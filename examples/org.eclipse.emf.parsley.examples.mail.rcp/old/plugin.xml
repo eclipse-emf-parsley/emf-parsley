@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.eclipse.emf.parsley.examples.mail.rcp.MailApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Emf Parsley Mail RCP Perspective"
+            class="org.eclipse.emf.parsley.examples.mail.rcp.Perspective"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Message"
+            allowMultiple="true"
+            icon="icons/sample2.gif"
+            class="org.eclipse.emf.parsley.examples.mail.rcp.View"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.view">
+      </view>
+      <view
+            name="Mailboxes"
+            allowMultiple="true"
+            icon="icons/sample3.gif"
+            class="org.eclipse.emf.parsley.examples.mail.rcp.NavigationView"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.navigationView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Mail"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.category">
+      </category>
+      <command
+            name="Open Mailbox"
+            description="Opens a mailbox"
+            categoryId="org.eclipse.emf.parsley.examples.mail.rcp.category"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.open">
+      </command>
+      <command
+            name="Open Message Dialog"
+            description="Open a message dialog"
+            categoryId="org.eclipse.emf.parsley.examples.mail.rcp.category"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.openMessage">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.eclipse.emf.parsley.examples.mail.rcp.open"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+2">
+      </key>
+      <key
+            commandId="org.eclipse.emf.parsley.examples.mail.rcp.openMessage"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+3">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+X">
+      </key>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.emf.parsley.examples.mail.rcp.application"
+            name="Emf Parsley Mail RCP Product">
+         <property
+               name="aboutText"
+               value="RCP Mail created with Emf Parsley">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/sample2.gif">
+         </property>
+         <property
+               name="aboutImage"
+               value="product_lg.gif">
+         </property>
+         <property
+               name="appName"
+               value="Emf Parsley Mail RCP Product">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

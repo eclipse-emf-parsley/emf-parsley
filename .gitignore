@@ -1,0 +1,14 @@
+.metadata
+*.class
+bin/
+*~
+logs.zip
+*.orig
+.svn/
+#xtend-gen/ we need it for building
+target/
+*.java._trace
+*.smap
+
+buildroot/
+buildroot-RAP/

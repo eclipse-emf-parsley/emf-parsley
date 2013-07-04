@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Emf Components Mail RCP Product" uid="org.eclipse.emf.parsley.examples.mail.rcp.product" id="org.eclipse.emf.parsley.examples.mail.rcp.product" application="org.eclipse.emf.parsley.examples.mail.rcp.application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="product_lg.gif"/>
+      <text>
+         RCP Mail template created by PDE
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Xms40m -Xmx512m -XX:MaxPermSize=256m</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="icons/sample2.gif"/>
+
+   <splash
+      location="org.eclipse.emf.parsley.examples.mail.rcp" />
+   <launcher name="emfparlsey_mail">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.emf.parsley.examples.mail.product.feature" version="1.0.0.qualifier"/>
+   </features>
+
+
+</product>

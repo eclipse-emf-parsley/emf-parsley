@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     May 25, 2010 10:34:57 AM                                                        
+
+	 This ant script creates a zip file for each of Emf Parsley's example projects.
+	 
+	 This is based on the Xtext's corresponding one.
+	  
+	 If the examples would not be zipped the resulting file namens would be too long to be 
+	 handled my MS Windows. See https://bugs.eclipse.org/bugs/show_bug.cgi?id=301858
+                   
+     Moritz Eysholdt                                                                
+     ====================================================================== -->
+<project name="project" default="zip_all_examples">
+
+	<property name="source" location="../" />
+	<property name="target_xtext" location="contents" />
+
+	<macrodef name="zip_example">
+		<attribute name="name" default="default" />
+		<attribute name="source" default="${source}" />
+		<attribute name="target" default="${target_xtext}" />
+		<sequential>
+			<delete file="@{target}/@{name}.zip" />
+			<zip destfile="@{target}/@{name}.zip" basedir="@{source}/@{name}" excludes="bin,bin/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**" />
+		</sequential>
+	</macrodef>
+
+	<target name="zip_all_examples">
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.rcp" />
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.model" />
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.accountsview" />
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.mailsview" />
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.messageview" />
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.feature" source="../../features/" />
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.site" source="../../releng/" />
+		<zip_example name="org.eclipse.emf.parsley.examples.firstexample" />
+		<zip_example name="org.eclipse.emf.examples.library" />
+		<zip_example name="org.eclipse.emf.examples.library.edit" />
+		<zip_example name="org.eclipse.emf.parsley.examples.views" />
+	</target>
+
+	<target name="clean">
+		<delete>
+			<fileset dir="${target_xtext}" includes="**/*.zip" />
+		</delete>
+	</target>
+
+</project>

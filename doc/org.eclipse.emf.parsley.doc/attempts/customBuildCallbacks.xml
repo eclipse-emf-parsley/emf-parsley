@@ -1,0 +1,9 @@
+<project name="Build specific targets and properties" default="noDefault">
+	<target name="post.build.jars">
+		<antcall target="build.index"/>
+	</target>
+
+	<target name="build.index" description="Builds search index for the plug-in: org.eclipse.someplugin.doc.user." if="eclipse.running">
+		<help.buildHelpIndex manifest="plugin.xml" destination="."/>
+	</target>
+</project>

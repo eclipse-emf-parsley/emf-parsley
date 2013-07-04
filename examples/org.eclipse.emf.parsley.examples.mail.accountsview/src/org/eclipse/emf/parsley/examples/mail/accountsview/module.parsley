@@ -1,0 +1,40 @@
+import org.eclipse.emf.parsley.examples.mail.Account
+import org.eclipse.emf.parsley.examples.mail.Folder
+import org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView
+
+/* org.eclipse.emf.parsley.examples.mail.accountsview Emf Components Dsl Module file */
+module org.eclipse.emf.parsley.examples.mail.accountsview {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView {
+			viewname "Mail Accounts View"
+			viewclass AccountsView
+			viewcategory org.eclipse.emf.parsley.examples.mail.accountsview
+		}
+	}
+	
+	labelProvider {
+		image {
+			Account -> "account.gif"
+			Folder -> {
+				switch (name) {
+					case "Inbox" : "inbox.gif"
+					case "Sent" : "sent.png"
+					case "Trash" : "trash.png"
+					default: "folder.gif"
+				}
+			}
+		}
+		
+		text {
+			Account -> email
+			Folder -> name
+		}
+	}
+	
+	viewerContentProvider {
+		children {
+			Folder -> subfolders // don't show emails
+		}
+	}
+}

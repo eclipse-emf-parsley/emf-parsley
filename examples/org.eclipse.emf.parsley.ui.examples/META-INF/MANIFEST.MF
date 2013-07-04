@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Components Examples
+Bundle-SymbolicName: org.eclipse.emf.parsley.ui.examples;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: RCP Vision
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.ui;bundle-version="3.5.0",
+ org.eclipse.emf.common.ui;bundle-version="2.7.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.junit4;bundle-version="[2.4.2,2.5.0)",
+ org.eclipse.xtext.ui.junit;bundle-version="[2.4.2,2.5.0)"

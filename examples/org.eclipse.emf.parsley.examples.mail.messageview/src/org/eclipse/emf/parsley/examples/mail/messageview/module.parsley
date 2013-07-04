@@ -1,0 +1,44 @@
+import org.eclipse.emf.parsley.examples.mail.Mail
+import org.eclipse.emf.parsley.examples.mail.messageview.views.MessageView
+
+/* org.eclipse.emf.parsley.examples.mail.messageview Emf Components Dsl Module file */
+module org.eclipse.emf.parsley.examples.mail.messageview {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.mail.messageview.views.MessageView {
+			viewname "Mail Message View"
+			viewclass MessageView
+			viewcategory org.eclipse.emf.parsley.examples.mail.messageview
+		}
+	}
+	
+	labelProvider {
+		text {
+			Mail -> subject
+		}
+		image {
+			Mail -> "email.png"
+		}
+	}
+	formControlFactory {
+		control {
+			Mail : message ->
+				toolkit.createText(parent, "", 
+					SWT::MULTI.bitwiseOr(SWT::BORDER).
+						bitwiseOr(SWT::WRAP).bitwiseOr(SWT::V_SCROLL)
+				)
+				target observeText(SWT::Modify)
+		}
+	}
+	featuresProvider {
+		features {
+			// the subject is already in the title
+			Mail -> from, recipients, message
+		}
+	}
+	propertyDescriptionProvider {
+		text {
+			Mail : recipients -> 'to'
+		}
+	}
+}

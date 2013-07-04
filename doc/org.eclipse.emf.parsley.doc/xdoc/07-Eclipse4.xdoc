@@ -1,0 +1,223 @@
+chapter:Eclipse4[Eclipse 4]
+
+Instead of using the Extension Point mechanism, EMF Components leverages from DSL and Google Guice Injection.
+
+Because of this, it is very easy to use it with Eclipse 4.
+
+section:GetFirstExample[First Example Setup]
+
+If you followed the steps described in section ref:GettingStarted[Getting Started] you will have already
+what we need to begin. Otherwise the following wizard will bring you to that point.
+
+ol[
+	item[File -> New... -> Example...]
+	item[from Category "Emf Parsley Examples", select "Emf Parsley First Example"]
+	item[press Next and Finish]
+]
+
+You will end up with three plug-ins:
+
+ul[
+item[org.eclipse.emf.parsley.examples.firstexample (the EMF Components example plug-in)]
+item[org.eclipse.emf.examples.library (the model plug-in)]
+item[org.eclipse.emf.examples.library.edit (the model.edit plug-in)]
+]
+
+As a reminder, in section ref:GettingStarted[Getting Started] we reached the point where we launched a second Eclipse
+instance (but, of course, just defining a product you could have a standalone 3.x application) with a
+view (called "My Library Tree Form") that allowed to manage the model.
+
+section:PrepareForEclipse4Application[Preparing for a pure Eclipse 4 Application]
+
+What we will do now is starting from the previous step and create an Eclipse 4 Application (on top of
+the previous plug-ins) that gets to the same result, but now with a pure Eclipse 4 Part.
+
+In order to do this we need to export the e["org.eclipse.emf.parsley.examples.firstexample"] package from the first plug-in.
+
+
+section:CreateEclipse4Application[Create an Eclipse 4 Application]
+
+Now let's create a new, empty, Eclipse 4 application, e.g. e["org.eclipse.emf.parsley.examples.firstexample.application"]
+(you can find details on how to create Eclipse 4 applications in link[http://www.rcp-vision.com/?p=4694&lang=en][our
+tutorials]).
+
+Create a Part and ensure that the application starts.
+
+section:Eclipse4ApplicationAndEMFComponents[Using an EMF Parsley TreeComposite into an Eclipse 4 Part]
+
+In the just created plug-in we need dependencies from the previous plug-ins: so open the e[org.eclipse.emf.parsley.examples.firstexample.application/MANIFEST.MF] file, go to e[Dependencies]
+tab and add the three previous plug-ins. Add also e["org.eclipse.emf.parsley"] plug-in.
+Don't forget to add the previous, and the required plug-ins, also to the Product.
+
+Open the Part java class and make the following changes:
+code[EmfComponents][
+// Use these imports during Organizing Imports operation
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.swt.widgets.Composite;
+]
+
+code[EmfComponents][
+// The part implements IMenuListener for context menu handling
+public class MyEclipse4Part implements IMenuListener
+]
+
+code[EmfComponents][
+//the parent composite
+private Composite parent;
+//the EMF Parley composite for showing a tree and a detail form
+private TreeFormComposite treeFormComposite;
+//the EMF Resource
+private Resource resource;
+
+//Guice injected EMF Parsley component for contributing to the tree context menu
+private TreeActionBarContributor treeActionBarContributor = FirstexampleActivator.getDefault().getInjector()
+
+		.getInstance(TreeActionBarContributor.class);
+
+
+//Guice injected EMF Parsley factory for the tree detail form
+private TreeFormFactory treeFormFactory = FirstexampleActivator.getDefault().getInjector()
+
+		.getInstance(TreeFormFactory.class);
+
+//Guice injected EMF Parsley Resource loader
+private ResourceLoader resourceLoader = FirstexampleActivator.getDefault().getInjector()
+
+		.getInstance(ResourceLoader.class);
+
+//Guice injected EMF Parsley editing domain
+private AdapterFactoryEditingDomain editingDomain = FirstexampleActivator.getDefault().getInjector()
+
+		.getInstance(AdapterFactoryEditingDomain.class);
+
+//Guice injected viewer initializer
+private ViewerInitializer viewerInitializer = (ViewerInitializer) FirstexampleActivator.getDefault().getInjector()
+
+		.getInstance(ViewerInitializer.class);
+
+//Guice injected save manager
+private ResourceSaveManager resourceSaveManager = FirstexampleActivator.getDefault().getInjector()
+
+		.getInstance(ResourceSaveManager.class);
+
+//URI for EMF Resource
+private URI uri = URI.createFileURI(System.getProperty("user.home")
+
+		+ "/MyLibrary.library");
+]
+
+
+Modify the e[@PostConstruct] method with this code:
+
+code[EmfComponents][
+@PostConstruct
+public void postConstruct(Composite parent) {
+	this.parent = parent;
+
+	// Initialize TreeFormFactory & ResourceLoader
+	init(treeFormFactory, resourceLoader);
+
+	// Prepare the menu action bar contributor upon the selection
+	treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
+
+}
+]
+
+and add the following methods:
+
+code[EmfComponents][
+
+public void init(TreeFormFactory treeFormFactory, ResourceLoader resourceLoader) {
+	//create the tree-form composite
+	treeFormComposite = treeFormFactory.createTreeFormMasterDetailComposite(parent, SWT.BORDER);
+	//load the resource
+	resource = resourceLoader.getResource(editingDomain, uri).getResource();
+	//update the composite
+	treeFormComposite.update(resource);
+	//initialize and bind the context menu to the tree-form composite
+	treeActionBarContributor.initialize(editingDomain);
+	viewerInitializer.addContextMenu(
+			treeFormComposite.getViewer(), treeActionBarContributor, editingDomain, this);
+}
+
+
+@Override
+public void menuAboutToShow(IMenuManager manager) {
+	treeActionBarContributor.menuAboutToShow(manager);
+}
+]
+
+If you now run the application you will be able to manage the model:
+
+img[images/07-eclipse4-part.png][][ ][]
+
+but you will notice that it is not possible to persist the changes to the model.
+
+section:Eclipse4Save[Adding the dirty state and Save command]
+
+In order to allow persisting the model changes we have to add the dirty state handling to the part and
+the Save command to the application.
+Let's start with adding the following attribute to the part
+
+code[EmfComponents][
+@Inject
+MDirtyable dirtyable;
+]
+
+initialize it in the e[@PostConstruct] method
+
+code[EmfComponents][
+@PostConstruct
+public void postConstruct(Composite parent, MDirtyable dirtyable) {
+
+		this.dirtyable = dirtyable;
+
+		this.dirtyable.setDirty(false);
+]
+
+add to e[init] method the following code in order to update the dirty state
+
+code[EmfComponents][
+	editingDomain.getCommandStack().addCommandStackListener(
+				new CommandStackListener() {
+					public void commandStackChanged(EventObject event) {
+						if (dirtyable != null)
+							dirtyable.setDirty(true);
+					}
+				});
+]
+
+and add the e[@Persist] method, which will be called when the part is saved
+
+code[EmfComponents][
+@Persist
+public void save(MDirtyable dirty) throws IOException {
+	if (resourceSaveManager.save(resource)) {
+
+		if (dirty != null) {
+
+			dirty.setDirty(false);
+
+		}
+
+	}
+}
+]
+
+and, in the end, add the e[Save] handler along with the correspondent e[Command] and e[Menu]
+(you can find how to create handlers, commands and menus in an Eclipse 4 applications in link[http://www.rcp-vision.com/?p=4972&lang=en][our
+tutorials])
+
+code[EmfComponents][
+public class SaveHandler {
+
+	@Execute
+	void execute(EPartService partService, @Named(IServiceConstants.ACTIVE_PART) MPart part) {
+
+		partService.savePart(part, false);
+	}
+
+}
+]
+

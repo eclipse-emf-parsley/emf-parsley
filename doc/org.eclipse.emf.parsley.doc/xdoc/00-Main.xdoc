@@ -1,0 +1,47 @@
+document[Emf Parsley Guide]
+
+authors[Lorenzo Bettini, Vincenzo Caselli, Francesco Guidieri]
+
+codelanguage-def[Java]
+[
+	abstract,continue,for,new,switch,
+	assert,default,package,synchronized,
+	boolean,do,if,private,this,
+	break,double,implements,protected,throw,
+	byte,else,import,public,throws,
+	case,enum,instanceof,return,transient,
+	catch,extends,int,short,try,
+	char,final,interface,static,void,
+	class,finally,long,strictfp,volatile,
+	float,native,super,while
+]
+
+codelanguage-def[EmfComponents]
+[
+	import,module,parts,labelProvider,text,image,
+	propertyDescriptionProvider,featuresProvider,features,
+	formControlFactory,control,target,viewerContentProvider,
+	children,viewpart,viewname,viewclass,viewcategory
+]
+
+part[Documentation]
+
+chapter-ref[Introduction]
+
+chapter-ref[GettingStarted]
+
+chapter-ref[Components]
+
+chapter-ref[Customization]
+
+chapter-ref[DSL]
+
+chapter-ref[AdvancedComponents]
+
+chapter-ref[Eclipse4]
+
+part[Appendix]
+
+chapter-ref[GettingSources]
+
+chapter-ref[samples]

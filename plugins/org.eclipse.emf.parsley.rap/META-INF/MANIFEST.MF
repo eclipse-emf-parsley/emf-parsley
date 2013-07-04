@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Emf Components
+Bundle-SymbolicName: org.eclipse.emf.parsley.rap
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.eclipse.emf.parsley.rap.EmfComponentsRapActivator
+Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibility:=reexport,
+ org.eclipse.core.databinding.property;bundle-version="1.4.0",
+ org.eclipse.emf.ecore.edit;bundle-version="2.7.0";visibility:=reexport,
+ org.eclipse.core.runtime;bundle-version="3.5.0";visibility:=reexport,
+ org.eclipse.emf.parsley.rap.runtime;bundle-version="0.1.0";visibility:=reexport,
+ org.eclipse.rap.ui;bundle-version="1.5.0";visibility:=reexport,
+ org.eclipse.emf.rap.edit.ui;bundle-version="2.7.0";visibility:=reexport,
+ org.eclipse.rap.ui.forms;bundle-version="1.5.0";visibility:=reexport,
+ org.eclipse.rap.jface.databinding;bundle-version="1.5.0";visibility:=reexport,
+ org.eclipse.emf.parsley.common;bundle-version="0.1.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

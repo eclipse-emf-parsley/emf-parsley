@@ -1,0 +1,321 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>Eclipse 4</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="xtext.html" title="">
+</head>
+<body>
+<a name="Eclipse4"></a>
+<h1>Eclipse 4</h1>
+<p>
+Instead of using the Extension Point mechanism, EMF Components leverages from DSL and Google Guice Injection.
+</p>
+<p>
+Because of this, it is very easy to use it with Eclipse 4.
+</p>
+<a name="GetFirstExample"></a>
+<h2>First Example Setup</h2>
+<p>
+If you followed the steps described in section <a href="02-GettingStarted.html#GettingStarted" title="Go to &quot;Getting Started&quot;">Getting Started</a> you will have already
+what we need to begin. Otherwise the following wizard will bring you to that point.
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley First Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+</ol>
+</p>
+<p>
+You will end up with three plug-ins:
+</p>
+<p>
+<ul>
+	<li>
+		org.eclipse.emf.parsley.examples.firstexample (the EMF Components example plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library (the model plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library.edit (the model.edit plug-in)
+	</li>
+</ul>
+</p>
+<p>
+As a reminder, in section <a href="02-GettingStarted.html#GettingStarted" title="Go to &quot;Getting Started&quot;">Getting Started</a> we reached the point where we launched a second Eclipse
+instance (but, of course, just defining a product you could have a standalone 3.x application) with a
+view (called "My Library Tree Form") that allowed to manage the model.
+</p>
+<a name="PrepareForEclipse4Application"></a>
+<h2>Preparing for a pure Eclipse 4 Application</h2>
+<p>
+What we will do now is starting from the previous step and create an Eclipse 4 Application (on top of
+the previous plug-ins) that gets to the same result, but now with a pure Eclipse 4 Part.
+</p>
+<p>
+In order to do this we need to export the <em>"org.eclipse.emf.parsley.examples.firstexample"</em> package from the first plug-in.
+</p>
+<a name="CreateEclipse4Application"></a>
+<h2>Create an Eclipse 4 Application</h2>
+<p>
+Now let&apos;s create a new, empty, Eclipse 4 application, e.g. <em>"org.eclipse.emf.parsley.examples.firstexample.application"</em>
+(you can find details on how to create Eclipse 4 applications in <a href="http://www.rcp-vision.com/?p=4694&lang=en">our
+tutorials</a>).
+</p>
+<p>
+Create a Part and ensure that the application starts.
+</p>
+<a name="Eclipse4ApplicationAndEMFComponents"></a>
+<h2>Using an EMF Parsley TreeComposite into an Eclipse 4 Part</h2>
+<p>
+In the just created plug-in we need dependencies from the previous plug-ins: so open the <em>org.eclipse.emf.parsley.examples.firstexample.application/MANIFEST.MF</em> file, go to <em>Dependencies</em>
+tab and add the three previous plug-ins. Add also <em>"org.eclipse.emf.parsley"</em> plug-in.
+Don&apos;t forget to add the previous, and the required plug-ins, also to the Product.
+</p>
+<p>
+Open the Part java class and make the following changes:
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="comment">//&nbsp;Use&nbsp;these&nbsp;imports&nbsp;during&nbsp;Organizing&nbsp;Imports&nbsp;operation<br/>
+</span><span class="keyword">import</span>&nbsp;org.eclipse.emf.common.util.URI;<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.swt.widgets.Composite;<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="comment">//&nbsp;The&nbsp;part&nbsp;implements&nbsp;IMenuListener&nbsp;for&nbsp;context&nbsp;menu&nbsp;handling<br/>
+</span>public&nbsp;class&nbsp;MyEclipse4Part&nbsp;implements&nbsp;IMenuListener<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="comment">//the&nbsp;parent&nbsp;composite<br/>
+</span>private&nbsp;Composite&nbsp;parent;<br/>
+<span class="comment">//the&nbsp;EMF&nbsp;Parley&nbsp;composite&nbsp;for&nbsp;showing&nbsp;a&nbsp;tree&nbsp;and&nbsp;a&nbsp;detail&nbsp;form<br/>
+</span>private&nbsp;TreeFormComposite&nbsp;treeFormComposite;<br/>
+<span class="comment">//the&nbsp;EMF&nbsp;Resource<br/>
+</span>private&nbsp;Resource&nbsp;resource;<br/>
+<br/>
+<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;component&nbsp;for&nbsp;contributing&nbsp;to&nbsp;the&nbsp;tree&nbsp;context&nbsp;menu<br/>
+</span>private&nbsp;TreeActionBarContributor&nbsp;treeActionBarContributor&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(TreeActionBarContributor.class);<br/>
+<br/>
+<br/>
+<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;factory&nbsp;for&nbsp;the&nbsp;tree&nbsp;detail&nbsp;form<br/>
+</span>private&nbsp;TreeFormFactory&nbsp;treeFormFactory&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(TreeFormFactory.class);<br/>
+<br/>
+<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;Resource&nbsp;loader<br/>
+</span>private&nbsp;ResourceLoader&nbsp;resourceLoader&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(ResourceLoader.class);<br/>
+<br/>
+<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;editing&nbsp;domain<br/>
+</span>private&nbsp;AdapterFactoryEditingDomain&nbsp;editingDomain&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(AdapterFactoryEditingDomain.class);<br/>
+<br/>
+<span class="comment">//Guice&nbsp;injected&nbsp;viewer&nbsp;initializer<br/>
+</span>private&nbsp;ViewerInitializer&nbsp;viewerInitializer&nbsp;=&nbsp;(ViewerInitializer)&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(ViewerInitializer.class);<br/>
+<br/>
+<span class="comment">//Guice&nbsp;injected&nbsp;save&nbsp;manager<br/>
+</span>private&nbsp;ResourceSaveManager&nbsp;resourceSaveManager&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(ResourceSaveManager.class);<br/>
+<br/>
+<span class="comment">//URI&nbsp;for&nbsp;EMF&nbsp;Resource<br/>
+</span>private&nbsp;URI&nbsp;uri&nbsp;=&nbsp;URI.createFileURI(System.getProperty(<span class="string">"user.home"</span>)<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>);<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Modify the <em>@PostConstruct</em> method with this code:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@PostConstruct<br/>
+public&nbsp;void&nbsp;postConstruct(Composite&nbsp;parent)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;this.parent&nbsp;=&nbsp;parent;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Initialize&nbsp;TreeFormFactory&nbsp;&amp;&nbsp;ResourceLoader<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;init(treeFormFactory,&nbsp;resourceLoader);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Prepare&nbsp;the&nbsp;menu&nbsp;action&nbsp;bar&nbsp;contributor&nbsp;upon&nbsp;the&nbsp;selection<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);<br/>
+<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and add the following methods:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+public&nbsp;void&nbsp;init(TreeFormFactory&nbsp;treeFormFactory,&nbsp;ResourceLoader&nbsp;resourceLoader)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//create&nbsp;the&nbsp;tree-form&nbsp;composite<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite&nbsp;=&nbsp;treeFormFactory.createTreeFormMasterDetailComposite(parent,&nbsp;SWT.BORDER);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//load&nbsp;the&nbsp;resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;resource&nbsp;=&nbsp;resourceLoader.getResource(editingDomain,&nbsp;uri).getResource();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//update&nbsp;the&nbsp;composite<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite.update(resource);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//initialize&nbsp;and&nbsp;bind&nbsp;the&nbsp;context&nbsp;menu&nbsp;to&nbsp;the&nbsp;tree-form&nbsp;composite<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;treeActionBarContributor.initialize(editingDomain);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;viewerInitializer.addContextMenu(<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite.getViewer(),&nbsp;treeActionBarContributor,&nbsp;editingDomain,&nbsp;this);<br/>
+}<br/>
+<br/>
+<br/>
+@Override<br/>
+public&nbsp;void&nbsp;menuAboutToShow(IMenuManager&nbsp;manager)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;treeActionBarContributor.menuAboutToShow(manager);<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+If you now run the application you will be able to manage the model:
+</p>
+<p>
+<div class="image" >
+<img src="images/07-eclipse4-part.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+but you will notice that it is not possible to persist the changes to the model.
+</p>
+<a name="Eclipse4Save"></a>
+<h2>Adding the dirty state and Save command</h2>
+<p>
+In order to allow persisting the model changes we have to add the dirty state handling to the part and
+the Save command to the application.
+Let&apos;s start with adding the following attribute to the part
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@Inject<br/>
+MDirtyable&nbsp;dirtyable;<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+initialize it in the <em>@PostConstruct</em> method
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@PostConstruct<br/>
+public&nbsp;void&nbsp;postConstruct(Composite&nbsp;parent,&nbsp;MDirtyable&nbsp;dirtyable)&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.dirtyable&nbsp;=&nbsp;dirtyable;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.dirtyable.setDirty(false);<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+add to <em>init</em> method the following code in order to update the dirty state
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+editingDomain.getCommandStack().addCommandStackListener(<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;CommandStackListener()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;commandStackChanged(EventObject&nbsp;event)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(dirtyable&nbsp;!=&nbsp;null)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dirtyable.setDirty(true);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and add the <em>@Persist</em> method, which will be called when the part is saved
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@Persist<br/>
+public&nbsp;void&nbsp;save(MDirtyable&nbsp;dirty)&nbsp;throws&nbsp;IOException&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(resourceSaveManager.save(resource))&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(dirty&nbsp;!=&nbsp;null)&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dirty.setDirty(false);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and, in the end, add the <em>Save</em> handler along with the correspondent <em>Command</em> and <em>Menu</em>
+(you can find how to create handlers, commands and menus in an Eclipse 4 applications in <a href="http://www.rcp-vision.com/?p=4972&lang=en">our
+tutorials</a>)
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+public&nbsp;class&nbsp;SaveHandler&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Execute<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;execute(EPartService&nbsp;partService,&nbsp;@Named(IServiceConstants.ACTIVE_PART)&nbsp;MPart&nbsp;part)&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partService.savePart(part,&nbsp;false);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+</body>
+</html>

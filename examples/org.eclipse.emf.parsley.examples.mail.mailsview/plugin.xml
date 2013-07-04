@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.eclipse.emf.parsley.examples.mail.mailsview"
+            name="Mail Example">
+      </category>
+      <view
+            category="org.eclipse.emf.parsley.examples.mail.mailsview"
+            class="org.eclipse.emf.parsley.examples.mail.mailsview.MailsviewExecutableExtensionFactory:org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView"
+            icon="icons/sample.gif"
+            id="org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView"
+            name="Mails View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.emf.parsley.examples.mail.rcp.perspective">
+         <view
+               id="org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView"
+               minimized="false"
+               ratio="0.25"
+               relationship="top"
+               relative="org.eclipse.ui.editorss">
+         </view>
+      </perspectiveExtension>
+   </extension>
+</plugin>

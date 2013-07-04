@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:cspec xmlns:cs="http://www.eclipse.org/buckminster/CSpec-1.0" name="org.eclipse.emf.parsley.rap.buckminster" componentType="buckminster" version="1.0.0">
+    <cs:dependencies>
+        <cs:dependency name="org.eclipse.emf.parsley.buckminster.common" componentType="buckminster"/>
+        <cs:dependency name="org.eclipse.emf.parsley.rap.site" componentType="eclipse.feature"/>
+        <cs:dependency name="org.apache.log4j" componentType="osgi.bundle"/>
+        <cs:dependency name="org.eclipse.emf.databinding.edit" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.emf.rap.sdk" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.rap.runtime" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.rap.runtime.requirements" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.emf.parsley.examples.rap.feature" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.xtext.xbase.lib" componentType="osgi.bundle"/>
+        <cs:dependency name="org.apache.commons.logging" componentType="osgi.bundle"/>
+    </cs:dependencies>
+</cs:cspec>

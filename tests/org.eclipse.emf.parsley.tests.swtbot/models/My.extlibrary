@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extlib:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extlib="http:///org/eclipse/emf/parsley/examples/library/extlibrary.ecore/0.1.0" address="Library's address" name="My Library">
+  <stock xsi:type="extlib:Book" title="Lorenzo's Book" author="//@writers.0"/>
+  <stock xsi:type="extlib:Book" title="Another Book" author="//@writers.0"/>
+  <stock xsi:type="extlib:VideoCassette" copies="1" title="My Video" cast="//@writers.0"/>
+  <writers address="writer's address" firstName="Lorenzo" lastName="Bettini" books="//@stock.0 //@stock.1"/>
+  <borrowers address="foo bar's address" firstName="Foo" lastName="Bar"/>
+</extlib:Library>

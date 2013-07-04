@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extlib:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extlib="http:///org/eclipse/emf/parsley/examples/library/extlibrary.ecore/0.1.0">
+  <stock xsi:type="extlib:Book" borrowers="//@borrowers.0 //@borrowers.1" title="Without Author"/>
+  <stock xsi:type="extlib:Book" borrowers="//@borrowers.0" title="First Author's Book" author="//@writers.0"/>
+  <stock xsi:type="extlib:Book" title="Empty Book"/>
+  <writers firstName="First Author" books="//@stock.1"/>
+  <borrowers firstName="First Borrower" lastName="" borrowed="//@stock.0 //@stock.1"/>
+  <borrowers firstName="Second Borrower" lastName="" borrowed="//@stock.0"/>
+</extlib:Library>

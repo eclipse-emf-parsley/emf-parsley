@@ -1,0 +1,19 @@
+chapter:Introduction[Introduction]
+
+Emf Parsley is a lightweight framework that allows easy and quick development
+of EMF-based Applications. It can be configured to use all kind of EMF persistence 
+implementations (XMI, Teneo, CDO).
+
+It aims at providing a set of Components like Trees, Tables and Detail Forms 
+that manage the model with the introspective EMF capabilities. 
+Using these components you can easily build forms, viewer or editors. 
+The framework provides basic UI implementations which are customizable 
+with Injection mechanism
+(based on link[http://code.google.com/p/google-guice][Google Guice]). 
+
+
+section:reflectiveComponents[Reflective Components]
+
+section:easyToCustomize[Easy to Customize]
+
+section:architecture[Architecture]

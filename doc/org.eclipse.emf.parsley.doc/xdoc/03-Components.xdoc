@@ -1,0 +1,108 @@
+chapter:Components[Components]
+
+Here we list the behaviors that can be customized for all components.
+
+ul[
+	item[If you need a machanism to fill some data for the first time you use a model, you can provide
+	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
+	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
+	Loader]]
+]
+
+For what concern saving objects, there are some specific parts that can be customized:
+
+ul[
+	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
+	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
+	item[In some cases, it can be usefull to specify an editing domain to work with. In this case it can be used the ref:EditingDomainFinder[Editing Domain Finder].]
+]
+
+The following sections describe the basic components provided, that are the foundations for all parts built upon e[Emf Parsley].
+For each component we present a set of customizations, just to get an idea of how it works. You can refer
+to ref:Customization[Customization Section] for a complete list.
+ 
+
+section:FormComponent[Form Component]
+
+The e[Form Component] can be used to rapresent an codeRef[org.eclipse.emf.ecore.EObject] in a row-oriented form,
+like in the image above.
+
+img[images/03-components-form.png][][ ][]
+
+For each codeRef[org.eclipse.emf.ecore.EStructuralFeature] defined for the codeRef[org.eclipse.emf.ecore.EClass]
+(that is the type of the object to rapresent), the component builds a row with a 
+e[label] with the name of the feature and a e[control] to access the data. It can be used the factory
+to create such a component, like in the code below.
+
+code[Java][
+	formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
+	formComposite.init(eObject);
+]
+
+The e[form component] can be customized in many way, in particular the feature list, the labels and the controls.  
+
+
+section2:Form_Customizations[Form Customizations]
+
+The e[Form Component] can be customized in several way. Here the complete list.
+
+ul[
+	item[The e[list fo feature] displayed on the form can be customized via the ref:FeaturesProvider[Feature
+	Provider] to select the features or the order.]
+	item[The description on the left side of the form caan be customizzed via the ref:PropertyDescriptionProvider[Property
+	Description Provider].]
+	item[Otherwise to customize the controls on the right, you can use the ref:FormControlFactory[Form Control Factory].
+	]
+	item[Depending on the feature types, can be some fields that use predefined values (e.g. combo). You can provide
+	the exact proposal list via the ref:ProposalProvider[Proposal Provider].]
+]
+
+
+
+section:TreeComponent[Tree Component]
+
+The e[Tree Component] provides a tree rapresentation of data that can be feeded with an EResource, a
+Resource URI, and a simple EObject. This component use the EMF Meta-Model information to display objects in the tree. 
+
+img[images/03-components-tree.png][][ ][]
+
+section2:Tree_Customizations[Tree Customizations]
+
+The e[Tree Component]can be customized in several way via the standard EMF Edit facilities or with the EMF Components 
+codeinjection based mechanism. If you are familiar with Jface APIs, you can easily use the basic class with some facilties to define the specific implementation. 
+See the corrisponding sections for more details.
+
+ul[
+	item[The ref:ViewerContentProvider[Viewer Content Provider]]
+	item[The ref:ViewerLabelProvider[Viewer Label Provider]]
+	item[The ref:ViewerContextMenuFactory[Viewer Context Menu Factory]]
+]
+
+e[TODO]
+
+
+
+section:TreeFormComponent[Tree Form Component]
+
+The e[Tree Form Component] contains a ref:TreeComponent that provides a tree rapresentation of data that can be feeded with
+an EResource, a Resource URI, and a simple EObject. This component use the EMF Meta-Model information to display objects in 
+the tree. The component also combines a ref:FormComponent detail that display the current selected object.
+
+img[images/03-components-treeform.png][][ ][]
+
+section2:TreeForm_Customizations[Tree Form Customization]
+
+Since e[Tree Form Component] is a combination of  e[Tree Component] and  e[Form Component], all their customizations
+are avaible for it.
+
+
+
+section:TableComponent[Table Component]
+
+The e[Table Component] can rapresent data in a grid, once you have specified what kind of object need to be rapresented. 
+It uses metamodel infos to build column as needed.
+
+img[images/03-components-table.png][][ ][]
+
+todo[ To be continued ]
+

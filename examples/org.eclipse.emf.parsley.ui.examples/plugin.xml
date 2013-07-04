@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.eclipse.emf.parsley.ui.Examples" 
+				  name="Emf Parsley Examples" 
+				  parentCategory="org.eclipse.ui.Examples" />
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.eclipse.emf.parsley.project.Examples" 
+				  name="Examples" 
+				  parentCategory="org.eclipse.emf.parsley.wizards" />
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.MailExampleWizard" 
+			name="Emf Parsley Mail RCP Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Mail RCP implemented with Emf Parsley</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.MailExampleWizard" 
+			name="Emf Parsley Mail RCP Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Mail RCP implemented with Emf Parsley</description>
+		</wizard>
+	</extension>
+		<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.FirstExampleWizard" 
+			name="Emf Parsley First Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley First Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.FirstExampleWizard" 
+			name="Emf Parsley First Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley First Example</description>
+		</wizard>
+	</extension>
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <wizard
+          category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+          class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+          icon="icons/genproject.gif"
+          id="org.eclipse.emf.parsley.examples.ViewsExamples"
+          name="Emf Parsley Views Examples"
+          project="true">
+       <description>
+          Emf Parsley First Example
+       </description>
+    </wizard>
+ </extension>
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <wizard
+          category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+          class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+          icon="icons/genproject.gif"
+          id="org.eclipse.emf.parsley.examples.ViewsExamples"
+          name="Emf Parsley Views Examples"
+          project="true">
+       <description>
+          Emf Parsley First Example
+       </description>
+    </wizard>
+ </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.MailExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.mail.model.zip"
+               description="Mail Model"
+               name="org.eclipse.emf.parsley.examples.mail.model">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.mail.rcp.zip"
+               description="Mail RCP"
+               name="org.eclipse.emf.parsley.examples.mail.rcp">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.mail.accountsview.zip"
+               description="Mail Accounts View"
+               name="org.eclipse.emf.parsley.examples.mail.accountsview">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.mail.mailsview.zip"
+               description="Mail Emails View"
+               name="org.eclipse.emf.parsley.examples.mail.mailsview">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.mail.messageview.zip"
+               description="Mail Message View"
+               name="org.eclipse.emf.parsley.examples.mail.messageview">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.mail.product.feature.zip"
+               description="Mail Product Feature"
+               name="org.eclipse.emf.parsley.examples.mail.product.feature">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.mail.product.site.zip"
+               description="Mail Product Site Feature"
+               name="org.eclipse.emf.parsley.examples.mail.product.site">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.FirstExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.examples.library.zip"
+               description="Library Model"
+               name="org.eclipse.emf.examples.library">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.examples.library.edit.zip"
+               description="Library Edit Plugin"
+               name="org.eclipse.emf.examples.library.edit">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.firstexample.zip"
+               description="Emf Parsley First Example"
+               name="org.eclipse.emf.parsley.examples.firstexample">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.ViewsExamples">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.views.zip"
+               description="Emf Parsley Views Examples"
+               name="org.eclipse.emf.parsley.examples.views">
+         </projectDescriptor>
+      </example>
+   </extension>
+
+</plugin>

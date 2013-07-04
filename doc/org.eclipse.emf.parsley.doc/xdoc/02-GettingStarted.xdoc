@@ -1,0 +1,267 @@
+chapter:GettingStarted[Getting Started]
+
+To get started, you should first download "Eclipse Modeling Tools" from link[http://www.eclipse.org/downloads/][Eclipse
+Downloads]
+img[images/eclipseModelingTools.png][][ ][]
+This will ensure you have EMF and related Tools installed and ready to go.
+
+
+section:Installation[Installation]
+
+Now select "Help" -> "Install New Software..." and in the "Work with:" field insert the EMF Components update
+site link[http://www.rcp-vision.com/emf-components/updates/][http://www.rcp-vision.com/emf-components/updates/]
+and install all features.
+Although sources are not strictly required, it might help when using EMF Components
+to have a look at its sources.
+
+img[images/emf-components-update-site.png][][ ][]
+
+
+section:FirstExample[First Example]
+
+The purpose of this first example is to make use of the classical EMF Library Model example and
+create a view for editing such models using an EMF Components enabled plug-in.
+
+So let's start by creating the model plug-in with
+
+ol[
+	item[File -> New... -> Example...]
+	item[from Category "Eclipse Modeling Framework", select "Extended Library Model Example"]
+	item[press Next and Finish]
+]
+
+You will end up with three plug-ins: 
+
+ul[
+item[org.eclipse.emf.examples.library (the model plug-in)]
+item[org.eclipse.emf.examples.library.edit (the edit plug-in)]
+item[org.eclipse.emf.examples.library.editor (the editor plug-in)]
+]
+
+We only need the first plugin, so you might want to remove the .edit and .editor plugins.
+
+Now you can create your first example with the appropriate wizard.
+
+ol[
+	item[select "File" -> "New" -> "Project..."]
+	item[from the "Emf Parsley" category select "Emf Parsley Dsl based Project"]
+	item[click "Next"]
+	item[give a name to the project (e.g. "org.eclipse.emf.parsley.examples.firstexample")]
+	item[click "Finish"]
+]
+ 
+The generated project has some classes and a e[module.parlsey] file, which opens automatically.
+Just type the following content into the {} block (note that context assist is available)
+
+code[EmfComponents][
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.firstexample.view.library.treeform {
+			viewname "My Library Tree Form"
+			viewclass 
+		}
+	}
+]
+
+Here above we have just declared a view part with
+ 
+ol[
+	item[id e["org.eclipse.emf.parsley.examples.firstexample.view.library.treeform"]]
+	item[name e["Library Tree Form"]]
+	item[class: not yet set, we are going to create
+		 e["org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView"]]
+]
+
+So there is still an error, in fact we need to create the declared class. 
+e[Suggestion:] Just copy the above qualified class name (e["org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView"]), 
+select the project, right-click and select File -> New -> Class. Now paste the clipboard content into e["Name:"] field: the
+package and class name will be automatically splitted into right fields. Then click e["Finish"].
+
+Now modify the view class code with this content:
+
+code[Java][
+import org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;
+import org.eclipse.emf.common.util.URI;
+
+public class LibraryTreeFormView extends AbstractSaveableTreeFormView {
+
+	protected URI createResourceURI() {
+		return URI.createFileURI( System.getProperty("user.home") + "/MyLibrary.library" );
+	}
+
+}
+]
+
+Now get back to e[module.parlsey] file, go just after e["viewclass"] keyword, type e["LibraryTreeFormView"]
+and e[Ctrl-Space]: the content assist will set automatically the correct qualified name
+
+code[EmfComponents][
+	viewclass org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
+]
+
+when you save the above file you will notice that a new file (e["plugin.xml_emfparsley_gen"]) 
+is generated into the root folder of your project. Just copy this file into e["plugin.xml"].
+
+Let's focus briefly on the above e[createResourceURI()] method: our goal is allowing to manage 
+a library model instance which persists on a EMF Resource.
+In this example we choose to use the EMF default persistence (XMI), but you can provide any URI 
+(e.g. using Teneo, CDO or any other EMF Resource Persistence implementation)
+In particular here we choose to persist the Resource in a XMI file named e["MyLibrary.library"] into the user home
+folder (you might want to change it with any other path). 
+
+We need a e[Dependency] from the model plug-in: so open e[MANIFEST.MF] file, go to e[Dependencies]
+tab, press e["Add..."] button in e["Required Plug-ins"] section and insert e["org.eclipse.emf.examples.library"]
+among dependencies.
+
+Before executing this code we need to do some little more work in order to initialize the Resource.
+
+An easy way to overcome this issue can be the following:
+
+ol[
+	item[open the class *GuiceModule (FirstexampleGuiceModule in this example) that the wizard created for you.
+	Note that this is a key	class for all customizations; it allows to override several methods in order to provide custom behaviors
+	and implementations.]
+	item[override method e[bindEmptyResourceInitializer()] providing a class for Resource initialization
+	
+		code[Java][
+			public Class<? extends EmptyResourceInitializer> bindEmptyResourceInitializer() {
+				return LibraryEmptyResourceInitializer.class;
+			}
+		]
+	]
+	item[create a new class e[LibraryEmptyResourceInitializer] extending from e[EmptyResourceInitializer] for Resource initialization
+		code[Java][
+			import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+			import org.eclipse.emf.ecore.resource.Resource;
+			import org.eclipse.emf.examples.extlibrary.EXTLibraryFactory;
+			import org.eclipse.emf.examples.extlibrary.Library;
+			
+			public class LibraryEmptyResourceInitializer  extends EmptyResourceInitializer { 
+			    
+			   public void initialize(Resource resource) { 
+			       super.initialize(resource); 
+			       Library library = EXTLibraryFactory.eINSTANCE.createLibrary(); 
+			       resource.getContents().add(library); 
+			   } 
+			
+			} 
+		]
+		The method e[initialize()] will be executed only when the Resource is empty
+		(i.e., it has no contents).
+	]
+]
+
+now get back to the e[MANIFEST.MF] and run the example
+
+img[images/first-example-launch.png][][ ][]
+
+As an Eclipse RCP developer you know, of course, that this will start another Eclipse instance (unless
+you add an Application plug-in to the launch or define an Application in the current plug-in). 
+
+In this second Eclipse instance you can show the View in this way:
+ol[
+	item[e[Window -> Show View -> Other...]]
+	item[from Category "Emf Parsley", select "My Library Tree Form"]
+	item[press e[OK]]
+]
+
+img[images/first-example-run.png][][ ][]
+
+With this simple view you can start editing the model instance. For example you can set the e["name"]
+field; as soon as you start typing characters into this field you will notice that:
+ol[
+	item[the View turns to a e["dirty"] state (an asterisk symbol appears on the view tab)]
+	item[the e["Save"] toolbar button is enabled]
+	item[the typed characters are reflected into the label correspondent to the Library icon]
+]
+
+if you now perform a e["Save"] action the persistence mechanism will trigger and you will see that file 
+code[<user.home>/MyLibrary.library]
+is being created on the file system. From now on, this file will keep the state of the model object whenever
+you change and save it. 
+
+To create a Writer into the Library just right-click on the Library object and select e[New Child -> Writer]
+
+img[images/createWriter.png][][ ][]
+
+Please note that you might see a slightly different content in the above context-menu in case you deleted
+the .edit plugin when creating the model (e.g. e["Writers Writer"] instead of e["Writer"], e["Stock Book"] instead of e["Book"] and
+similar (this is because with EMF it is possible to customize labels also via .edit plugin).
+
+Now set for instance the writer e["name"] field and save.
+Now just play around creating Books, associating them to Writers and so on.
+As you can see you can entirely manage the EMF model instance: creating, modifying and deleting elements.
+
+Whenever the current selection on the upper side of the view changes, then the lower side shows the detail
+of this selection.
+
+However, up to this point, you have no control over the field to be shown and its order; for example
+you may want just the e["name"] attribute for the Library and e["name", "address" and "books"] attributes
+for Writers and maybe e["title", "authors" and "category"] for Books.
+
+Well, it's indeed very easy to obtain this: just edit the e[module.parsley] file, 
+adding the following import (without ending line with ";")
+
+code[EmfComponents][
+import org.eclipse.emf.examples.extlibrary.*
+]
+
+and then defining the features to show
+
+code[EmfComponents][
+
+module ... {
+
+	parts { 
+		...	
+	}
+	
+	featuresProvider {
+        features {
+            Library -> name
+            Writer -> name, address, books
+            Book -> author, title, category
+        }
+    }
+}
+]
+
+Remeber that code completion is available, just exploit it since it helps a lot.
+
+If you restart now the application you will see that, when selecting an object, only the declared attributes
+will be shown. Furthermore, they are shown in the specified order.
+
+Did you run the application in Debug mode? Well, then you can change fields and order, save and see the
+changes without even restarting the application.
+
+Do you want to change text used for attribute labels in the detail? Just add the following:
+
+code[EmfComponents][
+	propertyDescriptionProvider {
+		text {
+			Book : author -> 'Wrote by:'
+			Writer : name -> 'Name:'
+		}
+	}
+]
+ 
+Or do you want to change the label shown on the tree nodes on the upper side and as detail title? 
+Maybe want to format the book label like this?
+ 
+code[EmfComponents][
+	labelProvider {
+		text {
+			Book b -> '"' + b.title + '"' +' (by '+ b.author.name + ')'
+		}
+	}
+]
+ 
+img[images/labelCustomization.png][][ ][]
+ 
+  
+ 
+ 
+ 
+
+
+section:RCPMail[RCP Mail Example]
+

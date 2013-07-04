@@ -1,0 +1,41 @@
+import org.eclipse.emf.examples.extlibrary.Book
+import org.eclipse.emf.examples.extlibrary.Library
+import org.eclipse.emf.examples.extlibrary.Writer
+import org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
+
+/* org.eclipse.emf.parsley.examples.firstexample Emf Components Dsl Module file */
+module org.eclipse.emf.parsley.examples.firstexample {
+
+	parts { 
+	    viewpart org.eclipse.emf.parsley.examples.firstexample.view.library.treeform { 
+	        viewname "My Library Tree Form" 
+	        viewclass LibraryTreeFormView
+	    } 
+	} 
+	
+	 featuresProvider { 
+        features { 
+            Library -> name 
+            Writer -> name, address, books 
+            Book -> author, title, category 
+        } 
+    } 
+    
+    propertyDescriptionProvider { 
+	    text { 
+	        Book : author -> 'Wrote by:' 
+	        Writer : name -> 'Name:' 
+	    } 
+	}
+	
+	labelProvider { 
+	    text { 
+	        Book b -> {
+	        	'"' + b.title + '"' +
+	        	if (b.author != null)
+	        		' (by '+ b.author.name + ')'
+	        	else ''
+	        }
+	    } 
+	} 
+}

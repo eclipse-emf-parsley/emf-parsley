@@ -1,0 +1,2 @@
+setpref targetPlatformPath="${target.platform}"
+resolve "${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/build.cquery"

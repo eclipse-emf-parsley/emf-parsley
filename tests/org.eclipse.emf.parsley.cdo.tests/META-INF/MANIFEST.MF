@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Tree Editor CDO Tests
+Bundle-SymbolicName: org.eclipse.emf.parsley.cdo.tests
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: org.eclipse.emf.parsley.cdo.tests.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.parsley.cdo;bundle-version="0.1.0",
+ org.junit;bundle-version="4.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

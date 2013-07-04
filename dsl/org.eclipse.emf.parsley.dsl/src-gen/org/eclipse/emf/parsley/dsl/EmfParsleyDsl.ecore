@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://www.eclipse.org/emf/parsley/dsl/EmfParsleyDsl"
+    nsPrefix="model">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importSection" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/Xtype.ecore#//XImportSection"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="module" eType="#//Module"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//WithExtendsClause">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extendsClause" eType="#//ExtendsClause"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelProvider" eType="#//LabelProvider"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyDescriptionProvider"
+        eType="#//PropertyDescriptionProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featuresProvider" eType="#//FeaturesProvider"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="formControlFactory" eType="#//FormControlFactory"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proposalCreator" eType="#//ProposalCreator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewerContentProvider"
+        eType="#//ViewerContentProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
+        eType="#//PartSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtendsClause">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelSpecifications" upperBound="-1"
+        eType="#//LabelSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imageSpecifications" upperBound="-1"
+        eType="#//LabelSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterType" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyDescriptionProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelSpecifications" upperBound="-1"
+        eType="#//PropertyDescriptionSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyDescriptionSpecification" eSuperTypes="#//EmfFeatureAccess">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturesProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureSpecifications"
+        upperBound="-1" eType="#//FeatureSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureSpecification" eSuperTypes="#//EmfFeatureAccess">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FormControlFactory">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlSpecifications"
+        upperBound="-1" eType="#//FormControlSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FormControlSpecification" eSuperTypes="#//EmfFeatureAccess">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProposalCreator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proposalsSpecifications"
+        upperBound="-1" eType="#//ProposalSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProposalSpecification" eSuperTypes="#//EmfFeatureAccess">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewerContentProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childrenSpecifications"
+        upperBound="-1" eType="#//LabelSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EmfFeatureAccess">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterType" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WithExtendsClause"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartSpecification"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewSpecification" eSuperTypes="#//PartSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

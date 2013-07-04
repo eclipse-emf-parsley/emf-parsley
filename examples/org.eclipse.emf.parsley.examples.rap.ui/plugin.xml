@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="viewapp"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            thread="main"
+            cardinality="singleton-global"
+            visible="true">
+         <run
+               class="org.eclipse.emf.parsley.examples.rap.ui.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RAP Perspective"
+            class="org.eclipse.emf.parsley.examples.rap.ui.Perspective"
+            id="org.eclipse.emf.parsley.examples.rap.ui.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="View"
+            class="org.eclipse.emf.parsley.examples.rap.ui.ExecutableExtensionFactory:org.eclipse.emf.parsley.examples.rap.ui.View"
+            id="org.eclipse.emf.parsley.examples.rap.ui.view">
+      </view>
+      <view
+            class="org.eclipse.emf.parsley.examples.rap.ui.ExecutableExtensionFactory:org.eclipse.emf.parsley.examples.rap.ui.SaveableView"
+            id="org.eclipse.emf.parsley.examples.rap.ui.saveableview"
+            name="Saveable View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.branding">
+      <branding
+            servletName="view"
+            themeId="org.eclipse.rap.design.example.fancy.theme"
+            defaultEntrypointId="org.eclipse.emf.parsley.examples.rap.ui.viewapp"
+            title="RAP Single View"
+            id="org.eclipse.emf.parsley.examples.rap.ui.branding">
+      </branding>
+   </extension>
+
+</plugin>

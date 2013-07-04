@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:cspec xmlns:cs="http://www.eclipse.org/buckminster/CSpec-1.0" name="org.eclipse.emf.parsley.buckminster" componentType="buckminster" version="1.0.0">
+    <cs:dependencies>
+        <cs:dependency name="org.eclipse.emf.cdo.sdk" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.emf.parsley.buckminster.common" componentType="buckminster"/>
+        <cs:dependency name="org.eclipse.emf.parsley.site" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.emf.query.sdk" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.emf.sdk" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.equinox.executable" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.net4j.sdk" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.rcp" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.rcp.source" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.sdk" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.swtbot.eclipse" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.swtbot.ide" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.xtend.sdk" componentType="eclipse.feature"/>
+        <cs:dependency name="org.eclipse.xtext.sdk" componentType="eclipse.feature"/>
+    </cs:dependencies>
+</cs:cspec>

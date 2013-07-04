@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.parsley.wizards"
+            name="Emf Parsley">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.emf.parsley.wizards"
+            class="org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectWizard"
+            icon="icons/sample.gif"
+            id="org.eclipse.emf.parsley.wizards.NewEmfComponentsProject"
+            name="Emf Parsley Project"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.pde.ui.pluginContent">
+      <wizard
+            class="org.eclipse.emf.parsley.wizards.TablePluginContentWizard"
+            icon="icons/component.jpg"
+            id="org.eclipse.emf.parsley.masterdetail.tablewizard"
+            java="true"
+            name="Table Master Detail Wizard"
+            pureOSGi="false"
+            rcp="false"
+            requiresActivator="false"
+            ui-content="true">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.pde.ui.templates">
+      <template
+            class="org.eclipse.emf.parsley.wizards.TableViewTemplateSection"
+            contributingId="org.eclipse.ui.views"
+            icon="icons/component.jpg"
+            id="org.eclipse.emf.parsley.masterdetail.tabletemplate"
+            name="Table Master Detail View"/>
+	</extension>
+</plugin>

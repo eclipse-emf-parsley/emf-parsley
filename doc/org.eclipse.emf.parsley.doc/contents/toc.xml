@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<toc topic="contents/00-Main.html" label="Emf Parsley Guide" >
+	<topic href="contents/00-Main_4.html#Emf%20Parsley%20Guide_4" label="Documentation" >
+		<topic href="contents/01-Introduction.html#Introduction" label="Introduction" >
+			<topic href="contents/01-Introduction.html#reflectiveComponents" label="Reflective Components" >
+			</topic>
+			<topic href="contents/01-Introduction.html#easyToCustomize" label="Easy to Customize" >
+			</topic>
+			<topic href="contents/01-Introduction.html#architecture" label="Architecture" >
+			</topic>
+		</topic>
+		<topic href="contents/02-GettingStarted.html#GettingStarted" label="Getting Started" >
+			<topic href="contents/02-GettingStarted.html#Installation" label="Installation" >
+			</topic>
+			<topic href="contents/02-GettingStarted.html#FirstExample" label="First Example" >
+			</topic>
+			<topic href="contents/02-GettingStarted.html#RCPMail" label="RCP Mail Example" >
+			</topic>
+		</topic>
+		<topic href="contents/03-Components.html#Components" label="Components" >
+			<topic href="contents/03-Components.html#FormComponent" label="Form Component" >
+				<topic href="contents/03-Components.html#Form_Customizations" label="Form Customizations" >
+				</topic>
+			</topic>
+			<topic href="contents/03-Components.html#TreeComponent" label="Tree Component" >
+				<topic href="contents/03-Components.html#Tree_Customizations" label="Tree Customizations" >
+				</topic>
+			</topic>
+			<topic href="contents/03-Components.html#TreeFormComponent" label="Tree Form Component" >
+				<topic href="contents/03-Components.html#TreeForm_Customizations" label="Tree Form Customization" >
+				</topic>
+			</topic>
+			<topic href="contents/03-Components.html#TableComponent" label="Table Component" >
+			</topic>
+		</topic>
+		<topic href="contents/04-Customization.html#Customization" label="Customization" >
+			<topic href="contents/04-Customization.html#ResourceManagers" label="Managing Resources" >
+				<topic href="contents/04-Customization.html#ResourceLoader" label="Resource Loader" >
+				</topic>
+				<topic href="contents/04-Customization.html#EmptyResourceInitializer" label="Empty Resource Initializer" >
+				</topic>
+				<topic href="contents/04-Customization.html#EditingDomainFinder" label="Editing Domain Finder" >
+				</topic>
+				<topic href="contents/04-Customization.html#ResourceSaveManager" label="Resource Save Manager" >
+					<topic href="contents/04-Customization.html#ValidateResourceSaveManager" label="Validate Resource Save Manager" >
+					</topic>
+				</topic>
+			</topic>
+			<topic href="contents/04-Customization.html#Providers" label="Providers" >
+				<topic href="contents/04-Customization.html#FeaturesProvider" label="Features Provider" >
+					<topic href="contents/04-Customization.html#FeatureProvider1" label="Prima versione" >
+					</topic>
+					<topic href="contents/04-Customization.html#FeatureProvider2" label="Seconda versione" >
+					</topic>
+					<topic href="contents/04-Customization.html#FeaturesColumnProvider" label="Features Column Provider" >
+					</topic>
+				</topic>
+				<topic href="contents/04-Customization.html#PropertyDescriptionProvider" label="Property Description Provider" >
+					<topic href="contents/04-Customization.html#FormPropertyDescriptionProvider" label="Form Property Description Provider" >
+					</topic>
+				</topic>
+				<topic href="contents/04-Customization.html#ViewerLabelProvider" label="Viewer Label Provider" >
+				</topic>
+				<topic href="contents/04-Customization.html#ViewerContentProvider" label="Viewer Content Provider" >
+				</topic>
+				<topic href="contents/04-Customization.html#ProposalProvider" label="Proposal Provider" >
+				</topic>
+				<topic href="contents/04-Customization.html#ViewerContextMenuFactory" label="Viewer Context Menu Factory" >
+				</topic>
+				<topic href="contents/04-Customization.html#TableColumnLabelProvider" label="Table Column Label Provider" >
+				</topic>
+			</topic>
+			<topic href="contents/04-Customization.html#SelectionAndMenu" label="Selection And Menu" >
+				<topic href="contents/04-Customization.html#EmfSelectionHelper" label="Emf Selection Helper" >
+				</topic>
+			</topic>
+			<topic href="contents/04-Customization.html#Builders" label="Builders" >
+				<topic href="contents/04-Customization.html#TableViewerBuilder" label="Table Viewer Builder" >
+				</topic>
+				<topic href="contents/04-Customization.html#TableViewerColumnBuilder" label="Table Viewer Column Builder" >
+					<topic href="contents/04-Customization.html#TableViewerEditableColumnBuilder" label="Table Viewer Editable Column Builder" >
+					</topic>
+				</topic>
+			</topic>
+			<topic href="contents/04-Customization.html#Factories" label="Factories" >
+				<topic href="contents/04-Customization.html#FormFactory" label="Form Factory" >
+				</topic>
+				<topic href="contents/04-Customization.html#JfaceProviderFactory" label="Jface Provider Factory" >
+				</topic>
+				<topic href="contents/04-Customization.html#FormControlFactory" label="Form Control Factory" >
+				</topic>
+				<topic href="contents/04-Customization.html#TreeFormFactory" label="Tree Form Factory" >
+				</topic>
+				<topic href="contents/04-Customization.html#ViewerFactory" label="Viewer Factory" >
+				</topic>
+				<topic href="contents/04-Customization.html#AdapterFactoryEditingDomain" label="Viewer Factory" >
+				</topic>
+			</topic>
+			<topic href="contents/04-Customization.html#Viewers" label="Viewers" >
+				<topic href="contents/04-Customization.html#ViewerInitializer" label="Viewer Initializer" >
+				</topic>
+			</topic>
+		</topic>
+		<topic href="contents/05-DSL.html#DSL" label="EMF Components DSL" >
+			<topic href="contents/05-DSL.html#xbase" label="Xbase features" >
+			</topic>
+		</topic>
+		<topic href="contents/06-AdvancedComponents.html#AdvancedComponents" label="Advanced Components" >
+		</topic>
+		<topic href="contents/07-Eclipse4.html#Eclipse4" label="Eclipse 4" >
+			<topic href="contents/07-Eclipse4.html#GetFirstExample" label="First Example Setup" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#PrepareForEclipse4Application" label="Preparing for a pure Eclipse 4 Application" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#CreateEclipse4Application" label="Create an Eclipse 4 Application" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#Eclipse4ApplicationAndEMFComponents" label="Using an EMF Parsley TreeComposite into an Eclipse 4 Part" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#Eclipse4Save" label="Adding the dirty state and Save command" >
+			</topic>
+		</topic>
+	</topic>
+	<topic href="contents/00-Main_5.html#Emf%20Parsley%20Guide_5" label="Appendix" >
+		<topic href="contents/GettingSources.html#GettingSources" label="Getting Sources" >
+			<topic href="contents/GettingSources.html#InstallBuckminster" label="Install Buckminster in the IDE" >
+			</topic>
+			<topic href="contents/GettingSources.html#PrepareTP" label="Prepare an empty target platform" >
+			</topic>
+			<topic href="contents/GettingSources.html#MaterializeWP" label="Materialize the Workspace" >
+				<topic href="contents/GettingSources.html#CustomizeProperties" label="(Optional) Customize some Properties" >
+				</topic>
+				<topic href="contents/GettingSources.html#StartMaterialization" label="Start Materialization" >
+				</topic>
+			</topic>
+		</topic>
+		<topic href="contents/samples.html#samples" label="Xdoc Samples" >
+			<topic href="contents/samples.html#Links" label="References" >
+			</topic>
+			<topic href="contents/samples.html#CodeSections" label="Code Sections" >
+			</topic>
+			<topic href="contents/samples.html#Lists" label="Lists and Tables" >
+			</topic>
+			<topic href="contents/samples.html#Tables" label="Tables" >
+			</topic>
+			<topic href="contents/samples.html#TODO" label="TODO" >
+			</topic>
+			<topic href="contents/samples.html#Images" label="Images" >
+			</topic>
+		</topic>
+	</topic>
+</toc>

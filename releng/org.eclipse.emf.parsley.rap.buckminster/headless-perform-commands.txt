@@ -1,0 +1,3 @@
+build
+
+perform -D target.os=* -D target.ws=* -D target.arch=* org.eclipse.emf.parsley.rap.site#site.p2

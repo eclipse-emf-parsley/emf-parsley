@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.parsley.examples.feature"
+      label="Emf Parsley Examples"
+      version="0.1.0.qualifier"
+      provider-name="RCP Vision">
+
+   <description url="http://www.eclipse.org/emfparsley">
+      Working with EMF a developer realizes that all the information are available for building basic UI.
+
+A lightweight framework that allows easy and quick development of EMF-based Applications. Can be configured to use all kind of EMF persistence implementations (XMI, Teneo, CDO).
+
+It aims at providing a set of Components like Trees, Tables and Detail Forms that manage the model with the introspective EMF capabilities. Using these components you can easily build forms, viewer or editors. The framework provides basic UI implementations which are customizable with Injection mechanism (based on Google Guice).
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      Made available under Eclipse Public License v 1.0
+   </license>
+
+   <includes
+         id="org.eclipse.emf.parsley.feature"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.eclipse.emf.parsley.ui.examples"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

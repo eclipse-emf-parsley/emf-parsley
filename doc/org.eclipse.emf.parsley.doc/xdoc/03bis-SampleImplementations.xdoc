@@ -1,0 +1,400 @@
+chapter:Samples[Samples]
+
+section:SampleImplementation[Sample Implementations]
+
+This section describes some view that are developed using EMF Components as a reference implementation to understand how it can be used.
+
+
+section2:ResourceBased[Resource Based Components]
+
+These components are used to access and manipulate resource based models. 
+Since all of them specialize the abstract class codeRef[org.eclipse.emf.parsley.views.AbstractSaveableView], 
+they are all customizable via the following common features:
+
+section2:Resource_ResourceLoader[Resource Customization: Context Menu Factory]
+
+section2:Resource_AdapterFactoryEditingDomain[Resource Customization: Adapter Factory Editing Domain]
+
+
+%%ul[
+%%	item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%	ul[item[ref:ResourceLoader[ResourceLoader]
+%%		ul[
+%%			item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%		]]
+%%		item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%		item[ref:FeaturesProvider[FeaturesProvider]]
+%%	]]
+%%	item[ref:ResourceSaveManager[ResourceSaveManager]]
+%%	item[ref:EmfActionBarContributor[EmfActionBarContributor]]
+%%	item[ref:ViewerInitializer[ViewerInitializer]
+%%		ul[
+%%		item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%		ul[
+%%			item[ref:ResourceLoader[ResourceLoader]
+%%			ul[
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%			]]
+%%			item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%			item[ref:FeaturesProvider[FeaturesProvider]]
+%%		]]
+%%		item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%		ul[
+%%			item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%			item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%		]]	
+%%		item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
+%%	]]
+%%]
+section3:TableResourceView[Table Resource View]
+
+The e[Table Resource View] is implemented by codeRef[org.eclipse.emf.parsley.views.AbstractSaveableTableView]
+class that is intended to be subclassed bu user. It aims to provide a ready-to-use view containing a table that visualizes homogeneous objects.
+
+
+The following code is an simple example of how it can be used to display a list of Book (based on ExtLibrary
+example). To use this view you must first implement the code[URI createResourceURI()] method to specify resource URI. 
+
+code[Java][
+@Override
+protected URI createResourceURI() {
+	return URI.createPlatformResourceURI(
+			EmfComponentsAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+}
+]
+
+Therefore you have to implements code[EClass getEClass()] method to specify wich is the type to rapresent and code[Object getContents(Resource resource)]
+for the retrieve of the collection.
+
+code[Java][
+@Override
+protected EClass getEClass() {
+	return EXTLibraryPackage.Literals.BOOK;
+}	
+
+@Override
+protected Object getContents(Resource resource) {
+	Library library=(Library) resource.getContents().get(0);
+	return library.getBooks();
+}
+]
+
+Here a list of available customizations (see related links for examples):
+
+%%ul[
+%%	item[ref:TableViewerBuilder[TableViewerBuilder]
+%%	ul[
+%%		item[ref:TableViewerColumnBuilder[TableViewerColumnBuilder]
+%%		ul[
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]]
+%%			item[ref:PropertyDescriptionProvider[PropertyDescriptionProvider]]
+%%			item[ref:FeaturesProvider[FeaturesProvider]]
+%%		]]
+%%		item[ref:ViewerInitializer[ViewerInitializer]
+%%		ul[
+%%			item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%			ul[
+%%				item[ref:ResourceLoader[ResourceLoader]
+%%				ul[
+%%					item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				]]
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]	
+%%			item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
+%%		]]
+%%	]]
+%%	item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%	ul[
+%%		item[ref:ResourceLoader[ResourceLoader]
+%%		ul[
+%%			item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%		]]
+%%		item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%		item[ref:FeaturesProvider[FeaturesProvider]]
+%%	]]
+%%]
+section3:TreeResourceView[Tree Resource View]
+
+The e[Tree Resource View] is implemented by class codeRef[org.eclipse.emf.parsley.views.AbstractSaveableTreeView],
+that is intented to be subclassed by user.
+
+The following code is an simple example of how it can be used to display a tree of Book (based on ExtLibrary
+example). To use this view you must first implement the code[URI createResourceURI()] method to specify resource URI. 
+
+code[Java][
+@Override
+protected URI createResourceURI() {
+	return URI.createPlatformResourceURI(
+			EmfComponentsAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+}
+]
+
+Here a list of available customizations (see related links for examples):
+
+%%ul[
+%%	item[ref:ViewerInitializer[ViewerInitializer]
+%%		ul[
+%%			item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%			ul[
+%%				item[ref:ResourceLoader[ResourceLoader]
+%%				ul[
+%%					item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				]]
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]	
+%%			item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
+%%		]]
+%%]
+section3:AbstractSaveableTreeFormView[Tree Form Resource View]
+
+The e[Tree Form Resource View] is implemented by class codeRef[org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView],
+that is inteded to be subclassed by user.
+As well as in the e[Tree Resource View], it can be used to display a tree but it adds a detail form for editing.
+
+The following code is an example based on ExtLibrary example, where you can see how to implement the code[URI createResourceURI()] method to specify resource URI. 
+
+code[Java][
+@Override
+protected URI createResourceURI() {
+	return URI.createPlatformResourceURI(
+			EmfComponentsAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+}
+]
+
+Here a list of available customizations (see related links for examples):
+
+%%ul[
+%%	item[ref:TreeFormFactory[TreeFormFactory]
+%%	ul[
+%%		item[ref:ViewerInitializer[ViewerInitializer]
+%%		ul[
+%%			item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%			ul[
+%%				item[ref:ResourceLoader[ResourceLoader]
+%%				ul[
+%%					item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				]]
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]	
+%%			item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]
+%%			ul[
+%%				item[ref:ViewerContentProvider[ViewerContentProvider]]
+%%			]]
+%%		]]
+%%		item[ref:FormFactory[FormFactory]
+%%		ul[
+%%			item[ref:FormPropertyDescriptionProvider[FormPropertyDescriptionProvider]
+%%			ul[
+%%				item[ref:PropertyDescriptionProvider[PropertyDescriptionProvider]]
+%%			]]
+%%			item[ref:FormFeatureControlFactory[FormFeatureControlFactory]
+%%			ul[
+%%				item[ref:JfaceProviderFactory[JfaceProviderFactory]]
+%%			]]
+%%			item[ref:EditingDomainFinder[EditingDomainFinder]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]
+%%			item[ref:FeaturesProvider[FeaturesProvider]]
+%%		]]
+%%	]]
+%%]
+section2:SelectionChange[Selection Change Components]
+
+In this section we presents some components that are based on selection. These components extends the
+class codeRef[org.eclipse.emf.parsley.views.AbstractOnSelectionView].
+
+ul[
+	item[ref:EmfSelectionHelper[EmfSelectionHelper]]
+]
+
+section3:AbstractOnSelectionTableView[On Selection Table View (Abstract)]
+
+codeRef[org.eclipse.emf.parsley.views.AbstractOnSelectionTableView]
+
+%%ul[
+%%	item[ref:ViewerFactory[ViewerFactory]
+%%	ul[
+%%		item[ref:TableViewerBuilder[TableViewerBuilder]
+%%		ul[
+%%			item[ref:TableViewerColumnBuilder[TableViewerColumnBuilder]
+%%			ul[
+%%				item[ref:JfaceProviderFactory[JfaceProviderFactory]]
+%%				item[ref:PropertyDescriptionProvider[PropertyDescriptionProvider]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%		]]
+%%		item[ref:ViewerInitializer[ViewerInitializer]
+%%		ul[
+%%			item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%			ul[
+%%				item[ref:ResourceLoader[ResourceLoader]
+%%				ul[
+%%					item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				]]
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]	
+%%			item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
+%%		]]
+%%	]]
+%%]
+section3:OnSelectionFormView[On Selection Form View]
+
+codeRef[org.eclipse.emf.parsley.views.OnSelectionFormView]
+
+%%ul[
+%%	item[ref:ViewerFactory[ViewerFactory]
+%%	ul[
+%%		item[ref:TableViewerBuilder[TableViewerBuilder]
+%%		ul[
+%%			item[ref:TableViewerColumnBuilder[TableViewerColumnBuilder]
+%%			ul[
+%%				item[ref:JfaceProviderFactory[JfaceProviderFactory]]
+%%				item[ref:PropertyDescriptionProvider[PropertyDescriptionProvider]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%		]]
+%%		item[ref:ViewerInitializer[ViewerInitializer]
+%%		ul[
+%%			item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%			ul[
+%%				item[ref:ResourceLoader[ResourceLoader]
+%%				ul[
+%%					item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				]]
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]	
+%%			item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
+%%		]]
+%%	]]
+%%]
+section3:OnSelectionListView[On Selection List View]
+
+codeRef[org.eclipse.emf.parsley.views.OnSelectionListView]
+
+%%ul[
+%%	item[ref:ViewerInitializer[ViewerInitializer]
+%%	ul[
+%%		item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%		ul[
+%%			item[ref:ResourceLoader[ResourceLoader]
+%%			ul[
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%			]]
+%%			item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%			item[ref:FeaturesProvider[FeaturesProvider]]
+%%		]]
+%%		item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%		ul[
+%%			item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%			item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%		]]	
+%%		item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
+%%	]]
+%%]
+section3:OnSelectionTreeView[On Selection Tree View]
+
+codeRef[org.eclipse.emf.parsley.views.OnSelectionTreeView]
+
+%%ul[
+%%	item[ref:ViewerInitializer[ViewerInitializer]
+%%	ul[
+%%		item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%		ul[
+%%			item[ref:ResourceLoader[ResourceLoader]
+%%			ul[
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%			]]
+%%			item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%			item[ref:FeaturesProvider[FeaturesProvider]]
+%%		]]
+%%		item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%		ul[
+%%			item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%			item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%		]]	
+%%		item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
+%%	]]
+%%]
+section3:OnSelectionTreeFormView[On Selection Tree Form View]
+
+codeRef[org.eclipse.emf.parsley.views.OnSelectionTreeFormView]
+
+%%ul[
+%%	item[ref:TreeFormFactory[TreeFormFactory]
+%%	ul[
+%%		item[ref:ViewerInitializer[ViewerInitializer]
+%%		ul[
+%%			item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
+%%			ul[
+%%				item[ref:ResourceLoader[ResourceLoader]
+%%				ul[
+%%					item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				]]
+%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
+%%				item[ref:FeaturesProvider[FeaturesProvider]]
+%%			]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]	
+%%			item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]
+%%			ul[
+%%				item[ref:ViewerContentProvider[ViewerContentProvider]]
+%%			]]
+%%		]]
+%%		item[ref:FormFactory[FormFactory]
+%%		ul[
+%%			item[ref:FormPropertyDescriptionProvider[FormPropertyDescriptionProvider]
+%%			ul[
+%%				item[ref:PropertyDescriptionProvider[PropertyDescriptionProvider]]
+%%			]]
+%%			item[ref:FormFeatureControlFactory[FormFeatureControlFactory]
+%%			ul[
+%%				item[ref:JfaceProviderFactory[JfaceProviderFactory]]
+%%			]]
+%%			item[ref:EditingDomainFinder[EditingDomainFinder]]
+%%			item[ref:JfaceProviderFactory[JfaceProviderFactory]
+%%			ul[
+%%				item[ref:ViewerLabelProvider[ViewerLabelProvider]]
+%%				item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
+%%			]]
+%%			item[ref:FeaturesProvider[FeaturesProvider]]
+%%		]]
+%%	]]
+%%]
+section2:Editor[Editor component]
+

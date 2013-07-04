@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.parsley.examples.mail.model/src"
+    modelPluginID="org.eclipse.emf.parsley.examples.mail.model" modelName="Mail"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>mail.ecore</foreignModel>
+  <genPackages prefix="Mail" basePackage="org.eclipse.emf.parsley.examples" disposableProviderFactory="true"
+      ecorePackage="mail.ecore#/">
+    <genClasses ecoreClass="mail.ecore#//Account">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mail.ecore#//Account/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mail.ecore#//Account/email"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mail.ecore#//Account/folders"/>
+    </genClasses>
+    <genClasses ecoreClass="mail.ecore#//Folder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mail.ecore#//Folder/subfolders"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mail.ecore#//Folder/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mail.ecore#//Folder/mails"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mail.ecore#//FolderContent"/>
+    <genClasses ecoreClass="mail.ecore#//MailContent"/>
+    <genClasses ecoreClass="mail.ecore#//Mail">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mail.ecore#//Mail/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mail.ecore#//Mail/recipients"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mail.ecore#//Mail/message"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,18 @@
+import org.eclipse.emf.parsley.examples.mail.Mail
+
+/* org.eclipse.emf.parsley.examples.mail.mailsview Emf Components Dsl Module file */
+module org.eclipse.emf.parsley.examples.mail.mailsview {
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView {
+			viewname "Mails View"
+			viewclass org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView
+			viewcategory org.eclipse.emf.parsley.examples.mail.mailsview
+		}
+	}
+	
+	featuresProvider {
+		features {
+			Mail -> subject, from
+		}
+	}
+}

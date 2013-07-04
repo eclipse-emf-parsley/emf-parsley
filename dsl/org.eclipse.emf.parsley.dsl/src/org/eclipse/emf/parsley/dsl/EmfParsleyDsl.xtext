@@ -1,0 +1,150 @@
+grammar org.eclipse.emf.parsley.dsl.EmfParsleyDsl with
+    org.eclipse.xtext.xbase.Xbase
+
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+
+generate model "http://www.eclipse.org/emf/parsley/dsl/EmfParsleyDsl"
+
+Model:
+	importSection=XImportSection?
+	module = Module;
+
+Module:
+	'module' name=QualifiedName (extendsClause=ExtendsClause)? '{'
+		(
+			(labelProvider = LabelProvider)?
+			&
+			(propertyDescriptionProvider = PropertyDescriptionProvider)?
+			&
+			(featuresProvider = FeaturesProvider)?
+			&
+			(formControlFactory = FormControlFactory)?
+			&
+			(proposalCreator = ProposalCreator)?
+			&
+			(viewerContentProvider = ViewerContentProvider)?
+			&
+			('parts' '{'
+				parts += PartSpecification*
+			'}')?
+		)
+	'}'
+;
+
+ExtendsClause: 'extends' superType=JvmTypeReference;
+
+LabelProvider:
+	{LabelProvider} 'labelProvider' '{'
+		((
+		'text' '{'
+			labelSpecifications+=LabelSpecification*
+		'}'
+		)?
+		&
+		(
+		'image' '{'
+			imageSpecifications+=LabelSpecification*
+		'}'
+		)?)
+	'}'
+;
+
+LabelSpecification:
+	parameterType=JvmTypeReference (name=ValidID)?
+	'->'
+	expression = XExpression
+;
+
+PropertyDescriptionProvider:
+	{PropertyDescriptionProvider} 'propertyDescriptionProvider' '{'
+		((
+		'text' '{'
+			labelSpecifications+=PropertyDescriptionSpecification*
+		'}'
+		)?)
+	'}'
+;
+
+PropertyDescriptionSpecification:
+	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
+	'->'
+	expression = XExpression
+;
+
+FeaturesProvider:
+	{FeaturesProvider} 'featuresProvider' '{'
+		((
+		'features' '{'
+			featureSpecifications+=FeatureSpecification*
+		'}'
+		)?)
+	'}'
+;
+
+FeatureSpecification:
+	parameterType=JvmTypeReference
+	'->'
+	features += [types::JvmMember] (',' features += [types::JvmMember])*
+;
+
+FormControlFactory:
+	{FormControlFactory} 'formControlFactory' '{'
+		(
+		'control' '{'
+			controlSpecifications+=FormControlSpecification*
+		'}'
+		)?
+	'}'
+;
+
+FormControlSpecification:
+	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
+	'->'
+	expression = XExpression
+	('target' target = XExpression)?
+;
+
+ProposalCreator:
+	{ProposalCreator} 'proposals' '{'
+		proposalsSpecifications+=ProposalSpecification*
+	'}'
+;
+
+ProposalSpecification:
+	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
+	'->'
+	expression = XExpression
+;
+
+ViewerContentProvider:
+	{ViewerContentProvider} 'viewerContentProvider' '{'
+		((
+		'children' '{'
+			childrenSpecifications+=LabelSpecification*
+		'}'
+		)?)
+	'}'
+;
+
+// a utility base class for rules which access features of an EClass
+EmfFeatureAccess:
+	PropertyDescriptionSpecification |
+	FeatureSpecification |
+	FormControlSpecification |
+	ProposalSpecification
+;
+
+// a utility base class for rules with 'extends' clause
+WithExtendsClause:
+	Module
+;
+
+PartSpecification: ViewSpecification;
+
+ViewSpecification:
+	{ViewSpecification} 'viewpart' id=QualifiedName '{'
+		'viewname' viewName=STRING
+		'viewclass' type=JvmTypeReference
+		('viewcategory' category=QualifiedName)?
+	'}'
+;

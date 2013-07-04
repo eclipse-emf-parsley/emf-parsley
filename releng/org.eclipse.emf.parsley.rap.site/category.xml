@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.eclipse.emf.parsley.sdk">
+      <category name="emfcomponents.rap.category"/>
+   </feature>
+
+   <feature id="org.eclipse.emf.parsley.sdk.source">
+      <category name="emfcomponents.rap.category.source"/>
+   </feature>
+
+   <category-def name="emfcomponents.rap.category" label="Emf Components RAP">
+      <description>
+         Emf Components RAP
+      </description>
+   </category-def>
+   <category-def name="emfcomponents.rap.category.source" label="Emf Components RAP Sources">
+      <description>
+         Emf Components RAP (Sources)
+      </description>
+   </category-def>
+</site>

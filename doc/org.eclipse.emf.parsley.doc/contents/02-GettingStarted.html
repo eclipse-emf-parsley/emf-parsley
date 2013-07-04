@@ -1,0 +1,437 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>Getting Started</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="xtext.html" title="">
+</head>
+<body>
+<a name="GettingStarted"></a>
+<h1>Getting Started</h1>
+<p>
+To get started, you should first download "Eclipse Modeling Tools" from <a href="http://www.eclipse.org/downloads/">Eclipse
+Downloads</a>
+<div class="image" >
+<img src="images/eclipseModelingTools.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+
+This will ensure you have EMF and related Tools installed and ready to go.
+</p>
+<a name="Installation"></a>
+<h2>Installation</h2>
+<p>
+Now select "Help" -&gt; "Install New Software..." and in the "Work with:" field insert the EMF Components update
+site <a href="http://www.rcp-vision.com/emf-components/updates/">http://www.rcp-vision.com/emf-components/updates/</a>
+and install all features.
+Although sources are not strictly required, it might help when using EMF Components
+to have a look at its sources.
+</p>
+<p>
+<div class="image" >
+<img src="images/emf-components-update-site.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<a name="FirstExample"></a>
+<h2>First Example</h2>
+<p>
+The purpose of this first example is to make use of the classical EMF Library Model example and
+create a view for editing such models using an EMF Components enabled plug-in.
+</p>
+<p>
+So let&apos;s start by creating the model plug-in with
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Eclipse Modeling Framework", select "Extended Library Model Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+</ol>
+</p>
+<p>
+You will end up with three plug-ins: 
+</p>
+<p>
+<ul>
+	<li>
+		org.eclipse.emf.examples.library (the model plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library.edit (the edit plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library.editor (the editor plug-in)
+	</li>
+</ul>
+</p>
+<p>
+We only need the first plugin, so you might want to remove the .edit and .editor plugins.
+</p>
+<p>
+Now you can create your first example with the appropriate wizard.
+</p>
+<p>
+<ol>
+	<li>
+		select "File" -&gt; "New" -&gt; "Project..."
+	</li>
+	<li>
+		from the "Emf Parsley" category select "Emf Parsley Dsl based Project"
+	</li>
+	<li>
+		click "Next"
+	</li>
+	<li>
+		give a name to the project (e.g. "org.eclipse.emf.parsley.examples.firstexample")
+	</li>
+	<li>
+		click "Finish"
+	</li>
+</ol>
+
+ 
+The generated project has some classes and a <em>module.parlsey</em> file, which opens automatically.
+Just type the following content into the {} block (note that context assist is available)
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">parts</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewpart</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.view.library.treeform&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewname</span>&nbsp;<span class="string">"My&nbsp;Library&nbsp;Tree&nbsp;Form"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewclass</span>&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Here above we have just declared a view part with
+ 
+<ol>
+	<li>
+		id <em>"org.eclipse.emf.parsley.examples.firstexample.view.library.treeform"</em>
+	</li>
+	<li>
+		name <em>"Library Tree Form"</em>
+	</li>
+	<li>
+		class: not yet set, we are going to create
+				 <em>"org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView"</em>
+	</li>
+</ol>
+</p>
+<p>
+So there is still an error, in fact we need to create the declared class. 
+<em>Suggestion:</em> Just copy the above qualified class name (<em>"org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView"</em>), 
+select the project, right-click and select File -&gt; New -&gt; Class. Now paste the clipboard content into <em>"Name:"</em> field: the
+package and class name will be automatically splitted into right fields. Then click <em>"Finish"</em>.
+</p>
+<p>
+Now modify the view class code with this content:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.common.util.URI;<br/>
+<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryTreeFormView&nbsp;<span class="keyword">extends</span>&nbsp;AbstractSaveableTreeFormView&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;URI&nbsp;createResourceURI()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;URI.createFileURI(&nbsp;System.getProperty(<span class="string">"user.home"</span>)&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>&nbsp;);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Now get back to <em>module.parlsey</em> file, go just after <em>"viewclass"</em> keyword, type <em>"LibraryTreeFormView"</em>
+and <em>Ctrl-Space</em>: the content assist will set automatically the correct qualified name
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">viewclass</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+when you save the above file you will notice that a new file (<em>"plugin.xml_emfparsley_gen"</em>) 
+is generated into the root folder of your project. Just copy this file into <em>"plugin.xml"</em>.
+</p>
+<p>
+Let&apos;s focus briefly on the above <em>createResourceURI()</em> method: our goal is allowing to manage 
+a library model instance which persists on a EMF Resource.
+In this example we choose to use the EMF default persistence (XMI), but you can provide any URI 
+(e.g. using Teneo, CDO or any other EMF Resource Persistence implementation)
+In particular here we choose to persist the Resource in a XMI file named <em>"MyLibrary.library"</em> into the user home
+folder (you might want to change it with any other path). 
+</p>
+<p>
+We need a <em>Dependency</em> from the model plug-in: so open <em>MANIFEST.MF</em> file, go to <em>Dependencies</em>
+tab, press <em>"Add..."</em> button in <em>"Required Plug-ins"</em> section and insert <em>"org.eclipse.emf.examples.library"</em>
+among dependencies.
+</p>
+<p>
+Before executing this code we need to do some little more work in order to initialize the Resource.
+</p>
+<p>
+An easy way to overcome this issue can be the following:
+</p>
+<p>
+<ol>
+	<li>
+		open the class *GuiceModule (FirstexampleGuiceModule in this example) that the wizard created for you.
+			Note that this is a key	class for all customizations; it allows to override several methods in order to provide custom behaviors
+			and implementations.
+	</li>
+	<li>
+		override method <em>bindEmptyResourceInitializer()</em> providing a class for Resource initialization
+			
+				<div class="literallayout">
+		<div class="incode">
+		<p class="code">
+		<span class="keyword">public</span>&nbsp;Class&lt;?&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&gt;&nbsp;bindEmptyResourceInitializer()&nbsp;{<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;LibraryEmptyResourceInitializer.<span class="keyword">class</span>;<br/>
+		}<br/>
+		</p>
+		</div>
+		</div>
+		
+	</li>
+	<li>
+		create a new class <em>LibraryEmptyResourceInitializer</em> extending from <em>EmptyResourceInitializer</em> for Resource initialization
+				<div class="literallayout">
+		<div class="incode">
+		<p class="code">
+		<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.resource.EmptyResourceInitializer;<br/>
+		<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;<br/>
+		<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.EXTLibraryFactory;<br/>
+		<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.Library;<br/>
+		<br/>
+		<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryEmptyResourceInitializer&nbsp;&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&nbsp;{&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;initialize(Resource&nbsp;resource)&nbsp;{&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>.initialize(resource);&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;library&nbsp;=&nbsp;EXTLibraryFactory.eINSTANCE.createLibrary();&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resource.getContents().add(library);&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;}&nbsp;<br/>
+		<br/>
+		}&nbsp;<br/>
+		</p>
+		</div>
+		</div>
+		
+				The method <em>initialize()</em> will be executed only when the Resource is empty
+				(i.e., it has no contents).
+	</li>
+</ol>
+</p>
+<p>
+now get back to the <em>MANIFEST.MF</em> and run the example
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-launch.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+As an Eclipse RCP developer you know, of course, that this will start another Eclipse instance (unless
+you add an Application plug-in to the launch or define an Application in the current plug-in). 
+</p>
+<p>
+In this second Eclipse instance you can show the View in this way:
+<ol>
+	<li>
+		<em>Window -&gt; Show View -&gt; Other...</em>
+	</li>
+	<li>
+		from Category "Emf Parsley", select "My Library Tree Form"
+	</li>
+	<li>
+		press <em>OK</em>
+	</li>
+</ol>
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-run.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+With this simple view you can start editing the model instance. For example you can set the <em>"name"</em>
+field; as soon as you start typing characters into this field you will notice that:
+<ol>
+	<li>
+		the View turns to a <em>"dirty"</em> state (an asterisk symbol appears on the view tab)
+	</li>
+	<li>
+		the <em>"Save"</em> toolbar button is enabled
+	</li>
+	<li>
+		the typed characters are reflected into the label correspondent to the Library icon
+	</li>
+</ol>
+</p>
+<p>
+if you now perform a <em>"Save"</em> action the persistence mechanism will trigger and you will see that file 
+<span class="inlinecode">&lt;user.home&gt;/MyLibrary.library</span>
+is being created on the file system. From now on, this file will keep the state of the model object whenever
+you change and save it. 
+</p>
+<p>
+To create a Writer into the Library just right-click on the Library object and select <em>New Child -&gt; Writer</em>
+</p>
+<p>
+<div class="image" >
+<img src="images/createWriter.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Please note that you might see a slightly different content in the above context-menu in case you deleted
+the .edit plugin when creating the model (e.g. <em>"Writers Writer"</em> instead of <em>"Writer"</em>, <em>"Stock Book"</em> instead of <em>"Book"</em> and
+similar (this is because with EMF it is possible to customize labels also via .edit plugin).
+</p>
+<p>
+Now set for instance the writer <em>"name"</em> field and save.
+Now just play around creating Books, associating them to Writers and so on.
+As you can see you can entirely manage the EMF model instance: creating, modifying and deleting elements.
+</p>
+<p>
+Whenever the current selection on the upper side of the view changes, then the lower side shows the detail
+of this selection.
+</p>
+<p>
+However, up to this point, you have no control over the field to be shown and its order; for example
+you may want just the <em>"name"</em> attribute for the Library and <em>"name", "address" and "books"</em> attributes
+for Writers and maybe <em>"title", "authors" and "category"</em> for Books.
+</p>
+<p>
+Well, it&apos;s indeed very easy to obtain this: just edit the <em>module.parsley</em> file, 
+adding the following import (without ending line with ";")
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.*<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and then defining the features to show
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">module</span>&nbsp;...&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">parts</span>&nbsp;{&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">featuresProvider</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">features</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;name<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;-&gt;&nbsp;name,&nbsp;address,&nbsp;books<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;author,&nbsp;title,&nbsp;category<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Remeber that code completion is available, just exploit it since it helps a lot.
+</p>
+<p>
+If you restart now the application you will see that, when selecting an object, only the declared attributes
+will be shown. Furthermore, they are shown in the specified order.
+</p>
+<p>
+Did you run the application in Debug mode? Well, then you can change fields and order, save and see the
+changes without even restarting the application.
+</p>
+<p>
+Do you want to change text used for attribute labels in the detail? Just add the following:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">propertyDescriptionProvider</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;:&nbsp;author&nbsp;-&gt;&nbsp;<span class="string">&apos;Wrote&nbsp;by:&apos;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;<span class="string">&apos;Name:&apos;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+
+ 
+Or do you want to change the label shown on the tree nodes on the upper side and as detail title? 
+Maybe want to format the book label like this?
+ 
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">labelProvider</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;b&nbsp;-&gt;&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+&nbsp;b.title&nbsp;+&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+<span class="string">&apos;&nbsp;(by&nbsp;&apos;</span>+&nbsp;b.author.name&nbsp;+&nbsp;<span class="string">&apos;)&apos;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+
+ 
+<div class="image" >
+<img src="images/labelCustomization.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+
+ 
+  
+ 
+ 
+</p>
+<a name="RCPMail"></a>
+<h2>RCP Mail Example</h2>
+</body>
+</html>
