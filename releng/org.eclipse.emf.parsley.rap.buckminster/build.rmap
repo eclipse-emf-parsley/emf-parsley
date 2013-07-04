@@ -4,7 +4,7 @@
 
 	<rm:property key="projects.location" value="${workspace.root}" />
 
-	<rm:property key="git.clone.dest" value="${user.home}/git/emf-components" />
+	<rm:property key="git.clone.dest" value="${user.home}/git/org.eclipse.emf-parsley" />
 
 	<rm:property key="eclipse.download" value="http://download.eclipse.org" />
 	<rm:property key="xtext.p2.repository"
@@ -75,7 +75,7 @@
 		<rm:provider componentTypes="eclipse.feature,buckminster"
 			readerType="git">
 			<rm:property key="git.remote.uri"
-				value="https://code.google.com/a/eclipselabs.org/p/emf-components" />
+				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 			<rm:uri format="{0},releng/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
@@ -83,7 +83,7 @@
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
 			<rm:property key="git.remote.uri"
-				value="https://code.google.com/a/eclipselabs.org/p/emf-components" />
+				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 			<rm:uri format="{0},plugins/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
@@ -91,7 +91,7 @@
 		</rm:provider>
 		<rm:provider componentTypes="eclipse.feature" readerType="git">
 			<rm:property key="git.remote.uri"
-				value="https://code.google.com/a/eclipselabs.org/p/emf-components" />
+				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 			<rm:uri format="{0},features/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
@@ -99,7 +99,7 @@
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
 			<rm:property key="git.remote.uri"
-				value="https://code.google.com/a/eclipselabs.org/p/emf-components" />
+				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 			<rm:uri format="{0},tests/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
@@ -107,7 +107,7 @@
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
 			<rm:property key="git.remote.uri"
-				value="https://code.google.com/a/eclipselabs.org/p/emf-components" />
+				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 			<rm:uri format="{0},dsl/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
@@ -115,7 +115,7 @@
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
 			<rm:property key="git.remote.uri"
-				value="https://code.google.com/a/eclipselabs.org/p/emf-components" />
+				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 			<rm:uri format="{0},examples/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
@@ -123,7 +123,7 @@
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
 			<rm:property key="git.remote.uri"
-				value="https://code.google.com/a/eclipselabs.org/p/emf-components" />
+				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 			<rm:uri format="{0},doc/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
