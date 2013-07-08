@@ -9,7 +9,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
-public abstract class AbstractSaveableTreeView extends AbstractSaveableView {
+public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerView {
 
 	@Inject
 	protected ViewerInitializer viewerInitializer;

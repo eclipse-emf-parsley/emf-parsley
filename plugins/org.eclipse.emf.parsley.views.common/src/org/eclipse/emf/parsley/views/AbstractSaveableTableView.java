@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
-public abstract class AbstractSaveableTableView extends AbstractSaveableView {
+public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView {
 
 	@Inject
 	protected TableViewerBuilder tableViewerBuilder;

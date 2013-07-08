@@ -10,8 +10,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
-public abstract class AbstractSaveableTreeFormView extends AbstractSaveableView
-		{
+public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewerView{
 
 	@Inject
 	protected TreeFormFactory treeFormFactory;

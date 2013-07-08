@@ -14,8 +14,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
-public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
-		{
+public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView	{
 
 	@Inject
 	protected TableFormFactory tableFormFactory;
