@@ -66,7 +66,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.emf.parsley.examples.mail.rcp.application"
-            name="Emf Components Mail RCP Product">
+            name="Emf Parsley Mail RCP Product">
          <property
                name="aboutText"
                value="RCP Mail template created by PDE">
@@ -81,7 +81,7 @@
          </property>
          <property
                name="appName"
-               value="Emf Components Mail RCP Product">
+               value="Emf Parsley Mail RCP Product">
          </property>
       </product>
    </extension>
