@@ -18,6 +18,8 @@ import org.eclipse.emf.parsley.tests.factories.CustomContentProviderLibraryExecu
 import org.eclipse.emf.parsley.tests.factories.CustomContentProviderLibraryModule;
 import org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory;
 import org.eclipse.emf.parsley.tests.factories.CustomLibraryModule;
+import org.eclipse.emf.parsley.tests.factories.resourcelistening.ResourceListeningLibraryExecutableExtensionFactory;
+import org.eclipse.emf.parsley.tests.factories.resourcelistening.ResourceListeningLibraryModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -91,6 +93,11 @@ public class EmfComponentsTestsActivator extends AbstractUIPlugin {
 			} else if (CustomContentProviderLibraryExecutableExtensionFactory.class
 					.equals(cName)) {
 				injector = createInjector(new CustomContentProviderLibraryModule(
+						this));
+				injectorsMap.put(cName.getCanonicalName(), injector);
+			}  else if (ResourceListeningLibraryExecutableExtensionFactory.class
+					.equals(cName)) {
+				injector = createInjector(new ResourceListeningLibraryModule(	
 						this));
 				injectorsMap.put(cName.getCanonicalName(), injector);
 			}
