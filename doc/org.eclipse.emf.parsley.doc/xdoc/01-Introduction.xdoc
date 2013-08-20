@@ -11,9 +11,3 @@ The framework provides basic UI implementations which are customizable
 with Injection mechanism
 (based on link[http://code.google.com/p/google-guice][Google Guice]). 
 
-
-section:reflectiveComponents[Reflective Components]
-
-section:easyToCustomize[Easy to Customize]
-
-section:architecture[Architecture]
