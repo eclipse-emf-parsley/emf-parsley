@@ -11,29 +11,25 @@
 <a name="GettingStarted"></a>
 <h1>Getting Started</h1>
 <p>
-To get started, you should first download "Eclipse Modeling Tools" from <a href="http://www.eclipse.org/downloads/">Eclipse
-Downloads</a>
-<div class="image" >
-<img src="images/eclipseModelingTools.png" class=" " 
-/>
-<div class="caption">
-</div>
-</div>
-
-This will ensure you have EMF and related Tools installed and ready to go.
+To get started, you may download "Eclipse Modeling Tools" or "Eclipse IDE for Java and DSL Developers" from <a href="http://www.eclipse.org/downloads/">Eclipse
+Downloads</a>.
+</p>
+<p>
+This will ensure you have EMF and related Tools installed and ready to go (you may as well use any other Eclipse package, provided that you have installed
+also EMF and its tools).
 </p>
 <a name="Installation"></a>
 <h2>Installation</h2>
 <p>
-Now select "Help" -&gt; "Install New Software..." and in the "Work with:" field insert the EMF Components update
-site <a href="http://www.rcp-vision.com/emf-components/updates/">http://www.rcp-vision.com/emf-components/updates/</a>
+Now select "Help" -&gt; "Install New Software..." and in the "Work with:" field insert the EMF Parsley update
+site <a href="http://download.eclipse.org/emf-parsley/updates">http://download.eclipse.org/emf-parsley/updates</a>
 and install all features.
-Although sources are not strictly required, it might help when using EMF Components
+Although sources are not strictly required, it might help when using EMF Parsley
 to have a look at its sources.
 </p>
 <p>
 <div class="image" >
-<img src="images/emf-components-update-site.png" class=" " 
+<img src="images/emf-parsley-update-site.png" class=" " 
 />
 <div class="caption">
 </div>
@@ -43,7 +39,7 @@ to have a look at its sources.
 <h2>First Example</h2>
 <p>
 The purpose of this first example is to make use of the classical EMF Library Model example and
-create a view for editing such models using an EMF Components enabled plug-in.
+create a view for editing such models using an EMF Parsley enabled plug-in.
 </p>
 <p>
 So let&apos;s start by creating the model plug-in with
@@ -78,7 +74,8 @@ You will end up with three plug-ins:
 </ul>
 </p>
 <p>
-We only need the first plugin, so you might want to remove the .edit and .editor plugins.
+Please consider that here we are starting from this well known EMF model taken out-of-the-box from Eclipse,
+but you can start from your EMF model (in that case you may probably omit the ".edit" and ".editor" plugins, depending on your model).
 </p>
 <p>
 Now you can create your first example with the appropriate wizard.
@@ -110,12 +107,18 @@ Just type the following content into the {} block (note that context assist is a
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">parts</span>&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewpart</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.view.library.treeform&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewname</span>&nbsp;<span class="string">"My&nbsp;Library&nbsp;Tree&nbsp;Form"</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewclass</span>&nbsp;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">parts</span>&nbsp;{
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewpart</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.view.library.treeform&nbsp;{
+<br/>
+<span class="keyword">viewname</span>&nbsp;<span class="string">"My&nbsp;Library&nbsp;Tree&nbsp;Form"</span>
+<br/>
+<span class="keyword">viewclass</span>&nbsp;
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
 </p>
 </div>
 </div>
@@ -149,16 +152,20 @@ Now modify the view class code with this content:
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;<br/>
-<span class="keyword">import</span>&nbsp;org.eclipse.emf.common.util.URI;<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;
 <br/>
-<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryTreeFormView&nbsp;<span class="keyword">extends</span>&nbsp;AbstractSaveableTreeFormView&nbsp;{<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.common.util.URI;
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;URI&nbsp;createResourceURI()&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;URI.createFileURI(&nbsp;System.getProperty(<span class="string">"user.home"</span>)&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>&nbsp;);<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryTreeFormView&nbsp;<span class="keyword">extends</span>&nbsp;AbstractSaveableTreeFormView&nbsp;{
 <br/>
-}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;URI&nbsp;createResourceURI()&nbsp;{
+<br/>
+<span class="keyword">return</span>&nbsp;URI.createFileURI(&nbsp;System.getProperty(<span class="string">"user.home"</span>)&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>&nbsp;);
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+}
+<br/>
 </p>
 </div>
 </div>
@@ -171,7 +178,8 @@ and <em>Ctrl-Space</em>: the content assist will set automatically the correct q
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">viewclass</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewclass</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
+<br/>
 </p>
 </div>
 </div>
@@ -212,9 +220,12 @@ An easy way to overcome this issue can be the following:
 				<div class="literallayout">
 		<div class="incode">
 		<p class="code">
-		<span class="keyword">public</span>&nbsp;Class&lt;?&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&gt;&nbsp;bindEmptyResourceInitializer()&nbsp;{<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;LibraryEmptyResourceInitializer.<span class="keyword">class</span>;<br/>
-		}<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Class&lt;?&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&gt;&nbsp;bindEmptyResourceInitializer()&nbsp;{
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;LibraryEmptyResourceInitializer.<span class="keyword">class</span>;
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		<br/>
 		</p>
 		</div>
 		</div>
@@ -225,20 +236,30 @@ An easy way to overcome this issue can be the following:
 				<div class="literallayout">
 		<div class="incode">
 		<p class="code">
-		<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.resource.EmptyResourceInitializer;<br/>
-		<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;<br/>
-		<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.EXTLibraryFactory;<br/>
-		<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.Library;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
 		<br/>
-		<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryEmptyResourceInitializer&nbsp;&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&nbsp;{&nbsp;<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-		&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;initialize(Resource&nbsp;resource)&nbsp;{&nbsp;<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>.initialize(resource);&nbsp;<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;library&nbsp;=&nbsp;EXTLibraryFactory.eINSTANCE.createLibrary();&nbsp;<br/>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resource.getContents().add(library);&nbsp;<br/>
-		&nbsp;&nbsp;&nbsp;}&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;
 		<br/>
-		}&nbsp;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.EXTLibraryFactory;
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.Library;
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryEmptyResourceInitializer&nbsp;&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&nbsp;{&nbsp;
+		<br/>
+		&nbsp;&nbsp;
+		<br/>
+		&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;initialize(Resource&nbsp;resource)&nbsp;{&nbsp;
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>.initialize(resource);&nbsp;
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;library&nbsp;=&nbsp;EXTLibraryFactory.eINSTANCE.createLibrary();&nbsp;
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resource.getContents().add(library);&nbsp;
+		<br/>
+		&nbsp;}&nbsp;
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+		<br/>
 		</p>
 		</div>
 		</div>
@@ -270,7 +291,7 @@ In this second Eclipse instance you can show the View in this way:
 		<em>Window -&gt; Show View -&gt; Other...</em>
 	</li>
 	<li>
-		from Category "Emf Parsley", select "My Library Tree Form"
+		from Category "Other", select "My Library Tree Form"
 	</li>
 	<li>
 		press <em>OK</em>
@@ -344,7 +365,8 @@ adding the following import (without ending line with ";")
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.*<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.*
+<br/>
 </p>
 </div>
 </div>
@@ -356,20 +378,32 @@ and then defining the features to show
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">module</span>&nbsp;...&nbsp;{<br/>
+<span class="keyword">module</span>&nbsp;...&nbsp;{
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">parts</span>&nbsp;{&nbsp;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">featuresProvider</span>&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">features</span>&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;name<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;-&gt;&nbsp;name,&nbsp;address,&nbsp;books<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;author,&nbsp;title,&nbsp;category<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-}<br/>
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">parts</span>&nbsp;{&nbsp;
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<span class="keyword">featuresProvider</span>&nbsp;{
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">features</span>&nbsp;{
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;name
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;-&gt;&nbsp;name,&nbsp;address,&nbsp;books
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;author,&nbsp;title,&nbsp;category
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+}
+<br/>
+}
+<br/>
 </p>
 </div>
 </div>
@@ -392,12 +426,18 @@ Do you want to change text used for attribute labels in the detail? Just add the
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">propertyDescriptionProvider</span>&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;:&nbsp;author&nbsp;-&gt;&nbsp;<span class="string">&apos;Wrote&nbsp;by:&apos;</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;<span class="string">&apos;Name:&apos;</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">propertyDescriptionProvider</span>&nbsp;{
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{
+<br/>
+Book&nbsp;:&nbsp;author&nbsp;-&gt;&nbsp;<span class="string">&apos;Wrote&nbsp;by:&apos;</span>
+<br/>
+Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;<span class="string">&apos;Name:&apos;</span>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
 </p>
 </div>
 </div>
@@ -409,11 +449,16 @@ Maybe want to format the book label like this?
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">labelProvider</span>&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;b&nbsp;-&gt;&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+&nbsp;b.title&nbsp;+&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+<span class="string">&apos;&nbsp;(by&nbsp;&apos;</span>+&nbsp;b.author.name&nbsp;+&nbsp;<span class="string">&apos;)&apos;</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">labelProvider</span>&nbsp;{
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{
+<br/>
+Book&nbsp;b&nbsp;-&gt;&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+&nbsp;b.title&nbsp;+&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+<span class="string">&apos;&nbsp;(by&nbsp;&apos;</span>+&nbsp;b.author.name&nbsp;+&nbsp;<span class="string">&apos;)&apos;</span>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
 </p>
 </div>
 </div>

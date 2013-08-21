@@ -1,26 +1,26 @@
 chapter:GettingStarted[Getting Started]
 
-To get started, you should first download "Eclipse Modeling Tools" from link[http://www.eclipse.org/downloads/][Eclipse
-Downloads]
-img[images/eclipseModelingTools.png][][ ][]
-This will ensure you have EMF and related Tools installed and ready to go.
+To get started, you may download "Eclipse Modeling Tools" or "Eclipse IDE for Java and DSL Developers" from link[http://www.eclipse.org/downloads/][Eclipse
+Downloads].
 
+This will ensure you have EMF and related Tools installed and ready to go (you may as well use any other Eclipse package, provided that you have installed
+also EMF and its tools).
 
 section:Installation[Installation]
 
-Now select "Help" -> "Install New Software..." and in the "Work with:" field insert the EMF Components update
-site link[http://www.rcp-vision.com/emf-components/updates/][http://www.rcp-vision.com/emf-components/updates/]
+Now select "Help" -> "Install New Software..." and in the "Work with:" field insert the EMF Parsley update
+site link[http://download.eclipse.org/emf-parsley/updates][http://download.eclipse.org/emf-parsley/updates]
 and install all features.
-Although sources are not strictly required, it might help when using EMF Components
+Although sources are not strictly required, it might help when using EMF Parsley
 to have a look at its sources.
 
-img[images/emf-components-update-site.png][][ ][]
+img[images/emf-parsley-update-site.png][][ ][]
 
 
 section:FirstExample[First Example]
 
 The purpose of this first example is to make use of the classical EMF Library Model example and
-create a view for editing such models using an EMF Components enabled plug-in.
+create a view for editing such models using an EMF Parsley enabled plug-in.
 
 So let's start by creating the model plug-in with
 
@@ -38,7 +38,9 @@ item[org.eclipse.emf.examples.library.edit (the edit plug-in)]
 item[org.eclipse.emf.examples.library.editor (the editor plug-in)]
 ]
 
-We only need the first plugin, so you might want to remove the .edit and .editor plugins.
+Please consider that here we are starting from this well known EMF model taken out-of-the-box from Eclipse,
+but you can start from your EMF model (in that case you may probably omit the ".edit" and ".editor" plugins, depending on your model).
+
 
 Now you can create your first example with the appropriate wizard.
 
@@ -160,7 +162,7 @@ you add an Application plug-in to the launch or define an Application in the cur
 In this second Eclipse instance you can show the View in this way:
 ol[
 	item[e[Window -> Show View -> Other...]]
-	item[from Category "Emf Parsley", select "My Library Tree Form"]
+	item[from Category "Other", select "My Library Tree Form"]
 	item[press e[OK]]
 ]
 
