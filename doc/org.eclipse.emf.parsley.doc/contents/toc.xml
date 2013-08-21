@@ -2,12 +2,6 @@
 <toc topic="contents/00-Main.html" label="Emf Parsley Guide" >
 	<topic href="contents/00-Main_4.html#Emf%20Parsley%20Guide_4" label="Documentation" >
 		<topic href="contents/01-Introduction.html#Introduction" label="Introduction" >
-			<topic href="contents/01-Introduction.html#reflectiveComponents" label="Reflective Components" >
-			</topic>
-			<topic href="contents/01-Introduction.html#easyToCustomize" label="Easy to Customize" >
-			</topic>
-			<topic href="contents/01-Introduction.html#architecture" label="Architecture" >
-			</topic>
 		</topic>
 		<topic href="contents/02-GettingStarted.html#GettingStarted" label="Getting Started" >
 			<topic href="contents/02-GettingStarted.html#Installation" label="Installation" >
@@ -133,19 +127,7 @@
 				</topic>
 			</topic>
 		</topic>
-		<topic href="contents/samples.html#samples" label="Xdoc Samples" >
-			<topic href="contents/samples.html#Links" label="References" >
-			</topic>
-			<topic href="contents/samples.html#CodeSections" label="Code Sections" >
-			</topic>
-			<topic href="contents/samples.html#Lists" label="Lists and Tables" >
-			</topic>
-			<topic href="contents/samples.html#Tables" label="Tables" >
-			</topic>
-			<topic href="contents/samples.html#TODO" label="TODO" >
-			</topic>
-			<topic href="contents/samples.html#Images" label="Images" >
-			</topic>
+		<topic href="contents/Downloads.html#EmfParsleyDownloads" label="EMF Parsley - Downloads" >
 		</topic>
 	</topic>
 </toc>

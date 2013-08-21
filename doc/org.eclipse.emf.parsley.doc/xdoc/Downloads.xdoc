@@ -1,0 +1,14 @@
+chapter:EmfParsleyDownloads[EMF Parsley - Downloads]
+
+To install via the update site URL listed below, copy and paste it into the “Help > Install new software” dialog.
+
+N.B. All API are to be considered provisional!
+
+e[Update Site]: 
+
+ul[
+	item[Last Stable Release 0.1.0: link[http://download.eclipse.org/emf-parsley/updates][http://download.eclipse.org/emf-parsley/updates]]
+	
+]
+
+All downloads are provided under the terms and conditions of the Eclipse Foundation Software User Agreement unless otherwise specified.
