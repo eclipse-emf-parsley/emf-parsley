@@ -1,6 +1,6 @@
 chapter:GettingSources[Getting Sources]
 
-If you want to get the sources of EMF Components,
+If you want to get the sources of EMF Parsley,
 for instance, to contribute new features and patches, you can get them
 via Git.
 
@@ -8,7 +8,7 @@ We use link[http://www.eclipse.org/buckminster/][Buckminster] as the
 building and materialization infrastructure; this will let you
 automatically materialize the sources in the workspace and setup
 the target platform, so that you will have everything that is necessary
-to have a working workspace with EMF Components sources.
+to have a working workspace with EMF Parsley sources.
 
 For link[http://eclipse.org/rap/][RAP] related project sources
 you will have to use a different workspace (and the materialized target
@@ -61,12 +61,12 @@ section:MaterializeWP[Materialize the Workspace]
 From the File menu choose e[Open a Component Query...] and
 use this URL
 
-link[http://emf-components.eclipselabs.org.codespot.com/git/releng/org.eclipse.emf.parsley.buckminster/build.cquery][http://emf-components.eclipselabs.org.codespot.com/git/releng/org.eclipse.emf.parsley.buckminster/build.cquery]
+link[http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.buckminster/build.cquery][http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.buckminster/build.cquery]
 
-If you want to materialize a workspace with EMF Components RAP
+If you want to materialize a workspace with EMF Parsley RAP
 related projects use this URL instead
 
-link[http://emf-components.eclipselabs.org.codespot.com/git/releng/org.eclipse.emf.parsley.rap.buckminster/build.cquery][http://emf-components.eclipselabs.org.codespot.com/git/releng/org.eclipse.emf.parsley.rap.buckminster/build.cquery]
+link[http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.rap.buckminster/build.cquery][http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.rap.buckminster/build.cquery]
 
 
 img[images/open-cquery.png][The component query opened][ ][width:90%]
@@ -84,7 +84,7 @@ the e[New] button.
 
 For instance, you can customize the path in your system where
 the git repository will be cloned, which defaults to
-e[${user.home}/git/emf-components]); for instance, you can change it
+e[${user.home}/git/emf-parsley]); for instance, you can change it
 to something else
 
 img[images/open-cquery-new-property1.png][Property customization][ ][width:50%]
@@ -103,7 +103,7 @@ network connection), so you might want to go and get a coffee
 in the meantime ;)
 
 When the whole process terminates, you will have a working
-workspace with EMF Components projects and the needed target platform
+workspace with EMF Parsley projects and the needed target platform
 (thus, you should have no error!).
 
 img[images/materialized.png][The final materialized workspace][ ][width:90%]
