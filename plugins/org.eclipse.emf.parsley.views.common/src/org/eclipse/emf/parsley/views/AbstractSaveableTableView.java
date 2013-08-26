@@ -26,7 +26,7 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION);
+		tableViewer = new TableViewer(parent, createTableStyles());
 
 		tableViewerBuilder.buildAndFill(tableViewer,
 				getContents(getResource()), getEClass());
@@ -34,6 +34,10 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 		addContextMenu(tableViewer);
 		
 		getSite().setSelectionProvider(tableViewer);
+	}
+
+	protected int createTableStyles() {
+		return SWT.BORDER | SWT.FULL_SELECTION;
 	}
 
 	/**
