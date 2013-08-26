@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.parsley.examples.cdo.model/src"
+    modelPluginID="org.eclipse.emf.parsley.examples.cdo.model" modelName="Library"
+    rootExtendsInterface="org.eclipse.emf.cdo.CDOObject" rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl"
+    reflectiveDelegation="true" importerID="org.eclipse.emf.importer.cdo" featureDelegation="Reflective"
+    complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>Library.ecore</foreignModel>
+  <modelPluginVariables>CDO=org.eclipse.emf.cdo</modelPluginVariables>
+  <genPackages prefix="Library" disposableProviderFactory="true" ecorePackage="Library.ecore#/">
+    <genClasses ecoreClass="Library.ecore#//Author">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Library.ecore#//Author/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Library.ecore#//Author/surname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Library.ecore#//Author/birthdate"/>
+    </genClasses>
+    <genClasses ecoreClass="Library.ecore#//Book">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Library.ecore#//Book/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Library.ecore#//Book/authors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Library.ecore#//Book/pages"/>
+    </genClasses>
+    <genClasses ecoreClass="Library.ecore#//Library">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Library.ecore#//Library/books"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Library.ecore#//Library/authors"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

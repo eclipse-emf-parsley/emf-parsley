@@ -1,0 +1,21 @@
+import java.util.*
+import library.*
+import org.eclipse.emf.parsley.cdo.*
+import org.eclipse.emf.parsley.examples.cdo.view.TreeFormCDOView
+
+/* org.eclipse.emf.parsley.examples.cdo.treeform Emf Components Dsl Module file */
+module org.eclipse.emf.parsley.examples.cdo.treeform  extends CDOEmfComponentsModule{
+
+	parts{
+		viewpart org.eclipse.emf.parsley.examples.cdo.treeformview{
+			viewname "Test CDO form view"
+			viewclass TreeFormCDOView
+		}
+	}
+
+	featuresProvider{
+		features{
+			Book -> title, authors, pages 
+		}
+	}	
+}
