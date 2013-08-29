@@ -10,6 +10,10 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.ISaveablePart;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.WorkbenchPage;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -43,8 +47,11 @@ public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Book Domain Specific Languages");
 		botView.bot().textWithLabel("title").setText("My Tyltle");
+		botView.bot().sleep(50);
 		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
-		forceCloseView(botView);
+		forceSaveView(botView);
+		Assert.assertFalse(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
+//		botView.close();
 	}
 
 	
@@ -54,9 +61,11 @@ public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Author Ed Merks");
 		botView.bot().textWithLabel("name").setText("My Name");
-		bot.sleep(100);
+		botView.bot().sleep(50);
 		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
-		forceCloseView(botView);
+		forceSaveView(botView);
+		Assert.assertFalse(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
+//		botView.close();
 	}
 	
 	@After
@@ -69,14 +78,29 @@ public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 		return libraryNode;
 	}
 
-	private void forceCloseView(SWTBotView botView) {
-		botView.close();
-		bot.waitUntil(Conditions.shellIsActive("Save Resource"),5000);
-		SWTBotShell shell = bot.shell("Save Resource");
-		Assert.assertNotNull(shell);
-		shell.activate();
-		bot.button("No").click();
-		bot.waitUntil(shellCloses(shell), 50000);
+//	private void forceCloseView(SWTBotView botView) {
+//		botView.close();
+//		bot.waitUntil(Conditions.shellIsActive("Save Resource"),5000);
+//		SWTBotShell shell = bot.shell("Save Resource");
+//		Assert.assertNotNull(shell);
+//		shell.activate();
+//		bot.button("No").click();
+//		bot.waitUntil(shellCloses(shell), 50000);
+//	}
+	
+	private void forceSaveView(SWTBotView botView){
+		final WorkbenchPage workbenchPage = (WorkbenchPage)botView.getViewReference().getPage();
+		final IViewPart view = botView.getViewReference().getView(false);
+		if(view instanceof ISaveablePart){	
+			PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+				@Override
+				public void run() {
+					workbenchPage.saveSaveable((ISaveablePart)view, view, false, false);
+				}
+			});
+		}else{
+			throw new RuntimeException("View " +view.getTitle() + " is not saveable!");
+		}
 	}
 	
 }
