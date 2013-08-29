@@ -12,6 +12,8 @@
 			componentType="osgi.bundle" />
 		<dependency name="org.eclipse.emf.parsley.tests.swtbot.feature" 
 			componentType="eclipse.feature" />
+		<dependency name="org.eclipse.emf.parsley.tests.swtbot.cdo.feature" 
+			componentType="eclipse.feature" />
 		<dependency name="org.eclipse.emf.parsley.examples.mail.product.site" 
 			componentType="eclipse.feature" />
 		<dependency name="org.eclipse.emf.parsley.examples.firstexample" 

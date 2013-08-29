@@ -4,3 +4,4 @@ junit -l "org.eclipse.emf.parsley.tests/EmfComponentsAllTests.launch" --flatXML 
 junit -l "org.eclipse.emf.parsley.cdo.tests/CDOUriTests.launch" --flatXML -o "${buckminster.output.root}/test.results/CDOUriTests_junit_result.xml"
 junit -l "org.eclipse.emf.parsley.dsl.tests/EmfComponentsDslAllTests.launch" --flatXML -o "${buckminster.output.root}/test.results/EmfComponentsDslAllTests_junit_result.xml"
 junit -l "org.eclipse.emf.parsley.tests.swtbot/EmfComponentsSwtBotAllTests.launch" --flatXML -o "${buckminster.output.root}/test.results/EmfComponentsSwtBotAllTests_junit_result.xml"
+junit -l "org.eclipse.emf.parsley.tests.swtbot.cdo/EmfComponentsSwtBotAllTestsForCDO.launch" --flatXML -o "${buckminster.output.root}/test.results/EmfComponentsCDOSwtBotAllTests_junit_result.xml"
