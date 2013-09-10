@@ -54,21 +54,21 @@ public class EmfParsleyDslScopingTests extends EmfComponentsDslAbstractTests {
     IScope _scope = this._emfParsleyDslXbaseBatchScopeProvider.getScope(o, ref);
     Iterable<IEObjectDescription> _allElements = _scope.getAllElements();
     final Function1<IEObjectDescription,QualifiedName> _function = new Function1<IEObjectDescription,QualifiedName>() {
-        public QualifiedName apply(final IEObjectDescription it) {
-          QualifiedName _name = it.getName();
-          return _name;
-        }
-      };
+      public QualifiedName apply(final IEObjectDescription it) {
+        QualifiedName _name = it.getName();
+        return _name;
+      }
+    };
     final Iterable<QualifiedName> scope = IterableExtensions.<IEObjectDescription, QualifiedName>map(_allElements, _function);
     for (final String exp : listExpected) {
       String _plus = ("not found: " + exp);
       final Function1<QualifiedName,Boolean> _function_1 = new Function1<QualifiedName,Boolean>() {
-          public Boolean apply(final QualifiedName it) {
-            String _string = it.toString();
-            boolean _equals = Objects.equal(exp, _string);
-            return Boolean.valueOf(_equals);
-          }
-        };
+        public Boolean apply(final QualifiedName it) {
+          String _string = it.toString();
+          boolean _equals = Objects.equal(exp, _string);
+          return Boolean.valueOf(_equals);
+        }
+      };
       boolean _exists = IterableExtensions.<QualifiedName>exists(scope, _function_1);
       Assert.assertTrue(_plus, _exists);
     }
@@ -76,12 +76,12 @@ public class EmfParsleyDslScopingTests extends EmfComponentsDslAbstractTests {
       String _string = sc.toString();
       String _plus_1 = ("not expected: " + _string);
       final Function1<String,Boolean> _function_2 = new Function1<String,Boolean>() {
-          public Boolean apply(final String it) {
-            String _string = sc.toString();
-            boolean _equals = Objects.equal(_string, it);
-            return Boolean.valueOf(_equals);
-          }
-        };
+        public Boolean apply(final String it) {
+          String _string = sc.toString();
+          boolean _equals = Objects.equal(_string, it);
+          return Boolean.valueOf(_equals);
+        }
+      };
       boolean _exists_1 = IterableExtensions.<String>exists(listExpected, _function_2);
       Assert.assertTrue(_plus_1, _exists_1);
     }

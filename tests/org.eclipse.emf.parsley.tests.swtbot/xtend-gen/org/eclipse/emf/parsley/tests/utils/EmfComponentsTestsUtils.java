@@ -15,11 +15,11 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 public class EmfComponentsTestsUtils {
   public String toStringNameBased(final Iterable<EStructuralFeature> features) {
     final Function1<EStructuralFeature,String> _function = new Function1<EStructuralFeature,String>() {
-        public String apply(final EStructuralFeature it) {
-          String _name = it.getName();
-          return _name;
-        }
-      };
+      public String apply(final EStructuralFeature it) {
+        String _name = it.getName();
+        return _name;
+      }
+    };
     Iterable<String> _map = IterableExtensions.<EStructuralFeature, String>map(features, _function);
     String _join = IterableExtensions.join(_map, ", ");
     return _join;
@@ -27,11 +27,11 @@ public class EmfComponentsTestsUtils {
   
   public String toStringRep(final List<? extends Object> elements) {
     final Function1<Object,String> _function = new Function1<Object,String>() {
-        public String apply(final Object it) {
-          String _stringRep = EmfComponentsTestsUtils.this.stringRep(it);
-          return _stringRep;
-        }
-      };
+      public String apply(final Object it) {
+        String _stringRep = EmfComponentsTestsUtils.this.stringRep(it);
+        return _stringRep;
+      }
+    };
     List<String> _map = ListExtensions.map(elements, _function);
     String _join = IterableExtensions.join(_map, ", ");
     return _join;

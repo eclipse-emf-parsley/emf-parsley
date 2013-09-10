@@ -387,19 +387,19 @@ public class EmfComponentsDslGeneratorTests extends EmfComponentsDslAbstractTest
     _builder.append("      ");
     _builder.append("final Function1<Lendable,Integer> _function = new Function1<Lendable,Integer>() {");
     _builder.newLine();
-    _builder.append("          ");
+    _builder.append("        ");
     _builder.append("public Integer apply(final Lendable b) {");
     _builder.newLine();
-    _builder.append("            ");
+    _builder.append("          ");
     _builder.append("int _copies = b.getCopies();");
     _builder.newLine();
-    _builder.append("            ");
+    _builder.append("          ");
     _builder.append("return Integer.valueOf(_copies);");
     _builder.newLine();
-    _builder.append("          ");
+    _builder.append("        ");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("        ");
+    _builder.append("      ");
     _builder.append("};");
     _builder.newLine();
     _builder.append("      ");
@@ -799,19 +799,19 @@ public class EmfComponentsDslGeneratorTests extends EmfComponentsDslAbstractTest
     _builder_1.append("    ");
     _builder_1.append("final Function1<Book,String> _function = new Function1<Book,String>() {");
     _builder_1.newLine();
-    _builder_1.append("        ");
+    _builder_1.append("      ");
     _builder_1.append("public String apply(final Book it) {");
     _builder_1.newLine();
-    _builder_1.append("          ");
+    _builder_1.append("        ");
     _builder_1.append("String _title = it.getTitle();");
     _builder_1.newLine();
-    _builder_1.append("          ");
+    _builder_1.append("        ");
     _builder_1.append("return _title;");
     _builder_1.newLine();
-    _builder_1.append("        ");
+    _builder_1.append("      ");
     _builder_1.append("}");
     _builder_1.newLine();
-    _builder_1.append("      ");
+    _builder_1.append("    ");
     _builder_1.append("};");
     _builder_1.newLine();
     _builder_1.append("    ");
@@ -1202,16 +1202,16 @@ public class EmfComponentsDslGeneratorTests extends EmfComponentsDslAbstractTest
     _builder_1.append("    ");
     _builder_1.append("final Procedure1<Writer> _function = new Procedure1<Writer>() {");
     _builder_1.newLine();
-    _builder_1.append("        ");
+    _builder_1.append("      ");
     _builder_1.append("public void apply(final Writer it) {");
     _builder_1.newLine();
-    _builder_1.append("          ");
+    _builder_1.append("        ");
     _builder_1.append("it.setName(\"Foo\");");
     _builder_1.newLine();
-    _builder_1.append("        ");
+    _builder_1.append("      ");
     _builder_1.append("}");
     _builder_1.newLine();
-    _builder_1.append("      ");
+    _builder_1.append("    ");
     _builder_1.append("};");
     _builder_1.newLine();
     _builder_1.append("    ");
@@ -1223,16 +1223,16 @@ public class EmfComponentsDslGeneratorTests extends EmfComponentsDslAbstractTest
     _builder_1.append("    ");
     _builder_1.append("final Procedure1<Writer> _function_1 = new Procedure1<Writer>() {");
     _builder_1.newLine();
-    _builder_1.append("        ");
+    _builder_1.append("      ");
     _builder_1.append("public void apply(final Writer it) {");
     _builder_1.newLine();
-    _builder_1.append("          ");
+    _builder_1.append("        ");
     _builder_1.append("it.setName(\"Bar\");");
     _builder_1.newLine();
-    _builder_1.append("        ");
+    _builder_1.append("      ");
     _builder_1.append("}");
     _builder_1.newLine();
-    _builder_1.append("      ");
+    _builder_1.append("    ");
     _builder_1.append("};");
     _builder_1.newLine();
     _builder_1.append("    ");
@@ -1258,37 +1258,37 @@ public class EmfComponentsDslGeneratorTests extends EmfComponentsDslAbstractTest
     _builder_1.append("    ");
     _builder_1.append("final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {");
     _builder_1.newLine();
-    _builder_1.append("        ");
+    _builder_1.append("      ");
     _builder_1.append("public void apply(final List<Object> it) {");
     _builder_1.newLine();
-    _builder_1.append("          ");
+    _builder_1.append("        ");
     _builder_1.append("Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();");
     _builder_1.newLine();
-    _builder_1.append("          ");
+    _builder_1.append("        ");
     _builder_1.append("final Procedure1<Book> _function = new Procedure1<Book>() {");
     _builder_1.newLine();
-    _builder_1.append("              ");
+    _builder_1.append("          ");
     _builder_1.append("public void apply(final Book it) {");
     _builder_1.newLine();
-    _builder_1.append("                ");
+    _builder_1.append("            ");
     _builder_1.append("it.setTitle(\"Fake Book\");");
     _builder_1.newLine();
-    _builder_1.append("              ");
+    _builder_1.append("          ");
     _builder_1.append("}");
-    _builder_1.newLine();
-    _builder_1.append("            ");
-    _builder_1.append("};");
-    _builder_1.newLine();
-    _builder_1.append("          ");
-    _builder_1.append("Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);");
-    _builder_1.newLine();
-    _builder_1.append("          ");
-    _builder_1.append("it.add(_doubleArrow);");
     _builder_1.newLine();
     _builder_1.append("        ");
-    _builder_1.append("}");
+    _builder_1.append("};");
+    _builder_1.newLine();
+    _builder_1.append("        ");
+    _builder_1.append("Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);");
+    _builder_1.newLine();
+    _builder_1.append("        ");
+    _builder_1.append("it.add(_doubleArrow);");
     _builder_1.newLine();
     _builder_1.append("      ");
+    _builder_1.append("}");
+    _builder_1.newLine();
+    _builder_1.append("    ");
     _builder_1.append("};");
     _builder_1.newLine();
     _builder_1.append("    ");
@@ -1397,86 +1397,85 @@ public class EmfComponentsDslGeneratorTests extends EmfComponentsDslAbstractTest
   
   private void assertCorrectJavaCodeGeneration(final CharSequence input, final CharSequence expectedModule, final CharSequence expectedLabelProvider, final CharSequence expectedPropertyDescriptionProvider, final CharSequence expectedFeatureProvider, final CharSequence expectedFormFeatureControlFactory, final CharSequence expectedViewerContentProvider, final CharSequence expectedProposalCreator, final CharSequence expectedPluginXmlGen) {
     final IAcceptor<Result> _function = new IAcceptor<Result>() {
-        public void accept(final Result it) {
-          Map<String,CharSequence> _allGeneratedResources = it.getAllGeneratedResources();
-          Set<Entry<String,CharSequence>> _entrySet = _allGeneratedResources.entrySet();
-          for (final Entry<String,CharSequence> e : _entrySet) {
-            String _key = e.getKey();
-            boolean _endsWith = _key.endsWith("ModuleGen.java");
-            if (_endsWith) {
-              boolean _notEquals = (!Objects.equal(expectedModule, null));
-              if (_notEquals) {
-                CharSequence _value = e.getValue();
-                EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedModule, _value);
+      public void accept(final Result it) {
+        Map<String,CharSequence> _allGeneratedResources = it.getAllGeneratedResources();
+        Set<Entry<String,CharSequence>> _entrySet = _allGeneratedResources.entrySet();
+        for (final Entry<String,CharSequence> e : _entrySet) {
+          String _key = e.getKey();
+          boolean _endsWith = _key.endsWith("ModuleGen.java");
+          if (_endsWith) {
+            boolean _notEquals = (!Objects.equal(expectedModule, null));
+            if (_notEquals) {
+              CharSequence _value = e.getValue();
+              EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedModule, _value);
+            }
+          } else {
+            String _key_1 = e.getKey();
+            boolean _endsWith_1 = _key_1.endsWith("PropertyDescriptionProviderGen.java");
+            if (_endsWith_1) {
+              boolean _notEquals_1 = (!Objects.equal(expectedPropertyDescriptionProvider, null));
+              if (_notEquals_1) {
+                CharSequence _value_1 = e.getValue();
+                EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedPropertyDescriptionProvider, _value_1);
               }
             } else {
-              String _key_1 = e.getKey();
-              boolean _endsWith_1 = _key_1.endsWith("PropertyDescriptionProviderGen.java");
-              if (_endsWith_1) {
-                boolean _notEquals_1 = (!Objects.equal(expectedPropertyDescriptionProvider, null));
-                if (_notEquals_1) {
-                  CharSequence _value_1 = e.getValue();
-                  EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedPropertyDescriptionProvider, _value_1);
+              String _key_2 = e.getKey();
+              boolean _endsWith_2 = _key_2.endsWith("FeaturesProviderGen.java");
+              if (_endsWith_2) {
+                boolean _notEquals_2 = (!Objects.equal(expectedFeatureProvider, null));
+                if (_notEquals_2) {
+                  CharSequence _value_2 = e.getValue();
+                  EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedFeatureProvider, _value_2);
                 }
               } else {
-                String _key_2 = e.getKey();
-                boolean _endsWith_2 = _key_2.endsWith("FeaturesProviderGen.java");
-                if (_endsWith_2) {
-                  boolean _notEquals_2 = (!Objects.equal(expectedFeatureProvider, null));
-                  if (_notEquals_2) {
-                    CharSequence _value_2 = e.getValue();
-                    EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedFeatureProvider, _value_2);
+                String _key_3 = e.getKey();
+                boolean _endsWith_3 = _key_3.endsWith("LabelProviderGen.java");
+                if (_endsWith_3) {
+                  boolean _notEquals_3 = (!Objects.equal(expectedLabelProvider, null));
+                  if (_notEquals_3) {
+                    CharSequence _value_3 = e.getValue();
+                    EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedLabelProvider, _value_3);
                   }
                 } else {
-                  String _key_3 = e.getKey();
-                  boolean _endsWith_3 = _key_3.endsWith("LabelProviderGen.java");
-                  if (_endsWith_3) {
-                    boolean _notEquals_3 = (!Objects.equal(expectedLabelProvider, null));
-                    if (_notEquals_3) {
-                      CharSequence _value_3 = e.getValue();
-                      EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedLabelProvider, _value_3);
+                  String _key_4 = e.getKey();
+                  boolean _endsWith_4 = _key_4.endsWith("FormFeatureControlFactoryGen.java");
+                  if (_endsWith_4) {
+                    boolean _notEquals_4 = (!Objects.equal(expectedFormFeatureControlFactory, null));
+                    if (_notEquals_4) {
+                      CharSequence _value_4 = e.getValue();
+                      EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedFormFeatureControlFactory, _value_4);
                     }
                   } else {
-                    String _key_4 = e.getKey();
-                    boolean _endsWith_4 = _key_4.endsWith("FormFeatureControlFactoryGen.java");
-                    if (_endsWith_4) {
-                      boolean _notEquals_4 = (!Objects.equal(expectedFormFeatureControlFactory, null));
-                      if (_notEquals_4) {
-                        CharSequence _value_4 = e.getValue();
-                        EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedFormFeatureControlFactory, _value_4);
+                    String _key_5 = e.getKey();
+                    boolean _endsWith_5 = _key_5.endsWith("ViewerContentProviderGen.java");
+                    if (_endsWith_5) {
+                      boolean _notEquals_5 = (!Objects.equal(expectedViewerContentProvider, null));
+                      if (_notEquals_5) {
+                        CharSequence _value_5 = e.getValue();
+                        EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedViewerContentProvider, _value_5);
                       }
                     } else {
-                      String _key_5 = e.getKey();
-                      boolean _endsWith_5 = _key_5.endsWith("ViewerContentProviderGen.java");
-                      if (_endsWith_5) {
-                        boolean _notEquals_5 = (!Objects.equal(expectedViewerContentProvider, null));
-                        if (_notEquals_5) {
-                          CharSequence _value_5 = e.getValue();
-                          EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedViewerContentProvider, _value_5);
+                      String _key_6 = e.getKey();
+                      boolean _endsWith_6 = _key_6.endsWith("ProposalCreatorGen.java");
+                      if (_endsWith_6) {
+                        boolean _notEquals_6 = (!Objects.equal(expectedProposalCreator, null));
+                        if (_notEquals_6) {
+                          CharSequence _value_6 = e.getValue();
+                          EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedProposalCreator, _value_6);
                         }
                       } else {
-                        String _key_6 = e.getKey();
-                        boolean _endsWith_6 = _key_6.endsWith("ProposalCreatorGen.java");
-                        if (_endsWith_6) {
-                          boolean _notEquals_6 = (!Objects.equal(expectedProposalCreator, null));
-                          if (_notEquals_6) {
-                            CharSequence _value_6 = e.getValue();
-                            EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedProposalCreator, _value_6);
+                        String _key_7 = e.getKey();
+                        boolean _endsWith_7 = _key_7.endsWith(".xml_emfparsley_gen");
+                        if (_endsWith_7) {
+                          boolean _notEquals_7 = (!Objects.equal(expectedPluginXmlGen, null));
+                          if (_notEquals_7) {
+                            CharSequence _value_7 = e.getValue();
+                            EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedPluginXmlGen, _value_7);
                           }
                         } else {
-                          String _key_7 = e.getKey();
-                          boolean _endsWith_7 = _key_7.endsWith(".xml_emfparsley_gen");
-                          if (_endsWith_7) {
-                            boolean _notEquals_7 = (!Objects.equal(expectedPluginXmlGen, null));
-                            if (_notEquals_7) {
-                              CharSequence _value_7 = e.getValue();
-                              EmfComponentsDslGeneratorTests.this.assertEqualsStrings(expectedPluginXmlGen, _value_7);
-                            }
-                          } else {
-                            CharSequence _value_8 = e.getValue();
-                            String _plus = ("unexpected generated code: " + _value_8);
-                            Assert.fail(_plus);
-                          }
+                          CharSequence _value_8 = e.getValue();
+                          String _plus = ("unexpected generated code: " + _value_8);
+                          Assert.fail(_plus);
                         }
                       }
                     }
@@ -1485,9 +1484,10 @@ public class EmfComponentsDslGeneratorTests extends EmfComponentsDslAbstractTest
               }
             }
           }
-          it.compileToJava();
         }
-      };
+        it.compileToJava();
+      }
+    };
     this._customCompilationTestHelper.compileAll(input, _function);
   }
 }

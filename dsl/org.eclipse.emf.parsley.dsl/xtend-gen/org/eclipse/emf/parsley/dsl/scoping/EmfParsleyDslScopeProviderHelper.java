@@ -65,29 +65,29 @@ public class EmfParsleyDslScopeProviderHelper {
     Iterable<JvmFeature> _allFeatures = t.getAllFeatures();
     Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(_allFeatures, JvmOperation.class);
     final Function1<JvmOperation,Boolean> _function = new Function1<JvmOperation,Boolean>() {
-        public Boolean apply(final JvmOperation it) {
-          boolean _isStatic = it.isStatic();
-          boolean _not = (!_isStatic);
-          return Boolean.valueOf(_not);
-        }
-      };
+      public Boolean apply(final JvmOperation it) {
+        boolean _isStatic = it.isStatic();
+        boolean _not = (!_isStatic);
+        return Boolean.valueOf(_not);
+      }
+    };
     Iterable<JvmOperation> _filter_1 = IterableExtensions.<JvmOperation>filter(_filter, _function);
     final Function<JvmOperation,QualifiedName> _function_1 = new Function<JvmOperation,QualifiedName>() {
-        public QualifiedName apply(final JvmOperation it) {
-          QualifiedName _xifexpression = null;
-          String _simpleName = it.getSimpleName();
-          boolean _isGetterMethod = EmfParsleyDslScopeProviderHelper.this.isGetterMethod(_simpleName);
-          if (_isGetterMethod) {
-            String _simpleName_1 = it.getSimpleName();
-            String _propertyNameForGetterMethod = EmfParsleyDslScopeProviderHelper.this.getPropertyNameForGetterMethod(_simpleName_1);
-            QualifiedName _create = QualifiedName.create(_propertyNameForGetterMethod);
-            _xifexpression = _create;
-          } else {
-            _xifexpression = null;
-          }
-          return _xifexpression;
+      public QualifiedName apply(final JvmOperation it) {
+        QualifiedName _xifexpression = null;
+        String _simpleName = it.getSimpleName();
+        boolean _isGetterMethod = EmfParsleyDslScopeProviderHelper.this.isGetterMethod(_simpleName);
+        if (_isGetterMethod) {
+          String _simpleName_1 = it.getSimpleName();
+          String _propertyNameForGetterMethod = EmfParsleyDslScopeProviderHelper.this.getPropertyNameForGetterMethod(_simpleName_1);
+          QualifiedName _create = QualifiedName.create(_propertyNameForGetterMethod);
+          _xifexpression = _create;
+        } else {
+          _xifexpression = null;
         }
-      };
+        return _xifexpression;
+      }
+    };
     Iterable<IEObjectDescription> _scopedElementsFor = Scopes.<JvmOperation>scopedElementsFor(_filter_1, _function_1);
     SimpleScope _simpleScope = new SimpleScope(_scopedElementsFor);
     return _simpleScope;

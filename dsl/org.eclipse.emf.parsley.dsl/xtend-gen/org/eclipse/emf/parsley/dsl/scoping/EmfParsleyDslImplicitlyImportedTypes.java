@@ -13,7 +13,7 @@ import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
 public class EmfParsleyDslImplicitlyImportedTypes extends ImplicitlyImportedTypes {
   protected List<Class<? extends Object>> getExtensionClasses() {
     List<Class<? extends Object>> _extensionClasses = super.getExtensionClasses();
-    Iterable<Class<? extends Object>> _plus = Iterables.<Class<? extends Object>>concat(_extensionClasses, Collections.<Class<? extends Object>>unmodifiableList(Lists.<Class<? extends Object>>newArrayList(Control.class, SWTObservables.class)));
+    Iterable<Class<? extends Object>> _plus = Iterables.<Class<? extends Object>>concat(_extensionClasses, Collections.<Class<?>>unmodifiableList(Lists.<Class<?>>newArrayList(Control.class, SWTObservables.class)));
     List<Class<? extends Object>> _list = IterableExtensions.<Class<? extends Object>>toList(_plus);
     return _list;
   }

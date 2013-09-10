@@ -83,70 +83,70 @@ public class FeatureResolverTest {
   public Library createModel() {
     Library _createLibrary = EXTLibraryFactory.eINSTANCE.createLibrary();
     final Procedure1<Library> _function = new Procedure1<Library>() {
-        public void apply(final Library it) {
-          Writer _createWriter = EXTLibraryFactory.eINSTANCE.createWriter();
-          final Procedure1<Writer> _function = new Procedure1<Writer>() {
-              public void apply(final Writer it) {
-                it.setFirstName("Test");
-                it.setLastName("Writer");
-              }
-            };
-          final Writer writer = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
-          Writer _createWriter_1 = EXTLibraryFactory.eINSTANCE.createWriter();
-          final Procedure1<Writer> _function_1 = new Procedure1<Writer>() {
-              public void apply(final Writer it) {
-                it.setFirstName("Test2");
-                it.setLastName("Writer2");
-              }
-            };
-          final Writer writer2 = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter_1, _function_1);
-          EList<Writer> _writers = it.getWriters();
-          _writers.add(writer);
-          EList<Writer> _writers_1 = it.getWriters();
-          _writers_1.add(writer2);
-          EList<Book> _books = it.getBooks();
-          Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
-          final Procedure1<Book> _function_2 = new Procedure1<Book>() {
-              public void apply(final Book it) {
-                it.setTitle("Test Book");
-                it.setAuthor(writer);
-              }
-            };
-          Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function_2);
-          _books.add(_doubleArrow);
-          EList<Item> _stock = it.getStock();
-          BookOnTape _createBookOnTape = EXTLibraryFactory.eINSTANCE.createBookOnTape();
-          final Procedure1<BookOnTape> _function_3 = new Procedure1<BookOnTape>() {
-              public void apply(final BookOnTape it) {
-                it.setReader(writer);
-                it.setAuthor(writer2);
-              }
-            };
-          BookOnTape _doubleArrow_1 = ObjectExtensions.<BookOnTape>operator_doubleArrow(_createBookOnTape, _function_3);
-          _stock.add(_doubleArrow_1);
-          Employee _createEmployee = EXTLibraryFactory.eINSTANCE.createEmployee();
-          final Procedure1<Employee> _function_4 = new Procedure1<Employee>() {
-              public void apply(final Employee it) {
-                it.setFirstName("E");
-                it.setLastName("1");
-              }
-            };
-          final Employee employee1 = ObjectExtensions.<Employee>operator_doubleArrow(_createEmployee, _function_4);
-          Employee _createEmployee_1 = EXTLibraryFactory.eINSTANCE.createEmployee();
-          final Procedure1<Employee> _function_5 = new Procedure1<Employee>() {
-              public void apply(final Employee it) {
-                it.setFirstName("E");
-                it.setLastName("2");
-                it.setManager(employee1);
-              }
-            };
-          final Employee employee2 = ObjectExtensions.<Employee>operator_doubleArrow(_createEmployee_1, _function_5);
-          EList<Employee> _employees = it.getEmployees();
-          _employees.add(employee1);
-          EList<Employee> _employees_1 = it.getEmployees();
-          _employees_1.add(employee2);
-        }
-      };
+      public void apply(final Library it) {
+        Writer _createWriter = EXTLibraryFactory.eINSTANCE.createWriter();
+        final Procedure1<Writer> _function = new Procedure1<Writer>() {
+          public void apply(final Writer it) {
+            it.setFirstName("Test");
+            it.setLastName("Writer");
+          }
+        };
+        final Writer writer = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
+        Writer _createWriter_1 = EXTLibraryFactory.eINSTANCE.createWriter();
+        final Procedure1<Writer> _function_1 = new Procedure1<Writer>() {
+          public void apply(final Writer it) {
+            it.setFirstName("Test2");
+            it.setLastName("Writer2");
+          }
+        };
+        final Writer writer2 = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter_1, _function_1);
+        EList<Writer> _writers = it.getWriters();
+        _writers.add(writer);
+        EList<Writer> _writers_1 = it.getWriters();
+        _writers_1.add(writer2);
+        EList<Book> _books = it.getBooks();
+        Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
+        final Procedure1<Book> _function_2 = new Procedure1<Book>() {
+          public void apply(final Book it) {
+            it.setTitle("Test Book");
+            it.setAuthor(writer);
+          }
+        };
+        Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function_2);
+        _books.add(_doubleArrow);
+        EList<Item> _stock = it.getStock();
+        BookOnTape _createBookOnTape = EXTLibraryFactory.eINSTANCE.createBookOnTape();
+        final Procedure1<BookOnTape> _function_3 = new Procedure1<BookOnTape>() {
+          public void apply(final BookOnTape it) {
+            it.setReader(writer);
+            it.setAuthor(writer2);
+          }
+        };
+        BookOnTape _doubleArrow_1 = ObjectExtensions.<BookOnTape>operator_doubleArrow(_createBookOnTape, _function_3);
+        _stock.add(_doubleArrow_1);
+        Employee _createEmployee = EXTLibraryFactory.eINSTANCE.createEmployee();
+        final Procedure1<Employee> _function_4 = new Procedure1<Employee>() {
+          public void apply(final Employee it) {
+            it.setFirstName("E");
+            it.setLastName("1");
+          }
+        };
+        final Employee employee1 = ObjectExtensions.<Employee>operator_doubleArrow(_createEmployee, _function_4);
+        Employee _createEmployee_1 = EXTLibraryFactory.eINSTANCE.createEmployee();
+        final Procedure1<Employee> _function_5 = new Procedure1<Employee>() {
+          public void apply(final Employee it) {
+            it.setFirstName("E");
+            it.setLastName("2");
+            it.setManager(employee1);
+          }
+        };
+        final Employee employee2 = ObjectExtensions.<Employee>operator_doubleArrow(_createEmployee_1, _function_5);
+        EList<Employee> _employees = it.getEmployees();
+        _employees.add(employee1);
+        EList<Employee> _employees_1 = it.getEmployees();
+        _employees_1.add(employee2);
+      }
+    };
     Library _doubleArrow = ObjectExtensions.<Library>operator_doubleArrow(_createLibrary, _function);
     return _doubleArrow;
   }
@@ -159,11 +159,11 @@ public class FeatureResolverTest {
   public void assertFeatureList(final List<EStructuralFeature> features, final CharSequence expected) {
     String _string = expected.toString();
     final Function1<EStructuralFeature,String> _function = new Function1<EStructuralFeature,String>() {
-        public String apply(final EStructuralFeature it) {
-          String _name = it.getName();
-          return _name;
-        }
-      };
+      public String apply(final EStructuralFeature it) {
+        String _name = it.getName();
+        return _name;
+      }
+    };
     List<String> _map = ListExtensions.<EStructuralFeature, String>map(features, _function);
     String _join = IterableExtensions.join(_map, ", ");
     Assert.assertEquals(_string, _join);

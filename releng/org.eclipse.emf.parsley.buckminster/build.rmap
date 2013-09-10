@@ -24,14 +24,12 @@
 	<!--  <rm:locator pattern="^org\.eclipse\.xtext\.xdoc(?:\..+)?$"
 		searchPathRef="xdoc" />  -->
 
-	<!-- Currently, Xtext 2.4.2 is available only from Kepler site 
 	<rm:locator
 		pattern="^org\.eclipse\.(?:xtext|xpand|xtend|xtend2|emf\.mwe|emf\.mwe2)(?:\..+)?$"
 		searchPathRef="xtext" />
 	<rm:locator pattern="^com\.google.*" searchPathRef="xtext" />
 	<rm:locator pattern="^org\.antlr.*" searchPathRef="xtext" />
 	<rm:locator pattern="javax.inject" searchPathRef="xtext" />
-	-->
 	
 	<rm:locator pattern="^org\.hamcrest*" searchPathRef="swtbot" />
 	<rm:locator pattern="^org\.eclipse\.(?:swtbot)(?:\..+)?$"

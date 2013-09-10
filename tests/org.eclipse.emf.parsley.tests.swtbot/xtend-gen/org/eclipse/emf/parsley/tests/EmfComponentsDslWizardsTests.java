@@ -99,11 +99,11 @@ public class EmfComponentsDslWizardsTests extends EmfComponentsAbstractTests {
       String _plus = (EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_EMFPARSLEY_GEN + " still present!");
       List<String> _nodes = projTree.getNodes();
       final Function1<String,Boolean> _function = new Function1<String,Boolean>() {
-          public Boolean apply(final String it) {
-            boolean _notEquals = (!Objects.equal(it, EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_EMFPARSLEY_GEN));
-            return Boolean.valueOf(_notEquals);
-          }
-        };
+        public Boolean apply(final String it) {
+          boolean _notEquals = (!Objects.equal(it, EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_EMFPARSLEY_GEN));
+          return Boolean.valueOf(_notEquals);
+        }
+      };
       boolean _forall = IterableExtensions.<String>forall(_nodes, _function);
       Assert.assertTrue(_plus, _forall);
     } catch (Throwable _e) {

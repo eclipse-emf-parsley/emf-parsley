@@ -78,11 +78,11 @@ public class EmfParsleyDslPluginXmlGenerator implements IGenerator {
         _builder_1.newLine();
         _builder_1.append("    ");
         final Function1<PartSpecification,CharSequence> _function = new Function1<PartSpecification,CharSequence>() {
-            public CharSequence apply(final PartSpecification it) {
-              CharSequence _generateExtensionPoint = EmfParsleyDslPluginXmlGenerator.this.generateExtensionPoint(it);
-              return _generateExtensionPoint;
-            }
-          };
+          public CharSequence apply(final PartSpecification it) {
+            CharSequence _generateExtensionPoint = EmfParsleyDslPluginXmlGenerator.this.generateExtensionPoint(it);
+            return _generateExtensionPoint;
+          }
+        };
         List<CharSequence> _map = ListExtensions.<PartSpecification, CharSequence>map(partSpecs, _function);
         String _join = IterableExtensions.join(_map, "");
         _builder_1.append(_join, "    ");

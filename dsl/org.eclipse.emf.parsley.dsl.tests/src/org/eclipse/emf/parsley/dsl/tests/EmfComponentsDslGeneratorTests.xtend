@@ -207,11 +207,11 @@ public class LabelProviderGen extends ViewerLabelProvider {
     {
       EList<Lendable> _borrowed = it.getBorrowed();
       final Function1<Lendable,Integer> _function = new Function1<Lendable,Integer>() {
-          public Integer apply(final Lendable b) {
-            int _copies = b.getCopies();
-            return Integer.valueOf(_copies);
-          }
-        };
+        public Integer apply(final Lendable b) {
+          int _copies = b.getCopies();
+          return Integer.valueOf(_copies);
+        }
+      };
       List<Integer> _map = ListExtensions.<Lendable, Integer>map(_borrowed, _function);
       final String buffer = ("borrowed: " + _map);
       String _upperCase = buffer.toUpperCase();
@@ -397,11 +397,11 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
     Composite _parent = this.getParent();
     EList<Book> _books = it.getBooks();
     final Function1<Book,String> _function = new Function1<Book,String>() {
-        public String apply(final Book it) {
-          String _title = it.getTitle();
-          return _title;
-        }
-      };
+      public String apply(final Book it) {
+        String _title = it.getTitle();
+        return _title;
+      }
+    };
     List<String> _map = ListExtensions.<Book, String>map(_books, _function);
     String _join = IterableExtensions.join(_map, ", ");
     Label _createLabel = _toolkit.createLabel(_parent, _join);
@@ -571,17 +571,17 @@ public class ProposalCreatorGen extends ProposalCreator {
   public List<? extends Object> proposals_Book_author(final Book it, final EStructuralFeature feature) {
     Writer _createWriter = EXTLibraryFactory.eINSTANCE.createWriter();
     final Procedure1<Writer> _function = new Procedure1<Writer>() {
-        public void apply(final Writer it) {
-          it.setName("Foo");
-        }
-      };
+      public void apply(final Writer it) {
+        it.setName("Foo");
+      }
+    };
     Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
     Writer _createWriter_1 = EXTLibraryFactory.eINSTANCE.createWriter();
     final Procedure1<Writer> _function_1 = new Procedure1<Writer>() {
-        public void apply(final Writer it) {
-          it.setName("Bar");
-        }
-      };
+      public void apply(final Writer it) {
+        it.setName("Bar");
+      }
+    };
     Writer _doubleArrow_1 = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter_1, _function_1);
     ArrayList<Writer> _newArrayList = CollectionLiterals.<Writer>newArrayList(_doubleArrow, _doubleArrow_1);
     return _newArrayList;
@@ -590,17 +590,17 @@ public class ProposalCreatorGen extends ProposalCreator {
   public List<? extends Object> proposals_Borrower_borrowed(final Borrower it, final EStructuralFeature feature) {
     List<Object> _defaultProposals = this.defaultProposals(feature);
     final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
-        public void apply(final List<Object> it) {
-          Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
-          final Procedure1<Book> _function = new Procedure1<Book>() {
-              public void apply(final Book it) {
-                it.setTitle("Fake Book");
-              }
-            };
-          Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);
-          it.add(_doubleArrow);
-        }
-      };
+      public void apply(final List<Object> it) {
+        Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
+        final Procedure1<Book> _function = new Procedure1<Book>() {
+          public void apply(final Book it) {
+            it.setTitle("Fake Book");
+          }
+        };
+        Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);
+        it.add(_doubleArrow);
+      }
+    };
     final List<Object> p = ObjectExtensions.<List<Object>>operator_doubleArrow(_defaultProposals, _function);
     return p;
   }
