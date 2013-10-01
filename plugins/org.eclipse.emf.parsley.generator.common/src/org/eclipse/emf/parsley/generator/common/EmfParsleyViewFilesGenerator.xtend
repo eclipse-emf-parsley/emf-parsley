@@ -2,6 +2,58 @@ package org.eclipse.emf.parsley.generator.common
 
 class EmfParsleyViewFilesGenerator {
 
+	def generateConcreteForResourceTreeView(String projectName, String className, String extendsClass)
+'''
+package «projectName»;
+
+import org.eclipse.emf.parsley.views.«extendsClass»;
+
+import org.eclipse.emf.common.util.URI;
+
+public class «className» extends «extendsClass» {
+
+	@Override
+	protected URI createResourceURI() {
+		// TODO Insert here the resource URI
+		return null;
+	}
+	
+}
+'''
+
+	def generateConcreteForResourceTableView(String projectName, String simpleName, String extendsClass)
+'''
+package «projectName»;
+
+import org.eclipse.emf.parsley.views.«extendsClass»;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.resource.Resource;
+
+public class «simpleName» extends «extendsClass» {
+
+	@Override
+	protected Object getContents(Resource resource) {
+		// TODO  How to reach the contents from the resource
+		return null;
+	}
+
+	@Override
+	protected EClass getEClass() {
+		// TODO  Insert here the EClass to be represented 
+		return null;
+	}
+
+	@Override
+	protected URI createResourceURI() {
+		// TODO  Insert here the resource URI
+		return null;
+	}
+}
+'''
+
+
 	def generateTreeFormView(String projectName, String simpleName)
 '''
 package «projectName»;

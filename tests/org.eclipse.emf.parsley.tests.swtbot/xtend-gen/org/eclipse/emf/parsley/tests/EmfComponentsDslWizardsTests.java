@@ -21,11 +21,89 @@ import org.junit.runner.RunWith;
 public class EmfComponentsDslWizardsTests extends EmfComponentsAbstractTests {
   private final String TEST_PROJ_NAME = "my.emfparsley.proj";
   
+  private final String TREE_FORM_TEMPLATE = "Saveable Tree Form View";
+  
+  private final String TREE_TEMPLATE = "Saveable Tree View";
+  
+  private final String TABLE_FORM_TEMPLATE = "Saveable Table Form View";
+  
+  private final String TABLE_TEMPLATE = "Saveable Table View";
+  
+  private final String ONSELECTION_TREE_TEMPLATE = "On selection Tree Form View";
+  
+  private final String ONSELECTION_TABLE_TEMPLATE = "On selection Table Form View";
+  
   @Test
   public void canCreateDslProjectWithWizard() {
     try {
-      this.createProjectInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+      this.createProjectWithoutTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
         EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME);
+      this.assertNoErrorsInProjectAfterAutoBuild();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void canCreateDslProjectWithWizardAndTreeFormTemplate() {
+    try {
+      this.createProjectWithTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+        EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME, this.TREE_FORM_TEMPLATE);
+      this.assertNoErrorsInProjectAfterAutoBuild();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void canCreateDslProjectWithWizardAndTreeTemplate() {
+    try {
+      this.createProjectWithTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+        EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME, this.TREE_TEMPLATE);
+      this.assertNoErrorsInProjectAfterAutoBuild();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void canCreateDslProjectWithWizardAndTableFormTemplate() {
+    try {
+      this.createProjectWithTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+        EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME, this.TABLE_FORM_TEMPLATE);
+      this.assertNoErrorsInProjectAfterAutoBuild();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void canCreateDslProjectWithWizardAndTableTemplate() {
+    try {
+      this.createProjectWithTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+        EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME, this.TABLE_TEMPLATE);
+      this.assertNoErrorsInProjectAfterAutoBuild();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void canCreateDslProjectWithWizardAndOnselectionTreeTemplate() {
+    try {
+      this.createProjectWithTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+        EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME, this.ONSELECTION_TREE_TEMPLATE);
+      this.assertNoErrorsInProjectAfterAutoBuild();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void canCreateDslProjectWithWizardAndOnselectionTableTemplate() {
+    try {
+      this.createProjectWithTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+        EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME, this.ONSELECTION_TABLE_TEMPLATE);
       this.assertNoErrorsInProjectAfterAutoBuild();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -35,7 +113,7 @@ public class EmfComponentsDslWizardsTests extends EmfComponentsAbstractTests {
   @Test
   public void checkPluginXmlGen() {
     try {
-      this.createProjectInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+      this.createProjectWithoutTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
         EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME);
       this.assertNoErrorsInProjectAfterAutoBuild();
       final SWTBotEditor editor = EmfComponentsAbstractTests.bot.editorByTitle("module.parsley");
@@ -115,7 +193,7 @@ public class EmfComponentsDslWizardsTests extends EmfComponentsAbstractTests {
   @Test
   public void checkTemplateProposalForViewSpecification() {
     try {
-      this.createProjectInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+      this.createProjectWithoutTemplateInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
         EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME);
       this.assertNoErrorsInProjectAfterAutoBuild();
       final SWTBotEditor editor = EmfComponentsAbstractTests.bot.editorByTitle("module.parsley");
@@ -132,7 +210,7 @@ public class EmfComponentsDslWizardsTests extends EmfComponentsAbstractTests {
       _builder.newLine();
       _textEditor.insertText(_builder.toString());
       SWTBotEclipseEditor _textEditor_1 = editor.toTextEditor();
-      _textEditor_1.navigateTo(1, 10);
+      _textEditor_1.navigateTo(2, 10);
       SWTBotEclipseEditor _textEditor_2 = editor.toTextEditor();
       _textEditor_2.autoCompleteProposal(" ", 
         "ViewSpecification - Template for ViewSpecification");

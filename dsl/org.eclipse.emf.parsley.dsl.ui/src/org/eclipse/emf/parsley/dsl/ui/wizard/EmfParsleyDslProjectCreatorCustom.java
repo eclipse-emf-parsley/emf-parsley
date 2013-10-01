@@ -26,8 +26,7 @@ public class EmfParsleyDslProjectCreatorCustom extends
 	static EmfParsleyDslNewProjectFiles filesGenerator = new EmfParsleyDslNewProjectFiles();
 
 	static EmfParsleyProjectFilesGenerator projectFilesGenerator = new EmfParsleyProjectFilesGenerator();
-	
-	@Override
+		@Override
 	protected List<String> getAllFolders() {
 		return ImmutableList.of(SRC_ROOT,
 				EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN);
@@ -76,10 +75,19 @@ public class EmfParsleyDslProjectCreatorCustom extends
 				project, projectName, projectPackagePath, monitor);
 		NewEmfParsleyProjectSupport.createModule(project, projectName,
 				projectPackagePath, "EmfComponentsGuiceModuleGen", monitor);
-
+		
+		String dslFile = "";
+		if(getProjectInfo().getSelectedTemplate()!=null){
+			String superclassViewID=getProjectInfo().getSelectedTemplate().
+						 getOrGenerateViewClass(project,
+								projectName, projectPackagePath, monitor);
+			dslFile = filesGenerator.dslFileWithView(projectName,superclassViewID).toString();	
+		}else{
+			dslFile = filesGenerator.exampleDslFile(projectName).toString();
+		}
+		
 		NewEmfParsleyProjectSupport.createProjectFile(project,
-				projectPackagePath + "/module.parsley", filesGenerator
-						.exampleDslFile(projectName).toString(),
+				projectPackagePath + "/module.parsley", dslFile,
 				NewEmfParsleyProjectSupport
 						.createSubProgressMonitor(monitor));
 

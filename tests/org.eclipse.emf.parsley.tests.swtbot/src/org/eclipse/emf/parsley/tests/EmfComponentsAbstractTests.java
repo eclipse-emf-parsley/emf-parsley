@@ -462,15 +462,40 @@ public class EmfComponentsAbstractTests {
 	}
 
 	protected void createMyTestProject() {
-		createProjectInWorkspace("General", "Project", MY_TEST_PROJECT);
+		createProjectWithoutTemplateInWorkspace("General", "Project", MY_TEST_PROJECT);
 	}
 
 	protected void createProjectInWorkspace(String category,
 			String projectType, String projectName) {
 		SWTBotShell shell = createNewProjectWizard(category, projectType,
 				projectName);
-
+		
 		bot.button("Finish").click();
+		assertProjectIsCreated(projectName, shell);
+	}
+	
+	protected void createProjectWithoutTemplateInWorkspace(String category,
+			String projectType, String projectName) {
+		SWTBotShell shell = createNewProjectWizard(category, projectType,
+				projectName);
+		//deselect template check
+		bot.checkBox(1).deselect();
+		
+		bot.button("Finish").click();
+		assertProjectIsCreated(projectName, shell);
+	}
+	
+	protected void createProjectWithTemplateInWorkspace(String category,
+			String projectType, String projectName, String template) {
+		SWTBotShell shell = createNewProjectWizard(category, projectType,
+				projectName);
+		
+		bot.button("Next >").click();
+		
+		bot.table().select(template);
+		
+		bot.button("Finish").click();
+		
 		assertProjectIsCreated(projectName, shell);
 	}
 	
@@ -483,6 +508,7 @@ public class EmfComponentsAbstractTests {
 		bot.tree().expandNode(EMF_PARSLEY_CATEGORY, "Examples")
 				.select(exampleDescription);
 		bot.button("Next >").click();
+
 
 		bot.button("Finish").click();
 		
