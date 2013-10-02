@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
 import org.eclipse.emf.parsley.tests.EmfComponentsAbstractTests;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEclipseEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -106,6 +107,60 @@ public class EmfComponentsDslWizardsTests extends EmfComponentsAbstractTests {
       };
       boolean _forall = IterableExtensions.<String>forall(_nodes, _function);
       Assert.assertTrue(_plus, _forall);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void checkTemplateProposalForViewSpecification() {
+    try {
+      this.createProjectInWorkspace(EmfComponentsAbstractTests.EMF_PARSLEY_CATEGORY, 
+        EmfComponentsAbstractTests.NEW_EMF_COMPONENTS_DSL_PROJECT, this.TEST_PROJ_NAME);
+      this.assertNoErrorsInProjectAfterAutoBuild();
+      final SWTBotEditor editor = EmfComponentsAbstractTests.bot.editorByTitle("module.parsley");
+      this.setEditorContentsSaveAndWaitForAutoBuild(editor, 
+        "", false);
+      SWTBotEclipseEditor _textEditor = editor.toTextEditor();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("module ");
+      _builder.append(this.TEST_PROJ_NAME, "");
+      _builder.append(" {");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("parts { ");
+      _builder.newLine();
+      _textEditor.insertText(_builder.toString());
+      SWTBotEclipseEditor _textEditor_1 = editor.toTextEditor();
+      _textEditor_1.navigateTo(1, 10);
+      SWTBotEclipseEditor _textEditor_2 = editor.toTextEditor();
+      _textEditor_2.autoCompleteProposal(" ", 
+        "ViewSpecification - Template for ViewSpecification");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("module my.emfparsley.proj {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("parts { ");
+      _builder_1.newLine();
+      _builder_1.append(" ");
+      _builder_1.append("viewpart id {");
+      _builder_1.newLine();
+      _builder_1.append(" \t");
+      _builder_1.append("viewname \"View Name\"");
+      _builder_1.newLine();
+      _builder_1.append(" \t");
+      _builder_1.append("viewclass type");
+      _builder_1.newLine();
+      _builder_1.append(" \t");
+      _builder_1.append("// viewcategory my.category");
+      _builder_1.newLine();
+      _builder_1.append(" ");
+      _builder_1.append("}");
+      String _string = _builder_1.toString();
+      SWTBotEclipseEditor _textEditor_3 = editor.toTextEditor();
+      String _text = _textEditor_3.getText();
+      Assert.assertEquals(_string, _text);
+      editor.saveAndClose();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -26,6 +26,7 @@
 <booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.emf.parsley.tests.EmfComponentsDslWizardsTests"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.eclipse.emf.parsley.tests.swtbot"/>
@@ -35,7 +36,54 @@
 <stringAttribute key="product" value="org.eclipse.sdk.ide"/>
 <booleanAttribute key="run_in_ui_thread" value="false"/>
 <setAttribute key="selected_features">
+<setEntry value="org.eclipse.cvs.source:default"/>
+<setEntry value="org.eclipse.cvs:default"/>
+<setEntry value="org.eclipse.e4.rcp.source:default"/>
+<setEntry value="org.eclipse.e4.rcp:default"/>
+<setEntry value="org.eclipse.emf.common:default"/>
+<setEntry value="org.eclipse.emf.ecore:default"/>
+<setEntry value="org.eclipse.emf.parsley.dsl.feature:default"/>
+<setEntry value="org.eclipse.emf.parsley.examples.feature:default"/>
+<setEntry value="org.eclipse.emf.parsley.feature:default"/>
 <setEntry value="org.eclipse.emf.parsley.tests.swtbot.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.core.feature.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.core.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.extras.feature.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.extras.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.rcp.feature.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.rcp.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.user.ui.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.user.ui:default"/>
+<setEntry value="org.eclipse.help.source:default"/>
+<setEntry value="org.eclipse.help:default"/>
+<setEntry value="org.eclipse.jdt.source:default"/>
+<setEntry value="org.eclipse.jdt:default"/>
+<setEntry value="org.eclipse.pde.source:default"/>
+<setEntry value="org.eclipse.pde:default"/>
+<setEntry value="org.eclipse.platform.source:default"/>
+<setEntry value="org.eclipse.platform:default"/>
+<setEntry value="org.eclipse.rcp.source:default"/>
+<setEntry value="org.eclipse.rcp:default"/>
+<setEntry value="org.eclipse.sdk:default"/>
+<setEntry value="org.eclipse.swtbot.eclipse:default"/>
+<setEntry value="org.eclipse.swtbot.forms:default"/>
+<setEntry value="org.eclipse.swtbot.ide:default"/>
+<setEntry value="org.eclipse.swtbot:default"/>
+<setEntry value="org.eclipse.xtend.sdk:default"/>
+<setEntry value="org.eclipse.xtext.docs:default"/>
+<setEntry value="org.eclipse.xtext.examples.source:default"/>
+<setEntry value="org.eclipse.xtext.examples:default"/>
+<setEntry value="org.eclipse.xtext.runtime.source:default"/>
+<setEntry value="org.eclipse.xtext.runtime:default"/>
+<setEntry value="org.eclipse.xtext.sdk:default"/>
+<setEntry value="org.eclipse.xtext.ui.source:default"/>
+<setEntry value="org.eclipse.xtext.ui:default"/>
+<setEntry value="org.eclipse.xtext.xbase.lib.source:default"/>
+<setEntry value="org.eclipse.xtext.xbase.lib:default"/>
+<setEntry value="org.eclipse.xtext.xbase.source:default"/>
+<setEntry value="org.eclipse.xtext.xbase:default"/>
+<setEntry value="org.eclipse.xtext.xtext.ui.source:default"/>
+<setEntry value="org.eclipse.xtext.xtext.ui:default"/>
 </setAttribute>
 <booleanAttribute key="show_selected_only" value="false"/>
 <stringAttribute key="templateConfig" value="${target_home}/configuration/config.ini"/>

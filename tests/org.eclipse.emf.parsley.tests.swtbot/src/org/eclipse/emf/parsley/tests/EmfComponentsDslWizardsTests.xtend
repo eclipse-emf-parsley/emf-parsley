@@ -66,4 +66,43 @@ module «TEST_PROJ_NAME» {
 		)
 	}
 
+	@Test
+	def void checkTemplateProposalForViewSpecification() {
+		createProjectInWorkspace(EMF_PARSLEY_CATEGORY,
+				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME);
+		assertNoErrorsInProjectAfterAutoBuild();
+		
+		val editor = bot.editorByTitle("module.parsley")
+		
+		editor.setEditorContentsSaveAndWaitForAutoBuild(
+			"", false			
+		)
+		
+		editor.toTextEditor.insertText(
+'''
+module «TEST_PROJ_NAME» {
+	parts { 
+'''
+		)
+		
+		editor.toTextEditor.navigateTo(1, 10)
+		
+		editor.toTextEditor.autoCompleteProposal(" ", 
+			"ViewSpecification - Template for ViewSpecification"
+		)
+
+		Assert::assertEquals(
+'''
+module my.emfparsley.proj {
+	parts { 
+ viewpart id {
+ 	viewname "View Name"
+ 	viewclass type
+ 	// viewcategory my.category
+ }'''.toString, editor.toTextEditor.text			
+		)
+
+		editor.saveAndClose
+	}
+
 }

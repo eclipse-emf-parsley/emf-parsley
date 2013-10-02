@@ -804,9 +804,17 @@ public class EmfComponentsAbstractTests {
 	
 	protected void setEditorContentsSaveAndWaitForAutoBuild(
 			SWTBotEditor editor, CharSequence contents) throws CoreException {
+		setEditorContentsSaveAndWaitForAutoBuild(editor, contents, true);
+	}
+
+	protected void setEditorContentsSaveAndWaitForAutoBuild(
+			SWTBotEditor editor, CharSequence contents, boolean expectNoErrors) throws CoreException {
 		editor.toTextEditor().setText(contents.toString());
 		editor.save();
-		assertNoErrorsInProjectAfterAutoBuild();
+		if (expectNoErrors)
+			assertNoErrorsInProjectAfterAutoBuild();
+		else
+			waitForBuild();
 	}
 
 	private String printMarkers(List<IMarker> errorMarkers) {
