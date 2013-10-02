@@ -25,6 +25,13 @@
 
 	<property name="buckminster.home" location="${user.home}/buckminster" />
 	<property name="b3.home" location="${user.home}/b3" />
+
+	<property name="buckminster.output.root" value="${build.root}/buckminster.output" />
+	<property name="buckminster.temp.root" value="${build.root}/buckminster.temp" />
+	<property name="buckminster.workspace" value="${build.root}/buckminster.workspace"/>
+	<property name="buckminster.configuration" value="${build.root}/configuration"/>
+	<property name="buckminster.target.platform" value="${build.root}/${target.platform}"/>
+	<property name="buckminster.loglevel" value="INFO" />
 		
 	<property name="director.install.dest" location="${user.home}" />
 	<property name="director.dir" location="${director.install.dest}/director" />
@@ -32,28 +39,6 @@
 
 	<property name="eclipse.p2.mirrors" value="true" />
 	<property name="java.net.preferIPv4Stack" value="true" />
-
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: replace_win_slashes          
-         = = = = = = = = = = = = = = = = = -->
-	<macrodef name="replace_win_slashes">
-		<attribute name="property.to.process" default="default" />
-		<attribute name="output.property" default="default" />
-		<sequential>
-			<echo message="@{property.to.process}" file="some.tmp.file" />
-			<loadfile property="@{output.property}" srcFile="some.tmp.file">
-				<filterchain>
-					<tokenfilter>
-						<replaceregex pattern="\\" replace="/" flags="g" />
-						<replaceregex pattern=" " replace="\\ " flags="g" />
-					</tokenfilter>
-				</filterchain>
-			</loadfile>
-			<delete file="some.tmp.file" />
-		</sequential>
-	</macrodef>
-
-	<replace_win_slashes property.to.process="${eclipse.download}" output.property="eclipse-download" />
 	
 	<!-- = = = = = = = = = = = = = = = = =
           macrodef: run_buckminster
@@ -63,23 +48,27 @@
 		<attribute name="commandsfile" default="default" />
 		<attribute name="propertiesfile" default="default" />
 		<sequential>
+			<echo message=" " />
+			<echo message="java -Dbuckminster.output.root=${buckminster.output.root} -Dbuckminster.temp.root=${buckminster.temp.root} -Xms256m -Xmx512m -jar ${buckminster.home}/plugins/org.eclipse.equinox.launcher_*.jar -application org.eclipse.buckminster.cmdline.headless -data ${buckminster.workspace} --loglevel ${buckminster.loglevel} --script @{commandsfile} --properties @{propertiesfile}" />
 			<java fork="true" dir="${buckminster.home}" logError="true" classname="org.eclipse.core.launcher.Main" failonerror="true">
 				<classpath>
 					<fileset dir="${buckminster.home}/plugins">
 						<include name="org.eclipse.equinox.launcher_*.jar" />
 					</fileset>
 				</classpath>
-				<arg line='-update' />
-				<arg line='-data "${build.root}/buckminster.workspace"' />
-				<arg line='-configuration "${build.root}/configuration"' />
+				<arg line='-application org.eclipse.buckminster.cmdline.headless' />
+				<arg line='-data "${buckminster.workspace}"' />
+				<arg line='-configuration "${buckminster.configuration}"' />
 				<arg line='--properties "@{propertiesfile}"' />
 				<arg line='--script "@{commandsfile}"' />
+				<arg line='-L ${buckminster.loglevel}' />
+				<!-- <arg line='-L ant=INFO' />  -->
 				<!-- <arg line='-L DEBUG' /> -->
 				<sysproperty key="projects.location" value="${projects.location}" />
-				<sysproperty key="buckminster.output.root" value="${build.root}/buckminster.output" />
-				<sysproperty key="buckminster.temp.root" value="${build.root}/buckminster.temp" />
-				<sysproperty key="target.platform" value="${build.root}/${target.platform}" />
-				<sysproperty key="eclipse.download" value="${eclipse-download}" />
+				<sysproperty key="buckminster.output.root" value="${buckminster.output.root}" />
+				<sysproperty key="buckminster.temp.root" value="${buckminster.temp.root}" />
+				<sysproperty key="target.platform" value="${buckminster.target.platform}" />
+				<sysproperty key="eclipse.download" value="${eclipse.download}" />
 				<sysproperty key="eclipse.p2.mirrors" value="${eclipse.p2.mirrors}" />
 				<sysproperty key="java.net.preferIPv4Stack" value="${java.net.preferIPv4Stack}" />
 				<jvmarg line=" -Xms256m -Xmx512m" />
@@ -95,6 +84,8 @@
 		<attribute name="buildmodel" default="default" />
 		<sequential>
 			<java fork="true" dir="${b3.home}" logError="true" classname="org.eclipse.core.launcher.Main" failonerror="true">
+				<sysproperty key="eclipse.p2.mirrors" value="${eclipse.p2.mirrors}" />
+				<sysproperty key="java.net.preferIPv4Stack" value="${java.net.preferIPv4Stack}" />
 				<classpath>
 					<fileset dir="${b3.home}/plugins">
 						<include name="org.eclipse.equinox.launcher_*.jar" />
@@ -146,13 +137,15 @@
 				</fileset>
 			</classpath>
 			<arg line='-data "${director.dir}/workspace"' />
-			<arg line="-r ${eclipse-download}/tools/buckminster/headless-4.2,${eclipse-download}/releases/juno/" />
+			<arg line="-r ${eclipse.download}/tools/buckminster/headless-4.3,http://download.cloudsmith.com/buckminster/external-4.3,${eclipse.download}/releases/kepler" />
 			<arg line='-d "${buckminster.home}"' />
 			<arg line="-p Buckminster" />
 			<arg line="-i org.eclipse.buckminster.cmdline.product" />
 			<arg line="-i org.eclipse.buckminster.core.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.pde.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.git.headless.feature.feature.group" />
+			<arg line="-i org.eclipse.buckminster.maven.headless.feature.feature.group" />
+			<arg line="-i org.eclipse.buckminster.emma.headless.feature.feature.group" />
 		</java>
 	</target>
 	
@@ -175,7 +168,7 @@
 				</fileset>
 			</classpath>
 			<arg line='-data "${director.dir}/workspace"' />
-			<arg line="-r ${eclipse-download}/modeling/emft/b3/headless-4.2" />
+			<arg line="-r ${eclipse.download}/modeling/emft/b3/headless-4.2" />
 			<arg line='-d "${b3.home}"' />
 			<arg line="-p b3" />
 			<arg line="-i org.eclipse.b3.cli.product" />
@@ -201,12 +194,6 @@
 		<get src="${director.url}" dest="${director.zip}" />
 		<unzip src="${director.zip}" dest="${director.install.dest}" />
 		<delete file="${director.zip}" />
-	</target>
-	
-	<target name="install.p2.director.from.local" unless="p2.director.installed">
-		<echo message="" />
-		<echo message="Installing director..." />
-		<unzip dest="${director.install.dest}" src="tools/director_latest.zip" />
 	</target>
 
 </project>
