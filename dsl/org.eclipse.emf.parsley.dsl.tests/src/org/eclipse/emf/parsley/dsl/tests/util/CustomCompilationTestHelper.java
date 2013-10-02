@@ -72,7 +72,7 @@ public class CustomCompilationTestHelper extends CompilationTestHelper {
 				public void compileToJava() {
 					Map<String, String> toCompile = new HashMap<String, String>();
 					
-					for (final Entry<String, CharSequence> e : access.getFiles().entrySet()) {
+					for (final Entry<String, CharSequence> e : access.getTextFiles().entrySet()) {
 						if (!e.getKey().contains(".java"))
 							continue; // it's not a Java file
 						
@@ -87,7 +87,7 @@ public class CustomCompilationTestHelper extends CompilationTestHelper {
 				}
 
 				public Map<String, CharSequence> getAllGeneratedResources() {
-					return access.getFiles();
+					return access.getTextFiles();
 				}
 
 			});

@@ -35,10 +35,7 @@ public class EmfParsleyDslPluginXmlGenerator implements IGenerator {
     for (final Module module : _filter) {
       {
         final CharSequence contents = this.generatePluginXml(module);
-        int _length = 0;
-        if (contents!=null) {
-          _length=contents.length();
-        }
+        int _length = contents.length();
         boolean _greaterThan = (_length > 0);
         if (_greaterThan) {
           fsa.generateFile(

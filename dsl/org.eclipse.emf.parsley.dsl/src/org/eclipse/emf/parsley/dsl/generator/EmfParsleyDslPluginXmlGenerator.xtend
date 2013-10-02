@@ -18,7 +18,7 @@ class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 	override doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for(module: resource.allContents.toIterable.filter(typeof(Module))) {
 			val contents = module.generatePluginXml
-			if (contents?.length > 0)
+			if (contents.length > 0)
 				fsa.generateFile(
 	            	PLUGIN_XML_EMFPARSLEY_GEN_PATH,
 					PROJECT_ROOT_OUTPUT,
