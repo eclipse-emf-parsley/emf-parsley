@@ -65,7 +65,8 @@ public class MultipleFeatureControl extends Composite {
 	private boolean beQuiet;
 
 	public MultipleFeatureControl(final Composite parent, FormToolkit toolkit, final ILabelProvider labelProvider,
-			final EObject object, final EStructuralFeature feature, final ProposalCreator proposalcreator) {
+			final EObject object, final EStructuralFeature feature, final ProposalCreator proposalcreator,
+			boolean readonly) {
 		super(parent, SWT.NONE);
 		this.labelProvider = labelProvider;
 		toolkit.adapt(this);
@@ -101,6 +102,7 @@ public class MultipleFeatureControl extends Composite {
 			}
 		});
 
+		button.setVisible(!readonly);
 	}
 
 	protected void setSelection(ISelection structuredSelection) {

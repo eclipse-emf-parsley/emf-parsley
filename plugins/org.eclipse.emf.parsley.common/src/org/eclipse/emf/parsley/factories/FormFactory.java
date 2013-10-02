@@ -5,6 +5,7 @@ package org.eclipse.emf.parsley.factories;
 
 
 import org.eclipse.emf.parsley.widgets.FormDetailComposite;
+import org.eclipse.emf.parsley.widgets.FormDetailReadOnlyComposite;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
@@ -18,6 +19,9 @@ public class FormFactory {
 
 	@Inject
 	protected MembersInjector<FormDetailComposite> formDetailCompositeMembersInjector;
+	
+	@Inject
+	protected MembersInjector<FormDetailReadOnlyComposite> formDetailReadOnlyCompositeMembersInjector;
 
 	@Inject
 	public FormFactory() {
@@ -28,6 +32,13 @@ public class FormFactory {
 			int style) {
 		FormDetailComposite formDetailComposite = new FormDetailComposite(parent, style);
 		formDetailCompositeMembersInjector.injectMembers(formDetailComposite);
+		return formDetailComposite;
+	}
+	
+	public FormDetailReadOnlyComposite createFormDetailReadOnlyComposite(Composite parent,
+			int style) {
+		FormDetailReadOnlyComposite formDetailComposite = new FormDetailReadOnlyComposite(parent, style);
+		formDetailReadOnlyCompositeMembersInjector.injectMembers(formDetailComposite);
 		return formDetailComposite;
 	}
 

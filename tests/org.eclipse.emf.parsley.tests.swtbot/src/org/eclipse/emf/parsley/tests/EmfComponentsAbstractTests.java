@@ -50,14 +50,17 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.ContextMenuHelper;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IActionBars;
@@ -67,6 +70,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.junit.util.IResourcesSetupUtil;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
@@ -90,6 +94,8 @@ public class EmfComponentsAbstractTests {
 	protected static final String BOOK_LABEL = "Book Lorenzo's Book";
 
 	protected static final String LIBRARY_LABEL = "Library My Library";
+
+	protected static final String DAMAGED_VIDEO_LABEL = "Video Cassette My Damaged Video";
 
 	protected static final String OUTLINE_VIEW = "Outline";
 
@@ -141,6 +147,8 @@ public class EmfComponentsAbstractTests {
 	protected static final String LIBRARY_EMF_VIEW_CUSTOM_LABEL = "LibraryEmfView Custom Label";
 
 	protected static final String EMF_DETAIL_VIEW = "Emf Form View";
+	
+	protected static final String EMF_DETAIL_READONLY_VIEW = "Emf Read Only Form View";
 
 	protected static final String EMF_TREE_FORM_DETAIL_VIEW = "Emf Tree Form View";
 
@@ -171,6 +179,8 @@ public class EmfComponentsAbstractTests {
 	protected static final String AUTHOR_LABEL = "author";
 
 	protected static final String FIRSTNAME_LABEL = "firstName";
+
+	protected static final String DAMAGED_LABEL = "damaged";
 
 	protected static final String CUSTOM_FIRSTNAME_LABEL = "First name";
 
@@ -299,6 +309,10 @@ public class EmfComponentsAbstractTests {
 		return treeItem.expand().getNode(BOOK_LABEL);
 	}
 
+	protected SWTBotTreeItem getLibraryDamagedVideoCassetteNode(SWTBotTreeItem editorTreeRoot) {
+		return getDamagedVideoCassetteNode(getLibraryNode(editorTreeRoot));
+	}
+	
 	protected SWTBotTreeItem accessTreeWithCustomLabels(SWTBotTreeItem rootOfTree) {
 		return rootOfTree.expand().getNode("TEST " + LIBRARY_LABEL + " ENDTEST")
 				.expand().getNode("TEST " + WRITER_LABEL + " ENDTEST");
@@ -316,6 +330,10 @@ public class EmfComponentsAbstractTests {
 
 	protected SWTBotTreeItem getWriterNode(final SWTBotTreeItem treeItem) {
 		return treeItem.expand().getNode(WRITER_LABEL);
+	}
+
+	protected SWTBotTreeItem getDamagedVideoCassetteNode(final SWTBotTreeItem treeItem) {
+		return treeItem.expand().getNode(DAMAGED_VIDEO_LABEL);
 	}
 
 	protected SWTBotTreeItem getStatemachineNode(final SWTBotTreeItem treeItem) {
@@ -841,6 +859,26 @@ public class EmfComponentsAbstractTests {
 			assertNoErrorsInProjectAfterAutoBuild();
 		else
 			waitForBuild();
+	}
+
+	protected void assertTextComponent(SWTFormsBot formbot, String text, final boolean editable) {
+		final SWTBotText t = formbot.text(text);
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				Assert.assertEquals(editable, t.widget.getEditable());
+			}
+		});
+	}
+
+	protected void assertCheckBoxComponent(SWTFormsBot formbot, int index,
+			final boolean isChecked, final boolean isEnabled) {
+		final SWTBotCheckBox b = formbot.checkBox(index);
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				Assert.assertEquals(isEnabled, b.isEnabled());
+				Assert.assertEquals(isChecked, b.isChecked());
+			}
+		});
 	}
 
 	private String printMarkers(List<IMarker> errorMarkers) {

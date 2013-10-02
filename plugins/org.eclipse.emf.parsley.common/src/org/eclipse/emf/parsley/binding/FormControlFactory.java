@@ -15,8 +15,6 @@
  */
 package org.eclipse.emf.parsley.binding;
 
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
-
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +36,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfComponentsCommonActivator;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.databinding.swt.SWTObservables;
@@ -84,6 +83,9 @@ public class FormControlFactory {
 	private EObject owner;
 	protected EditingDomain domain;
 	protected EMFDataBindingContext edbc;
+	
+	protected boolean readonly = false;
+	
 	public static final String EOBJECT_KEY = EcorePackage.Literals.EOBJECT
 			.getName();
 	public static final String ESTRUCTURALFEATURE_KEY = EcorePackage.Literals.ESTRUCTURAL_FEATURE
@@ -97,6 +99,14 @@ public class FormControlFactory {
 
 	public FormControlFactory() {
 
+	}
+
+	public boolean isReadonly() {
+		return readonly;
+	}
+
+	public void setReadonly(boolean readonly) {
+		this.readonly = readonly;
 	}
 
 	public void init(EditingDomain domain, EObject owner, Composite parent,
@@ -169,7 +179,7 @@ public class FormControlFactory {
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(parent,
 				toolkit, labelProviderProvider.get(), owner,
-				feature, proposalcreator);
+				feature, proposalcreator, readonly);
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair(
 				mfc, target);
@@ -219,6 +229,7 @@ public class FormControlFactory {
 	protected ControlObservablePair createControlAndObservableValueForBoolean() {
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		Button b = toolkit.createButton(parent, "", SWT.CHECK);
+		b.setEnabled(!readonly);
 		retValAndTargetPair.setControl(b);
 		retValAndTargetPair.setObservableValue(SWTObservables
 				.observeSelection(b));
@@ -232,10 +243,14 @@ public class FormControlFactory {
 
 	protected ControlObservablePair createControlAndObservableValueForNonBooleanFeature(
 			EStructuralFeature feature) {
-		List<?> proposals = createProposals(feature);
-		if (hasPredefinedProposals(feature)) {
+		List<?> proposals = null;
+		if (!readonly)
+			proposals = createProposals(feature);
+		if (hasPredefinedProposals(feature) && !readonly) {
 			return createControlAndObservableWithPredefinedProposals(proposals);
 		} else {
+			if (readonly && feature instanceof EReference)
+				return createControlAndObservableForEObject();
 			return createControlAndObservableWithoutPredefinedProposals(proposals);
 		}
 	}
@@ -261,13 +276,27 @@ public class FormControlFactory {
 
 	protected ControlObservablePair createControlAndObservableWithoutPredefinedProposals(
 			List<?> proposals) {
+		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		Text t = toolkit.createText(parent, "");
+		t.setEditable(!readonly);
 		t.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
 		addContentProposalAdapter(t, proposals);
-		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		retValAndTargetPair.setControl(t);
 		retValAndTargetPair.setObservableValue(SWTObservables.observeText(t,
 				SWT.Modify));
+
+		return retValAndTargetPair;
+	}
+
+	protected ControlObservablePair createControlAndObservableForEObject() {
+		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
+		Text t = toolkit.createText(parent, "");
+		t.setEditable(!readonly);
+		t.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
+		retValAndTargetPair.setControl(t);
+		retValAndTargetPair.setObservableValue(new EObjectTextObservable(
+				labelProviderProvider.get(), t));
+
 		return retValAndTargetPair;
 	}
 
@@ -305,7 +334,9 @@ public class FormControlFactory {
 	private void setupControl(EStructuralFeature f, Control c) {
 		// disable unchangeable and unserializable
 		if (c != null) {
-			c.setEnabled(f.isChangeable()
+			// don't override readonly behavior
+			if (c.isEnabled())
+				c.setEnabled(f.isChangeable()
 					&& (!(f.getEType() instanceof EDataType && !((EDataType) f
 							.getEType()).isSerializable())));
 			c.setData(FormControlFactory.ESTRUCTURALFEATURE_KEY, f);

@@ -3,6 +3,7 @@
   <stock xsi:type="extlib:Book" title="Lorenzo's Book" author="//@writers.0"/>
   <stock xsi:type="extlib:Book" title="Another Book" author="//@writers.0"/>
   <stock xsi:type="extlib:VideoCassette" copies="1" title="My Video" cast="//@writers.0"/>
+  <stock xsi:type="extlib:VideoCassette" copies="1" title="My Damaged Video" damaged="true" cast="//@writers.0"/>
   <writers address="writer's address" firstName="Lorenzo" lastName="Bettini" books="//@stock.0 //@stock.1"/>
   <borrowers address="foo bar's address" firstName="Foo" lastName="Bar"/>
 </extlib:Library>
