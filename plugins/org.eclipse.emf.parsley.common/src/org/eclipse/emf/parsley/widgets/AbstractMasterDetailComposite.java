@@ -3,7 +3,6 @@ package org.eclipse.emf.parsley.widgets;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.factories.FormFactory;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;

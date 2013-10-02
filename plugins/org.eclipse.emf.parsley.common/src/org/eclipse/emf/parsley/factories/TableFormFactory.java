@@ -6,7 +6,6 @@ package org.eclipse.emf.parsley.factories;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.widgets.TableFormComposite;
-import org.eclipse.emf.parsley.widgets.TreeFormComposite;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;

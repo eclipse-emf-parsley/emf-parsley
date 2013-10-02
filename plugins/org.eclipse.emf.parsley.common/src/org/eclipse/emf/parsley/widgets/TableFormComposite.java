@@ -6,13 +6,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.inject.Inject;
@@ -75,7 +73,7 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 			removeExistingColumns();
 		}
 		if (input instanceof List){
-			final List elements=(List) input;
+			final List<?> elements=(List<?>) input;
 			IStructuredContentProvider contentProvider=new ArrayContentProvider();
 			if(elements.size()>0){
 				EObject eObject = (EObject) elements.get(0);
