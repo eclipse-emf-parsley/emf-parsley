@@ -12,5 +12,4 @@
     <cq:advisorNode namePattern="org\.eclipse\.emf\.mwe2(?:\..+)?" versionOverride="[2.4.0,2.5.0)"/>
     <cq:advisorNode namePattern="org\.eclipse\.emf\.mwe(?:\..+)?" versionOverride="[1.2.1,1.4.0)"/>
     <cq:advisorNode namePattern="org\.hamcrest(?:\..+)\.source?" skipComponent="true"/>
-    <cq:advisorNode namePattern=".*" useTargetPlatform="false"/>
 </cq:componentQuery>
