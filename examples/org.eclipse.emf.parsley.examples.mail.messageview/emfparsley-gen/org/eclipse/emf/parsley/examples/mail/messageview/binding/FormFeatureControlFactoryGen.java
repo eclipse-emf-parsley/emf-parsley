@@ -22,13 +22,18 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
   }
   
   protected Control createControl_Mail_message() {
-    FormToolkit _toolkit = this.getToolkit();
-    Composite _parent = this.getParent();
-    int _bitwiseOr = (SWT.MULTI | SWT.BORDER);
-    int _bitwiseOr_1 = (_bitwiseOr | SWT.WRAP);
-    int _bitwiseOr_2 = (_bitwiseOr_1 | SWT.V_SCROLL);
-    Text _createText = _toolkit.createText(_parent, "", _bitwiseOr_2);
-    return _createText;
+    Text _xblockexpression = null;
+    {
+      FormToolkit _toolkit = this.getToolkit();
+      Composite _parent = this.getParent();
+      int _bitwiseOr = (SWT.MULTI | SWT.BORDER);
+      int _bitwiseOr_1 = (_bitwiseOr | SWT.WRAP);
+      int _bitwiseOr_2 = (_bitwiseOr_1 | SWT.V_SCROLL);
+      final Text t = _toolkit.createText(_parent, "", _bitwiseOr_2);
+      t.setEditable(false);
+      _xblockexpression = (t);
+    }
+    return _xblockexpression;
   }
   
   protected IObservableValue createTarget_Mail_message(final Control it) {

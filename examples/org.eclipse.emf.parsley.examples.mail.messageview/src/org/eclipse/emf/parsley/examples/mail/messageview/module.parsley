@@ -23,10 +23,14 @@ module org.eclipse.emf.parsley.examples.mail.messageview {
 	formControlFactory {
 		control {
 			Mail : message ->
-				toolkit.createText(parent, "", 
-					SWT::MULTI.bitwiseOr(SWT::BORDER).
-						bitwiseOr(SWT::WRAP).bitwiseOr(SWT::V_SCROLL)
-				)
+				{
+					val t = toolkit.createText(parent, "", 
+						SWT::MULTI.bitwiseOr(SWT::BORDER).
+							bitwiseOr(SWT::WRAP).bitwiseOr(SWT::V_SCROLL)
+						)
+					t.editable = false
+					t
+				}
 				target observeText(SWT::Modify)
 		}
 	}
