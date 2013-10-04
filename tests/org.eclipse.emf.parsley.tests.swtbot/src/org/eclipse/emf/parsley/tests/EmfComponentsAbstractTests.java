@@ -56,6 +56,7 @@ import org.eclipse.swtbot.swt.finder.finders.ContextMenuHelper;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -530,7 +531,7 @@ public class EmfComponentsAbstractTests {
 
 		bot.button("Finish").click();
 		
-		bot.waitUntil(shellCloses(shell), 50000);
+		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
 		
 		for (String projectName : expectedProjects) {
 			assertProjectIsCreated(projectName, shell);
@@ -580,7 +581,7 @@ public class EmfComponentsAbstractTests {
 
 	protected void assertProjectIsCreated(String projectName, SWTBotShell shell) {
 		// creation of a project might require some time
-		bot.waitUntil(shellCloses(shell), 50000);
+		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
 		assertProjectIsCreated(projectName);
 	}
 
@@ -730,7 +731,7 @@ public class EmfComponentsAbstractTests {
 		shell.activate();
 		bot.tree().expandNode(EMF_PARSLEY_CATEGORY).select(libraryView);
 		bot.button("OK").click();
-		bot.waitUntil(shellCloses(shell), 50000);
+		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
 		return getLibraryView(libraryView);
 	}
 

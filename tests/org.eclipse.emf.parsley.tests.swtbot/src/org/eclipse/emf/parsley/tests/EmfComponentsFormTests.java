@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.hamcrest.Matcher;
@@ -188,7 +189,7 @@ public class EmfComponentsFormTests extends EmfComponentsAbstractTests {
 		// now the borrower should be in the right table
 		bot.table(1).select("Borrower: Foo"); // right table
 		bot.button("OK").click();
-		bot.waitUntil(shellCloses(shell), 50000);
+		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
 		
 		// check that the selected borrower has been added
 		formbot.label("Borrower: Foo");
