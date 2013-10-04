@@ -248,6 +248,8 @@ public class EmfComponentsAbstractTests {
 		// // OK!
 		// }
 		
+		SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
+		
 		closeWelcomePage();
 
 		editorNamesToId = new HashMap<String, String>();
@@ -892,5 +894,10 @@ public class EmfComponentsAbstractTests {
 			}
 		}
 		return buffer.toString();
+	}
+
+	protected void assertEditorText(SWTBotEditor editor, CharSequence expected) {
+		Assert.assertEquals(expected.toString().replace("\r", ""), editor
+				.toTextEditor().getText().replace("\r", ""));
 	}
 }

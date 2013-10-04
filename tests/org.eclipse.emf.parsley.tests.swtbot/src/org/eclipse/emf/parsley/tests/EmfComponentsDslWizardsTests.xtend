@@ -144,8 +144,10 @@ module «TEST_PROJ_NAME» {
 		editor.toTextEditor.autoCompleteProposal(" ", 
 			"ViewSpecification - Template for ViewSpecification"
 		)
+		
+		editor.save
 
-		Assert::assertEquals(
+		editor.assertEditorText(
 '''
 module my.emfparsley.proj {
 	parts { 
@@ -153,7 +155,7 @@ module my.emfparsley.proj {
  	viewname "View Name"
  	viewclass type
  	// viewcategory my.category
- }'''.toString, editor.toTextEditor.text			
+ }'''			
 		)
 
 		editor.saveAndClose
