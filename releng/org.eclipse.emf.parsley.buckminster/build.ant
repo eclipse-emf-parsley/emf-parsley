@@ -20,7 +20,7 @@
 
 	<property name="resolve.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-resolve-commands.txt" />
 	<property name="perform.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-perform-commands.txt" />
-	<property name="perform.local.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-perform-commands.txt" />
+	<property name="perform.local.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-perform-local-commands.txt" />
 	<property name="build.properties" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/build.properties" />
 
 	<target name="buckminster" depends="common.cleanup,clean-xtend-gen,install.buckminster.headless" description="description">
