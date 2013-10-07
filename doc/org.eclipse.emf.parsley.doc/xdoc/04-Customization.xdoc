@@ -202,26 +202,24 @@ In the following example we specify the label text for the feature 'Author' of B
 Writer.
 
 code[Java][
+public String text_Book_author(final EStructuralFeature feature) {
+	return "Wrote by:";
+}
 
-	public String text_Book_author(final EStructuralFeature feature) {
-		return "Wrote by:";
-	}
-
-	public String text_Writer_name(final EStructuralFeature feature) {
-		return "Name:";
-	}
+public String text_Writer_name(final EStructuralFeature feature) {
+	return "Name:";
+}
 ] 
 
 Another chance of customization is to define a method the returns directly the control, like in the example
 below. In this case there is another parameter that is the parent composite.
 
 code[Java][
-
-	public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
-		Label label = defaultLabel(parent, feature);
-		label.setBackground(getFormToolkit().getColors().getColor(IFormColors.TITLE));
-		return label;
-	}
+public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
+	Label label = defaultLabel(parent, feature);
+	label.setBackground(getFormToolkit().getColors().getColor(IFormColors.TITLE));
+	return label;
+}
 ]
 
 section3:FormPropertyDescriptionProvider[Form Property Description Provider]
@@ -238,26 +236,25 @@ EMF Components provides such an implementation with the class codeRef[org.eclips
 that is inteded to be surclassed by the programmer to provides specific implementations like in the example below.
 
 code[Java][
+public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 
-	public class CustomLibraryLabelProvider extends ViewerLabelProvider {
-
-		@Inject
-		public CustomLibraryLabelProvider(AdapterFactoryLabelProvider delegate) {
-			super(delegate);
-		}
-
-		public String text(Book book) {
-			return "Book: " + book.getTitle();
-		}
-
-		public String image(Book book) {
-			return "book2.png";
-		}
-
-		public String text(Borrower b) {
-			return "Borrower: " + b.getFirstName();
-		}
+	@Inject
+	public CustomLibraryLabelProvider(AdapterFactoryLabelProvider delegate) {
+		super(delegate);
 	}
+
+	public String text(Book book) {
+		return "Book: " + book.getTitle();
+	}
+
+	public String image(Book book) {
+		return "book2.png";
+	}
+
+	public String text(Borrower b) {
+		return "Borrower: " + b.getFirstName();
+	}
+}
 ]
 
 section2:ViewerContentProvider[Viewer Content Provider]
@@ -268,28 +265,27 @@ codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider] that can
 specify the children of all object on the tree, like in the example below.
 
 code[Java][
+public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
 
-	public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
-
-		@Inject
-		public CustomLibraryViewerContentProvider(AdapterFactory adapterFactory) {
-			super(adapterFactory);
-		}
-
-		public Object children(Library library) {
-			return library.getBooks();
-		}
-
-		public Object children(Book book) {
-			ArrayList<Object> children = new ArrayList<Object>();
-			Writer author = book.getAuthor();
-			if (author != null) {
-				children.add(author);
-			}
-			children.addAll(book.getBorrowers());
-			return children;
-		}
+	@Inject
+	public CustomLibraryViewerContentProvider(AdapterFactory adapterFactory) {
+		super(adapterFactory);
 	}
+
+	public Object children(Library library) {
+		return library.getBooks();
+	}
+
+	public Object children(Book book) {
+		ArrayList<Object> children = new ArrayList<Object>();
+		Writer author = book.getAuthor();
+		if (author != null) {
+			children.add(author);
+		}
+		children.addAll(book.getBorrowers());
+		return children;
+	}
+}
 ]
 
 section2:ProposalProvider[Proposal Provider]
@@ -302,19 +298,18 @@ values. For each feature it can be specified a list of proposals using a method 
 keyword e['proposals'] followed byt the EClass and Feature undescore-character-separated. 
 
 code[Java][
-
-	public List<?> proposals_Book_author(Book book) {
-		List<Object> proposals = new LinkedList<Object>();
-		Writer writer = EXTLibraryFactory.eINSTANCE.createWriter();
-		writer.setFirstName("Fake");
-		writer.setLastName("Writer");
-		proposals.add(writer);
-		writer = EXTLibraryFactory.eINSTANCE.createWriter();
-		writer.setFirstName("Fake");
-		writer.setLastName("Writer2");
-		proposals.add(writer);
-		return proposals;
-	}
+public List<?> proposals_Book_author(Book book) {
+	List<Object> proposals = new LinkedList<Object>();
+	Writer writer = EXTLibraryFactory.eINSTANCE.createWriter();
+	writer.setFirstName("Fake");
+	writer.setLastName("Writer");
+	proposals.add(writer);
+	writer = EXTLibraryFactory.eINSTANCE.createWriter();
+	writer.setFirstName("Fake");
+	writer.setLastName("Writer2");
+	proposals.add(writer);
+	return proposals;
+}
 ]
 
 section2:ViewerContextMenuFactory[Viewer Context Menu Factory]
@@ -394,16 +389,15 @@ followed by the EClass and EStructuralFeature undescore-character-separated. In 
 method must be both the e[DataBinding Context] and the e[Feature Observable] that can be used for databinding. 
 
 code[Java][
-
-	public Control control_Writer_name(DataBindingContext dbc,IObservableValue featureObservable) {
-		//Creating the control
-		Text text = getToolkit().createText(getParent(), "");
-		text.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
-		text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));
-		//Binding the control to the feature observable
-		dbc.bindValue(SWTObservables.observeText(text, SWT.Modify),	featureObservable);
-		return text;
-	}	
+public Control control_Writer_name(DataBindingContext dbc,IObservableValue featureObservable) {
+	//Creating the control
+	Text text = getToolkit().createText(getParent(), "");
+	text.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
+	text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));
+	//Binding the control to the feature observable
+	dbc.bindValue(SWTObservables.observeText(text, SWT.Modify),	featureObservable);
+	return text;
+}
 ]
 
 For more info, see the other parts that are used internally by the e[Form Control Factory]:
