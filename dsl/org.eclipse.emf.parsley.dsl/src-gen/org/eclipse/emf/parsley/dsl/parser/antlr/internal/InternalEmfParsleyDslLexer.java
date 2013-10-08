@@ -170,11 +170,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:13:7: ( 'parts' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:13:9: 'parts'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:13:7: ( '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:13:9: '}'
             {
-            match("parts"); 
-
+            match('}'); 
 
             }
 
@@ -191,10 +190,11 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:14:7: ( '}' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:14:9: '}'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:14:7: ( 'extends' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:14:9: 'extends'
             {
-            match('}'); 
+            match("extends"); 
+
 
             }
 
@@ -211,10 +211,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:15:7: ( 'extends' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:15:9: 'extends'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:15:7: ( 'labelProvider' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:15:9: 'labelProvider'
             {
-            match("extends"); 
+            match("labelProvider"); 
 
 
             }
@@ -232,10 +232,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:16:7: ( 'labelProvider' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:16:9: 'labelProvider'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:16:7: ( 'text' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:16:9: 'text'
             {
-            match("labelProvider"); 
+            match("text"); 
 
 
             }
@@ -253,10 +253,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:17:7: ( 'text' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:17:9: 'text'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:17:7: ( 'image' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:17:9: 'image'
             {
-            match("text"); 
+            match("image"); 
 
 
             }
@@ -274,10 +274,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:18:7: ( 'image' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:18:9: 'image'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:18:7: ( '->' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:18:9: '->'
             {
-            match("image"); 
+            match("->"); 
 
 
             }
@@ -295,10 +295,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:19:7: ( '->' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:19:9: '->'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:19:7: ( 'propertyDescriptionProvider' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:19:9: 'propertyDescriptionProvider'
             {
-            match("->"); 
+            match("propertyDescriptionProvider"); 
 
 
             }
@@ -316,11 +316,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:20:7: ( 'propertyDescriptionProvider' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:20:9: 'propertyDescriptionProvider'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:20:7: ( ':' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:20:9: ':'
             {
-            match("propertyDescriptionProvider"); 
-
+            match(':'); 
 
             }
 
@@ -337,10 +336,11 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:21:7: ( ':' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:21:9: ':'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:21:7: ( 'featuresProvider' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:21:9: 'featuresProvider'
             {
-            match(':'); 
+            match("featuresProvider"); 
+
 
             }
 
@@ -357,10 +357,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:22:7: ( 'featuresProvider' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:22:9: 'featuresProvider'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:22:7: ( 'features' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:22:9: 'features'
             {
-            match("featuresProvider"); 
+            match("features"); 
 
 
             }
@@ -378,11 +378,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:23:7: ( 'features' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:23:9: 'features'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:23:7: ( ',' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:23:9: ','
             {
-            match("features"); 
-
+            match(','); 
 
             }
 
@@ -399,10 +398,11 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:24:7: ( ',' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:24:9: ','
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:24:7: ( 'formControlFactory' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:24:9: 'formControlFactory'
             {
-            match(','); 
+            match("formControlFactory"); 
+
 
             }
 
@@ -419,10 +419,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:25:7: ( 'formControlFactory' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:25:9: 'formControlFactory'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:25:7: ( 'control' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:25:9: 'control'
             {
-            match("formControlFactory"); 
+            match("control"); 
 
 
             }
@@ -440,10 +440,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:26:7: ( 'control' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:26:9: 'control'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:26:7: ( 'target' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:26:9: 'target'
             {
-            match("control"); 
+            match("target"); 
 
 
             }
@@ -461,10 +461,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:27:7: ( 'target' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:27:9: 'target'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:27:7: ( 'proposals' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:27:9: 'proposals'
             {
-            match("target"); 
+            match("proposals"); 
 
 
             }
@@ -482,10 +482,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:28:7: ( 'proposals' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:28:9: 'proposals'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:28:7: ( 'viewerContentProvider' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:28:9: 'viewerContentProvider'
             {
-            match("proposals"); 
+            match("viewerContentProvider"); 
 
 
             }
@@ -503,10 +503,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:29:7: ( 'viewerContentProvider' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:29:9: 'viewerContentProvider'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:29:7: ( 'children' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:29:9: 'children'
             {
-            match("viewerContentProvider"); 
+            match("children"); 
 
 
             }
@@ -524,10 +524,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:30:7: ( 'children' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:30:9: 'children'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:30:7: ( 'parts' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:30:9: 'parts'
             {
-            match("children"); 
+            match("parts"); 
 
 
             }
@@ -1954,10 +1954,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:12: ( '0x' | '0X' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1985,7 +1985,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:13: '0x'
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:13: '0x'
                     {
                     match("0x"); 
 
@@ -1993,7 +1993,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:18: '0X'
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:18: '0X'
                     {
                     match("0X"); 
 
@@ -2003,7 +2003,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
             }
 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -2041,7 +2041,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2050,10 +2050,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -2071,7 +2071,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -2095,7 +2095,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6785:84: ( 'l' | 'L' )
+                            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6833:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -2134,11 +2134,11 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6787:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6787:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6835:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6835:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6787:21: ( '0' .. '9' | '_' )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6835:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -2187,11 +2187,11 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -2200,7 +2200,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -2211,7 +2211,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:36: ( '+' | '-' )?
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -2244,7 +2244,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
             }
 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -2256,7 +2256,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -2280,7 +2280,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6789:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6837:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -2313,10 +2313,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6791:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6791:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6839:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6839:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6791:11: ( '^' )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6839:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2325,7 +2325,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6791:11: '^'
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6839:11: '^'
                     {
                     match('^'); 
 
@@ -2343,7 +2343,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6791:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6839:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2392,10 +2392,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2413,10 +2413,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2432,7 +2432,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2448,7 +2448,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2473,10 +2473,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -2492,7 +2492,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2508,7 +2508,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6793:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6841:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2551,12 +2551,12 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6795:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6795:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6843:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6843:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6795:24: ( options {greedy=false; } : . )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6843:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -2581,7 +2581,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6795:52: .
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6843:52: .
             	    {
             	    matchAny(); 
 
@@ -2611,12 +2611,12 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2629,7 +2629,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2649,7 +2649,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:40: ( ( '\\r' )? '\\n' )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2658,9 +2658,9 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:41: ( '\\r' )? '\\n'
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:41: ( '\\r' )?
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2669,7 +2669,7 @@ public class InternalEmfParsleyDslLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6797:41: '\\r'
+                            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6845:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2701,10 +2701,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6799:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6799:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6847:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6847:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6799:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6847:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -2758,8 +2758,8 @@ public class InternalEmfParsleyDslLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6801:16: ( . )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6801:18: .
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6849:16: ( . )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:6849:18: .
             {
             matchAny(); 
 
@@ -3465,127 +3465,127 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
     protected DFA19 dfa19 = new DFA19(this);
     static final String DFA19_eotS =
-        "\1\uffff\1\60\1\uffff\1\60\1\uffff\4\60\1\102\1\104\1\60\1\uffff"+
-        "\2\60\1\121\1\123\1\125\1\127\1\131\1\133\1\136\1\140\1\143\1\145"+
-        "\1\150\1\uffff\1\60\6\uffff\5\60\2\174\1\56\1\uffff\2\56\2\uffff"+
-        "\1\60\2\uffff\2\60\1\uffff\12\60\1\u008f\5\uffff\4\60\1\uffff\5"+
-        "\60\1\u009c\10\uffff\1\u009e\3\uffff\1\u00a0\2\uffff\1\u00a2\12"+
-        "\uffff\1\u00a3\6\uffff\4\60\1\u00a8\4\60\1\uffff\1\174\4\uffff\11"+
-        "\60\1\u00b6\5\60\1\uffff\1\60\1\u00be\7\60\1\u00c6\1\u00c7\11\uffff"+
-        "\4\60\1\uffff\1\60\1\u00cd\6\60\1\u00d5\1\60\1\u00d7\1\60\1\u00d9"+
-        "\1\uffff\7\60\1\uffff\4\60\1\u00e5\2\60\2\uffff\5\60\1\uffff\1\u00f0"+
-        "\2\60\1\u00f3\3\60\1\uffff\1\60\1\uffff\1\60\1\uffff\1\60\1\u00fb"+
-        "\1\u00fc\4\60\1\u0101\3\60\1\uffff\1\u0105\6\60\1\u010d\1\60\1\u010f"+
-        "\1\uffff\1\60\1\u0111\1\uffff\5\60\1\u0117\1\u0118\2\uffff\1\u0119"+
-        "\3\60\1\uffff\3\60\1\uffff\5\60\1\u0125\1\u0126\1\uffff\1\60\1\uffff"+
-        "\1\u0128\1\uffff\2\60\1\u012b\2\60\3\uffff\3\60\1\u0131\1\u0132"+
-        "\6\60\2\uffff\1\u0139\1\uffff\2\60\1\uffff\3\60\1\u0140\1\60\2\uffff"+
-        "\1\u0142\1\60\1\u0144\1\u0145\2\60\1\uffff\1\60\1\u0149\1\u014a"+
-        "\3\60\1\uffff\1\60\1\uffff\1\60\2\uffff\1\u0150\2\60\2\uffff\1\60"+
-        "\1\u0154\3\60\1\uffff\3\60\1\uffff\11\60\1\u0164\1\60\1\u0166\3"+
-        "\60\1\uffff\1\60\1\uffff\10\60\1\u0173\3\60\1\uffff\3\60\1\u017a"+
-        "\2\60\1\uffff\4\60\1\u0181\1\60\1\uffff\4\60\1\u0187\1\uffff";
+        "\1\uffff\1\60\2\uffff\4\60\1\100\1\60\1\104\1\60\1\uffff\2\60\1"+
+        "\121\1\123\1\125\1\127\1\131\1\133\1\136\1\140\1\143\1\145\1\150"+
+        "\1\uffff\1\60\6\uffff\5\60\2\174\1\56\1\uffff\2\56\2\uffff\1\60"+
+        "\3\uffff\12\60\1\u008d\3\uffff\2\60\2\uffff\4\60\1\uffff\5\60\1"+
+        "\u009c\10\uffff\1\u009e\3\uffff\1\u00a0\2\uffff\1\u00a2\12\uffff"+
+        "\1\u00a3\6\uffff\4\60\1\u00a8\4\60\1\uffff\1\174\4\uffff\7\60\1"+
+        "\u00b4\5\60\1\uffff\3\60\1\u00be\7\60\1\u00c6\1\u00c7\11\uffff\4"+
+        "\60\1\uffff\1\60\1\u00cd\4\60\1\u00d2\1\60\1\u00d4\1\60\1\u00d6"+
+        "\1\uffff\11\60\1\uffff\4\60\1\u00e5\2\60\2\uffff\5\60\1\uffff\1"+
+        "\u00f0\3\60\1\uffff\1\60\1\uffff\1\60\1\uffff\1\60\1\u00f8\1\u00f9"+
+        "\4\60\1\u00fe\2\60\1\u0101\3\60\1\uffff\1\u0105\6\60\1\u010d\1\60"+
+        "\1\u010f\1\uffff\1\60\1\u0111\3\60\1\u0115\1\u0116\2\uffff\1\u0117"+
+        "\3\60\1\uffff\2\60\1\uffff\3\60\1\uffff\5\60\1\u0125\1\u0126\1\uffff"+
+        "\1\60\1\uffff\1\u0128\1\uffff\1\u0129\2\60\3\uffff\5\60\1\u0131"+
+        "\1\u0132\6\60\2\uffff\1\u0139\2\uffff\5\60\1\u0140\1\60\2\uffff"+
+        "\1\u0142\1\60\1\u0144\1\u0145\2\60\1\uffff\1\u0148\3\60\1\u014c"+
+        "\1\60\1\uffff\1\60\1\uffff\1\60\2\uffff\1\u0150\1\60\1\uffff\1\60"+
+        "\1\u0153\1\60\1\uffff\3\60\1\uffff\2\60\1\uffff\12\60\1\u0164\1"+
+        "\u0165\4\60\2\uffff\11\60\1\u0173\3\60\1\uffff\3\60\1\u017a\2\60"+
+        "\1\uffff\4\60\1\u0181\1\60\1\uffff\4\60\1\u0187\1\uffff";
     static final String DFA19_eofS =
         "\u0188\uffff";
     static final String DFA19_minS =
-        "\1\0\1\157\1\uffff\1\141\1\uffff\1\154\2\141\1\146\1\75\1\72\1\141"+
-        "\1\uffff\2\141\2\75\1\174\1\46\3\75\2\56\2\52\1\uffff\1\163\6\uffff"+
-        "\1\164\1\145\1\150\2\145\2\60\1\44\1\uffff\2\0\2\uffff\1\144\2\uffff"+
-        "\1\162\1\157\1\uffff\1\164\1\163\1\142\1\170\1\162\1\165\1\160\1"+
-        "\162\1\141\1\163\1\44\5\uffff\1\141\1\162\1\154\1\156\1\uffff\1"+
-        "\156\1\151\1\163\1\145\1\154\1\75\10\uffff\1\75\3\uffff\1\76\2\uffff"+
+        "\1\0\1\157\2\uffff\1\154\2\141\1\146\1\75\1\141\1\72\1\141\1\uffff"+
+        "\2\141\2\75\1\174\1\46\3\75\2\56\2\52\1\uffff\1\163\6\uffff\1\164"+
+        "\1\145\1\150\2\145\2\60\1\44\1\uffff\2\0\2\uffff\1\144\3\uffff\1"+
+        "\164\1\163\1\142\1\170\1\162\1\165\1\160\1\162\1\141\1\163\1\44"+
+        "\3\uffff\1\157\1\162\2\uffff\1\141\1\162\1\154\1\156\1\uffff\1\156"+
+        "\1\151\1\163\1\145\1\154\1\75\10\uffff\1\75\3\uffff\1\76\2\uffff"+
         "\1\74\12\uffff\1\44\6\uffff\1\151\1\141\1\160\1\146\1\44\1\151\1"+
-        "\167\1\154\1\164\1\uffff\1\60\4\uffff\1\165\1\164\1\160\3\145\1"+
-        "\164\1\147\1\145\1\44\1\145\1\157\1\147\1\157\1\164\1\uffff\1\164"+
-        "\1\44\1\163\1\141\1\164\1\154\1\145\1\143\1\167\2\44\11\uffff\2"+
-        "\164\1\145\1\141\1\uffff\1\154\1\44\1\154\1\165\1\154\1\163\1\145"+
-        "\1\156\1\44\1\154\1\44\1\145\1\44\1\uffff\1\157\1\167\1\145\1\162"+
-        "\1\141\1\165\1\103\1\uffff\1\145\1\154\1\162\1\144\1\44\1\150\1"+
-        "\143\2\uffff\1\143\1\151\1\162\1\165\1\145\1\uffff\1\44\1\162\1"+
-        "\145\1\44\1\162\1\163\1\144\1\uffff\1\120\1\uffff\1\164\1\uffff"+
-        "\1\146\2\44\1\164\1\156\1\162\1\157\1\44\1\154\1\157\1\162\1\uffff"+
-        "\1\44\1\162\3\141\1\150\1\143\1\44\1\154\1\44\1\uffff\1\156\1\44"+
-        "\1\uffff\1\164\1\141\1\163\1\151\1\162\2\44\2\uffff\1\44\1\143\1"+
-        "\145\1\156\1\uffff\1\171\1\154\1\145\1\uffff\1\103\1\162\1\155\1"+
-        "\141\1\164\2\44\1\uffff\1\164\1\uffff\1\44\1\uffff\1\171\1\154\1"+
-        "\44\2\157\3\uffff\1\145\1\163\1\164\2\44\1\156\1\157\1\164\1\145"+
-        "\1\163\1\145\2\uffff\1\44\1\uffff\1\104\1\163\1\uffff\1\156\1\166"+
-        "\1\157\1\44\1\162\2\uffff\1\44\1\156\2\44\1\163\1\147\1\uffff\1"+
-        "\145\2\44\1\151\1\146\1\162\1\uffff\1\157\1\uffff\1\164\2\uffff"+
-        "\1\44\1\157\1\163\2\uffff\1\144\1\44\1\157\1\154\1\145\1\uffff\1"+
-        "\162\1\143\1\145\1\uffff\1\166\1\106\1\156\1\171\2\162\1\151\1\141"+
-        "\1\164\1\44\1\151\1\44\1\144\1\143\1\120\1\uffff\1\160\1\uffff\1"+
-        "\145\1\164\1\162\1\164\1\162\2\157\1\151\1\44\1\162\1\166\1\157"+
-        "\1\uffff\1\171\1\151\1\156\1\44\1\144\1\120\1\uffff\1\145\2\162"+
-        "\1\157\1\44\1\166\1\uffff\1\151\1\144\1\145\1\162\1\44\1\uffff";
+        "\167\1\154\1\164\1\uffff\1\60\4\uffff\1\165\3\145\1\164\1\147\1"+
+        "\145\1\44\1\145\1\157\1\147\1\157\1\164\1\uffff\1\160\2\164\1\44"+
+        "\1\163\1\141\1\164\1\154\1\145\1\143\1\167\2\44\11\uffff\2\164\1"+
+        "\145\1\141\1\uffff\1\154\1\44\1\154\1\165\1\154\1\156\1\44\1\154"+
+        "\1\44\1\145\1\44\1\uffff\1\157\1\167\1\145\1\162\1\141\1\145\1\163"+
+        "\1\165\1\103\1\uffff\1\145\1\154\1\162\1\144\1\44\1\150\1\143\2"+
+        "\uffff\1\143\1\151\1\162\1\165\1\145\1\uffff\1\44\1\162\1\145\1"+
+        "\144\1\uffff\1\120\1\uffff\1\164\1\uffff\1\146\2\44\1\164\1\156"+
+        "\1\162\1\163\1\44\1\162\1\157\1\44\1\154\1\157\1\162\1\uffff\1\44"+
+        "\1\162\3\141\1\150\1\143\1\44\1\154\1\44\1\uffff\1\156\1\44\1\163"+
+        "\1\151\1\162\2\44\2\uffff\1\44\1\143\1\164\1\141\1\uffff\1\145\1"+
+        "\156\1\uffff\1\171\1\154\1\145\1\uffff\1\103\1\162\1\155\1\141\1"+
+        "\164\2\44\1\uffff\1\164\1\uffff\1\44\1\uffff\1\44\2\157\3\uffff"+
+        "\1\145\1\171\1\154\1\163\1\164\2\44\1\156\1\157\1\164\1\145\1\163"+
+        "\1\145\2\uffff\1\44\2\uffff\1\156\1\166\1\157\1\104\1\163\1\44\1"+
+        "\162\2\uffff\1\44\1\156\2\44\1\163\1\147\1\uffff\1\44\1\151\1\146"+
+        "\1\145\1\44\1\162\1\uffff\1\157\1\uffff\1\164\2\uffff\1\44\1\157"+
+        "\1\uffff\1\144\1\44\1\163\1\uffff\1\157\1\154\1\145\1\uffff\1\162"+
+        "\1\145\1\uffff\1\143\1\166\1\106\1\156\1\171\2\162\1\151\1\141\1"+
+        "\164\2\44\1\151\1\144\1\143\1\120\2\uffff\1\160\1\145\1\164\1\162"+
+        "\1\164\1\162\2\157\1\151\1\44\1\162\1\166\1\157\1\uffff\1\171\1"+
+        "\151\1\156\1\44\1\144\1\120\1\uffff\1\145\2\162\1\157\1\44\1\166"+
+        "\1\uffff\1\151\1\144\1\145\1\162\1\44\1\uffff";
     static final String DFA19_maxS =
-        "\1\uffff\1\157\1\uffff\1\162\1\uffff\1\170\1\141\1\171\1\156\1\76"+
-        "\1\72\1\157\1\uffff\1\157\1\151\1\76\1\75\1\174\1\46\2\75\1\76\1"+
-        "\56\1\72\1\52\1\57\1\uffff\1\163\6\uffff\1\167\1\157\1\150\1\165"+
-        "\1\145\1\170\1\154\1\172\1\uffff\2\uffff\2\uffff\1\144\2\uffff\1"+
-        "\162\1\157\1\uffff\1\164\1\163\1\142\1\170\1\162\1\171\1\160\1\162"+
-        "\1\160\1\163\1\172\5\uffff\1\141\1\162\1\154\1\156\1\uffff\1\156"+
-        "\1\151\1\164\1\145\1\162\1\75\10\uffff\1\75\3\uffff\1\76\2\uffff"+
-        "\1\74\12\uffff\1\172\6\uffff\1\151\1\141\1\160\1\146\1\172\1\151"+
-        "\1\167\1\154\1\164\1\uffff\1\154\4\uffff\1\165\1\164\1\160\3\145"+
-        "\1\164\1\147\1\145\1\172\1\145\1\157\1\147\1\157\1\164\1\uffff\1"+
-        "\164\1\172\1\163\1\141\1\164\1\154\1\145\1\143\1\167\2\172\11\uffff"+
-        "\2\164\1\145\1\141\1\uffff\1\154\1\172\1\154\1\165\1\154\1\163\1"+
-        "\157\1\156\1\172\1\154\1\172\1\145\1\172\1\uffff\1\157\1\167\1\145"+
-        "\1\162\1\141\1\165\1\103\1\uffff\1\145\1\154\1\162\1\144\1\172\1"+
-        "\150\1\160\2\uffff\1\143\1\151\1\162\1\165\1\145\1\uffff\1\172\1"+
-        "\162\1\145\1\172\1\162\2\163\1\uffff\1\120\1\uffff\1\164\1\uffff"+
-        "\1\146\2\172\1\164\1\156\1\162\1\157\1\172\1\154\1\157\1\162\1\uffff"+
-        "\1\172\1\162\2\141\1\154\1\150\1\143\1\172\1\154\1\172\1\uffff\1"+
-        "\156\1\172\1\uffff\1\164\1\141\1\163\1\151\1\162\2\172\2\uffff\1"+
-        "\172\1\143\1\145\1\156\1\uffff\1\171\1\154\1\145\1\uffff\1\103\1"+
-        "\162\1\155\1\141\1\164\2\172\1\uffff\1\164\1\uffff\1\172\1\uffff"+
-        "\1\171\1\154\1\172\2\157\3\uffff\1\145\1\163\1\164\2\172\1\156\1"+
-        "\157\1\164\1\145\1\163\1\145\2\uffff\1\172\1\uffff\1\104\1\163\1"+
-        "\uffff\1\156\1\166\1\157\1\172\1\162\2\uffff\1\172\1\156\2\172\1"+
-        "\163\1\147\1\uffff\1\145\2\172\1\151\1\146\1\162\1\uffff\1\157\1"+
-        "\uffff\1\164\2\uffff\1\172\1\157\1\163\2\uffff\1\144\1\172\1\157"+
-        "\1\154\1\145\1\uffff\1\162\1\143\1\145\1\uffff\1\166\1\106\1\156"+
-        "\1\171\2\162\1\151\1\141\1\164\1\172\1\151\1\172\1\144\1\143\1\120"+
-        "\1\uffff\1\160\1\uffff\1\145\1\164\1\162\1\164\1\162\2\157\1\151"+
-        "\1\172\1\162\1\166\1\157\1\uffff\1\171\1\151\1\156\1\172\1\144\1"+
-        "\120\1\uffff\1\145\2\162\1\157\1\172\1\166\1\uffff\1\151\1\144\1"+
-        "\145\1\162\1\172\1\uffff";
+        "\1\uffff\1\157\2\uffff\1\170\1\141\1\171\1\156\1\76\1\162\1\72\1"+
+        "\157\1\uffff\1\157\1\151\1\76\1\75\1\174\1\46\2\75\1\76\1\56\1\72"+
+        "\1\52\1\57\1\uffff\1\163\6\uffff\1\167\1\157\1\150\1\165\1\145\1"+
+        "\170\1\154\1\172\1\uffff\2\uffff\2\uffff\1\144\3\uffff\1\164\1\163"+
+        "\1\142\1\170\1\162\1\171\1\160\1\162\1\160\1\163\1\172\3\uffff\1"+
+        "\157\1\162\2\uffff\1\141\1\162\1\154\1\156\1\uffff\1\156\1\151\1"+
+        "\164\1\145\1\162\1\75\10\uffff\1\75\3\uffff\1\76\2\uffff\1\74\12"+
+        "\uffff\1\172\6\uffff\1\151\1\141\1\160\1\146\1\172\1\151\1\167\1"+
+        "\154\1\164\1\uffff\1\154\4\uffff\1\165\3\145\1\164\1\147\1\145\1"+
+        "\172\1\145\1\157\1\147\1\157\1\164\1\uffff\1\160\2\164\1\172\1\163"+
+        "\1\141\1\164\1\154\1\145\1\143\1\167\2\172\11\uffff\2\164\1\145"+
+        "\1\141\1\uffff\1\154\1\172\1\154\1\165\1\154\1\156\1\172\1\154\1"+
+        "\172\1\145\1\172\1\uffff\1\157\1\167\1\145\1\162\1\141\1\157\1\163"+
+        "\1\165\1\103\1\uffff\1\145\1\154\1\162\1\144\1\172\1\150\1\160\2"+
+        "\uffff\1\143\1\151\1\162\1\165\1\145\1\uffff\1\172\1\162\1\145\1"+
+        "\163\1\uffff\1\120\1\uffff\1\164\1\uffff\1\146\2\172\1\164\1\156"+
+        "\1\162\1\163\1\172\1\162\1\157\1\172\1\154\1\157\1\162\1\uffff\1"+
+        "\172\1\162\2\141\1\154\1\150\1\143\1\172\1\154\1\172\1\uffff\1\156"+
+        "\1\172\1\163\1\151\1\162\2\172\2\uffff\1\172\1\143\1\164\1\141\1"+
+        "\uffff\1\145\1\156\1\uffff\1\171\1\154\1\145\1\uffff\1\103\1\162"+
+        "\1\155\1\141\1\164\2\172\1\uffff\1\164\1\uffff\1\172\1\uffff\1\172"+
+        "\2\157\3\uffff\1\145\1\171\1\154\1\163\1\164\2\172\1\156\1\157\1"+
+        "\164\1\145\1\163\1\145\2\uffff\1\172\2\uffff\1\156\1\166\1\157\1"+
+        "\104\1\163\1\172\1\162\2\uffff\1\172\1\156\2\172\1\163\1\147\1\uffff"+
+        "\1\172\1\151\1\146\1\145\1\172\1\162\1\uffff\1\157\1\uffff\1\164"+
+        "\2\uffff\1\172\1\157\1\uffff\1\144\1\172\1\163\1\uffff\1\157\1\154"+
+        "\1\145\1\uffff\1\162\1\145\1\uffff\1\143\1\166\1\106\1\156\1\171"+
+        "\2\162\1\151\1\141\1\164\2\172\1\151\1\144\1\143\1\120\2\uffff\1"+
+        "\160\1\145\1\164\1\162\1\164\1\162\2\157\1\151\1\172\1\162\1\166"+
+        "\1\157\1\uffff\1\171\1\151\1\156\1\172\1\144\1\120\1\uffff\1\145"+
+        "\2\162\1\157\1\172\1\166\1\uffff\1\151\1\144\1\145\1\162\1\172\1"+
+        "\uffff";
     static final String DFA19_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\7\uffff\1\16\15\uffff\1\62\1\uffff\1\70"+
-        "\1\71\1\72\1\73\1\74\1\76\10\uffff\1\134\2\uffff\1\140\1\141\1\uffff"+
-        "\1\134\1\2\2\uffff\1\4\13\uffff\1\11\1\33\1\56\1\66\1\13\4\uffff"+
-        "\1\16\6\uffff\1\51\1\31\1\32\1\55\1\34\1\75\1\35\1\130\1\uffff\1"+
-        "\63\1\43\1\45\1\uffff\1\52\1\46\1\uffff\1\65\1\53\1\67\1\127\1\60"+
-        "\1\57\1\136\1\137\1\61\1\62\1\uffff\1\70\1\71\1\72\1\73\1\74\1\76"+
-        "\11\uffff\1\131\1\uffff\1\132\1\133\1\135\1\140\17\uffff\1\77\13"+
+        "\2\uffff\1\2\1\3\10\uffff\1\15\15\uffff\1\62\1\uffff\1\70\1\71\1"+
+        "\72\1\73\1\74\1\76\10\uffff\1\134\2\uffff\1\140\1\141\1\uffff\1"+
+        "\134\1\2\1\3\13\uffff\1\10\1\33\1\56\2\uffff\1\66\1\12\4\uffff\1"+
+        "\15\6\uffff\1\51\1\31\1\32\1\55\1\34\1\75\1\35\1\130\1\uffff\1\63"+
+        "\1\43\1\45\1\uffff\1\52\1\46\1\uffff\1\65\1\53\1\67\1\127\1\60\1"+
+        "\57\1\136\1\137\1\61\1\62\1\uffff\1\70\1\71\1\72\1\73\1\74\1\76"+
+        "\11\uffff\1\131\1\uffff\1\132\1\133\1\135\1\140\15\uffff\1\77\15"+
         "\uffff\1\40\1\36\1\41\1\37\1\54\1\44\1\47\1\50\1\64\4\uffff\1\106"+
-        "\15\uffff\1\124\7\uffff\1\104\7\uffff\1\107\1\110\5\uffff\1\115"+
-        "\7\uffff\1\100\1\uffff\1\7\1\uffff\1\117\13\uffff\1\103\12\uffff"+
-        "\1\120\2\uffff\1\3\7\uffff\1\122\1\10\4\uffff\1\116\3\uffff\1\126"+
-        "\7\uffff\1\114\1\uffff\1\105\1\uffff\1\1\5\uffff\1\21\1\121\1\112"+
-        "\13\uffff\1\101\1\111\1\uffff\1\123\2\uffff\1\5\5\uffff\1\125\1"+
-        "\20\6\uffff\1\102\6\uffff\1\15\1\uffff\1\24\1\uffff\1\25\1\26\3"+
-        "\uffff\1\22\1\113\5\uffff\1\27\3\uffff\1\42\17\uffff\1\30\1\uffff"+
-        "\1\6\14\uffff\1\14\6\uffff\1\17\6\uffff\1\23\5\uffff\1\12";
+        "\13\uffff\1\124\11\uffff\1\104\7\uffff\1\107\1\110\5\uffff\1\115"+
+        "\4\uffff\1\100\1\uffff\1\6\1\uffff\1\117\16\uffff\1\103\12\uffff"+
+        "\1\120\7\uffff\1\122\1\7\4\uffff\1\24\2\uffff\1\116\3\uffff\1\126"+
+        "\7\uffff\1\114\1\uffff\1\105\1\uffff\1\1\3\uffff\1\20\1\121\1\112"+
+        "\15\uffff\1\101\1\111\1\uffff\1\123\1\4\7\uffff\1\125\1\17\6\uffff"+
+        "\1\102\6\uffff\1\14\1\uffff\1\23\1\uffff\1\25\1\26\2\uffff\1\113"+
+        "\3\uffff\1\21\3\uffff\1\27\2\uffff\1\42\20\uffff\1\30\1\5\15\uffff"+
+        "\1\13\6\uffff\1\16\6\uffff\1\22\5\uffff\1\11";
     static final String DFA19_specialS =
         "\1\0\52\uffff\1\2\1\1\u015b\uffff}>";
     static final String[] DFA19_transitionS = {
             "\11\56\2\55\2\56\1\55\22\56\1\55\1\23\1\53\1\36\1\52\1\32\1"+
-            "\22\1\54\1\34\1\35\1\30\1\20\1\14\1\11\1\26\1\31\1\47\11\50"+
+            "\22\1\54\1\34\1\35\1\30\1\20\1\14\1\10\1\26\1\31\1\47\11\50"+
             "\1\12\1\41\1\25\1\17\1\24\1\27\1\56\32\52\1\37\1\56\1\40\1\51"+
-            "\1\52\1\56\1\33\1\52\1\15\1\43\1\5\1\13\2\52\1\10\2\52\1\6\1"+
-            "\1\1\45\1\52\1\3\1\52\1\46\1\42\1\7\1\52\1\16\1\44\3\52\1\2"+
-            "\1\21\1\4\uff82\56",
+            "\1\52\1\56\1\33\1\52\1\15\1\43\1\4\1\13\2\52\1\7\2\52\1\5\1"+
+            "\1\1\45\1\52\1\11\1\52\1\46\1\42\1\6\1\52\1\16\1\44\3\52\1\2"+
+            "\1\21\1\3\uff82\56",
             "\1\57",
             "",
-            "\1\62\20\uffff\1\63",
             "",
-            "\1\66\13\uffff\1\65",
-            "\1\67",
-            "\1\71\3\uffff\1\70\2\uffff\1\74\11\uffff\1\72\6\uffff\1\73",
-            "\1\77\6\uffff\1\75\1\76",
-            "\1\101\1\100",
+            "\1\64\13\uffff\1\63",
+            "\1\65",
+            "\1\67\3\uffff\1\66\2\uffff\1\72\11\uffff\1\70\6\uffff\1\71",
+            "\1\75\6\uffff\1\73\1\74",
+            "\1\77\1\76",
+            "\1\102\20\uffff\1\101",
             "\1\103",
             "\1\107\3\uffff\1\105\3\uffff\1\110\5\uffff\1\106",
             "",
@@ -3629,24 +3629,24 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\u0080",
             "",
             "",
+            "",
             "\1\u0081",
             "\1\u0082",
-            "",
             "\1\u0083",
             "\1\u0084",
             "\1\u0085",
-            "\1\u0086",
-            "\1\u0087",
-            "\1\u0088\3\uffff\1\u0089",
-            "\1\u008a",
-            "\1\u008b",
-            "\1\u008c\16\uffff\1\u008d",
-            "\1\u008e",
+            "\1\u0086\3\uffff\1\u0087",
+            "\1\u0088",
+            "\1\u0089",
+            "\1\u008a\16\uffff\1\u008b",
+            "\1\u008c",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
             "",
             "",
             "",
+            "\1\u008e",
+            "\1\u008f",
             "",
             "",
             "\1\u0090",
@@ -3718,16 +3718,16 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\u00b1",
             "\1\u00b2",
             "\1\u00b3",
-            "\1\u00b4",
-            "\1\u00b5",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
+            "\1\u00b5",
+            "\1\u00b6",
             "\1\u00b7",
             "\1\u00b8",
             "\1\u00b9",
+            "",
             "\1\u00ba",
             "\1\u00bb",
-            "",
             "\1\u00bc",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\14"+
             "\60\1\u00bd\15\60",
@@ -3763,21 +3763,21 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\u00cf",
             "\1\u00d0",
             "\1\u00d1",
-            "\1\u00d2\11\uffff\1\u00d3",
-            "\1\u00d4",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
-            "\1\u00d6",
+            "\1\u00d3",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
-            "\1\u00d8",
+            "\1\u00d5",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
             "",
+            "\1\u00d7",
+            "\1\u00d8",
+            "\1\u00d9",
             "\1\u00da",
             "\1\u00db",
-            "\1\u00dc",
-            "\1\u00dd",
+            "\1\u00dc\11\uffff\1\u00dd",
             "\1\u00de",
             "\1\u00df",
             "\1\u00e0",
@@ -3802,23 +3802,23 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\60",
             "\1\u00f1",
             "\1\u00f2",
-            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
-            "\60",
-            "\1\u00f4",
+            "\1\u00f3\16\uffff\1\u00f4",
+            "",
             "\1\u00f5",
-            "\1\u00f6\16\uffff\1\u00f7",
             "",
-            "\1\u00f8",
+            "\1\u00f6",
             "",
-            "\1\u00f9",
-            "",
+            "\1\u00f7",
+            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
+            "\60",
+            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
+            "\60",
             "\1\u00fa",
-            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
-            "\60",
-            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
-            "\60",
+            "\1\u00fb",
+            "\1\u00fc",
             "\1\u00fd",
-            "\1\u00fe",
+            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
+            "\60",
             "\1\u00ff",
             "\1\u0100",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
@@ -3844,12 +3844,9 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\u0110",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
-            "",
             "\1\u0112",
             "\1\u0113",
             "\1\u0114",
-            "\1\u0115",
-            "\1\u0116",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
@@ -3858,7 +3855,10 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
+            "\1\u0118",
+            "\1\u0119",
             "\1\u011a",
+            "",
             "\1\u011b",
             "\1\u011c",
             "",
@@ -3881,15 +3881,15 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
             "",
-            "\1\u0129",
-            "\1\u012a",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
+            "\1\u012a",
+            "\1\u012b",
+            "",
+            "",
+            "",
             "\1\u012c",
             "\1\u012d",
-            "",
-            "",
-            "",
             "\1\u012e",
             "\1\u012f",
             "\1\u0130",
@@ -3908,9 +3908,9 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
             "",
+            "",
             "\1\u013a",
             "\1\u013b",
-            "",
             "\1\u013c",
             "\1\u013d",
             "\1\u013e",
@@ -3929,13 +3929,13 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\u0146",
             "\1\u0147",
             "",
-            "\1\u0148",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
-            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
-            "\60",
+            "\1\u0149",
+            "\1\u014a",
             "\1\u014b",
-            "\1\u014c",
+            "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
+            "\60",
             "\1\u014d",
             "",
             "\1\u014e",
@@ -3946,20 +3946,20 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
             "\1\u0151",
+            "",
             "\1\u0152",
-            "",
-            "",
-            "\1\u0153",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
+            "\1\u0154",
+            "",
             "\1\u0155",
             "\1\u0156",
             "\1\u0157",
             "",
             "\1\u0158",
             "\1\u0159",
-            "\1\u015a",
             "",
+            "\1\u015a",
             "\1\u015b",
             "\1\u015c",
             "\1\u015d",
@@ -3971,15 +3971,15 @@ public class InternalEmfParsleyDslLexer extends Lexer {
             "\1\u0163",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
-            "\1\u0165",
             "\1\60\13\uffff\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32"+
             "\60",
+            "\1\u0166",
             "\1\u0167",
             "\1\u0168",
             "\1\u0169",
             "",
-            "\1\u016a",
             "",
+            "\1\u016a",
             "\1\u016b",
             "\1\u016c",
             "\1\u016d",
@@ -4063,19 +4063,19 @@ public class InternalEmfParsleyDslLexer extends Lexer {
 
                         else if ( (LA19_0=='{') ) {s = 2;}
 
-                        else if ( (LA19_0=='p') ) {s = 3;}
+                        else if ( (LA19_0=='}') ) {s = 3;}
 
-                        else if ( (LA19_0=='}') ) {s = 4;}
+                        else if ( (LA19_0=='e') ) {s = 4;}
 
-                        else if ( (LA19_0=='e') ) {s = 5;}
+                        else if ( (LA19_0=='l') ) {s = 5;}
 
-                        else if ( (LA19_0=='l') ) {s = 6;}
+                        else if ( (LA19_0=='t') ) {s = 6;}
 
-                        else if ( (LA19_0=='t') ) {s = 7;}
+                        else if ( (LA19_0=='i') ) {s = 7;}
 
-                        else if ( (LA19_0=='i') ) {s = 8;}
+                        else if ( (LA19_0=='-') ) {s = 8;}
 
-                        else if ( (LA19_0=='-') ) {s = 9;}
+                        else if ( (LA19_0=='p') ) {s = 9;}
 
                         else if ( (LA19_0==':') ) {s = 10;}
 

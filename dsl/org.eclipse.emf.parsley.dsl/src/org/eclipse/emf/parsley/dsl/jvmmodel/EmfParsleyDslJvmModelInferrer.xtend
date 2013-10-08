@@ -119,7 +119,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.viewerContentProvider.genBindMethod(viewerContentProviderClass, typeof(IContentProvider))
 			if (proposalCreatorClass != null)
 				members += element.proposalCreator.genBindMethod(proposalCreatorClass, typeof(ProposalCreator))
+			
 		]
+
    	}
 
 	def setSuperClassType(JvmGenericType e, Module dslElement, Class<?> defaultSuperClass) {
@@ -168,6 +170,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def proposalCreatorQN(Module element) {
 		element.fullyQualifiedName + ".binding.ProposalCreatorGen"
+	}
+
+	def partsClassQN(Module element) {
+		element.fullyQualifiedName + ".ui.parts.DummyPartsClass"
 	}
 
 	def inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {

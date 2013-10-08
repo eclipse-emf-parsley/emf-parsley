@@ -22,6 +22,7 @@ import org.eclipse.emf.parsley.dsl.model.ModelFactory;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 import org.eclipse.emf.parsley.dsl.model.Module;
 import org.eclipse.emf.parsley.dsl.model.PartSpecification;
+import org.eclipse.emf.parsley.dsl.model.PartsSpecifications;
 import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.ProposalCreator;
@@ -155,6 +156,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * @generated
    */
   private EClass withExtendsClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass partsSpecificationsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -362,7 +370,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_Parts()
+  public EReference getModule_PartsSpecifications()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(8);
   }
@@ -712,6 +720,26 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getPartsSpecifications()
+  {
+    return partsSpecificationsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPartsSpecifications_Parts()
+  {
+    return (EReference)partsSpecificationsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getPartSpecification()
   {
     return partSpecificationEClass;
@@ -810,7 +838,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEReference(moduleEClass, MODULE__FORM_CONTROL_FACTORY);
     createEReference(moduleEClass, MODULE__PROPOSAL_CREATOR);
     createEReference(moduleEClass, MODULE__VIEWER_CONTENT_PROVIDER);
-    createEReference(moduleEClass, MODULE__PARTS);
+    createEReference(moduleEClass, MODULE__PARTS_SPECIFICATIONS);
 
     extendsClauseEClass = createEClass(EXTENDS_CLAUSE);
     createEReference(extendsClauseEClass, EXTENDS_CLAUSE__SUPER_TYPE);
@@ -859,6 +887,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEReference(emfFeatureAccessEClass, EMF_FEATURE_ACCESS__PARAMETER_TYPE);
 
     withExtendsClauseEClass = createEClass(WITH_EXTENDS_CLAUSE);
+
+    partsSpecificationsEClass = createEClass(PARTS_SPECIFICATIONS);
+    createEReference(partsSpecificationsEClass, PARTS_SPECIFICATIONS__PARTS);
 
     partSpecificationEClass = createEClass(PART_SPECIFICATION);
 
@@ -924,7 +955,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEReference(getModule_FormControlFactory(), this.getFormControlFactory(), null, "formControlFactory", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_ProposalCreator(), this.getProposalCreator(), null, "proposalCreator", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_ViewerContentProvider(), this.getViewerContentProvider(), null, "viewerContentProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModule_Parts(), this.getPartSpecification(), null, "parts", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_PartsSpecifications(), this.getPartsSpecifications(), null, "partsSpecifications", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(extendsClauseEClass, ExtendsClause.class, "ExtendsClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExtendsClause_SuperType(), theTypesPackage.getJvmTypeReference(), null, "superType", null, 0, 1, ExtendsClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -974,12 +1005,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
 
     initEClass(withExtendsClauseEClass, WithExtendsClause.class, "WithExtendsClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(partsSpecificationsEClass, PartsSpecifications.class, "PartsSpecifications", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPartsSpecifications_Parts(), this.getPartSpecification(), null, "parts", null, 0, -1, PartsSpecifications.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(partSpecificationEClass, PartSpecification.class, "PartSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(viewSpecificationEClass, ViewSpecification.class, "ViewSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getViewSpecification_Id(), ecorePackage.getEString(), "id", null, 0, 1, ViewSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getViewSpecification_ViewName(), ecorePackage.getEString(), "viewName", null, 0, 1, ViewSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getViewSpecification_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, ViewSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getViewSpecification_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, ViewSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getViewSpecification_Category(), ecorePackage.getEString(), "category", null, 0, 1, ViewSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource

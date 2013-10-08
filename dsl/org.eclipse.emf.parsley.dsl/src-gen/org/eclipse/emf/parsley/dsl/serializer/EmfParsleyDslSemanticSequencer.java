@@ -13,6 +13,7 @@ import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
 import org.eclipse.emf.parsley.dsl.model.Model;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 import org.eclipse.emf.parsley.dsl.model.Module;
+import org.eclipse.emf.parsley.dsl.model.PartsSpecifications;
 import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.ProposalCreator;
@@ -134,6 +135,12 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 				if(context == grammarAccess.getModuleRule() ||
 				   context == grammarAccess.getWithExtendsClauseRule()) {
 					sequence_Module(context, (Module) semanticObject); 
+					return; 
+				}
+				else break;
+			case ModelPackage.PARTS_SPECIFICATIONS:
+				if(context == grammarAccess.getPartsSpecificationsRule()) {
+					sequence_PartsSpecifications(context, (PartsSpecifications) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1208,10 +1215,19 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	 *         formControlFactory=FormControlFactory? 
 	 *         proposalCreator=ProposalCreator? 
 	 *         viewerContentProvider=ViewerContentProvider? 
-	 *         parts+=PartSpecification*
+	 *         partsSpecifications=PartsSpecifications?
 	 *     )
 	 */
 	protected void sequence_Module(EObject context, Module semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (parts+=PartSpecification*)
+	 */
+	protected void sequence_PartsSpecifications(EObject context, PartsSpecifications semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1280,7 +1296,7 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (id=QualifiedName viewName=STRING type=[JvmType|QualifiedName] category=QualifiedName?)
+	 *     (id=QualifiedName viewName=STRING type=JvmTypeReference category=QualifiedName?)
 	 */
 	protected void sequence_ViewSpecification(EObject context, ViewSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

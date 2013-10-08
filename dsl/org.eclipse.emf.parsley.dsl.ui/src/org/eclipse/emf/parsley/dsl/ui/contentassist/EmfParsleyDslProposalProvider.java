@@ -9,9 +9,13 @@ import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess;
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
-import org.eclipse.emf.parsley.dsl.ui.contentassist.AbstractEmfParsleyDslProposalProvider;
+import org.eclipse.emf.parsley.dsl.model.ViewSpecification;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -28,14 +32,29 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 
 	@Inject
 	private JvmTypesBuilder typesBuilder;
+	
+	@Inject
+    IJvmTypeProvider.Factory typeProviderFactory;
 
 	@Override
-	public void completeViewSpecification_Type(EObject model,
-			Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		showOnlySubtypesOf(model, context, acceptor, IViewPart.class,
-				ModelPackage.Literals.VIEW_SPECIFICATION__TYPE);
+    public void complete_JvmTypeReference(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		if (EcoreUtil2.getContainerOfType(model, ViewSpecification.class) != null) {
+            final IJvmTypeProvider jvmTypeProvider = typeProviderFactory.createTypeProvider(model.eResource().getResourceSet());
+            final JvmType interfaceToImplement = jvmTypeProvider.findTypeByName(IViewPart.class.getName());
+            typeProposalProvider.createSubTypeProposals(interfaceToImplement, this, context, ModelPackage.Literals.VIEW_SPECIFICATION__TYPE, acceptor);
+        } else {
+            super.complete_JvmTypeReference(model, ruleCall, context, acceptor);
+        }
 	}
+
+//	
+//	@Override
+//	public void completeViewSpecification_Type(EObject model,
+//			Assignment assignment, ContentAssistContext context,
+//			ICompletionProposalAcceptor acceptor) {
+//		showOnlySubtypesOf(model, context, acceptor, IViewPart.class,
+//				ModelPackage.Literals.VIEW_SPECIFICATION__TYPE);
+//	}
 
 	@Override
 	public void completePropertyDescriptionSpecification_ParameterType(

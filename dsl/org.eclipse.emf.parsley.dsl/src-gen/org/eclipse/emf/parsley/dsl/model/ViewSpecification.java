@@ -2,7 +2,7 @@
  */
 package org.eclipse.emf.parsley.dsl.model;
 
-import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,30 +78,30 @@ public interface ViewSpecification extends PartSpecification
   void setViewName(String value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' reference.
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' reference isn't clear,
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' reference.
-   * @see #setType(JvmType)
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(JvmTypeReference)
    * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getViewSpecification_Type()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  JvmType getType();
+  JvmTypeReference getType();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType <em>Type</em>}' reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' reference.
+   * @param value the new value of the '<em>Type</em>' containment reference.
    * @see #getType()
    * @generated
    */
-  void setType(JvmType value);
+  void setType(JvmTypeReference value);
 
   /**
    * Returns the value of the '<em><b>Category</b></em>' attribute.

@@ -195,13 +195,13 @@ public interface ModelPackage extends EPackage
   int MODULE__VIEWER_CONTENT_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 7;
 
   /**
-   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+   * The feature id for the '<em><b>Parts Specifications</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__PARTS = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 8;
+  int MODULE__PARTS_SPECIFICATIONS = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>Module</em>' class.
@@ -676,6 +676,34 @@ public interface ModelPackage extends EPackage
   int VIEWER_CONTENT_PROVIDER_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PartsSpecificationsImpl <em>Parts Specifications</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.parsley.dsl.model.impl.PartsSpecificationsImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPartsSpecifications()
+   * @generated
+   */
+  int PARTS_SPECIFICATIONS = 16;
+
+  /**
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARTS_SPECIFICATIONS__PARTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Parts Specifications</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARTS_SPECIFICATIONS_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PartSpecificationImpl <em>Part Specification</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -683,7 +711,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPartSpecification()
    * @generated
    */
-  int PART_SPECIFICATION = 16;
+  int PART_SPECIFICATION = 17;
 
   /**
    * The number of structural features of the '<em>Part Specification</em>' class.
@@ -702,7 +730,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getViewSpecification()
    * @generated
    */
-  int VIEW_SPECIFICATION = 17;
+  int VIEW_SPECIFICATION = 18;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -723,7 +751,7 @@ public interface ModelPackage extends EPackage
   int VIEW_SPECIFICATION__VIEW_NAME = PART_SPECIFICATION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -881,15 +909,15 @@ public interface ModelPackage extends EPackage
   EReference getModule_ViewerContentProvider();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.Module#getParts <em>Parts</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getPartsSpecifications <em>Parts Specifications</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parts</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.Module#getParts()
+   * @return the meta object for the containment reference '<em>Parts Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.Module#getPartsSpecifications()
    * @see #getModule()
    * @generated
    */
-  EReference getModule_Parts();
+  EReference getModule_PartsSpecifications();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.ExtendsClause <em>Extends Clause</em>}'.
@@ -1252,6 +1280,27 @@ public interface ModelPackage extends EPackage
   EClass getWithExtendsClause();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.PartsSpecifications <em>Parts Specifications</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parts Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.PartsSpecifications
+   * @generated
+   */
+  EClass getPartsSpecifications();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.PartsSpecifications#getParts <em>Parts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parts</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.PartsSpecifications#getParts()
+   * @see #getPartsSpecifications()
+   * @generated
+   */
+  EReference getPartsSpecifications_Parts();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.PartSpecification <em>Part Specification</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1294,10 +1343,10 @@ public interface ModelPackage extends EPackage
   EAttribute getViewSpecification_ViewName();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType()
    * @see #getViewSpecification()
    * @generated
@@ -1439,12 +1488,12 @@ public interface ModelPackage extends EPackage
     EReference MODULE__VIEWER_CONTENT_PROVIDER = eINSTANCE.getModule_ViewerContentProvider();
 
     /**
-     * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Parts Specifications</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODULE__PARTS = eINSTANCE.getModule_Parts();
+    EReference MODULE__PARTS_SPECIFICATIONS = eINSTANCE.getModule_PartsSpecifications();
 
     /**
      * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.ExtendsClauseImpl <em>Extends Clause</em>}' class.
@@ -1747,6 +1796,24 @@ public interface ModelPackage extends EPackage
     EClass WITH_EXTENDS_CLAUSE = eINSTANCE.getWithExtendsClause();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PartsSpecificationsImpl <em>Parts Specifications</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.emf.parsley.dsl.model.impl.PartsSpecificationsImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPartsSpecifications()
+     * @generated
+     */
+    EClass PARTS_SPECIFICATIONS = eINSTANCE.getPartsSpecifications();
+
+    /**
+     * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARTS_SPECIFICATIONS__PARTS = eINSTANCE.getPartsSpecifications_Parts();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PartSpecificationImpl <em>Part Specification</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1783,7 +1850,7 @@ public interface ModelPackage extends EPackage
     EAttribute VIEW_SPECIFICATION__VIEW_NAME = eINSTANCE.getViewSpecification_ViewName();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

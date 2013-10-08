@@ -62,6 +62,6 @@ class EmfComponentsDslAbstractTests {
 	}
 
 	def partSpecification(CharSequence s) {
-		s.module.parts.head
+		s.module.partsSpecifications.parts.head
 	}
 }

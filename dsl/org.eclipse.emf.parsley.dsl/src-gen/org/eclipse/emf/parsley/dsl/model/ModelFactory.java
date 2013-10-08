@@ -167,6 +167,15 @@ public interface ModelFactory extends EFactory
   WithExtendsClause createWithExtendsClause();
 
   /**
+   * Returns a new object of class '<em>Parts Specifications</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parts Specifications</em>'.
+   * @generated
+   */
+  PartsSpecifications createPartsSpecifications();
+
+  /**
    * Returns a new object of class '<em>Part Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

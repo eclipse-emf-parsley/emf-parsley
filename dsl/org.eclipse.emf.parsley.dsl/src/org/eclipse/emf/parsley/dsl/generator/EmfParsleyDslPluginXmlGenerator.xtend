@@ -27,7 +27,7 @@ class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 	}
 
 	def generatePluginXml(Module module) {
-		val partSpecs = module?.parts
+		val partSpecs = module?.partsSpecifications?.parts
 		if (partSpecs == null || partSpecs.empty) {
 			return ''''''
 		} else {

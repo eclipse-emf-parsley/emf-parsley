@@ -80,6 +80,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
       case ModelPackage.VIEWER_CONTENT_PROVIDER: return createViewerContentProvider();
       case ModelPackage.EMF_FEATURE_ACCESS: return createEmfFeatureAccess();
       case ModelPackage.WITH_EXTENDS_CLAUSE: return createWithExtendsClause();
+      case ModelPackage.PARTS_SPECIFICATIONS: return createPartsSpecifications();
       case ModelPackage.PART_SPECIFICATION: return createPartSpecification();
       case ModelPackage.VIEW_SPECIFICATION: return createViewSpecification();
       default:
@@ -261,6 +262,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
   {
     WithExtendsClauseImpl withExtendsClause = new WithExtendsClauseImpl();
     return withExtendsClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PartsSpecifications createPartsSpecifications()
+  {
+    PartsSpecificationsImpl partsSpecifications = new PartsSpecificationsImpl();
+    return partsSpecifications;
   }
 
   /**

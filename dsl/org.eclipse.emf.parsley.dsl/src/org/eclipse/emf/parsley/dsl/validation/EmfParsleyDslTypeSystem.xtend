@@ -3,12 +3,11 @@ package org.eclipse.emf.parsley.dsl.validation
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.parsley.EmfComponentsGuiceModule
+import org.eclipse.ui.IViewPart
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.typing.XbaseTypeConformanceComputer
-import org.eclipse.ui.IViewPart
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule
-import org.eclipse.xtext.common.types.JvmType
 
 class EmfParsleyDslTypeSystem {
 	@Inject
@@ -32,9 +31,9 @@ class EmfParsleyDslTypeSystem {
 				typeof(EStructuralFeature), context), type);
 	}
 
-	def isViewPart(JvmType type, EObject context) {
+	def isViewPart(JvmTypeReference type, EObject context) {
 		isConformant(typeReferences.getTypeForName(
-				typeof(IViewPart), context), typeReferences.createTypeRef(type));
+				typeof(IViewPart), context), type);
 	}
 
 	def isEmfComponentsGuiceModule(JvmTypeReference type, EObject context) {

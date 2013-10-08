@@ -189,6 +189,13 @@ public class ModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ModelPackage.PARTS_SPECIFICATIONS:
+      {
+        PartsSpecifications partsSpecifications = (PartsSpecifications)theEObject;
+        T result = casePartsSpecifications(partsSpecifications);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ModelPackage.PART_SPECIFICATION:
       {
         PartSpecification partSpecification = (PartSpecification)theEObject;
@@ -460,6 +467,22 @@ public class ModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseWithExtendsClause(WithExtendsClause object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parts Specifications</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parts Specifications</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePartsSpecifications(PartsSpecifications object)
   {
     return null;
   }

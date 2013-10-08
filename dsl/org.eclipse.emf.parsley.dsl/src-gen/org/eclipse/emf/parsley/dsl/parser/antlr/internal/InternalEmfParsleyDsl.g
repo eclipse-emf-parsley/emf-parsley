@@ -372,36 +372,24 @@ ruleModule returns [EObject current=null]
 					{ 
 	 				  getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 6);
 	 				}
-					({true}?=>(	otherlv_11='parts' 
-    {
-    	newLeafNode(otherlv_11, grammarAccess.getModuleAccess().getPartsKeyword_4_6_0());
-    }
-	otherlv_12='{' 
-    {
-    	newLeafNode(otherlv_12, grammarAccess.getModuleAccess().getLeftCurlyBracketKeyword_4_6_1());
-    }
-(
+					({true}?=>(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAccess().getPartsPartSpecificationParserRuleCall_4_6_2_0()); 
+	        newCompositeNode(grammarAccess.getModuleAccess().getPartsSpecificationsPartsSpecificationsParserRuleCall_4_6_0()); 
 	    }
-		lv_parts_13_0=rulePartSpecification		{
+		lv_partsSpecifications_11_0=rulePartsSpecifications		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleRule());
 	        }
-       		add(
+       		set(
        			$current, 
-       			"parts",
-        		lv_parts_13_0, 
-        		"PartSpecification");
+       			"partsSpecifications",
+        		lv_partsSpecifications_11_0, 
+        		"PartsSpecifications");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_14='}' 
-    {
-    	newLeafNode(otherlv_14, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_4_6_3());
-    }
 ))
 					{ 
 	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModuleAccess().getUnorderedGroup_4());
@@ -416,9 +404,9 @@ ruleModule returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getModuleAccess().getUnorderedGroup_4());
 	}
 
-)	otherlv_15='}' 
+)	otherlv_12='}' 
     {
-    	newLeafNode(otherlv_15, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_5());
+    	newLeafNode(otherlv_12, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;
@@ -1354,6 +1342,63 @@ ruleViewerContentProvider returns [EObject current=null]
 
 
 
+// Entry rule entryRulePartsSpecifications
+entryRulePartsSpecifications returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getPartsSpecificationsRule()); }
+	 iv_rulePartsSpecifications=rulePartsSpecifications 
+	 { $current=$iv_rulePartsSpecifications.current; } 
+	 EOF 
+;
+
+// Rule PartsSpecifications
+rulePartsSpecifications returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getPartsSpecificationsAccess().getPartsSpecificationsAction_0(),
+            $current);
+    }
+)	otherlv_1='parts' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getPartsSpecificationsAccess().getPartsKeyword_1());
+    }
+	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getPartsSpecificationsAccess().getLeftCurlyBracketKeyword_2());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPartsSpecificationsAccess().getPartsPartSpecificationParserRuleCall_3_0()); 
+	    }
+		lv_parts_3_0=rulePartSpecification		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPartsSpecificationsRule());
+	        }
+       		add(
+       			$current, 
+       			"parts",
+        		lv_parts_3_0, 
+        		"PartSpecification");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_4='}' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getPartsSpecificationsAccess().getRightCurlyBracketKeyword_4());
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRulePartSpecification
 entryRulePartSpecification returns [EObject current=null] 
 	:
@@ -1458,15 +1503,18 @@ ruleViewSpecification returns [EObject current=null]
     }
 (
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getViewSpecificationRule());
-	        }
-        }
 		{ 
-	        newCompositeNode(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeCrossReference_7_0()); 
+	        newCompositeNode(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeReferenceParserRuleCall_7_0()); 
 	    }
-		ruleQualifiedName		{ 
+		lv_type_7_0=ruleJvmTypeReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getViewSpecificationRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_7_0, 
+        		"JvmTypeReference");
 	        afterParserOrEnumRuleCall();
 	    }
 

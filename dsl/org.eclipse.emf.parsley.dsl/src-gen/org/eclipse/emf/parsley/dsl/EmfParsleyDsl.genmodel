@@ -20,7 +20,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//Module/formControlFactory"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//Module/proposalCreator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//Module/viewerContentProvider"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//Module/parts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//Module/partsSpecifications"/>
     </genClasses>
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//ExtendsClause">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ExtendsClause/superType"/>
@@ -69,11 +69,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//EmfFeatureAccess/parameterType"/>
     </genClasses>
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//WithExtendsClause"/>
+    <genClasses ecoreClass="EmfParsleyDsl.ecore#//PartsSpecifications">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//PartsSpecifications/parts"/>
+    </genClasses>
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//PartSpecification"/>
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//ViewSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EmfParsleyDsl.ecore#//ViewSpecification/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EmfParsleyDsl.ecore#//ViewSpecification/viewName"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ViewSpecification/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ViewSpecification/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EmfParsleyDsl.ecore#//ViewSpecification/category"/>
     </genClasses>
   </genPackages>

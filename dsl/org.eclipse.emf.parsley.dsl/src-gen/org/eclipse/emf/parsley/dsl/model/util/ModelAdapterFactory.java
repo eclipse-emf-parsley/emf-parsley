@@ -155,6 +155,11 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
         return createWithExtendsClauseAdapter();
       }
       @Override
+      public Adapter casePartsSpecifications(PartsSpecifications object)
+      {
+        return createPartsSpecificationsAdapter();
+      }
+      @Override
       public Adapter casePartSpecification(PartSpecification object)
       {
         return createPartSpecificationAdapter();
@@ -422,6 +427,21 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWithExtendsClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.PartsSpecifications <em>Parts Specifications</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.emf.parsley.dsl.model.PartsSpecifications
+   * @generated
+   */
+  public Adapter createPartsSpecificationsAdapter()
   {
     return null;
   }

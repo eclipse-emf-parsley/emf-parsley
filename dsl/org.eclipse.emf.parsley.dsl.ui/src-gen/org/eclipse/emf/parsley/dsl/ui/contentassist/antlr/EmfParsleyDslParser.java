@@ -77,7 +77,6 @@ public class EmfParsleyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getModuleAccess().getGroup(), "rule__Module__Group__0");
-					put(grammarAccess.getModuleAccess().getGroup_4_6(), "rule__Module__Group_4_6__0");
 					put(grammarAccess.getExtendsClauseAccess().getGroup(), "rule__ExtendsClause__Group__0");
 					put(grammarAccess.getLabelProviderAccess().getGroup(), "rule__LabelProvider__Group__0");
 					put(grammarAccess.getLabelProviderAccess().getGroup_3_0(), "rule__LabelProvider__Group_3_0__0");
@@ -98,6 +97,7 @@ public class EmfParsleyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProposalSpecificationAccess().getGroup(), "rule__ProposalSpecification__Group__0");
 					put(grammarAccess.getViewerContentProviderAccess().getGroup(), "rule__ViewerContentProvider__Group__0");
 					put(grammarAccess.getViewerContentProviderAccess().getGroup_3(), "rule__ViewerContentProvider__Group_3__0");
+					put(grammarAccess.getPartsSpecificationsAccess().getGroup(), "rule__PartsSpecifications__Group__0");
 					put(grammarAccess.getViewSpecificationAccess().getGroup(), "rule__ViewSpecification__Group__0");
 					put(grammarAccess.getViewSpecificationAccess().getGroup_8(), "rule__ViewSpecification__Group_8__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
@@ -263,7 +263,7 @@ public class EmfParsleyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModuleAccess().getFormControlFactoryAssignment_4_3(), "rule__Module__FormControlFactoryAssignment_4_3");
 					put(grammarAccess.getModuleAccess().getProposalCreatorAssignment_4_4(), "rule__Module__ProposalCreatorAssignment_4_4");
 					put(grammarAccess.getModuleAccess().getViewerContentProviderAssignment_4_5(), "rule__Module__ViewerContentProviderAssignment_4_5");
-					put(grammarAccess.getModuleAccess().getPartsAssignment_4_6_2(), "rule__Module__PartsAssignment_4_6_2");
+					put(grammarAccess.getModuleAccess().getPartsSpecificationsAssignment_4_6(), "rule__Module__PartsSpecificationsAssignment_4_6");
 					put(grammarAccess.getExtendsClauseAccess().getSuperTypeAssignment_1(), "rule__ExtendsClause__SuperTypeAssignment_1");
 					put(grammarAccess.getLabelProviderAccess().getLabelSpecificationsAssignment_3_0_2(), "rule__LabelProvider__LabelSpecificationsAssignment_3_0_2");
 					put(grammarAccess.getLabelProviderAccess().getImageSpecificationsAssignment_3_1_2(), "rule__LabelProvider__ImageSpecificationsAssignment_3_1_2");
@@ -288,6 +288,7 @@ public class EmfParsleyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProposalSpecificationAccess().getFeatureAssignment_2(), "rule__ProposalSpecification__FeatureAssignment_2");
 					put(grammarAccess.getProposalSpecificationAccess().getExpressionAssignment_4(), "rule__ProposalSpecification__ExpressionAssignment_4");
 					put(grammarAccess.getViewerContentProviderAccess().getChildrenSpecificationsAssignment_3_2(), "rule__ViewerContentProvider__ChildrenSpecificationsAssignment_3_2");
+					put(grammarAccess.getPartsSpecificationsAccess().getPartsAssignment_3(), "rule__PartsSpecifications__PartsAssignment_3");
 					put(grammarAccess.getViewSpecificationAccess().getIdAssignment_2(), "rule__ViewSpecification__IdAssignment_2");
 					put(grammarAccess.getViewSpecificationAccess().getViewNameAssignment_5(), "rule__ViewSpecification__ViewNameAssignment_5");
 					put(grammarAccess.getViewSpecificationAccess().getTypeAssignment_7(), "rule__ViewSpecification__TypeAssignment_7");

@@ -24,8 +24,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="viewerContentProvider"
         eType="#//ViewerContentProvider" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
-        eType="#//PartSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partsSpecifications" eType="#//PartsSpecifications"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExtendsClause">
     <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
@@ -90,11 +90,16 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WithExtendsClause"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PartsSpecifications">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
+        eType="#//PartSpecification" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartSpecification"/>
   <eClassifiers xsi:type="ecore:EClass" name="ViewSpecification" eSuperTypes="#//PartSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -2,20 +2,13 @@
  */
 package org.eclipse.emf.parsley.dsl.model.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
@@ -23,7 +16,7 @@ import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
 import org.eclipse.emf.parsley.dsl.model.LabelProvider;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 import org.eclipse.emf.parsley.dsl.model.Module;
-import org.eclipse.emf.parsley.dsl.model.PartSpecification;
+import org.eclipse.emf.parsley.dsl.model.PartsSpecifications;
 import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ProposalCreator;
 import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
@@ -43,7 +36,7 @@ import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFormControlFactory <em>Form Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getProposalCreator <em>Proposal Creator</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getViewerContentProvider <em>Viewer Content Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getParts <em>Parts</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getPartsSpecifications <em>Parts Specifications</em>}</li>
  * </ul>
  * </p>
  *
@@ -142,14 +135,14 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
   protected ViewerContentProvider viewerContentProvider;
 
   /**
-   * The cached value of the '{@link #getParts() <em>Parts</em>}' containment reference list.
+   * The cached value of the '{@link #getPartsSpecifications() <em>Parts Specifications</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParts()
+   * @see #getPartsSpecifications()
    * @generated
    * @ordered
    */
-  protected EList<PartSpecification> parts;
+  protected PartsSpecifications partsSpecifications;
 
   /**
    * <!-- begin-user-doc -->
@@ -536,13 +529,47 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PartSpecification> getParts()
+  public PartsSpecifications getPartsSpecifications()
   {
-    if (parts == null)
+    return partsSpecifications;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPartsSpecifications(PartsSpecifications newPartsSpecifications, NotificationChain msgs)
+  {
+    PartsSpecifications oldPartsSpecifications = partsSpecifications;
+    partsSpecifications = newPartsSpecifications;
+    if (eNotificationRequired())
     {
-      parts = new EObjectContainmentEList<PartSpecification>(PartSpecification.class, this, ModelPackage.MODULE__PARTS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__PARTS_SPECIFICATIONS, oldPartsSpecifications, newPartsSpecifications);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return parts;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPartsSpecifications(PartsSpecifications newPartsSpecifications)
+  {
+    if (newPartsSpecifications != partsSpecifications)
+    {
+      NotificationChain msgs = null;
+      if (partsSpecifications != null)
+        msgs = ((InternalEObject)partsSpecifications).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__PARTS_SPECIFICATIONS, null, msgs);
+      if (newPartsSpecifications != null)
+        msgs = ((InternalEObject)newPartsSpecifications).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__PARTS_SPECIFICATIONS, null, msgs);
+      msgs = basicSetPartsSpecifications(newPartsSpecifications, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__PARTS_SPECIFICATIONS, newPartsSpecifications, newPartsSpecifications));
   }
 
   /**
@@ -569,8 +596,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return basicSetProposalCreator(null, msgs);
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:
         return basicSetViewerContentProvider(null, msgs);
-      case ModelPackage.MODULE__PARTS:
-        return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
+      case ModelPackage.MODULE__PARTS_SPECIFICATIONS:
+        return basicSetPartsSpecifications(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -601,8 +628,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return getProposalCreator();
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:
         return getViewerContentProvider();
-      case ModelPackage.MODULE__PARTS:
-        return getParts();
+      case ModelPackage.MODULE__PARTS_SPECIFICATIONS:
+        return getPartsSpecifications();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -612,7 +639,6 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -642,9 +668,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:
         setViewerContentProvider((ViewerContentProvider)newValue);
         return;
-      case ModelPackage.MODULE__PARTS:
-        getParts().clear();
-        getParts().addAll((Collection<? extends PartSpecification>)newValue);
+      case ModelPackage.MODULE__PARTS_SPECIFICATIONS:
+        setPartsSpecifications((PartsSpecifications)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -684,8 +709,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:
         setViewerContentProvider((ViewerContentProvider)null);
         return;
-      case ModelPackage.MODULE__PARTS:
-        getParts().clear();
+      case ModelPackage.MODULE__PARTS_SPECIFICATIONS:
+        setPartsSpecifications((PartsSpecifications)null);
         return;
     }
     super.eUnset(featureID);
@@ -717,8 +742,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return proposalCreator != null;
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:
         return viewerContentProvider != null;
-      case ModelPackage.MODULE__PARTS:
-        return parts != null && !parts.isEmpty();
+      case ModelPackage.MODULE__PARTS_SPECIFICATIONS:
+        return partsSpecifications != null;
     }
     return super.eIsSet(featureID);
   }

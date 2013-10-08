@@ -2,7 +2,6 @@
  */
 package org.eclipse.emf.parsley.dsl.model;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormControlFactory <em>Form Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getProposalCreator <em>Proposal Creator</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getViewerContentProvider <em>Viewer Content Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getParts <em>Parts</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getPartsSpecifications <em>Parts Specifications</em>}</li>
  * </ul>
  * </p>
  *
@@ -239,19 +238,29 @@ public interface Module extends WithExtendsClause
   void setViewerContentProvider(ViewerContentProvider value);
 
   /**
-   * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.emf.parsley.dsl.model.PartSpecification}.
+   * Returns the value of the '<em><b>Parts Specifications</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parts</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Parts Specifications</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parts</em>' containment reference list.
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_Parts()
+   * @return the value of the '<em>Parts Specifications</em>' containment reference.
+   * @see #setPartsSpecifications(PartsSpecifications)
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_PartsSpecifications()
    * @model containment="true"
    * @generated
    */
-  EList<PartSpecification> getParts();
+  PartsSpecifications getPartsSpecifications();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getPartsSpecifications <em>Parts Specifications</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Parts Specifications</em>' containment reference.
+   * @see #getPartsSpecifications()
+   * @generated
+   */
+  void setPartsSpecifications(PartsSpecifications value);
 
 } // Module
