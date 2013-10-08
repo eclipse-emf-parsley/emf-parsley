@@ -93,6 +93,32 @@ EClass'''
 		)
 	}
 
+	@Test
+	def void checkProposalForTypeInViewSpecification() {
+		assertProposal(
+'''
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass 
+''',
+		"OnSelection",
+		"OnSelectionFormView - org.eclipse.emf.parsley.views",
+'''
+import org.eclipse.emf.parsley.views.OnSelectionFormView
+
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass 
+OnSelectionFormView'''			
+		)
+	}
+
 	def private void assertProposal(CharSequence input, CharSequence proposal, CharSequence expectedAfterProposal) {
 		assertProposal(input, "", proposal, expectedAfterProposal)
 	}
@@ -115,6 +141,8 @@ EClass'''
 		editor.toTextEditor.autoCompleteProposal(textToInsert, 
 			proposal.toString
 		)
+		
+		println("proposals")
 		
 		editor.save
 
