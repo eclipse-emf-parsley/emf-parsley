@@ -12,9 +12,7 @@ public class EmfParsleyDslEditorTests extends EmfParsleyDslUiAbstractTests {
 
 	@Test
 	def void checkPluginXmlGen() {
-		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME);
-		assertNoErrorsInProjectAfterAutoBuild();
+		createDslProjectWithWizard
 		
 		val editor = bot.editorByTitle("module.parsley")
 		
@@ -58,9 +56,49 @@ module «TEST_PROJ_NAME» {
 
 	@Test
 	def void checkTemplateProposalForViewSpecification() {
-		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME);
-		assertNoErrorsInProjectAfterAutoBuild();
+		assertProposal(
+'''
+module «TEST_PROJ_NAME» {
+	parts { 
+''',
+		"ViewSpecification - Template for ViewSpecification",
+'''
+module my.emfparsley.proj {
+	parts { 
+viewpart id {
+	viewname "View Name"
+	viewclass type
+	// viewcategory my.category
+}'''			
+		)
+	}
+
+	@Test
+	def void checkProposalForType() {
+		assertProposal(
+'''
+module «TEST_PROJ_NAME» {
+	labelProvider {
+		text {
+''',
+		"EClass",
+		"EClass - org.eclipse.emf.ecore",
+'''
+import org.eclipse.emf.ecore.EClass
+
+module my.emfparsley.proj {
+	labelProvider {
+		text {
+EClass'''			
+		)
+	}
+
+	def private void assertProposal(CharSequence input, CharSequence proposal, CharSequence expectedAfterProposal) {
+		assertProposal(input, "", proposal, expectedAfterProposal)
+	}
+
+	def private void assertProposal(CharSequence input, String textToInsert, CharSequence proposal, CharSequence expectedAfterProposal) {
+		createDslProjectWithWizard
 		
 		val editor = bot.editorByTitle("module.parsley")
 		
@@ -68,33 +106,22 @@ module «TEST_PROJ_NAME» {
 			"", false			
 		)
 		
-		editor.toTextEditor.insertText(
-'''
-module «TEST_PROJ_NAME» {
-	parts { 
-'''
-		)
+		editor.toTextEditor.insertText(input.toString)
 		
-		editor.toTextEditor.navigateTo(2, 10)
+		val lines = input.toString.split("\n").length
 		
-		editor.toTextEditor.autoCompleteProposal(" ", 
-			"ViewSpecification - Template for ViewSpecification"
+		editor.toTextEditor.navigateTo(lines, 50)
+		
+		editor.toTextEditor.autoCompleteProposal(textToInsert, 
+			proposal.toString
 		)
 		
 		editor.save
 
-		editor.assertEditorText(
-'''
-module my.emfparsley.proj {
-	parts { 
- viewpart id {
- 	viewname "View Name"
- 	viewclass type
- 	// viewcategory my.category
- }'''			
-		)
+		editor.assertEditorText(expectedAfterProposal)
 
 		editor.saveAndClose
+	
 	}
 
 }
