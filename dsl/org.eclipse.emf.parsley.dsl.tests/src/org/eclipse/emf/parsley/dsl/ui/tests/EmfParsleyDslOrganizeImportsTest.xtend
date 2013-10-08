@@ -87,8 +87,6 @@ module my.test.proj {
 	}
 
 	@Test def testForViewSpecification() {
-		// this shows the problem: organize imports does not
-		// work for types in ViewSpecification
 		'''
 import org.eclipse.ui.views.contentoutline.ContentOutline
 
@@ -102,6 +100,8 @@ module my.test.proj {
 	}
 }
 		'''.assertIsOrganizedTo('''
+import org.eclipse.ui.views.contentoutline.ContentOutline
+
 module my.test.proj {
 	
 	parts {
@@ -114,5 +114,43 @@ module my.test.proj {
 		''')
 	}
 
+	@Test def testForManyTypes() {
+		'''
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass org.eclipse.ui.views.contentoutline.ContentOutline
+		}
+	}
+	
+	labelProvider {
+		text {
+			org.eclipse.emf.ecore.EClass -> ""
+		}
+	}
+}
+		'''.assertIsOrganizedTo('''
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.ui.views.contentoutline.ContentOutline
+
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass ContentOutline
+		}
+	}
+	
+	labelProvider {
+		text {
+			EClass -> ""
+		}
+	}
+}
+		''')
+	}
 	
 }

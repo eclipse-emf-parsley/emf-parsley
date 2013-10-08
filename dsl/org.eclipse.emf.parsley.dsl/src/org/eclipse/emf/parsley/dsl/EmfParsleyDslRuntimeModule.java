@@ -5,6 +5,7 @@ package org.eclipse.emf.parsley.dsl;
 
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslGenerator;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
+import org.eclipse.emf.parsley.dsl.imports.EmfParsleyDslTypeUsageCollector;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImplicitlyImportedTypes;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImportedNamespaceScopeProvider;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslScopeProvider;
@@ -13,6 +14,7 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.xbase.imports.TypeUsageCollector;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 
@@ -49,6 +51,10 @@ public class EmfParsleyDslRuntimeModule extends org.eclipse.emf.parsley.dsl.Abst
 
 	public Class<? extends ImplicitlyImportedTypes> bindImplicitlyImportedTypes() {
 		return EmfParsleyDslImplicitlyImportedTypes.class;
+	}
+	
+	public Class<? extends TypeUsageCollector> bindTypeUsageCollector() {
+		return EmfParsleyDslTypeUsageCollector.class;
 	}
 
 	@Override
