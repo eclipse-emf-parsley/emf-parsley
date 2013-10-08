@@ -16,7 +16,7 @@ module «projectName» {
 '''
 import java.util.*
 
-/* «projectName» Emf Components Dsl Module file */
+/* «projectName» Emf Parsley Dsl Module file */
 module «projectName» {
 	
 	parts {

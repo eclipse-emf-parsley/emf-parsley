@@ -3,8 +3,6 @@ package org.eclipse.emf.parsley.dsl.ui.wizard.template;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.parsley.views.OnSelectionTableFormView;
-import org.eclipse.emf.parsley.views.OnSelectionTreeFormView;
 import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
 
 /**
