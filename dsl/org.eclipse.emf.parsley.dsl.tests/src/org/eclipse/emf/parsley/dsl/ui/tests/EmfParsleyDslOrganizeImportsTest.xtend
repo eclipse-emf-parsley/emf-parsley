@@ -1,0 +1,118 @@
+package org.eclipse.emf.parsley.dsl.ui.tests
+
+import com.google.inject.Inject
+import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
+import org.eclipse.emf.parsley.dsl.model.Model
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.util.ReplaceRegion
+import org.eclipse.xtext.xbase.imports.ImportOrganizer
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import static org.junit.Assert.*
+
+/**
+ * @author Lorenzo Bettini - copied and adapted from Domainmodel example
+ */
+@RunWith(typeof(XtextRunner))
+@InjectWith(typeof(EmfParsleyDslInjectorProvider))
+class EmfParsleyDslOrganizeImportsTest {
+	
+	@Inject extension ParseHelper<Model> 
+	@Inject ImportOrganizer importOrganizer
+
+	def protected assertIsOrganizedTo(CharSequence input, CharSequence expected) {
+		val model = parse(input.toString)
+		val changes = importOrganizer.getOrganizedImportChanges(model.eResource as XtextResource)
+		val builder = new StringBuilder(input)
+		val sortedChanges= changes.sortBy[offset]
+		var ReplaceRegion lastChange = null
+		for(it: sortedChanges) {
+			if(lastChange != null && lastChange.endOffset > offset)
+				fail("Overlapping text edits: " + lastChange + ' and ' +it)
+			lastChange = it
+		}
+		for(it: sortedChanges.reverse)
+			builder.replace(offset, offset + length, text)
+		assertEquals(expected.toString, builder.toString)
+	}
+
+	@Test def testTypeInLabelProvider() {
+		'''
+module my.test.proj {
+	labelProvider {
+		text {
+			org.eclipse.emf.ecore.EClass -> ""
+		}
+	}
+}
+		'''.assertIsOrganizedTo('''
+import org.eclipse.emf.ecore.EClass
+
+module my.test.proj {
+	labelProvider {
+		text {
+			EClass -> ""
+		}
+	}
+}
+		''')
+	}
+
+	@Test def testWithWildCard() {
+		'''
+import org.eclipse.emf.ecore.*
+
+module my.test.proj {
+	labelProvider {
+		text {
+			EClass -> ""
+		}
+	}
+}
+		'''.assertIsOrganizedTo('''
+import org.eclipse.emf.ecore.EClass
+
+module my.test.proj {
+	labelProvider {
+		text {
+			EClass -> ""
+		}
+	}
+}
+		''')
+	}
+
+	@Test def testForViewSpecification() {
+		// this shows the problem: organize imports does not
+		// work for types in ViewSpecification
+		'''
+import org.eclipse.ui.views.contentoutline.ContentOutline
+
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass ContentOutline
+		}
+	}
+}
+		'''.assertIsOrganizedTo('''
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass ContentOutline
+		}
+	}
+}
+		''')
+	}
+
+	
+}

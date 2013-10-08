@@ -12,7 +12,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	EmfParsleyDslContentAssistTest.class
+	EmfParsleyDslContentAssistTest.class,
+	EmfParsleyDslOrganizeImportsTest.class
 })
 public class EmfComponentsDslAllUiTests {
 
