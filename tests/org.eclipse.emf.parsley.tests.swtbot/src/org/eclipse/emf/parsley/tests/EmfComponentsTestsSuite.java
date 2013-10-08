@@ -1,12 +1,10 @@
 package org.eclipse.emf.parsley.tests;
 
-import org.eclipse.emf.parsley.tests.EmfComponentsDslWizardsTests;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * @author bettini
+ * @author Lorenzo Bettini - Initial Contribution
  * 
  */
 @RunWith(Suite.class)
@@ -22,7 +20,8 @@ import org.junit.runners.Suite;
 	EmfComponentsFormTests.class,
 	EmfComponentsWizardsTests.class,
 	EmfComponentsExamplesWizardsTests.class,
-	EmfComponentsDslWizardsTests.class
+	EmfParsleyDslWizardsTests.class,
+	EmfParsleyDslEditorTests.class
 })
 public class EmfComponentsTestsSuite {
 }
