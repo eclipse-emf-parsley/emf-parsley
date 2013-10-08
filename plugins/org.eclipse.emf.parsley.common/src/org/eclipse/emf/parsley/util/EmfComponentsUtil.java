@@ -13,20 +13,24 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.collect.Lists;
 
 /**
- * @author bettini
+ * @author Lorenzo Bettini - Initial Contribution and API
  * 
  */
 public class EmfComponentsUtil {
 	public static IStatusLineManager getStatusLineManager() {
-		IWorkbenchPartSite site = PlatformUI.getWorkbench()
+		try {
+			IWorkbenchPartSite site = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getActivePart()
 				.getSite();
-
-		if (site instanceof IViewSite) {
-			return getStatusLineManager(((IViewSite) site).getActionBars());
-		} else if (site instanceof IEditorSite) {
-			return getStatusLineManager(((IEditorSite) site).getActionBars());
-		} else {
+			
+			if (site instanceof IViewSite) {
+				return getStatusLineManager(((IViewSite) site).getActionBars());
+			} else if (site instanceof IEditorSite) {
+				return getStatusLineManager(((IEditorSite) site).getActionBars());
+			} else {
+				return null;
+			}
+		} catch (NullPointerException e) {
 			return null;
 		}
 	}
