@@ -24,7 +24,8 @@ import org.junit.runners.Suite;
 	EmfComponentsDslValidatorTests.class,
 	EmfComponentsDslJvmModelInferrerTests.class,
 	EmfComponentsDslPluginXmlGeneratorTests.class,
-	EmfComponentsDslGeneratorTests.class
+	EmfComponentsDslGeneratorTests.class,
+	EmfParsleyDslOrganizeImportsTest.class
 })
 public class EmfComponentsDslAllTests {
 

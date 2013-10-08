@@ -1,4 +1,4 @@
-package org.eclipse.emf.parsley.dsl.ui.tests
+package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
