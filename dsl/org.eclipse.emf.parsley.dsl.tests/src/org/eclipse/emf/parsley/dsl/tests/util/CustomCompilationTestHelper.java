@@ -21,7 +21,6 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini
  * 
  */
-@SuppressWarnings("restriction")
 public class CustomCompilationTestHelper extends CompilationTestHelper {
 	@Inject
 	private CustomOnTheFlyJavaCompiler javaCompiler;

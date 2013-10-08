@@ -26,7 +26,6 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini
  * 
  */
-@SuppressWarnings("restriction")
 public class CustomOnTheFlyJavaCompiler extends OnTheFlyJavaCompiler {
 	
 	static class DelegateOutStream extends OutputStream {
