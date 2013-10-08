@@ -1280,7 +1280,7 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (id=QualifiedName viewName=STRING type=JvmTypeReference category=QualifiedName?)
+	 *     (id=QualifiedName viewName=STRING type=[JvmType|QualifiedName] category=QualifiedName?)
 	 */
 	protected void sequence_ViewSpecification(EObject context, ViewSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

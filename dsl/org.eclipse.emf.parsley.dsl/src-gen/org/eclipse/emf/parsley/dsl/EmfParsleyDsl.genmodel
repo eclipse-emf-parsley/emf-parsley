@@ -73,7 +73,7 @@
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//ViewSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EmfParsleyDsl.ecore#//ViewSpecification/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EmfParsleyDsl.ecore#//ViewSpecification/viewName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ViewSpecification/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ViewSpecification/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EmfParsleyDsl.ecore#//ViewSpecification/category"/>
     </genClasses>
   </genPackages>

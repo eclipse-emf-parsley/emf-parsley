@@ -256,7 +256,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	
 	/**
 	 * Syntax:
-	 *     (('image' '{' '}') | ('text' '{' '}'))*
+	 *     (('text' '{' '}') | ('image' '{' '}'))*
 	 */
 	protected void emit_LabelProvider_____ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___or___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3____a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

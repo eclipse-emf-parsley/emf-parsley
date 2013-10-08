@@ -141,10 +141,12 @@ WithExtendsClause:
 
 PartSpecification: ViewSpecification;
 
+// This will not correspond to a Jvm class, thus we must use
+// JvmType and not JvmTypeReference, otherwise imports will not work.
 ViewSpecification:
 	{ViewSpecification} 'viewpart' id=QualifiedName '{'
 		'viewname' viewName=STRING
-		'viewclass' type=JvmTypeReference
+		'viewclass' type=[types::JvmType|QualifiedName]
 		('viewcategory' category=QualifiedName)?
 	'}'
 ;

@@ -1458,18 +1458,15 @@ ruleViewSpecification returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeReferenceParserRuleCall_7_0()); 
-	    }
-		lv_type_7_0=ruleJvmTypeReference		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getViewSpecificationRule());
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getViewSpecificationRule());
 	        }
-       		set(
-       			$current, 
-       			"type",
-        		lv_type_7_0, 
-        		"JvmTypeReference");
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeCrossReference_7_0()); 
+	    }
+		ruleQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 

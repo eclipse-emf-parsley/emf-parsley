@@ -850,7 +850,8 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cViewNameSTRINGTerminalRuleCall_5_0 = (RuleCall)cViewNameAssignment_5.eContents().get(0);
 		private final Keyword cViewclassKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Assignment cTypeAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_7_0 = (RuleCall)cTypeAssignment_7.eContents().get(0);
+		private final CrossReference cTypeJvmTypeCrossReference_7_0 = (CrossReference)cTypeAssignment_7.eContents().get(0);
+		private final RuleCall cTypeJvmTypeQualifiedNameParserRuleCall_7_0_1 = (RuleCall)cTypeJvmTypeCrossReference_7_0.eContents().get(1);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
 		private final Keyword cViewcategoryKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Assignment cCategoryAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
@@ -858,12 +859,12 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		//ViewSpecification:
-		//	{ViewSpecification} "viewpart" id=QualifiedName "{" "viewname" viewName=STRING "viewclass" type=JvmTypeReference
-		//	("viewcategory" category=QualifiedName)? "}";
+		//	{ViewSpecification} "viewpart" id=QualifiedName "{" "viewname" viewName=STRING "viewclass"
+		//	type=[types::JvmType|QualifiedName] ("viewcategory" category=QualifiedName)? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{ViewSpecification} "viewpart" id=QualifiedName "{" "viewname" viewName=STRING "viewclass" type=JvmTypeReference
-		//("viewcategory" category=QualifiedName)? "}"
+		//{ViewSpecification} "viewpart" id=QualifiedName "{" "viewname" viewName=STRING "viewclass"
+		//type=[types::JvmType|QualifiedName] ("viewcategory" category=QualifiedName)? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{ViewSpecification}
@@ -893,11 +894,14 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"viewclass"
 		public Keyword getViewclassKeyword_6() { return cViewclassKeyword_6; }
 
-		//type=JvmTypeReference
+		//type=[types::JvmType|QualifiedName]
 		public Assignment getTypeAssignment_7() { return cTypeAssignment_7; }
 
-		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_7_0() { return cTypeJvmTypeReferenceParserRuleCall_7_0; }
+		//[types::JvmType|QualifiedName]
+		public CrossReference getTypeJvmTypeCrossReference_7_0() { return cTypeJvmTypeCrossReference_7_0; }
+
+		//QualifiedName
+		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_7_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_7_0_1; }
 
 		//("viewcategory" category=QualifiedName)?
 		public Group getGroup_8() { return cGroup_8; }
@@ -1154,8 +1158,8 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ViewSpecification:
-	//	{ViewSpecification} "viewpart" id=QualifiedName "{" "viewname" viewName=STRING "viewclass" type=JvmTypeReference
-	//	("viewcategory" category=QualifiedName)? "}";
+	//	{ViewSpecification} "viewpart" id=QualifiedName "{" "viewname" viewName=STRING "viewclass"
+	//	type=[types::JvmType|QualifiedName] ("viewcategory" category=QualifiedName)? "}";
 	public ViewSpecificationElements getViewSpecificationAccess() {
 		return (pViewSpecification != null) ? pViewSpecification : (pViewSpecification = new ViewSpecificationElements());
 	}

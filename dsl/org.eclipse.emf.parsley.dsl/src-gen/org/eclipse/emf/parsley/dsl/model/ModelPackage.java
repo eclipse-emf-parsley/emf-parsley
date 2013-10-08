@@ -723,7 +723,7 @@ public interface ModelPackage extends EPackage
   int VIEW_SPECIFICATION__VIEW_NAME = PART_SPECIFICATION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1294,10 +1294,10 @@ public interface ModelPackage extends EPackage
   EAttribute getViewSpecification_ViewName();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @return the meta object for the reference '<em>Type</em>'.
    * @see org.eclipse.emf.parsley.dsl.model.ViewSpecification#getType()
    * @see #getViewSpecification()
    * @generated
@@ -1783,7 +1783,7 @@ public interface ModelPackage extends EPackage
     EAttribute VIEW_SPECIFICATION__VIEW_NAME = eINSTANCE.getViewSpecification_ViewName();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

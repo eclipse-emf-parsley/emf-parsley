@@ -19531,8 +19531,12 @@ rule__ViewSpecification__TypeAssignment_7
     }
 :
 (
-{ before(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeReferenceParserRuleCall_7_0()); }
-	ruleJvmTypeReference{ after(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeReferenceParserRuleCall_7_0()); }
+{ before(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeCrossReference_7_0()); }
+(
+{ before(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeQualifiedNameParserRuleCall_7_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeQualifiedNameParserRuleCall_7_0_1()); }
+)
+{ after(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeCrossReference_7_0()); }
 )
 
 ;

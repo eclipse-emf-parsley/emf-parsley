@@ -7488,11 +7488,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                 {
                 int LA2_1 = input.LA(2);
 
-                if ( (LA2_1==13) ) {
-                    alt2=1;
-                }
-                else if ( (LA2_1==EOF||(LA2_1>=RULE_ID && LA2_1<=RULE_STRING)||(LA2_1>=14 && LA2_1<=47)||(LA2_1>=49 && LA2_1<=50)||LA2_1==56||LA2_1==59||LA2_1==62||(LA2_1>=70 && LA2_1<=93)||(LA2_1>=96 && LA2_1<=97)||(LA2_1>=99 && LA2_1<=100)) ) {
+                if ( (LA2_1==EOF||(LA2_1>=RULE_ID && LA2_1<=RULE_STRING)||(LA2_1>=14 && LA2_1<=47)||(LA2_1>=49 && LA2_1<=50)||LA2_1==56||LA2_1==59||LA2_1==62||(LA2_1>=70 && LA2_1<=93)||(LA2_1>=96 && LA2_1<=97)||(LA2_1>=99 && LA2_1<=100)) ) {
                     alt2=2;
+                }
+                else if ( (LA2_1==13) ) {
+                    alt2=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -7507,11 +7507,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                 {
                 int LA2_2 = input.LA(2);
 
-                if ( (LA2_2==13) ) {
-                    alt2=1;
-                }
-                else if ( (LA2_2==EOF||(LA2_2>=RULE_ID && LA2_2<=RULE_STRING)||(LA2_2>=14 && LA2_2<=47)||(LA2_2>=49 && LA2_2<=50)||LA2_2==56||LA2_2==59||LA2_2==62||(LA2_2>=70 && LA2_2<=93)||(LA2_2>=96 && LA2_2<=97)||(LA2_2>=99 && LA2_2<=100)) ) {
+                if ( (LA2_2==EOF||(LA2_2>=RULE_ID && LA2_2<=RULE_STRING)||(LA2_2>=14 && LA2_2<=47)||(LA2_2>=49 && LA2_2<=50)||LA2_2==56||LA2_2==59||LA2_2==62||(LA2_2>=70 && LA2_2<=93)||(LA2_2>=96 && LA2_2<=97)||(LA2_2>=99 && LA2_2<=100)) ) {
                     alt2=2;
+                }
+                else if ( (LA2_2==13) ) {
+                    alt2=1;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -7526,11 +7526,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                 {
                 int LA2_3 = input.LA(2);
 
-                if ( (LA2_3==EOF||(LA2_3>=RULE_ID && LA2_3<=RULE_STRING)||(LA2_3>=14 && LA2_3<=47)||(LA2_3>=49 && LA2_3<=50)||LA2_3==56||LA2_3==59||LA2_3==62||(LA2_3>=70 && LA2_3<=93)||(LA2_3>=96 && LA2_3<=97)||(LA2_3>=99 && LA2_3<=100)) ) {
-                    alt2=2;
-                }
-                else if ( (LA2_3==13) ) {
+                if ( (LA2_3==13) ) {
                     alt2=1;
+                }
+                else if ( (LA2_3==EOF||(LA2_3>=RULE_ID && LA2_3<=RULE_STRING)||(LA2_3>=14 && LA2_3<=47)||(LA2_3>=49 && LA2_3<=50)||LA2_3==56||LA2_3==59||LA2_3==62||(LA2_3>=70 && LA2_3<=93)||(LA2_3>=96 && LA2_3<=97)||(LA2_3>=99 && LA2_3<=100)) ) {
+                    alt2=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
@@ -10166,11 +10166,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                 if ( (LA21_2==RULE_ID) ) {
                     int LA21_3 = input.LA(3);
 
-                    if ( ((LA21_3>=13 && LA21_3<=38)||LA21_3==40||(LA21_3>=70 && LA21_3<=72)||LA21_3==74||LA21_3==77||(LA21_3>=96 && LA21_3<=97)) ) {
-                        alt21=1;
-                    }
-                    else if ( (LA21_3==56) ) {
+                    if ( (LA21_3==56) ) {
                         alt21=2;
+                    }
+                    else if ( ((LA21_3>=13 && LA21_3<=38)||LA21_3==40||(LA21_3>=70 && LA21_3<=72)||LA21_3==74||LA21_3==77||(LA21_3>=96 && LA21_3<=97)) ) {
+                        alt21=1;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return ;}
@@ -55535,28 +55535,40 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__ViewSpecification__TypeAssignment_7"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19528:1: rule__ViewSpecification__TypeAssignment_7 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19528:1: rule__ViewSpecification__TypeAssignment_7 : ( ( ruleQualifiedName ) ) ;
     public final void rule__ViewSpecification__TypeAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19532:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19533:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19532:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19533:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19533:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19534:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19533:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19534:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeReferenceParserRuleCall_7_0()); 
+               before(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeCrossReference_7_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__ViewSpecification__TypeAssignment_739660);
-            ruleJvmTypeReference();
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19535:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19536:1: ruleQualifiedName
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeQualifiedNameParserRuleCall_7_0_1()); 
+            }
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ViewSpecification__TypeAssignment_739664);
+            ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeReferenceParserRuleCall_7_0()); 
+               after(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeQualifiedNameParserRuleCall_7_0_1()); 
+            }
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getViewSpecificationAccess().getTypeJvmTypeCrossReference_7_0()); 
             }
 
             }
@@ -55580,22 +55592,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__ViewSpecification__CategoryAssignment_8_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19543:1: rule__ViewSpecification__CategoryAssignment_8_1 : ( ruleQualifiedName ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19547:1: rule__ViewSpecification__CategoryAssignment_8_1 : ( ruleQualifiedName ) ;
     public final void rule__ViewSpecification__CategoryAssignment_8_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19547:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19548:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19551:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19552:1: ( ruleQualifiedName )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19548:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19549:1: ruleQualifiedName
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19552:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19553:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getViewSpecificationAccess().getCategoryQualifiedNameParserRuleCall_8_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ViewSpecification__CategoryAssignment_8_139691);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__ViewSpecification__CategoryAssignment_8_139699);
             ruleQualifiedName();
 
             state._fsp--;
@@ -55625,28 +55637,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAssignment__FeatureAssignment_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19558:1: rule__XAssignment__FeatureAssignment_0_1 : ( ( ruleFeatureCallID ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19562:1: rule__XAssignment__FeatureAssignment_0_1 : ( ( ruleFeatureCallID ) ) ;
     public final void rule__XAssignment__FeatureAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19562:1: ( ( ( ruleFeatureCallID ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19563:1: ( ( ruleFeatureCallID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19566:1: ( ( ( ruleFeatureCallID ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19567:1: ( ( ruleFeatureCallID ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19563:1: ( ( ruleFeatureCallID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19564:1: ( ruleFeatureCallID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19567:1: ( ( ruleFeatureCallID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19568:1: ( ruleFeatureCallID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAssignmentAccess().getFeatureJvmIdentifiableElementCrossReference_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19565:1: ( ruleFeatureCallID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19566:1: ruleFeatureCallID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19569:1: ( ruleFeatureCallID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19570:1: ruleFeatureCallID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAssignmentAccess().getFeatureJvmIdentifiableElementFeatureCallIDParserRuleCall_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleFeatureCallID_in_rule__XAssignment__FeatureAssignment_0_139726);
+            pushFollow(FOLLOW_ruleFeatureCallID_in_rule__XAssignment__FeatureAssignment_0_139734);
             ruleFeatureCallID();
 
             state._fsp--;
@@ -55682,22 +55694,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAssignment__ValueAssignment_0_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19577:1: rule__XAssignment__ValueAssignment_0_3 : ( ruleXAssignment ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19581:1: rule__XAssignment__ValueAssignment_0_3 : ( ruleXAssignment ) ;
     public final void rule__XAssignment__ValueAssignment_0_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19581:1: ( ( ruleXAssignment ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19582:1: ( ruleXAssignment )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19585:1: ( ( ruleXAssignment ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19586:1: ( ruleXAssignment )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19582:1: ( ruleXAssignment )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19583:1: ruleXAssignment
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19586:1: ( ruleXAssignment )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19587:1: ruleXAssignment
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAssignmentAccess().getValueXAssignmentParserRuleCall_0_3_0()); 
             }
-            pushFollow(FOLLOW_ruleXAssignment_in_rule__XAssignment__ValueAssignment_0_339761);
+            pushFollow(FOLLOW_ruleXAssignment_in_rule__XAssignment__ValueAssignment_0_339769);
             ruleXAssignment();
 
             state._fsp--;
@@ -55727,28 +55739,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAssignment__FeatureAssignment_1_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19592:1: rule__XAssignment__FeatureAssignment_1_1_0_0_1 : ( ( ruleOpMultiAssign ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19596:1: rule__XAssignment__FeatureAssignment_1_1_0_0_1 : ( ( ruleOpMultiAssign ) ) ;
     public final void rule__XAssignment__FeatureAssignment_1_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19596:1: ( ( ( ruleOpMultiAssign ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19597:1: ( ( ruleOpMultiAssign ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19600:1: ( ( ( ruleOpMultiAssign ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19601:1: ( ( ruleOpMultiAssign ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19597:1: ( ( ruleOpMultiAssign ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19598:1: ( ruleOpMultiAssign )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19601:1: ( ( ruleOpMultiAssign ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19602:1: ( ruleOpMultiAssign )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAssignmentAccess().getFeatureJvmIdentifiableElementCrossReference_1_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19599:1: ( ruleOpMultiAssign )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19600:1: ruleOpMultiAssign
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19603:1: ( ruleOpMultiAssign )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19604:1: ruleOpMultiAssign
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAssignmentAccess().getFeatureJvmIdentifiableElementOpMultiAssignParserRuleCall_1_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpMultiAssign_in_rule__XAssignment__FeatureAssignment_1_1_0_0_139796);
+            pushFollow(FOLLOW_ruleOpMultiAssign_in_rule__XAssignment__FeatureAssignment_1_1_0_0_139804);
             ruleOpMultiAssign();
 
             state._fsp--;
@@ -55784,22 +55796,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAssignment__RightOperandAssignment_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19611:1: rule__XAssignment__RightOperandAssignment_1_1_1 : ( ruleXAssignment ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19615:1: rule__XAssignment__RightOperandAssignment_1_1_1 : ( ruleXAssignment ) ;
     public final void rule__XAssignment__RightOperandAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19615:1: ( ( ruleXAssignment ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19616:1: ( ruleXAssignment )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19619:1: ( ( ruleXAssignment ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19620:1: ( ruleXAssignment )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19616:1: ( ruleXAssignment )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19617:1: ruleXAssignment
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19620:1: ( ruleXAssignment )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19621:1: ruleXAssignment
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAssignmentAccess().getRightOperandXAssignmentParserRuleCall_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXAssignment_in_rule__XAssignment__RightOperandAssignment_1_1_139831);
+            pushFollow(FOLLOW_ruleXAssignment_in_rule__XAssignment__RightOperandAssignment_1_1_139839);
             ruleXAssignment();
 
             state._fsp--;
@@ -55829,28 +55841,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XOrExpression__FeatureAssignment_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19626:1: rule__XOrExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpOr ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19630:1: rule__XOrExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpOr ) ) ;
     public final void rule__XOrExpression__FeatureAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19630:1: ( ( ( ruleOpOr ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19631:1: ( ( ruleOpOr ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19634:1: ( ( ( ruleOpOr ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19635:1: ( ( ruleOpOr ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19631:1: ( ( ruleOpOr ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19632:1: ( ruleOpOr )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19635:1: ( ( ruleOpOr ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19636:1: ( ruleOpOr )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXOrExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19633:1: ( ruleOpOr )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19634:1: ruleOpOr
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19637:1: ( ruleOpOr )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19638:1: ruleOpOr
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXOrExpressionAccess().getFeatureJvmIdentifiableElementOpOrParserRuleCall_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpOr_in_rule__XOrExpression__FeatureAssignment_1_0_0_139866);
+            pushFollow(FOLLOW_ruleOpOr_in_rule__XOrExpression__FeatureAssignment_1_0_0_139874);
             ruleOpOr();
 
             state._fsp--;
@@ -55886,22 +55898,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XOrExpression__RightOperandAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19645:1: rule__XOrExpression__RightOperandAssignment_1_1 : ( ruleXAndExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19649:1: rule__XOrExpression__RightOperandAssignment_1_1 : ( ruleXAndExpression ) ;
     public final void rule__XOrExpression__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19649:1: ( ( ruleXAndExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19650:1: ( ruleXAndExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19653:1: ( ( ruleXAndExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19654:1: ( ruleXAndExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19650:1: ( ruleXAndExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19651:1: ruleXAndExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19654:1: ( ruleXAndExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19655:1: ruleXAndExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXOrExpressionAccess().getRightOperandXAndExpressionParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXAndExpression_in_rule__XOrExpression__RightOperandAssignment_1_139901);
+            pushFollow(FOLLOW_ruleXAndExpression_in_rule__XOrExpression__RightOperandAssignment_1_139909);
             ruleXAndExpression();
 
             state._fsp--;
@@ -55931,28 +55943,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAndExpression__FeatureAssignment_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19660:1: rule__XAndExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpAnd ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19664:1: rule__XAndExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpAnd ) ) ;
     public final void rule__XAndExpression__FeatureAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19664:1: ( ( ( ruleOpAnd ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19665:1: ( ( ruleOpAnd ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19668:1: ( ( ( ruleOpAnd ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19669:1: ( ( ruleOpAnd ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19665:1: ( ( ruleOpAnd ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19666:1: ( ruleOpAnd )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19669:1: ( ( ruleOpAnd ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19670:1: ( ruleOpAnd )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAndExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19667:1: ( ruleOpAnd )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19668:1: ruleOpAnd
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19671:1: ( ruleOpAnd )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19672:1: ruleOpAnd
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAndExpressionAccess().getFeatureJvmIdentifiableElementOpAndParserRuleCall_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpAnd_in_rule__XAndExpression__FeatureAssignment_1_0_0_139936);
+            pushFollow(FOLLOW_ruleOpAnd_in_rule__XAndExpression__FeatureAssignment_1_0_0_139944);
             ruleOpAnd();
 
             state._fsp--;
@@ -55988,22 +56000,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAndExpression__RightOperandAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19679:1: rule__XAndExpression__RightOperandAssignment_1_1 : ( ruleXEqualityExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19683:1: rule__XAndExpression__RightOperandAssignment_1_1 : ( ruleXEqualityExpression ) ;
     public final void rule__XAndExpression__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19683:1: ( ( ruleXEqualityExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19684:1: ( ruleXEqualityExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19687:1: ( ( ruleXEqualityExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19688:1: ( ruleXEqualityExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19684:1: ( ruleXEqualityExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19685:1: ruleXEqualityExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19688:1: ( ruleXEqualityExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19689:1: ruleXEqualityExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAndExpressionAccess().getRightOperandXEqualityExpressionParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXEqualityExpression_in_rule__XAndExpression__RightOperandAssignment_1_139971);
+            pushFollow(FOLLOW_ruleXEqualityExpression_in_rule__XAndExpression__RightOperandAssignment_1_139979);
             ruleXEqualityExpression();
 
             state._fsp--;
@@ -56033,28 +56045,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XEqualityExpression__FeatureAssignment_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19694:1: rule__XEqualityExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpEquality ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19698:1: rule__XEqualityExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpEquality ) ) ;
     public final void rule__XEqualityExpression__FeatureAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19698:1: ( ( ( ruleOpEquality ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19699:1: ( ( ruleOpEquality ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19702:1: ( ( ( ruleOpEquality ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19703:1: ( ( ruleOpEquality ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19699:1: ( ( ruleOpEquality ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19700:1: ( ruleOpEquality )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19703:1: ( ( ruleOpEquality ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19704:1: ( ruleOpEquality )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXEqualityExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19701:1: ( ruleOpEquality )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19702:1: ruleOpEquality
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19705:1: ( ruleOpEquality )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19706:1: ruleOpEquality
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXEqualityExpressionAccess().getFeatureJvmIdentifiableElementOpEqualityParserRuleCall_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpEquality_in_rule__XEqualityExpression__FeatureAssignment_1_0_0_140006);
+            pushFollow(FOLLOW_ruleOpEquality_in_rule__XEqualityExpression__FeatureAssignment_1_0_0_140014);
             ruleOpEquality();
 
             state._fsp--;
@@ -56090,22 +56102,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XEqualityExpression__RightOperandAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19713:1: rule__XEqualityExpression__RightOperandAssignment_1_1 : ( ruleXRelationalExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19717:1: rule__XEqualityExpression__RightOperandAssignment_1_1 : ( ruleXRelationalExpression ) ;
     public final void rule__XEqualityExpression__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19717:1: ( ( ruleXRelationalExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19718:1: ( ruleXRelationalExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19721:1: ( ( ruleXRelationalExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19722:1: ( ruleXRelationalExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19718:1: ( ruleXRelationalExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19719:1: ruleXRelationalExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19722:1: ( ruleXRelationalExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19723:1: ruleXRelationalExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXEqualityExpressionAccess().getRightOperandXRelationalExpressionParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXRelationalExpression_in_rule__XEqualityExpression__RightOperandAssignment_1_140041);
+            pushFollow(FOLLOW_ruleXRelationalExpression_in_rule__XEqualityExpression__RightOperandAssignment_1_140049);
             ruleXRelationalExpression();
 
             state._fsp--;
@@ -56135,22 +56147,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XRelationalExpression__TypeAssignment_1_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19728:1: rule__XRelationalExpression__TypeAssignment_1_0_1 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19732:1: rule__XRelationalExpression__TypeAssignment_1_0_1 : ( ruleJvmTypeReference ) ;
     public final void rule__XRelationalExpression__TypeAssignment_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19732:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19733:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19736:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19737:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19733:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19734:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19737:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19738:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXRelationalExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XRelationalExpression__TypeAssignment_1_0_140072);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XRelationalExpression__TypeAssignment_1_0_140080);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -56180,28 +56192,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XRelationalExpression__FeatureAssignment_1_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19743:1: rule__XRelationalExpression__FeatureAssignment_1_1_0_0_1 : ( ( ruleOpCompare ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19747:1: rule__XRelationalExpression__FeatureAssignment_1_1_0_0_1 : ( ( ruleOpCompare ) ) ;
     public final void rule__XRelationalExpression__FeatureAssignment_1_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19747:1: ( ( ( ruleOpCompare ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19748:1: ( ( ruleOpCompare ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19751:1: ( ( ( ruleOpCompare ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19752:1: ( ( ruleOpCompare ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19748:1: ( ( ruleOpCompare ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19749:1: ( ruleOpCompare )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19752:1: ( ( ruleOpCompare ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19753:1: ( ruleOpCompare )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXRelationalExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19750:1: ( ruleOpCompare )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19751:1: ruleOpCompare
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19754:1: ( ruleOpCompare )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19755:1: ruleOpCompare
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXRelationalExpressionAccess().getFeatureJvmIdentifiableElementOpCompareParserRuleCall_1_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpCompare_in_rule__XRelationalExpression__FeatureAssignment_1_1_0_0_140107);
+            pushFollow(FOLLOW_ruleOpCompare_in_rule__XRelationalExpression__FeatureAssignment_1_1_0_0_140115);
             ruleOpCompare();
 
             state._fsp--;
@@ -56237,22 +56249,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XRelationalExpression__RightOperandAssignment_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19762:1: rule__XRelationalExpression__RightOperandAssignment_1_1_1 : ( ruleXOtherOperatorExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19766:1: rule__XRelationalExpression__RightOperandAssignment_1_1_1 : ( ruleXOtherOperatorExpression ) ;
     public final void rule__XRelationalExpression__RightOperandAssignment_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19766:1: ( ( ruleXOtherOperatorExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19767:1: ( ruleXOtherOperatorExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19770:1: ( ( ruleXOtherOperatorExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19771:1: ( ruleXOtherOperatorExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19767:1: ( ruleXOtherOperatorExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19768:1: ruleXOtherOperatorExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19771:1: ( ruleXOtherOperatorExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19772:1: ruleXOtherOperatorExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXRelationalExpressionAccess().getRightOperandXOtherOperatorExpressionParserRuleCall_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_rule__XRelationalExpression__RightOperandAssignment_1_1_140142);
+            pushFollow(FOLLOW_ruleXOtherOperatorExpression_in_rule__XRelationalExpression__RightOperandAssignment_1_1_140150);
             ruleXOtherOperatorExpression();
 
             state._fsp--;
@@ -56282,28 +56294,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19777:1: rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpOther ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19781:1: rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpOther ) ) ;
     public final void rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19781:1: ( ( ( ruleOpOther ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19782:1: ( ( ruleOpOther ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19785:1: ( ( ( ruleOpOther ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19786:1: ( ( ruleOpOther ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19782:1: ( ( ruleOpOther ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19783:1: ( ruleOpOther )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19786:1: ( ( ruleOpOther ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19787:1: ( ruleOpOther )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXOtherOperatorExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19784:1: ( ruleOpOther )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19785:1: ruleOpOther
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19788:1: ( ruleOpOther )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19789:1: ruleOpOther
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXOtherOperatorExpressionAccess().getFeatureJvmIdentifiableElementOpOtherParserRuleCall_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpOther_in_rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_140177);
+            pushFollow(FOLLOW_ruleOpOther_in_rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_140185);
             ruleOpOther();
 
             state._fsp--;
@@ -56339,22 +56351,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XOtherOperatorExpression__RightOperandAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19796:1: rule__XOtherOperatorExpression__RightOperandAssignment_1_1 : ( ruleXAdditiveExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19800:1: rule__XOtherOperatorExpression__RightOperandAssignment_1_1 : ( ruleXAdditiveExpression ) ;
     public final void rule__XOtherOperatorExpression__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19800:1: ( ( ruleXAdditiveExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19801:1: ( ruleXAdditiveExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19804:1: ( ( ruleXAdditiveExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19805:1: ( ruleXAdditiveExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19801:1: ( ruleXAdditiveExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19802:1: ruleXAdditiveExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19805:1: ( ruleXAdditiveExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19806:1: ruleXAdditiveExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXOtherOperatorExpressionAccess().getRightOperandXAdditiveExpressionParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXAdditiveExpression_in_rule__XOtherOperatorExpression__RightOperandAssignment_1_140212);
+            pushFollow(FOLLOW_ruleXAdditiveExpression_in_rule__XOtherOperatorExpression__RightOperandAssignment_1_140220);
             ruleXAdditiveExpression();
 
             state._fsp--;
@@ -56384,28 +56396,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAdditiveExpression__FeatureAssignment_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19811:1: rule__XAdditiveExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpAdd ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19815:1: rule__XAdditiveExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpAdd ) ) ;
     public final void rule__XAdditiveExpression__FeatureAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19815:1: ( ( ( ruleOpAdd ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19816:1: ( ( ruleOpAdd ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19819:1: ( ( ( ruleOpAdd ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19820:1: ( ( ruleOpAdd ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19816:1: ( ( ruleOpAdd ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19817:1: ( ruleOpAdd )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19820:1: ( ( ruleOpAdd ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19821:1: ( ruleOpAdd )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAdditiveExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19818:1: ( ruleOpAdd )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19819:1: ruleOpAdd
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19822:1: ( ruleOpAdd )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19823:1: ruleOpAdd
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAdditiveExpressionAccess().getFeatureJvmIdentifiableElementOpAddParserRuleCall_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpAdd_in_rule__XAdditiveExpression__FeatureAssignment_1_0_0_140247);
+            pushFollow(FOLLOW_ruleOpAdd_in_rule__XAdditiveExpression__FeatureAssignment_1_0_0_140255);
             ruleOpAdd();
 
             state._fsp--;
@@ -56441,22 +56453,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XAdditiveExpression__RightOperandAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19830:1: rule__XAdditiveExpression__RightOperandAssignment_1_1 : ( ruleXMultiplicativeExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19834:1: rule__XAdditiveExpression__RightOperandAssignment_1_1 : ( ruleXMultiplicativeExpression ) ;
     public final void rule__XAdditiveExpression__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19834:1: ( ( ruleXMultiplicativeExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19835:1: ( ruleXMultiplicativeExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19838:1: ( ( ruleXMultiplicativeExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19839:1: ( ruleXMultiplicativeExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19835:1: ( ruleXMultiplicativeExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19836:1: ruleXMultiplicativeExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19839:1: ( ruleXMultiplicativeExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19840:1: ruleXMultiplicativeExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXAdditiveExpressionAccess().getRightOperandXMultiplicativeExpressionParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_rule__XAdditiveExpression__RightOperandAssignment_1_140282);
+            pushFollow(FOLLOW_ruleXMultiplicativeExpression_in_rule__XAdditiveExpression__RightOperandAssignment_1_140290);
             ruleXMultiplicativeExpression();
 
             state._fsp--;
@@ -56486,28 +56498,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19845:1: rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpMulti ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19849:1: rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_1 : ( ( ruleOpMulti ) ) ;
     public final void rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19849:1: ( ( ( ruleOpMulti ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19850:1: ( ( ruleOpMulti ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19853:1: ( ( ( ruleOpMulti ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19854:1: ( ( ruleOpMulti ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19850:1: ( ( ruleOpMulti ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19851:1: ( ruleOpMulti )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19854:1: ( ( ruleOpMulti ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19855:1: ( ruleOpMulti )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMultiplicativeExpressionAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19852:1: ( ruleOpMulti )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19853:1: ruleOpMulti
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19856:1: ( ruleOpMulti )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19857:1: ruleOpMulti
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMultiplicativeExpressionAccess().getFeatureJvmIdentifiableElementOpMultiParserRuleCall_1_0_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpMulti_in_rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_140317);
+            pushFollow(FOLLOW_ruleOpMulti_in_rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_140325);
             ruleOpMulti();
 
             state._fsp--;
@@ -56543,22 +56555,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMultiplicativeExpression__RightOperandAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19864:1: rule__XMultiplicativeExpression__RightOperandAssignment_1_1 : ( ruleXUnaryOperation ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19868:1: rule__XMultiplicativeExpression__RightOperandAssignment_1_1 : ( ruleXUnaryOperation ) ;
     public final void rule__XMultiplicativeExpression__RightOperandAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19868:1: ( ( ruleXUnaryOperation ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19869:1: ( ruleXUnaryOperation )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19872:1: ( ( ruleXUnaryOperation ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19873:1: ( ruleXUnaryOperation )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19869:1: ( ruleXUnaryOperation )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19870:1: ruleXUnaryOperation
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19873:1: ( ruleXUnaryOperation )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19874:1: ruleXUnaryOperation
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMultiplicativeExpressionAccess().getRightOperandXUnaryOperationParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXUnaryOperation_in_rule__XMultiplicativeExpression__RightOperandAssignment_1_140352);
+            pushFollow(FOLLOW_ruleXUnaryOperation_in_rule__XMultiplicativeExpression__RightOperandAssignment_1_140360);
             ruleXUnaryOperation();
 
             state._fsp--;
@@ -56588,28 +56600,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XUnaryOperation__FeatureAssignment_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19879:1: rule__XUnaryOperation__FeatureAssignment_0_1 : ( ( ruleOpUnary ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19883:1: rule__XUnaryOperation__FeatureAssignment_0_1 : ( ( ruleOpUnary ) ) ;
     public final void rule__XUnaryOperation__FeatureAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19883:1: ( ( ( ruleOpUnary ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19884:1: ( ( ruleOpUnary ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19887:1: ( ( ( ruleOpUnary ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19888:1: ( ( ruleOpUnary ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19884:1: ( ( ruleOpUnary ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19885:1: ( ruleOpUnary )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19888:1: ( ( ruleOpUnary ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19889:1: ( ruleOpUnary )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXUnaryOperationAccess().getFeatureJvmIdentifiableElementCrossReference_0_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19886:1: ( ruleOpUnary )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19887:1: ruleOpUnary
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19890:1: ( ruleOpUnary )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19891:1: ruleOpUnary
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXUnaryOperationAccess().getFeatureJvmIdentifiableElementOpUnaryParserRuleCall_0_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleOpUnary_in_rule__XUnaryOperation__FeatureAssignment_0_140387);
+            pushFollow(FOLLOW_ruleOpUnary_in_rule__XUnaryOperation__FeatureAssignment_0_140395);
             ruleOpUnary();
 
             state._fsp--;
@@ -56645,22 +56657,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XUnaryOperation__OperandAssignment_0_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19898:1: rule__XUnaryOperation__OperandAssignment_0_2 : ( ruleXUnaryOperation ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19902:1: rule__XUnaryOperation__OperandAssignment_0_2 : ( ruleXUnaryOperation ) ;
     public final void rule__XUnaryOperation__OperandAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19902:1: ( ( ruleXUnaryOperation ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19903:1: ( ruleXUnaryOperation )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19906:1: ( ( ruleXUnaryOperation ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19907:1: ( ruleXUnaryOperation )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19903:1: ( ruleXUnaryOperation )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19904:1: ruleXUnaryOperation
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19907:1: ( ruleXUnaryOperation )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19908:1: ruleXUnaryOperation
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXUnaryOperationAccess().getOperandXUnaryOperationParserRuleCall_0_2_0()); 
             }
-            pushFollow(FOLLOW_ruleXUnaryOperation_in_rule__XUnaryOperation__OperandAssignment_0_240422);
+            pushFollow(FOLLOW_ruleXUnaryOperation_in_rule__XUnaryOperation__OperandAssignment_0_240430);
             ruleXUnaryOperation();
 
             state._fsp--;
@@ -56690,22 +56702,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XCastedExpression__TypeAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19913:1: rule__XCastedExpression__TypeAssignment_1_1 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19917:1: rule__XCastedExpression__TypeAssignment_1_1 : ( ruleJvmTypeReference ) ;
     public final void rule__XCastedExpression__TypeAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19917:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19921:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19922:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19922:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19923:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCastedExpressionAccess().getTypeJvmTypeReferenceParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XCastedExpression__TypeAssignment_1_140453);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XCastedExpression__TypeAssignment_1_140461);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -56735,28 +56747,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19928:1: rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_1 : ( ( '::' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19932:1: rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_1 : ( ( '::' ) ) ;
     public final void rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19932:1: ( ( ( '::' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19933:1: ( ( '::' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:1: ( ( ( '::' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19937:1: ( ( '::' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19933:1: ( ( '::' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19934:1: ( '::' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_0_0_0_1_1_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:1: ( '::' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:1: '::'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19937:1: ( ( '::' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19938:1: ( '::' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_0_0_0_1_1_0()); 
             }
-            match(input,96,FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_140489); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19939:1: ( '::' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19940:1: '::'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_0_0_0_1_1_0()); 
+            }
+            match(input,96,FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_140497); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_0_0_0_1_1_0()); 
             }
@@ -56788,28 +56800,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19951:1: rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_2 : ( ( ruleFeatureCallID ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19955:1: rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_2 : ( ( ruleFeatureCallID ) ) ;
     public final void rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19955:1: ( ( ( ruleFeatureCallID ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19956:1: ( ( ruleFeatureCallID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19959:1: ( ( ( ruleFeatureCallID ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19960:1: ( ( ruleFeatureCallID ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19956:1: ( ( ruleFeatureCallID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19957:1: ( ruleFeatureCallID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19960:1: ( ( ruleFeatureCallID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19961:1: ( ruleFeatureCallID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getFeatureJvmIdentifiableElementCrossReference_1_0_0_0_2_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19958:1: ( ruleFeatureCallID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19959:1: ruleFeatureCallID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19962:1: ( ruleFeatureCallID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:1: ruleFeatureCallID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getFeatureJvmIdentifiableElementFeatureCallIDParserRuleCall_1_0_0_0_2_0_1()); 
             }
-            pushFollow(FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_240532);
+            pushFollow(FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_240540);
             ruleFeatureCallID();
 
             state._fsp--;
@@ -56845,22 +56857,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__ValueAssignment_1_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19970:1: rule__XMemberFeatureCall__ValueAssignment_1_0_1 : ( ruleXAssignment ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19974:1: rule__XMemberFeatureCall__ValueAssignment_1_0_1 : ( ruleXAssignment ) ;
     public final void rule__XMemberFeatureCall__ValueAssignment_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19974:1: ( ( ruleXAssignment ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19975:1: ( ruleXAssignment )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19978:1: ( ( ruleXAssignment ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19979:1: ( ruleXAssignment )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19975:1: ( ruleXAssignment )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19976:1: ruleXAssignment
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19979:1: ( ruleXAssignment )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19980:1: ruleXAssignment
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getValueXAssignmentParserRuleCall_1_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXAssignment_in_rule__XMemberFeatureCall__ValueAssignment_1_0_140567);
+            pushFollow(FOLLOW_ruleXAssignment_in_rule__XMemberFeatureCall__ValueAssignment_1_0_140575);
             ruleXAssignment();
 
             state._fsp--;
@@ -56890,28 +56902,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19985:1: rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_1 : ( ( '?.' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19989:1: rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_1 : ( ( '?.' ) ) ;
     public final void rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19989:1: ( ( ( '?.' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19990:1: ( ( '?.' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19993:1: ( ( ( '?.' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19994:1: ( ( '?.' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19990:1: ( ( '?.' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19991:1: ( '?.' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXMemberFeatureCallAccess().getNullSafeQuestionMarkFullStopKeyword_1_1_0_0_1_1_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19992:1: ( '?.' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19993:1: '?.'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19994:1: ( ( '?.' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19995:1: ( '?.' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getNullSafeQuestionMarkFullStopKeyword_1_1_0_0_1_1_0()); 
             }
-            match(input,97,FOLLOW_97_in_rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_140603); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19996:1: ( '?.' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19997:1: '?.'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXMemberFeatureCallAccess().getNullSafeQuestionMarkFullStopKeyword_1_1_0_0_1_1_0()); 
+            }
+            match(input,97,FOLLOW_97_in_rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_140611); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getNullSafeQuestionMarkFullStopKeyword_1_1_0_0_1_1_0()); 
             }
@@ -56943,28 +56955,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20008:1: rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_2 : ( ( '::' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20012:1: rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_2 : ( ( '::' ) ) ;
     public final void rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20012:1: ( ( ( '::' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20013:1: ( ( '::' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20016:1: ( ( ( '::' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20017:1: ( ( '::' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20013:1: ( ( '::' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20014:1: ( '::' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_1_0_0_1_2_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20015:1: ( '::' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20016:1: '::'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20017:1: ( ( '::' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20018:1: ( '::' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_1_0_0_1_2_0()); 
             }
-            match(input,96,FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_240647); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20019:1: ( '::' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20020:1: '::'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_1_0_0_1_2_0()); 
+            }
+            match(input,96,FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_240655); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getExplicitStaticColonColonKeyword_1_1_0_0_1_2_0()); 
             }
@@ -56996,22 +57008,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20031:1: rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20035:1: rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20035:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20036:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20039:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20040:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20036:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20037:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20040:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20041:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_140686);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_140694);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -57041,22 +57053,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20046:1: rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20050:1: rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20050:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20051:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20054:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20055:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20051:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20052:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20055:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20056:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_1_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_140717);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_140725);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -57086,28 +57098,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__FeatureAssignment_1_1_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20061:1: rule__XMemberFeatureCall__FeatureAssignment_1_1_2 : ( ( ruleFeatureCallID ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20065:1: rule__XMemberFeatureCall__FeatureAssignment_1_1_2 : ( ( ruleFeatureCallID ) ) ;
     public final void rule__XMemberFeatureCall__FeatureAssignment_1_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20065:1: ( ( ( ruleFeatureCallID ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20066:1: ( ( ruleFeatureCallID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20069:1: ( ( ( ruleFeatureCallID ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20070:1: ( ( ruleFeatureCallID ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20066:1: ( ( ruleFeatureCallID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20067:1: ( ruleFeatureCallID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20070:1: ( ( ruleFeatureCallID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20071:1: ( ruleFeatureCallID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getFeatureJvmIdentifiableElementCrossReference_1_1_2_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20068:1: ( ruleFeatureCallID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20069:1: ruleFeatureCallID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20072:1: ( ruleFeatureCallID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20073:1: ruleFeatureCallID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getFeatureJvmIdentifiableElementFeatureCallIDParserRuleCall_1_1_2_0_1()); 
             }
-            pushFollow(FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_1_240752);
+            pushFollow(FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_1_240760);
             ruleFeatureCallID();
 
             state._fsp--;
@@ -57143,28 +57155,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20080:1: rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_0 : ( ( '(' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20084:1: rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_0 : ( ( '(' ) ) ;
     public final void rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20084:1: ( ( ( '(' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20085:1: ( ( '(' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20088:1: ( ( ( '(' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20089:1: ( ( '(' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20085:1: ( ( '(' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20086:1: ( '(' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_1_1_3_0_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20087:1: ( '(' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20088:1: '('
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20089:1: ( ( '(' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20090:1: ( '(' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_1_1_3_0_0()); 
             }
-            match(input,77,FOLLOW_77_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_040792); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20091:1: ( '(' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20092:1: '('
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_1_1_3_0_0()); 
+            }
+            match(input,77,FOLLOW_77_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_040800); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXMemberFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_1_1_3_0_0()); 
             }
@@ -57196,22 +57208,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20103:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_0 : ( ruleXShortClosure ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20107:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_0 : ( ruleXShortClosure ) ;
     public final void rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20107:1: ( ( ruleXShortClosure ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20108:1: ( ruleXShortClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20111:1: ( ( ruleXShortClosure ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20112:1: ( ruleXShortClosure )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20108:1: ( ruleXShortClosure )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20109:1: ruleXShortClosure
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20112:1: ( ruleXShortClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20113:1: ruleXShortClosure
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXShortClosureParserRuleCall_1_1_3_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXShortClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_040831);
+            pushFollow(FOLLOW_ruleXShortClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_040839);
             ruleXShortClosure();
 
             state._fsp--;
@@ -57241,22 +57253,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20118:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_0 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20122:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_0 : ( ruleXExpression ) ;
     public final void rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20122:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20123:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20126:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20127:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20123:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20124:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20127:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20128:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXExpressionParserRuleCall_1_1_3_1_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_040862);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_040870);
             ruleXExpression();
 
             state._fsp--;
@@ -57286,22 +57298,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20133:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20137:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_1 : ( ruleXExpression ) ;
     public final void rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20137:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20138:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20141:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20142:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20138:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20139:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20142:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20143:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXExpressionParserRuleCall_1_1_3_1_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_140893);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_140901);
             ruleXExpression();
 
             state._fsp--;
@@ -57331,22 +57343,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20148:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_4 : ( ruleXClosure ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20152:1: rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_4 : ( ruleXClosure ) ;
     public final void rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20152:1: ( ( ruleXClosure ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20153:1: ( ruleXClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20156:1: ( ( ruleXClosure ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20157:1: ( ruleXClosure )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20153:1: ( ruleXClosure )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20154:1: ruleXClosure
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20157:1: ( ruleXClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20158:1: ruleXClosure
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXMemberFeatureCallAccess().getMemberCallArgumentsXClosureParserRuleCall_1_1_4_0()); 
             }
-            pushFollow(FOLLOW_ruleXClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_440924);
+            pushFollow(FOLLOW_ruleXClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_440932);
             ruleXClosure();
 
             state._fsp--;
@@ -57376,22 +57388,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSetLiteral__ElementsAssignment_3_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20163:1: rule__XSetLiteral__ElementsAssignment_3_0 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20167:1: rule__XSetLiteral__ElementsAssignment_3_0 : ( ruleXExpression ) ;
     public final void rule__XSetLiteral__ElementsAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20167:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20168:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20171:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20172:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20168:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20169:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20172:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20173:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSetLiteralAccess().getElementsXExpressionParserRuleCall_3_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_040955);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_040963);
             ruleXExpression();
 
             state._fsp--;
@@ -57421,22 +57433,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSetLiteral__ElementsAssignment_3_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20178:1: rule__XSetLiteral__ElementsAssignment_3_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20182:1: rule__XSetLiteral__ElementsAssignment_3_1_1 : ( ruleXExpression ) ;
     public final void rule__XSetLiteral__ElementsAssignment_3_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20182:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20183:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20186:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20187:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20183:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20184:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20187:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20188:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSetLiteralAccess().getElementsXExpressionParserRuleCall_3_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_1_140986);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_1_140994);
             ruleXExpression();
 
             state._fsp--;
@@ -57466,22 +57478,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XListLiteral__ElementsAssignment_3_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20193:1: rule__XListLiteral__ElementsAssignment_3_0 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20197:1: rule__XListLiteral__ElementsAssignment_3_0 : ( ruleXExpression ) ;
     public final void rule__XListLiteral__ElementsAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20197:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20198:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20201:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20202:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20198:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20199:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20202:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20203:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXListLiteralAccess().getElementsXExpressionParserRuleCall_3_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_041017);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_041025);
             ruleXExpression();
 
             state._fsp--;
@@ -57511,22 +57523,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XListLiteral__ElementsAssignment_3_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20208:1: rule__XListLiteral__ElementsAssignment_3_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20212:1: rule__XListLiteral__ElementsAssignment_3_1_1 : ( ruleXExpression ) ;
     public final void rule__XListLiteral__ElementsAssignment_3_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20212:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20213:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20216:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20217:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20213:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20214:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20217:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20218:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXListLiteralAccess().getElementsXExpressionParserRuleCall_3_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_1_141048);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_1_141056);
             ruleXExpression();
 
             state._fsp--;
@@ -57556,22 +57568,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20223:1: rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_0 : ( ruleJvmFormalParameter ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20227:1: rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_0 : ( ruleJvmFormalParameter ) ;
     public final void rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20227:1: ( ( ruleJvmFormalParameter ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20228:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20231:1: ( ( ruleJvmFormalParameter ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20232:1: ( ruleJvmFormalParameter )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20228:1: ( ruleJvmFormalParameter )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20229:1: ruleJvmFormalParameter
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20232:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20233:1: ruleJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_1_0_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_041079);
+            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_041087);
             ruleJvmFormalParameter();
 
             state._fsp--;
@@ -57601,22 +57613,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20238:1: rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_1 : ( ruleJvmFormalParameter ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20242:1: rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_1 : ( ruleJvmFormalParameter ) ;
     public final void rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20242:1: ( ( ruleJvmFormalParameter ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20243:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20246:1: ( ( ruleJvmFormalParameter ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20247:1: ( ruleJvmFormalParameter )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20243:1: ( ruleJvmFormalParameter )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20244:1: ruleJvmFormalParameter
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20247:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20248:1: ruleJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_1_0_0_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_141110);
+            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_141118);
             ruleJvmFormalParameter();
 
             state._fsp--;
@@ -57646,28 +57658,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XClosure__ExplicitSyntaxAssignment_1_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20253:1: rule__XClosure__ExplicitSyntaxAssignment_1_0_1 : ( ( '|' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20257:1: rule__XClosure__ExplicitSyntaxAssignment_1_0_1 : ( ( '|' ) ) ;
     public final void rule__XClosure__ExplicitSyntaxAssignment_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20257:1: ( ( ( '|' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20258:1: ( ( '|' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20261:1: ( ( ( '|' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20262:1: ( ( '|' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20258:1: ( ( '|' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20259:1: ( '|' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXClosureAccess().getExplicitSyntaxVerticalLineKeyword_1_0_1_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20260:1: ( '|' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20261:1: '|'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20262:1: ( ( '|' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20263:1: ( '|' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXClosureAccess().getExplicitSyntaxVerticalLineKeyword_1_0_1_0()); 
             }
-            match(input,98,FOLLOW_98_in_rule__XClosure__ExplicitSyntaxAssignment_1_0_141146); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20264:1: ( '|' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20265:1: '|'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXClosureAccess().getExplicitSyntaxVerticalLineKeyword_1_0_1_0()); 
+            }
+            match(input,98,FOLLOW_98_in_rule__XClosure__ExplicitSyntaxAssignment_1_0_141154); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXClosureAccess().getExplicitSyntaxVerticalLineKeyword_1_0_1_0()); 
             }
@@ -57699,22 +57711,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XClosure__ExpressionAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20276:1: rule__XClosure__ExpressionAssignment_2 : ( ruleXExpressionInClosure ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20280:1: rule__XClosure__ExpressionAssignment_2 : ( ruleXExpressionInClosure ) ;
     public final void rule__XClosure__ExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20280:1: ( ( ruleXExpressionInClosure ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20281:1: ( ruleXExpressionInClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20284:1: ( ( ruleXExpressionInClosure ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20285:1: ( ruleXExpressionInClosure )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20281:1: ( ruleXExpressionInClosure )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20282:1: ruleXExpressionInClosure
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20285:1: ( ruleXExpressionInClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20286:1: ruleXExpressionInClosure
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXClosureAccess().getExpressionXExpressionInClosureParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpressionInClosure_in_rule__XClosure__ExpressionAssignment_241185);
+            pushFollow(FOLLOW_ruleXExpressionInClosure_in_rule__XClosure__ExpressionAssignment_241193);
             ruleXExpressionInClosure();
 
             state._fsp--;
@@ -57744,22 +57756,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XExpressionInClosure__ExpressionsAssignment_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20291:1: rule__XExpressionInClosure__ExpressionsAssignment_1_0 : ( ruleXExpressionInsideBlock ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20295:1: rule__XExpressionInClosure__ExpressionsAssignment_1_0 : ( ruleXExpressionInsideBlock ) ;
     public final void rule__XExpressionInClosure__ExpressionsAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20295:1: ( ( ruleXExpressionInsideBlock ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20296:1: ( ruleXExpressionInsideBlock )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20299:1: ( ( ruleXExpressionInsideBlock ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20300:1: ( ruleXExpressionInsideBlock )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20296:1: ( ruleXExpressionInsideBlock )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20297:1: ruleXExpressionInsideBlock
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20300:1: ( ruleXExpressionInsideBlock )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20301:1: ruleXExpressionInsideBlock
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXExpressionInClosureAccess().getExpressionsXExpressionInsideBlockParserRuleCall_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpressionInsideBlock_in_rule__XExpressionInClosure__ExpressionsAssignment_1_041216);
+            pushFollow(FOLLOW_ruleXExpressionInsideBlock_in_rule__XExpressionInClosure__ExpressionsAssignment_1_041224);
             ruleXExpressionInsideBlock();
 
             state._fsp--;
@@ -57789,22 +57801,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20306:1: rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_0 : ( ruleJvmFormalParameter ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20310:1: rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_0 : ( ruleJvmFormalParameter ) ;
     public final void rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20310:1: ( ( ruleJvmFormalParameter ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20311:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20314:1: ( ( ruleJvmFormalParameter ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20315:1: ( ruleJvmFormalParameter )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20311:1: ( ruleJvmFormalParameter )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20312:1: ruleJvmFormalParameter
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20315:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20316:1: ruleJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXShortClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_0_0_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_041247);
+            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_041255);
             ruleJvmFormalParameter();
 
             state._fsp--;
@@ -57834,22 +57846,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20321:1: rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_1 : ( ruleJvmFormalParameter ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20325:1: rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_1 : ( ruleJvmFormalParameter ) ;
     public final void rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20325:1: ( ( ruleJvmFormalParameter ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20326:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20329:1: ( ( ruleJvmFormalParameter ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20330:1: ( ruleJvmFormalParameter )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20326:1: ( ruleJvmFormalParameter )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20327:1: ruleJvmFormalParameter
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20330:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:1: ruleJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXShortClosureAccess().getDeclaredFormalParametersJvmFormalParameterParserRuleCall_0_0_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_141278);
+            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_141286);
             ruleJvmFormalParameter();
 
             state._fsp--;
@@ -57879,28 +57891,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XShortClosure__ExplicitSyntaxAssignment_0_0_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20336:1: rule__XShortClosure__ExplicitSyntaxAssignment_0_0_2 : ( ( '|' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20340:1: rule__XShortClosure__ExplicitSyntaxAssignment_0_0_2 : ( ( '|' ) ) ;
     public final void rule__XShortClosure__ExplicitSyntaxAssignment_0_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20340:1: ( ( ( '|' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20341:1: ( ( '|' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20344:1: ( ( ( '|' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20345:1: ( ( '|' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20341:1: ( ( '|' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20342:1: ( '|' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXShortClosureAccess().getExplicitSyntaxVerticalLineKeyword_0_0_2_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20343:1: ( '|' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20344:1: '|'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20345:1: ( ( '|' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20346:1: ( '|' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXShortClosureAccess().getExplicitSyntaxVerticalLineKeyword_0_0_2_0()); 
             }
-            match(input,98,FOLLOW_98_in_rule__XShortClosure__ExplicitSyntaxAssignment_0_0_241314); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20347:1: ( '|' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20348:1: '|'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXShortClosureAccess().getExplicitSyntaxVerticalLineKeyword_0_0_2_0()); 
+            }
+            match(input,98,FOLLOW_98_in_rule__XShortClosure__ExplicitSyntaxAssignment_0_0_241322); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXShortClosureAccess().getExplicitSyntaxVerticalLineKeyword_0_0_2_0()); 
             }
@@ -57932,22 +57944,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XShortClosure__ExpressionAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20359:1: rule__XShortClosure__ExpressionAssignment_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20363:1: rule__XShortClosure__ExpressionAssignment_1 : ( ruleXExpression ) ;
     public final void rule__XShortClosure__ExpressionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20363:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20364:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20367:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20368:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20364:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20365:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20368:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20369:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXShortClosureAccess().getExpressionXExpressionParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XShortClosure__ExpressionAssignment_141353);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XShortClosure__ExpressionAssignment_141361);
             ruleXExpression();
 
             state._fsp--;
@@ -57977,22 +57989,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XIfExpression__IfAssignment_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20374:1: rule__XIfExpression__IfAssignment_3 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20378:1: rule__XIfExpression__IfAssignment_3 : ( ruleXExpression ) ;
     public final void rule__XIfExpression__IfAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20378:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20379:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20382:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20383:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20379:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20380:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20383:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20384:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXIfExpressionAccess().getIfXExpressionParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XIfExpression__IfAssignment_341384);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XIfExpression__IfAssignment_341392);
             ruleXExpression();
 
             state._fsp--;
@@ -58022,22 +58034,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XIfExpression__ThenAssignment_5"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20389:1: rule__XIfExpression__ThenAssignment_5 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20393:1: rule__XIfExpression__ThenAssignment_5 : ( ruleXExpression ) ;
     public final void rule__XIfExpression__ThenAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20393:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20394:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20397:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20394:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20395:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20399:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXIfExpressionAccess().getThenXExpressionParserRuleCall_5_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XIfExpression__ThenAssignment_541415);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XIfExpression__ThenAssignment_541423);
             ruleXExpression();
 
             state._fsp--;
@@ -58067,22 +58079,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XIfExpression__ElseAssignment_6_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20404:1: rule__XIfExpression__ElseAssignment_6_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20408:1: rule__XIfExpression__ElseAssignment_6_1 : ( ruleXExpression ) ;
     public final void rule__XIfExpression__ElseAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20408:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20409:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20412:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20413:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20409:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20410:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20413:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20414:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXIfExpressionAccess().getElseXExpressionParserRuleCall_6_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XIfExpression__ElseAssignment_6_141446);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XIfExpression__ElseAssignment_6_141454);
             ruleXExpression();
 
             state._fsp--;
@@ -58112,22 +58124,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20419:1: rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_0 : ( ruleValidID ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20423:1: rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_0 : ( ruleValidID ) ;
     public final void rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20423:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20424:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20428:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20424:1: ( ruleValidID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20425:1: ruleValidID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20428:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20429:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getLocalVarNameValidIDParserRuleCall_2_0_0_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_041477);
+            pushFollow(FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_041485);
             ruleValidID();
 
             state._fsp--;
@@ -58157,22 +58169,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSwitchExpression__SwitchAssignment_2_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20434:1: rule__XSwitchExpression__SwitchAssignment_2_0_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20438:1: rule__XSwitchExpression__SwitchAssignment_2_0_1 : ( ruleXExpression ) ;
     public final void rule__XSwitchExpression__SwitchAssignment_2_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20438:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20439:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20442:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20443:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20439:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20440:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20443:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20444:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getSwitchXExpressionParserRuleCall_2_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_0_141508);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_0_141516);
             ruleXExpression();
 
             state._fsp--;
@@ -58202,22 +58214,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20449:1: rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_1 : ( ruleValidID ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20453:1: rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_1 : ( ruleValidID ) ;
     public final void rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20453:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20454:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20457:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20458:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20454:1: ( ruleValidID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20455:1: ruleValidID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20458:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20459:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getLocalVarNameValidIDParserRuleCall_2_1_0_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_141539);
+            pushFollow(FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_141547);
             ruleValidID();
 
             state._fsp--;
@@ -58247,22 +58259,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSwitchExpression__SwitchAssignment_2_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20464:1: rule__XSwitchExpression__SwitchAssignment_2_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20468:1: rule__XSwitchExpression__SwitchAssignment_2_1_1 : ( ruleXExpression ) ;
     public final void rule__XSwitchExpression__SwitchAssignment_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20468:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20469:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20472:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20473:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20469:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20470:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20473:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20474:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getSwitchXExpressionParserRuleCall_2_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_1_141570);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_1_141578);
             ruleXExpression();
 
             state._fsp--;
@@ -58292,22 +58304,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSwitchExpression__CasesAssignment_4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20479:1: rule__XSwitchExpression__CasesAssignment_4 : ( ruleXCasePart ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20483:1: rule__XSwitchExpression__CasesAssignment_4 : ( ruleXCasePart ) ;
     public final void rule__XSwitchExpression__CasesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20483:1: ( ( ruleXCasePart ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20484:1: ( ruleXCasePart )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20487:1: ( ( ruleXCasePart ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20488:1: ( ruleXCasePart )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20484:1: ( ruleXCasePart )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20485:1: ruleXCasePart
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20488:1: ( ruleXCasePart )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20489:1: ruleXCasePart
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getCasesXCasePartParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleXCasePart_in_rule__XSwitchExpression__CasesAssignment_441601);
+            pushFollow(FOLLOW_ruleXCasePart_in_rule__XSwitchExpression__CasesAssignment_441609);
             ruleXCasePart();
 
             state._fsp--;
@@ -58337,22 +58349,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XSwitchExpression__DefaultAssignment_5_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20494:1: rule__XSwitchExpression__DefaultAssignment_5_2 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20498:1: rule__XSwitchExpression__DefaultAssignment_5_2 : ( ruleXExpression ) ;
     public final void rule__XSwitchExpression__DefaultAssignment_5_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20498:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20499:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20502:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20503:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20499:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20500:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20503:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20504:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXSwitchExpressionAccess().getDefaultXExpressionParserRuleCall_5_2_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XSwitchExpression__DefaultAssignment_5_241632);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XSwitchExpression__DefaultAssignment_5_241640);
             ruleXExpression();
 
             state._fsp--;
@@ -58382,22 +58394,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XCasePart__TypeGuardAssignment_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20509:1: rule__XCasePart__TypeGuardAssignment_0 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20513:1: rule__XCasePart__TypeGuardAssignment_0 : ( ruleJvmTypeReference ) ;
     public final void rule__XCasePart__TypeGuardAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20513:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20514:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20517:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20518:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20514:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20515:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20518:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20519:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCasePartAccess().getTypeGuardJvmTypeReferenceParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XCasePart__TypeGuardAssignment_041663);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XCasePart__TypeGuardAssignment_041671);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -58427,22 +58439,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XCasePart__CaseAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20524:1: rule__XCasePart__CaseAssignment_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20528:1: rule__XCasePart__CaseAssignment_1_1 : ( ruleXExpression ) ;
     public final void rule__XCasePart__CaseAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20528:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20529:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20532:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20533:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20529:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20530:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20533:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20534:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCasePartAccess().getCaseXExpressionParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XCasePart__CaseAssignment_1_141694);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XCasePart__CaseAssignment_1_141702);
             ruleXExpression();
 
             state._fsp--;
@@ -58472,22 +58484,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XCasePart__ThenAssignment_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20539:1: rule__XCasePart__ThenAssignment_3 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20543:1: rule__XCasePart__ThenAssignment_3 : ( ruleXExpression ) ;
     public final void rule__XCasePart__ThenAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20543:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20544:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20547:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20548:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20544:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20545:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20548:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20549:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCasePartAccess().getThenXExpressionParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XCasePart__ThenAssignment_341725);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XCasePart__ThenAssignment_341733);
             ruleXExpression();
 
             state._fsp--;
@@ -58517,22 +58529,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XForLoopExpression__DeclaredParamAssignment_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20554:1: rule__XForLoopExpression__DeclaredParamAssignment_3 : ( ruleJvmFormalParameter ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20558:1: rule__XForLoopExpression__DeclaredParamAssignment_3 : ( ruleJvmFormalParameter ) ;
     public final void rule__XForLoopExpression__DeclaredParamAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20558:1: ( ( ruleJvmFormalParameter ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20559:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20562:1: ( ( ruleJvmFormalParameter ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20563:1: ( ruleJvmFormalParameter )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20559:1: ( ruleJvmFormalParameter )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20560:1: ruleJvmFormalParameter
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20563:1: ( ruleJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20564:1: ruleJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXForLoopExpressionAccess().getDeclaredParamJvmFormalParameterParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XForLoopExpression__DeclaredParamAssignment_341756);
+            pushFollow(FOLLOW_ruleJvmFormalParameter_in_rule__XForLoopExpression__DeclaredParamAssignment_341764);
             ruleJvmFormalParameter();
 
             state._fsp--;
@@ -58562,22 +58574,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XForLoopExpression__ForExpressionAssignment_5"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20569:1: rule__XForLoopExpression__ForExpressionAssignment_5 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20573:1: rule__XForLoopExpression__ForExpressionAssignment_5 : ( ruleXExpression ) ;
     public final void rule__XForLoopExpression__ForExpressionAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20573:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20574:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20577:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20578:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20574:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20575:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20578:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20579:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXForLoopExpressionAccess().getForExpressionXExpressionParserRuleCall_5_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XForLoopExpression__ForExpressionAssignment_541787);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XForLoopExpression__ForExpressionAssignment_541795);
             ruleXExpression();
 
             state._fsp--;
@@ -58607,22 +58619,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XForLoopExpression__EachExpressionAssignment_7"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20584:1: rule__XForLoopExpression__EachExpressionAssignment_7 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20588:1: rule__XForLoopExpression__EachExpressionAssignment_7 : ( ruleXExpression ) ;
     public final void rule__XForLoopExpression__EachExpressionAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20588:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20589:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20592:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20593:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20589:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20590:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20593:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20594:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXForLoopExpressionAccess().getEachExpressionXExpressionParserRuleCall_7_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XForLoopExpression__EachExpressionAssignment_741818);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XForLoopExpression__EachExpressionAssignment_741826);
             ruleXExpression();
 
             state._fsp--;
@@ -58652,22 +58664,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XWhileExpression__PredicateAssignment_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20599:1: rule__XWhileExpression__PredicateAssignment_3 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20603:1: rule__XWhileExpression__PredicateAssignment_3 : ( ruleXExpression ) ;
     public final void rule__XWhileExpression__PredicateAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20603:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20604:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20607:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20608:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20604:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20605:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20608:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20609:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXWhileExpressionAccess().getPredicateXExpressionParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XWhileExpression__PredicateAssignment_341849);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XWhileExpression__PredicateAssignment_341857);
             ruleXExpression();
 
             state._fsp--;
@@ -58697,22 +58709,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XWhileExpression__BodyAssignment_5"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20614:1: rule__XWhileExpression__BodyAssignment_5 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20618:1: rule__XWhileExpression__BodyAssignment_5 : ( ruleXExpression ) ;
     public final void rule__XWhileExpression__BodyAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20618:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20619:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20622:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20623:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20619:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20620:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20623:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20624:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXWhileExpressionAccess().getBodyXExpressionParserRuleCall_5_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XWhileExpression__BodyAssignment_541880);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XWhileExpression__BodyAssignment_541888);
             ruleXExpression();
 
             state._fsp--;
@@ -58742,22 +58754,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XDoWhileExpression__BodyAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20629:1: rule__XDoWhileExpression__BodyAssignment_2 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20633:1: rule__XDoWhileExpression__BodyAssignment_2 : ( ruleXExpression ) ;
     public final void rule__XDoWhileExpression__BodyAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20633:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20634:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20637:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20638:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20634:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20635:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20638:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20639:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXDoWhileExpressionAccess().getBodyXExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__BodyAssignment_241911);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__BodyAssignment_241919);
             ruleXExpression();
 
             state._fsp--;
@@ -58787,22 +58799,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XDoWhileExpression__PredicateAssignment_5"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20644:1: rule__XDoWhileExpression__PredicateAssignment_5 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20648:1: rule__XDoWhileExpression__PredicateAssignment_5 : ( ruleXExpression ) ;
     public final void rule__XDoWhileExpression__PredicateAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20648:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20649:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20652:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20653:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20649:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20650:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20653:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20654:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXDoWhileExpressionAccess().getPredicateXExpressionParserRuleCall_5_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__PredicateAssignment_541942);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__PredicateAssignment_541950);
             ruleXExpression();
 
             state._fsp--;
@@ -58832,22 +58844,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XBlockExpression__ExpressionsAssignment_2_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20659:1: rule__XBlockExpression__ExpressionsAssignment_2_0 : ( ruleXExpressionInsideBlock ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20663:1: rule__XBlockExpression__ExpressionsAssignment_2_0 : ( ruleXExpressionInsideBlock ) ;
     public final void rule__XBlockExpression__ExpressionsAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20663:1: ( ( ruleXExpressionInsideBlock ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20664:1: ( ruleXExpressionInsideBlock )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20667:1: ( ( ruleXExpressionInsideBlock ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20668:1: ( ruleXExpressionInsideBlock )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20664:1: ( ruleXExpressionInsideBlock )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20665:1: ruleXExpressionInsideBlock
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20668:1: ( ruleXExpressionInsideBlock )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20669:1: ruleXExpressionInsideBlock
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXBlockExpressionAccess().getExpressionsXExpressionInsideBlockParserRuleCall_2_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpressionInsideBlock_in_rule__XBlockExpression__ExpressionsAssignment_2_041973);
+            pushFollow(FOLLOW_ruleXExpressionInsideBlock_in_rule__XBlockExpression__ExpressionsAssignment_2_041981);
             ruleXExpressionInsideBlock();
 
             state._fsp--;
@@ -58877,28 +58889,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XVariableDeclaration__WriteableAssignment_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20674:1: rule__XVariableDeclaration__WriteableAssignment_1_0 : ( ( 'var' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20678:1: rule__XVariableDeclaration__WriteableAssignment_1_0 : ( ( 'var' ) ) ;
     public final void rule__XVariableDeclaration__WriteableAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20678:1: ( ( ( 'var' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20679:1: ( ( 'var' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20682:1: ( ( ( 'var' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20683:1: ( ( 'var' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20679:1: ( ( 'var' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20680:1: ( 'var' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXVariableDeclarationAccess().getWriteableVarKeyword_1_0_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20681:1: ( 'var' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20682:1: 'var'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20683:1: ( ( 'var' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20684:1: ( 'var' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXVariableDeclarationAccess().getWriteableVarKeyword_1_0_0()); 
             }
-            match(input,99,FOLLOW_99_in_rule__XVariableDeclaration__WriteableAssignment_1_042009); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20685:1: ( 'var' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20686:1: 'var'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXVariableDeclarationAccess().getWriteableVarKeyword_1_0_0()); 
+            }
+            match(input,99,FOLLOW_99_in_rule__XVariableDeclaration__WriteableAssignment_1_042017); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXVariableDeclarationAccess().getWriteableVarKeyword_1_0_0()); 
             }
@@ -58930,22 +58942,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XVariableDeclaration__TypeAssignment_2_0_0_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20697:1: rule__XVariableDeclaration__TypeAssignment_2_0_0_0 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20701:1: rule__XVariableDeclaration__TypeAssignment_2_0_0_0 : ( ruleJvmTypeReference ) ;
     public final void rule__XVariableDeclaration__TypeAssignment_2_0_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20701:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20702:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20705:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20706:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20702:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20703:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20706:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20707:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXVariableDeclarationAccess().getTypeJvmTypeReferenceParserRuleCall_2_0_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XVariableDeclaration__TypeAssignment_2_0_0_042048);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XVariableDeclaration__TypeAssignment_2_0_0_042056);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -58975,22 +58987,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XVariableDeclaration__NameAssignment_2_0_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20712:1: rule__XVariableDeclaration__NameAssignment_2_0_0_1 : ( ruleValidID ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20716:1: rule__XVariableDeclaration__NameAssignment_2_0_0_1 : ( ruleValidID ) ;
     public final void rule__XVariableDeclaration__NameAssignment_2_0_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20716:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20717:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20720:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20721:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20717:1: ( ruleValidID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20718:1: ruleValidID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20721:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20722:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXVariableDeclarationAccess().getNameValidIDParserRuleCall_2_0_0_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_0_0_142079);
+            pushFollow(FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_0_0_142087);
             ruleValidID();
 
             state._fsp--;
@@ -59020,22 +59032,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XVariableDeclaration__NameAssignment_2_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20727:1: rule__XVariableDeclaration__NameAssignment_2_1 : ( ruleValidID ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20731:1: rule__XVariableDeclaration__NameAssignment_2_1 : ( ruleValidID ) ;
     public final void rule__XVariableDeclaration__NameAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20731:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20732:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20735:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20736:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20732:1: ( ruleValidID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20733:1: ruleValidID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20736:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20737:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXVariableDeclarationAccess().getNameValidIDParserRuleCall_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_142110);
+            pushFollow(FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_142118);
             ruleValidID();
 
             state._fsp--;
@@ -59065,22 +59077,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XVariableDeclaration__RightAssignment_3_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20742:1: rule__XVariableDeclaration__RightAssignment_3_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20746:1: rule__XVariableDeclaration__RightAssignment_3_1 : ( ruleXExpression ) ;
     public final void rule__XVariableDeclaration__RightAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20746:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20747:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20750:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20751:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20747:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20748:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20751:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20752:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXVariableDeclarationAccess().getRightXExpressionParserRuleCall_3_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XVariableDeclaration__RightAssignment_3_142141);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XVariableDeclaration__RightAssignment_3_142149);
             ruleXExpression();
 
             state._fsp--;
@@ -59110,22 +59122,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmFormalParameter__ParameterTypeAssignment_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20757:1: rule__JvmFormalParameter__ParameterTypeAssignment_0 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20761:1: rule__JvmFormalParameter__ParameterTypeAssignment_0 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmFormalParameter__ParameterTypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20761:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20762:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20765:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20766:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20762:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20763:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20766:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20767:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmFormalParameterAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmFormalParameter__ParameterTypeAssignment_042172);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmFormalParameter__ParameterTypeAssignment_042180);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -59155,22 +59167,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmFormalParameter__NameAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20772:1: rule__JvmFormalParameter__NameAssignment_1 : ( ruleValidID ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20776:1: rule__JvmFormalParameter__NameAssignment_1 : ( ruleValidID ) ;
     public final void rule__JvmFormalParameter__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20776:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20777:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20780:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20781:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20777:1: ( ruleValidID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20778:1: ruleValidID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20781:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20782:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmFormalParameterAccess().getNameValidIDParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__JvmFormalParameter__NameAssignment_142203);
+            pushFollow(FOLLOW_ruleValidID_in_rule__JvmFormalParameter__NameAssignment_142211);
             ruleValidID();
 
             state._fsp--;
@@ -59200,22 +59212,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__FullJvmFormalParameter__ParameterTypeAssignment_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20787:1: rule__FullJvmFormalParameter__ParameterTypeAssignment_0 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20791:1: rule__FullJvmFormalParameter__ParameterTypeAssignment_0 : ( ruleJvmTypeReference ) ;
     public final void rule__FullJvmFormalParameter__ParameterTypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20791:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20792:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20795:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20796:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20792:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20793:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20796:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20797:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFullJvmFormalParameterAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__FullJvmFormalParameter__ParameterTypeAssignment_042234);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__FullJvmFormalParameter__ParameterTypeAssignment_042242);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -59245,22 +59257,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__FullJvmFormalParameter__NameAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20802:1: rule__FullJvmFormalParameter__NameAssignment_1 : ( ruleValidID ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20806:1: rule__FullJvmFormalParameter__NameAssignment_1 : ( ruleValidID ) ;
     public final void rule__FullJvmFormalParameter__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20806:1: ( ( ruleValidID ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20807:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20810:1: ( ( ruleValidID ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20811:1: ( ruleValidID )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20807:1: ( ruleValidID )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20808:1: ruleValidID
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20811:1: ( ruleValidID )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20812:1: ruleValidID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFullJvmFormalParameterAccess().getNameValidIDParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleValidID_in_rule__FullJvmFormalParameter__NameAssignment_142265);
+            pushFollow(FOLLOW_ruleValidID_in_rule__FullJvmFormalParameter__NameAssignment_142273);
             ruleValidID();
 
             state._fsp--;
@@ -59290,22 +59302,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__TypeArgumentsAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20817:1: rule__XFeatureCall__TypeArgumentsAssignment_1_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20821:1: rule__XFeatureCall__TypeArgumentsAssignment_1_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__XFeatureCall__TypeArgumentsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20821:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20822:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20825:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20826:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20822:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20823:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20826:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20827:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_142296);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_142304);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -59335,22 +59347,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__TypeArgumentsAssignment_1_2_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20832:1: rule__XFeatureCall__TypeArgumentsAssignment_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20836:1: rule__XFeatureCall__TypeArgumentsAssignment_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__XFeatureCall__TypeArgumentsAssignment_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20836:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20837:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20840:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20841:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20837:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20838:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20841:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20842:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_2_142327);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_2_142335);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -59380,28 +59392,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__FeatureAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20847:1: rule__XFeatureCall__FeatureAssignment_2 : ( ( ruleIdOrSuper ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20851:1: rule__XFeatureCall__FeatureAssignment_2 : ( ( ruleIdOrSuper ) ) ;
     public final void rule__XFeatureCall__FeatureAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20851:1: ( ( ( ruleIdOrSuper ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20852:1: ( ( ruleIdOrSuper ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20855:1: ( ( ( ruleIdOrSuper ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20856:1: ( ( ruleIdOrSuper ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20852:1: ( ( ruleIdOrSuper ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20853:1: ( ruleIdOrSuper )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20856:1: ( ( ruleIdOrSuper ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20857:1: ( ruleIdOrSuper )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getFeatureJvmIdentifiableElementCrossReference_2_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20854:1: ( ruleIdOrSuper )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20855:1: ruleIdOrSuper
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20858:1: ( ruleIdOrSuper )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20859:1: ruleIdOrSuper
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getFeatureJvmIdentifiableElementIdOrSuperParserRuleCall_2_0_1()); 
             }
-            pushFollow(FOLLOW_ruleIdOrSuper_in_rule__XFeatureCall__FeatureAssignment_242362);
+            pushFollow(FOLLOW_ruleIdOrSuper_in_rule__XFeatureCall__FeatureAssignment_242370);
             ruleIdOrSuper();
 
             state._fsp--;
@@ -59437,28 +59449,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__ExplicitOperationCallAssignment_3_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20866:1: rule__XFeatureCall__ExplicitOperationCallAssignment_3_0 : ( ( '(' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20870:1: rule__XFeatureCall__ExplicitOperationCallAssignment_3_0 : ( ( '(' ) ) ;
     public final void rule__XFeatureCall__ExplicitOperationCallAssignment_3_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20870:1: ( ( ( '(' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20871:1: ( ( '(' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20874:1: ( ( ( '(' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20875:1: ( ( '(' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20871:1: ( ( '(' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20872:1: ( '(' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_3_0_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20873:1: ( '(' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20874:1: '('
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20875:1: ( ( '(' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20876:1: ( '(' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_3_0_0()); 
             }
-            match(input,77,FOLLOW_77_in_rule__XFeatureCall__ExplicitOperationCallAssignment_3_042402); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20877:1: ( '(' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20878:1: '('
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_3_0_0()); 
+            }
+            match(input,77,FOLLOW_77_in_rule__XFeatureCall__ExplicitOperationCallAssignment_3_042410); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXFeatureCallAccess().getExplicitOperationCallLeftParenthesisKeyword_3_0_0()); 
             }
@@ -59490,22 +59502,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20889:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_0 : ( ruleXShortClosure ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20893:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_0 : ( ruleXShortClosure ) ;
     public final void rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20893:1: ( ( ruleXShortClosure ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20894:1: ( ruleXShortClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20897:1: ( ( ruleXShortClosure ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20898:1: ( ruleXShortClosure )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20894:1: ( ruleXShortClosure )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20895:1: ruleXShortClosure
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20898:1: ( ruleXShortClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20899:1: ruleXShortClosure
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXShortClosureParserRuleCall_3_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXShortClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_042441);
+            pushFollow(FOLLOW_ruleXShortClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_042449);
             ruleXShortClosure();
 
             state._fsp--;
@@ -59535,22 +59547,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20904:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_0 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20908:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_0 : ( ruleXExpression ) ;
     public final void rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20908:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20909:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20912:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20913:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20909:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20910:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20913:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20914:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXExpressionParserRuleCall_3_1_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_042472);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_042480);
             ruleXExpression();
 
             state._fsp--;
@@ -59580,22 +59592,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20919:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20923:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_1 : ( ruleXExpression ) ;
     public final void rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20923:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20924:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20927:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20928:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20924:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20925:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20928:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20929:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXExpressionParserRuleCall_3_1_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_142503);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_142511);
             ruleXExpression();
 
             state._fsp--;
@@ -59625,22 +59637,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFeatureCall__FeatureCallArgumentsAssignment_4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20934:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_4 : ( ruleXClosure ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20938:1: rule__XFeatureCall__FeatureCallArgumentsAssignment_4 : ( ruleXClosure ) ;
     public final void rule__XFeatureCall__FeatureCallArgumentsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20938:1: ( ( ruleXClosure ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20939:1: ( ruleXClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20942:1: ( ( ruleXClosure ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20943:1: ( ruleXClosure )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20939:1: ( ruleXClosure )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20940:1: ruleXClosure
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20943:1: ( ruleXClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20944:1: ruleXClosure
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFeatureCallAccess().getFeatureCallArgumentsXClosureParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleXClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_442534);
+            pushFollow(FOLLOW_ruleXClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_442542);
             ruleXClosure();
 
             state._fsp--;
@@ -59670,28 +59682,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XConstructorCall__ConstructorAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20949:1: rule__XConstructorCall__ConstructorAssignment_2 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20953:1: rule__XConstructorCall__ConstructorAssignment_2 : ( ( ruleQualifiedName ) ) ;
     public final void rule__XConstructorCall__ConstructorAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20953:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20954:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20957:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20958:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20954:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20955:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20958:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20959:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getConstructorJvmConstructorCrossReference_2_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20956:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20957:1: ruleQualifiedName
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20960:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20961:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getConstructorJvmConstructorQualifiedNameParserRuleCall_2_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XConstructorCall__ConstructorAssignment_242569);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XConstructorCall__ConstructorAssignment_242577);
             ruleQualifiedName();
 
             state._fsp--;
@@ -59727,22 +59739,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XConstructorCall__TypeArgumentsAssignment_3_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20968:1: rule__XConstructorCall__TypeArgumentsAssignment_3_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20972:1: rule__XConstructorCall__TypeArgumentsAssignment_3_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__XConstructorCall__TypeArgumentsAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20972:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20973:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20976:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20977:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20973:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20974:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20977:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20978:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_142604);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_142612);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -59772,22 +59784,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XConstructorCall__TypeArgumentsAssignment_3_2_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20983:1: rule__XConstructorCall__TypeArgumentsAssignment_3_2_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20987:1: rule__XConstructorCall__TypeArgumentsAssignment_3_2_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__XConstructorCall__TypeArgumentsAssignment_3_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20987:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20988:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20991:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20992:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20988:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20989:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20992:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20993:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getTypeArgumentsJvmArgumentTypeReferenceParserRuleCall_3_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_2_142635);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_2_142643);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -59817,22 +59829,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XConstructorCall__ArgumentsAssignment_4_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20998:1: rule__XConstructorCall__ArgumentsAssignment_4_1_0 : ( ruleXShortClosure ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21002:1: rule__XConstructorCall__ArgumentsAssignment_4_1_0 : ( ruleXShortClosure ) ;
     public final void rule__XConstructorCall__ArgumentsAssignment_4_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21002:1: ( ( ruleXShortClosure ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21003:1: ( ruleXShortClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21006:1: ( ( ruleXShortClosure ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21007:1: ( ruleXShortClosure )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21003:1: ( ruleXShortClosure )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21004:1: ruleXShortClosure
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21007:1: ( ruleXShortClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21008:1: ruleXShortClosure
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getArgumentsXShortClosureParserRuleCall_4_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXShortClosure_in_rule__XConstructorCall__ArgumentsAssignment_4_1_042666);
+            pushFollow(FOLLOW_ruleXShortClosure_in_rule__XConstructorCall__ArgumentsAssignment_4_1_042674);
             ruleXShortClosure();
 
             state._fsp--;
@@ -59862,22 +59874,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XConstructorCall__ArgumentsAssignment_4_1_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21013:1: rule__XConstructorCall__ArgumentsAssignment_4_1_1_0 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21017:1: rule__XConstructorCall__ArgumentsAssignment_4_1_1_0 : ( ruleXExpression ) ;
     public final void rule__XConstructorCall__ArgumentsAssignment_4_1_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21017:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21018:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21021:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21022:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21018:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21019:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21022:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21023:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_042697);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_042705);
             ruleXExpression();
 
             state._fsp--;
@@ -59907,22 +59919,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21028:1: rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21032:1: rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_1 : ( ruleXExpression ) ;
     public final void rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21032:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21033:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21036:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21037:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21033:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21034:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21037:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21038:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getArgumentsXExpressionParserRuleCall_4_1_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_142728);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_142736);
             ruleXExpression();
 
             state._fsp--;
@@ -59952,22 +59964,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XConstructorCall__ArgumentsAssignment_5"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21043:1: rule__XConstructorCall__ArgumentsAssignment_5 : ( ruleXClosure ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21047:1: rule__XConstructorCall__ArgumentsAssignment_5 : ( ruleXClosure ) ;
     public final void rule__XConstructorCall__ArgumentsAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21047:1: ( ( ruleXClosure ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21048:1: ( ruleXClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21051:1: ( ( ruleXClosure ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21052:1: ( ruleXClosure )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21048:1: ( ruleXClosure )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21049:1: ruleXClosure
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21052:1: ( ruleXClosure )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21053:1: ruleXClosure
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXConstructorCallAccess().getArgumentsXClosureParserRuleCall_5_0()); 
             }
-            pushFollow(FOLLOW_ruleXClosure_in_rule__XConstructorCall__ArgumentsAssignment_542759);
+            pushFollow(FOLLOW_ruleXClosure_in_rule__XConstructorCall__ArgumentsAssignment_542767);
             ruleXClosure();
 
             state._fsp--;
@@ -59997,28 +60009,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XBooleanLiteral__IsTrueAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21058:1: rule__XBooleanLiteral__IsTrueAssignment_1_1 : ( ( 'true' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21062:1: rule__XBooleanLiteral__IsTrueAssignment_1_1 : ( ( 'true' ) ) ;
     public final void rule__XBooleanLiteral__IsTrueAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21062:1: ( ( ( 'true' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21063:1: ( ( 'true' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21066:1: ( ( ( 'true' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21067:1: ( ( 'true' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21063:1: ( ( 'true' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21064:1: ( 'true' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXBooleanLiteralAccess().getIsTrueTrueKeyword_1_1_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21065:1: ( 'true' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21066:1: 'true'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21067:1: ( ( 'true' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21068:1: ( 'true' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXBooleanLiteralAccess().getIsTrueTrueKeyword_1_1_0()); 
             }
-            match(input,100,FOLLOW_100_in_rule__XBooleanLiteral__IsTrueAssignment_1_142795); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21069:1: ( 'true' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21070:1: 'true'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXBooleanLiteralAccess().getIsTrueTrueKeyword_1_1_0()); 
+            }
+            match(input,100,FOLLOW_100_in_rule__XBooleanLiteral__IsTrueAssignment_1_142803); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXBooleanLiteralAccess().getIsTrueTrueKeyword_1_1_0()); 
             }
@@ -60050,22 +60062,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XNumberLiteral__ValueAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21081:1: rule__XNumberLiteral__ValueAssignment_1 : ( ruleNumber ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21085:1: rule__XNumberLiteral__ValueAssignment_1 : ( ruleNumber ) ;
     public final void rule__XNumberLiteral__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21085:1: ( ( ruleNumber ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21086:1: ( ruleNumber )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21089:1: ( ( ruleNumber ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21090:1: ( ruleNumber )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21086:1: ( ruleNumber )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21087:1: ruleNumber
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21090:1: ( ruleNumber )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21091:1: ruleNumber
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXNumberLiteralAccess().getValueNumberParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleNumber_in_rule__XNumberLiteral__ValueAssignment_142834);
+            pushFollow(FOLLOW_ruleNumber_in_rule__XNumberLiteral__ValueAssignment_142842);
             ruleNumber();
 
             state._fsp--;
@@ -60095,22 +60107,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XStringLiteral__ValueAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21096:1: rule__XStringLiteral__ValueAssignment_1 : ( RULE_STRING ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21100:1: rule__XStringLiteral__ValueAssignment_1 : ( RULE_STRING ) ;
     public final void rule__XStringLiteral__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21100:1: ( ( RULE_STRING ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21101:1: ( RULE_STRING )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21104:1: ( ( RULE_STRING ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21105:1: ( RULE_STRING )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21101:1: ( RULE_STRING )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21102:1: RULE_STRING
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21105:1: ( RULE_STRING )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21106:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__XStringLiteral__ValueAssignment_142865); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__XStringLiteral__ValueAssignment_142873); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0()); 
             }
@@ -60136,28 +60148,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XTypeLiteral__TypeAssignment_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21111:1: rule__XTypeLiteral__TypeAssignment_3 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21115:1: rule__XTypeLiteral__TypeAssignment_3 : ( ( ruleQualifiedName ) ) ;
     public final void rule__XTypeLiteral__TypeAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21115:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21116:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21119:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21120:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21116:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21117:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21120:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21121:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTypeLiteralAccess().getTypeJvmTypeCrossReference_3_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21118:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21119:1: ruleQualifiedName
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21122:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21123:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTypeLiteralAccess().getTypeJvmTypeQualifiedNameParserRuleCall_3_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XTypeLiteral__TypeAssignment_342900);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XTypeLiteral__TypeAssignment_342908);
             ruleQualifiedName();
 
             state._fsp--;
@@ -60193,22 +60205,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XTypeLiteral__ArrayDimensionsAssignment_4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21130:1: rule__XTypeLiteral__ArrayDimensionsAssignment_4 : ( ruleArrayBrackets ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21134:1: rule__XTypeLiteral__ArrayDimensionsAssignment_4 : ( ruleArrayBrackets ) ;
     public final void rule__XTypeLiteral__ArrayDimensionsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21134:1: ( ( ruleArrayBrackets ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21135:1: ( ruleArrayBrackets )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21138:1: ( ( ruleArrayBrackets ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21139:1: ( ruleArrayBrackets )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21135:1: ( ruleArrayBrackets )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21136:1: ruleArrayBrackets
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21139:1: ( ruleArrayBrackets )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21140:1: ruleArrayBrackets
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTypeLiteralAccess().getArrayDimensionsArrayBracketsParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleArrayBrackets_in_rule__XTypeLiteral__ArrayDimensionsAssignment_442935);
+            pushFollow(FOLLOW_ruleArrayBrackets_in_rule__XTypeLiteral__ArrayDimensionsAssignment_442943);
             ruleArrayBrackets();
 
             state._fsp--;
@@ -60238,22 +60250,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XThrowExpression__ExpressionAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21145:1: rule__XThrowExpression__ExpressionAssignment_2 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21149:1: rule__XThrowExpression__ExpressionAssignment_2 : ( ruleXExpression ) ;
     public final void rule__XThrowExpression__ExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21149:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21150:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21153:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21154:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21150:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21151:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21154:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21155:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXThrowExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XThrowExpression__ExpressionAssignment_242966);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XThrowExpression__ExpressionAssignment_242974);
             ruleXExpression();
 
             state._fsp--;
@@ -60283,22 +60295,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XReturnExpression__ExpressionAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21160:1: rule__XReturnExpression__ExpressionAssignment_2 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21164:1: rule__XReturnExpression__ExpressionAssignment_2 : ( ruleXExpression ) ;
     public final void rule__XReturnExpression__ExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21164:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21165:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21168:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21169:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21165:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21166:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21169:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21170:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXReturnExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XReturnExpression__ExpressionAssignment_242997);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XReturnExpression__ExpressionAssignment_243005);
             ruleXExpression();
 
             state._fsp--;
@@ -60328,22 +60340,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XTryCatchFinallyExpression__ExpressionAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21175:1: rule__XTryCatchFinallyExpression__ExpressionAssignment_2 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21179:1: rule__XTryCatchFinallyExpression__ExpressionAssignment_2 : ( ruleXExpression ) ;
     public final void rule__XTryCatchFinallyExpression__ExpressionAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21179:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21180:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21183:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21184:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21180:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21181:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21184:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21185:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTryCatchFinallyExpressionAccess().getExpressionXExpressionParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__ExpressionAssignment_243028);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__ExpressionAssignment_243036);
             ruleXExpression();
 
             state._fsp--;
@@ -60373,22 +60385,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21190:1: rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_0 : ( ruleXCatchClause ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21194:1: rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_0 : ( ruleXCatchClause ) ;
     public final void rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21194:1: ( ( ruleXCatchClause ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21195:1: ( ruleXCatchClause )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21198:1: ( ( ruleXCatchClause ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21199:1: ( ruleXCatchClause )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21195:1: ( ruleXCatchClause )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21196:1: ruleXCatchClause
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21199:1: ( ruleXCatchClause )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21200:1: ruleXCatchClause
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTryCatchFinallyExpressionAccess().getCatchClausesXCatchClauseParserRuleCall_3_0_0_0()); 
             }
-            pushFollow(FOLLOW_ruleXCatchClause_in_rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_043059);
+            pushFollow(FOLLOW_ruleXCatchClause_in_rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_043067);
             ruleXCatchClause();
 
             state._fsp--;
@@ -60418,22 +60430,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21205:1: rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21209:1: rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_1 : ( ruleXExpression ) ;
     public final void rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21209:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21210:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21213:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21214:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21210:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21211:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21214:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21215:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_0_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_143090);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_143098);
             ruleXExpression();
 
             state._fsp--;
@@ -60463,22 +60475,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21220:1: rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_1 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21224:1: rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_1 : ( ruleXExpression ) ;
     public final void rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21224:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21225:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21228:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21229:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21225:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21226:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21229:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21230:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXTryCatchFinallyExpressionAccess().getFinallyExpressionXExpressionParserRuleCall_3_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_143121);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_143129);
             ruleXExpression();
 
             state._fsp--;
@@ -60508,22 +60520,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XCatchClause__DeclaredParamAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21235:1: rule__XCatchClause__DeclaredParamAssignment_2 : ( ruleFullJvmFormalParameter ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21239:1: rule__XCatchClause__DeclaredParamAssignment_2 : ( ruleFullJvmFormalParameter ) ;
     public final void rule__XCatchClause__DeclaredParamAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21239:1: ( ( ruleFullJvmFormalParameter ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21240:1: ( ruleFullJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21243:1: ( ( ruleFullJvmFormalParameter ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21244:1: ( ruleFullJvmFormalParameter )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21240:1: ( ruleFullJvmFormalParameter )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21241:1: ruleFullJvmFormalParameter
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21244:1: ( ruleFullJvmFormalParameter )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21245:1: ruleFullJvmFormalParameter
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCatchClauseAccess().getDeclaredParamFullJvmFormalParameterParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_rule__XCatchClause__DeclaredParamAssignment_243152);
+            pushFollow(FOLLOW_ruleFullJvmFormalParameter_in_rule__XCatchClause__DeclaredParamAssignment_243160);
             ruleFullJvmFormalParameter();
 
             state._fsp--;
@@ -60553,22 +60565,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XCatchClause__ExpressionAssignment_4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21250:1: rule__XCatchClause__ExpressionAssignment_4 : ( ruleXExpression ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21254:1: rule__XCatchClause__ExpressionAssignment_4 : ( ruleXExpression ) ;
     public final void rule__XCatchClause__ExpressionAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21254:1: ( ( ruleXExpression ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21255:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21258:1: ( ( ruleXExpression ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21259:1: ( ruleXExpression )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21255:1: ( ruleXExpression )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21256:1: ruleXExpression
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21259:1: ( ruleXExpression )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21260:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXCatchClauseAccess().getExpressionXExpressionParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__XCatchClause__ExpressionAssignment_443183);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__XCatchClause__ExpressionAssignment_443191);
             ruleXExpression();
 
             state._fsp--;
@@ -60598,22 +60610,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21265:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21269:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0 : ( ruleJvmTypeReference ) ;
     public final void rule__XFunctionTypeRef__ParamTypesAssignment_0_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21269:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21270:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21273:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21274:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21270:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21271:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21274:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21275:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_043214);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_043222);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -60643,22 +60655,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21280:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21284:1: rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1 : ( ruleJvmTypeReference ) ;
     public final void rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21284:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21285:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21288:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21289:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21285:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21286:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21289:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21290:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getParamTypesJvmTypeReferenceParserRuleCall_0_1_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_143245);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_143253);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -60688,22 +60700,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XFunctionTypeRef__ReturnTypeAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21295:1: rule__XFunctionTypeRef__ReturnTypeAssignment_2 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21299:1: rule__XFunctionTypeRef__ReturnTypeAssignment_2 : ( ruleJvmTypeReference ) ;
     public final void rule__XFunctionTypeRef__ReturnTypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21299:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21300:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21303:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21304:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21300:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21301:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21304:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21305:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXFunctionTypeRefAccess().getReturnTypeJvmTypeReferenceParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ReturnTypeAssignment_243276);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ReturnTypeAssignment_243284);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -60733,28 +60745,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__TypeAssignment_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21310:1: rule__JvmParameterizedTypeReference__TypeAssignment_0 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21314:1: rule__JvmParameterizedTypeReference__TypeAssignment_0 : ( ( ruleQualifiedName ) ) ;
     public final void rule__JvmParameterizedTypeReference__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21314:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21315:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21318:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21319:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21315:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21316:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21319:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21320:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeCrossReference_0_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21317:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21318:1: ruleQualifiedName
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21321:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21322:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getTypeJvmTypeQualifiedNameParserRuleCall_0_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__JvmParameterizedTypeReference__TypeAssignment_043311);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__JvmParameterizedTypeReference__TypeAssignment_043319);
             ruleQualifiedName();
 
             state._fsp--;
@@ -60790,22 +60802,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21329:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21333:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21333:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21334:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21337:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21338:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21334:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21335:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21338:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21339:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_143346);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_143354);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -60835,22 +60847,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21344:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21348:1: rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1 : ( ruleJvmArgumentTypeReference ) ;
     public final void rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21348:1: ( ( ruleJvmArgumentTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21349:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21352:1: ( ( ruleJvmArgumentTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21353:1: ( ruleJvmArgumentTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21349:1: ( ruleJvmArgumentTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21350:1: ruleJvmArgumentTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21353:1: ( ruleJvmArgumentTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21354:1: ruleJvmArgumentTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmParameterizedTypeReferenceAccess().getArgumentsJvmArgumentTypeReferenceParserRuleCall_1_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_143377);
+            pushFollow(FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_143385);
             ruleJvmArgumentTypeReference();
 
             state._fsp--;
@@ -60880,22 +60892,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21359:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0 : ( ruleJvmUpperBound ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21363:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0 : ( ruleJvmUpperBound ) ;
     public final void rule__JvmWildcardTypeReference__ConstraintsAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21363:1: ( ( ruleJvmUpperBound ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21364:1: ( ruleJvmUpperBound )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21367:1: ( ( ruleJvmUpperBound ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21368:1: ( ruleJvmUpperBound )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21364:1: ( ruleJvmUpperBound )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21365:1: ruleJvmUpperBound
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21368:1: ( ruleJvmUpperBound )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21369:1: ruleJvmUpperBound
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmUpperBoundParserRuleCall_2_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmUpperBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_043408);
+            pushFollow(FOLLOW_ruleJvmUpperBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_043416);
             ruleJvmUpperBound();
 
             state._fsp--;
@@ -60925,22 +60937,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21374:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1 : ( ruleJvmLowerBound ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21378:1: rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1 : ( ruleJvmLowerBound ) ;
     public final void rule__JvmWildcardTypeReference__ConstraintsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21378:1: ( ( ruleJvmLowerBound ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21379:1: ( ruleJvmLowerBound )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21382:1: ( ( ruleJvmLowerBound ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21383:1: ( ruleJvmLowerBound )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21379:1: ( ruleJvmLowerBound )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21380:1: ruleJvmLowerBound
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21383:1: ( ruleJvmLowerBound )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21384:1: ruleJvmLowerBound
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmWildcardTypeReferenceAccess().getConstraintsJvmLowerBoundParserRuleCall_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmLowerBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_143439);
+            pushFollow(FOLLOW_ruleJvmLowerBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_143447);
             ruleJvmLowerBound();
 
             state._fsp--;
@@ -60970,22 +60982,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmUpperBound__TypeReferenceAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21389:1: rule__JvmUpperBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21393:1: rule__JvmUpperBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmUpperBound__TypeReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21393:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21394:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21397:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21398:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21394:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21395:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21398:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21399:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmUpperBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBound__TypeReferenceAssignment_143470);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBound__TypeReferenceAssignment_143478);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -61015,22 +61027,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmUpperBoundAnded__TypeReferenceAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21404:1: rule__JvmUpperBoundAnded__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21408:1: rule__JvmUpperBoundAnded__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmUpperBoundAnded__TypeReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21408:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21409:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21412:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21413:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21409:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21410:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21413:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21414:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmUpperBoundAndedAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBoundAnded__TypeReferenceAssignment_143501);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBoundAnded__TypeReferenceAssignment_143509);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -61060,22 +61072,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__JvmLowerBound__TypeReferenceAssignment_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21419:1: rule__JvmLowerBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21423:1: rule__JvmLowerBound__TypeReferenceAssignment_1 : ( ruleJvmTypeReference ) ;
     public final void rule__JvmLowerBound__TypeReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21423:1: ( ( ruleJvmTypeReference ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21424:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21427:1: ( ( ruleJvmTypeReference ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21428:1: ( ruleJvmTypeReference )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21424:1: ( ruleJvmTypeReference )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21425:1: ruleJvmTypeReference
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21428:1: ( ruleJvmTypeReference )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21429:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getJvmLowerBoundAccess().getTypeReferenceJvmTypeReferenceParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmLowerBound__TypeReferenceAssignment_143532);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__JvmLowerBound__TypeReferenceAssignment_143540);
             ruleJvmTypeReference();
 
             state._fsp--;
@@ -61105,22 +61117,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XImportSection__ImportDeclarationsAssignment"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21438:1: rule__XImportSection__ImportDeclarationsAssignment : ( ruleXImportDeclaration ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21442:1: rule__XImportSection__ImportDeclarationsAssignment : ( ruleXImportDeclaration ) ;
     public final void rule__XImportSection__ImportDeclarationsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21442:1: ( ( ruleXImportDeclaration ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21443:1: ( ruleXImportDeclaration )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21446:1: ( ( ruleXImportDeclaration ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21447:1: ( ruleXImportDeclaration )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21443:1: ( ruleXImportDeclaration )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21444:1: ruleXImportDeclaration
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21447:1: ( ruleXImportDeclaration )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21448:1: ruleXImportDeclaration
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportSectionAccess().getImportDeclarationsXImportDeclarationParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleXImportDeclaration_in_rule__XImportSection__ImportDeclarationsAssignment43567);
+            pushFollow(FOLLOW_ruleXImportDeclaration_in_rule__XImportSection__ImportDeclarationsAssignment43575);
             ruleXImportDeclaration();
 
             state._fsp--;
@@ -61150,28 +61162,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XImportDeclaration__StaticAssignment_1_0_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21453:1: rule__XImportDeclaration__StaticAssignment_1_0_0 : ( ( 'static' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21457:1: rule__XImportDeclaration__StaticAssignment_1_0_0 : ( ( 'static' ) ) ;
     public final void rule__XImportDeclaration__StaticAssignment_1_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21457:1: ( ( ( 'static' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21458:1: ( ( 'static' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21461:1: ( ( ( 'static' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21462:1: ( ( 'static' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21458:1: ( ( 'static' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21459:1: ( 'static' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21460:1: ( 'static' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21461:1: 'static'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21462:1: ( ( 'static' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21463:1: ( 'static' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0()); 
             }
-            match(input,43,FOLLOW_43_in_rule__XImportDeclaration__StaticAssignment_1_0_043603); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21464:1: ( 'static' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21465:1: 'static'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0()); 
+            }
+            match(input,43,FOLLOW_43_in_rule__XImportDeclaration__StaticAssignment_1_0_043611); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXImportDeclarationAccess().getStaticStaticKeyword_1_0_0_0()); 
             }
@@ -61203,28 +61215,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XImportDeclaration__ExtensionAssignment_1_0_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21476:1: rule__XImportDeclaration__ExtensionAssignment_1_0_1 : ( ( 'extension' ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21480:1: rule__XImportDeclaration__ExtensionAssignment_1_0_1 : ( ( 'extension' ) ) ;
     public final void rule__XImportDeclaration__ExtensionAssignment_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21480:1: ( ( ( 'extension' ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21481:1: ( ( 'extension' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21484:1: ( ( ( 'extension' ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21485:1: ( ( 'extension' ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21481:1: ( ( 'extension' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21482:1: ( 'extension' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0()); 
-            }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21483:1: ( 'extension' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21484:1: 'extension'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21485:1: ( ( 'extension' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21486:1: ( 'extension' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0()); 
             }
-            match(input,45,FOLLOW_45_in_rule__XImportDeclaration__ExtensionAssignment_1_0_143647); if (state.failed) return ;
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21487:1: ( 'extension' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21488:1: 'extension'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0()); 
+            }
+            match(input,45,FOLLOW_45_in_rule__XImportDeclaration__ExtensionAssignment_1_0_143655); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getXImportDeclarationAccess().getExtensionExtensionKeyword_1_0_1_0()); 
             }
@@ -61256,28 +61268,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XImportDeclaration__ImportedTypeAssignment_1_0_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21499:1: rule__XImportDeclaration__ImportedTypeAssignment_1_0_2 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21503:1: rule__XImportDeclaration__ImportedTypeAssignment_1_0_2 : ( ( ruleQualifiedName ) ) ;
     public final void rule__XImportDeclaration__ImportedTypeAssignment_1_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21503:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21504:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21507:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21508:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21504:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21505:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21508:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21509:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21506:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21507:1: ruleQualifiedName
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21510:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21511:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeQualifiedNameParserRuleCall_1_0_2_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_0_243690);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_0_243698);
             ruleQualifiedName();
 
             state._fsp--;
@@ -61313,28 +61325,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XImportDeclaration__ImportedTypeAssignment_1_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21518:1: rule__XImportDeclaration__ImportedTypeAssignment_1_1 : ( ( ruleQualifiedName ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21522:1: rule__XImportDeclaration__ImportedTypeAssignment_1_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__XImportDeclaration__ImportedTypeAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21522:1: ( ( ( ruleQualifiedName ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21523:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21526:1: ( ( ( ruleQualifiedName ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21527:1: ( ( ruleQualifiedName ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21523:1: ( ( ruleQualifiedName ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21524:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21527:1: ( ( ruleQualifiedName ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21528:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeCrossReference_1_1_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21525:1: ( ruleQualifiedName )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21526:1: ruleQualifiedName
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21529:1: ( ruleQualifiedName )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21530:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedTypeJvmDeclaredTypeQualifiedNameParserRuleCall_1_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_143729);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_143737);
             ruleQualifiedName();
 
             state._fsp--;
@@ -61370,22 +61382,22 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21537:1: rule__XImportDeclaration__ImportedNamespaceAssignment_1_2 : ( ruleQualifiedNameWithWildcard ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21541:1: rule__XImportDeclaration__ImportedNamespaceAssignment_1_2 : ( ruleQualifiedNameWithWildcard ) ;
     public final void rule__XImportDeclaration__ImportedNamespaceAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21541:1: ( ( ruleQualifiedNameWithWildcard ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21542:1: ( ruleQualifiedNameWithWildcard )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21545:1: ( ( ruleQualifiedNameWithWildcard ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21546:1: ( ruleQualifiedNameWithWildcard )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21542:1: ( ruleQualifiedNameWithWildcard )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21543:1: ruleQualifiedNameWithWildcard
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21546:1: ( ruleQualifiedNameWithWildcard )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:21547:1: ruleQualifiedNameWithWildcard
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_2_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_rule__XImportDeclaration__ImportedNamespaceAssignment_1_243764);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_rule__XImportDeclaration__ImportedNamespaceAssignment_1_243772);
             ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -63568,23 +63580,23 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     static final String DFA37_eotS =
         "\7\uffff";
     static final String DFA37_eofS =
-        "\2\uffff\1\4\3\uffff\1\4";
+        "\2\uffff\1\4\2\uffff\1\4\1\uffff";
     static final String DFA37_minS =
-        "\1\4\1\uffff\1\50\1\4\2\uffff\1\50";
+        "\1\4\1\uffff\1\50\1\4\1\uffff\1\50\1\uffff";
     static final String DFA37_maxS =
-        "\1\53\1\uffff\1\114\1\43\2\uffff\1\114";
+        "\1\53\1\uffff\1\114\1\43\1\uffff\1\114\1\uffff";
     static final String DFA37_acceptS =
-        "\1\uffff\1\1\2\uffff\1\2\1\3\1\uffff";
+        "\1\uffff\1\1\2\uffff\1\2\1\uffff\1\3";
     static final String DFA37_specialS =
         "\7\uffff}>";
     static final String[] DFA37_transitionS = {
             "\1\2\46\uffff\1\1",
             "",
             "\1\3\3\uffff\1\4\3\uffff\1\4\33\uffff\1\4",
-            "\1\6\36\uffff\1\5",
+            "\1\5\36\uffff\1\6",
             "",
-            "",
-            "\1\3\3\uffff\1\4\3\uffff\1\4\33\uffff\1\4"
+            "\1\3\3\uffff\1\4\3\uffff\1\4\33\uffff\1\4",
+            ""
     };
 
     static final short[] DFA37_eot = DFA.unpackEncodedString(DFA37_eotS);
@@ -63631,7 +63643,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     static final String DFA61_acceptS =
         "\1\uffff\1\2\11\uffff\1\1";
     static final String DFA61_specialS =
-        "\2\uffff\1\2\1\6\1\5\1\10\1\1\1\7\1\3\1\4\1\0\1\uffff}>";
+        "\2\uffff\1\6\1\5\1\1\1\3\1\7\1\0\1\4\1\10\1\2\1\uffff}>";
     static final String[] DFA61_transitionS = {
             "\5\1\5\uffff\12\1\1\2\1\3\1\5\1\6\1\7\1\4\1\10\1\11\1\12\17"+
             "\1\1\uffff\2\1\5\uffff\1\1\2\uffff\1\1\2\uffff\1\1\7\uffff\30"+
@@ -63686,111 +63698,6 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA61_10 = input.LA(1);
-
-                         
-                        int index61_10 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index61_10);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA61_6 = input.LA(1);
-
-                         
-                        int index61_6 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index61_6);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA61_2 = input.LA(1);
-
-                         
-                        int index61_2 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index61_2);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA61_8 = input.LA(1);
-
-                         
-                        int index61_8 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index61_8);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA61_9 = input.LA(1);
-
-                         
-                        int index61_9 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index61_9);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 5 : 
-                        int LA61_4 = input.LA(1);
-
-                         
-                        int index61_4 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index61_4);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 6 : 
-                        int LA61_3 = input.LA(1);
-
-                         
-                        int index61_3 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
-
-                        else if ( (true) ) {s = 1;}
-
-                         
-                        input.seek(index61_3);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 7 : 
                         int LA61_7 = input.LA(1);
 
                          
@@ -63805,7 +63712,37 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                         input.seek(index61_7);
                         if ( s>=0 ) return s;
                         break;
-                    case 8 : 
+                    case 1 : 
+                        int LA61_4 = input.LA(1);
+
+                         
+                        int index61_4 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index61_4);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA61_10 = input.LA(1);
+
+                         
+                        int index61_10 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index61_10);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
                         int LA61_5 = input.LA(1);
 
                          
@@ -63818,6 +63755,81 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
                          
                         input.seek(index61_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA61_8 = input.LA(1);
+
+                         
+                        int index61_8 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index61_8);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA61_3 = input.LA(1);
+
+                         
+                        int index61_3 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index61_3);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA61_2 = input.LA(1);
+
+                         
+                        int index61_2 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index61_2);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 7 : 
+                        int LA61_6 = input.LA(1);
+
+                         
+                        int index61_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index61_6);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 8 : 
+                        int LA61_9 = input.LA(1);
+
+                         
+                        int index61_9 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred97_InternalEmfParsleyDsl()) ) {s = 11;}
+
+                        else if ( (true) ) {s = 1;}
+
+                         
+                        input.seek(index61_9);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -65612,22 +65624,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
     }
     static final String DFA115_eotS =
-        "\114\uffff";
+        "\113\uffff";
     static final String DFA115_eofS =
-        "\1\2\113\uffff";
+        "\1\2\112\uffff";
     static final String DFA115_minS =
-        "\1\4\1\0\112\uffff";
+        "\1\4\1\0\111\uffff";
     static final String DFA115_maxS =
-        "\1\144\1\0\112\uffff";
+        "\1\144\1\0\111\uffff";
     static final String DFA115_acceptS =
-        "\2\uffff\1\2\110\uffff\1\1";
+        "\2\uffff\1\2\107\uffff\1\1";
     static final String DFA115_specialS =
-        "\1\uffff\1\0\112\uffff}>";
+        "\1\uffff\1\0\111\uffff}>";
     static final String[] DFA115_transitionS = {
             "\5\2\5\uffff\13\2\1\1\26\2\1\uffff\2\2\5\uffff\1\2\2\uffff\1"+
-            "\2\2\uffff\1\2\6\uffff\31\2\2\uffff\2\2\1\uffff\2\2",
+            "\2\2\uffff\1\2\7\uffff\30\2\2\uffff\2\2\1\uffff\2\2",
             "\1\uffff",
-            "",
             "",
             "",
             "",
@@ -65746,7 +65757,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                         int index115_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred151_InternalEmfParsleyDsl()) ) {s = 75;}
+                        if ( (synpred151_InternalEmfParsleyDsl()) ) {s = 74;}
 
                         else if ( (true) ) {s = 2;}
 
@@ -66407,7 +66418,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_rule__ViewSpecification__Group__5__Impl_in_rule__ViewSpecification__Group__514117 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_rule__ViewSpecification__Group__6_in_rule__ViewSpecification__Group__514120 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ViewSpecification__ViewNameAssignment_5_in_rule__ViewSpecification__Group__5__Impl14147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ViewSpecification__Group__6__Impl_in_rule__ViewSpecification__Group__614177 = new BitSet(new long[]{0x0000000020000010L,0x0000000000002000L});
+    public static final BitSet FOLLOW_rule__ViewSpecification__Group__6__Impl_in_rule__ViewSpecification__Group__614177 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__ViewSpecification__Group__7_in_rule__ViewSpecification__Group__614180 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_68_in_rule__ViewSpecification__Group__6__Impl14208 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ViewSpecification__Group__7__Impl_in_rule__ViewSpecification__Group__714239 = new BitSet(new long[]{0x0004000000000000L,0x0000000000000020L});
@@ -67405,130 +67416,130 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_ruleLabelSpecification_in_rule__ViewerContentProvider__ChildrenSpecificationsAssignment_3_239567 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ViewSpecification__IdAssignment_239598 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__ViewSpecification__ViewNameAssignment_539629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__ViewSpecification__TypeAssignment_739660 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ViewSpecification__CategoryAssignment_8_139691 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_rule__XAssignment__FeatureAssignment_0_139726 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_rule__XAssignment__ValueAssignment_0_339761 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpMultiAssign_in_rule__XAssignment__FeatureAssignment_1_1_0_0_139796 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_rule__XAssignment__RightOperandAssignment_1_1_139831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpOr_in_rule__XOrExpression__FeatureAssignment_1_0_0_139866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAndExpression_in_rule__XOrExpression__RightOperandAssignment_1_139901 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpAnd_in_rule__XAndExpression__FeatureAssignment_1_0_0_139936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXEqualityExpression_in_rule__XAndExpression__RightOperandAssignment_1_139971 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpEquality_in_rule__XEqualityExpression__FeatureAssignment_1_0_0_140006 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXRelationalExpression_in_rule__XEqualityExpression__RightOperandAssignment_1_140041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XRelationalExpression__TypeAssignment_1_0_140072 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpCompare_in_rule__XRelationalExpression__FeatureAssignment_1_1_0_0_140107 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_rule__XRelationalExpression__RightOperandAssignment_1_1_140142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpOther_in_rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_140177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_rule__XOtherOperatorExpression__RightOperandAssignment_1_140212 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpAdd_in_rule__XAdditiveExpression__FeatureAssignment_1_0_0_140247 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_rule__XAdditiveExpression__RightOperandAssignment_1_140282 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpMulti_in_rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_140317 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXUnaryOperation_in_rule__XMultiplicativeExpression__RightOperandAssignment_1_140352 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpUnary_in_rule__XUnaryOperation__FeatureAssignment_0_140387 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXUnaryOperation_in_rule__XUnaryOperation__OperandAssignment_0_240422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XCastedExpression__TypeAssignment_1_140453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_140489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_240532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXAssignment_in_rule__XMemberFeatureCall__ValueAssignment_1_0_140567 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_97_in_rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_140603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_240647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_140686 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_140717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_1_240752 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_77_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_040792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_040831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_040862 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_140893 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_440924 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_040955 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_1_140986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_041017 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_1_141048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_041079 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_141110 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_98_in_rule__XClosure__ExplicitSyntaxAssignment_1_0_141146 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpressionInClosure_in_rule__XClosure__ExpressionAssignment_241185 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_rule__XExpressionInClosure__ExpressionsAssignment_1_041216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_041247 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_141278 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_98_in_rule__XShortClosure__ExplicitSyntaxAssignment_0_0_241314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XShortClosure__ExpressionAssignment_141353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XIfExpression__IfAssignment_341384 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XIfExpression__ThenAssignment_541415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XIfExpression__ElseAssignment_6_141446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_041477 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_0_141508 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_141539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_1_141570 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCasePart_in_rule__XSwitchExpression__CasesAssignment_441601 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSwitchExpression__DefaultAssignment_5_241632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XCasePart__TypeGuardAssignment_041663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XCasePart__CaseAssignment_1_141694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XCasePart__ThenAssignment_341725 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XForLoopExpression__DeclaredParamAssignment_341756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XForLoopExpression__ForExpressionAssignment_541787 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XForLoopExpression__EachExpressionAssignment_741818 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XWhileExpression__PredicateAssignment_341849 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XWhileExpression__BodyAssignment_541880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__BodyAssignment_241911 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__PredicateAssignment_541942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_rule__XBlockExpression__ExpressionsAssignment_2_041973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_99_in_rule__XVariableDeclaration__WriteableAssignment_1_042009 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XVariableDeclaration__TypeAssignment_2_0_0_042048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_0_0_142079 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_142110 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XVariableDeclaration__RightAssignment_3_142141 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmFormalParameter__ParameterTypeAssignment_042172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__JvmFormalParameter__NameAssignment_142203 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__FullJvmFormalParameter__ParameterTypeAssignment_042234 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValidID_in_rule__FullJvmFormalParameter__NameAssignment_142265 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_142296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_2_142327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIdOrSuper_in_rule__XFeatureCall__FeatureAssignment_242362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_77_in_rule__XFeatureCall__ExplicitOperationCallAssignment_3_042402 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_042441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_042472 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_142503 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_442534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XConstructorCall__ConstructorAssignment_242569 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_142604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_2_142635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XConstructorCall__ArgumentsAssignment_4_1_042666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_042697 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_142728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXClosure_in_rule__XConstructorCall__ArgumentsAssignment_542759 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_100_in_rule__XBooleanLiteral__IsTrueAssignment_1_142795 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNumber_in_rule__XNumberLiteral__ValueAssignment_142834 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__XStringLiteral__ValueAssignment_142865 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XTypeLiteral__TypeAssignment_342900 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayBrackets_in_rule__XTypeLiteral__ArrayDimensionsAssignment_442935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XThrowExpression__ExpressionAssignment_242966 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XReturnExpression__ExpressionAssignment_242997 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__ExpressionAssignment_243028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXCatchClause_in_rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_043059 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_143090 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_143121 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_rule__XCatchClause__DeclaredParamAssignment_243152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__XCatchClause__ExpressionAssignment_443183 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_043214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_143245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ReturnTypeAssignment_243276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__JvmParameterizedTypeReference__TypeAssignment_043311 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_143346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_143377 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmUpperBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_043408 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmLowerBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_143439 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBound__TypeReferenceAssignment_143470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBoundAnded__TypeReferenceAssignment_143501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmLowerBound__TypeReferenceAssignment_143532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXImportDeclaration_in_rule__XImportSection__ImportDeclarationsAssignment43567 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_43_in_rule__XImportDeclaration__StaticAssignment_1_0_043603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_45_in_rule__XImportDeclaration__ExtensionAssignment_1_0_143647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_0_243690 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_143729 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__XImportDeclaration__ImportedNamespaceAssignment_1_243764 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ViewSpecification__TypeAssignment_739664 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__ViewSpecification__CategoryAssignment_8_139699 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_rule__XAssignment__FeatureAssignment_0_139734 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_rule__XAssignment__ValueAssignment_0_339769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpMultiAssign_in_rule__XAssignment__FeatureAssignment_1_1_0_0_139804 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_rule__XAssignment__RightOperandAssignment_1_1_139839 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpOr_in_rule__XOrExpression__FeatureAssignment_1_0_0_139874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAndExpression_in_rule__XOrExpression__RightOperandAssignment_1_139909 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpAnd_in_rule__XAndExpression__FeatureAssignment_1_0_0_139944 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXEqualityExpression_in_rule__XAndExpression__RightOperandAssignment_1_139979 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpEquality_in_rule__XEqualityExpression__FeatureAssignment_1_0_0_140014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXRelationalExpression_in_rule__XEqualityExpression__RightOperandAssignment_1_140049 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XRelationalExpression__TypeAssignment_1_0_140080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpCompare_in_rule__XRelationalExpression__FeatureAssignment_1_1_0_0_140115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXOtherOperatorExpression_in_rule__XRelationalExpression__RightOperandAssignment_1_1_140150 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpOther_in_rule__XOtherOperatorExpression__FeatureAssignment_1_0_0_140185 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAdditiveExpression_in_rule__XOtherOperatorExpression__RightOperandAssignment_1_140220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpAdd_in_rule__XAdditiveExpression__FeatureAssignment_1_0_0_140255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXMultiplicativeExpression_in_rule__XAdditiveExpression__RightOperandAssignment_1_140290 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpMulti_in_rule__XMultiplicativeExpression__FeatureAssignment_1_0_0_140325 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXUnaryOperation_in_rule__XMultiplicativeExpression__RightOperandAssignment_1_140360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpUnary_in_rule__XUnaryOperation__FeatureAssignment_0_140395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXUnaryOperation_in_rule__XUnaryOperation__OperandAssignment_0_240430 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XCastedExpression__TypeAssignment_1_140461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_0_0_0_1_140497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_0_0_0_240540 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXAssignment_in_rule__XMemberFeatureCall__ValueAssignment_1_0_140575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_97_in_rule__XMemberFeatureCall__NullSafeAssignment_1_1_0_0_1_140611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_96_in_rule__XMemberFeatureCall__ExplicitStaticAssignment_1_1_0_0_1_240655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_140694 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XMemberFeatureCall__TypeArgumentsAssignment_1_1_1_2_140725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCallID_in_rule__XMemberFeatureCall__FeatureAssignment_1_1_240760 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_77_in_rule__XMemberFeatureCall__ExplicitOperationCallAssignment_1_1_3_040800 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_040839 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_040870 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_1_1_140901 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_440932 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_040963 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSetLiteral__ElementsAssignment_3_1_140994 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_041025 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XListLiteral__ElementsAssignment_3_1_141056 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_041087 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XClosure__DeclaredFormalParametersAssignment_1_0_0_1_141118 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_98_in_rule__XClosure__ExplicitSyntaxAssignment_1_0_141154 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpressionInClosure_in_rule__XClosure__ExpressionAssignment_241193 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_rule__XExpressionInClosure__ExpressionsAssignment_1_041224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_041255 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XShortClosure__DeclaredFormalParametersAssignment_0_0_1_1_141286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_98_in_rule__XShortClosure__ExplicitSyntaxAssignment_0_0_241322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XShortClosure__ExpressionAssignment_141361 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XIfExpression__IfAssignment_341392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XIfExpression__ThenAssignment_541423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XIfExpression__ElseAssignment_6_141454 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_0_0_0_041485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_0_141516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__XSwitchExpression__LocalVarNameAssignment_2_1_0_0_141547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSwitchExpression__SwitchAssignment_2_1_141578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCasePart_in_rule__XSwitchExpression__CasesAssignment_441609 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XSwitchExpression__DefaultAssignment_5_241640 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XCasePart__TypeGuardAssignment_041671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XCasePart__CaseAssignment_1_141702 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XCasePart__ThenAssignment_341733 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmFormalParameter_in_rule__XForLoopExpression__DeclaredParamAssignment_341764 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XForLoopExpression__ForExpressionAssignment_541795 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XForLoopExpression__EachExpressionAssignment_741826 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XWhileExpression__PredicateAssignment_341857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XWhileExpression__BodyAssignment_541888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__BodyAssignment_241919 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XDoWhileExpression__PredicateAssignment_541950 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpressionInsideBlock_in_rule__XBlockExpression__ExpressionsAssignment_2_041981 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_99_in_rule__XVariableDeclaration__WriteableAssignment_1_042017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XVariableDeclaration__TypeAssignment_2_0_0_042056 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_0_0_142087 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__XVariableDeclaration__NameAssignment_2_142118 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XVariableDeclaration__RightAssignment_3_142149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmFormalParameter__ParameterTypeAssignment_042180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__JvmFormalParameter__NameAssignment_142211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__FullJvmFormalParameter__ParameterTypeAssignment_042242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValidID_in_rule__FullJvmFormalParameter__NameAssignment_142273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_142304 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XFeatureCall__TypeArgumentsAssignment_1_2_142335 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIdOrSuper_in_rule__XFeatureCall__FeatureAssignment_242370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_77_in_rule__XFeatureCall__ExplicitOperationCallAssignment_3_042410 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_042449 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_042480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_3_1_1_1_142511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_rule__XFeatureCall__FeatureCallArgumentsAssignment_442542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XConstructorCall__ConstructorAssignment_242577 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_142612 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__XConstructorCall__TypeArgumentsAssignment_3_2_142643 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXShortClosure_in_rule__XConstructorCall__ArgumentsAssignment_4_1_042674 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_042705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XConstructorCall__ArgumentsAssignment_4_1_1_1_142736 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXClosure_in_rule__XConstructorCall__ArgumentsAssignment_542767 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_100_in_rule__XBooleanLiteral__IsTrueAssignment_1_142803 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNumber_in_rule__XNumberLiteral__ValueAssignment_142842 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__XStringLiteral__ValueAssignment_142873 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XTypeLiteral__TypeAssignment_342908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayBrackets_in_rule__XTypeLiteral__ArrayDimensionsAssignment_442943 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XThrowExpression__ExpressionAssignment_242974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XReturnExpression__ExpressionAssignment_243005 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__ExpressionAssignment_243036 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXCatchClause_in_rule__XTryCatchFinallyExpression__CatchClausesAssignment_3_0_043067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_0_1_143098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XTryCatchFinallyExpression__FinallyExpressionAssignment_3_1_143129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFullJvmFormalParameter_in_rule__XCatchClause__DeclaredParamAssignment_243160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__XCatchClause__ExpressionAssignment_443191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_043222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ParamTypesAssignment_0_1_1_143253 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__XFunctionTypeRef__ReturnTypeAssignment_243284 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__JvmParameterizedTypeReference__TypeAssignment_043319 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_143354 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmArgumentTypeReference_in_rule__JvmParameterizedTypeReference__ArgumentsAssignment_1_2_143385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmUpperBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_043416 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmLowerBound_in_rule__JvmWildcardTypeReference__ConstraintsAssignment_2_143447 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBound__TypeReferenceAssignment_143478 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmUpperBoundAnded__TypeReferenceAssignment_143509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__JvmLowerBound__TypeReferenceAssignment_143540 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXImportDeclaration_in_rule__XImportSection__ImportDeclarationsAssignment43575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_rule__XImportDeclaration__StaticAssignment_1_0_043611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_rule__XImportDeclaration__ExtensionAssignment_1_0_143655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_0_243698 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__XImportDeclaration__ImportedTypeAssignment_1_143737 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__XImportDeclaration__ImportedNamespaceAssignment_1_243772 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__OpOther__Group_6_1_0__0_in_synpred21_InternalEmfParsleyDsl5883 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XMemberFeatureCall__MemberCallArgumentsAssignment_1_1_3_1_0_in_synpred33_InternalEmfParsleyDsl6386 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__XVariableDeclaration__Group_2_0__0_in_synpred56_InternalEmfParsleyDsl7011 = new BitSet(new long[]{0x0000000000000002L});

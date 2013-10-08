@@ -8,6 +8,7 @@ import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.typing.XbaseTypeConformanceComputer
 import org.eclipse.ui.IViewPart
 import org.eclipse.emf.parsley.EmfComponentsGuiceModule
+import org.eclipse.xtext.common.types.JvmType
 
 class EmfParsleyDslTypeSystem {
 	@Inject
@@ -31,9 +32,9 @@ class EmfParsleyDslTypeSystem {
 				typeof(EStructuralFeature), context), type);
 	}
 
-	def isViewPart(JvmTypeReference type, EObject context) {
+	def isViewPart(JvmType type, EObject context) {
 		isConformant(typeReferences.getTypeForName(
-				typeof(IViewPart), context), type);
+				typeof(IViewPart), context), typeReferences.createTypeRef(type));
 	}
 
 	def isEmfComponentsGuiceModule(JvmTypeReference type, EObject context) {
