@@ -21,43 +21,11 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.platform"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.sdk"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.parsley.dsl.feature"
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.xtext.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.xtend.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.swtbot.ide"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.swtbot.forms"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.swtbot.eclipse"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.cdo.server"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.net4j"
          version="0.0.0"/>
 
    <plugin
