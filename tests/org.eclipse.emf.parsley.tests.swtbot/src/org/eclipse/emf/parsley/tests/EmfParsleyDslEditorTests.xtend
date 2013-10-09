@@ -1,9 +1,9 @@
 package org.eclipse.emf.parsley.tests
 
-import org.junit.runner.RunWith
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
-import org.junit.Test
 import org.junit.Assert
+import org.junit.Test
+import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
 
@@ -156,15 +156,22 @@ module my.test.proj {
 			viewclass OnSelectionFormView
 		}
 	}
-	
+
 	labelProvider {
 		text {
 			EClass -> ""
 		}
 	}
+
+	featuresProvider {
+		features {
+			EStructuralFeature -> name
+		}
+	}
 }''',
 '''
 import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.views.OnSelectionFormView
 
 module my.test.proj {
@@ -174,14 +181,96 @@ module my.test.proj {
 			viewclass OnSelectionFormView
 		}
 	}
-	
+
 	labelProvider {
 		text {
 			EClass -> ""
 		}
 	}
+
+	featuresProvider {
+		features {
+			EStructuralFeature -> name
+		}
+	}
 }'''			
 		)
+	}
+
+	@Test
+	def void checkProposalForTypeInViewSpecificationIsViewPart() {
+		assertNoProposals(
+'''
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass 
+''',
+		"",
+		"EClass - org.eclipse.emf.ecore")
+	}
+
+	@Test
+	def void checkProposalForModuleExtends() {
+		assertProposal(
+'''
+module my.test.proj extends 
+''',
+		"",
+		"EmfComponentsGuiceModule - org.eclipse.emf.parsley",
+'''
+import org.eclipse.emf.parsley.EmfComponentsGuiceModule
+
+module my.test.proj extends 
+EmfComponentsGuiceModule'''			
+		)
+	}
+
+	@Test
+	def void checkProposalForModuleExtendsIsGuiceModule() {
+		assertNoProposals(
+'''
+module my.test.proj extends 
+''',
+		"",
+		"EClass - org.eclipse.emf.ecore")
+	}
+
+	@Test
+	def void checkProposalForFeatureProvider() {
+		assertProposal(
+'''
+module my.test.proj {
+	
+	featuresProvider {
+		features { 
+''',
+		"EClass",
+		"EClass - org.eclipse.emf.ecore",
+'''
+import org.eclipse.emf.ecore.EClass
+
+module my.test.proj {
+	
+	featuresProvider {
+		features { 
+EClass'''			
+		)
+	}
+
+	@Test
+	def void checkProposalForFeatureProviderIsEObject() {
+		assertNoProposals(
+'''
+module my.test.proj {
+	
+	featuresProvider {
+		features { 
+''',
+		"",
+		"List - java.util")
 	}
 
 	def private void assertProposal(CharSequence input, CharSequence proposal, CharSequence expectedAfterProposal) {
@@ -212,6 +301,33 @@ module my.test.proj {
 		editor.assertEditorText(expectedAfterProposal)
 
 		editor.saveAndClose
+	
+	}
+
+	def private void assertNoProposals(CharSequence input, String textToInsert, CharSequence... notExpectedProposals) {
+		createDslProjectWithWizard
+		
+		val editor = bot.editorByTitle("module.parsley")
+		
+		editor.setEditorContentsSaveAndWaitForAutoBuild(
+			"", false			
+		)
+		
+		editor.toTextEditor.insertText(input.toString)
+		
+		val lines = input.toString.split("\n").length
+		
+		editor.toTextEditor.navigateTo(lines, 50)
+		
+		val autoCompleteProposals = editor.toTextEditor.getAutoCompleteProposals(textToInsert)
+		editor.save
+		
+		for (p : autoCompleteProposals) {
+			for (notExpected : notExpectedProposals) {
+				Assert.assertFalse(p + " should not be proposed",
+					p == notExpected)
+			}
+		}
 	
 	}
 

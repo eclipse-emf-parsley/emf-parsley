@@ -4,12 +4,9 @@
 package org.eclipse.emf.parsley.dsl.ui.contentassist;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess;
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
-import org.eclipse.emf.parsley.dsl.model.ModelPackage;
-import org.eclipse.emf.parsley.dsl.model.ViewSpecification;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.common.types.JvmType;
@@ -32,43 +29,26 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
     IJvmTypeProvider.Factory typeProviderFactory;
 
 //	@Override
-//	public void complete_JvmTypeReference(EObject model, RuleCall ruleCall,
-//			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-//		boolean showOnlySubtypesOf = 
-//			showOnlySubtypesOf(model,
-//				ViewSpecification.class, context, acceptor, IViewPart.class,
-//				ModelPackage.Literals.VIEW_SPECIFICATION__TYPE)
-//			;
-//		if (!showOnlySubtypesOf) {
-//			super.complete_JvmTypeReference(model, ruleCall, context, acceptor);
-//		}
-//	}
-//
-	@Override
-	public void completeJvmParameterizedTypeReference_Type(EObject model,
-			Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		boolean showOnlySubtypesOf = 
-				showOnlySubtypesOf(model,
-					ViewSpecification.class, context, acceptor, IViewPart.class)
-				;
-		if (!showOnlySubtypesOf) {
-			super.completeJvmParameterizedTypeReference_Type(model, assignment, context,
-				acceptor);
-		}
-//		
-//		super.completeJvmParameterizedTypeReference_Type(model, assignment, context,
-//				acceptor);
-	}
-
-//	
-//	@Override
-//	public void completeViewSpecification_Type(EObject model,
+//	public void completeJvmParameterizedTypeReference_Type(EObject model,
 //			Assignment assignment, ContentAssistContext context,
 //			ICompletionProposalAcceptor acceptor) {
-//		showOnlySubtypesOf(model, context, acceptor, IViewPart.class,
-//				ModelPackage.Literals.VIEW_SPECIFICATION__TYPE);
+//		boolean showOnlySubtypesOf = 
+//				showOnlySubtypesOf(model,
+//					ViewSpecification.class, context, acceptor, IViewPart.class)
+//				;
+//		if (!showOnlySubtypesOf) {
+//			super.completeJvmParameterizedTypeReference_Type(model, assignment, context,
+//				acceptor);
+//		}
 //	}
+
+	
+	@Override
+	public void completeViewSpecification_Type(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		showOnlySubtypesOf(model, context, acceptor, IViewPart.class);
+	}
 
 	@Override
 	public void completePropertyDescriptionSpecification_ParameterType(
@@ -96,51 +76,28 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		showOnlySubtypesOf(model, context, acceptor,
-				EmfComponentsGuiceModule.class,
-				ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE);
+				EmfComponentsGuiceModule.class);
 	}
 
 	protected void showSubtypesOfEObjectForEmfFeatureAccess(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		showOnlySubtypesOf(model, context, acceptor, EObject.class,
-				ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE);
+		showOnlySubtypesOf(model, context, acceptor, EObject.class);
 	}
 
-	protected boolean showOnlySubtypesOf(EObject model,
-			Class<? extends EObject> modelType,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
-			Class<?> superType) {
-		
-		if (modelType.isInstance(model)) {
-            final IJvmTypeProvider jvmTypeProvider = 
-            		typeProviderFactory.
-            			createTypeProvider(model.eResource().getResourceSet());
-            final JvmType interfaceToImplement = 
-            		jvmTypeProvider.findTypeByName(superType.getName());
-            typeProposalProvider.createSubTypeProposals
-            	(interfaceToImplement, this, context, 
-            			TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, acceptor);
-            return true;
-        }
-		
-		return false;
-	}
-	
 	protected void showOnlySubtypesOf(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
-			Class<?> superType, EReference reference) {
-		final IJvmTypeProvider jvmTypeProvider = 
-				typeProviderFactory.createTypeProvider(model.eResource().getResourceSet());
-        final JvmType interfaceToImplement = 
-        		jvmTypeProvider.findTypeByName(superType.getName());
-        typeProposalProvider.createSubTypeProposals
-        	(interfaceToImplement, this, context, reference, acceptor);
-		
-//		typeProposalProvider.createSubTypeProposals(
-//				typeReferences.findDeclaredType(superType, 
-//						EcoreUtil2.getContainerOfType(model, Model.class)), this,
-//				context, reference, acceptor);
+			Class<?> superType) {
+
+		final IJvmTypeProvider jvmTypeProvider = typeProviderFactory
+				.createTypeProvider(model.eResource().getResourceSet());
+		final JvmType interfaceToImplement = jvmTypeProvider
+				.findTypeByName(superType.getName());
+		typeProposalProvider.createSubTypeProposals(interfaceToImplement, this,
+				context,
+				TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE,
+				acceptor);
 	}
+
 
 	@Override
 	public void completeXFeatureCall_Feature(EObject model,
