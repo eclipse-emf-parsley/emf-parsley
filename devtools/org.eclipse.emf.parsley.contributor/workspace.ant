@@ -8,6 +8,8 @@
 	Properties:
 		WORKSPACE  			where workspace will be generated,
 							default: ${user.home}/workspaces/emf-parsley-sources
+							or ${user.home}/workspaces/emf-parsley-rap-sources
+							for target materialize.workspace.rap
 		buckminster.home	Buckminster headless location
 							default: ${user.home}/buckminster
 							if not installed, it will be automatically installed
@@ -15,8 +17,6 @@
 							${user.home}/git/org.eclipse.emf-parsley
 -->
 <project name="worskspace" default="materialize.workspace">
-	<property name="WORKSPACE" location="${user.home}/workspaces/emf-parsley-sources" />
-	<property name="projects.location" location="${WORKSPACE}" />
 	<!-- Windows Maximum Path Length Limitation issue
 	<condition property="git.root" value="/git" else="${user.home}/git">
 		<os family="windows" />
@@ -26,7 +26,6 @@
 	<property name="checkout.location" location="${git.clone.dest}" />
 
 	<property name="target.platform.dir" value="target.platform" />
-	<property name="target.platform" location="${WORKSPACE}/${target.platform.dir}" />
 	<property name="eclipse.download" value="http://download.eclipse.org" />
 
 	<property name="buckminster.home" location="${user.home}/buckminster" />
@@ -39,13 +38,34 @@
 	
 	<property name="remote.cquery" value="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/parsley-contr.cquery" />
 
-	<target name="materialize.workspace" depends="install.buckminster.headless,cleanup">
+	<target name="materialize.workspace" depends="install.buckminster.headless">
+		<property name="WORKSPACE" location="${user.home}/workspaces/emf-parsley-sources" />
+		<property name="target.platform" location="${WORKSPACE}/${target.platform.dir}" />
+		
 		<echo message="output workspace     : ${WORKSPACE}" />
 		<echo message="git clone repository : ${git.clone.dest}" />
 
+		<antcall target="cleanup" />
 		<antcall target="set.target.platform.path" />
 		<antcall target="clone.projects" />
 		<antcall target="resolve.commands" />
+		<antcall target="import.workspace.settings" />
+
+		<echo message=" " />
+		<echo message="Workspace materialized in: ${WORKSPACE}" />
+	</target>
+
+	<target name="materialize.workspace.rap" depends="install.buckminster.headless">
+		<property name="WORKSPACE" location="${user.home}/workspaces/emf-parsley-rap-sources" />
+		<property name="target.platform" location="${WORKSPACE}/${target.platform.dir}" />
+		
+		<echo message="output workspace     : ${WORKSPACE}" />
+		<echo message="git clone repository : ${git.clone.dest}" />
+
+		<antcall target="cleanup" />
+		<antcall target="set.target.platform.path" />
+		<antcall target="clone.projects" />
+		<antcall target="resolve.commands.rap" />
 		<antcall target="import.workspace.settings" />
 
 		<echo message=" " />
@@ -74,6 +94,11 @@
 	<target name="resolve.commands">
 		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
 		<run_buckminster command='--script "${checkout.location}/releng/org.eclipse.emf.parsley.buckminster/headless-resolve-commands-contributor.txt"' />
+	</target>
+
+	<target name="resolve.commands.rap">
+		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
+		<run_buckminster command='--script "${checkout.location}/releng/org.eclipse.emf.parsley.rap.buckminster/headless-resolve-commands-contributor.txt"' />
 	</target>
 
 	<target name="import.workspace.settings">
