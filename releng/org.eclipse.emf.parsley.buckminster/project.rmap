@@ -4,7 +4,10 @@
 
 	<rm:property key="projects.location" value="${workspace.root}" />
 
-	<rm:property key="git.clone.dest" value="${user.home}/git/org.eclipse.emf-parsley" />
+	<rm:property key="git.clone.dest" 
+		value="${user.home}/git/org.eclipse.emf-parsley" />
+	<rm:property key="git.uri" 
+		value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
 
 	<rm:locator pattern="^org\.eclipse\.emf\.parsley(?:\..+)?$"
 		searchPathRef="emfparsley" />
@@ -12,6 +15,13 @@
 		searchPathRef="emfparsley" />
 
 	<rm:searchPath name="emfparsley">
+		<rm:provider componentTypes="eclipse.feature,buckminster"
+			readerType="local" mutable="false">
+			<rm:uri format="{0}/devtools/{1}">
+				<bc:propertyRef key="projects.location" />
+				<bc:propertyRef key="buckminster.component" />
+			</rm:uri>
+		</rm:provider>
 		<rm:provider componentTypes="eclipse.feature,buckminster"
 			readerType="local" mutable="false">
 			<rm:uri format="{0}/releng/{1}">
@@ -66,56 +76,57 @@
 
 		<rm:provider componentTypes="eclipse.feature,buckminster"
 			readerType="git">
-			<rm:property key="git.remote.uri"
-				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
+			<rm:uri format="{0},devtools/{1}">
+				<bc:propertyRef key="git.clone.dest" />
+				<bc:propertyRef key="buckminster.component" />
+			</rm:uri>
+		</rm:provider>
+		<rm:provider componentTypes="eclipse.feature,buckminster"
+			readerType="git">
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},releng/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
-			<rm:property key="git.remote.uri"
-				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},plugins/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
 		<rm:provider componentTypes="eclipse.feature" readerType="git">
-			<rm:property key="git.remote.uri"
-				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},features/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
-			<rm:property key="git.remote.uri"
-				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},tests/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
-			<rm:property key="git.remote.uri"
-				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},dsl/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
-			<rm:property key="git.remote.uri"
-				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},examples/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
 		<rm:provider componentTypes="osgi.bundle" readerType="git">
-			<rm:property key="git.remote.uri"
-				value="git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git" />
+			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},doc/{1}">
 				<bc:propertyRef key="git.clone.dest" />
 				<bc:propertyRef key="buckminster.component" />
