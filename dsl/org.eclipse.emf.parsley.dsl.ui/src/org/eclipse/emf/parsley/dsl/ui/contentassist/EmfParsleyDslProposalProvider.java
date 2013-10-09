@@ -12,14 +12,12 @@ import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.TypesPackage;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 
 import com.google.inject.Inject;
 /**
@@ -31,20 +29,36 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 	private ITypesProposalProvider typeProposalProvider;
 
 	@Inject
-	private JvmTypesBuilder typesBuilder;
-	
-	@Inject
     IJvmTypeProvider.Factory typeProviderFactory;
 
+//	@Override
+//	public void complete_JvmTypeReference(EObject model, RuleCall ruleCall,
+//			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//		boolean showOnlySubtypesOf = 
+//			showOnlySubtypesOf(model,
+//				ViewSpecification.class, context, acceptor, IViewPart.class,
+//				ModelPackage.Literals.VIEW_SPECIFICATION__TYPE)
+//			;
+//		if (!showOnlySubtypesOf) {
+//			super.complete_JvmTypeReference(model, ruleCall, context, acceptor);
+//		}
+//	}
+//
 	@Override
-    public void complete_JvmTypeReference(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		if (EcoreUtil2.getContainerOfType(model, ViewSpecification.class) != null) {
-            final IJvmTypeProvider jvmTypeProvider = typeProviderFactory.createTypeProvider(model.eResource().getResourceSet());
-            final JvmType interfaceToImplement = jvmTypeProvider.findTypeByName(IViewPart.class.getName());
-            typeProposalProvider.createSubTypeProposals(interfaceToImplement, this, context, ModelPackage.Literals.VIEW_SPECIFICATION__TYPE, acceptor);
-        } else {
-            super.complete_JvmTypeReference(model, ruleCall, context, acceptor);
-        }
+	public void completeJvmParameterizedTypeReference_Type(EObject model,
+			Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		boolean showOnlySubtypesOf = 
+				showOnlySubtypesOf(model,
+					ViewSpecification.class, context, acceptor, IViewPart.class)
+				;
+		if (!showOnlySubtypesOf) {
+			super.completeJvmParameterizedTypeReference_Type(model, assignment, context,
+				acceptor);
+		}
+//		
+//		super.completeJvmParameterizedTypeReference_Type(model, assignment, context,
+//				acceptor);
 	}
 
 //	
@@ -92,12 +106,40 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 				ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE);
 	}
 
+	protected boolean showOnlySubtypesOf(EObject model,
+			Class<? extends EObject> modelType,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
+			Class<?> superType) {
+		
+		if (modelType.isInstance(model)) {
+            final IJvmTypeProvider jvmTypeProvider = 
+            		typeProviderFactory.
+            			createTypeProvider(model.eResource().getResourceSet());
+            final JvmType interfaceToImplement = 
+            		jvmTypeProvider.findTypeByName(superType.getName());
+            typeProposalProvider.createSubTypeProposals
+            	(interfaceToImplement, this, context, 
+            			TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, acceptor);
+            return true;
+        }
+		
+		return false;
+	}
+	
 	protected void showOnlySubtypesOf(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			Class<?> superType, EReference reference) {
-		typeProposalProvider.createSubTypeProposals(
-				typesBuilder.newTypeRef(model, superType).getType(), this,
-				context, reference, acceptor);
+		final IJvmTypeProvider jvmTypeProvider = 
+				typeProviderFactory.createTypeProvider(model.eResource().getResourceSet());
+        final JvmType interfaceToImplement = 
+        		jvmTypeProvider.findTypeByName(superType.getName());
+        typeProposalProvider.createSubTypeProposals
+        	(interfaceToImplement, this, context, reference, acceptor);
+		
+//		typeProposalProvider.createSubTypeProposals(
+//				typeReferences.findDeclaredType(superType, 
+//						EcoreUtil2.getContainerOfType(model, Model.class)), this,
+//				context, reference, acceptor);
 	}
 
 	@Override

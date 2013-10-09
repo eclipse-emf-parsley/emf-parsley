@@ -119,6 +119,71 @@ OnSelectionFormView'''
 		)
 	}
 
+	@Test
+	def void checkProposalForEmptyTypeInViewSpecification() {
+		assertProposal(
+'''
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass 
+''',
+		"",
+		"OnSelectionFormView - org.eclipse.emf.parsley.views",
+'''
+import org.eclipse.emf.parsley.views.OnSelectionFormView
+
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass 
+OnSelectionFormView'''			
+		)
+	}
+
+	@Test
+	def void checkOrganizeImportsInsertMissingImports() {
+		assertOrganizeImports(
+'''
+module my.test.proj {
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass OnSelectionFormView
+		}
+	}
+	
+	labelProvider {
+		text {
+			EClass -> ""
+		}
+	}
+}''',
+'''
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.parsley.views.OnSelectionFormView
+
+module my.test.proj {
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass OnSelectionFormView
+		}
+	}
+	
+	labelProvider {
+		text {
+			EClass -> ""
+		}
+	}
+}'''			
+		)
+	}
+
 	def private void assertProposal(CharSequence input, CharSequence proposal, CharSequence expectedAfterProposal) {
 		assertProposal(input, "", proposal, expectedAfterProposal)
 	}
@@ -142,7 +207,28 @@ OnSelectionFormView'''
 			proposal.toString
 		)
 		
-		println("proposals")
+		editor.save
+
+		editor.assertEditorText(expectedAfterProposal)
+
+		editor.saveAndClose
+	
+	}
+
+	def private void assertOrganizeImports(CharSequence input, CharSequence expectedAfterProposal) {
+		createDslProjectWithWizard
+		
+		val editor = bot.editorByTitle("module.parsley")
+		
+		editor.setEditorContentsSaveAndWaitForAutoBuild(
+			"", false			
+		)
+		
+		editor.toTextEditor.insertText(input.toString)
+		
+		editor.save
+		
+		editor.contextMenu("Organize Imports").click
 		
 		editor.save
 

@@ -429,6 +429,12 @@ public class EmfComponentsAbstractTests {
 		return contextMenu(getSWTBotTree(treeItem), texts);
 	}
 
+	protected SWTBotMenu contextMenu(final SWTBotEditor editor,
+			final String text) {
+		return new SWTBotMenu(
+				ContextMenuHelper.contextMenu(editor.toTextEditor().getStyledText(), text));
+	}
+
 	protected SWTBotTree getSWTBotTree(final SWTBotTreeItem treeItem) {
 		return new SWTBotTree(
 				UIThreadRunnable.syncExec(new WidgetResult<Tree>() {
