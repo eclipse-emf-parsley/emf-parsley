@@ -32,4 +32,60 @@ module my.parsley.project {
 			LinkedHashSet'''			
 		).assertText('java.util.LinkedHashSet')
 	}
+
+	@Test def void testEmfFeatureForFeatureProvider() {
+		newBuilder.append(
+'''
+import java.util.List
+
+module my.test.proj {
+
+	featuresProvider {
+		features {
+			List -> '''			
+		).assertText('class', 'empty')
+		// these correspond to getClass and isEmpty
+	}
+
+	@Test def void testEmfFeatureForPropertyDescriptionProvider() {
+		newBuilder.append(
+'''
+import java.util.List
+
+module my.test.proj {
+
+	propertyDescriptionProvider {
+		text {
+			List : '''			
+		).assertText('class', 'empty')
+		// these correspond to getClass and isEmpty
+	}
+
+	@Test def void testEmfFeatureForFormControlFactory() {
+		newBuilder.append(
+'''
+import java.util.List
+
+module my.test.proj {
+
+	formControlFactory {
+		control {
+			List : '''			
+		).assertText('class', 'empty')
+		// these correspond to getClass and isEmpty
+	}
+
+	@Test def void testEmfFeatureForProposalSpecification() {
+		newBuilder.append(
+'''
+import java.util.List
+
+module my.test.proj {
+
+	proposals {
+			List : '''			
+		).assertText('class', 'empty')
+		// these correspond to getClass and isEmpty
+	}
+
 }
