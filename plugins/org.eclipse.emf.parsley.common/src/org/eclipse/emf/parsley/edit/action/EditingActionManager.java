@@ -25,6 +25,7 @@ import org.eclipse.ui.internal.WorkbenchImages;
 import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 
+@SuppressWarnings("restriction")
 public class EditingActionManager {
 
 	private CommandActionHandler deleteAction;

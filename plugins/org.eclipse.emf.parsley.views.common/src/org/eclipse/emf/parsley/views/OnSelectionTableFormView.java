@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.factories.TableFormFactory;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
 import org.eclipse.emf.parsley.widgets.TableFormComposite;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -73,7 +72,7 @@ public class OnSelectionTableFormView extends AbstractOnSelectionView {
 			public void selectionChanged(SelectionChangedEvent event) {
 				if(!event.getSelection().isEmpty() && ((IStructuredSelection)event.getSelection()).getFirstElement()instanceof EStructuralFeature){
 					EStructuralFeature feature=(EStructuralFeature) ((IStructuredSelection)event.getSelection()).getFirstElement();
-					List elements= (List) currentEObject.eGet(feature);
+					List<?> elements= (List<?>) currentEObject.eGet(feature);
 					if(elements.size()>0){
 						tableFormDetailComposite.update(elements);						
 					}else{
@@ -115,7 +114,7 @@ public class OnSelectionTableFormView extends AbstractOnSelectionView {
 			EObject eobj) {
 		List<EStructuralFeature> notEmptyReferences=new ArrayList<EStructuralFeature>();
 		for (EStructuralFeature eStructuralFeature : references) {
-			if(((List) eobj.eGet(eStructuralFeature)).size()>0){
+			if(((List<?>) eobj.eGet(eStructuralFeature)).size()>0){
 				notEmptyReferences.add(eStructuralFeature);
 			}
 		}
