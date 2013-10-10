@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.4.2,2.5.0)";visibility:=ree
  org.eclipse.emf.parsley;bundle-version="0.1.0";visibility:=reexport,
  org.eclipse.emf.parsley.generator.common;bundle-version="0.1.0",
  org.eclipse.xtend.standalone;resolution:=optional
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.dsl.formatting,

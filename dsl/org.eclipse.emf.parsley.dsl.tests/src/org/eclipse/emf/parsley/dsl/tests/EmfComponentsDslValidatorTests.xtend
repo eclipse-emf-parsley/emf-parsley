@@ -9,7 +9,7 @@ import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslJavaValidator.*
+import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))

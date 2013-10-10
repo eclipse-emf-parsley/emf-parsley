@@ -94,9 +94,9 @@ public abstract class AbstractEmfParsleyDslRuntimeModule extends DefaultRuntimeM
 		return org.eclipse.xtext.parser.antlr.UnorderedGroupHelper.class;
 	}
 
-	// contributed by org.eclipse.xtext.generator.validation.JavaValidatorFragment
-	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslJavaValidator> bindEmfParsleyDslJavaValidator() {
-		return org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslJavaValidator.class;
+	// contributed by org.eclipse.xtext.generator.validation.ValidatorFragment
+	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator> bindEmfParsleyDslValidator() {
+		return org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment

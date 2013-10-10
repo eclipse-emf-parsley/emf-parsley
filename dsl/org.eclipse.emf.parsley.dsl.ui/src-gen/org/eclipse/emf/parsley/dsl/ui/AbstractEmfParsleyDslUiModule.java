@@ -108,7 +108,7 @@ public abstract class AbstractEmfParsleyDslUiModule extends DefaultUiModule {
 		return org.eclipse.emf.parsley.dsl.ui.quickfix.EmfParsleyDslQuickfixProvider.class;
 	}
 
-	// contributed by org.eclipse.xtext.ui.generator.contentAssist.JavaBasedContentAssistFragment
+	// contributed by org.eclipse.xtext.ui.generator.contentAssist.ContentAssistFragment
 	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider> bindIContentProposalProvider() {
 		return org.eclipse.emf.parsley.dsl.ui.contentassist.EmfParsleyDslProposalProvider.class;
 	}

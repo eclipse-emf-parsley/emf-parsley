@@ -225,28 +225,28 @@
     </extension>
 
 
-    <!-- marker definitions for org.eclipse.emf.parsley.dsl.EmfParsleyDsl -->
-    <extension
-            id="emfparsleydsl.check.fast"
-            name="EmfParsleyDsl Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.fast"/>
-        <persistent value="true"/>
-    </extension>
-    <extension
-            id="emfparsleydsl.check.normal"
-            name="EmfParsleyDsl Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.normal"/>
-        <persistent value="true"/>
-    </extension>
-    <extension
-            id="emfparsleydsl.check.expensive"
-            name="EmfParsleyDsl Problem"
-            point="org.eclipse.core.resources.markers">
-        <super type="org.eclipse.xtext.ui.check.expensive"/>
-        <persistent value="true"/>
-    </extension>
+	<!-- marker definitions for org.eclipse.emf.parsley.dsl.EmfParsleyDsl -->
+	<extension
+	        id="emfparsleydsl.check.fast"
+	        name="EmfParsleyDsl Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.fast"/>
+	    <persistent value="true"/>
+	</extension>
+	<extension
+	        id="emfparsleydsl.check.normal"
+	        name="EmfParsleyDsl Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.normal"/>
+	    <persistent value="true"/>
+	</extension>
+	<extension
+	        id="emfparsleydsl.check.expensive"
+	        name="EmfParsleyDsl Problem"
+	        point="org.eclipse.core.resources.markers">
+	    <super type="org.eclipse.xtext.ui.check.expensive"/>
+	    <persistent value="true"/>
+	</extension>
 
    <extension
          point="org.eclipse.xtext.builder.participant">
