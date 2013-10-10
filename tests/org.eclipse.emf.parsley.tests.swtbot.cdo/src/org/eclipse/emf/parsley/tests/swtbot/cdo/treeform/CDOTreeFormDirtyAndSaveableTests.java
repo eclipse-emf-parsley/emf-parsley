@@ -1,26 +1,20 @@
 package org.eclipse.emf.parsley.tests.swtbot.cdo.treeform;
 
-import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
 import library.business.CommonBusiness;
 
-import org.eclipse.emf.parsley.examples.cdo.treeform.TreeformCDOActivator;
 import org.eclipse.emf.parsley.tests.swtbot.cdo.util.CDOAbstractTests;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.WorkbenchPage;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+@SuppressWarnings("restriction")
 public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 
 

@@ -24,7 +24,7 @@ public class AbstractCDOTest {
     protected CDOSession openSession(String repoName) {
         IConnector connector = TCPUtil.getConnector(IPluginContainer.INSTANCE, SERVER + ":" + PORT);
         CDONet4jSessionConfiguration configuration = CDONet4jUtil.createNet4jSessionConfiguration();
-        configuration.getAuthenticator().setCredentialsProvider(new PasswordCredentialsProvider(USER, PASSWORD));
+        configuration.setCredentialsProvider(new PasswordCredentialsProvider(USER, PASSWORD));
         configuration.setConnector(connector);
         configuration.setRepositoryName(repoName);
         return configuration.openNet4jSession();

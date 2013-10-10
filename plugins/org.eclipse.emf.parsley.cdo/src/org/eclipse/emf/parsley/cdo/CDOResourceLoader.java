@@ -5,9 +5,6 @@ package org.eclipse.emf.parsley.cdo;
 
 
 import org.eclipse.emf.cdo.eresource.CDOResource;
-import org.eclipse.emf.cdo.net4j.CDONet4jSession;
-import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
-import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.view.CDOAdapterPolicy;
@@ -22,13 +19,10 @@ import org.eclipse.emf.parsley.resource.LoadResourceResponse;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.spi.cdo.CDOMergingConflictResolver;
 import org.eclipse.net4j.Net4jUtil;
-import org.eclipse.net4j.connector.IConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.event.IEvent;
 import org.eclipse.net4j.util.event.IListener;
-import org.eclipse.net4j.util.lifecycle.ILifecycle;
-import org.eclipse.net4j.util.lifecycle.LifecycleEventAdapter;
 
 import com.google.inject.Inject;
 
@@ -95,37 +89,37 @@ public class CDOResourceLoader extends ResourceLoader {
 		return resource;
 	}
 	
-	private static CDONet4jSession openSession(String repoName, String host) {
-		final IConnector connector = (IConnector) IPluginContainer.INSTANCE
-				.getElement( //
-						"org.eclipse.net4j.connectors", // Product group
-						"tcp", // Type
-						host); // Description
-
-		CDONet4jSessionConfiguration config = CDONet4jUtil.createNet4jSessionConfiguration();
-		config.setConnector(connector);
-		config.setRepositoryName(repoName);
-
-		CDONet4jSession session = config.openNet4jSession();
-
-		session.addListener(new LifecycleEventAdapter() {
-			@Override
-			protected void onDeactivated(ILifecycle lifecycle) {
-				connector.close();
-			}
-		});
-
-		return session;
-	}
+//	private static CDONet4jSession openSession(String repoName, String host) {
+//		final IConnector connector = (IConnector) IPluginContainer.INSTANCE
+//				.getElement( //
+//						"org.eclipse.net4j.connectors", // Product group
+//						"tcp", // Type
+//						host); // Description
+//
+//		CDONet4jSessionConfiguration config = CDONet4jUtil.createNet4jSessionConfiguration();
+//		config.setConnector(connector);
+//		config.setRepositoryName(repoName);
+//
+//		CDONet4jSession session = config.openNet4jSession();
+//
+//		session.addListener(new LifecycleEventAdapter() {
+//			@Override
+//			protected void onDeactivated(ILifecycle lifecycle) {
+//				connector.close();
+//			}
+//		});
+//
+//		return session;
+//	}
 
 	private CDOTransaction openTransaction(URI resourceURI){
 		Net4jUtil.prepareContainer(IPluginContainer.INSTANCE);
 		TCPUtil.prepareContainer(IPluginContainer.INSTANCE);
 		
-		CDOURIData data = CDOURIData.parse(resourceURI);
+//		CDOURIData data = CDOURIData.parse(resourceURI);
 		
-		String host = data.host;
-		String repoName = data.sessionName;
+//		String host = data.host;
+//		String repoName = data.sessionName;
 //		String resourceName = data.resourceName;
 		
 //		CDONet4jSession cdoSession = openSession(repoName, host);

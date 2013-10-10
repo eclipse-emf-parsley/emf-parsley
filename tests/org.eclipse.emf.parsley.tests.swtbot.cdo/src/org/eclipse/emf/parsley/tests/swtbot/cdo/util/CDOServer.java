@@ -13,8 +13,6 @@ import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.om.OMPlatform;
 import org.eclipse.net4j.util.om.log.PrintLogHandler;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * This class is intended to be used as a CDO server in Memory for tests

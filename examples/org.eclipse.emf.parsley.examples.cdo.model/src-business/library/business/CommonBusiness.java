@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.cdo.eresource.CDOResource;
+import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
-import org.eclipse.emf.cdo.net4j.CDOSessionConfiguration;
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.cdo.util.CDOURIUtil;
 import org.eclipse.emf.cdo.view.CDOAdapterPolicy;
@@ -98,15 +98,15 @@ public class CommonBusiness {
 						"tcp", // Type
 						host+":"+port); 
 
-		CDOSessionConfiguration config = CDONet4jUtil.createSessionConfiguration();
+		CDONet4jSessionConfiguration config = CDONet4jUtil.createNet4jSessionConfiguration();
 		config.setConnector(connector);
 		config.setRepositoryName(repoName);
 
 		if(user!=null && password!=null){
 			PasswordCredentialsProvider credentialsProvider = new PasswordCredentialsProvider(user, password);
-			config.getAuthenticator().setCredentialsProvider(credentialsProvider);
+			config.setCredentialsProvider(credentialsProvider);
 		}
-		CDOSession session = config.openSession();
+		CDOSession session = config.openNet4jSession();
 
 		session.addListener(new LifecycleEventAdapter() {
 			@Override

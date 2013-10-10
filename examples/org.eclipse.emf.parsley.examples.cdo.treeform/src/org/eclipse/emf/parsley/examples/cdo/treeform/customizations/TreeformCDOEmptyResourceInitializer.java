@@ -5,7 +5,6 @@ import library.Book;
 import library.Library;
 import library.LibraryFactory;
 
-import org.eclipse.emf.cdo.common.id.CDOReference;
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CommitException;

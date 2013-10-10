@@ -2,15 +2,12 @@ package org.eclipse.emf.parsley.tests.swtbot.cdo.treeform;
 
 import library.business.CommonBusiness;
 
-import org.eclipse.emf.parsley.examples.cdo.treeform.TreeformCDOActivator;
 import org.eclipse.emf.parsley.tests.swtbot.cdo.util.CDOAbstractTests;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

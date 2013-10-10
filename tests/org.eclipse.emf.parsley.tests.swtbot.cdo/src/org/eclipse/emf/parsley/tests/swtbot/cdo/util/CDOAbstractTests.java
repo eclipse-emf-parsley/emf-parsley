@@ -1,35 +1,24 @@
 package org.eclipse.emf.parsley.tests.swtbot.cdo.util;
 
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
-import library.business.CommonBusiness;
 
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
-import org.eclipse.emf.cdo.net4j.CDOSessionConfiguration;
 import org.eclipse.emf.cdo.session.CDOSession;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.net4j.connector.IConnector;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.security.PasswordCredentialsProvider;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.PlatformUI;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
-
-import com.google.inject.Injector;
-import com.google.inject.Provider;
 
 public class CDOAbstractTests {
 
@@ -60,15 +49,15 @@ public class CDOAbstractTests {
 	public static void checkCDOServer(String host, String user, String password, String port) {
 		final IConnector connector = (IConnector) IPluginContainer.INSTANCE.getElement("org.eclipse.net4j.connectors","tcp", host+":"+port  ); 
 
-		CDOSessionConfiguration config = CDONet4jUtil.createSessionConfiguration();
+		CDONet4jSessionConfiguration config = CDONet4jUtil.createNet4jSessionConfiguration();
 		config.setConnector(connector);
 		config.setRepositoryName("demo");
 
 		PasswordCredentialsProvider credentialsProvider = new PasswordCredentialsProvider(user, password);			
-		config.getAuthenticator().setCredentialsProvider(credentialsProvider);
+		config.setCredentialsProvider(credentialsProvider);
 		
 		connector.setOpenChannelTimeout(1000);
-		CDOSession session = config.openSession();
+		CDOSession session = config.openNet4jSession();
 		session.close();
 	}
 	
