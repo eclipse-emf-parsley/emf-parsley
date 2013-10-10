@@ -23,14 +23,14 @@
 
 	<import file="${ant.file}/../../org.eclipse.emf.parsley.buckminster.common/common.ant" as="common" />
 
+	<property name="resolve.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/headless-resolve-commands.txt" />
+	<property name="perform.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/headless-perform-commands.txt" />
+	<property name="build.properties" location="${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/build.properties" />
+
 	<target name="buckminster" depends="common.cleanup,install.buckminster.headless" description="description">
 
 		<fail unless="buckminster.home" message="buckminster.home must be specified." />
 
-		<property name="resolve.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/headless-resolve-commands.txt" />
-		<property name="perform.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/headless-perform-commands.txt" />
-		<property name="build.properties" location="${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/build.properties" />
-		
 		<antcall target="buckminster-resolve" />
 		<antcall target="buckminster-perform" />
 	</target>
