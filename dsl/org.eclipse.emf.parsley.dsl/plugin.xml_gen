@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.eclipse.org/emf/parsley/dsl/EmfParsleyDsl" 
        class = "org.eclipse.emf.parsley.dsl.model.ModelPackage"
-       genModel = "org/eclipse/emf/parsley/dsl/EmfParsleyDsl.genmodel" /> 
+       genModel = "model/generated/EmfParsleyDsl.genmodel" /> 
 	
   </extension>
 

@@ -4,7 +4,7 @@
     editorDirectory="/org.eclipse.emf.parsley.dsl.editor/src" modelPluginID="org.eclipse.emf.parsley.dsl"
     forceOverwrite="true" modelName="EmfParsleyDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.emf.parsley.dsl.edit"
-    editorPluginID="org.eclipse.emf.parsley.dsl.editor" runtimeVersion="2.9" usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
+    editorPluginID="org.eclipse.emf.parsley.dsl.editor" runtimeVersion="2.9" usedGenPackages="../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase ../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
   <genPackages prefix="Model" basePackage="org.eclipse.emf.parsley.dsl" disposableProviderFactory="true"
       ecorePackage="EmfParsleyDsl.ecore#/">
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//Model">
