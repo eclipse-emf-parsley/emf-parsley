@@ -1,13 +1,13 @@
 package $packageName$.internal.guice;
 
 import $packageName$.Activator;
-import org.eclipse.emf.parsley.EmfComponentsExtensionFactory;
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 
 import org.osgi.framework.Bundle;
 
 public class $prefixClassesname$ExecutableExtensionFactory extends
-		EmfComponentsExtensionFactory {
+		EmfParsleyExtensionFactory {
 
 	@Override
 	protected Bundle getBundle() {
@@ -15,7 +15,7 @@ public class $prefixClassesname$ExecutableExtensionFactory extends
 	}
 
 	@Override
-	protected EmfComponentsGuiceModule getModule() {
+	protected EmfParsleyGuiceModule getModule() {
 		return new $prefixClassesname$Module(Activator.getDefault());
 	}
 

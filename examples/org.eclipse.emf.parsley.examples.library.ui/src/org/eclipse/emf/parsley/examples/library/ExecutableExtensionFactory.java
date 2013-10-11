@@ -1,12 +1,12 @@
 package org.eclipse.emf.parsley.examples.library;
 
-import org.eclipse.emf.parsley.EmfComponentsExtensionFactory;
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.osgi.framework.Bundle;
 
 
 public class ExecutableExtensionFactory extends
-		EmfComponentsExtensionFactory {
+		EmfParsleyExtensionFactory {
 
 	@Override
 	protected Bundle getBundle() {
@@ -14,8 +14,8 @@ public class ExecutableExtensionFactory extends
 	}
 
 	@Override
-	protected EmfComponentsGuiceModule getModule() {
-		return new EmfComponentsGuiceModule(Activator.getDefault());
+	protected EmfParsleyGuiceModule getModule() {
+		return new EmfParsleyGuiceModule(Activator.getDefault());
 	}
 
 }

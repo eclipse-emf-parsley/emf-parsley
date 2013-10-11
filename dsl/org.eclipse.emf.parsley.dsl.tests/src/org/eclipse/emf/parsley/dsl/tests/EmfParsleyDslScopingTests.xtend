@@ -15,7 +15,7 @@ import static org.junit.Assert.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslScopingTests extends EmfComponentsDslAbstractTests {
+class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 
 	@Inject extension EmfParsleyDslXbaseBatchScopeProvider
 

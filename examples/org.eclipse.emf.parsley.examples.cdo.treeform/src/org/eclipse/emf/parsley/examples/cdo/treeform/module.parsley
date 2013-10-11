@@ -3,8 +3,8 @@ import library.*
 import org.eclipse.emf.parsley.cdo.*
 import org.eclipse.emf.parsley.examples.cdo.view.TreeFormCDOView
 
-/* org.eclipse.emf.parsley.examples.cdo.treeform Emf Components Dsl Module file */
-module org.eclipse.emf.parsley.examples.cdo.treeform  extends CDOEmfComponentsModule{
+/* org.eclipse.emf.parsley.examples.cdo.treeform Emf Parsley Dsl Module file */
+module org.eclipse.emf.parsley.examples.cdo.treeform  extends CDOEmfParsleyModule{
 
 	parts{
 		viewpart org.eclipse.emf.parsley.examples.cdo.treeformview{

@@ -55,7 +55,7 @@ ol[
 The generated project has some classes and a e[module.parlsey] file, which opens automatically.
 Just type the following content into the {} block (note that context assist is available)
 
-code[EmfComponents][
+code[EmfParsley][
 	parts {
 		viewpart org.eclipse.emf.parsley.examples.firstexample.view.library.treeform {
 			viewname "My Library Tree Form"
@@ -96,7 +96,7 @@ public class LibraryTreeFormView extends AbstractSaveableTreeFormView {
 Now get back to e[module.parlsey] file, go just after e["viewclass"] keyword, type e["LibraryTreeFormView"]
 and e[Ctrl-Space]: the content assist will set automatically the correct qualified name
 
-code[EmfComponents][
+code[EmfParsley][
 	viewclass org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
 ]
 
@@ -203,13 +203,13 @@ for Writers and maybe e["title", "authors" and "category"] for Books.
 Well, it's indeed very easy to obtain this: just edit the e[module.parsley] file, 
 adding the following import (without ending line with ";")
 
-code[EmfComponents][
+code[EmfParsley][
 import org.eclipse.emf.examples.extlibrary.*
 ]
 
 and then defining the features to show
 
-code[EmfComponents][
+code[EmfParsley][
 
 module ... {
 
@@ -237,7 +237,7 @@ changes without even restarting the application.
 
 Do you want to change text used for attribute labels in the detail? Just add the following:
 
-code[EmfComponents][
+code[EmfParsley][
 	propertyDescriptionProvider {
 		text {
 			Book : author -> 'Wrote by:'
@@ -249,7 +249,7 @@ code[EmfComponents][
 Or do you want to change the label shown on the tree nodes on the upper side and as detail title? 
 Maybe want to format the book label like this?
  
-code[EmfComponents][
+code[EmfParsley][
 	labelProvider {
 		text {
 			Book b -> '"' + b.title + '"' +' (by '+ b.author.name + ')'

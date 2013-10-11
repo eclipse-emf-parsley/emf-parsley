@@ -8,7 +8,7 @@ import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.dsl.model.FormControlSpecification
@@ -100,7 +100,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		
 		acceptor.accept(moduleClass).initializeLater [
 			documentation = element.documentation
-			moduleClass.setSuperClassType(element, typeof(EmfComponentsGuiceModule))
+			moduleClass.setSuperClassType(element, typeof(EmfParsleyGuiceModule))
 			
 			members += element.toConstructor() [
 				parameters += element.toParameter("plugin", element.newTypeRef(typeof(AbstractUIPlugin)))
@@ -136,7 +136,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
    	}
    	
    	def moduleQN(Module element) {
-   		element.fullyQualifiedName + ".EmfComponentsGuiceModuleGen"
+   		element.fullyQualifiedName + ".EmfParsleyGuiceModuleGen"
    	}
 
    	def executableExtensionFactoryQN(Module element) {

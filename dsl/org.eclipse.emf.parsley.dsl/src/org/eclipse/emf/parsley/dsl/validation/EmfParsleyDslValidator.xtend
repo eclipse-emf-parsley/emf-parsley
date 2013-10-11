@@ -23,7 +23,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val NOT_EOBJECT = "org.eclipse.emf.parsley.dsl.NotEObject";
 
-	public static val NOT_EMFCOMPONENTS_MODULE = "org.eclipse.emf.parsley.dsl.NotEmfComponentsGuiceModule";
+	public static val NOT_EMFCOMPONENTS_MODULE = "org.eclipse.emf.parsley.dsl.NotEmfParsleyGuiceModule";
 
 	@Inject EmfParsleyDslTypeSystem typeSystem
 
@@ -53,9 +53,9 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	def void checkModuleExtends(Module module) {
 		if (module.getExtendsClause() != null
 				&& module.getExtendsClause().getSuperType() != null
-				&& !typeSystem.isEmfComponentsGuiceModule(module
+				&& !typeSystem.isEmfParsleyGuiceModule(module
 						.getExtendsClause().getSuperType(), module)) {
-			error("Must be an EmfComponentsGuiceModule derived class",
+			error("Must be an EmfParsleyGuiceModule derived class",
 					module.getExtendsClause(),
 					ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE,
 					NOT_EMFCOMPONENTS_MODULE);

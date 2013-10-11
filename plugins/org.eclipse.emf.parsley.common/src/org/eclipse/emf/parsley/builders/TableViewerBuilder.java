@@ -4,7 +4,7 @@
 package org.eclipse.emf.parsley.builders;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.util.EmfComponentsUtil;
+import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
@@ -47,7 +47,7 @@ public class TableViewerBuilder {
 			IStructuredContentProvider contentProvider,
 			IBaseLabelProvider labelProvider) {
 		viewerInitializer.initialize(tableViewer,
-				EmfComponentsUtil.ensureCollection(contents), contentProvider,
+				EmfParsleyUtil.ensureCollection(contents), contentProvider,
 				labelProvider);
 	}
 	

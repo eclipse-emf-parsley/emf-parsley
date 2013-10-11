@@ -3,7 +3,7 @@ import org.eclipse.emf.examples.extlibrary.Library
 import org.eclipse.emf.examples.extlibrary.Writer
 import org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
 
-/* org.eclipse.emf.parsley.examples.firstexample Emf Components Dsl Module file */
+/* org.eclipse.emf.parsley.examples.firstexample Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.firstexample {
 
 	parts { 

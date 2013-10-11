@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.swtbot.eclipse.ui.launcher.JunitLaunchConfig">
+<setAttribute key="additional_plugins">
+<setEntry value="org.eclipse.emf.parsley.tests.swtbot:0.1.0.qualifier:default:false"/>
+</setAttribute>
+<booleanAttribute key="append.args" value="true"/>
+<booleanAttribute key="askclear" value="false"/>
+<booleanAttribute key="automaticAdd" value="true"/>
+<booleanAttribute key="automaticValidate" value="false"/>
+<stringAttribute key="bootstrap" value=""/>
+<stringAttribute key="checked" value="[NONE]"/>
+<booleanAttribute key="clearConfig" value="true"/>
+<booleanAttribute key="clearws" value="true"/>
+<booleanAttribute key="clearwslog" value="false"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
+<booleanAttribute key="default" value="false"/>
+<stringAttribute key="deselected_workspace_plugins" value="ProvaView,ProvaWizard,it.rcpvision.cdo04.editor,it.rcpvision.cdo04.model,org.eclipse.emf.parsley.cdo,org.eclipse.emf.parsley.cdo.tests,org.eclipse.emf.parsley.cdoexample.masterdetail.table,org.eclipse.emf.parsley.cdoexample.masterdetail.tree,org.eclipse.emf.parsley.cdoexample.model,org.eclipse.emf.parsley.cdoexample.model.business,org.eclipse.emf.parsley.cdoexample.rcp,org.eclipse.emf.parsley.cdoexample.rcp.tests,org.eclipse.emf.parsley.tests.cdo.app,org.eclipse.emf.parsley.tests.cdo.model,org.eclipse.emf.parsley.tests.cdo.product,it.rcpvision.rcptutorial03.model.cdo"/>
+<stringAttribute key="featureDefaultLocation" value="workspace"/>
+<stringAttribute key="featurePluginResolution" value="workspace"/>
+<booleanAttribute key="includeOptional" value="true"/>
+<stringAttribute key="location" value="${workspace_loc}/../junit-workspace"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/org.eclipse.emf.parsley.tests.swtbot/src/org/eclipse/emf/parsley/tests/EmfParsleyFormTests.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value=""/>
+<booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
+<stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
+<stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.emf.parsley.tests.EmfParsleyFormTests"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.eclipse.emf.parsley.tests.swtbot"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms40m -Xmx384m -XX:MaxPermSize=256m -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false"/>
+<stringAttribute key="pde.version" value="3.3"/>
+<stringAttribute key="product" value="org.eclipse.sdk.ide"/>
+<setAttribute key="selected_features">
+<setEntry value="org.eclipse.cvs.source:default"/>
+<setEntry value="org.eclipse.cvs:default"/>
+<setEntry value="org.eclipse.e4.rcp.source:default"/>
+<setEntry value="org.eclipse.e4.rcp:default"/>
+<setEntry value="org.eclipse.emf.common:default"/>
+<setEntry value="org.eclipse.emf.ecore:default"/>
+<setEntry value="org.eclipse.emf.parsley.dsl.feature:default"/>
+<setEntry value="org.eclipse.emf.parsley.examples.feature:default"/>
+<setEntry value="org.eclipse.emf.parsley.feature:default"/>
+<setEntry value="org.eclipse.emf.parsley.tests.swtbot.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.core.feature.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.core.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.extras.feature.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.extras.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.rcp.feature.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.rcp.feature:default"/>
+<setEntry value="org.eclipse.equinox.p2.user.ui.source:default"/>
+<setEntry value="org.eclipse.equinox.p2.user.ui:default"/>
+<setEntry value="org.eclipse.help.source:default"/>
+<setEntry value="org.eclipse.help:default"/>
+<setEntry value="org.eclipse.jdt.source:default"/>
+<setEntry value="org.eclipse.jdt:default"/>
+<setEntry value="org.eclipse.pde.source:default"/>
+<setEntry value="org.eclipse.pde:default"/>
+<setEntry value="org.eclipse.platform.source:default"/>
+<setEntry value="org.eclipse.platform:default"/>
+<setEntry value="org.eclipse.rcp.source:default"/>
+<setEntry value="org.eclipse.rcp:default"/>
+<setEntry value="org.eclipse.sdk:default"/>
+<setEntry value="org.eclipse.swtbot.eclipse:default"/>
+<setEntry value="org.eclipse.swtbot.forms:default"/>
+<setEntry value="org.eclipse.swtbot.ide:default"/>
+<setEntry value="org.eclipse.swtbot:default"/>
+<setEntry value="org.eclipse.xtend.sdk:default"/>
+<setEntry value="org.eclipse.xtext.docs:default"/>
+<setEntry value="org.eclipse.xtext.examples.source:default"/>
+<setEntry value="org.eclipse.xtext.examples:default"/>
+<setEntry value="org.eclipse.xtext.runtime.source:default"/>
+<setEntry value="org.eclipse.xtext.runtime:default"/>
+<setEntry value="org.eclipse.xtext.sdk:default"/>
+<setEntry value="org.eclipse.xtext.ui.source:default"/>
+<setEntry value="org.eclipse.xtext.ui:default"/>
+<setEntry value="org.eclipse.xtext.xbase.lib.source:default"/>
+<setEntry value="org.eclipse.xtext.xbase.lib:default"/>
+<setEntry value="org.eclipse.xtext.xbase.source:default"/>
+<setEntry value="org.eclipse.xtext.xbase:default"/>
+<setEntry value="org.eclipse.xtext.xtext.ui.source:default"/>
+<setEntry value="org.eclipse.xtext.xtext.ui:default"/>
+</setAttribute>
+<stringAttribute key="selected_target_plugins" value="ch.qos.logback.classic@default:default,ch.qos.logback.core@default:default,ch.qos.logback.slf4j@default:false,com.google.collect@default:default,com.google.guava@default:default,com.google.inject@default:default,com.ibm.icu@default:default,de.itemis.xtext.antlr@default:default,javax.activation@default:default,javax.inject@default:default,javax.mail@default:default,javax.servlet.jsp@default:default,javax.servlet@default:default,org.antlr.generator@default:default,org.antlr.runtime@default:default,org.apache.ant@default:default,org.apache.commons.cli@default:default,org.apache.commons.el@default:default,org.apache.commons.lang@default:default,org.apache.commons.logging*1.1.1.v201101211721@default:default,org.apache.jasper@default:default,org.apache.log4j@default:default,org.apache.lucene.analysis@default:default,org.apache.lucene.core@default:default,org.apache.lucene.highlighter@default:default,org.apache.lucene.memory@default:default,org.apache.lucene.misc@default:default,org.apache.lucene.queries@default:default,org.apache.lucene.snowball@default:default,org.apache.lucene.spellchecker@default:default,org.apache.lucene@default:default,org.easymock@default:default,org.eclipse.ant.core@default:default,org.eclipse.ant.launching@default:default,org.eclipse.ant.ui@default:default,org.eclipse.compare.core@default:default,org.eclipse.compare@default:default,org.eclipse.core.commands@default:default,org.eclipse.core.contenttype@default:default,org.eclipse.core.databinding.observable@default:default,org.eclipse.core.databinding.property@default:default,org.eclipse.core.databinding@default:default,org.eclipse.core.expressions@default:default,org.eclipse.core.externaltools@default:default,org.eclipse.core.filebuffers@default:default,org.eclipse.core.filesystem.linux.x86@default:false,org.eclipse.core.filesystem@default:default,org.eclipse.core.jobs@default:default,org.eclipse.core.net.linux.x86@default:false,org.eclipse.core.net@default:default,org.eclipse.core.resources@default:default,org.eclipse.core.runtime.compatibility.auth@default:default,org.eclipse.core.runtime.compatibility.registry@default:false,org.eclipse.core.runtime.compatibility@default:default,org.eclipse.core.runtime@default:true,org.eclipse.core.variables@default:default,org.eclipse.debug.core@default:default,org.eclipse.debug.ui@default:default,org.eclipse.emf.codegen.ecore@default:default,org.eclipse.emf.codegen@default:default,org.eclipse.emf.common.ui@default:default,org.eclipse.emf.common@default:default,org.eclipse.emf.databinding.edit@default:default,org.eclipse.emf.databinding@default:default,org.eclipse.emf.ecore.change@default:default,org.eclipse.emf.ecore.edit@default:default,org.eclipse.emf.ecore.editor@default:default,org.eclipse.emf.ecore.xmi@default:default,org.eclipse.emf.ecore@default:default,org.eclipse.emf.edit.ui@default:default,org.eclipse.emf.edit@default:default,org.eclipse.emf.mwe.core@default:default,org.eclipse.emf.mwe.utils@default:default,org.eclipse.emf.mwe2.language@default:default,org.eclipse.emf.mwe2.launch@default:default,org.eclipse.emf.mwe2.lib@default:default,org.eclipse.emf.mwe2.runtime@default:default,org.eclipse.equinox.app@default:default,org.eclipse.equinox.common@2:true,org.eclipse.equinox.frameworkadmin.equinox@default:default,org.eclipse.equinox.frameworkadmin@default:default,org.eclipse.equinox.http.jetty@default:default,org.eclipse.equinox.http.servlet@default:default,org.eclipse.equinox.p2.artifact.repository@default:default,org.eclipse.equinox.p2.core@default:default,org.eclipse.equinox.p2.director.app@default:default,org.eclipse.equinox.p2.director@default:default,org.eclipse.equinox.p2.engine@default:default,org.eclipse.equinox.p2.garbagecollector@default:default,org.eclipse.equinox.p2.jarprocessor@default:default,org.eclipse.equinox.p2.metadata.repository@default:default,org.eclipse.equinox.p2.metadata@default:default,org.eclipse.equinox.p2.operations@default:default,org.eclipse.equinox.p2.publisher.eclipse@default:default,org.eclipse.equinox.p2.publisher@default:default,org.eclipse.equinox.p2.repository.tools@default:default,org.eclipse.equinox.p2.repository@default:default,org.eclipse.equinox.p2.touchpoint.eclipse@default:default,org.eclipse.equinox.p2.ui@default:default,org.eclipse.equinox.p2.updatesite@default:default,org.eclipse.equinox.preferences@default:default,org.eclipse.equinox.registry@default:default,org.eclipse.equinox.security.ui@default:default,org.eclipse.equinox.security@default:default,org.eclipse.equinox.simpleconfigurator.manipulator@default:default,org.eclipse.equinox.simpleconfigurator@1:true,org.eclipse.help.base@default:default,org.eclipse.help.ui@default:default,org.eclipse.help@default:default,org.eclipse.jdt.compiler.apt@default:false,org.eclipse.jdt.compiler.tool@default:false,org.eclipse.jdt.core.manipulation@default:default,org.eclipse.jdt.core@default:default,org.eclipse.jdt.debug.ui@default:default,org.eclipse.jdt.debug@default:default,org.eclipse.jdt.junit.core@default:default,org.eclipse.jdt.junit.runtime@default:default,org.eclipse.jdt.junit@default:default,org.eclipse.jdt.launching@default:default,org.eclipse.jdt.ui@default:default,org.eclipse.jface.databinding@default:default,org.eclipse.jface.text@default:default,org.eclipse.jface@default:default,org.eclipse.ltk.core.refactoring@default:default,org.eclipse.ltk.ui.refactoring@default:default,org.eclipse.net4j.jms.api@default:default,org.eclipse.osgi.services@default:default,org.eclipse.osgi@-1:true,org.eclipse.pde.build@default:default,org.eclipse.pde.core@default:default,org.eclipse.pde.launching@default:default,org.eclipse.pde.ui@default:default,org.eclipse.sdk@default:default,org.eclipse.search@default:default,org.eclipse.swt.gtk.linux.x86@default:false,org.eclipse.swt@default:default,org.eclipse.swtbot.ant.optional.junit3@default:false,org.eclipse.swtbot.ant.optional.junit4@default:false,org.eclipse.swtbot.eclipse.core@default:default,org.eclipse.swtbot.eclipse.finder@default:default,org.eclipse.swtbot.forms.finder@default:default,org.eclipse.swtbot.go@default:default,org.eclipse.swtbot.junit4_x@default:default,org.eclipse.team.core@default:default,org.eclipse.team.ui@default:default,org.eclipse.text@default:default,org.eclipse.ui.cheatsheets@default:default,org.eclipse.ui.console@default:default,org.eclipse.ui.editors@default:default,org.eclipse.ui.externaltools@default:default,org.eclipse.ui.forms@default:default,org.eclipse.ui.ide.application@default:default,org.eclipse.ui.ide@default:default,org.eclipse.ui.intro@default:default,org.eclipse.ui.navigator.resources@default:default,org.eclipse.ui.navigator@default:default,org.eclipse.ui.views.log@default:default,org.eclipse.ui.views.properties.tabbed@default:default,org.eclipse.ui.views@default:default,org.eclipse.ui.workbench.texteditor@default:default,org.eclipse.ui.workbench@default:default,org.eclipse.ui@default:default,org.eclipse.update.configurator@3:true,org.eclipse.update.core.linux@default:false,org.eclipse.update.core@default:default,org.eclipse.wb.jdt.fragment@default:false,org.eclipse.xpand@default:default,org.eclipse.xtend.typesystem.emf@default:default,org.eclipse.xtend2.lib@default:default,org.eclipse.xtend@default:default,org.eclipse.xtext.builder@default:default,org.eclipse.xtext.common.types.ui@default:default,org.eclipse.xtext.common.types@default:default,org.eclipse.xtext.ecore@default:default,org.eclipse.xtext.generator@default:default,org.eclipse.xtext.junit@default:default,org.eclipse.xtext.logging@default:false,org.eclipse.xtext.ui.codetemplates.ui@default:default,org.eclipse.xtext.ui.codetemplates@default:default,org.eclipse.xtext.ui.junit@default:default,org.eclipse.xtext.ui.shared@default:default,org.eclipse.xtext.ui@default:default,org.eclipse.xtext.util@default:default,org.eclipse.xtext.xbase.lib@default:default,org.eclipse.xtext.xtend2.lib@default:default,org.eclipse.xtext@default:default,org.hamcrest.core@default:default,org.hamcrest.integration@default:default,org.hamcrest.library@default:default,org.hamcrest.text@default:default,org.hamcrest@default:default,org.junit*4.8.2.v4_8_2_v20110321-1705@default:default,org.junit4@default:default,org.mortbay.jetty.server@default:default,org.mortbay.jetty.util@default:default,org.sat4j.core@default:default,org.sat4j.pb@default:default,org.slf4j.api@default:default"/>
+<stringAttribute key="selected_workspace_plugins" value="org.eclipse.emf.parsley.tests.swtbot@default:default,org.eclipse.emf.parsley.wizards@default:default,org.eclipse.emf.parsley@default:default,org.eclipse.emf.parsley.examples.library.edit@default:default,org.eclipse.emf.parsley.examples.library.editor@default:default,org.eclipse.emf.parsley.examples.library@default:default,org.eclipse.swtbot.examples@default:default,org.eclipse.swtbot.swt.finder@default:default,org.eclipse.xtext.example.fowlerdsl.ui@default:default,org.eclipse.xtext.example.fowlerdsl@default:default"/>
+<booleanAttribute key="show_selected_only" value="false"/>
+<stringAttribute key="templateConfig" value="${target_home}/configuration/config.ini"/>
+<booleanAttribute key="tracing" value="false"/>
+<booleanAttribute key="useCustomFeatures" value="true"/>
+<booleanAttribute key="useDefaultConfig" value="true"/>
+<booleanAttribute key="useDefaultConfigArea" value="false"/>
+<booleanAttribute key="useProduct" value="true"/>
+</launchConfiguration>

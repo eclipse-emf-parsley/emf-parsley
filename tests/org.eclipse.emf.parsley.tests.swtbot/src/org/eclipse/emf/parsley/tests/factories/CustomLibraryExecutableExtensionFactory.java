@@ -3,7 +3,7 @@
  */
 package org.eclipse.emf.parsley.tests.factories;
 
-import org.eclipse.emf.parsley.tests.EmfComponentsTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
 
 import com.google.inject.Injector;
 
@@ -14,11 +14,11 @@ import com.google.inject.Injector;
  * 
  */
 public class CustomLibraryExecutableExtensionFactory extends
-		EmfComponentsTestsExecutableExtensionFactory {
+		EmfParsleyTestsExecutableExtensionFactory {
 
 	@Override
 	public Injector getInjector() {
-		return EmfComponentsTestsActivator.getDefault().getInjector(
+		return EmfParsleyTestsActivator.getDefault().getInjector(
 				this.getClass());
 	}
 

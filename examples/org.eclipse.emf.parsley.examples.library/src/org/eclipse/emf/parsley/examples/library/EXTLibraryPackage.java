@@ -72,7 +72,7 @@ public interface EXTLibraryPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eCONTENT_TYPE = "emfComponentsLibrary"; //$NON-NLS-1$
+  String eCONTENT_TYPE = "emfParsleyLibrary"; //$NON-NLS-1$
 
   /**
    * The singleton instance of the package.

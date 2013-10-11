@@ -2,7 +2,7 @@ package org.eclipse.emf.parsley.examples.rap.ui;
 
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.examples.rap.model.Element;
 import org.eclipse.emf.parsley.examples.rap.model.Item;
 import org.eclipse.emf.parsley.examples.rap.model.Model;
@@ -14,7 +14,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.inject.Inject;
 
-public class GuiceModule extends EmfComponentsGuiceModule {
+public class GuiceModule extends EmfParsleyGuiceModule {
 
 	public static class CustomEmptyResourceInitializer extends
 			EmptyResourceInitializer {

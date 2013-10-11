@@ -7,7 +7,7 @@ import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 
-public class TreeformGuiceModule extends EmfComponentsGuiceModuleGen {
+public class TreeformGuiceModule extends EmfParsleyGuiceModuleGen {
 
 	public TreeformGuiceModule(AbstractUIPlugin plugin) {
 		super(plugin);

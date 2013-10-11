@@ -26,7 +26,7 @@
             class="org.eclipse.emf.parsley.examples.library.presentation.EXTLibraryEditor"
             contributorClass="org.eclipse.emf.parsley.examples.library.actions.EXTLibraryExtendedActionBarContributor"
             default="true">
-         <contentTypeBinding contentTypeId="org.eclipse.emf.parsley.examples.library.emfComponentsLibrary"/>
+         <contentTypeBinding contentTypeId="org.eclipse.emf.parsley.examples.library.emfParsleyLibrary"/>
       </editor>
    </extension>
 </plugin>

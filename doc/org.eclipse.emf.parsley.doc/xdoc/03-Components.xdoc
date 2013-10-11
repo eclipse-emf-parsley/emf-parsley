@@ -68,7 +68,7 @@ img[images/03-components-tree.png][][ ][]
 
 section2:Tree_Customizations[Tree Customizations]
 
-The e[Tree Component]can be customized in several way via the standard EMF Edit facilities or with the EMF Components 
+The e[Tree Component]can be customized in several way via the standard EMF Edit facilities or with the EMF Parsley 
 codeinjection based mechanism. If you are familiar with Jface APIs, you can easily use the basic class with some facilties to define the specific implementation. 
 See the corrisponding sections for more details.
 

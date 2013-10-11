@@ -1,13 +1,13 @@
 package org.eclipse.emf.parsley.examples.cdo.treeform;
 
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
-import org.eclipse.emf.parsley.cdo.CDOEmfComponentsExtensionFactory;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.cdo.CDOEmfParsleyExtensionFactory;
 import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
 public class TreeformExecutableExtensionFactory extends
-		CDOEmfComponentsExtensionFactory{
+		CDOEmfParsleyExtensionFactory{
 
 	@Override
 	protected Bundle getBundle() {
@@ -15,7 +15,7 @@ public class TreeformExecutableExtensionFactory extends
 	}
 
 	@Override
-	protected EmfComponentsGuiceModule getModule() {
+	protected EmfParsleyGuiceModule getModule() {
 		return TreeformCDOActivator.getDefault().createModule();
 	}
 

@@ -70,7 +70,7 @@ public class NewEmfParsleyProjectSupport {
 			createExecutableExtensionFactory(project, projectName,
 					projectPackagePath, progressMonitor);
 			createModule(project, projectName, projectPackagePath,
-					"EmfComponentsGuiceModule", progressMonitor);
+					"EmfParsleyGuiceModule", progressMonitor);
 
 			createProjectFile(project, metaInfPath + "/MANIFEST.MF",
 					filesGenerator.generateManifest(projectName).toString(),

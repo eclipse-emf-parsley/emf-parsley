@@ -11,7 +11,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
-import org.eclipse.emf.parsley.views.EmfComponentsViewsActivator;
+import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator;
 import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
 
 import com.google.common.collect.ImmutableList;
@@ -40,7 +40,7 @@ public class EmfParsleyDslProjectCreatorCustom extends
 		return Lists.newArrayList(
 				"org.eclipse.core.runtime",
 				"org.eclipse.ui",
-				EmfComponentsViewsActivator.PLUGIN_ID,
+				EmfParsleyViewsActivator.PLUGIN_ID,
 				"org.eclipse.xtext.xbase.lib");
 		// don't add the components.dsl project dep
 		// otherwise the plugin will depend on xtext stuff
@@ -74,7 +74,7 @@ public class EmfParsleyDslProjectCreatorCustom extends
 		NewEmfParsleyProjectSupport.createExecutableExtensionFactory(
 				project, projectName, projectPackagePath, monitor);
 		NewEmfParsleyProjectSupport.createModule(project, projectName,
-				projectPackagePath, "EmfComponentsGuiceModuleGen", monitor);
+				projectPackagePath, "EmfParsleyGuiceModuleGen", monitor);
 		
 		String dslFile = "";
 		if(getProjectInfo().getSelectedTemplate()!=null){

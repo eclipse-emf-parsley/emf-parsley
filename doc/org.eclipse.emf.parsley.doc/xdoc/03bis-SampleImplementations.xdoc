@@ -2,7 +2,7 @@ chapter:Samples[Samples]
 
 section:SampleImplementation[Sample Implementations]
 
-This section describes some view that are developed using EMF Components as a reference implementation to understand how it can be used.
+This section describes some view that are developed using EMF Parsley as a reference implementation to understand how it can be used.
 
 
 section2:ResourceBased[Resource Based Components]
@@ -59,7 +59,7 @@ code[Java][
 @Override
 protected URI createResourceURI() {
 	return URI.createPlatformResourceURI(
-			EmfComponentsAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+			EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 }
 ]
 
@@ -131,7 +131,7 @@ code[Java][
 @Override
 protected URI createResourceURI() {
 	return URI.createPlatformResourceURI(
-			EmfComponentsAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+			EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 }
 ]
 
@@ -169,7 +169,7 @@ code[Java][
 @Override
 protected URI createResourceURI() {
 	return URI.createPlatformResourceURI(
-			EmfComponentsAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+			EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 }
 ]
 

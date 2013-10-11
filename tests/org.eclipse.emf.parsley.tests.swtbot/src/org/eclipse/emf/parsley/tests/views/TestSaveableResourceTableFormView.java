@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
-import org.eclipse.emf.parsley.tests.EmfComponentsAbstractTests;
+import org.eclipse.emf.parsley.tests.EmfParsleyAbstractTests;
 import org.eclipse.emf.parsley.views.AbstractSaveableTableFormView;
 
 public class TestSaveableResourceTableFormView extends AbstractSaveableTableFormView {
@@ -25,7 +25,7 @@ public class TestSaveableResourceTableFormView extends AbstractSaveableTableForm
 	@Override
 	protected URI createResourceURI() {
 		return URI.createPlatformResourceURI(
-				EmfComponentsAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
 }

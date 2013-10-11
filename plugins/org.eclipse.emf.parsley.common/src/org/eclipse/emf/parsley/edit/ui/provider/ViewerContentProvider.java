@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.parsley.util.EmfComponentsUtil;
+import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 
 import com.google.inject.Inject;
 
@@ -68,7 +68,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	public Object[] getChildren(Object element) {
 		Object children = childrenDispatcher.invoke(element);
 		if (children != null) {
-			return EmfComponentsUtil.ensureCollection(children).toArray();
+			return EmfParsleyUtil.ensureCollection(children).toArray();
 		}
 		return super.getChildren(element);
 	}

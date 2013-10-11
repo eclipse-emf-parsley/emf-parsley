@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Emf Components Runtime Functionalities
+Bundle-Name: Emf Parsley Runtime Functionalities
 Bundle-SymbolicName: org.eclipse.emf.parsley.runtime.common
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: RCP-VISION

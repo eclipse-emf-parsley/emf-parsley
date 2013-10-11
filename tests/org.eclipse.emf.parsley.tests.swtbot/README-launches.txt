@@ -1,8 +1,8 @@
-EmfComponentsTestsSuite.launch is the launch configuration for
+EmfParsleyTestsSuite.launch is the launch configuration for
 running all SWTBOT tests from the workspace
 (it is a SWTBOT Test launch configuration).
 
-EmfComponentsSwtBotAllTests.launch is the launch configuration
+EmfParsleySwtBotAllTests.launch is the launch configuration
 running all SWTBOT tests from Buckminster
 (it is a Junit Plug-in Test launch configuration
 with "Run in UI Thread" unchecked, so that it mimics

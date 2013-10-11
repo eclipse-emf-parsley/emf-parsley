@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.EmfComponentsCommonActivator;
+import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
 
 import com.google.common.collect.Lists;
 
@@ -91,7 +91,7 @@ public class FeaturesProvider {
 			if (feature != null)
 				result.add(feature);
 			else
-				EmfComponentsCommonActivator.logError("cannot find feature '"
+				EmfParsleyCommonActivator.logError("cannot find feature '"
 						+ featureName + "' in EClass '" + eClass.getName()
 						+ "'");
 		}

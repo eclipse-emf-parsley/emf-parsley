@@ -15,7 +15,7 @@ public class EmfParsleyDslJavaValidator extends AbstractEmfParsleyDslJavaValidat
 
 	public static final String NOT_EOBJECT = "org.eclipse.emf.parsley.dsl.NotEObject";
 
-	public static final String NOT_EMFCOMPONENTS_MODULE = "org.eclipse.emf.parsley.dsl.NotEmfComponentsGuiceModule";
+	public static final String NOT_EMFCOMPONENTS_MODULE = "org.eclipse.emf.parsley.dsl.NotEmfParsleyGuiceModule";
 
 	@Inject
 	private EmfParsleyDslTypeSystem typeSystem;
@@ -46,9 +46,9 @@ public class EmfParsleyDslJavaValidator extends AbstractEmfParsleyDslJavaValidat
 	public void checkModuleExtends(Module module) {
 		if (module.getExtendsClause() != null
 				&& module.getExtendsClause().getSuperType() != null
-				&& !typeSystem.isEmfComponentsGuiceModule(module
+				&& !typeSystem.isEmfParsleyGuiceModule(module
 						.getExtendsClause().getSuperType(), module)) {
-			error("Must be an EmfComponentsGuiceModule derived class",
+			error("Must be an EmfParsleyGuiceModule derived class",
 					module.getExtendsClause(),
 					ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE,
 					NOT_EMFCOMPONENTS_MODULE);

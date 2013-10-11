@@ -50,13 +50,13 @@ package «projectName»;
 
 import org.osgi.framework.BundleContext;
 
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
-import org.eclipse.emf.parsley.ui.EmfComponentsAbstractActivator;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class «projectName.activatorName» extends EmfComponentsAbstractActivator {
+public class «projectName.activatorName» extends EmfParsleyAbstractActivator {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "«projectName»"; //$NON-NLS-1$
@@ -95,11 +95,11 @@ public class «projectName.activatorName» extends EmfComponentsAbstractActivato
 	}
 
 	/**
-	 * Creates the EmfComponentsGuiceModule for this this plugin
+	 * Creates the EmfParsleyGuiceModule for this this plugin
 	 *
-	 * @return the EmfComponentsGuiceModule for this this plugin
+	 * @return the EmfParsleyGuiceModule for this this plugin
 	 */
-	public EmfComponentsGuiceModule createModule() {
+	public EmfParsleyGuiceModule createModule() {
 		return new «projectName.moduleName»(getDefault());
 	}
 }
@@ -111,13 +111,13 @@ package «projectName»;
 
 import org.osgi.framework.Bundle;
 
-import org.eclipse.emf.parsley.EmfComponentsExtensionFactory;
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 
 import com.google.inject.Injector;
 
 public class «projectName.extFactoryName» extends
-		EmfComponentsExtensionFactory {
+		EmfParsleyExtensionFactory {
 
 	@Override
 	protected Bundle getBundle() {
@@ -125,7 +125,7 @@ public class «projectName.extFactoryName» extends
 	}
 
 	@Override
-	protected EmfComponentsGuiceModule getModule() {
+	protected EmfParsleyGuiceModule getModule() {
 		return «projectName.activatorName».getDefault().createModule();
 	}
 
@@ -142,8 +142,8 @@ package «projectName»;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-«IF superClass == "EmfComponentsGuiceModule"»
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+«IF superClass == "EmfParsleyGuiceModule"»
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 «ENDIF»
 
 public class «projectName.moduleName» extends «superClass» {

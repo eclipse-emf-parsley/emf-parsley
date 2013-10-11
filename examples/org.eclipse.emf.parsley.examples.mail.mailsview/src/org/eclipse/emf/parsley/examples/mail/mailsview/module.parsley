@@ -1,6 +1,6 @@
 import org.eclipse.emf.parsley.examples.mail.Mail
 
-/* org.eclipse.emf.parsley.examples.mail.mailsview Emf Components Dsl Module file */
+/* org.eclipse.emf.parsley.examples.mail.mailsview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.mailsview {
 	parts {
 		viewpart org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView {

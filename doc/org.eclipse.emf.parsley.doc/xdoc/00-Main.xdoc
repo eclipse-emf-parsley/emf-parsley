@@ -16,7 +16,7 @@ codelanguage-def[Java]
 	float,native,super,while
 ]
 
-codelanguage-def[EmfComponents]
+codelanguage-def[EmfParsley]
 [
 	import,module,parts,labelProvider,text,image,
 	propertyDescriptionProvider,featuresProvider,features,

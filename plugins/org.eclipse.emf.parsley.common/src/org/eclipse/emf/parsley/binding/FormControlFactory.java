@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.EmfComponentsCommonActivator;
+import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
@@ -67,7 +67,7 @@ import com.google.inject.Provider;
  * Creates Control for an {@link EStructuralFeature}
  * 
  * @author Dennis Huebner initial code
- * @author Lorenzo Bettini refactoring for EmfComponents
+ * @author Lorenzo Bettini refactoring for EmfParsley
  * 
  */
 public class FormControlFactory {
@@ -317,11 +317,11 @@ public class FormControlFactory {
 			try {
 				keyStroke = KeyStroke.getInstance(string);
 			} catch (ParseException e) {
-				EmfComponentsCommonActivator
+				EmfParsleyCommonActivator
 						.getDefault()
 						.getLog()
 						.log(new Status(IStatus.ERROR,
-								EmfComponentsCommonActivator.PLUGIN_ID,
+								EmfParsleyCommonActivator.PLUGIN_ID,
 								"Error while parse: " + string, e));
 			}
 			new ContentProposalAdapter(t, new TextContentAdapter(),

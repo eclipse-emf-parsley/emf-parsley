@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.examples.mail.product.site"
-      label="Emf Components Mail Example Product Site"
+      label="Emf Parsley Mail Example Product Site"
       version="1.0.0.qualifier">
 
    <description url="http://www.example.com/description">

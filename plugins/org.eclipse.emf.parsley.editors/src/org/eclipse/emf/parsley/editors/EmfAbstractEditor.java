@@ -76,7 +76,7 @@ import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.ViewerMouseAdapter;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
-import org.eclipse.emf.parsley.util.EmfComponentsUtil;
+import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -1316,7 +1316,7 @@ protected ViewerInitializer viewerInitializer;
    */
   public void setStatusLineManager(ISelection selection)
   {
-    IStatusLineManager statusLineManager = EmfComponentsUtil.getStatusLineManager();
+    IStatusLineManager statusLineManager = EmfParsleyUtil.getStatusLineManager();
 
     if (statusLineManager != null)
     {

@@ -10,7 +10,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.EmfComponentsCommonActivator;
+import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
 
 /**
  * @author Lorenzo Bettini
@@ -41,7 +41,7 @@ public class FeatureResolver {
 					// recursive call
 					collectFeatures(eC, path.getPaths(), features);
 				} else {
-					EmfComponentsCommonActivator.logError("feature '"
+					EmfParsleyCommonActivator.logError("feature '"
 							+ feature.getName() + "' in EClass '" + eClass.getName() + "'" +
 							" is not an EClass.");
 				}
@@ -54,7 +54,7 @@ public class FeatureResolver {
 		if (feature != null)
 			return feature;
 		else
-			EmfComponentsCommonActivator.logError("cannot find feature '"
+			EmfParsleyCommonActivator.logError("cannot find feature '"
 					+ featureName + "' in EClass '" + eClass.getName() + "'");
 		return null;
 	}

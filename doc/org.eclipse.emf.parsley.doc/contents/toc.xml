@@ -95,7 +95,7 @@
 				</topic>
 			</topic>
 		</topic>
-		<topic href="contents/05-DSL.html#DSL" label="EMF Components DSL" >
+		<topic href="contents/05-DSL.html#DSL" label="EMF Parsley DSL" >
 			<topic href="contents/05-DSL.html#xbase" label="Xbase features" >
 			</topic>
 		</topic>
@@ -108,7 +108,7 @@
 			</topic>
 			<topic href="contents/07-Eclipse4.html#CreateEclipse4Application" label="Create an Eclipse 4 Application" >
 			</topic>
-			<topic href="contents/07-Eclipse4.html#Eclipse4ApplicationAndEMFComponents" label="Using an EMF Parsley TreeComposite into an Eclipse 4 Part" >
+			<topic href="contents/07-Eclipse4.html#Eclipse4ApplicationAndEMFParsley" label="Using an EMF Parsley TreeComposite into an Eclipse 4 Part" >
 			</topic>
 			<topic href="contents/07-Eclipse4.html#Eclipse4Save" label="Adding the dirty state and Save command" >
 			</topic>

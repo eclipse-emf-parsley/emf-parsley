@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.Assignment
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.xtext.common.types.TypesPackage
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification
@@ -70,7 +70,7 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		showOnlySubtypesOf(model, context, acceptor,
-				EmfComponentsGuiceModule);
+				EmfParsleyGuiceModule);
 	}
 
 	def protected void showSubtypesOfEObjectForEmfFeatureAccess(EObject model,

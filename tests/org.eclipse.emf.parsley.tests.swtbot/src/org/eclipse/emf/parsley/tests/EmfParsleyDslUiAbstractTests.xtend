@@ -4,7 +4,7 @@ import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyDslUiAbstractTests extends EmfComponentsAbstractTests {
+public class EmfParsleyDslUiAbstractTests extends EmfParsleyAbstractTests {
 
 	protected val TEST_PROJ_NAME = "my.emfparsley.proj"
 

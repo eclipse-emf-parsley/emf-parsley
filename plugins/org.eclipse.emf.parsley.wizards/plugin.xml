@@ -14,7 +14,7 @@
             category="org.eclipse.emf.parsley.wizards"
             class="org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectWizard"
             icon="icons/sample.gif"
-            id="org.eclipse.emf.parsley.wizards.NewEmfComponentsProject"
+            id="org.eclipse.emf.parsley.wizards.NewEmfParsleyProject"
             name="Emf Parsley Project"
             project="true">
       </wizard>

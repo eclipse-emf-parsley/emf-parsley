@@ -219,12 +219,12 @@ module my.test.proj {
 module my.test.proj extends 
 ''',
 		"",
-		"EmfComponentsGuiceModule - org.eclipse.emf.parsley",
+		"EmfParsleyGuiceModule - org.eclipse.emf.parsley",
 '''
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 
 module my.test.proj extends 
-EmfComponentsGuiceModule'''			
+EmfParsleyGuiceModule'''			
 		)
 	}
 

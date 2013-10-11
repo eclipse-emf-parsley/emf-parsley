@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.rap.site"
-      label="Emf Components RAP Site"
+      label="Emf Parsley RAP Site"
       version="0.1.0.qualifier">
 
    <description url="http://code.google.com/a/eclipselabs.org/p/emf-components/">

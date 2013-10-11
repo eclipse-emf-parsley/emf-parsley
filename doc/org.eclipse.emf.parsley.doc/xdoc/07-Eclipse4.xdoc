@@ -1,6 +1,6 @@
 chapter:Eclipse4[Eclipse 4]
 
-Instead of using the Extension Point mechanism, EMF Components leverages from DSL and Google Guice Injection.
+Instead of using the Extension Point mechanism, EMF Parsley leverages from DSL and Google Guice Injection.
 
 Because of this, it is very easy to use it with Eclipse 4.
 
@@ -18,7 +18,7 @@ ol[
 You will end up with three plug-ins:
 
 ul[
-item[org.eclipse.emf.parsley.examples.firstexample (the EMF Components example plug-in)]
+item[org.eclipse.emf.parsley.examples.firstexample (the EMF Parsley example plug-in)]
 item[org.eclipse.emf.examples.library (the model plug-in)]
 item[org.eclipse.emf.examples.library.edit (the model.edit plug-in)]
 ]
@@ -43,26 +43,26 @@ tutorials]).
 
 Create a Part and ensure that the application starts.
 
-section:Eclipse4ApplicationAndEMFComponents[Using an EMF Parsley TreeComposite into an Eclipse 4 Part]
+section:Eclipse4ApplicationAndEMFParsley[Using an EMF Parsley TreeComposite into an Eclipse 4 Part]
 
 In the just created plug-in we need dependencies from the previous plug-ins: so open the e[org.eclipse.emf.parsley.examples.firstexample.application/MANIFEST.MF] file, go to e[Dependencies]
 tab and add the three previous plug-ins. Add also e["org.eclipse.emf.parsley"] plug-in.
 Don't forget to add the previous, and the required plug-ins, also to the Product.
 
 Open the Part java class and make the following changes:
-code[EmfComponents][
+code[EmfParsley][
 // Use these imports during Organizing Imports operation
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.widgets.Composite;
 ]
 
-code[EmfComponents][
+code[EmfParsley][
 // The part implements IMenuListener for context menu handling
 public class MyEclipse4Part implements IMenuListener
 ]
 
-code[EmfComponents][
+code[EmfParsley][
 //the parent composite
 private Composite parent;
 //the EMF Parley composite for showing a tree and a detail form
@@ -110,7 +110,7 @@ private URI uri = URI.createFileURI(System.getProperty("user.home")
 
 Modify the e[@PostConstruct] method with this code:
 
-code[EmfComponents][
+code[EmfParsley][
 @PostConstruct
 public void postConstruct(Composite parent) {
 	this.parent = parent;
@@ -126,7 +126,7 @@ public void postConstruct(Composite parent) {
 
 and add the following methods:
 
-code[EmfComponents][
+code[EmfParsley][
 
 public void init(TreeFormFactory treeFormFactory, ResourceLoader resourceLoader) {
 	//create the tree-form composite
@@ -160,14 +160,14 @@ In order to allow persisting the model changes we have to add the dirty state ha
 the Save command to the application.
 Let's start with adding the following attribute to the part
 
-code[EmfComponents][
+code[EmfParsley][
 @Inject
 MDirtyable dirtyable;
 ]
 
 initialize it in the e[@PostConstruct] method
 
-code[EmfComponents][
+code[EmfParsley][
 @PostConstruct
 public void postConstruct(Composite parent, MDirtyable dirtyable) {
 
@@ -178,7 +178,7 @@ public void postConstruct(Composite parent, MDirtyable dirtyable) {
 
 add to e[init] method the following code in order to update the dirty state
 
-code[EmfComponents][
+code[EmfParsley][
 	editingDomain.getCommandStack().addCommandStackListener(
 				new CommandStackListener() {
 					public void commandStackChanged(EventObject event) {
@@ -190,7 +190,7 @@ code[EmfComponents][
 
 and add the e[@Persist] method, which will be called when the part is saved
 
-code[EmfComponents][
+code[EmfParsley][
 @Persist
 public void save(MDirtyable dirty) throws IOException {
 	if (resourceSaveManager.save(resource)) {
@@ -209,7 +209,7 @@ and, in the end, add the e[Save] handler along with the correspondent e[Command]
 (you can find how to create handlers, commands and menus in an Eclipse 4 applications in link[http://www.rcp-vision.com/?p=4972&lang=en][our
 tutorials])
 
-code[EmfComponents][
+code[EmfParsley][
 public class SaveHandler {
 
 	@Execute

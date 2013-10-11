@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.rap.sdk"
-      label="Emf Components RAP SDK"
+      label="Emf Parsley RAP SDK"
       version="0.1.0.qualifier">
 
    <description url="http://code.google.com/a/eclipselabs.org/p/emf-components/">

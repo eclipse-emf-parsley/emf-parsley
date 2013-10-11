@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Emf Components Generator Common Utilities
+Bundle-Name: Emf Parsley Generator Common Utilities
 Bundle-SymbolicName: org.eclipse.emf.parsley.generator.common
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.generator.common.Activator

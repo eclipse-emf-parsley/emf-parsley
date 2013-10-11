@@ -1,14 +1,14 @@
 package org.eclipse.emf.parsley.examples.mail.mailsview;
 
-import org.eclipse.emf.parsley.EmfComponentsExtensionFactory;
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.osgi.framework.Bundle;
 
 
 import com.google.inject.Injector;
 
 public class MailsviewExecutableExtensionFactory extends
-		EmfComponentsExtensionFactory {
+		EmfParsleyExtensionFactory {
 
 	@Override
 	protected Bundle getBundle() {
@@ -16,7 +16,7 @@ public class MailsviewExecutableExtensionFactory extends
 	}
 
 	@Override
-	protected EmfComponentsGuiceModule getModule() {
+	protected EmfParsleyGuiceModule getModule() {
 		return MailsviewActivator.getDefault().createModule();
 	}
 

@@ -1,7 +1,7 @@
 package org.eclipse.emf.parsley.listeners;
 
 
-import org.eclipse.emf.parsley.EmfComponentsCommonActivator;
+import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.ui.PartInitException;
@@ -22,7 +22,7 @@ public class ViewerMouseAdapter extends MouseAdapter {
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 						.showView("org.eclipse.ui.views.PropertySheet");
 			} catch (PartInitException exception) {
-				EmfComponentsCommonActivator.log(exception);
+				EmfParsleyCommonActivator.log(exception);
 			}
 		}
 	}

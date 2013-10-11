@@ -3,10 +3,10 @@
  */
 package org.eclipse.emf.parsley.tests.factories;
 
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.listeners.ViewerMouseAdapter;
 import org.eclipse.emf.parsley.listeners.ViewerNoOpMouseAdapter;
-import org.eclipse.emf.parsley.tests.EmfComponentsTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
 
 
 
@@ -17,12 +17,12 @@ import org.eclipse.emf.parsley.tests.EmfComponentsTestsActivator;
  * 
  */
 public class NoMouseEventExecutableExtensionFactory extends
-		EmfComponentsTestsExecutableExtensionFactory {
+		EmfParsleyTestsExecutableExtensionFactory {
 
 	@Override
-	protected EmfComponentsGuiceModule getModule() {
-		return new EmfComponentsGuiceModule(
-				EmfComponentsTestsActivator.getDefault()) {
+	protected EmfParsleyGuiceModule getModule() {
+		return new EmfParsleyGuiceModule(
+				EmfParsleyTestsActivator.getDefault()) {
 
 			@Override
 			public Class<? extends ViewerMouseAdapter> bindViewerMouseAdapter() {

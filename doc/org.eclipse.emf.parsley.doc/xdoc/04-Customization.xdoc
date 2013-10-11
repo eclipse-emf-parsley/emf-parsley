@@ -232,7 +232,7 @@ section2:ViewerLabelProvider[Viewer Label Provider]
 
 The Label Provider can be customized by providing a specific implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
 and injecting it in the spefic module e[(TODO)].
-EMF Components provides such an implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
+EMF Parsley provides such an implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
 that is inteded to be surclassed by the programmer to provides specific implementations like in the example below.
 
 code[Java][
@@ -260,7 +260,7 @@ public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 section2:ViewerContentProvider[Viewer Content Provider]
 
 The programmer can provide a specific implementation of codeRef[org.eclipse.jface.viewers.IContentProvider]
-by injecting it in the spefic module e[(TODO)]. EMF Components provides an implementation with the class
+by injecting it in the spefic module e[(TODO)]. EMF Parsley provides an implementation with the class
 codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider] that can be easily used to
 specify the children of all object on the tree, like in the example below.
 

@@ -1,7 +1,7 @@
 package org.eclipse.emf.parsley.tests.factories;
 
 
-import org.eclipse.emf.parsley.EmfComponentsGuiceModule;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
@@ -22,7 +22,7 @@ import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-public class CustomLibraryModule extends EmfComponentsGuiceModule {
+public class CustomLibraryModule extends EmfParsleyGuiceModule {
 	public CustomLibraryModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}

@@ -3,8 +3,8 @@
  */
 package org.eclipse.emf.parsley.tests.factories.resourcelistening;
 
-import org.eclipse.emf.parsley.tests.EmfComponentsTestsActivator;
-import org.eclipse.emf.parsley.tests.factories.EmfComponentsTestsExecutableExtensionFactory;
+import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
+import org.eclipse.emf.parsley.tests.factories.EmfParsleyTestsExecutableExtensionFactory;
 
 import com.google.inject.Injector;
 
@@ -15,11 +15,11 @@ import com.google.inject.Injector;
  * 
  */
 public class ResourceListeningLibraryExecutableExtensionFactory extends
-		EmfComponentsTestsExecutableExtensionFactory {
+		EmfParsleyTestsExecutableExtensionFactory {
 
 	@Override
 	public Injector getInjector() {
-		return EmfComponentsTestsActivator.getDefault().getInjector(
+		return EmfParsleyTestsActivator.getDefault().getInjector(
 				this.getClass());
 	}
 
