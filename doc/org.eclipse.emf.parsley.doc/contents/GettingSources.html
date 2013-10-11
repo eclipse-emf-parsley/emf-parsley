@@ -16,192 +16,116 @@ for instance, to contribute new features and patches, you can get them
 via Git.
 </p>
 <p>
+Note that you need two different workspaces (and two different target platforms)
+if you want to materialize also the workspace for developing the <a href="http://eclipse.org/rap/">RAP</a>
+version of Emf Parsley (see below).
+</p>
+<p>
 We use <a href="http://www.eclipse.org/buckminster/">Buckminster</a> as the
-building and materialization infrastructure; this will let you
-automatically materialize the sources in the workspace and setup
+building and materialization infrastructure.
+We provide an <a href="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/workspace.ant">ant script</a> which installs and runs Buckminster. 
+This will automatically materialize the sources in the workspace and setup
 the target platform, so that you will have everything that is necessary
 to have a working workspace with EMF Parsley sources.
 </p>
 <p>
-For <a href="http://eclipse.org/rap/">RAP</a> related project sources
-you will have to use a different workspace (and the materialized target
-platform will be different).  The procedure is the same, you will just
-need to use a different URL for the materialization (as explained in the
-following).
+What this ant script will do in detail:
 </p>
 <p>
-Some projects will be common to both RCP environment
-and RAP environment.
-</p>
-<a name="InstallBuckminster"></a>
-<h2>Install Buckminster in the IDE</h2>
-<p>
-First of all, you need to install Buckminster in your Eclipse;
-you can do that using the update site
-</p>
-<p>
-<em>http://download.eclipse.org/tools/buckminster/updates-4.2</em>
-</p>
-<p>
-You need to install the core, git and pde features.
-</p>
-<p>
-<div class="image" >
-<img src="images/install-buckminster.png" class=" " 
- style="width:90%" />
-<div class="caption">
-Install Buckminster features
-</div>
-</div>
-</p>
-<a name="PrepareTP"></a>
-<h2>Prepare an empty target platform</h2>
-<p>
-It is better to start with an empty target platform in your IDE
-(then Buckminster will materialize the required features and
-bundles starting from that empty target);
-you then need to create an empty target platform manually that contains 
-one single and empty directory and set this target platform active.
-A subsequent resolution/materialization will use that platform.
-Here are the detailed steps:
-</p>
-<p>
-<ol>
+<ul>
 	<li>
-		Create a new general project named TP 
-			(or some name of your preference)
+		installs Buckminster headless if not found;
+			default path: <em>${user.home}/buckminster</em>.
+			It can be changed by passing a path for the variable
+			<em>buckminster.home</em>.
 	</li>
 	<li>
-		Open "Window" =&gt; "Preferences" and expand "Plug-in Development"
+		creates an eclipse workspace; 
+			default: <em>${user.home}/workspaces/emf-parsley-sources</em>
+			or <em>${user.home}/workspaces/emf-parsley-rap-sources</em>
+			for target <em>materialize.workspace.rap</em>.
+			It can be changed by passing a path for the 
+			variable <em>WORKSPACE</em>
 	</li>
 	<li>
-		Select "Target Platform"
+		clones the Emf Parsley git repository;
+			default: <em>${user.home}/git/org.eclipse.emf-parsley</em>.
+			It can be changed by passing a full path for the
+			variable <em>git.clone.dest</em>.  Note that the repository will
+			be cloned only if it is not found in the given path.
 	</li>
 	<li>
-		Click "Add..."
+		creates and sets a target platform
 	</li>
 	<li>
-		Click "Next&gt;" (i.e. start with nothing)
+		imports necessary projects in created workspace
 	</li>
 	<li>
-		Enter TP in the Name: field
+		sets some important workspace settings
 	</li>
-	<li>
-		Click "Add..."
-	</li>
-	<li>
-		Select "Directory" and click "Next"
-	</li>
-	<li>
-		Click on "Variables..."
-	</li>
-	<li>
-		Scroll down and select "workspace_loc" and then type TP in the Argument: field.
-	</li>
-	<li>
-		Click "OK" and then "Finish" and then "Finish" again.
-	</li>
-	<li>
-		Set your new target definition active by checking it in the list of Target definitions: and click "OK"
-	</li>
-</ol>
-</p>
-<a name="MaterializeWP"></a>
-<h2>Materialize the Workspace</h2>
-<p>
-From the File menu choose <em>Open a Component Query...</em> and
-use this URL
+</ul>
 </p>
 <p>
-<a href="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.buckminster/build.cquery">http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.buckminster/build.cquery</a>
+Especially the first time (for cloning and materializing the target platform)
+the script might take several minutes.  (Target platform materialization
+might also fail due to network problems; in that case, try and run the
+script again).
 </p>
 <p>
-If you want to materialize a workspace with EMF Parsley RAP
-related projects use this URL instead
+Run the ant script located <a href="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/workspace.ant">here</a>. 
+In unix you can use following command: 
 </p>
 <p>
-<a href="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.rap.buckminster/build.cquery">http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/releng/org.eclipse.emf.parsley.rap.buckminster/build.cquery</a>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+wget&nbsp;-N&nbsp;http:<span class="comment">//git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/workspace.ant<br/>
+</span>
 </p>
-<p>
-<div class="image" >
-<img src="images/open-cquery.png" class=" " 
- style="width:90%" />
-<div class="caption">
-The component query opened
-</div>
-</div>
-</p>
-<a name="CustomizeProperties"></a>
-<h3>(Optional) Customize some Properties</h3>
-<p>
-Before starting the materialization, you might want to customize
-some properties; you can do that in the <em>Properties</em> tab of
-the opened component query:
-</p>
-<p>
-<div class="image" >
-<img src="images/open-cquery1.png" class=" " 
- style="width:90%" />
-<div class="caption">
-The properties tab
 </div>
 </div>
 </p>
 <p>
-You can add a property by pressing
-the <em>New</em> button.
+and then run the script:
 </p>
 <p>
-For instance, you can customize the path in your system where
-the git repository will be cloned, which defaults to
-<em>${user.home}/git/emf-parsley</em>); for instance, you can change it
-to something else
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+ant&nbsp;-f&nbsp;workspace.ant<br/>
 </p>
-<p>
-<div class="image" >
-<img src="images/open-cquery-new-property1.png" class=" " 
- style="width:50%" />
-<div class="caption">
-Property customization
-</div>
-</div>
-</p>
-<a name="StartMaterialization"></a>
-<h3>Start Materialization</h3>
-<p>
-You can now press the button in the opened query <em>Resolve and Materialize</em>.
-This will start the materialization process which will consist of
-cloning the git repository, materialize the target platform and importing
-all the projects into the workspace.
-</p>
-<p>
-<div class="image" >
-<img src="images/resolving-cquery.png" class=" " 
- style="width:70%" />
-<div class="caption">
-Materialization...
 </div>
 </div>
 </p>
 <p>
-Materializing the target platform may take sometime (depending on your
-network connection), so you might want to go and get a coffee 
-in the meantime ;)
+If you want the workspace for RAP version of Emf Parsley, run the script as
+follows:
 </p>
 <p>
-When the whole process terminates, you will have a working
-workspace with EMF Parsley projects and the needed target platform
-(thus, you should have no error!).
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+ant&nbsp;-f&nbsp;workspace.ant&nbsp;materialize.workspace.rap<br/>
+</p>
+</div>
+</div>
 </p>
 <p>
-<div class="image" >
-<img src="images/materialized.png" class=" " 
- style="width:90%" />
-<div class="caption">
-The final materialized workspace
+You can pass custom path using the variables defined above; for instance
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+ant&nbsp;-Dgit.clone.dest=/myrepos/emf-parsley&nbsp;-DWORKSPACE=/myworkspaces/parsley&nbsp;-f&nbsp;workspace.ant<br/>
+</p>
 </div>
 </div>
-
+</p>
+<p>
+After the script terminates successfully, you can open the materialized
+workspace with Eclipse (an automatic build will also start for compiling
+Xtend files).  The workspace is already setup with the correct target platform.
 </p>
 </body>
 </html>
