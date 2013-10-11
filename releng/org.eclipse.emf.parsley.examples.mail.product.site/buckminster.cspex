@@ -10,14 +10,14 @@
                 <property key="targets" value="create.product"/>
             </actorProperties>
             <properties>
-                <property key="profile" value="EmfComponentsMailProfile"/>
+                <property key="profile" value="EmfParsleyMailProfile"/>
                 <property key="iu" value="org.eclipse.emf.parsley.examples.mail.rcp.product"/>
             </properties>
 			<prerequisites alias="repository">
 				<attribute name="site.p2"/>
 			</prerequisites>
             <products alias="destination" base="${buckminster.output}">
-            	<path path="EmfComponentsMail.${target.ws}.${target.os}.${target.arch}/"/>
+            	<path path="EmfParsleyMail.${target.ws}.${target.os}.${target.arch}/"/>
             </products>
 		</public>
 		<public name="create.product.zip" actor="ant">
@@ -29,7 +29,7 @@
 				<attribute name="create.product"/>
 			</prerequisites>
             <products alias="action.output" base="${buckminster.output}">
-            	<path path="EmfComponentsMail.${target.ws}.${target.os}.${target.arch}.zip"/>
+            	<path path="EmfParsleyMail.${target.ws}.${target.os}.${target.arch}.zip"/>
             </products>
 		</public>
 	</actions>

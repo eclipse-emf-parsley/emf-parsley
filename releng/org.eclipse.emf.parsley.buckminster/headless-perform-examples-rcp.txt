@@ -1,3 +1,12 @@
-build
+build --continueonerror
+launch --stderr --stdout -l "org.eclipse.emf.parsley.generator.common/XtendCompiler.launch"
+build --continueonerror
+launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl/XtendCompiler.launch"
+build --continueonerror
+launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl.ui/XtendCompiler.launch"
+launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl.tests/XtendCompiler.launch"
+launch --stderr --stdout -l "org.eclipse.emf.parsley.tests/XtendCompiler.launch"
+launch --stderr --stdout -l "org.eclipse.emf.parsley.tests.swtbot/XtendCompiler.launch"
+build --clean
 perform -D target.os=win32 -D target.ws=win32 -D target.arch=x86 org.eclipse.emf.parsley.examples.mail.product.site#create.product.zip
 perform -D target.os=linux -D target.ws=gtk -D target.arch=x86_64 org.eclipse.emf.parsley.examples.mail.product.site#create.product.zip
