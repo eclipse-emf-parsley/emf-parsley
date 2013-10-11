@@ -33,6 +33,8 @@ public class EmfParsleyTestsActivator extends AbstractUIPlugin {
 	public static final String EMF_TREE_EDITOR = "org.eclipse.emf.parsley.editors.treeEditor";
 
 	public static final String EMF_TREE_EDITOR_NO_MOUSE_ID = "org.eclipse.emf.parsley.noMouseEvents";
+	
+	public static final String EMF_TREE_EDITOR_OPEN_DIALOG_ID = "org.eclipse.emf.parsley.openDialogOnDoubleClick";
 
 	public static final String EMF_TREE_EDITOR_CUSTOM_LABEL = "org.eclipse.emf.parsley.customLabel";
 

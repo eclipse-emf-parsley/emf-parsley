@@ -114,6 +114,8 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String EMF_TREE_EDITOR_NO_MOUSE = "EMF Tree Editor No Mouse Events";
 
+	protected static final String EMF_TREE_EDITOR_OPEN_DIALOG = "EMF Tree Editor Opening Dialog";
+	
 	protected static final String EMF_TREE_EDITOR_CUSTOM_LABEL = "EMF Tree Editor Custom Label";
 
 	protected static final String EMF_CUSTOM_LIBRARY_EDITOR = "EMF Custom Library Editor";
@@ -259,6 +261,8 @@ public class EmfParsleyAbstractTests {
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_FOR_STATEMACHINE);
 		editorNamesToId.put(EMF_TREE_EDITOR_NO_MOUSE,
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_NO_MOUSE_ID);
+		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_DIALOG,
+				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_CUSTOM_LABEL,
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_CUSTOM_LABEL);
 		editorNamesToId.put(EMF_CUSTOM_LIBRARY_EDITOR,
@@ -539,7 +543,7 @@ public class EmfParsleyAbstractTests {
 
 		bot.button("Finish").click();
 		
-		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
+		waitForShellToClose(shell);
 		
 		for (String projectName : expectedProjects) {
 			assertProjectIsCreated(projectName, shell);
@@ -588,8 +592,7 @@ public class EmfParsleyAbstractTests {
 	}
 
 	protected void assertProjectIsCreated(String projectName, SWTBotShell shell) {
-		// creation of a project might require some time
-		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
+		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName);
 	}
 
@@ -739,8 +742,12 @@ public class EmfParsleyAbstractTests {
 		shell.activate();
 		bot.tree().expandNode(EMF_PARSLEY_CATEGORY).select(libraryView);
 		bot.button("OK").click();
-		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
+		waitForShellToClose(shell);
 		return getLibraryView(libraryView);
+	}
+
+	protected void waitForShellToClose(SWTBotShell shell) {
+		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
 	}
 
 	protected void undo(String undoText) {

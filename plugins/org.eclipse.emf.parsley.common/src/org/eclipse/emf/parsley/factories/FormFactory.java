@@ -12,7 +12,7 @@ import com.google.inject.Inject;
 import com.google.inject.MembersInjector;
 
 /**
- * @author bettini
+ * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
 public class FormFactory {
