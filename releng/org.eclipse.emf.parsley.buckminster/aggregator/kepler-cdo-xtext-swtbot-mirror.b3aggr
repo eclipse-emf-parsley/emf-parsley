@@ -3,7 +3,7 @@
   <validationSets label="main">
     <contributions label="Kepler RCP">
       <repositories location="http://download.eclipse.org/releases/kepler">
-      	<products name="org.eclipse.sdk.ide"/>
+        <products name="org.eclipse.sdk.ide"/>
         <features name="org.eclipse.emf.sdk.feature.group"/>
         <features name="org.eclipse.emf.cdo.sdk.feature.group"/>
         <features name="org.eclipse.emf.query.sdk.feature.group"/>
@@ -27,6 +27,11 @@
       <repositories location="http://download.eclipse.org/technology/swtbot/releases/latest">
         <features name="org.eclipse.swtbot.eclipse.feature.group"/>
         <features name="org.eclipse.swtbot.ide.feature.group"/>
+      </repositories>
+    </contributions>
+    <contributions description="Xdoc" label="Xdoc">
+      <repositories location="http://master.dl.sourceforge.net/project/xtext-xdoc/updates-2.4">
+        <features name="org.eclipse.xtext.xdoc.feature.feature.group"/>
       </repositories>
     </contributions>
   </validationSets>
