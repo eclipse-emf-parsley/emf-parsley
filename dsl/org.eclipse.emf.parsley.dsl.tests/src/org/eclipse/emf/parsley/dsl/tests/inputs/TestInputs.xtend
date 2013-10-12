@@ -132,9 +132,9 @@ module my.empty {
 		control {
 			Library : name -> { }
 			Writer : books -> 
-				toolkit.createLabel(parent, 
+				createLabel(
 					books.map[title].join(", "))
-			Writer : name -> { toolkit.createLabel(parent, "") }
+			Writer : name -> { createLabel(parent, "") }
 				target { observeText }
 			Writer : firstName -> 
 				toolkit.createLabel(parent, "")

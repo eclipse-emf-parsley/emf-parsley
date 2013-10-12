@@ -6,12 +6,12 @@ package org.eclipse.emf.parsley;
 import org.eclipse.emf.parsley.runtime.service.AbstractGenericModule;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.ui.PluginImageHelper;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.parsley.binding.DialogControlFactory;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
@@ -118,6 +118,10 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 
 	public Class<? extends FormControlFactory> bindFormControlFactory() {
 		return FormControlFactory.class;
+	}
+
+	public Class<? extends DialogControlFactory> bindDialogControlFactory() {
+		return DialogControlFactory.class;
 	}
 
 	public Class<? extends ViewerContextMenuFactory> bindViewerContextMenuFactory() {

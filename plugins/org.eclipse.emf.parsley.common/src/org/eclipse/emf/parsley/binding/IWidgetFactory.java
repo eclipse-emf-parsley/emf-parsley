@@ -18,13 +18,23 @@ import org.eclipse.swt.widgets.Text;
  */
 public interface IWidgetFactory {
 
-	Label createLabel(Composite parent, String text);
+	Label createLabel(String text);
 	
+	Label createLabel(Composite parent, String text);
+
+	Button createButton(String text, int style);
+
 	Button createButton(Composite parent, String text, int style);
 	
+	Text createText(String text);
+
+	Text createText(String text, int style);
+
 	Text createText(Composite parent, String text);
 	
 	Text createText(Composite parent, String text, int style);
-	
+
+	ComboViewer createComboViewer(int style);
+
 	ComboViewer createComboViewer(Composite parent, int style);
 }

@@ -20,7 +20,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IFormColors;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 
 /**
@@ -39,8 +38,7 @@ public class CustomLibraryFormControlFactory extends FormControlFactory {
 
 	public Control control_Writer_name(DataBindingContext dbc,
 			IObservableValue featureObservable) {
-		Text text = getToolkit().createText(getParent(), "");
-		text.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
+		Text text = createText("");
 		text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));
 		dbc.bindValue(SWTObservables.observeText(text, SWT.Modify),
 				featureObservable);
@@ -48,7 +46,7 @@ public class CustomLibraryFormControlFactory extends FormControlFactory {
 	}
 	
 	public Control control_Writer_books(Writer writer) {
-		return getToolkit().createLabel(getParent(),
+		return createLabel(
 				join(map(writer.getBooks(), new Function1<Book, String>() {
 					public String apply(Book book) {
 						return book.getTitle();

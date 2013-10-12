@@ -378,7 +378,6 @@ import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -393,8 +392,6 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
   }
   
   public Control control_Writer_books(final Writer it) {
-    FormToolkit _toolkit = this.getToolkit();
-    Composite _parent = this.getParent();
     EList<Book> _books = it.getBooks();
     final Function1<Book,String> _function = new Function1<Book,String>() {
       public String apply(final Book it) {
@@ -404,7 +401,7 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
     };
     List<String> _map = ListExtensions.<Book, String>map(_books, _function);
     String _join = IterableExtensions.join(_map, ", ");
-    Label _createLabel = _toolkit.createLabel(_parent, _join);
+    Label _createLabel = this.createLabel(_join);
     return _createLabel;
   }
   
@@ -417,9 +414,7 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
   }
   
   protected Control createControl_Writer_name() {
-    FormToolkit _toolkit = this.getToolkit();
-    Composite _parent = this.getParent();
-    Label _createLabel = _toolkit.createLabel(_parent, "");
+    Label _createLabel = this.createLabel(this.parent, "");
     return _createLabel;
   }
   
@@ -438,8 +433,7 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
   
   protected Control createControl_Writer_firstName() {
     FormToolkit _toolkit = this.getToolkit();
-    Composite _parent = this.getParent();
-    Label _createLabel = _toolkit.createLabel(_parent, "");
+    Label _createLabel = _toolkit.createLabel(this.parent, "");
     return _createLabel;
   }
   
