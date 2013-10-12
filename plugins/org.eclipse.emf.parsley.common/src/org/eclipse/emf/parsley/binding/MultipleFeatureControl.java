@@ -42,7 +42,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * Widget that opens the {@link FeatureEditorDialog} to select some feature values.<br>
@@ -64,14 +63,13 @@ public class MultipleFeatureControl extends Composite {
 
 	private boolean beQuiet;
 
-	public MultipleFeatureControl(final Composite parent, FormToolkit toolkit, final ILabelProvider labelProvider,
+	public MultipleFeatureControl(final Composite parent, IWidgetFactory widgetFactory, final ILabelProvider labelProvider,
 			final EObject object, final EStructuralFeature feature, final ProposalCreator proposalcreator,
 			boolean readonly) {
 		super(parent, SWT.NONE);
 		this.labelProvider = labelProvider;
-		toolkit.adapt(this);
 		setLayout(new GridLayout(2, false));
-		label = toolkit.createLabel(this, "");
+		label = widgetFactory.createLabel(this, "");
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
@@ -80,7 +78,7 @@ public class MultipleFeatureControl extends Composite {
 		});
 		label.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-		button = toolkit.createButton(this, "...", SWT.PUSH);
+		button = widgetFactory.createButton(this, "...", SWT.PUSH);
 		button.setLayoutData(new GridData());
 		button.addSelectionListener(new SelectionAdapter() {
 

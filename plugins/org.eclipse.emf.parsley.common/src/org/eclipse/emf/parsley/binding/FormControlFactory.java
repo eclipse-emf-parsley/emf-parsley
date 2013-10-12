@@ -55,6 +55,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
@@ -70,7 +71,7 @@ import com.google.inject.Provider;
  * @author Lorenzo Bettini refactoring for EmfParsley
  * 
  */
-public class FormControlFactory {
+public class FormControlFactory implements IWidgetFactory {
 	@Inject
 	protected Provider<ILabelProvider> labelProviderProvider;
 
@@ -178,7 +179,7 @@ public class FormControlFactory {
 			return result;
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(parent,
-				toolkit, labelProviderProvider.get(), owner,
+				this, labelProviderProvider.get(), owner,
 				feature, proposalcreator, readonly);
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair(
@@ -228,7 +229,7 @@ public class FormControlFactory {
 
 	protected ControlObservablePair createControlAndObservableValueForBoolean() {
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
-		Button b = toolkit.createButton(parent, "", SWT.CHECK);
+		Button b = createButton(parent, "", SWT.CHECK);
 		b.setEnabled(!readonly);
 		retValAndTargetPair.setControl(b);
 		retValAndTargetPair.setObservableValue(SWTObservables
@@ -262,8 +263,7 @@ public class FormControlFactory {
 
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(
 			List<?> proposals) {
-		ComboViewer combo = new ComboViewer(parent, SWT.READ_ONLY);
-		toolkit.adapt(combo.getCombo());
+		ComboViewer combo = createComboViewer(parent, SWT.READ_ONLY);
 		combo.setContentProvider(new ArrayContentProvider());
 		combo.setLabelProvider(labelProviderProvider.get());
 		combo.setInput(proposals);
@@ -277,9 +277,8 @@ public class FormControlFactory {
 	protected ControlObservablePair createControlAndObservableWithoutPredefinedProposals(
 			List<?> proposals) {
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
-		Text t = toolkit.createText(parent, "");
+		Text t = createText(parent, "");
 		t.setEditable(!readonly);
-		t.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
 		addContentProposalAdapter(t, proposals);
 		retValAndTargetPair.setControl(t);
 		retValAndTargetPair.setObservableValue(SWTObservables.observeText(t,
@@ -290,9 +289,8 @@ public class FormControlFactory {
 
 	protected ControlObservablePair createControlAndObservableForEObject() {
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
-		Text t = toolkit.createText(parent, "");
+		Text t = createText(parent, "");
 		t.setEditable(!readonly);
-		t.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
 		retValAndTargetPair.setControl(t);
 		retValAndTargetPair.setObservableValue(new EObjectTextObservable(
 				labelProviderProvider.get(), t));
@@ -457,6 +455,30 @@ public class FormControlFactory {
 				+ feature.getEContainingClass().getName() + "_"
 				+ feature.getName();
 		return PolymorphicDispatcher.Predicates.forName(methodName, 2);
+	}
+
+	public Label createLabel(Composite parent, String text) {
+		return toolkit.createLabel(parent, text);
+	}
+
+	public Button createButton(Composite parent, String text, int style) {
+		return toolkit.createButton(parent, text, style);
+	}
+
+	public Text createText(Composite parent, String text) {
+		return toolkit.createText(parent, text);
+	}
+
+	public Text createText(Composite parent, String text, int style) {
+		Text t = toolkit.createText(parent, text, style);
+		t.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
+		return t;
+	}
+
+	public ComboViewer createComboViewer(Composite parent, int style) {
+		ComboViewer combo = new ComboViewer(parent, style);
+		toolkit.adapt(combo.getCombo());
+		return combo;
 	}
 
 }
