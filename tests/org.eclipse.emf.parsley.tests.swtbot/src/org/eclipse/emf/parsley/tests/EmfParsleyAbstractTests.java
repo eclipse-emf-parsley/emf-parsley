@@ -65,6 +65,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISaveablePart;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -95,6 +97,8 @@ public class EmfParsleyAbstractTests {
 	protected static final String BOOK_LABEL = "Book Lorenzo's Book";
 
 	protected static final String LIBRARY_LABEL = "Library My Library";
+
+	protected static final String LIBRARY_NAME = "My Library";
 
 	protected static final String DAMAGED_VIDEO_LABEL = "Video Cassette My Damaged Video";
 
@@ -380,16 +384,16 @@ public class EmfParsleyAbstractTests {
 		return outlineTree;
 	}
 
-	protected SWTBotTreeItem getRootOfEditorTree(
+	protected SWTBotTreeItem openEditorAndGetTreeRoot(
 			String emfEditorContextMenuString, String fileName,
 			String treeRootLabel) throws CoreException,
 			InvocationTargetException, InterruptedException, IOException {
-		SWTBotTree tree = getEditorTree(emfEditorContextMenuString, fileName);
+		SWTBotTree tree = openEditorAndGetTree(emfEditorContextMenuString, fileName);
 		SWTBotTreeItem treeItemRoot = tree.getTreeItem(treeRootLabel);
 		return treeItemRoot;
 	}
 
-	protected SWTBotTree getEditorTree(String emfEditorContextMenuString,
+	protected SWTBotTree openEditorAndGetTree(String emfEditorContextMenuString,
 			String fileName) throws CoreException, InvocationTargetException,
 			InterruptedException, IOException {
 		SWTBotEditor editor = openEmfEditorOnTestFile(
@@ -397,6 +401,23 @@ public class EmfParsleyAbstractTests {
 		SWTBotTree tree = editor.bot().tree();
 		return tree;
 	}
+
+	protected SWTBotTreeItem getRootOfTreeEditor(String emfEditorContextMenuString,
+			String treeRootLabel) 
+					throws CoreException, InvocationTargetException,
+						InterruptedException, IOException {
+		SWTBotTree tree = getEditorTree(emfEditorContextMenuString);
+		return tree.getTreeItem(treeRootLabel);
+	}
+
+	protected SWTBotTree getEditorTree(String emfEditorContextMenuString) 
+			throws CoreException, InvocationTargetException,
+				InterruptedException, IOException {
+		SWTBotEditor editor = getEditor(emfEditorContextMenuString);
+		SWTBotTree tree = editor.bot().tree();
+		return tree;
+	}
+
 
 	protected SWTBotEditor openEmfEditorOnTestFile(
 			String emfEditorContextMenuString, String fileName)
@@ -912,5 +933,76 @@ public class EmfParsleyAbstractTests {
 	protected void assertEditorText(SWTBotEditor editor, CharSequence expected) {
 		Assert.assertEquals(expected.toString().replace("\r", ""), editor
 				.toTextEditor().getText().replace("\r", ""));
+	}
+
+	protected void assertFormControlsOfBookNode(SWTFormsBot formbot) {
+		formbot.label(AUTHOR_LABEL);
+		formbot.comboBox(WRITER_LABEL);
+	}
+
+	protected void assertFormControlsOfLibraryNode(SWTFormsBot formbot, boolean editable) {
+		formbot.label(ADDRESS_LABEL);
+		assertTextComponent(formbot, LIBRARY_S_ADDRESS_TEXT, editable);
+		formbot.comboBox(0); // for "parentBranch
+		// the label for 'people'
+		formbot.label(PEOPLE_LABEL);
+		// the inner label listing all the people, before the button "..."
+		formbot.label(PEOPLE_TEXT);
+	}
+
+	protected void assertFormControlsOfWriterNode(SWTFormsBot formbot, boolean editable) {
+		formbot.label(ADDRESS_LABEL);
+		assertTextComponent(formbot, WRITER_S_ADDRESS_TEXT, editable);
+		formbot.label(FIRSTNAME_LABEL);
+		formbot.button("..."); // for "books"
+	}
+
+	protected SWTBotEditor assertEditorNotDirty(String editorName) {
+		SWTBotEditor editor = getEditor(editorName);
+		assertTrue("editor should NOT be in dirty state", !editor.isDirty());
+		return editor;
+	}
+
+	protected SWTBotEditor assertEditorDirty(String editorName) {
+		SWTBotEditor editor = getEditor(editorName);
+		assertTrue("editor should be in dirty state", editor.isDirty());
+		return editor;
+	}
+
+	protected void modifyFormText(SWTFormsBot formbot, String text) {
+		formbot.text(text).setText(text + " MODIFIED");
+	}
+
+	protected void assertDirtyThenSaveAndAssertNotDirty(String viewName) {
+		assertSaveableViewIsDirty(true, viewName);
+		saveViewAndAssertNotDirty(viewName);
+	}
+
+	protected void assertSaveableViewIsDirty(boolean isDirty, String viewName) {
+		ISaveablePart viewAsSaveablePart = getViewAsSaveablePart(viewName);
+		assertEquals(isDirty, viewAsSaveablePart.isDirty());
+	}
+
+	protected ISaveablePart getViewAsSaveablePart(String viewName) {
+		SWTBotView view = getLibraryView(viewName);
+		IViewPart viewPart = view.getViewReference().getView(false);
+		ISaveablePart viewAsSaveablePart = (ISaveablePart) viewPart;
+		return viewAsSaveablePart;
+	}
+
+	protected void saveViewAndAssertNotDirty(final String viewName) {
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				getViewAsSaveablePart(viewName).doSave(
+						new NullProgressMonitor());
+			}
+		});
+		assertSaveableViewIsDirty(false, viewName);
+	}
+
+	protected void assertEditorDirtySaveEditorAndAssertNotDirty(String editorName) {
+		assertEditorDirty(editorName);
+		getEditor(editorName).save();
+		assertEditorNotDirty(EMF_TREE_EDITOR);
 	}
 }

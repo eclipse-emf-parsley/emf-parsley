@@ -31,27 +31,17 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 		boolean editable = true;
 		SWTBotView detailView = openTestView(EMF_DETAIL_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(rootOfEditorTree).select();
 		SWTFormsBot formbot = formBotFromView(detailView);
-		formbot.label(ADDRESS_LABEL);
-		assertTextComponent(formbot, WRITER_S_ADDRESS_TEXT, editable);
-		formbot.label(FIRSTNAME_LABEL);
-		formbot.button("..."); // for "books"
+		assertFormControlsOfWriterNode(formbot, editable);
 		// select on the outline view
 		getLibraryNode(getRootOfOutlineViewTree()).select();
-		formbot.label(ADDRESS_LABEL);
-		assertTextComponent(formbot, LIBRARY_S_ADDRESS_TEXT, editable);
-		formbot.comboBox(0); // for "parentBranch
-		// the label for 'people'
-		formbot.label(PEOPLE_LABEL);
-		// the inner label listing all the people, before the button "..."
-		formbot.label(PEOPLE_TEXT);
+		assertFormControlsOfLibraryNode(formbot, editable);
 		// select the book
 		getLibraryBookNode(rootOfEditorTree).select();
-		formbot.label(AUTHOR_LABEL);
-		formbot.comboBox(WRITER_LABEL);
+		assertFormControlsOfBookNode(formbot);
 		// select the damaged video cassette node
 		getLibraryDamagedVideoCassetteNode(rootOfEditorTree).select();
 		assertCheckBoxComponent(formbot, 0, true, true);
@@ -63,11 +53,21 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	}
 
 	@Test
+	public void checkFormDatabinding() throws Exception {
+		SWTBotView detailView = openTestView(EMF_DETAIL_VIEW);
+		// select on the editor's tree
+		getLibraryNode(openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
+				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI)).select();
+		modifyFormText(formBotFromView(detailView), LIBRARY_NAME);
+		assertEditorDirtySaveEditorAndAssertNotDirty(EMF_TREE_EDITOR);
+	}
+
+	@Test
 	public void detailReadOnlyViewShowsDetailsOnSelection() throws Exception {
 		boolean editable = false;
 		SWTBotView detailView = openTestView(EMF_DETAIL_READONLY_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(rootOfEditorTree).select();
 		SWTFormsBot formbot = formBotFromView(detailView);
@@ -120,7 +120,7 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	public void detailViewShowsCustomDetailsOnSelection() throws Exception {
 		SWTBotView detailView = openTestView(LIBRARY_CUSTOM_DETAIL_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(rootOfEditorTree).select();
 		SWTFormsBot formbot = formBotFromView(detailView);
@@ -142,7 +142,7 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	public void customControlOfWriterNode() throws Exception {
 		SWTBotView detailView = openTestView(LIBRARY_CUSTOM_DETAIL_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(rootOfEditorTree).select();
 		SWTFormsBot formbot = formBotFromView(detailView);
@@ -154,7 +154,7 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	public void treeFormViewShowsOnSelection() throws Exception {
 		SWTBotView view = openTestView(EMF_TREE_FORM_DETAIL_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		// select on the editor
 		getLibraryNode(rootOfEditorTree).select();
@@ -172,7 +172,7 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	public void testMultipleFeatureControlDialog() throws Exception {
 		SWTBotView detailView = openTestView(LIBRARY_CUSTOM_DETAIL_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryBookNode(rootOfEditorTree).select();
 		SWTFormsBot formbot = formBotFromView(detailView);

@@ -32,34 +32,33 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 
 	@Test
 	public void canAccessEditorTreeOfLibrary() throws Exception {
-		getWriterNode(getLibraryNode(getRootOfEditorTree(EMF_TREE_EDITOR,
+		getWriterNode(getLibraryNode(openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI)));
 	}
 
 	@Test
 	public void canAccessContextMenuOfLibrary() throws Exception {
-		SWTBotTreeItem libraryNode = getLibraryNode(getRootOfEditorTree(
+		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
 		clickOnContextMenu(libraryNode, NEW_CHILD, BOOK_ON_TAPE);
 		// check that the new item was created
 		libraryNode.expand().getNode(BOOK_ON_TAPE);
-		SWTBotEditor editor = getEditor(EMF_TREE_EDITOR);
-		assertTrue("editor should be in dirty state", editor.isDirty());
+		SWTBotEditor editor = assertEditorDirty(EMF_TREE_EDITOR);
 		undo("New " + BOOK_ON_TAPE);
-		assertTrue("editor should NOT be in dirty state", !editor.isDirty());
-		editor.saveAndClose();
+		assertEditorNotDirty(EMF_TREE_EDITOR);
+		editor.save();
 	}
-	
+
 	@Test
 	public void canAccessStandardEditingActionsOnTreeEditor() throws Exception {
-		SWTBotTreeItem libraryNode = getLibraryNode(getRootOfEditorTree(
+		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
 		canAccessStandardEditingActions(libraryNode);
 	}
 
 	@Test
 	public void canAccessEditorTreeOfStatemachine() throws Exception {
-		accessStateMachineNodes(getRootOfEditorTree(
+		accessStateMachineNodes(openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR_STATEMACHINE, MY_STATEMACHINE,
 				MY_STATEMACHINE_PLATFORM_URI));
 	}
@@ -75,7 +74,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 		// double click on Library node on the tree of the editor and outline
 		// view should open the property view
 		getLibraryNode(
-				getRootOfEditorTree(EMF_TREE_EDITOR, MY_EXTLIBRARY,
+				openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
 						MY_EXT_LIBRARY_PLATFORM_URI)).doubleClick();
 		assertPropertyViewIsOpenedAndCloseIt();
 		getLibraryNode(getRootOfOutlineViewTree()).doubleClick();
@@ -89,7 +88,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 		// double click on Library node on the tree of the editor and outline
 		// view should NOT open the property view
 		getLibraryNode(
-				getRootOfEditorTree(EMF_TREE_EDITOR_NO_MOUSE, MY_EXTLIBRARY,
+				openEditorAndGetTreeRoot(EMF_TREE_EDITOR_NO_MOUSE, MY_EXTLIBRARY,
 						MY_EXT_LIBRARY_PLATFORM_URI)).doubleClick();
 		assertPropertyViewIsNotShown();
 		getLibraryNode(getRootOfOutlineViewTree()).doubleClick();
@@ -98,7 +97,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 
 	@Test
 	public void testEditorWithCustomLabels() throws Exception {
-		SWTBotTreeItem rootOfTree = getRootOfEditorTree(
+		SWTBotTreeItem rootOfTree = openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR_CUSTOM_LABEL, MY_EXTLIBRARY,
 				MY_EXT_LIBRARY_PLATFORM_URI);
 		accessTreeWithCustomLabels(rootOfTree);
@@ -107,7 +106,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 
 	@Test
 	public void testEditorWithCustomLibraryLabels() throws Exception {
-		SWTBotTreeItem rootOfTree = getRootOfEditorTree(
+		SWTBotTreeItem rootOfTree = openEditorAndGetTreeRoot(
 				EMF_CUSTOM_LIBRARY_EDITOR, MY_EXTLIBRARY,
 				MY_EXT_LIBRARY_PLATFORM_URI);
 		SWTBotTreeItem treeItem = accessTreeWithCustomLibraryLabels(rootOfTree);
@@ -121,7 +120,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	// the image is the same, but probably some internal modifications
 	// or adjustments make the images differ from the binary point of view...
 	public void testEditorWithCustomLibraryLabelsInEditPlugin() throws Exception {
-		SWTBotTreeItem rootOfTree = getRootOfEditorTree(
+		SWTBotTreeItem rootOfTree = openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR_CUSTOM_LABEL, MY_EXTLIBRARY,
 				MY_EXT_LIBRARY_PLATFORM_URI);
 		SWTBotTreeItem treeItem = accessTreeWithCustomLabels(rootOfTree);
@@ -132,7 +131,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 
 	@Test
 	public void canSelectInOutlineView() throws Exception {
-		SWTBotTreeItem editorTreeRoot = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem editorTreeRoot = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(getRootOfOutlineViewTree()).select();
 		assertTrue("writer node should be selected",
@@ -141,7 +140,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 
 	@Test
 	public void statusLineFromOutlineView() throws Exception {
-		getRootOfEditorTree(EMF_TREE_EDITOR, MY_EXTLIBRARY,
+		openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
 				MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(getRootOfOutlineViewTree()).select();
 		assertStatusLine("Selected Object: " + WRITER_LABEL);
@@ -150,7 +149,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	@Test
 	public void statusLineFromEditor() throws Exception {
 		getLibraryWriterNode(
-				getRootOfEditorTree(EMF_TREE_EDITOR, MY_EXTLIBRARY,
+				openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
 						MY_EXT_LIBRARY_PLATFORM_URI)).select();
 		assertStatusLine("Selected Object: " + WRITER_LABEL);
 	}
@@ -159,7 +158,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	public void tableViewShowsTablesOnSelection() throws Exception {
 		SWTBotView tableView = openTestView(EMF_SHOW_ALL_TABLE_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(rootOfEditorTree).select();
 		getTableHeader(ADDRESS_LABEL);
@@ -176,7 +175,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	public void selectionViewOnSelection() throws Exception {
 		SWTBotView selectionView = openTestView(LIBRARY_EMF_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(EMF_TREE_EDITOR,
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		// we select the library in the editor...
 		getLibraryNode(rootOfEditorTree).select();
@@ -190,7 +189,7 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	public void selectionViewOnSelectionOnStatemachine() throws Exception {
 		SWTBotView selectionView = openTestView(LIBRARY_EMF_VIEW);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = getRootOfEditorTree(
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR_STATEMACHINE, MY_STATEMACHINE,
 				MY_STATEMACHINE_PLATFORM_URI);
 		// we select the statemachine in the editor...

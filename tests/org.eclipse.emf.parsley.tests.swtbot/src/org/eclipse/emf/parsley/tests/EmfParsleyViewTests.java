@@ -93,7 +93,7 @@ public class EmfParsleyViewTests extends EmfParsleyAbstractTests {
 	@Test
 	public void testOnSelectionLibraryBooksTableView() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_VIEW);
-		SWTBotTreeItem libraryNode = getLibraryNode(getRootOfEditorTree(
+		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
 		libraryNode.select();
 		// the table should show the books

@@ -6,14 +6,10 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-import org.eclipse.ui.ISaveablePart;
-import org.eclipse.ui.IViewPart;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -144,33 +140,6 @@ public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
 		clickOnContextMenu(libraryNode, NEW_CHILD, childType);
 		// check that the new item was created
 		libraryNode.expand().getNode(childType);
-	}
-
-	protected void assertDirtyThenSaveAndAssertNotDirty(String viewName) {
-		assertSaveableViewIsDirty(true, viewName);
-		saveViewAndAssertNotDirty(viewName);
-	}
-
-	protected void assertSaveableViewIsDirty(boolean isDirty, String viewName) {
-		ISaveablePart viewAsSaveablePart = getViewAsSaveablePart(viewName);
-		assertEquals(isDirty, viewAsSaveablePart.isDirty());
-	}
-
-	protected ISaveablePart getViewAsSaveablePart(String viewName) {
-		SWTBotView view = getLibraryView(viewName);
-		IViewPart viewPart = view.getViewReference().getView(false);
-		ISaveablePart viewAsSaveablePart = (ISaveablePart) viewPart;
-		return viewAsSaveablePart;
-	}
-
-	protected void saveViewAndAssertNotDirty(final String viewName) {
-		Display.getDefault().syncExec(new Runnable() {
-			public void run() {
-				getViewAsSaveablePart(viewName).doSave(
-						new NullProgressMonitor());
-			}
-		});
-		assertSaveableViewIsDirty(false, viewName);
 	}
 
 	protected void assertTableItemsSize(final SWTBotTable table,
