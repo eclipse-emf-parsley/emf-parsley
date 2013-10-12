@@ -59,7 +59,8 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 		getLibraryNode(openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI)).select();
 		modifyFormText(formBotFromView(detailView), LIBRARY_NAME);
-		assertEditorDirtySaveEditorAndAssertNotDirty(EMF_TREE_EDITOR);
+		assertEditorDirty(EMF_TREE_EDITOR);
+		getEditor(EMF_TREE_EDITOR).close();
 	}
 
 	@Test
