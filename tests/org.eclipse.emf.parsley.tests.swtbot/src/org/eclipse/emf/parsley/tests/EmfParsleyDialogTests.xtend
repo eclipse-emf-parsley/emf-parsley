@@ -1,6 +1,5 @@
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.swtbot.forms.finder.SWTFormsBot
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem
 import org.junit.Test
@@ -14,12 +13,12 @@ public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 		openEmfEditorOnTestFile(EMF_TREE_EDITOR_OPEN_DIALOG,
 				MY_EXTLIBRARY)
 		
-		libraryNode.assertDialog(LIBRARY_LABEL) [
-			assertFormControlsOfLibraryNode(true)
+		libraryNode.assertDialog(LIBRARY_LABEL) [|
+			assertDialogControlsOfLibraryNode(true)
 		]
 		
-		writerNode.assertDialog(WRITER_LABEL) [
-			assertFormControlsOfWriterNode(true)
+		writerNode.assertDialog(WRITER_LABEL) [|
+			assertDialogControlsOfWriterNode(true)
 		]
 	}
 
@@ -28,21 +27,20 @@ public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 		openEmfEditorOnTestFile(EMF_TREE_EDITOR_OPEN_DIALOG,
 				MY_EXTLIBRARY)
 		
-		libraryNode.assertDialogEdit(LIBRARY_LABEL) [
-			modifyFormText(LIBRARY_NAME)
+		libraryNode.assertDialogEdit(LIBRARY_LABEL) [|
+			modifyText(LIBRARY_NAME)
 		]
 		
 	}
 
-	def private assertDialog(SWTBotTreeItem item, String dialogTitle, (SWTFormsBot)=>void proc) {
+	def private assertDialog(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		item.doubleClick
-		val shell = bot.shell(dialogTitle)
-		val formbot = new SWTFormsBot(shell.widget)
-		proc.apply(formbot)
+		bot.shell(dialogTitle)
+		proc.apply()
 		bot.button("OK").click()
 	}
 
-	def private assertDialogEdit(SWTBotTreeItem item, String dialogTitle, (SWTFormsBot)=>void proc) {
+	def private assertDialogEdit(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		assertDialog(item, dialogTitle, proc)
 		assertEditorDirty()
 		saveEditor()

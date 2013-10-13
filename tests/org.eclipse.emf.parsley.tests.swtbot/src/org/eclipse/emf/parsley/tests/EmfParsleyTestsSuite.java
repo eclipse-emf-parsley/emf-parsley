@@ -18,6 +18,7 @@ import org.junit.runners.Suite;
 	EmfParsleySaveableViewTests.class,
 	EmfParsleyEditorTests.class,
 	EmfParsleyFormTests.class,
+	EmfParsleyFormBasedDialogTests.class,
 	EmfParsleyDialogTests.class,
 	EmfParsleyWizardsTests.class,
 	EmfParsleyExamplesWizardsTests.class,

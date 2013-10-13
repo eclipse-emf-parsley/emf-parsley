@@ -4,7 +4,6 @@
 package org.eclipse.emf.parsley.listeners;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.parsley.dialogs.DetailDialog;
 import org.eclipse.emf.parsley.dialogs.DetailFormBasedDialog;
 import org.eclipse.emf.parsley.factories.DialogFactory;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
@@ -22,7 +21,7 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
-public class ViewerOpenDialogMouseAdapter extends ViewerMouseAdapter {
+public class ViewerOpenFormBasedDialogMouseAdapter extends ViewerMouseAdapter {
 
 	@Inject
 	private EmfSelectionHelper helper;
@@ -39,8 +38,8 @@ public class ViewerOpenDialogMouseAdapter extends ViewerMouseAdapter {
 			EObject eObject = helper.getEObjectFromMouseEvent(event);
 			System.out.println(eObject);
 			if (eObject != null) {
-				DetailDialog dialog = dialogFactory
-						.createDetailDialog(Display.getCurrent()
+				DetailFormBasedDialog dialog = dialogFactory
+						.createDetailFormBasedDialog(Display.getCurrent()
 								.getActiveShell(), labelProvider.getText(eObject), 
 									eObject);
 				int rc = dialog.open();

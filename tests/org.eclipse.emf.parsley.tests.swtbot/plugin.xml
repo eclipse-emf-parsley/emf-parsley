@@ -18,6 +18,20 @@
    	<extension
          point="org.eclipse.ui.editors">
       <editor
+            class="org.eclipse.emf.parsley.tests.factories.OpenFormDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+            contributorClass="org.eclipse.emf.parsley.tests.factories.OpenFormDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+            default="false"
+            id="org.eclipse.emf.parsley.openFormDialogOnDoubleClick"
+            name="EMF Tree Editor Opening Form Dialog">
+         <contentTypeBinding
+               contentTypeId="org.eclipse.emf.ecore.xmi">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+
+   	<extension
+         point="org.eclipse.ui.editors">
+      <editor
             class="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
             contributorClass="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
             default="false"

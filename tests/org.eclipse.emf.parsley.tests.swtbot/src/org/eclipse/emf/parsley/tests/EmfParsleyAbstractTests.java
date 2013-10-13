@@ -118,8 +118,10 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String EMF_TREE_EDITOR_NO_MOUSE = "EMF Tree Editor No Mouse Events";
 
+	protected static final String EMF_TREE_EDITOR_OPEN_FORM_DIALOG = "EMF Tree Editor Opening Form Dialog";
+
 	protected static final String EMF_TREE_EDITOR_OPEN_DIALOG = "EMF Tree Editor Opening Dialog";
-	
+
 	protected static final String EMF_TREE_EDITOR_CUSTOM_LABEL = "EMF Tree Editor Custom Label";
 
 	protected static final String EMF_CUSTOM_LIBRARY_EDITOR = "EMF Custom Library Editor";
@@ -265,6 +267,8 @@ public class EmfParsleyAbstractTests {
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_FOR_STATEMACHINE);
 		editorNamesToId.put(EMF_TREE_EDITOR_NO_MOUSE,
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_NO_MOUSE_ID);
+		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_FORM_DIALOG,
+				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_FORM_DIALOG_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_DIALOG,
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_CUSTOM_LABEL,
@@ -907,6 +911,15 @@ public class EmfParsleyAbstractTests {
 		});
 	}
 
+	protected void assertTextComponent(String text, final boolean editable) {
+		final SWTBotText t = bot.text(text);
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				Assert.assertEquals(editable, t.widget.getEditable());
+			}
+		});
+	}
+
 	protected void assertCheckBoxComponent(SWTFormsBot formbot, int index,
 			final boolean isChecked, final boolean isEnabled) {
 		final SWTBotCheckBox b = formbot.checkBox(index);
@@ -950,11 +963,28 @@ public class EmfParsleyAbstractTests {
 		formbot.label(PEOPLE_TEXT);
 	}
 
+	protected void assertDialogControlsOfLibraryNode(boolean editable) {
+		bot.label(ADDRESS_LABEL);
+		assertTextComponent(LIBRARY_S_ADDRESS_TEXT, editable);
+		bot.comboBox(0); // for "parentBranch
+		// the label for 'people'
+		bot.label(PEOPLE_LABEL);
+		// the inner label listing all the people, before the button "..."
+		bot.label(PEOPLE_TEXT);
+	}
+
 	protected void assertFormControlsOfWriterNode(SWTFormsBot formbot, boolean editable) {
 		formbot.label(ADDRESS_LABEL);
 		assertTextComponent(formbot, WRITER_S_ADDRESS_TEXT, editable);
 		formbot.label(FIRSTNAME_LABEL);
 		formbot.button("..."); // for "books"
+	}
+
+	protected void assertDialogControlsOfWriterNode(boolean editable) {
+		bot.label(ADDRESS_LABEL);
+		assertTextComponent(WRITER_S_ADDRESS_TEXT, editable);
+		bot.label(FIRSTNAME_LABEL);
+		bot.button("..."); // for "books"
 	}
 
 	protected SWTBotEditor assertEditorNotDirty(String editorName) {
@@ -971,6 +1001,10 @@ public class EmfParsleyAbstractTests {
 
 	protected void modifyFormText(SWTFormsBot formbot, String text) {
 		formbot.text(text).setText(text + " MODIFIED");
+	}
+
+	protected void modifyText(String text) {
+		bot.text(text).setText(text + " MODIFIED");
 	}
 
 	protected void assertDirtyThenSaveAndAssertNotDirty(String viewName) {

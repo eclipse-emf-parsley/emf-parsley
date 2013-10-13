@@ -5,7 +5,10 @@ package org.eclipse.emf.parsley.factories;
 
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.parsley.dialogs.DetailComponentDialog;
+import org.eclipse.emf.parsley.dialogs.DetailDialog;
+import org.eclipse.emf.parsley.dialogs.DetailFormBasedDialog;
+import org.eclipse.emf.parsley.widgets.DialogDetailComposite;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
@@ -18,17 +21,36 @@ import com.google.inject.MembersInjector;
 public class DialogFactory {
 
 	@Inject
-	protected MembersInjector<DetailComponentDialog> detailComponentDialogMembersInjection;
+	protected MembersInjector<DetailFormBasedDialog> detailFormBasedDialogMembersInjection;
+
+	@Inject
+	protected MembersInjector<DetailDialog> detailDialogMembersInjection;
+
+	@Inject
+	protected MembersInjector<DialogDetailComposite> detailComponentDialogMembersInjection;
 
 	@Inject
 	public DialogFactory() {
 
 	}
 
-	public DetailComponentDialog createDetailComponentDialog(Shell parentShell, String title, EObject eObject) {
-		DetailComponentDialog dialog = new DetailComponentDialog(parentShell, title, eObject);
-		detailComponentDialogMembersInjection.injectMembers(dialog);
+	public DetailFormBasedDialog createDetailFormBasedDialog(Shell parentShell, String title, EObject eObject) {
+		DetailFormBasedDialog dialog = new DetailFormBasedDialog(parentShell, title, eObject);
+		detailFormBasedDialogMembersInjection.injectMembers(dialog);
 		return dialog;
+	}
+
+	public DetailDialog createDetailDialog(Shell parentShell, String title, EObject eObject) {
+		DetailDialog dialog = new DetailDialog(parentShell, title, eObject);
+		detailDialogMembersInjection.injectMembers(dialog);
+		return dialog;
+	}
+	
+	public DialogDetailComposite createDialogDetailComposite(Composite parent,
+			int style) {
+		DialogDetailComposite detailComposite = new DialogDetailComposite(parent, style);
+		detailComponentDialogMembersInjection.injectMembers(detailComposite);
+		return detailComposite;
 	}
 
 }
