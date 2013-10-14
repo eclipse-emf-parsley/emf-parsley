@@ -313,6 +313,89 @@ public class PropertyDescriptionProviderGen extends PropertyDescriptionProvider 
 	}
 
 	@Test
+	def testFormPropertyDescriptionSpecifications() {
+		inputs.formPropertyDescriptionSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule = 
+'''
+package my.empty;
+
+import my.empty.ui.provider.FormPropertyDescriptionProviderGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends FormPropertyDescriptionProvider> bindFormPropertyDescriptionProvider() {
+    return FormPropertyDescriptionProviderGen.class;
+  }
+}
+'''
+expectedFormPropertyDescriptionProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
+import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+
+@SuppressWarnings("all")
+public class FormPropertyDescriptionProviderGen extends FormPropertyDescriptionProvider {
+  public String text_Library_name(final EStructuralFeature it) {
+    return "Name";
+  }
+  
+  public String text_Library_books(final EStructuralFeature it) {
+    return "Books";
+  }
+  
+  public String text_Writer_lastName(final EStructuralFeature it) {
+    String _name = it.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    return _firstUpper;
+  }
+  
+  public Label label_Library_name(final Composite parent, final EStructuralFeature it) {
+    Label _createLabel = this.createLabel(parent, "Name");
+    return _createLabel;
+  }
+  
+  public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
+    EReference _library_Books = EXTLibraryPackage.eINSTANCE.getLibrary_Books();
+    Label _createLabel = this.createLabel(parent, _library_Books);
+    return _createLabel;
+  }
+  
+  public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
+    Label _label = new Label(parent, SWT.NONE);
+    final Procedure1<Label> _function = new Procedure1<Label>() {
+      public void apply(final Label l) {
+        String _name = it.getName();
+        l.setText(_name);
+      }
+    };
+    Label _doubleArrow = ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
+    return _doubleArrow;
+  }
+}
+''']
+		)
+	}
+
+	@Test
 	def testFeaturesSpecifications() {
 		inputs.featuresSpecifications.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -681,35 +764,30 @@ expectedPluginXmlGen =
 		input.compileAll [
 			for (e : allGeneratedResources.entrySet) {
 				if (e.key.endsWith("ModuleGen.java")) {
-					// check the expected Java code for the module
 					if (expected.expectedModule != null)
 						assertEqualsStrings(expected.expectedModule, e.value)
+				} else if (e.key.endsWith("FormPropertyDescriptionProviderGen.java")) {
+					if (expected.expectedFormPropertyDescriptionProvider != null)
+						assertEqualsStrings(expected.expectedFormPropertyDescriptionProvider, e.value)
 				} else if (e.key.endsWith("PropertyDescriptionProviderGen.java")) {
-					// check the expected Java code for the module
 					if (expected.expectedPropertyDescriptionProvider != null)
 						assertEqualsStrings(expected.expectedPropertyDescriptionProvider, e.value)
 				} else if (e.key.endsWith("FeaturesProviderGen.java")) {
-					// check the expected Java code for the module
 					if (expected.expectedFeatureProvider != null)
 						assertEqualsStrings(expected.expectedFeatureProvider, e.value)
 				} else if (e.key.endsWith("LabelProviderGen.java")) {
-					// check the expected Java code for the module
 					if (expected.expectedLabelProvider != null)
 						assertEqualsStrings(expected.expectedLabelProvider, e.value)
 				} else if (e.key.endsWith("FormFeatureControlFactoryGen.java")) {
-					// check the expected Java code for the module
 					if (expected.expectedFormFeatureControlFactory != null)
 						assertEqualsStrings(expected.expectedFormFeatureControlFactory, e.value)
 				} else if (e.key.endsWith("ViewerContentProviderGen.java")) {
-					// check the expected Java code for the module
 					if (expected.expectedViewerContentProvider != null)
 						assertEqualsStrings(expected.expectedViewerContentProvider, e.value)
 				} else if (e.key.endsWith("ProposalCreatorGen.java")) {
-					// check the expected Java code for the module
 					if (expected.expectedProposalCreator != null)
 						assertEqualsStrings(expected.expectedProposalCreator, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
-					// check the expected Java code for the module
 					if (expected.expectedPluginXmlGen != null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else

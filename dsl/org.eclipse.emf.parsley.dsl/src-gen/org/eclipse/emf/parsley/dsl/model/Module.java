@@ -15,6 +15,7 @@ package org.eclipse.emf.parsley.dsl.model;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getExtendsClause <em>Extends Clause</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getLabelProvider <em>Label Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getPropertyDescriptionProvider <em>Property Description Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFeaturesProvider <em>Features Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormControlFactory <em>Form Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getProposalCreator <em>Proposal Creator</em>}</li>
@@ -132,6 +133,32 @@ public interface Module extends WithExtendsClause
    * @generated
    */
   void setPropertyDescriptionProvider(PropertyDescriptionProvider value);
+
+  /**
+   * Returns the value of the '<em><b>Form Property Description Provider</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Form Property Description Provider</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Form Property Description Provider</em>' containment reference.
+   * @see #setFormPropertyDescriptionProvider(FormPropertyDescriptionProvider)
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_FormPropertyDescriptionProvider()
+   * @model containment="true"
+   * @generated
+   */
+  FormPropertyDescriptionProvider getFormPropertyDescriptionProvider();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Form Property Description Provider</em>' containment reference.
+   * @see #getFormPropertyDescriptionProvider()
+   * @generated
+   */
+  void setFormPropertyDescriptionProvider(FormPropertyDescriptionProvider value);
 
   /**
    * Returns the value of the '<em><b>Features Provider</b></em>' containment reference.

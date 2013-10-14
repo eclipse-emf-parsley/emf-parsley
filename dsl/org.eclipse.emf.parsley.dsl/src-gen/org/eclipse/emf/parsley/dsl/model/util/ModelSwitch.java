@@ -115,6 +115,13 @@ public class ModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ModelPackage.FORM_PROPERTY_DESCRIPTION_PROVIDER:
+      {
+        FormPropertyDescriptionProvider formPropertyDescriptionProvider = (FormPropertyDescriptionProvider)theEObject;
+        T result = caseFormPropertyDescriptionProvider(formPropertyDescriptionProvider);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION:
       {
         PropertyDescriptionSpecification propertyDescriptionSpecification = (PropertyDescriptionSpecification)theEObject;
@@ -307,6 +314,22 @@ public class ModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePropertyDescriptionProvider(PropertyDescriptionProvider object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Form Property Description Provider</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Form Property Description Provider</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFormPropertyDescriptionProvider(FormPropertyDescriptionProvider object)
   {
     return null;
   }

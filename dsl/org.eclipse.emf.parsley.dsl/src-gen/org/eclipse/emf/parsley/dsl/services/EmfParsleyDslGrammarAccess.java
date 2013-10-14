@@ -61,27 +61,31 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLabelProviderLabelProviderParserRuleCall_4_0_0 = (RuleCall)cLabelProviderAssignment_4_0.eContents().get(0);
 		private final Assignment cPropertyDescriptionProviderAssignment_4_1 = (Assignment)cUnorderedGroup_4.eContents().get(1);
 		private final RuleCall cPropertyDescriptionProviderPropertyDescriptionProviderParserRuleCall_4_1_0 = (RuleCall)cPropertyDescriptionProviderAssignment_4_1.eContents().get(0);
-		private final Assignment cFeaturesProviderAssignment_4_2 = (Assignment)cUnorderedGroup_4.eContents().get(2);
-		private final RuleCall cFeaturesProviderFeaturesProviderParserRuleCall_4_2_0 = (RuleCall)cFeaturesProviderAssignment_4_2.eContents().get(0);
-		private final Assignment cFormControlFactoryAssignment_4_3 = (Assignment)cUnorderedGroup_4.eContents().get(3);
-		private final RuleCall cFormControlFactoryFormControlFactoryParserRuleCall_4_3_0 = (RuleCall)cFormControlFactoryAssignment_4_3.eContents().get(0);
-		private final Assignment cProposalCreatorAssignment_4_4 = (Assignment)cUnorderedGroup_4.eContents().get(4);
-		private final RuleCall cProposalCreatorProposalCreatorParserRuleCall_4_4_0 = (RuleCall)cProposalCreatorAssignment_4_4.eContents().get(0);
-		private final Assignment cViewerContentProviderAssignment_4_5 = (Assignment)cUnorderedGroup_4.eContents().get(5);
-		private final RuleCall cViewerContentProviderViewerContentProviderParserRuleCall_4_5_0 = (RuleCall)cViewerContentProviderAssignment_4_5.eContents().get(0);
-		private final Assignment cPartsSpecificationsAssignment_4_6 = (Assignment)cUnorderedGroup_4.eContents().get(6);
-		private final RuleCall cPartsSpecificationsPartsSpecificationsParserRuleCall_4_6_0 = (RuleCall)cPartsSpecificationsAssignment_4_6.eContents().get(0);
+		private final Assignment cFormPropertyDescriptionProviderAssignment_4_2 = (Assignment)cUnorderedGroup_4.eContents().get(2);
+		private final RuleCall cFormPropertyDescriptionProviderFormPropertyDescriptionProviderParserRuleCall_4_2_0 = (RuleCall)cFormPropertyDescriptionProviderAssignment_4_2.eContents().get(0);
+		private final Assignment cFeaturesProviderAssignment_4_3 = (Assignment)cUnorderedGroup_4.eContents().get(3);
+		private final RuleCall cFeaturesProviderFeaturesProviderParserRuleCall_4_3_0 = (RuleCall)cFeaturesProviderAssignment_4_3.eContents().get(0);
+		private final Assignment cFormControlFactoryAssignment_4_4 = (Assignment)cUnorderedGroup_4.eContents().get(4);
+		private final RuleCall cFormControlFactoryFormControlFactoryParserRuleCall_4_4_0 = (RuleCall)cFormControlFactoryAssignment_4_4.eContents().get(0);
+		private final Assignment cProposalCreatorAssignment_4_5 = (Assignment)cUnorderedGroup_4.eContents().get(5);
+		private final RuleCall cProposalCreatorProposalCreatorParserRuleCall_4_5_0 = (RuleCall)cProposalCreatorAssignment_4_5.eContents().get(0);
+		private final Assignment cViewerContentProviderAssignment_4_6 = (Assignment)cUnorderedGroup_4.eContents().get(6);
+		private final RuleCall cViewerContentProviderViewerContentProviderParserRuleCall_4_6_0 = (RuleCall)cViewerContentProviderAssignment_4_6.eContents().get(0);
+		private final Assignment cPartsSpecificationsAssignment_4_7 = (Assignment)cUnorderedGroup_4.eContents().get(7);
+		private final RuleCall cPartsSpecificationsPartsSpecificationsParserRuleCall_4_7_0 = (RuleCall)cPartsSpecificationsAssignment_4_7.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Module:
 		//	"module" name=QualifiedName extendsClause=ExtendsClause? "{" (labelProvider=LabelProvider? &
-		//	propertyDescriptionProvider=PropertyDescriptionProvider? & featuresProvider=FeaturesProvider? &
+		//	propertyDescriptionProvider=PropertyDescriptionProvider? &
+		//	formPropertyDescriptionProvider=FormPropertyDescriptionProvider? & featuresProvider=FeaturesProvider? &
 		//	formControlFactory=FormControlFactory? & proposalCreator=ProposalCreator? &
 		//	viewerContentProvider=ViewerContentProvider? & partsSpecifications=PartsSpecifications?) "}";
 		public ParserRule getRule() { return rule; }
 
 		//"module" name=QualifiedName extendsClause=ExtendsClause? "{" (labelProvider=LabelProvider? &
-		//propertyDescriptionProvider=PropertyDescriptionProvider? & featuresProvider=FeaturesProvider? &
+		//propertyDescriptionProvider=PropertyDescriptionProvider? &
+		//formPropertyDescriptionProvider=FormPropertyDescriptionProvider? & featuresProvider=FeaturesProvider? &
 		//formControlFactory=FormControlFactory? & proposalCreator=ProposalCreator? &
 		//viewerContentProvider=ViewerContentProvider? & partsSpecifications=PartsSpecifications?) "}"
 		public Group getGroup() { return cGroup; }
@@ -105,7 +109,8 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//labelProvider=LabelProvider? & propertyDescriptionProvider=PropertyDescriptionProvider? &
-		//featuresProvider=FeaturesProvider? & formControlFactory=FormControlFactory? & proposalCreator=ProposalCreator? &
+		//formPropertyDescriptionProvider=FormPropertyDescriptionProvider? & featuresProvider=FeaturesProvider? &
+		//formControlFactory=FormControlFactory? & proposalCreator=ProposalCreator? &
 		//viewerContentProvider=ViewerContentProvider? & partsSpecifications=PartsSpecifications?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
@@ -121,35 +126,41 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//PropertyDescriptionProvider
 		public RuleCall getPropertyDescriptionProviderPropertyDescriptionProviderParserRuleCall_4_1_0() { return cPropertyDescriptionProviderPropertyDescriptionProviderParserRuleCall_4_1_0; }
 
+		//formPropertyDescriptionProvider=FormPropertyDescriptionProvider?
+		public Assignment getFormPropertyDescriptionProviderAssignment_4_2() { return cFormPropertyDescriptionProviderAssignment_4_2; }
+
+		//FormPropertyDescriptionProvider
+		public RuleCall getFormPropertyDescriptionProviderFormPropertyDescriptionProviderParserRuleCall_4_2_0() { return cFormPropertyDescriptionProviderFormPropertyDescriptionProviderParserRuleCall_4_2_0; }
+
 		//featuresProvider=FeaturesProvider?
-		public Assignment getFeaturesProviderAssignment_4_2() { return cFeaturesProviderAssignment_4_2; }
+		public Assignment getFeaturesProviderAssignment_4_3() { return cFeaturesProviderAssignment_4_3; }
 
 		//FeaturesProvider
-		public RuleCall getFeaturesProviderFeaturesProviderParserRuleCall_4_2_0() { return cFeaturesProviderFeaturesProviderParserRuleCall_4_2_0; }
+		public RuleCall getFeaturesProviderFeaturesProviderParserRuleCall_4_3_0() { return cFeaturesProviderFeaturesProviderParserRuleCall_4_3_0; }
 
 		//formControlFactory=FormControlFactory?
-		public Assignment getFormControlFactoryAssignment_4_3() { return cFormControlFactoryAssignment_4_3; }
+		public Assignment getFormControlFactoryAssignment_4_4() { return cFormControlFactoryAssignment_4_4; }
 
 		//FormControlFactory
-		public RuleCall getFormControlFactoryFormControlFactoryParserRuleCall_4_3_0() { return cFormControlFactoryFormControlFactoryParserRuleCall_4_3_0; }
+		public RuleCall getFormControlFactoryFormControlFactoryParserRuleCall_4_4_0() { return cFormControlFactoryFormControlFactoryParserRuleCall_4_4_0; }
 
 		//proposalCreator=ProposalCreator?
-		public Assignment getProposalCreatorAssignment_4_4() { return cProposalCreatorAssignment_4_4; }
+		public Assignment getProposalCreatorAssignment_4_5() { return cProposalCreatorAssignment_4_5; }
 
 		//ProposalCreator
-		public RuleCall getProposalCreatorProposalCreatorParserRuleCall_4_4_0() { return cProposalCreatorProposalCreatorParserRuleCall_4_4_0; }
+		public RuleCall getProposalCreatorProposalCreatorParserRuleCall_4_5_0() { return cProposalCreatorProposalCreatorParserRuleCall_4_5_0; }
 
 		//viewerContentProvider=ViewerContentProvider?
-		public Assignment getViewerContentProviderAssignment_4_5() { return cViewerContentProviderAssignment_4_5; }
+		public Assignment getViewerContentProviderAssignment_4_6() { return cViewerContentProviderAssignment_4_6; }
 
 		//ViewerContentProvider
-		public RuleCall getViewerContentProviderViewerContentProviderParserRuleCall_4_5_0() { return cViewerContentProviderViewerContentProviderParserRuleCall_4_5_0; }
+		public RuleCall getViewerContentProviderViewerContentProviderParserRuleCall_4_6_0() { return cViewerContentProviderViewerContentProviderParserRuleCall_4_6_0; }
 
 		//partsSpecifications=PartsSpecifications?
-		public Assignment getPartsSpecificationsAssignment_4_6() { return cPartsSpecificationsAssignment_4_6; }
+		public Assignment getPartsSpecificationsAssignment_4_7() { return cPartsSpecificationsAssignment_4_7; }
 
 		//PartsSpecifications
-		public RuleCall getPartsSpecificationsPartsSpecificationsParserRuleCall_4_6_0() { return cPartsSpecificationsPartsSpecificationsParserRuleCall_4_6_0; }
+		public RuleCall getPartsSpecificationsPartsSpecificationsParserRuleCall_4_7_0() { return cPartsSpecificationsPartsSpecificationsParserRuleCall_4_7_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
@@ -310,18 +321,18 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cTextKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cLabelSpecificationsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final RuleCall cLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0 = (RuleCall)cLabelSpecificationsAssignment_3_2.eContents().get(0);
+		private final Assignment cSpecificationsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final RuleCall cSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0 = (RuleCall)cSpecificationsAssignment_3_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//PropertyDescriptionProvider:
 		//	{PropertyDescriptionProvider} "propertyDescriptionProvider" "{" ("text" "{"
-		//	labelSpecifications+=PropertyDescriptionSpecification* "}")? "}";
+		//	specifications+=PropertyDescriptionSpecification* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{PropertyDescriptionProvider} "propertyDescriptionProvider" "{" ("text" "{"
-		//labelSpecifications+=PropertyDescriptionSpecification* "}")? "}"
+		//specifications+=PropertyDescriptionSpecification* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{PropertyDescriptionProvider}
@@ -333,7 +344,7 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//("text" "{" labelSpecifications+=PropertyDescriptionSpecification* "}")?
+		//("text" "{" specifications+=PropertyDescriptionSpecification* "}")?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"text"
@@ -342,14 +353,99 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3_1() { return cLeftCurlyBracketKeyword_3_1; }
 
-		//labelSpecifications+=PropertyDescriptionSpecification*
-		public Assignment getLabelSpecificationsAssignment_3_2() { return cLabelSpecificationsAssignment_3_2; }
+		//specifications+=PropertyDescriptionSpecification*
+		public Assignment getSpecificationsAssignment_3_2() { return cSpecificationsAssignment_3_2; }
 
 		//PropertyDescriptionSpecification
-		public RuleCall getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0() { return cLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0; }
+		public RuleCall getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0() { return cSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3_3() { return cRightCurlyBracketKeyword_3_3; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class FormPropertyDescriptionProviderElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FormPropertyDescriptionProvider");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cFormPropertyDescriptionProviderAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cFormPropertyDescriptionProviderKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final UnorderedGroup cUnorderedGroup_3 = (UnorderedGroup)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cUnorderedGroup_3.eContents().get(0);
+		private final Keyword cTextKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final Assignment cSpecificationsAssignment_3_0_2 = (Assignment)cGroup_3_0.eContents().get(2);
+		private final RuleCall cSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0 = (RuleCall)cSpecificationsAssignment_3_0_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_0_3 = (Keyword)cGroup_3_0.eContents().get(3);
+		private final Group cGroup_3_1 = (Group)cUnorderedGroup_3.eContents().get(1);
+		private final Keyword cLabelKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final Assignment cLabelSpecificationsAssignment_3_1_2 = (Assignment)cGroup_3_1.eContents().get(2);
+		private final RuleCall cLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0 = (RuleCall)cLabelSpecificationsAssignment_3_1_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_1_3 = (Keyword)cGroup_3_1.eContents().get(3);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//FormPropertyDescriptionProvider:
+		//	{FormPropertyDescriptionProvider} "formPropertyDescriptionProvider" "{" (("text" "{"
+		//	specifications+=PropertyDescriptionSpecification* "}")? & ("label" "{"
+		//	labelSpecifications+=PropertyDescriptionSpecification* "}")?) "}";
+		public ParserRule getRule() { return rule; }
+
+		//{FormPropertyDescriptionProvider} "formPropertyDescriptionProvider" "{" (("text" "{"
+		//specifications+=PropertyDescriptionSpecification* "}")? & ("label" "{"
+		//labelSpecifications+=PropertyDescriptionSpecification* "}")?) "}"
+		public Group getGroup() { return cGroup; }
+
+		//{FormPropertyDescriptionProvider}
+		public Action getFormPropertyDescriptionProviderAction_0() { return cFormPropertyDescriptionProviderAction_0; }
+
+		//"formPropertyDescriptionProvider"
+		public Keyword getFormPropertyDescriptionProviderKeyword_1() { return cFormPropertyDescriptionProviderKeyword_1; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//("text" "{" specifications+=PropertyDescriptionSpecification* "}")? & ("label" "{"
+		//labelSpecifications+=PropertyDescriptionSpecification* "}")?
+		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
+
+		//("text" "{" specifications+=PropertyDescriptionSpecification* "}")?
+		public Group getGroup_3_0() { return cGroup_3_0; }
+
+		//"text"
+		public Keyword getTextKeyword_3_0_0() { return cTextKeyword_3_0_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_0_1() { return cLeftCurlyBracketKeyword_3_0_1; }
+
+		//specifications+=PropertyDescriptionSpecification*
+		public Assignment getSpecificationsAssignment_3_0_2() { return cSpecificationsAssignment_3_0_2; }
+
+		//PropertyDescriptionSpecification
+		public RuleCall getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0() { return cSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_0_3() { return cRightCurlyBracketKeyword_3_0_3; }
+
+		//("label" "{" labelSpecifications+=PropertyDescriptionSpecification* "}")?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//"label"
+		public Keyword getLabelKeyword_3_1_0() { return cLabelKeyword_3_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_1_1() { return cLeftCurlyBracketKeyword_3_1_1; }
+
+		//labelSpecifications+=PropertyDescriptionSpecification*
+		public Assignment getLabelSpecificationsAssignment_3_1_2() { return cLabelSpecificationsAssignment_3_1_2; }
+
+		//PropertyDescriptionSpecification
+		public RuleCall getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0() { return cLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_1_3() { return cRightCurlyBracketKeyword_3_1_3; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -942,6 +1038,7 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 	private LabelProviderElements pLabelProvider;
 	private LabelSpecificationElements pLabelSpecification;
 	private PropertyDescriptionProviderElements pPropertyDescriptionProvider;
+	private FormPropertyDescriptionProviderElements pFormPropertyDescriptionProvider;
 	private PropertyDescriptionSpecificationElements pPropertyDescriptionSpecification;
 	private FeaturesProviderElements pFeaturesProvider;
 	private FeatureSpecificationElements pFeatureSpecification;
@@ -1006,7 +1103,8 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Module:
 	//	"module" name=QualifiedName extendsClause=ExtendsClause? "{" (labelProvider=LabelProvider? &
-	//	propertyDescriptionProvider=PropertyDescriptionProvider? & featuresProvider=FeaturesProvider? &
+	//	propertyDescriptionProvider=PropertyDescriptionProvider? &
+	//	formPropertyDescriptionProvider=FormPropertyDescriptionProvider? & featuresProvider=FeaturesProvider? &
 	//	formControlFactory=FormControlFactory? & proposalCreator=ProposalCreator? &
 	//	viewerContentProvider=ViewerContentProvider? & partsSpecifications=PartsSpecifications?) "}";
 	public ModuleElements getModuleAccess() {
@@ -1050,13 +1148,25 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	//PropertyDescriptionProvider:
 	//	{PropertyDescriptionProvider} "propertyDescriptionProvider" "{" ("text" "{"
-	//	labelSpecifications+=PropertyDescriptionSpecification* "}")? "}";
+	//	specifications+=PropertyDescriptionSpecification* "}")? "}";
 	public PropertyDescriptionProviderElements getPropertyDescriptionProviderAccess() {
 		return (pPropertyDescriptionProvider != null) ? pPropertyDescriptionProvider : (pPropertyDescriptionProvider = new PropertyDescriptionProviderElements());
 	}
 	
 	public ParserRule getPropertyDescriptionProviderRule() {
 		return getPropertyDescriptionProviderAccess().getRule();
+	}
+
+	//FormPropertyDescriptionProvider:
+	//	{FormPropertyDescriptionProvider} "formPropertyDescriptionProvider" "{" (("text" "{"
+	//	specifications+=PropertyDescriptionSpecification* "}")? & ("label" "{"
+	//	labelSpecifications+=PropertyDescriptionSpecification* "}")?) "}";
+	public FormPropertyDescriptionProviderElements getFormPropertyDescriptionProviderAccess() {
+		return (pFormPropertyDescriptionProvider != null) ? pFormPropertyDescriptionProvider : (pFormPropertyDescriptionProvider = new FormPropertyDescriptionProviderElements());
+	}
+	
+	public ParserRule getFormPropertyDescriptionProviderRule() {
+		return getFormPropertyDescriptionProviderAccess().getRule();
 	}
 
 	//PropertyDescriptionSpecification:

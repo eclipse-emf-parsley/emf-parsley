@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getLabelSpecifications <em>Label Specifications</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getSpecifications <em>Specifications</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,19 +25,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface PropertyDescriptionProvider extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Label Specifications</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Specifications</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Label Specifications</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Specifications</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Label Specifications</em>' containment reference list.
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getPropertyDescriptionProvider_LabelSpecifications()
+   * @return the value of the '<em>Specifications</em>' containment reference list.
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getPropertyDescriptionProvider_Specifications()
    * @model containment="true"
    * @generated
    */
-  EList<PropertyDescriptionSpecification> getLabelSpecifications();
+  EList<PropertyDescriptionSpecification> getSpecifications();
 
 } // PropertyDescriptionProvider

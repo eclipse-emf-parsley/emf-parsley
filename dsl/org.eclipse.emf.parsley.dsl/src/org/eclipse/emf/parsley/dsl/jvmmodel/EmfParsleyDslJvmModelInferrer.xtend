@@ -36,6 +36,9 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider
+import org.eclipse.swt.widgets.Label
+import org.eclipse.swt.widgets.Composite
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -93,6 +96,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		
 		val labelProviderClass = element.inferLabelProvider(acceptor)
 		val propertyDescriptionProviderClass = element.inferPropertyDescriptionProvider(acceptor)
+		val formPropertyDescriptionProviderClass = element.inferFormPropertyDescriptionProvider(acceptor)
 		val featureProviderClass = element.inferFeatureProvider(acceptor)
 		val formControlFactoryClass = element.inferFormControlFactory(acceptor)
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
@@ -111,6 +115,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.labelProvider.genBindMethod(labelProviderClass, typeof(ILabelProvider))
 			if (propertyDescriptionProviderClass != null)
 				members += element.propertyDescriptionProvider.genBindMethod(propertyDescriptionProviderClass, typeof(PropertyDescriptionProvider))
+			if (formPropertyDescriptionProviderClass != null)
+				members += element.formPropertyDescriptionProvider.genBindMethod(formPropertyDescriptionProviderClass, typeof(FormPropertyDescriptionProvider))
 			if (featureProviderClass != null)
 				members += element.featuresProvider.genBindMethod(featureProviderClass, typeof(FeaturesProvider))
 			if (formControlFactoryClass != null)
@@ -154,6 +160,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	
 	def propertyDescriptionProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.PropertyDescriptionProviderGen"
+	}
+
+	def formPropertyDescriptionProviderQN(Module element) {
+		element.fullyQualifiedName + ".ui.provider.FormPropertyDescriptionProviderGen"
 	}
 
 	def featuresProviderQN(Module element) {
@@ -233,28 +243,82 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(propertyDescriptionProviderClass).initializeLater [
 				superTypes += element.newTypeRef(typeof(PropertyDescriptionProvider))
 				
-				element.propertyDescriptionProvider.labelSpecifications.forEach [
-					labelSpecification |
-					if (labelSpecification.feature?.simpleName != null) {
+				for (spec : element.propertyDescriptionProvider.specifications) {
+					if (spec.feature?.simpleName != null) {
 						// associate the method to the expression, not to the whole
-						// labelSpecification, otherwise the 'feature' is logically
+						// spec, otherwise the 'feature' is logically
 						// contained in a method which should return a string
 						// and the validator would complain
-						members += labelSpecification.expression.toMethod
+						members += spec.expression.toMethod
 						("text_" + 
-								labelSpecification.parameterType.simpleName + "_" +
-								labelSpecification.feature.simpleName.propertyNameForGetterSetterMethod, 
+								spec.parameterType.simpleName + "_" +
+								spec.feature.simpleName.propertyNameForGetterSetterMethod, 
 							element.newTypeRef(typeof(String))
 						) [
-							parameters += labelSpecification.toParameter(
+							parameters += spec.toParameter(
 								"it", element.newTypeRef(typeof(EStructuralFeature))
 							)
-							body = labelSpecification.expression
+							body = spec.expression
 						]
 					}
-				]
+				}
 			]
 			propertyDescriptionProviderClass
+		}
+	}
+
+	def inferFormPropertyDescriptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.formPropertyDescriptionProvider == null)
+			null
+		else {
+			val descriptionProviderClass = element.formPropertyDescriptionProvider.toClass(element.formPropertyDescriptionProviderQN)
+			acceptor.accept(descriptionProviderClass).initializeLater [
+				superTypes += element.newTypeRef(typeof(FormPropertyDescriptionProvider))
+				
+				for (spec : element.formPropertyDescriptionProvider.specifications) {
+					if (spec.feature?.simpleName != null) {
+						// associate the method to the expression, not to the whole
+						// spec, otherwise the 'feature' is logically
+						// contained in a method which should return a string
+						// and the validator would complain
+						members += spec.expression.toMethod
+						("text_" + 
+								spec.parameterType.simpleName + "_" +
+								spec.feature.simpleName.propertyNameForGetterSetterMethod, 
+							element.newTypeRef(typeof(String))
+						) [
+							parameters += spec.toParameter(
+								"it", element.newTypeRef(typeof(EStructuralFeature))
+							)
+							body = spec.expression
+						]
+					}
+				}
+				
+				for (spec : element.formPropertyDescriptionProvider.labelSpecifications) {
+					if (spec.feature?.simpleName != null) {
+						// associate the method to the expression, not to the whole
+						// spec, otherwise the 'feature' is logically
+						// contained in a method which should return a string
+						// and the validator would complain
+						members += spec.expression.toMethod
+						("label_" + 
+								spec.parameterType.simpleName + "_" +
+								spec.feature.simpleName.propertyNameForGetterSetterMethod, 
+							element.newTypeRef(typeof(Label))
+						) [
+							parameters += spec.toParameter(
+								"parent", element.newTypeRef(typeof(Composite))
+							)
+							parameters += spec.toParameter(
+								"it", element.newTypeRef(typeof(EStructuralFeature))
+							)
+							body = spec.expression
+						]
+					}
+				}
+			]
+			descriptionProviderClass
 		}
 	}
 

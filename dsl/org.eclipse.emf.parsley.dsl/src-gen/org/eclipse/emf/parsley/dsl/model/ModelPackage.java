@@ -101,7 +101,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getWithExtendsClause()
    * @generated
    */
-  int WITH_EXTENDS_CLAUSE = 15;
+  int WITH_EXTENDS_CLAUSE = 16;
 
   /**
    * The number of structural features of the '<em>With Extends Clause</em>' class.
@@ -159,13 +159,22 @@ public interface ModelPackage extends EPackage
   int MODULE__PROPERTY_DESCRIPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Form Property Description Provider</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Features Provider</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__FEATURES_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 4;
+  int MODULE__FEATURES_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Form Control Factory</b></em>' containment reference.
@@ -174,7 +183,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__FORM_CONTROL_FACTORY = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 5;
+  int MODULE__FORM_CONTROL_FACTORY = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Proposal Creator</b></em>' containment reference.
@@ -183,7 +192,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__PROPOSAL_CREATOR = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 6;
+  int MODULE__PROPOSAL_CREATOR = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Viewer Content Provider</b></em>' containment reference.
@@ -192,7 +201,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__VIEWER_CONTENT_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 7;
+  int MODULE__VIEWER_CONTENT_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Parts Specifications</b></em>' containment reference.
@@ -201,7 +210,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__PARTS_SPECIFICATIONS = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 8;
+  int MODULE__PARTS_SPECIFICATIONS = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 9;
 
   /**
    * The number of structural features of the '<em>Module</em>' class.
@@ -210,7 +219,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_FEATURE_COUNT = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 9;
+  int MODULE_FEATURE_COUNT = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 10;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.ExtendsClauseImpl <em>Extends Clause</em>}' class.
@@ -334,13 +343,13 @@ public interface ModelPackage extends EPackage
   int PROPERTY_DESCRIPTION_PROVIDER = 5;
 
   /**
-   * The feature id for the '<em><b>Label Specifications</b></em>' containment reference list.
+   * The feature id for the '<em><b>Specifications</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = 0;
+  int PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = 0;
 
   /**
    * The number of structural features of the '<em>Property Description Provider</em>' class.
@@ -352,6 +361,43 @@ public interface ModelPackage extends EPackage
   int PROPERTY_DESCRIPTION_PROVIDER_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl <em>Form Property Description Provider</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormPropertyDescriptionProvider()
+   * @generated
+   */
+  int FORM_PROPERTY_DESCRIPTION_PROVIDER = 6;
+
+  /**
+   * The feature id for the '<em><b>Specifications</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = 0;
+
+  /**
+   * The feature id for the '<em><b>Label Specifications</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = 1;
+
+  /**
+   * The number of structural features of the '<em>Form Property Description Provider</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FORM_PROPERTY_DESCRIPTION_PROVIDER_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.EmfFeatureAccessImpl <em>Emf Feature Access</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -359,7 +405,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getEmfFeatureAccess()
    * @generated
    */
-  int EMF_FEATURE_ACCESS = 14;
+  int EMF_FEATURE_ACCESS = 15;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -387,7 +433,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPropertyDescriptionSpecification()
    * @generated
    */
-  int PROPERTY_DESCRIPTION_SPECIFICATION = 6;
+  int PROPERTY_DESCRIPTION_SPECIFICATION = 7;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -433,7 +479,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFeaturesProvider()
    * @generated
    */
-  int FEATURES_PROVIDER = 7;
+  int FEATURES_PROVIDER = 8;
 
   /**
    * The feature id for the '<em><b>Feature Specifications</b></em>' containment reference list.
@@ -461,7 +507,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFeatureSpecification()
    * @generated
    */
-  int FEATURE_SPECIFICATION = 8;
+  int FEATURE_SPECIFICATION = 9;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -498,7 +544,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormControlFactory()
    * @generated
    */
-  int FORM_CONTROL_FACTORY = 9;
+  int FORM_CONTROL_FACTORY = 10;
 
   /**
    * The feature id for the '<em><b>Control Specifications</b></em>' containment reference list.
@@ -526,7 +572,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormControlSpecification()
    * @generated
    */
-  int FORM_CONTROL_SPECIFICATION = 10;
+  int FORM_CONTROL_SPECIFICATION = 11;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -581,7 +627,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getProposalCreator()
    * @generated
    */
-  int PROPOSAL_CREATOR = 11;
+  int PROPOSAL_CREATOR = 12;
 
   /**
    * The feature id for the '<em><b>Proposals Specifications</b></em>' containment reference list.
@@ -609,7 +655,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getProposalSpecification()
    * @generated
    */
-  int PROPOSAL_SPECIFICATION = 12;
+  int PROPOSAL_SPECIFICATION = 13;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -655,7 +701,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getViewerContentProvider()
    * @generated
    */
-  int VIEWER_CONTENT_PROVIDER = 13;
+  int VIEWER_CONTENT_PROVIDER = 14;
 
   /**
    * The feature id for the '<em><b>Children Specifications</b></em>' containment reference list.
@@ -683,7 +729,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPartsSpecifications()
    * @generated
    */
-  int PARTS_SPECIFICATIONS = 16;
+  int PARTS_SPECIFICATIONS = 17;
 
   /**
    * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -711,7 +757,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPartSpecification()
    * @generated
    */
-  int PART_SPECIFICATION = 17;
+  int PART_SPECIFICATION = 18;
 
   /**
    * The number of structural features of the '<em>Part Specification</em>' class.
@@ -730,7 +776,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getViewSpecification()
    * @generated
    */
-  int VIEW_SPECIFICATION = 18;
+  int VIEW_SPECIFICATION = 19;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -863,6 +909,17 @@ public interface ModelPackage extends EPackage
    * @generated
    */
   EReference getModule_PropertyDescriptionProvider();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Form Property Description Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider()
+   * @see #getModule()
+   * @generated
+   */
+  EReference getModule_FormPropertyDescriptionProvider();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getFeaturesProvider <em>Features Provider</em>}'.
@@ -1026,15 +1083,47 @@ public interface ModelPackage extends EPackage
   EClass getPropertyDescriptionProvider();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getLabelSpecifications <em>Label Specifications</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getSpecifications <em>Specifications</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Label Specifications</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getLabelSpecifications()
+   * @return the meta object for the containment reference list '<em>Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getSpecifications()
    * @see #getPropertyDescriptionProvider()
    * @generated
    */
-  EReference getPropertyDescriptionProvider_LabelSpecifications();
+  EReference getPropertyDescriptionProvider_Specifications();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider <em>Form Property Description Provider</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Form Property Description Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider
+   * @generated
+   */
+  EClass getFormPropertyDescriptionProvider();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getSpecifications <em>Specifications</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getSpecifications()
+   * @see #getFormPropertyDescriptionProvider()
+   * @generated
+   */
+  EReference getFormPropertyDescriptionProvider_Specifications();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getLabelSpecifications <em>Label Specifications</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Label Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getLabelSpecifications()
+   * @see #getFormPropertyDescriptionProvider()
+   * @generated
+   */
+  EReference getFormPropertyDescriptionProvider_LabelSpecifications();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification <em>Property Description Specification</em>}'.
@@ -1456,6 +1545,14 @@ public interface ModelPackage extends EPackage
     EReference MODULE__PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getModule_PropertyDescriptionProvider();
 
     /**
+     * The meta object literal for the '<em><b>Form Property Description Provider</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getModule_FormPropertyDescriptionProvider();
+
+    /**
      * The meta object literal for the '<em><b>Features Provider</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1584,12 +1681,38 @@ public interface ModelPackage extends EPackage
     EClass PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getPropertyDescriptionProvider();
 
     /**
+     * The meta object literal for the '<em><b>Specifications</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getPropertyDescriptionProvider_Specifications();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl <em>Form Property Description Provider</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormPropertyDescriptionProvider()
+     * @generated
+     */
+    EClass FORM_PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getFormPropertyDescriptionProvider();
+
+    /**
+     * The meta object literal for the '<em><b>Specifications</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FORM_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getFormPropertyDescriptionProvider_Specifications();
+
+    /**
      * The meta object literal for the '<em><b>Label Specifications</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = eINSTANCE.getPropertyDescriptionProvider_LabelSpecifications();
+    EReference FORM_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = eINSTANCE.getFormPropertyDescriptionProvider_LabelSpecifications();
 
     /**
      * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionSpecificationImpl <em>Property Description Specification</em>}' class.

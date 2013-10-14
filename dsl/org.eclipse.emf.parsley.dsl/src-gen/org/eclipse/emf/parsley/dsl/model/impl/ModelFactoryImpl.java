@@ -70,6 +70,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
       case ModelPackage.LABEL_PROVIDER: return createLabelProvider();
       case ModelPackage.LABEL_SPECIFICATION: return createLabelSpecification();
       case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER: return createPropertyDescriptionProvider();
+      case ModelPackage.FORM_PROPERTY_DESCRIPTION_PROVIDER: return createFormPropertyDescriptionProvider();
       case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION: return createPropertyDescriptionSpecification();
       case ModelPackage.FEATURES_PROVIDER: return createFeaturesProvider();
       case ModelPackage.FEATURE_SPECIFICATION: return createFeatureSpecification();
@@ -152,6 +153,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
   {
     PropertyDescriptionProviderImpl propertyDescriptionProvider = new PropertyDescriptionProviderImpl();
     return propertyDescriptionProvider;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FormPropertyDescriptionProvider createFormPropertyDescriptionProvider()
+  {
+    FormPropertyDescriptionProviderImpl formPropertyDescriptionProvider = new FormPropertyDescriptionProviderImpl();
+    return formPropertyDescriptionProvider;
   }
 
   /**

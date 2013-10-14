@@ -3,7 +3,6 @@
  */
 package org.eclipse.emf.parsley.ui.provider;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -24,8 +23,8 @@ public class FormPropertyDescriptionProvider extends DialogPropertyDescriptionPr
 	protected FormToolkit formToolkit;
 
 	@Override
-	protected Label createLabel(Composite parent, EStructuralFeature element) {
-		Label lab = formToolkit.createLabel(parent, getText(element));
+	protected Label createLabel(Composite parent, String text) {
+		Label lab = formToolkit.createLabel(parent, text);
 		lab.setLayoutData(new GridData());
 		return lab;
 	}

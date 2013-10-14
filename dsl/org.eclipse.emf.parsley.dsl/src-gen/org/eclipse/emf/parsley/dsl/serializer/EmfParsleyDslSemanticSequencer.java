@@ -8,6 +8,7 @@ import org.eclipse.emf.parsley.dsl.model.FeatureSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
 import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
 import org.eclipse.emf.parsley.dsl.model.FormControlSpecification;
+import org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
 import org.eclipse.emf.parsley.dsl.model.Model;
@@ -110,6 +111,12 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 				if(context == grammarAccess.getEmfFeatureAccessRule() ||
 				   context == grammarAccess.getFormControlSpecificationRule()) {
 					sequence_FormControlSpecification(context, (FormControlSpecification) semanticObject); 
+					return; 
+				}
+				else break;
+			case ModelPackage.FORM_PROPERTY_DESCRIPTION_PROVIDER:
+				if(context == grammarAccess.getFormPropertyDescriptionProviderRule()) {
+					sequence_FormPropertyDescriptionProvider(context, (FormPropertyDescriptionProvider) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1179,6 +1186,15 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (specifications+=PropertyDescriptionSpecification* labelSpecifications+=PropertyDescriptionSpecification*)
+	 */
+	protected void sequence_FormPropertyDescriptionProvider(EObject context, FormPropertyDescriptionProvider semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (labelSpecifications+=LabelSpecification* imageSpecifications+=LabelSpecification*)
 	 */
 	protected void sequence_LabelProvider(EObject context, LabelProvider semanticObject) {
@@ -1211,6 +1227,7 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	 *         extendsClause=ExtendsClause? 
 	 *         labelProvider=LabelProvider? 
 	 *         propertyDescriptionProvider=PropertyDescriptionProvider? 
+	 *         formPropertyDescriptionProvider=FormPropertyDescriptionProvider? 
 	 *         featuresProvider=FeaturesProvider? 
 	 *         formControlFactory=FormControlFactory? 
 	 *         proposalCreator=ProposalCreator? 
@@ -1234,7 +1251,7 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (labelSpecifications+=PropertyDescriptionSpecification*)
+	 *     (specifications+=PropertyDescriptionSpecification*)
 	 */
 	protected void sequence_PropertyDescriptionProvider(EObject context, PropertyDescriptionProvider semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

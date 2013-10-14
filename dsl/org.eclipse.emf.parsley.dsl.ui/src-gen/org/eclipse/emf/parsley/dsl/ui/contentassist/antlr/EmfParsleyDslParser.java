@@ -84,6 +84,9 @@ public class EmfParsleyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLabelSpecificationAccess().getGroup(), "rule__LabelSpecification__Group__0");
 					put(grammarAccess.getPropertyDescriptionProviderAccess().getGroup(), "rule__PropertyDescriptionProvider__Group__0");
 					put(grammarAccess.getPropertyDescriptionProviderAccess().getGroup_3(), "rule__PropertyDescriptionProvider__Group_3__0");
+					put(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup(), "rule__FormPropertyDescriptionProvider__Group__0");
+					put(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup_3_0(), "rule__FormPropertyDescriptionProvider__Group_3_0__0");
+					put(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup_3_1(), "rule__FormPropertyDescriptionProvider__Group_3_1__0");
 					put(grammarAccess.getPropertyDescriptionSpecificationAccess().getGroup(), "rule__PropertyDescriptionSpecification__Group__0");
 					put(grammarAccess.getFeaturesProviderAccess().getGroup(), "rule__FeaturesProvider__Group__0");
 					put(grammarAccess.getFeaturesProviderAccess().getGroup_3(), "rule__FeaturesProvider__Group_3__0");
@@ -259,18 +262,21 @@ public class EmfParsleyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModuleAccess().getExtendsClauseAssignment_2(), "rule__Module__ExtendsClauseAssignment_2");
 					put(grammarAccess.getModuleAccess().getLabelProviderAssignment_4_0(), "rule__Module__LabelProviderAssignment_4_0");
 					put(grammarAccess.getModuleAccess().getPropertyDescriptionProviderAssignment_4_1(), "rule__Module__PropertyDescriptionProviderAssignment_4_1");
-					put(grammarAccess.getModuleAccess().getFeaturesProviderAssignment_4_2(), "rule__Module__FeaturesProviderAssignment_4_2");
-					put(grammarAccess.getModuleAccess().getFormControlFactoryAssignment_4_3(), "rule__Module__FormControlFactoryAssignment_4_3");
-					put(grammarAccess.getModuleAccess().getProposalCreatorAssignment_4_4(), "rule__Module__ProposalCreatorAssignment_4_4");
-					put(grammarAccess.getModuleAccess().getViewerContentProviderAssignment_4_5(), "rule__Module__ViewerContentProviderAssignment_4_5");
-					put(grammarAccess.getModuleAccess().getPartsSpecificationsAssignment_4_6(), "rule__Module__PartsSpecificationsAssignment_4_6");
+					put(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderAssignment_4_2(), "rule__Module__FormPropertyDescriptionProviderAssignment_4_2");
+					put(grammarAccess.getModuleAccess().getFeaturesProviderAssignment_4_3(), "rule__Module__FeaturesProviderAssignment_4_3");
+					put(grammarAccess.getModuleAccess().getFormControlFactoryAssignment_4_4(), "rule__Module__FormControlFactoryAssignment_4_4");
+					put(grammarAccess.getModuleAccess().getProposalCreatorAssignment_4_5(), "rule__Module__ProposalCreatorAssignment_4_5");
+					put(grammarAccess.getModuleAccess().getViewerContentProviderAssignment_4_6(), "rule__Module__ViewerContentProviderAssignment_4_6");
+					put(grammarAccess.getModuleAccess().getPartsSpecificationsAssignment_4_7(), "rule__Module__PartsSpecificationsAssignment_4_7");
 					put(grammarAccess.getExtendsClauseAccess().getSuperTypeAssignment_1(), "rule__ExtendsClause__SuperTypeAssignment_1");
 					put(grammarAccess.getLabelProviderAccess().getLabelSpecificationsAssignment_3_0_2(), "rule__LabelProvider__LabelSpecificationsAssignment_3_0_2");
 					put(grammarAccess.getLabelProviderAccess().getImageSpecificationsAssignment_3_1_2(), "rule__LabelProvider__ImageSpecificationsAssignment_3_1_2");
 					put(grammarAccess.getLabelSpecificationAccess().getParameterTypeAssignment_0(), "rule__LabelSpecification__ParameterTypeAssignment_0");
 					put(grammarAccess.getLabelSpecificationAccess().getNameAssignment_1(), "rule__LabelSpecification__NameAssignment_1");
 					put(grammarAccess.getLabelSpecificationAccess().getExpressionAssignment_3(), "rule__LabelSpecification__ExpressionAssignment_3");
-					put(grammarAccess.getPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_2(), "rule__PropertyDescriptionProvider__LabelSpecificationsAssignment_3_2");
+					put(grammarAccess.getPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_2(), "rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2");
+					put(grammarAccess.getFormPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_0_2(), "rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2");
+					put(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_1_2(), "rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2");
 					put(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeAssignment_0(), "rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0");
 					put(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureAssignment_2(), "rule__PropertyDescriptionSpecification__FeatureAssignment_2");
 					put(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionAssignment_4(), "rule__PropertyDescriptionSpecification__ExpressionAssignment_4");
@@ -421,6 +427,7 @@ public class EmfParsleyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceAssignment_1_2(), "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getModuleAccess().getUnorderedGroup_4(), "rule__Module__UnorderedGroup_4");
 					put(grammarAccess.getLabelProviderAccess().getUnorderedGroup_3(), "rule__LabelProvider__UnorderedGroup_3");
+					put(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), "rule__FormPropertyDescriptionProvider__UnorderedGroup_3");
 				}
 			};
 		}

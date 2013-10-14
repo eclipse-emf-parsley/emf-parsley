@@ -45,8 +45,12 @@ public class DialogPropertyDescriptionProvider extends PropertyDescriptionProvid
 	}
 
 	protected Label createLabel(Composite parent, EStructuralFeature element) {
+		return createLabel(parent, getText(element));
+	}
+
+	protected Label createLabel(Composite parent, String text) {
 		Label lab = new Label(parent, SWT.NONE);
-		lab.setText(getText(element));
+		lab.setText(text);
 		lab.setLayoutData(new GridData());
 		return lab;
 	}

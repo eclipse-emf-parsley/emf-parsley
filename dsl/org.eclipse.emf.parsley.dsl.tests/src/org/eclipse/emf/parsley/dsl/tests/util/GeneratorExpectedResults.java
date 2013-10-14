@@ -13,6 +13,7 @@ public class GeneratorExpectedResults {
 	public CharSequence expectedModule;
 	public CharSequence expectedLabelProvider;
 	public CharSequence expectedPropertyDescriptionProvider;
+	public CharSequence expectedFormPropertyDescriptionProvider;
 	public CharSequence expectedFeatureProvider;
 	public CharSequence expectedFormFeatureControlFactory;
 	public CharSequence expectedViewerContentProvider;

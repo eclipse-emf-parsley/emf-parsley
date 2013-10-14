@@ -107,6 +107,35 @@ module my.empty {
 }
 '''
 
+	def formPropertyDescriptionSpecifications() 
+'''
+import java.util.*
+import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.swt.widgets.Label
+
+module my.empty {
+	formPropertyDescriptionProvider {
+		text {
+			Library:name -> 'Name' // constant
+			Library:books -> 'Books' // constant
+			Writer:lastName -> name.toFirstUpper // the implicit param is an EStructuralFeature
+		}
+		label {
+			Library:name -> createLabel(parent, "Name")
+			Library:books -> createLabel(parent, EXTLibraryPackage.eINSTANCE.library_Books)
+			Writer:lastName -> {
+				new Label(parent, SWT.NONE) => [
+					l |
+					l.^text = name
+				] 
+				// the implicit param is an EStructuralFeature
+				// 'name' comes from EStructuralFeature
+			}
+		}
+	}
+}
+'''
+
 	def featuresSpecifications() 
 '''
 import java.util.*

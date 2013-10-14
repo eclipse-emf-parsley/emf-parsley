@@ -77,6 +77,15 @@ public interface ModelFactory extends EFactory
   PropertyDescriptionProvider createPropertyDescriptionProvider();
 
   /**
+   * Returns a new object of class '<em>Form Property Description Provider</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Form Property Description Provider</em>'.
+   * @generated
+   */
+  FormPropertyDescriptionProvider createFormPropertyDescriptionProvider();
+
+  /**
    * Returns a new object of class '<em>Property Description Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

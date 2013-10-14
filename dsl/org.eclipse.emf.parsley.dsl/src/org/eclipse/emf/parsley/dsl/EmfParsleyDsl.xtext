@@ -16,6 +16,8 @@ Module:
 			&
 			(propertyDescriptionProvider = PropertyDescriptionProvider)?
 			&
+			(formPropertyDescriptionProvider = FormPropertyDescriptionProvider)?
+			&
 			(featuresProvider = FeaturesProvider)?
 			&
 			(formControlFactory = FormControlFactory)?
@@ -57,6 +59,22 @@ PropertyDescriptionProvider:
 	{PropertyDescriptionProvider} 'propertyDescriptionProvider' '{'
 		((
 		'text' '{'
+			specifications+=PropertyDescriptionSpecification*
+		'}'
+		)?)
+	'}'
+;
+
+FormPropertyDescriptionProvider:
+	{FormPropertyDescriptionProvider} 'formPropertyDescriptionProvider' '{'
+		((
+		'text' '{'
+			specifications+=PropertyDescriptionSpecification*
+		'}'
+		)?
+		&
+		(
+		'label' '{'
 			labelSpecifications+=PropertyDescriptionSpecification*
 		'}'
 		)?)
