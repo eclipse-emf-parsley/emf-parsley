@@ -3,12 +3,13 @@ package org.eclipse.emf.parsley.dsl.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification;
+import org.eclipse.emf.parsley.dsl.model.DialogControlFactory;
 import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
 import org.eclipse.emf.parsley.dsl.model.FeatureSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
 import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
-import org.eclipse.emf.parsley.dsl.model.FormControlSpecification;
 import org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
@@ -83,6 +84,19 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case ModelPackage.CONTROL_FACTORY_SPECIFICATION:
+				if(context == grammarAccess.getControlFactorySpecificationRule() ||
+				   context == grammarAccess.getEmfFeatureAccessRule()) {
+					sequence_ControlFactorySpecification(context, (ControlFactorySpecification) semanticObject); 
+					return; 
+				}
+				else break;
+			case ModelPackage.DIALOG_CONTROL_FACTORY:
+				if(context == grammarAccess.getDialogControlFactoryRule()) {
+					sequence_DialogControlFactory(context, (DialogControlFactory) semanticObject); 
+					return; 
+				}
+				else break;
 			case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
 				if(context == grammarAccess.getDialogPropertyDescriptionProviderRule()) {
 					sequence_DialogPropertyDescriptionProvider(context, (DialogPropertyDescriptionProvider) semanticObject); 
@@ -111,13 +125,6 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 			case ModelPackage.FORM_CONTROL_FACTORY:
 				if(context == grammarAccess.getFormControlFactoryRule()) {
 					sequence_FormControlFactory(context, (FormControlFactory) semanticObject); 
-					return; 
-				}
-				else break;
-			case ModelPackage.FORM_CONTROL_SPECIFICATION:
-				if(context == grammarAccess.getEmfFeatureAccessRule() ||
-				   context == grammarAccess.getFormControlSpecificationRule()) {
-					sequence_FormControlSpecification(context, (FormControlSpecification) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1141,6 +1148,24 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (parameterType=JvmTypeReference feature=[JvmMember|ID] expression=XExpression target=XExpression?)
+	 */
+	protected void sequence_ControlFactorySpecification(EObject context, ControlFactorySpecification semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (controlSpecifications+=ControlFactorySpecification*)
+	 */
+	protected void sequence_DialogControlFactory(EObject context, DialogControlFactory semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (specifications+=PropertyDescriptionSpecification* labelSpecifications+=PropertyDescriptionSpecification*)
 	 */
 	protected void sequence_DialogPropertyDescriptionProvider(EObject context, DialogPropertyDescriptionProvider semanticObject) {
@@ -1184,18 +1209,9 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (controlSpecifications+=FormControlSpecification*)
+	 *     (controlSpecifications+=ControlFactorySpecification*)
 	 */
 	protected void sequence_FormControlFactory(EObject context, FormControlFactory semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (parameterType=JvmTypeReference feature=[JvmMember|ID] expression=XExpression target=XExpression?)
-	 */
-	protected void sequence_FormControlSpecification(EObject context, FormControlSpecification semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1247,6 +1263,7 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	 *         dialogPropertyDescriptionProvider=DialogPropertyDescriptionProvider? 
 	 *         featuresProvider=FeaturesProvider? 
 	 *         formControlFactory=FormControlFactory? 
+	 *         dialogControlFactory=DialogControlFactory? 
 	 *         proposalCreator=ProposalCreator? 
 	 *         viewerContentProvider=ViewerContentProvider? 
 	 *         partsSpecifications=PartsSpecifications?

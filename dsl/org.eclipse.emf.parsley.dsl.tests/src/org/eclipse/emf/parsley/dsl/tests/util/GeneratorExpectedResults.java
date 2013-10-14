@@ -16,7 +16,8 @@ public class GeneratorExpectedResults {
 	public CharSequence expectedFormPropertyDescriptionProvider;
 	public CharSequence expectedDialogPropertyDescriptionProvider;
 	public CharSequence expectedFeatureProvider;
-	public CharSequence expectedFormFeatureControlFactory;
+	public CharSequence expectedFormControlFactory;
+	public CharSequence expectedDialogControlFactory;
 	public CharSequence expectedViewerContentProvider;
 	public CharSequence expectedProposalCreator;
 	public CharSequence expectedPluginXmlGen;

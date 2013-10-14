@@ -8,21 +8,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Form Control Factory</b></em>'.
+ * A representation of the model object '<em><b>Dialog Control Factory</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.FormControlFactory#getControlSpecifications <em>Control Specifications</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.DialogControlFactory#getControlSpecifications <em>Control Specifications</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFormControlFactory()
+ * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getDialogControlFactory()
  * @model
  * @generated
  */
-public interface FormControlFactory extends EObject
+public interface DialogControlFactory extends EObject
 {
   /**
    * Returns the value of the '<em><b>Control Specifications</b></em>' containment reference list.
@@ -34,10 +34,10 @@ public interface FormControlFactory extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Control Specifications</em>' containment reference list.
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFormControlFactory_ControlSpecifications()
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getDialogControlFactory_ControlSpecifications()
    * @model containment="true"
    * @generated
    */
   EList<ControlFactorySpecification> getControlSpecifications();
 
-} // FormControlFactory
+} // DialogControlFactory

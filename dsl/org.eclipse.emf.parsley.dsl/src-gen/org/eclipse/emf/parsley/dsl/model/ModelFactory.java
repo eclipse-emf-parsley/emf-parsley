@@ -131,13 +131,22 @@ public interface ModelFactory extends EFactory
   FormControlFactory createFormControlFactory();
 
   /**
-   * Returns a new object of class '<em>Form Control Specification</em>'.
+   * Returns a new object of class '<em>Dialog Control Factory</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Form Control Specification</em>'.
+   * @return a new object of class '<em>Dialog Control Factory</em>'.
    * @generated
    */
-  FormControlSpecification createFormControlSpecification();
+  DialogControlFactory createDialogControlFactory();
+
+  /**
+   * Returns a new object of class '<em>Control Factory Specification</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Control Factory Specification</em>'.
+   * @generated
+   */
+  ControlFactorySpecification createControlFactorySpecification();
 
   /**
    * Returns a new object of class '<em>Proposal Creator</em>'.

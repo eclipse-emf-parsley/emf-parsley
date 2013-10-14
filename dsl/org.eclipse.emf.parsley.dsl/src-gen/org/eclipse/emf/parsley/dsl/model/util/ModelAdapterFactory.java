@@ -135,9 +135,14 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
         return createFormControlFactoryAdapter();
       }
       @Override
-      public Adapter caseFormControlSpecification(FormControlSpecification object)
+      public Adapter caseDialogControlFactory(DialogControlFactory object)
       {
-        return createFormControlSpecificationAdapter();
+        return createDialogControlFactoryAdapter();
+      }
+      @Override
+      public Adapter caseControlFactorySpecification(ControlFactorySpecification object)
+      {
+        return createControlFactorySpecificationAdapter();
       }
       @Override
       public Adapter caseProposalCreator(ProposalCreator object)
@@ -382,16 +387,31 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification <em>Form Control Specification</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.DialogControlFactory <em>Dialog Control Factory</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.emf.parsley.dsl.model.FormControlSpecification
+   * @see org.eclipse.emf.parsley.dsl.model.DialogControlFactory
    * @generated
    */
-  public Adapter createFormControlSpecificationAdapter()
+  public Adapter createDialogControlFactoryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification <em>Control Factory Specification</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
+   * @generated
+   */
+  public Adapter createControlFactorySpecificationAdapter()
   {
     return null;
   }

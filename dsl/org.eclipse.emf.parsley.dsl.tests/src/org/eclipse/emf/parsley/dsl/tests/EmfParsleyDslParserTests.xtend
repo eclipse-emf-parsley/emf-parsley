@@ -82,8 +82,13 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	}
 
 	@Test
-	def void testFormControlSpecifications() {
-		inputs.formControlSpecifications.parseAndAssertNoError
+	def void testFormControlFactory() {
+		inputs.formControlFactory.parseAndAssertNoError
+	}
+
+	@Test
+	def void testDialogControlFactory() {
+		inputs.dialogControlFactory.parseAndAssertNoError
 	}
 
 	@Test

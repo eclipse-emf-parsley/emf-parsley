@@ -8,23 +8,23 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Form Control Specification</b></em>'.
+ * A representation of the model object '<em><b>Control Factory Specification</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getFeature <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getFeature <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFormControlSpecification()
+ * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getControlFactorySpecification()
  * @model
  * @generated
  */
-public interface FormControlSpecification extends EmfFeatureAccess
+public interface ControlFactorySpecification extends EmfFeatureAccess
 {
   /**
    * Returns the value of the '<em><b>Feature</b></em>' reference.
@@ -36,14 +36,14 @@ public interface FormControlSpecification extends EmfFeatureAccess
    * <!-- end-user-doc -->
    * @return the value of the '<em>Feature</em>' reference.
    * @see #setFeature(JvmMember)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFormControlSpecification_Feature()
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getControlFactorySpecification_Feature()
    * @model
    * @generated
    */
   JvmMember getFeature();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getFeature <em>Feature</em>}' reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getFeature <em>Feature</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Feature</em>' reference.
@@ -62,14 +62,14 @@ public interface FormControlSpecification extends EmfFeatureAccess
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
    * @see #setExpression(XExpression)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFormControlSpecification_Expression()
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getControlFactorySpecification_Expression()
    * @model containment="true"
    * @generated
    */
   XExpression getExpression();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getExpression <em>Expression</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getExpression <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Expression</em>' containment reference.
@@ -88,14 +88,14 @@ public interface FormControlSpecification extends EmfFeatureAccess
    * <!-- end-user-doc -->
    * @return the value of the '<em>Target</em>' containment reference.
    * @see #setTarget(XExpression)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFormControlSpecification_Target()
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getControlFactorySpecification_Target()
    * @model containment="true"
    * @generated
    */
   XExpression getTarget();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getTarget <em>Target</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getTarget <em>Target</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Target</em>' containment reference.
@@ -104,4 +104,4 @@ public interface FormControlSpecification extends EmfFeatureAccess
    */
   void setTarget(XExpression value);
 
-} // FormControlSpecification
+} // ControlFactorySpecification

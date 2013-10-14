@@ -375,17 +375,17 @@ ruleModule returns [EObject current=null]
 					({true}?=>(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAccess().getProposalCreatorProposalCreatorParserRuleCall_4_6_0()); 
+	        newCompositeNode(grammarAccess.getModuleAccess().getDialogControlFactoryDialogControlFactoryParserRuleCall_4_6_0()); 
 	    }
-		lv_proposalCreator_11_0=ruleProposalCreator		{
+		lv_dialogControlFactory_11_0=ruleDialogControlFactory		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleRule());
 	        }
        		set(
        			$current, 
-       			"proposalCreator",
-        		lv_proposalCreator_11_0, 
-        		"ProposalCreator");
+       			"dialogControlFactory",
+        		lv_dialogControlFactory_11_0, 
+        		"DialogControlFactory");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -405,17 +405,17 @@ ruleModule returns [EObject current=null]
 					({true}?=>(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAccess().getViewerContentProviderViewerContentProviderParserRuleCall_4_7_0()); 
+	        newCompositeNode(grammarAccess.getModuleAccess().getProposalCreatorProposalCreatorParserRuleCall_4_7_0()); 
 	    }
-		lv_viewerContentProvider_12_0=ruleViewerContentProvider		{
+		lv_proposalCreator_12_0=ruleProposalCreator		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleRule());
 	        }
        		set(
        			$current, 
-       			"viewerContentProvider",
-        		lv_viewerContentProvider_12_0, 
-        		"ViewerContentProvider");
+       			"proposalCreator",
+        		lv_proposalCreator_12_0, 
+        		"ProposalCreator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -435,16 +435,46 @@ ruleModule returns [EObject current=null]
 					({true}?=>(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAccess().getPartsSpecificationsPartsSpecificationsParserRuleCall_4_8_0()); 
+	        newCompositeNode(grammarAccess.getModuleAccess().getViewerContentProviderViewerContentProviderParserRuleCall_4_8_0()); 
 	    }
-		lv_partsSpecifications_13_0=rulePartsSpecifications		{
+		lv_viewerContentProvider_13_0=ruleViewerContentProvider		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModuleRule());
+	        }
+       		set(
+       			$current, 
+       			"viewerContentProvider",
+        		lv_viewerContentProvider_13_0, 
+        		"ViewerContentProvider");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getModuleAccess().getUnorderedGroup_4());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 9)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 9);
+	 				}
+					({true}?=>(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModuleAccess().getPartsSpecificationsPartsSpecificationsParserRuleCall_4_9_0()); 
+	    }
+		lv_partsSpecifications_14_0=rulePartsSpecifications		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleRule());
 	        }
        		set(
        			$current, 
        			"partsSpecifications",
-        		lv_partsSpecifications_13_0, 
+        		lv_partsSpecifications_14_0, 
         		"PartsSpecifications");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -464,9 +494,9 @@ ruleModule returns [EObject current=null]
 	  getUnorderedGroupHelper().leave(grammarAccess.getModuleAccess().getUnorderedGroup_4());
 	}
 
-)	otherlv_14='}' 
+)	otherlv_15='}' 
     {
-    	newLeafNode(otherlv_14, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_5());
+    	newLeafNode(otherlv_15, grammarAccess.getModuleAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;
@@ -1342,9 +1372,9 @@ ruleFormControlFactory returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFormControlFactoryAccess().getControlSpecificationsFormControlSpecificationParserRuleCall_3_2_0()); 
+	        newCompositeNode(grammarAccess.getFormControlFactoryAccess().getControlSpecificationsControlFactorySpecificationParserRuleCall_3_2_0()); 
 	    }
-		lv_controlSpecifications_5_0=ruleFormControlSpecification		{
+		lv_controlSpecifications_5_0=ruleControlFactorySpecification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFormControlFactoryRule());
 	        }
@@ -1352,7 +1382,7 @@ ruleFormControlFactory returns [EObject current=null]
        			$current, 
        			"controlSpecifications",
         		lv_controlSpecifications_5_0, 
-        		"FormControlSpecification");
+        		"ControlFactorySpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1372,28 +1402,97 @@ ruleFormControlFactory returns [EObject current=null]
 
 
 
-// Entry rule entryRuleFormControlSpecification
-entryRuleFormControlSpecification returns [EObject current=null] 
+// Entry rule entryRuleDialogControlFactory
+entryRuleDialogControlFactory returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getFormControlSpecificationRule()); }
-	 iv_ruleFormControlSpecification=ruleFormControlSpecification 
-	 { $current=$iv_ruleFormControlSpecification.current; } 
+	{ newCompositeNode(grammarAccess.getDialogControlFactoryRule()); }
+	 iv_ruleDialogControlFactory=ruleDialogControlFactory 
+	 { $current=$iv_ruleDialogControlFactory.current; } 
 	 EOF 
 ;
 
-// Rule FormControlSpecification
-ruleFormControlSpecification returns [EObject current=null] 
+// Rule DialogControlFactory
+ruleDialogControlFactory returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getDialogControlFactoryAccess().getDialogControlFactoryAction_0(),
+            $current);
+    }
+)	otherlv_1='dialogControlFactory' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDialogControlFactoryAccess().getDialogControlFactoryKeyword_1());
+    }
+	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDialogControlFactoryAccess().getLeftCurlyBracketKeyword_2());
+    }
+(	otherlv_3='control' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getDialogControlFactoryAccess().getControlKeyword_3_0());
+    }
+	otherlv_4='{' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDialogControlFactoryAccess().getLeftCurlyBracketKeyword_3_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getDialogControlFactoryAccess().getControlSpecificationsControlFactorySpecificationParserRuleCall_3_2_0()); 
+	    }
+		lv_controlSpecifications_5_0=ruleControlFactorySpecification		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getDialogControlFactoryRule());
+	        }
+       		add(
+       			$current, 
+       			"controlSpecifications",
+        		lv_controlSpecifications_5_0, 
+        		"ControlFactorySpecification");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*	otherlv_6='}' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getDialogControlFactoryAccess().getRightCurlyBracketKeyword_3_3());
+    }
+)?	otherlv_7='}' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getDialogControlFactoryAccess().getRightCurlyBracketKeyword_4());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleControlFactorySpecification
+entryRuleControlFactorySpecification returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getControlFactorySpecificationRule()); }
+	 iv_ruleControlFactorySpecification=ruleControlFactorySpecification 
+	 { $current=$iv_ruleControlFactorySpecification.current; } 
+	 EOF 
+;
+
+// Rule ControlFactorySpecification
+ruleControlFactorySpecification returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFormControlSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getControlFactorySpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
 	    }
 		lv_parameterType_0_0=ruleJvmTypeReference		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFormControlSpecificationRule());
+	            $current = createModelElementForParent(grammarAccess.getControlFactorySpecificationRule());
 	        }
        		set(
        			$current, 
@@ -1406,33 +1505,33 @@ ruleFormControlSpecification returns [EObject current=null]
 )
 )	otherlv_1=':' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getFormControlSpecificationAccess().getColonKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getControlFactorySpecificationAccess().getColonKeyword_1());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getFormControlSpecificationRule());
+	            $current = createModelElement(grammarAccess.getControlFactorySpecificationRule());
 	        }
         }
 	otherlv_2=RULE_ID
 	{
-		newLeafNode(otherlv_2, grammarAccess.getFormControlSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
+		newLeafNode(otherlv_2, grammarAccess.getControlFactorySpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
 	}
 
 )
 )	otherlv_3='->' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getFormControlSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getControlFactorySpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFormControlSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getControlFactorySpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
 	    }
 		lv_expression_4_0=ruleXExpression		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFormControlSpecificationRule());
+	            $current = createModelElementForParent(grammarAccess.getControlFactorySpecificationRule());
 	        }
        		set(
        			$current, 
@@ -1445,16 +1544,16 @@ ruleFormControlSpecification returns [EObject current=null]
 )
 )(	otherlv_5='target' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getFormControlSpecificationAccess().getTargetKeyword_5_0());
+    	newLeafNode(otherlv_5, grammarAccess.getControlFactorySpecificationAccess().getTargetKeyword_5_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFormControlSpecificationAccess().getTargetXExpressionParserRuleCall_5_1_0()); 
+	        newCompositeNode(grammarAccess.getControlFactorySpecificationAccess().getTargetXExpressionParserRuleCall_5_1_0()); 
 	    }
 		lv_target_6_0=ruleXExpression		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFormControlSpecificationRule());
+	            $current = createModelElementForParent(grammarAccess.getControlFactorySpecificationRule());
 	        }
        		set(
        			$current, 

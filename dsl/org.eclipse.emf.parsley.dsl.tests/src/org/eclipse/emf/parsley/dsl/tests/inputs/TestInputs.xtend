@@ -180,7 +180,7 @@ module my.empty {
 }
 '''
 
-	def formControlSpecifications()
+	def formControlFactory()
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -196,6 +196,28 @@ module my.empty {
 				target { observeText }
 			Writer : firstName -> 
 				toolkit.createLabel(parent, "")
+				target observeText(SWT::Modify)
+		}
+	}
+}
+'''
+
+	def dialogControlFactory()
+'''
+import java.util.*
+import org.eclipse.emf.parsley.examples.library.*
+
+module my.empty {
+	dialogControlFactory {
+		control {
+			Library : name -> { }
+			Writer : books -> 
+				createLabel(
+					books.map[title].join(", "))
+			Writer : name -> { createLabel(parent, "") }
+				target { observeText }
+			Writer : firstName -> 
+				createLabel(parent, "")
 				target observeText(SWT::Modify)
 		}
 	}

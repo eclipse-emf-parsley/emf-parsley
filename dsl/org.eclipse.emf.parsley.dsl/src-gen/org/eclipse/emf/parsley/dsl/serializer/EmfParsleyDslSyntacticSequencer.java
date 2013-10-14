@@ -19,6 +19,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EmfParsleyDslGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_DialogControlFactory___ControlKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q;
 	protected AbstractElementAlias match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__a__a;
 	protected AbstractElementAlias match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__a;
 	protected AbstractElementAlias match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___or_____LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a_RightCurlyBracketKeyword_3_1_3__q___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a__a__;
@@ -61,6 +62,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EmfParsleyDslGrammarAccess) access;
+		match_DialogControlFactory___ControlKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDialogControlFactoryAccess().getControlKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getDialogControlFactoryAccess().getLeftCurlyBracketKeyword_3_1()), new TokenAlias(false, false, grammarAccess.getDialogControlFactoryAccess().getRightCurlyBracketKeyword_3_3()));
 		match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__a__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()), new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3())));
 		match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()));
 		match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___or_____LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a_RightCurlyBracketKeyword_3_1_3__q___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a__a__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()), new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1())), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3())), new GroupAlias(true, false, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3())), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()), new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1())), new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()), new GroupAlias(true, false, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3())), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()), new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1())))), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()), new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()))));
@@ -138,7 +140,9 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__a__a.equals(syntax))
+			if(match_DialogControlFactory___ControlKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q.equals(syntax))
+				emit_DialogControlFactory___ControlKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__a__a.equals(syntax))
 				emit_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__a__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__a.equals(syntax))
 				emit_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__a(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -220,6 +224,14 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 
 	/**
 	 * Syntax:
+	 *     ('control' '{' '}')?
+	 */
+	protected void emit_DialogControlFactory___ControlKeyword_3_0_LeftCurlyBracketKeyword_3_1_RightCurlyBracketKeyword_3_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
 	 *     ('label' '{' '}' ('text' '{' '}')*)*
 	 */
 	protected void emit_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__a__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -237,6 +249,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	/**
 	 * Syntax:
 	 *     (
+	     ('label' '{' ('}' 'label' '{')*) | 
 	     (
 	         ('label' '{' ('}' 'label' '{')* '}')? 
 	         ('text' '{' '}')+ 
@@ -244,8 +257,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	         '{' 
 	         ('}' 'label' '{')* 
 	         ('}' ('text' '{' '}')+ 'label' '{' ('}' 'label' '{')*)*
-	     ) | 
-	     ('label' '{' ('}' 'label' '{')*)
+	     )
 	 )
 	 */
 	protected void emit_DialogPropertyDescriptionProvider___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___or_____LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a_RightCurlyBracketKeyword_3_1_3__q___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a__a__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -287,6 +299,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	/**
 	 * Syntax:
 	 *     (
+	     ('text' '{' ('}' 'text' '{')*) | 
 	     (
 	         ('text' '{' ('}' 'text' '{')* '}')? 
 	         ('label' '{' '}')+ 
@@ -294,8 +307,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	         '{' 
 	         ('}' 'text' '{')* 
 	         ('}' ('label' '{' '}')+ 'text' '{' ('}' 'text' '{')*)*
-	     ) | 
-	     ('text' '{' ('}' 'text' '{')*)
+	     )
 	 )
 	 */
 	protected void emit_DialogPropertyDescriptionProvider___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a___or_____TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a_RightCurlyBracketKeyword_3_0_3__q___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__p_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a___RightCurlyBracketKeyword_3_0_3___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__p_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a__a__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -304,7 +316,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	
 	/**
 	 * Syntax:
-	 *     (('text' '{' '}') | ('label' '{' '}'))*
+	 *     (('label' '{' '}') | ('text' '{' '}'))*
 	 */
 	protected void emit_DialogPropertyDescriptionProvider_____LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3___or___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3____a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -395,6 +407,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	/**
 	 * Syntax:
 	 *     (
+	     ('text' '{' ('}' 'text' '{')*) | 
 	     (
 	         ('text' '{' ('}' 'text' '{')* '}')? 
 	         ('label' '{' '}')+ 
@@ -402,8 +415,7 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	         '{' 
 	         ('}' 'text' '{')* 
 	         ('}' ('label' '{' '}')+ 'text' '{' ('}' 'text' '{')*)*
-	     ) | 
-	     ('text' '{' ('}' 'text' '{')*)
+	     )
 	 )
 	 */
 	protected void emit_FormPropertyDescriptionProvider___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a___or_____TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a_RightCurlyBracketKeyword_3_0_3__q___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__p_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a___RightCurlyBracketKeyword_3_0_3___LabelKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1_RightCurlyBracketKeyword_3_1_3__p_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1___RightCurlyBracketKeyword_3_0_3_TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1__a__a__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {

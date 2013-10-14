@@ -74,8 +74,8 @@ class EmfParsleyDslJvmModelInferrerTests extends EmfParsleyDslAbstractTests {
 
     @Test
 	def void testFormFeatureControlFactoryName() {
-        "my.empty.binding.FormFeatureControlFactoryGen".assertEqualsStrings(
-        	inferrer.formFeatureControlFactoryQN(inputs.emptyModule.module)
+        "my.empty.binding.FormControlFactoryGen".assertEqualsStrings(
+        	inferrer.formControlFactoryQN(inputs.emptyModule.module)
         )
     }
 

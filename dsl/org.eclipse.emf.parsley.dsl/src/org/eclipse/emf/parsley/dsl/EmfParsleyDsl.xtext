@@ -24,6 +24,8 @@ Module:
 			&
 			(formControlFactory = FormControlFactory)?
 			&
+			(dialogControlFactory = DialogControlFactory)?
+			&
 			(proposalCreator = ProposalCreator)?
 			&
 			(viewerContentProvider = ViewerContentProvider)?
@@ -125,13 +127,23 @@ FormControlFactory:
 	{FormControlFactory} 'formControlFactory' '{'
 		(
 		'control' '{'
-			controlSpecifications+=FormControlSpecification*
+			controlSpecifications+=ControlFactorySpecification*
 		'}'
 		)?
 	'}'
 ;
 
-FormControlSpecification:
+DialogControlFactory:
+	{DialogControlFactory} 'dialogControlFactory' '{'
+		(
+		'control' '{'
+			controlSpecifications+=ControlFactorySpecification*
+		'}'
+		)?
+	'}'
+;
+
+ControlFactorySpecification:
 	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
 	'->'
 	expression = XExpression
@@ -164,7 +176,7 @@ ViewerContentProvider:
 EmfFeatureAccess:
 	PropertyDescriptionSpecification |
 	FeatureSpecification |
-	FormControlSpecification |
+	ControlFactorySpecification |
 	ProposalSpecification
 ;
 

@@ -101,7 +101,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getWithExtendsClause()
    * @generated
    */
-  int WITH_EXTENDS_CLAUSE = 17;
+  int WITH_EXTENDS_CLAUSE = 18;
 
   /**
    * The number of structural features of the '<em>With Extends Clause</em>' class.
@@ -195,13 +195,22 @@ public interface ModelPackage extends EPackage
   int MODULE__FORM_CONTROL_FACTORY = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 7;
 
   /**
+   * The feature id for the '<em><b>Dialog Control Factory</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__DIALOG_CONTROL_FACTORY = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 8;
+
+  /**
    * The feature id for the '<em><b>Proposal Creator</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__PROPOSAL_CREATOR = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 8;
+  int MODULE__PROPOSAL_CREATOR = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Viewer Content Provider</b></em>' containment reference.
@@ -210,7 +219,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__VIEWER_CONTENT_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 9;
+  int MODULE__VIEWER_CONTENT_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 10;
 
   /**
    * The feature id for the '<em><b>Parts Specifications</b></em>' containment reference.
@@ -219,7 +228,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE__PARTS_SPECIFICATIONS = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 10;
+  int MODULE__PARTS_SPECIFICATIONS = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 11;
 
   /**
    * The number of structural features of the '<em>Module</em>' class.
@@ -228,7 +237,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_FEATURE_COUNT = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 11;
+  int MODULE_FEATURE_COUNT = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 12;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.ExtendsClauseImpl <em>Extends Clause</em>}' class.
@@ -451,7 +460,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getEmfFeatureAccess()
    * @generated
    */
-  int EMF_FEATURE_ACCESS = 16;
+  int EMF_FEATURE_ACCESS = 17;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -611,14 +620,42 @@ public interface ModelPackage extends EPackage
   int FORM_CONTROL_FACTORY_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormControlSpecificationImpl <em>Form Control Specification</em>}' class.
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.DialogControlFactoryImpl <em>Dialog Control Factory</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.emf.parsley.dsl.model.impl.FormControlSpecificationImpl
-   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormControlSpecification()
+   * @see org.eclipse.emf.parsley.dsl.model.impl.DialogControlFactoryImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getDialogControlFactory()
    * @generated
    */
-  int FORM_CONTROL_SPECIFICATION = 12;
+  int DIALOG_CONTROL_FACTORY = 12;
+
+  /**
+   * The feature id for the '<em><b>Control Specifications</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS = 0;
+
+  /**
+   * The number of structural features of the '<em>Dialog Control Factory</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIALOG_CONTROL_FACTORY_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl <em>Control Factory Specification</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getControlFactorySpecification()
+   * @generated
+   */
+  int CONTROL_FACTORY_SPECIFICATION = 13;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -627,7 +664,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_CONTROL_SPECIFICATION__PARAMETER_TYPE = EMF_FEATURE_ACCESS__PARAMETER_TYPE;
+  int CONTROL_FACTORY_SPECIFICATION__PARAMETER_TYPE = EMF_FEATURE_ACCESS__PARAMETER_TYPE;
 
   /**
    * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -636,7 +673,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_CONTROL_SPECIFICATION__FEATURE = EMF_FEATURE_ACCESS_FEATURE_COUNT + 0;
+  int CONTROL_FACTORY_SPECIFICATION__FEATURE = EMF_FEATURE_ACCESS_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -645,7 +682,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_CONTROL_SPECIFICATION__EXPRESSION = EMF_FEATURE_ACCESS_FEATURE_COUNT + 1;
+  int CONTROL_FACTORY_SPECIFICATION__EXPRESSION = EMF_FEATURE_ACCESS_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' containment reference.
@@ -654,16 +691,16 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_CONTROL_SPECIFICATION__TARGET = EMF_FEATURE_ACCESS_FEATURE_COUNT + 2;
+  int CONTROL_FACTORY_SPECIFICATION__TARGET = EMF_FEATURE_ACCESS_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Form Control Specification</em>' class.
+   * The number of structural features of the '<em>Control Factory Specification</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_CONTROL_SPECIFICATION_FEATURE_COUNT = EMF_FEATURE_ACCESS_FEATURE_COUNT + 3;
+  int CONTROL_FACTORY_SPECIFICATION_FEATURE_COUNT = EMF_FEATURE_ACCESS_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.ProposalCreatorImpl <em>Proposal Creator</em>}' class.
@@ -673,7 +710,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getProposalCreator()
    * @generated
    */
-  int PROPOSAL_CREATOR = 13;
+  int PROPOSAL_CREATOR = 14;
 
   /**
    * The feature id for the '<em><b>Proposals Specifications</b></em>' containment reference list.
@@ -701,7 +738,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getProposalSpecification()
    * @generated
    */
-  int PROPOSAL_SPECIFICATION = 14;
+  int PROPOSAL_SPECIFICATION = 15;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -747,7 +784,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getViewerContentProvider()
    * @generated
    */
-  int VIEWER_CONTENT_PROVIDER = 15;
+  int VIEWER_CONTENT_PROVIDER = 16;
 
   /**
    * The feature id for the '<em><b>Children Specifications</b></em>' containment reference list.
@@ -775,7 +812,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPartsSpecifications()
    * @generated
    */
-  int PARTS_SPECIFICATIONS = 18;
+  int PARTS_SPECIFICATIONS = 19;
 
   /**
    * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -803,7 +840,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPartSpecification()
    * @generated
    */
-  int PART_SPECIFICATION = 19;
+  int PART_SPECIFICATION = 20;
 
   /**
    * The number of structural features of the '<em>Part Specification</em>' class.
@@ -822,7 +859,7 @@ public interface ModelPackage extends EPackage
    * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getViewSpecification()
    * @generated
    */
-  int VIEW_SPECIFICATION = 20;
+  int VIEW_SPECIFICATION = 21;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -999,6 +1036,17 @@ public interface ModelPackage extends EPackage
    * @generated
    */
   EReference getModule_FormControlFactory();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogControlFactory <em>Dialog Control Factory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Dialog Control Factory</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.Module#getDialogControlFactory()
+   * @see #getModule()
+   * @generated
+   */
+  EReference getModule_DialogControlFactory();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getProposalCreator <em>Proposal Creator</em>}'.
@@ -1310,47 +1358,68 @@ public interface ModelPackage extends EPackage
   EReference getFormControlFactory_ControlSpecifications();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification <em>Form Control Specification</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.DialogControlFactory <em>Dialog Control Factory</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Form Control Specification</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.FormControlSpecification
+   * @return the meta object for class '<em>Dialog Control Factory</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.DialogControlFactory
    * @generated
    */
-  EClass getFormControlSpecification();
+  EClass getDialogControlFactory();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getFeature <em>Feature</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.DialogControlFactory#getControlSpecifications <em>Control Specifications</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Control Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.DialogControlFactory#getControlSpecifications()
+   * @see #getDialogControlFactory()
+   * @generated
+   */
+  EReference getDialogControlFactory_ControlSpecifications();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification <em>Control Factory Specification</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Control Factory Specification</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
+   * @generated
+   */
+  EClass getControlFactorySpecification();
+
+  /**
+   * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getFeature <em>Feature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Feature</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getFeature()
-   * @see #getFormControlSpecification()
+   * @see org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getFeature()
+   * @see #getControlFactorySpecification()
    * @generated
    */
-  EReference getFormControlSpecification_Feature();
+  EReference getControlFactorySpecification_Feature();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getExpression <em>Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getExpression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getExpression()
-   * @see #getFormControlSpecification()
+   * @see org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getExpression()
+   * @see #getControlFactorySpecification()
    * @generated
    */
-  EReference getFormControlSpecification_Expression();
+  EReference getControlFactorySpecification_Expression();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getTarget <em>Target</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getTarget <em>Target</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Target</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.FormControlSpecification#getTarget()
-   * @see #getFormControlSpecification()
+   * @see org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification#getTarget()
+   * @see #getControlFactorySpecification()
    * @generated
    */
-  EReference getFormControlSpecification_Target();
+  EReference getControlFactorySpecification_Target();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.ProposalCreator <em>Proposal Creator</em>}'.
@@ -1666,6 +1735,14 @@ public interface ModelPackage extends EPackage
     EReference MODULE__FORM_CONTROL_FACTORY = eINSTANCE.getModule_FormControlFactory();
 
     /**
+     * The meta object literal for the '<em><b>Dialog Control Factory</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODULE__DIALOG_CONTROL_FACTORY = eINSTANCE.getModule_DialogControlFactory();
+
+    /**
      * The meta object literal for the '<em><b>Proposal Creator</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1918,14 +1995,32 @@ public interface ModelPackage extends EPackage
     EReference FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS = eINSTANCE.getFormControlFactory_ControlSpecifications();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormControlSpecificationImpl <em>Form Control Specification</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.DialogControlFactoryImpl <em>Dialog Control Factory</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.emf.parsley.dsl.model.impl.FormControlSpecificationImpl
-     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormControlSpecification()
+     * @see org.eclipse.emf.parsley.dsl.model.impl.DialogControlFactoryImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getDialogControlFactory()
      * @generated
      */
-    EClass FORM_CONTROL_SPECIFICATION = eINSTANCE.getFormControlSpecification();
+    EClass DIALOG_CONTROL_FACTORY = eINSTANCE.getDialogControlFactory();
+
+    /**
+     * The meta object literal for the '<em><b>Control Specifications</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS = eINSTANCE.getDialogControlFactory_ControlSpecifications();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl <em>Control Factory Specification</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getControlFactorySpecification()
+     * @generated
+     */
+    EClass CONTROL_FACTORY_SPECIFICATION = eINSTANCE.getControlFactorySpecification();
 
     /**
      * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
@@ -1933,7 +2028,7 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_CONTROL_SPECIFICATION__FEATURE = eINSTANCE.getFormControlSpecification_Feature();
+    EReference CONTROL_FACTORY_SPECIFICATION__FEATURE = eINSTANCE.getControlFactorySpecification_Feature();
 
     /**
      * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
@@ -1941,7 +2036,7 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_CONTROL_SPECIFICATION__EXPRESSION = eINSTANCE.getFormControlSpecification_Expression();
+    EReference CONTROL_FACTORY_SPECIFICATION__EXPRESSION = eINSTANCE.getControlFactorySpecification_Expression();
 
     /**
      * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
@@ -1949,7 +2044,7 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_CONTROL_SPECIFICATION__TARGET = eINSTANCE.getFormControlSpecification_Target();
+    EReference CONTROL_FACTORY_SPECIFICATION__TARGET = eINSTANCE.getControlFactorySpecification_Target();
 
     /**
      * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.ProposalCreatorImpl <em>Proposal Creator</em>}' class.

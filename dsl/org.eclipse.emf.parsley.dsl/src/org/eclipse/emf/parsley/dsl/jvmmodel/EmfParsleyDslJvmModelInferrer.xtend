@@ -9,9 +9,10 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
+import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
-import org.eclipse.emf.parsley.dsl.model.FormControlSpecification
+import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification
@@ -102,6 +103,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val dialogPropertyDescriptionProviderClass = element.inferDialogPropertyDescriptionProvider(acceptor)
 		val featureProviderClass = element.inferFeatureProvider(acceptor)
 		val formControlFactoryClass = element.inferFormControlFactory(acceptor)
+		val dialogControlFactoryClass = element.inferDialogControlFactory(acceptor)
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
 		
@@ -126,6 +128,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.featuresProvider.genBindMethod(featureProviderClass, typeof(FeaturesProvider))
 			if (formControlFactoryClass != null)
 				members += element.formControlFactory.genBindMethod(formControlFactoryClass, typeof(FormControlFactory))
+			if (dialogControlFactoryClass != null)
+				members += element.dialogControlFactory.genBindMethod(dialogControlFactoryClass, typeof(DialogControlFactory))
 			if (viewerContentProviderClass != null)
 				members += element.viewerContentProvider.genBindMethod(viewerContentProviderClass, typeof(IContentProvider))
 			if (proposalCreatorClass != null)
@@ -179,8 +183,12 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		element.fullyQualifiedName + ".ui.provider.FeaturesProviderGen"
 	}
 
-	def formFeatureControlFactoryQN(Module element) {
-		element.fullyQualifiedName + ".binding.FormFeatureControlFactoryGen"
+	def formControlFactoryQN(Module element) {
+		element.fullyQualifiedName + ".binding.FormControlFactoryGen"
+	}
+
+	def dialogControlFactoryQN(Module element) {
+		element.fullyQualifiedName + ".binding.DialogControlFactoryGen"
 	}
 
 	def viewerContentProviderQN(Module element) {
@@ -380,72 +388,91 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		if (e.formControlFactory == null)
 			null
 		else {
-			val formFeatureControlFactoryClass = e.formControlFactory.toClass(e.formFeatureControlFactoryQN)
+			val formFeatureControlFactoryClass = e.formControlFactory.toClass(e.formControlFactoryQN)
 			acceptor.accept(formFeatureControlFactoryClass).initializeLater [
 				superTypes += e.newTypeRef(typeof(FormControlFactory))
 				
 				documentation = e.formControlFactory.documentation
 				
-				e.formControlFactory.controlSpecifications.forEach [
-					spec |
-					if (spec.feature?.simpleName != null) {
-						// associate the method to the expression, not to the whole
-						// labelSpecification, otherwise the 'feature' is logically
-						// contained in a method which should return a string
-						// and the validator would complain
-						if (spec.target == null)
-							members += spec.
-							control_EClass_EStructuralFeature(spec.expression) [
-								parameters += spec.toParameter(
-									"it", spec.parameterType
-								)
-								body = spec.expression
-							]
-						else {
-							val createControlMethodName = spec.methodNameForFormFeatureSpecification("createControl_")
-							val createTargetMethodName = spec.methodNameForFormFeatureSpecification("createTarget_")
-							members += spec.
-							control_EClass_EStructuralFeature(spec.expression) [
-								parameters += spec.toParameter(
-									"dataBindingContext", e.newTypeRef(typeof(DataBindingContext))
-								)
-								parameters += spec.toParameter(
-									"observableValue", e.newTypeRef(typeof(IObservableValue))
-								)
-								body = [
-									append(spec.newTypeRef(typeof(Control)).type)
-									append(''' control = «createControlMethodName»();''').newLine
-									append(
-									'''
-									dataBindingContext.bindValue(
-										«createTargetMethodName»(control),
-										observableValue);'''
-									).newLine
-									append('''return control;''')
-								]
-							]
-							
-							members += spec.toMethod
-							(createControlMethodName, 
-								spec.newTypeRef(typeof(Control))) [
-									visibility = JvmVisibility::PROTECTED
-									body = spec.expression
-							]
-							
-							members += spec.toMethod
-							(createTargetMethodName, 
-								spec.newTypeRef(typeof(IObservableValue))) [
-									visibility = JvmVisibility::PROTECTED
-									parameters += spec.toParameter(
-										"it", e.newTypeRef(typeof(Control))
-									)
-									body = spec.target
-							]
-						}
-					}
-				]
+				inferMethodsForControlFactory(e, it, e.formControlFactory.controlSpecifications)
 			]
 			formFeatureControlFactoryClass
+		}
+	}
+
+	def inferDialogControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
+		if (e.dialogControlFactory == null)
+			null
+		else {
+			val controlFactoryClass = e.dialogControlFactory.toClass(e.dialogControlFactoryQN)
+			acceptor.accept(controlFactoryClass).initializeLater [
+				superTypes += e.newTypeRef(typeof(DialogControlFactory))
+				
+				documentation = e.formControlFactory.documentation
+				
+				inferMethodsForControlFactory(e, it, e.dialogControlFactory.controlSpecifications)
+			]
+			controlFactoryClass
+		}
+	}
+	
+	def inferMethodsForControlFactory(Module e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
+		for (spec: specifications) {
+			if (spec.feature?.simpleName != null) {
+				// associate the method to the expression, not to the whole
+				// labelSpecification, otherwise the 'feature' is logically
+				// contained in a method which should return a string
+				// and the validator would complain
+				if (spec.target == null)
+					members += spec.
+					control_EClass_EStructuralFeature(spec.expression) [
+						parameters += spec.toParameter(
+							"it", spec.parameterType
+						)
+						body = spec.expression
+					]
+				else {
+					val createControlMethodName = spec.methodNameForFormFeatureSpecification("createControl_")
+					val createTargetMethodName = spec.methodNameForFormFeatureSpecification("createTarget_")
+					members += spec.
+					control_EClass_EStructuralFeature(spec.expression) [
+						parameters += spec.toParameter(
+							"dataBindingContext", e.newTypeRef(typeof(DataBindingContext))
+						)
+						parameters += spec.toParameter(
+							"observableValue", e.newTypeRef(typeof(IObservableValue))
+						)
+						body = [
+							append(spec.newTypeRef(typeof(Control)).type)
+							append(''' control = «createControlMethodName»();''').newLine
+							append(
+							'''
+							dataBindingContext.bindValue(
+								«createTargetMethodName»(control),
+								observableValue);'''
+							).newLine
+							append('''return control;''')
+						]
+					]
+					
+					members += spec.toMethod
+					(createControlMethodName, 
+						spec.newTypeRef(typeof(Control))) [
+							visibility = JvmVisibility::PROTECTED
+							body = spec.expression
+					]
+					
+					members += spec.toMethod
+					(createTargetMethodName, 
+						spec.newTypeRef(typeof(IObservableValue))) [
+							visibility = JvmVisibility::PROTECTED
+							parameters += spec.toParameter(
+								"it", e.newTypeRef(typeof(Control))
+							)
+							body = spec.target
+					]
+				}
+			}
 		}
 	}
 
@@ -521,7 +548,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 	
 	def control_EClass_EStructuralFeature(
-			FormControlSpecification spec, XExpression exp, (JvmOperation)=>void init
+			ControlFactorySpecification spec, XExpression exp, (JvmOperation)=>void init
 	) {
 		exp.toMethod
 			(spec.methodNameForFormFeatureSpecification("control_"), 
@@ -529,7 +556,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			, init)
 	}
 	
-	def methodNameForFormFeatureSpecification(FormControlSpecification spec, String prefix) {
+	def methodNameForFormFeatureSpecification(ControlFactorySpecification spec, String prefix) {
 		prefix + 
 					spec.parameterType.simpleName + "_" +
 					spec.feature.simpleName.propertyNameForGetterSetterMethod

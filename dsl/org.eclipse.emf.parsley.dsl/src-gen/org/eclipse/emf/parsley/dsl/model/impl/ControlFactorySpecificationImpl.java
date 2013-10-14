@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.parsley.dsl.model.FormControlSpecification;
+import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 
 import org.eclipse.xtext.common.types.JvmMember;
@@ -19,20 +19,20 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Form Control Specification</b></em>'.
+ * An implementation of the model object '<em><b>Control Factory Specification</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FormControlSpecificationImpl#getFeature <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FormControlSpecificationImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FormControlSpecificationImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl#getFeature <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implements FormControlSpecification
+public class ControlFactorySpecificationImpl extends EmfFeatureAccessImpl implements ControlFactorySpecification
 {
   /**
    * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
@@ -69,7 +69,7 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FormControlSpecificationImpl()
+  protected ControlFactorySpecificationImpl()
   {
     super();
   }
@@ -82,7 +82,7 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
   @Override
   protected EClass eStaticClass()
   {
-    return ModelPackage.Literals.FORM_CONTROL_SPECIFICATION;
+    return ModelPackage.Literals.CONTROL_FACTORY_SPECIFICATION;
   }
 
   /**
@@ -99,7 +99,7 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
       if (feature != oldFeature)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.FORM_CONTROL_SPECIFICATION__FEATURE, oldFeature, feature));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.CONTROL_FACTORY_SPECIFICATION__FEATURE, oldFeature, feature));
       }
     }
     return feature;
@@ -125,7 +125,7 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
     JvmMember oldFeature = feature;
     feature = newFeature;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.FORM_CONTROL_SPECIFICATION__FEATURE, oldFeature, feature));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTROL_FACTORY_SPECIFICATION__FEATURE, oldFeature, feature));
   }
 
   /**
@@ -149,7 +149,7 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
     expression = newExpression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION, oldExpression, newExpression);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION, oldExpression, newExpression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -166,14 +166,14 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
     {
       NotificationChain msgs = null;
       if (expression != null)
-        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION, null, msgs);
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION, null, msgs);
       if (newExpression != null)
-        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION, null, msgs);
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION, null, msgs);
       msgs = basicSetExpression(newExpression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION, newExpression, newExpression));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -197,7 +197,7 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
     target = newTarget;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET, oldTarget, newTarget);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET, oldTarget, newTarget);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -214,14 +214,14 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
     {
       NotificationChain msgs = null;
       if (target != null)
-        msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET, null, msgs);
+        msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET, null, msgs);
       if (newTarget != null)
-        msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET, null, msgs);
+        msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET, null, msgs);
       msgs = basicSetTarget(newTarget, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET, newTarget, newTarget));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET, newTarget, newTarget));
   }
 
   /**
@@ -234,9 +234,9 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION:
         return basicSetExpression(null, msgs);
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET:
         return basicSetTarget(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -252,12 +252,12 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__FEATURE:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__FEATURE:
         if (resolve) return getFeature();
         return basicGetFeature();
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION:
         return getExpression();
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET:
         return getTarget();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -273,13 +273,13 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__FEATURE:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__FEATURE:
         setFeature((JvmMember)newValue);
         return;
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION:
         setExpression((XExpression)newValue);
         return;
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET:
         setTarget((XExpression)newValue);
         return;
     }
@@ -296,13 +296,13 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__FEATURE:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__FEATURE:
         setFeature((JvmMember)null);
         return;
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION:
         setExpression((XExpression)null);
         return;
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET:
         setTarget((XExpression)null);
         return;
     }
@@ -319,14 +319,14 @@ public class FormControlSpecificationImpl extends EmfFeatureAccessImpl implement
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__FEATURE:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__FEATURE:
         return feature != null;
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__EXPRESSION:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__EXPRESSION:
         return expression != null;
-      case ModelPackage.FORM_CONTROL_SPECIFICATION__TARGET:
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION__TARGET:
         return target != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //FormControlSpecificationImpl
+} //ControlFactorySpecificationImpl

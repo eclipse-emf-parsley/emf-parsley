@@ -17,23 +17,23 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification;
-import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
+import org.eclipse.emf.parsley.dsl.model.DialogControlFactory;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Form Control Factory</b></em>'.
+ * An implementation of the model object '<em><b>Dialog Control Factory</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FormControlFactoryImpl#getControlSpecifications <em>Control Specifications</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.DialogControlFactoryImpl#getControlSpecifications <em>Control Specifications</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FormControlFactoryImpl extends MinimalEObjectImpl.Container implements FormControlFactory
+public class DialogControlFactoryImpl extends MinimalEObjectImpl.Container implements DialogControlFactory
 {
   /**
    * The cached value of the '{@link #getControlSpecifications() <em>Control Specifications</em>}' containment reference list.
@@ -50,7 +50,7 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FormControlFactoryImpl()
+  protected DialogControlFactoryImpl()
   {
     super();
   }
@@ -63,7 +63,7 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
   @Override
   protected EClass eStaticClass()
   {
-    return ModelPackage.Literals.FORM_CONTROL_FACTORY;
+    return ModelPackage.Literals.DIALOG_CONTROL_FACTORY;
   }
 
   /**
@@ -75,7 +75,7 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
   {
     if (controlSpecifications == null)
     {
-      controlSpecifications = new EObjectContainmentEList<ControlFactorySpecification>(ControlFactorySpecification.class, this, ModelPackage.FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS);
+      controlSpecifications = new EObjectContainmentEList<ControlFactorySpecification>(ControlFactorySpecification.class, this, ModelPackage.DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS);
     }
     return controlSpecifications;
   }
@@ -90,7 +90,7 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
+      case ModelPackage.DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
         return ((InternalEList<?>)getControlSpecifications()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -106,7 +106,7 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
+      case ModelPackage.DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
         return getControlSpecifications();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -123,7 +123,7 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
+      case ModelPackage.DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
         getControlSpecifications().clear();
         getControlSpecifications().addAll((Collection<? extends ControlFactorySpecification>)newValue);
         return;
@@ -141,7 +141,7 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
+      case ModelPackage.DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
         getControlSpecifications().clear();
         return;
     }
@@ -158,10 +158,10 @@ public class FormControlFactoryImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case ModelPackage.FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
+      case ModelPackage.DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS:
         return controlSpecifications != null && !controlSpecifications.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //FormControlFactoryImpl
+} //DialogControlFactoryImpl

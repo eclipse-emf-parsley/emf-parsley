@@ -527,14 +527,14 @@ public class FeaturesProviderGen extends FeaturesProvider {
 	}
 
 	@Test
-	def testFormFeatureControlSpecifications() {
-		inputs.formControlSpecifications.assertCorrectJavaCodeGeneration(
+	def testFormControlFactory() {
+		inputs.formControlFactory.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule =
 '''
 package my.empty;
 
-import my.empty.binding.FormFeatureControlFactoryGen;
+import my.empty.binding.FormControlFactoryGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -547,11 +547,11 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   
   @Override
   public Class<? extends FormControlFactory> bindFormControlFactory() {
-    return FormFeatureControlFactoryGen.class;
+    return FormControlFactoryGen.class;
   }
 }
 '''
-expectedFormFeatureControlFactory =
+expectedFormControlFactory =
 '''
 package my.empty.binding;
 
@@ -574,7 +574,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class FormFeatureControlFactoryGen extends FormControlFactory {
+public class FormControlFactoryGen extends FormControlFactory {
   public Control control_Library_name(final Library it) {
     return null;
   }
@@ -622,6 +622,112 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
   protected Control createControl_Writer_firstName() {
     FormToolkit _toolkit = this.getToolkit();
     Label _createLabel = _toolkit.createLabel(this.parent, "");
+    return _createLabel;
+  }
+  
+  protected IObservableValue createTarget_Writer_firstName(final Control it) {
+    ISWTObservableValue _observeText = SWTObservables.observeText(it, SWT.Modify);
+    return _observeText;
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testDialogControlFactory() {
+		inputs.dialogControlFactory.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import my.empty.binding.DialogControlFactoryGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.binding.DialogControlFactory;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends DialogControlFactory> bindDialogControlFactory() {
+    return DialogControlFactoryGen.class;
+  }
+}
+'''
+expectedDialogControlFactory =
+'''
+package my.empty.binding;
+
+import java.util.List;
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.parsley.binding.DialogControlFactory;
+import org.eclipse.emf.parsley.examples.library.Book;
+import org.eclipse.emf.parsley.examples.library.Library;
+import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.jface.databinding.swt.ISWTObservableValue;
+import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+
+@SuppressWarnings("all")
+public class DialogControlFactoryGen extends DialogControlFactory {
+  public Control control_Library_name(final Library it) {
+    return null;
+  }
+  
+  public Control control_Writer_books(final Writer it) {
+    EList<Book> _books = it.getBooks();
+    final Function1<Book,String> _function = new Function1<Book,String>() {
+      public String apply(final Book it) {
+        String _title = it.getTitle();
+        return _title;
+      }
+    };
+    List<String> _map = ListExtensions.<Book, String>map(_books, _function);
+    String _join = IterableExtensions.join(_map, ", ");
+    Label _createLabel = this.createLabel(_join);
+    return _createLabel;
+  }
+  
+  public Control control_Writer_name(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
+    Control control = createControl_Writer_name();
+    dataBindingContext.bindValue(
+    	createTarget_Writer_name(control),
+    	observableValue);
+    return control;
+  }
+  
+  protected Control createControl_Writer_name() {
+    Label _createLabel = this.createLabel(this.parent, "");
+    return _createLabel;
+  }
+  
+  protected IObservableValue createTarget_Writer_name(final Control it) {
+    ISWTObservableValue _observeText = SWTObservables.observeText(it);
+    return _observeText;
+  }
+  
+  public Control control_Writer_firstName(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
+    Control control = createControl_Writer_firstName();
+    dataBindingContext.bindValue(
+    	createTarget_Writer_firstName(control),
+    	observableValue);
+    return control;
+  }
+  
+  protected Control createControl_Writer_firstName() {
+    Label _createLabel = this.createLabel(this.parent, "");
     return _createLabel;
   }
   
@@ -864,9 +970,12 @@ expectedPluginXmlGen =
 				} else if (e.key.endsWith("LabelProviderGen.java")) {
 					if (expected.expectedLabelProvider != null)
 						assertEqualsStrings(expected.expectedLabelProvider, e.value)
-				} else if (e.key.endsWith("FormFeatureControlFactoryGen.java")) {
-					if (expected.expectedFormFeatureControlFactory != null)
-						assertEqualsStrings(expected.expectedFormFeatureControlFactory, e.value)
+				} else if (e.key.endsWith("FormControlFactoryGen.java")) {
+					if (expected.expectedFormControlFactory != null)
+						assertEqualsStrings(expected.expectedFormControlFactory, e.value)
+				} else if (e.key.endsWith("DialogControlFactoryGen.java")) {
+					if (expected.expectedDialogControlFactory != null)
+						assertEqualsStrings(expected.expectedDialogControlFactory, e.value)
 				} else if (e.key.endsWith("ViewerContentProviderGen.java")) {
 					if (expected.expectedViewerContentProvider != null)
 						assertEqualsStrings(expected.expectedViewerContentProvider, e.value)

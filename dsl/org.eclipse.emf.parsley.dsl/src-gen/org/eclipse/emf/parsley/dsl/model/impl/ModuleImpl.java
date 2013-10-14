@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.parsley.dsl.model.DialogControlFactory;
 import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
@@ -38,6 +39,7 @@ import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFeaturesProvider <em>Features Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFormControlFactory <em>Form Control Factory</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getDialogControlFactory <em>Dialog Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getProposalCreator <em>Proposal Creator</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getViewerContentProvider <em>Viewer Content Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getPartsSpecifications <em>Parts Specifications</em>}</li>
@@ -137,6 +139,16 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * @ordered
    */
   protected FormControlFactory formControlFactory;
+
+  /**
+   * The cached value of the '{@link #getDialogControlFactory() <em>Dialog Control Factory</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDialogControlFactory()
+   * @generated
+   * @ordered
+   */
+  protected DialogControlFactory dialogControlFactory;
 
   /**
    * The cached value of the '{@link #getProposalCreator() <em>Proposal Creator</em>}' containment reference.
@@ -553,6 +565,54 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
+  public DialogControlFactory getDialogControlFactory()
+  {
+    return dialogControlFactory;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDialogControlFactory(DialogControlFactory newDialogControlFactory, NotificationChain msgs)
+  {
+    DialogControlFactory oldDialogControlFactory = dialogControlFactory;
+    dialogControlFactory = newDialogControlFactory;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_CONTROL_FACTORY, oldDialogControlFactory, newDialogControlFactory);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDialogControlFactory(DialogControlFactory newDialogControlFactory)
+  {
+    if (newDialogControlFactory != dialogControlFactory)
+    {
+      NotificationChain msgs = null;
+      if (dialogControlFactory != null)
+        msgs = ((InternalEObject)dialogControlFactory).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_CONTROL_FACTORY, null, msgs);
+      if (newDialogControlFactory != null)
+        msgs = ((InternalEObject)newDialogControlFactory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_CONTROL_FACTORY, null, msgs);
+      msgs = basicSetDialogControlFactory(newDialogControlFactory, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_CONTROL_FACTORY, newDialogControlFactory, newDialogControlFactory));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ProposalCreator getProposalCreator()
   {
     return proposalCreator;
@@ -716,6 +776,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return basicSetFeaturesProvider(null, msgs);
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
         return basicSetFormControlFactory(null, msgs);
+      case ModelPackage.MODULE__DIALOG_CONTROL_FACTORY:
+        return basicSetDialogControlFactory(null, msgs);
       case ModelPackage.MODULE__PROPOSAL_CREATOR:
         return basicSetProposalCreator(null, msgs);
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:
@@ -752,6 +814,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return getFeaturesProvider();
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
         return getFormControlFactory();
+      case ModelPackage.MODULE__DIALOG_CONTROL_FACTORY:
+        return getDialogControlFactory();
       case ModelPackage.MODULE__PROPOSAL_CREATOR:
         return getProposalCreator();
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:
@@ -795,6 +859,9 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return;
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
         setFormControlFactory((FormControlFactory)newValue);
+        return;
+      case ModelPackage.MODULE__DIALOG_CONTROL_FACTORY:
+        setDialogControlFactory((DialogControlFactory)newValue);
         return;
       case ModelPackage.MODULE__PROPOSAL_CREATOR:
         setProposalCreator((ProposalCreator)newValue);
@@ -843,6 +910,9 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
         setFormControlFactory((FormControlFactory)null);
         return;
+      case ModelPackage.MODULE__DIALOG_CONTROL_FACTORY:
+        setDialogControlFactory((DialogControlFactory)null);
+        return;
       case ModelPackage.MODULE__PROPOSAL_CREATOR:
         setProposalCreator((ProposalCreator)null);
         return;
@@ -882,6 +952,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return featuresProvider != null;
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
         return formControlFactory != null;
+      case ModelPackage.MODULE__DIALOG_CONTROL_FACTORY:
+        return dialogControlFactory != null;
       case ModelPackage.MODULE__PROPOSAL_CREATOR:
         return proposalCreator != null;
       case ModelPackage.MODULE__VIEWER_CONTENT_PROVIDER:

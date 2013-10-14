@@ -159,11 +159,18 @@ public class ModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.FORM_CONTROL_SPECIFICATION:
+      case ModelPackage.DIALOG_CONTROL_FACTORY:
       {
-        FormControlSpecification formControlSpecification = (FormControlSpecification)theEObject;
-        T result = caseFormControlSpecification(formControlSpecification);
-        if (result == null) result = caseEmfFeatureAccess(formControlSpecification);
+        DialogControlFactory dialogControlFactory = (DialogControlFactory)theEObject;
+        T result = caseDialogControlFactory(dialogControlFactory);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.CONTROL_FACTORY_SPECIFICATION:
+      {
+        ControlFactorySpecification controlFactorySpecification = (ControlFactorySpecification)theEObject;
+        T result = caseControlFactorySpecification(controlFactorySpecification);
+        if (result == null) result = caseEmfFeatureAccess(controlFactorySpecification);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -422,17 +429,33 @@ public class ModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Form Control Specification</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Dialog Control Factory</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Form Control Specification</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Dialog Control Factory</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFormControlSpecification(FormControlSpecification object)
+  public T caseDialogControlFactory(DialogControlFactory object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Control Factory Specification</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Control Factory Specification</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseControlFactorySpecification(ControlFactorySpecification object)
   {
     return null;
   }

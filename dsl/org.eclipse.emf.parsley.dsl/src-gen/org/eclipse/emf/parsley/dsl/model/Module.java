@@ -19,6 +19,7 @@ package org.eclipse.emf.parsley.dsl.model;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFeaturesProvider <em>Features Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormControlFactory <em>Form Control Factory</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogControlFactory <em>Dialog Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getProposalCreator <em>Proposal Creator</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getViewerContentProvider <em>Viewer Content Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getPartsSpecifications <em>Parts Specifications</em>}</li>
@@ -238,6 +239,32 @@ public interface Module extends WithExtendsClause
    * @generated
    */
   void setFormControlFactory(FormControlFactory value);
+
+  /**
+   * Returns the value of the '<em><b>Dialog Control Factory</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Dialog Control Factory</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dialog Control Factory</em>' containment reference.
+   * @see #setDialogControlFactory(DialogControlFactory)
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_DialogControlFactory()
+   * @model containment="true"
+   * @generated
+   */
+  DialogControlFactory getDialogControlFactory();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogControlFactory <em>Dialog Control Factory</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Dialog Control Factory</em>' containment reference.
+   * @see #getDialogControlFactory()
+   * @generated
+   */
+  void setDialogControlFactory(DialogControlFactory value);
 
   /**
    * Returns the value of the '<em><b>Proposal Creator</b></em>' containment reference.

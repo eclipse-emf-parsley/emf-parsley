@@ -9,13 +9,14 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification;
+import org.eclipse.emf.parsley.dsl.model.DialogControlFactory;
 import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
 import org.eclipse.emf.parsley.dsl.model.FeatureSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
 import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
-import org.eclipse.emf.parsley.dsl.model.FormControlSpecification;
 import org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
@@ -136,7 +137,14 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass formControlSpecificationEClass = null;
+  private EClass dialogControlFactoryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass controlFactorySpecificationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -386,7 +394,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_ProposalCreator()
+  public EReference getModule_DialogControlFactory()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(8);
   }
@@ -396,7 +404,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_ViewerContentProvider()
+  public EReference getModule_ProposalCreator()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(9);
   }
@@ -406,9 +414,19 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_PartsSpecifications()
+  public EReference getModule_ViewerContentProvider()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModule_PartsSpecifications()
+  {
+    return (EReference)moduleEClass.getEStructuralFeatures().get(11);
   }
 
   /**
@@ -676,9 +694,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFormControlSpecification()
+  public EClass getDialogControlFactory()
   {
-    return formControlSpecificationEClass;
+    return dialogControlFactoryEClass;
   }
 
   /**
@@ -686,9 +704,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormControlSpecification_Feature()
+  public EReference getDialogControlFactory_ControlSpecifications()
   {
-    return (EReference)formControlSpecificationEClass.getEStructuralFeatures().get(0);
+    return (EReference)dialogControlFactoryEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -696,9 +714,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormControlSpecification_Expression()
+  public EClass getControlFactorySpecification()
   {
-    return (EReference)formControlSpecificationEClass.getEStructuralFeatures().get(1);
+    return controlFactorySpecificationEClass;
   }
 
   /**
@@ -706,9 +724,29 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormControlSpecification_Target()
+  public EReference getControlFactorySpecification_Feature()
   {
-    return (EReference)formControlSpecificationEClass.getEStructuralFeatures().get(2);
+    return (EReference)controlFactorySpecificationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getControlFactorySpecification_Expression()
+  {
+    return (EReference)controlFactorySpecificationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getControlFactorySpecification_Target()
+  {
+    return (EReference)controlFactorySpecificationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -934,6 +972,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEReference(moduleEClass, MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER);
     createEReference(moduleEClass, MODULE__FEATURES_PROVIDER);
     createEReference(moduleEClass, MODULE__FORM_CONTROL_FACTORY);
+    createEReference(moduleEClass, MODULE__DIALOG_CONTROL_FACTORY);
     createEReference(moduleEClass, MODULE__PROPOSAL_CREATOR);
     createEReference(moduleEClass, MODULE__VIEWER_CONTENT_PROVIDER);
     createEReference(moduleEClass, MODULE__PARTS_SPECIFICATIONS);
@@ -974,10 +1013,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     formControlFactoryEClass = createEClass(FORM_CONTROL_FACTORY);
     createEReference(formControlFactoryEClass, FORM_CONTROL_FACTORY__CONTROL_SPECIFICATIONS);
 
-    formControlSpecificationEClass = createEClass(FORM_CONTROL_SPECIFICATION);
-    createEReference(formControlSpecificationEClass, FORM_CONTROL_SPECIFICATION__FEATURE);
-    createEReference(formControlSpecificationEClass, FORM_CONTROL_SPECIFICATION__EXPRESSION);
-    createEReference(formControlSpecificationEClass, FORM_CONTROL_SPECIFICATION__TARGET);
+    dialogControlFactoryEClass = createEClass(DIALOG_CONTROL_FACTORY);
+    createEReference(dialogControlFactoryEClass, DIALOG_CONTROL_FACTORY__CONTROL_SPECIFICATIONS);
+
+    controlFactorySpecificationEClass = createEClass(CONTROL_FACTORY_SPECIFICATION);
+    createEReference(controlFactorySpecificationEClass, CONTROL_FACTORY_SPECIFICATION__FEATURE);
+    createEReference(controlFactorySpecificationEClass, CONTROL_FACTORY_SPECIFICATION__EXPRESSION);
+    createEReference(controlFactorySpecificationEClass, CONTROL_FACTORY_SPECIFICATION__TARGET);
 
     proposalCreatorEClass = createEClass(PROPOSAL_CREATOR);
     createEReference(proposalCreatorEClass, PROPOSAL_CREATOR__PROPOSALS_SPECIFICATIONS);
@@ -1043,7 +1085,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     moduleEClass.getESuperTypes().add(this.getWithExtendsClause());
     propertyDescriptionSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
     featureSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
-    formControlSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
+    controlFactorySpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
     proposalSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
     viewSpecificationEClass.getESuperTypes().add(this.getPartSpecification());
 
@@ -1061,6 +1103,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEReference(getModule_DialogPropertyDescriptionProvider(), this.getDialogPropertyDescriptionProvider(), null, "dialogPropertyDescriptionProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_FeaturesProvider(), this.getFeaturesProvider(), null, "featuresProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_FormControlFactory(), this.getFormControlFactory(), null, "formControlFactory", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_DialogControlFactory(), this.getDialogControlFactory(), null, "dialogControlFactory", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_ProposalCreator(), this.getProposalCreator(), null, "proposalCreator", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_ViewerContentProvider(), this.getViewerContentProvider(), null, "viewerContentProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_PartsSpecifications(), this.getPartsSpecifications(), null, "partsSpecifications", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1099,12 +1142,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEReference(getFeatureSpecification_Features(), theTypesPackage.getJvmMember(), null, "features", null, 0, -1, FeatureSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(formControlFactoryEClass, FormControlFactory.class, "FormControlFactory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFormControlFactory_ControlSpecifications(), this.getFormControlSpecification(), null, "controlSpecifications", null, 0, -1, FormControlFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormControlFactory_ControlSpecifications(), this.getControlFactorySpecification(), null, "controlSpecifications", null, 0, -1, FormControlFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(formControlSpecificationEClass, FormControlSpecification.class, "FormControlSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFormControlSpecification_Feature(), theTypesPackage.getJvmMember(), null, "feature", null, 0, 1, FormControlSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormControlSpecification_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, FormControlSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormControlSpecification_Target(), theXbasePackage.getXExpression(), null, "target", null, 0, 1, FormControlSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(dialogControlFactoryEClass, DialogControlFactory.class, "DialogControlFactory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDialogControlFactory_ControlSpecifications(), this.getControlFactorySpecification(), null, "controlSpecifications", null, 0, -1, DialogControlFactory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(controlFactorySpecificationEClass, ControlFactorySpecification.class, "ControlFactorySpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getControlFactorySpecification_Feature(), theTypesPackage.getJvmMember(), null, "feature", null, 0, 1, ControlFactorySpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getControlFactorySpecification_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, ControlFactorySpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getControlFactorySpecification_Target(), theXbasePackage.getXExpression(), null, "target", null, 0, 1, ControlFactorySpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(proposalCreatorEClass, ProposalCreator.class, "ProposalCreator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProposalCreator_ProposalsSpecifications(), this.getProposalSpecification(), null, "proposalsSpecifications", null, 0, -1, ProposalCreator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
