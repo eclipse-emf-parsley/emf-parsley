@@ -9,6 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
+import org.eclipse.emf.parsley.dsl.tests.util.GeneratorExpectedResults
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -19,7 +20,9 @@ class EmfParsleyDslGeneratorTests extends EmfParsleyDslAbstractTests {
 	@Test
 	def testEmptyModule() {
 		inputs.emptyModule.assertCorrectJavaCodeGeneration(
-'''
+			new GeneratorExpectedResults() => [
+expectedModule
+= '''
 package my.empty;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
@@ -31,13 +34,15 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     super(plugin);
   }
 }
-''', null, null, null, null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testModuleWithExtends() {
 		inputs.moduleWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule = 			
 '''
 package my.empty;
 
@@ -50,13 +55,15 @@ public class EmfParsleyGuiceModuleGen extends MyTestGuiceModule {
     super(plugin);
   }
 }
-''', null, null, null, null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testEmptyLabelProvider() {
 		inputs.emptyLabelProvider.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
 '''
 package my.empty;
 
@@ -76,7 +83,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     return LabelProviderGen.class;
   }
 }
-''',
+'''
+expectedLabelProvider = 
 '''
 package my.empty.ui.provider;
 
@@ -91,13 +99,15 @@ public class LabelProviderGen extends ViewerLabelProvider {
     super(delegate);
   }
 }
-''', null, null, null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testEmptyPropertyDescriptionProvider() {
 		inputs.emptyPropertyDescriptionProvider.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
 '''
 package my.empty;
 
@@ -117,23 +127,25 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     return PropertyDescriptionProviderGen.class;
   }
 }
-''',
+'''
+expectedPropertyDescriptionProvider =
 '''
 package my.empty.ui.provider;
 
-import org.eclipse.emf.parsley.ui.provider.FeatureLabelProvider;
+import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
 
 @SuppressWarnings("all")
 public class PropertyDescriptionProviderGen extends PropertyDescriptionProvider {
 }
-''', null, null, null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testEmptyLabelSpecifications() {
 		inputs.emptyLabelSpecifications.assertCorrectJavaCodeGeneration(
-null,
+			new GeneratorExpectedResults() => [
+expectedLabelProvider = 
 '''
 package my.empty.ui.provider;
 
@@ -148,14 +160,15 @@ public class LabelProviderGen extends ViewerLabelProvider {
     super(delegate);
   }
 }
-''', null, null, null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testLabelSpecifications() {
 		inputs.labelSpecifications.assertCorrectJavaCodeGeneration(
-null,
+			new GeneratorExpectedResults() => [
+expectedLabelProvider = 
 '''
 package my.empty.ui.provider;
 
@@ -242,13 +255,15 @@ public class LabelProviderGen extends ViewerLabelProvider {
     return _xifexpression;
   }
 }
-''', null, null, null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testPropertyDescriptionSpecifications() {
 		inputs.propertyDescriptionSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule = 
 '''
 package my.empty;
 
@@ -268,7 +283,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     return PropertyDescriptionProviderGen.class;
   }
 }
-''', null,
+'''
+expectedPropertyDescriptionProvider = 
 '''
 package my.empty.ui.provider;
 
@@ -292,13 +308,15 @@ public class PropertyDescriptionProviderGen extends PropertyDescriptionProvider 
     return _firstUpper;
   }
 }
-''', null, null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testFeaturesSpecifications() {
 		inputs.featuresSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
 '''
 package my.empty;
 
@@ -318,7 +336,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     return FeaturesProviderGen.class;
   }
 }
-''', null, null,
+'''
+expectedFeatureProvider = 
 '''
 package my.empty.ui.provider;
 
@@ -337,13 +356,15 @@ public class FeaturesProviderGen extends FeaturesProvider {
       "firstName", "lastName", "books");
   }
 }
-''', null, null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testFormFeatureControlSpecifications() {
 		inputs.formControlSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
 '''
 package my.empty;
 
@@ -363,7 +384,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     return FormFeatureControlFactoryGen.class;
   }
 }
-''', null, null, null,
+'''
+expectedFormFeatureControlFactory =
 '''
 package my.empty.binding;
 
@@ -442,13 +464,15 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
     return _observeText;
   }
 }
-''', null, null, null
+''']
 		)
 	}
 
 	@Test
 	def testViewerContentProviderSpecifications() {
 		inputs.viewerContentProviderSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
 '''
 package my.empty;
 
@@ -468,7 +492,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     return ViewerContentProviderGen.class;
   }
 }
-''', null, null, null, null,
+'''
+expectedViewerContentProvider =
 '''
 package my.empty.edit.ui.provider;
 
@@ -506,13 +531,15 @@ public class ViewerContentProviderGen extends ViewerContentProvider {
     return _author;
   }
 }
-''', null, null
+''']
 		)
 	}
 
 	@Test
 	def testProposalSpecifications() {
 		inputs.proposalsSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
 '''
 package my.empty;
 
@@ -532,7 +559,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     return ProposalCreatorGen.class;
   }
 }
-''', null, null, null, null, null,
+'''
+expectedProposalCreator =
 '''
 package my.empty.binding;
 
@@ -599,13 +627,15 @@ public class ProposalCreatorGen extends ProposalCreator {
     return p;
   }
 }
-''', null
+''']
 		)
 	}
 
 	@Test
 	def testViewsSpecifications() {
 		inputs.multipleViewsSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
 '''
 package my.test;
 
@@ -618,7 +648,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     super(plugin);
   }
 }
-''', null, null, null, null, null, null,
+'''
+expectedPluginXmlGen =
 '''
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
@@ -642,51 +673,45 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 	</extension>
 </plugin>
 '''
-		)
+		])
 	}
 
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
-			CharSequence expectedModule, CharSequence expectedLabelProvider, 
-			CharSequence expectedPropertyDescriptionProvider,
-			CharSequence expectedFeatureProvider,
-			CharSequence expectedFormFeatureControlFactory,
-			CharSequence expectedViewerContentProvider,
-			CharSequence expectedProposalCreator,
-			CharSequence expectedPluginXmlGen) {
+			GeneratorExpectedResults expected) {
 		input.compileAll [
 			for (e : allGeneratedResources.entrySet) {
 				if (e.key.endsWith("ModuleGen.java")) {
 					// check the expected Java code for the module
-					if (expectedModule != null)
-						assertEqualsStrings(expectedModule, e.value)
+					if (expected.expectedModule != null)
+						assertEqualsStrings(expected.expectedModule, e.value)
 				} else if (e.key.endsWith("PropertyDescriptionProviderGen.java")) {
 					// check the expected Java code for the module
-					if (expectedPropertyDescriptionProvider != null)
-						assertEqualsStrings(expectedPropertyDescriptionProvider, e.value)
+					if (expected.expectedPropertyDescriptionProvider != null)
+						assertEqualsStrings(expected.expectedPropertyDescriptionProvider, e.value)
 				} else if (e.key.endsWith("FeaturesProviderGen.java")) {
 					// check the expected Java code for the module
-					if (expectedFeatureProvider != null)
-						assertEqualsStrings(expectedFeatureProvider, e.value)
+					if (expected.expectedFeatureProvider != null)
+						assertEqualsStrings(expected.expectedFeatureProvider, e.value)
 				} else if (e.key.endsWith("LabelProviderGen.java")) {
 					// check the expected Java code for the module
-					if (expectedLabelProvider != null)
-						assertEqualsStrings(expectedLabelProvider, e.value)
+					if (expected.expectedLabelProvider != null)
+						assertEqualsStrings(expected.expectedLabelProvider, e.value)
 				} else if (e.key.endsWith("FormFeatureControlFactoryGen.java")) {
 					// check the expected Java code for the module
-					if (expectedFormFeatureControlFactory != null)
-						assertEqualsStrings(expectedFormFeatureControlFactory, e.value)
+					if (expected.expectedFormFeatureControlFactory != null)
+						assertEqualsStrings(expected.expectedFormFeatureControlFactory, e.value)
 				} else if (e.key.endsWith("ViewerContentProviderGen.java")) {
 					// check the expected Java code for the module
-					if (expectedViewerContentProvider != null)
-						assertEqualsStrings(expectedViewerContentProvider, e.value)
+					if (expected.expectedViewerContentProvider != null)
+						assertEqualsStrings(expected.expectedViewerContentProvider, e.value)
 				} else if (e.key.endsWith("ProposalCreatorGen.java")) {
 					// check the expected Java code for the module
-					if (expectedProposalCreator != null)
-						assertEqualsStrings(expectedProposalCreator, e.value)
+					if (expected.expectedProposalCreator != null)
+						assertEqualsStrings(expected.expectedProposalCreator, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
 					// check the expected Java code for the module
-					if (expectedPluginXmlGen != null)
-						assertEqualsStrings(expectedPluginXmlGen, e.value)
+					if (expected.expectedPluginXmlGen != null)
+						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else
 					fail("unexpected generated code: " + e.value)
 			}
