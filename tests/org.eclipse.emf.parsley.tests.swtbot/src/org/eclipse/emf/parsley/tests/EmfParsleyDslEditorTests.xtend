@@ -273,6 +273,76 @@ module my.test.proj {
 		"List - java.util")
 	}
 
+	@Test
+	def void checkProposalForPropertyDescriptionProvider() {
+		assertProposal(
+'''
+module my.test.proj {
+	
+	propertyDescriptionProvider {
+		text { 
+''',
+		"EClass",
+		"EClass - org.eclipse.emf.ecore",
+'''
+import org.eclipse.emf.ecore.EClass
+
+module my.test.proj {
+	
+	propertyDescriptionProvider {
+		text { 
+EClass'''			
+		)
+	}
+
+	@Test
+	def void checkProposalForPropertyDescriptionProviderIsEObject() {
+		assertNoProposals(
+'''
+module my.test.proj {
+	
+	propertyDescriptionProvider {
+		text { 
+''',
+		"",
+		"List - java.util")
+	}
+
+	@Test
+	def void checkProposalForFormPropertyDescriptionProvider() {
+		assertProposal(
+'''
+module my.test.proj {
+	
+	formPropertyDescriptionProvider {
+		text { 
+''',
+		"EClass",
+		"EClass - org.eclipse.emf.ecore",
+'''
+import org.eclipse.emf.ecore.EClass
+
+module my.test.proj {
+	
+	formPropertyDescriptionProvider {
+		text { 
+EClass'''			
+		)
+	}
+
+	@Test
+	def void checkProposalForFormPropertyDescriptionProviderIsEObject() {
+		assertNoProposals(
+'''
+module my.test.proj {
+	
+	formPropertyDescriptionProvider {
+		text { 
+''',
+		"",
+		"List - java.util")
+	}
+
 	def private void assertProposal(CharSequence input, CharSequence proposal, CharSequence expectedAfterProposal) {
 		assertProposal(input, "", proposal, expectedAfterProposal)
 	}
