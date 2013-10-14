@@ -4,8 +4,8 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.emf.parsley.editors.EmfComponentsEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-            contributorClass="org.eclipse.emf.parsley.editors.EmfComponentsEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfComponentsEditorActionBarContributor"
+            class="org.eclipse.emf.parsley.editors.EmfParsleyEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+            contributorClass="org.eclipse.emf.parsley.editors.EmfParsleyEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
             default="false"
             id="org.eclipse.emf.parsley.editors.treeEditor"
             name="EMF Tree Editor">

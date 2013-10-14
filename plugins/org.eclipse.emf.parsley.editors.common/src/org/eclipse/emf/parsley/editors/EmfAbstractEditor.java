@@ -29,14 +29,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.CommonPlugin;
@@ -47,6 +45,8 @@ import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.MarkerHelper;
+import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -56,7 +56,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.presentation.EcoreEditorPlugin;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.GenericXMLResourceFactoryImpl;
@@ -67,7 +66,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
-import org.eclipse.emf.parsley.edit.action.EditingActionBarContributor;
+import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
 import org.eclipse.emf.parsley.editors.outline.EmfEditorContentOutlineFactory;
 import org.eclipse.emf.parsley.editors.outline.EmfEditorContentOutlinePage;
@@ -75,15 +74,15 @@ import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.ViewerMouseAdapter;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
-import org.eclipse.emf.parsley.resource.EditingDomainFactory;
-import org.eclipse.emf.parsley.resource.EditingDomainResourceLoader;
-import org.eclipse.emf.parsley.util.EmfComponentsUtil;
+import org.eclipse.emf.parsley.resource.ResourceLoader;
+import org.eclipse.emf.parsley.util.EmfParsleyUtil;
+import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
-import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -100,14 +99,10 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.ide.IGotoMarker;
-import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
@@ -451,13 +446,16 @@ protected EmfEditorContentOutlineFactory emfContentOutlineFactory;
 protected OutlineSelectionHandler outlineSelectionHandler;
 
 @Inject
-protected EditingDomainFactory editingDomainFactory;
+protected Provider<AdapterFactoryEditingDomain> editingDomainProvider;
 
 @Inject
-protected EditingDomainResourceLoader resourceLoader;
+protected ResourceLoader resourceLoader;
 
 @Inject
 protected ViewerContextMenuFactory viewerContextMenuFactory;
+
+@Inject 
+protected ViewerInitializer viewerInitializer; 
 
   /**
    * Handles activation of the editor or it's associated views.
@@ -643,7 +641,7 @@ protected ViewerContextMenuFactory viewerContextMenuFactory;
   }
 
 	protected void initializeEditingDomain() {
-		editingDomain = editingDomainFactory.create();
+		editingDomain = editingDomainProvider.get();
 		adapterFactory = (ComposedAdapterFactory) editingDomain
 				.getAdapterFactory();
 		// Add a listener to set the most recent command's affected objects to
@@ -808,8 +806,8 @@ protected ViewerContextMenuFactory viewerContextMenuFactory;
 	}
 
 	public void createContextMenuFor(StructuredViewer viewer) {
-		MenuManager menuManager = viewerContextMenuFactory.createContextMenuFor(viewer, this, getEditingDomain());
-		menuManager.addMenuListener(this);
+		viewerInitializer.addContextMenu(viewer, (WorkbenchActionBarContributor)getActionBarContributor(),
+				editingDomain, this, this);
 		
 		ViewerMouseAdapter listener = getViewerMouseAdapter();
 		viewer.getControl().addMouseListener(listener);
@@ -1028,71 +1026,142 @@ protected ViewerContextMenuFactory viewerContextMenuFactory;
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void doSave(IProgressMonitor progressMonitor)
-  {
-    // Save only resources that have actually changed.
-    //
-    final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-    saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+//  @Override
+//  public void doSave(IProgressMonitor progressMonitor)
+//  {
+//    // Save only resources that have actually changed.
+//    //
+//    final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+//    saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+//
+//    // Do the work within an operation because this is a long running activity that modifies the workbench.
+//    //
+//    WorkspaceModifyOperation operation =
+//      new WorkspaceModifyOperation()
+//      {
+//        // This is the method that gets invoked when the operation runs.
+//        //
+//        @Override
+//        public void execute(IProgressMonitor monitor)
+//        {
+//          // Save the resources to the file system.
+//          //
+//          boolean first = true;
+//          for (Resource resource : editingDomain.getResourceSet().getResources())
+//          {
+//            if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource))
+//            {
+//              try
+//              {
+//                long timeStamp = resource.getTimeStamp();
+//                resource.save(saveOptions);
+//                if (resource.getTimeStamp() != timeStamp)
+//                {
+//                  savedResources.add(resource);
+//                }
+//              }
+//              catch (Exception exception)
+//              {
+//                resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+//              }
+//              first = false;
+//            }
+//          }
+//        }
+//      };
+//
+//    updateProblemIndication = false;
+//    try
+//    {
+//      // This runs the options, and shows progress.
+//      //
+//      new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+//
+//      // Refresh the necessary state.
+//      //
+//      ((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
+//      firePropertyChange(IEditorPart.PROP_DIRTY);
+//    }
+//    catch (Exception exception)
+//    {
+//      // Something went wrong that shouldn't.
+//      //
+//      EcoreEditorPlugin.INSTANCE.log(exception);
+//    }
+//    updateProblemIndication = true;
+//    updateProblemIndication();
+//  }
+  
+	@Override
+	public void doSave(IProgressMonitor progressMonitor) {
+		// Save only resources that have actually changed.
+		//
+		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
-    // Do the work within an operation because this is a long running activity that modifies the workbench.
-    //
-    WorkspaceModifyOperation operation =
-      new WorkspaceModifyOperation()
-      {
-        // This is the method that gets invoked when the operation runs.
-        //
-        @Override
-        public void execute(IProgressMonitor monitor)
-        {
-          // Save the resources to the file system.
-          //
-          boolean first = true;
-          for (Resource resource : editingDomain.getResourceSet().getResources())
-          {
-            if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource))
-            {
-              try
-              {
-                long timeStamp = resource.getTimeStamp();
-                resource.save(saveOptions);
-                if (resource.getTimeStamp() != timeStamp)
-                {
-                  savedResources.add(resource);
-                }
-              }
-              catch (Exception exception)
-              {
-                resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
-              }
-              first = false;
-            }
-          }
-        }
-      };
+		// Do the work within an operation because this is a long running activity that modifies the workbench.
+		//
+		IRunnableWithProgress operation =
+			new IRunnableWithProgress() {
+				// This is the method that gets invoked when the operation runs.
+				//
+				public void run(IProgressMonitor monitor) {
+					// Save the resources to the file system.
+					//
+					boolean first = true;
+					for (Resource resource : editingDomain.getResourceSet().getResources()) {
+						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
+							try {
+								long timeStamp = resource.getTimeStamp();
+								resource.save(saveOptions);
+								if (resource.getTimeStamp() != timeStamp) {
+									savedResources.add(resource);
+								}
+							}
+							catch (Exception exception) {
+								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+							}
+							first = false;
+						}
+					}
+				}
+			};
 
-    updateProblemIndication = false;
-    try
-    {
-      // This runs the options, and shows progress.
-      //
-      new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+//			final List<String> errors = validationCheck(editingDomain.getResourceSet());
+//			if (errors.size()>0) {
+//				PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+//					@Override
+//					public void run() {
+//						String message = "";
+//						for (String error : errors) {
+//							message  += "\n" + error;
+//						}
+//						MessageDialog.openError(null, "Error", message);
+//						firePropertyChange(IEditorPart.PROP_DIRTY);
+//					}
+//				});
+//				return;
+//			}
 
-      // Refresh the necessary state.
-      //
-      ((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
-      firePropertyChange(IEditorPart.PROP_DIRTY);
-    }
-    catch (Exception exception)
-    {
-      // Something went wrong that shouldn't.
-      //
-      EcoreEditorPlugin.INSTANCE.log(exception);
-    }
-    updateProblemIndication = true;
-    updateProblemIndication();
-  }
+		updateProblemIndication = false;
+		try {
+			// This runs the options, and shows progress.
+			//
+			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+
+			// Refresh the necessary state.
+			//
+			((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
+			firePropertyChange(IEditorPart.PROP_DIRTY);
+		}
+		catch (Exception exception) {
+			// Something went wrong that shouldn't.
+			//
+			EcoreEditorPlugin.INSTANCE.log(exception);
+		}
+		updateProblemIndication = true;
+		updateProblemIndication();
+	}
 
   /**
    * This returns whether something has been persisted to the URI of the specified resource.
@@ -1141,45 +1210,68 @@ protected ViewerContextMenuFactory viewerContextMenuFactory;
    * <!-- end-user-doc -->
    * @generated NOT
    */
-  @Override
-  public void doSaveAs()
-  {
-    SaveAsDialog saveAsDialog= new SaveAsDialog(getSite().getShell());
-    saveAsDialog.create();
-    saveAsDialog.setMessage(EcoreEditorPlugin.INSTANCE.getString("_UI_SaveAs_message"));
-    saveAsDialog.open();
-    IPath path= saveAsDialog.getResult();
-    if (path != null)
-    {
-      IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-      if (file != null)
-      {
-        ResourceSet resourceSet = editingDomain.getResourceSet();
-        Resource currentResource = resourceSet.getResources().get(0);
-        String currentExtension = currentResource.getURI().fileExtension();
+//  @Override
+//  public void doSaveAs()
+//  {
+//    SaveAsDialog saveAsDialog= new SaveAsDialog(getSite().getShell());
+//    saveAsDialog.create();
+//    saveAsDialog.setMessage(EcoreEditorPlugin.INSTANCE.getString("_UI_SaveAs_message"));
+//    saveAsDialog.open();
+//    IPath path= saveAsDialog.getResult();
+//    if (path != null)
+//    {
+//      IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+//      if (file != null)
+//      {
+//        ResourceSet resourceSet = editingDomain.getResourceSet();
+//        Resource currentResource = resourceSet.getResources().get(0);
+//        String currentExtension = currentResource.getURI().fileExtension();
+//
+//        URI newURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+//        String newExtension = newURI.fileExtension();
+//        
+//        if (currentExtension.equals(newExtension))
+//        {
+//          currentResource.setURI(newURI);
+//        }
+//        else
+//        {
+//          Resource newResource = resourceSet.createResource(newURI);
+//          newResource.getContents().addAll(currentResource.getContents());
+//          resourceSet.getResources().remove(0);
+//          resourceSet.getResources().move(0, newResource);
+//        }
+//
+//        IFileEditorInput modelFile = new FileEditorInput(file);
+//        setInputWithNotify(modelFile);
+//        setPartName(file.getName());
+//        doSave(getActionBars().getStatusLineManager().getProgressMonitor());
+//      }
+//    }
+//  }
+  
+	@Override
+	public void doSaveAs() {
+		new ResourceDialog(getSite().getShell(), null, SWT.NONE) {
+				@Override
+				protected boolean isSave() {
+					return true;
+				}
 
-        URI newURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-        String newExtension = newURI.fileExtension();
-        
-        if (currentExtension.equals(newExtension))
-        {
-          currentResource.setURI(newURI);
-        }
-        else
-        {
-          Resource newResource = resourceSet.createResource(newURI);
-          newResource.getContents().addAll(currentResource.getContents());
-          resourceSet.getResources().remove(0);
-          resourceSet.getResources().move(0, newResource);
-        }
-
-        IFileEditorInput modelFile = new FileEditorInput(file);
-        setInputWithNotify(modelFile);
-        setPartName(file.getName());
-        doSave(getActionBars().getStatusLineManager().getProgressMonitor());
-      }
-    }
-  }
+				@Override
+				protected boolean processResources() {
+					List<URI> uris = getURIs();
+					if (uris.size() > 0) {
+						URI uri = uris.get(0);
+						doSaveAs(uri, new URIEditorInput(uri));
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			}.open();
+	}
 
   /**
    * <!-- begin-user-doc -->
@@ -1314,7 +1406,7 @@ protected ViewerContextMenuFactory viewerContextMenuFactory;
    */
   public void setStatusLineManager(ISelection selection)
   {
-    IStatusLineManager statusLineManager = EmfComponentsUtil.getStatusLineManager();
+    IStatusLineManager statusLineManager = EmfParsleyUtil.getStatusLineManager();
 
     if (statusLineManager != null)
     {
@@ -1386,9 +1478,9 @@ protected ViewerContextMenuFactory viewerContextMenuFactory;
    * <!-- end-user-doc -->
    * @generated
    */
-  public EditingActionBarContributor getActionBarContributor()
+  public WorkbenchActionBarContributor getActionBarContributor()
   {
-    return (EditingActionBarContributor)getEditorSite().getActionBarContributor();
+    return (WorkbenchActionBarContributor)getEditorSite().getActionBarContributor();
   }
 
   /**

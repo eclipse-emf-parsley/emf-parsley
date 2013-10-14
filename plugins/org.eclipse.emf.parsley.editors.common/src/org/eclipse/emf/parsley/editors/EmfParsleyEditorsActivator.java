@@ -6,18 +6,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class EmfComponentsEditorsActivator extends AbstractUIPlugin {
+public class EmfParsleyEditorsActivator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.emf.parsley.editors"; //$NON-NLS-1$
 
 	// The shared instance
-	private static EmfComponentsEditorsActivator plugin;
+	private static EmfParsleyEditorsActivator plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public EmfComponentsEditorsActivator() {
+	public EmfParsleyEditorsActivator() {
 	}
 
 	/*
@@ -43,7 +43,7 @@ public class EmfComponentsEditorsActivator extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static EmfComponentsEditorsActivator getDefault() {
+	public static EmfParsleyEditorsActivator getDefault() {
 		return plugin;
 	}
 
