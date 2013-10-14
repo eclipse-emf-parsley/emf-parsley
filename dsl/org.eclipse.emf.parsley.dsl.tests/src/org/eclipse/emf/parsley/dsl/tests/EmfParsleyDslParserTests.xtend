@@ -57,6 +57,11 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	}
 
 	@Test
+	def void testDialogPropertyDescriptionSpecifications() {
+		inputs.dialogPropertyDescriptionSpecifications.parseAndAssertNoError
+	}
+
+	@Test
 	def void testWrongFeatureLabelSpecifications() {
 		val model = inputsWithErrors.wrongPropertyDescriptionSpecifications.parseModel
 		model.assertError(

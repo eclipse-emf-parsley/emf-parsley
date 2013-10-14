@@ -253,6 +253,34 @@ finally {
 
 
 
+// Entry rule entryRuleDialogPropertyDescriptionProvider
+entryRuleDialogPropertyDescriptionProvider 
+:
+{ before(grammarAccess.getDialogPropertyDescriptionProviderRule()); }
+	 ruleDialogPropertyDescriptionProvider
+{ after(grammarAccess.getDialogPropertyDescriptionProviderRule()); } 
+	 EOF 
+;
+
+// Rule DialogPropertyDescriptionProvider
+ruleDialogPropertyDescriptionProvider
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup()); }
+(rule__DialogPropertyDescriptionProvider__Group__0)
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRulePropertyDescriptionSpecification
 entryRulePropertyDescriptionSpecification 
 :
@@ -5192,6 +5220,426 @@ rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl
 	'}' 
 
 { after(grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+rule__DialogPropertyDescriptionProvider__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group__0__Impl
+	rule__DialogPropertyDescriptionProvider__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderAction_0()); }
+(
+
+)
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group__1__Impl
+	rule__DialogPropertyDescriptionProvider__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderKeyword_1()); }
+
+	'dialogPropertyDescriptionProvider' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderKeyword_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group__2__Impl
+	rule__DialogPropertyDescriptionProvider__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); }
+
+	'{' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group__3__Impl
+	rule__DialogPropertyDescriptionProvider__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3()); }
+(rule__DialogPropertyDescriptionProvider__UnorderedGroup_3)
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); }
+
+	'}' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl
+	rule__DialogPropertyDescriptionProvider__Group_3_0__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()); }
+
+	'text' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl
+	rule__DialogPropertyDescriptionProvider__Group_3_0__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); }
+
+	'{' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl
+	rule__DialogPropertyDescriptionProvider__Group_3_0__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_0_2()); }
+(rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2)*
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_0_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); }
+
+	'}' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl
+	rule__DialogPropertyDescriptionProvider__Group_3_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()); }
+
+	'label' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl
+	rule__DialogPropertyDescriptionProvider__Group_3_1__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); }
+
+	'{' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl
+	rule__DialogPropertyDescriptionProvider__Group_3_1__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); }
+(rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2)*
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); }
+
+	'}' 
+
+{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); }
 )
 
 ;
@@ -19192,9 +19640,9 @@ rule__Module__UnorderedGroup_4__Impl
 	 				}
 					(
 					
-						{ before(grammarAccess.getModuleAccess().getFeaturesProviderAssignment_4_3()); }
-						(rule__Module__FeaturesProviderAssignment_4_3)
-						{ after(grammarAccess.getModuleAccess().getFeaturesProviderAssignment_4_3()); }
+						{ before(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderAssignment_4_3()); }
+						(rule__Module__DialogPropertyDescriptionProviderAssignment_4_3)
+						{ after(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderAssignment_4_3()); }
 					)
  				)
 			)  |
@@ -19209,9 +19657,9 @@ rule__Module__UnorderedGroup_4__Impl
 	 				}
 					(
 					
-						{ before(grammarAccess.getModuleAccess().getFormControlFactoryAssignment_4_4()); }
-						(rule__Module__FormControlFactoryAssignment_4_4)
-						{ after(grammarAccess.getModuleAccess().getFormControlFactoryAssignment_4_4()); }
+						{ before(grammarAccess.getModuleAccess().getFeaturesProviderAssignment_4_4()); }
+						(rule__Module__FeaturesProviderAssignment_4_4)
+						{ after(grammarAccess.getModuleAccess().getFeaturesProviderAssignment_4_4()); }
 					)
  				)
 			)  |
@@ -19226,9 +19674,9 @@ rule__Module__UnorderedGroup_4__Impl
 	 				}
 					(
 					
-						{ before(grammarAccess.getModuleAccess().getProposalCreatorAssignment_4_5()); }
-						(rule__Module__ProposalCreatorAssignment_4_5)
-						{ after(grammarAccess.getModuleAccess().getProposalCreatorAssignment_4_5()); }
+						{ before(grammarAccess.getModuleAccess().getFormControlFactoryAssignment_4_5()); }
+						(rule__Module__FormControlFactoryAssignment_4_5)
+						{ after(grammarAccess.getModuleAccess().getFormControlFactoryAssignment_4_5()); }
 					)
  				)
 			)  |
@@ -19243,9 +19691,9 @@ rule__Module__UnorderedGroup_4__Impl
 	 				}
 					(
 					
-						{ before(grammarAccess.getModuleAccess().getViewerContentProviderAssignment_4_6()); }
-						(rule__Module__ViewerContentProviderAssignment_4_6)
-						{ after(grammarAccess.getModuleAccess().getViewerContentProviderAssignment_4_6()); }
+						{ before(grammarAccess.getModuleAccess().getProposalCreatorAssignment_4_6()); }
+						(rule__Module__ProposalCreatorAssignment_4_6)
+						{ after(grammarAccess.getModuleAccess().getProposalCreatorAssignment_4_6()); }
 					)
  				)
 			)  |
@@ -19260,9 +19708,26 @@ rule__Module__UnorderedGroup_4__Impl
 	 				}
 					(
 					
-						{ before(grammarAccess.getModuleAccess().getPartsSpecificationsAssignment_4_7()); }
-						(rule__Module__PartsSpecificationsAssignment_4_7)
-						{ after(grammarAccess.getModuleAccess().getPartsSpecificationsAssignment_4_7()); }
+						{ before(grammarAccess.getModuleAccess().getViewerContentProviderAssignment_4_7()); }
+						(rule__Module__ViewerContentProviderAssignment_4_7)
+						{ after(grammarAccess.getModuleAccess().getViewerContentProviderAssignment_4_7()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 8)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 8);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getModuleAccess().getPartsSpecificationsAssignment_4_8()); }
+						(rule__Module__PartsSpecificationsAssignment_4_8)
+						{ after(grammarAccess.getModuleAccess().getPartsSpecificationsAssignment_4_8()); }
 					)
  				)
 			)  
@@ -19373,10 +19838,25 @@ rule__Module__UnorderedGroup_4__7
     }
 :
 	rule__Module__UnorderedGroup_4__Impl
+	rule__Module__UnorderedGroup_4__8?
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Module__UnorderedGroup_4__8
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Module__UnorderedGroup_4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -19587,6 +20067,102 @@ finally {
 
 
 
+rule__DialogPropertyDescriptionProvider__UnorderedGroup_3
+    @init {
+    	int stackSize = keepStackSize();
+		getUnorderedGroupHelper().enter(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+    }
+:
+	rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0
+	?
+	
+;
+finally {
+	getUnorderedGroupHelper().leave(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl
+	@init {
+		int stackSize = keepStackSize();
+		boolean selected = false;
+    }
+:
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_0()); }
+						(rule__DialogPropertyDescriptionProvider__Group_3_0__0)
+						{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_0()); }
+					)
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1);
+	 				}
+	 				{
+	 				  selected = true;
+	 				}
+					(
+					
+						{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_1()); }
+						(rule__DialogPropertyDescriptionProvider__Group_3_1__0)
+						{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_1()); }
+					)
+ 				)
+			)  
+
+		)
+;
+finally {
+	if (selected)
+		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl
+	rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
 rule__Model__ImportSectionAssignment_0
     @init {
 		int stackSize = keepStackSize();
@@ -19692,14 +20268,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Module__FeaturesProviderAssignment_4_3
+rule__Module__DialogPropertyDescriptionProviderAssignment_4_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getModuleAccess().getFeaturesProviderFeaturesProviderParserRuleCall_4_3_0()); }
-	ruleFeaturesProvider{ after(grammarAccess.getModuleAccess().getFeaturesProviderFeaturesProviderParserRuleCall_4_3_0()); }
+{ before(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderDialogPropertyDescriptionProviderParserRuleCall_4_3_0()); }
+	ruleDialogPropertyDescriptionProvider{ after(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderDialogPropertyDescriptionProviderParserRuleCall_4_3_0()); }
 )
 
 ;
@@ -19707,14 +20283,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Module__FormControlFactoryAssignment_4_4
+rule__Module__FeaturesProviderAssignment_4_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getModuleAccess().getFormControlFactoryFormControlFactoryParserRuleCall_4_4_0()); }
-	ruleFormControlFactory{ after(grammarAccess.getModuleAccess().getFormControlFactoryFormControlFactoryParserRuleCall_4_4_0()); }
+{ before(grammarAccess.getModuleAccess().getFeaturesProviderFeaturesProviderParserRuleCall_4_4_0()); }
+	ruleFeaturesProvider{ after(grammarAccess.getModuleAccess().getFeaturesProviderFeaturesProviderParserRuleCall_4_4_0()); }
 )
 
 ;
@@ -19722,14 +20298,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Module__ProposalCreatorAssignment_4_5
+rule__Module__FormControlFactoryAssignment_4_5
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getModuleAccess().getProposalCreatorProposalCreatorParserRuleCall_4_5_0()); }
-	ruleProposalCreator{ after(grammarAccess.getModuleAccess().getProposalCreatorProposalCreatorParserRuleCall_4_5_0()); }
+{ before(grammarAccess.getModuleAccess().getFormControlFactoryFormControlFactoryParserRuleCall_4_5_0()); }
+	ruleFormControlFactory{ after(grammarAccess.getModuleAccess().getFormControlFactoryFormControlFactoryParserRuleCall_4_5_0()); }
 )
 
 ;
@@ -19737,14 +20313,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Module__ViewerContentProviderAssignment_4_6
+rule__Module__ProposalCreatorAssignment_4_6
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getModuleAccess().getViewerContentProviderViewerContentProviderParserRuleCall_4_6_0()); }
-	ruleViewerContentProvider{ after(grammarAccess.getModuleAccess().getViewerContentProviderViewerContentProviderParserRuleCall_4_6_0()); }
+{ before(grammarAccess.getModuleAccess().getProposalCreatorProposalCreatorParserRuleCall_4_6_0()); }
+	ruleProposalCreator{ after(grammarAccess.getModuleAccess().getProposalCreatorProposalCreatorParserRuleCall_4_6_0()); }
 )
 
 ;
@@ -19752,14 +20328,29 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Module__PartsSpecificationsAssignment_4_7
+rule__Module__ViewerContentProviderAssignment_4_7
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getModuleAccess().getPartsSpecificationsPartsSpecificationsParserRuleCall_4_7_0()); }
-	rulePartsSpecifications{ after(grammarAccess.getModuleAccess().getPartsSpecificationsPartsSpecificationsParserRuleCall_4_7_0()); }
+{ before(grammarAccess.getModuleAccess().getViewerContentProviderViewerContentProviderParserRuleCall_4_7_0()); }
+	ruleViewerContentProvider{ after(grammarAccess.getModuleAccess().getViewerContentProviderViewerContentProviderParserRuleCall_4_7_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Module__PartsSpecificationsAssignment_4_8
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getModuleAccess().getPartsSpecificationsPartsSpecificationsParserRuleCall_4_8_0()); }
+	rulePartsSpecifications{ after(grammarAccess.getModuleAccess().getPartsSpecificationsPartsSpecificationsParserRuleCall_4_8_0()); }
 )
 
 ;
@@ -19895,6 +20486,36 @@ rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2
 (
 { before(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); }
 	rulePropertyDescriptionSpecification{ after(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); }
+	rulePropertyDescriptionSpecification{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); }
+	rulePropertyDescriptionSpecification{ after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); }
 )
 
 ;

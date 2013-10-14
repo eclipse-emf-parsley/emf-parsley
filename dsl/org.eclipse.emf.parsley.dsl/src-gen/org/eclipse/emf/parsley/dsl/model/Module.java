@@ -16,6 +16,7 @@ package org.eclipse.emf.parsley.dsl.model;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getLabelProvider <em>Label Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getPropertyDescriptionProvider <em>Property Description Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFeaturesProvider <em>Features Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormControlFactory <em>Form Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getProposalCreator <em>Proposal Creator</em>}</li>
@@ -159,6 +160,32 @@ public interface Module extends WithExtendsClause
    * @generated
    */
   void setFormPropertyDescriptionProvider(FormPropertyDescriptionProvider value);
+
+  /**
+   * Returns the value of the '<em><b>Dialog Property Description Provider</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Dialog Property Description Provider</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dialog Property Description Provider</em>' containment reference.
+   * @see #setDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider)
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_DialogPropertyDescriptionProvider()
+   * @model containment="true"
+   * @generated
+   */
+  DialogPropertyDescriptionProvider getDialogPropertyDescriptionProvider();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Dialog Property Description Provider</em>' containment reference.
+   * @see #getDialogPropertyDescriptionProvider()
+   * @generated
+   */
+  void setDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider value);
 
   /**
    * Returns the value of the '<em><b>Features Provider</b></em>' containment reference.

@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
 import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
@@ -34,6 +35,7 @@ import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getLabelProvider <em>Label Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getPropertyDescriptionProvider <em>Property Description Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFeaturesProvider <em>Features Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFormControlFactory <em>Form Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getProposalCreator <em>Proposal Creator</em>}</li>
@@ -105,6 +107,16 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * @ordered
    */
   protected FormPropertyDescriptionProvider formPropertyDescriptionProvider;
+
+  /**
+   * The cached value of the '{@link #getDialogPropertyDescriptionProvider() <em>Dialog Property Description Provider</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDialogPropertyDescriptionProvider()
+   * @generated
+   * @ordered
+   */
+  protected DialogPropertyDescriptionProvider dialogPropertyDescriptionProvider;
 
   /**
    * The cached value of the '{@link #getFeaturesProvider() <em>Features Provider</em>}' containment reference.
@@ -397,6 +409,54 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
+  public DialogPropertyDescriptionProvider getDialogPropertyDescriptionProvider()
+  {
+    return dialogPropertyDescriptionProvider;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider newDialogPropertyDescriptionProvider, NotificationChain msgs)
+  {
+    DialogPropertyDescriptionProvider oldDialogPropertyDescriptionProvider = dialogPropertyDescriptionProvider;
+    dialogPropertyDescriptionProvider = newDialogPropertyDescriptionProvider;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, oldDialogPropertyDescriptionProvider, newDialogPropertyDescriptionProvider);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider newDialogPropertyDescriptionProvider)
+  {
+    if (newDialogPropertyDescriptionProvider != dialogPropertyDescriptionProvider)
+    {
+      NotificationChain msgs = null;
+      if (dialogPropertyDescriptionProvider != null)
+        msgs = ((InternalEObject)dialogPropertyDescriptionProvider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
+      if (newDialogPropertyDescriptionProvider != null)
+        msgs = ((InternalEObject)newDialogPropertyDescriptionProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
+      msgs = basicSetDialogPropertyDescriptionProvider(newDialogPropertyDescriptionProvider, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, newDialogPropertyDescriptionProvider, newDialogPropertyDescriptionProvider));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public FeaturesProvider getFeaturesProvider()
   {
     return featuresProvider;
@@ -650,6 +710,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return basicSetPropertyDescriptionProvider(null, msgs);
       case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
         return basicSetFormPropertyDescriptionProvider(null, msgs);
+      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
+        return basicSetDialogPropertyDescriptionProvider(null, msgs);
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         return basicSetFeaturesProvider(null, msgs);
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
@@ -684,6 +746,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return getPropertyDescriptionProvider();
       case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
         return getFormPropertyDescriptionProvider();
+      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
+        return getDialogPropertyDescriptionProvider();
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         return getFeaturesProvider();
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
@@ -722,6 +786,9 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return;
       case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
         setFormPropertyDescriptionProvider((FormPropertyDescriptionProvider)newValue);
+        return;
+      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
+        setDialogPropertyDescriptionProvider((DialogPropertyDescriptionProvider)newValue);
         return;
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         setFeaturesProvider((FeaturesProvider)newValue);
@@ -767,6 +834,9 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
       case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
         setFormPropertyDescriptionProvider((FormPropertyDescriptionProvider)null);
         return;
+      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
+        setDialogPropertyDescriptionProvider((DialogPropertyDescriptionProvider)null);
+        return;
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         setFeaturesProvider((FeaturesProvider)null);
         return;
@@ -806,6 +876,8 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return propertyDescriptionProvider != null;
       case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
         return formPropertyDescriptionProvider != null;
+      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
+        return dialogPropertyDescriptionProvider != null;
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         return featuresProvider != null;
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:

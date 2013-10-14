@@ -71,6 +71,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
       case ModelPackage.LABEL_SPECIFICATION: return createLabelSpecification();
       case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER: return createPropertyDescriptionProvider();
       case ModelPackage.FORM_PROPERTY_DESCRIPTION_PROVIDER: return createFormPropertyDescriptionProvider();
+      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER: return createDialogPropertyDescriptionProvider();
       case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION: return createPropertyDescriptionSpecification();
       case ModelPackage.FEATURES_PROVIDER: return createFeaturesProvider();
       case ModelPackage.FEATURE_SPECIFICATION: return createFeatureSpecification();
@@ -164,6 +165,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
   {
     FormPropertyDescriptionProviderImpl formPropertyDescriptionProvider = new FormPropertyDescriptionProviderImpl();
     return formPropertyDescriptionProvider;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DialogPropertyDescriptionProvider createDialogPropertyDescriptionProvider()
+  {
+    DialogPropertyDescriptionProviderImpl dialogPropertyDescriptionProvider = new DialogPropertyDescriptionProviderImpl();
+    return dialogPropertyDescriptionProvider;
   }
 
   /**

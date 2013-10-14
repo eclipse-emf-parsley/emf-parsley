@@ -18,6 +18,8 @@
         eType="#//PropertyDescriptionProvider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="formPropertyDescriptionProvider"
         eType="#//FormPropertyDescriptionProvider" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dialogPropertyDescriptionProvider"
+        eType="#//DialogPropertyDescriptionProvider" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="featuresProvider" eType="#//FeaturesProvider"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="formControlFactory" eType="#//FormControlFactory"
@@ -51,6 +53,12 @@
         eType="#//PropertyDescriptionSpecification" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FormPropertyDescriptionProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="specifications" upperBound="-1"
+        eType="#//PropertyDescriptionSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelSpecifications" upperBound="-1"
+        eType="#//PropertyDescriptionSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DialogPropertyDescriptionProvider">
     <eStructuralFeatures xsi:type="ecore:EReference" name="specifications" upperBound="-1"
         eType="#//PropertyDescriptionSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="labelSpecifications" upperBound="-1"

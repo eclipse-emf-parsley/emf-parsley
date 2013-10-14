@@ -14,6 +14,7 @@ public class GeneratorExpectedResults {
 	public CharSequence expectedLabelProvider;
 	public CharSequence expectedPropertyDescriptionProvider;
 	public CharSequence expectedFormPropertyDescriptionProvider;
+	public CharSequence expectedDialogPropertyDescriptionProvider;
 	public CharSequence expectedFeatureProvider;
 	public CharSequence expectedFormFeatureControlFactory;
 	public CharSequence expectedViewerContentProvider;

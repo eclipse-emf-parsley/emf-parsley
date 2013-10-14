@@ -396,6 +396,89 @@ public class FormPropertyDescriptionProviderGen extends FormPropertyDescriptionP
 	}
 
 	@Test
+	def testDialogPropertyDescriptionSpecifications() {
+		inputs.dialogPropertyDescriptionSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule = 
+'''
+package my.empty;
+
+import my.empty.ui.provider.DialogPropertyDescriptionProviderGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends DialogPropertyDescriptionProvider> bindDialogPropertyDescriptionProvider() {
+    return DialogPropertyDescriptionProviderGen.class;
+  }
+}
+'''
+expectedDialogPropertyDescriptionProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
+import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+
+@SuppressWarnings("all")
+public class DialogPropertyDescriptionProviderGen extends DialogPropertyDescriptionProvider {
+  public String text_Library_name(final EStructuralFeature it) {
+    return "Name";
+  }
+  
+  public String text_Library_books(final EStructuralFeature it) {
+    return "Books";
+  }
+  
+  public String text_Writer_lastName(final EStructuralFeature it) {
+    String _name = it.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    return _firstUpper;
+  }
+  
+  public Label label_Library_name(final Composite parent, final EStructuralFeature it) {
+    Label _createLabel = this.createLabel(parent, "Name");
+    return _createLabel;
+  }
+  
+  public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
+    EReference _library_Books = EXTLibraryPackage.eINSTANCE.getLibrary_Books();
+    Label _createLabel = this.createLabel(parent, _library_Books);
+    return _createLabel;
+  }
+  
+  public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
+    Label _label = new Label(parent, SWT.NONE);
+    final Procedure1<Label> _function = new Procedure1<Label>() {
+      public void apply(final Label l) {
+        String _name = it.getName();
+        l.setText(_name);
+      }
+    };
+    Label _doubleArrow = ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
+    return _doubleArrow;
+  }
+}
+''']
+		)
+	}
+
+	@Test
 	def testFeaturesSpecifications() {
 		inputs.featuresSpecifications.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -769,6 +852,9 @@ expectedPluginXmlGen =
 				} else if (e.key.endsWith("FormPropertyDescriptionProviderGen.java")) {
 					if (expected.expectedFormPropertyDescriptionProvider != null)
 						assertEqualsStrings(expected.expectedFormPropertyDescriptionProvider, e.value)
+				} else if (e.key.endsWith("DialogPropertyDescriptionProviderGen.java")) {
+					if (expected.expectedDialogPropertyDescriptionProvider != null)
+						assertEqualsStrings(expected.expectedDialogPropertyDescriptionProvider, e.value)
 				} else if (e.key.endsWith("PropertyDescriptionProviderGen.java")) {
 					if (expected.expectedPropertyDescriptionProvider != null)
 						assertEqualsStrings(expected.expectedPropertyDescriptionProvider, e.value)

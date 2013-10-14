@@ -3,6 +3,7 @@ package org.eclipse.emf.parsley.dsl.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
 import org.eclipse.emf.parsley.dsl.model.FeatureSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
@@ -82,6 +83,12 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
+				if(context == grammarAccess.getDialogPropertyDescriptionProviderRule()) {
+					sequence_DialogPropertyDescriptionProvider(context, (DialogPropertyDescriptionProvider) semanticObject); 
+					return; 
+				}
+				else break;
 			case ModelPackage.EXTENDS_CLAUSE:
 				if(context == grammarAccess.getExtendsClauseRule()) {
 					sequence_ExtendsClause(context, (ExtendsClause) semanticObject); 
@@ -1134,6 +1141,15 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (specifications+=PropertyDescriptionSpecification* labelSpecifications+=PropertyDescriptionSpecification*)
+	 */
+	protected void sequence_DialogPropertyDescriptionProvider(EObject context, DialogPropertyDescriptionProvider semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     superType=JvmTypeReference
 	 */
 	protected void sequence_ExtendsClause(EObject context, ExtendsClause semanticObject) {
@@ -1228,6 +1244,7 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	 *         labelProvider=LabelProvider? 
 	 *         propertyDescriptionProvider=PropertyDescriptionProvider? 
 	 *         formPropertyDescriptionProvider=FormPropertyDescriptionProvider? 
+	 *         dialogPropertyDescriptionProvider=DialogPropertyDescriptionProvider? 
 	 *         featuresProvider=FeaturesProvider? 
 	 *         formControlFactory=FormControlFactory? 
 	 *         proposalCreator=ProposalCreator? 
