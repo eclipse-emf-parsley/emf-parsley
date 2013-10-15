@@ -4,12 +4,22 @@
       label="Emf Parsley RAP SDK"
       version="0.1.0.qualifier">
 
-   <description url="http://code.google.com/a/eclipselabs.org/p/emf-components/">
-      Working with EMF a developer realizes that all the information are available for building basic UI.
+   <description url="http://www.eclipse.org/emf-parsley">
+      *** DO NOT INSTALL IN YOUR IDE ***
+This feature is only for provisioning Target Platforms.
+EMF Parsley runtime for the Rich Ajax Platform.
 
-A lightweight framework that allows easy and quick development of EMF-based Applications. Can be configured to use all kind of EMF persistence implementations (XMI, Teneo, CDO).
-
-It aims at providing a set of Components like Trees, Tables and Detail Forms that manage the model with the introspective EMF capabilities. Using these components you can easily build forms, viewer or editors. The framework provides basic UI implementations which are customizable with Injection mechanism (based on Google Guice).
+Working with EMF a developer realizes that all the information
+are available for building basic UI.
+A lightweight framework that allows easy and quick development
+of EMF-based Applications. Can be configured to use all kind
+of EMF persistence implementations (XMI, Teneo, CDO).
+It aims at providing a set of Components like Trees, Tables and
+Detail Forms that manage the model with the introspective EMF
+capabilities. Using these components you can easily build forms,
+viewer or editors. The framework provides basic UI implementations
+which are customizable with Injection mechanism (based on Google
+Guice).
    </description>
 
    <copyright url="http://www.example.com/copyright">

@@ -4,8 +4,10 @@
       label="Emf Parsley CDO RAP Sdk"
       version="0.1.0.qualifier">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://www.eclipse.org/emf-parsley">
+      *** DO NOT INSTALL IN YOUR IDE ***
+This feature is only for provisioning Target Platforms.
+EMF CDO Parsley runtime for the Rich Ajax Platform.
    </description>
 
    <copyright url="http://www.example.com/copyright">
