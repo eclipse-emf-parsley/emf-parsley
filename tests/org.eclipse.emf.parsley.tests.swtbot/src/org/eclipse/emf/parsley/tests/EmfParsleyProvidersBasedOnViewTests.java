@@ -45,7 +45,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 	public void testLibraryFeatureLabelProviderForLabelWidget() {
 		final FormPropertyDescriptionProvider formPropertyDescriptionProvider = getInjector()
 				.getInstance(CustomLibraryFormFeatureLabelProvider.class);
-		final SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				try {
@@ -64,7 +64,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 				}
 			}
 		});
-		closeLibraryView(LIBRARY_EMF_VIEW);
+		//closeLibraryView(LIBRARY_EMF_VIEW);
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 		final FormControlFactory bindingFactory = getInjector().getInstance(
 				FormControlFactory.class);
 		final Writer writer = createTestResourceAndWriter();
-		final SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				try {
@@ -91,7 +91,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 				}
 			}
 		});
-		closeLibraryView(LIBRARY_EMF_VIEW);
+		//closeLibraryView(LIBRARY_EMF_VIEW);
 	}
 
 	@Test
@@ -99,7 +99,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 		final FormControlFactory bindingFactory = getInjector().getInstance(
 				FormControlFactory.class);
 		final Writer writer = createTestResourceAndWriter();
-		final SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				try {
@@ -117,7 +117,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 				}
 			}
 		});
-		closeLibraryView(LIBRARY_EMF_VIEW);
+		//closeLibraryView(LIBRARY_EMF_VIEW);
 	}
 
 	@Test
@@ -125,7 +125,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 		final FormControlFactory bindingFactory = getInjector().getInstance(
 				FormControlFactory.class);
 		final Writer writer = createTestResourceAndWriter();
-		final SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				try {
@@ -143,7 +143,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 				}
 			}
 		});
-		closeLibraryView(LIBRARY_EMF_VIEW);
+		//closeLibraryView(LIBRARY_EMF_VIEW);
 	}
 
 	@Test
@@ -151,7 +151,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 		final FormControlFactory bindingFactory = getInjector().getInstance(
 				FormControlFactory.class);
 		final Writer writer = createTestResourceAndWriter();
-		final SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				try {
@@ -169,7 +169,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 				}
 			}
 		});
-		closeLibraryView(LIBRARY_EMF_VIEW);
+		//closeLibraryView(LIBRARY_EMF_VIEW);
 	}
 
 	@Test
@@ -177,7 +177,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 		final FormControlFactory bindingFactory = getInjector().getInstance(
 				FormControlFactory.class);
 		final Writer writer = createTestResourceAndWriter();
-		final SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				try {
@@ -200,7 +200,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 				}
 			}
 		});
-		closeLibraryView(LIBRARY_EMF_VIEW);
+		//closeLibraryView(LIBRARY_EMF_VIEW);
 	}
 
 	@Test
@@ -208,7 +208,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 		final FormControlFactory bindingFactory = getInjector().getInstance(
 				FormControlFactory.class);
 		final Writer writer = createTestResourceAndWriter();
-		final SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				try {
@@ -226,7 +226,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 				}
 			}
 		});
-		closeLibraryView(LIBRARY_EMF_VIEW);
+		//closeLibraryView(LIBRARY_EMF_VIEW);
 	}
 	
 	protected Writer createTestResourceAndWriter() {
@@ -273,5 +273,12 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 
 	protected Composite createCompositeParent(final SWTBotView view) {
 		return view.bot().tree().widget.getParent();
+	}
+
+	protected SWTBotView getTestView() {
+		// fake view just for tests
+		SWTBotView view = bot.viewByTitle("Problems");
+		return view;
+		// return openTestView(LIBRARY_EMF_VIEW);
 	}
 }
