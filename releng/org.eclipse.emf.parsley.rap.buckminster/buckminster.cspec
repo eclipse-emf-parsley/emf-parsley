@@ -4,6 +4,8 @@
         <cs:dependency name="org.apache.commons.logging" componentType="osgi.bundle"/>
         <cs:dependency name="org.apache.log4j" componentType="osgi.bundle"/>
         <cs:dependency name="org.eclipse.net4j.tcp" componentType="osgi.bundle"/>
+        <cs:dependency name="org.eclipse.emf.cdo.net4j" componentType="osgi.bundle"/>
+        <cs:dependency name="org.eclipse.emf.query" componentType="eclipse.feature"/>
         <cs:dependency name="org.eclipse.emf.databinding.edit" componentType="eclipse.feature"/>
         <cs:dependency name="org.eclipse.emf.parsley.buckminster.common" componentType="buckminster"/>
         <cs:dependency name="org.eclipse.emf.rap.sdk" componentType="eclipse.feature"/>

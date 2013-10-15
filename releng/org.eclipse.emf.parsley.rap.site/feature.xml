@@ -24,4 +24,8 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
          id="org.eclipse.emf.parsley.rap.sdk"
          version="0.0.0"/>
 
+   <includes
+         id="org.eclipse.emf.parsley.rap.cdo.sdk"
+         version="0.0.0"/>
+
 </feature>
