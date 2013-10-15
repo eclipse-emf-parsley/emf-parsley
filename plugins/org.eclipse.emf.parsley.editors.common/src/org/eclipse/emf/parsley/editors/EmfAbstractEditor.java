@@ -161,6 +161,8 @@ public abstract class EmfAbstractEditor
   protected ComposedAdapterFactory adapterFactory;
 
   protected EmfEditorContentOutlinePage contentOutlinePage;
+  
+  protected boolean saving = false;
 
   /**
    * This is the content outline page's viewer.
@@ -506,6 +508,11 @@ protected ViewerInitializer viewerInitializer;
    */
   protected void handleChangedResources()
   {
+	  // if we are saving we do not want to deal with changed resources
+	  // resources are being changed because we are saving them
+	  if (saving)
+		  return;
+	  
     if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict()))
     {
       if (isDirty())
@@ -1144,6 +1151,7 @@ protected ViewerInitializer viewerInitializer;
 //			}
 
 		updateProblemIndication = false;
+		saving = true;
 		try {
 			// This runs the options, and shows progress.
 			//
@@ -1159,6 +1167,7 @@ protected ViewerInitializer viewerInitializer;
 			//
 			EcoreEditorPlugin.INSTANCE.log(exception);
 		}
+		saving = false;
 		updateProblemIndication = true;
 		updateProblemIndication();
 	}
