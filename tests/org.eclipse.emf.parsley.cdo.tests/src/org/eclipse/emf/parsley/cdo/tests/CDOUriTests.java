@@ -31,8 +31,8 @@ public class CDOUriTests {
 	public void testCDOURIData() {
 		URI uri = URI.createURI(CDO_LOCALHOST_2036_DEMO_RES2);
 		CDOURIData data = CDOURIData.parse(uri);
-		assertEquals("localhost:2036", data.host);
-		assertEquals("demo", data.sessionName);
-		assertEquals("res2", data.resourceName);
+		assertEquals("localhost:2036", data.server);
+		assertEquals("demo", data.repository);
+		assertEquals("res2", data.resource);
 	}
 }

@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 
-public class OservableResourceLoader extends ResourceLoader {
+public class ObservableResourceLoader extends ResourceLoader {
 	
 	private AbstractResourcesListener resourceChangeListener;
 

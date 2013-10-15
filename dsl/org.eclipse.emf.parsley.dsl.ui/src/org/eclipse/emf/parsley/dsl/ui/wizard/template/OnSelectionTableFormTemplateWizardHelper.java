@@ -3,7 +3,6 @@ package org.eclipse.emf.parsley.dsl.ui.wizard.template;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.parsley.views.OnSelectionTableFormView;
 import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
 
 /**
@@ -21,7 +20,7 @@ public class OnSelectionTableFormTemplateWizardHelper extends AbstractTemplateWi
 
 	@Override
 	public String getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		String className=getSimpleNameProject(packagePath) + "OnSelectionTreeForm";
+		String className=getSimpleNameProject(packagePath) + "OnSelectionTableForm";
 		String classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
 		
 		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"

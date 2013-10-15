@@ -7,7 +7,7 @@ public class TreeFormCDOView extends AbstractSaveableTreeFormView {
 
 	@Override
 	protected URI createResourceURI() {
-		return URI.createURI("cdo://localhost:2036/demo/myResource/");
+		return URI.createURI("cdo://localhost:2037/demo/myResource/");
 	}
 
 }

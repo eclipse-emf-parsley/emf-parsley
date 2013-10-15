@@ -3,6 +3,7 @@ package org.eclipse.emf.parsley.dsl.ui.wizard;
 import java.util.Iterator;
 
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.IWizardTemplate;
+import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTreeFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableFormTemplateWizardHelper;
@@ -39,6 +40,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 			SaveableTreeFormTemplateWizardHelper.singlethon,
 			SaveableTableTemplateWizardHelper.singlethon,
 			SaveableTableFormTemplateWizardHelper.singlethon,
+			OnSelectionFormTemplateWizardHelper.singlethon,
 			OnSelectionTreeFormTemplateWizardHelper.singlethon,
 			OnSelectionTableFormTemplateWizardHelper.singlethon
 			};

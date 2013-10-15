@@ -1,7 +1,5 @@
 package org.eclipse.emf.parsley.tests.swtbot.cdo.treeform;
 
-import library.business.CommonBusiness;
-
 import org.eclipse.emf.parsley.tests.swtbot.cdo.util.CDOAbstractTests;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -21,7 +19,6 @@ public class CDOTreeFormTests extends CDOAbstractTests {
 	public static void prepare() throws Exception{
 		
 		startCDOServer();
-		CommonBusiness.setPort(PORT);
 		closeWelcomePage();
 		openTestView(TEST_CDO_FORM_VIEW);
 	}

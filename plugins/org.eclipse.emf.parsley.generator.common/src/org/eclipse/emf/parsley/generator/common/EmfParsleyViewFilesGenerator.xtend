@@ -59,23 +59,24 @@ package «projectName»;
 
 import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
 
 public class «simpleName» extends AbstractOnSelectionTableView {
-
-	@Override
-	protected Object getContents(Resource resource) {
-		// TODO  How to reach the contents from the selected object
-		return null;
-	}
 
 	@Override
 	protected EClass getEClass() {
 		// TODO  Insert here the EClass to be represented 
 		return null;
 	}
+	
+	@Override
+	protected EStructuralFeature getEStructuralFeature() {
+		// TODO How to reach the contents from the selected object
+		return null;
+	}
+	
 
 }
 '''

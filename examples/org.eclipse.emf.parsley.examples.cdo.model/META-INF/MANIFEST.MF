@@ -8,7 +8,6 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: library,
- library.business,
  library.impl,
  library.util
 Require-Bundle: org.eclipse.core.runtime,
