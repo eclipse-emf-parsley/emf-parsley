@@ -2,6 +2,15 @@
 <?eclipse version="3.4"?>
 <plugin>
 
+	<extension
+         id="viewapp.entrypoints"
+         point="org.eclipse.rap.ui.entrypoint">
+      <entrypoint
+            path="/rap"
+            applicationId="org.eclipse.emf.parsley.examples.rap.ui.viewapp"
+            id="viewapp.entrypoint">
+      </entrypoint>
+   </extension>
    <extension
          id="viewapp"
          point="org.eclipse.core.runtime.applications">
@@ -38,11 +47,9 @@
    <extension
          point="org.eclipse.rap.ui.branding">
       <branding
-            servletName="view"
+            id="org.eclipse.emf.parsley.examples.rap.ui.branding1"
             themeId="org.eclipse.rap.design.example.fancy.theme"
-            defaultEntrypointId="org.eclipse.emf.parsley.examples.rap.ui.viewapp"
-            title="RAP Single View"
-            id="org.eclipse.emf.parsley.examples.rap.ui.branding">
+            title="RAP View">
       </branding>
    </extension>
 
