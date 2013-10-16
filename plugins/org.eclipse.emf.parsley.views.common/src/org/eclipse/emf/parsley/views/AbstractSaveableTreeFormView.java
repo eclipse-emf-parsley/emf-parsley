@@ -31,6 +31,7 @@ public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewe
 		treeFormComposite.update(getContents(getResource()));
 
 		addContextMenu(treeFormComposite.getViewer());
+		addMouseListener(treeFormComposite.getViewer());
 	}
 
 	@Override

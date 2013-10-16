@@ -973,6 +973,16 @@ public class EmfParsleyAbstractTests {
 		bot.label(PEOPLE_TEXT);
 	}
 
+	protected void assertDialogControlsOfCustomLibraryNode(boolean editable) {
+		bot.label(ADDRESS_LABEL);
+		assertTextComponent(LIBRARY_S_ADDRESS_TEXT, editable);
+		bot.comboBox(0); // for "parentBranch
+		// the label for 'people'
+		bot.label(PEOPLE_LABEL);
+		// the inner label listing all the people, before the button "..."
+		bot.label(CUSTOM_PEOPLE_TEXT);
+	}
+
 	protected void assertFormControlsOfWriterNode(SWTFormsBot formbot, boolean editable) {
 		formbot.label(ADDRESS_LABEL);
 		assertTextComponent(formbot, WRITER_S_ADDRESS_TEXT, editable);

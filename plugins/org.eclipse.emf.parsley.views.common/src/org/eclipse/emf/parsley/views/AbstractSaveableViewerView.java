@@ -61,4 +61,8 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 				editingDomain, this, this);
 	}
 
+	protected void addMouseListener(StructuredViewer viewer) {
+		viewerInitializer.addMouseListener(viewer);
+	}
+
 }

@@ -54,14 +54,14 @@ public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
 	@Test
 	public void canAccessEditingActionsOnSaveableResourceTreeFormView()
 			throws Exception {
-		SWTBotTreeItem libraryNode = prepareSaveableViewAndGetLibraryNode();
+		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
 		canAccessStandardEditingActions(libraryNode);
 	}
 
 	@Test
 	public void canPerformNewChildActionOnSaveableResourceTreeFormView()
 			throws Exception {
-		SWTBotTreeItem libraryNode = prepareSaveableViewAndGetLibraryNode();
+		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
 		createNewChild(libraryNode, BOOK_ON_TAPE);
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TREE_FORM_VIEW);
 	}
@@ -70,7 +70,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
 	public void canPerformDeleteActionOnSaveableResourceTreeFormView()
 			throws Exception {
 		clickOnContextMenu(
-				getWriterNode(prepareSaveableViewAndGetLibraryNode()),
+				getWriterNode(prepareSaveableTreeFormViewAndGetLibraryNode()),
 				ACTION_DELETE);
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TREE_FORM_VIEW);
 	}
@@ -78,7 +78,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
 	@Test
 	public void canPerformUndoDeleteActionOnSaveableResourceTreeFormView()
 			throws Exception {
-		SWTBotTreeItem libraryNode = prepareSaveableViewAndGetLibraryNode();
+		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
 		clickOnContextMenu(getWriterNode(libraryNode), ACTION_DELETE);
 		assertSaveableViewIsDirty(true, TEST_SAVEABLE_TREE_FORM_VIEW);
 		undo(ACTION_DELETE);
@@ -136,6 +136,27 @@ public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
 		saveViewAndAssertNotDirty(TEST_SAVEABLE_TREE_VIEW);
 	}
 
+	@Test
+	public void doubleClickOpensDialogOnSaveableTreeView() throws Exception {
+		SWTBotTreeItem libraryNode = prepareSaveableTreeViewAndGetLibraryNode();
+		checkDoubleClickDialog(libraryNode, TEST_SAVEABLE_TREE_VIEW);
+	}
+
+	@Test
+	public void doubleClickOpensDialogOnSaveableTreeFormView() throws Exception {
+		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
+		checkDoubleClickDialog(libraryNode, TEST_SAVEABLE_TREE_FORM_VIEW);
+	}
+
+	protected void checkDoubleClickDialog(SWTBotTreeItem libraryNode, String viewName) {
+		libraryNode.doubleClick();
+		bot.shell(LIBRARY_LABEL);
+		assertDialogControlsOfCustomLibraryNode(true);
+		modifyText(LIBRARY_NAME);
+		bot.button("OK").click();
+		assertDirtyThenSaveAndAssertNotDirty(viewName);
+	}
+
 	protected void createNewChild(SWTBotTreeItem libraryNode, String childType) {
 		clickOnContextMenu(libraryNode, NEW_CHILD, childType);
 		// check that the new item was created
@@ -151,7 +172,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
 		});
 	}
 
-	protected SWTBotTreeItem prepareSaveableViewAndGetLibraryNode()
+	protected SWTBotTreeItem prepareSaveableTreeFormViewAndGetLibraryNode()
 			throws CoreException, InvocationTargetException,
 			InterruptedException, IOException {
 		createProjectAndTestFiles();

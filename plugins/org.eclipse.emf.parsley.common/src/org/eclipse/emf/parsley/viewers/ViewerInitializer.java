@@ -10,6 +10,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
+import org.eclipse.emf.parsley.listeners.IViewerMouseListener;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.jface.action.IMenuListener;
@@ -26,7 +27,8 @@ import com.google.inject.Provider;
 /**
  * Manager for viewers for EMF resources.
  * 
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini - Initial Contribution and API
+ * @author Francesco Guidieri - extensions
  * 
  */
 public class ViewerInitializer {
@@ -48,6 +50,9 @@ public class ViewerInitializer {
 	
 	@Inject
 	protected Provider<ILabelProvider> labelProviderProvider;
+
+	@Inject
+	protected Provider<IViewerMouseListener> viewerMouseListenerProvider;
 
 	public void initialize(StructuredViewer viewer, Object object) {
 		Object input;
@@ -122,9 +127,6 @@ public class ViewerInitializer {
 		actionBarContributor.setActivePart(activePart);
 	}
 	
-	
-	
-	
 	public void addContextMenu(StructuredViewer viewer, 
 			TreeActionBarContributor treeActionBarContributor,
 			AdapterFactoryEditingDomain editingDomain, 
@@ -138,7 +140,15 @@ public class ViewerInitializer {
 //		viewerSelectionProvider.addSelectionChangedListener(treeActionBarContributor);
 		viewer.addSelectionChangedListener(treeActionBarContributor);
 		treeActionBarContributor.initialize(editingDomain);
-		
+	}
+
+	/**
+	 * Adds the {@link IViewerMouseListener} specified in the guice module.
+	 * 
+	 * @param viewer
+	 */
+	public void addMouseListener(StructuredViewer viewer) {
+		viewer.getControl().addMouseListener(viewerMouseListenerProvider.get());
 	}
 
 	protected AdapterFactoryEditingDomain loadResource(URI resourceURI) {
