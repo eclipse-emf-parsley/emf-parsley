@@ -6,6 +6,7 @@ package org.eclipse.emf.parsley.listeners;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.dialogs.DetailDialog;
 import org.eclipse.emf.parsley.dialogs.DetailFormBasedDialog;
+import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.factories.DialogFactory;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -34,22 +35,22 @@ public class OpenDialogMouseAdapter extends MouseAdapter implements
 
 	@Inject
 	private ILabelProvider labelProvider;
+	
+	@Inject 
+	protected IEditingStrategy editingStrategy;
 
 	@Override
 	public void mouseDoubleClick(MouseEvent event) {
 		if (event.button == 1) {
 			EObject eObject = helper.getEObjectFromMouseEvent(event);
-			System.out.println(eObject);
 			if (eObject != null) {
+				EObject toBeEdited = editingStrategy.prepare(eObject);
 				DetailDialog dialog = dialogFactory.createDetailDialog(Display
 						.getCurrent().getActiveShell(), labelProvider
-						.getText(eObject), eObject);
+						.getText(eObject), toBeEdited);
 				int rc = dialog.open();
 				if (rc == Window.OK) {
-					System.out.println("OK pressed");
-					// Save entered text (dialog.getValue()) back to table
-				} else {
-					System.out.println("Cancel pressed");
+					editingStrategy.update(eObject, toBeEdited);
 				}
 			}
 		}

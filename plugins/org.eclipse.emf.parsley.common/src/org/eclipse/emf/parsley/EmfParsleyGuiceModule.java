@@ -14,6 +14,8 @@ import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.emf.parsley.builders.TableViewerColumnBuilder;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
+import org.eclipse.emf.parsley.edit.IEditingStrategy;
+import org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy;
 import org.eclipse.emf.parsley.edit.ResourceSaveManager;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.emf.parsley.edit.action.EmfActionManager;
@@ -206,6 +208,10 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 
 	public Class<? extends ProposalCreator> bindProposalCreator() {
 		return ProposalCreator.class;
+	}
+
+	public Class<? extends IEditingStrategy> bindIEditingStrategy() {
+		return OnTheFlyEditingStrategy.class;
 	}
 
 	public Class<? extends AdapterFactoryEditingDomain> bindAdapterFactoryEditingDomain() {
