@@ -4,9 +4,12 @@
     <contributions label="Kepler RCP">
       <repositories location="http://download.eclipse.org/releases/kepler">
         <bundles name="org.apache.log4j"/>
+        <bundles name="org.apache.commons.logging"/>
+        <bundles name="org.eclipse.emf.cdo.net4j"/>
+        <bundles name="org.eclipse.net4j.tcp"/>
         <features name="org.eclipse.emf.databinding.edit.feature.group"/>
         <features name="org.eclipse.emf.rap.sdk.feature.group"/>
-        <features name="org.eclipse.rap.sdk.feature.feature.group"/>
+        <features name="org.eclipse.emf.query.feature.group"/>
       </repositories>
     </contributions>
     <contributions description="Xtext Releases" label="Xtext Releases">
@@ -14,6 +17,15 @@
         <bundles name="com.google.guava"/>
         <bundles name="com.google.inject"/>
         <bundles name="javax.inject"/>
+        <bundles name="org.eclipse.xtext.xbase.lib"/>
+      </repositories>
+    </contributions>
+    <contributions description="RAP 2.1 TP" label="RAP 2.1 TP">
+      <repositories location="http://download.eclipse.org/rt/rap/2.1">
+        <features name="org.eclipse.rap.equinox.target.feature.feature.group"/>
+        <features name="org.eclipse.rap.examples.feature.feature.group"/>
+        <features name="org.eclipse.rap.feature.feature.group"/>
+        <features name="org.eclipse.rap.sdk.feature.feature.group"/>
       </repositories>
     </contributions>
   </validationSets>
