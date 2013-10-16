@@ -28,7 +28,10 @@ import org.eclipse.emf.parsley.factories.FormFactory;
 import org.eclipse.emf.parsley.factories.TreeFormFactory;
 import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
-import org.eclipse.emf.parsley.listeners.ViewerMouseAdapter;
+import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
+import org.eclipse.emf.parsley.listeners.IViewerMouseListener;
+import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
+import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
@@ -81,8 +84,12 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 		return ResourceLoader.class;
 	}
 
-	public Class<? extends ViewerMouseAdapter> bindViewerMouseAdapter() {
-		return ViewerMouseAdapter.class;
+	public Class<? extends IEditorMouseListener> bindIEditorMouseListener() {
+		return OpenPropertyViewMouseAdapter.class;
+	}
+
+	public Class<? extends IViewerMouseListener> bindIViewerMouseListener() {
+		return OpenDialogMouseAdapter.class;
 	}
 
 	public Class<? extends ILabelProvider> bindILabelProvider() {

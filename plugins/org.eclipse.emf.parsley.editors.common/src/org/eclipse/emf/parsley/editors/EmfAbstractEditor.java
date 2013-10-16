@@ -72,7 +72,7 @@ import org.eclipse.emf.parsley.editors.outline.EmfEditorContentOutlineFactory;
 import org.eclipse.emf.parsley.editors.outline.EmfEditorContentOutlinePage;
 import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
-import org.eclipse.emf.parsley.listeners.ViewerMouseAdapter;
+import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
@@ -439,7 +439,7 @@ public abstract class EmfAbstractEditor
 protected ViewerFactory treeViewerFactory;
 
 @Inject
-protected Provider<ViewerMouseAdapter> viewerMouseAdapterProvider;
+protected Provider<IEditorMouseListener> mouseAdapterProvider;
 
 @Inject
 protected EmfEditorContentOutlineFactory emfContentOutlineFactory;
@@ -816,12 +816,12 @@ protected ViewerInitializer viewerInitializer;
 		viewerInitializer.addContextMenu(viewer, (WorkbenchActionBarContributor)getActionBarContributor(),
 				editingDomain, this, this);
 		
-		ViewerMouseAdapter listener = getViewerMouseAdapter();
+		IEditorMouseListener listener = getMouseAdapter();
 		viewer.getControl().addMouseListener(listener);
 	}
 
-	protected ViewerMouseAdapter getViewerMouseAdapter() {
-		return viewerMouseAdapterProvider.get();
+	protected IEditorMouseListener getMouseAdapter() {
+		return mouseAdapterProvider.get();
 	}
 
 

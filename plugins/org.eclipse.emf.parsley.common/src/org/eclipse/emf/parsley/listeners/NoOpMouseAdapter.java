@@ -3,21 +3,18 @@ package org.eclipse.emf.parsley.listeners;
 import org.eclipse.swt.events.MouseEvent;
 
 /**
- * This implementation does nothing upon events.
+ * This implementation does nothing upon mouse events.
  * 
- * @author bettini
+ * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
-public class ViewerNoOpMouseAdapter extends ViewerMouseAdapter {
-	@Override
+public class NoOpMouseAdapter implements IEditorMouseListener {
 	public void mouseDoubleClick(MouseEvent event) {
 	}
 
-	@Override
 	public void mouseDown(MouseEvent e) {
 	}
 
-	@Override
 	public void mouseUp(MouseEvent e) {
 	}
 }

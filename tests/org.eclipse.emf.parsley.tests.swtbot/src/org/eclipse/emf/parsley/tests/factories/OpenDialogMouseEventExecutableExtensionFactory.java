@@ -4,8 +4,8 @@
 package org.eclipse.emf.parsley.tests.factories;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.listeners.ViewerMouseAdapter;
-import org.eclipse.emf.parsley.listeners.ViewerOpenDialogMouseAdapter;
+import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
+import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
 import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
 
 
@@ -25,8 +25,8 @@ public class OpenDialogMouseEventExecutableExtensionFactory extends
 				EmfParsleyTestsActivator.getDefault()) {
 
 			@Override
-			public Class<? extends ViewerMouseAdapter> bindViewerMouseAdapter() {
-				return ViewerOpenDialogMouseAdapter.class;
+			public Class<? extends IEditorMouseListener> bindIEditorMouseListener() {
+				return OpenDialogMouseAdapter.class;
 			}
 
 		};
