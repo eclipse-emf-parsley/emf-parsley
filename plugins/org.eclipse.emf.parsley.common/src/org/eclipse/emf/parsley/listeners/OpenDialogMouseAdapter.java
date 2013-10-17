@@ -42,15 +42,15 @@ public class OpenDialogMouseAdapter extends MouseAdapter implements
 	@Override
 	public void mouseDoubleClick(MouseEvent event) {
 		if (event.button == 1) {
-			EObject eObject = helper.getEObjectFromMouseEvent(event);
-			if (eObject != null) {
-				EObject toBeEdited = editingStrategy.prepare(eObject);
+			EObject original = helper.getEObjectFromMouseEvent(event);
+			if (original != null) {
+				EObject toBeEdited = editingStrategy.prepare(original);
 				DetailDialog dialog = dialogFactory.createDetailDialog(Display
 						.getCurrent().getActiveShell(), labelProvider
-						.getText(eObject), toBeEdited);
+						.getText(original), original, toBeEdited);
 				int rc = dialog.open();
 				if (rc == Window.OK) {
-					editingStrategy.update(eObject, toBeEdited);
+					editingStrategy.update(original, toBeEdited);
 				}
 			}
 		}

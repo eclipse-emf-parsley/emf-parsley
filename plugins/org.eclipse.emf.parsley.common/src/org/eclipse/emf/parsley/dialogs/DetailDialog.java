@@ -24,6 +24,11 @@ public class DetailDialog extends AbstractDetailDialog {
 		super(parentShell, title, eObject);
 	}
 
+	public DetailDialog(Shell parentShell, String title, EObject original,
+			EObject toBeEdited) {
+		super(parentShell, title, original, toBeEdited);
+	}
+
 	protected AbstractDetailComposite createDetailComposite(Composite composite) {
 		return dialogFactory.createDialogDetailComposite(composite, SWT.NONE);
 	}

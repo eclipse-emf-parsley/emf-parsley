@@ -15,8 +15,6 @@
  */
 package org.eclipse.emf.parsley.binding;
 
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
-
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,8 +31,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 
 import com.google.common.base.Predicate;
 
@@ -44,22 +42,20 @@ import com.google.common.base.Predicate;
  * 
  */
 public class ProposalCreator {
-	private ResourceSet resourceSet;
+	private Resource resource;
 	
 	private PolymorphicDispatcher.ErrorHandler<List<?>> proposals_errorHandler = new PolymorphicDispatcher.NullErrorHandler<List<?>>();
 
-	public ResourceSet getResourceSet() {
-		return resourceSet;
+	public Resource getResource() {
+		return resource;
 	}
 
-	public void setResourceSet(ResourceSet resourceSet) {
-		this.resourceSet = resourceSet;
+	public void setResource(Resource resource) {
+		this.resource = resource;
 	}
 	
-	protected void retrieveResourceSet(EObject eObject) {
-		Resource resource = eObject.eResource();
-		resourceSet = (resource == null ? null : resource
-				.getResourceSet());
+	protected void retrieveResource(EObject eObject) {
+		resource = eObject.eResource();
 	}
 
 	/**
@@ -75,8 +71,8 @@ public class ProposalCreator {
 			return proposals;
 		}
 		
-		if (resourceSet == null)
-			retrieveResourceSet(eObject);
+		if (resource == null)
+			retrieveResource(eObject);
 
 		return defaultProposals(feature);
 	}
@@ -103,11 +99,11 @@ public class ProposalCreator {
 	protected List<Object> findAllInstances(EClassifier type) {
 		List<Object> objects = new ArrayList<Object>();
 		
-		if (resourceSet == null)
+		if (resource == null)
 			return objects;
 		
 		TreeIterator<Object> allContents = EcoreUtil.getAllContents(
-				resourceSet.getResources(), true);
+				resource.getResourceSet().getResources(), true);
 		while (allContents.hasNext()) {
 			Object o = allContents.next();
 			if (type.isInstance(o))

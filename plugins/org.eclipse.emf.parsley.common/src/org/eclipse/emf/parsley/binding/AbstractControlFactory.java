@@ -33,9 +33,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
+import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
@@ -79,6 +79,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	protected Composite parent = null;
 
 	protected EObject owner;
+	protected Resource resource;
 	protected EditingDomain domain;
 	protected EMFDataBindingContext edbc;
 	
@@ -107,18 +108,36 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		this.readonly = readonly;
 	}
 
-	public void init(EditingDomain domain, EObject owner, Composite parent) {
+	/**
+	 * Initializes this factory for creating {@link Control}s with
+	 * Data Binding.
+	 * 
+	 * The passed {@link EditingDomain} can be null; in that case
+	 * Data Binding will be implemented through {@link EMFProperties}, instead
+	 * of {@link EMFEditProperties}.  If the {@link EditingDomain} is null
+	 * views and editors will not be notified about changes to the passed
+	 * {@link EObject}.  This is useful when you want to create {@link Control}s
+	 * that act on a copy of the original object (see also {@link IEditingStrategy}).
+	 * 
+	 * @param domain
+	 * @param resource
+	 * @param owner
+	 * @param parent
+	 * @see IEditingStrategy
+	 */
+	public void init(EditingDomain domain, Resource resource, EObject owner, Composite parent) {
 		this.edbc = new EMFDataBindingContext();
 		this.domain = domain;
 		this.owner = owner;
+		this.resource = resource;
 		this.parent = parent;
 	}
 
-	protected ResourceSet getResourceSet(EditingDomain domain, EObject owner) {
-		Resource resource = owner.eResource();
-		ResourceSet resourceSet = (resource == null ? null : resource
-				.getResourceSet());
-		return domain == null ? resourceSet : domain.getResourceSet();
+	protected Resource getResource() {
+		if (resource == null) {
+			resource = owner.eResource();
+		}
+		return resource;
 	}
 
 	public Control create(EStructuralFeature feature) {
@@ -149,7 +168,6 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		Control retVal = retValAndTargetPair.getControl();
 		IObservableValue target = retValAndTargetPair.getObservableValue();
 
-		// TODO Controllare perch� il bindValue � diverso!
 		Binding binding = edbc.bindValue(target, source);
 		binding.updateModelToTarget();
 		return retVal;
@@ -252,7 +270,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	}
 
 	public List<?> createProposals(EStructuralFeature feature) {
-		proposalcreator.setResourceSet(getResourceSet(domain, owner));
+		proposalcreator.setResource(getResource());
 		return proposalcreator.proposals(owner, feature);
 	}
 

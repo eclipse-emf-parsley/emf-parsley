@@ -3,8 +3,9 @@ package org.eclipse.emf.parsley.widgets;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.binding.DialogControlFactory;
-import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.layout.GridLayout;
@@ -17,8 +18,6 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 	protected DialogPropertyDescriptionProvider dialogPropertyDescriptionProvider;
 
 	protected DialogControlFactory dialogControlFactory;
-
-	protected EditingDomainFinder editingDomainFinder;
 
 	protected ILabelProvider labelProvider;
 
@@ -48,15 +47,6 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		this.dialogControlFactory = formControlFactory;
 	}
 
-	public EditingDomainFinder getEditingDomainFinder() {
-		return editingDomainFinder;
-	}
-
-	@Inject
-	public void setEditingDomainFinder(EditingDomainFinder editingDomainFinder) {
-		this.editingDomainFinder = editingDomainFinder;
-	}
-
 	public ILabelProvider getLabelProvider() {
 		return labelProvider;
 	}
@@ -66,9 +56,8 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		this.labelProvider = labelProvider;
 	}
 
-	protected void initControlFactory(EObject model) {
-		dialogControlFactory.init(
-				editingDomainFinder.getEditingDomainFor(model), model, this);
+	protected void initControlFactory(EditingDomain domain, Resource resource, EObject model) {
+		dialogControlFactory.init(domain, resource, model, this);
 	}
 
 	protected void createControlForFeature(EStructuralFeature feature) {

@@ -4,6 +4,8 @@
 package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.widgets.AbstractDetailComposite;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -22,17 +24,42 @@ import org.eclipse.swt.widgets.Shell;
 public abstract class AbstractDetailDialog extends Dialog {
 
 	private String title;
-	private EObject eObject;
-	
-	public AbstractDetailDialog(Shell parentShell, String title, EObject eObject) {
+	private EObject original;
+	private EObject toBeEdited;
+
+	/**
+	 * Initializes this dialog for editing the {@link EObject} object.
+	 * 
+	 * @param parentShell
+	 * @param title
+	 * @param object
+	 */
+	public AbstractDetailDialog(Shell parentShell, String title,
+			EObject object) {
+		this(parentShell, title, object, object);
+	}
+
+	/**
+	 * Initializes this dialog for editing the {@link EObject} toBeEdited;
+	 * the {@link EObject} original is needed to retrieve additional information
+	 * such as the {@link EditingDomain} and the containing {@link Resource}.
+	 * 
+	 * @param parentShell
+	 * @param title
+	 * @param original
+	 * @param toBeEdited
+	 */
+	public AbstractDetailDialog(Shell parentShell, String title,
+			EObject original, EObject toBeEdited) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.TITLE | SWT.MAX);
-//		setShellStyle(SWT.CLOSE | SWT.MAX | SWT.TITLE | SWT.BORDER
-//				| SWT.APPLICATION_MODAL | SWT.RESIZE | getDefaultOrientation());
+		// setShellStyle(SWT.CLOSE | SWT.MAX | SWT.TITLE | SWT.BORDER
+		// | SWT.APPLICATION_MODAL | SWT.RESIZE | getDefaultOrientation());
 		this.title = title;
-		this.eObject = eObject;
+		this.original = original;
+		this.toBeEdited = toBeEdited;
 	}
-	
+
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
@@ -40,22 +67,25 @@ public abstract class AbstractDetailDialog extends Dialog {
 			newShell.setText(title);
 		}
 	}
-	
+
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite dialogArea = (Composite) super.createDialogArea(parent);
-		//DetailComponent detailComponent = new DetailComponent(dialogArea, SWT.NONE, this.eObject);
+		// DetailComponent detailComponent = new DetailComponent(dialogArea,
+		// SWT.NONE, this.eObject);
 		Composite composite = new Composite(dialogArea, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
 		final AbstractDetailComposite detailEmfComponent = createDetailComposite(composite);
-		detailEmfComponent.init(eObject);
-		detailEmfComponent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		detailEmfComponent.init(original, toBeEdited);
+		detailEmfComponent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
+				true, 1, 1));
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(composite);
 		createCustomArea(dialogArea);
 		return dialogArea;
 	}
 
-	abstract protected AbstractDetailComposite createDetailComposite(Composite composite);
+	abstract protected AbstractDetailComposite createDetailComposite(
+			Composite composite);
 
 	protected Composite createCustomArea(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);

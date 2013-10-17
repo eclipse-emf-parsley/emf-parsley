@@ -3,6 +3,8 @@ package org.eclipse.emf.parsley.widgets;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
@@ -21,8 +23,6 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	protected FormPropertyDescriptionProvider formPropertyDescriptionProvider;
 
 	protected FormControlFactory formControlFactory;
-
-	protected EditingDomainFinder editingDomainFinder;
 
 	protected ILabelProvider labelProvider;
 
@@ -96,13 +96,12 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		this.labelProvider = labelProvider;
 	}
 
-	protected void initControlFactory(EObject model) {
+	protected void initControlFactory(EditingDomain domain, Resource resource,
+			EObject model) {
 		scrolledForm.setText(getLabelProvider().getText(model));
 		scrolledForm.setImage(getLabelProvider().getImage(model));
 
-		formControlFactory.init(
-				editingDomainFinder.getEditingDomainFor(model), model, main,
-				toolkit);
+		formControlFactory.init(domain, resource, model, main, toolkit);
 	}
 
 	protected void createControlForFeature(EStructuralFeature feature) {

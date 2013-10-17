@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.ReplaceCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.parsley.util.EcoreUtil2;
 
 import com.google.inject.Inject;
 
@@ -35,7 +36,7 @@ public class ActOnCopyEditingStrategy implements IEditingStrategy {
 	 * .ecore.EObject)
 	 */
 	public EObject prepare(EObject original) {
-		return EcoreUtil.copy(original);
+		return EcoreUtil2.clone(original);
 	}
 
 	/*
