@@ -3,7 +3,6 @@ package org.eclipse.emf.parsley.widgets;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.binding.DialogControlFactory;
 import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
@@ -56,8 +55,8 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		this.labelProvider = labelProvider;
 	}
 
-	protected void initControlFactory(EditingDomain domain, Resource resource, EObject model) {
-		dialogControlFactory.init(domain, resource, model, this);
+	protected void initControlFactory(EditingDomain domain, EObject model) {
+		dialogControlFactory.init(domain, model, this);
 	}
 
 	protected void createControlForFeature(EStructuralFeature feature) {

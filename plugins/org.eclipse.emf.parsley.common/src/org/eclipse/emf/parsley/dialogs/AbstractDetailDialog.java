@@ -25,19 +25,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 
 	private String title;
 	private EObject original;
-	private EObject toBeEdited;
-
-	/**
-	 * Initializes this dialog for editing the {@link EObject} object.
-	 * 
-	 * @param parentShell
-	 * @param title
-	 * @param object
-	 */
-	public AbstractDetailDialog(Shell parentShell, String title,
-			EObject object) {
-		this(parentShell, title, object, object);
-	}
+	private EditingDomain domain;
 
 	/**
 	 * Initializes this dialog for editing the {@link EObject} toBeEdited;
@@ -50,14 +38,14 @@ public abstract class AbstractDetailDialog extends Dialog {
 	 * @param toBeEdited
 	 */
 	public AbstractDetailDialog(Shell parentShell, String title,
-			EObject original, EObject toBeEdited) {
+			EObject original, EditingDomain domain) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.TITLE | SWT.MAX);
 		// setShellStyle(SWT.CLOSE | SWT.MAX | SWT.TITLE | SWT.BORDER
 		// | SWT.APPLICATION_MODAL | SWT.RESIZE | getDefaultOrientation());
 		this.title = title;
 		this.original = original;
-		this.toBeEdited = toBeEdited;
+		this.domain = domain;
 	}
 
 	@Override
@@ -76,7 +64,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 		Composite composite = new Composite(dialogArea, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
 		final AbstractDetailComposite detailEmfComponent = createDetailComposite(composite);
-		detailEmfComponent.init(original, toBeEdited);
+		detailEmfComponent.init(original, domain);
 		detailEmfComponent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 				true, 1, 1));
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(composite);

@@ -4,16 +4,18 @@
 package org.eclipse.emf.parsley.listeners;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.parsley.dialogs.DetailDialog;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.dialogs.DetailFormBasedDialog;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.factories.DialogFactory;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
 
@@ -35,24 +37,33 @@ public class OpenDialogMouseAdapter extends MouseAdapter implements
 
 	@Inject
 	private ILabelProvider labelProvider;
-	
-	@Inject 
+
+	@Inject
 	protected IEditingStrategy editingStrategy;
 
 	@Override
 	public void mouseDoubleClick(MouseEvent event) {
 		if (event.button == 1) {
-			EObject original = helper.getEObjectFromMouseEvent(event);
-			if (original != null) {
-				EObject toBeEdited = editingStrategy.prepare(original);
-				DetailDialog dialog = dialogFactory.createDetailDialog(Display
-						.getCurrent().getActiveShell(), labelProvider
-						.getText(original), original, toBeEdited);
+			EObject o = helper.getEObjectFromMouseEvent(event);
+			if (o != null) {
+				editingStrategy.prepare(o);
+				Dialog dialog = createDialog(o,
+						editingStrategy.getEditingDomain(o), Display
+								.getCurrent().getActiveShell(),
+						labelProvider.getText(o));
 				int rc = dialog.open();
 				if (rc == Window.OK) {
-					editingStrategy.update(original, toBeEdited);
+					editingStrategy.update(o);
+				} else {
+					editingStrategy.rollback(o);
 				}
 			}
 		}
+	}
+
+	protected Dialog createDialog(EObject o, EditingDomain editingDomain,
+			Shell activeShell, String title) {
+		return dialogFactory.createDetailDialog(activeShell, title, o,
+				editingDomain);
 	}
 }

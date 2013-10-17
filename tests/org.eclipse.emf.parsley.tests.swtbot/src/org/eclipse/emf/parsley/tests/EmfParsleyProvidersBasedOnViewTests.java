@@ -79,7 +79,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 					// we need a non-null display and parent so we use
 					// those in the view and in the tree
 					FormToolkit formToolkit = createFormToolkit(view);
-					bindingFactory.init(null, writer.eResource(), writer,
+					bindingFactory.init(null, writer,
 							createCompositeParent(view), formToolkit);
 					Control control = bindingFactory
 							.create(EXTLibraryPackage.Literals.WRITER__NAME);
@@ -106,7 +106,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 					// we need a non-null display and parent so we use
 					// those in the view and in the tree
 					FormToolkit formToolkit = createFormToolkit(view);
-					bindingFactory.init(null, writer.eResource(), writer,
+					bindingFactory.init(null, writer,
 							createCompositeParent(view), formToolkit);
 					Control control = bindingFactory
 							.create(EXTLibraryPackage.Literals.WRITER__BOOKS);
@@ -132,7 +132,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 					// we need a non-null display and parent so we use
 					// those in the view and in the tree
 					FormToolkit formToolkit = createFormToolkit(view);
-					bindingFactory.init(null, writer.eResource(), writer,
+					bindingFactory.init(null, writer,
 							createCompositeParent(view), formToolkit);
 					List<?> proposals = bindingFactory
 							.createProposals(EXTLibraryPackage.Literals.WRITER__BOOKS);
@@ -158,7 +158,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 					// we need a non-null display and parent so we use
 					// those in the view and in the tree
 					FormToolkit formToolkit = createFormToolkit(view);
-					bindingFactory.init(null, writer.eResource(), writer.getBooks().get(0),
+					bindingFactory.init(null, writer.getBooks().get(0),
 							createCompositeParent(view), formToolkit);
 					List<?> proposals = bindingFactory
 							.createProposals(EXTLibraryPackage.Literals.BOOK__AUTHOR);
@@ -189,7 +189,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 							.createBorrower();
 					writer.eResource().getContents().add(borrower);
 
-					bindingFactory.init(null, borrower.eResource(), borrower,
+					bindingFactory.init(null, borrower,
 							createCompositeParent(view), formToolkit);
 					List<?> proposals = bindingFactory
 							.createProposals(EXTLibraryPackage.Literals.BORROWER__BORROWED);
@@ -215,7 +215,7 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 					// we need a non-null display and parent so we use
 					// those in the view and in the tree
 					FormToolkit formToolkit = createFormToolkit(view);
-					bindingFactory.init(null, writer.eResource(), writer.getBooks().get(0),
+					bindingFactory.init(null, writer.getBooks().get(0),
 							createCompositeParent(view), formToolkit);
 					List<?> proposals = bindingFactory
 							.createProposals(EXTLibraryPackage.Literals.LENDABLE__BORROWERS);

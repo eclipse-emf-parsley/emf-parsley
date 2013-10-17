@@ -5,7 +5,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
@@ -31,33 +30,22 @@ public abstract class AbstractDetailComposite extends Composite {
 	 * @param object
 	 */
 	public void init(EObject object) {
-		init(object, object);
+		init(object, editingDomainFinder.getEditingDomainFor(object));
 	}
-	
+
 	/**
-	 * Initializes this component for editing the {@link EObject} toBeEdited;
-	 * the {@link EObject} original is needed to retrieve additional information
-	 * such as the {@link EditingDomain} and the containing {@link Resource}.
-	 * 
-	 * You cannot assume that original and toBeEdited are the same {@link EObject};
-	 * similarly, you cannot assume that toBeEdited is contained in a {@link Resource}.
+	 * Initializes this component for editing the passed {@link EObject} using
+	 * the passed {@link EditingDomain}.
 	 * 
 	 * @param original
-	 * @param toBeEdited
+	 * @param editingDomain
+	 *            it can be null
 	 */
-	public void init(EObject original, EObject toBeEdited) {
-		List<EStructuralFeature> features = featuresProvider.getFeatures(original);
+	public void init(EObject original, EditingDomain editingDomain) {
+		List<EStructuralFeature> features = featuresProvider
+				.getFeatures(original);
 
-		// when we editing a copy of the original object, we must not
-		// use the editing domain, since the copy is not part of
-		// any Resource, and the saveable part would save an object
-		// with dangling references.
-		if (original != toBeEdited)
-			initControlFactory(null,
-				original.eResource(), toBeEdited);
-		else
-			initControlFactory(editingDomainFinder.getEditingDomainFor(original),
-					original.eResource(), toBeEdited);
+		initControlFactory(editingDomain, original);
 
 		for (final EStructuralFeature feature : features) {
 			// derived, unchangeable, container and containment features
@@ -79,7 +67,7 @@ public abstract class AbstractDetailComposite extends Composite {
 	}
 
 	protected abstract void initControlFactory(EditingDomain domain,
-			Resource resource, EObject model);
+			EObject model);
 
 	protected abstract void createControlForFeature(
 			final EStructuralFeature feature);

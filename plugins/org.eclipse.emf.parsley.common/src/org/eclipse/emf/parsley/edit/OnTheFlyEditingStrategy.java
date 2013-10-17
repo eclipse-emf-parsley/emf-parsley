@@ -4,6 +4,9 @@
 package org.eclipse.emf.parsley.edit;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
+
+import com.google.inject.Inject;
 
 /**
  * With this strategy the edited {@link EObject} is the original
@@ -13,19 +16,23 @@ import org.eclipse.emf.ecore.EObject;
  *
  */
 public class OnTheFlyEditingStrategy implements IEditingStrategy {
+	
+	@Inject
+	private EditingDomainFinder editingDomainFinder;
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.parsley.edit.IEditingStrategy#prepare(org.eclipse.emf.ecore.EObject)
-	 */
-	public EObject prepare(EObject original) {
-		return original;
+	public void prepare(EObject original) {
+
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.emf.parsley.edit.IEditingStrategy#update(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
-	 */
-	public void update(EObject original, EObject edited) {
+	public void update(EObject edited) {
 		// Nothing, it's already updated
+	}
+
+	public EditingDomain getEditingDomain(EObject edited) {
+		return editingDomainFinder.getEditingDomainFor(edited);
+	}
+
+	public void rollback(EObject edited) {
 	}
 
 }

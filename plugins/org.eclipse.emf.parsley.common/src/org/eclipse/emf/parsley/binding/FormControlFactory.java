@@ -17,7 +17,6 @@ package org.eclipse.emf.parsley.binding;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.widgets.Button;
@@ -41,9 +40,9 @@ public class FormControlFactory extends DialogControlFactory {
 
 	}
 
-	public void init(EditingDomain domain, Resource resource, EObject owner, Composite parent,
+	public void init(EditingDomain domain, EObject owner, Composite parent,
 			FormToolkit toolkit) {
-		init(domain, resource, owner, parent);
+		init(domain, owner, parent);
 		this.toolkit = toolkit;
 	}
 

@@ -4,6 +4,7 @@
 package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.factories.FormFactory;
 import org.eclipse.emf.parsley.widgets.AbstractDetailComposite;
 import org.eclipse.swt.SWT;
@@ -20,13 +21,9 @@ public class DetailFormBasedDialog extends AbstractDetailDialog {
 	@Inject
 	private FormFactory formFactory;
 
-	public DetailFormBasedDialog(Shell parentShell, String title, EObject eObject) {
-		super(parentShell, title, eObject);
-	}
-
 	public DetailFormBasedDialog(Shell parentShell, String title,
-			EObject original, EObject toBeEdited) {
-		super(parentShell, title, original, toBeEdited);
+			EObject original, EditingDomain domain) {
+		super(parentShell, title, original, domain);
 	}
 
 	protected AbstractDetailComposite createDetailComposite(Composite composite) {

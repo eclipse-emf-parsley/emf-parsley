@@ -4,6 +4,7 @@
 package org.eclipse.emf.parsley.edit;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
  * Represents the strategy for preparing an {@link EObject} for editing
@@ -14,7 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface IEditingStrategy {
 
-	EObject prepare(EObject original);
+	void prepare(EObject original);
 	
-	void update(EObject original, EObject edited);
+	void update(EObject edited);
+	
+	void rollback(EObject edited);
+	
+	EditingDomain getEditingDomain(EObject edited);
 }

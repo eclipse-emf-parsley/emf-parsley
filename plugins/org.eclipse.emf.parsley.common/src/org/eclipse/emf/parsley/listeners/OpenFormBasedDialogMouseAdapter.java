@@ -4,14 +4,12 @@
 package org.eclipse.emf.parsley.listeners;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.dialogs.DetailFormBasedDialog;
 import org.eclipse.emf.parsley.factories.DialogFactory;
-import org.eclipse.emf.parsley.util.EmfSelectionHelper;
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.window.Window;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
 
@@ -22,36 +20,16 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
-public class OpenFormBasedDialogMouseAdapter extends MouseAdapter
+public class OpenFormBasedDialogMouseAdapter extends OpenDialogMouseAdapter
 		implements IEditorMouseListener {
-
-	@Inject
-	private EmfSelectionHelper helper;
 
 	@Inject
 	private DialogFactory dialogFactory;
 
-	@Inject
-	private ILabelProvider labelProvider;
-
 	@Override
-	public void mouseDoubleClick(MouseEvent event) {
-		if (event.button == 1) {
-			EObject eObject = helper.getEObjectFromMouseEvent(event);
-			System.out.println(eObject);
-			if (eObject != null) {
-				DetailFormBasedDialog dialog = dialogFactory
-						.createDetailFormBasedDialog(Display.getCurrent()
-								.getActiveShell(), labelProvider
-								.getText(eObject), eObject);
-				int rc = dialog.open();
-				if (rc == Window.OK) {
-					System.out.println("OK pressed");
-					// Save entered text (dialog.getValue()) back to table
-				} else {
-					System.out.println("Cancel pressed");
-				}
-			}
-		}
+	protected Dialog createDialog(EObject o, EditingDomain editingDomain,
+			Shell activeShell, String title) {
+		return dialogFactory.createDetailFormBasedDialog(activeShell, title, o,
+				editingDomain);
 	}
 }

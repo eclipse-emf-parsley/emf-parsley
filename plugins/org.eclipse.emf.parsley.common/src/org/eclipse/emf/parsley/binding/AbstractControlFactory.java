@@ -120,16 +120,14 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * that act on a copy of the original object (see also {@link IEditingStrategy}).
 	 * 
 	 * @param domain
-	 * @param resource
 	 * @param owner
 	 * @param parent
 	 * @see IEditingStrategy
 	 */
-	public void init(EditingDomain domain, Resource resource, EObject owner, Composite parent) {
+	public void init(EditingDomain domain, EObject owner, Composite parent) {
 		this.edbc = new EMFDataBindingContext();
 		this.domain = domain;
 		this.owner = owner;
-		this.resource = resource;
 		this.parent = parent;
 	}
 
