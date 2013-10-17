@@ -18,4 +18,8 @@ public class EcoreUtil2 {
 	public static <T extends EObject> T clone(T original) {
 		return EcoreUtil.copy(original);
 	}
+
+	public static EObjectState copyState(EObject o) {
+		return new EObjectState(o);
+	}
 }
