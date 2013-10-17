@@ -8,9 +8,11 @@ import org.junit.runner.RunWith
 @RunWith(typeof(SWTBotJunit4ClassRunner))
 public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 
+	protected var editorName = EMF_TREE_EDITOR_OPEN_DIALOG
+
 	@Test
 	def void checkOpenDialogOnTreeElements() {
-		openEmfEditorOnTestFile(EMF_TREE_EDITOR_OPEN_DIALOG,
+		openEmfEditorOnTestFile(editorName,
 				MY_EXTLIBRARY)
 		
 		libraryNode.assertDialog(LIBRARY_LABEL) [|
@@ -24,7 +26,7 @@ public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 
 	@Test
 	def void checkDialogDatabinding() {
-		openEmfEditorOnTestFile(EMF_TREE_EDITOR_OPEN_DIALOG,
+		openEmfEditorOnTestFile(editorName,
 				MY_EXTLIBRARY)
 		
 		libraryNode.assertDialogEdit(LIBRARY_LABEL) [|
@@ -33,36 +35,36 @@ public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 		
 	}
 
-	def private assertDialog(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
+	def protected assertDialog(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		item.doubleClick
 		bot.shell(dialogTitle)
 		proc.apply()
 		bot.button("OK").click()
 	}
 
-	def private assertDialogEdit(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
+	def protected assertDialogEdit(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		assertDialog(item, dialogTitle, proc)
 		assertEditorDirty()
 		saveEditor()
 	}
 	
-	private def assertEditorDirty() {
-		EMF_TREE_EDITOR_OPEN_DIALOG.assertEditorDirty
+	def protected assertEditorDirty() {
+		editorName.assertEditorDirty
 	}
 	
-	private def saveEditor() {
-		getEditor(EMF_TREE_EDITOR_OPEN_DIALOG).save
+	def protected saveEditor() {
+		getEditor(editorName).save
 	}
 	
-	def private getRootOfEditor() {
-		getRootOfTreeEditor(EMF_TREE_EDITOR_OPEN_DIALOG, MY_EXT_LIBRARY_PLATFORM_URI)
+	def protected getRootOfEditor() {
+		getRootOfTreeEditor(editorName, MY_EXT_LIBRARY_PLATFORM_URI)
 	}
 	
-	def private libraryNode() {
+	def protected libraryNode() {
 		getLibraryNode(getRootOfEditor)
 	}
 
-	def private writerNode() {
+	def protected writerNode() {
 		getWriterNode(libraryNode)
 	}
 

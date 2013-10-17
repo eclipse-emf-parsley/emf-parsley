@@ -122,6 +122,8 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String EMF_TREE_EDITOR_OPEN_DIALOG = "EMF Tree Editor Opening Dialog";
 
+	protected static final String EMF_TREE_EDITOR_OPEN_DIALOG_ACTS_ON_COPY = "EMF Tree Editor Dialog Acts on a Copy";
+
 	protected static final String EMF_TREE_EDITOR_CUSTOM_LABEL = "EMF Tree Editor Custom Label";
 
 	protected static final String EMF_CUSTOM_LIBRARY_EDITOR = "EMF Custom Library Editor";
@@ -271,6 +273,8 @@ public class EmfParsleyAbstractTests {
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_FORM_DIALOG_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_DIALOG,
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_ID);
+		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_DIALOG_ACTS_ON_COPY,
+				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_ACTS_ON_COPY_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_CUSTOM_LABEL,
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_CUSTOM_LABEL);
 		editorNamesToId.put(EMF_CUSTOM_LIBRARY_EDITOR,

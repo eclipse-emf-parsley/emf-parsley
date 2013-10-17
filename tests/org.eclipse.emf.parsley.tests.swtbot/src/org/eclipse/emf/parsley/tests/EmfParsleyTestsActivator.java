@@ -38,6 +38,8 @@ public class EmfParsleyTestsActivator extends AbstractUIPlugin {
 
 	public static final String EMF_TREE_EDITOR_OPEN_DIALOG_ID = "org.eclipse.emf.parsley.openDialogOnDoubleClick";
 
+	public static final String EMF_TREE_EDITOR_OPEN_DIALOG_ACTS_ON_COPY_ID = "org.eclipse.emf.parsley.openDialogActsOnCopy";
+
 	public static final String EMF_TREE_EDITOR_CUSTOM_LABEL = "org.eclipse.emf.parsley.customLabel";
 
 	public static final String EMF_TREE_EDITOR_FOR_STATEMACHINE = "org.eclipse.emf.parsley.statemachine";
