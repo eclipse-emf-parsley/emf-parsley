@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Parsley Library RAP
+Bundle-SymbolicName: org.eclipse.emf.parsley.examples.cdo.rap;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.rap.ui;bundle-version="[2.0.0,3.0.0)"

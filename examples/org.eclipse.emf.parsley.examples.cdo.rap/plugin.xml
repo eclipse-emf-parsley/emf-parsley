@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="demoapp.entrypoints"
+         point="org.eclipse.rap.ui.entrypoint">
+      <entrypoint
+            path="/demo"
+            applicationId="org.eclipse.emf.parsley.examples.cdo.rap.demoapp"
+            id="demoapp.entrypoint">
+      </entrypoint>
+   </extension>
+   <extension
+         id="org.eclipse.emf.parsley.examples.cdo.rap.demoapp"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            thread="main"
+            cardinality="singleton-global"
+            visible="true">
+         <run
+               class="org.eclipse.emf.parsley.examples.cdo.rap.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RAP Perspective"
+            class="org.eclipse.emf.parsley.examples.cdo.rap.Perspective"
+            id="org.eclipse.emf.parsley.examples.cdo.rap.perspective">
+      </perspective>
+   </extension>
+
+</plugin>
