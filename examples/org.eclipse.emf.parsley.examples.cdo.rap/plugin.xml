@@ -31,17 +31,28 @@
             id="org.eclipse.emf.parsley.examples.cdo.rap.perspective">
       </perspective>
    </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="*">
-         <view
-               id="org.eclipse.emf.parsley.examples.cdo.treeformview"
-               minimized="false"
-               relationship="stack"
-               relative="org.eclipse.ui.editorss">
-         </view>
-      </perspectiveExtension>
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="file"
+               label="File">
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.views.showView"
+                  label="Show View"
+                  style="push">
+               <parameter
+                     name="org.eclipse.ui.views.showView.viewId"
+                     value="org.eclipse.emf.parsley.examples.cdo.treeformview">
+               </parameter>
+            </command>
+         </menu>
+      </menuContribution>
    </extension>
 
 </plugin>
