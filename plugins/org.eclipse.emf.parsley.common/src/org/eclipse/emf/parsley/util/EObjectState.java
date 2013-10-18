@@ -8,6 +8,7 @@ import java.util.HashMap;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 import com.google.common.collect.Lists;
 
@@ -25,6 +26,9 @@ public class EObjectState extends HashMap<EStructuralFeature, Object> {
 		
 		for (EStructuralFeature f : o.eClass().getEAllStructuralFeatures()) {
 			Object eGet = o.eGet(f);
+			if (eGet instanceof FeatureMap)
+				continue;
+			
 			if (eGet instanceof EList<?>) {
 				EList<?> list = (EList<?>) eGet;
 				// make sure to store a copy of the list

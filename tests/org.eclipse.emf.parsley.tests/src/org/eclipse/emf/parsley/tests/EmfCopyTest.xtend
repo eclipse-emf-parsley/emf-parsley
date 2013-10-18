@@ -56,6 +56,17 @@ class EmfCopyTest {
 		wr.assertBooks(1)
 		b.author.assertSame(wr)
 	}
+
+	@Test def void testFeatureMapCase() {
+		1.assertEquals(lib.people.size)
+		val state = EcoreUtil2.copyState(lib)
+		1.assertEquals(
+			(state.get(EXTLibraryPackage.eINSTANCE.library_Books) as List<?>).size
+		)
+		state.copyStateTo(lib)
+		1.assertEquals(lib.people.size)
+		1.assertEquals(lib.writers.size)
+	}
 	
 	def private assertBooks(Writer w, int expectedSize) {
 		expectedSize.assertEquals(w.books.size)

@@ -7,7 +7,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.parsley.util.EObjectState;
@@ -15,13 +14,15 @@ import org.eclipse.emf.parsley.util.EObjectState;
 import com.google.inject.Inject;
 
 /**
- * The edited object is a copy of the original one; IMPORTANT: the copy is not
- * part of any {@link Resource}.
+ * The object is being edited without live notifications, so that views do not
+ * get updated until the editing is submitted, for instance, with a dialog "OK"
+ * button; the editing can also be undone and the object is rolledback to its
+ * original state.
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
-public class ActOnCopyEditingStrategy implements IEditingStrategy {
+public class UndoableEditingStrategy implements IEditingStrategy {
 
 	@Inject
 	private EditingDomainFinder editingDomainFinder;
@@ -52,20 +53,22 @@ public class ActOnCopyEditingStrategy implements IEditingStrategy {
 	public void update(EObject edited) {
 		enableNotifications(edited, true);
 		EditingDomain domain = editingDomainFinder.getEditingDomainFor(edited);
-		EditCommand editCommand = new EditCommand(
-				domain, "Edit "
-						+ edited.eClass().getName(), edited, state);
+		EditCommand editCommand = new EditCommand(domain, "Edit "
+				+ edited.eClass().getName(), edited, state);
 		domain.getCommandStack().execute(editCommand);
-		edited.eNotify(new ViewerNotification(
-			new ENotificationImpl(
-				(InternalEObject) edited, Notification.SET, 
-					edited.eClass().getEAllStructuralFeatures().get(0).getFeatureID(), null, edited), 
-			edited, false, true));
+		triggerViewerNotification(edited);
+	}
+
+	protected void triggerViewerNotification(EObject edited) {
+		edited.eNotify(new ViewerNotification(new ENotificationImpl(
+				(InternalEObject) edited, Notification.SET, edited.eClass()
+						.getEAllStructuralFeatures().get(0).getFeatureID(),
+				null, edited), edited, false, true));
 	}
 
 	public void rollback(EObject edited) {
-		state.copyStateTo(edited);
 		enableNotifications(edited, true);
+		state.copyStateTo(edited);
 	}
 
 	protected void enableNotifications(EObject edited, boolean deliver) {

@@ -4,7 +4,7 @@
 package org.eclipse.emf.parsley.tests.factories;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.edit.ActOnCopyEditingStrategy;
+import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
@@ -18,7 +18,7 @@ import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
  * @author Lorenzo Bettini
  * 
  */
-public class ActOnCopyEditingStrategyExecutableExtensionFactory extends
+public class UndoableEditingStrategyExecutableExtensionFactory extends
 		EmfParsleyTestsExecutableExtensionFactory {
 
 	@Override
@@ -33,7 +33,7 @@ public class ActOnCopyEditingStrategyExecutableExtensionFactory extends
 
 			@Override
 			public Class<? extends IEditingStrategy> bindIEditingStrategy() {
-				return ActOnCopyEditingStrategy.class;
+				return UndoableEditingStrategy.class;
 			}
 
 		};

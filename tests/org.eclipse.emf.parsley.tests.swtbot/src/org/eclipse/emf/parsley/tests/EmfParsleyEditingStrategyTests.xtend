@@ -12,7 +12,7 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogTests {
 
 	@Before
 	def void setup() {
-		editorName = EMF_TREE_EDITOR_OPEN_DIALOG_ACTS_ON_COPY
+		editorName = EMF_TREE_EDITOR_OPEN_DIALOG_UNDOABLE
 	}
 
 	@Test
@@ -38,7 +38,9 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogTests {
 		
 		"Edit Library".undo
 		
-		assertEditorNotDirty
+		assertEditorDirty
+		saveEditor()
+
 		// library label has not changed
 		libraryNode
 	}
