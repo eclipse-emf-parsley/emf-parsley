@@ -2,6 +2,7 @@ package org.eclipse.emf.parsley.tests.swtbot.cdo.util;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.cdo.server.CDOServerUtil;
 import org.eclipse.emf.cdo.server.IRepository;
@@ -50,6 +51,16 @@ public class CDOServer {
 		IPluginContainer.INSTANCE.getElement("org.eclipse.net4j.acceptors",	"tcp", "0.0.0.0:"+port);
 		
 		System.out.println(repository + " started!");
+	}
+
+	public static void main(String[] args) {
+		startMemoryRepository("demo", "2037");
+		try {
+			TimeUnit.DAYS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
