@@ -37,18 +37,10 @@ public class DialogControlFactory extends AbstractControlFactory {
 
 	}
 
-	public Label createLabel(String text) {
-		return createLabel(parent, text);
-	}
-
 	public Label createLabel(Composite parent, String text) {
 		Label label = new Label(parent, SWT.NONE);
 		label.setText(text);
 		return label;
-	}
-
-	public Button createButton(String text, int style) {
-		return createButton(parent, text, style);
 	}
 
 	public Button createButton(Composite parent, String text, int style) {
@@ -57,26 +49,10 @@ public class DialogControlFactory extends AbstractControlFactory {
 		return button;
 	}
 
-	public Text createText(String text) {
-		return createText(parent, text);
-	}
-
-	public Text createText(String text, int style) {
-		return createText(parent, text, style);
-	}
-
-	public Text createText(Composite parent, String text) {
-		return createText(parent, text, SWT.BORDER);
-	}
-
 	public Text createText(Composite parent, String text, int style) {
 		Text t = new Text(parent, style);
 		t.setText(text);
 		return t;
-	}
-
-	public ComboViewer createComboViewer(int style) {
-		return createComboViewer(parent, style);
 	}
 
 	public ComboViewer createComboViewer(Composite parent, int style) {

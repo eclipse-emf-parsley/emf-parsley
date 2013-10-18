@@ -63,7 +63,7 @@ public class MultipleFeatureControl extends Composite {
 
 	private boolean beQuiet;
 
-	public MultipleFeatureControl(final Composite parent, IWidgetFactory widgetFactory, final ILabelProvider labelProvider,
+	public MultipleFeatureControl(final Composite parent, AbstractWidgetFactory widgetFactory, final ILabelProvider labelProvider,
 			final EObject object, final EStructuralFeature feature, final ProposalCreator proposalcreator,
 			boolean readonly) {
 		super(parent, SWT.NONE);

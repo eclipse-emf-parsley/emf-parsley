@@ -69,14 +69,12 @@ import com.google.inject.Provider;
  * @author Lorenzo Bettini refactoring for EmfParsley
  * 
  */
-public abstract class AbstractControlFactory implements IWidgetFactory {
+public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	@Inject
 	protected Provider<ILabelProvider> labelProviderProvider;
 
 	@Inject
 	protected ProposalCreator proposalcreator;
-
-	protected Composite parent = null;
 
 	protected EObject owner;
 	protected Resource resource;
@@ -125,10 +123,10 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * @see IEditingStrategy
 	 */
 	public void init(EditingDomain domain, EObject owner, Composite parent) {
+		super.init(parent);
 		this.edbc = new EMFDataBindingContext();
 		this.domain = domain;
 		this.owner = owner;
-		this.parent = parent;
 	}
 
 	protected Resource getResource() {
