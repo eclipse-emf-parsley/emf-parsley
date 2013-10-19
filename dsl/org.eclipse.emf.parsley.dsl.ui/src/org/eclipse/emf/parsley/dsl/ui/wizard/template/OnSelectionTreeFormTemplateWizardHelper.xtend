@@ -13,20 +13,20 @@ public class OnSelectionTreeFormTemplateWizardHelper extends AbstractTemplateWiz
 	
 	public static final OnSelectionTreeFormTemplateWizardHelper singlethon=new OnSelectionTreeFormTemplateWizardHelper();
 	
-	public String getLabel() {
+	override getLabel() {
 		return "On selection Tree Form View";
 	}
 
-	@Override
-	public String getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		return OnSelectionTreeFormView.class.getName();
+	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
+		return OnSelectionTreeFormView.getName();
 	}
 
-	@Override
-	public String getDescription() {
-		return "<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>"
-				+ "<li>On selection <b>table form</b> view</li>"
-				+ "<p><b>No user change is needed to run the project</b></p>";
+	override getDescription() {
+		'''
+		<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>
+		<li>On selection <b>table form</b> view</li>
+		<p><b>No user change is needed to run the project</b></p>
+		'''
 	}
 
 }

@@ -13,20 +13,20 @@ public class OnSelectionFormTemplateWizardHelper extends AbstractTemplateWizardH
 	
 	public static final OnSelectionFormTemplateWizardHelper singlethon=new OnSelectionFormTemplateWizardHelper();
 	
-	public String getLabel() {
-		return "On selection Form View";
+	override getLabel() {
+		"On selection Form View";
 	}
 
-	@Override
-	public String getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		return OnSelectionFormView.class.getName();
+	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
+		return OnSelectionFormView.getName();
 	}
 
-	@Override
-	public String getDescription() {
-		return "<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>"
-				+ "<li>On selection <b>form</b> view</li>"
-				+ "<p><b>No user change is needed to run the project</b></p>";
+	override getDescription() {
+		'''
+		<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>
+		<li>On selection <b>form</b> view</li>
+		<p><b>No user change is needed to run the project</b></p>
+		'''
 	}
 
 }

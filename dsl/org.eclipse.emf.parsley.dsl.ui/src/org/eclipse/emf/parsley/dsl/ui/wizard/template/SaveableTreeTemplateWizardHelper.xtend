@@ -13,18 +13,17 @@ public class SaveableTreeTemplateWizardHelper  extends AbstractTemplateWizardHel
 	
 	public static final SaveableTreeTemplateWizardHelper singlethon=new SaveableTreeTemplateWizardHelper();
 
-	public String getLabel() {
+	override getLabel() {
 		return "Saveable Tree View";
 	}
 
-	public String getPostFix() {
+	def getPostFix() {
 		return "TreeView";
 	}
 
-	@Override
-	public String getOrGenerateViewClass(IProject project, String projectName,	String packagePath, IProgressMonitor monitor) throws CoreException {
-		String className=getSimpleNameProject(packagePath) + getPostFix();
-		String classContent =viewFilesGenerator.generateConcreteForResourceTreeView(projectName, className,ABSTRACT_SAVEABLE+getPostFix()).toString();
+	override getOrGenerateViewClass(IProject project, String projectName,	String packagePath, IProgressMonitor monitor) throws CoreException {
+		val className=getSimpleNameProject(packagePath) + getPostFix();
+		val classContent =viewFilesGenerator.generateConcreteForResourceTreeView(projectName, className,ABSTRACT_SAVEABLE+getPostFix()).toString();
 		
 		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
 				 +className.concat(".java"), classContent,
@@ -33,12 +32,13 @@ public class SaveableTreeTemplateWizardHelper  extends AbstractTemplateWizardHel
 		return projectName+"."+className;
 	}
 
-	@Override
-	public String getDescription() {
-		return "<p>This wizard creates a plug-in that contains a view with a <b>tree</b> component.</p>"
-				+ "<p>This view read the content form a resource and can save changes, that can be performed in other parts (like Property view).</p>"
-				+ "<p><b>The user must specify:</b></p>"
-				+ "<li>the resource URI</li>";
+	override getDescription() {
+		'''
+		<p>This wizard creates a plug-in that contains a view with a <b>tree</b> component.</p>
+		<p>This view read the content form a resource and can save changes, that can be performed in other parts (like Property view).</p>
+		<p><b>The user must specify:</b></p>
+		<li>the resource URI</li>
+		'''
 	}
 
 }

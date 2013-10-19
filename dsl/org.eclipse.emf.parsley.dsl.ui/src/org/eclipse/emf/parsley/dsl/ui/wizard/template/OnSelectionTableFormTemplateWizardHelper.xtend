@@ -13,15 +13,14 @@ public class OnSelectionTableFormTemplateWizardHelper extends AbstractTemplateWi
 	
 	public static final OnSelectionTableFormTemplateWizardHelper singlethon=new OnSelectionTableFormTemplateWizardHelper();
 	
-	public String getLabel() {
-		return "On selection Table Form View";
+	override getLabel() {
+		"On selection Table Form View";
 	}
 
 
-	@Override
-	public String getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		String className=getSimpleNameProject(packagePath) + "OnSelectionTableForm";
-		String classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
+	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
+		val className=getSimpleNameProject(packagePath) + "OnSelectionTableForm";
+		val classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
 		
 		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
 				 +className.concat(".java"), classContent,
@@ -30,13 +29,14 @@ public class OnSelectionTableFormTemplateWizardHelper extends AbstractTemplateWi
 		return projectName+"."+className;
 	}
 	
-	@Override
-	public String getDescription() {
-		return "<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>"
-				+ "<li><b>On selection table form view</b></li>"
-				+ "<p><b>The user must specify:</b></p>"
-				+ "<li>how to reach the contents from the selected object</li>"
-				+ "<li>the EClass to be represented</li>";
+	override getDescription() {
+		'''
+		<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>
+		<li><b>On selection table form view</b></li>
+		<p><b>The user must specify:</b></p>
+		<li>how to reach the contents from the selected object</li>
+		<li>the EClass to be represented</li>
+		'''
 	}
 	
 }
