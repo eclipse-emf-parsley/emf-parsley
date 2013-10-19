@@ -19,8 +19,8 @@ module org.eclipse.emf.parsley.examples.mail.accountsview {
 			Folder -> {
 				switch (name) {
 					case "Inbox" : "inbox.gif"
-					case "Sent" : "sent.png"
-					case "Trash" : "trash.png"
+					case "Sent" : "sent.gif"
+					case "Trash" : "trash.gif"
 					default: "folder.gif"
 				}
 			}

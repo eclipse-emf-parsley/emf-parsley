@@ -25,7 +25,7 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 		super.createPartControl(parent);
 
 		treeViewer = new TreeViewer(parent);
-		viewerInitializer.initialize(treeViewer, getResource());
+		viewerInitializer.initialize(treeViewer, getContents(getResource()));
 
 		addContextMenu(treeViewer);
 		addMouseListener(treeViewer);
@@ -39,6 +39,10 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 	}
 
 	public StructuredViewer getViewer() {
+		return treeViewer;
+	}
+
+	public TreeViewer getTreeViewer() {
 		return treeViewer;
 	}
 

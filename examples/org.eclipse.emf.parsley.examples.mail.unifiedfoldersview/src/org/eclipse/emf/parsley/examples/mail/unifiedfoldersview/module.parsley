@@ -1,0 +1,39 @@
+import org.eclipse.emf.parsley.examples.mail.Account
+import org.eclipse.emf.parsley.examples.mail.Folder
+import org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewGuiceModule
+import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFolderContainer
+import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFoldersView
+
+/* org.eclipse.emf.parsley.examples.mail.unifiedfoldersview Emf Parsley Dsl Module file */
+module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends AccountsviewGuiceModule {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.mail.unifiedfoldersview {
+			viewname "Unified Folders"
+			viewclass UnifiedFoldersView
+		}
+	}
+	
+	labelProvider {
+		text {
+			UnifiedFolderContainer -> containerName
+			Folder -> (eContainer as Account).email
+		}
+		image {
+			UnifiedFolderContainer -> containerName.toFirstLower + ".gif"
+			Folder -> "account.gif"
+		}
+	}
+	
+	viewerContentProvider {
+		children {
+			UnifiedFolderContainer c -> {
+				c.resource.allContents.
+				filter(Folder).
+				filter[name == c.containerName]
+			}
+			Folder -> { emptyList }
+		}
+	}
+	
+}

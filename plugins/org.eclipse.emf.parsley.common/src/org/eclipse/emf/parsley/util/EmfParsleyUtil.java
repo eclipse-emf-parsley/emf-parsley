@@ -2,6 +2,7 @@ package org.eclipse.emf.parsley.util;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.IActionBars;
@@ -53,6 +54,8 @@ public class EmfParsleyUtil {
 			return (Collection<?>) contents;
 		else if (contents instanceof Iterable<?>)
 			return Lists.newArrayList((Iterable<?>)contents);
+		else if (contents instanceof Iterator<?>)
+			return Lists.newArrayList((Iterator<?>)contents);
 		else
 			return Collections.singleton(contents);
 	}

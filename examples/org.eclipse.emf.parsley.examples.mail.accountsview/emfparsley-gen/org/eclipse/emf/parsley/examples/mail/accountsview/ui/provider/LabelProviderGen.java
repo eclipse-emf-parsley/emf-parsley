@@ -42,13 +42,13 @@ public class LabelProviderGen extends ViewerLabelProvider {
     if (!_matched) {
       if (Objects.equal(getName,"Sent")) {
         _matched=true;
-        _switchResult = "sent.png";
+        _switchResult = "sent.gif";
       }
     }
     if (!_matched) {
       if (Objects.equal(getName,"Trash")) {
         _matched=true;
-        _switchResult = "trash.png";
+        _switchResult = "trash.gif";
       }
     }
     if (!_matched) {
