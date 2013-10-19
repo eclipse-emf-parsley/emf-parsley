@@ -28,7 +28,7 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogTests {
 	}
 
 	@Test
-	def void checkDialogEditAndUndo() {
+	def void checkDialogEditAndUndoAndRedo() {
 		openEmfEditorOnTestFile(editorName,
 				MY_EXTLIBRARY)
 		
@@ -43,6 +43,14 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogTests {
 
 		// library label has not changed
 		libraryNode
+		
+		"Edit Library".redo
+		
+		assertEditorDirty
+		saveEditor()
+
+		// library label has been changed by Redo
+		libraryModifiedNode
 	}
 
 	def protected assertDialogEditAndCancel(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {

@@ -64,6 +64,10 @@ public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 		getLibraryNode(getRootOfEditor)
 	}
 
+	def protected libraryModifiedNode() {
+		getLibraryModifiedNode(getRootOfEditor)
+	}
+
 	def protected writerNode() {
 		getWriterNode(libraryNode)
 	}

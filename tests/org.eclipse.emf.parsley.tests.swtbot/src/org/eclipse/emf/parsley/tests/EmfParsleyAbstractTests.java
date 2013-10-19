@@ -347,6 +347,10 @@ public class EmfParsleyAbstractTests {
 		return treeItem.expand().getNode(LIBRARY_LABEL);
 	}
 
+	protected SWTBotTreeItem getLibraryModifiedNode(final SWTBotTreeItem treeItem) {
+		return treeItem.expand().getNode(LIBRARY_LABEL + " MODIFIED");
+	}
+
 	protected SWTBotTreeItem getWriterNode(final SWTBotTreeItem treeItem) {
 		return treeItem.expand().getNode(WRITER_LABEL);
 	}
@@ -781,6 +785,10 @@ public class EmfParsleyAbstractTests {
 
 	protected void undo(final String undoText) {
 		bot.menu("Edit").menu("Undo " + undoText).click();
+	}
+
+	protected void redo(final String undoText) {
+		bot.menu("Edit").menu("Redo " + undoText).click();
 	}
 
 	protected SWTBotView getLibraryView(String libraryView) {
