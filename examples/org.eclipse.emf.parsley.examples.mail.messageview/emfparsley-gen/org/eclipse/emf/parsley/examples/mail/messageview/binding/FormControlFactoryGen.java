@@ -6,13 +6,11 @@ import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 
 @SuppressWarnings("all")
-public class FormFeatureControlFactoryGen extends FormControlFactory {
+public class FormControlFactoryGen extends FormControlFactory {
   public Control control_Mail_message(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
     Control control = createControl_Mail_message();
     dataBindingContext.bindValue(
@@ -24,12 +22,9 @@ public class FormFeatureControlFactoryGen extends FormControlFactory {
   protected Control createControl_Mail_message() {
     Text _xblockexpression = null;
     {
-      FormToolkit _toolkit = this.getToolkit();
-      Composite _parent = this.getParent();
-      int _bitwiseOr = (SWT.MULTI | SWT.BORDER);
-      int _bitwiseOr_1 = (_bitwiseOr | SWT.WRAP);
-      int _bitwiseOr_2 = (_bitwiseOr_1 | SWT.V_SCROLL);
-      final Text t = _toolkit.createText(_parent, "", _bitwiseOr_2);
+      final Text t = this.createText("", 
+        SWT.MULTI, SWT.BORDER, 
+        SWT.WRAP, SWT.V_SCROLL);
       t.setEditable(false);
       _xblockexpression = (t);
     }

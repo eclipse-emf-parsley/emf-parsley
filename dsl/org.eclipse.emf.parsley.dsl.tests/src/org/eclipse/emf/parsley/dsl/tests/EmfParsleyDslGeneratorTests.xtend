@@ -561,6 +561,7 @@ import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
+import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
@@ -568,6 +569,7 @@ import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -629,6 +631,13 @@ public class FormControlFactoryGen extends FormControlFactory {
     ISWTObservableValue _observeText = SWTObservables.observeText(it, SWT.Modify);
     return _observeText;
   }
+  
+  public Control control_Borrower_firstName(final Borrower it) {
+    String _firstName = it.getFirstName();
+    Text _createText = this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
+      SWT.WRAP, SWT.V_SCROLL);
+    return _createText;
+  }
 }
 ''']
 		)
@@ -669,6 +678,7 @@ import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.parsley.binding.DialogControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
+import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
@@ -676,6 +686,7 @@ import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -734,6 +745,13 @@ public class DialogControlFactoryGen extends DialogControlFactory {
   protected IObservableValue createTarget_Writer_firstName(final Control it) {
     ISWTObservableValue _observeText = SWTObservables.observeText(it, SWT.Modify);
     return _observeText;
+  }
+  
+  public Control control_Borrower_firstName(final Borrower it) {
+    String _firstName = it.getFirstName();
+    Text _createText = this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
+      SWT.WRAP, SWT.V_SCROLL);
+    return _createText;
   }
 }
 ''']

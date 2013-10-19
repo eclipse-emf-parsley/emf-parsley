@@ -197,6 +197,10 @@ module my.empty {
 			Writer : firstName -> 
 				toolkit.createLabel(parent, "")
 				target observeText(SWT::Modify)
+			Borrower : firstName -> {
+				createText(firstName, SWT::MULTI, SWT::BORDER,
+									SWT::WRAP, SWT::V_SCROLL)
+			}
 		}
 	}
 }
@@ -219,6 +223,10 @@ module my.empty {
 			Writer : firstName -> 
 				createLabel(parent, "")
 				target observeText(SWT::Modify)
+			Borrower : firstName -> {
+				createText(firstName, SWT::MULTI, SWT::BORDER,
+									SWT::WRAP, SWT::V_SCROLL)
+			}
 		}
 	}
 }

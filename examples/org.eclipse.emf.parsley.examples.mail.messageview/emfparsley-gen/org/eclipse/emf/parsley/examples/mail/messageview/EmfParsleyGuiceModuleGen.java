@@ -2,7 +2,7 @@ package org.eclipse.emf.parsley.examples.mail.messageview;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
-import org.eclipse.emf.parsley.examples.mail.messageview.binding.FormFeatureControlFactoryGen;
+import org.eclipse.emf.parsley.examples.mail.messageview.binding.FormControlFactoryGen;
 import org.eclipse.emf.parsley.examples.mail.messageview.ui.provider.FeaturesProviderGen;
 import org.eclipse.emf.parsley.examples.mail.messageview.ui.provider.LabelProviderGen;
 import org.eclipse.emf.parsley.examples.mail.messageview.ui.provider.PropertyDescriptionProviderGen;
@@ -37,6 +37,6 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   
   @Override
   public Class<? extends FormControlFactory> bindFormControlFactory() {
-    return FormFeatureControlFactoryGen.class;
+    return FormControlFactoryGen.class;
   }
 }
