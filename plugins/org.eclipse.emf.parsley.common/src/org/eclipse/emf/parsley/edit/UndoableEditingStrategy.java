@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.parsley.util.EObjectState;
+import org.eclipse.jface.viewers.ILabelProvider;
 
 import com.google.inject.Inject;
 
@@ -26,6 +27,9 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 
 	@Inject
 	private EditingDomainFinder editingDomainFinder;
+
+	@Inject
+	private ILabelProvider labelProvider;
 
 	private EObjectState state;
 
@@ -54,7 +58,7 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 		enableNotifications(edited, true);
 		EditingDomain domain = editingDomainFinder.getEditingDomainFor(edited);
 		EditCommand editCommand = new EditCommand(domain, "Edit "
-				+ edited.eClass().getName(), edited, state);
+				+ labelProvider.getText(edited), edited, state);
 		domain.getCommandStack().execute(editCommand);
 		triggerViewerNotification(edited);
 	}

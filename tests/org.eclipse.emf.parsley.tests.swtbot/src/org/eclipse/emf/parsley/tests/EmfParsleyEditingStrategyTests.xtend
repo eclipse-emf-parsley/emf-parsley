@@ -36,21 +36,25 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogTests {
 			modifyText(LIBRARY_NAME)
 		]
 		
-		"Edit Library".undo
+		editMenuItemForModifiedLibrary().undo
 		
 		assertEditorDirty
 		saveEditor()
 
 		// library label has not changed
-		libraryNode
+		libraryNode()
 		
-		"Edit Library".redo
+		editMenuItemForModifiedLibrary().redo
 		
 		assertEditorDirty
 		saveEditor()
 
 		// library label has been changed by Redo
 		libraryModifiedNode
+	}
+	
+	protected def editMenuItemForModifiedLibrary() {
+		"Edit " + LIBRARY_LABEL + " MODIFIED"
 	}
 
 	def protected assertDialogEditAndCancel(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
