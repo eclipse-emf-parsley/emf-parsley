@@ -25,6 +25,9 @@ public class EObjectState extends HashMap<EStructuralFeature, Object> {
 			return;
 		
 		for (EStructuralFeature f : o.eClass().getEAllStructuralFeatures()) {
+			if (!f.isChangeable() || f.isDerived())
+				continue;
+			
 			Object eGet = o.eGet(f);
 			if (eGet instanceof FeatureMap)
 				continue;
