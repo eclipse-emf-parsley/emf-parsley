@@ -9,17 +9,17 @@ import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
  * @author Francesco Guidieri
  * 
  */
-public class OnSelectionTableFormTemplateWizardHelper extends AbstractTemplateWizardHelper{
+public class OnSelectionTableTemplateWizardHelper extends AbstractTemplateWizardHelper{
 	
-	public static final OnSelectionTableFormTemplateWizardHelper singlethon=new OnSelectionTableFormTemplateWizardHelper();
+	public static final OnSelectionTableTemplateWizardHelper singlethon=new OnSelectionTableTemplateWizardHelper();
 	
 	override getLabel() {
-		"On selection Table Form View";
+		"On selection Table View";
 	}
 
 
 	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		val className=getSimpleNameProject(packagePath) + "OnSelectionTableForm";
+		val className=getSimpleNameProject(packagePath) + "OnSelectionTable";
 		val classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
 		
 		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
@@ -32,10 +32,9 @@ public class OnSelectionTableFormTemplateWizardHelper extends AbstractTemplateWi
 	override getDescription() {
 		'''
 		<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>
-		<li><b>On selection table form view</b></li>
+		<li><b>On selection table view</b></li>
 		<p><b>The user must specify:</b></p>
-		<li>how to reach the contents from the selected object</li>
-		<li>the EClass to be represented</li>
+		<li>the EStructuralFeature for getting the contents from the resource</li>
 		'''
 	}
 	

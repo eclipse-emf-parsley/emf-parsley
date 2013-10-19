@@ -102,5 +102,7 @@ public abstract class AbstractOnSelectionTableView extends
 	/**
 	 * @return the {@link EClass} to build the table columns
 	 */
-	protected abstract EClass getEClass();
+	protected EClass getEClass() {
+		return (EClass) getEStructuralFeature().getEType();
+	}
 }

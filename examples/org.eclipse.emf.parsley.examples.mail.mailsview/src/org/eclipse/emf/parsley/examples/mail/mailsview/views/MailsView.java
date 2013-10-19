@@ -3,7 +3,6 @@
  */
 package org.eclipse.emf.parsley.examples.mail.mailsview.views;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.mail.MailPackage;
 import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
@@ -20,11 +19,6 @@ public class MailsView extends AbstractOnSelectionTableView {
 	@Override
 	protected EStructuralFeature getEStructuralFeature() {
 		return MailPackage.Literals.FOLDER__MAILS;
-	}
-
-	@Override
-	protected EClass getEClass() {
-		return MailPackage.Literals.MAIL;
 	}
 
 }

@@ -12,7 +12,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	val TABLE_FORM_TEMPLATE = "Saveable Table Form View"
 	val TABLE_TEMPLATE = "Saveable Table View"
 	val ONSELECTION_TREE_TEMPLATE = "On selection Tree Form View"
-	val ONSELECTION_TABLE_TEMPLATE = "On selection Table Form View"	
+	val ONSELECTION_TABLE_TEMPLATE = "On selection Table View"	
 	val ONSELECTION_FORM_TEMPLATE = "On selection Form View"
 
 	@Test

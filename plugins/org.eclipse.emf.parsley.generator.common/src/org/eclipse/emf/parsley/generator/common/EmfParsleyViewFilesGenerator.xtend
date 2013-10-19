@@ -57,20 +57,11 @@ public class «simpleName» extends «extendsClass» {
 '''
 package «projectName»;
 
-import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
 
 public class «simpleName» extends AbstractOnSelectionTableView {
 
-	@Override
-	protected EClass getEClass() {
-		// TODO  Insert here the EClass to be represented 
-		return null;
-	}
-	
 	@Override
 	protected EStructuralFeature getEStructuralFeature() {
 		// TODO How to reach the contents from the selected object

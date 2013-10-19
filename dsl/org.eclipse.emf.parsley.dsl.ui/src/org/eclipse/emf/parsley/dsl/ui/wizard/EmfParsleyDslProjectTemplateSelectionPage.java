@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.IWizardTemplate;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionFormTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableFormTemplateWizardHelper;
+import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTreeFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableTemplateWizardHelper;
@@ -42,7 +42,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 			SaveableTableFormTemplateWizardHelper.singlethon,
 			OnSelectionFormTemplateWizardHelper.singlethon,
 			OnSelectionTreeFormTemplateWizardHelper.singlethon,
-			OnSelectionTableFormTemplateWizardHelper.singlethon
+			OnSelectionTableTemplateWizardHelper.singlethon
 			};
 	public static final String ONSELECTION_CATEGORY = "On selection";
 	public static final String SAVEABLE_CATEGORY = "Saveable";
