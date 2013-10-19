@@ -21,7 +21,7 @@ import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.emf.parsley.edit.action.EmfActionManager;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
-import org.eclipse.emf.parsley.edit.domain.InjectableAdapterFactoryEditingDomain;
+import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider;
 import org.eclipse.emf.parsley.edit.provider.InjectableAdapterFactory;
 import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
@@ -32,8 +32,8 @@ import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.IViewerMouseListener;
-import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
+import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
@@ -55,6 +55,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.inject.Binder;
+import com.google.inject.Provider;
 
 /**
  * Default Google Guice bindings.
@@ -214,9 +215,13 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 		return OnTheFlyEditingStrategy.class;
 	}
 
-	public Class<? extends AdapterFactoryEditingDomain> bindAdapterFactoryEditingDomain() {
-		return InjectableAdapterFactoryEditingDomain.class;
-	}
+    public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
+    	return DefaultAdapterFactoryEditingDomainProvider.class;
+    }
+
+//	public Class<? extends AdapterFactoryEditingDomain> bindAdapterFactoryEditingDomain() {
+//		return InjectableAdapterFactoryEditingDomain.class;
+//	}
 	
 	public Class<? extends AdapterFactory> bindAdapterFactory() {
 		return InjectableAdapterFactory.class;

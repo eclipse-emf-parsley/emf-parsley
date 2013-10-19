@@ -10,6 +10,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	EmfParsleyUtilTests.class,
+	EmfParsleyEditingDomainTests.class,
 	EmfParsleyColumnLabelProviderTests.class,
 	EmfParsleyLabelProviderTests.class,
 	EmfParsleyProvidersTests.class,
