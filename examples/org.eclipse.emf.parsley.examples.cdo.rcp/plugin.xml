@@ -16,16 +16,8 @@
       <perspective
             name="Perspective"
             class="org.eclipse.emf.parsley.examples.cdo.rcp.Perspective"
-            id="it.rcpvision.emf.parsley.cdo.rcp.perspective">
+            id="org.eclipse.emf.parsley.examples.cdo.rcp.perspective">
       </perspective>
-   </extension>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            name="View"
-            class="org.eclipse.emf.parsley.examples.cdo.rcp.View"
-            id="it.rcpvision.emf.parsley.cdo.rcp.view">
-      </view>
    </extension>
 
 </plugin>
