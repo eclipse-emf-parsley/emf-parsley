@@ -19,7 +19,7 @@ public class SaveableTreeFormTemplateWizardHelper extends SaveableTreeTemplateWi
 	override getDescription() {
 		'''
 		<p>This wizard creates a plug-in that contains a view with a <b>tree form</b> component.</p>
-		<p>This view read the content form a resource and can save changes.</p>
+		<p>This view reads the content from a resource and can save changes.</p>
 		<p><b>The user must specify:</b></p>
 		<li>the resource URI</li>
 		'''

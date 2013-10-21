@@ -35,7 +35,7 @@ public class SaveableTreeTemplateWizardHelper  extends AbstractTemplateWizardHel
 	override getDescription() {
 		'''
 		<p>This wizard creates a plug-in that contains a view with a <b>tree</b> component.</p>
-		<p>This view read the content form a resource and can save changes, that can be performed in other parts (like Property view).</p>
+		<p>This view reads the content from a resource and can save changes, that can be performed in other parts (like Property view).</p>
 		<p><b>The user must specify:</b></p>
 		<li>the resource URI</li>
 		'''
