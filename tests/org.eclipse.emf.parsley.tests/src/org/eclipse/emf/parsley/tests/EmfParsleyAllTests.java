@@ -16,6 +16,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
+	NotificationBufferTest.class,
 	EmfCopyTest.class
 })
 public class EmfParsleyAllTests {

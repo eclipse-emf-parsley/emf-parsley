@@ -3,12 +3,8 @@
  */
 package org.eclipse.emf.parsley.edit;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.parsley.util.EObjectState;
 import org.eclipse.jface.viewers.ILabelProvider;
 
@@ -32,6 +28,8 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 	private ILabelProvider labelProvider;
 
 	private EObjectState state;
+	
+	private NotificationBuffer notificationBuffer;
 
 	/*
 	 * (non-Javadoc)
@@ -42,7 +40,8 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 	 */
 	public void prepare(EObject original) {
 		state = new EObjectState(original);
-		enableNotifications(original, false);
+		notificationBuffer = new NotificationBuffer(original);
+		disableNotifications(original);
 	}
 
 	/**
@@ -55,7 +54,7 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 	}
 
 	public void update(EObject edited) {
-		enableNotifications(edited, true);
+		enableNotifications(edited);
 		EditingDomain domain = editingDomainFinder.getEditingDomainFor(edited);
 		EditCommand editCommand = new EditCommand(domain, "Edit "
 				+ labelProvider.getText(edited), edited, state);
@@ -64,18 +63,23 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 	}
 
 	protected void triggerViewerNotification(EObject edited) {
-		edited.eNotify(new ViewerNotification(new ENotificationImpl(
-				(InternalEObject) edited, Notification.SET, edited.eClass()
-						.getEAllStructuralFeatures().get(0).getFeatureID(),
-				null, edited), edited, false, true));
+		notificationBuffer.propagateBufferedNotifications();
+//		edited.eNotify(new ViewerNotification(new ENotificationImpl(
+//				(InternalEObject) edited, Notification.SET, edited.eClass()
+//						.getEAllStructuralFeatures().get(0).getFeatureID(),
+//				null, edited), edited, false, true));
 	}
 
 	public void rollback(EObject edited) {
-		enableNotifications(edited, true);
 		state.copyStateTo(edited);
+		enableNotifications(edited);
 	}
 
-	protected void enableNotifications(EObject edited, boolean deliver) {
-		edited.eSetDeliver(deliver);
+	protected void disableNotifications(EObject edited) {
+		notificationBuffer.startBuffering();
+	}
+
+	protected void enableNotifications(EObject edited) {
+		notificationBuffer.stopBuffering();
 	}
 }
