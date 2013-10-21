@@ -113,10 +113,6 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 		}
 	}
 
-	protected SWTFormsBot formBotFromView(SWTBotView detailView) {
-		return new SWTFormsBot(detailView.getWidget());
-	}
-
 	@Test
 	public void detailViewShowsCustomDetailsOnSelection() throws Exception {
 		SWTBotView detailView = openTestView(LIBRARY_CUSTOM_DETAIL_VIEW);

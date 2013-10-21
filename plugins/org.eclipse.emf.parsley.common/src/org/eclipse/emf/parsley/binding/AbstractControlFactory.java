@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
+import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
@@ -148,7 +149,17 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			}
 			setupControl(feature, control);
 		}
+		
+		registerUndo(control);
+		
 		return control;
+	}
+
+	protected void registerUndo(Control control) {
+		if (control instanceof Text) {
+			Text text = (Text) control;
+			new TextUndoRedo(text);
+		}
 	}
 
 	protected Predicate<Method> getControlPredicate(EStructuralFeature feature) {

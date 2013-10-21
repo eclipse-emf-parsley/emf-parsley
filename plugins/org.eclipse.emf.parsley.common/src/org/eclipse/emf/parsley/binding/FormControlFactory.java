@@ -61,11 +61,6 @@ public class FormControlFactory extends DialogControlFactory {
 	}
 
 	@Override
-	public Text createText(Composite parent, String text) {
-		return toolkit.createText(parent, text);
-	}
-
-	@Override
 	public Text createText(Composite parent, String text, int style) {
 		Text t = toolkit.createText(parent, text, style);
 		t.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);

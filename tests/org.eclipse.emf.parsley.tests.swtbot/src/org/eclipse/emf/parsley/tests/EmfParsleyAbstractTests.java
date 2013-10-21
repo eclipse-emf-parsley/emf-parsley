@@ -36,6 +36,7 @@ import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.jface.action.SubStatusLineManager;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -87,6 +88,8 @@ public class EmfParsleyAbstractTests {
 	protected static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
 
 	protected static final String WRITER_LABEL = "Writer Lorenzo Bettini";
+
+	protected static final String WRITER_FIRSTNAME = "Lorenzo";
 
 	protected static final String WRITER_NAME = "Lorenzo Bettini";
 
@@ -791,6 +794,16 @@ public class EmfParsleyAbstractTests {
 		bot.menu("Edit").menu("Redo " + undoText).click();
 	}
 
+	protected SWTBotText undoShortcut(SWTBotText text) {
+		text.pressShortcut(SWT.CTRL, 'z');
+		return text;
+	}
+
+	protected SWTBotText redoShortcut(SWTBotText text) {
+		text.pressShortcut(SWT.CTRL | SWT.SHIFT, 'z');
+		return text;
+	}
+
 	protected SWTBotView getLibraryView(String libraryView) {
 		return bot.viewByTitle(libraryView);
 	}
@@ -1060,5 +1073,9 @@ public class EmfParsleyAbstractTests {
 		assertEditorDirty(editorName);
 		getEditor(editorName).save();
 		assertEditorNotDirty(EMF_TREE_EDITOR);
+	}
+
+	protected SWTFormsBot formBotFromView(SWTBotView detailView) {
+		return new SWTFormsBot(detailView.getWidget());
 	}
 }

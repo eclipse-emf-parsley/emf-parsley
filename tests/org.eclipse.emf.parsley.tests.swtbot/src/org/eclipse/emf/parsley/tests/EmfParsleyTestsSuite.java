@@ -22,6 +22,7 @@ import org.junit.runners.Suite;
 	EmfParsleyFormBasedDialogTests.class,
 	EmfParsleyDialogTests.class,
 	EmfParsleyEditingStrategyTests.class,
+	EmfParsleyTextUndoRedoTests.class,
 	EmfParsleyWizardsTests.class,
 	EmfParsleyExamplesWizardsTests.class,
 	EmfParsleyDslWizardsTests.class,
