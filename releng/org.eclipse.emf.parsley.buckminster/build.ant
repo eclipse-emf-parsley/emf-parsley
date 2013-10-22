@@ -21,6 +21,8 @@
 	<property name="resolve.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-resolve-commands.txt" />
 	<property name="perform.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-perform-commands.txt" />
 	<property name="perform.local.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-perform-local-commands.txt" />
+	<property name="build.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-build-commands.txt" />
+	<property name="build.local.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-build-local-commands.txt" />
 	<property name="build.properties" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/build.properties" />
 
 	<target name="buckminster" depends="common.cleanup,clean-xtend-gen,install.buckminster.headless" description="description">
@@ -28,6 +30,7 @@
 		<fail unless="buckminster.home" message="buckminster.home must be specified." />
 
 		<antcall target="buckminster-resolve" />
+		<antcall target="buckminster-build" />
 		<antcall target="buckminster-perform" />
 	</target>
 
@@ -36,6 +39,7 @@
 		<fail unless="buckminster.home" message="buckminster.home must be specified." />
 
 		<antcall target="buckminster-resolve" />
+		<antcall target="buckminster-build-local" />
 		<antcall target="buckminster-perform-local" />
 	</target>
 	
@@ -44,6 +48,16 @@
 		<echo message="eclipse.download: ${eclipse.download}" />
 		<echo message="build.properties: ${build.properties}" />
 		<run_buckminster commandsfile="${resolve.commands.file}" propertiesfile="${build.properties}" />
+	</target>
+
+	<target name="buckminster-build">
+		<run_buckminster commandsfile="${build.commands.file}" propertiesfile="${build.properties}" />
+		<echo message=" " />
+	</target>
+
+	<target name="buckminster-build-local">
+		<run_buckminster commandsfile="${build.local.commands.file}" propertiesfile="${build.properties}" />
+		<echo message=" " />
 	</target>
 
 	<target name="buckminster-perform">

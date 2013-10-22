@@ -1,0 +1,10 @@
+build --continueonerror
+launch --stderr --stdout -l "org.eclipse.emf.parsley.generator.common/XtendCompiler.launch"
+build --continueonerror
+launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl/XtendCompiler.launch"
+build --continueonerror
+launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl.ui/XtendCompiler.launch"
+launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl.tests/XtendCompiler.launch"
+launch --stderr --stdout -l "org.eclipse.emf.parsley.tests/XtendCompiler.launch"
+launch --stderr --stdout -l "org.eclipse.emf.parsley.tests.swtbot/XtendCompiler.launch"
+build --clean
