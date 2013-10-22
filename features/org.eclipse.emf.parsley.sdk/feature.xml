@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.emf.parsley.site"
-      label="Emf Parsley Site"
+      id="org.eclipse.emf.parsley.sdk"
+      label="Emf Parsley SDK"
       version="0.1.0.qualifier"
       provider-name="RCP Vision">
 
@@ -22,11 +22,7 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
    </license>
 
    <includes
-         id="org.eclipse.emf.parsley.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.cdo.feature"
+         id="org.eclipse.emf.parsley.dsl.feature"
          version="0.0.0"/>
 
    <includes
@@ -34,11 +30,7 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.parsley.dsl.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.sdk"
+         id="org.eclipse.emf.parsley.feature"
          version="0.0.0"/>
 
 </feature>

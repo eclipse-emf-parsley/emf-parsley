@@ -13,6 +13,6 @@
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="org.eclipse.emf.parsley.buckminster"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/org.eclipse.emf.parsley.buckminster/build.ant}"/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-Dbuckminster.home=${system_property:user.home}/buckminster -Declipse.download=file:/${system_property:user.home}/eclipsemirror"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-Dbuckminster.home=${system_property:user.home}/buckminster -Dbuckminster.home=${system_property:user.home}/buckminster -Dperform.commands.file=${project_loc:org.eclipse.emf.parsley.buckminster}/headless-perform-site.p2.txt"/>
 <stringAttribute key="process_factory_id" value="org.eclipse.ant.ui.remoteAntProcessFactory"/>
 </launchConfiguration>

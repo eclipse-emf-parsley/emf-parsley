@@ -12,6 +12,9 @@
    <feature id="org.eclipse.emf.parsley.dsl.feature">
       <category name="emfparsley.category"/>
    </feature>
+   <feature id="org.eclipse.emf.parsley.sdk">
+      <category name="emfparsley.category"/>
+   </feature>
 
    <feature id="org.eclipse.emf.parsley.source.feature">
       <category name="emfparsley.category.source"/>
@@ -23,6 +26,9 @@
       <category name="emfparsley.category.source"/>
    </feature>
    <feature id="org.eclipse.emf.parsley.dsl.source.feature">
+      <category name="emfparsley.category.source"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.sdk.source">
       <category name="emfparsley.category.source"/>
    </feature>
 

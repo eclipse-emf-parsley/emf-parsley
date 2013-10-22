@@ -19,28 +19,40 @@
 		<dependency name="org.eclipse.emf.parsley.examples.firstexample" 
 			componentType="osgi.bundle" />
 	</dependencies>
-	<generators>
-		<!-- Place your Generators here -->
-	</generators>
-	<artifacts>
-		<!-- Place your Artifacts here -->
-	</artifacts>
-	<actions>
-		<!-- Place your Actions here -->
-	</actions>
-	<groups>
-		<!-- Place your Groups here -->
-	</groups>
-	<alterDependencies>
-		<!-- Place your Dependency alterations here -->
-	</alterDependencies>
-	<alterArtifacts>
-		<!-- Place your Artifact alterations here -->
-	</alterArtifacts>
-	<alterActions>
-		<!-- Place your Action alterations here -->
-	</alterActions>
-	<alterGroups>
-		<!-- Place your Group alterations here -->
-	</alterGroups>
+    <actions>
+        <public name="eclipse-install-test-indigo" actor="ant">
+            <actorProperties>
+                <property key="buildFile" value="eclipse-install-test/eclipse-install-test.ant"/>
+                <property key="targets" value="test.install.in.indigo"/>
+            </actorProperties>
+            <prerequisites alias="repository">
+                <attribute name="site.p2" />
+            </prerequisites>
+        </public>
+        <public name="eclipse-install-test-juno" actor="ant">
+            <actorProperties>
+                <property key="buildFile" value="eclipse-install-test/eclipse-install-test.ant"/>
+                <property key="targets" value="test.install.in.juno"/>
+            </actorProperties>
+            <prerequisites alias="repository">
+                <attribute name="site.p2" />
+            </prerequisites>
+        </public>
+        <public name="eclipse-install-test-kepler" actor="ant">
+            <actorProperties>
+                <property key="buildFile" value="eclipse-install-test/eclipse-install-test.ant"/>
+                <property key="targets" value="test.install.in.kepler"/>
+            </actorProperties>
+            <prerequisites alias="repository">
+                <attribute name="site.p2" />
+            </prerequisites>
+        </public>
+    </actions>
+    <groups>
+        <public name="eclipse-install-test">
+            <attribute name="eclipse-install-test-indigo"/>
+            <attribute name="eclipse-install-test-juno"/>
+            <attribute name="eclipse-install-test-kepler"/>
+        </public>
+    </groups>
 </cspecExtension>
