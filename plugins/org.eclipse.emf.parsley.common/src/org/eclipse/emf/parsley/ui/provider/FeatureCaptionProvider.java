@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import com.google.common.base.Predicate;
 
 /**
- * Provides labels for EStructuralFeatures
+ * Provides captions for EStructuralFeatures
  * 
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini - Initial Contribution and API
  * 
  */
-public class PropertyDescriptionProvider {
+public class FeatureCaptionProvider {
 
 	private PolymorphicDispatcher.ErrorHandler<String> errorHandler = new PolymorphicDispatcher.NullErrorHandler<String>();
 

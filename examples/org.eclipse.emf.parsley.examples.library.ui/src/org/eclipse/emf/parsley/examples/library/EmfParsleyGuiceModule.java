@@ -2,7 +2,7 @@ package org.eclipse.emf.parsley.examples.library;
 
 
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
@@ -18,8 +18,8 @@ public class EmfParsleyGuiceModule extends org.eclipse.emf.parsley.EmfParsleyGui
 	}
 
 	@Override
-	public Class<? extends PropertyDescriptionProvider> bindPropertyDescriptionProvider() {
-		return CustomFeatureLabelProvider.class;
+	public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
+		return CustomFeatureCaptionProvider.class;
 	}
 
 	@Override

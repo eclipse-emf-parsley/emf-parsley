@@ -49,8 +49,8 @@
 					<topic href="contents/04-Customization.html#FeaturesColumnProvider" label="Features Column Provider" >
 					</topic>
 				</topic>
-				<topic href="contents/04-Customization.html#PropertyDescriptionProvider" label="Property Description Provider" >
-					<topic href="contents/04-Customization.html#FormPropertyDescriptionProvider" label="Form Property Description Provider" >
+				<topic href="contents/04-Customization.html#PropertyDescriptionProvider" label="Feature Caption Provider" >
+					<topic href="contents/04-Customization.html#FormPropertyDescriptionProvider" label="Form Feature Caption Provider" >
 					</topic>
 				</topic>
 				<topic href="contents/04-Customization.html#ViewerLabelProvider" label="Viewer Label Provider" >

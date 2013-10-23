@@ -65,12 +65,12 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	def void testWrongFeatureLabelSpecifications() {
 		val model = inputsWithErrors.wrongPropertyDescriptionSpecifications.parseModel
 		model.assertError(
-			ModelPackage::eINSTANCE.propertyDescriptionSpecification,
+			ModelPackage::eINSTANCE.featureCaptionSpecification,
 			Diagnostic::LINKING_DIAGNOSTIC,
 			"newArrayList"
 		)
 		model.assertError(
-			ModelPackage::eINSTANCE.propertyDescriptionSpecification,
+			ModelPackage::eINSTANCE.featureCaptionSpecification,
 			Diagnostic::LINKING_DIAGNOSTIC,
 			"getBooks"
 		)

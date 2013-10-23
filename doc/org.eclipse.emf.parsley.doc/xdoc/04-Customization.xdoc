@@ -188,17 +188,18 @@ As an extension, you can use the codeRef[org.eclipse.emf.parsley.ui.provider.Fea
 the customizations will be applied only to ref:TableComponent[tables], not to ref:FormComponent[Forms].
 
 
-section2:PropertyDescriptionProvider[Property Description Provider]
+section2:PropertyDescriptionProvider[Feature Caption Provider]
 
  e[This can be done with Parsley DSL too!]
  
-The codeRef[org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider] provides labels for
-the features. It can be customized, with injection (see Injection paragraph), to customize the label on the
-left of each control. The framework use a polimorphic mechanism to find customizations, so that It can
+The codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider] provides captions for
+the features. It can be customized, with injection (see Injection paragraph), to customize the caption label on the
+left of each control in a form and the headers in a table's columns. 
+The framework use a polimorphic mechanism to find customizations, so that It can
 be written a method with a specific signature build by the keyword e['text'] followed by the EClass and the EStructuralFeature.
 All parts of the name are separated by an underscore character and the method must accept a parameter of type EStructuralFeature.
 
-In the following example we specify the label text for the feature 'Author' of Book and the feature 'Name' for
+In the following example we specify the caption text for the feature 'Author' of Book and the feature 'Name' for
 Writer.
 
 code[Java][
@@ -211,8 +212,14 @@ public String text_Writer_name(final EStructuralFeature feature) {
 }
 ] 
 
-Another chance of customization is to define a method the returns directly the control, like in the example
-below. In this case there is another parameter that is the parent composite.
+section3:FormPropertyDescriptionProvider[Form Feature Caption Provider]
+
+The codeRef[org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider] can be used if you want
+to define the description only for the form. For example using the ref:TreeFormComponent[Tree
+Form] your definition will not be used in the tree.
+
+In this case you can also define a method the returns directly the control, like in the example
+below. In such methods there is another parameter that is the parent composite.
 
 code[Java][
 public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
@@ -221,12 +228,6 @@ public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
 	return label;
 }
 ]
-
-section3:FormPropertyDescriptionProvider[Form Property Description Provider]
-
-The codeRef[org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider] can be used if you want
-to define the description only for the form. For example using the ref:TreeFormComponent[Tree
-Form] your definition will not be used in the tree.
 
 section2:ViewerLabelProvider[Viewer Label Provider]
 

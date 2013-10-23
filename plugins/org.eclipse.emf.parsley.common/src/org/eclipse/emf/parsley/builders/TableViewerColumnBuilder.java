@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.factories.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableLayout;
@@ -37,7 +37,7 @@ public class TableViewerColumnBuilder {
 	protected ColumnLabelProviderFactory columnLabelProviderFactory;
 
 	@Inject
-	protected PropertyDescriptionProvider propertyDescriptionProvider;
+	protected FeatureCaptionProvider featureCaptionProvider;
 
 	@Inject
 	protected FeaturesColumnProvider featuresProvider;
@@ -87,7 +87,7 @@ public class TableViewerColumnBuilder {
 				eStructuralFeature, contentProvider);
 		TableColumn objectColumn = viewerColumn.getColumn();
 		layout.addColumnData(new ColumnWeightData(weight, 30, true));
-		objectColumn.setText(propertyDescriptionProvider.getText(eStructuralFeature));
+		objectColumn.setText(featureCaptionProvider.getText(eStructuralFeature));
 		objectColumn.setResizable(true);
 		return viewerColumn;
 	}

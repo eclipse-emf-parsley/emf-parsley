@@ -22,13 +22,13 @@ class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 	@Test
 	def void testFeaturesForLabelSpecifications() {
 		inputs.propertyDescriptionSpecifications.parseModel.
-			module.propertyDescriptionProvider.specifications.head.
+			module.featureCaptionProvider.specifications.head.
 				assertScope
-				(ModelPackage::eINSTANCE.propertyDescriptionSpecification_Feature,
+				(ModelPackage::eINSTANCE.featureCaptionSpecification_Feature,
 					"name, books, borrowers, writers, employees, stock, branches, parentBranch, people, address, class"
 				)
 			
-	} 	
+	}
 
 	def private assertScope(EObject o, EReference ref, String expected) {
 		val listExpected = expected.split(", ").toList

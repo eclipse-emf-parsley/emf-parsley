@@ -69,10 +69,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
       case ModelPackage.EXTENDS_CLAUSE: return createExtendsClause();
       case ModelPackage.LABEL_PROVIDER: return createLabelProvider();
       case ModelPackage.LABEL_SPECIFICATION: return createLabelSpecification();
-      case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER: return createPropertyDescriptionProvider();
-      case ModelPackage.FORM_PROPERTY_DESCRIPTION_PROVIDER: return createFormPropertyDescriptionProvider();
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER: return createDialogPropertyDescriptionProvider();
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION: return createPropertyDescriptionSpecification();
+      case ModelPackage.FEATURE_CAPTION_PROVIDER: return createFeatureCaptionProvider();
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER: return createFormFeatureCaptionProvider();
+      case ModelPackage.DIALOG_FEATURE_CAPTION_PROVIDER: return createDialogFeatureCaptionProvider();
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION: return createFeatureCaptionSpecification();
       case ModelPackage.FEATURES_PROVIDER: return createFeaturesProvider();
       case ModelPackage.FEATURE_SPECIFICATION: return createFeatureSpecification();
       case ModelPackage.FORM_CONTROL_FACTORY: return createFormControlFactory();
@@ -151,10 +151,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyDescriptionProvider createPropertyDescriptionProvider()
+  public FeatureCaptionProvider createFeatureCaptionProvider()
   {
-    PropertyDescriptionProviderImpl propertyDescriptionProvider = new PropertyDescriptionProviderImpl();
-    return propertyDescriptionProvider;
+    FeatureCaptionProviderImpl featureCaptionProvider = new FeatureCaptionProviderImpl();
+    return featureCaptionProvider;
   }
 
   /**
@@ -162,10 +162,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FormPropertyDescriptionProvider createFormPropertyDescriptionProvider()
+  public FormFeatureCaptionProvider createFormFeatureCaptionProvider()
   {
-    FormPropertyDescriptionProviderImpl formPropertyDescriptionProvider = new FormPropertyDescriptionProviderImpl();
-    return formPropertyDescriptionProvider;
+    FormFeatureCaptionProviderImpl formFeatureCaptionProvider = new FormFeatureCaptionProviderImpl();
+    return formFeatureCaptionProvider;
   }
 
   /**
@@ -173,10 +173,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public DialogPropertyDescriptionProvider createDialogPropertyDescriptionProvider()
+  public DialogFeatureCaptionProvider createDialogFeatureCaptionProvider()
   {
-    DialogPropertyDescriptionProviderImpl dialogPropertyDescriptionProvider = new DialogPropertyDescriptionProviderImpl();
-    return dialogPropertyDescriptionProvider;
+    DialogFeatureCaptionProviderImpl dialogFeatureCaptionProvider = new DialogFeatureCaptionProviderImpl();
+    return dialogFeatureCaptionProvider;
   }
 
   /**
@@ -184,10 +184,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyDescriptionSpecification createPropertyDescriptionSpecification()
+  public FeatureCaptionSpecification createFeatureCaptionSpecification()
   {
-    PropertyDescriptionSpecificationImpl propertyDescriptionSpecification = new PropertyDescriptionSpecificationImpl();
-    return propertyDescriptionSpecification;
+    FeatureCaptionSpecificationImpl featureCaptionSpecification = new FeatureCaptionSpecificationImpl();
+    return featureCaptionSpecification;
   }
 
   /**

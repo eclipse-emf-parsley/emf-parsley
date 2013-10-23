@@ -68,40 +68,40 @@ public interface ModelFactory extends EFactory
   LabelSpecification createLabelSpecification();
 
   /**
-   * Returns a new object of class '<em>Property Description Provider</em>'.
+   * Returns a new object of class '<em>Feature Caption Provider</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Description Provider</em>'.
+   * @return a new object of class '<em>Feature Caption Provider</em>'.
    * @generated
    */
-  PropertyDescriptionProvider createPropertyDescriptionProvider();
+  FeatureCaptionProvider createFeatureCaptionProvider();
 
   /**
-   * Returns a new object of class '<em>Form Property Description Provider</em>'.
+   * Returns a new object of class '<em>Form Feature Caption Provider</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Form Property Description Provider</em>'.
+   * @return a new object of class '<em>Form Feature Caption Provider</em>'.
    * @generated
    */
-  FormPropertyDescriptionProvider createFormPropertyDescriptionProvider();
+  FormFeatureCaptionProvider createFormFeatureCaptionProvider();
 
   /**
-   * Returns a new object of class '<em>Dialog Property Description Provider</em>'.
+   * Returns a new object of class '<em>Dialog Feature Caption Provider</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Dialog Property Description Provider</em>'.
+   * @return a new object of class '<em>Dialog Feature Caption Provider</em>'.
    * @generated
    */
-  DialogPropertyDescriptionProvider createDialogPropertyDescriptionProvider();
+  DialogFeatureCaptionProvider createDialogFeatureCaptionProvider();
 
   /**
-   * Returns a new object of class '<em>Property Description Specification</em>'.
+   * Returns a new object of class '<em>Feature Caption Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Description Specification</em>'.
+   * @return a new object of class '<em>Feature Caption Specification</em>'.
    * @generated
    */
-  PropertyDescriptionSpecification createPropertyDescriptionSpecification();
+  FeatureCaptionSpecification createFeatureCaptionSpecification();
 
   /**
    * Returns a new object of class '<em>Features Provider</em>'.

@@ -16,25 +16,25 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification;
+import org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Dialog Property Description Provider</b></em>'.
+ * An implementation of the model object '<em><b>Form Feature Caption Provider</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.DialogPropertyDescriptionProviderImpl#getSpecifications <em>Specifications</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.DialogPropertyDescriptionProviderImpl#getLabelSpecifications <em>Label Specifications</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FormFeatureCaptionProviderImpl#getSpecifications <em>Specifications</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FormFeatureCaptionProviderImpl#getLabelSpecifications <em>Label Specifications</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Container implements DialogPropertyDescriptionProvider
+public class FormFeatureCaptionProviderImpl extends MinimalEObjectImpl.Container implements FormFeatureCaptionProvider
 {
   /**
    * The cached value of the '{@link #getSpecifications() <em>Specifications</em>}' containment reference list.
@@ -44,7 +44,7 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
    * @generated
    * @ordered
    */
-  protected EList<PropertyDescriptionSpecification> specifications;
+  protected EList<FeatureCaptionSpecification> specifications;
 
   /**
    * The cached value of the '{@link #getLabelSpecifications() <em>Label Specifications</em>}' containment reference list.
@@ -54,14 +54,14 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
    * @generated
    * @ordered
    */
-  protected EList<PropertyDescriptionSpecification> labelSpecifications;
+  protected EList<FeatureCaptionSpecification> labelSpecifications;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DialogPropertyDescriptionProviderImpl()
+  protected FormFeatureCaptionProviderImpl()
   {
     super();
   }
@@ -74,7 +74,7 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
   @Override
   protected EClass eStaticClass()
   {
-    return ModelPackage.Literals.DIALOG_PROPERTY_DESCRIPTION_PROVIDER;
+    return ModelPackage.Literals.FORM_FEATURE_CAPTION_PROVIDER;
   }
 
   /**
@@ -82,11 +82,11 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PropertyDescriptionSpecification> getSpecifications()
+  public EList<FeatureCaptionSpecification> getSpecifications()
   {
     if (specifications == null)
     {
-      specifications = new EObjectContainmentEList<PropertyDescriptionSpecification>(PropertyDescriptionSpecification.class, this, ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS);
+      specifications = new EObjectContainmentEList<FeatureCaptionSpecification>(FeatureCaptionSpecification.class, this, ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS);
     }
     return specifications;
   }
@@ -96,11 +96,11 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PropertyDescriptionSpecification> getLabelSpecifications()
+  public EList<FeatureCaptionSpecification> getLabelSpecifications()
   {
     if (labelSpecifications == null)
     {
-      labelSpecifications = new EObjectContainmentEList<PropertyDescriptionSpecification>(PropertyDescriptionSpecification.class, this, ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS);
+      labelSpecifications = new EObjectContainmentEList<FeatureCaptionSpecification>(FeatureCaptionSpecification.class, this, ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS);
     }
     return labelSpecifications;
   }
@@ -115,9 +115,9 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         return ((InternalEList<?>)getSpecifications()).basicRemove(otherEnd, msgs);
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS:
         return ((InternalEList<?>)getLabelSpecifications()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -133,9 +133,9 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         return getSpecifications();
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS:
         return getLabelSpecifications();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -152,13 +152,13 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         getSpecifications().clear();
-        getSpecifications().addAll((Collection<? extends PropertyDescriptionSpecification>)newValue);
+        getSpecifications().addAll((Collection<? extends FeatureCaptionSpecification>)newValue);
         return;
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS:
         getLabelSpecifications().clear();
-        getLabelSpecifications().addAll((Collection<? extends PropertyDescriptionSpecification>)newValue);
+        getLabelSpecifications().addAll((Collection<? extends FeatureCaptionSpecification>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -174,10 +174,10 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         getSpecifications().clear();
         return;
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS:
         getLabelSpecifications().clear();
         return;
     }
@@ -194,12 +194,12 @@ public class DialogPropertyDescriptionProviderImpl extends MinimalEObjectImpl.Co
   {
     switch (featureID)
     {
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         return specifications != null && !specifications.isEmpty();
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS:
         return labelSpecifications != null && !labelSpecifications.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //DialogPropertyDescriptionProviderImpl
+} //FormFeatureCaptionProviderImpl

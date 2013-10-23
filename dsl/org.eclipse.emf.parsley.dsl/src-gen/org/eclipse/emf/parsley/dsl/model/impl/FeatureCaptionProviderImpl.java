@@ -16,24 +16,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider;
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property Description Provider</b></em>'.
+ * An implementation of the model object '<em><b>Feature Caption Provider</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionProviderImpl#getSpecifications <em>Specifications</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionProviderImpl#getSpecifications <em>Specifications</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Container implements PropertyDescriptionProvider
+public class FeatureCaptionProviderImpl extends MinimalEObjectImpl.Container implements FeatureCaptionProvider
 {
   /**
    * The cached value of the '{@link #getSpecifications() <em>Specifications</em>}' containment reference list.
@@ -43,14 +43,14 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
    * @generated
    * @ordered
    */
-  protected EList<PropertyDescriptionSpecification> specifications;
+  protected EList<FeatureCaptionSpecification> specifications;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyDescriptionProviderImpl()
+  protected FeatureCaptionProviderImpl()
   {
     super();
   }
@@ -63,7 +63,7 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
   @Override
   protected EClass eStaticClass()
   {
-    return ModelPackage.Literals.PROPERTY_DESCRIPTION_PROVIDER;
+    return ModelPackage.Literals.FEATURE_CAPTION_PROVIDER;
   }
 
   /**
@@ -71,11 +71,11 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PropertyDescriptionSpecification> getSpecifications()
+  public EList<FeatureCaptionSpecification> getSpecifications()
   {
     if (specifications == null)
     {
-      specifications = new EObjectContainmentEList<PropertyDescriptionSpecification>(PropertyDescriptionSpecification.class, this, ModelPackage.PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS);
+      specifications = new EObjectContainmentEList<FeatureCaptionSpecification>(FeatureCaptionSpecification.class, this, ModelPackage.FEATURE_CAPTION_PROVIDER__SPECIFICATIONS);
     }
     return specifications;
   }
@@ -90,7 +90,7 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         return ((InternalEList<?>)getSpecifications()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -106,7 +106,7 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         return getSpecifications();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -123,9 +123,9 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         getSpecifications().clear();
-        getSpecifications().addAll((Collection<? extends PropertyDescriptionSpecification>)newValue);
+        getSpecifications().addAll((Collection<? extends FeatureCaptionSpecification>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,7 +141,7 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         getSpecifications().clear();
         return;
     }
@@ -158,10 +158,10 @@ public class PropertyDescriptionProviderImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS:
+      case ModelPackage.FEATURE_CAPTION_PROVIDER__SPECIFICATIONS:
         return specifications != null && !specifications.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //PropertyDescriptionProviderImpl
+} //FeatureCaptionProviderImpl

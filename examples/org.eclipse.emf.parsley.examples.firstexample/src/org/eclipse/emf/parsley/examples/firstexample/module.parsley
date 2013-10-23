@@ -21,7 +21,7 @@ module org.eclipse.emf.parsley.examples.firstexample {
         } 
     } 
     
-    propertyDescriptionProvider { 
+    featureCaptionProvider { 
 	    text { 
 	        Book : author -> 'Wrote by:' 
 	        Writer : name -> 'Name:' 

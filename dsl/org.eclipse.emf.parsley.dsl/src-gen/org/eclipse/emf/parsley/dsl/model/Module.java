@@ -14,9 +14,9 @@ package org.eclipse.emf.parsley.dsl.model;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getExtendsClause <em>Extends Clause</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getLabelProvider <em>Label Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getPropertyDescriptionProvider <em>Property Description Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFeatureCaptionProvider <em>Feature Caption Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormFeatureCaptionProvider <em>Form Feature Caption Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogFeatureCaptionProvider <em>Dialog Feature Caption Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFeaturesProvider <em>Features Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getFormControlFactory <em>Form Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogControlFactory <em>Dialog Control Factory</em>}</li>
@@ -111,82 +111,82 @@ public interface Module extends WithExtendsClause
   void setLabelProvider(LabelProvider value);
 
   /**
-   * Returns the value of the '<em><b>Property Description Provider</b></em>' containment reference.
+   * Returns the value of the '<em><b>Feature Caption Provider</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Property Description Provider</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Feature Caption Provider</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Property Description Provider</em>' containment reference.
-   * @see #setPropertyDescriptionProvider(PropertyDescriptionProvider)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_PropertyDescriptionProvider()
+   * @return the value of the '<em>Feature Caption Provider</em>' containment reference.
+   * @see #setFeatureCaptionProvider(FeatureCaptionProvider)
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_FeatureCaptionProvider()
    * @model containment="true"
    * @generated
    */
-  PropertyDescriptionProvider getPropertyDescriptionProvider();
+  FeatureCaptionProvider getFeatureCaptionProvider();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getPropertyDescriptionProvider <em>Property Description Provider</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getFeatureCaptionProvider <em>Feature Caption Provider</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Property Description Provider</em>' containment reference.
-   * @see #getPropertyDescriptionProvider()
+   * @param value the new value of the '<em>Feature Caption Provider</em>' containment reference.
+   * @see #getFeatureCaptionProvider()
    * @generated
    */
-  void setPropertyDescriptionProvider(PropertyDescriptionProvider value);
+  void setFeatureCaptionProvider(FeatureCaptionProvider value);
 
   /**
-   * Returns the value of the '<em><b>Form Property Description Provider</b></em>' containment reference.
+   * Returns the value of the '<em><b>Form Feature Caption Provider</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Form Property Description Provider</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Form Feature Caption Provider</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Form Property Description Provider</em>' containment reference.
-   * @see #setFormPropertyDescriptionProvider(FormPropertyDescriptionProvider)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_FormPropertyDescriptionProvider()
+   * @return the value of the '<em>Form Feature Caption Provider</em>' containment reference.
+   * @see #setFormFeatureCaptionProvider(FormFeatureCaptionProvider)
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_FormFeatureCaptionProvider()
    * @model containment="true"
    * @generated
    */
-  FormPropertyDescriptionProvider getFormPropertyDescriptionProvider();
+  FormFeatureCaptionProvider getFormFeatureCaptionProvider();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getFormFeatureCaptionProvider <em>Form Feature Caption Provider</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Form Property Description Provider</em>' containment reference.
-   * @see #getFormPropertyDescriptionProvider()
+   * @param value the new value of the '<em>Form Feature Caption Provider</em>' containment reference.
+   * @see #getFormFeatureCaptionProvider()
    * @generated
    */
-  void setFormPropertyDescriptionProvider(FormPropertyDescriptionProvider value);
+  void setFormFeatureCaptionProvider(FormFeatureCaptionProvider value);
 
   /**
-   * Returns the value of the '<em><b>Dialog Property Description Provider</b></em>' containment reference.
+   * Returns the value of the '<em><b>Dialog Feature Caption Provider</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Dialog Property Description Provider</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Dialog Feature Caption Provider</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Dialog Property Description Provider</em>' containment reference.
-   * @see #setDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_DialogPropertyDescriptionProvider()
+   * @return the value of the '<em>Dialog Feature Caption Provider</em>' containment reference.
+   * @see #setDialogFeatureCaptionProvider(DialogFeatureCaptionProvider)
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getModule_DialogFeatureCaptionProvider()
    * @model containment="true"
    * @generated
    */
-  DialogPropertyDescriptionProvider getDialogPropertyDescriptionProvider();
+  DialogFeatureCaptionProvider getDialogFeatureCaptionProvider();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogFeatureCaptionProvider <em>Dialog Feature Caption Provider</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dialog Property Description Provider</em>' containment reference.
-   * @see #getDialogPropertyDescriptionProvider()
+   * @param value the new value of the '<em>Dialog Feature Caption Provider</em>' containment reference.
+   * @see #getDialogFeatureCaptionProvider()
    * @generated
    */
-  void setDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider value);
+  void setDialogFeatureCaptionProvider(DialogFeatureCaptionProvider value);
 
   /**
    * Returns the value of the '<em><b>Features Provider</b></em>' containment reference.

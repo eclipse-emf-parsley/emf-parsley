@@ -150,31 +150,31 @@ public interface ModelPackage extends EPackage
   int MODULE__LABEL_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Property Description Provider</b></em>' containment reference.
+   * The feature id for the '<em><b>Feature Caption Provider</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__PROPERTY_DESCRIPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 3;
+  int MODULE__FEATURE_CAPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Form Property Description Provider</b></em>' containment reference.
+   * The feature id for the '<em><b>Form Feature Caption Provider</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 4;
+  int MODULE__FORM_FEATURE_CAPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 4;
 
   /**
-   * The feature id for the '<em><b>Dialog Property Description Provider</b></em>' containment reference.
+   * The feature id for the '<em><b>Dialog Feature Caption Provider</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 5;
+  int MODULE__DIALOG_FEATURE_CAPTION_PROVIDER = WITH_EXTENDS_CLAUSE_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Features Provider</b></em>' containment reference.
@@ -351,14 +351,14 @@ public interface ModelPackage extends EPackage
   int LABEL_SPECIFICATION_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionProviderImpl <em>Property Description Provider</em>}' class.
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionProviderImpl <em>Feature Caption Provider</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionProviderImpl
-   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPropertyDescriptionProvider()
+   * @see org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionProviderImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFeatureCaptionProvider()
    * @generated
    */
-  int PROPERTY_DESCRIPTION_PROVIDER = 5;
+  int FEATURE_CAPTION_PROVIDER = 5;
 
   /**
    * The feature id for the '<em><b>Specifications</b></em>' containment reference list.
@@ -367,26 +367,26 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = 0;
+  int FEATURE_CAPTION_PROVIDER__SPECIFICATIONS = 0;
 
   /**
-   * The number of structural features of the '<em>Property Description Provider</em>' class.
+   * The number of structural features of the '<em>Feature Caption Provider</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_DESCRIPTION_PROVIDER_FEATURE_COUNT = 1;
+  int FEATURE_CAPTION_PROVIDER_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl <em>Form Property Description Provider</em>}' class.
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormFeatureCaptionProviderImpl <em>Form Feature Caption Provider</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl
-   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormPropertyDescriptionProvider()
+   * @see org.eclipse.emf.parsley.dsl.model.impl.FormFeatureCaptionProviderImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormFeatureCaptionProvider()
    * @generated
    */
-  int FORM_PROPERTY_DESCRIPTION_PROVIDER = 6;
+  int FORM_FEATURE_CAPTION_PROVIDER = 6;
 
   /**
    * The feature id for the '<em><b>Specifications</b></em>' containment reference list.
@@ -395,7 +395,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = 0;
+  int FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS = 0;
 
   /**
    * The feature id for the '<em><b>Label Specifications</b></em>' containment reference list.
@@ -404,26 +404,26 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FORM_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = 1;
+  int FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS = 1;
 
   /**
-   * The number of structural features of the '<em>Form Property Description Provider</em>' class.
+   * The number of structural features of the '<em>Form Feature Caption Provider</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FORM_PROPERTY_DESCRIPTION_PROVIDER_FEATURE_COUNT = 2;
+  int FORM_FEATURE_CAPTION_PROVIDER_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.DialogPropertyDescriptionProviderImpl <em>Dialog Property Description Provider</em>}' class.
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.DialogFeatureCaptionProviderImpl <em>Dialog Feature Caption Provider</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.emf.parsley.dsl.model.impl.DialogPropertyDescriptionProviderImpl
-   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getDialogPropertyDescriptionProvider()
+   * @see org.eclipse.emf.parsley.dsl.model.impl.DialogFeatureCaptionProviderImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getDialogFeatureCaptionProvider()
    * @generated
    */
-  int DIALOG_PROPERTY_DESCRIPTION_PROVIDER = 7;
+  int DIALOG_FEATURE_CAPTION_PROVIDER = 7;
 
   /**
    * The feature id for the '<em><b>Specifications</b></em>' containment reference list.
@@ -432,7 +432,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = 0;
+  int DIALOG_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS = 0;
 
   /**
    * The feature id for the '<em><b>Label Specifications</b></em>' containment reference list.
@@ -441,16 +441,16 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = 1;
+  int DIALOG_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS = 1;
 
   /**
-   * The number of structural features of the '<em>Dialog Property Description Provider</em>' class.
+   * The number of structural features of the '<em>Dialog Feature Caption Provider</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DIALOG_PROPERTY_DESCRIPTION_PROVIDER_FEATURE_COUNT = 2;
+  int DIALOG_FEATURE_CAPTION_PROVIDER_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.EmfFeatureAccessImpl <em>Emf Feature Access</em>}' class.
@@ -481,14 +481,14 @@ public interface ModelPackage extends EPackage
   int EMF_FEATURE_ACCESS_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionSpecificationImpl <em>Property Description Specification</em>}' class.
+   * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionSpecificationImpl <em>Feature Caption Specification</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionSpecificationImpl
-   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPropertyDescriptionSpecification()
+   * @see org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionSpecificationImpl
+   * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFeatureCaptionSpecification()
    * @generated
    */
-  int PROPERTY_DESCRIPTION_SPECIFICATION = 8;
+  int FEATURE_CAPTION_SPECIFICATION = 8;
 
   /**
    * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
@@ -497,7 +497,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_DESCRIPTION_SPECIFICATION__PARAMETER_TYPE = EMF_FEATURE_ACCESS__PARAMETER_TYPE;
+  int FEATURE_CAPTION_SPECIFICATION__PARAMETER_TYPE = EMF_FEATURE_ACCESS__PARAMETER_TYPE;
 
   /**
    * The feature id for the '<em><b>Feature</b></em>' reference.
@@ -506,7 +506,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE = EMF_FEATURE_ACCESS_FEATURE_COUNT + 0;
+  int FEATURE_CAPTION_SPECIFICATION__FEATURE = EMF_FEATURE_ACCESS_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -515,16 +515,16 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION = EMF_FEATURE_ACCESS_FEATURE_COUNT + 1;
+  int FEATURE_CAPTION_SPECIFICATION__EXPRESSION = EMF_FEATURE_ACCESS_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Property Description Specification</em>' class.
+   * The number of structural features of the '<em>Feature Caption Specification</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_DESCRIPTION_SPECIFICATION_FEATURE_COUNT = EMF_FEATURE_ACCESS_FEATURE_COUNT + 2;
+  int FEATURE_CAPTION_SPECIFICATION_FEATURE_COUNT = EMF_FEATURE_ACCESS_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FeaturesProviderImpl <em>Features Provider</em>}' class.
@@ -983,37 +983,37 @@ public interface ModelPackage extends EPackage
   EReference getModule_LabelProvider();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getPropertyDescriptionProvider <em>Property Description Provider</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getFeatureCaptionProvider <em>Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Property Description Provider</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.Module#getPropertyDescriptionProvider()
+   * @return the meta object for the containment reference '<em>Feature Caption Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.Module#getFeatureCaptionProvider()
    * @see #getModule()
    * @generated
    */
-  EReference getModule_PropertyDescriptionProvider();
+  EReference getModule_FeatureCaptionProvider();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getFormFeatureCaptionProvider <em>Form Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Form Property Description Provider</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.Module#getFormPropertyDescriptionProvider()
+   * @return the meta object for the containment reference '<em>Form Feature Caption Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.Module#getFormFeatureCaptionProvider()
    * @see #getModule()
    * @generated
    */
-  EReference getModule_FormPropertyDescriptionProvider();
+  EReference getModule_FormFeatureCaptionProvider();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getDialogFeatureCaptionProvider <em>Dialog Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Dialog Property Description Provider</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.Module#getDialogPropertyDescriptionProvider()
+   * @return the meta object for the containment reference '<em>Dialog Feature Caption Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.Module#getDialogFeatureCaptionProvider()
    * @see #getModule()
    * @generated
    */
-  EReference getModule_DialogPropertyDescriptionProvider();
+  EReference getModule_DialogFeatureCaptionProvider();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.Module#getFeaturesProvider <em>Features Provider</em>}'.
@@ -1178,121 +1178,121 @@ public interface ModelPackage extends EPackage
   EReference getLabelSpecification_Expression();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider <em>Property Description Provider</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider <em>Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Property Description Provider</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider
+   * @return the meta object for class '<em>Feature Caption Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider
    * @generated
    */
-  EClass getPropertyDescriptionProvider();
+  EClass getFeatureCaptionProvider();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getSpecifications <em>Specifications</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Specifications</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider#getSpecifications()
-   * @see #getPropertyDescriptionProvider()
-   * @generated
-   */
-  EReference getPropertyDescriptionProvider_Specifications();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider <em>Form Property Description Provider</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Form Property Description Provider</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider
-   * @generated
-   */
-  EClass getFormPropertyDescriptionProvider();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getSpecifications <em>Specifications</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider#getSpecifications <em>Specifications</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Specifications</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getSpecifications()
-   * @see #getFormPropertyDescriptionProvider()
+   * @see org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider#getSpecifications()
+   * @see #getFeatureCaptionProvider()
    * @generated
    */
-  EReference getFormPropertyDescriptionProvider_Specifications();
+  EReference getFeatureCaptionProvider_Specifications();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getLabelSpecifications <em>Label Specifications</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider <em>Form Feature Caption Provider</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Form Feature Caption Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider
+   * @generated
+   */
+  EClass getFormFeatureCaptionProvider();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider#getSpecifications <em>Specifications</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider#getSpecifications()
+   * @see #getFormFeatureCaptionProvider()
+   * @generated
+   */
+  EReference getFormFeatureCaptionProvider_Specifications();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider#getLabelSpecifications <em>Label Specifications</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Label Specifications</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider#getLabelSpecifications()
-   * @see #getFormPropertyDescriptionProvider()
+   * @see org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider#getLabelSpecifications()
+   * @see #getFormFeatureCaptionProvider()
    * @generated
    */
-  EReference getFormPropertyDescriptionProvider_LabelSpecifications();
+  EReference getFormFeatureCaptionProvider_LabelSpecifications();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider <em>Dialog Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Dialog Property Description Provider</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider
+   * @return the meta object for class '<em>Dialog Feature Caption Provider</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider
    * @generated
    */
-  EClass getDialogPropertyDescriptionProvider();
+  EClass getDialogFeatureCaptionProvider();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider#getSpecifications <em>Specifications</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider#getSpecifications <em>Specifications</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Specifications</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider#getSpecifications()
-   * @see #getDialogPropertyDescriptionProvider()
+   * @see org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider#getSpecifications()
+   * @see #getDialogFeatureCaptionProvider()
    * @generated
    */
-  EReference getDialogPropertyDescriptionProvider_Specifications();
+  EReference getDialogFeatureCaptionProvider_Specifications();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider#getLabelSpecifications <em>Label Specifications</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider#getLabelSpecifications <em>Label Specifications</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Label Specifications</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider#getLabelSpecifications()
-   * @see #getDialogPropertyDescriptionProvider()
+   * @see org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider#getLabelSpecifications()
+   * @see #getDialogFeatureCaptionProvider()
    * @generated
    */
-  EReference getDialogPropertyDescriptionProvider_LabelSpecifications();
+  EReference getDialogFeatureCaptionProvider_LabelSpecifications();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification <em>Property Description Specification</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification <em>Feature Caption Specification</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Property Description Specification</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification
+   * @return the meta object for class '<em>Feature Caption Specification</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification
    * @generated
    */
-  EClass getPropertyDescriptionSpecification();
+  EClass getFeatureCaptionSpecification();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getFeature <em>Feature</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getFeature <em>Feature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Feature</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getFeature()
-   * @see #getPropertyDescriptionSpecification()
+   * @see org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getFeature()
+   * @see #getFeatureCaptionSpecification()
    * @generated
    */
-  EReference getPropertyDescriptionSpecification_Feature();
+  EReference getFeatureCaptionSpecification_Feature();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getExpression <em>Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getExpression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getExpression()
-   * @see #getPropertyDescriptionSpecification()
+   * @see org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getExpression()
+   * @see #getFeatureCaptionSpecification()
    * @generated
    */
-  EReference getPropertyDescriptionSpecification_Expression();
+  EReference getFeatureCaptionSpecification_Expression();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.emf.parsley.dsl.model.FeaturesProvider <em>Features Provider</em>}'.
@@ -1695,28 +1695,28 @@ public interface ModelPackage extends EPackage
     EReference MODULE__LABEL_PROVIDER = eINSTANCE.getModule_LabelProvider();
 
     /**
-     * The meta object literal for the '<em><b>Property Description Provider</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Feature Caption Provider</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODULE__PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getModule_PropertyDescriptionProvider();
+    EReference MODULE__FEATURE_CAPTION_PROVIDER = eINSTANCE.getModule_FeatureCaptionProvider();
 
     /**
-     * The meta object literal for the '<em><b>Form Property Description Provider</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Form Feature Caption Provider</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getModule_FormPropertyDescriptionProvider();
+    EReference MODULE__FORM_FEATURE_CAPTION_PROVIDER = eINSTANCE.getModule_FormFeatureCaptionProvider();
 
     /**
-     * The meta object literal for the '<em><b>Dialog Property Description Provider</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Dialog Feature Caption Provider</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getModule_DialogPropertyDescriptionProvider();
+    EReference MODULE__DIALOG_FEATURE_CAPTION_PROVIDER = eINSTANCE.getModule_DialogFeatureCaptionProvider();
 
     /**
      * The meta object literal for the '<em><b>Features Provider</b></em>' containment reference feature.
@@ -1845,14 +1845,14 @@ public interface ModelPackage extends EPackage
     EReference LABEL_SPECIFICATION__EXPRESSION = eINSTANCE.getLabelSpecification_Expression();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionProviderImpl <em>Property Description Provider</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionProviderImpl <em>Feature Caption Provider</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionProviderImpl
-     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPropertyDescriptionProvider()
+     * @see org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionProviderImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFeatureCaptionProvider()
      * @generated
      */
-    EClass PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getPropertyDescriptionProvider();
+    EClass FEATURE_CAPTION_PROVIDER = eINSTANCE.getFeatureCaptionProvider();
 
     /**
      * The meta object literal for the '<em><b>Specifications</b></em>' containment reference list feature.
@@ -1860,17 +1860,17 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getPropertyDescriptionProvider_Specifications();
+    EReference FEATURE_CAPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getFeatureCaptionProvider_Specifications();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl <em>Form Property Description Provider</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FormFeatureCaptionProviderImpl <em>Form Feature Caption Provider</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.emf.parsley.dsl.model.impl.FormPropertyDescriptionProviderImpl
-     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormPropertyDescriptionProvider()
+     * @see org.eclipse.emf.parsley.dsl.model.impl.FormFeatureCaptionProviderImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFormFeatureCaptionProvider()
      * @generated
      */
-    EClass FORM_PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getFormPropertyDescriptionProvider();
+    EClass FORM_FEATURE_CAPTION_PROVIDER = eINSTANCE.getFormFeatureCaptionProvider();
 
     /**
      * The meta object literal for the '<em><b>Specifications</b></em>' containment reference list feature.
@@ -1878,7 +1878,7 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getFormPropertyDescriptionProvider_Specifications();
+    EReference FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getFormFeatureCaptionProvider_Specifications();
 
     /**
      * The meta object literal for the '<em><b>Label Specifications</b></em>' containment reference list feature.
@@ -1886,17 +1886,17 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FORM_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = eINSTANCE.getFormPropertyDescriptionProvider_LabelSpecifications();
+    EReference FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS = eINSTANCE.getFormFeatureCaptionProvider_LabelSpecifications();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.DialogPropertyDescriptionProviderImpl <em>Dialog Property Description Provider</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.DialogFeatureCaptionProviderImpl <em>Dialog Feature Caption Provider</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.emf.parsley.dsl.model.impl.DialogPropertyDescriptionProviderImpl
-     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getDialogPropertyDescriptionProvider()
+     * @see org.eclipse.emf.parsley.dsl.model.impl.DialogFeatureCaptionProviderImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getDialogFeatureCaptionProvider()
      * @generated
      */
-    EClass DIALOG_PROPERTY_DESCRIPTION_PROVIDER = eINSTANCE.getDialogPropertyDescriptionProvider();
+    EClass DIALOG_FEATURE_CAPTION_PROVIDER = eINSTANCE.getDialogFeatureCaptionProvider();
 
     /**
      * The meta object literal for the '<em><b>Specifications</b></em>' containment reference list feature.
@@ -1904,7 +1904,7 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getDialogPropertyDescriptionProvider_Specifications();
+    EReference DIALOG_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS = eINSTANCE.getDialogFeatureCaptionProvider_Specifications();
 
     /**
      * The meta object literal for the '<em><b>Label Specifications</b></em>' containment reference list feature.
@@ -1912,17 +1912,17 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS = eINSTANCE.getDialogPropertyDescriptionProvider_LabelSpecifications();
+    EReference DIALOG_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS = eINSTANCE.getDialogFeatureCaptionProvider_LabelSpecifications();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionSpecificationImpl <em>Property Description Specification</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionSpecificationImpl <em>Feature Caption Specification</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionSpecificationImpl
-     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getPropertyDescriptionSpecification()
+     * @see org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionSpecificationImpl
+     * @see org.eclipse.emf.parsley.dsl.model.impl.ModelPackageImpl#getFeatureCaptionSpecification()
      * @generated
      */
-    EClass PROPERTY_DESCRIPTION_SPECIFICATION = eINSTANCE.getPropertyDescriptionSpecification();
+    EClass FEATURE_CAPTION_SPECIFICATION = eINSTANCE.getFeatureCaptionSpecification();
 
     /**
      * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
@@ -1930,7 +1930,7 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE = eINSTANCE.getPropertyDescriptionSpecification_Feature();
+    EReference FEATURE_CAPTION_SPECIFICATION__FEATURE = eINSTANCE.getFeatureCaptionSpecification_Feature();
 
     /**
      * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
@@ -1938,7 +1938,7 @@ public interface ModelPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION = eINSTANCE.getPropertyDescriptionSpecification_Expression();
+    EReference FEATURE_CAPTION_SPECIFICATION__EXPRESSION = eINSTANCE.getFeatureCaptionSpecification_Expression();
 
     /**
      * The meta object literal for the '{@link org.eclipse.emf.parsley.dsl.model.impl.FeaturesProviderImpl <em>Features Provider</em>}' class.

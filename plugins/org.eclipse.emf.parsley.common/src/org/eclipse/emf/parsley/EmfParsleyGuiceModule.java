@@ -40,11 +40,11 @@ import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.runtime.service.AbstractGenericModule;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.ui.PluginImageHelper;
-import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
@@ -99,16 +99,16 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 		return ViewerLabelProvider.class;
 	}
 
-	public Class<? extends PropertyDescriptionProvider> bindPropertyDescriptionProvider() {
-		return PropertyDescriptionProvider.class;
+	public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
+		return FeatureCaptionProvider.class;
 	}
 
-	public Class<? extends FormPropertyDescriptionProvider> bindFormPropertyDescriptionProvider() {
-		return FormPropertyDescriptionProvider.class;
+	public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
+		return FormFeatureCaptionProvider.class;
 	}
 
-	public Class<? extends DialogPropertyDescriptionProvider> bindDialogPropertyDescriptionProvider() {
-		return DialogPropertyDescriptionProvider.class;
+	public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
+		return DialogFeatureCaptionProvider.class;
 	}
 
 	public Class<? extends OutlineSelectionHandler> bindOutlineSelectionHandler() {

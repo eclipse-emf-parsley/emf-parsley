@@ -11,16 +11,16 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.parsley.dsl.model.DialogControlFactory;
-import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
 import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
-import org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelProvider;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 import org.eclipse.emf.parsley.dsl.model.Module;
 import org.eclipse.emf.parsley.dsl.model.PartsSpecifications;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ProposalCreator;
 import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
 
@@ -34,9 +34,9 @@ import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getExtendsClause <em>Extends Clause</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getLabelProvider <em>Label Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getPropertyDescriptionProvider <em>Property Description Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFormPropertyDescriptionProvider <em>Form Property Description Provider</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getDialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFeatureCaptionProvider <em>Feature Caption Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFormFeatureCaptionProvider <em>Form Feature Caption Provider</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getDialogFeatureCaptionProvider <em>Dialog Feature Caption Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFeaturesProvider <em>Features Provider</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getFormControlFactory <em>Form Control Factory</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ModuleImpl#getDialogControlFactory <em>Dialog Control Factory</em>}</li>
@@ -91,34 +91,34 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
   protected LabelProvider labelProvider;
 
   /**
-   * The cached value of the '{@link #getPropertyDescriptionProvider() <em>Property Description Provider</em>}' containment reference.
+   * The cached value of the '{@link #getFeatureCaptionProvider() <em>Feature Caption Provider</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPropertyDescriptionProvider()
+   * @see #getFeatureCaptionProvider()
    * @generated
    * @ordered
    */
-  protected PropertyDescriptionProvider propertyDescriptionProvider;
+  protected FeatureCaptionProvider featureCaptionProvider;
 
   /**
-   * The cached value of the '{@link #getFormPropertyDescriptionProvider() <em>Form Property Description Provider</em>}' containment reference.
+   * The cached value of the '{@link #getFormFeatureCaptionProvider() <em>Form Feature Caption Provider</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFormPropertyDescriptionProvider()
+   * @see #getFormFeatureCaptionProvider()
    * @generated
    * @ordered
    */
-  protected FormPropertyDescriptionProvider formPropertyDescriptionProvider;
+  protected FormFeatureCaptionProvider formFeatureCaptionProvider;
 
   /**
-   * The cached value of the '{@link #getDialogPropertyDescriptionProvider() <em>Dialog Property Description Provider</em>}' containment reference.
+   * The cached value of the '{@link #getDialogFeatureCaptionProvider() <em>Dialog Feature Caption Provider</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDialogPropertyDescriptionProvider()
+   * @see #getDialogFeatureCaptionProvider()
    * @generated
    * @ordered
    */
-  protected DialogPropertyDescriptionProvider dialogPropertyDescriptionProvider;
+  protected DialogFeatureCaptionProvider dialogFeatureCaptionProvider;
 
   /**
    * The cached value of the '{@link #getFeaturesProvider() <em>Features Provider</em>}' containment reference.
@@ -325,9 +325,9 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyDescriptionProvider getPropertyDescriptionProvider()
+  public FeatureCaptionProvider getFeatureCaptionProvider()
   {
-    return propertyDescriptionProvider;
+    return featureCaptionProvider;
   }
 
   /**
@@ -335,13 +335,13 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPropertyDescriptionProvider(PropertyDescriptionProvider newPropertyDescriptionProvider, NotificationChain msgs)
+  public NotificationChain basicSetFeatureCaptionProvider(FeatureCaptionProvider newFeatureCaptionProvider, NotificationChain msgs)
   {
-    PropertyDescriptionProvider oldPropertyDescriptionProvider = propertyDescriptionProvider;
-    propertyDescriptionProvider = newPropertyDescriptionProvider;
+    FeatureCaptionProvider oldFeatureCaptionProvider = featureCaptionProvider;
+    featureCaptionProvider = newFeatureCaptionProvider;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER, oldPropertyDescriptionProvider, newPropertyDescriptionProvider);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER, oldFeatureCaptionProvider, newFeatureCaptionProvider);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -352,20 +352,20 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPropertyDescriptionProvider(PropertyDescriptionProvider newPropertyDescriptionProvider)
+  public void setFeatureCaptionProvider(FeatureCaptionProvider newFeatureCaptionProvider)
   {
-    if (newPropertyDescriptionProvider != propertyDescriptionProvider)
+    if (newFeatureCaptionProvider != featureCaptionProvider)
     {
       NotificationChain msgs = null;
-      if (propertyDescriptionProvider != null)
-        msgs = ((InternalEObject)propertyDescriptionProvider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
-      if (newPropertyDescriptionProvider != null)
-        msgs = ((InternalEObject)newPropertyDescriptionProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
-      msgs = basicSetPropertyDescriptionProvider(newPropertyDescriptionProvider, msgs);
+      if (featureCaptionProvider != null)
+        msgs = ((InternalEObject)featureCaptionProvider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER, null, msgs);
+      if (newFeatureCaptionProvider != null)
+        msgs = ((InternalEObject)newFeatureCaptionProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER, null, msgs);
+      msgs = basicSetFeatureCaptionProvider(newFeatureCaptionProvider, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER, newPropertyDescriptionProvider, newPropertyDescriptionProvider));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER, newFeatureCaptionProvider, newFeatureCaptionProvider));
   }
 
   /**
@@ -373,9 +373,9 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public FormPropertyDescriptionProvider getFormPropertyDescriptionProvider()
+  public FormFeatureCaptionProvider getFormFeatureCaptionProvider()
   {
-    return formPropertyDescriptionProvider;
+    return formFeatureCaptionProvider;
   }
 
   /**
@@ -383,13 +383,13 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFormPropertyDescriptionProvider(FormPropertyDescriptionProvider newFormPropertyDescriptionProvider, NotificationChain msgs)
+  public NotificationChain basicSetFormFeatureCaptionProvider(FormFeatureCaptionProvider newFormFeatureCaptionProvider, NotificationChain msgs)
   {
-    FormPropertyDescriptionProvider oldFormPropertyDescriptionProvider = formPropertyDescriptionProvider;
-    formPropertyDescriptionProvider = newFormPropertyDescriptionProvider;
+    FormFeatureCaptionProvider oldFormFeatureCaptionProvider = formFeatureCaptionProvider;
+    formFeatureCaptionProvider = newFormFeatureCaptionProvider;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER, oldFormPropertyDescriptionProvider, newFormPropertyDescriptionProvider);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER, oldFormFeatureCaptionProvider, newFormFeatureCaptionProvider);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -400,20 +400,20 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFormPropertyDescriptionProvider(FormPropertyDescriptionProvider newFormPropertyDescriptionProvider)
+  public void setFormFeatureCaptionProvider(FormFeatureCaptionProvider newFormFeatureCaptionProvider)
   {
-    if (newFormPropertyDescriptionProvider != formPropertyDescriptionProvider)
+    if (newFormFeatureCaptionProvider != formFeatureCaptionProvider)
     {
       NotificationChain msgs = null;
-      if (formPropertyDescriptionProvider != null)
-        msgs = ((InternalEObject)formPropertyDescriptionProvider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
-      if (newFormPropertyDescriptionProvider != null)
-        msgs = ((InternalEObject)newFormPropertyDescriptionProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
-      msgs = basicSetFormPropertyDescriptionProvider(newFormPropertyDescriptionProvider, msgs);
+      if (formFeatureCaptionProvider != null)
+        msgs = ((InternalEObject)formFeatureCaptionProvider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER, null, msgs);
+      if (newFormFeatureCaptionProvider != null)
+        msgs = ((InternalEObject)newFormFeatureCaptionProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER, null, msgs);
+      msgs = basicSetFormFeatureCaptionProvider(newFormFeatureCaptionProvider, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER, newFormPropertyDescriptionProvider, newFormPropertyDescriptionProvider));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER, newFormFeatureCaptionProvider, newFormFeatureCaptionProvider));
   }
 
   /**
@@ -421,9 +421,9 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public DialogPropertyDescriptionProvider getDialogPropertyDescriptionProvider()
+  public DialogFeatureCaptionProvider getDialogFeatureCaptionProvider()
   {
-    return dialogPropertyDescriptionProvider;
+    return dialogFeatureCaptionProvider;
   }
 
   /**
@@ -431,13 +431,13 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider newDialogPropertyDescriptionProvider, NotificationChain msgs)
+  public NotificationChain basicSetDialogFeatureCaptionProvider(DialogFeatureCaptionProvider newDialogFeatureCaptionProvider, NotificationChain msgs)
   {
-    DialogPropertyDescriptionProvider oldDialogPropertyDescriptionProvider = dialogPropertyDescriptionProvider;
-    dialogPropertyDescriptionProvider = newDialogPropertyDescriptionProvider;
+    DialogFeatureCaptionProvider oldDialogFeatureCaptionProvider = dialogFeatureCaptionProvider;
+    dialogFeatureCaptionProvider = newDialogFeatureCaptionProvider;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, oldDialogPropertyDescriptionProvider, newDialogPropertyDescriptionProvider);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER, oldDialogFeatureCaptionProvider, newDialogFeatureCaptionProvider);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -448,20 +448,20 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider newDialogPropertyDescriptionProvider)
+  public void setDialogFeatureCaptionProvider(DialogFeatureCaptionProvider newDialogFeatureCaptionProvider)
   {
-    if (newDialogPropertyDescriptionProvider != dialogPropertyDescriptionProvider)
+    if (newDialogFeatureCaptionProvider != dialogFeatureCaptionProvider)
     {
       NotificationChain msgs = null;
-      if (dialogPropertyDescriptionProvider != null)
-        msgs = ((InternalEObject)dialogPropertyDescriptionProvider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
-      if (newDialogPropertyDescriptionProvider != null)
-        msgs = ((InternalEObject)newDialogPropertyDescriptionProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, null, msgs);
-      msgs = basicSetDialogPropertyDescriptionProvider(newDialogPropertyDescriptionProvider, msgs);
+      if (dialogFeatureCaptionProvider != null)
+        msgs = ((InternalEObject)dialogFeatureCaptionProvider).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER, null, msgs);
+      if (newDialogFeatureCaptionProvider != null)
+        msgs = ((InternalEObject)newDialogFeatureCaptionProvider).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER, null, msgs);
+      msgs = basicSetDialogFeatureCaptionProvider(newDialogFeatureCaptionProvider, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER, newDialogPropertyDescriptionProvider, newDialogPropertyDescriptionProvider));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER, newDialogFeatureCaptionProvider, newDialogFeatureCaptionProvider));
   }
 
   /**
@@ -766,12 +766,12 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return basicSetExtendsClause(null, msgs);
       case ModelPackage.MODULE__LABEL_PROVIDER:
         return basicSetLabelProvider(null, msgs);
-      case ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER:
-        return basicSetPropertyDescriptionProvider(null, msgs);
-      case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
-        return basicSetFormPropertyDescriptionProvider(null, msgs);
-      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
-        return basicSetDialogPropertyDescriptionProvider(null, msgs);
+      case ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER:
+        return basicSetFeatureCaptionProvider(null, msgs);
+      case ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER:
+        return basicSetFormFeatureCaptionProvider(null, msgs);
+      case ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER:
+        return basicSetDialogFeatureCaptionProvider(null, msgs);
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         return basicSetFeaturesProvider(null, msgs);
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
@@ -804,12 +804,12 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return getExtendsClause();
       case ModelPackage.MODULE__LABEL_PROVIDER:
         return getLabelProvider();
-      case ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER:
-        return getPropertyDescriptionProvider();
-      case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
-        return getFormPropertyDescriptionProvider();
-      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
-        return getDialogPropertyDescriptionProvider();
+      case ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER:
+        return getFeatureCaptionProvider();
+      case ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER:
+        return getFormFeatureCaptionProvider();
+      case ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER:
+        return getDialogFeatureCaptionProvider();
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         return getFeaturesProvider();
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:
@@ -845,14 +845,14 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
       case ModelPackage.MODULE__LABEL_PROVIDER:
         setLabelProvider((LabelProvider)newValue);
         return;
-      case ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER:
-        setPropertyDescriptionProvider((PropertyDescriptionProvider)newValue);
+      case ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER:
+        setFeatureCaptionProvider((FeatureCaptionProvider)newValue);
         return;
-      case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
-        setFormPropertyDescriptionProvider((FormPropertyDescriptionProvider)newValue);
+      case ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER:
+        setFormFeatureCaptionProvider((FormFeatureCaptionProvider)newValue);
         return;
-      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
-        setDialogPropertyDescriptionProvider((DialogPropertyDescriptionProvider)newValue);
+      case ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER:
+        setDialogFeatureCaptionProvider((DialogFeatureCaptionProvider)newValue);
         return;
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         setFeaturesProvider((FeaturesProvider)newValue);
@@ -895,14 +895,14 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
       case ModelPackage.MODULE__LABEL_PROVIDER:
         setLabelProvider((LabelProvider)null);
         return;
-      case ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER:
-        setPropertyDescriptionProvider((PropertyDescriptionProvider)null);
+      case ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER:
+        setFeatureCaptionProvider((FeatureCaptionProvider)null);
         return;
-      case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
-        setFormPropertyDescriptionProvider((FormPropertyDescriptionProvider)null);
+      case ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER:
+        setFormFeatureCaptionProvider((FormFeatureCaptionProvider)null);
         return;
-      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
-        setDialogPropertyDescriptionProvider((DialogPropertyDescriptionProvider)null);
+      case ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER:
+        setDialogFeatureCaptionProvider((DialogFeatureCaptionProvider)null);
         return;
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         setFeaturesProvider((FeaturesProvider)null);
@@ -942,12 +942,12 @@ public class ModuleImpl extends WithExtendsClauseImpl implements Module
         return extendsClause != null;
       case ModelPackage.MODULE__LABEL_PROVIDER:
         return labelProvider != null;
-      case ModelPackage.MODULE__PROPERTY_DESCRIPTION_PROVIDER:
-        return propertyDescriptionProvider != null;
-      case ModelPackage.MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER:
-        return formPropertyDescriptionProvider != null;
-      case ModelPackage.MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
-        return dialogPropertyDescriptionProvider != null;
+      case ModelPackage.MODULE__FEATURE_CAPTION_PROVIDER:
+        return featureCaptionProvider != null;
+      case ModelPackage.MODULE__FORM_FEATURE_CAPTION_PROVIDER:
+        return formFeatureCaptionProvider != null;
+      case ModelPackage.MODULE__DIALOG_FEATURE_CAPTION_PROVIDER:
+        return dialogFeatureCaptionProvider != null;
       case ModelPackage.MODULE__FEATURES_PROVIDER:
         return featuresProvider != null;
       case ModelPackage.MODULE__FORM_CONTROL_FACTORY:

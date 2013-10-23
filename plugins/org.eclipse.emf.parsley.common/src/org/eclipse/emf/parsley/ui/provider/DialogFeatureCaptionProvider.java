@@ -18,7 +18,7 @@ import com.google.inject.Inject;
 
 /**
  * Provides labels for EStructuralFeatures for dialogs. With respect to the
- * superclass {@link PropertyDescriptionProvider} you can also specify the Label,
+ * superclass {@link FeatureCaptionProvider} you can also specify the Label,
  * besides its text.  If a custom PropertyDescriptionProvider is provided (through
  * injection) then it tries to get the text also from that one, before
  * using the default text.
@@ -26,10 +26,10 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini
  * 
  */
-public class DialogPropertyDescriptionProvider extends PropertyDescriptionProvider {
+public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 
 	@Inject
-	protected PropertyDescriptionProvider delegate;
+	protected FeatureCaptionProvider delegate;
 	
 	private PolymorphicDispatcher.ErrorHandler<Label> errorLabelHandler = new PolymorphicDispatcher.NullErrorHandler<Label>();
 

@@ -108,32 +108,32 @@ public class ModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER:
+      case ModelPackage.FEATURE_CAPTION_PROVIDER:
       {
-        PropertyDescriptionProvider propertyDescriptionProvider = (PropertyDescriptionProvider)theEObject;
-        T result = casePropertyDescriptionProvider(propertyDescriptionProvider);
+        FeatureCaptionProvider featureCaptionProvider = (FeatureCaptionProvider)theEObject;
+        T result = caseFeatureCaptionProvider(featureCaptionProvider);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.FORM_PROPERTY_DESCRIPTION_PROVIDER:
+      case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER:
       {
-        FormPropertyDescriptionProvider formPropertyDescriptionProvider = (FormPropertyDescriptionProvider)theEObject;
-        T result = caseFormPropertyDescriptionProvider(formPropertyDescriptionProvider);
+        FormFeatureCaptionProvider formFeatureCaptionProvider = (FormFeatureCaptionProvider)theEObject;
+        T result = caseFormFeatureCaptionProvider(formFeatureCaptionProvider);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
+      case ModelPackage.DIALOG_FEATURE_CAPTION_PROVIDER:
       {
-        DialogPropertyDescriptionProvider dialogPropertyDescriptionProvider = (DialogPropertyDescriptionProvider)theEObject;
-        T result = caseDialogPropertyDescriptionProvider(dialogPropertyDescriptionProvider);
+        DialogFeatureCaptionProvider dialogFeatureCaptionProvider = (DialogFeatureCaptionProvider)theEObject;
+        T result = caseDialogFeatureCaptionProvider(dialogFeatureCaptionProvider);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION:
       {
-        PropertyDescriptionSpecification propertyDescriptionSpecification = (PropertyDescriptionSpecification)theEObject;
-        T result = casePropertyDescriptionSpecification(propertyDescriptionSpecification);
-        if (result == null) result = caseEmfFeatureAccess(propertyDescriptionSpecification);
+        FeatureCaptionSpecification featureCaptionSpecification = (FeatureCaptionSpecification)theEObject;
+        T result = caseFeatureCaptionSpecification(featureCaptionSpecification);
+        if (result == null) result = caseEmfFeatureAccess(featureCaptionSpecification);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -317,65 +317,65 @@ public class ModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Description Provider</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Feature Caption Provider</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Description Provider</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Feature Caption Provider</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePropertyDescriptionProvider(PropertyDescriptionProvider object)
+  public T caseFeatureCaptionProvider(FeatureCaptionProvider object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Form Property Description Provider</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Form Feature Caption Provider</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Form Property Description Provider</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Form Feature Caption Provider</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFormPropertyDescriptionProvider(FormPropertyDescriptionProvider object)
+  public T caseFormFeatureCaptionProvider(FormFeatureCaptionProvider object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Dialog Property Description Provider</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Dialog Feature Caption Provider</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Dialog Property Description Provider</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Dialog Feature Caption Provider</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider object)
+  public T caseDialogFeatureCaptionProvider(DialogFeatureCaptionProvider object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Description Specification</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Feature Caption Specification</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Description Specification</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Feature Caption Specification</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePropertyDescriptionSpecification(PropertyDescriptionSpecification object)
+  public T caseFeatureCaptionSpecification(FeatureCaptionSpecification object)
   {
     return null;
   }

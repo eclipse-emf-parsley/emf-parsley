@@ -14,11 +14,11 @@ Module:
 		(
 			(labelProvider = LabelProvider)?
 			&
-			(propertyDescriptionProvider = PropertyDescriptionProvider)?
+			(featureCaptionProvider = FeatureCaptionProvider)?
 			&
-			(formPropertyDescriptionProvider = FormPropertyDescriptionProvider)?
+			(formFeatureCaptionProvider = FormFeatureCaptionProvider)?
 			&
-			(dialogPropertyDescriptionProvider = DialogPropertyDescriptionProvider)?
+			(dialogFeatureCaptionProvider = DialogFeatureCaptionProvider)?
 			&
 			(featuresProvider = FeaturesProvider)?
 			&
@@ -59,49 +59,49 @@ LabelSpecification:
 	expression = XExpression
 ;
 
-PropertyDescriptionProvider:
-	{PropertyDescriptionProvider} 'propertyDescriptionProvider' '{'
+FeatureCaptionProvider:
+	{FeatureCaptionProvider} 'featureCaptionProvider' '{'
 		((
 		'text' '{'
-			specifications+=PropertyDescriptionSpecification*
+			specifications+=FeatureCaptionSpecification*
 		'}'
 		)?)
 	'}'
 ;
 
-FormPropertyDescriptionProvider:
-	{FormPropertyDescriptionProvider} 'formPropertyDescriptionProvider' '{'
+FormFeatureCaptionProvider:
+	{FormFeatureCaptionProvider} 'formFeatureCaptionProvider' '{'
 		((
 		'text' '{'
-			specifications+=PropertyDescriptionSpecification*
+			specifications+=FeatureCaptionSpecification*
 		'}'
 		)?
 		&
 		(
 		'label' '{'
-			labelSpecifications+=PropertyDescriptionSpecification*
+			labelSpecifications+=FeatureCaptionSpecification*
 		'}'
 		)?)
 	'}'
 ;
 
-DialogPropertyDescriptionProvider:
-	{DialogPropertyDescriptionProvider} 'dialogPropertyDescriptionProvider' '{'
+DialogFeatureCaptionProvider:
+	{DialogFeatureCaptionProvider} 'dialogFeatureCaptionProvider' '{'
 		((
 		'text' '{'
-			specifications+=PropertyDescriptionSpecification*
+			specifications+=FeatureCaptionSpecification*
 		'}'
 		)?
 		&
 		(
 		'label' '{'
-			labelSpecifications+=PropertyDescriptionSpecification*
+			labelSpecifications+=FeatureCaptionSpecification*
 		'}'
 		)?)
 	'}'
 ;
 
-PropertyDescriptionSpecification:
+FeatureCaptionSpecification:
 	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
 	'->'
 	expression = XExpression
@@ -174,7 +174,7 @@ ViewerContentProvider:
 
 // a utility base class for rules which access features of an EClass
 EmfFeatureAccess:
-	PropertyDescriptionSpecification |
+	FeatureCaptionSpecification |
 	FeatureSpecification |
 	ControlFactorySpecification |
 	ProposalSpecification

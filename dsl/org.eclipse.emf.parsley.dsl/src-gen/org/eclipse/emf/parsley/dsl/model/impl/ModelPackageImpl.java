@@ -11,13 +11,15 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification;
 import org.eclipse.emf.parsley.dsl.model.DialogControlFactory;
-import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider;
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeatureSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
 import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
-import org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
 import org.eclipse.emf.parsley.dsl.model.Model;
@@ -26,8 +28,6 @@ import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 import org.eclipse.emf.parsley.dsl.model.Module;
 import org.eclipse.emf.parsley.dsl.model.PartSpecification;
 import org.eclipse.emf.parsley.dsl.model.PartsSpecifications;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.ProposalCreator;
 import org.eclipse.emf.parsley.dsl.model.ProposalSpecification;
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification;
@@ -88,28 +88,28 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass propertyDescriptionProviderEClass = null;
+  private EClass featureCaptionProviderEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass formPropertyDescriptionProviderEClass = null;
+  private EClass formFeatureCaptionProviderEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass dialogPropertyDescriptionProviderEClass = null;
+  private EClass dialogFeatureCaptionProviderEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass propertyDescriptionSpecificationEClass = null;
+  private EClass featureCaptionSpecificationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -344,7 +344,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_PropertyDescriptionProvider()
+  public EReference getModule_FeatureCaptionProvider()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(3);
   }
@@ -354,7 +354,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_FormPropertyDescriptionProvider()
+  public EReference getModule_FormFeatureCaptionProvider()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(4);
   }
@@ -364,7 +364,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModule_DialogPropertyDescriptionProvider()
+  public EReference getModule_DialogFeatureCaptionProvider()
   {
     return (EReference)moduleEClass.getEStructuralFeatures().get(5);
   }
@@ -524,9 +524,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPropertyDescriptionProvider()
+  public EClass getFeatureCaptionProvider()
   {
-    return propertyDescriptionProviderEClass;
+    return featureCaptionProviderEClass;
   }
 
   /**
@@ -534,9 +534,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyDescriptionProvider_Specifications()
+  public EReference getFeatureCaptionProvider_Specifications()
   {
-    return (EReference)propertyDescriptionProviderEClass.getEStructuralFeatures().get(0);
+    return (EReference)featureCaptionProviderEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -544,9 +544,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFormPropertyDescriptionProvider()
+  public EClass getFormFeatureCaptionProvider()
   {
-    return formPropertyDescriptionProviderEClass;
+    return formFeatureCaptionProviderEClass;
   }
 
   /**
@@ -554,9 +554,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormPropertyDescriptionProvider_Specifications()
+  public EReference getFormFeatureCaptionProvider_Specifications()
   {
-    return (EReference)formPropertyDescriptionProviderEClass.getEStructuralFeatures().get(0);
+    return (EReference)formFeatureCaptionProviderEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -564,9 +564,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFormPropertyDescriptionProvider_LabelSpecifications()
+  public EReference getFormFeatureCaptionProvider_LabelSpecifications()
   {
-    return (EReference)formPropertyDescriptionProviderEClass.getEStructuralFeatures().get(1);
+    return (EReference)formFeatureCaptionProviderEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -574,9 +574,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDialogPropertyDescriptionProvider()
+  public EClass getDialogFeatureCaptionProvider()
   {
-    return dialogPropertyDescriptionProviderEClass;
+    return dialogFeatureCaptionProviderEClass;
   }
 
   /**
@@ -584,9 +584,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDialogPropertyDescriptionProvider_Specifications()
+  public EReference getDialogFeatureCaptionProvider_Specifications()
   {
-    return (EReference)dialogPropertyDescriptionProviderEClass.getEStructuralFeatures().get(0);
+    return (EReference)dialogFeatureCaptionProviderEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -594,9 +594,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDialogPropertyDescriptionProvider_LabelSpecifications()
+  public EReference getDialogFeatureCaptionProvider_LabelSpecifications()
   {
-    return (EReference)dialogPropertyDescriptionProviderEClass.getEStructuralFeatures().get(1);
+    return (EReference)dialogFeatureCaptionProviderEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -604,9 +604,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPropertyDescriptionSpecification()
+  public EClass getFeatureCaptionSpecification()
   {
-    return propertyDescriptionSpecificationEClass;
+    return featureCaptionSpecificationEClass;
   }
 
   /**
@@ -614,9 +614,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyDescriptionSpecification_Feature()
+  public EReference getFeatureCaptionSpecification_Feature()
   {
-    return (EReference)propertyDescriptionSpecificationEClass.getEStructuralFeatures().get(0);
+    return (EReference)featureCaptionSpecificationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -624,9 +624,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyDescriptionSpecification_Expression()
+  public EReference getFeatureCaptionSpecification_Expression()
   {
-    return (EReference)propertyDescriptionSpecificationEClass.getEStructuralFeatures().get(1);
+    return (EReference)featureCaptionSpecificationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -967,9 +967,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEAttribute(moduleEClass, MODULE__NAME);
     createEReference(moduleEClass, MODULE__EXTENDS_CLAUSE);
     createEReference(moduleEClass, MODULE__LABEL_PROVIDER);
-    createEReference(moduleEClass, MODULE__PROPERTY_DESCRIPTION_PROVIDER);
-    createEReference(moduleEClass, MODULE__FORM_PROPERTY_DESCRIPTION_PROVIDER);
-    createEReference(moduleEClass, MODULE__DIALOG_PROPERTY_DESCRIPTION_PROVIDER);
+    createEReference(moduleEClass, MODULE__FEATURE_CAPTION_PROVIDER);
+    createEReference(moduleEClass, MODULE__FORM_FEATURE_CAPTION_PROVIDER);
+    createEReference(moduleEClass, MODULE__DIALOG_FEATURE_CAPTION_PROVIDER);
     createEReference(moduleEClass, MODULE__FEATURES_PROVIDER);
     createEReference(moduleEClass, MODULE__FORM_CONTROL_FACTORY);
     createEReference(moduleEClass, MODULE__DIALOG_CONTROL_FACTORY);
@@ -989,20 +989,20 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEAttribute(labelSpecificationEClass, LABEL_SPECIFICATION__NAME);
     createEReference(labelSpecificationEClass, LABEL_SPECIFICATION__EXPRESSION);
 
-    propertyDescriptionProviderEClass = createEClass(PROPERTY_DESCRIPTION_PROVIDER);
-    createEReference(propertyDescriptionProviderEClass, PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS);
+    featureCaptionProviderEClass = createEClass(FEATURE_CAPTION_PROVIDER);
+    createEReference(featureCaptionProviderEClass, FEATURE_CAPTION_PROVIDER__SPECIFICATIONS);
 
-    formPropertyDescriptionProviderEClass = createEClass(FORM_PROPERTY_DESCRIPTION_PROVIDER);
-    createEReference(formPropertyDescriptionProviderEClass, FORM_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS);
-    createEReference(formPropertyDescriptionProviderEClass, FORM_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS);
+    formFeatureCaptionProviderEClass = createEClass(FORM_FEATURE_CAPTION_PROVIDER);
+    createEReference(formFeatureCaptionProviderEClass, FORM_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS);
+    createEReference(formFeatureCaptionProviderEClass, FORM_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS);
 
-    dialogPropertyDescriptionProviderEClass = createEClass(DIALOG_PROPERTY_DESCRIPTION_PROVIDER);
-    createEReference(dialogPropertyDescriptionProviderEClass, DIALOG_PROPERTY_DESCRIPTION_PROVIDER__SPECIFICATIONS);
-    createEReference(dialogPropertyDescriptionProviderEClass, DIALOG_PROPERTY_DESCRIPTION_PROVIDER__LABEL_SPECIFICATIONS);
+    dialogFeatureCaptionProviderEClass = createEClass(DIALOG_FEATURE_CAPTION_PROVIDER);
+    createEReference(dialogFeatureCaptionProviderEClass, DIALOG_FEATURE_CAPTION_PROVIDER__SPECIFICATIONS);
+    createEReference(dialogFeatureCaptionProviderEClass, DIALOG_FEATURE_CAPTION_PROVIDER__LABEL_SPECIFICATIONS);
 
-    propertyDescriptionSpecificationEClass = createEClass(PROPERTY_DESCRIPTION_SPECIFICATION);
-    createEReference(propertyDescriptionSpecificationEClass, PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE);
-    createEReference(propertyDescriptionSpecificationEClass, PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION);
+    featureCaptionSpecificationEClass = createEClass(FEATURE_CAPTION_SPECIFICATION);
+    createEReference(featureCaptionSpecificationEClass, FEATURE_CAPTION_SPECIFICATION__FEATURE);
+    createEReference(featureCaptionSpecificationEClass, FEATURE_CAPTION_SPECIFICATION__EXPRESSION);
 
     featuresProviderEClass = createEClass(FEATURES_PROVIDER);
     createEReference(featuresProviderEClass, FEATURES_PROVIDER__FEATURE_SPECIFICATIONS);
@@ -1083,7 +1083,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
 
     // Add supertypes to classes
     moduleEClass.getESuperTypes().add(this.getWithExtendsClause());
-    propertyDescriptionSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
+    featureCaptionSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
     featureSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
     controlFactorySpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
     proposalSpecificationEClass.getESuperTypes().add(this.getEmfFeatureAccess());
@@ -1098,9 +1098,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEAttribute(getModule_Name(), ecorePackage.getEString(), "name", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_ExtendsClause(), this.getExtendsClause(), null, "extendsClause", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_LabelProvider(), this.getLabelProvider(), null, "labelProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModule_PropertyDescriptionProvider(), this.getPropertyDescriptionProvider(), null, "propertyDescriptionProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModule_FormPropertyDescriptionProvider(), this.getFormPropertyDescriptionProvider(), null, "formPropertyDescriptionProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModule_DialogPropertyDescriptionProvider(), this.getDialogPropertyDescriptionProvider(), null, "dialogPropertyDescriptionProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_FeatureCaptionProvider(), this.getFeatureCaptionProvider(), null, "featureCaptionProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_FormFeatureCaptionProvider(), this.getFormFeatureCaptionProvider(), null, "formFeatureCaptionProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModule_DialogFeatureCaptionProvider(), this.getDialogFeatureCaptionProvider(), null, "dialogFeatureCaptionProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_FeaturesProvider(), this.getFeaturesProvider(), null, "featuresProvider", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_FormControlFactory(), this.getFormControlFactory(), null, "formControlFactory", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModule_DialogControlFactory(), this.getDialogControlFactory(), null, "dialogControlFactory", null, 0, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1120,20 +1120,20 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEAttribute(getLabelSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, LabelSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLabelSpecification_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, LabelSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(propertyDescriptionProviderEClass, PropertyDescriptionProvider.class, "PropertyDescriptionProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPropertyDescriptionProvider_Specifications(), this.getPropertyDescriptionSpecification(), null, "specifications", null, 0, -1, PropertyDescriptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(featureCaptionProviderEClass, FeatureCaptionProvider.class, "FeatureCaptionProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFeatureCaptionProvider_Specifications(), this.getFeatureCaptionSpecification(), null, "specifications", null, 0, -1, FeatureCaptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(formPropertyDescriptionProviderEClass, FormPropertyDescriptionProvider.class, "FormPropertyDescriptionProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFormPropertyDescriptionProvider_Specifications(), this.getPropertyDescriptionSpecification(), null, "specifications", null, 0, -1, FormPropertyDescriptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFormPropertyDescriptionProvider_LabelSpecifications(), this.getPropertyDescriptionSpecification(), null, "labelSpecifications", null, 0, -1, FormPropertyDescriptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(formFeatureCaptionProviderEClass, FormFeatureCaptionProvider.class, "FormFeatureCaptionProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFormFeatureCaptionProvider_Specifications(), this.getFeatureCaptionSpecification(), null, "specifications", null, 0, -1, FormFeatureCaptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormFeatureCaptionProvider_LabelSpecifications(), this.getFeatureCaptionSpecification(), null, "labelSpecifications", null, 0, -1, FormFeatureCaptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(dialogPropertyDescriptionProviderEClass, DialogPropertyDescriptionProvider.class, "DialogPropertyDescriptionProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDialogPropertyDescriptionProvider_Specifications(), this.getPropertyDescriptionSpecification(), null, "specifications", null, 0, -1, DialogPropertyDescriptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDialogPropertyDescriptionProvider_LabelSpecifications(), this.getPropertyDescriptionSpecification(), null, "labelSpecifications", null, 0, -1, DialogPropertyDescriptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(dialogFeatureCaptionProviderEClass, DialogFeatureCaptionProvider.class, "DialogFeatureCaptionProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDialogFeatureCaptionProvider_Specifications(), this.getFeatureCaptionSpecification(), null, "specifications", null, 0, -1, DialogFeatureCaptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDialogFeatureCaptionProvider_LabelSpecifications(), this.getFeatureCaptionSpecification(), null, "labelSpecifications", null, 0, -1, DialogFeatureCaptionProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(propertyDescriptionSpecificationEClass, PropertyDescriptionSpecification.class, "PropertyDescriptionSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPropertyDescriptionSpecification_Feature(), theTypesPackage.getJvmMember(), null, "feature", null, 0, 1, PropertyDescriptionSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPropertyDescriptionSpecification_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, PropertyDescriptionSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(featureCaptionSpecificationEClass, FeatureCaptionSpecification.class, "FeatureCaptionSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFeatureCaptionSpecification_Feature(), theTypesPackage.getJvmMember(), null, "feature", null, 0, 1, FeatureCaptionSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFeatureCaptionSpecification_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, FeatureCaptionSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(featuresProviderEClass, FeaturesProvider.class, "FeaturesProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFeaturesProvider_FeatureSpecifications(), this.getFeatureSpecification(), null, "featureSpecifications", null, 0, -1, FeaturesProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

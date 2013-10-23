@@ -40,7 +40,7 @@ module org.eclipse.emf.parsley.examples.mail.messageview {
 			Mail -> from, recipients, message
 		}
 	}
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text {
 			Mail : recipients -> 'to'
 		}

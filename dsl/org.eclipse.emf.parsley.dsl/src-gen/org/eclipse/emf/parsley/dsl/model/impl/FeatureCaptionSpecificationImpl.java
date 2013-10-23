@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification;
 
 import org.eclipse.xtext.common.types.JvmMember;
 
@@ -19,19 +19,19 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property Description Specification</b></em>'.
+ * An implementation of the model object '<em><b>Feature Caption Specification</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionSpecificationImpl#getFeature <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.PropertyDescriptionSpecificationImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionSpecificationImpl#getFeature <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.FeatureCaptionSpecificationImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl implements PropertyDescriptionSpecification
+public class FeatureCaptionSpecificationImpl extends EmfFeatureAccessImpl implements FeatureCaptionSpecification
 {
   /**
    * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
@@ -58,7 +58,7 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyDescriptionSpecificationImpl()
+  protected FeatureCaptionSpecificationImpl()
   {
     super();
   }
@@ -71,7 +71,7 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
   @Override
   protected EClass eStaticClass()
   {
-    return ModelPackage.Literals.PROPERTY_DESCRIPTION_SPECIFICATION;
+    return ModelPackage.Literals.FEATURE_CAPTION_SPECIFICATION;
   }
 
   /**
@@ -88,7 +88,7 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
       if (feature != oldFeature)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE, oldFeature, feature));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.FEATURE_CAPTION_SPECIFICATION__FEATURE, oldFeature, feature));
       }
     }
     return feature;
@@ -114,7 +114,7 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
     JvmMember oldFeature = feature;
     feature = newFeature;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE, oldFeature, feature));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.FEATURE_CAPTION_SPECIFICATION__FEATURE, oldFeature, feature));
   }
 
   /**
@@ -138,7 +138,7 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
     expression = newExpression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION, oldExpression, newExpression);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION, oldExpression, newExpression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -155,14 +155,14 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
     {
       NotificationChain msgs = null;
       if (expression != null)
-        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION, null, msgs);
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION, null, msgs);
       if (newExpression != null)
-        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION, null, msgs);
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION, null, msgs);
       msgs = basicSetExpression(newExpression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION, newExpression, newExpression));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -175,7 +175,7 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION:
         return basicSetExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -191,10 +191,10 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__FEATURE:
         if (resolve) return getFeature();
         return basicGetFeature();
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION:
         return getExpression();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -210,10 +210,10 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__FEATURE:
         setFeature((JvmMember)newValue);
         return;
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION:
         setExpression((XExpression)newValue);
         return;
     }
@@ -230,10 +230,10 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__FEATURE:
         setFeature((JvmMember)null);
         return;
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION:
         setExpression((XExpression)null);
         return;
     }
@@ -250,12 +250,12 @@ public class PropertyDescriptionSpecificationImpl extends EmfFeatureAccessImpl i
   {
     switch (featureID)
     {
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__FEATURE:
         return feature != null;
-      case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION:
+      case ModelPackage.FEATURE_CAPTION_SPECIFICATION__EXPRESSION:
         return expression != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //PropertyDescriptionSpecificationImpl
+} //FeatureCaptionSpecificationImpl

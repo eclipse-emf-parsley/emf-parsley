@@ -100,24 +100,24 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
         return createLabelSpecificationAdapter();
       }
       @Override
-      public Adapter casePropertyDescriptionProvider(PropertyDescriptionProvider object)
+      public Adapter caseFeatureCaptionProvider(FeatureCaptionProvider object)
       {
-        return createPropertyDescriptionProviderAdapter();
+        return createFeatureCaptionProviderAdapter();
       }
       @Override
-      public Adapter caseFormPropertyDescriptionProvider(FormPropertyDescriptionProvider object)
+      public Adapter caseFormFeatureCaptionProvider(FormFeatureCaptionProvider object)
       {
-        return createFormPropertyDescriptionProviderAdapter();
+        return createFormFeatureCaptionProviderAdapter();
       }
       @Override
-      public Adapter caseDialogPropertyDescriptionProvider(DialogPropertyDescriptionProvider object)
+      public Adapter caseDialogFeatureCaptionProvider(DialogFeatureCaptionProvider object)
       {
-        return createDialogPropertyDescriptionProviderAdapter();
+        return createDialogFeatureCaptionProviderAdapter();
       }
       @Override
-      public Adapter casePropertyDescriptionSpecification(PropertyDescriptionSpecification object)
+      public Adapter caseFeatureCaptionSpecification(FeatureCaptionSpecification object)
       {
-        return createPropertyDescriptionSpecificationAdapter();
+        return createFeatureCaptionSpecificationAdapter();
       }
       @Override
       public Adapter caseFeaturesProvider(FeaturesProvider object)
@@ -282,61 +282,61 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider <em>Property Description Provider</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider <em>Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider
+   * @see org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider
    * @generated
    */
-  public Adapter createPropertyDescriptionProviderAdapter()
+  public Adapter createFeatureCaptionProviderAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider <em>Form Property Description Provider</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider <em>Form Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider
+   * @see org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider
    * @generated
    */
-  public Adapter createFormPropertyDescriptionProviderAdapter()
+  public Adapter createFormFeatureCaptionProviderAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider <em>Dialog Property Description Provider</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider <em>Dialog Feature Caption Provider</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider
+   * @see org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider
    * @generated
    */
-  public Adapter createDialogPropertyDescriptionProviderAdapter()
+  public Adapter createDialogFeatureCaptionProviderAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification <em>Property Description Specification</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification <em>Feature Caption Specification</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification
+   * @see org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification
    * @generated
    */
-  public Adapter createPropertyDescriptionSpecificationAdapter()
+  public Adapter createFeatureCaptionSpecificationAdapter()
   {
     return null;
   }

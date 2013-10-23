@@ -27,7 +27,7 @@ import org.eclipse.emf.parsley.examples.library.*
 
 
 module my.empty {
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text {
 			Item:publicationDate -> 'Publication Date'
 			Library:newArrayList -> 'Name' // static method, wrong
@@ -60,7 +60,7 @@ import org.eclipse.emf.parsley.examples.library.*
 import org.eclipse.emf.parsley.views.*
 
 module my.empty {
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text {
 			List:publicationDate -> 'Publication Date'
 			AbstractSaveableTreeView:lastName -> null

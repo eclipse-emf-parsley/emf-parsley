@@ -60,8 +60,8 @@ class EmfParsleyDslJvmModelInferrerTests extends EmfParsleyDslAbstractTests {
 
     @Test
 	def void testPropertyDescriptionProviderName() {
-        "my.empty.ui.provider.PropertyDescriptionProviderGen".assertEqualsStrings(
-        	inferrer.propertyDescriptionProviderQN(inputs.emptyModule.module)
+        "my.empty.ui.provider.FeatureCaptionProviderGen".assertEqualsStrings(
+        	inferrer.featureCaptionProviderQN(inputs.emptyModule.module)
         )
     }
 

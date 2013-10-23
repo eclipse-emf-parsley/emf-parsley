@@ -5,13 +5,13 @@ package org.eclipse.emf.parsley.examples.library;
 
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 
 /**
  * @author bettini
  * 
  */
-public class CustomFeatureLabelProvider extends PropertyDescriptionProvider {
+public class CustomFeatureCaptionProvider extends FeatureCaptionProvider {
 
 	public String text_Person_firstName(EStructuralFeature f) {
 		return "First name";

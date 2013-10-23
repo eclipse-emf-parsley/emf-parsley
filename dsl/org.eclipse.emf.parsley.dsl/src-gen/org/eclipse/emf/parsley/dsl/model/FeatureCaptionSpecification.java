@@ -8,22 +8,22 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Property Description Specification</b></em>'.
+ * A representation of the model object '<em><b>Feature Caption Specification</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getFeature <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getFeature <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getPropertyDescriptionSpecification()
+ * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFeatureCaptionSpecification()
  * @model
  * @generated
  */
-public interface PropertyDescriptionSpecification extends EmfFeatureAccess
+public interface FeatureCaptionSpecification extends EmfFeatureAccess
 {
   /**
    * Returns the value of the '<em><b>Feature</b></em>' reference.
@@ -35,14 +35,14 @@ public interface PropertyDescriptionSpecification extends EmfFeatureAccess
    * <!-- end-user-doc -->
    * @return the value of the '<em>Feature</em>' reference.
    * @see #setFeature(JvmMember)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getPropertyDescriptionSpecification_Feature()
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFeatureCaptionSpecification_Feature()
    * @model
    * @generated
    */
   JvmMember getFeature();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getFeature <em>Feature</em>}' reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getFeature <em>Feature</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Feature</em>' reference.
@@ -61,14 +61,14 @@ public interface PropertyDescriptionSpecification extends EmfFeatureAccess
    * <!-- end-user-doc -->
    * @return the value of the '<em>Expression</em>' containment reference.
    * @see #setExpression(XExpression)
-   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getPropertyDescriptionSpecification_Expression()
+   * @see org.eclipse.emf.parsley.dsl.model.ModelPackage#getFeatureCaptionSpecification_Expression()
    * @model containment="true"
    * @generated
    */
   XExpression getExpression();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification#getExpression <em>Expression</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification#getExpression <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Expression</em>' containment reference.
@@ -77,4 +77,4 @@ public interface PropertyDescriptionSpecification extends EmfFeatureAccess
    */
   void setExpression(XExpression value);
 
-} // PropertyDescriptionSpecification
+} // FeatureCaptionSpecification

@@ -54,7 +54,7 @@ import java.util.List
 
 module my.test.proj {
 
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text {
 			List : '''			
 		).assertText('class', 'empty')

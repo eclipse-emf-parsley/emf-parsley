@@ -36,7 +36,7 @@ module my.empty {
 import java.util.*
 
 module my.empty {
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		
 	}
 }
@@ -97,7 +97,7 @@ import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
 
 module my.empty {
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text {
 			Library:name -> 'Name' // constant
 			Library:books -> 'Books' // constant
@@ -114,7 +114,7 @@ import org.eclipse.emf.parsley.examples.library.*
 import org.eclipse.swt.widgets.Label
 
 module my.empty {
-	formPropertyDescriptionProvider {
+	formFeatureCaptionProvider {
 		text {
 			Library:name -> 'Name' // constant
 			Library:books -> 'Books' // constant
@@ -143,7 +143,7 @@ import org.eclipse.emf.parsley.examples.library.*
 import org.eclipse.swt.widgets.Label
 
 module my.empty {
-	dialogPropertyDescriptionProvider {
+	dialogFeatureCaptionProvider {
 		text {
 			Library:name -> 'Name' // constant
 			Library:books -> 'Books' // constant

@@ -12,9 +12,9 @@ package org.eclipse.emf.parsley.dsl.tests.util;
 public class GeneratorExpectedResults {
 	public CharSequence expectedModule;
 	public CharSequence expectedLabelProvider;
-	public CharSequence expectedPropertyDescriptionProvider;
-	public CharSequence expectedFormPropertyDescriptionProvider;
-	public CharSequence expectedDialogPropertyDescriptionProvider;
+	public CharSequence expectedFeatureCaptionProvider;
+	public CharSequence expectedFormFeatureCaptionProvider;
+	public CharSequence expectedDialogFeatureCaptionProvider;
 	public CharSequence expectedFeatureProvider;
 	public CharSequence expectedFormControlFactory;
 	public CharSequence expectedDialogControlFactory;

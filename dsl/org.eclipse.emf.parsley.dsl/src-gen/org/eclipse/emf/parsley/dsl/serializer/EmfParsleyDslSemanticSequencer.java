@@ -5,20 +5,20 @@ import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification;
 import org.eclipse.emf.parsley.dsl.model.DialogControlFactory;
-import org.eclipse.emf.parsley.dsl.model.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.dsl.model.DialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.ExtendsClause;
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider;
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeatureSpecification;
 import org.eclipse.emf.parsley.dsl.model.FeaturesProvider;
 import org.eclipse.emf.parsley.dsl.model.FormControlFactory;
-import org.eclipse.emf.parsley.dsl.model.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.dsl.model.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelProvider;
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification;
 import org.eclipse.emf.parsley.dsl.model.Model;
 import org.eclipse.emf.parsley.dsl.model.ModelPackage;
 import org.eclipse.emf.parsley.dsl.model.Module;
 import org.eclipse.emf.parsley.dsl.model.PartsSpecifications;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionProvider;
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification;
 import org.eclipse.emf.parsley.dsl.model.ProposalCreator;
 import org.eclipse.emf.parsley.dsl.model.ProposalSpecification;
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification;
@@ -97,15 +97,28 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ModelPackage.DIALOG_PROPERTY_DESCRIPTION_PROVIDER:
-				if(context == grammarAccess.getDialogPropertyDescriptionProviderRule()) {
-					sequence_DialogPropertyDescriptionProvider(context, (DialogPropertyDescriptionProvider) semanticObject); 
+			case ModelPackage.DIALOG_FEATURE_CAPTION_PROVIDER:
+				if(context == grammarAccess.getDialogFeatureCaptionProviderRule()) {
+					sequence_DialogFeatureCaptionProvider(context, (DialogFeatureCaptionProvider) semanticObject); 
 					return; 
 				}
 				else break;
 			case ModelPackage.EXTENDS_CLAUSE:
 				if(context == grammarAccess.getExtendsClauseRule()) {
 					sequence_ExtendsClause(context, (ExtendsClause) semanticObject); 
+					return; 
+				}
+				else break;
+			case ModelPackage.FEATURE_CAPTION_PROVIDER:
+				if(context == grammarAccess.getFeatureCaptionProviderRule()) {
+					sequence_FeatureCaptionProvider(context, (FeatureCaptionProvider) semanticObject); 
+					return; 
+				}
+				else break;
+			case ModelPackage.FEATURE_CAPTION_SPECIFICATION:
+				if(context == grammarAccess.getEmfFeatureAccessRule() ||
+				   context == grammarAccess.getFeatureCaptionSpecificationRule()) {
+					sequence_FeatureCaptionSpecification(context, (FeatureCaptionSpecification) semanticObject); 
 					return; 
 				}
 				else break;
@@ -128,9 +141,9 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ModelPackage.FORM_PROPERTY_DESCRIPTION_PROVIDER:
-				if(context == grammarAccess.getFormPropertyDescriptionProviderRule()) {
-					sequence_FormPropertyDescriptionProvider(context, (FormPropertyDescriptionProvider) semanticObject); 
+			case ModelPackage.FORM_FEATURE_CAPTION_PROVIDER:
+				if(context == grammarAccess.getFormFeatureCaptionProviderRule()) {
+					sequence_FormFeatureCaptionProvider(context, (FormFeatureCaptionProvider) semanticObject); 
 					return; 
 				}
 				else break;
@@ -162,19 +175,6 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 			case ModelPackage.PARTS_SPECIFICATIONS:
 				if(context == grammarAccess.getPartsSpecificationsRule()) {
 					sequence_PartsSpecifications(context, (PartsSpecifications) semanticObject); 
-					return; 
-				}
-				else break;
-			case ModelPackage.PROPERTY_DESCRIPTION_PROVIDER:
-				if(context == grammarAccess.getPropertyDescriptionProviderRule()) {
-					sequence_PropertyDescriptionProvider(context, (PropertyDescriptionProvider) semanticObject); 
-					return; 
-				}
-				else break;
-			case ModelPackage.PROPERTY_DESCRIPTION_SPECIFICATION:
-				if(context == grammarAccess.getEmfFeatureAccessRule() ||
-				   context == grammarAccess.getPropertyDescriptionSpecificationRule()) {
-					sequence_PropertyDescriptionSpecification(context, (PropertyDescriptionSpecification) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1166,9 +1166,9 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (specifications+=PropertyDescriptionSpecification* labelSpecifications+=PropertyDescriptionSpecification*)
+	 *     (specifications+=FeatureCaptionSpecification* labelSpecifications+=FeatureCaptionSpecification*)
 	 */
-	protected void sequence_DialogPropertyDescriptionProvider(EObject context, DialogPropertyDescriptionProvider semanticObject) {
+	protected void sequence_DialogFeatureCaptionProvider(EObject context, DialogFeatureCaptionProvider semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1185,6 +1185,37 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getExtendsClauseAccess().getSuperTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getSuperType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (specifications+=FeatureCaptionSpecification*)
+	 */
+	protected void sequence_FeatureCaptionProvider(EObject context, FeatureCaptionProvider semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (parameterType=JvmTypeReference feature=[JvmMember|ID] expression=XExpression)
+	 */
+	protected void sequence_FeatureCaptionSpecification(EObject context, FeatureCaptionSpecification semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE));
+			if(transientValues.isValueTransient(semanticObject, ModelPackage.Literals.FEATURE_CAPTION_SPECIFICATION__FEATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ModelPackage.Literals.FEATURE_CAPTION_SPECIFICATION__FEATURE));
+			if(transientValues.isValueTransient(semanticObject, ModelPackage.Literals.FEATURE_CAPTION_SPECIFICATION__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ModelPackage.Literals.FEATURE_CAPTION_SPECIFICATION__EXPRESSION));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFeatureCaptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0(), semanticObject.getParameterType());
+		feeder.accept(grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureJvmMemberIDTerminalRuleCall_2_0_1(), semanticObject.getFeature());
+		feeder.accept(grammarAccess.getFeatureCaptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -1218,9 +1249,9 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (specifications+=PropertyDescriptionSpecification* labelSpecifications+=PropertyDescriptionSpecification*)
+	 *     (specifications+=FeatureCaptionSpecification* labelSpecifications+=FeatureCaptionSpecification*)
 	 */
-	protected void sequence_FormPropertyDescriptionProvider(EObject context, FormPropertyDescriptionProvider semanticObject) {
+	protected void sequence_FormFeatureCaptionProvider(EObject context, FormFeatureCaptionProvider semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1258,9 +1289,9 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	 *         name=QualifiedName 
 	 *         extendsClause=ExtendsClause? 
 	 *         labelProvider=LabelProvider? 
-	 *         propertyDescriptionProvider=PropertyDescriptionProvider? 
-	 *         formPropertyDescriptionProvider=FormPropertyDescriptionProvider? 
-	 *         dialogPropertyDescriptionProvider=DialogPropertyDescriptionProvider? 
+	 *         featureCaptionProvider=FeatureCaptionProvider? 
+	 *         formFeatureCaptionProvider=FormFeatureCaptionProvider? 
+	 *         dialogFeatureCaptionProvider=DialogFeatureCaptionProvider? 
 	 *         featuresProvider=FeaturesProvider? 
 	 *         formControlFactory=FormControlFactory? 
 	 *         dialogControlFactory=DialogControlFactory? 
@@ -1280,37 +1311,6 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	 */
 	protected void sequence_PartsSpecifications(EObject context, PartsSpecifications semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (specifications+=PropertyDescriptionSpecification*)
-	 */
-	protected void sequence_PropertyDescriptionProvider(EObject context, PropertyDescriptionProvider semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (parameterType=JvmTypeReference feature=[JvmMember|ID] expression=XExpression)
-	 */
-	protected void sequence_PropertyDescriptionSpecification(EObject context, PropertyDescriptionSpecification semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE));
-			if(transientValues.isValueTransient(semanticObject, ModelPackage.Literals.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ModelPackage.Literals.PROPERTY_DESCRIPTION_SPECIFICATION__FEATURE));
-			if(transientValues.isValueTransient(semanticObject, ModelPackage.Literals.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ModelPackage.Literals.PROPERTY_DESCRIPTION_SPECIFICATION__EXPRESSION));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0(), semanticObject.getParameterType());
-		feeder.accept(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureJvmMemberIDTerminalRuleCall_2_0_1(), semanticObject.getFeature());
-		feeder.accept(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0(), semanticObject.getExpression());
-		feeder.finish();
 	}
 	
 	

@@ -116,7 +116,6 @@ RULE_WS=11
 '==='=20
 '<>'=30
 'for'=87
-'propertyDescriptionProvider'=54
 '?.'=101
 '+'=33
 'viewerContentProvider'=67
@@ -165,7 +164,7 @@ RULE_WS=11
 '<=>'=32
 '='=13
 'features'=60
-'dialogPropertyDescriptionProvider'=57
+'dialogFeatureCaptionProvider'=57
 '::'=100
 'throw'=93
 ')'=76
@@ -179,8 +178,8 @@ RULE_WS=11
 '}'=50
 'dialogControlFactory'=64
 'label'=56
+'featureCaptionProvider'=54
 '<='=23
-'formPropertyDescriptionProvider'=55
 '!='=19
 '!=='=21
 'false'=47
@@ -191,3 +190,4 @@ RULE_WS=11
 'viewclass'=72
 '&'=99
 'image'=53
+'formFeatureCaptionProvider'=55

@@ -225,17 +225,17 @@ ruleModule returns [EObject current=null]
 					({true}?=>(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAccess().getPropertyDescriptionProviderPropertyDescriptionProviderParserRuleCall_4_1_0()); 
+	        newCompositeNode(grammarAccess.getModuleAccess().getFeatureCaptionProviderFeatureCaptionProviderParserRuleCall_4_1_0()); 
 	    }
-		lv_propertyDescriptionProvider_6_0=rulePropertyDescriptionProvider		{
+		lv_featureCaptionProvider_6_0=ruleFeatureCaptionProvider		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleRule());
 	        }
        		set(
        			$current, 
-       			"propertyDescriptionProvider",
-        		lv_propertyDescriptionProvider_6_0, 
-        		"PropertyDescriptionProvider");
+       			"featureCaptionProvider",
+        		lv_featureCaptionProvider_6_0, 
+        		"FeatureCaptionProvider");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -255,17 +255,17 @@ ruleModule returns [EObject current=null]
 					({true}?=>(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderFormPropertyDescriptionProviderParserRuleCall_4_2_0()); 
+	        newCompositeNode(grammarAccess.getModuleAccess().getFormFeatureCaptionProviderFormFeatureCaptionProviderParserRuleCall_4_2_0()); 
 	    }
-		lv_formPropertyDescriptionProvider_7_0=ruleFormPropertyDescriptionProvider		{
+		lv_formFeatureCaptionProvider_7_0=ruleFormFeatureCaptionProvider		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleRule());
 	        }
        		set(
        			$current, 
-       			"formPropertyDescriptionProvider",
-        		lv_formPropertyDescriptionProvider_7_0, 
-        		"FormPropertyDescriptionProvider");
+       			"formFeatureCaptionProvider",
+        		lv_formFeatureCaptionProvider_7_0, 
+        		"FormFeatureCaptionProvider");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -285,17 +285,17 @@ ruleModule returns [EObject current=null]
 					({true}?=>(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderDialogPropertyDescriptionProviderParserRuleCall_4_3_0()); 
+	        newCompositeNode(grammarAccess.getModuleAccess().getDialogFeatureCaptionProviderDialogFeatureCaptionProviderParserRuleCall_4_3_0()); 
 	    }
-		lv_dialogPropertyDescriptionProvider_8_0=ruleDialogPropertyDescriptionProvider		{
+		lv_dialogFeatureCaptionProvider_8_0=ruleDialogFeatureCaptionProvider		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModuleRule());
 	        }
        		set(
        			$current, 
-       			"dialogPropertyDescriptionProvider",
-        		lv_dialogPropertyDescriptionProvider_8_0, 
-        		"DialogPropertyDescriptionProvider");
+       			"dialogFeatureCaptionProvider",
+        		lv_dialogFeatureCaptionProvider_8_0, 
+        		"DialogFeatureCaptionProvider");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -766,67 +766,67 @@ ruleLabelSpecification returns [EObject current=null]
 
 
 
-// Entry rule entryRulePropertyDescriptionProvider
-entryRulePropertyDescriptionProvider returns [EObject current=null] 
+// Entry rule entryRuleFeatureCaptionProvider
+entryRuleFeatureCaptionProvider returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getPropertyDescriptionProviderRule()); }
-	 iv_rulePropertyDescriptionProvider=rulePropertyDescriptionProvider 
-	 { $current=$iv_rulePropertyDescriptionProvider.current; } 
+	{ newCompositeNode(grammarAccess.getFeatureCaptionProviderRule()); }
+	 iv_ruleFeatureCaptionProvider=ruleFeatureCaptionProvider 
+	 { $current=$iv_ruleFeatureCaptionProvider.current; } 
 	 EOF 
 ;
 
-// Rule PropertyDescriptionProvider
-rulePropertyDescriptionProvider returns [EObject current=null] 
+// Rule FeatureCaptionProvider
+ruleFeatureCaptionProvider returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderAction_0(),
+            grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderAction_0(),
             $current);
     }
-)	otherlv_1='propertyDescriptionProvider' 
+)	otherlv_1='featureCaptionProvider' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderKeyword_1());
     }
 	otherlv_2='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2());
     }
 (	otherlv_3='text' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getPropertyDescriptionProviderAccess().getTextKeyword_3_0());
+    	newLeafNode(otherlv_3, grammarAccess.getFeatureCaptionProviderAccess().getTextKeyword_3_0());
     }
 	otherlv_4='{' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1());
+    	newLeafNode(otherlv_4, grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0()); 
+	        newCompositeNode(grammarAccess.getFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_2_0()); 
 	    }
-		lv_specifications_5_0=rulePropertyDescriptionSpecification		{
+		lv_specifications_5_0=ruleFeatureCaptionSpecification		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getPropertyDescriptionProviderRule());
+	            $current = createModelElementForParent(grammarAccess.getFeatureCaptionProviderRule());
 	        }
        		add(
        			$current, 
        			"specifications",
         		lv_specifications_5_0, 
-        		"PropertyDescriptionSpecification");
+        		"FeatureCaptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )*	otherlv_6='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_3());
+    	newLeafNode(otherlv_6, grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_3());
     }
 )?	otherlv_7='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_7, grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
@@ -835,123 +835,123 @@ rulePropertyDescriptionProvider returns [EObject current=null]
 
 
 
-// Entry rule entryRuleFormPropertyDescriptionProvider
-entryRuleFormPropertyDescriptionProvider returns [EObject current=null] 
+// Entry rule entryRuleFormFeatureCaptionProvider
+entryRuleFormFeatureCaptionProvider returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getFormPropertyDescriptionProviderRule()); }
-	 iv_ruleFormPropertyDescriptionProvider=ruleFormPropertyDescriptionProvider 
-	 { $current=$iv_ruleFormPropertyDescriptionProvider.current; } 
+	{ newCompositeNode(grammarAccess.getFormFeatureCaptionProviderRule()); }
+	 iv_ruleFormFeatureCaptionProvider=ruleFormFeatureCaptionProvider 
+	 { $current=$iv_ruleFormFeatureCaptionProvider.current; } 
 	 EOF 
 ;
 
-// Rule FormPropertyDescriptionProvider
-ruleFormPropertyDescriptionProvider returns [EObject current=null] 
+// Rule FormFeatureCaptionProvider
+ruleFormFeatureCaptionProvider returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderAction_0(),
+            grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderAction_0(),
             $current);
     }
-)	otherlv_1='formPropertyDescriptionProvider' 
+)	otherlv_1='formFeatureCaptionProvider' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderKeyword_1());
     }
 	otherlv_2='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2());
     }
 (
 
 (
 	{ 
-	  getUnorderedGroupHelper().enter(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	  getUnorderedGroupHelper().enter(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	}
 	(
 		(
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
 	 				}
 					({true}?=>(	otherlv_4='text' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getFormPropertyDescriptionProviderAccess().getTextKeyword_3_0_0());
+    	newLeafNode(otherlv_4, grammarAccess.getFormFeatureCaptionProviderAccess().getTextKeyword_3_0_0());
     }
 	otherlv_5='{' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
+    	newLeafNode(otherlv_5, grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFormPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+	        newCompositeNode(grammarAccess.getFormFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
 	    }
-		lv_specifications_6_0=rulePropertyDescriptionSpecification		{
+		lv_specifications_6_0=ruleFeatureCaptionSpecification		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFormPropertyDescriptionProviderRule());
+	            $current = createModelElementForParent(grammarAccess.getFormFeatureCaptionProviderRule());
 	        }
        		add(
        			$current, 
        			"specifications",
         		lv_specifications_6_0, 
-        		"PropertyDescriptionSpecification");
+        		"FeatureCaptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )*	otherlv_7='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
+    	newLeafNode(otherlv_7, grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
     }
 ))
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1);
 	 				}
 					({true}?=>(	otherlv_8='label' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0());
+    	newLeafNode(otherlv_8, grammarAccess.getFormFeatureCaptionProviderAccess().getLabelKeyword_3_1_0());
     }
 	otherlv_9='{' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
+    	newLeafNode(otherlv_9, grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+	        newCompositeNode(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
 	    }
-		lv_labelSpecifications_10_0=rulePropertyDescriptionSpecification		{
+		lv_labelSpecifications_10_0=ruleFeatureCaptionSpecification		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFormPropertyDescriptionProviderRule());
+	            $current = createModelElementForParent(grammarAccess.getFormFeatureCaptionProviderRule());
 	        }
        		add(
        			$current, 
        			"labelSpecifications",
         		lv_labelSpecifications_10_0, 
-        		"PropertyDescriptionSpecification");
+        		"FeatureCaptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )*	otherlv_11='}' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
+    	newLeafNode(otherlv_11, grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
     }
 ))
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	 				}
  				)
 			)  
@@ -960,12 +960,12 @@ ruleFormPropertyDescriptionProvider returns [EObject current=null]
 	)
 )
 	{ 
-	  getUnorderedGroupHelper().leave(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	  getUnorderedGroupHelper().leave(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	}
 
 )	otherlv_12='}' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_12, grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
@@ -974,123 +974,123 @@ ruleFormPropertyDescriptionProvider returns [EObject current=null]
 
 
 
-// Entry rule entryRuleDialogPropertyDescriptionProvider
-entryRuleDialogPropertyDescriptionProvider returns [EObject current=null] 
+// Entry rule entryRuleDialogFeatureCaptionProvider
+entryRuleDialogFeatureCaptionProvider returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getDialogPropertyDescriptionProviderRule()); }
-	 iv_ruleDialogPropertyDescriptionProvider=ruleDialogPropertyDescriptionProvider 
-	 { $current=$iv_ruleDialogPropertyDescriptionProvider.current; } 
+	{ newCompositeNode(grammarAccess.getDialogFeatureCaptionProviderRule()); }
+	 iv_ruleDialogFeatureCaptionProvider=ruleDialogFeatureCaptionProvider 
+	 { $current=$iv_ruleDialogFeatureCaptionProvider.current; } 
 	 EOF 
 ;
 
-// Rule DialogPropertyDescriptionProvider
-ruleDialogPropertyDescriptionProvider returns [EObject current=null] 
+// Rule DialogFeatureCaptionProvider
+ruleDialogFeatureCaptionProvider returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderAction_0(),
+            grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderAction_0(),
             $current);
     }
-)	otherlv_1='dialogPropertyDescriptionProvider' 
+)	otherlv_1='dialogFeatureCaptionProvider' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderKeyword_1());
     }
 	otherlv_2='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2());
     }
 (
 
 (
 	{ 
-	  getUnorderedGroupHelper().enter(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	  getUnorderedGroupHelper().enter(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	}
 	(
 		(
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
 	 				}
 					({true}?=>(	otherlv_4='text' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0());
+    	newLeafNode(otherlv_4, grammarAccess.getDialogFeatureCaptionProviderAccess().getTextKeyword_3_0_0());
     }
 	otherlv_5='{' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
+    	newLeafNode(otherlv_5, grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+	        newCompositeNode(grammarAccess.getDialogFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
 	    }
-		lv_specifications_6_0=rulePropertyDescriptionSpecification		{
+		lv_specifications_6_0=ruleFeatureCaptionSpecification		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDialogPropertyDescriptionProviderRule());
+	            $current = createModelElementForParent(grammarAccess.getDialogFeatureCaptionProviderRule());
 	        }
        		add(
        			$current, 
        			"specifications",
         		lv_specifications_6_0, 
-        		"PropertyDescriptionSpecification");
+        		"FeatureCaptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )*	otherlv_7='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
+    	newLeafNode(otherlv_7, grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
     }
 ))
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	 				}
  				)
 			)  |
 
 			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1)}?=>(
 					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1);
+	 				  getUnorderedGroupHelper().select(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1);
 	 				}
 					({true}?=>(	otherlv_8='label' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0());
+    	newLeafNode(otherlv_8, grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelKeyword_3_1_0());
     }
 	otherlv_9='{' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
+    	newLeafNode(otherlv_9, grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+	        newCompositeNode(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
 	    }
-		lv_labelSpecifications_10_0=rulePropertyDescriptionSpecification		{
+		lv_labelSpecifications_10_0=ruleFeatureCaptionSpecification		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDialogPropertyDescriptionProviderRule());
+	            $current = createModelElementForParent(grammarAccess.getDialogFeatureCaptionProviderRule());
 	        }
        		add(
        			$current, 
        			"labelSpecifications",
         		lv_labelSpecifications_10_0, 
-        		"PropertyDescriptionSpecification");
+        		"FeatureCaptionSpecification");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )*	otherlv_11='}' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
+    	newLeafNode(otherlv_11, grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
     }
 ))
 					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	 				}
  				)
 			)  
@@ -1099,12 +1099,12 @@ ruleDialogPropertyDescriptionProvider returns [EObject current=null]
 	)
 )
 	{ 
-	  getUnorderedGroupHelper().leave(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+	  getUnorderedGroupHelper().leave(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
 	}
 
 )	otherlv_12='}' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_12, grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
@@ -1113,28 +1113,28 @@ ruleDialogPropertyDescriptionProvider returns [EObject current=null]
 
 
 
-// Entry rule entryRulePropertyDescriptionSpecification
-entryRulePropertyDescriptionSpecification returns [EObject current=null] 
+// Entry rule entryRuleFeatureCaptionSpecification
+entryRuleFeatureCaptionSpecification returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getPropertyDescriptionSpecificationRule()); }
-	 iv_rulePropertyDescriptionSpecification=rulePropertyDescriptionSpecification 
-	 { $current=$iv_rulePropertyDescriptionSpecification.current; } 
+	{ newCompositeNode(grammarAccess.getFeatureCaptionSpecificationRule()); }
+	 iv_ruleFeatureCaptionSpecification=ruleFeatureCaptionSpecification 
+	 { $current=$iv_ruleFeatureCaptionSpecification.current; } 
 	 EOF 
 ;
 
-// Rule PropertyDescriptionSpecification
-rulePropertyDescriptionSpecification returns [EObject current=null] 
+// Rule FeatureCaptionSpecification
+ruleFeatureCaptionSpecification returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getFeatureCaptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
 	    }
 		lv_parameterType_0_0=ruleJvmTypeReference		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getPropertyDescriptionSpecificationRule());
+	            $current = createModelElementForParent(grammarAccess.getFeatureCaptionSpecificationRule());
 	        }
        		set(
        			$current, 
@@ -1147,33 +1147,33 @@ rulePropertyDescriptionSpecification returns [EObject current=null]
 )
 )	otherlv_1=':' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getPropertyDescriptionSpecificationAccess().getColonKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getFeatureCaptionSpecificationAccess().getColonKeyword_1());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPropertyDescriptionSpecificationRule());
+	            $current = createModelElement(grammarAccess.getFeatureCaptionSpecificationRule());
 	        }
         }
 	otherlv_2=RULE_ID
 	{
-		newLeafNode(otherlv_2, grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
+		newLeafNode(otherlv_2, grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
 	}
 
 )
 )	otherlv_3='->' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getPropertyDescriptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getFeatureCaptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getFeatureCaptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
 	    }
 		lv_expression_4_0=ruleXExpression		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getPropertyDescriptionSpecificationRule());
+	            $current = createModelElementForParent(grammarAccess.getFeatureCaptionSpecificationRule());
 	        }
        		set(
        			$current, 

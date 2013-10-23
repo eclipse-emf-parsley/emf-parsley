@@ -111,9 +111,9 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.PropertyDescriptionProviderGen;
+import my.empty.ui.provider.FeatureCaptionProviderGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
@@ -123,19 +123,19 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   }
   
   @Override
-  public Class<? extends PropertyDescriptionProvider> bindPropertyDescriptionProvider() {
-    return PropertyDescriptionProviderGen.class;
+  public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
+    return FeatureCaptionProviderGen.class;
   }
 }
 '''
-expectedPropertyDescriptionProvider =
+expectedFeatureCaptionProvider =
 '''
 package my.empty.ui.provider;
 
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 
 @SuppressWarnings("all")
-public class PropertyDescriptionProviderGen extends PropertyDescriptionProvider {
+public class FeatureCaptionProviderGen extends FeatureCaptionProvider {
 }
 ''']
 		)
@@ -267,9 +267,9 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.PropertyDescriptionProviderGen;
+import my.empty.ui.provider.FeatureCaptionProviderGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
@@ -279,21 +279,21 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   }
   
   @Override
-  public Class<? extends PropertyDescriptionProvider> bindPropertyDescriptionProvider() {
-    return PropertyDescriptionProviderGen.class;
+  public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
+    return FeatureCaptionProviderGen.class;
   }
 }
 '''
-expectedPropertyDescriptionProvider = 
+expectedFeatureCaptionProvider = 
 '''
 package my.empty.ui.provider;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class PropertyDescriptionProviderGen extends PropertyDescriptionProvider {
+public class FeatureCaptionProviderGen extends FeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -320,9 +320,9 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.FormPropertyDescriptionProviderGen;
+import my.empty.ui.provider.FormFeatureCaptionProviderGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
@@ -332,19 +332,19 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   }
   
   @Override
-  public Class<? extends FormPropertyDescriptionProvider> bindFormPropertyDescriptionProvider() {
-    return FormPropertyDescriptionProviderGen.class;
+  public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
+    return FormFeatureCaptionProviderGen.class;
   }
 }
 '''
-expectedFormPropertyDescriptionProvider = 
+expectedFormFeatureCaptionProvider = 
 '''
 package my.empty.ui.provider;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
-import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -353,7 +353,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class FormPropertyDescriptionProviderGen extends FormPropertyDescriptionProvider {
+public class FormFeatureCaptionProviderGen extends FormFeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -403,9 +403,9 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.DialogPropertyDescriptionProviderGen;
+import my.empty.ui.provider.DialogFeatureCaptionProviderGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
@@ -415,19 +415,19 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   }
   
   @Override
-  public Class<? extends DialogPropertyDescriptionProvider> bindDialogPropertyDescriptionProvider() {
-    return DialogPropertyDescriptionProviderGen.class;
+  public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
+    return DialogFeatureCaptionProviderGen.class;
   }
 }
 '''
-expectedDialogPropertyDescriptionProvider = 
+expectedDialogFeatureCaptionProvider = 
 '''
 package my.empty.ui.provider;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
-import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -436,7 +436,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class DialogPropertyDescriptionProviderGen extends DialogPropertyDescriptionProvider {
+public class DialogFeatureCaptionProviderGen extends DialogFeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -973,15 +973,15 @@ expectedPluginXmlGen =
 				if (e.key.endsWith("ModuleGen.java")) {
 					if (expected.expectedModule != null)
 						assertEqualsStrings(expected.expectedModule, e.value)
-				} else if (e.key.endsWith("FormPropertyDescriptionProviderGen.java")) {
-					if (expected.expectedFormPropertyDescriptionProvider != null)
-						assertEqualsStrings(expected.expectedFormPropertyDescriptionProvider, e.value)
-				} else if (e.key.endsWith("DialogPropertyDescriptionProviderGen.java")) {
-					if (expected.expectedDialogPropertyDescriptionProvider != null)
-						assertEqualsStrings(expected.expectedDialogPropertyDescriptionProvider, e.value)
-				} else if (e.key.endsWith("PropertyDescriptionProviderGen.java")) {
-					if (expected.expectedPropertyDescriptionProvider != null)
-						assertEqualsStrings(expected.expectedPropertyDescriptionProvider, e.value)
+				} else if (e.key.endsWith("FormFeatureCaptionProviderGen.java")) {
+					if (expected.expectedFormFeatureCaptionProvider != null)
+						assertEqualsStrings(expected.expectedFormFeatureCaptionProvider, e.value)
+				} else if (e.key.endsWith("DialogFeatureCaptionProviderGen.java")) {
+					if (expected.expectedDialogFeatureCaptionProvider != null)
+						assertEqualsStrings(expected.expectedDialogFeatureCaptionProvider, e.value)
+				} else if (e.key.endsWith("FeatureCaptionProviderGen.java")) {
+					if (expected.expectedFeatureCaptionProvider != null)
+						assertEqualsStrings(expected.expectedFeatureCaptionProvider, e.value)
 				} else if (e.key.endsWith("FeaturesProviderGen.java")) {
 					if (expected.expectedFeatureProvider != null)
 						assertEqualsStrings(expected.expectedFeatureProvider, e.value)

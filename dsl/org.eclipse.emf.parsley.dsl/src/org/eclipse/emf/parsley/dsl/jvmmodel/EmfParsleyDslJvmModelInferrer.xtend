@@ -13,16 +13,16 @@ import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
+import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
-import org.eclipse.emf.parsley.dsl.model.PropertyDescriptionSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
-import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider
+import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
-import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
@@ -98,9 +98,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val moduleClass = element.toClass(element.moduleQN)
 		
 		val labelProviderClass = element.inferLabelProvider(acceptor)
-		val propertyDescriptionProviderClass = element.inferPropertyDescriptionProvider(acceptor)
-		val formPropertyDescriptionProviderClass = element.inferFormPropertyDescriptionProvider(acceptor)
-		val dialogPropertyDescriptionProviderClass = element.inferDialogPropertyDescriptionProvider(acceptor)
+		val featureCaptionProviderClass = element.inferFeatureCaptionProvider(acceptor)
+		val formFeatureCaptionProviderClass = element.inferFormFeatureCaptionProvider(acceptor)
+		val dialogFeatureCaptionProviderClass = element.inferDialogFeatureCaptionProvider(acceptor)
 		val featureProviderClass = element.inferFeatureProvider(acceptor)
 		val formControlFactoryClass = element.inferFormControlFactory(acceptor)
 		val dialogControlFactoryClass = element.inferDialogControlFactory(acceptor)
@@ -118,12 +118,12 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			
 			if (labelProviderClass != null)
 				members += element.labelProvider.genBindMethod(labelProviderClass, typeof(ILabelProvider))
-			if (propertyDescriptionProviderClass != null)
-				members += element.propertyDescriptionProvider.genBindMethod(propertyDescriptionProviderClass, typeof(PropertyDescriptionProvider))
-			if (formPropertyDescriptionProviderClass != null)
-				members += element.formPropertyDescriptionProvider.genBindMethod(formPropertyDescriptionProviderClass, typeof(FormPropertyDescriptionProvider))
-			if (dialogPropertyDescriptionProviderClass != null)
-				members += element.dialogPropertyDescriptionProvider.genBindMethod(dialogPropertyDescriptionProviderClass, typeof(DialogPropertyDescriptionProvider))
+			if (featureCaptionProviderClass != null)
+				members += element.featureCaptionProvider.genBindMethod(featureCaptionProviderClass, typeof(FeatureCaptionProvider))
+			if (formFeatureCaptionProviderClass != null)
+				members += element.formFeatureCaptionProvider.genBindMethod(formFeatureCaptionProviderClass, typeof(FormFeatureCaptionProvider))
+			if (dialogFeatureCaptionProviderClass != null)
+				members += element.dialogFeatureCaptionProvider.genBindMethod(dialogFeatureCaptionProviderClass, typeof(DialogFeatureCaptionProvider))
 			if (featureProviderClass != null)
 				members += element.featuresProvider.genBindMethod(featureProviderClass, typeof(FeaturesProvider))
 			if (formControlFactoryClass != null)
@@ -167,16 +167,16 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		element.fullyQualifiedName + ".ui.provider.LabelProviderGen"
 	}
 	
-	def propertyDescriptionProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.PropertyDescriptionProviderGen"
+	def featureCaptionProviderQN(Module element) {
+		element.fullyQualifiedName + ".ui.provider.FeatureCaptionProviderGen"
 	}
 
-	def formPropertyDescriptionProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.FormPropertyDescriptionProviderGen"
+	def formFeatureCaptionProviderQN(Module element) {
+		element.fullyQualifiedName + ".ui.provider.FormFeatureCaptionProviderGen"
 	}
 
-	def dialogPropertyDescriptionProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.DialogPropertyDescriptionProviderGen"
+	def dialogFeatureCaptionProviderQN(Module element) {
+		element.fullyQualifiedName + ".ui.provider.DialogFeatureCaptionProviderGen"
 	}
 
 	def featuresProviderQN(Module element) {
@@ -252,21 +252,21 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferPropertyDescriptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.propertyDescriptionProvider == null)
+	def inferFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.featureCaptionProvider == null)
 			null
 		else {
-			val propertyDescriptionProviderClass = element.propertyDescriptionProvider.toClass(element.propertyDescriptionProviderQN)
+			val propertyDescriptionProviderClass = element.featureCaptionProvider.toClass(element.featureCaptionProviderQN)
 			acceptor.accept(propertyDescriptionProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(PropertyDescriptionProvider))
+				superTypes += element.newTypeRef(typeof(FeatureCaptionProvider))
 				
-				inferMethodsForTextPropertyDescription(element, it, element.propertyDescriptionProvider.specifications)
+				inferMethodsForTextPropertyDescription(element, it, element.featureCaptionProvider.specifications)
 			]
 			propertyDescriptionProviderClass
 		}
 	}
 	
-	def inferMethodsForTextPropertyDescription(Module element, JvmGenericType it, Iterable<PropertyDescriptionSpecification> specifications) {
+	def inferMethodsForTextPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureCaptionSpecification> specifications) {
 		for (spec : specifications) {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole
@@ -288,23 +288,23 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def inferFormPropertyDescriptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.formPropertyDescriptionProvider == null)
+	def inferFormFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.formFeatureCaptionProvider == null)
 			null
 		else {
-			val descriptionProviderClass = element.formPropertyDescriptionProvider.toClass(element.formPropertyDescriptionProviderQN)
+			val descriptionProviderClass = element.formFeatureCaptionProvider.toClass(element.formFeatureCaptionProviderQN)
 			acceptor.accept(descriptionProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(FormPropertyDescriptionProvider))
+				superTypes += element.newTypeRef(typeof(FormFeatureCaptionProvider))
 				
-				inferMethodsForTextPropertyDescription(element, it, element.formPropertyDescriptionProvider.specifications)
+				inferMethodsForTextPropertyDescription(element, it, element.formFeatureCaptionProvider.specifications)
 				
-				inferMethodsForLabelPropertyDescription(element, it, element.formPropertyDescriptionProvider.labelSpecifications)
+				inferMethodsForLabelPropertyDescription(element, it, element.formFeatureCaptionProvider.labelSpecifications)
 			]
 			descriptionProviderClass
 		}
 	}
 	
-	def inferMethodsForLabelPropertyDescription(Module element, JvmGenericType it, Iterable<PropertyDescriptionSpecification> specifications) {
+	def inferMethodsForLabelPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureCaptionSpecification> specifications) {
 		for (spec : specifications) {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole
@@ -329,17 +329,17 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def inferDialogPropertyDescriptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.dialogPropertyDescriptionProvider == null)
+	def inferDialogFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.dialogFeatureCaptionProvider == null)
 			null
 		else {
-			val descriptionProviderClass = element.dialogPropertyDescriptionProvider.toClass(element.dialogPropertyDescriptionProviderQN)
+			val descriptionProviderClass = element.dialogFeatureCaptionProvider.toClass(element.dialogFeatureCaptionProviderQN)
 			acceptor.accept(descriptionProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(DialogPropertyDescriptionProvider))
+				superTypes += element.newTypeRef(typeof(DialogFeatureCaptionProvider))
 				
-				inferMethodsForTextPropertyDescription(element, it, element.dialogPropertyDescriptionProvider.specifications)
+				inferMethodsForTextPropertyDescription(element, it, element.dialogFeatureCaptionProvider.specifications)
 				
-				inferMethodsForLabelPropertyDescription(element, it, element.dialogPropertyDescriptionProvider.labelSpecifications)			
+				inferMethodsForLabelPropertyDescription(element, it, element.dialogFeatureCaptionProvider.labelSpecifications)			
 			]
 			descriptionProviderClass
 		}

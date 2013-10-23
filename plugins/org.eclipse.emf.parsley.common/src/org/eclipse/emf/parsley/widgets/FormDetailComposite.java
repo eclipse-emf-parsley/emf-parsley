@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
-import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -19,7 +19,7 @@ import com.google.inject.Inject;
 
 public class FormDetailComposite extends AbstractDetailComposite {
 
-	protected FormPropertyDescriptionProvider formPropertyDescriptionProvider;
+	protected FormFeatureCaptionProvider formFeatureCaptionProvider;
 
 	protected FormControlFactory formControlFactory;
 
@@ -56,15 +56,15 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		toolkit.dispose();
 	}
 
-	public FormPropertyDescriptionProvider getFormPropertyDescriptionProvider() {
-		return formPropertyDescriptionProvider;
+	public FormFeatureCaptionProvider getFormFeatureCaptionProvider() {
+		return formFeatureCaptionProvider;
 	}
 
 	@Inject
-	public void setFormPropertyDescriptionProvider(
-			FormPropertyDescriptionProvider formPropertyDescriptionProvider) {
-		this.formPropertyDescriptionProvider = formPropertyDescriptionProvider;
-		this.formPropertyDescriptionProvider.setFormToolkit(toolkit);
+	public void setFormFeatureCaptionProvider(
+			FormFeatureCaptionProvider formFeatureCaptionProvider) {
+		this.formFeatureCaptionProvider = formFeatureCaptionProvider;
+		this.formFeatureCaptionProvider.setFormToolkit(toolkit);
 	}
 
 	public FormControlFactory getFormControlFactory() {
@@ -104,7 +104,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	}
 
 	protected void createControlForFeature(EStructuralFeature feature) {
-		formPropertyDescriptionProvider.getLabel(main, feature);
+		formFeatureCaptionProvider.getLabel(main, feature);
 		formControlFactory.create(feature);
 	}
 

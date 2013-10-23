@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.binding.DialogControlFactory;
-import org.eclipse.emf.parsley.ui.provider.DialogPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -14,7 +14,7 @@ import com.google.inject.Inject;
 
 public class DialogDetailComposite extends AbstractDetailComposite {
 
-	protected DialogPropertyDescriptionProvider dialogPropertyDescriptionProvider;
+	protected DialogFeatureCaptionProvider dialogFeatureCaptionProvider;
 
 	protected DialogControlFactory dialogControlFactory;
 
@@ -26,14 +26,14 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		setLayout(new GridLayout(1, false));
 	}
 
-	public DialogPropertyDescriptionProvider getDialogPropertyDescriptionProvider() {
-		return dialogPropertyDescriptionProvider;
+	public DialogFeatureCaptionProvider getDialogFeatureCaptionProvider() {
+		return dialogFeatureCaptionProvider;
 	}
 
 	@Inject
-	public void setDialogPropertyDescriptionProvider(
-			DialogPropertyDescriptionProvider formPropertyDescriptionProvider) {
-		this.dialogPropertyDescriptionProvider = formPropertyDescriptionProvider;
+	public void setDialogFeatureCaptionProviderr(
+			DialogFeatureCaptionProvider formPropertyDescriptionProvider) {
+		this.dialogFeatureCaptionProvider = formPropertyDescriptionProvider;
 	}
 
 	public DialogControlFactory getDialogControlFactory() {
@@ -60,7 +60,7 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 	}
 
 	protected void createControlForFeature(EStructuralFeature feature) {
-		dialogPropertyDescriptionProvider.getLabel(this, feature);
+		dialogFeatureCaptionProvider.getLabel(this, feature);
 		dialogControlFactory.create(feature);
 	}
 

@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'module'", "'{'", "'}'", "'extends'", "'labelProvider'", "'text'", "'image'", "'->'", "'propertyDescriptionProvider'", "'formPropertyDescriptionProvider'", "'label'", "'dialogPropertyDescriptionProvider'", "':'", "'featuresProvider'", "'features'", "','", "'formControlFactory'", "'control'", "'dialogControlFactory'", "'target'", "'proposals'", "'viewerContentProvider'", "'children'", "'parts'", "'viewpart'", "'viewname'", "'viewclass'", "'viewcategory'", "'='", "'+='", "'-='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'>='", "'<='", "'>'", "'<'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'<=>'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'as'", "'.'", "'::'", "'?.'", "'('", "')'", "'#'", "'['", "']'", "'|'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'static'", "'import'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'?'", "'&'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'module'", "'{'", "'}'", "'extends'", "'labelProvider'", "'text'", "'image'", "'->'", "'featureCaptionProvider'", "'formFeatureCaptionProvider'", "'label'", "'dialogFeatureCaptionProvider'", "':'", "'featuresProvider'", "'features'", "','", "'formControlFactory'", "'control'", "'dialogControlFactory'", "'target'", "'proposals'", "'viewerContentProvider'", "'children'", "'parts'", "'viewpart'", "'viewname'", "'viewclass'", "'viewcategory'", "'='", "'+='", "'-='", "'||'", "'&&'", "'=='", "'!='", "'==='", "'!=='", "'instanceof'", "'>='", "'<='", "'>'", "'<'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'<=>'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'as'", "'.'", "'::'", "'?.'", "'('", "')'", "'#'", "'['", "']'", "'|'", "';'", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'var'", "'val'", "'static'", "'import'", "'extension'", "'super'", "'new'", "'false'", "'true'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'?'", "'&'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -368,7 +368,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModule"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:133:1: ruleModule returns [EObject current=null] : (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' ) ;
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:133:1: ruleModule returns [EObject current=null] : (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' ) ;
     public final EObject ruleModule() throws RecognitionException {
         EObject current = null;
 
@@ -381,11 +381,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
         EObject lv_labelProvider_5_0 = null;
 
-        EObject lv_propertyDescriptionProvider_6_0 = null;
+        EObject lv_featureCaptionProvider_6_0 = null;
 
-        EObject lv_formPropertyDescriptionProvider_7_0 = null;
+        EObject lv_formFeatureCaptionProvider_7_0 = null;
 
-        EObject lv_dialogPropertyDescriptionProvider_8_0 = null;
+        EObject lv_dialogFeatureCaptionProvider_8_0 = null;
 
         EObject lv_featuresProvider_9_0 = null;
 
@@ -403,11 +403,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:136:28: ( (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:137:1: (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:136:28: ( (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:137:1: (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:137:1: (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:137:3: otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:137:1: (otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:137:3: otherlv_0= 'module' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_extendsClause_2_0= ruleExtendsClause ) )? otherlv_3= '{' ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) ) otherlv_15= '}'
             {
             otherlv_0=(Token)match(input,13,FOLLOW_13_in_ruleModule236); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -502,17 +502,17 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_3, grammarAccess.getModuleAccess().getLeftCurlyBracketKeyword_3());
                   
             }
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:181:1: ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:183:1: ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:181:1: ( ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:183:1: ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:183:1: ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:184:2: ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:183:1: ( ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:184:2: ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* )
             {
             getUnorderedGroupHelper().enter(grammarAccess.getModuleAccess().getUnorderedGroup_4());
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:187:2: ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:188:3: ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:187:2: ( ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:188:3: ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )*
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:188:3: ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:188:3: ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )*
             loop3:
             do {
                 int alt3=11;
@@ -588,39 +588,39 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:220:4: ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:220:4: ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:220:4: ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:221:5: {...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:220:4: ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:221:5: {...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleModule", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1)");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:221:103: ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:222:6: ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:221:103: ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:222:6: ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1);
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:225:6: ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:225:7: {...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:225:6: ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:225:7: {...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleModule", "true");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:225:16: ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:226:1: (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:225:16: ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:226:1: (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:226:1: (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:227:3: lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:226:1: (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:227:3: lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getModuleAccess().getPropertyDescriptionProviderPropertyDescriptionProviderParserRuleCall_4_1_0()); 
+            	      	        newCompositeNode(grammarAccess.getModuleAccess().getFeatureCaptionProviderFeatureCaptionProviderParserRuleCall_4_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_rulePropertyDescriptionProvider_in_ruleModule432);
-            	    lv_propertyDescriptionProvider_6_0=rulePropertyDescriptionProvider();
+            	    pushFollow(FOLLOW_ruleFeatureCaptionProvider_in_ruleModule432);
+            	    lv_featureCaptionProvider_6_0=ruleFeatureCaptionProvider();
 
             	    state._fsp--;
             	    if (state.failed) return current;
@@ -631,9 +631,9 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	      	        }
             	             		set(
             	             			current, 
-            	             			"propertyDescriptionProvider",
-            	              		lv_propertyDescriptionProvider_6_0, 
-            	              		"PropertyDescriptionProvider");
+            	             			"featureCaptionProvider",
+            	              		lv_featureCaptionProvider_6_0, 
+            	              		"FeatureCaptionProvider");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -657,39 +657,39 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 3 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:250:4: ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:250:4: ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:250:4: ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:251:5: {...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:250:4: ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:251:5: {...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleModule", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2)");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:251:103: ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:252:6: ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:251:103: ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:252:6: ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2);
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:255:6: ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:255:7: {...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:255:6: ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:255:7: {...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleModule", "true");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:255:16: ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:256:1: (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:255:16: ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:256:1: (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:256:1: (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:257:3: lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:256:1: (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:257:3: lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderFormPropertyDescriptionProviderParserRuleCall_4_2_0()); 
+            	      	        newCompositeNode(grammarAccess.getModuleAccess().getFormFeatureCaptionProviderFormFeatureCaptionProviderParserRuleCall_4_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleFormPropertyDescriptionProvider_in_ruleModule507);
-            	    lv_formPropertyDescriptionProvider_7_0=ruleFormPropertyDescriptionProvider();
+            	    pushFollow(FOLLOW_ruleFormFeatureCaptionProvider_in_ruleModule507);
+            	    lv_formFeatureCaptionProvider_7_0=ruleFormFeatureCaptionProvider();
 
             	    state._fsp--;
             	    if (state.failed) return current;
@@ -700,9 +700,9 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	      	        }
             	             		set(
             	             			current, 
-            	             			"formPropertyDescriptionProvider",
-            	              		lv_formPropertyDescriptionProvider_7_0, 
-            	              		"FormPropertyDescriptionProvider");
+            	             			"formFeatureCaptionProvider",
+            	              		lv_formFeatureCaptionProvider_7_0, 
+            	              		"FormFeatureCaptionProvider");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -726,39 +726,39 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 4 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:280:4: ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:280:4: ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:280:4: ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:281:5: {...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:280:4: ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:281:5: {...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) )
             	    {
             	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleModule", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3)");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:281:103: ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:282:6: ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:281:103: ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:282:6: ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) )
             	    {
             	    getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3);
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:285:6: ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:285:7: {...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:285:6: ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:285:7: {...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
             	        throw new FailedPredicateException(input, "ruleModule", "true");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:285:16: ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:286:1: (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:285:16: ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:286:1: (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:286:1: (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:287:3: lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:286:1: (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:287:3: lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderDialogPropertyDescriptionProviderParserRuleCall_4_3_0()); 
+            	      	        newCompositeNode(grammarAccess.getModuleAccess().getDialogFeatureCaptionProviderDialogFeatureCaptionProviderParserRuleCall_4_3_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleDialogPropertyDescriptionProvider_in_ruleModule582);
-            	    lv_dialogPropertyDescriptionProvider_8_0=ruleDialogPropertyDescriptionProvider();
+            	    pushFollow(FOLLOW_ruleDialogFeatureCaptionProvider_in_ruleModule582);
+            	    lv_dialogFeatureCaptionProvider_8_0=ruleDialogFeatureCaptionProvider();
 
             	    state._fsp--;
             	    if (state.failed) return current;
@@ -769,9 +769,9 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	      	        }
             	             		set(
             	             			current, 
-            	             			"dialogPropertyDescriptionProvider",
-            	              		lv_dialogPropertyDescriptionProvider_8_0, 
-            	              		"DialogPropertyDescriptionProvider");
+            	             			"dialogFeatureCaptionProvider",
+            	              		lv_dialogFeatureCaptionProvider_8_0, 
+            	              		"DialogFeatureCaptionProvider");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -1963,30 +1963,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleLabelSpecification"
 
 
-    // $ANTLR start "entryRulePropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:770:1: entryRulePropertyDescriptionProvider returns [EObject current=null] : iv_rulePropertyDescriptionProvider= rulePropertyDescriptionProvider EOF ;
-    public final EObject entryRulePropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "entryRuleFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:770:1: entryRuleFeatureCaptionProvider returns [EObject current=null] : iv_ruleFeatureCaptionProvider= ruleFeatureCaptionProvider EOF ;
+    public final EObject entryRuleFeatureCaptionProvider() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_rulePropertyDescriptionProvider = null;
+        EObject iv_ruleFeatureCaptionProvider = null;
 
 
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:771:2: (iv_rulePropertyDescriptionProvider= rulePropertyDescriptionProvider EOF )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:772:2: iv_rulePropertyDescriptionProvider= rulePropertyDescriptionProvider EOF
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:771:2: (iv_ruleFeatureCaptionProvider= ruleFeatureCaptionProvider EOF )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:772:2: iv_ruleFeatureCaptionProvider= ruleFeatureCaptionProvider EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getPropertyDescriptionProviderRule()); 
+               newCompositeNode(grammarAccess.getFeatureCaptionProviderRule()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionProvider_in_entryRulePropertyDescriptionProvider1746);
-            iv_rulePropertyDescriptionProvider=rulePropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleFeatureCaptionProvider_in_entryRuleFeatureCaptionProvider1746);
+            iv_ruleFeatureCaptionProvider=ruleFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_rulePropertyDescriptionProvider; 
+               current =iv_ruleFeatureCaptionProvider; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePropertyDescriptionProvider1756); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCaptionProvider1756); if (state.failed) return current;
 
             }
 
@@ -2000,12 +2000,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRulePropertyDescriptionProvider"
+    // $ANTLR end "entryRuleFeatureCaptionProvider"
 
 
-    // $ANTLR start "rulePropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:779:1: rulePropertyDescriptionProvider returns [EObject current=null] : ( () otherlv_1= 'propertyDescriptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' ) ;
-    public final EObject rulePropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "ruleFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:779:1: ruleFeatureCaptionProvider returns [EObject current=null] : ( () otherlv_1= 'featureCaptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' ) ;
+    public final EObject ruleFeatureCaptionProvider() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
@@ -2020,11 +2020,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:782:28: ( ( () otherlv_1= 'propertyDescriptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:783:1: ( () otherlv_1= 'propertyDescriptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:782:28: ( ( () otherlv_1= 'featureCaptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:783:1: ( () otherlv_1= 'featureCaptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:783:1: ( () otherlv_1= 'propertyDescriptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:783:2: () otherlv_1= 'propertyDescriptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:783:1: ( () otherlv_1= 'featureCaptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:783:2: () otherlv_1= 'featureCaptionProvider' otherlv_2= '{' (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )* otherlv_6= '}' )? otherlv_7= '}'
             {
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:783:2: ()
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:784:5: 
@@ -2032,26 +2032,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
                       current = forceCreateModelElement(
-                          grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderAction_0(),
+                          grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderAction_0(),
                           current);
                   
             }
 
             }
 
-            otherlv_1=(Token)match(input,21,FOLLOW_21_in_rulePropertyDescriptionProvider1802); if (state.failed) return current;
+            otherlv_1=(Token)match(input,21,FOLLOW_21_in_ruleFeatureCaptionProvider1802); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_1, grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderKeyword_1());
+                  	newLeafNode(otherlv_1, grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,14,FOLLOW_14_in_rulePropertyDescriptionProvider1814); if (state.failed) return current;
+            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleFeatureCaptionProvider1814); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_2, grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2());
+                  	newLeafNode(otherlv_2, grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2());
                   
             }
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:797:1: (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )* otherlv_6= '}' )?
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:797:1: (otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )* otherlv_6= '}' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2060,21 +2060,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:797:3: otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )* otherlv_6= '}'
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:797:3: otherlv_3= 'text' otherlv_4= '{' ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )* otherlv_6= '}'
                     {
-                    otherlv_3=(Token)match(input,18,FOLLOW_18_in_rulePropertyDescriptionProvider1827); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,18,FOLLOW_18_in_ruleFeatureCaptionProvider1827); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_3, grammarAccess.getPropertyDescriptionProviderAccess().getTextKeyword_3_0());
+                          	newLeafNode(otherlv_3, grammarAccess.getFeatureCaptionProviderAccess().getTextKeyword_3_0());
                           
                     }
-                    otherlv_4=(Token)match(input,14,FOLLOW_14_in_rulePropertyDescriptionProvider1839); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,14,FOLLOW_14_in_ruleFeatureCaptionProvider1839); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_4, grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1());
+                          	newLeafNode(otherlv_4, grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1());
                           
                     }
-                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:805:1: ( (lv_specifications_5_0= rulePropertyDescriptionSpecification ) )*
+                    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:805:1: ( (lv_specifications_5_0= ruleFeatureCaptionSpecification ) )*
                     loop8:
                     do {
                         int alt8=2;
@@ -2087,31 +2087,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:806:1: (lv_specifications_5_0= rulePropertyDescriptionSpecification )
+                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:806:1: (lv_specifications_5_0= ruleFeatureCaptionSpecification )
                     	    {
-                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:806:1: (lv_specifications_5_0= rulePropertyDescriptionSpecification )
-                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:807:3: lv_specifications_5_0= rulePropertyDescriptionSpecification
+                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:806:1: (lv_specifications_5_0= ruleFeatureCaptionSpecification )
+                    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:807:3: lv_specifications_5_0= ruleFeatureCaptionSpecification
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
-                    	      	        newCompositeNode(grammarAccess.getPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0()); 
+                    	      	        newCompositeNode(grammarAccess.getFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_2_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_rulePropertyDescriptionProvider1860);
-                    	    lv_specifications_5_0=rulePropertyDescriptionSpecification();
+                    	    pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_ruleFeatureCaptionProvider1860);
+                    	    lv_specifications_5_0=ruleFeatureCaptionSpecification();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	      	        if (current==null) {
-                    	      	            current = createModelElementForParent(grammarAccess.getPropertyDescriptionProviderRule());
+                    	      	            current = createModelElementForParent(grammarAccess.getFeatureCaptionProviderRule());
                     	      	        }
                     	             		add(
                     	             			current, 
                     	             			"specifications",
                     	              		lv_specifications_5_0, 
-                    	              		"PropertyDescriptionSpecification");
+                    	              		"FeatureCaptionSpecification");
                     	      	        afterParserOrEnumRuleCall();
                     	      	    
                     	    }
@@ -2127,10 +2127,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_6=(Token)match(input,15,FOLLOW_15_in_rulePropertyDescriptionProvider1873); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,15,FOLLOW_15_in_ruleFeatureCaptionProvider1873); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_6, grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_3());
+                          	newLeafNode(otherlv_6, grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_3());
                           
                     }
 
@@ -2139,10 +2139,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,15,FOLLOW_15_in_rulePropertyDescriptionProvider1887); if (state.failed) return current;
+            otherlv_7=(Token)match(input,15,FOLLOW_15_in_ruleFeatureCaptionProvider1887); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_7, grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4());
+                  	newLeafNode(otherlv_7, grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4());
                   
             }
 
@@ -2164,33 +2164,33 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "rulePropertyDescriptionProvider"
+    // $ANTLR end "ruleFeatureCaptionProvider"
 
 
-    // $ANTLR start "entryRuleFormPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:839:1: entryRuleFormPropertyDescriptionProvider returns [EObject current=null] : iv_ruleFormPropertyDescriptionProvider= ruleFormPropertyDescriptionProvider EOF ;
-    public final EObject entryRuleFormPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "entryRuleFormFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:839:1: entryRuleFormFeatureCaptionProvider returns [EObject current=null] : iv_ruleFormFeatureCaptionProvider= ruleFormFeatureCaptionProvider EOF ;
+    public final EObject entryRuleFormFeatureCaptionProvider() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleFormPropertyDescriptionProvider = null;
+        EObject iv_ruleFormFeatureCaptionProvider = null;
 
 
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:840:2: (iv_ruleFormPropertyDescriptionProvider= ruleFormPropertyDescriptionProvider EOF )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:841:2: iv_ruleFormPropertyDescriptionProvider= ruleFormPropertyDescriptionProvider EOF
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:840:2: (iv_ruleFormFeatureCaptionProvider= ruleFormFeatureCaptionProvider EOF )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:841:2: iv_ruleFormFeatureCaptionProvider= ruleFormFeatureCaptionProvider EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getFormPropertyDescriptionProviderRule()); 
+               newCompositeNode(grammarAccess.getFormFeatureCaptionProviderRule()); 
             }
-            pushFollow(FOLLOW_ruleFormPropertyDescriptionProvider_in_entryRuleFormPropertyDescriptionProvider1923);
-            iv_ruleFormPropertyDescriptionProvider=ruleFormPropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleFormFeatureCaptionProvider_in_entryRuleFormFeatureCaptionProvider1923);
+            iv_ruleFormFeatureCaptionProvider=ruleFormFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleFormPropertyDescriptionProvider; 
+               current =iv_ruleFormFeatureCaptionProvider; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFormPropertyDescriptionProvider1933); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFormFeatureCaptionProvider1933); if (state.failed) return current;
 
             }
 
@@ -2204,12 +2204,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleFormPropertyDescriptionProvider"
+    // $ANTLR end "entryRuleFormFeatureCaptionProvider"
 
 
-    // $ANTLR start "ruleFormPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:848:1: ruleFormPropertyDescriptionProvider returns [EObject current=null] : ( () otherlv_1= 'formPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) ;
-    public final EObject ruleFormPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "ruleFormFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:848:1: ruleFormFeatureCaptionProvider returns [EObject current=null] : ( () otherlv_1= 'formFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) ;
+    public final EObject ruleFormFeatureCaptionProvider() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
@@ -2229,11 +2229,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:851:28: ( ( () otherlv_1= 'formPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:852:1: ( () otherlv_1= 'formPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:851:28: ( ( () otherlv_1= 'formFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:852:1: ( () otherlv_1= 'formFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:852:1: ( () otherlv_1= 'formPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:852:2: () otherlv_1= 'formPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:852:1: ( () otherlv_1= 'formFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:852:2: () otherlv_1= 'formFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}'
             {
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:852:2: ()
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:853:5: 
@@ -2241,87 +2241,87 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
                       current = forceCreateModelElement(
-                          grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderAction_0(),
+                          grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderAction_0(),
                           current);
                   
             }
 
             }
 
-            otherlv_1=(Token)match(input,22,FOLLOW_22_in_ruleFormPropertyDescriptionProvider1979); if (state.failed) return current;
+            otherlv_1=(Token)match(input,22,FOLLOW_22_in_ruleFormFeatureCaptionProvider1979); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_1, grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderKeyword_1());
+                  	newLeafNode(otherlv_1, grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleFormPropertyDescriptionProvider1991); if (state.failed) return current;
+            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleFormFeatureCaptionProvider1991); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_2, grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2());
+                  	newLeafNode(otherlv_2, grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2());
                   
             }
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:866:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:868:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:866:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:868:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:868:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:869:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:868:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:869:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
             {
-            getUnorderedGroupHelper().enter(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:872:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:873:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
+            getUnorderedGroupHelper().enter(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:872:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:873:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:873:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:873:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
             loop12:
             do {
                 int alt12=3;
                 int LA12_0 = input.LA(1);
 
-                if ( LA12_0 ==18 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+                if ( LA12_0 ==18 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                     alt12=1;
                 }
-                else if ( LA12_0 ==23 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+                else if ( LA12_0 ==23 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                     alt12=2;
                 }
 
 
                 switch (alt12) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:875:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:875:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:875:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:876:5: {...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:875:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:876:5: {...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) )
             	    {
-            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleFormPropertyDescriptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)");
+            	        throw new FailedPredicateException(input, "ruleFormFeatureCaptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:876:128: ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:877:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:876:123: ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:877:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) )
             	    {
-            	    getUnorderedGroupHelper().select(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:7: {...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' )
+            	    getUnorderedGroupHelper().select(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:7: {...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleFormPropertyDescriptionProvider", "true");
+            	        throw new FailedPredicateException(input, "ruleFormFeatureCaptionProvider", "true");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:16: (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:18: otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}'
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:16: (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:880:18: otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}'
             	    {
-            	    otherlv_4=(Token)match(input,18,FOLLOW_18_in_ruleFormPropertyDescriptionProvider2049); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,18,FOLLOW_18_in_ruleFormFeatureCaptionProvider2049); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_4, grammarAccess.getFormPropertyDescriptionProviderAccess().getTextKeyword_3_0_0());
+            	          	newLeafNode(otherlv_4, grammarAccess.getFormFeatureCaptionProviderAccess().getTextKeyword_3_0_0());
             	          
             	    }
-            	    otherlv_5=(Token)match(input,14,FOLLOW_14_in_ruleFormPropertyDescriptionProvider2061); if (state.failed) return current;
+            	    otherlv_5=(Token)match(input,14,FOLLOW_14_in_ruleFormFeatureCaptionProvider2061); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_5, grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
+            	          	newLeafNode(otherlv_5, grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
             	          
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:888:1: ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )*
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:888:1: ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )*
             	    loop10:
             	    do {
             	        int alt10=2;
@@ -2334,31 +2334,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	        switch (alt10) {
             	    	case 1 :
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:889:1: (lv_specifications_6_0= rulePropertyDescriptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:889:1: (lv_specifications_6_0= ruleFeatureCaptionSpecification )
             	    	    {
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:889:1: (lv_specifications_6_0= rulePropertyDescriptionSpecification )
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:890:3: lv_specifications_6_0= rulePropertyDescriptionSpecification
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:889:1: (lv_specifications_6_0= ruleFeatureCaptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:890:3: lv_specifications_6_0= ruleFeatureCaptionSpecification
             	    	    {
             	    	    if ( state.backtracking==0 ) {
             	    	       
-            	    	      	        newCompositeNode(grammarAccess.getFormPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+            	    	      	        newCompositeNode(grammarAccess.getFormFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
             	    	      	    
             	    	    }
-            	    	    pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_ruleFormPropertyDescriptionProvider2082);
-            	    	    lv_specifications_6_0=rulePropertyDescriptionSpecification();
+            	    	    pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_ruleFormFeatureCaptionProvider2082);
+            	    	    lv_specifications_6_0=ruleFeatureCaptionSpecification();
 
             	    	    state._fsp--;
             	    	    if (state.failed) return current;
             	    	    if ( state.backtracking==0 ) {
 
             	    	      	        if (current==null) {
-            	    	      	            current = createModelElementForParent(grammarAccess.getFormPropertyDescriptionProviderRule());
+            	    	      	            current = createModelElementForParent(grammarAccess.getFormFeatureCaptionProviderRule());
             	    	      	        }
             	    	             		add(
             	    	             			current, 
             	    	             			"specifications",
             	    	              		lv_specifications_6_0, 
-            	    	              		"PropertyDescriptionSpecification");
+            	    	              		"FeatureCaptionSpecification");
             	    	      	        afterParserOrEnumRuleCall();
             	    	      	    
             	    	    }
@@ -2374,10 +2374,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	        }
             	    } while (true);
 
-            	    otherlv_7=(Token)match(input,15,FOLLOW_15_in_ruleFormPropertyDescriptionProvider2095); if (state.failed) return current;
+            	    otherlv_7=(Token)match(input,15,FOLLOW_15_in_ruleFormFeatureCaptionProvider2095); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_7, grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
+            	          	newLeafNode(otherlv_7, grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
             	          
             	    }
 
@@ -2386,7 +2386,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
 
             	    }
 
@@ -2397,42 +2397,42 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:917:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:917:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:917:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:918:5: {...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:917:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:918:5: {...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) )
             	    {
-            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleFormPropertyDescriptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1)");
+            	        throw new FailedPredicateException(input, "ruleFormFeatureCaptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1)");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:918:128: ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:919:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:918:123: ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:919:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) )
             	    {
-            	    getUnorderedGroupHelper().select(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1);
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:7: {...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' )
+            	    getUnorderedGroupHelper().select(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1);
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:7: {...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleFormPropertyDescriptionProvider", "true");
+            	        throw new FailedPredicateException(input, "ruleFormFeatureCaptionProvider", "true");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:16: (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:18: otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}'
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:16: (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:922:18: otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}'
             	    {
-            	    otherlv_8=(Token)match(input,23,FOLLOW_23_in_ruleFormPropertyDescriptionProvider2163); if (state.failed) return current;
+            	    otherlv_8=(Token)match(input,23,FOLLOW_23_in_ruleFormFeatureCaptionProvider2163); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_8, grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0());
+            	          	newLeafNode(otherlv_8, grammarAccess.getFormFeatureCaptionProviderAccess().getLabelKeyword_3_1_0());
             	          
             	    }
-            	    otherlv_9=(Token)match(input,14,FOLLOW_14_in_ruleFormPropertyDescriptionProvider2175); if (state.failed) return current;
+            	    otherlv_9=(Token)match(input,14,FOLLOW_14_in_ruleFormFeatureCaptionProvider2175); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_9, grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
+            	          	newLeafNode(otherlv_9, grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
             	          
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:930:1: ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )*
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:930:1: ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )*
             	    loop11:
             	    do {
             	        int alt11=2;
@@ -2445,31 +2445,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	        switch (alt11) {
             	    	case 1 :
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:931:1: (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:931:1: (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification )
             	    	    {
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:931:1: (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification )
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:932:3: lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:931:1: (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:932:3: lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification
             	    	    {
             	    	    if ( state.backtracking==0 ) {
             	    	       
-            	    	      	        newCompositeNode(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+            	    	      	        newCompositeNode(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
             	    	      	    
             	    	    }
-            	    	    pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_ruleFormPropertyDescriptionProvider2196);
-            	    	    lv_labelSpecifications_10_0=rulePropertyDescriptionSpecification();
+            	    	    pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_ruleFormFeatureCaptionProvider2196);
+            	    	    lv_labelSpecifications_10_0=ruleFeatureCaptionSpecification();
 
             	    	    state._fsp--;
             	    	    if (state.failed) return current;
             	    	    if ( state.backtracking==0 ) {
 
             	    	      	        if (current==null) {
-            	    	      	            current = createModelElementForParent(grammarAccess.getFormPropertyDescriptionProviderRule());
+            	    	      	            current = createModelElementForParent(grammarAccess.getFormFeatureCaptionProviderRule());
             	    	      	        }
             	    	             		add(
             	    	             			current, 
             	    	             			"labelSpecifications",
             	    	              		lv_labelSpecifications_10_0, 
-            	    	              		"PropertyDescriptionSpecification");
+            	    	              		"FeatureCaptionSpecification");
             	    	      	        afterParserOrEnumRuleCall();
             	    	      	    
             	    	    }
@@ -2485,10 +2485,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	        }
             	    } while (true);
 
-            	    otherlv_11=(Token)match(input,15,FOLLOW_15_in_ruleFormPropertyDescriptionProvider2209); if (state.failed) return current;
+            	    otherlv_11=(Token)match(input,15,FOLLOW_15_in_ruleFormFeatureCaptionProvider2209); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_11, grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
+            	          	newLeafNode(otherlv_11, grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
             	          
             	    }
 
@@ -2497,7 +2497,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
 
             	    }
 
@@ -2519,14 +2519,14 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            getUnorderedGroupHelper().leave(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            getUnorderedGroupHelper().leave(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
 
             }
 
-            otherlv_12=(Token)match(input,15,FOLLOW_15_in_ruleFormPropertyDescriptionProvider2262); if (state.failed) return current;
+            otherlv_12=(Token)match(input,15,FOLLOW_15_in_ruleFormFeatureCaptionProvider2262); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_12, grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4());
+                  	newLeafNode(otherlv_12, grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4());
                   
             }
 
@@ -2548,33 +2548,33 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleFormPropertyDescriptionProvider"
+    // $ANTLR end "ruleFormFeatureCaptionProvider"
 
 
-    // $ANTLR start "entryRuleDialogPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:978:1: entryRuleDialogPropertyDescriptionProvider returns [EObject current=null] : iv_ruleDialogPropertyDescriptionProvider= ruleDialogPropertyDescriptionProvider EOF ;
-    public final EObject entryRuleDialogPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "entryRuleDialogFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:978:1: entryRuleDialogFeatureCaptionProvider returns [EObject current=null] : iv_ruleDialogFeatureCaptionProvider= ruleDialogFeatureCaptionProvider EOF ;
+    public final EObject entryRuleDialogFeatureCaptionProvider() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleDialogPropertyDescriptionProvider = null;
+        EObject iv_ruleDialogFeatureCaptionProvider = null;
 
 
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:979:2: (iv_ruleDialogPropertyDescriptionProvider= ruleDialogPropertyDescriptionProvider EOF )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:980:2: iv_ruleDialogPropertyDescriptionProvider= ruleDialogPropertyDescriptionProvider EOF
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:979:2: (iv_ruleDialogFeatureCaptionProvider= ruleDialogFeatureCaptionProvider EOF )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:980:2: iv_ruleDialogFeatureCaptionProvider= ruleDialogFeatureCaptionProvider EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getDialogPropertyDescriptionProviderRule()); 
+               newCompositeNode(grammarAccess.getDialogFeatureCaptionProviderRule()); 
             }
-            pushFollow(FOLLOW_ruleDialogPropertyDescriptionProvider_in_entryRuleDialogPropertyDescriptionProvider2298);
-            iv_ruleDialogPropertyDescriptionProvider=ruleDialogPropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleDialogFeatureCaptionProvider_in_entryRuleDialogFeatureCaptionProvider2298);
+            iv_ruleDialogFeatureCaptionProvider=ruleDialogFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleDialogPropertyDescriptionProvider; 
+               current =iv_ruleDialogFeatureCaptionProvider; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDialogPropertyDescriptionProvider2308); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDialogFeatureCaptionProvider2308); if (state.failed) return current;
 
             }
 
@@ -2588,12 +2588,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleDialogPropertyDescriptionProvider"
+    // $ANTLR end "entryRuleDialogFeatureCaptionProvider"
 
 
-    // $ANTLR start "ruleDialogPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:987:1: ruleDialogPropertyDescriptionProvider returns [EObject current=null] : ( () otherlv_1= 'dialogPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) ;
-    public final EObject ruleDialogPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "ruleDialogFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:987:1: ruleDialogFeatureCaptionProvider returns [EObject current=null] : ( () otherlv_1= 'dialogFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) ;
+    public final EObject ruleDialogFeatureCaptionProvider() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
@@ -2613,11 +2613,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:990:28: ( ( () otherlv_1= 'dialogPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:991:1: ( () otherlv_1= 'dialogPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:990:28: ( ( () otherlv_1= 'dialogFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:991:1: ( () otherlv_1= 'dialogFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:991:1: ( () otherlv_1= 'dialogPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:991:2: () otherlv_1= 'dialogPropertyDescriptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}'
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:991:1: ( () otherlv_1= 'dialogFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}' )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:991:2: () otherlv_1= 'dialogFeatureCaptionProvider' otherlv_2= '{' ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) ) otherlv_12= '}'
             {
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:991:2: ()
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:992:5: 
@@ -2625,87 +2625,87 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
                       current = forceCreateModelElement(
-                          grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderAction_0(),
+                          grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderAction_0(),
                           current);
                   
             }
 
             }
 
-            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleDialogPropertyDescriptionProvider2354); if (state.failed) return current;
+            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleDialogFeatureCaptionProvider2354); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_1, grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderKeyword_1());
+                  	newLeafNode(otherlv_1, grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderKeyword_1());
                   
             }
-            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleDialogPropertyDescriptionProvider2366); if (state.failed) return current;
+            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleDialogFeatureCaptionProvider2366); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_2, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2());
+                  	newLeafNode(otherlv_2, grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2());
                   
             }
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1005:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1007:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1005:1: ( ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1007:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1007:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1008:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1007:1: ( ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* ) )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1008:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
             {
-            getUnorderedGroupHelper().enter(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1011:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1012:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
+            getUnorderedGroupHelper().enter(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1011:2: ( ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )* )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1012:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
             {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1012:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1012:3: ( ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) ) )*
             loop15:
             do {
                 int alt15=3;
                 int LA15_0 = input.LA(1);
 
-                if ( LA15_0 ==18 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+                if ( LA15_0 ==18 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                     alt15=1;
                 }
-                else if ( LA15_0 ==23 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+                else if ( LA15_0 ==23 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                     alt15=2;
                 }
 
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1014:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1014:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1014:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1015:5: {...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1014:4: ({...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1015:5: {...}? => ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) )
             	    {
-            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleDialogPropertyDescriptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)");
+            	        throw new FailedPredicateException(input, "ruleDialogFeatureCaptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1015:130: ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1016:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1015:125: ( ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1016:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) )
             	    {
-            	    getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:7: {...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' )
+            	    getUnorderedGroupHelper().select(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:6: ({...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:7: {...}? => (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleDialogPropertyDescriptionProvider", "true");
+            	        throw new FailedPredicateException(input, "ruleDialogFeatureCaptionProvider", "true");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:16: (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}' )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:18: otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )* otherlv_7= '}'
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:16: (otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}' )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1019:18: otherlv_4= 'text' otherlv_5= '{' ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )* otherlv_7= '}'
             	    {
-            	    otherlv_4=(Token)match(input,18,FOLLOW_18_in_ruleDialogPropertyDescriptionProvider2424); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,18,FOLLOW_18_in_ruleDialogFeatureCaptionProvider2424); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_4, grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0());
+            	          	newLeafNode(otherlv_4, grammarAccess.getDialogFeatureCaptionProviderAccess().getTextKeyword_3_0_0());
             	          
             	    }
-            	    otherlv_5=(Token)match(input,14,FOLLOW_14_in_ruleDialogPropertyDescriptionProvider2436); if (state.failed) return current;
+            	    otherlv_5=(Token)match(input,14,FOLLOW_14_in_ruleDialogFeatureCaptionProvider2436); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_5, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
+            	          	newLeafNode(otherlv_5, grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1());
             	          
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1027:1: ( (lv_specifications_6_0= rulePropertyDescriptionSpecification ) )*
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1027:1: ( (lv_specifications_6_0= ruleFeatureCaptionSpecification ) )*
             	    loop13:
             	    do {
             	        int alt13=2;
@@ -2718,31 +2718,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	        switch (alt13) {
             	    	case 1 :
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1028:1: (lv_specifications_6_0= rulePropertyDescriptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1028:1: (lv_specifications_6_0= ruleFeatureCaptionSpecification )
             	    	    {
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1028:1: (lv_specifications_6_0= rulePropertyDescriptionSpecification )
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1029:3: lv_specifications_6_0= rulePropertyDescriptionSpecification
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1028:1: (lv_specifications_6_0= ruleFeatureCaptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1029:3: lv_specifications_6_0= ruleFeatureCaptionSpecification
             	    	    {
             	    	    if ( state.backtracking==0 ) {
             	    	       
-            	    	      	        newCompositeNode(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+            	    	      	        newCompositeNode(grammarAccess.getDialogFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
             	    	      	    
             	    	    }
-            	    	    pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_ruleDialogPropertyDescriptionProvider2457);
-            	    	    lv_specifications_6_0=rulePropertyDescriptionSpecification();
+            	    	    pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_ruleDialogFeatureCaptionProvider2457);
+            	    	    lv_specifications_6_0=ruleFeatureCaptionSpecification();
 
             	    	    state._fsp--;
             	    	    if (state.failed) return current;
             	    	    if ( state.backtracking==0 ) {
 
             	    	      	        if (current==null) {
-            	    	      	            current = createModelElementForParent(grammarAccess.getDialogPropertyDescriptionProviderRule());
+            	    	      	            current = createModelElementForParent(grammarAccess.getDialogFeatureCaptionProviderRule());
             	    	      	        }
             	    	             		add(
             	    	             			current, 
             	    	             			"specifications",
             	    	              		lv_specifications_6_0, 
-            	    	              		"PropertyDescriptionSpecification");
+            	    	              		"FeatureCaptionSpecification");
             	    	      	        afterParserOrEnumRuleCall();
             	    	      	    
             	    	    }
@@ -2758,10 +2758,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	        }
             	    } while (true);
 
-            	    otherlv_7=(Token)match(input,15,FOLLOW_15_in_ruleDialogPropertyDescriptionProvider2470); if (state.failed) return current;
+            	    otherlv_7=(Token)match(input,15,FOLLOW_15_in_ruleDialogFeatureCaptionProvider2470); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_7, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
+            	          	newLeafNode(otherlv_7, grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3());
             	          
             	    }
 
@@ -2770,7 +2770,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
 
             	    }
 
@@ -2781,42 +2781,42 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1056:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1056:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) )
             	    {
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1056:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1057:5: {...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1056:4: ({...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1057:5: {...}? => ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) )
             	    {
-            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            	    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleDialogPropertyDescriptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1)");
+            	        throw new FailedPredicateException(input, "ruleDialogFeatureCaptionProvider", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1)");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1057:130: ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1058:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1057:125: ( ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1058:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) )
             	    {
-            	    getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1);
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' ) )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:7: {...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' )
+            	    getUnorderedGroupHelper().select(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1);
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:6: ({...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' ) )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:7: {...}? => (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' )
             	    {
             	    if ( !((true)) ) {
             	        if (state.backtracking>0) {state.failed=true; return current;}
-            	        throw new FailedPredicateException(input, "ruleDialogPropertyDescriptionProvider", "true");
+            	        throw new FailedPredicateException(input, "ruleDialogFeatureCaptionProvider", "true");
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:16: (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}' )
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:18: otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )* otherlv_11= '}'
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:16: (otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}' )
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1061:18: otherlv_8= 'label' otherlv_9= '{' ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )* otherlv_11= '}'
             	    {
-            	    otherlv_8=(Token)match(input,23,FOLLOW_23_in_ruleDialogPropertyDescriptionProvider2538); if (state.failed) return current;
+            	    otherlv_8=(Token)match(input,23,FOLLOW_23_in_ruleDialogFeatureCaptionProvider2538); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_8, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0());
+            	          	newLeafNode(otherlv_8, grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelKeyword_3_1_0());
             	          
             	    }
-            	    otherlv_9=(Token)match(input,14,FOLLOW_14_in_ruleDialogPropertyDescriptionProvider2550); if (state.failed) return current;
+            	    otherlv_9=(Token)match(input,14,FOLLOW_14_in_ruleDialogFeatureCaptionProvider2550); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_9, grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
+            	          	newLeafNode(otherlv_9, grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1());
             	          
             	    }
-            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1069:1: ( (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification ) )*
+            	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1069:1: ( (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification ) )*
             	    loop14:
             	    do {
             	        int alt14=2;
@@ -2829,31 +2829,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	        switch (alt14) {
             	    	case 1 :
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1070:1: (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1070:1: (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification )
             	    	    {
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1070:1: (lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification )
-            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1071:3: lv_labelSpecifications_10_0= rulePropertyDescriptionSpecification
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1070:1: (lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification )
+            	    	    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1071:3: lv_labelSpecifications_10_0= ruleFeatureCaptionSpecification
             	    	    {
             	    	    if ( state.backtracking==0 ) {
             	    	       
-            	    	      	        newCompositeNode(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+            	    	      	        newCompositeNode(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
             	    	      	    
             	    	    }
-            	    	    pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_ruleDialogPropertyDescriptionProvider2571);
-            	    	    lv_labelSpecifications_10_0=rulePropertyDescriptionSpecification();
+            	    	    pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_ruleDialogFeatureCaptionProvider2571);
+            	    	    lv_labelSpecifications_10_0=ruleFeatureCaptionSpecification();
 
             	    	    state._fsp--;
             	    	    if (state.failed) return current;
             	    	    if ( state.backtracking==0 ) {
 
             	    	      	        if (current==null) {
-            	    	      	            current = createModelElementForParent(grammarAccess.getDialogPropertyDescriptionProviderRule());
+            	    	      	            current = createModelElementForParent(grammarAccess.getDialogFeatureCaptionProviderRule());
             	    	      	        }
             	    	             		add(
             	    	             			current, 
             	    	             			"labelSpecifications",
             	    	              		lv_labelSpecifications_10_0, 
-            	    	              		"PropertyDescriptionSpecification");
+            	    	              		"FeatureCaptionSpecification");
             	    	      	        afterParserOrEnumRuleCall();
             	    	      	    
             	    	    }
@@ -2869,10 +2869,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             	        }
             	    } while (true);
 
-            	    otherlv_11=(Token)match(input,15,FOLLOW_15_in_ruleDialogPropertyDescriptionProvider2584); if (state.failed) return current;
+            	    otherlv_11=(Token)match(input,15,FOLLOW_15_in_ruleDialogFeatureCaptionProvider2584); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_11, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
+            	          	newLeafNode(otherlv_11, grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3());
             	          
             	    }
 
@@ -2881,7 +2881,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            	    getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
 
             	    }
 
@@ -2903,14 +2903,14 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            getUnorderedGroupHelper().leave(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            getUnorderedGroupHelper().leave(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
 
             }
 
-            otherlv_12=(Token)match(input,15,FOLLOW_15_in_ruleDialogPropertyDescriptionProvider2637); if (state.failed) return current;
+            otherlv_12=(Token)match(input,15,FOLLOW_15_in_ruleDialogFeatureCaptionProvider2637); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_12, grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4());
+                  	newLeafNode(otherlv_12, grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4());
                   
             }
 
@@ -2932,33 +2932,33 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleDialogPropertyDescriptionProvider"
+    // $ANTLR end "ruleDialogFeatureCaptionProvider"
 
 
-    // $ANTLR start "entryRulePropertyDescriptionSpecification"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1117:1: entryRulePropertyDescriptionSpecification returns [EObject current=null] : iv_rulePropertyDescriptionSpecification= rulePropertyDescriptionSpecification EOF ;
-    public final EObject entryRulePropertyDescriptionSpecification() throws RecognitionException {
+    // $ANTLR start "entryRuleFeatureCaptionSpecification"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1117:1: entryRuleFeatureCaptionSpecification returns [EObject current=null] : iv_ruleFeatureCaptionSpecification= ruleFeatureCaptionSpecification EOF ;
+    public final EObject entryRuleFeatureCaptionSpecification() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_rulePropertyDescriptionSpecification = null;
+        EObject iv_ruleFeatureCaptionSpecification = null;
 
 
         try {
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1118:2: (iv_rulePropertyDescriptionSpecification= rulePropertyDescriptionSpecification EOF )
-            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1119:2: iv_rulePropertyDescriptionSpecification= rulePropertyDescriptionSpecification EOF
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1118:2: (iv_ruleFeatureCaptionSpecification= ruleFeatureCaptionSpecification EOF )
+            // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1119:2: iv_ruleFeatureCaptionSpecification= ruleFeatureCaptionSpecification EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getPropertyDescriptionSpecificationRule()); 
+               newCompositeNode(grammarAccess.getFeatureCaptionSpecificationRule()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_entryRulePropertyDescriptionSpecification2673);
-            iv_rulePropertyDescriptionSpecification=rulePropertyDescriptionSpecification();
+            pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_entryRuleFeatureCaptionSpecification2673);
+            iv_ruleFeatureCaptionSpecification=ruleFeatureCaptionSpecification();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_rulePropertyDescriptionSpecification; 
+               current =iv_ruleFeatureCaptionSpecification; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePropertyDescriptionSpecification2683); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCaptionSpecification2683); if (state.failed) return current;
 
             }
 
@@ -2972,12 +2972,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRulePropertyDescriptionSpecification"
+    // $ANTLR end "entryRuleFeatureCaptionSpecification"
 
 
-    // $ANTLR start "rulePropertyDescriptionSpecification"
-    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1126:1: rulePropertyDescriptionSpecification returns [EObject current=null] : ( ( (lv_parameterType_0_0= ruleJvmTypeReference ) ) otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '->' ( (lv_expression_4_0= ruleXExpression ) ) ) ;
-    public final EObject rulePropertyDescriptionSpecification() throws RecognitionException {
+    // $ANTLR start "ruleFeatureCaptionSpecification"
+    // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1126:1: ruleFeatureCaptionSpecification returns [EObject current=null] : ( ( (lv_parameterType_0_0= ruleJvmTypeReference ) ) otherlv_1= ':' ( (otherlv_2= RULE_ID ) ) otherlv_3= '->' ( (lv_expression_4_0= ruleXExpression ) ) ) ;
+    public final EObject ruleFeatureCaptionSpecification() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
@@ -3005,10 +3005,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
+              	        newCompositeNode(grammarAccess.getFeatureCaptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rulePropertyDescriptionSpecification2729);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_ruleFeatureCaptionSpecification2729);
             lv_parameterType_0_0=ruleJvmTypeReference();
 
             state._fsp--;
@@ -3016,7 +3016,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getPropertyDescriptionSpecificationRule());
+              	            current = createModelElementForParent(grammarAccess.getFeatureCaptionSpecificationRule());
               	        }
                      		set(
                      			current, 
@@ -3032,10 +3032,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,25,FOLLOW_25_in_rulePropertyDescriptionSpecification2741); if (state.failed) return current;
+            otherlv_1=(Token)match(input,25,FOLLOW_25_in_ruleFeatureCaptionSpecification2741); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_1, grammarAccess.getPropertyDescriptionSpecificationAccess().getColonKeyword_1());
+                  	newLeafNode(otherlv_1, grammarAccess.getFeatureCaptionSpecificationAccess().getColonKeyword_1());
                   
             }
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1152:1: ( (otherlv_2= RULE_ID ) )
@@ -3047,14 +3047,14 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               			if (current==null) {
-              	            current = createModelElement(grammarAccess.getPropertyDescriptionSpecificationRule());
+              	            current = createModelElement(grammarAccess.getFeatureCaptionSpecificationRule());
               	        }
                       
             }
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePropertyDescriptionSpecification2761); if (state.failed) return current;
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFeatureCaptionSpecification2761); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_2, grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
+              		newLeafNode(otherlv_2, grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
               	
             }
 
@@ -3063,10 +3063,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,20,FOLLOW_20_in_rulePropertyDescriptionSpecification2773); if (state.failed) return current;
+            otherlv_3=(Token)match(input,20,FOLLOW_20_in_ruleFeatureCaptionSpecification2773); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_3, grammarAccess.getPropertyDescriptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3());
+                  	newLeafNode(otherlv_3, grammarAccess.getFeatureCaptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3());
                   
             }
             // ../org.eclipse.emf.parsley.dsl/src-gen/org/eclipse/emf/parsley/dsl/parser/antlr/internal/InternalEmfParsleyDsl.g:1169:1: ( (lv_expression_4_0= ruleXExpression ) )
@@ -3077,10 +3077,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
+              	        newCompositeNode(grammarAccess.getFeatureCaptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rulePropertyDescriptionSpecification2794);
+            pushFollow(FOLLOW_ruleXExpression_in_ruleFeatureCaptionSpecification2794);
             lv_expression_4_0=ruleXExpression();
 
             state._fsp--;
@@ -3088,7 +3088,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getPropertyDescriptionSpecificationRule());
+              	            current = createModelElementForParent(grammarAccess.getFeatureCaptionSpecificationRule());
               	        }
                      		set(
                      			current, 
@@ -3123,7 +3123,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "rulePropertyDescriptionSpecification"
+    // $ANTLR end "ruleFeatureCaptionSpecification"
 
 
     // $ANTLR start "entryRuleFeaturesProvider"
@@ -22709,7 +22709,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
             this.transition = DFA3_transition;
         }
         public String getDescription() {
-            return "()* loopback of 188:3: ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_propertyDescriptionProvider_6_0= rulePropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formPropertyDescriptionProvider_7_0= ruleFormPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogPropertyDescriptionProvider_8_0= ruleDialogPropertyDescriptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )*";
+            return "()* loopback of 188:3: ( ({...}? => ( ({...}? => ( (lv_labelProvider_5_0= ruleLabelProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featureCaptionProvider_6_0= ruleFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formFeatureCaptionProvider_7_0= ruleFormFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogFeatureCaptionProvider_8_0= ruleDialogFeatureCaptionProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_featuresProvider_9_0= ruleFeaturesProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_formControlFactory_10_0= ruleFormControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_dialogControlFactory_11_0= ruleDialogControlFactory ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_proposalCreator_12_0= ruleProposalCreator ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_viewerContentProvider_13_0= ruleViewerContentProvider ) ) ) ) ) | ({...}? => ( ({...}? => ( (lv_partsSpecifications_14_0= rulePartsSpecifications ) ) ) ) ) )*";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -25559,9 +25559,9 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleExtendsClause_in_ruleModule278 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_14_in_ruleModule291 = new BitSet(new long[]{0x00000016A5628000L});
     public static final BitSet FOLLOW_ruleLabelProvider_in_ruleModule357 = new BitSet(new long[]{0x00000016A5628000L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionProvider_in_ruleModule432 = new BitSet(new long[]{0x00000016A5628000L});
-    public static final BitSet FOLLOW_ruleFormPropertyDescriptionProvider_in_ruleModule507 = new BitSet(new long[]{0x00000016A5628000L});
-    public static final BitSet FOLLOW_ruleDialogPropertyDescriptionProvider_in_ruleModule582 = new BitSet(new long[]{0x00000016A5628000L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionProvider_in_ruleModule432 = new BitSet(new long[]{0x00000016A5628000L});
+    public static final BitSet FOLLOW_ruleFormFeatureCaptionProvider_in_ruleModule507 = new BitSet(new long[]{0x00000016A5628000L});
+    public static final BitSet FOLLOW_ruleDialogFeatureCaptionProvider_in_ruleModule582 = new BitSet(new long[]{0x00000016A5628000L});
     public static final BitSet FOLLOW_ruleFeaturesProvider_in_ruleModule657 = new BitSet(new long[]{0x00000016A5628000L});
     public static final BitSet FOLLOW_ruleFormControlFactory_in_ruleModule732 = new BitSet(new long[]{0x00000016A5628000L});
     public static final BitSet FOLLOW_ruleDialogControlFactory_in_ruleModule807 = new BitSet(new long[]{0x00000016A5628000L});
@@ -25592,48 +25592,48 @@ public class InternalEmfParsleyDslParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleValidID_in_ruleLabelSpecification1676 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_20_in_ruleLabelSpecification1689 = new BitSet(new long[]{0x60400000000141F0L,0x0000001FFE728D08L});
     public static final BitSet FOLLOW_ruleXExpression_in_ruleLabelSpecification1710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionProvider_in_entryRulePropertyDescriptionProvider1746 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePropertyDescriptionProvider1756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rulePropertyDescriptionProvider1802 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_rulePropertyDescriptionProvider1814 = new BitSet(new long[]{0x0000000000048000L});
-    public static final BitSet FOLLOW_18_in_rulePropertyDescriptionProvider1827 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_rulePropertyDescriptionProvider1839 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_rulePropertyDescriptionProvider1860 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_15_in_rulePropertyDescriptionProvider1873 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_rulePropertyDescriptionProvider1887 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFormPropertyDescriptionProvider_in_entryRuleFormPropertyDescriptionProvider1923 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFormPropertyDescriptionProvider1933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleFormPropertyDescriptionProvider1979 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleFormPropertyDescriptionProvider1991 = new BitSet(new long[]{0x0000000000848000L});
-    public static final BitSet FOLLOW_18_in_ruleFormPropertyDescriptionProvider2049 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleFormPropertyDescriptionProvider2061 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_ruleFormPropertyDescriptionProvider2082 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_15_in_ruleFormPropertyDescriptionProvider2095 = new BitSet(new long[]{0x0000000000848000L});
-    public static final BitSet FOLLOW_23_in_ruleFormPropertyDescriptionProvider2163 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleFormPropertyDescriptionProvider2175 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_ruleFormPropertyDescriptionProvider2196 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_15_in_ruleFormPropertyDescriptionProvider2209 = new BitSet(new long[]{0x0000000000848000L});
-    public static final BitSet FOLLOW_15_in_ruleFormPropertyDescriptionProvider2262 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDialogPropertyDescriptionProvider_in_entryRuleDialogPropertyDescriptionProvider2298 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDialogPropertyDescriptionProvider2308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleDialogPropertyDescriptionProvider2354 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleDialogPropertyDescriptionProvider2366 = new BitSet(new long[]{0x0000000000848000L});
-    public static final BitSet FOLLOW_18_in_ruleDialogPropertyDescriptionProvider2424 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleDialogPropertyDescriptionProvider2436 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_ruleDialogPropertyDescriptionProvider2457 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_15_in_ruleDialogPropertyDescriptionProvider2470 = new BitSet(new long[]{0x0000000000848000L});
-    public static final BitSet FOLLOW_23_in_ruleDialogPropertyDescriptionProvider2538 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleDialogPropertyDescriptionProvider2550 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_ruleDialogPropertyDescriptionProvider2571 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
-    public static final BitSet FOLLOW_15_in_ruleDialogPropertyDescriptionProvider2584 = new BitSet(new long[]{0x0000000000848000L});
-    public static final BitSet FOLLOW_15_in_ruleDialogPropertyDescriptionProvider2637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_entryRulePropertyDescriptionSpecification2673 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePropertyDescriptionSpecification2683 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rulePropertyDescriptionSpecification2729 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_rulePropertyDescriptionSpecification2741 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePropertyDescriptionSpecification2761 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_rulePropertyDescriptionSpecification2773 = new BitSet(new long[]{0x60400000000141F0L,0x0000001FFE728D08L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rulePropertyDescriptionSpecification2794 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionProvider_in_entryRuleFeatureCaptionProvider1746 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCaptionProvider1756 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ruleFeatureCaptionProvider1802 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleFeatureCaptionProvider1814 = new BitSet(new long[]{0x0000000000048000L});
+    public static final BitSet FOLLOW_18_in_ruleFeatureCaptionProvider1827 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleFeatureCaptionProvider1839 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_ruleFeatureCaptionProvider1860 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_15_in_ruleFeatureCaptionProvider1873 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_ruleFeatureCaptionProvider1887 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFormFeatureCaptionProvider_in_entryRuleFormFeatureCaptionProvider1923 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFormFeatureCaptionProvider1933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleFormFeatureCaptionProvider1979 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleFormFeatureCaptionProvider1991 = new BitSet(new long[]{0x0000000000848000L});
+    public static final BitSet FOLLOW_18_in_ruleFormFeatureCaptionProvider2049 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleFormFeatureCaptionProvider2061 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_ruleFormFeatureCaptionProvider2082 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_15_in_ruleFormFeatureCaptionProvider2095 = new BitSet(new long[]{0x0000000000848000L});
+    public static final BitSet FOLLOW_23_in_ruleFormFeatureCaptionProvider2163 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleFormFeatureCaptionProvider2175 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_ruleFormFeatureCaptionProvider2196 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_15_in_ruleFormFeatureCaptionProvider2209 = new BitSet(new long[]{0x0000000000848000L});
+    public static final BitSet FOLLOW_15_in_ruleFormFeatureCaptionProvider2262 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDialogFeatureCaptionProvider_in_entryRuleDialogFeatureCaptionProvider2298 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDialogFeatureCaptionProvider2308 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleDialogFeatureCaptionProvider2354 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleDialogFeatureCaptionProvider2366 = new BitSet(new long[]{0x0000000000848000L});
+    public static final BitSet FOLLOW_18_in_ruleDialogFeatureCaptionProvider2424 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleDialogFeatureCaptionProvider2436 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_ruleDialogFeatureCaptionProvider2457 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_15_in_ruleDialogFeatureCaptionProvider2470 = new BitSet(new long[]{0x0000000000848000L});
+    public static final BitSet FOLLOW_23_in_ruleDialogFeatureCaptionProvider2538 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleDialogFeatureCaptionProvider2550 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_ruleDialogFeatureCaptionProvider2571 = new BitSet(new long[]{0x0200000000008010L,0x0000000000000100L});
+    public static final BitSet FOLLOW_15_in_ruleDialogFeatureCaptionProvider2584 = new BitSet(new long[]{0x0000000000848000L});
+    public static final BitSet FOLLOW_15_in_ruleDialogFeatureCaptionProvider2637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_entryRuleFeatureCaptionSpecification2673 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCaptionSpecification2683 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_ruleFeatureCaptionSpecification2729 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_ruleFeatureCaptionSpecification2741 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFeatureCaptionSpecification2761 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20_in_ruleFeatureCaptionSpecification2773 = new BitSet(new long[]{0x60400000000141F0L,0x0000001FFE728D08L});
+    public static final BitSet FOLLOW_ruleXExpression_in_ruleFeatureCaptionSpecification2794 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFeaturesProvider_in_entryRuleFeaturesProvider2830 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFeaturesProvider2840 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_26_in_ruleFeaturesProvider2886 = new BitSet(new long[]{0x0000000000004000L});

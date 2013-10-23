@@ -6,7 +6,6 @@ import static org.eclipse.emf.parsley.examples.library.EXTLibraryPackage.Literal
 import static org.eclipse.emf.parsley.examples.library.EXTLibraryPackage.Literals.PERIODICAL;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import org.eclipse.emf.parsley.tests.utils.EmfParsleyTestsUtils;
 
 import java.io.IOException;
 
@@ -22,14 +21,15 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureLabelProvider;
+import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.tests.providers.CustomLibraryViewerContentProvider;
 import org.eclipse.emf.parsley.tests.providers.LibraryEStructuralFeaturesAsStringsProvider;
 import org.eclipse.emf.parsley.tests.providers.LibraryEStructuralFeaturesProvider;
 import org.eclipse.emf.parsley.tests.providers.OrderedEStructuralFeaturesProvider;
+import org.eclipse.emf.parsley.tests.utils.EmfParsleyTestsUtils;
 import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
@@ -50,11 +50,11 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 
 	@Test
 	public void testLibraryFeatureLabelProvider() {
-		FormPropertyDescriptionProvider formPropertyDescriptionProvider = getInjector()
-				.getInstance(CustomLibraryFormFeatureLabelProvider.class);
-		assertLabelForFeature(formPropertyDescriptionProvider, "First name",
+		FormFeatureCaptionProvider formFeatureCaptionProvider = getInjector()
+				.getInstance(CustomLibraryFormFeatureCaptionProvider.class);
+		assertLabelForFeature(formFeatureCaptionProvider, "First name",
 				EXTLibraryPackage.Literals.PERSON__FIRST_NAME);
-		assertLabelForFeature(formPropertyDescriptionProvider, "Last name",
+		assertLabelForFeature(formFeatureCaptionProvider, "Last name",
 				EXTLibraryPackage.Literals.PERSON__LAST_NAME);
 	}
 
@@ -181,9 +181,9 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 	}
 
 	protected void assertLabelForFeature(
-			FormPropertyDescriptionProvider formPropertyDescriptionProvider, String expected,
+			FormFeatureCaptionProvider formFeatureCaptionProvider, String expected,
 			EStructuralFeature feature) {
-		String labelText = formPropertyDescriptionProvider.getText(feature);
+		String labelText = formFeatureCaptionProvider.getText(feature);
 		assertEquals(expected, labelText);
 	}
 

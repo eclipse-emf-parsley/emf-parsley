@@ -2,7 +2,6 @@ package org.eclipse.emf.parsley.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import org.eclipse.emf.parsley.tests.utils.EmfParsleyTestsUtils;
 
 import java.util.List;
 
@@ -17,8 +16,9 @@ import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureLabelProvider;
-import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
+import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureCaptionProvider;
+import org.eclipse.emf.parsley.tests.utils.EmfParsleyTestsUtils;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -43,8 +43,8 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 
 	@Test
 	public void testLibraryFeatureLabelProviderForLabelWidget() {
-		final FormPropertyDescriptionProvider formPropertyDescriptionProvider = getInjector()
-				.getInstance(CustomLibraryFormFeatureLabelProvider.class);
+		final FormFeatureCaptionProvider formFeatureCaptionProvider = getInjector()
+				.getInstance(CustomLibraryFormFeatureCaptionProvider.class);
 		final SWTBotView view = getTestView();
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
@@ -52,8 +52,8 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 					// we need a non-null display and parent so we use
 					// those in the view and in the tree
 					FormToolkit formToolkit = createFormToolkit(view);
-					formPropertyDescriptionProvider.setFormToolkit(formToolkit);
-					Label label = formPropertyDescriptionProvider.getLabel(
+					formFeatureCaptionProvider.setFormToolkit(formToolkit);
+					Label label = formFeatureCaptionProvider.getLabel(
 							createCompositeParent(view),
 							EXTLibraryPackage.Literals.WRITER__NAME);
 					assertEquals(
@@ -261,9 +261,9 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 	}
 
 	protected void assertLabelForFeature(
-			FormPropertyDescriptionProvider formPropertyDescriptionProvider, String expected,
+			FormFeatureCaptionProvider formFeatureCaptionProvider, String expected,
 			EStructuralFeature feature) {
-		String labelText = formPropertyDescriptionProvider.getText(feature);
+		String labelText = formFeatureCaptionProvider.getText(feature);
 		assertEquals(expected, labelText);
 	}
 

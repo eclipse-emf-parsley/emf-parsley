@@ -279,7 +279,7 @@ module my.test.proj {
 '''
 module my.test.proj {
 	
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text { 
 ''',
 		"EClass",
@@ -289,7 +289,7 @@ import org.eclipse.emf.ecore.EClass
 
 module my.test.proj {
 	
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text { 
 EClass'''			
 		)
@@ -301,7 +301,7 @@ EClass'''
 '''
 module my.test.proj {
 	
-	propertyDescriptionProvider {
+	featureCaptionProvider {
 		text { 
 ''',
 		"",
@@ -314,7 +314,7 @@ module my.test.proj {
 '''
 module my.test.proj {
 	
-	formPropertyDescriptionProvider {
+	formFeatureCaptionProvider {
 		text { 
 ''',
 		"EClass",
@@ -324,7 +324,7 @@ import org.eclipse.emf.ecore.EClass
 
 module my.test.proj {
 	
-	formPropertyDescriptionProvider {
+	formFeatureCaptionProvider {
 		text { 
 EClass'''			
 		)
@@ -336,7 +336,7 @@ EClass'''
 '''
 module my.test.proj {
 	
-	formPropertyDescriptionProvider {
+	formFeatureCaptionProvider {
 		text { 
 ''',
 		"",

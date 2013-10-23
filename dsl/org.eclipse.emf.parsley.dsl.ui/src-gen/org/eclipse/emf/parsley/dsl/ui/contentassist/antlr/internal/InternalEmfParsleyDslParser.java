@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'||'", "'&&'", "'+='", "'-='", "'=='", "'!='", "'==='", "'!=='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'<=>'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'false'", "'module'", "'{'", "'}'", "'labelProvider'", "'text'", "'image'", "'propertyDescriptionProvider'", "'formPropertyDescriptionProvider'", "'label'", "'dialogPropertyDescriptionProvider'", "':'", "'featuresProvider'", "'features'", "','", "'formControlFactory'", "'control'", "'dialogControlFactory'", "'target'", "'proposals'", "'viewerContentProvider'", "'children'", "'parts'", "'viewpart'", "'viewname'", "'viewclass'", "'viewcategory'", "'instanceof'", "'as'", "')'", "'#'", "'['", "']'", "';'", "'('", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'?'", "'&'", "'::'", "'?.'", "'|'", "'var'", "'true'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_HEX", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'='", "'||'", "'&&'", "'+='", "'-='", "'=='", "'!='", "'==='", "'!=='", "'>='", "'<='", "'>'", "'<'", "'->'", "'..<'", "'..'", "'=>'", "'<>'", "'?:'", "'<=>'", "'+'", "'-'", "'*'", "'**'", "'/'", "'%'", "'!'", "'.'", "'val'", "'extends'", "'static'", "'import'", "'extension'", "'super'", "'false'", "'module'", "'{'", "'}'", "'labelProvider'", "'text'", "'image'", "'featureCaptionProvider'", "'formFeatureCaptionProvider'", "'label'", "'dialogFeatureCaptionProvider'", "':'", "'featuresProvider'", "'features'", "','", "'formControlFactory'", "'control'", "'dialogControlFactory'", "'target'", "'proposals'", "'viewerContentProvider'", "'children'", "'parts'", "'viewpart'", "'viewname'", "'viewclass'", "'viewcategory'", "'instanceof'", "'as'", "')'", "'#'", "'['", "']'", "';'", "'('", "'if'", "'else'", "'switch'", "'default'", "'case'", "'for'", "'while'", "'do'", "'new'", "'null'", "'typeof'", "'throw'", "'return'", "'try'", "'finally'", "'catch'", "'?'", "'&'", "'::'", "'?.'", "'|'", "'var'", "'true'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -590,25 +590,25 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     // $ANTLR end "ruleLabelSpecification"
 
 
-    // $ANTLR start "entryRulePropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:201:1: entryRulePropertyDescriptionProvider : rulePropertyDescriptionProvider EOF ;
-    public final void entryRulePropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "entryRuleFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:201:1: entryRuleFeatureCaptionProvider : ruleFeatureCaptionProvider EOF ;
+    public final void entryRuleFeatureCaptionProvider() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:202:1: ( rulePropertyDescriptionProvider EOF )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:203:1: rulePropertyDescriptionProvider EOF
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:202:1: ( ruleFeatureCaptionProvider EOF )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:203:1: ruleFeatureCaptionProvider EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderRule()); 
+               before(grammarAccess.getFeatureCaptionProviderRule()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionProvider_in_entryRulePropertyDescriptionProvider367);
-            rulePropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleFeatureCaptionProvider_in_entryRuleFeatureCaptionProvider367);
+            ruleFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderRule()); 
+               after(grammarAccess.getFeatureCaptionProviderRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePropertyDescriptionProvider374); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCaptionProvider374); if (state.failed) return ;
 
             }
 
@@ -621,30 +621,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "entryRulePropertyDescriptionProvider"
+    // $ANTLR end "entryRuleFeatureCaptionProvider"
 
 
-    // $ANTLR start "rulePropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:210:1: rulePropertyDescriptionProvider : ( ( rule__PropertyDescriptionProvider__Group__0 ) ) ;
-    public final void rulePropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "ruleFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:210:1: ruleFeatureCaptionProvider : ( ( rule__FeatureCaptionProvider__Group__0 ) ) ;
+    public final void ruleFeatureCaptionProvider() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:214:2: ( ( ( rule__PropertyDescriptionProvider__Group__0 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:215:1: ( ( rule__PropertyDescriptionProvider__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:214:2: ( ( ( rule__FeatureCaptionProvider__Group__0 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:215:1: ( ( rule__FeatureCaptionProvider__Group__0 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:215:1: ( ( rule__PropertyDescriptionProvider__Group__0 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:216:1: ( rule__PropertyDescriptionProvider__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:215:1: ( ( rule__FeatureCaptionProvider__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:216:1: ( rule__FeatureCaptionProvider__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getGroup()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:217:1: ( rule__PropertyDescriptionProvider__Group__0 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:217:2: rule__PropertyDescriptionProvider__Group__0
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:217:1: ( rule__FeatureCaptionProvider__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:217:2: rule__FeatureCaptionProvider__Group__0
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__0_in_rulePropertyDescriptionProvider400);
-            rule__PropertyDescriptionProvider__Group__0();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__0_in_ruleFeatureCaptionProvider400);
+            rule__FeatureCaptionProvider__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -652,7 +652,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getGroup()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getGroup()); 
             }
 
             }
@@ -672,28 +672,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rulePropertyDescriptionProvider"
+    // $ANTLR end "ruleFeatureCaptionProvider"
 
 
-    // $ANTLR start "entryRuleFormPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:229:1: entryRuleFormPropertyDescriptionProvider : ruleFormPropertyDescriptionProvider EOF ;
-    public final void entryRuleFormPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "entryRuleFormFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:229:1: entryRuleFormFeatureCaptionProvider : ruleFormFeatureCaptionProvider EOF ;
+    public final void entryRuleFormFeatureCaptionProvider() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:230:1: ( ruleFormPropertyDescriptionProvider EOF )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:231:1: ruleFormPropertyDescriptionProvider EOF
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:230:1: ( ruleFormFeatureCaptionProvider EOF )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:231:1: ruleFormFeatureCaptionProvider EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderRule()); 
+               before(grammarAccess.getFormFeatureCaptionProviderRule()); 
             }
-            pushFollow(FOLLOW_ruleFormPropertyDescriptionProvider_in_entryRuleFormPropertyDescriptionProvider427);
-            ruleFormPropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleFormFeatureCaptionProvider_in_entryRuleFormFeatureCaptionProvider427);
+            ruleFormFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderRule()); 
+               after(grammarAccess.getFormFeatureCaptionProviderRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFormPropertyDescriptionProvider434); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFormFeatureCaptionProvider434); if (state.failed) return ;
 
             }
 
@@ -706,30 +706,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "entryRuleFormPropertyDescriptionProvider"
+    // $ANTLR end "entryRuleFormFeatureCaptionProvider"
 
 
-    // $ANTLR start "ruleFormPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:238:1: ruleFormPropertyDescriptionProvider : ( ( rule__FormPropertyDescriptionProvider__Group__0 ) ) ;
-    public final void ruleFormPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "ruleFormFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:238:1: ruleFormFeatureCaptionProvider : ( ( rule__FormFeatureCaptionProvider__Group__0 ) ) ;
+    public final void ruleFormFeatureCaptionProvider() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:242:2: ( ( ( rule__FormPropertyDescriptionProvider__Group__0 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:243:1: ( ( rule__FormPropertyDescriptionProvider__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:242:2: ( ( ( rule__FormFeatureCaptionProvider__Group__0 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:243:1: ( ( rule__FormFeatureCaptionProvider__Group__0 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:243:1: ( ( rule__FormPropertyDescriptionProvider__Group__0 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:244:1: ( rule__FormPropertyDescriptionProvider__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:243:1: ( ( rule__FormFeatureCaptionProvider__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:244:1: ( rule__FormFeatureCaptionProvider__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:245:1: ( rule__FormPropertyDescriptionProvider__Group__0 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:245:2: rule__FormPropertyDescriptionProvider__Group__0
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:245:1: ( rule__FormFeatureCaptionProvider__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:245:2: rule__FormFeatureCaptionProvider__Group__0
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__0_in_ruleFormPropertyDescriptionProvider460);
-            rule__FormPropertyDescriptionProvider__Group__0();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__0_in_ruleFormFeatureCaptionProvider460);
+            rule__FormFeatureCaptionProvider__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -737,7 +737,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getGroup()); 
             }
 
             }
@@ -757,28 +757,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "ruleFormPropertyDescriptionProvider"
+    // $ANTLR end "ruleFormFeatureCaptionProvider"
 
 
-    // $ANTLR start "entryRuleDialogPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:257:1: entryRuleDialogPropertyDescriptionProvider : ruleDialogPropertyDescriptionProvider EOF ;
-    public final void entryRuleDialogPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "entryRuleDialogFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:257:1: entryRuleDialogFeatureCaptionProvider : ruleDialogFeatureCaptionProvider EOF ;
+    public final void entryRuleDialogFeatureCaptionProvider() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:258:1: ( ruleDialogPropertyDescriptionProvider EOF )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:259:1: ruleDialogPropertyDescriptionProvider EOF
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:258:1: ( ruleDialogFeatureCaptionProvider EOF )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:259:1: ruleDialogFeatureCaptionProvider EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderRule()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderRule()); 
             }
-            pushFollow(FOLLOW_ruleDialogPropertyDescriptionProvider_in_entryRuleDialogPropertyDescriptionProvider487);
-            ruleDialogPropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleDialogFeatureCaptionProvider_in_entryRuleDialogFeatureCaptionProvider487);
+            ruleDialogFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderRule()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleDialogPropertyDescriptionProvider494); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleDialogFeatureCaptionProvider494); if (state.failed) return ;
 
             }
 
@@ -791,30 +791,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "entryRuleDialogPropertyDescriptionProvider"
+    // $ANTLR end "entryRuleDialogFeatureCaptionProvider"
 
 
-    // $ANTLR start "ruleDialogPropertyDescriptionProvider"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:266:1: ruleDialogPropertyDescriptionProvider : ( ( rule__DialogPropertyDescriptionProvider__Group__0 ) ) ;
-    public final void ruleDialogPropertyDescriptionProvider() throws RecognitionException {
+    // $ANTLR start "ruleDialogFeatureCaptionProvider"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:266:1: ruleDialogFeatureCaptionProvider : ( ( rule__DialogFeatureCaptionProvider__Group__0 ) ) ;
+    public final void ruleDialogFeatureCaptionProvider() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:270:2: ( ( ( rule__DialogPropertyDescriptionProvider__Group__0 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:271:1: ( ( rule__DialogPropertyDescriptionProvider__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:270:2: ( ( ( rule__DialogFeatureCaptionProvider__Group__0 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:271:1: ( ( rule__DialogFeatureCaptionProvider__Group__0 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:271:1: ( ( rule__DialogPropertyDescriptionProvider__Group__0 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:272:1: ( rule__DialogPropertyDescriptionProvider__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:271:1: ( ( rule__DialogFeatureCaptionProvider__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:272:1: ( rule__DialogFeatureCaptionProvider__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:273:1: ( rule__DialogPropertyDescriptionProvider__Group__0 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:273:2: rule__DialogPropertyDescriptionProvider__Group__0
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:273:1: ( rule__DialogFeatureCaptionProvider__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:273:2: rule__DialogFeatureCaptionProvider__Group__0
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__0_in_ruleDialogPropertyDescriptionProvider520);
-            rule__DialogPropertyDescriptionProvider__Group__0();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__0_in_ruleDialogFeatureCaptionProvider520);
+            rule__DialogFeatureCaptionProvider__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -822,7 +822,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getGroup()); 
             }
 
             }
@@ -842,28 +842,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "ruleDialogPropertyDescriptionProvider"
+    // $ANTLR end "ruleDialogFeatureCaptionProvider"
 
 
-    // $ANTLR start "entryRulePropertyDescriptionSpecification"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:285:1: entryRulePropertyDescriptionSpecification : rulePropertyDescriptionSpecification EOF ;
-    public final void entryRulePropertyDescriptionSpecification() throws RecognitionException {
+    // $ANTLR start "entryRuleFeatureCaptionSpecification"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:285:1: entryRuleFeatureCaptionSpecification : ruleFeatureCaptionSpecification EOF ;
+    public final void entryRuleFeatureCaptionSpecification() throws RecognitionException {
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:286:1: ( rulePropertyDescriptionSpecification EOF )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:287:1: rulePropertyDescriptionSpecification EOF
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:286:1: ( ruleFeatureCaptionSpecification EOF )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:287:1: ruleFeatureCaptionSpecification EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationRule()); 
+               before(grammarAccess.getFeatureCaptionSpecificationRule()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_entryRulePropertyDescriptionSpecification547);
-            rulePropertyDescriptionSpecification();
+            pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_entryRuleFeatureCaptionSpecification547);
+            ruleFeatureCaptionSpecification();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationRule()); 
+               after(grammarAccess.getFeatureCaptionSpecificationRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePropertyDescriptionSpecification554); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFeatureCaptionSpecification554); if (state.failed) return ;
 
             }
 
@@ -876,30 +876,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "entryRulePropertyDescriptionSpecification"
+    // $ANTLR end "entryRuleFeatureCaptionSpecification"
 
 
-    // $ANTLR start "rulePropertyDescriptionSpecification"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:294:1: rulePropertyDescriptionSpecification : ( ( rule__PropertyDescriptionSpecification__Group__0 ) ) ;
-    public final void rulePropertyDescriptionSpecification() throws RecognitionException {
+    // $ANTLR start "ruleFeatureCaptionSpecification"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:294:1: ruleFeatureCaptionSpecification : ( ( rule__FeatureCaptionSpecification__Group__0 ) ) ;
+    public final void ruleFeatureCaptionSpecification() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:298:2: ( ( ( rule__PropertyDescriptionSpecification__Group__0 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:299:1: ( ( rule__PropertyDescriptionSpecification__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:298:2: ( ( ( rule__FeatureCaptionSpecification__Group__0 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:299:1: ( ( rule__FeatureCaptionSpecification__Group__0 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:299:1: ( ( rule__PropertyDescriptionSpecification__Group__0 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:300:1: ( rule__PropertyDescriptionSpecification__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:299:1: ( ( rule__FeatureCaptionSpecification__Group__0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:300:1: ( rule__FeatureCaptionSpecification__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getGroup()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getGroup()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:301:1: ( rule__PropertyDescriptionSpecification__Group__0 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:301:2: rule__PropertyDescriptionSpecification__Group__0
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:301:1: ( rule__FeatureCaptionSpecification__Group__0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:301:2: rule__FeatureCaptionSpecification__Group__0
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__0_in_rulePropertyDescriptionSpecification580);
-            rule__PropertyDescriptionSpecification__Group__0();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__0_in_ruleFeatureCaptionSpecification580);
+            rule__FeatureCaptionSpecification__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -907,7 +907,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getGroup()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getGroup()); 
             }
 
             }
@@ -927,7 +927,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rulePropertyDescriptionSpecification"
+    // $ANTLR end "ruleFeatureCaptionSpecification"
 
 
     // $ANTLR start "entryRuleFeaturesProvider"
@@ -14450,23 +14450,23 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     // $ANTLR end "rule__LabelSpecification__Group__3__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4556:1: rule__PropertyDescriptionProvider__Group__0 : rule__PropertyDescriptionProvider__Group__0__Impl rule__PropertyDescriptionProvider__Group__1 ;
-    public final void rule__PropertyDescriptionProvider__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4556:1: rule__FeatureCaptionProvider__Group__0 : rule__FeatureCaptionProvider__Group__0__Impl rule__FeatureCaptionProvider__Group__1 ;
+    public final void rule__FeatureCaptionProvider__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4560:1: ( rule__PropertyDescriptionProvider__Group__0__Impl rule__PropertyDescriptionProvider__Group__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4561:2: rule__PropertyDescriptionProvider__Group__0__Impl rule__PropertyDescriptionProvider__Group__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4560:1: ( rule__FeatureCaptionProvider__Group__0__Impl rule__FeatureCaptionProvider__Group__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4561:2: rule__FeatureCaptionProvider__Group__0__Impl rule__FeatureCaptionProvider__Group__1
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__0__Impl_in_rule__PropertyDescriptionProvider__Group__09725);
-            rule__PropertyDescriptionProvider__Group__0__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__0__Impl_in_rule__FeatureCaptionProvider__Group__09725);
+            rule__FeatureCaptionProvider__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__1_in_rule__PropertyDescriptionProvider__Group__09728);
-            rule__PropertyDescriptionProvider__Group__1();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__1_in_rule__FeatureCaptionProvider__Group__09728);
+            rule__FeatureCaptionProvider__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -14485,12 +14485,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__0"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__0"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4568:1: rule__PropertyDescriptionProvider__Group__0__Impl : ( () ) ;
-    public final void rule__PropertyDescriptionProvider__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4568:1: rule__FeatureCaptionProvider__Group__0__Impl : ( () ) ;
+    public final void rule__FeatureCaptionProvider__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -14502,7 +14502,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4574:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderAction_0()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderAction_0()); 
             }
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4575:1: ()
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4577:1: 
@@ -14510,7 +14510,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderAction_0()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderAction_0()); 
             }
 
             }
@@ -14526,26 +14526,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__0__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__0__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4587:1: rule__PropertyDescriptionProvider__Group__1 : rule__PropertyDescriptionProvider__Group__1__Impl rule__PropertyDescriptionProvider__Group__2 ;
-    public final void rule__PropertyDescriptionProvider__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4587:1: rule__FeatureCaptionProvider__Group__1 : rule__FeatureCaptionProvider__Group__1__Impl rule__FeatureCaptionProvider__Group__2 ;
+    public final void rule__FeatureCaptionProvider__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4591:1: ( rule__PropertyDescriptionProvider__Group__1__Impl rule__PropertyDescriptionProvider__Group__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4592:2: rule__PropertyDescriptionProvider__Group__1__Impl rule__PropertyDescriptionProvider__Group__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4591:1: ( rule__FeatureCaptionProvider__Group__1__Impl rule__FeatureCaptionProvider__Group__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4592:2: rule__FeatureCaptionProvider__Group__1__Impl rule__FeatureCaptionProvider__Group__2
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__1__Impl_in_rule__PropertyDescriptionProvider__Group__19786);
-            rule__PropertyDescriptionProvider__Group__1__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__1__Impl_in_rule__FeatureCaptionProvider__Group__19786);
+            rule__FeatureCaptionProvider__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__2_in_rule__PropertyDescriptionProvider__Group__19789);
-            rule__PropertyDescriptionProvider__Group__2();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__2_in_rule__FeatureCaptionProvider__Group__19789);
+            rule__FeatureCaptionProvider__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -14564,28 +14564,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__1"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__1"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4599:1: rule__PropertyDescriptionProvider__Group__1__Impl : ( 'propertyDescriptionProvider' ) ;
-    public final void rule__PropertyDescriptionProvider__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4599:1: rule__FeatureCaptionProvider__Group__1__Impl : ( 'featureCaptionProvider' ) ;
+    public final void rule__FeatureCaptionProvider__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4603:1: ( ( 'propertyDescriptionProvider' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4604:1: ( 'propertyDescriptionProvider' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4603:1: ( ( 'featureCaptionProvider' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4604:1: ( 'featureCaptionProvider' )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4604:1: ( 'propertyDescriptionProvider' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4605:1: 'propertyDescriptionProvider'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4604:1: ( 'featureCaptionProvider' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4605:1: 'featureCaptionProvider'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderKeyword_1()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderKeyword_1()); 
             }
-            match(input,54,FOLLOW_54_in_rule__PropertyDescriptionProvider__Group__1__Impl9817); if (state.failed) return ;
+            match(input,54,FOLLOW_54_in_rule__FeatureCaptionProvider__Group__1__Impl9817); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getPropertyDescriptionProviderKeyword_1()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getFeatureCaptionProviderKeyword_1()); 
             }
 
             }
@@ -14605,26 +14605,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__1__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__1__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4618:1: rule__PropertyDescriptionProvider__Group__2 : rule__PropertyDescriptionProvider__Group__2__Impl rule__PropertyDescriptionProvider__Group__3 ;
-    public final void rule__PropertyDescriptionProvider__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4618:1: rule__FeatureCaptionProvider__Group__2 : rule__FeatureCaptionProvider__Group__2__Impl rule__FeatureCaptionProvider__Group__3 ;
+    public final void rule__FeatureCaptionProvider__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4622:1: ( rule__PropertyDescriptionProvider__Group__2__Impl rule__PropertyDescriptionProvider__Group__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4623:2: rule__PropertyDescriptionProvider__Group__2__Impl rule__PropertyDescriptionProvider__Group__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4622:1: ( rule__FeatureCaptionProvider__Group__2__Impl rule__FeatureCaptionProvider__Group__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4623:2: rule__FeatureCaptionProvider__Group__2__Impl rule__FeatureCaptionProvider__Group__3
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__2__Impl_in_rule__PropertyDescriptionProvider__Group__29848);
-            rule__PropertyDescriptionProvider__Group__2__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__2__Impl_in_rule__FeatureCaptionProvider__Group__29848);
+            rule__FeatureCaptionProvider__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__3_in_rule__PropertyDescriptionProvider__Group__29851);
-            rule__PropertyDescriptionProvider__Group__3();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__3_in_rule__FeatureCaptionProvider__Group__29851);
+            rule__FeatureCaptionProvider__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -14643,12 +14643,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__2"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__2"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4630:1: rule__PropertyDescriptionProvider__Group__2__Impl : ( '{' ) ;
-    public final void rule__PropertyDescriptionProvider__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4630:1: rule__FeatureCaptionProvider__Group__2__Impl : ( '{' ) ;
+    public final void rule__FeatureCaptionProvider__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -14660,11 +14660,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4636:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,49,FOLLOW_49_in_rule__PropertyDescriptionProvider__Group__2__Impl9879); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__FeatureCaptionProvider__Group__2__Impl9879); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
             }
 
             }
@@ -14684,26 +14684,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__2__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__2__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4649:1: rule__PropertyDescriptionProvider__Group__3 : rule__PropertyDescriptionProvider__Group__3__Impl rule__PropertyDescriptionProvider__Group__4 ;
-    public final void rule__PropertyDescriptionProvider__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4649:1: rule__FeatureCaptionProvider__Group__3 : rule__FeatureCaptionProvider__Group__3__Impl rule__FeatureCaptionProvider__Group__4 ;
+    public final void rule__FeatureCaptionProvider__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4653:1: ( rule__PropertyDescriptionProvider__Group__3__Impl rule__PropertyDescriptionProvider__Group__4 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4654:2: rule__PropertyDescriptionProvider__Group__3__Impl rule__PropertyDescriptionProvider__Group__4
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4653:1: ( rule__FeatureCaptionProvider__Group__3__Impl rule__FeatureCaptionProvider__Group__4 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4654:2: rule__FeatureCaptionProvider__Group__3__Impl rule__FeatureCaptionProvider__Group__4
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__3__Impl_in_rule__PropertyDescriptionProvider__Group__39910);
-            rule__PropertyDescriptionProvider__Group__3__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__3__Impl_in_rule__FeatureCaptionProvider__Group__39910);
+            rule__FeatureCaptionProvider__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__4_in_rule__PropertyDescriptionProvider__Group__39913);
-            rule__PropertyDescriptionProvider__Group__4();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__4_in_rule__FeatureCaptionProvider__Group__39913);
+            rule__FeatureCaptionProvider__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -14722,26 +14722,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__3"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__3"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4661:1: rule__PropertyDescriptionProvider__Group__3__Impl : ( ( rule__PropertyDescriptionProvider__Group_3__0 )? ) ;
-    public final void rule__PropertyDescriptionProvider__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4661:1: rule__FeatureCaptionProvider__Group__3__Impl : ( ( rule__FeatureCaptionProvider__Group_3__0 )? ) ;
+    public final void rule__FeatureCaptionProvider__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4665:1: ( ( ( rule__PropertyDescriptionProvider__Group_3__0 )? ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4666:1: ( ( rule__PropertyDescriptionProvider__Group_3__0 )? )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4665:1: ( ( ( rule__FeatureCaptionProvider__Group_3__0 )? ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4666:1: ( ( rule__FeatureCaptionProvider__Group_3__0 )? )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4666:1: ( ( rule__PropertyDescriptionProvider__Group_3__0 )? )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4667:1: ( rule__PropertyDescriptionProvider__Group_3__0 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4666:1: ( ( rule__FeatureCaptionProvider__Group_3__0 )? )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4667:1: ( rule__FeatureCaptionProvider__Group_3__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getGroup_3()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getGroup_3()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4668:1: ( rule__PropertyDescriptionProvider__Group_3__0 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4668:1: ( rule__FeatureCaptionProvider__Group_3__0 )?
             int alt43=2;
             int LA43_0 = input.LA(1);
 
@@ -14750,10 +14750,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
             switch (alt43) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4668:2: rule__PropertyDescriptionProvider__Group_3__0
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4668:2: rule__FeatureCaptionProvider__Group_3__0
                     {
-                    pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__0_in_rule__PropertyDescriptionProvider__Group__3__Impl9940);
-                    rule__PropertyDescriptionProvider__Group_3__0();
+                    pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__0_in_rule__FeatureCaptionProvider__Group__3__Impl9940);
+                    rule__FeatureCaptionProvider__Group_3__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -14764,7 +14764,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getGroup_3()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getGroup_3()); 
             }
 
             }
@@ -14784,21 +14784,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__3__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__3__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4678:1: rule__PropertyDescriptionProvider__Group__4 : rule__PropertyDescriptionProvider__Group__4__Impl ;
-    public final void rule__PropertyDescriptionProvider__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__4"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4678:1: rule__FeatureCaptionProvider__Group__4 : rule__FeatureCaptionProvider__Group__4__Impl ;
+    public final void rule__FeatureCaptionProvider__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4682:1: ( rule__PropertyDescriptionProvider__Group__4__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4683:2: rule__PropertyDescriptionProvider__Group__4__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4682:1: ( rule__FeatureCaptionProvider__Group__4__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4683:2: rule__FeatureCaptionProvider__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group__4__Impl_in_rule__PropertyDescriptionProvider__Group__49971);
-            rule__PropertyDescriptionProvider__Group__4__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group__4__Impl_in_rule__FeatureCaptionProvider__Group__49971);
+            rule__FeatureCaptionProvider__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -14817,12 +14817,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__4"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__4"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group__4__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4689:1: rule__PropertyDescriptionProvider__Group__4__Impl : ( '}' ) ;
-    public final void rule__PropertyDescriptionProvider__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group__4__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4689:1: rule__FeatureCaptionProvider__Group__4__Impl : ( '}' ) ;
+    public final void rule__FeatureCaptionProvider__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -14834,11 +14834,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4695:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,50,FOLLOW_50_in_rule__PropertyDescriptionProvider__Group__4__Impl9999); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__FeatureCaptionProvider__Group__4__Impl9999); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4()); 
             }
 
             }
@@ -14858,26 +14858,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group__4__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group__4__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4718:1: rule__PropertyDescriptionProvider__Group_3__0 : rule__PropertyDescriptionProvider__Group_3__0__Impl rule__PropertyDescriptionProvider__Group_3__1 ;
-    public final void rule__PropertyDescriptionProvider__Group_3__0() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4718:1: rule__FeatureCaptionProvider__Group_3__0 : rule__FeatureCaptionProvider__Group_3__0__Impl rule__FeatureCaptionProvider__Group_3__1 ;
+    public final void rule__FeatureCaptionProvider__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4722:1: ( rule__PropertyDescriptionProvider__Group_3__0__Impl rule__PropertyDescriptionProvider__Group_3__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4723:2: rule__PropertyDescriptionProvider__Group_3__0__Impl rule__PropertyDescriptionProvider__Group_3__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4722:1: ( rule__FeatureCaptionProvider__Group_3__0__Impl rule__FeatureCaptionProvider__Group_3__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4723:2: rule__FeatureCaptionProvider__Group_3__0__Impl rule__FeatureCaptionProvider__Group_3__1
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__0__Impl_in_rule__PropertyDescriptionProvider__Group_3__010040);
-            rule__PropertyDescriptionProvider__Group_3__0__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__0__Impl_in_rule__FeatureCaptionProvider__Group_3__010040);
+            rule__FeatureCaptionProvider__Group_3__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__1_in_rule__PropertyDescriptionProvider__Group_3__010043);
-            rule__PropertyDescriptionProvider__Group_3__1();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__1_in_rule__FeatureCaptionProvider__Group_3__010043);
+            rule__FeatureCaptionProvider__Group_3__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -14896,12 +14896,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__0"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__0"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4730:1: rule__PropertyDescriptionProvider__Group_3__0__Impl : ( 'text' ) ;
-    public final void rule__PropertyDescriptionProvider__Group_3__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4730:1: rule__FeatureCaptionProvider__Group_3__0__Impl : ( 'text' ) ;
+    public final void rule__FeatureCaptionProvider__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -14913,11 +14913,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4736:1: 'text'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getTextKeyword_3_0()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getTextKeyword_3_0()); 
             }
-            match(input,52,FOLLOW_52_in_rule__PropertyDescriptionProvider__Group_3__0__Impl10071); if (state.failed) return ;
+            match(input,52,FOLLOW_52_in_rule__FeatureCaptionProvider__Group_3__0__Impl10071); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getTextKeyword_3_0()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getTextKeyword_3_0()); 
             }
 
             }
@@ -14937,26 +14937,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__0__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__0__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4749:1: rule__PropertyDescriptionProvider__Group_3__1 : rule__PropertyDescriptionProvider__Group_3__1__Impl rule__PropertyDescriptionProvider__Group_3__2 ;
-    public final void rule__PropertyDescriptionProvider__Group_3__1() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4749:1: rule__FeatureCaptionProvider__Group_3__1 : rule__FeatureCaptionProvider__Group_3__1__Impl rule__FeatureCaptionProvider__Group_3__2 ;
+    public final void rule__FeatureCaptionProvider__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4753:1: ( rule__PropertyDescriptionProvider__Group_3__1__Impl rule__PropertyDescriptionProvider__Group_3__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4754:2: rule__PropertyDescriptionProvider__Group_3__1__Impl rule__PropertyDescriptionProvider__Group_3__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4753:1: ( rule__FeatureCaptionProvider__Group_3__1__Impl rule__FeatureCaptionProvider__Group_3__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4754:2: rule__FeatureCaptionProvider__Group_3__1__Impl rule__FeatureCaptionProvider__Group_3__2
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__1__Impl_in_rule__PropertyDescriptionProvider__Group_3__110102);
-            rule__PropertyDescriptionProvider__Group_3__1__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__1__Impl_in_rule__FeatureCaptionProvider__Group_3__110102);
+            rule__FeatureCaptionProvider__Group_3__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__2_in_rule__PropertyDescriptionProvider__Group_3__110105);
-            rule__PropertyDescriptionProvider__Group_3__2();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__2_in_rule__FeatureCaptionProvider__Group_3__110105);
+            rule__FeatureCaptionProvider__Group_3__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -14975,12 +14975,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__1"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__1"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4761:1: rule__PropertyDescriptionProvider__Group_3__1__Impl : ( '{' ) ;
-    public final void rule__PropertyDescriptionProvider__Group_3__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4761:1: rule__FeatureCaptionProvider__Group_3__1__Impl : ( '{' ) ;
+    public final void rule__FeatureCaptionProvider__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -14992,11 +14992,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4767:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1()); 
             }
-            match(input,49,FOLLOW_49_in_rule__PropertyDescriptionProvider__Group_3__1__Impl10133); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__FeatureCaptionProvider__Group_3__1__Impl10133); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1()); 
             }
 
             }
@@ -15016,26 +15016,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__1__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__1__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4780:1: rule__PropertyDescriptionProvider__Group_3__2 : rule__PropertyDescriptionProvider__Group_3__2__Impl rule__PropertyDescriptionProvider__Group_3__3 ;
-    public final void rule__PropertyDescriptionProvider__Group_3__2() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4780:1: rule__FeatureCaptionProvider__Group_3__2 : rule__FeatureCaptionProvider__Group_3__2__Impl rule__FeatureCaptionProvider__Group_3__3 ;
+    public final void rule__FeatureCaptionProvider__Group_3__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4784:1: ( rule__PropertyDescriptionProvider__Group_3__2__Impl rule__PropertyDescriptionProvider__Group_3__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4785:2: rule__PropertyDescriptionProvider__Group_3__2__Impl rule__PropertyDescriptionProvider__Group_3__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4784:1: ( rule__FeatureCaptionProvider__Group_3__2__Impl rule__FeatureCaptionProvider__Group_3__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4785:2: rule__FeatureCaptionProvider__Group_3__2__Impl rule__FeatureCaptionProvider__Group_3__3
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__2__Impl_in_rule__PropertyDescriptionProvider__Group_3__210164);
-            rule__PropertyDescriptionProvider__Group_3__2__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__2__Impl_in_rule__FeatureCaptionProvider__Group_3__210164);
+            rule__FeatureCaptionProvider__Group_3__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__3_in_rule__PropertyDescriptionProvider__Group_3__210167);
-            rule__PropertyDescriptionProvider__Group_3__3();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__3_in_rule__FeatureCaptionProvider__Group_3__210167);
+            rule__FeatureCaptionProvider__Group_3__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15054,26 +15054,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__2"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__2"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4792:1: rule__PropertyDescriptionProvider__Group_3__2__Impl : ( ( rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2 )* ) ;
-    public final void rule__PropertyDescriptionProvider__Group_3__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4792:1: rule__FeatureCaptionProvider__Group_3__2__Impl : ( ( rule__FeatureCaptionProvider__SpecificationsAssignment_3_2 )* ) ;
+    public final void rule__FeatureCaptionProvider__Group_3__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4796:1: ( ( ( rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2 )* ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4797:1: ( ( rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4796:1: ( ( ( rule__FeatureCaptionProvider__SpecificationsAssignment_3_2 )* ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4797:1: ( ( rule__FeatureCaptionProvider__SpecificationsAssignment_3_2 )* )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4797:1: ( ( rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2 )* )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4798:1: ( rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4797:1: ( ( rule__FeatureCaptionProvider__SpecificationsAssignment_3_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4798:1: ( rule__FeatureCaptionProvider__SpecificationsAssignment_3_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_2()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getSpecificationsAssignment_3_2()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4799:1: ( rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4799:1: ( rule__FeatureCaptionProvider__SpecificationsAssignment_3_2 )*
             loop44:
             do {
                 int alt44=2;
@@ -15086,10 +15086,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
                 switch (alt44) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4799:2: rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2
+            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4799:2: rule__FeatureCaptionProvider__SpecificationsAssignment_3_2
             	    {
-            	    pushFollow(FOLLOW_rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2_in_rule__PropertyDescriptionProvider__Group_3__2__Impl10194);
-            	    rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2();
+            	    pushFollow(FOLLOW_rule__FeatureCaptionProvider__SpecificationsAssignment_3_2_in_rule__FeatureCaptionProvider__Group_3__2__Impl10194);
+            	    rule__FeatureCaptionProvider__SpecificationsAssignment_3_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -15103,7 +15103,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_2()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getSpecificationsAssignment_3_2()); 
             }
 
             }
@@ -15123,21 +15123,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__2__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__2__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4809:1: rule__PropertyDescriptionProvider__Group_3__3 : rule__PropertyDescriptionProvider__Group_3__3__Impl ;
-    public final void rule__PropertyDescriptionProvider__Group_3__3() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4809:1: rule__FeatureCaptionProvider__Group_3__3 : rule__FeatureCaptionProvider__Group_3__3__Impl ;
+    public final void rule__FeatureCaptionProvider__Group_3__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4813:1: ( rule__PropertyDescriptionProvider__Group_3__3__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4814:2: rule__PropertyDescriptionProvider__Group_3__3__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4813:1: ( rule__FeatureCaptionProvider__Group_3__3__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4814:2: rule__FeatureCaptionProvider__Group_3__3__Impl
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionProvider__Group_3__3__Impl_in_rule__PropertyDescriptionProvider__Group_3__310225);
-            rule__PropertyDescriptionProvider__Group_3__3__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionProvider__Group_3__3__Impl_in_rule__FeatureCaptionProvider__Group_3__310225);
+            rule__FeatureCaptionProvider__Group_3__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15156,12 +15156,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__3"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__3"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__Group_3__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4820:1: rule__PropertyDescriptionProvider__Group_3__3__Impl : ( '}' ) ;
-    public final void rule__PropertyDescriptionProvider__Group_3__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__Group_3__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4820:1: rule__FeatureCaptionProvider__Group_3__3__Impl : ( '}' ) ;
+    public final void rule__FeatureCaptionProvider__Group_3__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15173,11 +15173,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4826:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_3()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_3()); 
             }
-            match(input,50,FOLLOW_50_in_rule__PropertyDescriptionProvider__Group_3__3__Impl10253); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__FeatureCaptionProvider__Group_3__3__Impl10253); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_3()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_3()); 
             }
 
             }
@@ -15197,26 +15197,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__Group_3__3__Impl"
+    // $ANTLR end "rule__FeatureCaptionProvider__Group_3__3__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4847:1: rule__FormPropertyDescriptionProvider__Group__0 : rule__FormPropertyDescriptionProvider__Group__0__Impl rule__FormPropertyDescriptionProvider__Group__1 ;
-    public final void rule__FormPropertyDescriptionProvider__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4847:1: rule__FormFeatureCaptionProvider__Group__0 : rule__FormFeatureCaptionProvider__Group__0__Impl rule__FormFeatureCaptionProvider__Group__1 ;
+    public final void rule__FormFeatureCaptionProvider__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4851:1: ( rule__FormPropertyDescriptionProvider__Group__0__Impl rule__FormPropertyDescriptionProvider__Group__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4852:2: rule__FormPropertyDescriptionProvider__Group__0__Impl rule__FormPropertyDescriptionProvider__Group__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4851:1: ( rule__FormFeatureCaptionProvider__Group__0__Impl rule__FormFeatureCaptionProvider__Group__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4852:2: rule__FormFeatureCaptionProvider__Group__0__Impl rule__FormFeatureCaptionProvider__Group__1
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__0__Impl_in_rule__FormPropertyDescriptionProvider__Group__010292);
-            rule__FormPropertyDescriptionProvider__Group__0__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__0__Impl_in_rule__FormFeatureCaptionProvider__Group__010292);
+            rule__FormFeatureCaptionProvider__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__1_in_rule__FormPropertyDescriptionProvider__Group__010295);
-            rule__FormPropertyDescriptionProvider__Group__1();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__1_in_rule__FormFeatureCaptionProvider__Group__010295);
+            rule__FormFeatureCaptionProvider__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15235,12 +15235,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__0"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__0"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4859:1: rule__FormPropertyDescriptionProvider__Group__0__Impl : ( () ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4859:1: rule__FormFeatureCaptionProvider__Group__0__Impl : ( () ) ;
+    public final void rule__FormFeatureCaptionProvider__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15252,7 +15252,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4865:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderAction_0()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderAction_0()); 
             }
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4866:1: ()
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4868:1: 
@@ -15260,7 +15260,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderAction_0()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderAction_0()); 
             }
 
             }
@@ -15276,26 +15276,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__0__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__0__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4878:1: rule__FormPropertyDescriptionProvider__Group__1 : rule__FormPropertyDescriptionProvider__Group__1__Impl rule__FormPropertyDescriptionProvider__Group__2 ;
-    public final void rule__FormPropertyDescriptionProvider__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4878:1: rule__FormFeatureCaptionProvider__Group__1 : rule__FormFeatureCaptionProvider__Group__1__Impl rule__FormFeatureCaptionProvider__Group__2 ;
+    public final void rule__FormFeatureCaptionProvider__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4882:1: ( rule__FormPropertyDescriptionProvider__Group__1__Impl rule__FormPropertyDescriptionProvider__Group__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4883:2: rule__FormPropertyDescriptionProvider__Group__1__Impl rule__FormPropertyDescriptionProvider__Group__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4882:1: ( rule__FormFeatureCaptionProvider__Group__1__Impl rule__FormFeatureCaptionProvider__Group__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4883:2: rule__FormFeatureCaptionProvider__Group__1__Impl rule__FormFeatureCaptionProvider__Group__2
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__1__Impl_in_rule__FormPropertyDescriptionProvider__Group__110353);
-            rule__FormPropertyDescriptionProvider__Group__1__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__1__Impl_in_rule__FormFeatureCaptionProvider__Group__110353);
+            rule__FormFeatureCaptionProvider__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__2_in_rule__FormPropertyDescriptionProvider__Group__110356);
-            rule__FormPropertyDescriptionProvider__Group__2();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__2_in_rule__FormFeatureCaptionProvider__Group__110356);
+            rule__FormFeatureCaptionProvider__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15314,28 +15314,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__1"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__1"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4890:1: rule__FormPropertyDescriptionProvider__Group__1__Impl : ( 'formPropertyDescriptionProvider' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4890:1: rule__FormFeatureCaptionProvider__Group__1__Impl : ( 'formFeatureCaptionProvider' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4894:1: ( ( 'formPropertyDescriptionProvider' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4895:1: ( 'formPropertyDescriptionProvider' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4894:1: ( ( 'formFeatureCaptionProvider' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4895:1: ( 'formFeatureCaptionProvider' )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4895:1: ( 'formPropertyDescriptionProvider' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4896:1: 'formPropertyDescriptionProvider'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4895:1: ( 'formFeatureCaptionProvider' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4896:1: 'formFeatureCaptionProvider'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderKeyword_1()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderKeyword_1()); 
             }
-            match(input,55,FOLLOW_55_in_rule__FormPropertyDescriptionProvider__Group__1__Impl10384); if (state.failed) return ;
+            match(input,55,FOLLOW_55_in_rule__FormFeatureCaptionProvider__Group__1__Impl10384); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getFormPropertyDescriptionProviderKeyword_1()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getFormFeatureCaptionProviderKeyword_1()); 
             }
 
             }
@@ -15355,26 +15355,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__1__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__1__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4909:1: rule__FormPropertyDescriptionProvider__Group__2 : rule__FormPropertyDescriptionProvider__Group__2__Impl rule__FormPropertyDescriptionProvider__Group__3 ;
-    public final void rule__FormPropertyDescriptionProvider__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4909:1: rule__FormFeatureCaptionProvider__Group__2 : rule__FormFeatureCaptionProvider__Group__2__Impl rule__FormFeatureCaptionProvider__Group__3 ;
+    public final void rule__FormFeatureCaptionProvider__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4913:1: ( rule__FormPropertyDescriptionProvider__Group__2__Impl rule__FormPropertyDescriptionProvider__Group__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4914:2: rule__FormPropertyDescriptionProvider__Group__2__Impl rule__FormPropertyDescriptionProvider__Group__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4913:1: ( rule__FormFeatureCaptionProvider__Group__2__Impl rule__FormFeatureCaptionProvider__Group__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4914:2: rule__FormFeatureCaptionProvider__Group__2__Impl rule__FormFeatureCaptionProvider__Group__3
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__2__Impl_in_rule__FormPropertyDescriptionProvider__Group__210415);
-            rule__FormPropertyDescriptionProvider__Group__2__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__2__Impl_in_rule__FormFeatureCaptionProvider__Group__210415);
+            rule__FormFeatureCaptionProvider__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__3_in_rule__FormPropertyDescriptionProvider__Group__210418);
-            rule__FormPropertyDescriptionProvider__Group__3();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__3_in_rule__FormFeatureCaptionProvider__Group__210418);
+            rule__FormFeatureCaptionProvider__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15393,12 +15393,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__2"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__2"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4921:1: rule__FormPropertyDescriptionProvider__Group__2__Impl : ( '{' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4921:1: rule__FormFeatureCaptionProvider__Group__2__Impl : ( '{' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15410,11 +15410,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4927:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,49,FOLLOW_49_in_rule__FormPropertyDescriptionProvider__Group__2__Impl10446); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__FormFeatureCaptionProvider__Group__2__Impl10446); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
             }
 
             }
@@ -15434,26 +15434,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__2__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__2__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4940:1: rule__FormPropertyDescriptionProvider__Group__3 : rule__FormPropertyDescriptionProvider__Group__3__Impl rule__FormPropertyDescriptionProvider__Group__4 ;
-    public final void rule__FormPropertyDescriptionProvider__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4940:1: rule__FormFeatureCaptionProvider__Group__3 : rule__FormFeatureCaptionProvider__Group__3__Impl rule__FormFeatureCaptionProvider__Group__4 ;
+    public final void rule__FormFeatureCaptionProvider__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4944:1: ( rule__FormPropertyDescriptionProvider__Group__3__Impl rule__FormPropertyDescriptionProvider__Group__4 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4945:2: rule__FormPropertyDescriptionProvider__Group__3__Impl rule__FormPropertyDescriptionProvider__Group__4
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4944:1: ( rule__FormFeatureCaptionProvider__Group__3__Impl rule__FormFeatureCaptionProvider__Group__4 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4945:2: rule__FormFeatureCaptionProvider__Group__3__Impl rule__FormFeatureCaptionProvider__Group__4
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__3__Impl_in_rule__FormPropertyDescriptionProvider__Group__310477);
-            rule__FormPropertyDescriptionProvider__Group__3__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__3__Impl_in_rule__FormFeatureCaptionProvider__Group__310477);
+            rule__FormFeatureCaptionProvider__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__4_in_rule__FormPropertyDescriptionProvider__Group__310480);
-            rule__FormPropertyDescriptionProvider__Group__4();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__4_in_rule__FormFeatureCaptionProvider__Group__310480);
+            rule__FormFeatureCaptionProvider__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15472,30 +15472,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__3"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__3"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4952:1: rule__FormPropertyDescriptionProvider__Group__3__Impl : ( ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3 ) ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4952:1: rule__FormFeatureCaptionProvider__Group__3__Impl : ( ( rule__FormFeatureCaptionProvider__UnorderedGroup_3 ) ) ;
+    public final void rule__FormFeatureCaptionProvider__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4956:1: ( ( ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4957:1: ( ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4956:1: ( ( ( rule__FormFeatureCaptionProvider__UnorderedGroup_3 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4957:1: ( ( rule__FormFeatureCaptionProvider__UnorderedGroup_3 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4957:1: ( ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4958:1: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4957:1: ( ( rule__FormFeatureCaptionProvider__UnorderedGroup_3 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4958:1: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4959:1: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4959:2: rule__FormPropertyDescriptionProvider__UnorderedGroup_3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4959:1: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4959:2: rule__FormFeatureCaptionProvider__UnorderedGroup_3
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3_in_rule__FormPropertyDescriptionProvider__Group__3__Impl10507);
-            rule__FormPropertyDescriptionProvider__UnorderedGroup_3();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3_in_rule__FormFeatureCaptionProvider__Group__3__Impl10507);
+            rule__FormFeatureCaptionProvider__UnorderedGroup_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15503,7 +15503,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3()); 
             }
 
             }
@@ -15523,21 +15523,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__3__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__3__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4969:1: rule__FormPropertyDescriptionProvider__Group__4 : rule__FormPropertyDescriptionProvider__Group__4__Impl ;
-    public final void rule__FormPropertyDescriptionProvider__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__4"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4969:1: rule__FormFeatureCaptionProvider__Group__4 : rule__FormFeatureCaptionProvider__Group__4__Impl ;
+    public final void rule__FormFeatureCaptionProvider__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4973:1: ( rule__FormPropertyDescriptionProvider__Group__4__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4974:2: rule__FormPropertyDescriptionProvider__Group__4__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4973:1: ( rule__FormFeatureCaptionProvider__Group__4__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4974:2: rule__FormFeatureCaptionProvider__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group__4__Impl_in_rule__FormPropertyDescriptionProvider__Group__410537);
-            rule__FormPropertyDescriptionProvider__Group__4__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group__4__Impl_in_rule__FormFeatureCaptionProvider__Group__410537);
+            rule__FormFeatureCaptionProvider__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15556,12 +15556,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__4"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__4"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group__4__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4980:1: rule__FormPropertyDescriptionProvider__Group__4__Impl : ( '}' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group__4__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4980:1: rule__FormFeatureCaptionProvider__Group__4__Impl : ( '}' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15573,11 +15573,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:4986:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,50,FOLLOW_50_in_rule__FormPropertyDescriptionProvider__Group__4__Impl10565); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__FormFeatureCaptionProvider__Group__4__Impl10565); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4()); 
             }
 
             }
@@ -15597,26 +15597,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group__4__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group__4__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5009:1: rule__FormPropertyDescriptionProvider__Group_3_0__0 : rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl rule__FormPropertyDescriptionProvider__Group_3_0__1 ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__0() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5009:1: rule__FormFeatureCaptionProvider__Group_3_0__0 : rule__FormFeatureCaptionProvider__Group_3_0__0__Impl rule__FormFeatureCaptionProvider__Group_3_0__1 ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5013:1: ( rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl rule__FormPropertyDescriptionProvider__Group_3_0__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5014:2: rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl rule__FormPropertyDescriptionProvider__Group_3_0__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5013:1: ( rule__FormFeatureCaptionProvider__Group_3_0__0__Impl rule__FormFeatureCaptionProvider__Group_3_0__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5014:2: rule__FormFeatureCaptionProvider__Group_3_0__0__Impl rule__FormFeatureCaptionProvider__Group_3_0__1
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__010606);
-            rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__0__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__010606);
+            rule__FormFeatureCaptionProvider__Group_3_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__1_in_rule__FormPropertyDescriptionProvider__Group_3_0__010609);
-            rule__FormPropertyDescriptionProvider__Group_3_0__1();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__1_in_rule__FormFeatureCaptionProvider__Group_3_0__010609);
+            rule__FormFeatureCaptionProvider__Group_3_0__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15635,12 +15635,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__0"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__0"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5021:1: rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl : ( 'text' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5021:1: rule__FormFeatureCaptionProvider__Group_3_0__0__Impl : ( 'text' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15652,11 +15652,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5027:1: 'text'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getTextKeyword_3_0_0()); 
             }
-            match(input,52,FOLLOW_52_in_rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl10637); if (state.failed) return ;
+            match(input,52,FOLLOW_52_in_rule__FormFeatureCaptionProvider__Group_3_0__0__Impl10637); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getTextKeyword_3_0_0()); 
             }
 
             }
@@ -15676,26 +15676,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__0__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5040:1: rule__FormPropertyDescriptionProvider__Group_3_0__1 : rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl rule__FormPropertyDescriptionProvider__Group_3_0__2 ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__1() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5040:1: rule__FormFeatureCaptionProvider__Group_3_0__1 : rule__FormFeatureCaptionProvider__Group_3_0__1__Impl rule__FormFeatureCaptionProvider__Group_3_0__2 ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5044:1: ( rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl rule__FormPropertyDescriptionProvider__Group_3_0__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5045:2: rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl rule__FormPropertyDescriptionProvider__Group_3_0__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5044:1: ( rule__FormFeatureCaptionProvider__Group_3_0__1__Impl rule__FormFeatureCaptionProvider__Group_3_0__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5045:2: rule__FormFeatureCaptionProvider__Group_3_0__1__Impl rule__FormFeatureCaptionProvider__Group_3_0__2
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__110668);
-            rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__1__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__110668);
+            rule__FormFeatureCaptionProvider__Group_3_0__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__2_in_rule__FormPropertyDescriptionProvider__Group_3_0__110671);
-            rule__FormPropertyDescriptionProvider__Group_3_0__2();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__2_in_rule__FormFeatureCaptionProvider__Group_3_0__110671);
+            rule__FormFeatureCaptionProvider__Group_3_0__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15714,12 +15714,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__1"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__1"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5052:1: rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl : ( '{' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5052:1: rule__FormFeatureCaptionProvider__Group_3_0__1__Impl : ( '{' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15731,11 +15731,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5058:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
             }
-            match(input,49,FOLLOW_49_in_rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl10699); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__FormFeatureCaptionProvider__Group_3_0__1__Impl10699); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
             }
 
             }
@@ -15755,26 +15755,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__1__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5071:1: rule__FormPropertyDescriptionProvider__Group_3_0__2 : rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl rule__FormPropertyDescriptionProvider__Group_3_0__3 ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__2() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5071:1: rule__FormFeatureCaptionProvider__Group_3_0__2 : rule__FormFeatureCaptionProvider__Group_3_0__2__Impl rule__FormFeatureCaptionProvider__Group_3_0__3 ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5075:1: ( rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl rule__FormPropertyDescriptionProvider__Group_3_0__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5076:2: rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl rule__FormPropertyDescriptionProvider__Group_3_0__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5075:1: ( rule__FormFeatureCaptionProvider__Group_3_0__2__Impl rule__FormFeatureCaptionProvider__Group_3_0__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5076:2: rule__FormFeatureCaptionProvider__Group_3_0__2__Impl rule__FormFeatureCaptionProvider__Group_3_0__3
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__210730);
-            rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__2__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__210730);
+            rule__FormFeatureCaptionProvider__Group_3_0__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__3_in_rule__FormPropertyDescriptionProvider__Group_3_0__210733);
-            rule__FormPropertyDescriptionProvider__Group_3_0__3();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__3_in_rule__FormFeatureCaptionProvider__Group_3_0__210733);
+            rule__FormFeatureCaptionProvider__Group_3_0__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15793,26 +15793,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__2"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__2"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5083:1: rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl : ( ( rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5083:1: rule__FormFeatureCaptionProvider__Group_3_0__2__Impl : ( ( rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5087:1: ( ( ( rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5088:1: ( ( rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5087:1: ( ( ( rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5088:1: ( ( rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5088:1: ( ( rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5089:1: ( rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5088:1: ( ( rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5089:1: ( rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5090:1: ( rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5090:1: ( rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )*
             loop45:
             do {
                 int alt45=2;
@@ -15825,10 +15825,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
                 switch (alt45) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5090:2: rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2
+            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5090:2: rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2
             	    {
-            	    pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2_in_rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl10760);
-            	    rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2();
+            	    pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2_in_rule__FormFeatureCaptionProvider__Group_3_0__2__Impl10760);
+            	    rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -15842,7 +15842,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
             }
 
             }
@@ -15862,21 +15862,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__2__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5100:1: rule__FormPropertyDescriptionProvider__Group_3_0__3 : rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__3() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5100:1: rule__FormFeatureCaptionProvider__Group_3_0__3 : rule__FormFeatureCaptionProvider__Group_3_0__3__Impl ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5104:1: ( rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5105:2: rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5104:1: ( rule__FormFeatureCaptionProvider__Group_3_0__3__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5105:2: rule__FormFeatureCaptionProvider__Group_3_0__3__Impl
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__310791);
-            rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__3__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__310791);
+            rule__FormFeatureCaptionProvider__Group_3_0__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15895,12 +15895,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__3"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__3"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5111:1: rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl : ( '}' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_0__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5111:1: rule__FormFeatureCaptionProvider__Group_3_0__3__Impl : ( '}' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_0__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15912,11 +15912,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5117:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
             }
-            match(input,50,FOLLOW_50_in_rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl10819); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__FormFeatureCaptionProvider__Group_3_0__3__Impl10819); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
             }
 
             }
@@ -15936,26 +15936,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_0__3__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5138:1: rule__FormPropertyDescriptionProvider__Group_3_1__0 : rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl rule__FormPropertyDescriptionProvider__Group_3_1__1 ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__0() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5138:1: rule__FormFeatureCaptionProvider__Group_3_1__0 : rule__FormFeatureCaptionProvider__Group_3_1__0__Impl rule__FormFeatureCaptionProvider__Group_3_1__1 ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5142:1: ( rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl rule__FormPropertyDescriptionProvider__Group_3_1__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5143:2: rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl rule__FormPropertyDescriptionProvider__Group_3_1__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5142:1: ( rule__FormFeatureCaptionProvider__Group_3_1__0__Impl rule__FormFeatureCaptionProvider__Group_3_1__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5143:2: rule__FormFeatureCaptionProvider__Group_3_1__0__Impl rule__FormFeatureCaptionProvider__Group_3_1__1
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__010858);
-            rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__0__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__010858);
+            rule__FormFeatureCaptionProvider__Group_3_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__1_in_rule__FormPropertyDescriptionProvider__Group_3_1__010861);
-            rule__FormPropertyDescriptionProvider__Group_3_1__1();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__1_in_rule__FormFeatureCaptionProvider__Group_3_1__010861);
+            rule__FormFeatureCaptionProvider__Group_3_1__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -15974,12 +15974,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__0"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__0"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5150:1: rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl : ( 'label' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5150:1: rule__FormFeatureCaptionProvider__Group_3_1__0__Impl : ( 'label' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -15991,11 +15991,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5156:1: 'label'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelKeyword_3_1_0()); 
             }
-            match(input,56,FOLLOW_56_in_rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl10889); if (state.failed) return ;
+            match(input,56,FOLLOW_56_in_rule__FormFeatureCaptionProvider__Group_3_1__0__Impl10889); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelKeyword_3_1_0()); 
             }
 
             }
@@ -16015,26 +16015,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__0__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5169:1: rule__FormPropertyDescriptionProvider__Group_3_1__1 : rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl rule__FormPropertyDescriptionProvider__Group_3_1__2 ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__1() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5169:1: rule__FormFeatureCaptionProvider__Group_3_1__1 : rule__FormFeatureCaptionProvider__Group_3_1__1__Impl rule__FormFeatureCaptionProvider__Group_3_1__2 ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5173:1: ( rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl rule__FormPropertyDescriptionProvider__Group_3_1__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5174:2: rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl rule__FormPropertyDescriptionProvider__Group_3_1__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5173:1: ( rule__FormFeatureCaptionProvider__Group_3_1__1__Impl rule__FormFeatureCaptionProvider__Group_3_1__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5174:2: rule__FormFeatureCaptionProvider__Group_3_1__1__Impl rule__FormFeatureCaptionProvider__Group_3_1__2
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__110920);
-            rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__1__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__110920);
+            rule__FormFeatureCaptionProvider__Group_3_1__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__2_in_rule__FormPropertyDescriptionProvider__Group_3_1__110923);
-            rule__FormPropertyDescriptionProvider__Group_3_1__2();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__2_in_rule__FormFeatureCaptionProvider__Group_3_1__110923);
+            rule__FormFeatureCaptionProvider__Group_3_1__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16053,12 +16053,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__1"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__1"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5181:1: rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl : ( '{' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5181:1: rule__FormFeatureCaptionProvider__Group_3_1__1__Impl : ( '{' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16070,11 +16070,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5187:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
             }
-            match(input,49,FOLLOW_49_in_rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl10951); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__FormFeatureCaptionProvider__Group_3_1__1__Impl10951); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
             }
 
             }
@@ -16094,26 +16094,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__1__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5200:1: rule__FormPropertyDescriptionProvider__Group_3_1__2 : rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl rule__FormPropertyDescriptionProvider__Group_3_1__3 ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__2() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5200:1: rule__FormFeatureCaptionProvider__Group_3_1__2 : rule__FormFeatureCaptionProvider__Group_3_1__2__Impl rule__FormFeatureCaptionProvider__Group_3_1__3 ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5204:1: ( rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl rule__FormPropertyDescriptionProvider__Group_3_1__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5205:2: rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl rule__FormPropertyDescriptionProvider__Group_3_1__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5204:1: ( rule__FormFeatureCaptionProvider__Group_3_1__2__Impl rule__FormFeatureCaptionProvider__Group_3_1__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5205:2: rule__FormFeatureCaptionProvider__Group_3_1__2__Impl rule__FormFeatureCaptionProvider__Group_3_1__3
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__210982);
-            rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__2__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__210982);
+            rule__FormFeatureCaptionProvider__Group_3_1__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__3_in_rule__FormPropertyDescriptionProvider__Group_3_1__210985);
-            rule__FormPropertyDescriptionProvider__Group_3_1__3();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__3_in_rule__FormFeatureCaptionProvider__Group_3_1__210985);
+            rule__FormFeatureCaptionProvider__Group_3_1__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16132,26 +16132,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__2"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__2"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5212:1: rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl : ( ( rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5212:1: rule__FormFeatureCaptionProvider__Group_3_1__2__Impl : ( ( rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5216:1: ( ( ( rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5217:1: ( ( rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5216:1: ( ( ( rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5217:1: ( ( rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5217:1: ( ( rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5218:1: ( rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5217:1: ( ( rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5218:1: ( rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5219:1: ( rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5219:1: ( rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )*
             loop46:
             do {
                 int alt46=2;
@@ -16164,10 +16164,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
                 switch (alt46) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5219:2: rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2
+            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5219:2: rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2
             	    {
-            	    pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl11012);
-            	    rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2();
+            	    pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__FormFeatureCaptionProvider__Group_3_1__2__Impl11012);
+            	    rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -16181,7 +16181,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
             }
 
             }
@@ -16201,21 +16201,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__2__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5229:1: rule__FormPropertyDescriptionProvider__Group_3_1__3 : rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__3() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5229:1: rule__FormFeatureCaptionProvider__Group_3_1__3 : rule__FormFeatureCaptionProvider__Group_3_1__3__Impl ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5233:1: ( rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5234:2: rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5233:1: ( rule__FormFeatureCaptionProvider__Group_3_1__3__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5234:2: rule__FormFeatureCaptionProvider__Group_3_1__3__Impl
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__311043);
-            rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__3__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__311043);
+            rule__FormFeatureCaptionProvider__Group_3_1__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16234,12 +16234,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__3"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__3"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5240:1: rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl : ( '}' ) ;
-    public final void rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__Group_3_1__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5240:1: rule__FormFeatureCaptionProvider__Group_3_1__3__Impl : ( '}' ) ;
+    public final void rule__FormFeatureCaptionProvider__Group_3_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16251,11 +16251,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5246:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
             }
-            match(input,50,FOLLOW_50_in_rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl11071); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__FormFeatureCaptionProvider__Group_3_1__3__Impl11071); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
             }
 
             }
@@ -16275,26 +16275,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__Group_3_1__3__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5267:1: rule__DialogPropertyDescriptionProvider__Group__0 : rule__DialogPropertyDescriptionProvider__Group__0__Impl rule__DialogPropertyDescriptionProvider__Group__1 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5267:1: rule__DialogFeatureCaptionProvider__Group__0 : rule__DialogFeatureCaptionProvider__Group__0__Impl rule__DialogFeatureCaptionProvider__Group__1 ;
+    public final void rule__DialogFeatureCaptionProvider__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5271:1: ( rule__DialogPropertyDescriptionProvider__Group__0__Impl rule__DialogPropertyDescriptionProvider__Group__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5272:2: rule__DialogPropertyDescriptionProvider__Group__0__Impl rule__DialogPropertyDescriptionProvider__Group__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5271:1: ( rule__DialogFeatureCaptionProvider__Group__0__Impl rule__DialogFeatureCaptionProvider__Group__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5272:2: rule__DialogFeatureCaptionProvider__Group__0__Impl rule__DialogFeatureCaptionProvider__Group__1
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__0__Impl_in_rule__DialogPropertyDescriptionProvider__Group__011110);
-            rule__DialogPropertyDescriptionProvider__Group__0__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__0__Impl_in_rule__DialogFeatureCaptionProvider__Group__011110);
+            rule__DialogFeatureCaptionProvider__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__1_in_rule__DialogPropertyDescriptionProvider__Group__011113);
-            rule__DialogPropertyDescriptionProvider__Group__1();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__1_in_rule__DialogFeatureCaptionProvider__Group__011113);
+            rule__DialogFeatureCaptionProvider__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16313,12 +16313,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__0"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__0"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5279:1: rule__DialogPropertyDescriptionProvider__Group__0__Impl : ( () ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5279:1: rule__DialogFeatureCaptionProvider__Group__0__Impl : ( () ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16330,7 +16330,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5285:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderAction_0()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderAction_0()); 
             }
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5286:1: ()
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5288:1: 
@@ -16338,7 +16338,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderAction_0()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderAction_0()); 
             }
 
             }
@@ -16354,26 +16354,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__0__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__0__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5298:1: rule__DialogPropertyDescriptionProvider__Group__1 : rule__DialogPropertyDescriptionProvider__Group__1__Impl rule__DialogPropertyDescriptionProvider__Group__2 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5298:1: rule__DialogFeatureCaptionProvider__Group__1 : rule__DialogFeatureCaptionProvider__Group__1__Impl rule__DialogFeatureCaptionProvider__Group__2 ;
+    public final void rule__DialogFeatureCaptionProvider__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5302:1: ( rule__DialogPropertyDescriptionProvider__Group__1__Impl rule__DialogPropertyDescriptionProvider__Group__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5303:2: rule__DialogPropertyDescriptionProvider__Group__1__Impl rule__DialogPropertyDescriptionProvider__Group__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5302:1: ( rule__DialogFeatureCaptionProvider__Group__1__Impl rule__DialogFeatureCaptionProvider__Group__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5303:2: rule__DialogFeatureCaptionProvider__Group__1__Impl rule__DialogFeatureCaptionProvider__Group__2
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__1__Impl_in_rule__DialogPropertyDescriptionProvider__Group__111171);
-            rule__DialogPropertyDescriptionProvider__Group__1__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__1__Impl_in_rule__DialogFeatureCaptionProvider__Group__111171);
+            rule__DialogFeatureCaptionProvider__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__2_in_rule__DialogPropertyDescriptionProvider__Group__111174);
-            rule__DialogPropertyDescriptionProvider__Group__2();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__2_in_rule__DialogFeatureCaptionProvider__Group__111174);
+            rule__DialogFeatureCaptionProvider__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16392,28 +16392,28 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__1"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__1"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5310:1: rule__DialogPropertyDescriptionProvider__Group__1__Impl : ( 'dialogPropertyDescriptionProvider' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5310:1: rule__DialogFeatureCaptionProvider__Group__1__Impl : ( 'dialogFeatureCaptionProvider' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5314:1: ( ( 'dialogPropertyDescriptionProvider' ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5315:1: ( 'dialogPropertyDescriptionProvider' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5314:1: ( ( 'dialogFeatureCaptionProvider' ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5315:1: ( 'dialogFeatureCaptionProvider' )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5315:1: ( 'dialogPropertyDescriptionProvider' )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5316:1: 'dialogPropertyDescriptionProvider'
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5315:1: ( 'dialogFeatureCaptionProvider' )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5316:1: 'dialogFeatureCaptionProvider'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderKeyword_1()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderKeyword_1()); 
             }
-            match(input,57,FOLLOW_57_in_rule__DialogPropertyDescriptionProvider__Group__1__Impl11202); if (state.failed) return ;
+            match(input,57,FOLLOW_57_in_rule__DialogFeatureCaptionProvider__Group__1__Impl11202); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getDialogPropertyDescriptionProviderKeyword_1()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getDialogFeatureCaptionProviderKeyword_1()); 
             }
 
             }
@@ -16433,26 +16433,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__1__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__1__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5329:1: rule__DialogPropertyDescriptionProvider__Group__2 : rule__DialogPropertyDescriptionProvider__Group__2__Impl rule__DialogPropertyDescriptionProvider__Group__3 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5329:1: rule__DialogFeatureCaptionProvider__Group__2 : rule__DialogFeatureCaptionProvider__Group__2__Impl rule__DialogFeatureCaptionProvider__Group__3 ;
+    public final void rule__DialogFeatureCaptionProvider__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5333:1: ( rule__DialogPropertyDescriptionProvider__Group__2__Impl rule__DialogPropertyDescriptionProvider__Group__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5334:2: rule__DialogPropertyDescriptionProvider__Group__2__Impl rule__DialogPropertyDescriptionProvider__Group__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5333:1: ( rule__DialogFeatureCaptionProvider__Group__2__Impl rule__DialogFeatureCaptionProvider__Group__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5334:2: rule__DialogFeatureCaptionProvider__Group__2__Impl rule__DialogFeatureCaptionProvider__Group__3
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__2__Impl_in_rule__DialogPropertyDescriptionProvider__Group__211233);
-            rule__DialogPropertyDescriptionProvider__Group__2__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__2__Impl_in_rule__DialogFeatureCaptionProvider__Group__211233);
+            rule__DialogFeatureCaptionProvider__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__3_in_rule__DialogPropertyDescriptionProvider__Group__211236);
-            rule__DialogPropertyDescriptionProvider__Group__3();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__3_in_rule__DialogFeatureCaptionProvider__Group__211236);
+            rule__DialogFeatureCaptionProvider__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16471,12 +16471,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__2"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__2"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5341:1: rule__DialogPropertyDescriptionProvider__Group__2__Impl : ( '{' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5341:1: rule__DialogFeatureCaptionProvider__Group__2__Impl : ( '{' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16488,11 +16488,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5347:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,49,FOLLOW_49_in_rule__DialogPropertyDescriptionProvider__Group__2__Impl11264); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__DialogFeatureCaptionProvider__Group__2__Impl11264); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_2()); 
             }
 
             }
@@ -16512,26 +16512,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__2__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__2__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5360:1: rule__DialogPropertyDescriptionProvider__Group__3 : rule__DialogPropertyDescriptionProvider__Group__3__Impl rule__DialogPropertyDescriptionProvider__Group__4 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5360:1: rule__DialogFeatureCaptionProvider__Group__3 : rule__DialogFeatureCaptionProvider__Group__3__Impl rule__DialogFeatureCaptionProvider__Group__4 ;
+    public final void rule__DialogFeatureCaptionProvider__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5364:1: ( rule__DialogPropertyDescriptionProvider__Group__3__Impl rule__DialogPropertyDescriptionProvider__Group__4 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5365:2: rule__DialogPropertyDescriptionProvider__Group__3__Impl rule__DialogPropertyDescriptionProvider__Group__4
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5364:1: ( rule__DialogFeatureCaptionProvider__Group__3__Impl rule__DialogFeatureCaptionProvider__Group__4 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5365:2: rule__DialogFeatureCaptionProvider__Group__3__Impl rule__DialogFeatureCaptionProvider__Group__4
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__3__Impl_in_rule__DialogPropertyDescriptionProvider__Group__311295);
-            rule__DialogPropertyDescriptionProvider__Group__3__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__3__Impl_in_rule__DialogFeatureCaptionProvider__Group__311295);
+            rule__DialogFeatureCaptionProvider__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__4_in_rule__DialogPropertyDescriptionProvider__Group__311298);
-            rule__DialogPropertyDescriptionProvider__Group__4();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__4_in_rule__DialogFeatureCaptionProvider__Group__311298);
+            rule__DialogFeatureCaptionProvider__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16550,30 +16550,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__3"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__3"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5372:1: rule__DialogPropertyDescriptionProvider__Group__3__Impl : ( ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3 ) ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5372:1: rule__DialogFeatureCaptionProvider__Group__3__Impl : ( ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3 ) ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5376:1: ( ( ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5377:1: ( ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5376:1: ( ( ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5377:1: ( ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5377:1: ( ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5378:1: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5377:1: ( ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5378:1: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5379:1: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5379:2: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5379:1: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5379:2: rule__DialogFeatureCaptionProvider__UnorderedGroup_3
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3_in_rule__DialogPropertyDescriptionProvider__Group__3__Impl11325);
-            rule__DialogPropertyDescriptionProvider__UnorderedGroup_3();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3_in_rule__DialogFeatureCaptionProvider__Group__3__Impl11325);
+            rule__DialogFeatureCaptionProvider__UnorderedGroup_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16581,7 +16581,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3()); 
             }
 
             }
@@ -16601,21 +16601,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__3__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__3__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5389:1: rule__DialogPropertyDescriptionProvider__Group__4 : rule__DialogPropertyDescriptionProvider__Group__4__Impl ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__4"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5389:1: rule__DialogFeatureCaptionProvider__Group__4 : rule__DialogFeatureCaptionProvider__Group__4__Impl ;
+    public final void rule__DialogFeatureCaptionProvider__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5393:1: ( rule__DialogPropertyDescriptionProvider__Group__4__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5394:2: rule__DialogPropertyDescriptionProvider__Group__4__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5393:1: ( rule__DialogFeatureCaptionProvider__Group__4__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5394:2: rule__DialogFeatureCaptionProvider__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group__4__Impl_in_rule__DialogPropertyDescriptionProvider__Group__411355);
-            rule__DialogPropertyDescriptionProvider__Group__4__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group__4__Impl_in_rule__DialogFeatureCaptionProvider__Group__411355);
+            rule__DialogFeatureCaptionProvider__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16634,12 +16634,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__4"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__4"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group__4__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5400:1: rule__DialogPropertyDescriptionProvider__Group__4__Impl : ( '}' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group__4__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5400:1: rule__DialogFeatureCaptionProvider__Group__4__Impl : ( '}' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16651,11 +16651,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5406:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,50,FOLLOW_50_in_rule__DialogPropertyDescriptionProvider__Group__4__Impl11383); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__DialogFeatureCaptionProvider__Group__4__Impl11383); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_4()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_4()); 
             }
 
             }
@@ -16675,26 +16675,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group__4__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group__4__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5429:1: rule__DialogPropertyDescriptionProvider__Group_3_0__0 : rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__1 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__0() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5429:1: rule__DialogFeatureCaptionProvider__Group_3_0__0 : rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl rule__DialogFeatureCaptionProvider__Group_3_0__1 ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5433:1: ( rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5434:2: rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5433:1: ( rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl rule__DialogFeatureCaptionProvider__Group_3_0__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5434:2: rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl rule__DialogFeatureCaptionProvider__Group_3_0__1
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__011424);
-            rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__011424);
+            rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__1_in_rule__DialogPropertyDescriptionProvider__Group_3_0__011427);
-            rule__DialogPropertyDescriptionProvider__Group_3_0__1();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__1_in_rule__DialogFeatureCaptionProvider__Group_3_0__011427);
+            rule__DialogFeatureCaptionProvider__Group_3_0__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16713,12 +16713,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__0"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__0"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5441:1: rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl : ( 'text' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5441:1: rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl : ( 'text' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16730,11 +16730,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5447:1: 'text'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getTextKeyword_3_0_0()); 
             }
-            match(input,52,FOLLOW_52_in_rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl11455); if (state.failed) return ;
+            match(input,52,FOLLOW_52_in_rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl11455); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getTextKeyword_3_0_0()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getTextKeyword_3_0_0()); 
             }
 
             }
@@ -16754,26 +16754,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5460:1: rule__DialogPropertyDescriptionProvider__Group_3_0__1 : rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__2 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__1() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5460:1: rule__DialogFeatureCaptionProvider__Group_3_0__1 : rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl rule__DialogFeatureCaptionProvider__Group_3_0__2 ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5464:1: ( rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5465:2: rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5464:1: ( rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl rule__DialogFeatureCaptionProvider__Group_3_0__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5465:2: rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl rule__DialogFeatureCaptionProvider__Group_3_0__2
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__111486);
-            rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__111486);
+            rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__2_in_rule__DialogPropertyDescriptionProvider__Group_3_0__111489);
-            rule__DialogPropertyDescriptionProvider__Group_3_0__2();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__2_in_rule__DialogFeatureCaptionProvider__Group_3_0__111489);
+            rule__DialogFeatureCaptionProvider__Group_3_0__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16792,12 +16792,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__1"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__1"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5472:1: rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl : ( '{' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5472:1: rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl : ( '{' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16809,11 +16809,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5478:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
             }
-            match(input,49,FOLLOW_49_in_rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl11517); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl11517); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_0_1()); 
             }
 
             }
@@ -16833,26 +16833,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5491:1: rule__DialogPropertyDescriptionProvider__Group_3_0__2 : rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__3 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__2() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5491:1: rule__DialogFeatureCaptionProvider__Group_3_0__2 : rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl rule__DialogFeatureCaptionProvider__Group_3_0__3 ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5495:1: ( rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5496:2: rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl rule__DialogPropertyDescriptionProvider__Group_3_0__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5495:1: ( rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl rule__DialogFeatureCaptionProvider__Group_3_0__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5496:2: rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl rule__DialogFeatureCaptionProvider__Group_3_0__3
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__211548);
-            rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__211548);
+            rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__3_in_rule__DialogPropertyDescriptionProvider__Group_3_0__211551);
-            rule__DialogPropertyDescriptionProvider__Group_3_0__3();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__3_in_rule__DialogFeatureCaptionProvider__Group_3_0__211551);
+            rule__DialogFeatureCaptionProvider__Group_3_0__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16871,26 +16871,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__2"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__2"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5503:1: rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl : ( ( rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5503:1: rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl : ( ( rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5507:1: ( ( ( rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5508:1: ( ( rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5507:1: ( ( ( rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5508:1: ( ( rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5508:1: ( ( rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )* )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5509:1: ( rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5508:1: ( ( rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5509:1: ( rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5510:1: ( rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5510:1: ( rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2 )*
             loop47:
             do {
                 int alt47=2;
@@ -16903,10 +16903,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
                 switch (alt47) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5510:2: rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2
+            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5510:2: rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2
             	    {
-            	    pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2_in_rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl11578);
-            	    rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2();
+            	    pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2_in_rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl11578);
+            	    rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -16920,7 +16920,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getSpecificationsAssignment_3_0_2()); 
             }
 
             }
@@ -16940,21 +16940,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5520:1: rule__DialogPropertyDescriptionProvider__Group_3_0__3 : rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__3() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5520:1: rule__DialogFeatureCaptionProvider__Group_3_0__3 : rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5524:1: ( rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5525:2: rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5524:1: ( rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5525:2: rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__311609);
-            rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__311609);
+            rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -16973,12 +16973,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__3"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__3"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5531:1: rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl : ( '}' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5531:1: rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl : ( '}' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16990,11 +16990,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5537:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
             }
-            match(input,50,FOLLOW_50_in_rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl11637); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl11637); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_0_3()); 
             }
 
             }
@@ -17014,26 +17014,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5558:1: rule__DialogPropertyDescriptionProvider__Group_3_1__0 : rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__1 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__0() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5558:1: rule__DialogFeatureCaptionProvider__Group_3_1__0 : rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl rule__DialogFeatureCaptionProvider__Group_3_1__1 ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5562:1: ( rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5563:2: rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5562:1: ( rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl rule__DialogFeatureCaptionProvider__Group_3_1__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5563:2: rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl rule__DialogFeatureCaptionProvider__Group_3_1__1
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__011676);
-            rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__011676);
+            rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__1_in_rule__DialogPropertyDescriptionProvider__Group_3_1__011679);
-            rule__DialogPropertyDescriptionProvider__Group_3_1__1();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__1_in_rule__DialogFeatureCaptionProvider__Group_3_1__011679);
+            rule__DialogFeatureCaptionProvider__Group_3_1__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17052,12 +17052,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__0"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__0"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5570:1: rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl : ( 'label' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5570:1: rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl : ( 'label' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -17069,11 +17069,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5576:1: 'label'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelKeyword_3_1_0()); 
             }
-            match(input,56,FOLLOW_56_in_rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl11707); if (state.failed) return ;
+            match(input,56,FOLLOW_56_in_rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl11707); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelKeyword_3_1_0()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelKeyword_3_1_0()); 
             }
 
             }
@@ -17093,26 +17093,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5589:1: rule__DialogPropertyDescriptionProvider__Group_3_1__1 : rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__2 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__1() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5589:1: rule__DialogFeatureCaptionProvider__Group_3_1__1 : rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl rule__DialogFeatureCaptionProvider__Group_3_1__2 ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5593:1: ( rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5594:2: rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5593:1: ( rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl rule__DialogFeatureCaptionProvider__Group_3_1__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5594:2: rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl rule__DialogFeatureCaptionProvider__Group_3_1__2
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__111738);
-            rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__111738);
+            rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__2_in_rule__DialogPropertyDescriptionProvider__Group_3_1__111741);
-            rule__DialogPropertyDescriptionProvider__Group_3_1__2();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__2_in_rule__DialogFeatureCaptionProvider__Group_3_1__111741);
+            rule__DialogFeatureCaptionProvider__Group_3_1__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17131,12 +17131,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__1"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__1"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5601:1: rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl : ( '{' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5601:1: rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl : ( '{' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -17148,11 +17148,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5607:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
             }
-            match(input,49,FOLLOW_49_in_rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl11769); if (state.failed) return ;
+            match(input,49,FOLLOW_49_in_rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl11769); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getLeftCurlyBracketKeyword_3_1_1()); 
             }
 
             }
@@ -17172,26 +17172,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5620:1: rule__DialogPropertyDescriptionProvider__Group_3_1__2 : rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__3 ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__2() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5620:1: rule__DialogFeatureCaptionProvider__Group_3_1__2 : rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl rule__DialogFeatureCaptionProvider__Group_3_1__3 ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5624:1: ( rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5625:2: rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl rule__DialogPropertyDescriptionProvider__Group_3_1__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5624:1: ( rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl rule__DialogFeatureCaptionProvider__Group_3_1__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5625:2: rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl rule__DialogFeatureCaptionProvider__Group_3_1__3
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__211800);
-            rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__211800);
+            rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__3_in_rule__DialogPropertyDescriptionProvider__Group_3_1__211803);
-            rule__DialogPropertyDescriptionProvider__Group_3_1__3();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__3_in_rule__DialogFeatureCaptionProvider__Group_3_1__211803);
+            rule__DialogFeatureCaptionProvider__Group_3_1__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17210,26 +17210,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__2"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__2"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5632:1: rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl : ( ( rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5632:1: rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl : ( ( rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5636:1: ( ( ( rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5637:1: ( ( rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5636:1: ( ( ( rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5637:1: ( ( rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5637:1: ( ( rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5638:1: ( rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5637:1: ( ( rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )* )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5638:1: ( rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5639:1: ( rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 )*
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5639:1: ( rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 )*
             loop48:
             do {
                 int alt48=2;
@@ -17242,10 +17242,10 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
                 switch (alt48) {
             	case 1 :
-            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5639:2: rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2
+            	    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5639:2: rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2
             	    {
-            	    pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl11830);
-            	    rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2();
+            	    pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl11830);
+            	    rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -17259,7 +17259,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelSpecificationsAssignment_3_1_2()); 
             }
 
             }
@@ -17279,21 +17279,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5649:1: rule__DialogPropertyDescriptionProvider__Group_3_1__3 : rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__3() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5649:1: rule__DialogFeatureCaptionProvider__Group_3_1__3 : rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5653:1: ( rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5654:2: rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5653:1: ( rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5654:2: rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__311861);
-            rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__311861);
+            rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17312,12 +17312,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__3"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__3"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5660:1: rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl : ( '}' ) ;
-    public final void rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5660:1: rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl : ( '}' ) ;
+    public final void rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -17329,11 +17329,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5666:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
             }
-            match(input,50,FOLLOW_50_in_rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl11889); if (state.failed) return ;
+            match(input,50,FOLLOW_50_in_rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl11889); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getRightCurlyBracketKeyword_3_1_3()); 
             }
 
             }
@@ -17353,26 +17353,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5687:1: rule__PropertyDescriptionSpecification__Group__0 : rule__PropertyDescriptionSpecification__Group__0__Impl rule__PropertyDescriptionSpecification__Group__1 ;
-    public final void rule__PropertyDescriptionSpecification__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5687:1: rule__FeatureCaptionSpecification__Group__0 : rule__FeatureCaptionSpecification__Group__0__Impl rule__FeatureCaptionSpecification__Group__1 ;
+    public final void rule__FeatureCaptionSpecification__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5691:1: ( rule__PropertyDescriptionSpecification__Group__0__Impl rule__PropertyDescriptionSpecification__Group__1 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5692:2: rule__PropertyDescriptionSpecification__Group__0__Impl rule__PropertyDescriptionSpecification__Group__1
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5691:1: ( rule__FeatureCaptionSpecification__Group__0__Impl rule__FeatureCaptionSpecification__Group__1 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5692:2: rule__FeatureCaptionSpecification__Group__0__Impl rule__FeatureCaptionSpecification__Group__1
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__0__Impl_in_rule__PropertyDescriptionSpecification__Group__011928);
-            rule__PropertyDescriptionSpecification__Group__0__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__0__Impl_in_rule__FeatureCaptionSpecification__Group__011928);
+            rule__FeatureCaptionSpecification__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__1_in_rule__PropertyDescriptionSpecification__Group__011931);
-            rule__PropertyDescriptionSpecification__Group__1();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__1_in_rule__FeatureCaptionSpecification__Group__011931);
+            rule__FeatureCaptionSpecification__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17391,30 +17391,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__0"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__0"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__0__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5699:1: rule__PropertyDescriptionSpecification__Group__0__Impl : ( ( rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0 ) ) ;
-    public final void rule__PropertyDescriptionSpecification__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__0__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5699:1: rule__FeatureCaptionSpecification__Group__0__Impl : ( ( rule__FeatureCaptionSpecification__ParameterTypeAssignment_0 ) ) ;
+    public final void rule__FeatureCaptionSpecification__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5703:1: ( ( ( rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5704:1: ( ( rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5703:1: ( ( ( rule__FeatureCaptionSpecification__ParameterTypeAssignment_0 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5704:1: ( ( rule__FeatureCaptionSpecification__ParameterTypeAssignment_0 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5704:1: ( ( rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5705:1: ( rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5704:1: ( ( rule__FeatureCaptionSpecification__ParameterTypeAssignment_0 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5705:1: ( rule__FeatureCaptionSpecification__ParameterTypeAssignment_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeAssignment_0()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getParameterTypeAssignment_0()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5706:1: ( rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5706:2: rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5706:1: ( rule__FeatureCaptionSpecification__ParameterTypeAssignment_0 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5706:2: rule__FeatureCaptionSpecification__ParameterTypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0_in_rule__PropertyDescriptionSpecification__Group__0__Impl11958);
-            rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__ParameterTypeAssignment_0_in_rule__FeatureCaptionSpecification__Group__0__Impl11958);
+            rule__FeatureCaptionSpecification__ParameterTypeAssignment_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17422,7 +17422,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeAssignment_0()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getParameterTypeAssignment_0()); 
             }
 
             }
@@ -17442,26 +17442,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__0__Impl"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__0__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5716:1: rule__PropertyDescriptionSpecification__Group__1 : rule__PropertyDescriptionSpecification__Group__1__Impl rule__PropertyDescriptionSpecification__Group__2 ;
-    public final void rule__PropertyDescriptionSpecification__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5716:1: rule__FeatureCaptionSpecification__Group__1 : rule__FeatureCaptionSpecification__Group__1__Impl rule__FeatureCaptionSpecification__Group__2 ;
+    public final void rule__FeatureCaptionSpecification__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5720:1: ( rule__PropertyDescriptionSpecification__Group__1__Impl rule__PropertyDescriptionSpecification__Group__2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5721:2: rule__PropertyDescriptionSpecification__Group__1__Impl rule__PropertyDescriptionSpecification__Group__2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5720:1: ( rule__FeatureCaptionSpecification__Group__1__Impl rule__FeatureCaptionSpecification__Group__2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5721:2: rule__FeatureCaptionSpecification__Group__1__Impl rule__FeatureCaptionSpecification__Group__2
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__1__Impl_in_rule__PropertyDescriptionSpecification__Group__111988);
-            rule__PropertyDescriptionSpecification__Group__1__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__1__Impl_in_rule__FeatureCaptionSpecification__Group__111988);
+            rule__FeatureCaptionSpecification__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__2_in_rule__PropertyDescriptionSpecification__Group__111991);
-            rule__PropertyDescriptionSpecification__Group__2();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__2_in_rule__FeatureCaptionSpecification__Group__111991);
+            rule__FeatureCaptionSpecification__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17480,12 +17480,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__1"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__1"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__1__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5728:1: rule__PropertyDescriptionSpecification__Group__1__Impl : ( ':' ) ;
-    public final void rule__PropertyDescriptionSpecification__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__1__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5728:1: rule__FeatureCaptionSpecification__Group__1__Impl : ( ':' ) ;
+    public final void rule__FeatureCaptionSpecification__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -17497,11 +17497,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5734:1: ':'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getColonKeyword_1()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getColonKeyword_1()); 
             }
-            match(input,58,FOLLOW_58_in_rule__PropertyDescriptionSpecification__Group__1__Impl12019); if (state.failed) return ;
+            match(input,58,FOLLOW_58_in_rule__FeatureCaptionSpecification__Group__1__Impl12019); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getColonKeyword_1()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getColonKeyword_1()); 
             }
 
             }
@@ -17521,26 +17521,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__1__Impl"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__1__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5747:1: rule__PropertyDescriptionSpecification__Group__2 : rule__PropertyDescriptionSpecification__Group__2__Impl rule__PropertyDescriptionSpecification__Group__3 ;
-    public final void rule__PropertyDescriptionSpecification__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5747:1: rule__FeatureCaptionSpecification__Group__2 : rule__FeatureCaptionSpecification__Group__2__Impl rule__FeatureCaptionSpecification__Group__3 ;
+    public final void rule__FeatureCaptionSpecification__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5751:1: ( rule__PropertyDescriptionSpecification__Group__2__Impl rule__PropertyDescriptionSpecification__Group__3 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5752:2: rule__PropertyDescriptionSpecification__Group__2__Impl rule__PropertyDescriptionSpecification__Group__3
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5751:1: ( rule__FeatureCaptionSpecification__Group__2__Impl rule__FeatureCaptionSpecification__Group__3 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5752:2: rule__FeatureCaptionSpecification__Group__2__Impl rule__FeatureCaptionSpecification__Group__3
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__2__Impl_in_rule__PropertyDescriptionSpecification__Group__212050);
-            rule__PropertyDescriptionSpecification__Group__2__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__2__Impl_in_rule__FeatureCaptionSpecification__Group__212050);
+            rule__FeatureCaptionSpecification__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__3_in_rule__PropertyDescriptionSpecification__Group__212053);
-            rule__PropertyDescriptionSpecification__Group__3();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__3_in_rule__FeatureCaptionSpecification__Group__212053);
+            rule__FeatureCaptionSpecification__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17559,30 +17559,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__2"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__2"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__2__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5759:1: rule__PropertyDescriptionSpecification__Group__2__Impl : ( ( rule__PropertyDescriptionSpecification__FeatureAssignment_2 ) ) ;
-    public final void rule__PropertyDescriptionSpecification__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__2__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5759:1: rule__FeatureCaptionSpecification__Group__2__Impl : ( ( rule__FeatureCaptionSpecification__FeatureAssignment_2 ) ) ;
+    public final void rule__FeatureCaptionSpecification__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5763:1: ( ( ( rule__PropertyDescriptionSpecification__FeatureAssignment_2 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5764:1: ( ( rule__PropertyDescriptionSpecification__FeatureAssignment_2 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5763:1: ( ( ( rule__FeatureCaptionSpecification__FeatureAssignment_2 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5764:1: ( ( rule__FeatureCaptionSpecification__FeatureAssignment_2 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5764:1: ( ( rule__PropertyDescriptionSpecification__FeatureAssignment_2 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5765:1: ( rule__PropertyDescriptionSpecification__FeatureAssignment_2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5764:1: ( ( rule__FeatureCaptionSpecification__FeatureAssignment_2 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5765:1: ( rule__FeatureCaptionSpecification__FeatureAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureAssignment_2()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureAssignment_2()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5766:1: ( rule__PropertyDescriptionSpecification__FeatureAssignment_2 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5766:2: rule__PropertyDescriptionSpecification__FeatureAssignment_2
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5766:1: ( rule__FeatureCaptionSpecification__FeatureAssignment_2 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5766:2: rule__FeatureCaptionSpecification__FeatureAssignment_2
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__FeatureAssignment_2_in_rule__PropertyDescriptionSpecification__Group__2__Impl12080);
-            rule__PropertyDescriptionSpecification__FeatureAssignment_2();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__FeatureAssignment_2_in_rule__FeatureCaptionSpecification__Group__2__Impl12080);
+            rule__FeatureCaptionSpecification__FeatureAssignment_2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17590,7 +17590,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureAssignment_2()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureAssignment_2()); 
             }
 
             }
@@ -17610,26 +17610,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__2__Impl"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__2__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5776:1: rule__PropertyDescriptionSpecification__Group__3 : rule__PropertyDescriptionSpecification__Group__3__Impl rule__PropertyDescriptionSpecification__Group__4 ;
-    public final void rule__PropertyDescriptionSpecification__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5776:1: rule__FeatureCaptionSpecification__Group__3 : rule__FeatureCaptionSpecification__Group__3__Impl rule__FeatureCaptionSpecification__Group__4 ;
+    public final void rule__FeatureCaptionSpecification__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5780:1: ( rule__PropertyDescriptionSpecification__Group__3__Impl rule__PropertyDescriptionSpecification__Group__4 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5781:2: rule__PropertyDescriptionSpecification__Group__3__Impl rule__PropertyDescriptionSpecification__Group__4
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5780:1: ( rule__FeatureCaptionSpecification__Group__3__Impl rule__FeatureCaptionSpecification__Group__4 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5781:2: rule__FeatureCaptionSpecification__Group__3__Impl rule__FeatureCaptionSpecification__Group__4
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__3__Impl_in_rule__PropertyDescriptionSpecification__Group__312110);
-            rule__PropertyDescriptionSpecification__Group__3__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__3__Impl_in_rule__FeatureCaptionSpecification__Group__312110);
+            rule__FeatureCaptionSpecification__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__4_in_rule__PropertyDescriptionSpecification__Group__312113);
-            rule__PropertyDescriptionSpecification__Group__4();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__4_in_rule__FeatureCaptionSpecification__Group__312113);
+            rule__FeatureCaptionSpecification__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17648,12 +17648,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__3"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__3"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5788:1: rule__PropertyDescriptionSpecification__Group__3__Impl : ( '->' ) ;
-    public final void rule__PropertyDescriptionSpecification__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5788:1: rule__FeatureCaptionSpecification__Group__3__Impl : ( '->' ) ;
+    public final void rule__FeatureCaptionSpecification__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -17665,11 +17665,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5794:1: '->'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3()); 
             }
-            match(input,26,FOLLOW_26_in_rule__PropertyDescriptionSpecification__Group__3__Impl12141); if (state.failed) return ;
+            match(input,26,FOLLOW_26_in_rule__FeatureCaptionSpecification__Group__3__Impl12141); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getHyphenMinusGreaterThanSignKeyword_3()); 
             }
 
             }
@@ -17689,21 +17689,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__3__Impl"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__3__Impl"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5807:1: rule__PropertyDescriptionSpecification__Group__4 : rule__PropertyDescriptionSpecification__Group__4__Impl ;
-    public final void rule__PropertyDescriptionSpecification__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__4"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5807:1: rule__FeatureCaptionSpecification__Group__4 : rule__FeatureCaptionSpecification__Group__4__Impl ;
+    public final void rule__FeatureCaptionSpecification__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5811:1: ( rule__PropertyDescriptionSpecification__Group__4__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5812:2: rule__PropertyDescriptionSpecification__Group__4__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5811:1: ( rule__FeatureCaptionSpecification__Group__4__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5812:2: rule__FeatureCaptionSpecification__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__Group__4__Impl_in_rule__PropertyDescriptionSpecification__Group__412172);
-            rule__PropertyDescriptionSpecification__Group__4__Impl();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__Group__4__Impl_in_rule__FeatureCaptionSpecification__Group__412172);
+            rule__FeatureCaptionSpecification__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17722,30 +17722,30 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__4"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__4"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__Group__4__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5818:1: rule__PropertyDescriptionSpecification__Group__4__Impl : ( ( rule__PropertyDescriptionSpecification__ExpressionAssignment_4 ) ) ;
-    public final void rule__PropertyDescriptionSpecification__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__Group__4__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5818:1: rule__FeatureCaptionSpecification__Group__4__Impl : ( ( rule__FeatureCaptionSpecification__ExpressionAssignment_4 ) ) ;
+    public final void rule__FeatureCaptionSpecification__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5822:1: ( ( ( rule__PropertyDescriptionSpecification__ExpressionAssignment_4 ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5823:1: ( ( rule__PropertyDescriptionSpecification__ExpressionAssignment_4 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5822:1: ( ( ( rule__FeatureCaptionSpecification__ExpressionAssignment_4 ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5823:1: ( ( rule__FeatureCaptionSpecification__ExpressionAssignment_4 ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5823:1: ( ( rule__PropertyDescriptionSpecification__ExpressionAssignment_4 ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5824:1: ( rule__PropertyDescriptionSpecification__ExpressionAssignment_4 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5823:1: ( ( rule__FeatureCaptionSpecification__ExpressionAssignment_4 ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5824:1: ( rule__FeatureCaptionSpecification__ExpressionAssignment_4 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionAssignment_4()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getExpressionAssignment_4()); 
             }
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5825:1: ( rule__PropertyDescriptionSpecification__ExpressionAssignment_4 )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5825:2: rule__PropertyDescriptionSpecification__ExpressionAssignment_4
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5825:1: ( rule__FeatureCaptionSpecification__ExpressionAssignment_4 )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:5825:2: rule__FeatureCaptionSpecification__ExpressionAssignment_4
             {
-            pushFollow(FOLLOW_rule__PropertyDescriptionSpecification__ExpressionAssignment_4_in_rule__PropertyDescriptionSpecification__Group__4__Impl12199);
-            rule__PropertyDescriptionSpecification__ExpressionAssignment_4();
+            pushFollow(FOLLOW_rule__FeatureCaptionSpecification__ExpressionAssignment_4_in_rule__FeatureCaptionSpecification__Group__4__Impl12199);
+            rule__FeatureCaptionSpecification__ExpressionAssignment_4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -17753,7 +17753,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionAssignment_4()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getExpressionAssignment_4()); 
             }
 
             }
@@ -17773,7 +17773,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__Group__4__Impl"
+    // $ANTLR end "rule__FeatureCaptionSpecification__Group__4__Impl"
 
 
     // $ANTLR start "rule__FeaturesProvider__Group__0"
@@ -55982,17 +55982,17 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
 
     // $ANTLR start "rule__Module__UnorderedGroup_4__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19893:1: rule__Module__UnorderedGroup_4__Impl : ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) ) ;
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19893:1: rule__Module__UnorderedGroup_4__Impl : ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) ) ;
     public final void rule__Module__UnorderedGroup_4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         		boolean selected = false;
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19898:1: ( ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19899:3: ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19898:1: ( ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19899:3: ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19899:3: ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19899:3: ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) )
             int alt127=10;
             alt127 = dfa127.predict(input);
             switch (alt127) {
@@ -56044,31 +56044,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) )
                     {
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:5: {...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:5: {...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1) ) {
                         if (state.backtracking>0) {state.failed=true; return ;}
                         throw new FailedPredicateException(input, "rule__Module__UnorderedGroup_4__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1)");
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:103: ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19920:6: ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:103: ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19920:6: ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) )
                     {
                     getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1);
                     selected = true;
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19926:6: ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19928:7: ( rule__Module__PropertyDescriptionProviderAssignment_4_1 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19926:6: ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19928:7: ( rule__Module__FeatureCaptionProviderAssignment_4_1 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getModuleAccess().getPropertyDescriptionProviderAssignment_4_1()); 
+                       before(grammarAccess.getModuleAccess().getFeatureCaptionProviderAssignment_4_1()); 
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:7: ( rule__Module__PropertyDescriptionProviderAssignment_4_1 )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:8: rule__Module__PropertyDescriptionProviderAssignment_4_1
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:7: ( rule__Module__FeatureCaptionProviderAssignment_4_1 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:8: rule__Module__FeatureCaptionProviderAssignment_4_1
                     {
-                    pushFollow(FOLLOW_rule__Module__PropertyDescriptionProviderAssignment_4_1_in_rule__Module__UnorderedGroup_4__Impl39962);
-                    rule__Module__PropertyDescriptionProviderAssignment_4_1();
+                    pushFollow(FOLLOW_rule__Module__FeatureCaptionProviderAssignment_4_1_in_rule__Module__UnorderedGroup_4__Impl39962);
+                    rule__Module__FeatureCaptionProviderAssignment_4_1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -56076,7 +56076,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getModuleAccess().getPropertyDescriptionProviderAssignment_4_1()); 
+                       after(grammarAccess.getModuleAccess().getFeatureCaptionProviderAssignment_4_1()); 
                     }
 
                     }
@@ -56091,31 +56091,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
                     break;
                 case 3 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) )
                     {
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:5: {...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:5: {...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2) ) {
                         if (state.backtracking>0) {state.failed=true; return ;}
                         throw new FailedPredicateException(input, "rule__Module__UnorderedGroup_4__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2)");
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:103: ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19937:6: ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:103: ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19937:6: ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) )
                     {
                     getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2);
                     selected = true;
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19943:6: ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19945:7: ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19943:6: ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19945:7: ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderAssignment_4_2()); 
+                       before(grammarAccess.getModuleAccess().getFormFeatureCaptionProviderAssignment_4_2()); 
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:7: ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:8: rule__Module__FormPropertyDescriptionProviderAssignment_4_2
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:7: ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:8: rule__Module__FormFeatureCaptionProviderAssignment_4_2
                     {
-                    pushFollow(FOLLOW_rule__Module__FormPropertyDescriptionProviderAssignment_4_2_in_rule__Module__UnorderedGroup_4__Impl40053);
-                    rule__Module__FormPropertyDescriptionProviderAssignment_4_2();
+                    pushFollow(FOLLOW_rule__Module__FormFeatureCaptionProviderAssignment_4_2_in_rule__Module__UnorderedGroup_4__Impl40053);
+                    rule__Module__FormFeatureCaptionProviderAssignment_4_2();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -56123,7 +56123,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderAssignment_4_2()); 
+                       after(grammarAccess.getModuleAccess().getFormFeatureCaptionProviderAssignment_4_2()); 
                     }
 
                     }
@@ -56138,31 +56138,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
                     break;
                 case 4 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) )
                     {
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:5: {...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:5: {...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) )
                     {
                     if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3) ) {
                         if (state.backtracking>0) {state.failed=true; return ;}
                         throw new FailedPredicateException(input, "rule__Module__UnorderedGroup_4__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3)");
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:103: ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19954:6: ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:103: ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19954:6: ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) )
                     {
                     getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3);
                     selected = true;
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19960:6: ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19962:7: ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19960:6: ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19962:7: ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderAssignment_4_3()); 
+                       before(grammarAccess.getModuleAccess().getDialogFeatureCaptionProviderAssignment_4_3()); 
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:7: ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:8: rule__Module__DialogPropertyDescriptionProviderAssignment_4_3
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:7: ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:8: rule__Module__DialogFeatureCaptionProviderAssignment_4_3
                     {
-                    pushFollow(FOLLOW_rule__Module__DialogPropertyDescriptionProviderAssignment_4_3_in_rule__Module__UnorderedGroup_4__Impl40144);
-                    rule__Module__DialogPropertyDescriptionProviderAssignment_4_3();
+                    pushFollow(FOLLOW_rule__Module__DialogFeatureCaptionProviderAssignment_4_3_in_rule__Module__UnorderedGroup_4__Impl40144);
+                    rule__Module__DialogFeatureCaptionProviderAssignment_4_3();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -56170,7 +56170,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderAssignment_4_3()); 
+                       after(grammarAccess.getModuleAccess().getDialogFeatureCaptionProviderAssignment_4_3()); 
                     }
 
                     }
@@ -57273,33 +57273,33 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     // $ANTLR end "rule__LabelProvider__UnorderedGroup_3__1"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__UnorderedGroup_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20325:1: rule__FormPropertyDescriptionProvider__UnorderedGroup_3 : ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0 )? ;
-    public final void rule__FormPropertyDescriptionProvider__UnorderedGroup_3() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__UnorderedGroup_3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20325:1: rule__FormFeatureCaptionProvider__UnorderedGroup_3 : ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__0 )? ;
+    public final void rule__FormFeatureCaptionProvider__UnorderedGroup_3() throws RecognitionException {
 
             	int stackSize = keepStackSize();
-        		getUnorderedGroupHelper().enter(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+        		getUnorderedGroupHelper().enter(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20330:1: ( ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0 )? )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20330:1: ( ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__0 )? )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__0 )?
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__0 )?
             int alt140=2;
             int LA140_0 = input.LA(1);
 
-            if ( LA140_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA140_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                 alt140=1;
             }
-            else if ( LA140_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA140_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                 alt140=1;
             }
             switch (alt140) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__FormFeatureCaptionProvider__UnorderedGroup_3__0
                     {
-                    pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_341338);
-                    rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0();
+                    pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__0_in_rule__FormFeatureCaptionProvider__UnorderedGroup_341338);
+                    rule__FormFeatureCaptionProvider__UnorderedGroup_3__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57319,34 +57319,34 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         finally {
 
-            	getUnorderedGroupHelper().leave(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            	getUnorderedGroupHelper().leave(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
             	restoreStackSize(stackSize);
 
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__UnorderedGroup_3"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__UnorderedGroup_3"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20341:1: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl : ( ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) ) ;
-    public final void rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20341:1: rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl : ( ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) ) ) ) ;
+    public final void rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         		boolean selected = false;
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20346:1: ( ( ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20347:3: ( ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20346:1: ( ( ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20347:3: ( ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) ) ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20347:3: ( ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20347:3: ( ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) ) ) )
             int alt141=2;
             int LA141_0 = input.LA(1);
 
-            if ( LA141_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA141_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                 alt141=1;
             }
-            else if ( LA141_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA141_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                 alt141=2;
             }
             else {
@@ -57358,31 +57358,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
             switch (alt141) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) )
                     {
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:5: {...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:5: {...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) )
                     {
-                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                         if (state.backtracking>0) {state.failed=true; return ;}
-                        throw new FailedPredicateException(input, "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)");
+                        throw new FailedPredicateException(input, "rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)");
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:128: ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20351:6: ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:123: ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20351:6: ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) )
                     {
-                    getUnorderedGroupHelper().select(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
+                    getUnorderedGroupHelper().select(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
                     selected = true;
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20357:6: ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20359:7: ( rule__FormPropertyDescriptionProvider__Group_3_0__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20357:6: ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20359:7: ( rule__FormFeatureCaptionProvider__Group_3_0__0 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup_3_0()); 
+                       before(grammarAccess.getFormFeatureCaptionProviderAccess().getGroup_3_0()); 
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:7: ( rule__FormPropertyDescriptionProvider__Group_3_0__0 )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:8: rule__FormPropertyDescriptionProvider__Group_3_0__0
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:7: ( rule__FormFeatureCaptionProvider__Group_3_0__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:8: rule__FormFeatureCaptionProvider__Group_3_0__0
                     {
-                    pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__0_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl41425);
-                    rule__FormPropertyDescriptionProvider__Group_3_0__0();
+                    pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__0_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl41425);
+                    rule__FormFeatureCaptionProvider__Group_3_0__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57390,7 +57390,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup_3_0()); 
+                       after(grammarAccess.getFormFeatureCaptionProviderAccess().getGroup_3_0()); 
                     }
 
                     }
@@ -57405,31 +57405,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20366:4: ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20366:4: ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) ) )
                     {
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20366:4: ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20367:5: {...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20366:4: ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20367:5: {...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) )
                     {
-                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                         if (state.backtracking>0) {state.failed=true; return ;}
-                        throw new FailedPredicateException(input, "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1)");
+                        throw new FailedPredicateException(input, "rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1)");
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20367:128: ( ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20368:6: ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20367:123: ( ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20368:6: ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) )
                     {
-                    getUnorderedGroupHelper().select(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1);
+                    getUnorderedGroupHelper().select(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1);
                     selected = true;
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20374:6: ( ( rule__FormPropertyDescriptionProvider__Group_3_1__0 ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20376:7: ( rule__FormPropertyDescriptionProvider__Group_3_1__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20374:6: ( ( rule__FormFeatureCaptionProvider__Group_3_1__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20376:7: ( rule__FormFeatureCaptionProvider__Group_3_1__0 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup_3_1()); 
+                       before(grammarAccess.getFormFeatureCaptionProviderAccess().getGroup_3_1()); 
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20377:7: ( rule__FormPropertyDescriptionProvider__Group_3_1__0 )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20377:8: rule__FormPropertyDescriptionProvider__Group_3_1__0
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20377:7: ( rule__FormFeatureCaptionProvider__Group_3_1__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20377:8: rule__FormFeatureCaptionProvider__Group_3_1__0
                     {
-                    pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__0_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl41516);
-                    rule__FormPropertyDescriptionProvider__Group_3_1__0();
+                    pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__0_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl41516);
+                    rule__FormFeatureCaptionProvider__Group_3_1__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57437,7 +57437,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup_3_1()); 
+                       after(grammarAccess.getFormFeatureCaptionProviderAccess().getGroup_3_1()); 
                     }
 
                     }
@@ -57465,46 +57465,46 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         finally {
 
             	if (selected)
-            		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3());
             	restoreStackSize(stackSize);
 
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20392:1: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0 : rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1 )? ;
-    public final void rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__UnorderedGroup_3__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20392:1: rule__FormFeatureCaptionProvider__UnorderedGroup_3__0 : rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__1 )? ;
+    public final void rule__FormFeatureCaptionProvider__UnorderedGroup_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20396:1: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1 )? )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20397:2: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20396:1: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__1 )? )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20397:2: rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__1 )?
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__041575);
-            rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__041575);
+            rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:2: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:2: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__1 )?
             int alt142=2;
             int LA142_0 = input.LA(1);
 
-            if ( LA142_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA142_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                 alt142=1;
             }
-            else if ( LA142_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA142_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                 alt142=1;
             }
             switch (alt142) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__FormFeatureCaptionProvider__UnorderedGroup_3__1
                     {
-                    pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__041578);
-                    rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1();
+                    pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__1_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__041578);
+                    rule__FormFeatureCaptionProvider__UnorderedGroup_3__1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57529,21 +57529,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__UnorderedGroup_3__0"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20405:1: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1 : rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl ;
-    public final void rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__UnorderedGroup_3__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20405:1: rule__FormFeatureCaptionProvider__UnorderedGroup_3__1 : rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl ;
+    public final void rule__FormFeatureCaptionProvider__UnorderedGroup_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20409:1: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20410:2: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20409:1: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20410:2: rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl
             {
-            pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__141603);
-            rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl();
+            pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__141603);
+            rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -57562,36 +57562,36 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__UnorderedGroup_3__1"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20421:1: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3 : ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0 )? ;
-    public final void rule__DialogPropertyDescriptionProvider__UnorderedGroup_3() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__UnorderedGroup_3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20421:1: rule__DialogFeatureCaptionProvider__UnorderedGroup_3 : ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0 )? ;
+    public final void rule__DialogFeatureCaptionProvider__UnorderedGroup_3() throws RecognitionException {
 
             	int stackSize = keepStackSize();
-        		getUnorderedGroupHelper().enter(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+        		getUnorderedGroupHelper().enter(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20426:1: ( ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0 )? )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20426:1: ( ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0 )? )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0 )?
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0 )?
             int alt143=2;
             int LA143_0 = input.LA(1);
 
-            if ( LA143_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA143_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                 alt143=1;
             }
-            else if ( LA143_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA143_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                 alt143=1;
             }
             switch (alt143) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0
                     {
-                    pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_341631);
-                    rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0();
+                    pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_341631);
+                    rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57611,34 +57611,34 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         finally {
 
-            	getUnorderedGroupHelper().leave(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            	getUnorderedGroupHelper().leave(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
             	restoreStackSize(stackSize);
 
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__UnorderedGroup_3"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20437:1: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl : ( ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) ) ;
-    public final void rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20437:1: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl : ( ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) ) ) ) ;
+    public final void rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         		boolean selected = false;
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20442:1: ( ( ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20443:3: ( ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20442:1: ( ( ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20443:3: ( ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) ) ) )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20443:3: ( ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) ) ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20443:3: ( ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) ) | ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) ) ) )
             int alt144=2;
             int LA144_0 = input.LA(1);
 
-            if ( LA144_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA144_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                 alt144=1;
             }
-            else if ( LA144_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA144_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                 alt144=2;
             }
             else {
@@ -57650,31 +57650,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             }
             switch (alt144) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) )
                     {
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:5: {...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:5: {...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) )
                     {
-                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                         if (state.backtracking>0) {state.failed=true; return ;}
-                        throw new FailedPredicateException(input, "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)");
+                        throw new FailedPredicateException(input, "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)");
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:130: ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20447:6: ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:125: ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20447:6: ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) )
                     {
-                    getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
+                    getUnorderedGroupHelper().select(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
                     selected = true;
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20453:6: ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20455:7: ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20453:6: ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20455:7: ( rule__DialogFeatureCaptionProvider__Group_3_0__0 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_0()); 
+                       before(grammarAccess.getDialogFeatureCaptionProviderAccess().getGroup_3_0()); 
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:7: ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:8: rule__DialogPropertyDescriptionProvider__Group_3_0__0
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:7: ( rule__DialogFeatureCaptionProvider__Group_3_0__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:8: rule__DialogFeatureCaptionProvider__Group_3_0__0
                     {
-                    pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__0_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl41718);
-                    rule__DialogPropertyDescriptionProvider__Group_3_0__0();
+                    pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__0_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl41718);
+                    rule__DialogFeatureCaptionProvider__Group_3_0__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57682,7 +57682,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_0()); 
+                       after(grammarAccess.getDialogFeatureCaptionProviderAccess().getGroup_3_0()); 
                     }
 
                     }
@@ -57697,31 +57697,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
                     break;
                 case 2 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20462:4: ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20462:4: ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) ) )
                     {
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20462:4: ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20463:5: {...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20462:4: ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20463:5: {...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) )
                     {
-                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+                    if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                         if (state.backtracking>0) {state.failed=true; return ;}
-                        throw new FailedPredicateException(input, "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1)");
+                        throw new FailedPredicateException(input, "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1)");
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20463:130: ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20464:6: ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20463:125: ( ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20464:6: ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) )
                     {
-                    getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1);
+                    getUnorderedGroupHelper().select(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1);
                     selected = true;
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20470:6: ( ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 ) )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20472:7: ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20470:6: ( ( rule__DialogFeatureCaptionProvider__Group_3_1__0 ) )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20472:7: ( rule__DialogFeatureCaptionProvider__Group_3_1__0 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_1()); 
+                       before(grammarAccess.getDialogFeatureCaptionProviderAccess().getGroup_3_1()); 
                     }
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20473:7: ( rule__DialogPropertyDescriptionProvider__Group_3_1__0 )
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20473:8: rule__DialogPropertyDescriptionProvider__Group_3_1__0
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20473:7: ( rule__DialogFeatureCaptionProvider__Group_3_1__0 )
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20473:8: rule__DialogFeatureCaptionProvider__Group_3_1__0
                     {
-                    pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__0_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl41809);
-                    rule__DialogPropertyDescriptionProvider__Group_3_1__0();
+                    pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__0_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl41809);
+                    rule__DialogFeatureCaptionProvider__Group_3_1__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57729,7 +57729,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_1()); 
+                       after(grammarAccess.getDialogFeatureCaptionProviderAccess().getGroup_3_1()); 
                     }
 
                     }
@@ -57757,46 +57757,46 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         finally {
 
             	if (selected)
-            		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3());
+            		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3());
             	restoreStackSize(stackSize);
 
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20488:1: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0 : rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1 )? ;
-    public final void rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20488:1: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0 : rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1 )? ;
+    public final void rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20492:1: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1 )? )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20493:2: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20492:1: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1 )? )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20493:2: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1 )?
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__041868);
-            rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__041868);
+            rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20494:2: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1 )?
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20494:2: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1 )?
             int alt145=2;
             int LA145_0 = input.LA(1);
 
-            if ( LA145_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA145_0 ==52 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
                 alt145=1;
             }
-            else if ( LA145_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA145_0 ==56 && getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 1) ) {
                 alt145=1;
             }
             switch (alt145) {
                 case 1 :
-                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1
+                    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:0:0: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1
                     {
-                    pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__041871);
-                    rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1();
+                    pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__041871);
+                    rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -57821,21 +57821,21 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20501:1: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1 : rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl ;
-    public final void rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20501:1: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1 : rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl ;
+    public final void rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20505:1: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20506:2: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20505:1: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20506:2: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl
             {
-            pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__141896);
-            rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl();
+            pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__141896);
+            rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -57854,7 +57854,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1"
 
 
     // $ANTLR start "rule__Model__ImportSectionAssignment_0"
@@ -58082,29 +58082,29 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     // $ANTLR end "rule__Module__LabelProviderAssignment_4_0"
 
 
-    // $ANTLR start "rule__Module__PropertyDescriptionProviderAssignment_4_1"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20592:1: rule__Module__PropertyDescriptionProviderAssignment_4_1 : ( rulePropertyDescriptionProvider ) ;
-    public final void rule__Module__PropertyDescriptionProviderAssignment_4_1() throws RecognitionException {
+    // $ANTLR start "rule__Module__FeatureCaptionProviderAssignment_4_1"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20592:1: rule__Module__FeatureCaptionProviderAssignment_4_1 : ( ruleFeatureCaptionProvider ) ;
+    public final void rule__Module__FeatureCaptionProviderAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20596:1: ( ( rulePropertyDescriptionProvider ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20597:1: ( rulePropertyDescriptionProvider )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20596:1: ( ( ruleFeatureCaptionProvider ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20597:1: ( ruleFeatureCaptionProvider )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20597:1: ( rulePropertyDescriptionProvider )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20598:1: rulePropertyDescriptionProvider
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20597:1: ( ruleFeatureCaptionProvider )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20598:1: ruleFeatureCaptionProvider
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getModuleAccess().getPropertyDescriptionProviderPropertyDescriptionProviderParserRuleCall_4_1_0()); 
+               before(grammarAccess.getModuleAccess().getFeatureCaptionProviderFeatureCaptionProviderParserRuleCall_4_1_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionProvider_in_rule__Module__PropertyDescriptionProviderAssignment_4_142083);
-            rulePropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleFeatureCaptionProvider_in_rule__Module__FeatureCaptionProviderAssignment_4_142083);
+            ruleFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getModuleAccess().getPropertyDescriptionProviderPropertyDescriptionProviderParserRuleCall_4_1_0()); 
+               after(grammarAccess.getModuleAccess().getFeatureCaptionProviderFeatureCaptionProviderParserRuleCall_4_1_0()); 
             }
 
             }
@@ -58124,32 +58124,32 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__Module__PropertyDescriptionProviderAssignment_4_1"
+    // $ANTLR end "rule__Module__FeatureCaptionProviderAssignment_4_1"
 
 
-    // $ANTLR start "rule__Module__FormPropertyDescriptionProviderAssignment_4_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20607:1: rule__Module__FormPropertyDescriptionProviderAssignment_4_2 : ( ruleFormPropertyDescriptionProvider ) ;
-    public final void rule__Module__FormPropertyDescriptionProviderAssignment_4_2() throws RecognitionException {
+    // $ANTLR start "rule__Module__FormFeatureCaptionProviderAssignment_4_2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20607:1: rule__Module__FormFeatureCaptionProviderAssignment_4_2 : ( ruleFormFeatureCaptionProvider ) ;
+    public final void rule__Module__FormFeatureCaptionProviderAssignment_4_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20611:1: ( ( ruleFormPropertyDescriptionProvider ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20612:1: ( ruleFormPropertyDescriptionProvider )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20611:1: ( ( ruleFormFeatureCaptionProvider ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20612:1: ( ruleFormFeatureCaptionProvider )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20612:1: ( ruleFormPropertyDescriptionProvider )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20613:1: ruleFormPropertyDescriptionProvider
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20612:1: ( ruleFormFeatureCaptionProvider )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20613:1: ruleFormFeatureCaptionProvider
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderFormPropertyDescriptionProviderParserRuleCall_4_2_0()); 
+               before(grammarAccess.getModuleAccess().getFormFeatureCaptionProviderFormFeatureCaptionProviderParserRuleCall_4_2_0()); 
             }
-            pushFollow(FOLLOW_ruleFormPropertyDescriptionProvider_in_rule__Module__FormPropertyDescriptionProviderAssignment_4_242114);
-            ruleFormPropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleFormFeatureCaptionProvider_in_rule__Module__FormFeatureCaptionProviderAssignment_4_242114);
+            ruleFormFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderFormPropertyDescriptionProviderParserRuleCall_4_2_0()); 
+               after(grammarAccess.getModuleAccess().getFormFeatureCaptionProviderFormFeatureCaptionProviderParserRuleCall_4_2_0()); 
             }
 
             }
@@ -58169,32 +58169,32 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__Module__FormPropertyDescriptionProviderAssignment_4_2"
+    // $ANTLR end "rule__Module__FormFeatureCaptionProviderAssignment_4_2"
 
 
-    // $ANTLR start "rule__Module__DialogPropertyDescriptionProviderAssignment_4_3"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20622:1: rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 : ( ruleDialogPropertyDescriptionProvider ) ;
-    public final void rule__Module__DialogPropertyDescriptionProviderAssignment_4_3() throws RecognitionException {
+    // $ANTLR start "rule__Module__DialogFeatureCaptionProviderAssignment_4_3"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20622:1: rule__Module__DialogFeatureCaptionProviderAssignment_4_3 : ( ruleDialogFeatureCaptionProvider ) ;
+    public final void rule__Module__DialogFeatureCaptionProviderAssignment_4_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20626:1: ( ( ruleDialogPropertyDescriptionProvider ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20627:1: ( ruleDialogPropertyDescriptionProvider )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20626:1: ( ( ruleDialogFeatureCaptionProvider ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20627:1: ( ruleDialogFeatureCaptionProvider )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20627:1: ( ruleDialogPropertyDescriptionProvider )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20628:1: ruleDialogPropertyDescriptionProvider
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20627:1: ( ruleDialogFeatureCaptionProvider )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20628:1: ruleDialogFeatureCaptionProvider
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderDialogPropertyDescriptionProviderParserRuleCall_4_3_0()); 
+               before(grammarAccess.getModuleAccess().getDialogFeatureCaptionProviderDialogFeatureCaptionProviderParserRuleCall_4_3_0()); 
             }
-            pushFollow(FOLLOW_ruleDialogPropertyDescriptionProvider_in_rule__Module__DialogPropertyDescriptionProviderAssignment_4_342145);
-            ruleDialogPropertyDescriptionProvider();
+            pushFollow(FOLLOW_ruleDialogFeatureCaptionProvider_in_rule__Module__DialogFeatureCaptionProviderAssignment_4_342145);
+            ruleDialogFeatureCaptionProvider();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderDialogPropertyDescriptionProviderParserRuleCall_4_3_0()); 
+               after(grammarAccess.getModuleAccess().getDialogFeatureCaptionProviderDialogFeatureCaptionProviderParserRuleCall_4_3_0()); 
             }
 
             }
@@ -58214,7 +58214,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__Module__DialogPropertyDescriptionProviderAssignment_4_3"
+    // $ANTLR end "rule__Module__DialogFeatureCaptionProviderAssignment_4_3"
 
 
     // $ANTLR start "rule__Module__FeaturesProviderAssignment_4_4"
@@ -58757,29 +58757,29 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     // $ANTLR end "rule__LabelSpecification__ExpressionAssignment_3"
 
 
-    // $ANTLR start "rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20817:1: rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2 : ( rulePropertyDescriptionSpecification ) ;
-    public final void rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionProvider__SpecificationsAssignment_3_2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20817:1: rule__FeatureCaptionProvider__SpecificationsAssignment_3_2 : ( ruleFeatureCaptionSpecification ) ;
+    public final void rule__FeatureCaptionProvider__SpecificationsAssignment_3_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20821:1: ( ( rulePropertyDescriptionSpecification ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20822:1: ( rulePropertyDescriptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20821:1: ( ( ruleFeatureCaptionSpecification ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20822:1: ( ruleFeatureCaptionSpecification )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20822:1: ( rulePropertyDescriptionSpecification )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20823:1: rulePropertyDescriptionSpecification
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20822:1: ( ruleFeatureCaptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20823:1: ruleFeatureCaptionSpecification
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0()); 
+               before(grammarAccess.getFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_2_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_rule__PropertyDescriptionProvider__SpecificationsAssignment_3_242548);
-            rulePropertyDescriptionSpecification();
+            pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_rule__FeatureCaptionProvider__SpecificationsAssignment_3_242548);
+            ruleFeatureCaptionSpecification();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_2_0()); 
+               after(grammarAccess.getFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_2_0()); 
             }
 
             }
@@ -58799,32 +58799,32 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2"
+    // $ANTLR end "rule__FeatureCaptionProvider__SpecificationsAssignment_3_2"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20832:1: rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 : ( rulePropertyDescriptionSpecification ) ;
-    public final void rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20832:1: rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2 : ( ruleFeatureCaptionSpecification ) ;
+    public final void rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20836:1: ( ( rulePropertyDescriptionSpecification ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20837:1: ( rulePropertyDescriptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20836:1: ( ( ruleFeatureCaptionSpecification ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20837:1: ( ruleFeatureCaptionSpecification )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20837:1: ( rulePropertyDescriptionSpecification )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20838:1: rulePropertyDescriptionSpecification
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20837:1: ( ruleFeatureCaptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20838:1: ruleFeatureCaptionSpecification
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_242579);
-            rulePropertyDescriptionSpecification();
+            pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_242579);
+            ruleFeatureCaptionSpecification();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
             }
 
             }
@@ -58844,32 +58844,32 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2"
 
 
-    // $ANTLR start "rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20847:1: rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 : ( rulePropertyDescriptionSpecification ) ;
-    public final void rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2() throws RecognitionException {
+    // $ANTLR start "rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20847:1: rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 : ( ruleFeatureCaptionSpecification ) ;
+    public final void rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20851:1: ( ( rulePropertyDescriptionSpecification ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20852:1: ( rulePropertyDescriptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20851:1: ( ( ruleFeatureCaptionSpecification ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20852:1: ( ruleFeatureCaptionSpecification )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20852:1: ( rulePropertyDescriptionSpecification )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20853:1: rulePropertyDescriptionSpecification
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20852:1: ( ruleFeatureCaptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20853:1: ruleFeatureCaptionSpecification
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+               before(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_242610);
-            rulePropertyDescriptionSpecification();
+            pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_242610);
+            ruleFeatureCaptionSpecification();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getFormPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+               after(grammarAccess.getFormFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
             }
 
             }
@@ -58889,32 +58889,32 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2"
+    // $ANTLR end "rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20862:1: rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2 : ( rulePropertyDescriptionSpecification ) ;
-    public final void rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20862:1: rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2 : ( ruleFeatureCaptionSpecification ) ;
+    public final void rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20866:1: ( ( rulePropertyDescriptionSpecification ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20867:1: ( rulePropertyDescriptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20866:1: ( ( ruleFeatureCaptionSpecification ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20867:1: ( ruleFeatureCaptionSpecification )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20867:1: ( rulePropertyDescriptionSpecification )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20868:1: rulePropertyDescriptionSpecification
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20867:1: ( ruleFeatureCaptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20868:1: ruleFeatureCaptionSpecification
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_242641);
-            rulePropertyDescriptionSpecification();
+            pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_242641);
+            ruleFeatureCaptionSpecification();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_0_2_0()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getSpecificationsFeatureCaptionSpecificationParserRuleCall_3_0_2_0()); 
             }
 
             }
@@ -58934,32 +58934,32 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2"
 
 
-    // $ANTLR start "rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20877:1: rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2 : ( rulePropertyDescriptionSpecification ) ;
-    public final void rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2() throws RecognitionException {
+    // $ANTLR start "rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20877:1: rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2 : ( ruleFeatureCaptionSpecification ) ;
+    public final void rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20881:1: ( ( rulePropertyDescriptionSpecification ) )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20882:1: ( rulePropertyDescriptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20881:1: ( ( ruleFeatureCaptionSpecification ) )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20882:1: ( ruleFeatureCaptionSpecification )
             {
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20882:1: ( rulePropertyDescriptionSpecification )
-            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20883:1: rulePropertyDescriptionSpecification
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20882:1: ( ruleFeatureCaptionSpecification )
+            // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20883:1: ruleFeatureCaptionSpecification
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+               before(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyDescriptionSpecification_in_rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_242672);
-            rulePropertyDescriptionSpecification();
+            pushFollow(FOLLOW_ruleFeatureCaptionSpecification_in_rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_242672);
+            ruleFeatureCaptionSpecification();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getDialogPropertyDescriptionProviderAccess().getLabelSpecificationsPropertyDescriptionSpecificationParserRuleCall_3_1_2_0()); 
+               after(grammarAccess.getDialogFeatureCaptionProviderAccess().getLabelSpecificationsFeatureCaptionSpecificationParserRuleCall_3_1_2_0()); 
             }
 
             }
@@ -58979,12 +58979,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2"
+    // $ANTLR end "rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20892:1: rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0 : ( ruleJvmTypeReference ) ;
-    public final void rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__ParameterTypeAssignment_0"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20892:1: rule__FeatureCaptionSpecification__ParameterTypeAssignment_0 : ( ruleJvmTypeReference ) ;
+    public final void rule__FeatureCaptionSpecification__ParameterTypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -58996,15 +58996,15 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20898:1: ruleJvmTypeReference
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__PropertyDescriptionSpecification__ParameterTypeAssignment_042703);
+            pushFollow(FOLLOW_ruleJvmTypeReference_in_rule__FeatureCaptionSpecification__ParameterTypeAssignment_042703);
             ruleJvmTypeReference();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getParameterTypeJvmTypeReferenceParserRuleCall_0_0()); 
             }
 
             }
@@ -59024,12 +59024,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0"
+    // $ANTLR end "rule__FeatureCaptionSpecification__ParameterTypeAssignment_0"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__FeatureAssignment_2"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20907:1: rule__PropertyDescriptionSpecification__FeatureAssignment_2 : ( ( RULE_ID ) ) ;
-    public final void rule__PropertyDescriptionSpecification__FeatureAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__FeatureAssignment_2"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20907:1: rule__FeatureCaptionSpecification__FeatureAssignment_2 : ( ( RULE_ID ) ) ;
+    public final void rule__FeatureCaptionSpecification__FeatureAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -59041,23 +59041,23 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20913:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
             }
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20914:1: ( RULE_ID )
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20915:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureJvmMemberIDTerminalRuleCall_2_0_1()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureJvmMemberIDTerminalRuleCall_2_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PropertyDescriptionSpecification__FeatureAssignment_242738); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FeatureCaptionSpecification__FeatureAssignment_242738); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureJvmMemberIDTerminalRuleCall_2_0_1()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureJvmMemberIDTerminalRuleCall_2_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getFeatureJvmMemberCrossReference_2_0()); 
             }
 
             }
@@ -59077,12 +59077,12 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__FeatureAssignment_2"
+    // $ANTLR end "rule__FeatureCaptionSpecification__FeatureAssignment_2"
 
 
-    // $ANTLR start "rule__PropertyDescriptionSpecification__ExpressionAssignment_4"
-    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20926:1: rule__PropertyDescriptionSpecification__ExpressionAssignment_4 : ( ruleXExpression ) ;
-    public final void rule__PropertyDescriptionSpecification__ExpressionAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__FeatureCaptionSpecification__ExpressionAssignment_4"
+    // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20926:1: rule__FeatureCaptionSpecification__ExpressionAssignment_4 : ( ruleXExpression ) ;
+    public final void rule__FeatureCaptionSpecification__ExpressionAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -59094,15 +59094,15 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20932:1: ruleXExpression
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
+               before(grammarAccess.getFeatureCaptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleXExpression_in_rule__PropertyDescriptionSpecification__ExpressionAssignment_442773);
+            pushFollow(FOLLOW_ruleXExpression_in_rule__FeatureCaptionSpecification__ExpressionAssignment_442773);
             ruleXExpression();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyDescriptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
+               after(grammarAccess.getFeatureCaptionSpecificationAccess().getExpressionXExpressionParserRuleCall_4_0()); 
             }
 
             }
@@ -59122,7 +59122,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
         }
         return ;
     }
-    // $ANTLR end "rule__PropertyDescriptionSpecification__ExpressionAssignment_4"
+    // $ANTLR end "rule__FeatureCaptionSpecification__ExpressionAssignment_4"
 
 
     // $ANTLR start "rule__FeaturesProvider__FeatureSpecificationsAssignment_3_2"
@@ -66431,31 +66431,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred164_InternalEmfParsleyDsl
     public final void synpred164_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ( ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ( ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) )
         {
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:5: {...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19918:4: ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:5: {...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) )
         {
         if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1) ) {
             if (state.backtracking>0) {state.failed=true; return ;}
             throw new FailedPredicateException(input, "synpred164_InternalEmfParsleyDsl", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1)");
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:103: ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19920:6: ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19919:103: ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19920:6: ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) )
         {
         getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 1);
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19926:6: ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19928:7: ( rule__Module__PropertyDescriptionProviderAssignment_4_1 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19926:6: ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19928:7: ( rule__Module__FeatureCaptionProviderAssignment_4_1 )
         {
         if ( state.backtracking==0 ) {
-           before(grammarAccess.getModuleAccess().getPropertyDescriptionProviderAssignment_4_1()); 
+           before(grammarAccess.getModuleAccess().getFeatureCaptionProviderAssignment_4_1()); 
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:7: ( rule__Module__PropertyDescriptionProviderAssignment_4_1 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:8: rule__Module__PropertyDescriptionProviderAssignment_4_1
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:7: ( rule__Module__FeatureCaptionProviderAssignment_4_1 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19929:8: rule__Module__FeatureCaptionProviderAssignment_4_1
         {
-        pushFollow(FOLLOW_rule__Module__PropertyDescriptionProviderAssignment_4_1_in_synpred164_InternalEmfParsleyDsl39962);
-        rule__Module__PropertyDescriptionProviderAssignment_4_1();
+        pushFollow(FOLLOW_rule__Module__FeatureCaptionProviderAssignment_4_1_in_synpred164_InternalEmfParsleyDsl39962);
+        rule__Module__FeatureCaptionProviderAssignment_4_1();
 
         state._fsp--;
         if (state.failed) return ;
@@ -66478,31 +66478,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred165_InternalEmfParsleyDsl
     public final void synpred165_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ( ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ( ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) )
         {
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:5: {...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19935:4: ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:5: {...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) )
         {
         if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2) ) {
             if (state.backtracking>0) {state.failed=true; return ;}
             throw new FailedPredicateException(input, "synpred165_InternalEmfParsleyDsl", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2)");
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:103: ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19937:6: ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19936:103: ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19937:6: ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) )
         {
         getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 2);
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19943:6: ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19945:7: ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19943:6: ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19945:7: ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 )
         {
         if ( state.backtracking==0 ) {
-           before(grammarAccess.getModuleAccess().getFormPropertyDescriptionProviderAssignment_4_2()); 
+           before(grammarAccess.getModuleAccess().getFormFeatureCaptionProviderAssignment_4_2()); 
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:7: ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:8: rule__Module__FormPropertyDescriptionProviderAssignment_4_2
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:7: ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19946:8: rule__Module__FormFeatureCaptionProviderAssignment_4_2
         {
-        pushFollow(FOLLOW_rule__Module__FormPropertyDescriptionProviderAssignment_4_2_in_synpred165_InternalEmfParsleyDsl40053);
-        rule__Module__FormPropertyDescriptionProviderAssignment_4_2();
+        pushFollow(FOLLOW_rule__Module__FormFeatureCaptionProviderAssignment_4_2_in_synpred165_InternalEmfParsleyDsl40053);
+        rule__Module__FormFeatureCaptionProviderAssignment_4_2();
 
         state._fsp--;
         if (state.failed) return ;
@@ -66525,31 +66525,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred166_InternalEmfParsleyDsl
     public final void synpred166_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ( ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ( ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) )
         {
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:5: {...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19952:4: ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:5: {...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) )
         {
         if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3) ) {
             if (state.backtracking>0) {state.failed=true; return ;}
             throw new FailedPredicateException(input, "synpred166_InternalEmfParsleyDsl", "getUnorderedGroupHelper().canSelect(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3)");
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:103: ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19954:6: ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19953:103: ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19954:6: ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) )
         {
         getUnorderedGroupHelper().select(grammarAccess.getModuleAccess().getUnorderedGroup_4(), 3);
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19960:6: ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19962:7: ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19960:6: ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19962:7: ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 )
         {
         if ( state.backtracking==0 ) {
-           before(grammarAccess.getModuleAccess().getDialogPropertyDescriptionProviderAssignment_4_3()); 
+           before(grammarAccess.getModuleAccess().getDialogFeatureCaptionProviderAssignment_4_3()); 
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:7: ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:8: rule__Module__DialogPropertyDescriptionProviderAssignment_4_3
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:7: ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:19963:8: rule__Module__DialogFeatureCaptionProviderAssignment_4_3
         {
-        pushFollow(FOLLOW_rule__Module__DialogPropertyDescriptionProviderAssignment_4_3_in_synpred166_InternalEmfParsleyDsl40144);
-        rule__Module__DialogPropertyDescriptionProviderAssignment_4_3();
+        pushFollow(FOLLOW_rule__Module__DialogFeatureCaptionProviderAssignment_4_3_in_synpred166_InternalEmfParsleyDsl40144);
+        rule__Module__DialogFeatureCaptionProviderAssignment_4_3();
 
         state._fsp--;
         if (state.failed) return ;
@@ -67019,11 +67019,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred184_InternalEmfParsleyDsl
     public final void synpred184_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__0 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20331:2: rule__FormFeatureCaptionProvider__UnorderedGroup_3__0
         {
-        pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0_in_synpred184_InternalEmfParsleyDsl41338);
-        rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0();
+        pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__0_in_synpred184_InternalEmfParsleyDsl41338);
+        rule__FormFeatureCaptionProvider__UnorderedGroup_3__0();
 
         state._fsp--;
         if (state.failed) return ;
@@ -67034,31 +67034,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred185_InternalEmfParsleyDsl
     public final void synpred185_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ( ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ( ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) )
         {
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:5: {...}? => ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20349:4: ({...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:5: {...}? => ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) )
         {
-        if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+        if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
             if (state.backtracking>0) {state.failed=true; return ;}
-            throw new FailedPredicateException(input, "synpred185_InternalEmfParsleyDsl", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)");
+            throw new FailedPredicateException(input, "synpred185_InternalEmfParsleyDsl", "getUnorderedGroupHelper().canSelect(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)");
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:128: ( ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20351:6: ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20350:123: ( ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20351:6: ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) )
         {
-        getUnorderedGroupHelper().select(grammarAccess.getFormPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20357:6: ( ( rule__FormPropertyDescriptionProvider__Group_3_0__0 ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20359:7: ( rule__FormPropertyDescriptionProvider__Group_3_0__0 )
+        getUnorderedGroupHelper().select(grammarAccess.getFormFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20357:6: ( ( rule__FormFeatureCaptionProvider__Group_3_0__0 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20359:7: ( rule__FormFeatureCaptionProvider__Group_3_0__0 )
         {
         if ( state.backtracking==0 ) {
-           before(grammarAccess.getFormPropertyDescriptionProviderAccess().getGroup_3_0()); 
+           before(grammarAccess.getFormFeatureCaptionProviderAccess().getGroup_3_0()); 
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:7: ( rule__FormPropertyDescriptionProvider__Group_3_0__0 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:8: rule__FormPropertyDescriptionProvider__Group_3_0__0
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:7: ( rule__FormFeatureCaptionProvider__Group_3_0__0 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20360:8: rule__FormFeatureCaptionProvider__Group_3_0__0
         {
-        pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__0_in_synpred185_InternalEmfParsleyDsl41425);
-        rule__FormPropertyDescriptionProvider__Group_3_0__0();
+        pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__0_in_synpred185_InternalEmfParsleyDsl41425);
+        rule__FormFeatureCaptionProvider__Group_3_0__0();
 
         state._fsp--;
         if (state.failed) return ;
@@ -67081,11 +67081,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred186_InternalEmfParsleyDsl
     public final void synpred186_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:2: ( rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:2: rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:2: ( rule__FormFeatureCaptionProvider__UnorderedGroup_3__1 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20398:2: rule__FormFeatureCaptionProvider__UnorderedGroup_3__1
         {
-        pushFollow(FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1_in_synpred186_InternalEmfParsleyDsl41578);
-        rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1();
+        pushFollow(FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__1_in_synpred186_InternalEmfParsleyDsl41578);
+        rule__FormFeatureCaptionProvider__UnorderedGroup_3__1();
 
         state._fsp--;
         if (state.failed) return ;
@@ -67096,11 +67096,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred187_InternalEmfParsleyDsl
     public final void synpred187_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20427:2: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0
         {
-        pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0_in_synpred187_InternalEmfParsleyDsl41631);
-        rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0();
+        pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0_in_synpred187_InternalEmfParsleyDsl41631);
+        rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0();
 
         state._fsp--;
         if (state.failed) return ;
@@ -67111,31 +67111,31 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred188_InternalEmfParsleyDsl
     public final void synpred188_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ( ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ( ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) )
         {
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:5: {...}? => ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20445:4: ({...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:5: {...}? => ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) )
         {
-        if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0) ) {
+        if ( ! getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0) ) {
             if (state.backtracking>0) {state.failed=true; return ;}
-            throw new FailedPredicateException(input, "synpred188_InternalEmfParsleyDsl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0)");
+            throw new FailedPredicateException(input, "synpred188_InternalEmfParsleyDsl", "getUnorderedGroupHelper().canSelect(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0)");
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:130: ( ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20447:6: ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20446:125: ( ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20447:6: ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) )
         {
-        getUnorderedGroupHelper().select(grammarAccess.getDialogPropertyDescriptionProviderAccess().getUnorderedGroup_3(), 0);
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20453:6: ( ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 ) )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20455:7: ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 )
+        getUnorderedGroupHelper().select(grammarAccess.getDialogFeatureCaptionProviderAccess().getUnorderedGroup_3(), 0);
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20453:6: ( ( rule__DialogFeatureCaptionProvider__Group_3_0__0 ) )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20455:7: ( rule__DialogFeatureCaptionProvider__Group_3_0__0 )
         {
         if ( state.backtracking==0 ) {
-           before(grammarAccess.getDialogPropertyDescriptionProviderAccess().getGroup_3_0()); 
+           before(grammarAccess.getDialogFeatureCaptionProviderAccess().getGroup_3_0()); 
         }
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:7: ( rule__DialogPropertyDescriptionProvider__Group_3_0__0 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:8: rule__DialogPropertyDescriptionProvider__Group_3_0__0
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:7: ( rule__DialogFeatureCaptionProvider__Group_3_0__0 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20456:8: rule__DialogFeatureCaptionProvider__Group_3_0__0
         {
-        pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__0_in_synpred188_InternalEmfParsleyDsl41718);
-        rule__DialogPropertyDescriptionProvider__Group_3_0__0();
+        pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__0_in_synpred188_InternalEmfParsleyDsl41718);
+        rule__DialogFeatureCaptionProvider__Group_3_0__0();
 
         state._fsp--;
         if (state.failed) return ;
@@ -67158,11 +67158,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
 
     // $ANTLR start synpred189_InternalEmfParsleyDsl
     public final void synpred189_InternalEmfParsleyDsl_fragment() throws RecognitionException {   
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20494:2: ( rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1 )
-        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20494:2: rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20494:2: ( rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1 )
+        // ../org.eclipse.emf.parsley.dsl.ui/src-gen/org/eclipse/emf/parsley/dsl/ui/contentassist/antlr/internal/InternalEmfParsleyDsl.g:20494:2: rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1
         {
-        pushFollow(FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1_in_synpred189_InternalEmfParsleyDsl41871);
-        rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1();
+        pushFollow(FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1_in_synpred189_InternalEmfParsleyDsl41871);
+        rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1();
 
         state._fsp--;
         if (state.failed) return ;
@@ -70872,7 +70872,7 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
             this.transition = DFA127_transition;
         }
         public String getDescription() {
-            return "19899:3: ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__PropertyDescriptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormPropertyDescriptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogPropertyDescriptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) )";
+            return "19899:3: ( ({...}? => ( ( ( rule__Module__LabelProviderAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeatureCaptionProviderAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormFeatureCaptionProviderAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogFeatureCaptionProviderAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__Module__FeaturesProviderAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__Module__FormControlFactoryAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__Module__DialogControlFactoryAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__Module__ProposalCreatorAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__Module__ViewerContentProviderAssignment_4_8 ) ) ) ) | ({...}? => ( ( ( rule__Module__PartsSpecificationsAssignment_4_9 ) ) ) ) )";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -71879,18 +71879,18 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_ruleLabelSpecification_in_entryRuleLabelSpecification307 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleLabelSpecification314 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LabelSpecification__Group__0_in_ruleLabelSpecification340 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionProvider_in_entryRulePropertyDescriptionProvider367 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePropertyDescriptionProvider374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__0_in_rulePropertyDescriptionProvider400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFormPropertyDescriptionProvider_in_entryRuleFormPropertyDescriptionProvider427 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFormPropertyDescriptionProvider434 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__0_in_ruleFormPropertyDescriptionProvider460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDialogPropertyDescriptionProvider_in_entryRuleDialogPropertyDescriptionProvider487 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleDialogPropertyDescriptionProvider494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__0_in_ruleDialogPropertyDescriptionProvider520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_entryRulePropertyDescriptionSpecification547 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePropertyDescriptionSpecification554 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__0_in_rulePropertyDescriptionSpecification580 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionProvider_in_entryRuleFeatureCaptionProvider367 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCaptionProvider374 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__0_in_ruleFeatureCaptionProvider400 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFormFeatureCaptionProvider_in_entryRuleFormFeatureCaptionProvider427 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFormFeatureCaptionProvider434 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__0_in_ruleFormFeatureCaptionProvider460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDialogFeatureCaptionProvider_in_entryRuleDialogFeatureCaptionProvider487 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleDialogFeatureCaptionProvider494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__0_in_ruleDialogFeatureCaptionProvider520 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_entryRuleFeatureCaptionSpecification547 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFeatureCaptionSpecification554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__0_in_ruleFeatureCaptionSpecification580 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFeaturesProvider_in_entryRuleFeaturesProvider607 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFeaturesProvider614 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FeaturesProvider__Group__0_in_ruleFeaturesProvider640 = new BitSet(new long[]{0x0000000000000002L});
@@ -72316,114 +72316,114 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_26_in_rule__LabelSpecification__Group__2__Impl9629 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LabelSpecification__Group__3__Impl_in_rule__LabelSpecification__Group__39660 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LabelSpecification__ExpressionAssignment_3_in_rule__LabelSpecification__Group__3__Impl9687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__0__Impl_in_rule__PropertyDescriptionProvider__Group__09725 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__1_in_rule__PropertyDescriptionProvider__Group__09728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__1__Impl_in_rule__PropertyDescriptionProvider__Group__19786 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__2_in_rule__PropertyDescriptionProvider__Group__19789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_rule__PropertyDescriptionProvider__Group__1__Impl9817 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__2__Impl_in_rule__PropertyDescriptionProvider__Group__29848 = new BitSet(new long[]{0x0014000000000000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__3_in_rule__PropertyDescriptionProvider__Group__29851 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__PropertyDescriptionProvider__Group__2__Impl9879 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__3__Impl_in_rule__PropertyDescriptionProvider__Group__39910 = new BitSet(new long[]{0x0014000000000000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__4_in_rule__PropertyDescriptionProvider__Group__39913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__0_in_rule__PropertyDescriptionProvider__Group__3__Impl9940 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group__4__Impl_in_rule__PropertyDescriptionProvider__Group__49971 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__PropertyDescriptionProvider__Group__4__Impl9999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__0__Impl_in_rule__PropertyDescriptionProvider__Group_3__010040 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__1_in_rule__PropertyDescriptionProvider__Group_3__010043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_rule__PropertyDescriptionProvider__Group_3__0__Impl10071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__1__Impl_in_rule__PropertyDescriptionProvider__Group_3__110102 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__2_in_rule__PropertyDescriptionProvider__Group_3__110105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__PropertyDescriptionProvider__Group_3__1__Impl10133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__2__Impl_in_rule__PropertyDescriptionProvider__Group_3__210164 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__3_in_rule__PropertyDescriptionProvider__Group_3__210167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__SpecificationsAssignment_3_2_in_rule__PropertyDescriptionProvider__Group_3__2__Impl10194 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionProvider__Group_3__3__Impl_in_rule__PropertyDescriptionProvider__Group_3__310225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__PropertyDescriptionProvider__Group_3__3__Impl10253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__0__Impl_in_rule__FormPropertyDescriptionProvider__Group__010292 = new BitSet(new long[]{0x0080000000000000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__1_in_rule__FormPropertyDescriptionProvider__Group__010295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__1__Impl_in_rule__FormPropertyDescriptionProvider__Group__110353 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__2_in_rule__FormPropertyDescriptionProvider__Group__110356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_55_in_rule__FormPropertyDescriptionProvider__Group__1__Impl10384 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__2__Impl_in_rule__FormPropertyDescriptionProvider__Group__210415 = new BitSet(new long[]{0x0110000000000000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__3_in_rule__FormPropertyDescriptionProvider__Group__210418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__FormPropertyDescriptionProvider__Group__2__Impl10446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__3__Impl_in_rule__FormPropertyDescriptionProvider__Group__310477 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__4_in_rule__FormPropertyDescriptionProvider__Group__310480 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3_in_rule__FormPropertyDescriptionProvider__Group__3__Impl10507 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group__4__Impl_in_rule__FormPropertyDescriptionProvider__Group__410537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__FormPropertyDescriptionProvider__Group__4__Impl10565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__010606 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__1_in_rule__FormPropertyDescriptionProvider__Group_3_0__010609 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_rule__FormPropertyDescriptionProvider__Group_3_0__0__Impl10637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__110668 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__2_in_rule__FormPropertyDescriptionProvider__Group_3_0__110671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__FormPropertyDescriptionProvider__Group_3_0__1__Impl10699 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__210730 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__3_in_rule__FormPropertyDescriptionProvider__Group_3_0__210733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_2_in_rule__FormPropertyDescriptionProvider__Group_3_0__2__Impl10760 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_0__310791 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__FormPropertyDescriptionProvider__Group_3_0__3__Impl10819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__010858 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__1_in_rule__FormPropertyDescriptionProvider__Group_3_1__010861 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_rule__FormPropertyDescriptionProvider__Group_3_1__0__Impl10889 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__110920 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__2_in_rule__FormPropertyDescriptionProvider__Group_3_1__110923 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__FormPropertyDescriptionProvider__Group_3_1__1__Impl10951 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__210982 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__3_in_rule__FormPropertyDescriptionProvider__Group_3_1__210985 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__FormPropertyDescriptionProvider__Group_3_1__2__Impl11012 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl_in_rule__FormPropertyDescriptionProvider__Group_3_1__311043 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__FormPropertyDescriptionProvider__Group_3_1__3__Impl11071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__0__Impl_in_rule__DialogPropertyDescriptionProvider__Group__011110 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__1_in_rule__DialogPropertyDescriptionProvider__Group__011113 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__1__Impl_in_rule__DialogPropertyDescriptionProvider__Group__111171 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__2_in_rule__DialogPropertyDescriptionProvider__Group__111174 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_57_in_rule__DialogPropertyDescriptionProvider__Group__1__Impl11202 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__2__Impl_in_rule__DialogPropertyDescriptionProvider__Group__211233 = new BitSet(new long[]{0x0110000000000000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__3_in_rule__DialogPropertyDescriptionProvider__Group__211236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__DialogPropertyDescriptionProvider__Group__2__Impl11264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__3__Impl_in_rule__DialogPropertyDescriptionProvider__Group__311295 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__4_in_rule__DialogPropertyDescriptionProvider__Group__311298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3_in_rule__DialogPropertyDescriptionProvider__Group__3__Impl11325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group__4__Impl_in_rule__DialogPropertyDescriptionProvider__Group__411355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__DialogPropertyDescriptionProvider__Group__4__Impl11383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__011424 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__1_in_rule__DialogPropertyDescriptionProvider__Group_3_0__011427 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_rule__DialogPropertyDescriptionProvider__Group_3_0__0__Impl11455 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__111486 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__2_in_rule__DialogPropertyDescriptionProvider__Group_3_0__111489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__DialogPropertyDescriptionProvider__Group_3_0__1__Impl11517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__211548 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__3_in_rule__DialogPropertyDescriptionProvider__Group_3_0__211551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_2_in_rule__DialogPropertyDescriptionProvider__Group_3_0__2__Impl11578 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_0__311609 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__DialogPropertyDescriptionProvider__Group_3_0__3__Impl11637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__011676 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__1_in_rule__DialogPropertyDescriptionProvider__Group_3_1__011679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_rule__DialogPropertyDescriptionProvider__Group_3_1__0__Impl11707 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__111738 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__2_in_rule__DialogPropertyDescriptionProvider__Group_3_1__111741 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_rule__DialogPropertyDescriptionProvider__Group_3_1__1__Impl11769 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__211800 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__3_in_rule__DialogPropertyDescriptionProvider__Group_3_1__211803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__DialogPropertyDescriptionProvider__Group_3_1__2__Impl11830 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl_in_rule__DialogPropertyDescriptionProvider__Group_3_1__311861 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_rule__DialogPropertyDescriptionProvider__Group_3_1__3__Impl11889 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__0__Impl_in_rule__PropertyDescriptionSpecification__Group__011928 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__1_in_rule__PropertyDescriptionSpecification__Group__011931 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__ParameterTypeAssignment_0_in_rule__PropertyDescriptionSpecification__Group__0__Impl11958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__1__Impl_in_rule__PropertyDescriptionSpecification__Group__111988 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__2_in_rule__PropertyDescriptionSpecification__Group__111991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_58_in_rule__PropertyDescriptionSpecification__Group__1__Impl12019 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__2__Impl_in_rule__PropertyDescriptionSpecification__Group__212050 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__3_in_rule__PropertyDescriptionSpecification__Group__212053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__FeatureAssignment_2_in_rule__PropertyDescriptionSpecification__Group__2__Impl12080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__3__Impl_in_rule__PropertyDescriptionSpecification__Group__312110 = new BitSet(new long[]{0x0002FC86020001F0L,0x00000100FF966000L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__4_in_rule__PropertyDescriptionSpecification__Group__312113 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__PropertyDescriptionSpecification__Group__3__Impl12141 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__Group__4__Impl_in_rule__PropertyDescriptionSpecification__Group__412172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyDescriptionSpecification__ExpressionAssignment_4_in_rule__PropertyDescriptionSpecification__Group__4__Impl12199 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__0__Impl_in_rule__FeatureCaptionProvider__Group__09725 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__1_in_rule__FeatureCaptionProvider__Group__09728 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__1__Impl_in_rule__FeatureCaptionProvider__Group__19786 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__2_in_rule__FeatureCaptionProvider__Group__19789 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_54_in_rule__FeatureCaptionProvider__Group__1__Impl9817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__2__Impl_in_rule__FeatureCaptionProvider__Group__29848 = new BitSet(new long[]{0x0014000000000000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__3_in_rule__FeatureCaptionProvider__Group__29851 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__FeatureCaptionProvider__Group__2__Impl9879 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__3__Impl_in_rule__FeatureCaptionProvider__Group__39910 = new BitSet(new long[]{0x0014000000000000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__4_in_rule__FeatureCaptionProvider__Group__39913 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__0_in_rule__FeatureCaptionProvider__Group__3__Impl9940 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group__4__Impl_in_rule__FeatureCaptionProvider__Group__49971 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__FeatureCaptionProvider__Group__4__Impl9999 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__0__Impl_in_rule__FeatureCaptionProvider__Group_3__010040 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__1_in_rule__FeatureCaptionProvider__Group_3__010043 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_rule__FeatureCaptionProvider__Group_3__0__Impl10071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__1__Impl_in_rule__FeatureCaptionProvider__Group_3__110102 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__2_in_rule__FeatureCaptionProvider__Group_3__110105 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__FeatureCaptionProvider__Group_3__1__Impl10133 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__2__Impl_in_rule__FeatureCaptionProvider__Group_3__210164 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__3_in_rule__FeatureCaptionProvider__Group_3__210167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__SpecificationsAssignment_3_2_in_rule__FeatureCaptionProvider__Group_3__2__Impl10194 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionProvider__Group_3__3__Impl_in_rule__FeatureCaptionProvider__Group_3__310225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__FeatureCaptionProvider__Group_3__3__Impl10253 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__0__Impl_in_rule__FormFeatureCaptionProvider__Group__010292 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__1_in_rule__FormFeatureCaptionProvider__Group__010295 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__1__Impl_in_rule__FormFeatureCaptionProvider__Group__110353 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__2_in_rule__FormFeatureCaptionProvider__Group__110356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_rule__FormFeatureCaptionProvider__Group__1__Impl10384 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__2__Impl_in_rule__FormFeatureCaptionProvider__Group__210415 = new BitSet(new long[]{0x0110000000000000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__3_in_rule__FormFeatureCaptionProvider__Group__210418 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__FormFeatureCaptionProvider__Group__2__Impl10446 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__3__Impl_in_rule__FormFeatureCaptionProvider__Group__310477 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__4_in_rule__FormFeatureCaptionProvider__Group__310480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3_in_rule__FormFeatureCaptionProvider__Group__3__Impl10507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group__4__Impl_in_rule__FormFeatureCaptionProvider__Group__410537 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__FormFeatureCaptionProvider__Group__4__Impl10565 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__0__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__010606 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__1_in_rule__FormFeatureCaptionProvider__Group_3_0__010609 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_rule__FormFeatureCaptionProvider__Group_3_0__0__Impl10637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__1__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__110668 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__2_in_rule__FormFeatureCaptionProvider__Group_3_0__110671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__FormFeatureCaptionProvider__Group_3_0__1__Impl10699 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__2__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__210730 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__3_in_rule__FormFeatureCaptionProvider__Group_3_0__210733 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_2_in_rule__FormFeatureCaptionProvider__Group_3_0__2__Impl10760 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__3__Impl_in_rule__FormFeatureCaptionProvider__Group_3_0__310791 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__FormFeatureCaptionProvider__Group_3_0__3__Impl10819 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__0__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__010858 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__1_in_rule__FormFeatureCaptionProvider__Group_3_1__010861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_rule__FormFeatureCaptionProvider__Group_3_1__0__Impl10889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__1__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__110920 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__2_in_rule__FormFeatureCaptionProvider__Group_3_1__110923 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__FormFeatureCaptionProvider__Group_3_1__1__Impl10951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__2__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__210982 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__3_in_rule__FormFeatureCaptionProvider__Group_3_1__210985 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__FormFeatureCaptionProvider__Group_3_1__2__Impl11012 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__3__Impl_in_rule__FormFeatureCaptionProvider__Group_3_1__311043 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__FormFeatureCaptionProvider__Group_3_1__3__Impl11071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__0__Impl_in_rule__DialogFeatureCaptionProvider__Group__011110 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__1_in_rule__DialogFeatureCaptionProvider__Group__011113 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__1__Impl_in_rule__DialogFeatureCaptionProvider__Group__111171 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__2_in_rule__DialogFeatureCaptionProvider__Group__111174 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_57_in_rule__DialogFeatureCaptionProvider__Group__1__Impl11202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__2__Impl_in_rule__DialogFeatureCaptionProvider__Group__211233 = new BitSet(new long[]{0x0110000000000000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__3_in_rule__DialogFeatureCaptionProvider__Group__211236 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__DialogFeatureCaptionProvider__Group__2__Impl11264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__3__Impl_in_rule__DialogFeatureCaptionProvider__Group__311295 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__4_in_rule__DialogFeatureCaptionProvider__Group__311298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3_in_rule__DialogFeatureCaptionProvider__Group__3__Impl11325 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group__4__Impl_in_rule__DialogFeatureCaptionProvider__Group__411355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__DialogFeatureCaptionProvider__Group__4__Impl11383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__011424 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__1_in_rule__DialogFeatureCaptionProvider__Group_3_0__011427 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_52_in_rule__DialogFeatureCaptionProvider__Group_3_0__0__Impl11455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__111486 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__2_in_rule__DialogFeatureCaptionProvider__Group_3_0__111489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__DialogFeatureCaptionProvider__Group_3_0__1__Impl11517 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__211548 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__3_in_rule__DialogFeatureCaptionProvider__Group_3_0__211551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_2_in_rule__DialogFeatureCaptionProvider__Group_3_0__2__Impl11578 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_0__311609 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__DialogFeatureCaptionProvider__Group_3_0__3__Impl11637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__011676 = new BitSet(new long[]{0x0002000000000000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__1_in_rule__DialogFeatureCaptionProvider__Group_3_1__011679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_56_in_rule__DialogFeatureCaptionProvider__Group_3_1__0__Impl11707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__111738 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__2_in_rule__DialogFeatureCaptionProvider__Group_3_1__111741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_rule__DialogFeatureCaptionProvider__Group_3_1__1__Impl11769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__211800 = new BitSet(new long[]{0x0004000020000010L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__3_in_rule__DialogFeatureCaptionProvider__Group_3_1__211803 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_2_in_rule__DialogFeatureCaptionProvider__Group_3_1__2__Impl11830 = new BitSet(new long[]{0x0000000020000012L,0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl_in_rule__DialogFeatureCaptionProvider__Group_3_1__311861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_rule__DialogFeatureCaptionProvider__Group_3_1__3__Impl11889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__0__Impl_in_rule__FeatureCaptionSpecification__Group__011928 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__1_in_rule__FeatureCaptionSpecification__Group__011931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__ParameterTypeAssignment_0_in_rule__FeatureCaptionSpecification__Group__0__Impl11958 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__1__Impl_in_rule__FeatureCaptionSpecification__Group__111988 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__2_in_rule__FeatureCaptionSpecification__Group__111991 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_rule__FeatureCaptionSpecification__Group__1__Impl12019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__2__Impl_in_rule__FeatureCaptionSpecification__Group__212050 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__3_in_rule__FeatureCaptionSpecification__Group__212053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__FeatureAssignment_2_in_rule__FeatureCaptionSpecification__Group__2__Impl12080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__3__Impl_in_rule__FeatureCaptionSpecification__Group__312110 = new BitSet(new long[]{0x0002FC86020001F0L,0x00000100FF966000L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__4_in_rule__FeatureCaptionSpecification__Group__312113 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__FeatureCaptionSpecification__Group__3__Impl12141 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__Group__4__Impl_in_rule__FeatureCaptionSpecification__Group__412172 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FeatureCaptionSpecification__ExpressionAssignment_4_in_rule__FeatureCaptionSpecification__Group__4__Impl12199 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FeaturesProvider__Group__0__Impl_in_rule__FeaturesProvider__Group__012239 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_rule__FeaturesProvider__Group__1_in_rule__FeaturesProvider__Group__012242 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FeaturesProvider__Group__1__Impl_in_rule__FeaturesProvider__Group__112300 = new BitSet(new long[]{0x0002000000000000L});
@@ -73551,9 +73551,9 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_35_in_rule__XImportDeclaration__Group_1_0__4__Impl39742 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__UnorderedGroup_4__0_in_rule__Module__UnorderedGroup_439784 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__LabelProviderAssignment_4_0_in_rule__Module__UnorderedGroup_4__Impl39871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Module__PropertyDescriptionProviderAssignment_4_1_in_rule__Module__UnorderedGroup_4__Impl39962 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Module__FormPropertyDescriptionProviderAssignment_4_2_in_rule__Module__UnorderedGroup_4__Impl40053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Module__DialogPropertyDescriptionProviderAssignment_4_3_in_rule__Module__UnorderedGroup_4__Impl40144 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Module__FeatureCaptionProviderAssignment_4_1_in_rule__Module__UnorderedGroup_4__Impl39962 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Module__FormFeatureCaptionProviderAssignment_4_2_in_rule__Module__UnorderedGroup_4__Impl40053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Module__DialogFeatureCaptionProviderAssignment_4_3_in_rule__Module__UnorderedGroup_4__Impl40144 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__FeaturesProviderAssignment_4_4_in_rule__Module__UnorderedGroup_4__Impl40235 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__FormControlFactoryAssignment_4_5_in_rule__Module__UnorderedGroup_4__Impl40326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__DialogControlFactoryAssignment_4_6_in_rule__Module__UnorderedGroup_4__Impl40417 = new BitSet(new long[]{0x0000000000000002L});
@@ -73585,26 +73585,26 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_rule__LabelProvider__UnorderedGroup_3__Impl_in_rule__LabelProvider__UnorderedGroup_3__041282 = new BitSet(new long[]{0x0030000000000002L});
     public static final BitSet FOLLOW_rule__LabelProvider__UnorderedGroup_3__1_in_rule__LabelProvider__UnorderedGroup_3__041285 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LabelProvider__UnorderedGroup_3__Impl_in_rule__LabelProvider__UnorderedGroup_3__141310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_341338 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__0_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl41425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_1__0_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl41516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__041575 = new BitSet(new long[]{0x0110000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__041578 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__141603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_341631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__0_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl41718 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_1__0_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl41809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__041868 = new BitSet(new long[]{0x0110000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__041871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__Impl_in_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__141896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__0_in_rule__FormFeatureCaptionProvider__UnorderedGroup_341338 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__0_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl41425 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_1__0_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl41516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__041575 = new BitSet(new long[]{0x0110000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__1_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__041578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__FormFeatureCaptionProvider__UnorderedGroup_3__141603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_341631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__0_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl41718 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_1__0_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl41809 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__041868 = new BitSet(new long[]{0x0110000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__041871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__Impl_in_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__141896 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXImportSection_in_rule__Model__ImportSectionAssignment_041928 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleModule_in_rule__Model__ModuleAssignment_141959 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Module__NameAssignment_141990 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleExtendsClause_in_rule__Module__ExtendsClauseAssignment_242021 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLabelProvider_in_rule__Module__LabelProviderAssignment_4_042052 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionProvider_in_rule__Module__PropertyDescriptionProviderAssignment_4_142083 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFormPropertyDescriptionProvider_in_rule__Module__FormPropertyDescriptionProviderAssignment_4_242114 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleDialogPropertyDescriptionProvider_in_rule__Module__DialogPropertyDescriptionProviderAssignment_4_342145 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionProvider_in_rule__Module__FeatureCaptionProviderAssignment_4_142083 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFormFeatureCaptionProvider_in_rule__Module__FormFeatureCaptionProviderAssignment_4_242114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleDialogFeatureCaptionProvider_in_rule__Module__DialogFeatureCaptionProviderAssignment_4_342145 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFeaturesProvider_in_rule__Module__FeaturesProviderAssignment_4_442176 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFormControlFactory_in_rule__Module__FormControlFactoryAssignment_4_542207 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDialogControlFactory_in_rule__Module__DialogControlFactoryAssignment_4_642238 = new BitSet(new long[]{0x0000000000000002L});
@@ -73617,14 +73617,14 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__LabelSpecification__ParameterTypeAssignment_042455 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleValidID_in_rule__LabelSpecification__NameAssignment_142486 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleXExpression_in_rule__LabelSpecification__ExpressionAssignment_342517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_rule__PropertyDescriptionProvider__SpecificationsAssignment_3_242548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_rule__FormPropertyDescriptionProvider__SpecificationsAssignment_3_0_242579 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_rule__FormPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_242610 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_rule__DialogPropertyDescriptionProvider__SpecificationsAssignment_3_0_242641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyDescriptionSpecification_in_rule__DialogPropertyDescriptionProvider__LabelSpecificationsAssignment_3_1_242672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__PropertyDescriptionSpecification__ParameterTypeAssignment_042703 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PropertyDescriptionSpecification__FeatureAssignment_242738 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleXExpression_in_rule__PropertyDescriptionSpecification__ExpressionAssignment_442773 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_rule__FeatureCaptionProvider__SpecificationsAssignment_3_242548 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_rule__FormFeatureCaptionProvider__SpecificationsAssignment_3_0_242579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_rule__FormFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_242610 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_rule__DialogFeatureCaptionProvider__SpecificationsAssignment_3_0_242641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFeatureCaptionSpecification_in_rule__DialogFeatureCaptionProvider__LabelSpecificationsAssignment_3_1_242672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__FeatureCaptionSpecification__ParameterTypeAssignment_042703 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__FeatureCaptionSpecification__FeatureAssignment_242738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleXExpression_in_rule__FeatureCaptionSpecification__ExpressionAssignment_442773 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFeatureSpecification_in_rule__FeaturesProvider__FeatureSpecificationsAssignment_3_242804 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleJvmTypeReference_in_rule__FeatureSpecification__ParameterTypeAssignment_042835 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__FeatureSpecification__FeaturesAssignment_242870 = new BitSet(new long[]{0x0000000000000002L});
@@ -73799,9 +73799,9 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_rule__JvmParameterizedTypeReference__Group_1__0_in_synpred157_InternalEmfParsleyDsl38127 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__UnorderedGroup_4__0_in_synpred162_InternalEmfParsleyDsl39784 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__LabelProviderAssignment_4_0_in_synpred163_InternalEmfParsleyDsl39871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Module__PropertyDescriptionProviderAssignment_4_1_in_synpred164_InternalEmfParsleyDsl39962 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Module__FormPropertyDescriptionProviderAssignment_4_2_in_synpred165_InternalEmfParsleyDsl40053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Module__DialogPropertyDescriptionProviderAssignment_4_3_in_synpred166_InternalEmfParsleyDsl40144 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Module__FeatureCaptionProviderAssignment_4_1_in_synpred164_InternalEmfParsleyDsl39962 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Module__FormFeatureCaptionProviderAssignment_4_2_in_synpred165_InternalEmfParsleyDsl40053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Module__DialogFeatureCaptionProviderAssignment_4_3_in_synpred166_InternalEmfParsleyDsl40144 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__FeaturesProviderAssignment_4_4_in_synpred167_InternalEmfParsleyDsl40235 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__FormControlFactoryAssignment_4_5_in_synpred168_InternalEmfParsleyDsl40326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Module__DialogControlFactoryAssignment_4_6_in_synpred169_InternalEmfParsleyDsl40417 = new BitSet(new long[]{0x0000000000000002L});
@@ -73819,11 +73819,11 @@ public class InternalEmfParsleyDslParser extends AbstractInternalContentAssistPa
     public static final BitSet FOLLOW_rule__LabelProvider__UnorderedGroup_3__0_in_synpred181_InternalEmfParsleyDsl41045 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LabelProvider__Group_3_0__0_in_synpred182_InternalEmfParsleyDsl41132 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LabelProvider__UnorderedGroup_3__1_in_synpred183_InternalEmfParsleyDsl41285 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__0_in_synpred184_InternalEmfParsleyDsl41338 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__Group_3_0__0_in_synpred185_InternalEmfParsleyDsl41425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FormPropertyDescriptionProvider__UnorderedGroup_3__1_in_synpred186_InternalEmfParsleyDsl41578 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__0_in_synpred187_InternalEmfParsleyDsl41631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__Group_3_0__0_in_synpred188_InternalEmfParsleyDsl41718 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__DialogPropertyDescriptionProvider__UnorderedGroup_3__1_in_synpred189_InternalEmfParsleyDsl41871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__0_in_synpred184_InternalEmfParsleyDsl41338 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__Group_3_0__0_in_synpred185_InternalEmfParsleyDsl41425 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FormFeatureCaptionProvider__UnorderedGroup_3__1_in_synpred186_InternalEmfParsleyDsl41578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__0_in_synpred187_InternalEmfParsleyDsl41631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__Group_3_0__0_in_synpred188_InternalEmfParsleyDsl41718 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__DialogFeatureCaptionProvider__UnorderedGroup_3__1_in_synpred189_InternalEmfParsleyDsl41871 = new BitSet(new long[]{0x0000000000000002L});
 
 }

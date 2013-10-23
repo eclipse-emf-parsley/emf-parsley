@@ -1,10 +1,10 @@
 package org.eclipse.emf.parsley.examples.firstexample.ui.provider;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 
 @SuppressWarnings("all")
-public class PropertyDescriptionProviderGen extends PropertyDescriptionProvider {
+public class FeatureCaptionProviderGen extends FeatureCaptionProvider {
   public String text_Book_author(final EStructuralFeature it) {
     return "Wrote by:";
   }

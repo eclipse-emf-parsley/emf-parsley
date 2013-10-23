@@ -1,11 +1,11 @@
 package org.eclipse.emf.parsley.examples.firstexample;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.examples.firstexample.ui.provider.FeatureCaptionProviderGen;
 import org.eclipse.emf.parsley.examples.firstexample.ui.provider.FeaturesProviderGen;
 import org.eclipse.emf.parsley.examples.firstexample.ui.provider.LabelProviderGen;
-import org.eclipse.emf.parsley.examples.firstexample.ui.provider.PropertyDescriptionProviderGen;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.ui.provider.PropertyDescriptionProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
@@ -24,8 +24,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   }
   
   @Override
-  public Class<? extends PropertyDescriptionProvider> bindPropertyDescriptionProvider() {
-    return PropertyDescriptionProviderGen.class;
+  public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
+    return FeatureCaptionProviderGen.class;
   }
   
   @Override
