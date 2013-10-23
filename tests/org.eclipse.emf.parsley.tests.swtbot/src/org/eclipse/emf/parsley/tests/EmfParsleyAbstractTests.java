@@ -521,11 +521,17 @@ public class EmfParsleyAbstractTests {
 	}
 	
 	protected Library localLibrary(String extlibraryFileName) throws IOException {
+		Resource resource = localResource(extlibraryFileName);
+		return (Library) resource.getContents().get(0);
+	}
+
+	protected Resource localResource(String extlibraryFileName)
+			throws IOException {
 		File file = EmfParsleyTestsActivator.localFile(extlibraryFileName);
 		URI uri = URI.createFileURI(file.getAbsolutePath());
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.getResource(uri, true);
-		return (Library) resource.getContents().get(0);
+		return resource;
 	}
 
 	protected void createMyTestProject() {

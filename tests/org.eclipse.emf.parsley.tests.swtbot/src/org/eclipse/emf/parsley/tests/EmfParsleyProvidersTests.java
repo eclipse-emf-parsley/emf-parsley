@@ -21,7 +21,9 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.tests.factories.CustomElementsContentProviderLibraryModule;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureCaptionProvider;
+import org.eclipse.emf.parsley.tests.providers.CustomElementsLibraryViewerContentProvider;
 import org.eclipse.emf.parsley.tests.providers.CustomLibraryViewerContentProvider;
 import org.eclipse.emf.parsley.tests.providers.LibraryEStructuralFeaturesAsStringsProvider;
 import org.eclipse.emf.parsley.tests.providers.LibraryEStructuralFeaturesProvider;
@@ -36,6 +38,8 @@ import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.google.inject.Guice;
 
 /**
  * @author Lorenzo Bettini
@@ -169,6 +173,27 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 		assertFalse(viewerContentProvider.hasChildren(libraryChildren[2]));
 	}
 
+	@Test
+	public void testCustomElementsViewerContentProvider() throws IOException {
+		Resource resource = localResource("My2.extlibrary");
+		ViewerContentProvider viewerContentProvider = Guice.createInjector(
+				new CustomElementsContentProviderLibraryModule(
+						EmfParsleyTestsActivator.getDefault())).getInstance(
+				CustomElementsLibraryViewerContentProvider.class);
+		Object[] elements = viewerContentProvider.getElements(resource);
+		assertLabels(
+				"Book: Without Author; Book: First Author's Book; Book: Empty Book; ",
+				elements);
+		// the first book has no author, but two borrowers
+		assertLabels("Borrower: First Borrower; Borrower: Second Borrower; ",
+				viewerContentProvider.getChildren(elements[0]));
+		// the second book has author, and one borrower
+		assertLabels("Writer First Author; Borrower: First Borrower; ",
+				viewerContentProvider.getChildren(elements[1]));
+		// the third book has neither an author nor s borrower
+		assertFalse(viewerContentProvider.hasChildren(elements[2]));
+	}
+
 	protected void assertFeatureNames(Iterable<EStructuralFeature> expected,
 			Iterable<EStructuralFeature> actual) {
 		assertEquals(utils.toStringNameBased(expected),
@@ -194,4 +219,5 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 	protected Composite createCompositeParent(final SWTBotView view) {
 		return view.bot().tree().widget.getParent();
 	}
+
 }

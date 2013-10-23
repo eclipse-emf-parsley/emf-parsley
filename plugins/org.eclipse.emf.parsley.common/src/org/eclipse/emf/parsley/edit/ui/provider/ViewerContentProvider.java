@@ -16,7 +16,7 @@ import com.google.inject.Inject;
 /**
  * Declarative ContentProvider based on {@link AdapterFactoryContentProvider}.
  * 
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
 public class ViewerContentProvider extends AdapterFactoryContentProvider {
@@ -28,6 +28,9 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
 	private PolymorphicDispatcher<Object> childrenDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("children", 1, 1, this);
+
+	private PolymorphicDispatcher<Object> elementsDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("elements", 1, 1, this);
 
 //	/**
 //	 * This implements {@link IStructuredItemContentProvider#getElements
@@ -64,6 +67,16 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 		return null;
 	}
 
+	/**
+	 * The default implementation
+	 * 
+	 * @param o
+	 * @return null
+	 */
+	public List<Object> elements(Object o) {
+		return null;
+	}
+
 	@Override
 	public Object[] getChildren(Object element) {
 		Object children = childrenDispatcher.invoke(element);
@@ -71,5 +84,14 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 			return EmfParsleyUtil.ensureCollection(children).toArray();
 		}
 		return super.getChildren(element);
+	}
+
+	@Override
+	public Object[] getElements(Object element) {
+		Object elements = elementsDispatcher.invoke(element);
+		if (elements != null) {
+			return EmfParsleyUtil.ensureCollection(elements).toArray();
+		}
+		return super.getElements(element);
 	}
 }
