@@ -3,6 +3,7 @@ package org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.edit.ui.provide
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -21,6 +22,14 @@ public class ViewerContentProviderGen extends ViewerContentProvider {
   @Inject
   public ViewerContentProviderGen(final AdapterFactory adapterFactory) {
     super(adapterFactory);
+  }
+  
+  public Object elements(final Resource resource) {
+    UnifiedFolderContainer _unifiedFolderContainer = new UnifiedFolderContainer("Inbox", resource);
+    UnifiedFolderContainer _unifiedFolderContainer_1 = new UnifiedFolderContainer("Sent", resource);
+    UnifiedFolderContainer _unifiedFolderContainer_2 = new UnifiedFolderContainer("Trash", resource);
+    ArrayList<UnifiedFolderContainer> _newArrayList = CollectionLiterals.<UnifiedFolderContainer>newArrayList(_unifiedFolderContainer, _unifiedFolderContainer_1, _unifiedFolderContainer_2);
+    return _newArrayList;
   }
   
   public Object children(final UnifiedFolderContainer c) {

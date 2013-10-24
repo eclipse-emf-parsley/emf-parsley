@@ -3,6 +3,7 @@ import org.eclipse.emf.parsley.examples.mail.Folder
 import org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewGuiceModule
 import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFolderContainer
 import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFoldersView
+import org.eclipse.emf.ecore.resource.Resource
 
 /* org.eclipse.emf.parsley.examples.mail.unifiedfoldersview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends AccountsviewGuiceModule {
@@ -26,6 +27,15 @@ module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends Accounts
 	}
 	
 	viewerContentProvider {
+		elements {
+			Resource resource -> {
+				newArrayList(
+					new UnifiedFolderContainer("Inbox", resource),
+					new UnifiedFolderContainer("Sent", resource),
+					new UnifiedFolderContainer("Trash", resource))
+			}
+		}
+		
 		children {
 			UnifiedFolderContainer c -> {
 				c.resource.allContents.
