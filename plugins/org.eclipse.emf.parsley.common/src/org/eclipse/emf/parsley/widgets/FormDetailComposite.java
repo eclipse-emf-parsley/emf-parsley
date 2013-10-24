@@ -48,6 +48,8 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		scrolledForm.getBody().setLayout(new GridLayout(2, false));
 
 		main = scrolledForm.getBody();
+		
+		setBackgroundMode(SWT.INHERIT_FORCE);
 	}
 
 	@Override
