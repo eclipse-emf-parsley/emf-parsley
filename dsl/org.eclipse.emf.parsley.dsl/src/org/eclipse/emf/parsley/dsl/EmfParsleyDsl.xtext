@@ -165,6 +165,12 @@ ProposalSpecification:
 ViewerContentProvider:
 	{ViewerContentProvider} 'viewerContentProvider' '{'
 		((
+		'elements' '{'
+			elementsSpecifications+=LabelSpecification*
+		'}'
+		)?
+		&
+		(
 		'children' '{'
 			childrenSpecifications+=LabelSpecification*
 		'}'

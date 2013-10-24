@@ -970,21 +970,28 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cViewerContentProviderAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cViewerContentProviderKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cChildrenKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cChildrenSpecificationsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final RuleCall cChildrenSpecificationsLabelSpecificationParserRuleCall_3_2_0 = (RuleCall)cChildrenSpecificationsAssignment_3_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
+		private final UnorderedGroup cUnorderedGroup_3 = (UnorderedGroup)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cUnorderedGroup_3.eContents().get(0);
+		private final Keyword cElementsKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final Assignment cElementsSpecificationsAssignment_3_0_2 = (Assignment)cGroup_3_0.eContents().get(2);
+		private final RuleCall cElementsSpecificationsLabelSpecificationParserRuleCall_3_0_2_0 = (RuleCall)cElementsSpecificationsAssignment_3_0_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_0_3 = (Keyword)cGroup_3_0.eContents().get(3);
+		private final Group cGroup_3_1 = (Group)cUnorderedGroup_3.eContents().get(1);
+		private final Keyword cChildrenKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final Assignment cChildrenSpecificationsAssignment_3_1_2 = (Assignment)cGroup_3_1.eContents().get(2);
+		private final RuleCall cChildrenSpecificationsLabelSpecificationParserRuleCall_3_1_2_0 = (RuleCall)cChildrenSpecificationsAssignment_3_1_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_1_3 = (Keyword)cGroup_3_1.eContents().get(3);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//ViewerContentProvider:
-		//	{ViewerContentProvider} "viewerContentProvider" "{" ("children" "{" childrenSpecifications+=LabelSpecification* "}")?
-		//	"}";
+		//	{ViewerContentProvider} "viewerContentProvider" "{" (("elements" "{" elementsSpecifications+=LabelSpecification* "}")?
+		//	& ("children" "{" childrenSpecifications+=LabelSpecification* "}")?) "}";
 		public ParserRule getRule() { return rule; }
 
-		//{ViewerContentProvider} "viewerContentProvider" "{" ("children" "{" childrenSpecifications+=LabelSpecification* "}")?
-		//"}"
+		//{ViewerContentProvider} "viewerContentProvider" "{" (("elements" "{" elementsSpecifications+=LabelSpecification* "}")? &
+		//("children" "{" childrenSpecifications+=LabelSpecification* "}")?) "}"
 		public Group getGroup() { return cGroup; }
 
 		//{ViewerContentProvider}
@@ -996,23 +1003,45 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//("children" "{" childrenSpecifications+=LabelSpecification* "}")?
-		public Group getGroup_3() { return cGroup_3; }
+		//("elements" "{" elementsSpecifications+=LabelSpecification* "}")? & ("children" "{"
+		//childrenSpecifications+=LabelSpecification* "}")?
+		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//"children"
-		public Keyword getChildrenKeyword_3_0() { return cChildrenKeyword_3_0; }
+		//("elements" "{" elementsSpecifications+=LabelSpecification* "}")?
+		public Group getGroup_3_0() { return cGroup_3_0; }
+
+		//"elements"
+		public Keyword getElementsKeyword_3_0_0() { return cElementsKeyword_3_0_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3_1() { return cLeftCurlyBracketKeyword_3_1; }
+		public Keyword getLeftCurlyBracketKeyword_3_0_1() { return cLeftCurlyBracketKeyword_3_0_1; }
 
-		//childrenSpecifications+=LabelSpecification*
-		public Assignment getChildrenSpecificationsAssignment_3_2() { return cChildrenSpecificationsAssignment_3_2; }
+		//elementsSpecifications+=LabelSpecification*
+		public Assignment getElementsSpecificationsAssignment_3_0_2() { return cElementsSpecificationsAssignment_3_0_2; }
 
 		//LabelSpecification
-		public RuleCall getChildrenSpecificationsLabelSpecificationParserRuleCall_3_2_0() { return cChildrenSpecificationsLabelSpecificationParserRuleCall_3_2_0; }
+		public RuleCall getElementsSpecificationsLabelSpecificationParserRuleCall_3_0_2_0() { return cElementsSpecificationsLabelSpecificationParserRuleCall_3_0_2_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_3_3() { return cRightCurlyBracketKeyword_3_3; }
+		public Keyword getRightCurlyBracketKeyword_3_0_3() { return cRightCurlyBracketKeyword_3_0_3; }
+
+		//("children" "{" childrenSpecifications+=LabelSpecification* "}")?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//"children"
+		public Keyword getChildrenKeyword_3_1_0() { return cChildrenKeyword_3_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3_1_1() { return cLeftCurlyBracketKeyword_3_1_1; }
+
+		//childrenSpecifications+=LabelSpecification*
+		public Assignment getChildrenSpecificationsAssignment_3_1_2() { return cChildrenSpecificationsAssignment_3_1_2; }
+
+		//LabelSpecification
+		public RuleCall getChildrenSpecificationsLabelSpecificationParserRuleCall_3_1_2_0() { return cChildrenSpecificationsLabelSpecificationParserRuleCall_3_1_2_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3_1_3() { return cRightCurlyBracketKeyword_3_1_3; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -1422,8 +1451,8 @@ public class EmfParsleyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ViewerContentProvider:
-	//	{ViewerContentProvider} "viewerContentProvider" "{" ("children" "{" childrenSpecifications+=LabelSpecification* "}")?
-	//	"}";
+	//	{ViewerContentProvider} "viewerContentProvider" "{" (("elements" "{" elementsSpecifications+=LabelSpecification* "}")?
+	//	& ("children" "{" childrenSpecifications+=LabelSpecification* "}")?) "}";
 	public ViewerContentProviderElements getViewerContentProviderAccess() {
 		return (pViewerContentProvider != null) ? pViewerContentProvider : (pViewerContentProvider = new ViewerContentProviderElements());
 	}

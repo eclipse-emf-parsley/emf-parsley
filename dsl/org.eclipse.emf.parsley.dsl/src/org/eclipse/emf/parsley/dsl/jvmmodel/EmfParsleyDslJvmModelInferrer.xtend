@@ -493,6 +493,20 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					annotations += element.toAnnotation(typeof(Inject))
 				]
 				
+				element.viewerContentProvider.elementsSpecifications.forEach [
+					specification |
+					members += specification.toMethod("elements", element.newTypeRef(typeof(Object))) [
+						parameters += specification.toParameter(
+							if (specification.name != null)
+								specification.name
+							else
+								"it"
+							, specification.parameterType
+						)
+						body = specification.expression
+					]
+				]
+				
 				element.viewerContentProvider.childrenSpecifications.forEach [
 					specification |
 					members += specification.toMethod("children", element.newTypeRef(typeof(Object))) [

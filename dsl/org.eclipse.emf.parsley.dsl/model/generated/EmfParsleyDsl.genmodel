@@ -80,6 +80,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ProposalSpecification/expression"/>
     </genClasses>
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//ViewerContentProvider">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ViewerContentProvider/elementsSpecifications"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EmfParsleyDsl.ecore#//ViewerContentProvider/childrenSpecifications"/>
     </genClasses>
     <genClasses ecoreClass="EmfParsleyDsl.ecore#//EmfFeatureAccess">

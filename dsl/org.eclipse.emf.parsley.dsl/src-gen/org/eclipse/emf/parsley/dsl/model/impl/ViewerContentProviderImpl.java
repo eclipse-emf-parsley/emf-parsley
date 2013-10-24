@@ -27,6 +27,7 @@ import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ViewerContentProviderImpl#getElementsSpecifications <em>Elements Specifications</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.dsl.model.impl.ViewerContentProviderImpl#getChildrenSpecifications <em>Children Specifications</em>}</li>
  * </ul>
  * </p>
@@ -35,6 +36,16 @@ import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider;
  */
 public class ViewerContentProviderImpl extends MinimalEObjectImpl.Container implements ViewerContentProvider
 {
+  /**
+   * The cached value of the '{@link #getElementsSpecifications() <em>Elements Specifications</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getElementsSpecifications()
+   * @generated
+   * @ordered
+   */
+  protected EList<LabelSpecification> elementsSpecifications;
+
   /**
    * The cached value of the '{@link #getChildrenSpecifications() <em>Children Specifications</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -71,6 +82,20 @@ public class ViewerContentProviderImpl extends MinimalEObjectImpl.Container impl
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<LabelSpecification> getElementsSpecifications()
+  {
+    if (elementsSpecifications == null)
+    {
+      elementsSpecifications = new EObjectContainmentEList<LabelSpecification>(LabelSpecification.class, this, ModelPackage.VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS);
+    }
+    return elementsSpecifications;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<LabelSpecification> getChildrenSpecifications()
   {
     if (childrenSpecifications == null)
@@ -90,6 +115,8 @@ public class ViewerContentProviderImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
+      case ModelPackage.VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS:
+        return ((InternalEList<?>)getElementsSpecifications()).basicRemove(otherEnd, msgs);
       case ModelPackage.VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS:
         return ((InternalEList<?>)getChildrenSpecifications()).basicRemove(otherEnd, msgs);
     }
@@ -106,6 +133,8 @@ public class ViewerContentProviderImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
+      case ModelPackage.VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS:
+        return getElementsSpecifications();
       case ModelPackage.VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS:
         return getChildrenSpecifications();
     }
@@ -123,6 +152,10 @@ public class ViewerContentProviderImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
+      case ModelPackage.VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS:
+        getElementsSpecifications().clear();
+        getElementsSpecifications().addAll((Collection<? extends LabelSpecification>)newValue);
+        return;
       case ModelPackage.VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS:
         getChildrenSpecifications().clear();
         getChildrenSpecifications().addAll((Collection<? extends LabelSpecification>)newValue);
@@ -141,6 +174,9 @@ public class ViewerContentProviderImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
+      case ModelPackage.VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS:
+        getElementsSpecifications().clear();
+        return;
       case ModelPackage.VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS:
         getChildrenSpecifications().clear();
         return;
@@ -158,6 +194,8 @@ public class ViewerContentProviderImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
+      case ModelPackage.VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS:
+        return elementsSpecifications != null && !elementsSpecifications.isEmpty();
       case ModelPackage.VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS:
         return childrenSpecifications != null && !childrenSpecifications.isEmpty();
     }

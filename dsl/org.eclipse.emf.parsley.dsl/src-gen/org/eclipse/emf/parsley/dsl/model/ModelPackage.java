@@ -787,13 +787,22 @@ public interface ModelPackage extends EPackage
   int VIEWER_CONTENT_PROVIDER = 16;
 
   /**
+   * The feature id for the '<em><b>Elements Specifications</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS = 0;
+
+  /**
    * The feature id for the '<em><b>Children Specifications</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS = 0;
+  int VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS = 1;
 
   /**
    * The number of structural features of the '<em>Viewer Content Provider</em>' class.
@@ -802,7 +811,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VIEWER_CONTENT_PROVIDER_FEATURE_COUNT = 1;
+  int VIEWER_CONTENT_PROVIDER_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.emf.parsley.dsl.model.impl.PartsSpecificationsImpl <em>Parts Specifications</em>}' class.
@@ -1485,6 +1494,17 @@ public interface ModelPackage extends EPackage
   EClass getViewerContentProvider();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.ViewerContentProvider#getElementsSpecifications <em>Elements Specifications</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Elements Specifications</em>'.
+   * @see org.eclipse.emf.parsley.dsl.model.ViewerContentProvider#getElementsSpecifications()
+   * @see #getViewerContentProvider()
+   * @generated
+   */
+  EReference getViewerContentProvider_ElementsSpecifications();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.dsl.model.ViewerContentProvider#getChildrenSpecifications <em>Children Specifications</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2099,6 +2119,14 @@ public interface ModelPackage extends EPackage
      * @generated
      */
     EClass VIEWER_CONTENT_PROVIDER = eINSTANCE.getViewerContentProvider();
+
+    /**
+     * The meta object literal for the '<em><b>Elements Specifications</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS = eINSTANCE.getViewerContentProvider_ElementsSpecifications();
 
     /**
      * The meta object literal for the '<em><b>Children Specifications</b></em>' containment reference list feature.

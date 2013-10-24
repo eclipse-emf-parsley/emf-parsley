@@ -788,10 +788,14 @@ expectedViewerContentProvider =
 package my.empty.edit.ui.provider;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
+import java.util.Iterator;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
@@ -802,6 +806,12 @@ public class ViewerContentProviderGen extends ViewerContentProvider {
   @Inject
   public ViewerContentProviderGen(final AdapterFactory adapterFactory) {
     super(adapterFactory);
+  }
+  
+  public Object elements(final Resource it) {
+    TreeIterator<EObject> _allContents = it.getAllContents();
+    Iterator<Library> _filter = Iterators.<Library>filter(_allContents, Library.class);
+    return _filter;
   }
   
   public Object children(final Library it) {

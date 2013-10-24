@@ -814,9 +814,19 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getViewerContentProvider_ChildrenSpecifications()
+  public EReference getViewerContentProvider_ElementsSpecifications()
   {
     return (EReference)viewerContentProviderEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getViewerContentProvider_ChildrenSpecifications()
+  {
+    return (EReference)viewerContentProviderEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1029,6 +1039,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEReference(proposalSpecificationEClass, PROPOSAL_SPECIFICATION__EXPRESSION);
 
     viewerContentProviderEClass = createEClass(VIEWER_CONTENT_PROVIDER);
+    createEReference(viewerContentProviderEClass, VIEWER_CONTENT_PROVIDER__ELEMENTS_SPECIFICATIONS);
     createEReference(viewerContentProviderEClass, VIEWER_CONTENT_PROVIDER__CHILDREN_SPECIFICATIONS);
 
     emfFeatureAccessEClass = createEClass(EMF_FEATURE_ACCESS);
@@ -1160,6 +1171,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEReference(getProposalSpecification_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, ProposalSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(viewerContentProviderEClass, ViewerContentProvider.class, "ViewerContentProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getViewerContentProvider_ElementsSpecifications(), this.getLabelSpecification(), null, "elementsSpecifications", null, 0, -1, ViewerContentProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getViewerContentProvider_ChildrenSpecifications(), this.getLabelSpecification(), null, "childrenSpecifications", null, 0, -1, ViewerContentProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(emfFeatureAccessEClass, EmfFeatureAccess.class, "EmfFeatureAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

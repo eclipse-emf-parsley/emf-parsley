@@ -268,9 +268,14 @@ module my.empty {
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.ecore.resource.Resource
 
 module my.empty {
 	viewerContentProvider {
+		elements {
+			Resource -> allContents.filter(Library)
+		}
+		
 		children {
 			Library -> books + writers
 			Writer writer -> writer.books

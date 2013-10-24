@@ -104,6 +104,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ViewerContentProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementsSpecifications"
+        upperBound="-1" eType="#//LabelSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="childrenSpecifications"
         upperBound="-1" eType="#//LabelSpecification" containment="true"/>
   </eClassifiers>

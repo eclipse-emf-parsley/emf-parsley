@@ -1356,7 +1356,7 @@ public class EmfParsleyDslSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (childrenSpecifications+=LabelSpecification*)
+	 *     (elementsSpecifications+=LabelSpecification* childrenSpecifications+=LabelSpecification*)
 	 */
 	protected void sequence_ViewerContentProvider(EObject context, ViewerContentProvider semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
