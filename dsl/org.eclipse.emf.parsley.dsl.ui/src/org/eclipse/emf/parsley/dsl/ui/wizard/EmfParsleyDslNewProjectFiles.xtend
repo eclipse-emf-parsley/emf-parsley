@@ -1,6 +1,8 @@
 package org.eclipse.emf.parsley.dsl.ui.wizard
 
-class EmfParsleyDslNewProjectFiles {
+import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
+
+class EmfParsleyDslNewProjectFiles extends EmfParsleyProjectFilesGenerator {
 	
 	def exampleDslFile(String projectName)
 '''
@@ -21,7 +23,7 @@ module «projectName» {
 	
 	parts {
 		viewpart «projectName» {
-			viewname "«projectName»"
+			viewname "«projectName.prefixFromProject»"
 			viewclass «viewId»
 		}
 	}
