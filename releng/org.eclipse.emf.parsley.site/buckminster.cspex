@@ -16,6 +16,8 @@
 			componentType="eclipse.feature" />
 		<dependency name="org.eclipse.emf.parsley.examples.mail.product.site" 
 			componentType="eclipse.feature" />
+		<dependency name="org.eclipse.emf.parsley.examples.eclipse4.product.feature" 
+			componentType="eclipse.feature" />
 		<dependency name="org.eclipse.emf.parsley.examples.firstexample" 
 			componentType="osgi.bundle" />
 	</dependencies>
