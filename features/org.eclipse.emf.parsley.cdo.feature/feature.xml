@@ -3,7 +3,7 @@
       id="org.eclipse.emf.parsley.cdo.feature"
       label="Emf Parsley CDO"
       version="0.1.0.qualifier"
-      provider-name="RCP Vision">
+      provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emfparsley">
       Working with EMF a developer realizes that all the information are available for building basic UI.
@@ -13,12 +13,12 @@ A lightweight framework that allows easy and quick development of EMF-based Appl
 It aims at providing a set of Components like Trees, Tables and Detail Forms that manage the model with the introspective EMF capabilities. Using these components you can easily build forms, viewer or editors. The framework provides basic UI implementations which are customizable with Injection mechanism (based on Google Guice).
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      %copyright
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
-      Made available under Eclipse Public License v 1.0
+      %license
    </license>
 
    <includes

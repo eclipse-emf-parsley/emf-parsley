@@ -2,7 +2,8 @@
 <feature
       id="org.eclipse.emf.parsley.rap.cdo.sdk"
       label="Emf Parsley CDO RAP Sdk"
-      version="0.1.0.qualifier">
+      version="0.1.0.qualifier"
+      provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emf-parsley">
       *** DO NOT INSTALL IN YOUR IDE ***
@@ -10,12 +11,12 @@ This feature is only for provisioning Target Platforms.
 EMF CDO Parsley runtime for the Rich Ajax Platform.
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      %copyright
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
    </license>
 
    <plugin
