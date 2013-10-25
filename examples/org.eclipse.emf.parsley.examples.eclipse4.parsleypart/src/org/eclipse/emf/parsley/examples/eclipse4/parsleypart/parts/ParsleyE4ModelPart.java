@@ -7,6 +7,7 @@ import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
+import org.eclipse.emf.parsley.examples.eclipse4.parsleypart.ParsleypartActivator;
 import org.eclipse.emf.parsley.factories.TreeFormFactory;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.emf.parsley.widgets.TreeFormComposite;
@@ -20,16 +21,16 @@ import com.google.inject.Injector;
 public class ParsleyE4ModelPart implements IMenuListener {
 
 	//Guice injector
-	private Injector injector=ParsleyE4ModelPartActivator.getDefault().getInjector();
+	private Injector injector=ParsleypartActivator.getDefault().getInjector();
 	
 	// Guice injected EMF Parsley component for contributing to the tree context menu
-	private TreeActionBarContributor treeActionBarContributor = injector.getInstance(TreeActionBarContributor.class);
+	private TreeActionBarContributor treeActionBarContributor;
 	// Guice injected EMF Parsley factory for the tree detail form
-	private TreeFormFactory treeFormFactory = injector.getInstance(TreeFormFactory.class);
+	private TreeFormFactory treeFormFactory;
 	// Guice injected EMF Parsley editing domain
-	private AdapterFactoryEditingDomain editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class);
+	private AdapterFactoryEditingDomain editingDomain;
 	// Guice injected viewer initializer
-	private ViewerInitializer viewerInitializer = (ViewerInitializer) injector.getInstance(ViewerInitializer.class);
+	private ViewerInitializer viewerInitializer;
 	
 	private TreeFormComposite treeFormComposite;
 	
@@ -39,6 +40,13 @@ public class ParsleyE4ModelPart implements IMenuListener {
 	@Inject
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+		treeActionBarContributor = injector.getInstance(TreeActionBarContributor.class);
+		// Guice injected EMF Parsley factory for the tree detail form
+		treeFormFactory = injector.getInstance(TreeFormFactory.class);
+		// Guice injected EMF Parsley editing domain
+		editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class);
+		// Guice injected viewer initializer
+		viewerInitializer = injector.getInstance(ViewerInitializer.class);
 		
 		// Initialize Parsley Tree Form:  
 		// 1) create the tree-form composite

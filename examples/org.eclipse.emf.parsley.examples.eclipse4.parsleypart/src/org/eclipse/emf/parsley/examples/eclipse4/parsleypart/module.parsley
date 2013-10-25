@@ -1,0 +1,15 @@
+import org.eclipse.e4.ui.model.application.ui.basic.impl.TrimmedWindowImpl
+
+/* org.eclipse.emf.parsley.examples.eclipse4.parsleypart Emf Components Dsl Module file */
+module org.eclipse.emf.parsley.examples.eclipse4.parsleypart {
+	
+	featureCaptionProvider {
+		text {
+			TrimmedWindowImpl :  elementId -> 'Wrote by:' 
+			TrimmedWindowImpl :  tags -> 'Tags:' 
+		}
+	}
+	
+	
+	
+}
