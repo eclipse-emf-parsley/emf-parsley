@@ -8,6 +8,11 @@ Note that you need two different workspaces (and two different target platforms)
 if you want to materialize also the workspace for developing the link[http://eclipse.org/rap/][RAP]
 version of Emf Parsley (see below).
 
+In both cases, you need a link[http://www.eclipse.org/Xtext/download.html]["Full eclipse"] 
+from Xtext website or use the link[http://www.eclipse.org/downloads/][eclipse DSL Package]
+(we use Xtend for many source files, and we do not put the generated files
+in the repository).
+
 We use link[http://www.eclipse.org/buckminster/][Buckminster] as the
 building and materialization infrastructure.
 We provide an link[http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/workspace.ant][ant script] which installs and runs Buckminster. 
