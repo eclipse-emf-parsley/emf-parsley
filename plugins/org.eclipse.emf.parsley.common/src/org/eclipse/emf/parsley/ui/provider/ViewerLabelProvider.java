@@ -16,7 +16,7 @@ import org.eclipse.swt.graphics.Image;
 import com.google.inject.Inject;
 
 /**
- * @author bettini
+ * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
 public class ViewerLabelProvider implements ILabelProvider {
@@ -49,7 +49,7 @@ public class ViewerLabelProvider implements ILabelProvider {
 	}
 
 	protected String getDelegateText(Object element) {
-		return delegateLabelProvider.getText(element);
+		return getDelegateLabelProvider().getText(element);
 	}
 
 	public Image getImage(Object element) {
@@ -84,31 +84,27 @@ public class ViewerLabelProvider implements ILabelProvider {
 	}
 
 	protected Image getDelegateImage(Object element) {
-		return delegateLabelProvider.getImage(element);
+		return getDelegateLabelProvider().getImage(element);
 	}
 
 	public void addListener(ILabelProviderListener listener) {
-		delegateLabelProvider.addListener(listener);
+		getDelegateLabelProvider().addListener(listener);
 	}
 
 	public void dispose() {
-		delegateLabelProvider.dispose();
+		getDelegateLabelProvider().dispose();
 	}
 
 	public boolean isLabelProperty(Object element, String property) {
-		return delegateLabelProvider.isLabelProperty(element, property);
+		return getDelegateLabelProvider().isLabelProperty(element, property);
 	}
 
 	public void removeListener(ILabelProviderListener listener) {
-		delegateLabelProvider.removeListener(listener);
+		getDelegateLabelProvider().removeListener(listener);
 	}
 
 	public ILabelProvider getDelegateLabelProvider() {
 		return delegateLabelProvider;
-	}
-
-	public void setDelegateLabelProvider(ILabelProvider delegateLabelProvider) {
-		this.delegateLabelProvider = delegateLabelProvider;
 	}
 
 	public String text(Object element) {

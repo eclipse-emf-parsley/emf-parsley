@@ -52,13 +52,13 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 
 	@Override
 	public String getText(Object element) {
-		String ret=polymorphicGetText(element, eStructuralFeature);
+		String ret=polymorphicGetText(element, geteStructuralFeature());
 		if(ret!=null) {
 			return ret;
 		}
 		try {
 			Object featureValue = getFeatureValue(element);
-			return featureValue != null ? labelProvider.getText(featureValue)
+			return featureValue != null ? getLabelProvider().getText(featureValue)
 					: "";
 		} catch (Exception e) {
 			// avoid exceptions during rendering
@@ -72,13 +72,13 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 */
 	protected Object getFeatureValue(Object element) {
 		EObject p = (EObject) element;
-		Object featureValue = p.eGet(eStructuralFeature);
+		Object featureValue = p.eGet(geteStructuralFeature());
 		return featureValue;
 	}
 
 	@Override
 	public Image getImage(Object element) {
-		Image ret=polymorphicGetImage(element, eStructuralFeature);
+		Image ret=polymorphicGetImage(element, geteStructuralFeature());
 		return ret;
 	}
 	

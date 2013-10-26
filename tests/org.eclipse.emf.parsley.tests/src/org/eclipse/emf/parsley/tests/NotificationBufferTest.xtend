@@ -35,6 +35,14 @@ class NotificationBufferTest extends EmfAbstractTest {
 	}
 
 	@Test
+	def public void checkNotificationsAreBuffered() {
+		clearTestAdaptersNotifications
+		buffer.startBuffering
+		addTestBook("1") // the test adapters will receive no notification
+		"[eventType: 3, eventType: 3]".assertBufferedNotifications
+	}
+
+	@Test
 	def public void checkNotificationsStartAndStopBuffering() {
 		clearTestAdaptersNotifications
 		addTestBook("1")
@@ -77,6 +85,11 @@ class NotificationBufferTest extends EmfAbstractTest {
 	def private assertNotificationsInTestAdapters(CharSequence expected) {
 		expected.toString.assertEquals(adapter1.notificationsToString)
 		expected.toString.assertEquals(adapter2.notificationsToString)
+	}
+
+	def private assertBufferedNotifications(CharSequence expected) {
+		expected.toString.assertEquals(buffer.notifications.map[
+			"eventType: " + eventType].toString)
 	}
 	
 	private def clearTestAdaptersNotifications() {

@@ -97,10 +97,6 @@ public class WorkbenchActionBarContributor extends
 		controlAction = editingActionManager.createControlAction();
 	}
 
-	protected boolean removeAllReferencesOnDelete() {
-		return true;
-	}
-
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
 		IMenuManager submenuManager = new MenuManager("Emf Parsley",

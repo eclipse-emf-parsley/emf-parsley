@@ -62,8 +62,4 @@ public class NotificationBuffer extends AdapterImpl {
 	public List<Notification> getNotifications() {
 		return notifications;
 	}
-
-	public void setNotifications(List<Notification> notifications) {
-		this.notifications = notifications;
-	}
 }
