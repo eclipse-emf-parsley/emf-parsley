@@ -4,8 +4,8 @@ Bundle-Name: Emf Parsley RAP Cdo
 Bundle-SymbolicName: org.eclipse.emf.parsley.rap.cdo;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.cdo.Activator
-Require-Bundle: org.eclipse.emf.parsley.cdo.common;bundle-version="0.1.0";visibility:=reexport,
- org.eclipse.rap.ui;bundle-version="1.5.2"
+Require-Bundle: org.eclipse.emf.parsley.cdo.common;visibility:=reexport,
+ org.eclipse.rap.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.parsley.cdo

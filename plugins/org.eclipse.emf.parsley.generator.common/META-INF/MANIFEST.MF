@@ -6,7 +6,7 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.generator.common.Activator
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.5.0",
  com.google.guava,
- org.eclipse.xtext.xbase.lib;bundle-version="[2.4.2,2.5.0)",
+ org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.standalone;resolution:=optional
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
