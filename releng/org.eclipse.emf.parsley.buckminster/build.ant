@@ -21,6 +21,7 @@
 	<property name="resolve.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-resolve-commands.txt" />
 	<property name="perform.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-perform-commands.txt" />
 	<property name="perform.local.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-perform-local-commands.txt" />
+	<property name="promote.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-promote-site.txt" />
 	<property name="build.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-build-commands.txt" />
 	<property name="build.local.commands.file" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/headless-build-local-commands.txt" />
 	<property name="build.properties" location="${projects.location}/releng/org.eclipse.emf.parsley.buckminster/build.properties" />
@@ -70,6 +71,11 @@
 		<run_buckminster commandsfile="${perform.local.commands.file}" propertiesfile="${build.properties}" />
 		<echo message=" " />
 		<echo message="Updatesite output in: ${build.root}/buckminster.output/org.eclipse.emf.parsley.site_*-eclipse.feature/site.p2/" />
+	</target>
+
+	<target name="buckminster-promote">
+		<run_buckminster commandsfile="${promote.commands.file}" propertiesfile="${build.properties}" />
+		<echo message=" " />
 	</target>
 
 	<target name="b3_aggregation" depends="install.b3.headless" description="description">

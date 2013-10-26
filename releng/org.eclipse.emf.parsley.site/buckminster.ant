@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<project name="project">
+	
+	<import file="${buckminster.pdetasks}" />
+	
+	<condition property="legal.directory">
+		<matches pattern="^/[^/]+/.*" string="${directory}"/>
+	</condition>
+	
+	<target name="do.clear.directory" if="legal.directory">
+		<delete includeemptydirs="true" quiet="true">
+			<fileset dir="${directory}" includes="**/*" defaultexcludes="false"/>
+		</delete>
+	</target>
+	
+	<target name="dont.clear.directory" unless="legal.directory">
+		<fail message="Directory &quot;${directory}&quot; is invalid"/>
+	</target>
+	
+	<target name="clear.directory" depends="do.clear.directory,dont.clear.directory"/>
+	
+	<target name="compute.child.repository.directory" >
+		<tstamp>
+		     <format property="time.stamp" pattern="yyyyMMdd-HHmm"/>
+		</tstamp>
+		<property name="child.repository" 
+			value="${parsley.release}-${time.stamp}" />
+		<property name="child.repository.directory" 
+			location="${parsley.download.area}/updates/updates-${site.suffix}/${child.repository}/" />
+	</target>
+	
+	<target name="composite.add" depends="compute.child.repository.directory">
+
+		<echo message=" " />
+		<echo message="Copying to ${child.repository.directory}..." />
+		
+		<mkdir dir="${child.repository.directory}"/>
+		<buckminster.copy todir="${child.repository.directory}" overwrite="true">
+				<buckminster.filesetgroup value="${fs:action.requirements}"/>
+		</buckminster.copy>
+		
+		<property name="composite.repository.directory" location="${parsley.download.area}/updates/updates-${site.suffix}/" />
+		
+		<echo message=" " />
+		<echo message="Composite repository       : ${composite.repository.directory}" />
+		<echo message="Composite name             : ${site.composite.name}" />
+		<echo message="Child repository directory : ${child.repository.directory}" />
+		<echo message="Adding child repository    : ${child.repository}" />
+		
+		<p2.composite.repository>
+			<repository
+				compressed="false"
+				location="${composite.repository.directory}" 
+				name="${site.composite.name}" />
+			<add>
+				<repository location="${child.repository}" />
+			</add>
+		</p2.composite.repository>
+		
+<echo file="${composite.repository.directory}/p2.index">version=1
+metadata.repository.factory.order=compositeContent.xml,\!
+artifact.repository.factory.order=compositeArtifacts.xml,\!
+</echo>
+
+	</target>
+
+</project>

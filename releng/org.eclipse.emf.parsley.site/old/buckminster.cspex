@@ -38,18 +38,9 @@
             </actorProperties>
             <prerequisites alias="action.requirements">
                 <attribute name="site.p2"/>
-                <!--  <attribute name="clear.site.eclipse" contributor="false"/>  -->
+                <attribute name="clear.site.eclipse" contributor="false"/>
             </prerequisites>
-            <products alias="action.output" base="${parsley.download.area}/updates-${site.suffix}/${parsley.release}/"/>
-        </public>
-        <public name="promote.site.composite" actor="ant">
-            <actorProperties>
-                <property key="buildFile" value="buckminster.ant"/>
-                <property key="targets" value="composite.add"/>
-            </actorProperties>
-            <prerequisites alias="action.requirements">
-                <attribute name="site.p2"/>
-            </prerequisites>
+            <products alias="action.output" base="${parsley.download.area}/updates-${site.suffix}/"/>
         </public>
         <public name="eclipse-install-test-indigo" actor="ant">
             <actorProperties>
