@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley RAP Views
 Bundle-SymbolicName: org.eclipse.emf.parsley.rap.views
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.eclipse.emf.parsley.rap.views.EmfParsleyRapViewsActivator
+Bundle-Activator: org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.5.0";visibility:=reexport,
  org.eclipse.emf.parsley.views.common;visibility:=reexport,
  org.eclipse.rap.ui.views;visibility:=reexport,

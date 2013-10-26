@@ -1,6 +1,6 @@
 package org.eclipse.emf.parsley.listeners;
 
-import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
+import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.ui.PartInitException;
@@ -23,7 +23,7 @@ public class OpenPropertyViewMouseAdapter extends MouseAdapter
 						.getActivePage()
 						.showView("org.eclipse.ui.views.PropertySheet");
 			} catch (PartInitException exception) {
-				EmfParsleyCommonActivator.log(exception);
+				EmfParsleyActivator.log(exception);
 			}
 		}
 	}

@@ -8,18 +8,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class EmfParsleyCommonActivator extends AbstractUIPlugin {
+public class EmfParsleyActivator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.emf.parsley"; //$NON-NLS-1$
 
 	// The shared instance
-	private static EmfParsleyCommonActivator plugin;
+	private static EmfParsleyActivator plugin;
 
 	/**
 	 * The constructor
 	 */
-	public EmfParsleyCommonActivator() {
+	public EmfParsleyActivator() {
 	}
 
 	/*
@@ -51,7 +51,7 @@ public class EmfParsleyCommonActivator extends AbstractUIPlugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static EmfParsleyCommonActivator getDefault() {
+	public static EmfParsleyActivator getDefault() {
 		return plugin;
 	}
 
@@ -60,12 +60,12 @@ public class EmfParsleyCommonActivator extends AbstractUIPlugin {
 	}
 
 	public static void logError(String errorMessage) {
-		log(new Status(IStatus.ERROR, EmfParsleyCommonActivator.PLUGIN_ID,
+		log(new Status(IStatus.ERROR, EmfParsleyActivator.PLUGIN_ID,
 				errorMessage));
 	}
 
 	public static void log(Throwable exception) {
-		log(new Status(IStatus.ERROR, EmfParsleyCommonActivator.PLUGIN_ID,
+		log(new Status(IStatus.ERROR, EmfParsleyActivator.PLUGIN_ID,
 				exception.getMessage(),
 				exception));
 	}

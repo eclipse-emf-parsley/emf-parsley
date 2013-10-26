@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.EmfParsleyCommonActivator;
+import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
@@ -335,11 +335,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			try {
 				keyStroke = KeyStroke.getInstance(string);
 			} catch (ParseException e) {
-				EmfParsleyCommonActivator
+				EmfParsleyActivator
 						.getDefault()
 						.getLog()
 						.log(new Status(IStatus.ERROR,
-								EmfParsleyCommonActivator.PLUGIN_ID,
+								EmfParsleyActivator.PLUGIN_ID,
 								"Error while parse: " + string, e));
 			}
 			new ContentProposalAdapter(t, new TextContentAdapter(),

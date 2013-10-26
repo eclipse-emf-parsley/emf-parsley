@@ -15,7 +15,7 @@ public class CDOEmfParsleyExtensionFactory extends
 
 	@Override
 	protected EmfParsleyGuiceModule getModule() {
-		return new CDOEmfParsleyModule(Activator.getDefault());
+		return new CDOEmfParsleyModule(EmfParsleyCDOActivator.getDefault());
 	}
 	
 	

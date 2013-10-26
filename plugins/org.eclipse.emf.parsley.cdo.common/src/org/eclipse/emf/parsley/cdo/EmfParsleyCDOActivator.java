@@ -1,25 +1,23 @@
-package org.eclipse.emf.parsley.views;
+package org.eclipse.emf.parsley.cdo;
 
-
-import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class EmfParsleyViewsActivator extends AbstractUIPlugin {
+public class EmfParsleyCDOActivator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.emf.parsley.views"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.eclipse.emf.parsley.cdo"; //$NON-NLS-1$
 
 	// The shared instance
-	private static EmfParsleyViewsActivator plugin;
+	private static EmfParsleyCDOActivator plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public EmfParsleyViewsActivator() {
+	public EmfParsleyCDOActivator() {
 	}
 
 	/*
@@ -45,7 +43,7 @@ public class EmfParsleyViewsActivator extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static EmfParsleyViewsActivator getDefault() {
+	public static EmfParsleyCDOActivator getDefault() {
 		return plugin;
 	}
 

@@ -28,7 +28,7 @@ public class EmfParsleyExtensionFactory extends
 	 */
 	@Override
 	protected Bundle getBundle() {
-		return EmfParsleyCommonActivator.getDefault().getBundle();
+		return EmfParsleyActivator.getDefault().getBundle();
 	}
 
 	/*
@@ -44,7 +44,7 @@ public class EmfParsleyExtensionFactory extends
 	}
 
 	protected EmfParsleyGuiceModule getModule() {
-		return new EmfParsleyGuiceModule(EmfParsleyCommonActivator.getDefault());
+		return new EmfParsleyGuiceModule(EmfParsleyActivator.getDefault());
 	}
 
 }
