@@ -4,7 +4,7 @@ Bundle-Name: EMF Parsley SWTBOT Tests
 Bundle-SymbolicName: org.eclipse.emf.parsley.tests.swtbot;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ActivationPolicy: lazy
-Bundle-Vendor: RCP-VISION
+Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.1.0",
  org.eclipse.xtext.ui.junit,

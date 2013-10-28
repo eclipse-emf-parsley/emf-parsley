@@ -6,4 +6,4 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.emf.parsley.runtime.common;visibility:=reexport,
  org.eclipse.rap.ui
-Bundle-Vendor: RCP-VISION
+Bundle-Vendor: Eclipse Modeling Project

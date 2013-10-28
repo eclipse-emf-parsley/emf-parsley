@@ -5,3 +5,4 @@ Bundle-SymbolicName: org.eclipse.emf.parsley.examples.cdo.rap;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.rap.ui
+Bundle-Vendor: Eclipse Modeling Project

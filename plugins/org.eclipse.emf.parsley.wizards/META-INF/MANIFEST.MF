@@ -4,7 +4,7 @@ Bundle-Name: Emf Parsley Wizards
 Bundle-SymbolicName: org.eclipse.emf.parsley.wizards;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.wizards.Activator
-Bundle-Vendor: RCP-VISION
+Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.jdt.core;bundle-version="3.7.1",
  org.eclipse.jdt.launching;bundle-version="3.6.1",
  org.eclipse.jdt.ui;bundle-version="3.7.1",

@@ -17,3 +17,4 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.ui.plugin
 Export-Package: org.eclipse.emf.parsley.cdo,
  org.eclipse.emf.parsley.cdo.util
+Bundle-Vendor: Eclipse Modeling Project

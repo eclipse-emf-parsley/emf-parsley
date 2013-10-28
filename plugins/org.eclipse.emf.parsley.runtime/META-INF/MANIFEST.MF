@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Emf Parsley Runtime Functionalities
 Bundle-SymbolicName: org.eclipse.emf.parsley.runtime
 Bundle-Version: 0.1.0.qualifier
-Bundle-Vendor: RCP-VISION
+Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: com.google.inject;visibility:=reexport,
  javax.inject;visibility:=reexport,
