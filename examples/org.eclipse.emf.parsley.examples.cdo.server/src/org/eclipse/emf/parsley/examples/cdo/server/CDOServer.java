@@ -1,4 +1,4 @@
-package org.eclipse.emf.parsley.tests.swtbot.cdo.util;
+package org.eclipse.emf.parsley.examples.cdo.server;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,7 +58,6 @@ public class CDOServer {
 		try {
 			TimeUnit.DAYS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

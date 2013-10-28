@@ -26,6 +26,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.parsley.common,
  org.eclipse.emf.parsley.examples.cdo.treeform,
  org.eclipse.emf.parsley.examples.cdo.model,
- org.eclipse.xtend.standalone;resolution:=optional
+ org.eclipse.xtend.standalone;resolution:=optional,
+ org.eclipse.emf.parsley.examples.cdo.server
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

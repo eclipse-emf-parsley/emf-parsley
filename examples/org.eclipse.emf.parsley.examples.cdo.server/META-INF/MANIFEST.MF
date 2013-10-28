@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Emf Parsley Example CDO Server
+Bundle-SymbolicName: org.eclipse.emf.parsley.examples.cdo.server
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Eclipse Modeling Project
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.emf.cdo,
+ org.eclipse.net4j,
+ org.eclipse.emf.cdo.net4j,
+ org.eclipse.emf.cdo.server,
+ org.eclipse.emf.cdo.server.db,
+ org.eclipse.emf.cdo.server.net4j,
+ org.eclipse.net4j.tcp
+Export-Package: org.eclipse.emf.parsley.examples.cdo.server
