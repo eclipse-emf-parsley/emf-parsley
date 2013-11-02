@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Buckminster Headless - build
+
+	buckminster.home must be specified on the command line, e.g.,
+	 	ant -Dbuckminster.home=/home/bettini/buckminster -f build.ant
+
+	Properties:
+		WORKSPACE  			Eclipse workspace location, or hudson job workspace
+		build.root 			Where to build? WARNING: This folder will be cleaned up, so do not point to user.home or something important
+							Default: ${WORKSPACE}/buildroot
+		buckminster.home	Buckminster headless to use. See http://www.eclipse.org/buckminster/downloads.html
+		projects.location	Where to find projects to build?
+							Default: ${WORKSPACE}
+		eclipse.download	The base URL for all the repositories in the RMAP
+							Default: http://download.eclipse.org
+-->
+<project name="Buckminster Headless for examples" default="buckminster">
+	<import file="common.ant" as="common" />
+
+	<property name="releng.project" location="${projects.location}/releng/org.eclipse.emf.parsley.releng"/>
+	<property name="commands.path" value="${releng.project}/commands"/>
+	
+	<property name="resolve.commands.file" value="${commands.path}/headless-resolve-commands.bmscript" />
+	<property name="products.commands.file" value="${commands.path}/headless-perform-examples-rcp.bmscript" />
+	<property name="products.local.commands.file" value="${commands.path}/headless-perform-local-examples-rcp.bmscript" />
+	<property name="build.properties" value="${releng.project}/build.properties" />
+
+	<target name="buckminster" depends="common.cleanup,clean-xtend-gen,install.buckminster.headless" description="description">
+
+		<fail unless="buckminster.home" message="buckminster.home must be specified." />
+						
+		<echo message="IMPORTANT: Populating an empty target platform may took over 10 minutes." />
+		<echo message="eclipse.download: ${eclipse.download}" />
+		<echo message="build.properties: ${build.properties}" />
+
+		<run_buckminster commandsfile="${resolve.commands.file}" propertiesfile="${build.properties}" />
+		<run_buckminster commandsfile="${products.commands.file}" propertiesfile="${build.properties}" />
+
+		<echo message=" " />
+		<echo message="Updatesite output in: ${build.root}/buckminster.output/org.eclipse.emf.parsley.examples.mail.product.site_*-eclipse.feature/site.p2/" />
+		<echo message="Products output in: ${build.root}/buckminster.output/org.eclipse.emf.parsley.examples.mail.product.site_*-eclipse.feature/EmfParsleyMail.OS.WS.ARCH/" />
+	</target>
+
+	<target name="buckminster-local" depends="common.cleanup,install.buckminster.headless" description="description">
+
+		<fail unless="buckminster.home" message="buckminster.home must be specified." />
+						
+		<echo message="IMPORTANT: Populating an empty target platform may took over 10 minutes." />
+		<echo message="eclipse.download: ${eclipse.download}" />
+		<echo message="build.properties: ${build.properties}" />
+
+		<run_buckminster commandsfile="${resolve.commands.file}" propertiesfile="${build.properties}" />
+		<run_buckminster commandsfile="${products.local.commands.file}" propertiesfile="${build.properties}" />
+
+		<echo message=" " />
+		<echo message="Updatesite output in: ${build.root}/buckminster.output/org.eclipse.emf.parsley.examples.mail.product.site_*-eclipse.feature/site.p2/" />
+		<echo message="Products output in: ${build.root}/buckminster.output/org.eclipse.emf.parsley.examples.mail.product.site_*-eclipse.feature/EmfParsleyMail.OS.WS.ARCH/" />
+	</target>
+</project>

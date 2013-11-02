@@ -2,7 +2,7 @@
 <cs:cspec xmlns:cs="http://www.eclipse.org/buckminster/CSpec-1.0" name="org.eclipse.emf.parsley.buckminster" componentType="buckminster" version="1.0.0">
     <cs:dependencies>
         <cs:dependency name="org.eclipse.emf.cdo.sdk" componentType="eclipse.feature"/>
-        <cs:dependency name="org.eclipse.emf.parsley.buckminster.common" componentType="buckminster"/>
+        <cs:dependency name="org.eclipse.emf.parsley.releng" componentType="buckminster"/>
         <cs:dependency name="org.eclipse.emf.query.sdk" componentType="eclipse.feature"/>
         <cs:dependency name="org.eclipse.emf.sdk" componentType="eclipse.feature"/>
         <cs:dependency name="org.eclipse.equinox.executable" componentType="eclipse.feature"/>

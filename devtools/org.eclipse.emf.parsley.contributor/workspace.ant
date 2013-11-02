@@ -24,6 +24,8 @@
 	<property name="git.root" value="${user.home}/git" />
 	<property name="git.clone.dest" location="${git.root}/org.eclipse.emf-parsley" />
 	<property name="checkout.location" location="${git.clone.dest}" />
+	<property name="releng.project" value="${checkout.location}/releng/org.eclipse.emf.parsley.releng"/>
+	<property name="commands.path" value="${releng.project}/commands"/>
 
 	<property name="target.platform.dir" value="target.platform" />
 	<property name="eclipse.download" value="http://download.eclipse.org" />
@@ -93,12 +95,12 @@
 
 	<target name="resolve.commands">
 		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
-		<run_buckminster command='--script "${checkout.location}/releng/org.eclipse.emf.parsley.buckminster/headless-resolve-commands-contributor.txt"' />
+		<run_buckminster command='--script "${commands.path}/headless-resolve-commands-contributor.bmscript"' />
 	</target>
 
 	<target name="resolve.commands.rap">
 		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
-		<run_buckminster command='--script "${checkout.location}/releng/org.eclipse.emf.parsley.rap.buckminster/headless-resolve-commands-contributor.txt"' />
+		<run_buckminster command='--script "${commands.path}/headless-resolve-commands-contributor-rap.bmscript"' />
 	</target>
 
 	<target name="import.workspace.settings">
@@ -152,7 +154,7 @@
 				</fileset>
 			</classpath>
 			<arg line='-data "${director.dir}/workspace"' />
-			<arg line="-r ${eclipse.download}/tools/buckminster/headless-4.3,http://download.cloudsmith.com/buckminster/external-4.3,${eclipse.download}/releases/kepler" />
+			<arg line="-r ${eclipse.download}/tools/buckminster/headless-4.3,http://download.cloudsmith.com/buckminster/external-4.3" />
 			<arg line='-d "${buckminster.home}"' />
 			<arg line="-p Buckminster" />
 			<arg line="-i org.eclipse.buckminster.cmdline.product" />

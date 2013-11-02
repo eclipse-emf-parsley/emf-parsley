@@ -1,4 +1,0 @@
-setpref targetPlatformPath="${target.platform}"
-
-resolve "${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/projects-platform-contributor.cquery"
-resolve "${projects.location}/releng/org.eclipse.emf.parsley.rap.buckminster/project.cquery"
