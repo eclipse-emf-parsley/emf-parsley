@@ -24,7 +24,7 @@
     <actions>
     	<public name="clear.site.eclipse" actor="ant" always="true">
             <actorProperties>
-                <property key="buildFile" value="buckminster.ant"/>
+                <property key="buildFile" value="../org.eclipse.emf.parsley.releng/packaging.ant"/>
                 <property key="targets" value="clear.directory"/>
             </actorProperties>
             <properties>
@@ -44,7 +44,7 @@
         </public>
         <public name="promote.site.composite" actor="ant">
             <actorProperties>
-                <property key="buildFile" value="buckminster.ant"/>
+                <property key="buildFile" value="../org.eclipse.emf.parsley.releng/packaging.ant"/>
                 <property key="targets" value="composite.add"/>
             </actorProperties>
             <prerequisites alias="action.requirements">

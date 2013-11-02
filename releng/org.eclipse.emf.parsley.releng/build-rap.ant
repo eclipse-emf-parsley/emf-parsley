@@ -30,7 +30,8 @@
 	<property name="resolve.commands.file" value="${commands.path}/headless-resolve-commands-rap.bmscript" />
 	<property name="perform.commands.file" value="${commands.path}/headless-perform-commands-rap.bmscript" />
 	<property name="build.commands.file" value="${commands.path}/headless-build-local-commands.bmscript" />
-		
+	<property name="promote.commands.file" value="${commands.path}/headless-promote-site-rap.bmscript" />
+	
 	<!-- rap bundles do not use xtend, and we must not remove the generated
 		Java files generated for the common bundles -->
 	<property name="dont-clean-xtend-gen" value="true"/>

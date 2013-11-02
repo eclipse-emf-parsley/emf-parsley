@@ -23,10 +23,16 @@
 		<tstamp>
 		     <format property="time.stamp" pattern="yyyyMMdd-HHmm"/>
 		</tstamp>
+		<property name="updates.dir" value="updates"/>
+
 		<property name="child.repository" 
 			value="${parsley.release}-${time.stamp}" />
+
+		<property name="composite.repository.directory" 
+			location="${parsley.download.area}/${updates.dir}/updates-${site.suffix}/" />
+		
 		<property name="child.repository.directory" 
-			location="${parsley.download.area}/updates/updates-${site.suffix}/${child.repository}/" />
+			value="${composite.repository.directory}/${child.repository}/" />
 	</target>
 	
 	<target name="composite.add" depends="compute.child.repository.directory">
@@ -38,8 +44,6 @@
 		<buckminster.copy todir="${child.repository.directory}" overwrite="true">
 				<buckminster.filesetgroup value="${fs:action.requirements}"/>
 		</buckminster.copy>
-		
-		<property name="composite.repository.directory" location="${parsley.download.area}/updates/updates-${site.suffix}/" />
 		
 		<echo message=" " />
 		<echo message="Composite repository       : ${composite.repository.directory}" />
