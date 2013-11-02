@@ -489,7 +489,6 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	/**
 	 * Syntax:
 	 *     (
-	     ('image' '{' ('}' 'image' '{')*) | 
 	     (
 	         ('image' '{' ('}' 'image' '{')* '}')? 
 	         ('text' '{' '}')+ 
@@ -497,7 +496,8 @@ public class EmfParsleyDslSyntacticSequencer extends AbstractSyntacticSequencer 
 	         '{' 
 	         ('}' 'image' '{')* 
 	         ('}' ('text' '{' '}')+ 'image' '{' ('}' 'image' '{')*)*
-	     )
+	     ) | 
+	     ('image' '{' ('}' 'image' '{')*)
 	 )
 	 */
 	protected void emit_LabelProvider___ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___or_____ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a_RightCurlyBracketKeyword_3_1_3__q___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a___RightCurlyBracketKeyword_3_1_3___TextKeyword_3_0_0_LeftCurlyBracketKeyword_3_0_1_RightCurlyBracketKeyword_3_0_3__p_ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1___RightCurlyBracketKeyword_3_1_3_ImageKeyword_3_1_0_LeftCurlyBracketKeyword_3_1_1__a__a__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {

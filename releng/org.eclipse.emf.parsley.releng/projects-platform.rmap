@@ -9,6 +9,8 @@
 	<rm:property key="eclipse.download" value="http://download.eclipse.org" />
 	<rm:property key="xtext.p2.repository"
 		value="${eclipse.download}/modeling/tmf/xtext/updates/composite/releases" />
+	<rm:property key="itemis.p2.repository"
+		value="http://download.itemis.de/updates" />
 	<rm:property key="eclipse.target.platform" value="${eclipse.download}/releases/kepler" />
 	<rm:property key="eclipse.juno.target.platform" value="${eclipse.download}/releases/juno" />
 	<rm:property key="swtbot.repository"
@@ -36,6 +38,7 @@
 	<rm:locator pattern="^com\.google.*" searchPathRef="xtext" />
 	<rm:locator pattern="^org\.antlr.*" searchPathRef="xtext" />
 	<rm:locator pattern="javax.inject" searchPathRef="xtext" />
+	<rm:locator pattern="^de\.itemis(?:\..+)?$" searchPathRef="xtext" />
 	
 	<rm:locator pattern="^org\.hamcrest*" searchPathRef="swtbot" />
 	<rm:locator pattern="^org\.eclipse\.(?:swtbot)(?:\..+)?$"
@@ -52,6 +55,13 @@
 			<rm:property key="buckminster.source" value="false" />
 			<rm:uri format="{0}">
 				<bc:propertyRef key="xtext.p2.repository" />
+			</rm:uri>
+		</rm:provider>
+		<rm:provider componentTypes="osgi.bundle,eclipse.feature"
+			readerType="p2" source="false">
+			<rm:property key="buckminster.source" value="false" />
+			<rm:uri format="{0}">
+				<bc:propertyRef key="itemis.p2.repository" />
 			</rm:uri>
 		</rm:provider>
 	</rm:searchPath>
