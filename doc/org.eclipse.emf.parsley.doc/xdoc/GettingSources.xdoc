@@ -24,7 +24,7 @@ What this ant script will do in detail:
 
 ul[
 item[installs Buckminster headless if not found;
-	default path: e[${user.home}/buckminster].
+	default path: e[${user.home}/buckminster.parsley].
 	It can be changed by passing a path for the variable
 	e[buckminster.home].]
 item[creates an eclipse workspace; 
@@ -39,7 +39,10 @@ item[clones the Emf Parsley git repository;
 	variable e[git.clone.dest].  Note that the repository will
 	be cloned only if it is not found in the given path.]
 item[creates and sets a target platform]
-item[imports necessary projects in created workspace]
+item[imports necessary projects in the created workspace]
+item[runs the MWE2 workflow for generating Xtext language infrastructure for the DSL 
+	(in this phase, you should ignore possible Java compilation errors you see in the
+	console)]
 item[sets some important workspace settings]
 ]
 

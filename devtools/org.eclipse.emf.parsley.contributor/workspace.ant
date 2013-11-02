@@ -11,7 +11,7 @@
 							or ${user.home}/workspaces/emf-parsley-rap-sources
 							for target materialize.workspace.rap
 		buckminster.home	Buckminster headless location
-							default: ${user.home}/buckminster
+							default: ${user.home}/buckminster.parsley
 							if not installed, it will be automatically installed
 		git.clone.dest		where sources are (or will be) cloned
 							${user.home}/git/org.eclipse.emf-parsley
@@ -30,7 +30,7 @@
 	<property name="target.platform.dir" value="target.platform" />
 	<property name="eclipse.download" value="http://download.eclipse.org" />
 
-	<property name="buckminster.home" location="${user.home}/buckminster" />
+	<property name="buckminster.home" location="${user.home}/buckminster.parsley" />
 
 	<property name="director.install.dest" location="${user.home}" />
 	<property name="director.dir" location="${director.install.dest}/director" />
@@ -95,6 +95,7 @@
 
 	<target name="resolve.commands">
 		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
+		<echo message="IMPORTANT: Don't worry: Java compilation errors are expected." />
 		<run_buckminster command='--script "${commands.path}/headless-resolve-commands-contributor.bmscript"' />
 	</target>
 
@@ -154,15 +155,17 @@
 				</fileset>
 			</classpath>
 			<arg line='-data "${director.dir}/workspace"' />
-			<arg line="-r ${eclipse.download}/tools/buckminster/headless-4.3,http://download.cloudsmith.com/buckminster/external-4.3" />
+			<arg line="-r ${eclipse.download}/tools/buckminster/headless-4.3,http://download.cloudsmith.com/buckminster/external-4.3,${eclipse.download}/modeling/tmf/xtext/updates/composite/releases" />
 			<arg line='-d "${buckminster.home}"' />
 			<arg line="-p Buckminster" />
+			<arg line="-roaming" />
 			<arg line="-i org.eclipse.buckminster.cmdline.product" />
 			<arg line="-i org.eclipse.buckminster.core.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.pde.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.git.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.maven.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.emma.headless.feature.feature.group" />
+			<arg line="-i org.eclipse.emf.mwe2.launcher.feature.group" />
 		</java>
 	</target>
 

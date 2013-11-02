@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types
 Import-Package: org.apache.commons.logging,
- org.apache.log4j
+ org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.parsley.examples.fowlerdsl.parser.antlr,
  org.eclipse.emf.parsley.examples.fowlerdsl.parser.antlr.internal,
@@ -30,7 +31,6 @@ Export-Package: org.eclipse.emf.parsley.examples.fowlerdsl.parser.antlr,
  org.eclipse.emf.parsley.examples.fowlerdsl.statemachine.util,
  org.eclipse.emf.parsley.examples.fowlerdsl,
  org.eclipse.emf.parsley.examples.fowlerdsl.formatting,
- org.eclipse.emf.parsley.examples.fowlerdsl.generator,
  org.eclipse.emf.parsley.examples.fowlerdsl.scoping,
  org.eclipse.emf.parsley.examples.fowlerdsl.validation
 

@@ -41,7 +41,7 @@ What this ant script will do in detail:
 <ul>
 	<li>
 		installs Buckminster headless if not found;
-			default path: <em>${user.home}/buckminster</em>.
+			default path: <em>${user.home}/buckminster.parsley</em>.
 			It can be changed by passing a path for the variable
 			<em>buckminster.home</em>.
 	</li>
@@ -64,7 +64,12 @@ What this ant script will do in detail:
 		creates and sets a target platform
 	</li>
 	<li>
-		imports necessary projects in created workspace
+		imports necessary projects in the created workspace
+	</li>
+	<li>
+		runs the MWE2 workflow for generating Xtext language infrastructure for the DSL 
+			(in this phase, you should ignore possible Java compilation errors you see in the
+			console)
 	</li>
 	<li>
 		sets some important workspace settings

@@ -29,7 +29,6 @@ Workflow {
     component = Generator {
         pathRtProject = runtimeProject
         pathUiProject = "${runtimeProject}.ui"
-        pathTestProject = "${runtimeProject}.tests"
         projectNameRt = projectName
         projectNameUi = "${projectName}.ui"
         language = {
@@ -83,10 +82,11 @@ Workflow {
             fragment = builder.BuilderIntegrationFragment {}
 
             // generator API
-            fragment = generator.GeneratorFragment {
-                generateMwe = false
-                generateJavaMain = false
-            }
+//            fragment = generator.GeneratorFragment {
+//                generateMwe = false
+//                generateJavaMain = false
+//                generateStub = false
+//            }
 
             // formatter API
             fragment = formatting.FormatterFragment {}

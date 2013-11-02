@@ -20,5 +20,6 @@ Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.parsley.examples.fowlerdsl.ui.contentassist,
- org.eclipse.emf.parsley.examples.fowlerdsl.ui.contentassist.antlr
+ org.eclipse.emf.parsley.examples.fowlerdsl.ui.contentassist.antlr,
+ org.eclipse.emf.parsley.examples.fowlerdsl.ui.quickfix
 Bundle-Activator: org.eclipse.emf.parsley.examples.fowlerdsl.ui.internal.StatemachineActivator
