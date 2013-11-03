@@ -13,38 +13,6 @@
 		<!-- Place your Artifacts here -->
 	</artifacts>
 	<actions>
-		<public name="clear.site.eclipse" actor="ant" always="true">
-            <actorProperties>
-                <property key="buildFile" value="../org.eclipse.emf.parsley.releng/packaging.ant"/>
-                <property key="targets" value="clear.directory"/>
-            </actorProperties>
-            <properties>
-                <property key="directory" value="${parsley.download.area}/rt-${site.suffix}/"/>
-            </properties>
-        </public>
-        <public name="promote.site.eclipse" actor="ant">
-            <actorProperties>
-                <property key="buildFileId" value="buckminster.pdetasks"/>
-                <property key="targets" value="copy.group"/>
-            </actorProperties>
-            <prerequisites alias="action.requirements">
-                <attribute name="site.p2"/>
-                <!--  <attribute name="clear.site.eclipse" contributor="false"/>  -->
-            </prerequisites>
-            <products alias="action.output" base="${parsley.download.area}/rt-${site.suffix}/${parsley.release}/"/>
-        </public>
-        <public name="promote.site.composite" actor="ant">
-            <actorProperties>
-                <property key="buildFile" value="../org.eclipse.emf.parsley.releng/packaging.ant"/>
-                <property key="targets" value="composite.add"/>
-            </actorProperties>
-            <properties>
-                <property key="updates.dir" value="rt"/>
-            </properties>
-            <prerequisites alias="action.requirements">
-                <attribute name="site.p2"/>
-            </prerequisites>
-        </public>
 	</actions>
 	<groups>
 		<!-- Place your Groups here -->
