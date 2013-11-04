@@ -40,9 +40,7 @@ item[clones the Emf Parsley git repository;
 	be cloned only if it is not found in the given path.]
 item[creates and sets a target platform]
 item[imports necessary projects in the created workspace]
-item[runs the MWE2 workflow for generating Xtext language infrastructure for the DSL 
-	(in this phase, you should ignore possible Java compilation errors you see in the
-	console)]
+item[runs the MWE2 workflow for generating Xtext language infrastructure for the DSL]
 item[sets some important workspace settings]
 ]
 

@@ -3,6 +3,5 @@ setpref targetPlatformPath="${target.platform}"
 resolve "${projects.location}/releng/org.eclipse.emf.parsley.releng/projects-platform-contributor.cquery"
 resolve "${projects.location}/releng/org.eclipse.emf.parsley.releng/project.cquery"
 
-build --continueonerror
 launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl/.launch/Generate Language Infrastructure (org.eclipse.emf.parsley.dsl).launch"
 launch --stderr --stdout -l "org.eclipse.emf.parsley.examples.fowlerdsl/.launch/Generate Language Infrastructure (org.eclipse.emf.parsley.examples.fowlerdsl).launch"
