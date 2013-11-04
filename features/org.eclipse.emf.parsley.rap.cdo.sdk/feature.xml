@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.rap.cdo.sdk"
-      label="Emf Parsley CDO RAP Sdk"
+      label="Emf Parsley CDO RAP SDK"
       version="0.1.0.qualifier"
       provider-name="%providerName">
 
@@ -18,6 +18,10 @@ EMF CDO Parsley runtime for the Rich Ajax Platform.
    <license url="http://www.eclipse.org/legal/epl-v10.html">
       %license
    </license>
+
+   <includes
+         id="org.eclipse.emf.parsley.rap.cdo.requirements"
+         version="0.0.0"/>
 
    <plugin
          id="org.eclipse.emf.parsley.cdo.common"

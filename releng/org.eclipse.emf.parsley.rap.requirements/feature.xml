@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.emf.parsley.rap.sdk"
-      label="Emf Parsley RAP SDK"
+      id="org.eclipse.emf.parsley.rap.requirements"
+      label="Emf Parsley Rap Runtime Requirements"
       version="0.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emf-parsley">
       *** DO NOT INSTALL IN YOUR IDE ***
 This feature is only for provisioning Target Platforms.
-EMF Parsley runtime for the Rich Ajax Platform.
+EMF Parsley runtime requirements for the Rich Ajax Platform.
    </description>
 
    <copyright>
@@ -20,46 +20,47 @@ EMF Parsley runtime for the Rich Ajax Platform.
    </license>
 
    <includes
-         id="org.eclipse.emf.parsley.rap.requirements"
+         id="org.eclipse.emf.databinding.edit"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.query"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.rap.sdk"
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.runtime.common"
+         id="com.google.inject"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.views.common"
+         id="javax.inject"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.rap.runtime"
+         id="org.apache.commons.logging"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.common"
+         id="org.apache.log4j"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.rap"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.rap.views"
+         id="org.eclipse.xtext.xbase.lib"
          download-size="0"
          install-size="0"
          version="0.0.0"
