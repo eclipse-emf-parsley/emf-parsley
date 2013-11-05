@@ -37,7 +37,7 @@ public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 
 	def protected assertDialog(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		item.doubleClick
-		bot.shell(dialogTitle)
+		bot.shell(dialogTitle).activate
 		proc.apply()
 		bot.button("OK").click()
 	}

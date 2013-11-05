@@ -22,7 +22,8 @@
 		<attribute name="target" default="${target_xtext}" />
 		<sequential>
 			<delete file="@{target}/@{name}.zip" />
-			<zip destfile="@{target}/@{name}.zip" basedir="@{source}/@{name}" excludes="bin,bin/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**" />
+			<zip destfile="@{target}/@{name}.zip" basedir="@{source}/@{name}" 
+				excludes="bin,bin/**,xtend-gen,xtend-gen/**,emfparsley-gen,emfparsley-gen/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**,**/hs_*.log" />
 		</sequential>
 	</macrodef>
 
@@ -36,9 +37,21 @@
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.feature" source="../../features/" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.site" source="../../releng/" />
 		<zip_example name="org.eclipse.emf.parsley.examples.firstexample" />
+		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4" />
+		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4.parsleypart" />
+		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4.product.feature" source="../../features/" />
 		<zip_example name="org.eclipse.emf.examples.library" />
 		<zip_example name="org.eclipse.emf.examples.library.edit" />
 		<zip_example name="org.eclipse.emf.parsley.examples.views" />
+		<zip_example name="org.eclipse.emf.parsley.examples.cdo.server" />
+		<zip_example name="org.eclipse.emf.parsley.examples.cdo.model" />
+		<zip_example name="org.eclipse.emf.parsley.examples.cdo.rcp" />
+		<zip_example name="org.eclipse.emf.parsley.examples.cdo.treeform" />
+		<zip_example name="org.eclipse.emf.parsley.examples.cdo.product.feature" source="../../features/" />
+		<zip_example name="org.eclipse.emf.parsley.examples.cdo.rap" />
+		<zip_example name="org.eclipse.emf.parsley.examples.rap.targetplatform" />
+		<zip_example name="org.eclipse.emf.parsley.examples.rap.model" />
+		<zip_example name="org.eclipse.emf.parsley.examples.rap.ui" />
 	</target>
 
 	<target name="clean">

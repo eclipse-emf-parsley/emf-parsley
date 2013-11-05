@@ -21,7 +21,7 @@ public class EmfParsleyTextUndoRedoTests extends EmfParsleyAbstractTests {
 	def void testUndoRedoOnDialogText() {
 		val editorRoot = prepareForDialog
 		getLibraryWriterNode(editorRoot).select().doubleClick
-		bot.shell(WRITER_LABEL)
+		bot.shell(WRITER_LABEL).activate
 		assertUndoRedo(bot)
 		bot.button("OK").click()
 	}

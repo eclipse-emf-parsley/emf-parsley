@@ -231,17 +231,29 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String NEW_SIBLING = "New Sibling";
 
-	protected static final String EMF_COMPONENTS_PROJECT = "EmfParsleyProject";
+	protected static final String EMF_PARSLEY_PROJECT = "EmfParsleyProject";
 
-	protected static final String NEW_EMF_COMPONENTS_PROJECT = "Emf Parsley Project";
+	protected static final String NEW_EMF_PARSLEY_PROJECT = "Emf Parsley Project";
 
-	protected static final String NEW_EMF_COMPONENTS_DSL_PROJECT = "Emf Parsley Dsl Based Project";
+	protected static final String NEW_EMF_PARSLEY_DSL_PROJECT = "Emf Parsley Dsl Based Project";
 
-	protected static final String EMF_COMPONENTS_MAIL_RCP_EXAMPLE = "Emf Parsley Mail RCP Example";
+	protected static final String EMF_PARSLEY_MAIL_RCP_EXAMPLE = "Emf Parsley Mail RCP Example";
 	
-	protected static final String EMF_COMPONENTS_FIRST_EXAMPLE = "Emf Parsley First Example";
+	protected static final String EMF_PARSLEY_FIRST_EXAMPLE = "Emf Parsley First Example";
 
-	protected static final String EMF_COMPONENTS_VIEWS_EXAMPLES = "Emf Parsley Views Examples";
+	protected static final String EMF_PARSLEY_VIEWS_EXAMPLES = "Emf Parsley Views Examples";
+	
+	protected static final String EMF_PARSLEY_E4_EXAMPLE = "Emf Parsley Eclipse 4 Part Example";
+
+	protected static final String EMF_PARSLEY_CDO_SERVER_EXAMPLE = "Emf Parsley Cdo Server Example";
+	
+	protected static final String EMF_PARSLEY_CDO_EXAMPLE = "Emf Parsley Cdo Example";
+	
+	protected static final String EMF_PARSLEY_RAP_TP_EXAMPLE = "Emf Parsley Rap Target Platform Example";
+
+	protected static final String EMF_PARSLEY_RAP_CDO_EXAMPLE = "Emf Parsley Rap Cdo Example";
+
+	protected static final String EMF_PARSLEY_RAP_EXAMPLE = "Emf Parsley Rap Example";
 
 	protected static SWTWorkbenchBot bot;
 

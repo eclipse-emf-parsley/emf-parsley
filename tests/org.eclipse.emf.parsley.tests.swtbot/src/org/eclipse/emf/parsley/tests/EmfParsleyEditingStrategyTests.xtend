@@ -65,6 +65,7 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogTests {
 	def protected assertDialogCancel(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		item.doubleClick
 		val shell = bot.shell(dialogTitle)
+		shell.activate
 		proc.apply()
 		// tree refresh (upon Cancel and rollback) is asynchronous so we must
 		// wait for refresh to end, with a sync operation

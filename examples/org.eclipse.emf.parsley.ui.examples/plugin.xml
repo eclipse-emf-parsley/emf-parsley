@@ -51,6 +51,26 @@
 			<description>Emf Parsley First Example</description>
 		</wizard>
 	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.E4ExampleWizard" 
+			name="Emf Parsley Eclipse 4 Part Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Eclipse 4 Part Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.E4ExampleWizard" 
+			name="Emf Parsley Eclipse 4 Part Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Eclipse 4 Part Example</description>
+		</wizard>
+	</extension>
  <extension
        point="org.eclipse.ui.newWizards">
     <wizard
@@ -61,7 +81,7 @@
           name="Emf Parsley Views Examples"
           project="true">
        <description>
-          Emf Parsley First Example
+          Emf Parsley Views Examples
        </description>
     </wizard>
  </extension>
@@ -75,10 +95,110 @@
           name="Emf Parsley Views Examples"
           project="true">
        <description>
-          Emf Parsley First Example
+          Emf Parsley Views Examples
        </description>
     </wizard>
  </extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.CdoServerExampleWizard" 
+			name="Emf Parsley Cdo Server Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Cdo Server Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.CdoServerExampleWizard" 
+			name="Emf Parsley Cdo Server Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Cdo Server Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.CdoExampleWizard" 
+			name="Emf Parsley Cdo Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Cdo Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.CdoExampleWizard" 
+			name="Emf Parsley Cdo Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Cdo Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.RapTPExampleWizard" 
+			name="Emf Parsley Rap Target Platform Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Rap Target Platform Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.RapTPExampleWizard" 
+			name="Emf Parsley Rap Target Platform Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Rap Target Platform Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.RapCdoExampleWizard" 
+			name="Emf Parsley Rap Cdo Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Rap Cdo Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.RapCdoExampleWizard" 
+			name="Emf Parsley Rap Cdo Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Rap Cdo Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.RapExampleWizard" 
+			name="Emf Parsley Rap Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Rap Example</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<wizard	id="org.eclipse.emf.parsley.examples.RapExampleWizard" 
+			name="Emf Parsley Rap Example" 
+			class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard" 
+			category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+			icon="icons/genproject.gif" 
+			project="true">
+			<description>Emf Parsley Rap Example</description>
+		</wizard>
+	</extension>
    <extension
          point="org.eclipse.emf.common.ui.examples">
       <example
@@ -160,5 +280,116 @@
          </projectDescriptor>
       </example>
    </extension>
-
+	<extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.E4ExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.eclipse4.zip"
+               description="Eclipse 4 Application and Launch"
+               name="org.eclipse.emf.parsley.examples.eclipse4">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.eclipse4.parsleypart.zip"
+               description="Eclipse 4 View"
+               name="org.eclipse.emf.parsley.examples.eclipse4.parsleypart">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.eclipse4.product.feature.zip"
+               description="Eclipse 4 Product"
+               name="org.eclipse.emf.parsley.examples.eclipse4.product.feature">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.CdoServerExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.server.zip"
+               description="Emf Parsley Cdo Server Example"
+               name="org.eclipse.emf.parsley.examples.cdo.server">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.CdoExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.model.zip"
+               description="Emf Parsley Cdo Model Example"
+               name="org.eclipse.emf.parsley.examples.cdo.model">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.rcp.zip"
+               description="Emf Parsley Cdo Rcp Example"
+               name="org.eclipse.emf.parsley.examples.cdo.rcp">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.treeform.zip"
+               description="Emf Parsley Cdo TreeForm Example"
+               name="org.eclipse.emf.parsley.examples.cdo.treeform">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.product.feature.zip"
+               description="Emf Parsley Cdo Product Feature Example"
+               name="org.eclipse.emf.parsley.examples.cdo.product.feature">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.RapTPExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.rap.targetplatform.zip"
+               description="Emf Parsley Rap Target Platform Example"
+               name="org.eclipse.emf.parsley.examples.rap.targetplatform">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.RapCdoExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.model.zip"
+               description="Emf Parsley Cdo Model Example"
+               name="org.eclipse.emf.parsley.examples.cdo.model">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.rap.zip"
+               description="Emf Parsley Rap Cdo Example"
+               name="org.eclipse.emf.parsley.examples.cdo.rap">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.cdo.treeform.zip"
+               description="Emf Parsley Cdo TreeForm Example"
+               name="org.eclipse.emf.parsley.examples.cdo.treeform">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.RapExampleWizard">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.rap.model.zip"
+               description="Emf Parsley Rap Model Example"
+               name="org.eclipse.emf.parsley.examples.rap.model">
+         </projectDescriptor>
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.rap.ui.zip"
+               description="Emf Parsley Rap Ui Example"
+               name="org.eclipse.emf.parsley.examples.rap.ui">
+         </projectDescriptor>
+      </example>
+   </extension>
 </plugin>

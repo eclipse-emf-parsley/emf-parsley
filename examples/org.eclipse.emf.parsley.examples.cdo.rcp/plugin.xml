@@ -19,5 +19,13 @@
             id="org.eclipse.emf.parsley.examples.cdo.rcp.perspective">
       </perspective>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.emf.parsley.examples.cdo.rcp.application"
+            name="Emf Parsley Cdo Example">
+      </product>
+   </extension>
 
 </plugin>

@@ -23,7 +23,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	@Test
 	def canCreateDslProjectWithWizardAndTreeFormTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME,TREE_FORM_TEMPLATE);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,TREE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -31,7 +31,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	@Test
 	def canCreateDslProjectWithWizardAndTreeTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME,TREE_TEMPLATE);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,TREE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -39,7 +39,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	@Test
 	def canCreateDslProjectWithWizardAndTableFormTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME,TABLE_FORM_TEMPLATE);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,TABLE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -47,7 +47,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	@Test
 	def canCreateDslProjectWithWizardAndTableTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME,TABLE_TEMPLATE);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,TABLE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -55,7 +55,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTreeTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME,ONSELECTION_TREE_TEMPLATE);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,ONSELECTION_TREE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -63,7 +63,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTableTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME,ONSELECTION_TABLE_TEMPLATE);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,ONSELECTION_TABLE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -71,7 +71,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionFormTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME,ONSELECTION_FORM_TEMPLATE);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,ONSELECTION_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}

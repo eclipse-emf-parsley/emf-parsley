@@ -15,7 +15,7 @@ public class EmfParsleyWizardsTests extends EmfParsleyAbstractTests {
 	@Test
 	public void canCreateProjectWithWizard() throws Exception {
 		createProjectInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_PROJECT, EMF_COMPONENTS_PROJECT);
+				NEW_EMF_PARSLEY_PROJECT, EMF_PARSLEY_PROJECT);
 		// bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -23,7 +23,7 @@ public class EmfParsleyWizardsTests extends EmfParsleyAbstractTests {
 	@Test
 	public void canCreateProjectWithWizardWithNoSelectedView() throws Exception {
 		createProjectInWorkspaceWithView(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_PROJECT, EMF_COMPONENTS_PROJECT, null);
+				NEW_EMF_PARSLEY_PROJECT, EMF_PARSLEY_PROJECT, null);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 
@@ -31,7 +31,7 @@ public class EmfParsleyWizardsTests extends EmfParsleyAbstractTests {
 	public void canCreateProjectWithWizardWithSelectedTreeFormView()
 			throws Exception {
 		createProjectInWorkspaceWithView(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_PROJECT, EMF_COMPONENTS_PROJECT,
+				NEW_EMF_PARSLEY_PROJECT, EMF_PARSLEY_PROJECT,
 				"Create a TreeFormView");
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
@@ -40,7 +40,7 @@ public class EmfParsleyWizardsTests extends EmfParsleyAbstractTests {
 	public void canCreateProjectWithWizardWithSelectedTableView()
 			throws Exception {
 		createProjectInWorkspaceWithView(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_PROJECT, EMF_COMPONENTS_PROJECT,
+				NEW_EMF_PARSLEY_PROJECT, EMF_PARSLEY_PROJECT,
 				"Create a TableView");
 		assertNoErrorsInProjectAfterAutoBuild();
 	}

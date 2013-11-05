@@ -18,6 +18,8 @@
 			componentType="eclipse.feature" />
 		<dependency name="org.eclipse.emf.parsley.examples.eclipse4.product.feature" 
 			componentType="eclipse.feature" />
+		<dependency name="org.eclipse.emf.parsley.examples.cdo.product.feature" 
+			componentType="eclipse.feature" />
 		<dependency name="org.eclipse.emf.parsley.examples.firstexample" 
 			componentType="osgi.bundle" />
 	</dependencies>

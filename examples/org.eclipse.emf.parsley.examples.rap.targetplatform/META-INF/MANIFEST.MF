@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Targetplatform for Emf Parsley RAP Examples
+Bundle-SymbolicName: org.eclipse.emf.parsley.examples.rap.targetplatform
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Emf Modeling Project

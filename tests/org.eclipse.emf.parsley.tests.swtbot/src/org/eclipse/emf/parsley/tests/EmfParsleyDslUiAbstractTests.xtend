@@ -10,7 +10,7 @@ public class EmfParsleyDslUiAbstractTests extends EmfParsleyAbstractTests {
 
 	def createDslProjectWithWizard() {
 		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_COMPONENTS_DSL_PROJECT, TEST_PROJ_NAME);
+				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 }

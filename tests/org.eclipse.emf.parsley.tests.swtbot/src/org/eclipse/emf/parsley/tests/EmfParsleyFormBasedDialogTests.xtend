@@ -37,6 +37,7 @@ public class EmfParsleyFormBasedDialogTests extends EmfParsleyAbstractTests {
 	def private assertDialog(SWTBotTreeItem item, String dialogTitle, (SWTFormsBot)=>void proc) {
 		item.doubleClick
 		val shell = bot.shell(dialogTitle)
+		shell.activate
 		val formbot = new SWTFormsBot(shell.widget)
 		proc.apply(formbot)
 		bot.button("OK").click()
