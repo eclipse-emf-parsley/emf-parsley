@@ -50,19 +50,20 @@ tab and add the three previous plug-ins. Add also e["org.eclipse.emf.parsley"] p
 Don't forget to add the previous, and the required plug-ins, also to the Product.
 
 Open the Part java class and make the following changes:
-code[EmfParsley][
+
+code[Java][
 // Use these imports during Organizing Imports operation
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.widgets.Composite;
 ]
 
-code[EmfParsley][
+code[Java][
 // The part implements IMenuListener for context menu handling
 public class MyEclipse4Part implements IMenuListener
 ]
 
-code[EmfParsley][
+code[Java][
 //the parent composite
 private Composite parent;
 //the EMF Parley composite for showing a tree and a detail form
@@ -72,45 +73,38 @@ private Resource resource;
 
 //Guice injected EMF Parsley component for contributing to the tree context menu
 private TreeActionBarContributor treeActionBarContributor = FirstexampleActivator.getDefault().getInjector()
-
 		.getInstance(TreeActionBarContributor.class);
 
 
 //Guice injected EMF Parsley factory for the tree detail form
 private TreeFormFactory treeFormFactory = FirstexampleActivator.getDefault().getInjector()
-
 		.getInstance(TreeFormFactory.class);
 
 //Guice injected EMF Parsley Resource loader
 private ResourceLoader resourceLoader = FirstexampleActivator.getDefault().getInjector()
-
 		.getInstance(ResourceLoader.class);
 
 //Guice injected EMF Parsley editing domain
 private AdapterFactoryEditingDomain editingDomain = FirstexampleActivator.getDefault().getInjector()
-
 		.getInstance(AdapterFactoryEditingDomain.class);
 
 //Guice injected viewer initializer
 private ViewerInitializer viewerInitializer = (ViewerInitializer) FirstexampleActivator.getDefault().getInjector()
-
 		.getInstance(ViewerInitializer.class);
 
 //Guice injected save manager
 private ResourceSaveManager resourceSaveManager = FirstexampleActivator.getDefault().getInjector()
-
 		.getInstance(ResourceSaveManager.class);
 
 //URI for EMF Resource
 private URI uri = URI.createFileURI(System.getProperty("user.home")
-
 		+ "/MyLibrary.library");
 ]
 
 
 Modify the e[@PostConstruct] method with this code:
 
-code[EmfParsley][
+code[Java][
 @PostConstruct
 public void postConstruct(Composite parent) {
 	this.parent = parent;
@@ -120,14 +114,12 @@ public void postConstruct(Composite parent) {
 
 	// Prepare the menu action bar contributor upon the selection
 	treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
-
 }
 ]
 
 and add the following methods:
 
-code[EmfParsley][
-
+code[Java][
 public void init(TreeFormFactory treeFormFactory, ResourceLoader resourceLoader) {
 	//create the tree-form composite
 	treeFormComposite = treeFormFactory.createTreeFormMasterDetailComposite(parent, SWT.BORDER);
@@ -140,7 +132,6 @@ public void init(TreeFormFactory treeFormFactory, ResourceLoader resourceLoader)
 	viewerInitializer.addContextMenu(
 			treeFormComposite.getViewer(), treeActionBarContributor, editingDomain, this);
 }
-
 
 @Override
 public void menuAboutToShow(IMenuManager manager) {
@@ -160,14 +151,14 @@ In order to allow persisting the model changes we have to add the dirty state ha
 the Save command to the application.
 Let's start with adding the following attribute to the part
 
-code[EmfParsley][
+code[Java][
 @Inject
 MDirtyable dirtyable;
 ]
 
 initialize it in the e[@PostConstruct] method
 
-code[EmfParsley][
+code[Java][
 @PostConstruct
 public void postConstruct(Composite parent, MDirtyable dirtyable) {
 
@@ -178,7 +169,7 @@ public void postConstruct(Composite parent, MDirtyable dirtyable) {
 
 add to e[init] method the following code in order to update the dirty state
 
-code[EmfParsley][
+code[Java][
 	editingDomain.getCommandStack().addCommandStackListener(
 				new CommandStackListener() {
 					public void commandStackChanged(EventObject event) {
@@ -190,17 +181,13 @@ code[EmfParsley][
 
 and add the e[@Persist] method, which will be called when the part is saved
 
-code[EmfParsley][
+code[Java][
 @Persist
 public void save(MDirtyable dirty) throws IOException {
 	if (resourceSaveManager.save(resource)) {
-
 		if (dirty != null) {
-
 			dirty.setDirty(false);
-
 		}
-
 	}
 }
 ]
@@ -209,15 +196,13 @@ and, in the end, add the e[Save] handler along with the correspondent e[Command]
 (you can find how to create handlers, commands and menus in an Eclipse 4 applications in link[http://www.rcp-vision.com/?p=4972&lang=en][our
 tutorials])
 
-code[EmfParsley][
+code[Java][
 public class SaveHandler {
 
 	@Execute
 	void execute(EPartService partService, @Named(IServiceConstants.ACTIVE_PART) MPart part) {
-
 		partService.savePart(part, false);
 	}
-
 }
 ]
 
