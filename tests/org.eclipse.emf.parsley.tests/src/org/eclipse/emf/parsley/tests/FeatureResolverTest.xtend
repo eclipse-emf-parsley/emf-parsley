@@ -112,7 +112,6 @@ class FeatureResolverTest {
 		resolver.getFeatures(eClass, paths).assertFeatureList(expected)
 	}
 	
-	
 	def assertFeatureList(List<EStructuralFeature> features, CharSequence expected) {
 		expected.toString.assertEquals(features.map[name].join(", "))
 	}

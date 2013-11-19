@@ -49,7 +49,7 @@ public class FeatureResolver {
 		}
 	}
 
-	protected EStructuralFeature getFeature(EClass eClass, String featureName) {
+	public EStructuralFeature getFeature(EClass eClass, String featureName) {
 		EStructuralFeature feature = eClass.getEStructuralFeature(featureName);
 		if (feature != null)
 			return feature;

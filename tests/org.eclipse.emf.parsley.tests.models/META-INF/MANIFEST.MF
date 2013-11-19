@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.parsley.tests.models;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipse.emf.parsley.tests.models.testmodels,
+ org.eclipse.emf.parsley.tests.models.testmodels.impl,
+ org.eclipse.emf.parsley.tests.models.testmodels.util

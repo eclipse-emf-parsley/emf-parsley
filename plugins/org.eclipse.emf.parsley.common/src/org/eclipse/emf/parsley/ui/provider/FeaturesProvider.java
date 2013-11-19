@@ -100,13 +100,23 @@ public class FeaturesProvider {
 	}
 
 	private void buildMapInternal() {
-		map = new EClassToEStructuralFeatureMap();
-		buildMap(map);
+		buildMap(getMap());
+	}
+
+	public EClassToEStructuralFeatureMap getMap() {
+		if (map == null)
+			map = new EClassToEStructuralFeatureMap();
+		return map;
 	}
 
 	private void buildStringMapInternal() {
-		stringMap = new EClassToEStructuralFeatureAsStringsMap();
-		buildStringMap(stringMap);
+		buildStringMap(getStringMap());
+	}
+
+	public EClassToEStructuralFeatureAsStringsMap getStringMap() {
+		if (stringMap == null)
+			stringMap = new EClassToEStructuralFeatureAsStringsMap();
+		return stringMap;
 	}
 
 	/**
@@ -129,6 +139,10 @@ public class FeaturesProvider {
 	protected void buildStringMap(
 			EClassToEStructuralFeatureAsStringsMap stringMap) {
 		// default implementation is empty
+	}
+
+	public void addToStringMap(EClass eClass, String...featuresNames) {
+		getStringMap().mapTo(eClass.getInstanceClassName(), featuresNames);
 	}
 
 }
