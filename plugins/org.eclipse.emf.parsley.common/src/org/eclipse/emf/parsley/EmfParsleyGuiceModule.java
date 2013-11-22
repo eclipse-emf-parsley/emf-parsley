@@ -13,6 +13,7 @@ import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.emf.parsley.builders.TableViewerColumnBuilder;
+import org.eclipse.emf.parsley.ecore.FeatureResolver;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy;
@@ -181,6 +182,10 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 
 	public Class<? extends FeaturesProvider> bindFeaturesProvider() {
 		return FeaturesProvider.class;
+	}
+
+	public Class<? extends FeatureResolver> bindFeatureResolver() {
+		return FeatureResolver.class;
 	}
 
 	public Class<? extends FeaturesColumnProvider> bindFeaturesColumnProvider() {

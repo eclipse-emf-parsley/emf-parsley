@@ -53,8 +53,15 @@ public class FeatureResolver {
 		EStructuralFeature feature = eClass.getEStructuralFeature(featureName);
 		if (feature != null)
 			return feature;
-		else
-			EmfParsleyActivator.logError("cannot find feature '"
+		
+		// try to search for the feature ignoring the case
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=421998
+		for (EStructuralFeature f : eClass.getEAllStructuralFeatures()) {
+			if (f.getName().equalsIgnoreCase(featureName))
+				return f;
+		}
+		
+		EmfParsleyActivator.logError("cannot find feature '"
 					+ featureName + "' in EClass '" + eClass.getName() + "'");
 		return null;
 	}

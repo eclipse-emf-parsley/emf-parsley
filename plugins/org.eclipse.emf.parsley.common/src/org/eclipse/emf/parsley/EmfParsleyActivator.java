@@ -56,7 +56,11 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 	}
 
 	public static void log(Status status) {
-		getDefault().getLog().log(status);
+		EmfParsleyActivator p = getDefault();
+		if (p != null)
+			p.getLog().log(status);
+		else
+			System.err.println(status.toString());
 	}
 
 	public static void logError(String errorMessage) {

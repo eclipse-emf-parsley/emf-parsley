@@ -9,6 +9,8 @@ import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.eclipse.emf.parsley.ecore.FeatureResolver
 
 class FeaturesProviderTest {
 	
@@ -17,6 +19,7 @@ class FeaturesProviderTest {
 	@Before
 	def void setUp() {
 		featuresProvider = new FeaturesProvider
+		featuresProvider.featureResolver = new FeatureResolver
 	}
 	
 	def private void buildStringMap(EClass eClass, String...featuresNames) {
@@ -34,6 +37,13 @@ class FeaturesProviderTest {
 		EXTLibraryPackage::eINSTANCE.employee => [
 			buildStringMap("firstName", "manager")
 			assertFeatureList("firstName, manager")
+		]
+	}
+
+	@Test def void testUpperCaseFeatureNames() {
+		TestmodelsPackage::eINSTANCE.testEClass => [
+			buildStringMap("lowercaseNameFeature", "upperCaseNameFeature")
+			assertFeatureList("lowercaseNameFeature, UpperCaseNameFeature")
 		]
 	}
 	

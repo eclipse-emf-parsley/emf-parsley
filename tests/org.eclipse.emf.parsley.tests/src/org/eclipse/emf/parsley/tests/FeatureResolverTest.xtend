@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import static extension org.junit.Assert.*
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 
 class FeatureResolverTest {
 	
@@ -71,6 +72,16 @@ class FeatureResolverTest {
 		EXTLibraryPackage::eINSTANCE.employee.
 			assertFeatureList(paths, "firstName, lastName, firstName, lastName, firstName, lastName")
 	}
+
+	@Test def void testResolveFeatureWithLowerCaseName() {
+		TestmodelsPackage.eINSTANCE.testEClass.
+			assertFeature("lowercaseNameFeature", "lowercaseNameFeature")
+	}
+
+	@Test def void testResolveFeatureWithUpperCaseName() {
+		TestmodelsPackage.eINSTANCE.testEClass.
+			assertFeature("upperCaseNameFeature", "UpperCaseNameFeature")
+	}
 	
 	def createModel() {
 		eINSTANCE.createLibrary => [
@@ -114,5 +125,12 @@ class FeatureResolverTest {
 	
 	def assertFeatureList(List<EStructuralFeature> features, CharSequence expected) {
 		expected.toString.assertEquals(features.map[name].join(", "))
+	}
+
+	def assertFeature(EClass eClass, String queryName, String realName) {
+		resolver.getFeature(eClass, queryName) => [
+			assertNotNull
+			realName.assertEquals(name)
+		]
 	}
 }

@@ -14,8 +14,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
+import org.eclipse.emf.parsley.ecore.FeatureResolver;
 
 import com.google.common.collect.Lists;
+import com.google.inject.Inject;
 
 /**
  * Provides the list of {@link EStructuralFeature} of an {@link EClass}. The
@@ -28,6 +30,17 @@ import com.google.common.collect.Lists;
  * 
  */
 public class FeaturesProvider {
+	
+	@Inject
+	private FeatureResolver featureResolver;
+
+	public FeatureResolver getFeatureResolver() {
+		return featureResolver;
+	}
+
+	public void setFeatureResolver(FeatureResolver featureResolver) {
+		this.featureResolver = featureResolver;
+	}
 
 	public static class EClassToEStructuralFeatureMap extends
 			HashMap<EClass, List<EStructuralFeature>> {
@@ -86,8 +99,7 @@ public class FeaturesProvider {
 		LinkedList<EStructuralFeature> result = new LinkedList<EStructuralFeature>();
 
 		for (String featureName : list) {
-			EStructuralFeature feature = eClass
-					.getEStructuralFeature(featureName);
+			EStructuralFeature feature = featureResolver.getFeature(eClass, featureName);
 			if (feature != null)
 				result.add(feature);
 			else

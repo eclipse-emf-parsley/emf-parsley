@@ -3,15 +3,17 @@
  */
 package org.eclipse.emf.parsley.tests.providers;
 
-import static org.eclipse.emf.parsley.examples.library.EXTLibraryPackage.Literals.*;
+import static org.eclipse.emf.parsley.examples.library.EXTLibraryPackage.Literals.LENDABLE;
+import static org.eclipse.emf.parsley.examples.library.EXTLibraryPackage.Literals.LENDABLE__COPIES;
 
 import org.eclipse.emf.parsley.examples.library.Periodical;
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 
 
 /**
- * @author bettini
+ * @author Lorenzo Bettini
  * 
  */
 public class TestFeaturesProvider extends FeaturesProvider {
@@ -27,5 +29,9 @@ public class TestFeaturesProvider extends FeaturesProvider {
 			EClassToEStructuralFeatureAsStringsMap stringMap) {
 		super.buildStringMap(stringMap);
 		stringMap.mapTo(Periodical.class.getName(), "title");
+		// the actual feature's name is UpperCaseNameFeature
+		// but we specify it with the initial lowercase
+		addToStringMap(TestmodelsPackage.eINSTANCE.getTestEClass(), 
+				"upperCaseNameFeature");
 	}
 }

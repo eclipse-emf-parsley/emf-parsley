@@ -23,6 +23,7 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.tests.factories.CustomElementsContentProviderLibraryModule;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureCaptionProvider;
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
 import org.eclipse.emf.parsley.tests.providers.CustomElementsLibraryViewerContentProvider;
 import org.eclipse.emf.parsley.tests.providers.CustomLibraryViewerContentProvider;
 import org.eclipse.emf.parsley.tests.providers.LibraryEStructuralFeaturesAsStringsProvider;
@@ -152,6 +153,14 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 		// this is actually defined in FeaturesColumnProvider
 		assertFeatureNames("reader",
 				provider.getFeatures(EXTLibraryPackage.Literals.BOOK_ON_TAPE));
+	}
+
+	@Test
+	public void testFeaturesWithUppercaseName() {
+		FeaturesProvider provider = getInjector().getInstance(
+				FeaturesProvider.class);
+		assertFeatureNames("UpperCaseNameFeature",
+				provider.getFeatures(TestmodelsPackage.Literals.TEST_ECLASS));
 	}
 
 	@Test
