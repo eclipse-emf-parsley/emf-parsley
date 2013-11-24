@@ -39,6 +39,9 @@
 	<property name="git.config.file" location="${git.clone.dest}/.git/config" />
 	
 	<property name="remote.cquery" value="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/parsley-contr.cquery" />
+	
+	<property name="eclipse.p2.mirrors" value="true" />
+	<property name="java.net.preferIPv4Stack" value="true" />
 
 	<target name="materialize.workspace" depends="install.buckminster.headless">
 		<property name="WORKSPACE" location="${user.home}/workspaces/emf-parsley-sources" />
@@ -93,7 +96,7 @@
 		<run_buckminster command='addbaseline -A "api-baseline"' />
 	</target>
 
-	<target name="resolve.commands">
+	<target name="resolve.commands" depends="copy-xtext-grammar-to-bin">
 		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
 		<echo message="IMPORTANT: Don't worry: Java compilation errors are expected." />
 		<run_buckminster command='--script "${commands.path}/headless-resolve-commands-contributor.bmscript"' />
@@ -131,10 +134,22 @@
 				<sysproperty key="checkout.location" value="${checkout.location}" />
 				<sysproperty key="target.platform" value="${target.platform}" />
 				<sysproperty key="eclipse.download" value="${eclipse.download}" />
+				<sysproperty key="eclipse.p2.mirrors" value="${eclipse.p2.mirrors}" />
+				<sysproperty key="java.net.preferIPv4Stack" value="${java.net.preferIPv4Stack}" />
 				<jvmarg line=" -Xms256m -Xmx512m" />
 			</java>
 		</sequential>
 	</macrodef>
+	
+	<target name="copy-xtext-grammar-to-bin">
+	  <copy todir="${checkout.location}" overwrite="true" verbose="true">
+	    <fileset dir="${checkout.location}" casesensitive="true">
+	      <include name="**/src/**/*.xtext" />
+	    </fileset>
+	    <mapper type="regexp" 
+		      from="(.*)/(src)/(.*/*\.xtext)" to="\1/bin/\3" />
+	  </copy>
+	</target>
 
 	<target name="install.buckminster.headless">
 		<condition property="buckminster.headless.installed">
