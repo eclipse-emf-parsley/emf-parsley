@@ -23,10 +23,18 @@ Workflow {
         component = DirectoryCleaner {
             directory = "${runtimeProject}/src-gen"
         }
+        
+        component = DirectoryCleaner {
+    		directory = "${runtimeProject}/model"
+    	}
     
         component = DirectoryCleaner {
             directory = "${runtimeProject}.ui/src-gen"
         }
+
+        component = DirectoryCleaner {
+	    	directory = "${runtimeProject}.tests/src-gen"
+    	}
     
         component = Generator {
             pathRtProject = runtimeProject
