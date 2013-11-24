@@ -31,7 +31,7 @@
 
 	<property name="update.site.output" value="${build.root}/buckminster.output/org.eclipse.emf.parsley.site_*-eclipse.feature/site.p2/"/>
 	
-	<target name="buckminster" depends="common.cleanup,clean-xtend-gen,install.buckminster.headless" description="description">
+	<target name="buckminster" depends="common.cleanup,clean-xtend-gen,copy-xtext-grammar-to-bin,install.buckminster.headless" description="description">
 
 		<fail unless="buckminster.home" message="buckminster.home must be specified." />
 

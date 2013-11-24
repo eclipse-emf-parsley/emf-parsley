@@ -99,6 +99,35 @@
 		</sequential>
 	</macrodef>
 
+	<target name="copy-xtext-grammar-to-bin">
+	  <copy todir="${projects.location}" overwrite="true" verbose="true">
+	    <fileset dir="${projects.location}" casesensitive="true">
+	      <include name="**/src/**/*.xtext" />
+	    </fileset>
+	    <mapper type="regexp" 
+		      from="(.*)/(src)/(.*/*\.xtext)" to="\1/bin/\3" />
+	  </copy>
+	</target>
+
+	<target name="copy-xtext-grammar-to-bin-debug" description="only for debuging purpose">
+		<fileset dir="${projects.location}" includes="**/src/**/*.xtext" />
+
+		<path id="xtext.files">
+		  <fileset dir="${projects.location}">
+		      <include name="**/src/**/*.xtext*" />
+		  </fileset>
+		</path>
+
+		<pathconvert property="xtext-files">
+		    <path refid="xtext.files" />
+		    <mapper type="regexp" 
+		      from="(.*)/(src)/(.*/*\.xtext)" to="\1/bin/\3" />
+		</pathconvert>
+
+		<!-- <pathconvert property="xtext-files" refid="xtext.files" pathsep=" " /> -->
+		<echo message="${xtext-files}" />
+	</target>
+	
 	<target name="cleanup">
 		<delete failonerror="false" includeemptydirs="true">
 			<fileset dir="${build.root}" defaultexcludes="false">
