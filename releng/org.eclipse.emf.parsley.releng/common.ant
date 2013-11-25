@@ -82,6 +82,7 @@
          = = = = = = = = = = = = = = = = = -->
 	<macrodef name="run_b3_aggregator">
 		<attribute name="buildmodel" default="default" />
+		<element name="args" optional="true"/>
 		<sequential>
 			<java fork="true" dir="${b3.home}" logError="true" classname="org.eclipse.core.launcher.Main" failonerror="true">
 				<sysproperty key="eclipse.p2.mirrors" value="${eclipse.p2.mirrors}" />
@@ -93,11 +94,31 @@
 				</classpath>
 				<arg line='aggregate' />
 				<arg line='--buildModel "@{buildmodel}"' />
+				<args/>
 				<!-- <arg line='-L DEBUG' /> -->
 				<jvmarg line=" -Xms256m -Xmx512m" />
 			</java>
 		</sequential>
 	</macrodef>
+	
+	<!-- example; replace the - - with two dashes (can't be done in this comment)
+	<target name="b3_aggregation_with_buildroot" depends="install.b3.headless" description="Runs the b3 aggregation with explicit buildRoot">
+
+		<property name="build.model" location="${releng.project}/aggregator/mirror.b3aggr" />
+		<property name="b3.build.root" location="${releng.project}/../../mirrors/my-mirror"/>
+		
+		<echo message="IMPORTANT: Mirror aggregation may took over 10 minutes." />
+		<echo message="build.model: ${build.model}" />
+		<echo message="b3.build.root: ${b3.build.root}" />
+
+		<run_b3_aggregator buildmodel="${build.model}" >
+			<args>
+				<arg value='- -buildRoot' />
+				<arg value='${b3.build.root}' />
+			</args>
+		</run_b3_aggregator>
+	</target>
+	-->
 
 	<target name="copy-xtext-grammar-to-bin">
 	  <copy todir="${projects.location}" overwrite="true" verbose="true">
@@ -208,7 +229,7 @@
 				</fileset>
 			</classpath>
 			<arg line='-data "${director.dir}/workspace"' />
-			<arg line="-r ${eclipse.download}/modeling/emft/b3/headless-4.2" />
+			<arg line="-r ${eclipse.download}/modeling/emft/b3/headless-4.3" />
 			<arg line='-d "${b3.home}"' />
 			<arg line="-p b3" />
 			<arg line="-i org.eclipse.b3.cli.product" />
