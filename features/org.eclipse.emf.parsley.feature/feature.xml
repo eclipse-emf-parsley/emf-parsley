@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.feature"
       label="Emf Parsley"
-      version="0.1.0.qualifier"
+      version="0.1.1.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emfparsley">
