@@ -22,7 +22,6 @@ public class ObservableResourceLoader extends ResourceLoader {
 				
 			}
 		};
-		AbstractResourcesListener.registerInterestInProteoResources(resourceChangeListener);
 		return resource;
 	}
 
