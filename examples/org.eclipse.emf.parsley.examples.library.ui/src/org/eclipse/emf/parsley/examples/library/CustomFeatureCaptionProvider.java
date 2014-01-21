@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 
 /**
- * @author bettini
+ * @author Lorenzo Bettini
  * 
  */
 public class CustomFeatureCaptionProvider extends FeatureCaptionProvider {
