@@ -3,7 +3,8 @@
       id="org.eclipse.emf.parsley.examples.feature"
       label="Emf Parsley Examples"
       version="0.1.1.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.eclipse.emf.parsley.ui.examples">
 
    <description url="http://www.eclipse.org/emfparsley">
       Working with EMF a developer realizes that all the information are available for building basic UI.

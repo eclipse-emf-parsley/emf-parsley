@@ -3,7 +3,8 @@
       id="org.eclipse.emf.parsley.rap.cdo.sdk"
       label="Emf Parsley CDO RAP SDK"
       version="0.1.1.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.eclipse.emf.parsley.cdo.common">
 
    <description url="http://www.eclipse.org/emf-parsley">
       *** DO NOT INSTALL IN YOUR IDE ***

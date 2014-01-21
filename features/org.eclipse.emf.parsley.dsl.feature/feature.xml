@@ -3,7 +3,8 @@
       id="org.eclipse.emf.parsley.dsl.feature"
       label="Emf Parsley DSL"
       version="0.1.1.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.eclipse.emf.parsley.dsl">
 
    <description url="http://www.eclipse.org/emfparsley">
       Working with EMF a developer realizes that all the information are available for building basic UI.
