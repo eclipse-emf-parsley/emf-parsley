@@ -284,7 +284,10 @@ public class EmfParsleyProvidersBasedOnViewTests extends EmfParsleyCustomLibrary
 
 	protected SWTBotView getTestView() {
 		// fake view just for tests
-		SWTBotView view = bot.viewByTitle("Problems");
+		// in SwtBot 2.2.0 we must use part name since the title
+		// of the problems view also contains the items count
+		// see also http://www.eclipse.org/forums/index.php/t/640194/
+		SWTBotView view = bot.viewByPartName("Problems");
 		return view;
 		// return openTestView(LIBRARY_EMF_VIEW);
 	}
