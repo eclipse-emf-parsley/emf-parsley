@@ -24,6 +24,17 @@
 			componentType="osgi.bundle" />
 	</dependencies>
     <actions>
+    	<public name="run.findbugs" actor="ant">
+	       <actorProperties>
+	           <property key="buildFile" value="findbugs.ant"/>
+	           <property key="targets" value="findbugs"/>
+	       </actorProperties>
+	       <prerequisites>
+	           <attribute name="site.p2" 
+	           		alias="site.p2.repository"/>
+	       </prerequisites>
+	       <products alias="action.output" base="${buckminster.output.root}/findbugs/"/>
+	   </public>
         <public name="eclipse-install-test-indigo" actor="ant">
             <actorProperties>
                 <property key="buildFile" value="eclipse-install-test/eclipse-install-test.ant"/>
