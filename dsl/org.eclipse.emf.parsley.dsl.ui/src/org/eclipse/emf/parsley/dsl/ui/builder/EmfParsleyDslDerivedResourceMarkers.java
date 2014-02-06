@@ -16,7 +16,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.xtext.builder.DerivedResourceMarkers;
 
 /**
- * Custom implementation to deal with the "hack" to generate in the
+ * Custom implementation to deal with the generation in the
  * project root folder: in that output configuration we use "src" and then
  * when generating we use "src/..", thus, when seraching for derived
  * resource markers, we must make sure that, instead of searching in "src"

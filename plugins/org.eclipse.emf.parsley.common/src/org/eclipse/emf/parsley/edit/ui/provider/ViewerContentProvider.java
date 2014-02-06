@@ -21,7 +21,7 @@ import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import com.google.inject.Inject;
 
 /**
- * Declarative ContentProvider based on {@link AdapterFactoryContentProvider}.
+ * Declarative ContentProvider inheriting from {@link AdapterFactoryContentProvider}.
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  * 
@@ -57,7 +57,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	 * returns any children.
 	 */
 	public boolean hasChildren(Object element) {
-		// Lorenzo: ugly hack
+		// Lorenzo: we need to call the super method anyway
 		// if the super method is not invoked the tree is not
 		// refreshed correctly
 		super.hasChildren(element); // ignore it.

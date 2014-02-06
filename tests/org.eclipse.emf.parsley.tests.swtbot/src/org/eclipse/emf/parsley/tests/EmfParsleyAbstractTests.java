@@ -755,8 +755,7 @@ public class EmfParsleyAbstractTests {
 				IStatusLineManager statusLineManager = actionBars
 						.getStatusLineManager();
 
-				// this is a terrible hack to read the current text of the
-				// status line manager as suggested here:
+				// access the current text of the status line manager as suggested here:
 				// http://stackoverflow.com/questions/5173838/reading-eclipse-status-line
 				SubStatusLineManager subStatusLineManager = (SubStatusLineManager) statusLineManager;
 				Control control = ((StatusLineManager) subStatusLineManager

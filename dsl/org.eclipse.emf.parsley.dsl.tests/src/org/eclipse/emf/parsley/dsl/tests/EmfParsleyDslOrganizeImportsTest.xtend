@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 import static org.junit.Assert.*
 
 /**
- * @author Lorenzo Bettini - copied and adapted from Domainmodel example
+ * @author Lorenzo Bettini - inspired by the Xtext Domainmodel example
  */
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
