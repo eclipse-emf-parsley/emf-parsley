@@ -51,7 +51,6 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
@@ -879,40 +878,6 @@ public class EmfParsleyAbstractTests {
 							"Image data do not match at ({0},{1})", x, y));
 				}
 			}
-		}
-	}
-
-	/**
-	 * Taken from http://www.prait.ch/wordpress/?p=218
-	 * 
-	 * @param parentMenu
-	 * @param itemText
-	 * @return
-	 * @throws WidgetNotFoundException
-	 */
-	protected SWTBotMenu getSubMenuItem(final SWTBotMenu parentMenu,
-			final String itemText) throws WidgetNotFoundException {
-
-		MenuItem menuItem = UIThreadRunnable
-				.syncExec(new WidgetResult<MenuItem>() {
-					public MenuItem run() {
-						Menu bar = parentMenu.widget.getMenu();
-						if (bar != null) {
-							for (MenuItem item : bar.getItems()) {
-								if (item.getText().equals(itemText)) {
-									return item;
-								}
-							}
-						}
-						return null;
-					}
-				});
-
-		if (menuItem == null) {
-			throw new WidgetNotFoundException("MenuItem \"" + itemText
-					+ "\" not found.");
-		} else {
-			return new SWTBotMenu(menuItem);
 		}
 	}
 
