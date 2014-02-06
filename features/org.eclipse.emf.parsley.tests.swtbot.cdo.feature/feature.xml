@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.tests.swtbot.cdo.feature"
-      label="Emf Parsley SWTBOT Tests Feature"
+      label="Emf Parsley CDO SWTBOT Tests Feature"
       version="0.1.1.qualifier">
 
    <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+      Emf Parsley CDO SWTBOT Tests Feature
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      %copyright
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
    </license>
 
    <includes
