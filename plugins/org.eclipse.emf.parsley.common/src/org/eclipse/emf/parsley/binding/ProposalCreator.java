@@ -9,6 +9,7 @@
  * 
  * Contributors: 
  *   itemis AG - Initial API and implementation
+ *   Lorenzo Bettini - refactoring for EmfParsley
  *
  * </copyright>
  *
@@ -37,7 +38,7 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import com.google.common.base.Predicate;
 
 /**
- * @author Dennis H�bner Initial
+ * @author Dennis Huebner Initial
  * @author Lorenzo Bettini polymorphic proposals
  * 
  */

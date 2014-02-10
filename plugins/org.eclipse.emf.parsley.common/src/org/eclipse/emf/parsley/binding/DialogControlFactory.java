@@ -9,6 +9,7 @@
  * 
  * Contributors: 
  *   itemis AG - Initial API and implementation
+ *   Lorenzo Bettini - refactoring for EmfParsley
  *
  * </copyright>
  *

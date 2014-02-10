@@ -4,6 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: 
+ *   itemis AG - Initial API and implementation
+ *   Lorenzo Bettini - refactoring for EmfParsley
  *******************************************************************************/
 package org.eclipse.emf.parsley.binding;
 
@@ -17,7 +21,7 @@ import org.eclipse.swt.graphics.Image;
 /**
  * Cached Label Provider.
  * 
- * @author Dennis H�bner - Initial contribution and API
+ * @author Dennis Huebner - Initial contribution and API
  */
 public class CachedLabelProvider implements ILabelProvider {
 

@@ -1,18 +1,13 @@
-/**
- * <copyright> 
- *
- * Copyright (c) 2008, 2013 itemis AG and others.
- * All rights reserved.   This program and the accompanying materials
+/*******************************************************************************
+ * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors: 
- *   itemis AG - Initial API and implementation
- *
- * </copyright>
- *
- */
+ * Contributors:
+ * Lorenzo Bettini - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.parsley.binding;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,11 +21,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
- * 
  * Creates Control for an {@link EStructuralFeature}
- * 
- * @author Lorenzo Bettini refactoring for EmfParsley
- * 
  */
 public class FormControlFactory extends DialogControlFactory {
 

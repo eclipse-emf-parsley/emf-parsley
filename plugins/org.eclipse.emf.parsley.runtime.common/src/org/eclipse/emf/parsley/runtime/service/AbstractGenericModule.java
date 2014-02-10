@@ -6,6 +6,11 @@ package org.eclipse.emf.parsley.runtime.service;
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * @author Heiko Behrens - Initial contribution and API
+ * @author Sven Efftinge
+ * @author Sebastian Zarnekow
  *******************************************************************************/
 import java.io.IOException;
 import java.io.InputStream;
