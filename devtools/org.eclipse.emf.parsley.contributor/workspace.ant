@@ -142,12 +142,13 @@
 	</macrodef>
 	
 	<target name="copy-xtext-grammar-to-bin">
+	  <echo message="checkout.location: ${checkout.location}" />
+
 	  <copy todir="${checkout.location}" overwrite="true" verbose="true">
 	    <fileset dir="${checkout.location}" casesensitive="true">
 	      <include name="**/src/**/*.xtext" />
 	    </fileset>
-	    <mapper type="regexp" 
-		      from="(.*)/(src)/(.*/*\.xtext)" to="\1/bin/\3" />
+	    <regexpmapper from="(.*)/(src)/(.*/*\.xtext)" to="\1/bin/\3" casesensitive="yes" handledirsep="yes"/>
 	  </copy>
 	</target>
 
