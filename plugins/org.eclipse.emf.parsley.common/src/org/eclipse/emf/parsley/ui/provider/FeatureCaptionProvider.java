@@ -20,10 +20,19 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import com.google.common.base.Predicate;
 
 /**
- * Provides captions for EStructuralFeatures
+ * Provides captions for EStructuralFeatures that uses polymorphic dispatch to invoke methods at runtime.
+ * If you define methods with a specific signature convention, the framework will select the correct implementation depending on runtime type of the input.
+ * You can defines methods with a prefix 'text' followed by the EClass and EStructuralFeature names separated by an underscore character, like in the example:
+ *  
+ * <pre>
+ * {@code
+ *    public String text_MyClass_myFeature(EStructuralFeature feature)
+ *      
+ * }
+ * </pre>
  * 
  * @author Lorenzo Bettini - Initial Contribution and API
- * 
+ * @author Francesco Guidieri - Javadocs
  */
 public class FeatureCaptionProvider {
 

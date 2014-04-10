@@ -18,6 +18,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
+/**
+ * Provides the list of EStructuralFeature of an EClass only for tables.
+ * @author Lorenzo Bettini, Francesco Guidieri
+ * @see FeaturesProvider
+ *
+ */
 public class FeaturesColumnProvider extends FeaturesProvider{
 	
 	@Inject

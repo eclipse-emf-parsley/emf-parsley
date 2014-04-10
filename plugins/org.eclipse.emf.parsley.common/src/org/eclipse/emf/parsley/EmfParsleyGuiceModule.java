@@ -26,6 +26,7 @@ import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy;
 import org.eclipse.emf.parsley.edit.ResourceSaveManager;
+import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.emf.parsley.edit.action.EmfActionManager;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
@@ -70,6 +71,7 @@ import com.google.inject.Provider;
  * Default Google Guice bindings.
  * 
  * @author Lorenzo Bettini
+ * @author Francesco Guidieri - only Javadocs :-)
  * 
  */
 public class EmfParsleyGuiceModule extends AbstractGenericModule {
@@ -88,147 +90,328 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 				plugin.getDialogSettings());
 	}
 
+
+	/**
+	 * Use this binding to provide your own implementation of getImages methods.
+	 * Default implementation is {@link PluginImageHelper}.
+	 * @return a specialization of {@link IImageHelper}
+	 * 
+	 */
 	public Class<? extends IImageHelper> bindIImageHelper() {
 		return PluginImageHelper.class;
 	}
 
+	/**
+	 * Use this binding to change the way your resources are loaded from the framework.
+	 * @return a specialization of {@link ResourceLoader}
+	 * 
+	 */
 	public Class<? extends ResourceLoader> bindResourceLoader() {
 		return ResourceLoader.class;
 	}
 
+	/**
+	 * Use this binding to define the mouse listener for editors.
+	 * Default implementation is {@link OpenPropertyViewMouseAdapter}
+	 * @return a specialization of {@link IEditorMouseListener}
+	 * @see MouseListener
+	 * @see IViewerMouseListener
+	 */
 	public Class<? extends IEditorMouseListener> bindIEditorMouseListener() {
 		return OpenPropertyViewMouseAdapter.class;
 	}
 
+	/**
+	 * Use this binding to define the mouse listener for viewers.
+	 * Default implementation is {@link OpenDialogMouseAdapter}
+	 * @return a specialization of {@link IViewerMouseListener}
+	 * @see MouseListener
+	 */
 	public Class<? extends IViewerMouseListener> bindIViewerMouseListener() {
 		return OpenDialogMouseAdapter.class;
 	}
 
+	/**
+	 * Use this binding to implement the label provider.
+	 * Default implementation is {@link ViewerLabelProvider}
+	 * @return a specialization of {@link ILabelProvider}
+	 */
 	public Class<? extends ILabelProvider> bindILabelProvider() {
 		return ViewerLabelProvider.class;
 	}
 
+	/**
+	 * Use this binding to provide the caption provider for your EStructuralFeatures.
+	 * @return a specialization of {@link FeatureCaptionProvider}
+	 * @see FormFeatureCaptionProvider
+	 * @see DialogFeatureCaptionProvider
+	 */	
 	public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
 		return FeatureCaptionProvider.class;
 	}
 
+	/**
+	 * Use this binding to provide the caption provider only for Forms.
+	 * @return a specialization of {@link FormFeatureCaptionProvider}
+	 * @see FeatureCaptionProvider
+	 * @see DialogFeatureCaptionProvider  
+	 */	
 	public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
 		return FormFeatureCaptionProvider.class;
 	}
 
+	/**
+	 * Use this binding to provide the caption provider only for Dialogs.
+	 * @return a specialization of {@link DialogFeatureCaptionProvider}
+	 * @see FeatureCaptionProvider
+	 * @see FormFeatureCaptionProvider  
+	 */	
 	public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
 		return DialogFeatureCaptionProvider.class;
 	}
 
+	/**
+	 * Use this binding to provide an handler for outline selection in editors.
+	 * @return a specialization of {@link OutlineSelectionHandler}
+	 */
 	public Class<? extends OutlineSelectionHandler> bindOutlineSelectionHandler() {
 		return OutlineSelectionHandler.class;
 	}
 
+	/**
+	 * Use this bind to change the way JFace viewers (tree and tables) are built
+	 * @return a specialization of {@link ViewerFactory}
+	 */
 	public Class<? extends ViewerFactory> bindViewerFactory() {
 		return ViewerFactory.class;
 	}
 
+	/**
+	 * Use this bind to provide a factory that builds Tree Form components
+	 * @return a specialization of {@link TreeFormFactory}
+	 * @see FormFactory
+	 */
 	public Class<? extends TreeFormFactory> bindTreeFormFactory() {
 		return TreeFormFactory.class;
 	}
 
+	/**
+	 * Use this bind to provide a factory that builds Form components
+	 * @return a specialization of {@link FormFactory}
+	 * @see TreeFormFactory
+	 */
 	public Class<? extends FormFactory> bindFormFactory() {
 		return FormFactory.class;
 	}
 
+	/**
+	 * Use this bind to change the viewers initialization mechanisms from resources. 
+	 * @return a specialization of {@link ViewerInitializer}
+	 */
 	public Class<? extends ViewerInitializer> bindViewerInitializer() {
 		return ViewerInitializer.class;
 	}
 
+	/**
+	 * Use this bind to provide a factory that builds controls for your forms
+	 * @return a specialization of {@link FormControlFactory}
+	 * @see TreeFormFactory
+	 */
 	public Class<? extends FormControlFactory> bindFormControlFactory() {
 		return FormControlFactory.class;
 	}
 
+	/**
+	 * Use this bind to provide a factory that builds controls for your dialogs
+	 * @return a specialization of {@link DialogControlFactory}
+	 * @see TreeFormFactory
+	 */
 	public Class<? extends DialogControlFactory> bindDialogControlFactory() {
 		return DialogControlFactory.class;
 	}
-
+	
+	/**
+	 * Use this bind to provide a factory for context menu
+	 * @return a specialization of {@link ViewerContextMenuFactory}
+	 */
 	public Class<? extends ViewerContextMenuFactory> bindViewerContextMenuFactory() {
 		return ViewerContextMenuFactory.class;
 	}
 
+	/**
+	 * Use this bind to customize the label provider factory, specifically for columns.
+	 * The default implementation will use the same implementation specified by bind method {@link #bindILabelProvider()}  
+	 * @return a specialization of {@link ColumnLabelProviderFactory}
+	 * @see ViewerLabelProvider
+	 */
 	public Class<? extends ColumnLabelProviderFactory> bindColumnLabelProviderFactory() {
 		return ColumnLabelProviderFactory.class;
 	}
 
+	/**
+	 * Use this binding to provide the label provider factory only for columns.
+	 * The default implementation will use the same implementation specified by bind method {@link #bindILabelProvider()}  
+	 * @return a specialization of {@link TableColumnLabelProvider}
+	 * @see FeatureCaptionProvider
+	 */		
 	public Class<? extends TableColumnLabelProvider> bindTableColumnLabelProvider() {
 		return TableColumnLabelProvider.class;
 	}
 
+	/**
+	 * Use this bind to change the way tables are built and initialized from resources. 
+	 * @return a specialization of {@link TableViewerBuilder}
+	 */
 	public Class<? extends TableViewerBuilder> bindTableViewerBuilder() {
 		return TableViewerBuilder.class;
 	}
 
+	/**
+	 * Use this bind to change the way columns for table are built. 
+	 * @return a specialization of {@link TableViewerColumnBuilder}
+	 * @see TableViewerBuilder
+	 */
 	public Class<? extends TableViewerColumnBuilder> bindTableViewerColumnBuilder() {
 		return TableViewerColumnBuilder.class;
 	}
 
+	/**
+	 * Use this binding to provide your implementation of a <b>action bar contributor</b> for a workbench context.
+	 * Default implementation is {@link WorkbenchActionBarContributor}
+	 * @return an implementation of  {@link WorkbenchActionBarContributor}
+	 */
 	public Class<? extends WorkbenchActionBarContributor> bindEmfActionBarContributor() {
 		return WorkbenchActionBarContributor.class;
 	}
 	
+	/**
+	 * Use this bind to provide your implementation of a of <b>action bar contributor</b>  without a workbench.
+	 * This scenario can be used where you have a view instead of an editor, for example in a <b>e4 application</b>.  
+	 * @return an implementation of  {@link TreeActionBarContributor}
+	 * @see WorkbenchActionBarContributor
+	 */
 	public Class<? extends TreeActionBarContributor> bindTreeActionBarContributor() {
 		return TreeActionBarContributor.class;
 	}
 	
+	/**
+	 * Use this bind method to change the way Emf action (createChild, createSibiling, etc) are added to context menu.
+	 * 
+	 * @return a specialization of {@link EmfActionManager}
+	 */	
 	public Class<? extends EmfActionManager> bindEmfActionManager() {
 		return EmfActionManager.class;
 	}
-
+	
+	/**
+	 * Use this bind method to change the way Edit action (Copy, cut and paste) are added to context menu.
+	 * 
+	 * @return a specialization of {@link EditingActionManager}
+	 */
 	public Class<? extends EditingActionManager> bindEditingActionManager() {
 		return EditingActionManager.class;
 	}
 	
+	/**
+	 * Use this method to specify how the editing domain can be found
+	 * @return a specialization of {@link EditingDomainFinder}
+	 * 
+	 */
 	public Class<? extends EditingDomainFinder> bindEditingDomainFinder() {
 		return EditingDomainFinder.class;
 	}
 
+	/**
+	 * Use this binding to provide a custom list of EStructuralFetures for your model
+	 * @return a specialization of {@link FeaturesProvider}
+	 */
 	public Class<? extends FeaturesProvider> bindFeaturesProvider() {
 		return FeaturesProvider.class;
 	}
 
+	/**
+	 * Use this binding to customize the way to resolve EStructuralFeatures
+	 * @return a specialization of {@link FeatureResolver}
+	 */
 	public Class<? extends FeatureResolver> bindFeatureResolver() {
 		return FeatureResolver.class;
 	}
 
+	/**
+	 * Use this binding to provide a custom list of EStructuralFetures only for tables.
+	 * The default behavior is to use the same class provided by {@link #bindFeaturesProvider()} method.
+	 * @return a specialization of {@link FeaturesColumnProvider}
+	 * @see FeaturesProvider
+	 */
 	public Class<? extends FeaturesColumnProvider> bindFeaturesColumnProvider() {
 		return FeaturesColumnProvider.class;
 	}
 
+	/**
+	 * Use this binding to customize the helper EmfSelectionHelper
+	 * @return a specialization of {@link EmfSelectionHelper}
+	 */
 	public Class<? extends EmfSelectionHelper> bindEmfSelectionHelper() {
 		return EmfSelectionHelper.class;
 	}
-
+	
+	/**
+	 * Use this method to customize save mechanism
+	 * @return a specification of {@link ResourceSaveManager}
+	 */
 	public Class<? extends ResourceSaveManager> bindResourceSaveManager() {
 		return ResourceSaveManager.class;
 	}
 
+	/**
+	 * Use this method to customize validity checks.
+	 * @return a specification of {@link Diagnostician}
+	 */
 	public Diagnostician bindDiagnostician() {
 		return Diagnostician.INSTANCE;
 	}
 	
+	/**
+	 * Use this method to customize the resource initialization.
+	 * @return a specification of {@link EmptyResourceInitializer}
+	 */
 	public Class<? extends EmptyResourceInitializer> bindEmptyResourceInitializer() {
 		return EmptyResourceInitializer.class;
 	}
 
+	/**
+	 * Use this binding to implement a custom label provider.
+	 * Default implementation is {@link ViewerContentProvider}
+	 * @return an implementation of {@link IContentProvider}
+	 */
 	public Class<? extends IContentProvider> bindIContentProvider() {
 		return ViewerContentProvider.class;
 	}
 
+	/**
+	 * Use this method to customize the proposal provider.
+	 * @return a specification of {@link ProposalCreator}
+	 */
 	public Class<? extends ProposalCreator> bindProposalCreator() {
 		return ProposalCreator.class;
 	}
 
+	/**
+	 * Use this method to customize an editing strategy, to prepare the eObject for edit and update.
+	 * The default implementation is {@link OnTheFlyEditingStrategy}.
+	 * @return a specification of {@link IEditingStrategy}
+	 * @see UndoableEditingStrategy
+	 */
 	public Class<? extends IEditingStrategy> bindIEditingStrategy() {
 		return OnTheFlyEditingStrategy.class;
 	}
 
-    public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
+	/**
+	 * Use this method to specify a provider for {@link AdapterFactoryEditingDomain}.
+	 * The default implementation in {@link DefaultAdapterFactoryEditingDomainProvider}
+	 * @return an implementation of {@link Provider} for {@link AdapterFactoryEditingDomain}
+	 */
+	public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
     	return DefaultAdapterFactoryEditingDomainProvider.class;
     }
 
@@ -236,6 +419,11 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 //		return InjectableAdapterFactoryEditingDomain.class;
 //	}
 	
+	/**
+	 * Use this method to specify an adapter factory
+	 * The default implementation is {@link InjectableAdapterFactory}
+	 * @return an implementation of {@link AdapterFactory}
+	 */
 	public Class<? extends AdapterFactory> bindAdapterFactory() {
 		return InjectableAdapterFactory.class;
 	}

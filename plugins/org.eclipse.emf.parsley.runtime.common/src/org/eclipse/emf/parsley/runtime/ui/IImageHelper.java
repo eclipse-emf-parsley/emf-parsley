@@ -16,6 +16,8 @@ import org.eclipse.swt.graphics.Image;
 import com.google.inject.ImplementedBy;
 
 /**
+ * IImageHelper defines the signatures of getImage methods for retrieving {@link Image} given their
+ * name or {@link ImageDescriptor}.
  * @author Sebastian Zarnekow
  * @author Michael Clay
  */

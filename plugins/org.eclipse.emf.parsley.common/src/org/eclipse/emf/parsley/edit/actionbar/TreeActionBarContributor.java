@@ -23,6 +23,20 @@ import org.eclipse.jface.viewers.StructuredViewer;
 
 import com.google.inject.Inject;
 
+/**
+ * This class has been created to replace {link WorkbenchActionBarContributor} where a workbench is not available (views)
+ * The main difference is that this class has to be initialized with editing domain.
+ * 
+ *  <pre>
+ *  
+ *  viewer.addSelectionChangedListener(treeActionBarContributor);
+ *  
+ *  treeActionBarContributor.initialize(editingDomain);
+ *  
+ *  </pre>
+ * @author Francesco Guidieri
+ *
+ */
 public class TreeActionBarContributor implements IMenuListener,
 		ISelectionChangedListener {
 

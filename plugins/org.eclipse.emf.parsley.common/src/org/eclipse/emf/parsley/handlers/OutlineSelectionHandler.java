@@ -19,8 +19,9 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 
 /**
+ * This class is used in editors to manage the outline selection.
  * @author Lorenzo Bettini
- * 
+ * @see EmfAbstractEditor
  */
 public class OutlineSelectionHandler {
 	protected StructuredViewer selectionViewer;

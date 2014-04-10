@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.ui.provider;
 
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
-
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -23,8 +22,12 @@ import org.eclipse.swt.graphics.Image;
 import com.google.inject.Inject;
 
 /**
- * @author Lorenzo Bettini - Initial contribution and API
+ * Default implementation for {@link ILabelProvider} that uses polymorphic dispatch to invoke methods at runtime.
+ * You can define {@link #text(Object)} and {@link #image(Object)} methods specifying the input type. 
+ * The framework will select the correct implementation depending on the runtime type of the argument.
  * 
+ * @author Lorenzo Bettini - Initial contribution and API 
+ * @author Francesco Guidieri - Javadocs :-)
  */
 public class ViewerLabelProvider implements ILabelProvider {
 
@@ -114,10 +117,18 @@ public class ViewerLabelProvider implements ILabelProvider {
 		return delegateLabelProvider;
 	}
 
+	/**
+	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * @return the text representation of the input parameter
+	 */
 	public String text(Object element) {
 		return null;
 	}
 
+	/**
+	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * @return the image that represents the input
+	 */
 	public Object image(Object element) {
 		return null;
 	}

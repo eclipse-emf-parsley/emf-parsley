@@ -25,7 +25,19 @@ import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 /**
- * A column provider based on an Emf feature.
+ * Provides a column provider for EStructuralFeatures that uses polymorphic dispatch to call methods at runtime.
+ * If you define methods with a specific signature convention, the framework will select the correct implementation depending on the runtime type of the input.
+ * You can define methods with a prefix 'text' or 'image' followed by the EClass and EStructuralFeature names separated by an underscore character, like in the example:
+ *  
+ * <pre>
+ * {@code
+ * 
+ * public String text_MyClass_myFeature(Object object)
+ *    
+ * public Image image_MyClass_myFeature(Object object)
+ *    
+ * }
+ * </pre>
  * 
  * @author Francesco Guidieri
  * 

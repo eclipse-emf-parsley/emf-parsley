@@ -18,6 +18,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import com.google.inject.Inject;
 
 /**
+ * ResourceLoader is responsible for loading the resource.
  * @author Lorenzo Bettini
  * 
  */
