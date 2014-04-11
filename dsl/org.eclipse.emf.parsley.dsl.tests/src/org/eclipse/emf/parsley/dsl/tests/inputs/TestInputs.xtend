@@ -399,4 +399,30 @@ module my.empty {
 	}
 }
 '''
+
+
+	def treeFormFactory() 
+'''
+module my.test.project {
+
+	
+	treeFormFactory {
+		horizontal
+	}
+}
+
+'''
+
+	def treeFormFactoryWithWeights() 
+'''
+module my.test.project {
+
+	
+	treeFormFactory {
+		vertical(2:1)
+	}
+}
+
+'''
+
 }

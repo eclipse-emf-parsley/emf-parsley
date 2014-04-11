@@ -1085,6 +1085,58 @@ expectedPluginXmlGen =
 		])
 	}
 
+	
+@Test
+	def testTreeFormFactory() {
+		inputs.treeFormFactory.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedTreeFormFactory = 
+'''
+package my.test.project.factory;
+
+import org.eclipse.emf.parsley.factories.TreeFormFactory;
+import org.eclipse.emf.parsley.widgets.TreeFormComposite;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+
+@SuppressWarnings("all")
+public class TreeFormFactoryGen extends TreeFormFactory {
+  public TreeFormComposite createComposite(final Composite parent, final int style) {
+    TreeFormComposite control = new TreeFormComposite (parent,	style, SWT.HORIZONTAL, new int[0]);
+    return control;
+  }
+}
+''']
+		)
+	}
+
+
+	
+	@Test
+	def testTreeFormFactoryWithWeights() {
+		inputs.treeFormFactoryWithWeights.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedTreeFormFactory = 
+'''
+package my.test.project.factory;
+
+import org.eclipse.emf.parsley.factories.TreeFormFactory;
+import org.eclipse.emf.parsley.widgets.TreeFormComposite;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+
+@SuppressWarnings("all")
+public class TreeFormFactoryGen extends TreeFormFactory {
+  public TreeFormComposite createComposite(final Composite parent, final int style) {
+    TreeFormComposite control = new TreeFormComposite (parent,	style, SWT.VERTICAL, new int[] {2,1});
+    return control;
+  }
+}
+''']
+		)
+	}
+
+
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
 			GeneratorExpectedResults expected) {
 		input.compileAll [
@@ -1125,6 +1177,9 @@ expectedPluginXmlGen =
 				} else if (e.key.endsWith("ProposalCreatorGen.java")) {
 					if (expected.expectedProposalCreator != null)
 						assertEqualsStrings(expected.expectedProposalCreator, e.value)
+				} else if (e.key.endsWith("TreeFormFactoryGen.java")) {
+					if (expected.expectedTreeFormFactory != null)
+						assertEqualsStrings(expected.expectedTreeFormFactory, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
 					if (expected.expectedPluginXmlGen != null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)

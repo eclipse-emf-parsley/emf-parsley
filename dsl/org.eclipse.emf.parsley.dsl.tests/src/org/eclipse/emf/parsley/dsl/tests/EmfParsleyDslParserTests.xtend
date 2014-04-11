@@ -136,4 +136,14 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	def void testMultipleViewsSpecifications() {
 		inputs.multipleViewsSpecifications.parseAndAssertNoError
 	}
+	
+	@Test
+	def void testTreeFormFactory() {
+		inputs.treeFormFactory.parseAndAssertNoError
+	}
+	
+	@Test
+	def void testTreeFormFactoryWithWeights() {
+		inputs.treeFormFactoryWithWeights.parseAndAssertNoError
+	}
 }

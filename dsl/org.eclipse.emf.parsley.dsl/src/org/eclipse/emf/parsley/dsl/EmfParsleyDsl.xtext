@@ -250,7 +250,7 @@ ViewSpecification:
 ;
 
 TreeFormFactory:
-	{TreeFormFactory} 'treeForm' '{'
+	{TreeFormFactory} 'treeFormFactory' '{'
 		orientation = TreeFormOrientation
 		('(' treeWeight = INT ':' formWeight = INT ')')?
 	'}'
@@ -259,5 +259,4 @@ TreeFormFactory:
 enum TreeFormOrientation:
 	VERTICAL= 'vertical' | 
 	HORIZONTAL= 'horizontal'
-		
 ;

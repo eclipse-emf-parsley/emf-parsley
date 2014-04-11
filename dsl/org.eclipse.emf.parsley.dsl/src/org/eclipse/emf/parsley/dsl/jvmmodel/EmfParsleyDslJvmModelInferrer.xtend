@@ -702,11 +702,18 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						body = [
 				
 							append(element.newTypeRef(typeof(TreeFormComposite)).type)
+							var weights=''', new int['''
+							if((element.treeFormFactory.treeWeight!=0) &&element.treeFormFactory.formWeight!=0){
+								weights=weights+'''] {'''+
+								element.treeFormFactory.treeWeight +''','''+element.treeFormFactory.formWeight+'''}'''
+							} else{
+								weights=weights+'''0]'''
+							}
 							
-							append(''' control = new TreeFormComposite (parent,	style,''').
+							
+							append(''' control = new TreeFormComposite (parent,	style, ''').
 							append(typeof(SWT).findDeclaredType(element)).append('''.''')
-							append(element.treeFormFactory.orientation.getName).append(''', new int[]{'''+
-								element.treeFormFactory.treeWeight +''','''+element.treeFormFactory.formWeight+'''}''').
+							append(element.treeFormFactory.orientation.getName).append(weights.toString).
 							append(''');''').newLine
 							
 							append('''return control;''')

@@ -29,5 +29,6 @@ public class GeneratorExpectedResults {
 	public CharSequence expectedDialogControlFactory;
 	public CharSequence expectedViewerContentProvider;
 	public CharSequence expectedProposalCreator;
+	public CharSequence expectedTreeFormFactory;
 	public CharSequence expectedPluginXmlGen;
 }
