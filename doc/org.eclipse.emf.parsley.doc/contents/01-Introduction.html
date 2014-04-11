@@ -23,5 +23,51 @@ The framework provides basic UI implementations which are customizable
 with Injection mechanism
 (based on <a href="http://code.google.com/p/google-guice">Google Guice</a>). 
 </p>
+<p>
+You can use <em>Emf Parsley</em> basically in 2 ways the easy and the hard one!
+</p>
+<a name="CustomizationsTheEasyWay"></a>
+<h2>Customizations: the Easy way</h2>
+<p>
+The framework provides a DSL that allows to customize the most relevant behaviors.
+You can use the DSL by creating a new project with the wizard "Create a new project" -&gt; "EMF Parsley DSL Based project"
+</p>
+<p>
+<div class="image" >
+<img src="images/01-new-project-dsl-wizard.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Clicking the "Finish" button the wizard will open directly the dsl editor. You can use the content assistant
+to discover all features.
+</p>
+<p>
+<div class="image" >
+<img src="images/01-dsl-content-assistant.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<a name="CustomitationsTheHardWay"></a>
+<h2>Customizations: the Hard way</h2>
+<p>
+If you need a deeper degree of customizations, you can use the injection mechanism based on Google Guice.
+The framework has been designed for being completly customized in every detail. All you need to do is provide a custom
+implementation for a class that implements a specific aspect; then you need to write the corresponding
+<em>bind</em> method to tell the dependency injection mechanism to use your own custom class.
+You can use the Java editor content assist to discover all bindings. 
+</p>
+<p>
+<div class="image" >
+<img src="images/01-guice-module-content-assistant.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
 </body>
 </html>

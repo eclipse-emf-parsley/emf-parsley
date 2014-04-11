@@ -11,3 +11,27 @@ The framework provides basic UI implementations which are customizable
 with Injection mechanism
 (based on link[http://code.google.com/p/google-guice][Google Guice]). 
 
+You can use e[Emf Parsley] basically in 2 ways the easy and the hard one!
+
+section:CustomizationsTheEasyWay[Customizations: the Easy way]
+
+The framework provides a DSL that allows to customize the most relevant behaviors.
+You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
+
+img[images/01-new-project-dsl-wizard.png][][ ][] 
+
+Clicking the "Finish" button the wizard will open directly the dsl editor. You can use the content assistant
+to discover all features.
+
+img[images/01-dsl-content-assistant.png][][ ][] 
+
+section:CustomitationsTheHardWay[Customizations: the Hard way]
+
+If you need a deeper degree of customizations, you can use the injection mechanism based on Google Guice.
+The framework has been designed for being completly customized in every detail. All you need to do is provide a custom
+implementation for a class that implements a specific aspect; then you need to write the corresponding
+e[bind] method to tell the dependency injection mechanism to use your own custom class.
+You can use the Java editor content assist to discover all bindings. 
+
+img[images/01-guice-module-content-assistant.png][][ ][] 
+

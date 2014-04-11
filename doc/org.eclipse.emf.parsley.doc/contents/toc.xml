@@ -2,6 +2,10 @@
 <toc topic="contents/00-Main.html" label="Emf Parsley Guide" >
 	<topic href="contents/00-Main_4.html#Emf%20Parsley%20Guide_4" label="Documentation" >
 		<topic href="contents/01-Introduction.html#Introduction" label="Introduction" >
+			<topic href="contents/01-Introduction.html#CustomizationsTheEasyWay" label="Customizations: the Easy way" >
+			</topic>
+			<topic href="contents/01-Introduction.html#CustomitationsTheHardWay" label="Customizations: the Hard way" >
+			</topic>
 		</topic>
 		<topic href="contents/02-GettingStarted.html#GettingStarted" label="Getting Started" >
 			<topic href="contents/02-GettingStarted.html#Installation" label="Installation" >

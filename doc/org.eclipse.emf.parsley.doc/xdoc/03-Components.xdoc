@@ -1,6 +1,8 @@
 chapter:Components[Components]
 
-Here we list the behaviors that can be customized for all components.
+EMF Parsley is strongly component-based and for each component you can customize several behaviors.
+
+In this section we will list firstly some of them that are commons for all components.
 
 ul[
 	item[If you need a machanism to fill some data for the first time you use a model, you can provide
