@@ -31,6 +31,18 @@ class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 
 	@Test
 	def void testFeaturesForLabelSpecifications() {
+		inputs.labelSpecificationsForColumns.parseModel.
+			module.tableLabelProvider.labelSpecifications.head.
+				assertScope
+				(ModelPackage::eINSTANCE.labelSpecificationForColumn_Feature,
+					"name, books, borrowers, writers, employees, stock, branches, parentBranch, people, address, class"
+				)
+			
+	}
+
+
+	@Test
+	def void testFeaturesForPropertyDescriptionSpecifications() {
 		inputs.propertyDescriptionSpecifications.parseModel.
 			module.featureCaptionProvider.specifications.head.
 				assertScope

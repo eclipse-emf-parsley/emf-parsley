@@ -52,6 +52,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -108,6 +109,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val moduleClass = element.toClass(element.moduleQN)
 		
 		val labelProviderClass = element.inferLabelProvider(acceptor)
+		val tableLabelProviderClass = element.inferTableLabelProvider(acceptor)
 		val featureCaptionProviderClass = element.inferFeatureCaptionProvider(acceptor)
 		val formFeatureCaptionProviderClass = element.inferFormFeatureCaptionProvider(acceptor)
 		val dialogFeatureCaptionProviderClass = element.inferDialogFeatureCaptionProvider(acceptor)
@@ -128,6 +130,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			
 			if (labelProviderClass != null)
 				members += element.labelProvider.genBindMethod(labelProviderClass, typeof(ILabelProvider))
+			if (tableLabelProviderClass != null)
+				members += element.tableLabelProvider.genBindMethod(tableLabelProviderClass, typeof(TableColumnLabelProvider)
+				)
 			if (featureCaptionProviderClass != null)
 				members += element.featureCaptionProvider.genBindMethod(featureCaptionProviderClass, typeof(FeatureCaptionProvider))
 			if (formFeatureCaptionProviderClass != null)
@@ -175,6 +180,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def labelProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.LabelProviderGen"
+	}
+	
+	def tableLabelProviderQN(Module element) {
+		element.fullyQualifiedName + ".ui.provider.TableLabelProviderGen"
 	}
 	
 	def featureCaptionProviderQN(Module element) {
@@ -259,6 +268,52 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				]
 			]
 			labelProviderClass
+		}
+	}
+	
+	def inferTableLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.tableLabelProvider == null)
+			null
+		else {
+			val tableLabelProviderClass = element.tableLabelProvider.toClass(element.tableLabelProviderQN)
+			acceptor.accept(tableLabelProviderClass).initializeLater [
+				superTypes += element.newTypeRef(typeof(TableColumnLabelProvider))
+				
+					
+				element.tableLabelProvider.labelSpecifications.forEach [
+					labelSpecification |
+					if (labelSpecification.feature?.simpleName != null) {
+						members += labelSpecification.toMethod("text_" + 
+							labelSpecification.parameterType.simpleName + "_" +
+							labelSpecification.feature.simpleName.propertyNameForGetterSetterMethod
+							, element.newTypeRef(typeof(String))
+						) [
+							parameters += labelSpecification.toParameter(
+								"it"
+								, labelSpecification.parameterType
+							)
+							body = labelSpecification.expression
+						]
+					}
+				]
+			
+				element.tableLabelProvider.imageSpecifications.forEach [
+					imageSpecification |
+					if (imageSpecification.feature?.simpleName != null) {
+						members += imageSpecification.toMethod("image_" + 
+							imageSpecification.parameterType.simpleName + "_" +
+							imageSpecification.feature.simpleName.propertyNameForGetterSetterMethod
+							, element.newTypeRef(typeof(Object))) [
+							parameters += imageSpecification.toParameter(
+									"it"
+								, imageSpecification.parameterType
+							)
+							body = imageSpecification.expression
+						]
+					}
+				]
+			]
+			tableLabelProviderClass
 		}
 	}
 	

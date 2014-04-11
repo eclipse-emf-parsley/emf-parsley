@@ -68,6 +68,23 @@ module my.empty {
 }
 '''
 
+	def emptyLabelSpecificationsForColumns() 
+'''
+import java.util.*
+
+module my.empty {
+	tableLabelProvider {
+		text {
+			
+		}
+		image {
+			
+		}
+	}
+}
+'''
+
+
 	def labelSpecifications() 
 '''
 import java.util.*
@@ -93,6 +110,30 @@ module my.empty {
 			Library -> 'library.jpeg' // constant
 			Writer writer -> 
 				if (writer.name.nullOrEmpty) 
+					"noname.gif"
+				else
+					new org.eclipse.swt.graphics.ImageData("writer.jpeg")
+		}
+	}
+}
+'''
+
+	def labelSpecificationsForColumns() 
+'''
+import java.util.*
+import org.eclipse.emf.parsley.examples.library.*
+
+module my.empty {
+	tableLabelProvider {
+		text {
+			Library:name -> 'Name' // constant
+			Library:books -> 'Books' // constant
+			Writer:lastName -> name.toFirstUpper // the implicit param is an EStructuralFeature
+		}
+		
+		image {
+			Book: author -> 
+				if (author.name.nullOrEmpty) 
 					"noname.gif"
 				else
 					new org.eclipse.swt.graphics.ImageData("writer.jpeg")

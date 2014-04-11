@@ -52,6 +52,17 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	}
 	
 	@Test
+	def void testEmptyLabelSpecificationsForColumns() {
+		inputs.emptyLabelSpecificationsForColumns.parseAndAssertNoError
+	}
+
+	@Test
+	def void testLabelSpecificationsForColumns() {
+		inputs.labelSpecificationsForColumns.parseAndAssertNoError
+	}
+	
+	
+	@Test
 	def void testDuplicateLabelSpecifications() {
 		inputsWithErrors.duplicateLabelSpecifications.parseAndAssertErrors
 	}

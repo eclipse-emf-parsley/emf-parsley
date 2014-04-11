@@ -18,6 +18,7 @@ package org.eclipse.emf.parsley.dsl.tests.util;
  */
 public class GeneratorExpectedResults {
 	public CharSequence expectedModule;
+	public CharSequence expectedTableLabelProvider;
 	public CharSequence expectedLabelProvider;
 	public CharSequence expectedFeatureCaptionProvider;
 	public CharSequence expectedFormFeatureCaptionProvider;

@@ -268,6 +268,57 @@ public class LabelProviderGen extends ViewerLabelProvider {
 ''']
 		)
 	}
+	
+	
+@Test
+	def testLabelSpecificationsForColumns() {
+		inputs.labelSpecificationsForColumns.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedTableLabelProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.parsley.examples.library.Book;
+import org.eclipse.emf.parsley.examples.library.Library;
+import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+
+@SuppressWarnings("all")
+public class TableLabelProviderGen extends TableColumnLabelProvider {
+  public String text_Library_name(final Library it) {
+    return "Name";
+  }
+  
+  public String text_Library_books(final Library it) {
+    return "Books";
+  }
+  
+  public String text_Writer_lastName(final Writer it) {
+    String _name = it.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    return _firstUpper;
+  }
+  
+  public Object image_Book_author(final Book it) {
+    Object _xifexpression = null;
+    Writer _author = it.getAuthor();
+    String _name = _author.getName();
+    boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+    if (_isNullOrEmpty) {
+      _xifexpression = "noname.gif";
+    } else {
+      ImageData _imageData = new ImageData("writer.jpeg");
+      _xifexpression = _imageData;
+    }
+    return _xifexpression;
+  }
+}
+''']
+		)
+	}
+	
 
 	@Test
 	def testPropertyDescriptionSpecifications() {
@@ -1005,6 +1056,9 @@ expectedPluginXmlGen =
 				} else if (e.key.endsWith("FeaturesProviderGen.java")) {
 					if (expected.expectedFeatureProvider != null)
 						assertEqualsStrings(expected.expectedFeatureProvider, e.value)
+				} else if (e.key.endsWith("TableLabelProviderGen.java")) {
+					if (expected.expectedTableLabelProvider != null)
+						assertEqualsStrings(expected.expectedTableLabelProvider, e.value)
 				} else if (e.key.endsWith("LabelProviderGen.java")) {
 					if (expected.expectedLabelProvider != null)
 						assertEqualsStrings(expected.expectedLabelProvider, e.value)
