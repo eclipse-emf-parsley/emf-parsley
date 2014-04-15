@@ -15,14 +15,14 @@ import static org.eclipse.emf.parsley.examples.library.EXTLibraryPackage.Literal
 
 import org.eclipse.emf.parsley.examples.library.BookOnTape;
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
-import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 
 
 /**
  * @author Lorenzo Bettini
  * 
  */
-public class TestFeaturesColumnProvider extends FeaturesColumnProvider {
+public class TestTableFeaturesProvider extends TableFeaturesProvider {
 
 	@Override
 	protected void buildMap(EClassToEStructuralFeatureMap map) {

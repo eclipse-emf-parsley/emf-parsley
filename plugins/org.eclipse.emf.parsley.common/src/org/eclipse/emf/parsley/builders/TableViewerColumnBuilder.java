@@ -17,7 +17,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.factories.ColumnLabelProviderFactory;
-import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -48,7 +48,7 @@ public class TableViewerColumnBuilder {
 	protected FeatureCaptionProvider featureCaptionProvider;
 
 	@Inject
-	protected FeaturesColumnProvider featuresProvider;
+	protected TableFeaturesProvider featuresProvider;
 
 	public void buildTableViewer(TableViewer tableViewer, EClass eClass) {
 		buildTableViewer(tableViewer, eClass, null);

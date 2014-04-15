@@ -564,7 +564,7 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   }
 }
 '''
-expectedFeatureProvider = 
+expectedFeaturesProvider = 
 '''
 package my.empty.ui.provider;
 
@@ -573,6 +573,54 @@ import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 
 @SuppressWarnings("all")
 public class FeaturesProviderGen extends FeaturesProvider {
+  @Override
+  public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
+    super.buildStringMap(stringMap);
+    
+    stringMap.mapTo("org.eclipse.emf.parsley.examples.library.Library",
+      "name");
+    stringMap.mapTo("org.eclipse.emf.parsley.examples.library.Writer",
+      "firstName", "lastName", "books");
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testTableFeaturesSpecifications() {
+		inputs.tableFeaturesSpecifications.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import my.empty.ui.provider.TableFeaturesProviderGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
+    return TableFeaturesProviderGen.class;
+  }
+}
+'''
+expectedTableFeaturesProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
+
+@SuppressWarnings("all")
+public class TableFeaturesProviderGen extends TableFeaturesProvider {
   @Override
   public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
     super.buildStringMap(stringMap);
@@ -1053,9 +1101,12 @@ expectedPluginXmlGen =
 				} else if (e.key.endsWith("FeatureCaptionProviderGen.java")) {
 					if (expected.expectedFeatureCaptionProvider != null)
 						assertEqualsStrings(expected.expectedFeatureCaptionProvider, e.value)
+				} else if (e.key.endsWith("TableFeaturesProviderGen.java")) {
+					if (expected.expectedTableFeaturesProvider != null)
+						assertEqualsStrings(expected.expectedTableFeaturesProvider, e.value)
 				} else if (e.key.endsWith("FeaturesProviderGen.java")) {
-					if (expected.expectedFeatureProvider != null)
-						assertEqualsStrings(expected.expectedFeatureProvider, e.value)
+					if (expected.expectedFeaturesProvider != null)
+						assertEqualsStrings(expected.expectedFeaturesProvider, e.value)
 				} else if (e.key.endsWith("TableLabelProviderGen.java")) {
 					if (expected.expectedTableLabelProvider != null)
 						assertEqualsStrings(expected.expectedTableLabelProvider, e.value)

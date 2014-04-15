@@ -51,11 +51,11 @@ import org.eclipse.emf.parsley.runtime.service.AbstractGenericModule;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.ui.PluginImageHelper;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
-import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
@@ -340,11 +340,11 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 	/**
 	 * Use this binding to provide a custom list of EStructuralFetures only for tables.
 	 * The default behavior is to use the same class provided by {@link #bindFeaturesProvider()} method.
-	 * @return a specialization of {@link FeaturesColumnProvider}
+	 * @return a specialization of {@link TableFeaturesProvider}
 	 * @see FeaturesProvider
 	 */
-	public Class<? extends FeaturesColumnProvider> bindFeaturesColumnProvider() {
-		return FeaturesColumnProvider.class;
+	public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
+		return TableFeaturesProvider.class;
 	}
 
 	/**

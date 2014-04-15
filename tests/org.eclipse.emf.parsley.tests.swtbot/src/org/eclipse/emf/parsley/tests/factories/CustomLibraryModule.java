@@ -21,11 +21,11 @@ import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFeatureCaptionProvide
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryLabelProvider;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryTableColumnLabelProvider;
-import org.eclipse.emf.parsley.tests.providers.TestFeaturesColumnProvider;
+import org.eclipse.emf.parsley.tests.providers.TestTableFeaturesProvider;
 import org.eclipse.emf.parsley.tests.providers.TestFeaturesProvider;
 import org.eclipse.emf.parsley.tests.resource.TestEmptyLibraryResourceInitializer;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
-import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
@@ -78,7 +78,7 @@ public class CustomLibraryModule extends EmfParsleyGuiceModule {
 	}
 
 	@Override
-	public Class<? extends FeaturesColumnProvider> bindFeaturesColumnProvider() {
-		return TestFeaturesColumnProvider.class;
+	public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
+		return TestTableFeaturesProvider.class;
 	}
 }

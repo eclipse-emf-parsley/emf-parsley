@@ -40,7 +40,7 @@ import org.eclipse.emf.parsley.tests.providers.LibraryEStructuralFeaturesAsStrin
 import org.eclipse.emf.parsley.tests.providers.LibraryEStructuralFeaturesProvider;
 import org.eclipse.emf.parsley.tests.providers.OrderedEStructuralFeaturesProvider;
 import org.eclipse.emf.parsley.tests.utils.EmfParsleyTestsUtils;
-import org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.swt.widgets.Composite;
@@ -131,36 +131,36 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 	}
 
 	@Test
-	public void testFeaturesColumnProviderDelegated() {
+	public void testTableFeaturesProviderDelegated() {
 		FeaturesProvider provider = getInjector().getInstance(
-				FeaturesColumnProvider.class);
+				TableFeaturesProvider.class);
 		// this is actually defined in FeaturesProvider
 		// and we delegate to it if there's no customization
 		assertFeatureNames("copies", provider.getFeatures(LENDABLE));
 	}
 
 	@Test
-	public void testFeaturesColumnProviderAsStringsDelegated() {
+	public void testTableFeaturesProviderAsStringsDelegated() {
 		FeaturesProvider provider = getInjector().getInstance(
-				FeaturesColumnProvider.class);
+				TableFeaturesProvider.class);
 		// this is actually defined in FeaturesProvider
 		// and we delegate to it if there's no customization
 		assertFeatureNames("title", provider.getFeatures(PERIODICAL));
 	}
 
 	@Test
-	public void testFeaturesColumnProvider() {
+	public void testTableFeaturesProvider() {
 		FeaturesProvider provider = getInjector().getInstance(
-				FeaturesColumnProvider.class);
-		// this is actually defined in FeaturesColumnProvider
+				TableFeaturesProvider.class);
+		// this is actually defined in TableFeaturesProvider
 		assertFeatureNames("damaged", provider.getFeatures(AUDIO_VISUAL_ITEM));
 	}
 
 	@Test
-	public void testFeaturesColumnProviderAsStrings() {
+	public void testTableFeaturesProviderAsStrings() {
 		FeaturesProvider provider = getInjector().getInstance(
-				FeaturesColumnProvider.class);
-		// this is actually defined in FeaturesColumnProvider
+				TableFeaturesProvider.class);
+		// this is actually defined in TableFeaturesProvider
 		assertFeatureNames("reader",
 				provider.getFeatures(EXTLibraryPackage.Literals.BOOK_ON_TAPE));
 	}

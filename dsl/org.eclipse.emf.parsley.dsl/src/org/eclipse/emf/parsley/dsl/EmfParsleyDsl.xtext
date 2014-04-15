@@ -24,6 +24,8 @@ Module:
 			&
 			(featuresProvider = FeaturesProvider)?
 			&
+			(tableFeaturesProvider = TableFeaturesProvider)?
+			&
 			(formControlFactory = FormControlFactory)?
 			&
 			(dialogControlFactory = DialogControlFactory)?
@@ -141,6 +143,18 @@ FeaturesProvider:
 		)?)
 	'}'
 ;
+
+
+TableFeaturesProvider:
+	{TableFeaturesProvider} 'tableFeaturesProvider' '{'
+		((
+		'features' '{'
+			featureSpecifications+=FeatureSpecification*
+		'}'
+		)?)
+	'}'
+;
+
 
 FeatureSpecification:
 	parameterType=JvmTypeReference

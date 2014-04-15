@@ -23,7 +23,8 @@ public class GeneratorExpectedResults {
 	public CharSequence expectedFeatureCaptionProvider;
 	public CharSequence expectedFormFeatureCaptionProvider;
 	public CharSequence expectedDialogFeatureCaptionProvider;
-	public CharSequence expectedFeatureProvider;
+	public CharSequence expectedTableFeaturesProvider;
+	public CharSequence expectedFeaturesProvider;
 	public CharSequence expectedFormControlFactory;
 	public CharSequence expectedDialogControlFactory;
 	public CharSequence expectedViewerContentProvider;

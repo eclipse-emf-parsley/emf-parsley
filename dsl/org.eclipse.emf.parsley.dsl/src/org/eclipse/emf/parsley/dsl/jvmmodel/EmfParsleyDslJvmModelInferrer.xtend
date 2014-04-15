@@ -26,6 +26,7 @@ import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
@@ -33,6 +34,7 @@ import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMa
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider
+import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
@@ -52,7 +54,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -114,6 +115,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val formFeatureCaptionProviderClass = element.inferFormFeatureCaptionProvider(acceptor)
 		val dialogFeatureCaptionProviderClass = element.inferDialogFeatureCaptionProvider(acceptor)
 		val featureProviderClass = element.inferFeatureProvider(acceptor)
+		val tableFeatureProviderClass = element.inferTableFeatureProvider(acceptor)
 		val formControlFactoryClass = element.inferFormControlFactory(acceptor)
 		val dialogControlFactoryClass = element.inferDialogControlFactory(acceptor)
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
@@ -141,6 +143,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.dialogFeatureCaptionProvider.genBindMethod(dialogFeatureCaptionProviderClass, typeof(DialogFeatureCaptionProvider))
 			if (featureProviderClass != null)
 				members += element.featuresProvider.genBindMethod(featureProviderClass, typeof(FeaturesProvider))
+			if (tableFeatureProviderClass != null)
+				members += element.tableFeaturesProvider.genBindMethod(tableFeatureProviderClass, typeof(TableFeaturesProvider))
 			if (formControlFactoryClass != null)
 				members += element.formControlFactory.genBindMethod(formControlFactoryClass, typeof(FormControlFactory))
 			if (dialogControlFactoryClass != null)
@@ -200,6 +204,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def featuresProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.FeaturesProviderGen"
+	}
+
+	def tableFeaturesProviderQN(Module element) {
+		element.fullyQualifiedName + ".ui.provider.TableFeaturesProviderGen"
 	}
 
 	def formControlFactoryQN(Module element) {
@@ -446,6 +454,46 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				]
 			]
 			featureProviderClass
+		}
+	}
+
+
+	def inferTableFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.tableFeaturesProvider == null)
+			null
+		else {
+			val tableFeatureProviderClass = element.tableFeaturesProvider.toClass(element.tableFeaturesProviderQN)
+			acceptor.accept(tableFeatureProviderClass).initializeLater [
+				superTypes += element.newTypeRef(typeof(TableFeaturesProvider))
+				
+				documentation = element.tableFeaturesProvider.documentation
+				members += element.tableFeaturesProvider.
+						toMethod("buildStringMap", Void::TYPE.getTypeForName(element)) [
+					annotations += element.toAnnotation(typeof(Override))
+					parameters += element.tableFeaturesProvider.toParameter("stringMap",
+							element.newTypeRef(
+								typeof(EClassToEStructuralFeatureAsStringsMap)
+							)
+					)
+					body = [
+						append("super.buildStringMap(stringMap);").newLine
+						element.tableFeaturesProvider.featureSpecifications.forEach [
+							featureSpecification |
+							newLine.
+								append('''stringMap.mapTo("«featureSpecification.parameterType.identifier»",''').
+									increaseIndentation.newLine
+							val fs = featureSpecification.features.map [
+								feature |
+								'"' + feature.simpleName.propertyNameForGetterSetterMethod
+								+ '"'
+							]
+							append(fs.join(", "))
+							append(");").decreaseIndentation
+						]
+					]
+				]
+			]
+			tableFeatureProviderClass
 		}
 	}
 

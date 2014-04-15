@@ -385,4 +385,18 @@ module my.test {
 }
 '''
 
+	def tableFeaturesSpecifications() 
+'''
+import java.util.*
+import org.eclipse.emf.parsley.examples.library.*
+
+module my.empty {
+	tableFeaturesProvider {
+		features {
+			Library -> name
+			Writer -> firstName, lastName, books
+		}
+	}
+}
+'''
 }

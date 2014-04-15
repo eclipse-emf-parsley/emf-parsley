@@ -24,7 +24,7 @@ import com.google.inject.Inject;
  * @see FeaturesProvider
  *
  */
-public class FeaturesColumnProvider extends FeaturesProvider{
+public class TableFeaturesProvider extends FeaturesProvider{
 	
 	@Inject
 	protected FeaturesProvider featuresProvider;

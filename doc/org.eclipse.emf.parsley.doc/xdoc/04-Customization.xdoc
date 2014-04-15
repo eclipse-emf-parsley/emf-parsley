@@ -182,9 +182,9 @@ public class LibraryEStructuralFeaturesAsStringsProvider extends
 ]
 
 
-section3:FeaturesColumnProvider[Features Column Provider]
+section3:TableFeaturesProvider[Table Features Provider]
 
-As an extension, you can use the codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesColumnProvider]:
+As an extension, you can use the codeRef[org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider]:
 the customizations will be applied only to ref:TableComponent[tables], not to ref:FormComponent[Forms].
 
 
