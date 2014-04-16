@@ -36,7 +36,7 @@ public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewe
 		super.createPartControl(parent);
 
 		treeFormComposite = treeFormFactory
-				.createTreeFormMasterDetailComposite(parent, SWT.BORDER);
+				.createTreeFormComposite(parent, SWT.BORDER);
 
 		treeFormComposite.update(getContents(getResource()));
 

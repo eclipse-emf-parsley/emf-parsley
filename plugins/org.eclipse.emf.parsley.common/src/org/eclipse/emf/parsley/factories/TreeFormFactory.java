@@ -31,10 +31,12 @@ public class TreeFormFactory {
 
 	}
 
-	public TreeFormComposite createTreeFormMasterDetailComposite(
-			Composite parent, int style) {
-		TreeFormComposite treeFormComposite = new TreeFormComposite(parent,
-				style);
+	/**
+	 * This method is not intended to be extended. Use {link {@link #createComposite(Composite, int)} to customize the creation of the {@link TreeFormComposite}. 
+	 * @return the TreeFormComposite instance
+	 */
+	public TreeFormComposite createTreeFormComposite(Composite parent, int style) {
+		TreeFormComposite treeFormComposite = createComposite(parent, style);
 		treeFormCompositeMembersInjector.injectMembers(treeFormComposite);
 		return treeFormComposite;
 	}

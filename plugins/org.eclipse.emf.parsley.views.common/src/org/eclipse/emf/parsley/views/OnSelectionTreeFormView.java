@@ -31,7 +31,7 @@ public class OnSelectionTreeFormView extends AbstractOnSelectionView {
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		treeFormDetailComposite = treeFormFactory.createTreeFormMasterDetailComposite(parent,
+		treeFormDetailComposite = treeFormFactory.createTreeFormComposite(parent,
 				SWT.BORDER);
 	}
 

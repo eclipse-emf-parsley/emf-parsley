@@ -62,7 +62,7 @@ public class ParsleyE4ModelPart implements IMenuListener {
 		// Initialize Parsley Tree Form:  
 		// 1) create the tree-form composite
 		treeFormComposite = treeFormFactory
-				.createTreeFormMasterDetailComposite(parent, SWT.BORDER);
+				.createTreeFormComposite(parent, SWT.BORDER);
 
 		// 2) initialize and bind the context menu to the tree-form composite
 		treeActionBarContributor.initialize(editingDomain);

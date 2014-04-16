@@ -36,7 +36,7 @@ public class View extends ViewPart {
 	 * it.
 	 */
 	public void createPartControl(Composite parent) {
-		treeFormComposite = treeFormFactory.createTreeFormMasterDetailComposite(parent,
+		treeFormComposite = treeFormFactory.createTreeFormComposite(parent,
 				SWT.BORDER);
 		
 		Resource resource = new ResourceImpl();
