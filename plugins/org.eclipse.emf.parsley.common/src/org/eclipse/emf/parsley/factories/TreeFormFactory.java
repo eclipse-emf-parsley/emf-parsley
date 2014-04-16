@@ -38,4 +38,8 @@ public class TreeFormFactory {
 		treeFormCompositeMembersInjector.injectMembers(treeFormComposite);
 		return treeFormComposite;
 	}
+
+	protected TreeFormComposite createComposite(Composite parent, int style) {
+		return new TreeFormComposite(parent, style);
+	}
 }

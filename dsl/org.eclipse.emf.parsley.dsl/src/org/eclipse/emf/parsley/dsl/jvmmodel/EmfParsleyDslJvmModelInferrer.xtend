@@ -26,8 +26,8 @@ import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
-import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
+import org.eclipse.emf.parsley.factories.TreeFormFactory
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
@@ -35,7 +35,9 @@ import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+import org.eclipse.emf.parsley.widgets.TreeFormComposite
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.swt.widgets.Composite
@@ -54,6 +56,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.swt.SWT
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -120,6 +123,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val dialogControlFactoryClass = element.inferDialogControlFactory(acceptor)
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
+		val treeFormFactoryClass = element.inferTreeFormFactory(acceptor)
 		
 		acceptor.accept(moduleClass).initializeLater [
 			documentation = element.documentation
@@ -153,6 +157,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.viewerContentProvider.genBindMethod(viewerContentProviderClass, typeof(IContentProvider))
 			if (proposalCreatorClass != null)
 				members += element.proposalCreator.genBindMethod(proposalCreatorClass, typeof(ProposalCreator))
+			if (treeFormFactoryClass != null)
+				members += element.treeFormFactory.genBindMethod(treeFormFactoryClass, typeof(TreeFormFactory))
 			
 		]
 
@@ -224,6 +230,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def proposalCreatorQN(Module element) {
 		element.fullyQualifiedName + ".binding.ProposalCreatorGen"
+	}
+
+	def treeFormFactoryQN(Module element) {
+		element.fullyQualifiedName + ".factory.TreeFormFactoryGen"
 	}
 
 	def partsClassQN(Module element) {
@@ -674,6 +684,39 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
+	def inferTreeFormFactory(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.treeFormFactory == null)
+			null
+		else {
+			val treeFormFactoryClass = element.treeFormFactory.toClass(element.treeFormFactoryQN)
+			acceptor.accept(treeFormFactoryClass).initializeLater [
+				superTypes += element.newTypeRef(typeof(TreeFormFactory))
+				
+				members += element.treeFormFactory.toMethod('createComposite',element.newTypeRef(typeof(TreeFormComposite))) [
+						parameters += element.treeFormFactory.toParameter(
+						"parent", element.newTypeRef(typeof(Composite))
+					)
+					parameters += element.treeFormFactory.toParameter(
+						"style", element.newTypeRef(typeof(int))
+					)
+						body = [
+				
+							append(element.newTypeRef(typeof(TreeFormComposite)).type)
+							
+							append(''' control = new TreeFormComposite (parent,	style,''').
+							append(typeof(SWT).findDeclaredType(element)).append('''.''')
+							append(element.treeFormFactory.orientation.getName).append(''', new int[]{'''+
+								element.treeFormFactory.treeWeight +''','''+element.treeFormFactory.formWeight+'''}''').
+							append(''');''').newLine
+							
+							append('''return control;''')
+						]
+					]
+			]
+			treeFormFactoryClass
+		}
+	}
+
 	def control_EClass_EStructuralFeature(
 			ControlFactorySpecification spec, XExpression exp, (JvmOperation)=>void init
 	) {
