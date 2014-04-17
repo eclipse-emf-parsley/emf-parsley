@@ -13,7 +13,6 @@
 package org.eclipse.emf.parsley.binding;
 
 import java.lang.reflect.Method;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.databinding.Binding;
@@ -35,6 +34,7 @@ import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.databinding.swt.SWTObservables;
@@ -85,12 +85,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			.getName();
 	public static final String ESTRUCTURALFEATURE_KEY = EcorePackage.Literals.ESTRUCTURAL_FEATURE
 			.getName();
-
-	private PolymorphicDispatcher.ErrorHandler<ControlObservablePair> control_errorHandler = new PolymorphicDispatcher.NullErrorHandler<ControlObservablePair>();
-
-	private PolymorphicDispatcher.ErrorHandler<Control> createControl_errorHandler = new PolymorphicDispatcher.NullErrorHandler<Control>();
-
-	private PolymorphicDispatcher.ErrorHandler<IObservableValue> observeable_errorHandler = new PolymorphicDispatcher.NullErrorHandler<IObservableValue>();
 
 	public AbstractControlFactory() {
 
@@ -371,19 +365,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	}
 
 	private ControlObservablePair polymorphicGetObservableControl(EStructuralFeature element) {
-		PolymorphicDispatcher<ControlObservablePair> dispatcher = new PolymorphicDispatcher<ControlObservablePair>(
-				Collections.singletonList(this),
-				getObservableControlPredicate(element), control_errorHandler) {
-			@Override
-			protected ControlObservablePair handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(control_errorHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
-
-		return dispatcher.invoke(element);
+		return PolymorphicDispatcherExtensions.
+				<ControlObservablePair>createPolymorphicDispatcher(this, getObservableControlPredicate(element)).
+					invoke(element);
 	}
 
 	/**
@@ -394,10 +378,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	 */
 	private Control polymorphicCreateControl(EStructuralFeature element,
 			IObservableValue featureObservable) {
-		PolymorphicDispatcher<Control> dispatcher = createPolymorphicDispatcherForCreateControl(
-				element, 2);
-
-		return dispatcher.invoke(edbc, featureObservable);
+		return createPolymorphicDispatcherForCreateControl(element, 2).invoke(edbc, featureObservable);
 	}
 
 	/**
@@ -406,26 +387,13 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	 * @return
 	 */
 	private Control polymorphicCreateControl(EStructuralFeature element) {
-		PolymorphicDispatcher<Control> dispatcher = createPolymorphicDispatcherForCreateControl(
-				element, 1);
-
-		return dispatcher.invoke(owner);
+		return createPolymorphicDispatcherForCreateControl(element, 1).invoke(owner);
 	}
 
 	private PolymorphicDispatcher<Control> createPolymorphicDispatcherForCreateControl(
 			EStructuralFeature element, int numOfParams) {
-		return new PolymorphicDispatcher<Control>(
-				Collections.singletonList(this),
-				getCreateControlMethodPredicate(element, numOfParams),
-				createControl_errorHandler) {
-			@Override
-			protected Control handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(createControl_errorHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
+		return PolymorphicDispatcherExtensions.createPolymorphicDispatcher
+				(this, getCreateControlMethodPredicate(element, numOfParams));
 	}
 
 	protected Predicate<Method> getObservableControlPredicate(
@@ -446,20 +414,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 
 	private IObservableValue polymorphicCreateObserveable(EditingDomain domain, EObject element,
 			EStructuralFeature feature) {
-		PolymorphicDispatcher<IObservableValue> dispatcher = new PolymorphicDispatcher<IObservableValue>(
-				Collections.singletonList(this),
-				getCreateObserveablePredicate(feature),
-				new PolymorphicDispatcher.NullErrorHandler<IObservableValue>()) {
-			@Override
-			protected IObservableValue handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(observeable_errorHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
-
-		return dispatcher.invoke(domain, element);
+		return PolymorphicDispatcherExtensions.
+				<IObservableValue>createPolymorphicDispatcher(this, getCreateObserveablePredicate(feature)).
+					invoke(domain, element);
 	}
 
 	protected Predicate<Method> getCreateObserveablePredicate(
@@ -469,5 +426,5 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 				+ feature.getName();
 		return PolymorphicDispatcher.Predicates.forName(methodName, 2);
 	}
-
+	
 }

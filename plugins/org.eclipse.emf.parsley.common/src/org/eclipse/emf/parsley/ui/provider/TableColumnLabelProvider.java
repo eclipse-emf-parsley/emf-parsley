@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
-
 import java.lang.reflect.Method;
-import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.graphics.Image;
@@ -44,9 +43,6 @@ import com.google.inject.Inject;
  */
 public class TableColumnLabelProvider extends ColumnLabelProvider {
 	protected EStructuralFeature eStructuralFeature;
-	
-	private PolymorphicDispatcher.ErrorHandler<Image> errorImageHandler = new PolymorphicDispatcher.NullErrorHandler<Image>();
-	private PolymorphicDispatcher.ErrorHandler<String> errorLabelHandler = new PolymorphicDispatcher.NullErrorHandler<String>();
 	
 	protected ILabelProvider labelProvider;
 
@@ -104,20 +100,11 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 		return ret;
 	}
 	
-	protected String polymorphicGetText(Object element,	EStructuralFeature feature) {
-		PolymorphicDispatcher<String> dispatcher = new PolymorphicDispatcher<String>(
-				Collections.singletonList(this), getTextPredicate(feature),
-				errorLabelHandler) {
-			@Override
-			protected String handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(errorLabelHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
-
-		return dispatcher.invoke(element);
+	protected String polymorphicGetText(Object element,
+			EStructuralFeature feature) {
+		return PolymorphicDispatcherExtensions
+				.<String> createPolymorphicDispatcher(this,
+						getTextPredicate(feature)).invoke(element);
 	}
 
 	protected Predicate<Method> getTextPredicate(EStructuralFeature feature) {
@@ -126,20 +113,11 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 		return PolymorphicDispatcher.Predicates.forName(methodName, 1);
 	}
 	
-	protected Image polymorphicGetImage(Object element,	EStructuralFeature feature) {
-		PolymorphicDispatcher<Image> dispatcher = new PolymorphicDispatcher<Image>(
-				Collections.singletonList(this), getImagePredicate(feature),
-				errorImageHandler) {
-			@Override
-			protected Image handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(errorImageHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
-
-		return dispatcher.invoke(element);
+	protected Image polymorphicGetImage(Object element,
+			EStructuralFeature feature) {
+		return PolymorphicDispatcherExtensions
+				.<Image> createPolymorphicDispatcher(this,
+						getImagePredicate(feature)).invoke(element);
 	}
 
 	protected Predicate<Method> getImagePredicate(EStructuralFeature feature) {

@@ -18,7 +18,6 @@ package org.eclipse.emf.parsley.binding;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,6 +33,7 @@ import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 
 import com.google.common.base.Predicate;
 
@@ -45,8 +45,6 @@ import com.google.common.base.Predicate;
 public class ProposalCreator {
 	private Resource resource;
 	
-	private PolymorphicDispatcher.ErrorHandler<List<?>> proposals_errorHandler = new PolymorphicDispatcher.NullErrorHandler<List<?>>();
-
 	public Resource getResource() {
 		return resource;
 	}
@@ -144,18 +142,8 @@ public class ProposalCreator {
 
 	private PolymorphicDispatcher<List<Object>> createPolymorphicDispatcher(
 			EObject object, EStructuralFeature feature, int numOfParams) {
-		return new PolymorphicDispatcher<List<Object>>(
-				Collections.singletonList(this), getCreateProposalsPredicate(
-						object, feature, numOfParams),
-				new PolymorphicDispatcher.NullErrorHandler<List<Object>>()) {
-			@Override
-			protected List<Object> handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(proposals_errorHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
+		return PolymorphicDispatcherExtensions.createPolymorphicDispatcher(this, getCreateProposalsPredicate(
+						object, feature, numOfParams));
 	}
 
 	protected Predicate<Method> getCreateProposalsPredicate(

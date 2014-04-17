@@ -11,10 +11,10 @@
 package org.eclipse.emf.parsley.ui.provider;
 
 import java.lang.reflect.Method;
-import java.util.Collections;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -37,8 +37,6 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 
 	@Inject
 	protected FeatureCaptionProvider delegate;
-	
-	private PolymorphicDispatcher.ErrorHandler<Label> errorLabelHandler = new PolymorphicDispatcher.NullErrorHandler<Label>();
 
 	public Label getLabel(Composite parent, EStructuralFeature element) {
 		Label lab = polymorphicGetLabel(parent, element);
@@ -72,19 +70,9 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 
 	protected Label polymorphicGetLabel(Composite parent,
 			EStructuralFeature element) {
-		PolymorphicDispatcher<Label> dispatcher = new PolymorphicDispatcher<Label>(
-				Collections.singletonList(this), getLabelPredicate(element),
-				errorLabelHandler) {
-			@Override
-			protected Label handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(errorLabelHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
-
-		return dispatcher.invoke(parent, element);
+		return PolymorphicDispatcherExtensions
+				.<Label> createPolymorphicDispatcher(this,
+						getLabelPredicate(element)).invoke(parent, element);
 	}
 
 	protected Predicate<Method> getLabelPredicate(EStructuralFeature feature) {

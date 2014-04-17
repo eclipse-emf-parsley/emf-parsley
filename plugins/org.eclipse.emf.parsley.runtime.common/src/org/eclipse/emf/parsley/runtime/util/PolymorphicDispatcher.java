@@ -7,6 +7,7 @@
  *
  * Contributors:
  * itemis AG - Initial contribution and API
+ * Francesco Guidieri - additional error handlers
  *******************************************************************************/
 package org.eclipse.emf.parsley.runtime.util;
 
@@ -28,6 +29,7 @@ import com.google.common.base.Predicate;
 
 /**
  * @author Sven Efftinge - Initial contribution and API
+ * @author Francesco Guidieri - additional error handlers
  */
 public class PolymorphicDispatcher<RT> {
 
@@ -375,4 +377,25 @@ public class PolymorphicDispatcher<RT> {
 			return "Couldn't find method '" + methodFilter.toString() + "' for objects " + Arrays.toString(params);
 		}
 	}
+
+	public static class ExceptionLogHandler<RT> implements ErrorHandler<RT> {
+		
+		private Logger logger;
+
+		public ExceptionLogHandler(Logger logger) {
+			this.logger = logger;
+		}
+		
+		public static <RT> ErrorHandler<RT> get(Logger logger) {
+			return new ExceptionLogHandler<RT>(logger);
+		}
+		
+		public RT handle(Object[] params, Throwable throwable) {
+			if(!(throwable instanceof NoSuchMethodException)){
+				logger.warn("Error in polymorphic dispatcher : "+throwable.getMessage(), throwable);
+			}
+			return null;
+		}
+	}
+
 }

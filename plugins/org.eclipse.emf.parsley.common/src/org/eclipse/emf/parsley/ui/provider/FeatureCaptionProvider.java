@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
-
 import java.lang.reflect.Method;
-import java.util.Collections;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 
 import com.google.common.base.Predicate;
 
@@ -36,8 +35,6 @@ import com.google.common.base.Predicate;
  */
 public class FeatureCaptionProvider {
 
-	private PolymorphicDispatcher.ErrorHandler<String> errorHandler = new PolymorphicDispatcher.NullErrorHandler<String>();
-
 	public String getText(EStructuralFeature element) {
 		String text = polymorphicGetText(element);
 		if (text != null) {
@@ -47,19 +44,9 @@ public class FeatureCaptionProvider {
 	}
 
 	protected String polymorphicGetText(EStructuralFeature element) {
-		PolymorphicDispatcher<String> dispatcher = new PolymorphicDispatcher<String>(
-				Collections.singletonList(this), getTextPredicate(element),
-				errorHandler) {
-			@Override
-			protected String handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.NullErrorHandler.class
-						.equals(errorHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
-			}
-		};
-
-		return dispatcher.invoke(element);
+		return PolymorphicDispatcherExtensions
+				.<String> createPolymorphicDispatcher(this,
+						getTextPredicate(element)).invoke(element);
 	}
 
 	protected Predicate<Method> getTextPredicate(EStructuralFeature feature) {
