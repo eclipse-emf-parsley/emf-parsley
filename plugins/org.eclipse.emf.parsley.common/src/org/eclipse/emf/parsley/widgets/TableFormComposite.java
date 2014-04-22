@@ -7,13 +7,11 @@
  * 
  * Contributors:
  * Francesco Guidieri - initial API and implementation
+ * Lorenzo Bettini - aligned to other composites
  *******************************************************************************/
 package org.eclipse.emf.parsley.widgets;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -21,7 +19,6 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.inject.Inject;
 
@@ -30,31 +27,15 @@ import com.google.inject.Inject;
  * object in the tree.
  * 
  * @author Francesco Guidieri
- * 
+ * @author Lorenzo Bettini
  */
 public class TableFormComposite extends AbstractMasterDetailComposite {
 	
 	private TableViewerBuilder tableViewerBuilder;
 	private TableViewer tableViewer;
-	private boolean autoBuild;
 	
-	public TableFormComposite(Composite parent, int style, boolean autoBuild) {
-		super(parent, style, SWT.VERTICAL, new int[0]);
-		this.autoBuild=autoBuild;
-	}
-
 	public TableFormComposite(Composite parent, int style) {
-		this(parent, style, SWT.VERTICAL, new int[0], false);
-	}
-	
-	public TableFormComposite(Composite parent, int style, int sashStyle,int[] weights) {
-		this(parent, style, sashStyle, weights, false);
-		
-	}
-	
-	public TableFormComposite(Composite parent, int style, int sashStyle,int[] weights, boolean autoBuild) {
 		super(parent, style);
-		this.autoBuild=autoBuild;
 	}
 	
 	protected StructuredViewer createViewer(Composite parent) {
@@ -78,28 +59,9 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	
 	
 	@Override
-	public void update(Object input) {
-		if(autoBuild){
-			removeExistingColumns();
-		}
-		if (input instanceof List){
-			final List<?> elements=(List<?>) input;
-			IStructuredContentProvider contentProvider=new ArrayContentProvider();
-			if(elements.size()>0){
-				EObject eObject = (EObject) elements.get(0);
-				tableViewerBuilder.build(tableViewer, eObject.eClass(), contentProvider);
-				tableViewer.setContentProvider(contentProvider);
-				//TODO
-				PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-					public void run() {
-						tableViewer.setInput(elements);
-					}
-				});
-			}else{				
-				viewerInitializer.initialize(tableViewer,input,contentProvider,null);
-			}
-			pagebook.showPage(tableViewer.getControl());
-		}else super.update(input);
+	public void update(Object contents) {
+		tableViewerBuilder.fill(tableViewer, contents, new ArrayContentProvider(), null);
+		pagebook.showPage(tableViewer.getControl());
 	}
 
 	private void removeExistingColumns() {

@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Lorenzo Bettini - Initial contribution and API
+ * Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
@@ -28,10 +28,10 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.inject.Inject;
 
 /**
- * A View that visualizes the list of elements of an EObject (it also acts as a
- * selection provider), filtered by the specified type.
+ * A View that visualizes a table with the list of elements of an EObject (it also acts as a
+ * selection provider), filtered by the specified type (EClass) and feature.
  *
- * @author Lorenzo Bettini
+ * @author Francesco Guidieri - Initial contribution and API
  *
  */
 public abstract class AbstractOnSelectionTableFormView extends
@@ -61,6 +61,7 @@ public abstract class AbstractOnSelectionTableFormView extends
 			ISelection selection) {
 
 		EObject eObject = getFirstSelectedEObject(selection);
+		// TODO: Lorenzo: I think passing null might raise a NPE, this class is not tested
 		tableFormDetailComposite.update(null);
 		if (eObject != null) {
 			update(eObject);

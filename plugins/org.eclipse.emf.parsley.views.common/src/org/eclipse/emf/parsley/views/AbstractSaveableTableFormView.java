@@ -22,6 +22,11 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
+/**
+ * @author Francesco Guidieri - Initial contribution and API
+ * @author Lorenzo Bettini - aligned to {@link AbstractSaveableTableView}
+ *
+ */
 public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView	{
 
 	@Inject
@@ -29,16 +34,12 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 
 	protected TableFormComposite tableFormComposite;
 
-	protected Object getContents(Resource resource) {
-		return resource;
-	}
-
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
 		tableFormComposite = tableFormFactory
-				.createTableFormMasterDetailComposite(parent, SWT.BORDER,getEClass());
+				.createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass());
 
 		tableFormComposite.update(getContents(getResource()));
 
@@ -54,7 +55,16 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 		return tableFormComposite.getViewer();
 	}
 	
+	/**
+	 * @return the {@link EClass} for objects to be shown in the table
+	 */
 	protected abstract EClass getEClass();
+	
+	/**
+	 * @param resource
+	 * @return the contents from the passed resource to be shown in the table
+	 */
+	protected abstract Object getContents(Resource resource);
 
 	@Override
 	protected void mostRecentCommandAffectsResource(Command mostRecentCommand) {

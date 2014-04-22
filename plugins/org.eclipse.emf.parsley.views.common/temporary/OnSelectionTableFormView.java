@@ -37,6 +37,10 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.inject.Inject;
 
+/**
+ * @author Francesco Guidieri - Initial contribution and API
+ *
+ */
 public class OnSelectionTableFormView extends AbstractOnSelectionView {
 
 	@Inject

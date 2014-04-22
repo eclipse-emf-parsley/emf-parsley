@@ -40,10 +40,4 @@ public class TableFormFactory {
 		return tableFormComposite;
 	}
 	
-	public TableFormComposite createTableFormMasterDetailComposite(
-			Composite parent, int style) {
-		TableFormComposite tableFormComposite = new TableFormComposite(parent,style, true);
-		tableFormCompositeMembersInjector.injectMembers(tableFormComposite);
-		return tableFormComposite;
-	}
 }
