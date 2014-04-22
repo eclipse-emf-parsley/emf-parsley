@@ -173,11 +173,11 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 		getLibraryWriterNode(rootOfEditorTree).select();
 		getTableHeader(ADDRESS_LABEL);
 		getTableHeader(FIRSTNAME_LABEL);
+		// the books table is the second one
+		getTableHeader(1, BORROWERS_LABEL);
 		// select on the outline view
 		getLibraryNode(getRootOfOutlineViewTree()).select();
 		getTableHeader(ADDRESS_LABEL);
-		// the writers table is the second one
-		getTableHeader(1, FIRSTNAME_LABEL);
 		tableView.close();
 	}
 

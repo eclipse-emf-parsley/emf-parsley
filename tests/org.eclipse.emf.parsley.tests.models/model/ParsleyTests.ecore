@@ -5,5 +5,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="TestEClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowercaseNameFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="UpperCaseNameFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notChangeableFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="derivedFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="" derived="true"/>
   </eClassifiers>
 </ecore:EPackage>

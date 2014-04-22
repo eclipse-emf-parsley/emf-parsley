@@ -11,18 +11,23 @@
 package org.eclipse.emf.parsley.ui.provider;
 
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.ecore.FeatureResolver;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
@@ -84,8 +89,21 @@ public class FeaturesProvider {
 				return fromMap;
 		}
 
-		return new BasicEList<EStructuralFeature>(
-				eClass.getEAllStructuralFeatures());
+		// default behavior
+		EList<EStructuralFeature> eAllStructuralFeatures = eClass.getEAllStructuralFeatures();
+		Collection<EStructuralFeature> filtered = Collections2.filter(eAllStructuralFeatures, new Predicate<EStructuralFeature>() {
+
+			public boolean apply(EStructuralFeature feature) {
+				// derived, unchangeable, container and containment features ignored
+				return feature.isChangeable()
+						&& !feature.isDerived()
+						&& !(feature instanceof EReference && (((EReference) feature)
+								.isContainment()
+						// || ((EReference) feature).isContainer()
+						));
+			}
+		});
+		return new BasicEList<EStructuralFeature>(filtered);
 	}
 
 	protected List<EStructuralFeature> getFromMap(EClass eClass) {

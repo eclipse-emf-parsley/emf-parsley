@@ -91,13 +91,31 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_ECLASS__UPPER_CASE_NAME_FEATURE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Not Changeable Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_ECLASS__NOT_CHANGEABLE_FEATURE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Derived Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_ECLASS__DERIVED_FEATURE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Test EClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_ECLASS_FEATURE_COUNT = 2;
+	int TEST_ECLASS_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Test EClass</em>' class.
@@ -140,6 +158,28 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTestEClass_UpperCaseNameFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getNotChangeableFeature <em>Not Changeable Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Not Changeable Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getNotChangeableFeature()
+	 * @see #getTestEClass()
+	 * @generated
+	 */
+	EAttribute getTestEClass_NotChangeableFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getDerivedFeature <em>Derived Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Derived Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getDerivedFeature()
+	 * @see #getTestEClass()
+	 * @generated
+	 */
+	EAttribute getTestEClass_DerivedFeature();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -187,6 +227,20 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TEST_ECLASS__UPPER_CASE_NAME_FEATURE = eINSTANCE.getTestEClass_UpperCaseNameFeature();
+		/**
+		 * The meta object literal for the '<em><b>Not Changeable Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_ECLASS__NOT_CHANGEABLE_FEATURE = eINSTANCE.getTestEClass_NotChangeableFeature();
+		/**
+		 * The meta object literal for the '<em><b>Derived Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_ECLASS__DERIVED_FEATURE = eINSTANCE.getTestEClass_DerivedFeature();
 
 	}
 

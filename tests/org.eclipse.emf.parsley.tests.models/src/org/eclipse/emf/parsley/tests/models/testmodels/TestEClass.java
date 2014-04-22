@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getLowercaseNameFeature <em>Lowercase Name Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getUpperCaseNameFeature <em>Upper Case Name Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getNotChangeableFeature <em>Not Changeable Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getDerivedFeature <em>Derived Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,4 +83,46 @@ public interface TestEClass extends EObject {
 	 * @generated
 	 */
 	void setUpperCaseNameFeature(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Not Changeable Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Not Changeable Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Not Changeable Feature</em>' attribute.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getTestEClass_NotChangeableFeature()
+	 * @model changeable="false"
+	 * @generated
+	 */
+	String getNotChangeableFeature();
+
+	/**
+	 * Returns the value of the '<em><b>Derived Feature</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Derived Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Derived Feature</em>' attribute.
+	 * @see #setDerivedFeature(String)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getTestEClass_DerivedFeature()
+	 * @model default="" derived="true"
+	 * @generated
+	 */
+	String getDerivedFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass#getDerivedFeature <em>Derived Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Derived Feature</em>' attribute.
+	 * @see #getDerivedFeature()
+	 * @generated
+	 */
+	void setDerivedFeature(String value);
 } // TestEClass

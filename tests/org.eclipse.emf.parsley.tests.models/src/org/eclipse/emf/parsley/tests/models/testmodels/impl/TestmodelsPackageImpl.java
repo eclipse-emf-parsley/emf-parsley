@@ -126,6 +126,24 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTestEClass_NotChangeableFeature() {
+		return (EAttribute)testEClassEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestEClass_DerivedFeature() {
+		return (EAttribute)testEClassEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TestmodelsFactory getTestmodelsFactory() {
 		return (TestmodelsFactory)getEFactoryInstance();
 	}
@@ -152,6 +170,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		testEClassEClass = createEClass(TEST_ECLASS);
 		createEAttribute(testEClassEClass, TEST_ECLASS__LOWERCASE_NAME_FEATURE);
 		createEAttribute(testEClassEClass, TEST_ECLASS__UPPER_CASE_NAME_FEATURE);
+		createEAttribute(testEClassEClass, TEST_ECLASS__NOT_CHANGEABLE_FEATURE);
+		createEAttribute(testEClassEClass, TEST_ECLASS__DERIVED_FEATURE);
 	}
 
 	/**
@@ -187,6 +207,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEClass(testEClassEClass, TestEClass.class, "TestEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestEClass_LowercaseNameFeature(), ecorePackage.getEString(), "lowercaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestEClass_UpperCaseNameFeature(), ecorePackage.getEString(), "UpperCaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestEClass_NotChangeableFeature(), ecorePackage.getEString(), "notChangeableFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestEClass_DerivedFeature(), ecorePackage.getEString(), "derivedFeature", "", 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

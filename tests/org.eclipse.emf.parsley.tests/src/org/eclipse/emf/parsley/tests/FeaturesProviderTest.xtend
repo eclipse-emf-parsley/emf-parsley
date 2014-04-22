@@ -35,6 +35,23 @@ class FeaturesProviderTest {
 	def private void buildStringMap(EClass eClass, String...featuresNames) {
 		featuresProvider.addToStringMap(eClass, featuresNames);
 	}
+
+	@Test def void testDefaultImplementationWithTestmodel() {
+		TestmodelsPackage::eINSTANCE.testEClass => [
+			assertFeatureList("lowercaseNameFeature, UpperCaseNameFeature")
+		]
+	}
+
+	@Test def void testFilterNotAppliedToCustomImplementation() {
+		TestmodelsPackage::eINSTANCE.testEClass => [
+			buildStringMap("lowercaseNameFeature", "notChangeableFeature")
+			// notChangeableFeature would be discarded by the default implementation
+			// but since we customized the feature provider, the filter is not applied
+			// NOTE: it is responsibility of the programmer to return a list of feature
+			// that makes sense
+			assertFeatureList("lowercaseNameFeature, notChangeableFeature")
+		]
+	}
 	
 	@Test def void testLibraryFeatures() {
 		EXTLibraryPackage::eINSTANCE.library => [

@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.widgets;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
@@ -24,6 +23,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
+ * @author Francesco Guidieri - Contributions
  */
 public abstract class AbstractDetailComposite extends Composite {
 
@@ -58,24 +58,14 @@ public abstract class AbstractDetailComposite extends Composite {
 		initControlFactory(editingDomain, original);
 
 		for (final EStructuralFeature feature : features) {
-			// derived, unchangeable, container and containment features
-			// ignored
-			if (feature.isChangeable()
-					&& !feature.isDerived()
-					&& !(feature instanceof EReference && (((EReference) feature)
-							.isContainment()
-					// || ((EReference) feature).isContainer()
-					))) {
-
-				createControlForFeature(feature);
-			}
+			createControlForFeature(feature);
 		}
 
 		// toolkit.paintBordersFor(main);
 
 		this.layout();
 	}
-
+	
 	protected abstract void initControlFactory(EditingDomain domain,
 			EObject model);
 

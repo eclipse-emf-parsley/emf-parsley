@@ -93,7 +93,10 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 	@Test
 	public void testEClassFeatureProviderGetAllFeatures() {
 		EClass test = LIBRARY;
-		assertFeatureNames(test.getEAllStructuralFeatures(),
+		assertFeatureNames(
+				//test.getEAllStructuralFeatures(),
+				// features are already filtered
+				"address, name, parentBranch, people",
 				getInjector().getInstance(FeaturesProvider.class)
 						.getFeatures(test));
 	}
@@ -102,7 +105,9 @@ public class EmfParsleyProvidersTests extends EmfParsleyCustomLibraryAbstractTes
 	public void testEClassFeatureProviderOrdered() {
 		EClass test = LIBRARY;
 		assertFeatureNames(
-				"address, books, borrowers, branches, employees, name, parentBranch, people, stock, writers",
+				//"address, books, borrowers, branches, employees, name, parentBranch, people, stock, writers",
+				// features are already filtered
+				"address, name, parentBranch, people",
 				getInjector().getInstance(
 						OrderedEStructuralFeaturesProvider.class).getFeatures(
 						test));
