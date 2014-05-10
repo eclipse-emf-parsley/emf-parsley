@@ -23,7 +23,7 @@
             restorable="true">
       </view>
             <view
-            class="org.eclipse.emf.parsley.examples.library.ExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionShowAllTableView"
+            class="org.eclipse.emf.parsley.examples.library.ExecutableExtensionFactory:org.eclipse.emf.parsley.examples.views.OnSelectionShowAllTableView"
             id="org.eclipse.emf.parsley.examples.library.tableview"
             name="Custom Show All Table View"
             restorable="true">

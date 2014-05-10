@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.views;
+package org.eclipse.emf.parsley.examples.views;
 
 
 import java.util.List;
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
+import org.eclipse.emf.parsley.views.AbstractOnSelectionView;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
