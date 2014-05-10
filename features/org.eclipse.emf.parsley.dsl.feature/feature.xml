@@ -22,12 +22,6 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
       %license
    </license>
 
-   <requires>
-      <import feature="org.eclipse.xtext.xbase" version="2.4.3.v201309030823" match="greaterOrEqual"/>
-      <import feature="org.eclipse.xtext.runtime" version="2.4.3.v201309030823" match="greaterOrEqual"/>
-      <import feature="org.eclipse.xtext.ui" version="2.4.3.v201309030823" match="greaterOrEqual"/>
-   </requires>
-
    <plugin
          id="org.eclipse.emf.parsley.dsl"
          download-size="0"

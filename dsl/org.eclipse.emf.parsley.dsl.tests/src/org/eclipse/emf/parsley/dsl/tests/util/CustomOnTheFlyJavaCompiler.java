@@ -14,8 +14,6 @@ package org.eclipse.emf.parsley.dsl.tests.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileFilter;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -140,26 +138,6 @@ public class CustomOnTheFlyJavaCompiler extends OnTheFlyJavaCompiler {
 				errorStream)), false /* systemExit */, null /* options */, null);
 	}
 
-	/**
-	 * Copied from {@link OnTheFlyJavaCompiler}
-	 * 
-	 * @return
-	 */
-	private File createTempDir() {
-		File rootTempDir = null;
-		String defTmpPath = System.getProperty("java.io.tmpdir");
-		if (defTmpPath != null) {
-			rootTempDir = new File(defTmpPath);
-		} else {
-			// use current directory, should be writable
-			rootTempDir = new File("./");
-		}
-		// VM unique temp dir
-		File tempDir = new File(rootTempDir, "otfjc"
-				+ OnTheFlyJavaCompiler.class.hashCode());
-		return tempDir;
-	}
-	
 	public Class<?> compileToClass(String classname, String code) {
 		File tempDir = createTempDir();
 		final String classNameAsPath = classname.replace('.',
@@ -200,18 +178,6 @@ public class CustomOnTheFlyJavaCompiler extends OnTheFlyJavaCompiler {
 		}
 	}
 	
-	private void cleanUpTmpFolder(File tempDir) {
-		try {
-			Files.cleanFolder(tempDir, new FileFilter() {
-				public boolean accept(File pathname) {
-					return !pathname.getName().endsWith(".class");
-				}
-			}, true, true);
-		} catch (FileNotFoundException e) {
-			// ignore
-		}
-	}
-
 	public void compileAll(Map<String, String> toCompile) {
 		File tempDir = createTempDir();
 		StringBuilder fileNamesToCompile = new StringBuilder();

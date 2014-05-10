@@ -231,14 +231,12 @@ public class LabelProviderGen extends ViewerLabelProvider {
       EList<Lendable> _borrowed = it.getBorrowed();
       final Function1<Lendable,Integer> _function = new Function1<Lendable,Integer>() {
         public Integer apply(final Lendable b) {
-          int _copies = b.getCopies();
-          return Integer.valueOf(_copies);
+          return Integer.valueOf(b.getCopies());
         }
       };
       List<Integer> _map = ListExtensions.<Lendable, Integer>map(_borrowed, _function);
       final String buffer = ("borrowed: " + _map);
-      String _upperCase = buffer.toUpperCase();
-      _xblockexpression = (_upperCase);
+      _xblockexpression = buffer.toUpperCase();
     }
     return _xblockexpression;
   }
@@ -259,8 +257,7 @@ public class LabelProviderGen extends ViewerLabelProvider {
     if (_isNullOrEmpty) {
       _xifexpression = "noname.gif";
     } else {
-      ImageData _imageData = new ImageData("writer.jpeg");
-      _xifexpression = _imageData;
+      _xifexpression = new ImageData("writer.jpeg");
     }
     return _xifexpression;
   }
@@ -309,8 +306,7 @@ public class TableLabelProviderGen extends TableColumnLabelProvider {
     if (_isNullOrEmpty) {
       _xifexpression = "noname.gif";
     } else {
-      ImageData _imageData = new ImageData("writer.jpeg");
-      _xifexpression = _imageData;
+      _xifexpression = new ImageData("writer.jpeg");
     }
     return _xifexpression;
   }
@@ -448,8 +444,7 @@ public class FormFeatureCaptionProviderGen extends FormFeatureCaptionProvider {
         l.setText(_name);
       }
     };
-    Label _doubleArrow = ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
-    return _doubleArrow;
+    return ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
   }
 }
 ''']
@@ -531,8 +526,7 @@ public class DialogFeatureCaptionProviderGen extends DialogFeatureCaptionProvide
         l.setText(_name);
       }
     };
-    Label _doubleArrow = ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
-    return _doubleArrow;
+    return ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
   }
 }
 ''']
@@ -678,7 +672,6 @@ import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -694,8 +687,7 @@ public class FormControlFactoryGen extends FormControlFactory {
     EList<Book> _books = it.getBooks();
     final Function1<Book,String> _function = new Function1<Book,String>() {
       public String apply(final Book it) {
-        String _title = it.getTitle();
-        return _title;
+        return it.getTitle();
       }
     };
     List<String> _map = ListExtensions.<Book, String>map(_books, _function);
@@ -713,13 +705,11 @@ public class FormControlFactoryGen extends FormControlFactory {
   }
   
   protected Control createControl_Writer_name() {
-    Label _createLabel = this.createLabel(this.parent, "");
-    return _createLabel;
+    return this.createLabel(this.parent, "");
   }
   
   protected IObservableValue createTarget_Writer_name(final Control it) {
-    ISWTObservableValue _observeText = SWTObservables.observeText(it);
-    return _observeText;
+    return SWTObservables.observeText(it);
   }
   
   public Control control_Writer_firstName(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
@@ -743,9 +733,8 @@ public class FormControlFactoryGen extends FormControlFactory {
   
   public Control control_Borrower_firstName(final Borrower it) {
     String _firstName = it.getFirstName();
-    Text _createText = this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
+    return this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
       SWT.WRAP, SWT.V_SCROLL);
-    return _createText;
   }
 }
 ''']
@@ -795,7 +784,6 @@ import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -810,8 +798,7 @@ public class DialogControlFactoryGen extends DialogControlFactory {
     EList<Book> _books = it.getBooks();
     final Function1<Book,String> _function = new Function1<Book,String>() {
       public String apply(final Book it) {
-        String _title = it.getTitle();
-        return _title;
+        return it.getTitle();
       }
     };
     List<String> _map = ListExtensions.<Book, String>map(_books, _function);
@@ -829,13 +816,11 @@ public class DialogControlFactoryGen extends DialogControlFactory {
   }
   
   protected Control createControl_Writer_name() {
-    Label _createLabel = this.createLabel(this.parent, "");
-    return _createLabel;
+    return this.createLabel(this.parent, "");
   }
   
   protected IObservableValue createTarget_Writer_name(final Control it) {
-    ISWTObservableValue _observeText = SWTObservables.observeText(it);
-    return _observeText;
+    return SWTObservables.observeText(it);
   }
   
   public Control control_Writer_firstName(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
@@ -858,9 +843,8 @@ public class DialogControlFactoryGen extends DialogControlFactory {
   
   public Control control_Borrower_firstName(final Borrower it) {
     String _firstName = it.getFirstName();
-    Text _createText = this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
+    return this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
       SWT.WRAP, SWT.V_SCROLL);
-    return _createText;
   }
 }
 ''']
@@ -973,9 +957,7 @@ expectedProposalCreator =
 '''
 package my.empty.binding;
 
-import java.util.ArrayList;
 import java.util.List;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.examples.library.Book;
@@ -989,17 +971,15 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class ProposalCreatorGen extends ProposalCreator {
-  public List<? extends Object> proposals_Library_name(final Library it, final EStructuralFeature feature) {
-    ArrayList<String> _newArrayList = CollectionLiterals.<String>newArrayList("foo", "bar");
-    return _newArrayList;
+  public List<?> proposals_Library_name(final Library it, final EStructuralFeature feature) {
+    return CollectionLiterals.<String>newArrayList("foo", "bar");
   }
   
-  public List<? extends Object> proposals_Writer_books(final Writer it, final EStructuralFeature feature) {
-    EList<Book> _books = it.getBooks();
-    return _books;
+  public List<?> proposals_Writer_books(final Writer it, final EStructuralFeature feature) {
+    return it.getBooks();
   }
   
-  public List<? extends Object> proposals_Book_author(final Book it, final EStructuralFeature feature) {
+  public List<?> proposals_Book_author(final Book it, final EStructuralFeature feature) {
     Writer _createWriter = EXTLibraryFactory.eINSTANCE.createWriter();
     final Procedure1<Writer> _function = new Procedure1<Writer>() {
       public void apply(final Writer it) {
@@ -1014,11 +994,10 @@ public class ProposalCreatorGen extends ProposalCreator {
       }
     };
     Writer _doubleArrow_1 = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter_1, _function_1);
-    ArrayList<Writer> _newArrayList = CollectionLiterals.<Writer>newArrayList(_doubleArrow, _doubleArrow_1);
-    return _newArrayList;
+    return CollectionLiterals.<Writer>newArrayList(_doubleArrow, _doubleArrow_1);
   }
   
-  public List<? extends Object> proposals_Borrower_borrowed(final Borrower it, final EStructuralFeature feature) {
+  public List<?> proposals_Borrower_borrowed(final Borrower it, final EStructuralFeature feature) {
     List<Object> _defaultProposals = this.defaultProposals(feature);
     final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
       public void apply(final List<Object> it) {
