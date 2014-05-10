@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * Francesco Guidieri - Initial contribution and API
+ * Lorenzo Bettini - some cleanup
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
@@ -15,20 +16,20 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
-import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
+/**
+ * @author Francesco Guidieri - Initial contribution and API
+ * @author Lorenzo Bettini - some cleanup
+ */
 public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView {
 
 	@Inject
 	protected TableViewerBuilder tableViewerBuilder;
-
-	@Inject
-	protected ResourceLoader resourceLoader;
 
 	protected TableViewer tableViewer;
 
