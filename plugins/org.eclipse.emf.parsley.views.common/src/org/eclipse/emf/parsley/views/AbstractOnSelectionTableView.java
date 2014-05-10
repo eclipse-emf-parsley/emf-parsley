@@ -107,6 +107,8 @@ public abstract class AbstractOnSelectionTableView extends
 	protected abstract EStructuralFeature getEStructuralFeature();
 
 	/**
+	 * The default implementation uses the {@link EStructuralFeature} returned by
+	 * {@link #getEStructuralFeature()}
 	 * @return the {@link EClass} to build the table columns
 	 */
 	protected EClass getEClass() {

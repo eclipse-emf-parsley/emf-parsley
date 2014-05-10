@@ -7,11 +7,10 @@
  * 
  * Contributors:
  * Francesco Guidieri - Initial contribution and API
+ * Lorenzo Bettini - contributions and testing
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-
-import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -32,7 +31,7 @@ import com.google.inject.Inject;
  * selection provider), filtered by the specified type (EClass) and feature.
  *
  * @author Francesco Guidieri - Initial contribution and API
- *
+ * @author Lorenzo Bettini
  */
 public abstract class AbstractOnSelectionTableFormView extends
 		AbstractOnSelectionView {
@@ -61,7 +60,6 @@ public abstract class AbstractOnSelectionTableFormView extends
 			ISelection selection) {
 
 		EObject eObject = getFirstSelectedEObject(selection);
-		// TODO: Lorenzo: I think passing null might raise a NPE, this class is not tested
 		tableFormDetailComposite.update(null);
 		if (eObject != null) {
 			update(eObject);
@@ -70,8 +68,8 @@ public abstract class AbstractOnSelectionTableFormView extends
 
 	protected void update(EObject eObject) {
 		EStructuralFeature feature = getEStructuralFeature();
-		List<EStructuralFeature> allowedFeatures= featuresProvider.getFeatures(eObject);
-		if (!allowedFeatures.contains(feature))
+
+		if (!eObject.eClass().getEAllStructuralFeatures().contains(feature))
 			return;
 
 		Object value = eObject.eGet(feature);
@@ -90,7 +88,11 @@ public abstract class AbstractOnSelectionTableFormView extends
 	protected abstract EStructuralFeature getEStructuralFeature();
 
 	/**
+	 * The default implementation uses the {@link EStructuralFeature} returned by
+	 * {@link #getEStructuralFeature()}
 	 * @return the {@link EClass} to build the table columns
 	 */
-	protected abstract EClass getEClass();
+	protected EClass getEClass() {
+		return (EClass) getEStructuralFeature().getEType();
+	}
 }

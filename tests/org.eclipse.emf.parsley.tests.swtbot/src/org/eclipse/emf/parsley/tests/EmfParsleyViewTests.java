@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.tests;
 
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Test;
@@ -108,6 +109,26 @@ public class EmfParsleyViewTests extends EmfParsleyAbstractTests {
 		libraryNode.select();
 		// the table should show the books
 		getTableHeader(AUTHOR_LABEL);
+		
+		getWriterNode(libraryNode).select();
+		// the table won't show anything
+
+		view.close();
+	}
+
+	@Test
+	public void testOnSelectionLibraryBooksTableFormView() throws Exception {
+		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_FORM_VIEW);
+		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
+		libraryNode.select();
+		// the table should show the books
+		getTableHeader(AUTHOR_LABEL);
+
+		// now test the form
+		bot.table().select(0);
+		SWTFormsBot formbot = formBotFromView(view);
+		formbot.label(AUTHOR_LABEL);
 
 		getWriterNode(libraryNode).select();
 		// the table won't show anything

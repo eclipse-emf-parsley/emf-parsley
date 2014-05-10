@@ -183,6 +183,8 @@ public class EmfParsleyAbstractTests {
 	
 	protected static final String LIBRARY_BOOKS_TABLE_VIEW = "Library Books Table View";
 
+	protected static final String LIBRARY_BOOKS_TABLE_FORM_VIEW = "Library Books Table Form View";
+
 	protected static final String TEST_SAVEABLE_TREE_FORM_VIEW = "Library Test Saveable Resource Tree Form View";
 	
 	protected static final String TEST_SAVEABLE_TABLE_FORM_VIEW = "Library Test Saveable Resource Table Form View";
