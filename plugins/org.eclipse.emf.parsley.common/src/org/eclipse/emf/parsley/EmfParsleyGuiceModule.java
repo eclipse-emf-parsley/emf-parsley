@@ -280,7 +280,7 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 	 * Default implementation is {@link WorkbenchActionBarContributor}
 	 * @return an implementation of  {@link WorkbenchActionBarContributor}
 	 */
-	public Class<? extends WorkbenchActionBarContributor> bindEmfActionBarContributor() {
+	public Class<? extends WorkbenchActionBarContributor> bindWorkbenchActionBarContributor() {
 		return WorkbenchActionBarContributor.class;
 	}
 	
