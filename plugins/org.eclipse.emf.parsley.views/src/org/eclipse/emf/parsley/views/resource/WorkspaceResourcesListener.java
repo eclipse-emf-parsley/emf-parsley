@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Francesco Guidieri - Initial contribution and API
+ * Lorenzo Bettini, Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.views.resource;
 
@@ -21,6 +21,7 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -28,23 +29,27 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.PlatformUI;
 
-public abstract class AbstractResourcesListener {
+/**
+ * This implementation of a {@link IResourceChangeListener} gets changes in the resource and apply them to the model instance. 
+ * It works only if the resource is contained in the workspace.
+ * 
+ * @author Francesco Guidieri
+ */
+public class WorkspaceResourcesListener implements IResourceChangeListener{
 
-	private IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
-
-		public void resourceChanged(final IResourceChangeEvent event) {
-			PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-				public void run() {
-					manageEvent(event);
-				}
-			});
-		}
-	};
 	private ResourceSet resourceSet;
 
-	public AbstractResourcesListener(ResourceSet resourceSet) {
+	public WorkspaceResourcesListener(ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
+	}
+	public void resourceChanged(final IResourceChangeEvent event) {
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+
+			public void run() {
+				manageEvent(event);
+			}
+		});
 	}
 
 	private void manageEvent(final IResourceChangeEvent event) {
@@ -66,10 +71,18 @@ public abstract class AbstractResourcesListener {
 			}
 		}
 
-		resourcesChanged(changedObjectUris);
+		aftertResourcesChanged(changedObjectUris);
 	}
 
-	public abstract void resourcesChanged(List<String> changedObjectUris);
+	/**
+	 * This method is necessary to remove all listeners, it is intended to be called to prepare for garbage
+	 */
+	public void removeWorkspaceListener(){
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
+	}
+	
+	protected void aftertResourcesChanged(List<String> changedObjectUris) {
+	}
 
 	private class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 

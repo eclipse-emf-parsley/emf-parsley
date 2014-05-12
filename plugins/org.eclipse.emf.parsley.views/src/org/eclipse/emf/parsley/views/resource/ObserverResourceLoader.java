@@ -6,33 +6,34 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Lorenzo Bettini - Initial contribution and API
+ * Lorenzo Bettini, Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.views.resource;
-
-import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 
-public class ObservableResourceLoader extends ResourceLoader {
+/**
+ * This Resource Loader implements a resource changes listening mechanism, if the resource is contained in the workspace. 
+ * 
+ * @author Francesco Guidieri
+ *
+ */
+public class ObserverResourceLoader extends ResourceLoader {
 	
-	private AbstractResourcesListener resourceChangeListener;
+	private WorkspaceResourcesListener resourceListener;
 
 	@Override
 	public Resource getResource(ResourceSet resourceSet, URI resourceURI) {
 		Resource resource = super.getResource(resourceSet, resourceURI);
-		resourceChangeListener = new AbstractResourcesListener(resourceSet) {
-			
-			@Override
-			public void resourcesChanged(List<String> changedObjectUris) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
+		resourceListener = new WorkspaceResourcesListener(resourceSet);
 		return resource;
+	}
+	
+	public void removeListener(){
+		resourceListener.removeWorkspaceListener();
 	}
 
 }

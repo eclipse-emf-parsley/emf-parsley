@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests.factories.resourcelistening;
 
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.tests.factories.CustomLibraryModule;
-import org.eclipse.emf.parsley.views.resource.ObservableResourceLoader;
+import org.eclipse.emf.parsley.views.resource.ObserverResourceLoader;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 public final class ResourceListeningLibraryModule extends
@@ -25,7 +25,7 @@ public final class ResourceListeningLibraryModule extends
 
 	@Override
 	public Class<? extends ResourceLoader> bindResourceLoader() {
-		return ObservableResourceLoader.class;
+		return ObserverResourceLoader.class;
 	}
 	
 }
