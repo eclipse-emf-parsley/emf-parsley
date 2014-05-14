@@ -1,0 +1,39 @@
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.parsley.examples.cdo.company.Company
+import org.eclipse.emf.parsley.examples.cdo.company.CompanyGuiceModule
+import org.eclipse.emf.parsley.examples.cdo.company.Product
+import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ProductsTreeFormView
+import org.eclipse.emf.parsley.examples.cdo.company.SalesOrder
+
+/* org.eclipse.emf.parsley.examples.cdo.company.ui.products Emf Parsley Dsl Module file */
+module org.eclipse.emf.parsley.examples.cdo.company.ui.products extends CompanyGuiceModule{
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.cdo.company.ui.products {
+			viewname "Products tree form"
+			viewclass ProductsTreeFormView
+		}
+	}
+	
+	viewerContentProvider{
+		elements{
+			Resource -> {
+				if(contents.size>0){
+					val company = contents.get(0) as Company
+					company.categories
+				}
+			}
+			SalesOrder -> emptyList
+		}
+	}
+	
+	labelProvider{
+		image{
+			Product -> "product.png"
+		}
+	}
+	
+	treeFormFactory{
+		horizontal(1:3)
+	}
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated company -->
+      <package
+            uri="http://www.eclipse.org/emf/CDO/examples/company/1.0.0"
+            class="org.eclipse.emf.parsley.examples.cdo.company.CompanyPackage"
+            genModel="model/company.genmodel"/>
+   </extension>
+
+</plugin>

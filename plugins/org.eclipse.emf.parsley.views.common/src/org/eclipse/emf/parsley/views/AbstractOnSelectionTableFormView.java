@@ -20,6 +20,7 @@ import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.widgets.TableFormComposite;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
@@ -31,7 +32,6 @@ import com.google.inject.Inject;
  * selection provider), filtered by the specified type (EClass) and feature.
  *
  * @author Francesco Guidieri - Initial contribution and API
- * @author Lorenzo Bettini
  */
 public abstract class AbstractOnSelectionTableFormView extends
 		AbstractOnSelectionView {
@@ -95,4 +95,9 @@ public abstract class AbstractOnSelectionTableFormView extends
 	protected EClass getEClass() {
 		return (EClass) getEStructuralFeature().getEType();
 	}
+
+	public StructuredViewer getViewer() {
+		return tableFormDetailComposite.getViewer();
+	}
+
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.eclipse.emf.parsley.examples.cdo.company.app.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="org.eclipse.emf.parsley.examples.cdo.company.app.Perspective"
+            id="org.eclipse.emf.parsley.examples.cdo.company.app.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+     <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="it.rcpvision.countervision.model.ui.treeform.toolbar">
+            <command
+                  commandId="org.eclipse.emf.parsley.examples.cdo.company.addNewProduct"
+                  icon="icons/alt_window_16.gif"
+                  label="New Product"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.emf.parsley.examples.cdo.company.addNewCustomer"
+                  icon="icons/alt_window_16.gif"
+                  label="New Customer"
+                  style="push">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+       <command
+             id="org.eclipse.emf.parsley.examples.cdo.company.addNewProduct"
+             name="New Product">
+      </command>
+      <command
+             id="org.eclipse.emf.parsley.examples.cdo.company.addNewCustomer"
+             name="New Customer">
+      </command>
+   </extension>
+   <extension
+       point="org.eclipse.ui.handlers">
+      <handler
+          class="org.eclipse.emf.parsley.examples.cdo.company.handler.AddNewCustomerHandler"
+          commandId="org.eclipse.emf.parsley.examples.cdo.company.addNewCustomer">
+      </handler>
+      <handler
+          class="org.eclipse.emf.parsley.examples.cdo.company.handler.AddNewProductHandler"
+          commandId="org.eclipse.emf.parsley.examples.cdo.company.addNewProduct">
+      </handler>
+   </extension>
+   
+</plugin>

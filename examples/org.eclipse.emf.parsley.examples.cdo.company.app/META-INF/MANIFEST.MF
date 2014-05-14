@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: App
+Bundle-SymbolicName: org.eclipse.emf.parsley.examples.cdo.company.app;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.emf.parsley.examples.cdo.company.app.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.parsley;bundle-version="0.1.1",
+ org.eclipse.emf.parsley.cdo.common;bundle-version="0.1.1",
+ org.eclipse.emf.parsley.examples.cdo.company.model;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.emf.parsley.examples.cdo.company

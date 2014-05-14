@@ -1,0 +1,31 @@
+import org.eclipse.emf.parsley.examples.cdo.company.CompanyGuiceModule
+import org.eclipse.emf.parsley.examples.cdo.company.Order
+import org.eclipse.emf.parsley.examples.cdo.company.OrderDetail
+import org.eclipse.emf.parsley.examples.cdo.company.ui.orders.OrdersView
+import org.eclipse.emf.parsley.examples.cdo.company.Customer
+import org.eclipse.emf.parsley.examples.cdo.company.SalesOrder
+
+/* org.eclipse.emf.parsley.examples.cdo.company.ui.orders Emf Parsley Dsl Module file */
+module org.eclipse.emf.parsley.examples.cdo.company.ui.orders extends CompanyGuiceModule {
+	 
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.cdo.company.ui.orders {
+			viewname "Orders2"
+			viewclass OrdersView
+		}
+	}
+	
+	labelProvider{
+		text{
+			Order -> {
+				val customer= eContainer as Customer
+				"order made by " + customer.name
+			}
+		}
+		image{
+			Order -> "order.png"	
+			OrderDetail -> "order_detail.png"
+		}
+	}
+	
+}
