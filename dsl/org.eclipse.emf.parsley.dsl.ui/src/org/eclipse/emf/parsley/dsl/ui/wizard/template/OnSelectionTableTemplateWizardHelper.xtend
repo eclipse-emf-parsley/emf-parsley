@@ -29,7 +29,7 @@ public class OnSelectionTableTemplateWizardHelper extends AbstractTemplateWizard
 
 
 	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		val className=getSimpleNameProject(packagePath) + "OnSelectionTable";
+		val className=getSimpleNameProject(packagePath) + "OnSelectionTableView";
 		val classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
 		
 		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"

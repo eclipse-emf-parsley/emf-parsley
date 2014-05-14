@@ -83,6 +83,25 @@ public class «simpleName» extends AbstractOnSelectionTableView {
 '''
 
 
+	def generateConcreteForOnSelectionTableFormView(String projectName, String simpleName)
+'''
+package «projectName»;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
+
+public class «simpleName» extends AbstractOnSelectionTableFormView {
+
+	@Override
+	protected EStructuralFeature getEStructuralFeature() {
+		// TODO How to reach the contents from the selected object
+		return null;
+	}
+	
+
+}
+'''
+
 
 
 	def generateTreeFormView(String projectName, String simpleName)

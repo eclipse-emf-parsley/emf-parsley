@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.wizard.template;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.parsley.views.OnSelectionTreeFormView;
+import org.eclipse.core.resources.IProject
+import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport
 
 /**
  * @author Francesco Guidieri
@@ -28,8 +28,16 @@ public class OnSelectionTreeFormTemplateWizardHelper extends AbstractTemplateWiz
 	}
 
 	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		return OnSelectionTreeFormView.getName();
+		val className=getSimpleNameProject(packagePath) + "OnSelectionTreeFormView";
+		val classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
+		
+		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
+				 +className.concat(".java"), classContent,
+				NewEmfParsleyProjectSupport
+						.createSubProgressMonitor(monitor));
+		return projectName+"."+className;
 	}
+	
 
 	override getDescription() {
 		'''

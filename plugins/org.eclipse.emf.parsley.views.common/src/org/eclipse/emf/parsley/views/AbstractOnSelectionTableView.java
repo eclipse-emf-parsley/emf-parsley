@@ -30,7 +30,7 @@ import com.google.inject.Inject;
  * A View that visualizes the list of elements of an EObject (it also acts as a
  * selection provider), filtered by the specified type.
  *
- * @author Lorenzo Bettini
+ * @author Francesco Guidieri - Initial contribution and API
  *
  */
 public abstract class AbstractOnSelectionTableView extends

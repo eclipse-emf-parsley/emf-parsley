@@ -19,18 +19,18 @@ import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport
  * @author Francesco Guidieri
  * 
  */
-public class OnSelectionFormTemplateWizardHelper extends AbstractTemplateWizardHelper{
+public class OnSelectionTableFormTemplateWizardHelper extends AbstractTemplateWizardHelper{
 	
-	public static final OnSelectionFormTemplateWizardHelper singlethon=new OnSelectionFormTemplateWizardHelper();
+	public static final OnSelectionTableFormTemplateWizardHelper singlethon=new OnSelectionTableFormTemplateWizardHelper();
 	
 	override getLabel() {
-		"On selection Form View";
+		"On selection Table Form View";
 	}
 
 
 	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		val className=getSimpleNameProject(packagePath) + "OnSelectionTreeView";
-		val classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
+		val className=getSimpleNameProject(packagePath) + "OnSelectionTableFormView";
+		val classContent =viewFilesGenerator.generateConcreteForOnSelectionTableFormView(projectName, className).toString();
 		
 		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
 				 +className.concat(".java"), classContent,
@@ -38,13 +38,14 @@ public class OnSelectionFormTemplateWizardHelper extends AbstractTemplateWizardH
 						.createSubProgressMonitor(monitor));
 		return projectName+"."+className;
 	}
-
+	
 	override getDescription() {
 		'''
 		<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>
-		<li>On selection <b>form</b> view</li>
-		<p><b>No user change is needed to run the project</b></p>
+		<li><b>On selection table form view</b></li>
+		<p><b>The user must specify:</b></p>
+		<li>the EStructuralFeature for getting the contents from the resource</li>
 		'''
 	}
-
+	
 }

@@ -14,6 +14,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.IWizardTemplate;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionFormTemplateWizardHelper;
+import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTreeFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableFormTemplateWizardHelper;
@@ -52,7 +53,8 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 			SaveableTableFormTemplateWizardHelper.singlethon,
 			OnSelectionFormTemplateWizardHelper.singlethon,
 			OnSelectionTreeFormTemplateWizardHelper.singlethon,
-			OnSelectionTableTemplateWizardHelper.singlethon
+			OnSelectionTableTemplateWizardHelper.singlethon,
+			OnSelectionTableFormTemplateWizardHelper.singlethon
 			};
 	public static final String ONSELECTION_CATEGORY = "On selection";
 	public static final String SAVEABLE_CATEGORY = "Saveable";
@@ -76,7 +78,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 	}
 	
 	public void setDescriptionText(String text) {
-		if (text == null)
+		if (text == null) 	
 			text = "No Description available.";
 		descriptionBrowser.setText(text);
 	}
