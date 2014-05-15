@@ -101,4 +101,18 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 		}
 		return super.getElements(element);
 	}
+
+	@Override
+	public Object getParent(Object object) {
+		/* 
+		 * This is necessary in the CDO Resource case: getParent returns itself.
+		 * This leads AbstractTreeViewer to a loop during the internalExpand method. 
+		 */
+		Object parent = super.getParent(object);
+		if(parent==object){
+			return null;
+		}
+		return parent;
+	}
+
 }
