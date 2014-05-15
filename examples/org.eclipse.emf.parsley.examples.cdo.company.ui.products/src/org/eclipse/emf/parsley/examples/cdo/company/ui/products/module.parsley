@@ -4,6 +4,8 @@ import org.eclipse.emf.parsley.examples.cdo.company.CompanyGuiceModule
 import org.eclipse.emf.parsley.examples.cdo.company.Product
 import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ProductsTreeFormView
 import org.eclipse.emf.parsley.examples.cdo.company.SalesOrder
+import org.eclipse.emf.parsley.examples.cdo.company.Category
+import org.eclipse.jface.layout.GridDataFactory
 
 /* org.eclipse.emf.parsley.examples.cdo.company.ui.products Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.cdo.company.ui.products extends CompanyGuiceModule{
@@ -15,25 +17,43 @@ module org.eclipse.emf.parsley.examples.cdo.company.ui.products extends CompanyG
 		}
 	}
 	
+	labelProvider{
+		image{
+			Product -> "product2.png"
+			Category -> "category.png"
+		}
+		text{
+			Category -> name
+			Product -> "Product: " + name
+		}
+	}
+
+	treeFormFactory{
+		horizontal(1:3)
+	}
+
+
 	viewerContentProvider{
 		elements{
 			Resource -> {
 				if(contents.size>0){
-					val company = contents.get(0) as Company
+					val company = (contents.get(0) as Company)
 					company.categories
 				}
 			}
-			SalesOrder -> emptyList
 		}
 	}
 	
-	labelProvider{
-		image{
-			Product -> "product.png"
+	featuresProvider{
+		features{
+			Product -> name, description, price, vat
 		}
 	}
+
+	featureCaptionProvider{
+		text{
+			Product: vat -> "V.A.T." 
+		}
+	}	
 	
-	treeFormFactory{
-		horizontal(1:3)
-	}
 }

@@ -3,8 +3,12 @@ package org.eclipse.emf.parsley.examples.cdo.company.ui.products;
 import org.eclipse.emf.parsley.examples.cdo.company.CompanyGuiceModule;
 import org.eclipse.emf.parsley.examples.cdo.company.ui.products.edit.ui.provider.ViewerContentProviderGen;
 import org.eclipse.emf.parsley.examples.cdo.company.ui.products.factory.TreeFormFactoryGen;
+import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ui.provider.FeatureCaptionProviderGen;
+import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ui.provider.FeaturesProviderGen;
 import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ui.provider.LabelProviderGen;
 import org.eclipse.emf.parsley.factories.TreeFormFactory;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -21,6 +25,16 @@ public class EmfParsleyGuiceModuleGen extends CompanyGuiceModule {
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return LabelProviderGen.class;
+  }
+  
+  @Override
+  public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
+    return FeatureCaptionProviderGen.class;
+  }
+  
+  @Override
+  public Class<? extends FeaturesProvider> bindFeaturesProvider() {
+    return FeaturesProviderGen.class;
   }
   
   @Override

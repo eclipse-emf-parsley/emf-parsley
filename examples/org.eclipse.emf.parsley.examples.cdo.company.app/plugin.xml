@@ -38,6 +38,10 @@
                   label="New Customer"
                   style="push">
             </command>
+            <command
+                  commandId="org.eclipse.ui.file.save"
+                  style="push">
+            </command>
          </toolbar>
       </menuContribution>
    </extension>

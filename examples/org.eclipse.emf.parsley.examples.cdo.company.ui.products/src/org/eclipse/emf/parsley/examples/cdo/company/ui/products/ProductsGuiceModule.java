@@ -13,8 +13,4 @@ public class ProductsGuiceModule extends EmfParsleyGuiceModuleGen {
 		super(plugin);
 	}
 
-	@Override
-	public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
-		return GlobalAdapterFactoryEditingDomainProvider.class;
-	}
 }

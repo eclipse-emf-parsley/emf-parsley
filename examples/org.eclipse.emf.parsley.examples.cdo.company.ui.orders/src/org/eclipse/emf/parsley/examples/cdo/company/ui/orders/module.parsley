@@ -17,9 +17,10 @@ module org.eclipse.emf.parsley.examples.cdo.company.ui.orders extends CompanyGui
 	
 	labelProvider{
 		text{
-			Order -> {
+			SalesOrder -> {
 				val customer= eContainer as Customer
-				"order made by " + customer.name
+				var i= customer.salesOrders.indexOf(it)+1
+				"order "+i+" made by " + customer.name 
 			}
 		}
 		image{

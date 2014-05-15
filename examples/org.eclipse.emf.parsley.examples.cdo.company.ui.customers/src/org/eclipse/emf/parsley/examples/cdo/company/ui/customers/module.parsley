@@ -2,6 +2,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.examples.cdo.company.Company
 import org.eclipse.emf.parsley.examples.cdo.company.CompanyGuiceModule
 import org.eclipse.emf.parsley.examples.cdo.company.Customer
+import org.eclipse.emf.parsley.examples.cdo.company.SalesOrder
 import org.eclipse.emf.parsley.examples.cdo.company.ui.customers.CustomersTreeView
 
 /* org.eclipse.emf.parsley.examples.cdo.company.ui.customers Emf Parsley Dsl Module file */
@@ -23,6 +24,10 @@ module org.eclipse.emf.parsley.examples.cdo.company.ui.customers extends Company
 				}
 			}
 		}
+		children{
+			SalesOrder -> emptyList
+		}
+		
 	}
 	
 	labelProvider{
