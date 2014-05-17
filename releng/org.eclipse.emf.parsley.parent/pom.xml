@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse.emf.parsley</groupId>
+	<artifactId>org.eclipse.emf.parsley.parent</artifactId>
+	<version>0.1.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
+		<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
+		<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
+		<module>../../plugins/org.eclipse.emf.parsley.common</module>
+		<module>../../plugins/org.eclipse.emf.parsley</module>
+		<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
+		<module>../../plugins/org.eclipse.emf.parsley.views</module>
+		<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
+		<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
+		<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
+		<module>../../plugins/org.eclipse.emf.parsley.editors</module>
+		<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
+		<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
+
+		<module>../../doc/org.eclipse.emf.parsley.doc</module>
+
+		<module>../../features/org.eclipse.emf.parsley.feature</module>
+	</modules>
+
+	<properties>
+		<tycho-version>0.19.0</tycho-version>
+		<tycho-extras-version>0.19.0</tycho-extras-version>
+		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
+		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		<junit-version>4.11</junit-version>
+		<jacoco-version>0.5.8.201207111220</jacoco-version>
+		<findbugs-version>2.5.4-SNAPSHOT</findbugs-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M
+			-XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
+		<xtext-version>2.5.4</xtext-version>
+		<platform-version>[3.9,4.0)</platform-version>
+
+		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
+		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->
+
+		<!-- Sonar -->
+		<sonar.language>java</sonar.language>
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.junit.reportsPath>../${project.artifactId}.tests/target/surefire-reports/</sonar.junit.reportsPath>
+		<!-- <sonar.skippedModules> </sonar.skippedModules> -->
+		<sonar.exclusions>file:**/src-gen/**</sonar.exclusions>
+
+		<findbugs.skip>false</findbugs.skip>
+	</properties>
+
+	<!-- 
+	<repositories>
+		<repository>
+			<id>kepler</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/kepler</url>
+		</repository>
+		<repository>
+			<id>Xtext Update Site</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+		</repository>
+	</repositories>
+	-->
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- xtend-maven-plugin is in pluginManagement instead of in plugins 
+					so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
+					we can list it after. -->
+
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtext-version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>xtend-install-debug-info</goal>
+								<goal>testCompile</goal>
+								<goal>xtend-test-install-debug-info</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<outputDirectory>xtend-gen</outputDirectory>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho-extras-version}</version>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<!-- These are bundles and feature that do not have a corresponding 
+									source version; NOT the ones that we do not want source versions -->
+								<plugin id="org.eclipse.emf.parsley.runtime" />
+								<plugin id="org.eclipse.emf.parsley" />
+								<plugin id="org.eclipse.emf.parsley.editors" />
+
+								<feature id="org.eclipse.swtbot.ide" />
+								<feature id="org.eclipse.xtext.sdk" />
+								<feature id="org.eclipse.pde" />
+								<feature id="org.eclipse.emf.mwe2.language.sdk" />
+								<feature id="org.eclipse.emf.mwe2.runtime.sdk" />
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>attach-p2-metadata</id>
+						<phase>package</phase>
+						<goals>
+							<goal>p2-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<format>'v'yyyyMMdd'-'HHmm</format>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.emf.parsley</groupId>
+							<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
+							<version>0.1.1-SNAPSHOT</version>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<!-- Where to put jacoco coverage report -->
+							<destFile>${sonar.jacoco.reportPath}</destFile>
+							<includes>
+								<include>xtraitj.*</include>
+							</includes>
+							<excludes>
+								<exclude>**/src-gen/**/*.java</exclude>
+								<exclude>**/org/eclipse/**/*.java</exclude>
+								<exclude>**.antlr**</exclude>
+								<exclude>**.parseTree**</exclude>
+								<exclude>**Abstract*RuntimeModule.java</exclude>
+								<exclude>**/*SetupGenerated*.java</exclude>
+								<exclude>**/Abstract*Validator.java</exclude>
+								<exclude>**/*GrammarAccess.java</exclude>
+								<exclude>**/Abstract*UiModule.java</exclude>
+								<exclude>**/Abstract*ProposalProvider.java</exclude>
+								<exclude>**/*Test.java</exclude>
+							</excludes>
+							<append>true</append>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
