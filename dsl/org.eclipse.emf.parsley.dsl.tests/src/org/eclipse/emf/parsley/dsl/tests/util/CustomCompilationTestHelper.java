@@ -10,97 +10,176 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.tests.util;
 
-import java.util.HashMap;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.emf.ecore.EObject;
+import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtext.diagnostics.Severity;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
-import org.eclipse.xtext.junit4.util.ParseHelper;
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.util.IAcceptor;
+import org.eclipse.xtext.validation.CheckMode;
+import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.compiler.CompilationTestHelper;
+import org.eclipse.xtext.xbase.compiler.OnTheFlyJavaCompiler;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
+import com.google.common.base.Joiner;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
- * A custom helper since we generate two classes for each input file.
+ * A custom helper since we generate both Java and non Java files
+ * (for instance, xml files); the default implementation of compile method
+ * assumes that all files generated are Java files instead.
  * 
  * @author Lorenzo Bettini
  * 
  */
 public class CustomCompilationTestHelper extends CompilationTestHelper {
-	@Inject
-	private CustomOnTheFlyJavaCompiler javaCompiler;
-
-	@Inject
-	private ParseHelper<EObject> parseHelper;
-
-	@Inject
-	private ValidationTestHelper validationTestHelper;
-
-	@Inject
-	private IGenerator generator;
+	private final static Logger log = Logger.getLogger(CustomCompilationTestHelper.class);
 	
-	/**
-	 * A result contains information about various aspects of a compiled piece of code.
-	 *   
-	 */
-	public static interface Result {
-		/**
-		 * @return the loaded, validated and fully linked source resource
-		 */
-		Resource getSource();
-		
-		/**
-		 * Compile all Java sources generated for a resource
-		 */
-		void compileToJava();
-		
-		/**
-		 * @return access to all generated artifacts. The key points to the pathesa dn the values are the generated code.
-		 */
-		Map<String,CharSequence> getAllGeneratedResources();
-	}
+	@Inject
+	private OnTheFlyJavaCompiler javaCompiler;
+	
+	@Inject private Provider<InMemoryFileSystemAccess> fileSystemAccessProvider;
 
-	public void compileAll(CharSequence source, IAcceptor<Result> acceptor) {
+	@Override
+	public void compile(
+			final ResourceSet resourceSet,
+			IAcceptor<org.eclipse.xtext.xbase.compiler.CompilationTestHelper.Result> acceptor) {
 		try {
-			final EObject parsed = parseHelper.parse(source);
-			validationTestHelper.assertNoErrors(parsed);
-			final InMemoryFileSystemAccess access = new InMemoryFileSystemAccess();
-			generator.doGenerate(parsed.eResource(), access);
+			boolean hasErrors = false;
+			List<Issue> allErrors = newArrayList();
+			List<Resource> resourcesToCheck = newArrayList(resourceSet.getResources());
+			for (Resource resource : resourcesToCheck) {
+				if (resource instanceof XtextResource) {
+					XtextResource xtextResource = (XtextResource) resource;
+					if (!xtextResource.isLoaded()) {
+						xtextResource.load(resourceSet.getLoadOptions());
+					}
+					List<Issue> issues = xtextResource.getResourceServiceProvider().getResourceValidator().validate(xtextResource, CheckMode.ALL, CancelIndicator.NullImpl);
+					for (Issue issue : issues) {
+						if (issue.getSeverity() == Severity.ERROR) {
+							hasErrors = true;
+							log.error(issue);
+							allErrors.add(issue);
+						} else {
+							log.info(issue);
+						}
+					}
+				}
+			}
+			if (hasErrors) {
+				throw new IllegalStateException("One or more resources contained errors : "+Joiner.on(',').join(allErrors));
+			}
 			
+			final InMemoryFileSystemAccess access = fileSystemAccessProvider.get();
+			for (Resource resource : resourcesToCheck) {
+				if (resource instanceof XtextResource) {
+					XtextResource xtextResource = (XtextResource) resource;
+					IGenerator generator = xtextResource.getResourceServiceProvider().get(IGenerator.class);
+					if (generator != null)
+						generator.doGenerate(xtextResource, access);
+				}
+			}
 			acceptor.accept(new Result() {
-
-				public Resource getSource() {
-					return (Resource) parsed.eResource();
+				
+				private ClassLoader classLoader;
+				private Map<String,Class<?>> compiledClasses;
+				private Map<String,String> generatedCode;
+				
+				public Map<String,Class<?>> getCompiledClasses() {
+					if (compiledClasses == null) {
+						compile();
+					}
+					return compiledClasses;
+				}
+				
+				private void compile() {
+					try {
+						org.eclipse.xtext.util.Pair<ClassLoader, Map<String, Class<?>>> compilationResult = javaCompiler.internalCompileToClasses(getGeneratedCode());
+						this.classLoader = compilationResult.getFirst();
+						this.compiledClasses = compilationResult.getSecond();
+					} catch (IllegalArgumentException e) {
+						throw new AssertionError(e);
+					}
+				}
+				
+				public ClassLoader getClassLoader() {
+					if (classLoader == null) {
+						compile();
+					}
+					return classLoader;
+				}
+				
+				public Map<String,String> getGeneratedCode() {
+					if (generatedCode == null) {
+						generatedCode = newHashMap();
+						for (final Entry<String, CharSequence> e : access.getTextFiles().entrySet()) {
+							if (e.getKey().endsWith(".java")) {
+								String name = e.getKey().substring("DEFAULT_OUTPUT".length(), e.getKey().length() - ".java".length());
+								generatedCode.put(name.replace('/', '.'), e.getValue().toString());
+							}
+						}
+					}
+					return generatedCode;
 				}
 
-				public void compileToJava() {
-					Map<String, String> toCompile = new HashMap<String, String>();
-					
-					for (final Entry<String, CharSequence> e : access.getTextFiles().entrySet()) {
-						if (!e.getKey().contains(".java"))
-							continue; // it's not a Java file
-						
-						String name = e.getKey().substring(
-								"DEFAULT_OUTPUT".length(),
-								e.getKey().length() - ".java".length());
-						name = name.replace('/', '.');
-						toCompile.put(name, e.getValue().toString());
+				public String getGeneratedCode(String typeName) {
+					return getGeneratedCode().get(typeName);
+				}
+				
+				public String getSingleGeneratedCode() {
+					if (access.getTextFiles().size() == 1)
+						return access.getTextFiles().values().iterator().next().toString();
+					String separator = System.getProperty("line.separator");
+					if (separator == null)
+						separator = "\n";
+					List<Entry<String,CharSequence>> files = newArrayList(access.getTextFiles().entrySet());
+					Collections.sort(files, new Comparator<Entry<String,CharSequence>>() {
+						public int compare(Entry<String, CharSequence> o1,
+								Entry<String, CharSequence> o2) {
+							return o1.getKey().compareTo(o2.getKey());
+						}
+					});
+					StringBuilder result = new StringBuilder("MULTIPLE FILES WERE GENERATED"+separator+separator);
+					int i = 1;
+					for (Entry<String,CharSequence> entry: files) {
+						result.append("File "+i+" : "+entry.getKey().replace("DEFAULT_OUTPUT", "")+separator+separator);
+						result.append(entry.getValue()).append(separator);
+						i++;
 					}
-					
-					javaCompiler.compileAll(toCompile);
+					return result.toString();
+				}
+
+				public ResourceSet getResourceSet() {
+					return resourceSet;
+				}
+
+				public Class<?> getCompiledClass() {
+					return IterableExtensions.head(getCompiledClasses().values());
+				}
+				
+				public Class<?> getCompiledClass(String className) {
+					return getCompiledClasses().get(className);
 				}
 
 				public Map<String, CharSequence> getAllGeneratedResources() {
 					return access.getTextFiles();
 				}
-
+				
 			});
-			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
