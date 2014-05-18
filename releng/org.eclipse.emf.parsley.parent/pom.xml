@@ -22,7 +22,17 @@
 
 		<module>../../doc/org.eclipse.emf.parsley.doc</module>
 
+		<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
+
+		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
+
+
+		<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
+		<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
+		<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
+
 		<module>../../features/org.eclipse.emf.parsley.feature</module>
+		<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 	</modules>
 
 	<properties>
@@ -38,6 +48,7 @@
 			-XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<xtext-version>2.5.4</xtext-version>
 		<platform-version>[3.9,4.0)</platform-version>
+		<fornax-oaw-m2-plugin-version>3.4.0</fornax-oaw-m2-plugin-version>
 
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->
@@ -52,6 +63,7 @@
 		<sonar.exclusions>file:**/src-gen/**</sonar.exclusions>
 
 		<findbugs.skip>false</findbugs.skip>
+		<mwe2.skip>false</mwe2.skip>
 	</properties>
 
 	<!-- 
@@ -68,6 +80,24 @@
 		</repository>
 	</repositories>
 	-->
+
+	<pluginRepositories>
+		<!-- Repository to resolve fornax-oaw-m2-plugin -->
+		<!-- in case of SSL certificates errors, use
+			-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -->
+		<pluginRepository>
+			<id>fornax.plugin.repository</id>
+			<name>Fornax Plugin Repository</name>
+			<url>http://www.fornax-platform.org/m2/repository</url>
+			<!--  <url>http://www.fornax-platform.org/nexus/content/groups/public</url> -->
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<pluginManagement>
