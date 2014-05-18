@@ -89,7 +89,6 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 			dcontrol.setEnabled(enabled);
 	}
 
-	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 
