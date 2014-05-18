@@ -5,8 +5,8 @@ bin/
 logs.zip
 *.orig
 .svn/
-xtend-gen/ 
-src-gen/ 
+xtend-gen
+src-gen
 target/
 *.java._trace
 *.smap
