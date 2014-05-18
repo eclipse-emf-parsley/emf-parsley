@@ -65,7 +65,7 @@
 		<sonar.language>java</sonar.language>
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.jacoco.reportPath>${project.basedir}/../../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.junit.reportsPath>../${project.artifactId}.tests/target/surefire-reports/</sonar.junit.reportsPath>
 		<!-- <sonar.skippedModules> </sonar.skippedModules> -->
 		<sonar.exclusions>file:**/src-gen/**</sonar.exclusions>
@@ -240,11 +240,10 @@
 							<!-- Where to put jacoco coverage report -->
 							<destFile>${sonar.jacoco.reportPath}</destFile>
 							<includes>
-								<include>xtraitj.*</include>
+								<include>org.eclipse.emf.parsley.*</include>
 							</includes>
 							<excludes>
 								<exclude>**/src-gen/**/*.java</exclude>
-								<exclude>**/org/eclipse/**/*.java</exclude>
 								<exclude>**.antlr**</exclude>
 								<exclude>**.parseTree**</exclude>
 								<exclude>**Abstract*RuntimeModule.java</exclude>
