@@ -27,6 +27,7 @@
 		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
 
 		<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
+		<module>../../tests/org.eclipse.emf.parsley.tests</module>
 
 		<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 		<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
