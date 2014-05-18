@@ -26,13 +26,13 @@
 
 		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
 
-
 		<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 		<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
 		<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
 
 		<module>../../features/org.eclipse.emf.parsley.feature</module>
 		<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
+		<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 	</modules>
 
 	<properties>
@@ -165,6 +165,7 @@
 									source version; NOT the ones that we do not want source versions -->
 								<plugin id="org.eclipse.emf.parsley.runtime" />
 								<plugin id="org.eclipse.emf.parsley" />
+								<plugin id="org.eclipse.emf.parsley.cdo" />
 								<plugin id="org.eclipse.emf.parsley.editors" />
 
 								<feature id="org.eclipse.swtbot.ide" />
