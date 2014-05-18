@@ -11,18 +11,18 @@
 package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.tests.util.CustomCompilationTestHelper
+import org.eclipse.emf.parsley.dsl.tests.util.EmfParsleyDslInjectorProviderCustom
+import org.eclipse.emf.parsley.dsl.tests.util.GeneratorExpectedResults
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
-import org.eclipse.emf.parsley.dsl.tests.util.GeneratorExpectedResults
 
 @RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
+@InjectWith(typeof(EmfParsleyDslInjectorProviderCustom))
 class EmfParsleyDslGeneratorTests extends EmfParsleyDslAbstractTests {
  
 	@Inject extension CustomCompilationTestHelper
@@ -1118,7 +1118,7 @@ public class TreeFormFactoryGen extends TreeFormFactory {
 
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
 			GeneratorExpectedResults expected) {
-		input.compileAll [
+		input.compile [
 			for (e : allGeneratedResources.entrySet) {
 				if (e.key.endsWith("ModuleGen.java")) {
 					if (expected.expectedModule != null)
@@ -1166,8 +1166,7 @@ public class TreeFormFactoryGen extends TreeFormFactory {
 					fail("unexpected generated code: " + e.value)
 			}
 			
-			// this will issue Java generation
-			compileToJava
+			compiledClass // check Java compilation succeeds
 		]
 	}
 }
