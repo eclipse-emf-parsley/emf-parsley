@@ -20,11 +20,14 @@
 		<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 		<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 
+		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
+		<module>../../examples/org.eclipse.emf.parsley.ui.examples</module>
+
+		<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
+
 		<module>../../doc/org.eclipse.emf.parsley.doc</module>
 
 		<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
-
-		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
 
 		<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
 		<module>../../tests/org.eclipse.emf.parsley.tests</module>
