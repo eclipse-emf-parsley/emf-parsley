@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.eclipse.emf.parsley.feature">
+      <category name="emfparsley.category"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.examples.feature">
+      <category name="emfparsley.category"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.cdo.feature">
+      <category name="emfparsley.category"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.dsl.feature">
+      <category name="emfparsley.category"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.sdk">
+      <category name="emfparsley.category"/>
+   </feature>
+
+   <feature id="org.eclipse.emf.parsley.feature.source">
+      <category name="emfparsley.category.source"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.examples.feature.source">
+      <category name="emfparsley.category.source"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.cdo.feature.source">
+      <category name="emfparsley.category.source"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.dsl.feature.source">
+      <category name="emfparsley.category.source"/>
+   </feature>
+   <feature id="org.eclipse.emf.parsley.sdk.source">
+      <category name="emfparsley.category.source"/>
+   </feature>
+
+   <category-def name="emfparsley.category" label="Emf Parsley">
+      <description>
+         Emf Parsley
+      </description>
+   </category-def>
+   <category-def name="emfparsley.category.source" label="Emf Parsley Sources">
+      <description>
+         Emf Parsley (Sources)
+      </description>
+   </category-def>
+</site>
