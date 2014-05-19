@@ -42,7 +42,6 @@ public class WaitForBuildCondition extends DefaultCondition {
 		workspace.addResourceChangeListener(myResourceChangeListener);
 	}
 
-	@Override
 	public String getFailureMessage() {
 		return "failed waiting for building";
 	}

@@ -17,11 +17,31 @@
    </license>
 
    <includes
-         id="org.eclipse.emf.parsley.examples.feature"
+         id="org.eclipse.emf.parsley.sdk"
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.parsley.dsl.feature"
+         id="org.eclipse.pde"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.swtbot.eclipse"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.swtbot.forms"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.swtbot.ide"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.xtext.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.cdo.server"
          version="0.0.0"/>
 
    <plugin
