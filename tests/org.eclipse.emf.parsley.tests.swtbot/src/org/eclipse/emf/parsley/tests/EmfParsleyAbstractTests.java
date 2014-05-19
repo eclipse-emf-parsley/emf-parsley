@@ -305,6 +305,21 @@ public class EmfParsleyAbstractTests {
 				EmfParsleyTestsActivator.EMF_TREE_EDITOR_CUSTOM_LABEL);
 		editorNamesToId.put(EMF_CUSTOM_LIBRARY_EDITOR,
 				EmfParsleyTestsActivator.EMF_EDITOR_FOR_LIBRARY);
+		
+		// Change the perspective via the Open Perspective dialog
+		bot.menu("Window").menu("Open Perspective").menu("Other...").click();
+		SWTBotShell openPerspectiveShell = bot.shell("Open Perspective");
+		openPerspectiveShell.activate();
+
+		// select the dialog
+		bot.table().select("Plug-in Development");
+		bot.button("OK").click();
+
+		// in SwtBot 2.2.0 we must use part name since the title
+		// of the problems view also contains the items count
+		// see also http://www.eclipse.org/forums/index.php/t/640194/
+		bot.viewByPartName("Error Log").close();
+		bot.viewByPartName("Problems").show();
 
 		bot.viewByTitle(OUTLINE_VIEW).show();
 	}
