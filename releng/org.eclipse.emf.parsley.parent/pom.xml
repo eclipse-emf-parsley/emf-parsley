@@ -20,7 +20,6 @@
 		<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 		<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 
-		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
 		<module>../../examples/org.eclipse.emf.parsley.ui.examples</module>
 
 		<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
@@ -44,6 +43,9 @@
 		<!-- The fowlerdsl examples is used in swtbot tests -->
 		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl</module>
 		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl.ui</module>
+		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
+		<module>../../examples/org.eclipse.emf.parsley.examples.library.edit</module>
+		<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>
 		
 		<module>../../releng/org.eclipse.emf.parsley.repository</module>
 	</modules>
