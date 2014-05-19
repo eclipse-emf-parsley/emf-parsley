@@ -40,6 +40,10 @@
 		<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 		<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 		<module>../../features/org.eclipse.emf.parsley.sdk</module>
+
+		<!-- The fowlerdsl examples is used in swtbot tests -->
+		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl</module>
+		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl.ui</module>
 		
 		<module>../../releng/org.eclipse.emf.parsley.repository</module>
 	</modules>
