@@ -46,6 +46,10 @@
 		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
 		<module>../../examples/org.eclipse.emf.parsley.examples.library.edit</module>
 		<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>
+		<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
+
+		<module>../../features/org.eclipse.emf.parsley.tests.swtbot.feature</module>
+		<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
 		
 		<module>../../releng/org.eclipse.emf.parsley.repository</module>
 	</modules>
@@ -78,6 +82,9 @@
 
 		<findbugs.skip>false</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
+		
+		<dsl.tests.skip>false</dsl.tests.skip>
+		<simple.tests.skip>false</simple.tests.skip>
 	</properties>
 
 	<!-- 
@@ -188,6 +195,9 @@
 								<feature id="org.eclipse.pde" />
 								<feature id="org.eclipse.emf.mwe2.language.sdk" />
 								<feature id="org.eclipse.emf.mwe2.runtime.sdk" />
+								<feature id="org.eclipse.swtbot.eclipse" />
+								<feature id="org.eclipse.swtbot.forms" />
+								<feature id="org.eclipse.emf.cdo.server" />
 							</excludes>
 						</configuration>
 					</execution>

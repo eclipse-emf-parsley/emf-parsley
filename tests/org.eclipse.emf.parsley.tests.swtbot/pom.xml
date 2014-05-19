@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<relativePath>../../releng/org.eclipse.emf.parsley.parent/pom.xml</relativePath>
+		<groupId>org.eclipse.emf.parsley</groupId>
+		<artifactId>org.eclipse.emf.parsley.parent</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>org.eclipse.emf.parsley.tests.swtbot</artifactId>
+	<packaging>eclipse-test-plugin</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
+						for jacoco agent -->
+					<argLine>${tycho.testArgLine} ${memoryArgs} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</argLine>
+					<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+					<excludes>
+						<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>
+						<exclude>**/org/eclipse/emf/parsley/tests/*WizardsTest*.java</exclude>
+						<exclude>**/org/eclipse/emf/parsley/tests/*DslEditorTest*.java</exclude>
+						<exclude>**/org/eclipse/emf/parsley/tests/*TestsSuite*.java</exclude>
+						<exclude>**/org/eclipse/emf/parsley/tests/*Activator*.java</exclude>
+					</excludes>
+					<includes>
+						<include>**/org/eclipse/emf/parsley/tests/*Test*.java</include>
+					</includes>
+					<dependencies>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.emf.parsley.tests.swtbot.feature.feature.group</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+					</dependencies>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
