@@ -17,15 +17,7 @@
    </license>
 
    <includes
-         id="org.eclipse.emf.parsley.examples.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.dsl.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.cdo.server"
+         id="org.eclipse.emf.parsley.tests.swtbot.feature"
          version="0.0.0"/>
 
    <plugin

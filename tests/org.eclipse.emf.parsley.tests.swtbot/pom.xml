@@ -28,6 +28,7 @@
 						<id>default-test</id>
 						<phase>test</phase>
 						<configuration>
+							<skip>${swtbot.tests.skip}</skip>
 							<useUIHarness>true</useUIHarness>
 							<useUIThread>false</useUIThread>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
@@ -61,6 +62,7 @@
 						<phase>test</phase>
 						<!-- These tests required PDE and must pass -DbuildingWithTycho=true -->
 						<configuration>
+							<skip>${swtbot.tests.skip}</skip>
 							<useUIHarness>true</useUIHarness>
 							<useUIThread>false</useUIThread>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 

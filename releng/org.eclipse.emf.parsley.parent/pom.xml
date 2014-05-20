@@ -40,7 +40,7 @@
 		<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 		<module>../../features/org.eclipse.emf.parsley.sdk</module>
 
-		<!-- The fowlerdsl examples is used in swtbot tests -->
+		<!-- These examples are used in swtbot tests -->
 		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl</module>
 		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl.ui</module>
 		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
@@ -51,6 +51,14 @@
 		<module>../../features/org.eclipse.emf.parsley.tests.swtbot.feature</module>
 		<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
 		
+		<!-- These examples are used in CDO swtbot tests -->
+		<module>../../examples/org.eclipse.emf.parsley.examples.cdo.server</module>
+		<module>../../examples/org.eclipse.emf.parsley.examples.cdo.model</module>
+		<module>../../examples/org.eclipse.emf.parsley.examples.cdo.treeform</module>
+
+		<module>../../features/org.eclipse.emf.parsley.tests.swtbot.cdo.feature</module>
+		<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo</module>
+
 		<module>../../releng/org.eclipse.emf.parsley.repository</module>
 	</modules>
 
@@ -85,6 +93,7 @@
 		
 		<dsl.tests.skip>false</dsl.tests.skip>
 		<simple.tests.skip>false</simple.tests.skip>
+		<swtbot.tests.skip>false</swtbot.tests.skip>
 	</properties>
 
 	<!-- 
