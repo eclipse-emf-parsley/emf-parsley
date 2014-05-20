@@ -23,31 +23,72 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
-				<configuration>
-					<useUIHarness>true</useUIHarness>
-					<useUIThread>false</useUIThread>
-					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-						for jacoco agent -->
-					<argLine>${tycho.testArgLine} ${memoryArgs} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</argLine>
-					<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
-					<excludes>
-						<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>
-						<exclude>**/org/eclipse/emf/parsley/tests/*WizardsTest*.java</exclude>
-						<exclude>**/org/eclipse/emf/parsley/tests/*DslEditorTest*.java</exclude>
-						<exclude>**/org/eclipse/emf/parsley/tests/*TestsSuite*.java</exclude>
-						<exclude>**/org/eclipse/emf/parsley/tests/*Activator*.java</exclude>
-					</excludes>
-					<includes>
-						<include>**/org/eclipse/emf/parsley/tests/*Test*.java</include>
-					</includes>
-					<dependencies>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.emf.parsley.tests.swtbot.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-					</dependencies>
-				</configuration>
+				<executions>
+					<execution>
+						<id>default-test</id>
+						<phase>test</phase>
+						<configuration>
+							<useUIHarness>true</useUIHarness>
+							<useUIThread>false</useUIThread>
+							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
+								for jacoco agent -->
+							<argLine>${tycho.testArgLine} ${memoryArgs} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</argLine>
+							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+							<excludes>
+								<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/*WizardsTest*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/*DslEditorTest*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/*TestsSuite*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/*Activator*.java</exclude>
+							</excludes>
+							<includes>
+								<include>**/org/eclipse/emf/parsley/tests/*Test*.java</include>
+							</includes>
+							<dependencies>
+								<dependency>
+									<type>p2-installable-unit</type>
+									<artifactId>org.eclipse.emf.parsley.tests.swtbot.feature.feature.group</artifactId>
+									<version>0.0.0</version>
+								</dependency>
+							</dependencies>
+						</configuration>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>PDEBasedTests</id>
+						<phase>test</phase>
+						<!-- These tests required PDE and must pass -DbuildingWithTycho=true -->
+						<configuration>
+							<useUIHarness>true</useUIHarness>
+							<useUIThread>false</useUIThread>
+							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
+								for jacoco agent -->
+							<argLine>${tycho.testArgLine} ${memoryArgs} -DbuildingWithTycho=true -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</argLine>
+							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+							<excludes>
+								<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/*TestsSuite*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/*Activator*.java</exclude>
+							</excludes>
+							<includes>
+								<include>**/org/eclipse/emf/parsley/tests/*DslEditorTest*.java</include>
+								<include>**/org/eclipse/emf/parsley/tests/*WizardsTest*.java</include>
+							</includes>
+							<dependencies>
+								<dependency>
+									<type>p2-installable-unit</type>
+									<artifactId>org.eclipse.emf.parsley.tests.swtbot.feature.feature.group</artifactId>
+									<version>0.0.0</version>
+								</dependency>
+							</dependencies>
+						</configuration>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
