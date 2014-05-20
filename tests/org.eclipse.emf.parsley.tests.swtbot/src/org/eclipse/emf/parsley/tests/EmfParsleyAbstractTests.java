@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.parsley.examples.library.Library;
+import org.eclipse.emf.parsley.tests.utils.PDETargetPlatformUtils;
 import org.eclipse.emf.parsley.tests.views.LibraryEmfView;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -272,6 +273,8 @@ public class EmfParsleyAbstractTests {
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
+		PDETargetPlatformUtils.setTargetPlatform();
+		
 		bot = new SWTWorkbenchBot();
 
 		// increase timeout to 10 seconds
