@@ -11,7 +11,7 @@
 <booleanAttribute key="clearws" value="true"/>
 <booleanAttribute key="clearwslog" value="false"/>
 <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
-<booleanAttribute key="default" value="true"/>
+<booleanAttribute key="default" value="false"/>
 <stringAttribute key="featureDefaultLocation" value="workspace"/>
 <stringAttribute key="featurePluginResolution" value="workspace"/>
 <booleanAttribute key="includeOptional" value="true"/>
@@ -36,37 +36,28 @@
 <stringAttribute key="product" value="org.eclipse.sdk.ide"/>
 <booleanAttribute key="run_in_ui_thread" value="false"/>
 <setAttribute key="selected_features">
-<setEntry value="org.eclipse.cvs.source:default"/>
-<setEntry value="org.eclipse.cvs:default"/>
-<setEntry value="org.eclipse.e4.rcp.source:default"/>
 <setEntry value="org.eclipse.e4.rcp:default"/>
+<setEntry value="org.eclipse.emf.cdo.server:default"/>
 <setEntry value="org.eclipse.emf.common:default"/>
 <setEntry value="org.eclipse.emf.ecore:default"/>
+<setEntry value="org.eclipse.emf.parsley.cdo.feature:default"/>
 <setEntry value="org.eclipse.emf.parsley.dsl.feature:default"/>
 <setEntry value="org.eclipse.emf.parsley.examples.feature:default"/>
 <setEntry value="org.eclipse.emf.parsley.feature:default"/>
+<setEntry value="org.eclipse.emf.parsley.sdk:default"/>
 <setEntry value="org.eclipse.emf.parsley.tests.swtbot.feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.core.feature.source:default"/>
 <setEntry value="org.eclipse.equinox.p2.core.feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.extras.feature.source:default"/>
 <setEntry value="org.eclipse.equinox.p2.extras.feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.rcp.feature.source:default"/>
 <setEntry value="org.eclipse.equinox.p2.rcp.feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.user.ui.source:default"/>
 <setEntry value="org.eclipse.equinox.p2.user.ui:default"/>
-<setEntry value="org.eclipse.help.source:default"/>
 <setEntry value="org.eclipse.help:default"/>
-<setEntry value="org.eclipse.jdt.source:default"/>
 <setEntry value="org.eclipse.jdt:default"/>
-<setEntry value="org.eclipse.pde.source:default"/>
 <setEntry value="org.eclipse.pde:default"/>
-<setEntry value="org.eclipse.platform.source:default"/>
 <setEntry value="org.eclipse.platform:default"/>
-<setEntry value="org.eclipse.rcp.source:default"/>
 <setEntry value="org.eclipse.rcp:default"/>
-<setEntry value="org.eclipse.sdk:default"/>
 <setEntry value="org.eclipse.swtbot.eclipse:default"/>
 <setEntry value="org.eclipse.swtbot.forms:default"/>
+<setEntry value="org.eclipse.swtbot.generator.feature:default"/>
 <setEntry value="org.eclipse.swtbot.ide:default"/>
 <setEntry value="org.eclipse.swtbot:default"/>
 <setEntry value="org.eclipse.xtend.sdk:default"/>
@@ -88,7 +79,7 @@
 <booleanAttribute key="show_selected_only" value="false"/>
 <stringAttribute key="templateConfig" value="${target_home}/configuration/config.ini"/>
 <booleanAttribute key="tracing" value="false"/>
-<booleanAttribute key="useCustomFeatures" value="false"/>
+<booleanAttribute key="useCustomFeatures" value="true"/>
 <booleanAttribute key="useDefaultConfig" value="true"/>
 <booleanAttribute key="useDefaultConfigArea" value="false"/>
 <booleanAttribute key="useProduct" value="true"/>
