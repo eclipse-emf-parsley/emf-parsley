@@ -16,6 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
+import org.eclipse.emf.parsley.tests.utils.SWTBotEclipseEditorCustom
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
 public class EmfParsleyDslEditorTests extends EmfParsleyDslUiAbstractTests {
@@ -372,9 +373,10 @@ module my.test.proj {
 		
 		editor.toTextEditor.navigateTo(lines, 50)
 		
-		editor.toTextEditor.autoCompleteProposal(textToInsert, 
-			proposal.toString
-		)
+		new SWTBotEclipseEditorCustom(editor.reference, bot).
+			autoCompleteProposal(textToInsert, 
+				proposal.toString
+			)
 		
 		editor.save
 
@@ -399,7 +401,9 @@ module my.test.proj {
 		
 		editor.toTextEditor.navigateTo(lines, 50)
 		
-		val autoCompleteProposals = editor.toTextEditor.getAutoCompleteProposals(textToInsert)
+		val autoCompleteProposals = 
+			new SWTBotEclipseEditorCustom(editor.reference, bot).
+				getAutoCompleteProposals(textToInsert)
 		editor.save
 		
 		for (p : autoCompleteProposals) {
@@ -411,7 +415,7 @@ module my.test.proj {
 	
 	}
 
-	def private void assertOrganizeImports(CharSequence input, CharSequence expectedAfterProposal) {
+	def private void assertOrganizeImports(CharSequence input, CharSequence expectedAfterOrganize) {
 		createDslProjectWithWizard
 		
 		val editor = bot.editorByTitle("module.parsley")
@@ -428,7 +432,7 @@ module my.test.proj {
 		
 		editor.save
 
-		editor.assertEditorText(expectedAfterProposal)
+		editor.assertEditorText(expectedAfterOrganize)
 
 		editor.saveAndClose
 	
