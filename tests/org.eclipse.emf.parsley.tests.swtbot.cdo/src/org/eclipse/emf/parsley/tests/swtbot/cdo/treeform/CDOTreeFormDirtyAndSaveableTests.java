@@ -7,11 +7,14 @@
  * 
  * Contributors:
  * Francesco Guidieri - Initial contribution and API
+ * Lorenzo Bettini - use SWTBotJunit4ClassRunner to generate screenshots
+ *                   in case of failures
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot.cdo.treeform;
 
 import org.eclipse.emf.parsley.tests.swtbot.cdo.util.CDOAbstractTests;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
@@ -21,8 +24,10 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 @SuppressWarnings("restriction")
+@RunWith(SWTBotJunit4ClassRunner.class)
 public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 
 
