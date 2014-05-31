@@ -180,7 +180,7 @@
 			<arg line="-i org.eclipse.buckminster.pde.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.git.headless.feature.feature.group" />
 			<arg line="-i org.eclipse.buckminster.maven.headless.feature.feature.group" />
-			<arg line="-i org.eclipse.buckminster.emma.headless.feature.feature.group" />
+			<!-- <arg line="-i org.eclipse.buckminster.emma.headless.feature.feature.group" /> -->
 			<arg line="-i org.eclipse.emf.mwe2.launcher.feature.group" />
 		</java>
 	</target>
