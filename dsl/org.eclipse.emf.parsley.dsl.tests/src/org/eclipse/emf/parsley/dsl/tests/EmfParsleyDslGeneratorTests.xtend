@@ -229,7 +229,7 @@ public class LabelProviderGen extends ViewerLabelProvider {
     String _xblockexpression = null;
     {
       EList<Lendable> _borrowed = it.getBorrowed();
-      final Function1<Lendable,Integer> _function = new Function1<Lendable,Integer>() {
+      final Function1<Lendable, Integer> _function = new Function1<Lendable, Integer>() {
         public Integer apply(final Lendable b) {
           return Integer.valueOf(b.getCopies());
         }
@@ -685,7 +685,7 @@ public class FormControlFactoryGen extends FormControlFactory {
   
   public Control control_Writer_books(final Writer it) {
     EList<Book> _books = it.getBooks();
-    final Function1<Book,String> _function = new Function1<Book,String>() {
+    final Function1<Book, String> _function = new Function1<Book, String>() {
       public String apply(final Book it) {
         return it.getTitle();
       }
@@ -796,7 +796,7 @@ public class DialogControlFactoryGen extends DialogControlFactory {
   
   public Control control_Writer_books(final Writer it) {
     EList<Book> _books = it.getBooks();
-    final Function1<Book,String> _function = new Function1<Book,String>() {
+    final Function1<Book, String> _function = new Function1<Book, String>() {
       public String apply(final Book it) {
         return it.getTitle();
       }

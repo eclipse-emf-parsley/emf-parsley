@@ -16,7 +16,7 @@
 	<rm:property key="swtbot.repository"
 		value="${eclipse.download}/technology/swtbot/releases/latest" />
 	<rm:property key="xdoc.repository" 
-		value="http://master.dl.sourceforge.net/project/xtext-xdoc/updates-2.5"/>
+		value="http://master.dl.sourceforge.net/project/xtext-xdoc/updates-2.6"/>
 	<!-- 
 	<rm:property key="swtbot.repository"
 		value="${eclipse.download}/technology/swtbot/snapshots" />
@@ -38,7 +38,9 @@
 	<rm:locator pattern="javax.inject" searchPathRef="xtext" />
 	<rm:locator pattern="^de\.itemis(?:\..+)?$" searchPathRef="xtext" />
 	<rm:locator pattern="^org\.objectweb\.asm.*" searchPathRef="xtext"/>
-	
+	<rm:locator pattern="^org\.apache\.commons\.lang.*" searchPathRef="xtext"/>
+	<rm:locator pattern="^org\.apache\.log4j.*" searchPathRef="xtext"/>
+  
 	<rm:locator pattern="^org\.hamcrest*" searchPathRef="swtbot" />
 	<rm:locator pattern="^org\.eclipse\.(?:swtbot)(?:\..+)?$"
 		searchPathRef="swtbot" />
