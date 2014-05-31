@@ -85,8 +85,7 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.junit.reportsPath>../${project.artifactId}.tests/target/surefire-reports/</sonar.junit.reportsPath>
-		<!-- <sonar.skippedModules> </sonar.skippedModules> -->
-		<sonar.exclusions>file:**/src-gen/**</sonar.exclusions>
+		<sonar.exclusions>file:**/src-gen/**,file:**/test/**,file:**/tests/**,file:**/example/**,file:**/examples/**</sonar.exclusions>
 
 		<findbugs.skip>false</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
@@ -112,6 +111,21 @@
 	-->
 
 	<pluginRepositories>
+		<pluginRepository>
+			<!-- required for findbugs plugin 2.5.4-SNAPSHOT (using findbugs 2.0.3) -->
+			<id>codehaus-snapshots</id>
+			<name>codehaus snapshot repository</name>
+			<!--<url>http://snapshots.repository.codehaus.org/</url> -->
+
+			<url>http://maven.wso2.org/nexus/content/repositories/codehaus-snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	
 		<!-- Repository to resolve fornax-oaw-m2-plugin -->
 		<!-- in case of SSL certificates errors, use
 			-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -->
@@ -153,6 +167,33 @@
 					<configuration>
 						<outputDirectory>xtend-gen</outputDirectory>
 					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>${findbugs-version}</version>
+					<configuration>
+						<skip>${findbugs.skip}</skip>
+						<findbugsXmlOutput>true</findbugsXmlOutput>
+						<failOnError>false</failOnError>
+						<!-- <findbugsXmlOutputDirectory>${findbugs.reportPath}</findbugsXmlOutputDirectory> -->
+						<!-- Enables analysis which takes more memory but finds more bugs. If 
+							you run out of memory, changes the value of the effort element to 'Low'. -->
+						<!-- <effort>Max</effort> -->
+						<!-- Low: Reports all bugs (other values are medium and max) -->
+						<!-- <threshold>Medium</threshold> -->
+						<maxRank>15</maxRank>
+						<jvmArgs>-Xmx1024m</jvmArgs>
+						<excludeFilterFile>${project.basedir}/../../releng/org.eclipse.emf.parsley.site/excludeFilter.xml</excludeFilterFile>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
