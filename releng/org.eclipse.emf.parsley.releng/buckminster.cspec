@@ -46,5 +46,25 @@
                 <cs:attribute name="site.p2" component="org.eclipse.emf.parsley.rap.site" />
             </cs:prerequisites>
         </cs:public>
+        <cs:public name="copy.site.p2" actor="ant">
+            <cs:actorProperties>
+                <cs:property key="buildFileId" value="buckminster.pdetasks"/>
+                <cs:property key="targets" value="copy.group"/>
+            </cs:actorProperties>
+            <cs:prerequisites alias="action.requirements">
+                <cs:attribute name="site.p2" component="org.eclipse.emf.parsley.site" />
+            </cs:prerequisites>
+            <cs:products alias="action.output" base="${buckminster.output}/../../repository/"/>
+        </cs:public>
+        <cs:public name="copy.rap.site.p2" actor="ant">
+            <cs:actorProperties>
+                <cs:property key="buildFileId" value="buckminster.pdetasks"/>
+                <cs:property key="targets" value="copy.group"/>
+            </cs:actorProperties>
+            <cs:prerequisites alias="action.requirements">
+                <cs:attribute name="site.p2" component="org.eclipse.emf.parsley.rap.site" />
+            </cs:prerequisites>
+            <cs:products alias="action.output" base="${buckminster.output}/../../repository-rap/"/>
+        </cs:public>
     </cs:actions>
 </cs:cspec>
