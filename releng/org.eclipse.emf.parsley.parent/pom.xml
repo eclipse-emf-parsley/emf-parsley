@@ -123,6 +123,42 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<profile>
+			<id>rap-build</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>../../devtools/org.eclipse.emf.parsley.rap.targetplatform</module>
+				<module>../../plugins/org.eclipse.emf.parsley.rap.runtime</module>
+				<module>../../plugins/org.eclipse.emf.parsley.rap</module>
+				<module>../../plugins/org.eclipse.emf.parsley.rap.cdo</module>
+				<module>../../plugins/org.eclipse.emf.parsley.rap.views</module>
+			</modules>
+			<properties>
+				<findbugs.skip>true</findbugs.skip>
+			</properties>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>org.eclipse.emf.parsley</groupId>
+									<artifactId>org.eclipse.emf.parsley.rap.targetplatform</artifactId>
+									<version>0.1.1-SNAPSHOT</version>
+								</artifact>
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 	<!-- 
