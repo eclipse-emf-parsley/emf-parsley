@@ -135,6 +135,12 @@
 				<module>../../plugins/org.eclipse.emf.parsley.rap</module>
 				<module>../../plugins/org.eclipse.emf.parsley.rap.cdo</module>
 				<module>../../plugins/org.eclipse.emf.parsley.rap.views</module>
+				
+				<module>../../releng/org.eclipse.emf.parsley.rap.requirements</module>
+				<module>../../features/org.eclipse.emf.parsley.rap.sdk</module>
+
+				<module>../../releng/org.eclipse.emf.parsley.rap.cdo.requirements</module>
+				<module>../../features/org.eclipse.emf.parsley.rap.cdo.sdk</module>
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
@@ -305,10 +311,20 @@
 								<plugin id="org.eclipse.emf.parsley" />
 								<plugin id="org.eclipse.emf.parsley.cdo" />
 								<plugin id="org.eclipse.emf.parsley.editors" />
+								
+								<plugin id="org.eclipse.emf.parsley.rap.runtime" />
+								<plugin id="org.eclipse.emf.parsley.rap" />
+								<plugin id="org.eclipse.emf.parsley.rap.cdo" />
+								<plugin id="org.eclipse.emf.parsley.rap.views" />
+
+								<plugin id="org.eclipse.emf.rap" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
 								<feature id="org.eclipse.pde" />
+								<feature id="org.eclipse.emf.common" />
+								<feature id="org.eclipse.emf.databinding.edit" />
+								<feature id="org.eclipse.emf.query" />
 								<feature id="org.eclipse.emf.mwe2.language.sdk" />
 								<feature id="org.eclipse.emf.mwe2.runtime.sdk" />
 								<feature id="org.eclipse.swtbot.eclipse" />
