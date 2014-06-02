@@ -6,60 +6,10 @@
 	<version>0.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
 		<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
-		<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 		<module>../../plugins/org.eclipse.emf.parsley.common</module>
-		<module>../../plugins/org.eclipse.emf.parsley</module>
 		<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
-		<module>../../plugins/org.eclipse.emf.parsley.views</module>
 		<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
-		<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
-		<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
-		<module>../../plugins/org.eclipse.emf.parsley.editors</module>
-		<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
-		<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
-
-		<module>../../examples/org.eclipse.emf.parsley.ui.examples</module>
-
-		<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
-
-		<module>../../doc/org.eclipse.emf.parsley.doc</module>
-
-		<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
-
-		<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
-		<module>../../tests/org.eclipse.emf.parsley.tests</module>
-
-		<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
-		<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
-		<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
-
-		<module>../../features/org.eclipse.emf.parsley.feature</module>
-		<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
-		<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
-		<module>../../features/org.eclipse.emf.parsley.sdk</module>
-
-		<!-- These examples are used in swtbot tests -->
-		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl</module>
-		<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl.ui</module>
-		<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
-		<module>../../examples/org.eclipse.emf.parsley.examples.library.edit</module>
-		<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>
-		<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
-
-		<module>../../features/org.eclipse.emf.parsley.tests.swtbot.feature</module>
-		<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
-		
-		<!-- These examples are used in CDO swtbot tests -->
-		<module>../../examples/org.eclipse.emf.parsley.examples.cdo.server</module>
-		<module>../../examples/org.eclipse.emf.parsley.examples.cdo.model</module>
-		<module>../../examples/org.eclipse.emf.parsley.examples.cdo.treeform</module>
-
-		<module>../../features/org.eclipse.emf.parsley.tests.swtbot.cdo.feature</module>
-		<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo</module>
-
-		<module>../../releng/org.eclipse.emf.parsley.repository</module>
 	</modules>
 
 	<properties>
@@ -94,6 +44,86 @@
 		<simple.tests.skip>false</simple.tests.skip>
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 	</properties>
+	
+	<profiles>
+		<profile>
+			<id>rcp-build</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
+				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
+				<module>../../plugins/org.eclipse.emf.parsley</module>
+				<module>../../plugins/org.eclipse.emf.parsley.views</module>
+				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
+				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
+				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
+		
+				<module>../../examples/org.eclipse.emf.parsley.ui.examples</module>
+		
+				<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
+		
+				<module>../../doc/org.eclipse.emf.parsley.doc</module>
+		
+				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
+		
+				<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests</module>
+		
+				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
+		
+				<module>../../features/org.eclipse.emf.parsley.feature</module>
+				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
+				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
+				<module>../../features/org.eclipse.emf.parsley.sdk</module>
+		
+				<!-- These examples are used in swtbot tests -->
+				<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl.ui</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.library.edit</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
+		
+				<module>../../features/org.eclipse.emf.parsley.tests.swtbot.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
+				
+				<!-- These examples are used in CDO swtbot tests -->
+				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.server</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.model</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.treeform</module>
+		
+				<module>../../features/org.eclipse.emf.parsley.tests.swtbot.cdo.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo</module>
+		
+				<module>../../releng/org.eclipse.emf.parsley.repository</module>
+			</modules>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>org.eclipse.emf.parsley</groupId>
+									<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
+									<version>0.1.1-SNAPSHOT</version>
+								</artifact>
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<!-- 
 	<repositories>
@@ -275,21 +305,6 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<format>'v'yyyyMMdd'-'HHmm</format>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<target>
-						<artifact>
-							<groupId>org.eclipse.emf.parsley</groupId>
-							<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
-							<version>0.1.1-SNAPSHOT</version>
-						</artifact>
-					</target>
 				</configuration>
 			</plugin>
 
