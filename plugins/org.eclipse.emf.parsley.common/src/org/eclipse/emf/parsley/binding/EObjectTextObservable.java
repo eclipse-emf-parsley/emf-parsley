@@ -52,11 +52,7 @@ public class EObjectTextObservable extends AbstractObservableValue {
 		
 		current = (EObject) value;
 		
-		if (current != null) {
-			text.setText(labelProvider.getText(current));
-		} else {
-			text.setText("");
-		}
+		text.setText(labelProvider.getText(current));
 	}
 
 }
