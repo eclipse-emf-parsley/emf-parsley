@@ -121,6 +121,39 @@
 							</target>
 						</configuration>
 					</plugin>
+					
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${jacoco-version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<!-- Where to put jacoco coverage report -->
+									<destFile>${sonar.jacoco.reportPath}</destFile>
+									<includes>
+										<include>org.eclipse.emf.parsley.*</include>
+									</includes>
+									<excludes>
+										<exclude>**/src-gen/**/*.java</exclude>
+										<exclude>**.antlr**</exclude>
+										<exclude>**.parseTree**</exclude>
+										<exclude>**Abstract*RuntimeModule.java</exclude>
+										<exclude>**/*SetupGenerated*.java</exclude>
+										<exclude>**/Abstract*Validator.java</exclude>
+										<exclude>**/*GrammarAccess.java</exclude>
+										<exclude>**/Abstract*UiModule.java</exclude>
+										<exclude>**/Abstract*ProposalProvider.java</exclude>
+										<exclude>**/*Test.java</exclude>
+									</excludes>
+									<append>true</append>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
@@ -373,38 +406,6 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco-version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<!-- Where to put jacoco coverage report -->
-							<destFile>${sonar.jacoco.reportPath}</destFile>
-							<includes>
-								<include>org.eclipse.emf.parsley.*</include>
-							</includes>
-							<excludes>
-								<exclude>**/src-gen/**/*.java</exclude>
-								<exclude>**.antlr**</exclude>
-								<exclude>**.parseTree**</exclude>
-								<exclude>**Abstract*RuntimeModule.java</exclude>
-								<exclude>**/*SetupGenerated*.java</exclude>
-								<exclude>**/Abstract*Validator.java</exclude>
-								<exclude>**/*GrammarAccess.java</exclude>
-								<exclude>**/Abstract*UiModule.java</exclude>
-								<exclude>**/Abstract*ProposalProvider.java</exclude>
-								<exclude>**/*Test.java</exclude>
-							</excludes>
-							<append>true</append>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
