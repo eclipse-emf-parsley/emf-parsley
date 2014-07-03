@@ -15,8 +15,8 @@
 	</modules>
 
 	<properties>
-		<tycho-version>0.19.0</tycho-version>
-		<tycho-extras-version>0.19.0</tycho-extras-version>
+		<tycho-version>0.20.0</tycho-version>
+		<tycho-extras-version>0.20.0</tycho-extras-version>
 		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<junit-version>4.11</junit-version>
@@ -92,7 +92,6 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
 		
 				<module>../../features/org.eclipse.emf.parsley.tests.swtbot.feature</module>
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.kepler</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
 				
 				<!-- These examples are used in CDO swtbot tests -->
@@ -108,21 +107,6 @@
 			
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
-						<configuration>
-							<target>
-								<artifact>
-									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
-									<artifactId>kepler</artifactId>
-									<version>0.1.1-SNAPSHOT</version>
-								</artifact>
-							</target>
-						</configuration>
-					</plugin>
-					
 					<plugin>
 						<groupId>org.jacoco</groupId>
 						<artifactId>jacoco-maven-plugin</artifactId>
@@ -154,6 +138,64 @@
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>rcp-build-luna</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+			</modules>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
+									<artifactId>luna</artifactId>
+									<version>0.1.1-SNAPSHOT</version>
+								</artifact>
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>rcp-build-kepler</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.kepler</module>
+			</modules>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
+									<artifactId>kepler</artifactId>
+									<version>0.1.1-SNAPSHOT</version>
+								</artifact>
+							</target>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
