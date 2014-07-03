@@ -10,6 +10,10 @@
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
-	<packaging>eclipse-target-definition</packaging>
+	<packaging>pom</packaging>
 
+	<modules>
+		<module>kepler</module>
+		<module>kepler-rap</module>
+	</modules>
 </project>

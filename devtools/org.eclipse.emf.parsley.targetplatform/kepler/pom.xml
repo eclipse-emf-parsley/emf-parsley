@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<relativePath>../../releng/org.eclipse.emf.parsley.parent/pom.xml</relativePath>
 		<groupId>org.eclipse.emf.parsley</groupId>
-		<artifactId>org.eclipse.emf.parsley.parent</artifactId>
+		<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.eclipse.emf.parsley.rap.targetplatform</artifactId>
+	<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
+	<artifactId>kepler</artifactId>
 	<packaging>eclipse-target-definition</packaging>
 
 </project>

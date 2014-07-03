@@ -6,6 +6,8 @@
 	<version>0.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
+		<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
+		
 		<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
 		<module>../../plugins/org.eclipse.emf.parsley.common</module>
 		<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
@@ -52,7 +54,6 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.views</module>
@@ -113,8 +114,8 @@
 						<configuration>
 							<target>
 								<artifact>
-									<groupId>org.eclipse.emf.parsley</groupId>
-									<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
+									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
+									<artifactId>kepler</artifactId>
 									<version>0.1.1-SNAPSHOT</version>
 								</artifact>
 							</target>
@@ -130,7 +131,6 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>../../devtools/org.eclipse.emf.parsley.rap.targetplatform</module>
 				<module>../../plugins/org.eclipse.emf.parsley.rap.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley.rap</module>
 				<module>../../plugins/org.eclipse.emf.parsley.rap.cdo</module>
@@ -157,8 +157,8 @@
 						<configuration>
 							<target>
 								<artifact>
-									<groupId>org.eclipse.emf.parsley</groupId>
-									<artifactId>org.eclipse.emf.parsley.rap.targetplatform</artifactId>
+									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
+									<artifactId>kepler-rap</artifactId>
 									<version>0.1.1-SNAPSHOT</version>
 								</artifact>
 							</target>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.eclipse.emf.parsley</groupId>
+		<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
+	<artifactId>kepler-rap</artifactId>
+	<packaging>eclipse-target-definition</packaging>
+
+</project>
