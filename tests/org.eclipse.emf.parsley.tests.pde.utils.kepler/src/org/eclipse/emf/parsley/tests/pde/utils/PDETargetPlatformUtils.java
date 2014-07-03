@@ -1,3 +1,4 @@
+package org.eclipse.emf.parsley.tests.pde.utils;
 /*******************************************************************************
  * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
@@ -8,7 +9,7 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests.utils;
+
 
 import java.io.File;
 import java.util.ArrayList;
