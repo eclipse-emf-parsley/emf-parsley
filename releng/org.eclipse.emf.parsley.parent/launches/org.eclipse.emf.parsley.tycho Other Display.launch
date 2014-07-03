@@ -15,5 +15,5 @@
 <mapEntry key="DISPLAY" value=":50"/>
 </mapAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms40m -Xmx384m -XX:MaxPermSize=256m"/>
-<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="/home/bettini/work/emf/emf-parsley-tycho/releng/org.eclipse.emf.parsley.parent"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:/org.eclipse.emf.parsley.parent}"/>
 </launchConfiguration>
