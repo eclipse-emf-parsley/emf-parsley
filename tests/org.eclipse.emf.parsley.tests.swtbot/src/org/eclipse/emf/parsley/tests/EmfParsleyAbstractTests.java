@@ -26,6 +26,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -35,6 +37,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -317,11 +320,20 @@ public class EmfParsleyAbstractTests {
 		// select the dialog
 		bot.table().select("Plug-in Development");
 		bot.button("OK").click();
-
+		
 		// in SwtBot 2.2.0 we must use part name since the title
 		// of the problems view also contains the items count
 		// see also http://www.eclipse.org/forums/index.php/t/640194/
-		//bot.viewByPartName("Error Log").close();
+		
+		// Error Log view is disturbing since it often shows up
+		// and gets the focus, breaking many of our tests, so it's crucial
+		// to close it right away.
+		// Unfortunately, before Luna, the Error Log view was enabled by
+		// default in Plug-in Development perspective, but in Luna it is
+		// there anymore.
+		if (!isLuna()) {
+			bot.viewByPartName("Error Log").close();
+		}
 		bot.viewByPartName("Problems").show();
 
 		bot.viewByTitle(OUTLINE_VIEW).show();
@@ -352,6 +364,23 @@ public class EmfParsleyAbstractTests {
 				}
 			}
 		});
+	}
+
+	protected static boolean isLuna() {
+		String version = Platform.getBundle(PlatformUI.PLUGIN_ID).getHeaders()
+				.get("Bundle-Version");
+
+		Pattern versionPattern = Pattern.compile("\\d+\\.(\\d+)\\..*");
+		Matcher m = versionPattern.matcher(version);
+		if (m.matches()) {
+			// org.eclipse.ui has minor number 106 for Luna
+			int minorVersion = Integer.parseInt(m.group(1));
+			if (minorVersion >= 106) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	protected void assertPropertyViewIsOpenedAndCloseIt() {
