@@ -115,6 +115,9 @@
 									<version>0.0.0</version>
 								</dependency>
 							</dependencies>
+							<environmentVariables>
+								<SWT_GTK3>0</SWT_GTK3>
+							</environmentVariables>
 						</configuration>
 						<goals>
 							<goal>test</goal>
