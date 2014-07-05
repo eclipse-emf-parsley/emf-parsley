@@ -33,7 +33,7 @@
 							<useUIThread>false</useUIThread>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${memoryArgs} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</argLine>
+							<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>
@@ -85,7 +85,7 @@
 							<useUIThread>false</useUIThread>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${memoryArgs} -DbuildingWithTycho=true -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</argLine>
+							<argLine>${tycho.testArgLine} ${pdeTestsArgs} ${swtbotTestsArgs}</argLine>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>

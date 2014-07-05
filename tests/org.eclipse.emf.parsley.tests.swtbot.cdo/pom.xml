@@ -24,7 +24,7 @@
 					<useUIThread>false</useUIThread>
 					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 						for jacoco agent -->
-					<argLine>${tycho.testArgLine} ${memoryArgs} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</argLine>
+					<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
 					<testSuite>org.eclipse.emf.parsley.tests.swtbot.cdo</testSuite>
 					<testClass>org.eclipse.emf.parsley.tests.swtbot.cdo.CDOTestSuite</testClass>
 					<dependencies>
