@@ -383,6 +383,23 @@ public class EmfParsleyAbstractTests {
 		return false;
 	}
 
+	protected static boolean isIndigo() {
+		String version = Platform.getBundle(PlatformUI.PLUGIN_ID).getHeaders()
+				.get("Bundle-Version");
+
+		Pattern versionPattern = Pattern.compile("\\d+\\.(\\d+)\\..*");
+		Matcher m = versionPattern.matcher(version);
+		if (m.matches()) {
+			// org.eclipse.ui has minor number 7 for Indigo, and surely less than 100
+			int minorVersion = Integer.parseInt(m.group(1));
+			if (minorVersion < 100) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	protected void assertPropertyViewIsOpenedAndCloseIt() {
 		SWTBotView propertyView = bot.viewByTitle("Properties");
 		// bot.sleep(2000);

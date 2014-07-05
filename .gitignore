@@ -10,6 +10,7 @@ src-gen
 target/
 *.java._trace
 *.smap
+hs_*.log
 
 buildroot/
 buildroot-RAP/

@@ -9,13 +9,7 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
-	<packaging>pom</packaging>
+	<artifactId>org.eclipse.emf.parsley.tests.pde.utils</artifactId>
+	<packaging>eclipse-plugin</packaging>
 
-	<modules>
-		<module>indigo</module>
-		<module>kepler</module>
-		<module>luna</module>
-		<module>kepler-rap</module>
-	</modules>
 </project>

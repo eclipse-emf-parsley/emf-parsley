@@ -206,6 +206,36 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<profile>
+			<id>rcp-build-indigo</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.indigo</module>
+				<module>../../tests/org.eclipse.osgi.compatibility.state.fake</module>
+			</modules>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
+									<artifactId>indigo</artifactId>
+									<version>0.1.1-SNAPSHOT</version>
+								</artifact>
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		
 		<profile>
 			<id>rap-build</id>

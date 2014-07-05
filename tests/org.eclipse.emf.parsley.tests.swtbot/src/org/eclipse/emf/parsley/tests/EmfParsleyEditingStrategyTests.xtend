@@ -18,7 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogTests {
+public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTests {
 
 	@Before
 	def void setup() {

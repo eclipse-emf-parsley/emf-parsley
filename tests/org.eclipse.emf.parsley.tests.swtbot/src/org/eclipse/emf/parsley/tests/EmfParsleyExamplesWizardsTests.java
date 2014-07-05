@@ -47,6 +47,9 @@ public class EmfParsleyExamplesWizardsTests extends
 
 	@Test
 	public void canCreateE4ExamplesProjectWithWizard() throws Exception {
+		if (isIndigo())
+			return; // this test would fail since e4 is not in the target platform in Indigo
+		
 		createExampleProjectsInWorkspace(EMF_PARSLEY_E4_EXAMPLE,
 				"org.eclipse.emf.parsley.examples.eclipse4",
 				"org.eclipse.emf.parsley.examples.eclipse4.parsleypart");

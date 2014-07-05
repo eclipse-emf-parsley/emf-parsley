@@ -11,14 +11,11 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
-
-	protected var editorName = EMF_TREE_EDITOR_OPEN_DIALOG
+public class EmfParsleyDialogTests extends EmfParsleyDialogAbstractTests {
 
 	@Test
 	def void checkOpenDialogOnTreeElements() {
@@ -43,43 +40,6 @@ public class EmfParsleyDialogTests extends EmfParsleyAbstractTests {
 			modifyText(LIBRARY_NAME)
 		]
 		
-	}
-
-	def protected assertDialog(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
-		item.doubleClick
-		bot.shell(dialogTitle).activate
-		proc.apply()
-		bot.button("OK").click()
-	}
-
-	def protected assertDialogEdit(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
-		assertDialog(item, dialogTitle, proc)
-		assertEditorDirty()
-		saveEditor()
-	}
-	
-	def protected assertEditorDirty() {
-		editorName.assertEditorDirty
-	}
-	
-	def protected saveEditor() {
-		getEditor(editorName).save
-	}
-	
-	def protected getRootOfEditor() {
-		getRootOfTreeEditor(editorName, MY_EXT_LIBRARY_PLATFORM_URI)
-	}
-	
-	def protected libraryNode() {
-		getLibraryNode(getRootOfEditor)
-	}
-
-	def protected libraryModifiedNode() {
-		getLibraryModifiedNode(getRootOfEditor)
-	}
-
-	def protected writerNode() {
-		getWriterNode(libraryNode)
 	}
 
 }
