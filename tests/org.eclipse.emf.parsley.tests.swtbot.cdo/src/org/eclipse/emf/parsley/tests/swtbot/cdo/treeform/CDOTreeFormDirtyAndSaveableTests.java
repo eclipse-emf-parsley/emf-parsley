@@ -12,21 +12,20 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot.cdo.treeform;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.parsley.tests.swtbot.cdo.util.CDOAbstractTests;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.WorkbenchPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@SuppressWarnings("restriction")
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 
@@ -95,13 +94,12 @@ public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 //	}
 	
 	private void forceSaveView(SWTBotView botView){
-		final WorkbenchPage workbenchPage = (WorkbenchPage)botView.getViewReference().getPage();
 		final IViewPart view = botView.getViewReference().getView(false);
 		if(view instanceof ISaveablePart){	
-			PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-				@Override
+			Display.getDefault().syncExec(new Runnable() {
 				public void run() {
-					workbenchPage.saveSaveable((ISaveablePart)view, view, false, false);
+					((ISaveablePart)view).doSave(
+							new NullProgressMonitor());
 				}
 			});
 		}else{
