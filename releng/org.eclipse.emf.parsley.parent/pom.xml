@@ -35,6 +35,8 @@
 
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->
+		
+		<p2.repository.dest>${project.basedir}/../../target/repository</p2.repository.dest>
 
 		<!-- Sonar -->
 		<sonar.language>java</sonar.language>
