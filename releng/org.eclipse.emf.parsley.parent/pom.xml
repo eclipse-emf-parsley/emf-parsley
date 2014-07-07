@@ -172,7 +172,7 @@
 								<artifact>
 									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
 									<artifactId>luna</artifactId>
-									<version>0.1.1-SNAPSHOT</version>
+									<version>${project.version}</version>
 								</artifact>
 							</target>
 						</configuration>
@@ -202,7 +202,7 @@
 								<artifact>
 									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
 									<artifactId>kepler</artifactId>
-									<version>0.1.1-SNAPSHOT</version>
+									<version>${project.version}</version>
 								</artifact>
 							</target>
 						</configuration>
@@ -232,7 +232,7 @@
 								<artifact>
 									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
 									<artifactId>indigo</artifactId>
-									<version>0.1.1-SNAPSHOT</version>
+									<version>${project.version}</version>
 								</artifact>
 							</target>
 						</configuration>
