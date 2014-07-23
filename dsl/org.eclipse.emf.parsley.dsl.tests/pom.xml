@@ -68,7 +68,7 @@
 					<execution>
 						<!-- compiler tests need an OSGI environment, but no UI -->
 						<id>default-test</id>
-						<phase>test</phase>
+						<phase>integration-test</phase>
 						<configuration>
 							<skip>${dsl.tests.skip}</skip>
 							<useUIHarness>false</useUIHarness>
@@ -86,7 +86,7 @@
 					</execution>
 					<execution>
 						<id>TychoSurefirePluginUiTest</id>
-						<phase>test</phase>
+						<phase>integration-test</phase>
 						<configuration>
 							<skip>${dsl.tests.skip}</skip>
 							<useUIHarness>true</useUIHarness>
@@ -101,13 +101,8 @@
 								<!-- These are required for Luna
 									see https://issues.jboss.org/browse/JBIDE-16161 -->
 								<dependency>
-									<type>eclipse-plugin</type>
-									<artifactId>org.eclipse.equinox.event</artifactId>
-									<version>0.0.0</version>
-								</dependency>
-								<dependency>
-									<type>eclipse-plugin</type>
-									<artifactId>org.eclipse.osgi.compatibility.state</artifactId>
+									<type>eclipse-feature</type>
+									<artifactId>org.eclipse.equinox.core.feature</artifactId>
 									<version>0.0.0</version>
 								</dependency>
 							</dependencies>
