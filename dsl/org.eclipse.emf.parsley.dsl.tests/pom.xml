@@ -102,7 +102,7 @@
 									see https://issues.jboss.org/browse/JBIDE-16161 -->
 								<dependency>
 									<type>eclipse-feature</type>
-									<artifactId>org.eclipse.equinox.core.feature</artifactId>
+									<artifactId>org.eclipse.rcp</artifactId>
 									<version>0.0.0</version>
 								</dependency>
 							</dependencies>

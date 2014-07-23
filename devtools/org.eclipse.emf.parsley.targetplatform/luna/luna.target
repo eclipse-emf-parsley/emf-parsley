@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="luna" sequenceNumber="4">
+<target name="luna" sequenceNumber="3">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="de.itemis.xtext.antlr.feature.feature.group" version="2.1.1.v201405091103"/>
@@ -12,7 +12,6 @@
 <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.3.0.v20140606-1557"/>
 <unit id="org.eclipse.sdk.feature.group" version="4.4.0.v20140606-1558"/>
 <unit id="org.eclipse.emf.query.sdk.feature.group" version="1.8.0.201405281426"/>
-<unit id="org.eclipse.equinox.core.feature.feature.group" version="1.2.0.v20140606-1445"/>
 <repository location="http://download.eclipse.org/releases/luna"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">

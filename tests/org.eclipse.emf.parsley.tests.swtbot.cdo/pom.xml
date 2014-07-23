@@ -33,16 +33,9 @@
 							<artifactId>org.eclipse.emf.parsley.tests.swtbot.cdo.feature.feature.group</artifactId>
 							<version>0.0.0</version>
 						</dependency>
-						<!-- These are required for Luna
-							see https://issues.jboss.org/browse/JBIDE-16161 -->
 						<dependency>
-							<type>eclipse-plugin</type>
-							<artifactId>org.eclipse.equinox.event</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>eclipse-plugin</type>
-							<artifactId>org.eclipse.osgi.compatibility.state</artifactId>
+							<type>eclipse-feature</type>
+							<artifactId>org.eclipse.rcp</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 					</dependencies>
