@@ -42,6 +42,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.parsley.examples.EmfParsleyExamplesViewsActivator;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils;
 import org.eclipse.emf.parsley.tests.views.LibraryEmfView;
@@ -277,6 +278,9 @@ public class EmfParsleyAbstractTests {
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 		PDETargetPlatformUtils.setTargetPlatform();
+		
+		// force loading of examples.views
+		EmfParsleyExamplesViewsActivator.getDefault();
 		
 		bot = new SWTWorkbenchBot();
 

@@ -20,12 +20,12 @@ public class EmfParsleyExamplesExecutableExtensionFactory extends
 
 	@Override
 	protected Bundle getBundle() {
-		return Activator.getDefault().getBundle();
+		return EmfParsleyExamplesViewsActivator.getDefault().getBundle();
 	}
 
 	@Override
 	protected EmfParsleyGuiceModule getModule() {
-		return new EmfParsleyExamplesModule(Activator.getDefault());
+		return new EmfParsleyExamplesModule(EmfParsleyExamplesViewsActivator.getDefault());
 	}
 
 }
