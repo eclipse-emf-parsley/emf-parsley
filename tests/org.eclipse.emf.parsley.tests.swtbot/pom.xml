@@ -45,21 +45,8 @@
 							<includes>
 								<include>**/org/eclipse/emf/parsley/tests/*Test*.java</include>
 							</includes>
-							<dependencies>
-								<dependency>
-									<type>p2-installable-unit</type>
-									<artifactId>org.eclipse.emf.parsley.tests.swtbot.feature.feature.group</artifactId>
-									<version>0.0.0</version>
-								</dependency>
-								<dependency>
-									<type>eclipse-feature</type>
-									<artifactId>org.eclipse.rcp</artifactId>
-									<version>0.0.0</version>
-								</dependency>
-							</dependencies>
 							<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
 								http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
-							<!-- Use Tycho 0.19.0 because of bug in Tycho 0.20.0 (https://bugs.eclipse.org/bugs/show_bug.cgi?id=431793) -->
 							<environmentVariables>
 								<SWT_GTK3>0</SWT_GTK3>
 							</environmentVariables>
@@ -89,18 +76,6 @@
 								<include>**/org/eclipse/emf/parsley/tests/*DslEditorTest*.java</include>
 								<include>**/org/eclipse/emf/parsley/tests/*WizardsTest*.java</include>
 							</includes>
-							<dependencies>
-								<dependency>
-									<type>p2-installable-unit</type>
-									<artifactId>org.eclipse.emf.parsley.tests.swtbot.feature.feature.group</artifactId>
-									<version>0.0.0</version>
-								</dependency>
-								<dependency>
-									<type>eclipse-feature</type>
-									<artifactId>org.eclipse.rcp</artifactId>
-									<version>0.0.0</version>
-								</dependency>
-							</dependencies>
 							<environmentVariables>
 								<SWT_GTK3>0</SWT_GTK3>
 							</environmentVariables>
@@ -110,6 +85,27 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.emf.parsley.tests.swtbot.feature</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

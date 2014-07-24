@@ -27,18 +27,27 @@
 					<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
 					<testSuite>org.eclipse.emf.parsley.tests.swtbot.cdo</testSuite>
 					<testClass>org.eclipse.emf.parsley.tests.swtbot.cdo.CDOTestSuite</testClass>
-					<dependencies>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.emf.parsley.tests.swtbot.cdo.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>eclipse-feature</type>
-							<artifactId>org.eclipse.rcp</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-					</dependencies>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.emf.parsley.tests.swtbot.cdo.feature</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
 				</configuration>
 			</plugin>
 		</plugins>

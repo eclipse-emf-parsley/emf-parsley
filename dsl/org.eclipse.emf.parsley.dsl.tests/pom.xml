@@ -97,21 +97,31 @@
 							<includes>
 								<include>**/org/eclipse/emf/parsley/dsl/ui/tests/*Test.java</include>
 							</includes>
-							<dependencies>
-								<!-- These are required for Luna
-									see https://issues.jboss.org/browse/JBIDE-16161 -->
-								<dependency>
-									<type>eclipse-feature</type>
-									<artifactId>org.eclipse.rcp</artifactId>
-									<version>0.0.0</version>
-								</dependency>
-							</dependencies>
 						</configuration>
 						<goals>
 							<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<dependency-resolution>
+						<extraRequirements>
+							<!-- to get the org.eclipse.osgi.compatibility.state plugin iff 
+							the targeted Eclipse version (e.g., Luna) has it
+							(backwards compatible with kepler and previous versions) -->
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
