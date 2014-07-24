@@ -188,7 +188,6 @@
 			</activation>
 			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.kepler</module>
-				<module>../../tests/org.eclipse.osgi.compatibility.state.fake</module>
 			</modules>
 			
 			<build>
@@ -218,7 +217,6 @@
 			</activation>
 			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.indigo</module>
-				<module>../../tests/org.eclipse.osgi.compatibility.state.fake</module>
 			</modules>
 			
 			<build>
