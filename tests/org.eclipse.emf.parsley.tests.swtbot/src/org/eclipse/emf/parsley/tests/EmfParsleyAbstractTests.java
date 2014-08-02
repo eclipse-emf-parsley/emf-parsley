@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -70,6 +71,7 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.ContextMenuHelper;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.results.ListResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
@@ -669,7 +671,7 @@ public class EmfParsleyAbstractTests {
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
-		bot.tree().expandNode(EMF_PARSLEY_CATEGORY, "Examples")
+		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY, "Examples")
 				.select(exampleDescription);
 		bot.button("Next >").click();
 
@@ -704,7 +706,7 @@ public class EmfParsleyAbstractTests {
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
-		bot.tree().expandNode(category).select(projectType);
+		expandNodeSync(bot.tree(), category).select(projectType);
 		bot.button("Next >").click();
 
 		bot.textWithLabel("Project name:").setText(projectName);
@@ -717,7 +719,7 @@ public class EmfParsleyAbstractTests {
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
-		bot.tree().expandNode(category, subCategory).select(projectType);
+		expandNodeSync(bot.tree(), category, subCategory).select(projectType);
 		bot.button("Next >").click();
 
 		bot.textWithLabel("Project name:").setText(projectName);
@@ -872,7 +874,7 @@ public class EmfParsleyAbstractTests {
 		bot.menu("Window").menu("Show View").menu("Other...").click();
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
-		bot.tree().expandNode(EMF_PARSLEY_CATEGORY).select(libraryView);
+		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(libraryView);
 		bot.button("OK").click();
 		waitForShellToClose(shell);
 		return getLibraryView(libraryView);
@@ -1140,4 +1142,65 @@ public class EmfParsleyAbstractTests {
 	protected SWTFormsBot formBotFromView(SWTBotView detailView) {
 		return new SWTFormsBot(detailView.getWidget());
 	}
+
+	protected SWTBotTreeItem expandNodeSync(final SWTBotTree tree, String...names) {
+		SWTBotTreeItem current = null;
+		for (int i = 0; i < names.length; i++) {
+			if (current == null) {
+				current = tree.expandNode(names[i]);
+			} else {
+				current = current.expandNode(names[i]);
+			}
+			waitForTreeItems(current);
+		}
+		return current;
+	}
+
+	/**
+	 * This should prevent test failures in slow machines.
+	 * @param treeItem
+	 */
+	protected void waitForTreeItems(final SWTBotTreeItem treeItem) {
+		int retries = 3;
+		int msecs = 2000;
+		int count = 0;
+		while (count < retries) {
+			System.out.println("Checking that tree item " + treeItem.getText() + " has children...");
+			List<SWTBotTreeItem> foundItems = UIThreadRunnable.syncExec(new ListResult<SWTBotTreeItem>() {
+				public List<SWTBotTreeItem> run() {
+					TreeItem[] items = treeItem.widget.getItems();
+					List<SWTBotTreeItem> results = new ArrayList<SWTBotTreeItem>();
+					for (TreeItem treeItem : items) {
+						results.add(new SWTBotTreeItem(treeItem));
+					}
+					return results;
+				}
+			});
+			if (foundItems.isEmpty()) {
+				treeItem.collapse();
+				System.out.println("No chilren... retrying in " + msecs + " milliseconds..."); //$NON-NLS-1$
+				try {
+					Thread.sleep(msecs);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				treeItem.expand();
+			} else if (foundItems.size() == 1 && foundItems.get(0).getText().trim().isEmpty()) {
+				treeItem.collapse();
+				System.out.println("Only one child with empty text... retrying in " + msecs + " milliseconds..."); //$NON-NLS-1$
+				try {
+					Thread.sleep(msecs);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				treeItem.expand();
+			} else {
+				System.out.println("Found " + foundItems.size() + " items. OK!");
+				return;
+			}
+			
+			count++;
+		}
+	}
+
 }
