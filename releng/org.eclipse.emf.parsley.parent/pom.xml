@@ -158,27 +158,29 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+
 			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
 			</modules>
 			
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<configuration>
-							<target>
-								<artifact>
-									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
-									<artifactId>luna</artifactId>
-									<version>${project.version}</version>
-								</artifact>
-							</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+			<properties>
+				<target-file-name>luna</target-file-name>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+			</modules>
+			
+			<properties>
+				<target-file-name>local</target-file-name>
+			</properties>
 		</profile>
 		
 		<profile>
@@ -186,28 +188,14 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
+			
 			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.kepler</module>
 			</modules>
 			
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
-						<configuration>
-							<target>
-								<artifact>
-									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
-									<artifactId>kepler</artifactId>
-									<version>${project.version}</version>
-								</artifact>
-							</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+			<properties>
+				<target-file-name>kepler</target-file-name>
+			</properties>
 		</profile>
 
 		<profile>
@@ -215,28 +203,14 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
+
 			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.indigo</module>
 			</modules>
 			
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
-						<configuration>
-							<target>
-								<artifact>
-									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
-									<artifactId>indigo</artifactId>
-									<version>${project.version}</version>
-								</artifact>
-							</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+			<properties>
+				<target-file-name>indigo</target-file-name>
+			</properties>
 		</profile>
 		
 		<profile>
@@ -244,6 +218,7 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
+
 			<modules>
 				<module>../../plugins/org.eclipse.emf.parsley.rap.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley.rap</module>
@@ -260,26 +235,8 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
+				<target-file-name>kepler-rap</target-file-name>
 			</properties>
-			
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
-						<configuration>
-							<target>
-								<artifact>
-									<groupId>org.eclipse.emf.parsley.targetplatform</groupId>
-									<artifactId>kepler-rap</artifactId>
-									<version>${project.version}</version>
-								</artifact>
-							</target>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
@@ -521,6 +478,21 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.emf.parsley</groupId>
+							<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
+							<version>${project.version}</version>
+							<classifier>${target-file-name}</classifier> 
+						</artifact>
+					</target>
+				</configuration>
 			</plugin>
 
 			<plugin>
