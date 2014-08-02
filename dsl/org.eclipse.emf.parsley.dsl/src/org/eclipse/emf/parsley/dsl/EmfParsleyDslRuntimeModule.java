@@ -15,7 +15,7 @@ package org.eclipse.emf.parsley.dsl;
 
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslGenerator;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
-import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImplicitlyImportedTypes;
+import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImplicitlyImportedFeatures;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImportedNamespaceScopeProvider;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslScopeProvider;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslXbaseBatchScopeProvider;
@@ -23,7 +23,7 @@ import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedTypes;
+import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 
 import com.google.inject.Binder;
@@ -57,8 +57,8 @@ public class EmfParsleyDslRuntimeModule extends org.eclipse.emf.parsley.dsl.Abst
 		return EmfParsleyDslScopeProvider.class;
 	}
 
-	public Class<? extends ImplicitlyImportedTypes> bindImplicitlyImportedTypes() {
-		return EmfParsleyDslImplicitlyImportedTypes.class;
+	public Class<? extends ImplicitlyImportedFeatures> bindImplicitlyImportedFeatures() {
+		return EmfParsleyDslImplicitlyImportedFeatures.class;
 	}
 	
 	@Override
