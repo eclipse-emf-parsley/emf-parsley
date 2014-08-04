@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.tests.swtbot.feature"
       label="Emf Parsley SWTBOT Tests Feature"
-      version="0.1.1.qualifier">
+      version="0.2.0.qualifier">
 
    <description url="http://www.example.com/description">
       Emf Parsley SWTBOT Tests Feature
