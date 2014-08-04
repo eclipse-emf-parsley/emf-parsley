@@ -1,3 +1,5 @@
 build
 
 perform -D target.os=* -D target.ws=* -D target.arch=* org.eclipse.emf.parsley.rap.site#site.p2
+
+perform -D target.os=* -D target.ws=* -D target.arch=* org.eclipse.emf.parsley.releng#copy.rap.site.p2
