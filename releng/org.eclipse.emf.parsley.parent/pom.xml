@@ -36,6 +36,9 @@
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->
 		
+		<parsley.download.area>/home/data/httpd/download.eclipse.org/emf-parsley</parsley.download.area>
+		<parsley.updates.dir>updates</parsley.updates.dir>
+		<parsley.rap.updates.dir>rt</parsley.rap.updates.dir>
 		<p2.repository.dest>${project.basedir}/../../target/repository</p2.repository.dest>
 		
 		<!-- Enable this on Hudson CI @Eclipse.org -->
