@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
+ * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.actionbar;
 
@@ -314,6 +315,7 @@ public class WorkbenchActionBarContributor extends
 		EditingDomain domain = ((IEditingDomainProvider) activePart)
 				.getEditingDomain();
 		emfActionManager.updateSelection(event.getSelection(), domain);
+		editingActionManager.updateSelection(event.getSelection());
 	}
 
 }
