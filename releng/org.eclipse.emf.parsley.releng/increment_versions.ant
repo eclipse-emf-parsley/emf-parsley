@@ -53,6 +53,7 @@
 			<fileset id="path.manifest" dir="${WORKSPACE}">
 				<include name="**/META-INF/MANIFEST.MF" />
 				<exclude name="buildroot/**" />
+				<exclude name="examples/org.eclipse.emf.examples.library*/**" />
 			</fileset>
 		</replaceregexp>
 
