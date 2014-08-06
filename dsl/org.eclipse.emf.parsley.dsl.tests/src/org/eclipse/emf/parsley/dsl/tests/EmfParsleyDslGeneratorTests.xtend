@@ -175,8 +175,8 @@ public class LabelProviderGen extends ViewerLabelProvider {
 	}
 
 	@Test
-	def testLabelSpecifications() {
-		inputs.labelSpecifications.assertCorrectJavaCodeGeneration(
+	def testLabelProvider() {
+		inputs.labelProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedLabelProvider = 
 '''
@@ -265,9 +265,32 @@ public class LabelProviderGen extends ViewerLabelProvider {
 ''']
 		)
 	}
+
+	@Test
+	def testLabelProviderWithExtends() {
+		inputs.labelProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedLabelProvider = 
+'''
+package my.empty.ui.provider;
+
+import com.google.inject.Inject;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestLabelProvider;
+
+@SuppressWarnings("all")
+public class LabelProviderGen extends TestLabelProvider {
+  @Inject
+  public LabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+    super(delegate);
+  }
+}
+''']
+		)
+	}
+
 	
-	
-@Test
+	@Test
 	def testLabelSpecificationsForColumns() {
 		inputs.labelSpecificationsForColumns.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [

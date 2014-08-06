@@ -48,7 +48,7 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 
 	@Test
 	def void testLabelSpecifications() {
-		inputs.labelSpecifications.parseAndAssertNoError
+		inputs.labelProvider.parseAndAssertNoError
 	}
 	
 	@Test

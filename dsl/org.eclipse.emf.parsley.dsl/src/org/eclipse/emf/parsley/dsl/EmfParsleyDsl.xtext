@@ -44,7 +44,7 @@ Module:
 ExtendsClause: 'extends' superType=JvmTypeReference;
 
 LabelProvider:
-	{LabelProvider} 'labelProvider' '{'
+	{LabelProvider} 'labelProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'text' '{'
 			labelSpecifications+=LabelSpecification*
@@ -233,7 +233,7 @@ EmfFeatureAccess:
 
 // a utility base class for rules with 'extends' clause
 WithExtendsClause:
-	Module
+	Module | LabelProvider
 ;
 
 PartsSpecifications:

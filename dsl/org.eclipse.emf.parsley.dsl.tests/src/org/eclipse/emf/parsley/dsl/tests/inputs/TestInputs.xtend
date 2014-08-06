@@ -85,7 +85,7 @@ module my.empty {
 '''
 
 
-	def labelSpecifications() 
+	def labelProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -114,6 +114,19 @@ module my.empty {
 				else
 					new org.eclipse.swt.graphics.ImageData("writer.jpeg")
 		}
+	}
+}
+'''
+
+	def labelProviderWithExtends() 
+'''
+import java.util.*
+import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestLabelProvider
+
+module my.empty {
+	labelProvider extends TestLabelProvider {
+		
 	}
 }
 '''

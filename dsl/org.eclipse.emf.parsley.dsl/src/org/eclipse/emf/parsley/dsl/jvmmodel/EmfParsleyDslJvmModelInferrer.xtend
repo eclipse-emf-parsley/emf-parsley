@@ -60,6 +60,7 @@ import org.eclipse.swt.SWT
 import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel
+import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -167,7 +168,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
    	}
 
-	def setSuperClassType(JvmGenericType e, Module dslElement, Class<?> defaultSuperClass) {
+	def setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
 		if (dslElement.extendsClause != null)
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
 		else
@@ -247,12 +248,13 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		if (element.labelProvider == null)
 			null
 		else {
-			val labelProviderClass = element.labelProvider.toClass(element.labelProviderQN)
+			val labelProvider = element.labelProvider
+			val labelProviderClass = labelProvider.toClass(element.labelProviderQN)
 			acceptor.accept(labelProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(ViewerLabelProvider))
+				setSuperClassType(labelProvider, typeof(ViewerLabelProvider))
 				
-				members += element.labelProvider.toConstructor() [
-					parameters += element.labelProvider.
+				members += labelProvider.toConstructor() [
+					parameters += labelProvider.
 						toParameter("delegate", 
 							element.newTypeRef(typeof(AdapterFactoryLabelProvider))
 						)
@@ -260,7 +262,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					annotations += element.toAnnotation(typeof(Inject))
 				]
 				
-				element.labelProvider.labelSpecifications.forEach [
+				labelProvider.labelSpecifications.forEach [
 					labelSpecification |
 					members += labelSpecification.toMethod("text", element.newTypeRef(typeof(String))) [
 						parameters += labelSpecification.toParameter(
@@ -274,7 +276,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					]
 				]
 				
-				element.labelProvider.imageSpecifications.forEach [
+				labelProvider.imageSpecifications.forEach [
 					imageSpecification |
 					members += imageSpecification.toMethod("image", element.newTypeRef(typeof(Object))) [
 						parameters += imageSpecification.toParameter(
