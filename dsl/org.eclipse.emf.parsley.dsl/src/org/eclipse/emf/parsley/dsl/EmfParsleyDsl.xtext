@@ -156,6 +156,10 @@ TableFeaturesProvider:
 	'}'
 ;
 
+AbstractFeatureProvider:
+	FeaturesProvider | TableFeaturesProvider
+;
+
 
 FeatureSpecification:
 	parameterType=JvmTypeReference

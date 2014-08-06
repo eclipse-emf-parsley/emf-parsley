@@ -58,6 +58,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.swt.SWT
 import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
+import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -430,26 +431,35 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def inferFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.featuresProvider == null)
+		element.featuresProvider.inferFeatureProviderCommon(
+			element.featuresProviderQN, typeof(FeaturesProvider), acceptor)
+	}
+
+	def inferTableFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		element.tableFeaturesProvider.
+			inferFeatureProviderCommon(element.tableFeaturesProviderQN, typeof(TableFeaturesProvider), acceptor)
+	}
+
+	def inferFeatureProviderCommon(AbstractFeatureProvider element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element == null)
 			null
 		else {
-			val featureProviderClass = element.featuresProvider.toClass(element.featuresProviderQN)
+			val featureProviderClass = element.toClass(name)
 			acceptor.accept(featureProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(FeaturesProvider))
+				superTypes += element.newTypeRef(superClass)
 				
-				documentation = element.featuresProvider.documentation
-				members += element.featuresProvider.
+				documentation = element.documentation
+				members += element.
 						toMethod("buildStringMap", Void::TYPE.getTypeForName(element)) [
 					annotations += element.toAnnotation(typeof(Override))
-					parameters += element.featuresProvider.toParameter("stringMap",
+					parameters += element.toParameter("stringMap",
 							element.newTypeRef(
 								typeof(EClassToEStructuralFeatureAsStringsMap)
 							)
 					)
 					body = [
 						append("super.buildStringMap(stringMap);").newLine
-						element.featuresProvider.featureSpecifications.forEach [
-							featureSpecification |
+						for (featureSpecification : element.featureSpecifications) {
 							newLine.
 								append('''stringMap.mapTo("«featureSpecification.parameterType.identifier»",''').
 									increaseIndentation.newLine
@@ -460,51 +470,11 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 							]
 							append(fs.join(", "))
 							append(");").decreaseIndentation
-						]
+						}
 					]
 				]
 			]
 			featureProviderClass
-		}
-	}
-
-
-	def inferTableFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.tableFeaturesProvider == null)
-			null
-		else {
-			val tableFeatureProviderClass = element.tableFeaturesProvider.toClass(element.tableFeaturesProviderQN)
-			acceptor.accept(tableFeatureProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(TableFeaturesProvider))
-				
-				documentation = element.tableFeaturesProvider.documentation
-				members += element.tableFeaturesProvider.
-						toMethod("buildStringMap", Void::TYPE.getTypeForName(element)) [
-					annotations += element.toAnnotation(typeof(Override))
-					parameters += element.tableFeaturesProvider.toParameter("stringMap",
-							element.newTypeRef(
-								typeof(EClassToEStructuralFeatureAsStringsMap)
-							)
-					)
-					body = [
-						append("super.buildStringMap(stringMap);").newLine
-						element.tableFeaturesProvider.featureSpecifications.forEach [
-							featureSpecification |
-							newLine.
-								append('''stringMap.mapTo("«featureSpecification.parameterType.identifier»",''').
-									increaseIndentation.newLine
-							val fs = featureSpecification.features.map [
-								feature |
-								'"' + feature.simpleName.propertyNameForGetterSetterMethod
-								+ '"'
-							]
-							append(fs.join(", "))
-							append(");").decreaseIndentation
-						]
-					]
-				]
-			]
-			tableFeatureProviderClass
 		}
 	}
 
