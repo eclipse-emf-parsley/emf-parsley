@@ -57,6 +57,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.swt.SWT
+import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -508,38 +509,30 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def inferFormControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
-		if (e.formControlFactory == null)
-			null
-		else {
-			val formFeatureControlFactoryClass = e.formControlFactory.toClass(e.formControlFactoryQN)
-			acceptor.accept(formFeatureControlFactoryClass).initializeLater [
-				superTypes += e.newTypeRef(typeof(FormControlFactory))
-				
-				documentation = e.formControlFactory.documentation
-				
-				inferMethodsForControlFactory(e, it, e.formControlFactory.controlSpecifications)
-			]
-			formFeatureControlFactoryClass
-		}
+		e.formControlFactory.inferControlFactory(e.formControlFactoryQN, typeof(FormControlFactory), acceptor)
 	}
 
 	def inferDialogControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
-		if (e.dialogControlFactory == null)
+		e.dialogControlFactory.inferControlFactory(e.dialogControlFactoryQN, typeof(DialogControlFactory), acceptor)
+	}
+
+	def inferControlFactory(AbstractControlFactory e, String name, Class<?> clazz, IJvmDeclaredTypeAcceptor acceptor) {
+		if (e == null)
 			null
 		else {
-			val controlFactoryClass = e.dialogControlFactory.toClass(e.dialogControlFactoryQN)
+			val controlFactoryClass = e.toClass(name)
 			acceptor.accept(controlFactoryClass).initializeLater [
-				superTypes += e.newTypeRef(typeof(DialogControlFactory))
+				superTypes += e.newTypeRef(clazz)
 				
-				documentation = e.formControlFactory.documentation
+				documentation = e.documentation
 				
-				inferMethodsForControlFactory(e, it, e.dialogControlFactory.controlSpecifications)
+				inferMethodsForControlFactory(e, it, e.controlSpecifications)
 			]
 			controlFactoryClass
 		}
 	}
 	
-	def inferMethodsForControlFactory(Module e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
+	def inferMethodsForControlFactory(AbstractControlFactory e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
 		for (spec: specifications) {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole
