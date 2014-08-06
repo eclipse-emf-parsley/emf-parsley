@@ -405,7 +405,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole
 				// spec, otherwise the 'feature' is logically
-				// contained in a method which should return a string
+				// contained in a method which should return a label
 				// and the validator would complain
 				members += spec.expression.toMethod
 				("label_" + 
@@ -500,10 +500,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def inferMethodsForControlFactory(AbstractControlFactory e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
 		for (spec: specifications) {
 			if (spec.feature?.simpleName != null) {
-				// associate the method to the expression, not to the whole
-				// labelSpecification, otherwise the 'feature' is logically
-				// contained in a method which should return a string
-				// and the validator would complain
 				if (spec.target == null)
 					members += spec.
 					control_EClass_EStructuralFeature(spec.expression) [
@@ -619,7 +615,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					if (spec.feature?.simpleName != null) {
 						// associate the method to the expression, not to the whole
 						// specification, otherwise the 'feature' is logically
-						// contained in a method which should return a string
+						// contained in a method which should return a list
 						// and the validator would complain
 						members += spec.expression.toMethod
 						("proposals_" + 
