@@ -23,7 +23,7 @@ import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
-import org.eclipse.emf.parsley.dsl.model.FeatureCaptionSpecification
+import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
@@ -349,7 +349,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferMethodsForTextPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureCaptionSpecification> specifications) {
+	def inferMethodsForTextPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
 		for (spec : specifications) {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole
@@ -387,7 +387,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferMethodsForLabelPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureCaptionSpecification> specifications) {
+	def inferMethodsForLabelPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
 		for (spec : specifications) {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole

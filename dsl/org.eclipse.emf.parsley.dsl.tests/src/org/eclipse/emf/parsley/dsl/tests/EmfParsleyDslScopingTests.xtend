@@ -46,7 +46,7 @@ class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 		inputs.propertyDescriptionSpecifications.parseModel.
 			module.featureCaptionProvider.specifications.head.
 				assertScope
-				(ModelPackage::eINSTANCE.featureCaptionSpecification_Feature,
+				(ModelPackage::eINSTANCE.featureAssociatedExpression_Feature,
 					"name, books, borrowers, writers, employees, stock, branches, parentBranch, people, address, class"
 				)
 			

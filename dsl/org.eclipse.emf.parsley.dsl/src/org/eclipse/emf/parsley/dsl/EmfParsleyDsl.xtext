@@ -92,7 +92,7 @@ FeatureCaptionProvider:
 	{FeatureCaptionProvider} 'featureCaptionProvider' '{'
 		((
 		'text' '{'
-			specifications+=FeatureCaptionSpecification*
+			specifications+=FeatureAssociatedExpression*
 		'}'
 		)?)
 	'}'
@@ -102,13 +102,13 @@ FormFeatureCaptionProvider:
 	{FormFeatureCaptionProvider} 'formFeatureCaptionProvider' '{'
 		((
 		'text' '{'
-			specifications+=FeatureCaptionSpecification*
+			specifications+=FeatureAssociatedExpression*
 		'}'
 		)?
 		&
 		(
 		'label' '{'
-			labelSpecifications+=FeatureCaptionSpecification*
+			labelSpecifications+=FeatureAssociatedExpression*
 		'}'
 		)?)
 	'}'
@@ -118,19 +118,24 @@ DialogFeatureCaptionProvider:
 	{DialogFeatureCaptionProvider} 'dialogFeatureCaptionProvider' '{'
 		((
 		'text' '{'
-			specifications+=FeatureCaptionSpecification*
+			specifications+=FeatureAssociatedExpression*
 		'}'
 		)?
 		&
 		(
 		'label' '{'
-			labelSpecifications+=FeatureCaptionSpecification*
+			labelSpecifications+=FeatureAssociatedExpression*
 		'}'
 		)?)
 	'}'
 ;
 
-FeatureCaptionSpecification:
+/**
+ * Specify an XExpression associated to an EStructuralFeature
+ * (actually we associated to the Java get method in the generated code, which
+ * corresponds to the original EStructuralFeature).
+ */
+FeatureAssociatedExpression:
 	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
 	'->'
 	expression = XExpression
@@ -221,7 +226,7 @@ ViewerContentProvider:
 
 // a utility base class for rules which access features of an EClass
 EmfFeatureAccess:
-	FeatureCaptionSpecification |
+	FeatureAssociatedExpression |
 	FeatureSpecification |
 	ControlFactorySpecification |
 	ProposalSpecification |
