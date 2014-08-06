@@ -63,13 +63,13 @@ TableLabelProvider:
 	{TableLabelProvider} 'tableLabelProvider' '{'
 		((
 		'text' '{'
-			labelSpecifications+=LabelSpecificationForColumn*
+			labelSpecifications+=FeatureAssociatedExpression*
 		'}'
 		)?
 		&
 		(
 		'image' '{'
-			imageSpecifications+=LabelSpecificationForColumn*
+			imageSpecifications+=FeatureAssociatedExpression*
 		'}'
 		)?)
 	'}'
@@ -81,12 +81,6 @@ LabelSpecification:
 	expression = XExpression
 ;
 
-
-LabelSpecificationForColumn:
-	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
-	'->'
-	expression = XExpression
-;
 
 FeatureCaptionProvider:
 	{FeatureCaptionProvider} 'featureCaptionProvider' '{'
@@ -229,8 +223,7 @@ EmfFeatureAccess:
 	FeatureAssociatedExpression |
 	FeatureSpecification |
 	ControlFactorySpecification |
-	ProposalSpecification |
-	LabelSpecificationForColumn
+	ProposalSpecification
 ;
 
 // a utility base class for rules with 'extends' clause

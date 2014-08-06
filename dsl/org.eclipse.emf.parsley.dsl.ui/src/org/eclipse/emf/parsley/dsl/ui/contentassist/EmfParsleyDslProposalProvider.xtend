@@ -55,12 +55,6 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 		showOnlySubtypesOf(model, context, acceptor, IViewPart);
 	}
 
-	override void completeLabelSpecificationForColumn_ParameterType(
-			EObject model, Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		showSubtypesOfEObjectForEmfFeatureAccess(model, context, acceptor);
-	}
-
 	override void completeFeatureAssociatedExpression_ParameterType(
 			EObject model, Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
