@@ -24,6 +24,7 @@ public class GeneratorUtils {
 
 		if (opName.startsWith("is") && opName.length() > 2 && Character.isUpperCase(opName.charAt(2)))
 			return Introspector.decapitalize(opName.substring(2));
-		return null;
+
+		return opName;
 	}
 }

@@ -15,3 +15,17 @@ Inclusions (e.g.: **/*.class)
 Exclusions (e.g.: **/*Test*)
 **/*Internal*,**/*Sequencer*,**/*GrammarAccess*,**/antlr/*.*,**/internal/*.*,**/org/eclipse/emf/parsley/dsl/model/impl/*.*,**/org/eclipse/emf/parsley/dsl/model/util/*.*,**/org/eclipse/emf/parsley/rap/**/*.*,**/org/eclipse/emf/parsley/runtime/**/*.*
 
+
+For Tycho
+
+Path to class directories (e.g.: **/target/classDir, **/classes)	
+plugins/org.eclipse.emf.parsley.*/**/classes,dsl/org.eclipse.emf.parsley.dsl/**/classes,dsl/org.eclipse.emf.parsley.dsl.ui/**/classes
+
+Path to source directories (e.g.: **/mySourceFiles)
+plugins/org.eclipse.emf.parsley.*/src,plugins/org.eclipse.emf.parsley.*/xtend-gen,dsl/org.eclipse.emf.parsley.dsl/src,dsl/org.eclipse.emf.parsley.dsl/xtend-gen,dsl/org.eclipse.emf.parsley.dsl.ui/src,dsl/org.eclipse.emf.parsley.dsl.ui/xtend-gen
+
+Inclusions (e.g.: **/*.class)	
+
+
+Exclusions (e.g.: **/*Test*)
+**/*Internal*,**/*Sequencer*,**/*GrammarAccess*,**/antlr/*.*,**/internal/*.*,**/org/eclipse/emf/parsley/dsl/model/impl/*.*,**/org/eclipse/emf/parsley/dsl/model/util/*.*,**/org/eclipse/emf/parsley/rap/**/*.*,**/org/eclipse/emf/parsley/runtime/**/*.*

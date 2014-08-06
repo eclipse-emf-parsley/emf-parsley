@@ -26,6 +26,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	EClassTests.class,
+	EmfParsleyDslGeneratorUtilsTests.class,
 	EmfParsleyDslParserTests.class,
 	EmfParsleyDslScopingTests.class,
 	EmfParsleyDslValidatorTests.class,
