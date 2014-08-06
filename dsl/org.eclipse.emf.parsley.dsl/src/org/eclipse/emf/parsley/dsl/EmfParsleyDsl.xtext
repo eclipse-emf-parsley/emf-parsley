@@ -124,6 +124,10 @@ DialogFeatureCaptionProvider:
 	'}'
 ;
 
+AbstractFeatureCaptionProviderWithLabel:
+	FormFeatureCaptionProvider | DialogFeatureCaptionProvider
+;
+
 /**
  * Specify an XExpression associated to an EStructuralFeature
  * (actually we associated to the Java get method in the generated code, which

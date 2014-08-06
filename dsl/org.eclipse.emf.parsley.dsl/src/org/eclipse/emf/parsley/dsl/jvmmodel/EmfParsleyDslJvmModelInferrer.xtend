@@ -59,6 +59,7 @@ import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.swt.SWT
 import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
+import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -351,7 +352,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferMethodsForTextPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
+	def inferMethodsForTextPropertyDescription(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
 		for (spec : specifications) {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole
@@ -374,22 +375,32 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def inferFormFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.formFeatureCaptionProvider == null)
+		element.formFeatureCaptionProvider.inferDialogFeatureCaptionProviderWithLabel(
+			element.formFeatureCaptionProviderQN, typeof(FormFeatureCaptionProvider), acceptor)
+	}
+
+	def inferDialogFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		element.dialogFeatureCaptionProvider.inferDialogFeatureCaptionProviderWithLabel(
+			element.dialogFeatureCaptionProviderQN, typeof(DialogFeatureCaptionProvider), acceptor)
+	}
+
+	def inferDialogFeatureCaptionProviderWithLabel(AbstractFeatureCaptionProviderWithLabel element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element == null)
 			null
 		else {
-			val descriptionProviderClass = element.formFeatureCaptionProvider.toClass(element.formFeatureCaptionProviderQN)
+			val descriptionProviderClass = element.toClass(name)
 			acceptor.accept(descriptionProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(FormFeatureCaptionProvider))
+				superTypes += element.newTypeRef(superClass)
 				
-				inferMethodsForTextPropertyDescription(element, it, element.formFeatureCaptionProvider.specifications)
+				inferMethodsForTextPropertyDescription(element, it, element.specifications)
 				
-				inferMethodsForLabelPropertyDescription(element, it, element.formFeatureCaptionProvider.labelSpecifications)
+				inferMethodsForLabelPropertyDescription(element, it, element.labelSpecifications)			
 			]
 			descriptionProviderClass
 		}
 	}
 	
-	def inferMethodsForLabelPropertyDescription(Module element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
+	def inferMethodsForLabelPropertyDescription(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
 		for (spec : specifications) {
 			if (spec.feature?.simpleName != null) {
 				// associate the method to the expression, not to the whole
@@ -411,22 +422,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					body = spec.expression
 				]
 			}
-		}
-	}
-
-	def inferDialogFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.dialogFeatureCaptionProvider == null)
-			null
-		else {
-			val descriptionProviderClass = element.dialogFeatureCaptionProvider.toClass(element.dialogFeatureCaptionProviderQN)
-			acceptor.accept(descriptionProviderClass).initializeLater [
-				superTypes += element.newTypeRef(typeof(DialogFeatureCaptionProvider))
-				
-				inferMethodsForTextPropertyDescription(element, it, element.dialogFeatureCaptionProvider.specifications)
-				
-				inferMethodsForLabelPropertyDescription(element, it, element.dialogFeatureCaptionProvider.labelSpecifications)			
-			]
-			descriptionProviderClass
 		}
 	}
 
@@ -486,13 +481,13 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		e.dialogControlFactory.inferControlFactory(e.dialogControlFactoryQN, typeof(DialogControlFactory), acceptor)
 	}
 
-	def inferControlFactory(AbstractControlFactory e, String name, Class<?> clazz, IJvmDeclaredTypeAcceptor acceptor) {
+	def inferControlFactory(AbstractControlFactory e, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
 		if (e == null)
 			null
 		else {
 			val controlFactoryClass = e.toClass(name)
 			acceptor.accept(controlFactoryClass).initializeLater [
-				superTypes += e.newTypeRef(clazz)
+				superTypes += e.newTypeRef(superClass)
 				
 				documentation = e.documentation
 				
