@@ -192,14 +192,8 @@ ControlFactorySpecification:
 
 ProposalCreator:
 	{ProposalCreator} 'proposals' '{'
-		proposalsSpecifications+=ProposalSpecification*
+		proposalsSpecifications+=FeatureAssociatedExpression*
 	'}'
-;
-
-ProposalSpecification:
-	parameterType=JvmTypeReference ':' feature=[types::JvmMember]
-	'->'
-	expression = XExpression
 ;
 
 ViewerContentProvider:
@@ -222,8 +216,7 @@ ViewerContentProvider:
 EmfFeatureAccess:
 	FeatureAssociatedExpression |
 	FeatureSpecification |
-	ControlFactorySpecification |
-	ProposalSpecification
+	ControlFactorySpecification
 ;
 
 // a utility base class for rules with 'extends' clause
