@@ -120,8 +120,6 @@ module my.empty {
 
 	def labelProviderWithExtends() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestLabelProvider
 
 module my.empty {
@@ -131,7 +129,7 @@ module my.empty {
 }
 '''
 
-	def labelSpecificationsForColumns() 
+	def tableLabelProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -155,7 +153,18 @@ module my.empty {
 }
 '''
 
-	def propertyDescriptionSpecifications() 
+	def tableLabelProviderWithExtends() 
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableColumnLabelProvider
+
+module my.empty {
+	tableLabelProvider extends TestTableColumnLabelProvider {
+		
+	}
+}
+'''
+
+	def featureCaptionProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -171,7 +180,22 @@ module my.empty {
 }
 '''
 
-	def formPropertyDescriptionSpecifications() 
+	def featureCaptionProviderWithExtends() 
+'''
+import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeatureCaptionProvider
+
+module my.empty {
+	featureCaptionProvider extends TestFeatureCaptionProvider {
+		text {
+			Library:name -> 'Name' // constant
+			Writer:lastName -> name.toFirstUpper // the implicit param is an EStructuralFeature
+		}
+	}
+}
+'''
+
+	def formFeatureCaptionProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -200,7 +224,17 @@ module my.empty {
 }
 '''
 
-	def dialogPropertyDescriptionSpecifications() 
+	def formFeatureCaptionProviderWithExtends() 
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormFeatureCaptionProvider
+
+module my.empty {
+	formFeatureCaptionProvider extends TestFormFeatureCaptionProvider {
+	}
+}
+'''
+
+	def dialogFeatureCaptionProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -229,7 +263,17 @@ module my.empty {
 }
 '''
 
-	def featuresSpecifications() 
+	def dialogFeatureCaptionProviderWithExtends() 
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogFeatureCaptionProvider
+
+module my.empty {
+	dialogFeatureCaptionProvider extends TestDialogFeatureCaptionProvider {
+	}
+}
+'''
+
+	def featuresProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -240,6 +284,41 @@ module my.empty {
 			Library -> name
 			Writer -> firstName, lastName, books
 		}
+	}
+}
+'''
+
+	def featuresProviderWithExtends() 
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeaturesProvider
+
+module my.empty {
+	featuresProvider extends TestFeaturesProvider {
+	}
+}
+'''
+
+	def tableFeaturesProvider() 
+'''
+import java.util.*
+import org.eclipse.emf.parsley.examples.library.*
+
+module my.empty {
+	tableFeaturesProvider {
+		features {
+			Library -> name
+			Writer -> firstName, lastName, books
+		}
+	}
+}
+'''
+
+	def tableFeaturesProviderWithExtends() 
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableFeaturesProvider
+
+module my.empty {
+	tableFeaturesProvider extends TestTableFeaturesProvider {
 	}
 }
 '''
@@ -270,6 +349,16 @@ module my.empty {
 }
 '''
 
+	def formControlFactoryWithExtends()
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormControlFactory
+
+module my.empty {
+	formControlFactory extends TestFormControlFactory {
+	}
+}
+'''
+
 	def dialogControlFactory()
 '''
 import java.util.*
@@ -296,7 +385,17 @@ module my.empty {
 }
 '''
 
-	def proposalsSpecifications()
+	def dialogControlFactoryWithExtends()
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogControlFactory
+
+module my.empty {
+	dialogControlFactory extends TestDialogControlFactory {
+	}
+}
+'''
+
+	def proposalCreator()
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -328,7 +427,17 @@ module my.empty {
 }
 '''
 
-	def viewerContentProviderSpecifications() 
+	def proposalCreatorWithExtends()
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestProposalCreator
+
+module my.empty {
+	proposals extends TestProposalCreator {
+	}
+}
+'''
+
+	def viewerContentProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -345,6 +454,16 @@ module my.empty {
 			Writer writer -> writer.books
 			Book -> author // implit 'it' param
 		}
+	}
+}
+'''
+
+	def viewerContentProviderWithExtends() 
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestViewerContentProvider
+
+module my.empty {
+	viewerContentProvider extends TestViewerContentProvider {
 	}
 }
 '''
@@ -398,22 +517,6 @@ module my.test {
 }
 '''
 
-	def tableFeaturesSpecifications() 
-'''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
-
-module my.empty {
-	tableFeaturesProvider {
-		features {
-			Library -> name
-			Writer -> firstName, lastName, books
-		}
-	}
-}
-'''
-
-
 	def treeFormFactory() 
 '''
 module my.test.project {
@@ -423,7 +526,17 @@ module my.test.project {
 		horizontal
 	}
 }
+'''
 
+	def treeFormFactoryWithExtends() 
+'''
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestTreeFormFactory
+
+module my.test.project {
+	treeFormFactory extends TestTreeFormFactory {
+		horizontal
+	}
+}
 '''
 
 	def treeFormFactoryWithWeights() 

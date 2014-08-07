@@ -58,7 +58,7 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 
 	@Test
 	def void testLabelSpecificationsForColumns() {
-		inputs.labelSpecificationsForColumns.parseAndAssertNoError
+		inputs.tableLabelProvider.parseAndAssertNoError
 	}
 	
 	
@@ -69,17 +69,17 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	
 	@Test
 	def void testPropertyDescriptionSpecifications() {
-		inputs.propertyDescriptionSpecifications.parseAndAssertNoError
+		inputs.featureCaptionProvider.parseAndAssertNoError
 	}
 
 	@Test
 	def void testFormPropertyDescriptionSpecifications() {
-		inputs.formPropertyDescriptionSpecifications.parseAndAssertNoError
+		inputs.formFeatureCaptionProvider.parseAndAssertNoError
 	}
 
 	@Test
 	def void testDialogPropertyDescriptionSpecifications() {
-		inputs.dialogPropertyDescriptionSpecifications.parseAndAssertNoError
+		inputs.dialogFeatureCaptionProvider.parseAndAssertNoError
 	}
 
 	@Test
@@ -99,7 +99,7 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	
 	@Test
 	def void testFeaturesSpecifications() {
-		inputs.featuresSpecifications.parseAndAssertNoError
+		inputs.featuresProvider.parseAndAssertNoError
 	}
 
 	@Test
@@ -114,12 +114,12 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 
 	@Test
 	def void testProposalsSpecifications() {
-		inputs.proposalsSpecifications.parseAndAssertNoError
+		inputs.proposalCreator.parseAndAssertNoError
 	}
 
 	@Test
 	def void testViewerContentProviderSpecifications() {
-		inputs.viewerContentProviderSpecifications.parseAndAssertNoError
+		inputs.viewerContentProvider.parseAndAssertNoError
 	}
 
 	@Test

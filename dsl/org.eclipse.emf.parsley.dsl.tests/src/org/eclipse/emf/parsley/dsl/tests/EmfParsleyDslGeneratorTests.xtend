@@ -291,8 +291,8 @@ public class LabelProviderGen extends TestLabelProvider {
 
 	
 	@Test
-	def testLabelSpecificationsForColumns() {
-		inputs.labelSpecificationsForColumns.assertCorrectJavaCodeGeneration(
+	def testTableLabelProvider() {
+		inputs.tableLabelProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedTableLabelProvider = 
 '''
@@ -337,11 +337,27 @@ public class TableLabelProviderGen extends TableColumnLabelProvider {
 ''']
 		)
 	}
-	
 
 	@Test
-	def testPropertyDescriptionSpecifications() {
-		inputs.propertyDescriptionSpecifications.assertCorrectJavaCodeGeneration(
+	def testTableLabelProviderWithExtends() {
+		inputs.tableLabelProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedTableLabelProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableColumnLabelProvider;
+
+@SuppressWarnings("all")
+public class TableLabelProviderGen extends TestTableColumnLabelProvider {
+}
+''']
+		)
+	}
+
+	@Test
+	def testFeatureCaptionProvider() {
+		inputs.featureCaptionProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule = 
 '''
@@ -393,8 +409,57 @@ public class FeatureCaptionProviderGen extends FeatureCaptionProvider {
 	}
 
 	@Test
-	def testFormPropertyDescriptionSpecifications() {
-		inputs.formPropertyDescriptionSpecifications.assertCorrectJavaCodeGeneration(
+	def testFeatureCaptionProviderWithExtends() {
+		inputs.featureCaptionProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule = 
+'''
+package my.empty;
+
+import my.empty.ui.provider.FeatureCaptionProviderGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
+    return FeatureCaptionProviderGen.class;
+  }
+}
+'''
+expectedFeatureCaptionProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeatureCaptionProvider;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+
+@SuppressWarnings("all")
+public class FeatureCaptionProviderGen extends TestFeatureCaptionProvider {
+  public String text_Library_name(final EStructuralFeature it) {
+    return "Name";
+  }
+  
+  public String text_Writer_lastName(final EStructuralFeature it) {
+    String _name = it.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    return _firstUpper;
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testFormFeatureCaptionProvider() {
+		inputs.formFeatureCaptionProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule = 
 '''
@@ -475,8 +540,25 @@ public class FormFeatureCaptionProviderGen extends FormFeatureCaptionProvider {
 	}
 
 	@Test
-	def testDialogPropertyDescriptionSpecifications() {
-		inputs.dialogPropertyDescriptionSpecifications.assertCorrectJavaCodeGeneration(
+	def testFormFeatureCaptionProviderWithExtends() {
+		inputs.formFeatureCaptionProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedFormFeatureCaptionProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormFeatureCaptionProvider;
+
+@SuppressWarnings("all")
+public class FormFeatureCaptionProviderGen extends TestFormFeatureCaptionProvider {
+}
+''']
+		)
+	}
+
+	@Test
+	def testDialogFeatureCaptionProvider() {
+		inputs.dialogFeatureCaptionProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule = 
 '''
@@ -557,8 +639,25 @@ public class DialogFeatureCaptionProviderGen extends DialogFeatureCaptionProvide
 	}
 
 	@Test
-	def testFeaturesSpecifications() {
-		inputs.featuresSpecifications.assertCorrectJavaCodeGeneration(
+	def testDialogFeatureCaptionProviderWithExtends() {
+		inputs.dialogFeatureCaptionProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedDialogFeatureCaptionProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogFeatureCaptionProvider;
+
+@SuppressWarnings("all")
+public class DialogFeatureCaptionProviderGen extends TestDialogFeatureCaptionProvider {
+}
+''']
+		)
+	}
+
+	@Test
+	def testFeaturesProvider() {
+		inputs.featuresProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule =
 '''
@@ -605,8 +704,31 @@ public class FeaturesProviderGen extends FeaturesProvider {
 	}
 
 	@Test
-	def testTableFeaturesSpecifications() {
-		inputs.tableFeaturesSpecifications.assertCorrectJavaCodeGeneration(
+	def testFeaturesProviderWithExtends() {
+		inputs.featuresProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedFeaturesProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeaturesProvider;
+import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
+
+@SuppressWarnings("all")
+public class FeaturesProviderGen extends TestFeaturesProvider {
+  @Override
+  public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
+    super.buildStringMap(stringMap);
+    
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testTableFeaturesProvider() {
+		inputs.tableFeaturesProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule =
 '''
@@ -646,6 +768,29 @@ public class TableFeaturesProviderGen extends TableFeaturesProvider {
       "name");
     stringMap.mapTo("org.eclipse.emf.parsley.examples.library.Writer",
       "firstName", "lastName", "books");
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testTableFeaturesProviderWithExtends() {
+		inputs.tableFeaturesProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedTableFeaturesProvider = 
+'''
+package my.empty.ui.provider;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableFeaturesProvider;
+import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
+
+@SuppressWarnings("all")
+public class TableFeaturesProviderGen extends TestTableFeaturesProvider {
+  @Override
+  public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
+    super.buildStringMap(stringMap);
+    
   }
 }
 ''']
@@ -765,6 +910,23 @@ public class FormControlFactoryGen extends FormControlFactory {
 	}
 
 	@Test
+	def testFormControlFactoryWithExtends() {
+		inputs.formControlFactoryWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedFormControlFactory =
+'''
+package my.empty.binding;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormControlFactory;
+
+@SuppressWarnings("all")
+public class FormControlFactoryGen extends TestFormControlFactory {
+}
+''']
+		)
+	}
+
+	@Test
 	def testDialogControlFactory() {
 		inputs.dialogControlFactory.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -875,8 +1037,25 @@ public class DialogControlFactoryGen extends DialogControlFactory {
 	}
 
 	@Test
-	def testViewerContentProviderSpecifications() {
-		inputs.viewerContentProviderSpecifications.assertCorrectJavaCodeGeneration(
+	def testDialogControlFactoryWithExtends() {
+		inputs.dialogControlFactoryWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedDialogControlFactory =
+'''
+package my.empty.binding;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogControlFactory;
+
+@SuppressWarnings("all")
+public class DialogControlFactoryGen extends TestDialogControlFactory {
+}
+''']
+		)
+	}
+
+	@Test
+	def testViewerContentProvider() {
+		inputs.viewerContentProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule =
 '''
@@ -952,8 +1131,31 @@ public class ViewerContentProviderGen extends ViewerContentProvider {
 	}
 
 	@Test
-	def testProposalSpecifications() {
-		inputs.proposalsSpecifications.assertCorrectJavaCodeGeneration(
+	def testViewerContentProviderWithExtends() {
+		inputs.viewerContentProviderWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedViewerContentProvider =
+'''
+package my.empty.edit.ui.provider;
+
+import com.google.inject.Inject;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestViewerContentProvider;
+
+@SuppressWarnings("all")
+public class ViewerContentProviderGen extends TestViewerContentProvider {
+  @Inject
+  public ViewerContentProviderGen(final AdapterFactory adapterFactory) {
+    super(adapterFactory);
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testProposalCreator() {
+		inputs.proposalCreator.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedModule =
 '''
@@ -1043,6 +1245,23 @@ public class ProposalCreatorGen extends ProposalCreator {
 	}
 
 	@Test
+	def testProposalCreatorWithExtends() {
+		inputs.proposalCreatorWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedProposalCreator =
+'''
+package my.empty.binding;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestProposalCreator;
+
+@SuppressWarnings("all")
+public class ProposalCreatorGen extends TestProposalCreator {
+}
+''']
+		)
+	}
+
+	@Test
 	def testViewsSpecifications() {
 		inputs.multipleViewsSpecifications.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -1087,8 +1306,7 @@ expectedPluginXmlGen =
 		])
 	}
 
-	
-@Test
+	@Test
 	def testTreeFormFactory() {
 		inputs.treeFormFactory.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -1112,6 +1330,29 @@ public class TreeFormFactoryGen extends TreeFormFactory {
 		)
 	}
 
+	@Test
+	def testTreeFormFactoryWithExtends() {
+		inputs.treeFormFactoryWithExtends.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedTreeFormFactory = 
+'''
+package my.test.project.factory;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestTreeFormFactory;
+import org.eclipse.emf.parsley.widgets.TreeFormComposite;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+
+@SuppressWarnings("all")
+public class TreeFormFactoryGen extends TestTreeFormFactory {
+  public TreeFormComposite createComposite(final Composite parent, final int style) {
+    TreeFormComposite control = new TreeFormComposite (parent,	style, SWT.HORIZONTAL, new int[0]);
+    return control;
+  }
+}
+''']
+		)
+	}
 
 	
 	@Test

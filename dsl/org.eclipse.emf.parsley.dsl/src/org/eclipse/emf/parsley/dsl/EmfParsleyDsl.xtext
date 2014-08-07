@@ -60,7 +60,7 @@ LabelProvider:
 ;
 
 TableLabelProvider:
-	{TableLabelProvider} 'tableLabelProvider' '{'
+	{TableLabelProvider} 'tableLabelProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'text' '{'
 			labelSpecifications+=FeatureAssociatedExpression*
@@ -83,7 +83,7 @@ LabelSpecification:
 
 
 FeatureCaptionProvider:
-	{FeatureCaptionProvider} 'featureCaptionProvider' '{'
+	{FeatureCaptionProvider} 'featureCaptionProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'text' '{'
 			specifications+=FeatureAssociatedExpression*
@@ -93,7 +93,7 @@ FeatureCaptionProvider:
 ;
 
 FormFeatureCaptionProvider:
-	{FormFeatureCaptionProvider} 'formFeatureCaptionProvider' '{'
+	{FormFeatureCaptionProvider} 'formFeatureCaptionProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'text' '{'
 			specifications+=FeatureAssociatedExpression*
@@ -109,7 +109,7 @@ FormFeatureCaptionProvider:
 ;
 
 DialogFeatureCaptionProvider:
-	{DialogFeatureCaptionProvider} 'dialogFeatureCaptionProvider' '{'
+	{DialogFeatureCaptionProvider} 'dialogFeatureCaptionProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'text' '{'
 			specifications+=FeatureAssociatedExpression*
@@ -140,7 +140,7 @@ FeatureAssociatedExpression:
 ;
 
 FeaturesProvider:
-	{FeaturesProvider} 'featuresProvider' '{'
+	{FeaturesProvider} 'featuresProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'features' '{'
 			featureSpecifications+=FeatureSpecification*
@@ -151,7 +151,7 @@ FeaturesProvider:
 
 
 TableFeaturesProvider:
-	{TableFeaturesProvider} 'tableFeaturesProvider' '{'
+	{TableFeaturesProvider} 'tableFeaturesProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'features' '{'
 			featureSpecifications+=FeatureSpecification*
@@ -172,7 +172,7 @@ FeatureSpecification:
 ;
 
 FormControlFactory:
-	{FormControlFactory} 'formControlFactory' '{'
+	{FormControlFactory} 'formControlFactory' (extendsClause=ExtendsClause)? '{'
 		(
 		'control' '{'
 			controlSpecifications+=ControlFactorySpecification*
@@ -182,7 +182,7 @@ FormControlFactory:
 ;
 
 DialogControlFactory:
-	{DialogControlFactory} 'dialogControlFactory' '{'
+	{DialogControlFactory} 'dialogControlFactory' (extendsClause=ExtendsClause)? '{'
 		(
 		'control' '{'
 			controlSpecifications+=ControlFactorySpecification*
@@ -203,13 +203,13 @@ ControlFactorySpecification:
 ;
 
 ProposalCreator:
-	{ProposalCreator} 'proposals' '{'
+	{ProposalCreator} 'proposals' (extendsClause=ExtendsClause)? '{'
 		proposalsSpecifications+=FeatureAssociatedExpression*
 	'}'
 ;
 
 ViewerContentProvider:
-	{ViewerContentProvider} 'viewerContentProvider' '{'
+	{ViewerContentProvider} 'viewerContentProvider' (extendsClause=ExtendsClause)? '{'
 		((
 		'elements' '{'
 			elementsSpecifications+=LabelSpecification*
@@ -233,7 +233,9 @@ EmfFeatureAccess:
 
 // a utility base class for rules with 'extends' clause
 WithExtendsClause:
-	Module | LabelProvider
+	Module | LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
+	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |
+	TreeFormFactory
 ;
 
 PartsSpecifications:
@@ -253,7 +255,7 @@ ViewSpecification:
 ;
 
 TreeFormFactory:
-	{TreeFormFactory} 'treeFormFactory' '{'
+	{TreeFormFactory} 'treeFormFactory' (extendsClause=ExtendsClause)? '{'
 		orientation = TreeFormOrientation
 		('(' treeWeight = INT ':' formWeight = INT ')')?
 	'}'
