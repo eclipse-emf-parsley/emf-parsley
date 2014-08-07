@@ -1321,7 +1321,8 @@ import org.eclipse.swt.widgets.Composite;
 
 @SuppressWarnings("all")
 public class TreeFormFactoryGen extends TreeFormFactory {
-  public TreeFormComposite createComposite(final Composite parent, final int style) {
+  @Override
+  protected TreeFormComposite createComposite(final Composite parent, final int style) {
     TreeFormComposite control = new TreeFormComposite (parent,	style, SWT.HORIZONTAL, new int[0]);
     return control;
   }
@@ -1345,7 +1346,8 @@ import org.eclipse.swt.widgets.Composite;
 
 @SuppressWarnings("all")
 public class TreeFormFactoryGen extends TestTreeFormFactory {
-  public TreeFormComposite createComposite(final Composite parent, final int style) {
+  @Override
+  protected TreeFormComposite createComposite(final Composite parent, final int style) {
     TreeFormComposite control = new TreeFormComposite (parent,	style, SWT.HORIZONTAL, new int[0]);
     return control;
   }
@@ -1370,7 +1372,8 @@ import org.eclipse.swt.widgets.Composite;
 
 @SuppressWarnings("all")
 public class TreeFormFactoryGen extends TreeFormFactory {
-  public TreeFormComposite createComposite(final Composite parent, final int style) {
+  @Override
+  protected TreeFormComposite createComposite(final Composite parent, final int style) {
     TreeFormComposite control = new TreeFormComposite (parent,	style, SWT.VERTICAL, new int[] {2,1});
     return control;
   }
