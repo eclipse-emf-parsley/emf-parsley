@@ -262,8 +262,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					annotations += element.toAnnotation(typeof(Inject))
 				]
 				
-				labelProvider.labelSpecifications.forEach [
-					labelSpecification |
+				for (labelSpecification : labelProvider.labelSpecifications) {
 					members += labelSpecification.toMethod("text", element.newTypeRef(typeof(String))) [
 						parameters += labelSpecification.toParameter(
 							if (labelSpecification.name != null)
@@ -274,10 +273,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						)
 						body = labelSpecification.expression
 					]
-				]
+				}
 				
-				labelProvider.imageSpecifications.forEach [
-					imageSpecification |
+				for (imageSpecification : labelProvider.imageSpecifications) {
 					members += imageSpecification.toMethod("image", element.newTypeRef(typeof(Object))) [
 						parameters += imageSpecification.toParameter(
 							if (imageSpecification.name != null)
@@ -288,7 +286,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						)
 						body = imageSpecification.expression
 					]
-				]
+				}
 			]
 			labelProviderClass
 		}
@@ -303,8 +301,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(tableLabelProviderClass).initializeLater [
 				setSuperClassType(tableLabelProvider, typeof(TableColumnLabelProvider))
 					
-				tableLabelProvider.labelSpecifications.forEach [
-					labelSpecification |
+				for (labelSpecification : tableLabelProvider.labelSpecifications) {
 					if (labelSpecification.feature?.simpleName != null) {
 						members += labelSpecification.toMethod("text_" + 
 							labelSpecification.parameterType.simpleName + "_" +
@@ -318,10 +315,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 							body = labelSpecification.expression
 						]
 					}
-				]
+				}
 			
-				tableLabelProvider.imageSpecifications.forEach [
-					imageSpecification |
+				for (imageSpecification : tableLabelProvider.imageSpecifications) {
 					if (imageSpecification.feature?.simpleName != null) {
 						members += imageSpecification.toMethod("image_" + 
 							imageSpecification.parameterType.simpleName + "_" +
@@ -334,7 +330,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 							body = imageSpecification.expression
 						]
 					}
-				]
+				}
 			]
 			tableLabelProviderClass
 		}
@@ -574,8 +570,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					annotations += element.toAnnotation(typeof(Inject))
 				]
 				
-				viewerContentProvider.elementsSpecifications.forEach [
-					specification |
+				for (specification : viewerContentProvider.elementsSpecifications) {
 					members += specification.toMethod("elements", element.newTypeRef(typeof(Object))) [
 						parameters += specification.toParameter(
 							if (specification.name != null)
@@ -586,10 +581,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						)
 						body = specification.expression
 					]
-				]
+				}
 				
-				viewerContentProvider.childrenSpecifications.forEach [
-					specification |
+				for (specification : viewerContentProvider.childrenSpecifications) {
 					members += specification.toMethod("children", element.newTypeRef(typeof(Object))) [
 						parameters += specification.toParameter(
 							if (specification.name != null)
@@ -600,7 +594,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						)
 						body = specification.expression
 					]
-				]
+				}
 			]
 			viewerContentProviderClass
 		}
@@ -615,8 +609,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(proposalCreatorClass).initializeLater [
 				setSuperClassType(proposalCreator, typeof(ProposalCreator))
 				
-				proposalCreator.proposalsSpecifications.forEach [
-					spec |
+				for (spec : proposalCreator.proposalsSpecifications) {
 					if (spec.feature?.simpleName != null) {
 						// associate the method to the expression, not to the whole
 						// specification, otherwise the 'feature' is logically
@@ -637,7 +630,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 							body = spec.expression
 						]
 					}
-				]
+				}
 			]
 			proposalCreatorClass
 		}
