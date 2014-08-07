@@ -243,6 +243,38 @@
 		</profile>
 
 		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+	
+			<modules>
+				<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
+
+				<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
+
+				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
+				<module>../../plugins/org.eclipse.emf.parsley</module>
+				<module>../../plugins/org.eclipse.emf.parsley.views</module>
+				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
+				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
+				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
+
+				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
+			</modules>
+
+			<properties>
+				<target-file-name>luna</target-file-name>
+			</properties>
+		</profile>
+
+		<profile>
 			<id>eclipse-sign</id>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
