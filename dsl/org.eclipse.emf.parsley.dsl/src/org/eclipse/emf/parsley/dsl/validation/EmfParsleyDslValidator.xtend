@@ -11,11 +11,16 @@
 package org.eclipse.emf.parsley.dsl.validation
 
 import com.google.inject.Inject
-import org.eclipse.xtext.validation.Check
-import org.eclipse.emf.parsley.dsl.model.ViewSpecification
-import org.eclipse.emf.parsley.dsl.model.ModelPackage
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
-import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.emf.parsley.dsl.model.ModelPackage
+import org.eclipse.emf.parsley.dsl.model.ViewSpecification
+import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.validation.Check
+
+import static extension org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslExpectedSuperTypes.*
 
 //import org.eclipse.xtext.validation.Check
 
@@ -26,46 +31,43 @@ import org.eclipse.emf.parsley.dsl.model.Module
  */
 class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
-	public static val NOT_I_VIEW_PART = "org.eclipse.emf.parsley.dsl.NotIViewPart";
-
-	public static val NOT_EOBJECT = "org.eclipse.emf.parsley.dsl.NotEObject";
-
-	public static val NOT_EMFCOMPONENTS_MODULE = "org.eclipse.emf.parsley.dsl.NotEmfParsleyGuiceModule";
+	public static val TYPE_MISMATCH = "org.eclipse.emf.parsley.dsl.TypeMismatch";
 
 	@Inject EmfParsleyDslTypeSystem typeSystem
 
 	@Check
 	def void checkViewSpecification(ViewSpecification viewSpecification) {
-		if (viewSpecification.getType() != null
-				&& !typeSystem.isViewPart(viewSpecification.getType(),
-						viewSpecification)) {
-			error("Must be an IViewPart",
-					ModelPackage.Literals.VIEW_SPECIFICATION__TYPE,
-					NOT_I_VIEW_PART);
-		}
+		checkType(viewSpecification, 
+			viewSpecification.type, viewSpecification.expectedSupertype, 
+			ModelPackage.Literals.VIEW_SPECIFICATION__TYPE)
 	}
 
 	@Check
 	def void checkEmfFeatureAccess(EmfFeatureAccess emfFeatureAccess) {
-		if (emfFeatureAccess.getParameterType() != null
-				&& !typeSystem.isEObject(emfFeatureAccess.getParameterType(),
-						emfFeatureAccess)) {
-			error("Must be an EObject derived class",
-					ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE,
-					NOT_EOBJECT);
-		}
+		checkType(emfFeatureAccess, 
+			emfFeatureAccess.parameterType, emfFeatureAccess.expectedSupertype, 
+			ModelPackage.Literals.EMF_FEATURE_ACCESS__PARAMETER_TYPE)
 	}
 
 	@Check
-	def void checkModuleExtends(Module module) {
-		if (module.getExtendsClause() != null
-				&& module.getExtendsClause().getSuperType() != null
-				&& !typeSystem.isEmfParsleyGuiceModule(module
-						.getExtendsClause().getSuperType(), module)) {
-			error("Must be an EmfParsleyGuiceModule derived class",
-					module.getExtendsClause(),
-					ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE,
-					NOT_EMFCOMPONENTS_MODULE);
+	def void checkExtendsClause(WithExtendsClause withExtendsClause) {
+		if (withExtendsClause.getExtendsClause() != null) {
+			checkType(withExtendsClause.extendsClause, 
+				withExtendsClause.extendsClause.superType, withExtendsClause.expectedSupertype, 
+				ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE)
+		}
+	}
+
+	def protected checkType(EObject context, JvmTypeReference actualType, Class<?> expectedType,
+			EStructuralFeature feature) {
+		if (actualType != null) {
+			if (!typeSystem.isConformant(context, expectedType, actualType)) {
+				error("Type mismatch: cannot convert from " + actualType.simpleName +
+					" to " + expectedType.simpleName,
+					context,
+					feature,
+					TYPE_MISMATCH);
+			}
 		}
 	}
 }

@@ -124,10 +124,6 @@ DialogFeatureCaptionProvider:
 	'}'
 ;
 
-AbstractFeatureCaptionProviderWithLabel:
-	FormFeatureCaptionProvider | DialogFeatureCaptionProvider
-;
-
 /**
  * Specify an XExpression associated to an EStructuralFeature
  * (actually we associated to the Java get method in the generated code, which
@@ -160,11 +156,6 @@ TableFeaturesProvider:
 	'}'
 ;
 
-AbstractFeatureProvider:
-	FeaturesProvider | TableFeaturesProvider
-;
-
-
 FeatureSpecification:
 	parameterType=JvmTypeReference
 	'->'
@@ -189,10 +180,6 @@ DialogControlFactory:
 		'}'
 		)?
 	'}'
-;
-
-AbstractControlFactory:
-	FormControlFactory | DialogControlFactory
 ;
 
 ControlFactorySpecification:
@@ -225,13 +212,30 @@ ViewerContentProvider:
 ;
 
 // a utility base class for rules which access features of an EClass
+// IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
 EmfFeatureAccess:
 	FeatureAssociatedExpression |
 	FeatureSpecification |
 	ControlFactorySpecification
 ;
 
+// IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
+AbstractFeatureCaptionProviderWithLabel:
+	FormFeatureCaptionProvider | DialogFeatureCaptionProvider
+;
+
+// IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
+AbstractFeatureProvider:
+	FeaturesProvider | TableFeaturesProvider
+;
+
+// IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
+AbstractControlFactory:
+	FormControlFactory | DialogControlFactory
+;
+
 // a utility base class for rules with 'extends' clause
+// IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
 WithExtendsClause:
 	Module | LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
 	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |

@@ -12,9 +12,6 @@ package org.eclipse.emf.parsley.dsl.validation
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.ui.IViewPart
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.typing.XbaseTypeConformanceComputer
@@ -30,24 +27,9 @@ class EmfParsleyDslTypeSystem {
 			JvmTypeReference actual) {
 		conformanceComputer.isConformant(expected, actual);
 	}
+
+	def isConformant(EObject context, Class<?> expected, JvmTypeReference actual) {
+		isConformant(typeReferences.getTypeForName(expected, context), actual);
+	}
 	
-	def isEObject(JvmTypeReference type, EObject context) {
-		isConformant(
-				typeReferences.getTypeForName(typeof(EObject), context), type);
-	}
-
-	def isEStructuralFeature(JvmTypeReference type, EObject context) {
-		isConformant(typeReferences.getTypeForName(
-				typeof(EStructuralFeature), context), type);
-	}
-
-	def isViewPart(JvmTypeReference type, EObject context) {
-		isConformant(typeReferences.getTypeForName(
-				typeof(IViewPart), context), type);
-	}
-
-	def isEmfParsleyGuiceModule(JvmTypeReference type, EObject context) {
-		isConformant(typeReferences.getTypeForName(
-				typeof(EmfParsleyGuiceModule), context), type);
-	}
 }

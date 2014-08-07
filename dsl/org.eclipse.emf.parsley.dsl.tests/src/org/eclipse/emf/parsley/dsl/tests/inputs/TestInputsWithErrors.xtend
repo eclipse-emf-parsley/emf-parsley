@@ -81,12 +81,11 @@ module my.empty {
 
 	def notValidModuleExtends() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
-import org.eclipse.emf.parsley.views.*
+import org.eclipse.emf.parsley.examples.library.Library
 
 module my.empty extends Library {
 
 }
 '''
+
 }
