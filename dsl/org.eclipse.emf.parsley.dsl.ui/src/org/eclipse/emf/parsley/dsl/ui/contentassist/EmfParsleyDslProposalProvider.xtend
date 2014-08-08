@@ -10,49 +10,32 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.contentassist
 
-import org.eclipse.emf.parsley.dsl.ui.contentassist.AbstractEmfParsleyDslProposalProvider
 import com.google.inject.Inject
-import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider
-import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.Assignment
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.xtext.common.types.TypesPackage
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification
-import org.eclipse.ui.IViewPart
+import org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslExpectedSuperTypes
+import org.eclipse.xtext.Assignment
+import org.eclipse.xtext.common.types.TypesPackage
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider
+import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
 
 /**
  * see http://www.eclipse.org/Xtext/documentation.html#contentAssist on how to customize content assistant
  */
 class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvider {
-	@Inject
-	private ITypesProposalProvider typeProposalProvider;
+	@Inject ITypesProposalProvider typeProposalProvider;
 
-	@Inject
-    IJvmTypeProvider.Factory typeProviderFactory;
-
-//	@Override
-//	public void completeJvmParameterizedTypeReference_Type(EObject model,
-//			Assignment assignment, ContentAssistContext context,
-//			ICompletionProposalAcceptor acceptor) {
-//		boolean showOnlySubtypesOf = 
-//				showOnlySubtypesOf(model,
-//					ViewSpecification.class, context, acceptor, IViewPart.class)
-//				;
-//		if (!showOnlySubtypesOf) {
-//			super.completeJvmParameterizedTypeReference_Type(model, assignment, context,
-//				acceptor);
-//		}
-//	}
-
+	@Inject IJvmTypeProvider.Factory typeProviderFactory;
 	
+	@Inject extension EmfParsleyDslExpectedSuperTypes
+
 	override void completeViewSpecification_Type(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		showOnlySubtypesOf(model, context, acceptor, IViewPart);
+		showOnlySubtypesOf(model, context, acceptor, model.expectedSupertype);
 	}
 
 	override void completeFeatureAssociatedExpression_ParameterType(
@@ -76,13 +59,13 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 	override void completeExtendsClause_SuperType(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-		showOnlySubtypesOf(model, context, acceptor,
-				EmfParsleyGuiceModule);
+		// we must take the expected supertype of the container of the extends clause object
+		showOnlySubtypesOf(model, context, acceptor, model.eContainer.expectedSupertype);
 	}
 
 	def protected void showSubtypesOfEObjectForEmfFeatureAccess(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		showOnlySubtypesOf(model, context, acceptor, EObject);
+		showOnlySubtypesOf(model, context, acceptor, model.expectedSupertype);
 	}
 
 	def protected void showOnlySubtypesOf(EObject model,
