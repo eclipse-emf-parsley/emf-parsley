@@ -14,3 +14,5 @@ hs_*.log
 
 buildroot/
 buildroot-RAP/
+
+org.sonar.ide.eclipse.core.prefs
