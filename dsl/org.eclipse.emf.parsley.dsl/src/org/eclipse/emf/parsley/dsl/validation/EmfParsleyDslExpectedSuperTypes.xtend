@@ -29,6 +29,7 @@ import org.eclipse.ui.IViewPart
 import static org.eclipse.emf.parsley.dsl.model.ModelPackage.Literals.*
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.factories.TreeFormFactory
+import com.google.inject.Singleton
 
 /**
  * Utility class that associates to each DSL element that can 'extends'
@@ -50,33 +51,31 @@ import org.eclipse.emf.parsley.factories.TreeFormFactory
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  */
+@Singleton
 class EmfParsleyDslExpectedSuperTypes {
-	
-	val static EXPECTED_SUPERTYPES = new HashMap<EClass, Class<?>>
-	
-	private new() {
-		
+
+	val expected = new HashMap<EClass, Class<?>>
+
+	new() {
+		expected.put(MODULE, EmfParsleyGuiceModule)
+		expected.put(VIEW_SPECIFICATION, IViewPart)
+		expected.put(FEATURE_ASSOCIATED_EXPRESSION, EObject)
+		expected.put(CONTROL_FACTORY_SPECIFICATION, EObject)
+		expected.put(LABEL_PROVIDER, ViewerLabelProvider)
+		expected.put(TABLE_LABEL_PROVIDER, TableColumnLabelProvider)
+		expected.put(FEATURE_CAPTION_PROVIDER, FeatureCaptionProvider)
+		expected.put(FORM_FEATURE_CAPTION_PROVIDER, FormFeatureCaptionProvider)
+		expected.put(DIALOG_FEATURE_CAPTION_PROVIDER, DialogFeatureCaptionProvider)
+		expected.put(FEATURES_PROVIDER, FeaturesProvider)
+		expected.put(TABLE_FEATURES_PROVIDER, TableFeaturesProvider)
+		expected.put(FORM_CONTROL_FACTORY, FormControlFactory)
+		expected.put(DIALOG_CONTROL_FACTORY, DialogControlFactory)
+		expected.put(PROPOSAL_CREATOR, ProposalCreator)
+		expected.put(VIEWER_CONTENT_PROVIDER, ViewerContentProvider)
+		expected.put(TREE_FORM_FACTORY, TreeFormFactory)
 	}
-	
-	def static getExpectedSupertype(EObject element) {
-		if (EXPECTED_SUPERTYPES.empty) {
-			EXPECTED_SUPERTYPES.put(MODULE, EmfParsleyGuiceModule)
-			EXPECTED_SUPERTYPES.put(VIEW_SPECIFICATION, IViewPart)
-			EXPECTED_SUPERTYPES.put(FEATURE_ASSOCIATED_EXPRESSION, EObject)
-			EXPECTED_SUPERTYPES.put(CONTROL_FACTORY_SPECIFICATION, EObject)
-			EXPECTED_SUPERTYPES.put(LABEL_PROVIDER, ViewerLabelProvider)
-			EXPECTED_SUPERTYPES.put(TABLE_LABEL_PROVIDER, TableColumnLabelProvider)
-			EXPECTED_SUPERTYPES.put(FEATURE_CAPTION_PROVIDER, FeatureCaptionProvider)
-			EXPECTED_SUPERTYPES.put(FORM_FEATURE_CAPTION_PROVIDER, FormFeatureCaptionProvider)
-			EXPECTED_SUPERTYPES.put(DIALOG_FEATURE_CAPTION_PROVIDER, DialogFeatureCaptionProvider)
-			EXPECTED_SUPERTYPES.put(FEATURES_PROVIDER, FeaturesProvider)
-			EXPECTED_SUPERTYPES.put(TABLE_FEATURES_PROVIDER, TableFeaturesProvider)
-			EXPECTED_SUPERTYPES.put(FORM_CONTROL_FACTORY, FormControlFactory)
-			EXPECTED_SUPERTYPES.put(DIALOG_CONTROL_FACTORY, DialogControlFactory)
-			EXPECTED_SUPERTYPES.put(PROPOSAL_CREATOR, ProposalCreator)
-			EXPECTED_SUPERTYPES.put(VIEWER_CONTENT_PROVIDER, ViewerContentProvider)
-			EXPECTED_SUPERTYPES.put(TREE_FORM_FACTORY, TreeFormFactory)
-		}
-		return EXPECTED_SUPERTYPES.get(element.eClass)
+
+	def getExpectedSupertype(EObject element) {
+		return expected.get(element.eClass)
 	}
 }

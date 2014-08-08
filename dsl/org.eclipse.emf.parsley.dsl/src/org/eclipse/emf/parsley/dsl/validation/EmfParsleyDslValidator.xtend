@@ -20,7 +20,6 @@ import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
 
-import static extension org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslExpectedSuperTypes.*
 import org.eclipse.xtext.common.types.JvmGenericType
 import java.util.Set
 
@@ -38,6 +37,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	public static val CYCLIC_INHERITANCE = "org.eclipse.emf.parsley.dsl.CyclicInheritance";
 
 	@Inject EmfParsleyDslTypeSystem typeSystem
+	@Inject extension EmfParsleyDslExpectedSuperTypes
 
 	@Check
 	def void checkViewSpecification(ViewSpecification viewSpecification) {
