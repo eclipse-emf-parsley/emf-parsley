@@ -13,23 +13,21 @@ package org.eclipse.emf.parsley.dsl.typing
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
-import org.eclipse.xtext.common.types.util.TypeReferences
-import org.eclipse.xtext.xbase.typing.XbaseTypeConformanceComputer
+import org.eclipse.xtext.xbase.typesystem.legacy.StandardTypeReferenceOwner
+import org.eclipse.xtext.xbase.typesystem.references.OwnedConverter
+import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices
 
 class EmfParsleyDslTypeSystem {
-	@Inject
-	private XbaseTypeConformanceComputer conformanceComputer
+	@Inject CommonTypeComputationServices services;
 	
-	@Inject
-	private TypeReferences typeReferences
-
-	def isConformant(JvmTypeReference expected,
-			JvmTypeReference actual) {
-		conformanceComputer.isConformant(expected, actual);
-	}
-
 	def isConformant(EObject context, Class<?> expected, JvmTypeReference actual) {
-		isConformant(typeReferences.getTypeForName(expected, context), actual);
+		val actualType = actual.toLightweightTypeReference(context)
+		actualType.isSubtypeOf(expected)
+	}
+	
+	def toLightweightTypeReference(JvmTypeReference typeRef, EObject context) {
+		val converter = new OwnedConverter(new StandardTypeReferenceOwner(services, context))
+		converter.toLightweightReference(typeRef)
 	}
 	
 }
