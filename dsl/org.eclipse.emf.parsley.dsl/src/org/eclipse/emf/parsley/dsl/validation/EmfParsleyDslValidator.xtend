@@ -11,17 +11,17 @@
 package org.eclipse.emf.parsley.dsl.validation
 
 import com.google.inject.Inject
+import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
+import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
+import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
-
-import org.eclipse.xtext.common.types.JvmGenericType
-import java.util.Set
 
 //import org.eclipse.xtext.validation.Check
 

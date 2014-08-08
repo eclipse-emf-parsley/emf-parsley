@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.dsl.validation
+package org.eclipse.emf.parsley.dsl.typing
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject

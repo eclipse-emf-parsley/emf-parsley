@@ -37,6 +37,7 @@ Export-Package: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.dsl.scoping,
  org.eclipse.emf.parsley.dsl.serializer,
  org.eclipse.emf.parsley.dsl.services,
+ org.eclipse.emf.parsley.dsl.typing,
  org.eclipse.emf.parsley.dsl.util,
  org.eclipse.emf.parsley.dsl.validation
 
