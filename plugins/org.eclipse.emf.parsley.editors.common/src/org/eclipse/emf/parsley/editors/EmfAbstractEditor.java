@@ -479,7 +479,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				if (resource.isLoaded()) {
 					resource.unload();
 					try {
-						resource.load(Collections.EMPTY_MAP);
+						resource.load(Collections.emptyMap());
 					} catch (IOException exception) {
 						if (!resourceToDiagnosticMap.containsKey(resource)) {
 							resourceToDiagnosticMap
@@ -682,7 +682,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		@Override
 		public Object[] getElements(Object object) {
 			Object parent = super.getParent(object);
-			return (parent == null ? Collections.EMPTY_SET : Collections
+			return (parent == null ? Collections.emptySet() : Collections
 					.singleton(parent)).toArray();
 		}
 
@@ -694,7 +694,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		@Override
 		public Object[] getChildren(Object object) {
 			Object parent = super.getParent(object);
-			return (parent == null ? Collections.EMPTY_SET : Collections
+			return (parent == null ? Collections.emptySet() : Collections
 					.singleton(parent)).toArray();
 		}
 
@@ -1034,7 +1034,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			@Override
 			protected boolean processResources() {
 				List<URI> uris = getURIs();
-				if (uris.size() > 0) {
+				if (!uris.isEmpty()) {
 					URI uri = uris.get(0);
 					doSaveAs(uri, new URIEditorInput(uri));
 					return true;
