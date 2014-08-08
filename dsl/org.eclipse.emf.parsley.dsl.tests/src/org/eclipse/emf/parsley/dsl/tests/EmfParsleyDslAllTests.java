@@ -28,6 +28,7 @@ import org.junit.runners.Suite;
 	EClassTests.class,
 	EmfParsleyDslGeneratorUtilsTests.class,
 	EmfParsleyDslParserTests.class,
+	EmfParsleyDslSmokeTests.class,
 	EmfParsleyDslScopingTests.class,
 	EmfParsleyDslValidatorTests.class,
 	EmfParsleyDslJvmModelInferrerTests.class,

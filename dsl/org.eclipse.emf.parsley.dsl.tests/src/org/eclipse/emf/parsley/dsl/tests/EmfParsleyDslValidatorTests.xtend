@@ -18,6 +18,7 @@ import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
+import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.examples.library.Library
@@ -33,6 +34,7 @@ import org.eclipse.emf.parsley.views.AbstractSaveableTreeView
 import org.eclipse.ui.IViewPart
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -43,6 +45,7 @@ import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
 class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 
+	@Inject extension ParseHelper<Model>
  	@Inject extension ValidationTestHelper
 
 	@Test
@@ -147,6 +150,65 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 			assertExtendsTypeMismatch(TreeFormFactory)
 	}
 
+	@Test
+	def void testModuleExtendsItself() {
+		'''
+		module my.first extends my.first.EmfParsleyGuiceModuleGen {
+		}
+		'''.parse.assertHierarchyCycle("EmfParsleyGuiceModuleGen")
+	}
+
+	@Test
+	def void testModuleCycleInHierarchy() {
+		val m1 = '''
+		module my.first extends my.second.EmfParsleyGuiceModuleGen {
+		}
+		'''.parse
+		
+		val m2 = '''
+		module my.second extends my.third.EmfParsleyGuiceModuleGen {
+		}
+		'''.parse(m1.eResource.resourceSet)
+		
+		val m3 = '''
+		module my.third extends my.first.EmfParsleyGuiceModuleGen {
+		}
+		'''.parse(m2.eResource.resourceSet)
+		
+		val className = "EmfParsleyGuiceModuleGen"
+		
+		m1.assertHierarchyCycle(className)
+		m2.assertHierarchyCycle(className)
+		m3.assertHierarchyCycle(className)
+	}
+
+	@Test
+	def void testLabelProviderCycleInHierarchy() {
+		val m1 = '''
+		module my.first {
+			labelProvider extends my.second.ui.provider.LabelProviderGen {}
+		}
+		'''.parse
+		
+		val m2 = '''
+		module my.second {
+			labelProvider extends my.third.ui.provider.LabelProviderGen {}
+		}
+		'''.parse(m1.eResource.resourceSet)
+		
+		val m3 = '''
+		module my.third {
+			labelProvider extends my.first.ui.provider.LabelProviderGen {}
+		}
+		'''.parse(m2.eResource.resourceSet)
+		
+		val className = "LabelProviderGen"
+		
+		m1.assertHierarchyCycle(className)
+		m2.assertHierarchyCycle(className)
+		m3.assertHierarchyCycle(className)
+	}
+
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {
 		// the wrong actual type is always Library in these tests
 		'''
@@ -168,6 +230,14 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 			TYPE_MISMATCH,
 			"Type mismatch: cannot convert from " + actualType.simpleName +
 				" to " + expectedType.simpleName
+		)
+	}
+
+	def private assertHierarchyCycle(EObject e, String className) {
+		e.assertError(
+			ModelPackage.eINSTANCE.extendsClause,
+			CYCLIC_INHERITANCE,
+			'''The inheritance hierarchy of «className» contains cycles'''
 		)
 	}
 }

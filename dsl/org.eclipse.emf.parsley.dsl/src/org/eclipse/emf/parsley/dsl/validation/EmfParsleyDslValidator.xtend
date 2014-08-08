@@ -21,6 +21,8 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
 
 import static extension org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslExpectedSuperTypes.*
+import org.eclipse.xtext.common.types.JvmGenericType
+import java.util.Set
 
 //import org.eclipse.xtext.validation.Check
 
@@ -32,6 +34,8 @@ import static extension org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslExpe
 class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val TYPE_MISMATCH = "org.eclipse.emf.parsley.dsl.TypeMismatch";
+	
+	public static val CYCLIC_INHERITANCE = "org.eclipse.emf.parsley.dsl.CyclicInheritance";
 
 	@Inject EmfParsleyDslTypeSystem typeSystem
 
@@ -51,7 +55,9 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	@Check
 	def void checkExtendsClause(WithExtendsClause withExtendsClause) {
-		if (withExtendsClause.getExtendsClause() != null) {
+		if (withExtendsClause.getExtendsClause() != null && !withExtendsClause.hasCycleInHierarchy()) {
+			// it makes no sense to check for type conformance if there's a cycle in the
+			// hierarchy: there will always be a type mismatch in that case
 			checkType(withExtendsClause.extendsClause, 
 				withExtendsClause.extendsClause.superType, withExtendsClause.expectedSupertype, 
 				ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE)
@@ -69,5 +75,36 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 					TYPE_MISMATCH);
 			}
 		}
+	}
+
+	def protected boolean hasCycleInHierarchy(WithExtendsClause withExtendsClause) {
+		val superType = withExtendsClause.extendsClause.superType?.type
+		
+		if (superType instanceof JvmGenericType) {
+			if (superType.hasCycleInHierarchy(newHashSet())) {
+				error("The inheritance hierarchy of " + superType.simpleName + " contains cycles",
+					withExtendsClause.extendsClause,
+					ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE,
+					CYCLIC_INHERITANCE);
+				return true
+			}
+		}
+		
+		return false
+	}
+
+	def protected boolean hasCycleInHierarchy(JvmGenericType type, Set<JvmGenericType> processedSuperTypes) {
+		if (processedSuperTypes.contains(type)) {
+			return true;
+		}
+		processedSuperTypes.add(type);
+		for (JvmTypeReference superTypeRef : type.getSuperTypes()) {
+			if (superTypeRef.getType() instanceof JvmGenericType) {
+				if (hasCycleInHierarchy(superTypeRef.getType() as JvmGenericType, processedSuperTypes))
+					return true;
+			}
+		}
+		processedSuperTypes.remove(type);
+		return false;
 	}
 }
