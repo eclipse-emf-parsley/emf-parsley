@@ -78,4 +78,8 @@ class EmfParsleyDslExpectedSuperTypes {
 	def getExpectedSupertype(EObject element) {
 		return expected.get(element.eClass)
 	}
+
+	def getExpectedSupertype(EClass eClass) {
+		return expected.get(eClass)
+	}
 }
