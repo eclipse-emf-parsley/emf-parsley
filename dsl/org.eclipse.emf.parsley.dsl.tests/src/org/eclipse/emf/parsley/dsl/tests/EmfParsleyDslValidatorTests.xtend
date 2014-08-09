@@ -40,6 +40,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
+import java.util.List
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -59,13 +60,30 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	}
 
 	@Test
-	def void testNotAnEObjectInEmfFeatureAccess() {
-		inputsWithErrors.notAnEObjectInEmfFeatureAccess.parseModel.
-		assertTypeMismatch(
-			ModelPackage.eINSTANCE.emfFeatureAccess,
-			EObject,
-			AbstractSaveableTreeView
-		)
+	def void testNotAnEObjectInFeatureCaptionProvider() {
+		inputsWithErrors.notAnEObjectInFeatureCaptionProvider.parseModel => [
+			assertTypeMismatch(
+				ModelPackage.eINSTANCE.emfFeatureAccess,
+				EObject,
+				AbstractSaveableTreeView
+			)
+			assertTypeMismatch(
+				ModelPackage.eINSTANCE.emfFeatureAccess,
+				EObject,
+				List
+			)
+		]
+	}
+
+	@Test
+	def void testNotAnEObjectInFeaturesProvider() {
+		inputsWithErrors.notAnEObjectInFeaturesProvider.parseModel => [
+			assertTypeMismatch(
+				ModelPackage.eINSTANCE.emfFeatureAccess,
+				EObject,
+				List
+			)
+		]
 	}
 
 	@Test

@@ -59,6 +59,7 @@ class EmfParsleyDslExpectedSuperTypes {
 	new() {
 		expected.put(MODULE, EmfParsleyGuiceModule)
 		expected.put(VIEW_SPECIFICATION, IViewPart)
+		expected.put(FEATURE_SPECIFICATION, EObject)
 		expected.put(FEATURE_ASSOCIATED_EXPRESSION, EObject)
 		expected.put(CONTROL_FACTORY_SPECIFICATION, EObject)
 		expected.put(LABEL_PROVIDER, ViewerLabelProvider)

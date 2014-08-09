@@ -63,7 +63,7 @@ module my.empty {
 }
 '''
 
-	def notAnEObjectInEmfFeatureAccess() 
+	def notAnEObjectInFeatureCaptionProvider() 
 '''
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
@@ -74,6 +74,19 @@ module my.empty {
 		text {
 			List:publicationDate -> 'Publication Date'
 			AbstractSaveableTreeView:lastName -> null
+		}
+	}
+}
+'''
+
+	def notAnEObjectInFeaturesProvider() 
+'''
+import java.util.List
+
+module my.empty {
+	featuresProvider {
+		features {
+			List -> null
 		}
 	}
 }
