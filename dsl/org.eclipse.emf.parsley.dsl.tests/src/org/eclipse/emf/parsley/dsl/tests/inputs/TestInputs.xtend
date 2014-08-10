@@ -198,6 +198,19 @@ module my.empty {
 }
 '''
 
+	def tableLabelProviderWithFields() 
+'''
+import com.google.inject.Inject
+import org.eclipse.jface.viewers.ILabelProvider
+
+module my.empty {
+	tableLabelProvider {
+		@Inject
+		var ILabelProvider parentLabelProvider;
+	}
+}
+'''
+
 	def featureCaptionProvider() 
 '''
 import java.util.*

@@ -423,6 +423,35 @@ public class TableLabelProviderGen extends TestTableColumnLabelProvider {
 	}
 
 	@Test
+	def testTableLabelProviderWithFields() {
+		inputs.tableLabelProviderWithFields.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedTableLabelProvider = 
+'''
+package my.empty.ui.provider;
+
+import com.google.inject.Inject;
+import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
+
+@SuppressWarnings("all")
+public class TableLabelProviderGen extends TableColumnLabelProvider {
+  @Inject
+  private ILabelProvider parentLabelProvider;
+  
+  public ILabelProvider getParentLabelProvider() {
+    return this.parentLabelProvider;
+  }
+  
+  public void setParentLabelProvider(final ILabelProvider parentLabelProvider) {
+    this.parentLabelProvider = parentLabelProvider;
+  }
+}
+''']
+		)
+	}
+
+	@Test
 	def testFeatureCaptionProvider() {
 		inputs.featureCaptionProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [

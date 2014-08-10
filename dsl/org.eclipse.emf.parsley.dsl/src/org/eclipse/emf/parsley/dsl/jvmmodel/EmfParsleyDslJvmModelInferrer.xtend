@@ -180,6 +180,11 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			e.superTypes += e.newTypeRef(defaultSuperClass)
 	}
 
+	def setSuperClassTypeAndFields(JvmGenericType e, WithFields dslElement, Class<?> defaultSuperClass) {
+		e.setSuperClassType(dslElement, defaultSuperClass)
+		e.processFields(dslElement)
+	}
+
 	def processFields(JvmGenericType it, WithFields dslElement) {
 		for (f : dslElement.fields) {
 			var type = f.type
@@ -281,8 +286,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val labelProvider = element.labelProvider
 			val labelProviderClass = labelProvider.toClass(element.labelProviderQN)
 			acceptor.accept(labelProviderClass).initializeLater [
-				setSuperClassType(labelProvider, typeof(ViewerLabelProvider))
-				processFields(labelProvider)
+				setSuperClassTypeAndFields(labelProvider, typeof(ViewerLabelProvider))
 				
 				members += labelProvider.toConstructor() [
 					parameters += labelProvider.
@@ -330,7 +334,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val tableLabelProvider = element.tableLabelProvider
 			val tableLabelProviderClass = tableLabelProvider.toClass(element.tableLabelProviderQN)
 			acceptor.accept(tableLabelProviderClass).initializeLater [
-				setSuperClassType(tableLabelProvider, typeof(TableColumnLabelProvider))
+				setSuperClassTypeAndFields(tableLabelProvider, typeof(TableColumnLabelProvider))
 					
 				for (labelSpecification : tableLabelProvider.labelSpecifications) {
 					if (labelSpecification.feature?.simpleName != null) {
@@ -374,7 +378,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val featureCaptionProvider = element.featureCaptionProvider
 			val propertyDescriptionProviderClass = featureCaptionProvider.toClass(element.featureCaptionProviderQN)
 			acceptor.accept(propertyDescriptionProviderClass).initializeLater [
-				setSuperClassType(featureCaptionProvider, typeof(FeatureCaptionProvider))
+				setSuperClassTypeAndFields(featureCaptionProvider, typeof(FeatureCaptionProvider))
 				
 				inferMethodsForTextPropertyDescription(element, it, featureCaptionProvider.specifications)
 			]
@@ -420,7 +424,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val descriptionProviderClass = element.toClass(name)
 			acceptor.accept(descriptionProviderClass).initializeLater [
-				setSuperClassType(element, superClass)
+				setSuperClassTypeAndFields(element, superClass)
 				
 				inferMethodsForTextPropertyDescription(element, it, element.specifications)
 				
@@ -471,7 +475,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val featureProviderClass = element.toClass(name)
 			acceptor.accept(featureProviderClass).initializeLater [
-				setSuperClassType(element, superClass)
+				setSuperClassTypeAndFields(element, superClass)
 				
 				documentation = element.documentation
 				members += element.
@@ -517,7 +521,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val controlFactoryClass = e.toClass(name)
 			acceptor.accept(controlFactoryClass).initializeLater [
-				setSuperClassType(e, superClass)
+				setSuperClassTypeAndFields(e, superClass)
 				
 				documentation = e.documentation
 				
@@ -590,7 +594,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val viewerContentProvider = element.viewerContentProvider
 			val viewerContentProviderClass = viewerContentProvider.toClass(element.viewerContentProviderQN)
 			acceptor.accept(viewerContentProviderClass).initializeLater [
-				setSuperClassType(viewerContentProvider, typeof(ViewerContentProvider))
+				setSuperClassTypeAndFields(viewerContentProvider, typeof(ViewerContentProvider))
 				
 				members += viewerContentProvider.toConstructor() [
 					parameters += element.viewerContentProvider.
@@ -638,7 +642,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val proposalCreator = element.proposalCreator
 			val proposalCreatorClass = proposalCreator.toClass(element.proposalCreatorQN)
 			acceptor.accept(proposalCreatorClass).initializeLater [
-				setSuperClassType(proposalCreator, typeof(ProposalCreator))
+				setSuperClassTypeAndFields(proposalCreator, typeof(ProposalCreator))
 				
 				for (spec : proposalCreator.proposalsSpecifications) {
 					if (spec.feature?.simpleName != null) {
@@ -674,7 +678,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val treeFormFactory = element.treeFormFactory
 			val treeFormFactoryClass = treeFormFactory.toClass(element.treeFormFactoryQN)
 			acceptor.accept(treeFormFactoryClass).initializeLater [
-				setSuperClassType(treeFormFactory, typeof(TreeFormFactory))
+				setSuperClassTypeAndFields(treeFormFactory, typeof(TreeFormFactory))
 				
 				members += treeFormFactory.toMethod('createComposite',element.newTypeRef(typeof(TreeFormComposite))) [
 						parameters += element.treeFormFactory.toParameter(
