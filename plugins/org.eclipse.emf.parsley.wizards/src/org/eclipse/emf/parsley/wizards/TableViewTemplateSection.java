@@ -67,12 +67,12 @@ public class TableViewTemplateSection extends OptionTemplateSection {
 	
 	@Override
 	protected URL getInstallURL() {
-		return Activator.getDefault().getBundle().getEntry("/");
+		return EmfParsleyWizardsActivator.getDefault().getBundle().getEntry("/");
 	}
 	
 	@Override
 	protected ResourceBundle getPluginResourceBundle() {
-		return Platform.getResourceBundle(Activator.getDefault().getBundle());
+		return Platform.getResourceBundle(EmfParsleyWizardsActivator.getDefault().getBundle());
 	}
 	
 	public void addPages(Wizard wizard) {

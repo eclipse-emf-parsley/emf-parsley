@@ -42,7 +42,7 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${project.basedir}/../../target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.junit.reportsPath>../${project.artifactId}.tests/target/surefire-reports/</sonar.junit.reportsPath>
-		<sonar.exclusions>file:**/src-gen/**,file:**/test/**,file:**/tests/**,file:**/example/**,file:**/examples/**,**/*GuiceModule.java,**/*Dsl*Module.java,**/*ParsleyModule.java</sonar.exclusions>
+		<sonar.exclusions>file:**/src-gen/**,file:**/test/**,file:**/tests/**,file:**/example/**,file:**/examples/**,**/*GuiceModule.java,**/*Dsl*Module.java,**/*ParsleyModule.java,**/*Parsley*Activator.java</sonar.exclusions>
 
 		<findbugs.skip>false</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
