@@ -10,14 +10,22 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.scoping
 
-import com.google.inject.Inject
+import java.beans.Introspector
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider
+import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmType
+import org.eclipse.xtext.common.types.TypesPackage
+import org.eclipse.xtext.naming.QualifiedName
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.scoping.impl.SimpleScope
+import org.eclipse.xtext.xbase.annotations.typesystem.XbaseWithAnnotationsBatchScopeProvider
 
-class EmfParsleyDslXbaseBatchScopeProvider extends XbaseBatchScopeProvider {
-	
-	@Inject extension EmfParsleyDslScopeProviderHelper
+import static extension org.eclipse.emf.parsley.dsl.util.EmfParsleyDslModelUtil.*
+import static extension org.eclipse.xtext.scoping.Scopes.*
+
+class EmfParsleyDslXbaseBatchScopeProvider extends XbaseWithAnnotationsBatchScopeProvider {
 	
 	override getScope(EObject context, EReference reference) {
 		val scope = context.createCustomScope(reference)
@@ -25,5 +33,55 @@ class EmfParsleyDslXbaseBatchScopeProvider extends XbaseBatchScopeProvider {
 		if (scope != null)
 			return scope;
 		super.getScope(context, reference);
+	}
+
+	def IScope createCustomScope(EObject context, EReference reference) {
+		if (reference.EType == TypesPackage::eINSTANCE.jvmMember) {
+			return context.containingEmfFeatureAccess?.
+				parameterType?.type?.customScope
+		}
+
+		return null;
+	}
+	
+	def dispatch IScope customScope(JvmType t) {
+		null
+	}
+
+	def dispatch IScope customScope(JvmGenericType t) {
+		// a JvmMember does not have 'name', but 'simpleName'
+		// thus we must also provide a function for computing the
+		// QualifiedName (the default one relies on 'name')
+		return new SimpleScope(
+			t.allFeatures.filter(typeof(JvmOperation)).filter[!static].
+				scopedElementsFor [
+					if (simpleName.getterMethod)
+						QualifiedName::create
+							(simpleName.propertyNameForGetterMethod)
+					else
+						null
+			]
+		)
+	}
+	
+	def isGetterMethod(String opName) {
+		if ((opName.startsWith("get"))
+				&& opName.length() > 3
+				&& Character::isUpperCase(opName.charAt(3)))
+			return true;
+
+		if (opName.startsWith("is") && opName.length() > 2
+				&& Character::isUpperCase(opName.charAt(2)))
+			return true;
+		return false;
+	}
+	
+	def getPropertyNameForGetterMethod(String opName) {
+		if (opName.startsWith("get") && opName.length() > 3 && Character::isUpperCase(opName.charAt(3)))
+			return Introspector::decapitalize(opName.substring(3));
+
+		if (opName.startsWith("is") && opName.length() > 2 && Character::isUpperCase(opName.charAt(2)))
+			return Introspector::decapitalize(opName.substring(2));
+		return null;
 	}
 }

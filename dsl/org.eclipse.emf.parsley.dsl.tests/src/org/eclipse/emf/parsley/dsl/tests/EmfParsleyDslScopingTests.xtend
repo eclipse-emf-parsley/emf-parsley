@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
-import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslXbaseBatchScopeProvider
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.scoping.IScopeProvider
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -27,7 +27,7 @@ import static org.junit.Assert.*
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
 class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 
-	@Inject extension EmfParsleyDslXbaseBatchScopeProvider
+	@Inject extension IScopeProvider
 
 	@Test
 	def void testFeaturesForLabelSpecifications() {
@@ -39,7 +39,6 @@ class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 				)
 			
 	}
-
 
 	@Test
 	def void testFeaturesForPropertyDescriptionSpecifications() {

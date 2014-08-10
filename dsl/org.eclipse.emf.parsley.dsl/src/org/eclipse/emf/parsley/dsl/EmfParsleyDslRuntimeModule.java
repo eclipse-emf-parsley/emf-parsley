@@ -17,12 +17,10 @@ import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslGenerator;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImplicitlyImportedFeatures;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImportedNamespaceScopeProvider;
-import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslScopeProvider;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslXbaseBatchScopeProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfigurationProvider;
-import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 
@@ -50,11 +48,6 @@ public class EmfParsleyDslRuntimeModule extends org.eclipse.emf.parsley.dsl.Abst
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
 		return EmfParsleyDslGenerator.class;
-	}
-
-	@Override
-	public Class<? extends IScopeProvider> bindIScopeProvider() {
-		return EmfParsleyDslScopeProvider.class;
 	}
 
 	public Class<? extends ImplicitlyImportedFeatures> bindImplicitlyImportedFeatures() {
