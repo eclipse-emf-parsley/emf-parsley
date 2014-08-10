@@ -289,6 +289,41 @@ public class LabelProviderGen extends TestLabelProvider {
 		)
 	}
 
+	@Test
+	def testLabelProviderWithFields() {
+		inputs.labelProviderWithFields.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedLabelProvider = 
+'''
+package my.empty.ui.provider;
+
+import com.google.inject.Inject;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
+
+@SuppressWarnings("all")
+public class LabelProviderGen extends ViewerLabelProvider {
+  @Inject
+  private ILabelProvider parentLabelProvider;
+  
+  public ILabelProvider getParentLabelProvider() {
+    return this.parentLabelProvider;
+  }
+  
+  public void setParentLabelProvider(final ILabelProvider parentLabelProvider) {
+    this.parentLabelProvider = parentLabelProvider;
+  }
+  
+  @Inject
+  public LabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+    super(delegate);
+  }
+}
+''']
+		)
+	}
+
 	
 	@Test
 	def testTableLabelProvider() {

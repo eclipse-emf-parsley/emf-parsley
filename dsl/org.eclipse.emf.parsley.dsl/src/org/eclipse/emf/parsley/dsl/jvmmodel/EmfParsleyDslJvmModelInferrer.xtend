@@ -22,10 +22,15 @@ import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
+import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel
+import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
+import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
+import org.eclipse.emf.parsley.dsl.model.WithFields
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.factories.TreeFormFactory
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
@@ -40,10 +45,13 @@ import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.emf.parsley.widgets.TreeFormComposite
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Control
 import org.eclipse.swt.widgets.Label
 import org.eclipse.ui.plugin.AbstractUIPlugin
+import org.eclipse.xtext.common.types.JvmAnnotationTarget
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -51,16 +59,13 @@ import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.XExpression
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.swt.SWT
-import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
-import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
-import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel
-import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -91,18 +96,18 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	 * 
 	 * @param element
 	 *            the model to create one or more
-	 *            {@link org.eclipse.xtext.common.types.JvmDeclaredType declared
+	 *            {@link JvmDeclaredType declared
 	 *            types} from.
 	 * @param acceptor
 	 *            each created
-	 *            {@link org.eclipse.xtext.common.types.JvmDeclaredType type}
+	 *            {@link JvmDeclaredType type}
 	 *            without a container should be passed to the acceptor in order
 	 *            get attached to the current resource. The acceptor's
 	 *            {@link IJvmDeclaredTypeAcceptor#accept(org.eclipse.xtext.common.types.JvmDeclaredType)
 	 *            accept(..)} method takes the constructed empty type for the
 	 *            pre-indexing phase. This one is further initialized in the
 	 *            indexing phase using the closure you pass to the returned
-	 *            {@link org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing#initializeLater(org.eclipse.xtext.xbase.lib.Procedures.Procedure1)
+	 *            {@link IPostIndexingInitializing#initializeLater(org.eclipse.xtext.xbase.lib.Procedures.Procedure1)
 	 *            initializeLater(..)}.
 	 * @param isPreIndexingPhase
 	 *            whether the method is called in a pre-indexing phase, i.e.
@@ -173,6 +178,30 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
 		else
 			e.superTypes += e.newTypeRef(defaultSuperClass)
+	}
+
+	def processFields(JvmGenericType it, WithFields dslElement) {
+		for (f : dslElement.fields) {
+			var type = f.type
+			val initialExp = f.right
+			if (type == null && initialExp != null) {
+				type = initialExp.inferredType
+			}
+			members += f.toField(f.name, type) => [
+				final = !f.writeable
+				visibility = JvmVisibility.PRIVATE
+				translateAnnotations(f.annotations)
+				initializer = initialExp
+			]
+			members += f.toGetter(f.name, type)
+			if (f.writeable) {
+				members += f.toSetter(f.name, type)
+			}
+		}
+	}
+
+	def void translateAnnotations(JvmAnnotationTarget target, List<XAnnotation> annotations) {
+		annotations.filterNull.filter[annotationType != null].translateAnnotationsTo(target);
 	}
    	
    	def activatorQN(Module element) {
@@ -252,6 +281,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val labelProviderClass = labelProvider.toClass(element.labelProviderQN)
 			acceptor.accept(labelProviderClass).initializeLater [
 				setSuperClassType(labelProvider, typeof(ViewerLabelProvider))
+				processFields(labelProvider)
 				
 				members += labelProvider.toConstructor() [
 					parameters += labelProvider.

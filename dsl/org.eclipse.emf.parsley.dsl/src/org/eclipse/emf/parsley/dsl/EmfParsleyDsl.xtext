@@ -45,6 +45,8 @@ ExtendsClause: 'extends' superType=JvmTypeReference;
 
 LabelProvider:
 	{LabelProvider} 'labelProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+	
 		((
 		'text' '{'
 			labelSpecifications+=LabelSpecification*
@@ -59,8 +61,16 @@ LabelProvider:
 	'}'
 ;
 
+FieldSpecification:
+	annotations+=XAnnotation*
+	(writeable?='var'|'val') extension?='extension'? 
+	(=>(type=JvmTypeReference name=ValidID) | name=ValidID) ('=' right=XExpression)? ';'?
+;
+
 TableLabelProvider:
 	{TableLabelProvider} 'tableLabelProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+	
 		((
 		'text' '{'
 			labelSpecifications+=FeatureAssociatedExpression*
@@ -84,6 +94,8 @@ LabelSpecification:
 
 FeatureCaptionProvider:
 	{FeatureCaptionProvider} 'featureCaptionProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+
 		((
 		'text' '{'
 			specifications+=FeatureAssociatedExpression*
@@ -94,6 +106,8 @@ FeatureCaptionProvider:
 
 FormFeatureCaptionProvider:
 	{FormFeatureCaptionProvider} 'formFeatureCaptionProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+
 		((
 		'text' '{'
 			specifications+=FeatureAssociatedExpression*
@@ -110,6 +124,8 @@ FormFeatureCaptionProvider:
 
 DialogFeatureCaptionProvider:
 	{DialogFeatureCaptionProvider} 'dialogFeatureCaptionProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
 		((
 		'text' '{'
 			specifications+=FeatureAssociatedExpression*
@@ -137,6 +153,8 @@ FeatureAssociatedExpression:
 
 FeaturesProvider:
 	{FeaturesProvider} 'featuresProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
 		((
 		'features' '{'
 			featureSpecifications+=FeatureSpecification*
@@ -148,6 +166,8 @@ FeaturesProvider:
 
 TableFeaturesProvider:
 	{TableFeaturesProvider} 'tableFeaturesProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
 		((
 		'features' '{'
 			featureSpecifications+=FeatureSpecification*
@@ -164,6 +184,8 @@ FeatureSpecification:
 
 FormControlFactory:
 	{FormControlFactory} 'formControlFactory' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
 		(
 		'control' '{'
 			controlSpecifications+=ControlFactorySpecification*
@@ -174,6 +196,8 @@ FormControlFactory:
 
 DialogControlFactory:
 	{DialogControlFactory} 'dialogControlFactory' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
 		(
 		'control' '{'
 			controlSpecifications+=ControlFactorySpecification*
@@ -191,12 +215,16 @@ ControlFactorySpecification:
 
 ProposalCreator:
 	{ProposalCreator} 'proposals' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+
 		proposalsSpecifications+=FeatureAssociatedExpression*
 	'}'
 ;
 
 ViewerContentProvider:
 	{ViewerContentProvider} 'viewerContentProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
 		((
 		'elements' '{'
 			elementsSpecifications+=LabelSpecification*
@@ -237,7 +265,11 @@ AbstractControlFactory:
 // a utility base class for rules with 'extends' clause
 // IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
 WithExtendsClause:
-	Module | LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
+	Module | WithFields
+;
+
+WithFields:
+	LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
 	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |
 	TreeFormFactory
 ;
@@ -260,6 +292,8 @@ ViewSpecification:
 
 TreeFormFactory:
 	{TreeFormFactory} 'treeFormFactory' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
 		orientation = TreeFormOrientation
 		('(' treeWeight = INT ':' formWeight = INT ')')?
 	'}'

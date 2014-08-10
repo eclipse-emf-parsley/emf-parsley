@@ -129,6 +129,19 @@ module my.empty {
 }
 '''
 
+	def labelProviderWithFields() 
+'''
+import com.google.inject.Inject
+import org.eclipse.jface.viewers.ILabelProvider
+
+module my.empty {
+	labelProvider {
+		@Inject
+		var ILabelProvider parentLabelProvider;
+	}
+}
+'''
+
 	def tableLabelProvider() 
 '''
 import java.util.*
