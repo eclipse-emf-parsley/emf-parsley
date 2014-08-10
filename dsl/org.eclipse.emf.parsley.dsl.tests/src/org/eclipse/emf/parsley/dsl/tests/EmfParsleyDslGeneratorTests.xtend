@@ -298,9 +298,16 @@ expectedLabelProvider =
 package my.empty.ui.provider;
 
 import com.google.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestExtensions;
+import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class LabelProviderGen extends ViewerLabelProvider {
@@ -315,9 +322,34 @@ public class LabelProviderGen extends ViewerLabelProvider {
     this.parentLabelProvider = parentLabelProvider;
   }
   
+  @Extension
+  private final TestExtensions myExtensions = new TestExtensions();
+  
+  public TestExtensions getMyExtensions() {
+    return this.myExtensions;
+  }
+  
+  private final List<String> listOfString = ObjectExtensions.<ArrayList<String>>operator_doubleArrow(new ArrayList<String>(), new Procedure1<ArrayList<String>>() {
+    public void apply(final ArrayList<String> it) {
+      it.add("first");
+      it.add("second");
+    }
+  });
+  
+  public List<String> getListOfString() {
+    return this.listOfString;
+  }
+  
   @Inject
   public LabelProviderGen(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
+  }
+  
+  public String text(final Library it) {
+    final ArrayList<Object> myList = new ArrayList<Object>();
+    this.myExtensions.printList(myList);
+    String _text = this.parentLabelProvider.getText(it);
+    return ("result: " + _text);
   }
 }
 ''']

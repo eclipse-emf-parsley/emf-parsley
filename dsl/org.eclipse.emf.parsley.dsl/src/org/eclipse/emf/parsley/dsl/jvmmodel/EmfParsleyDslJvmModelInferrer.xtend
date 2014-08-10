@@ -183,19 +183,20 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def processFields(JvmGenericType it, WithFields dslElement) {
 		for (f : dslElement.fields) {
 			var type = f.type
+			val name = f.name
 			val initialExp = f.right
-			if (type == null && initialExp != null) {
-				type = initialExp.inferredType
-			}
-			members += f.toField(f.name, type) => [
+			members += f.toField(name, type) => [
 				final = !f.writeable
 				visibility = JvmVisibility.PRIVATE
 				translateAnnotations(f.annotations)
+				if (f.extension) {
+					annotations += f.toAnnotation(typeof(Extension))
+				}
 				initializer = initialExp
 			]
-			members += f.toGetter(f.name, type)
+			members += f.toGetter(name, type)
 			if (f.writeable) {
-				members += f.toSetter(f.name, type)
+				members += f.toSetter(name, type)
 			}
 		}
 	}

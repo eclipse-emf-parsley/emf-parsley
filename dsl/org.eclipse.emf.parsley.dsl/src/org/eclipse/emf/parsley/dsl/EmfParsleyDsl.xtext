@@ -64,7 +64,7 @@ LabelProvider:
 FieldSpecification:
 	annotations+=XAnnotation*
 	(writeable?='var'|'val') extension?='extension'? 
-	(=>(type=JvmTypeReference name=ValidID) | name=ValidID) ('=' right=XExpression)? ';'?
+	type=JvmTypeReference name=ValidID ('=' right=XExpression)? ';'?
 ;
 
 TableLabelProvider:

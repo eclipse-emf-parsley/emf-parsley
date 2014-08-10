@@ -131,13 +131,34 @@ module my.empty {
 
 	def labelProviderWithFields() 
 '''
+import java.util.ArrayList
+import java.util.List
 import com.google.inject.Inject
 import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestExtensions
+import org.eclipse.emf.parsley.examples.library.Library
 
 module my.empty {
 	labelProvider {
 		@Inject
 		var ILabelProvider parentLabelProvider;
+		
+		// 
+		val extension TestExtensions myExtensions = new TestExtensions();
+		
+		// initialize it with a complex expression
+		val List<String> listOfString = new ArrayList() => [
+			it += "first"
+			it += "second"
+		]
+		
+		text {
+			Library -> {
+				val myList = new ArrayList()
+				myList.printList() // extension method from TestExtensions
+				return 'result: ' + parentLabelProvider.getText(it)
+			}
+		}
 	}
 }
 '''
