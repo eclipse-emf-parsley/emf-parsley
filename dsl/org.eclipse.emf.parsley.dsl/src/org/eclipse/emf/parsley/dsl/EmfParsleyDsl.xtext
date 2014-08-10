@@ -1,5 +1,5 @@
 grammar org.eclipse.emf.parsley.dsl.EmfParsleyDsl with
-    org.eclipse.xtext.xbase.Xbase
+    org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
