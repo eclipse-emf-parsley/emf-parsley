@@ -41,6 +41,8 @@ import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
 import java.util.List
+import org.eclipse.xtext.xbase.XbasePackage
+import org.eclipse.xtext.xbase.validation.IssueCodes
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -225,6 +227,40 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 		m1.assertHierarchyCycle(className)
 		m2.assertHierarchyCycle(className)
 		m3.assertHierarchyCycle(className)
+	}
+
+	@Test
+	def void testTypeMismatchInFieldInitializer() {
+		'''
+		import java.util.List
+		
+		module my.test {
+			labelProvider {
+				val List<Object> list = "foo"
+			}
+		}
+		'''.parse.assertError(
+			XbasePackage.eINSTANCE.XStringLiteral,
+			IssueCodes.INCOMPATIBLE_TYPES,
+			"Type mismatch: cannot convert from String to List<Object>"
+		)
+	}
+
+	@Test
+	def void testMissingInitializerForFinalField() {
+		'''
+		import java.util.List
+		
+		module my.test {
+			labelProvider {
+				val List<Object> list
+			}
+		}
+		'''.parse.assertError(
+			ModelPackage.eINSTANCE.fieldSpecification,
+			FINAL_FIELD_NOT_INITIALIZED,
+			"The blank final field list may not have been initialized"
+		)
 	}
 
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {

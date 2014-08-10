@@ -22,6 +22,7 @@ import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
+import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 
 //import org.eclipse.xtext.validation.Check
 
@@ -35,6 +36,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	public static val TYPE_MISMATCH = "org.eclipse.emf.parsley.dsl.TypeMismatch";
 	
 	public static val CYCLIC_INHERITANCE = "org.eclipse.emf.parsley.dsl.CyclicInheritance";
+
+	public static val FINAL_FIELD_NOT_INITIALIZED = "org.eclipse.emf.parsley.dsl.FinalFieldNotInitialized";
 
 	@Inject EmfParsleyDslTypeSystem typeSystem
 	@Inject extension EmfParsleyDslExpectedSuperTypes
@@ -61,6 +64,16 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 			checkType(withExtendsClause.extendsClause, 
 				withExtendsClause.extendsClause.superType, withExtendsClause.expectedSupertype, 
 				ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE)
+		}
+	}
+
+	@Check
+	def void checkFinalFieldIsInitialized(FieldSpecification f) {
+		if (!f.writeable && f.right == null) {
+			error("The blank final field " + f.name + " may not have been initialized",
+				ModelPackage.Literals.FIELD_SPECIFICATION__NAME,
+				FINAL_FIELD_NOT_INITIALIZED
+			)
 		}
 	}
 
