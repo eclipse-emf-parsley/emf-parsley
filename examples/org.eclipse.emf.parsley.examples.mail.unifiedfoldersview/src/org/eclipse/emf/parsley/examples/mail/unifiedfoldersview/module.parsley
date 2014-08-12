@@ -1,9 +1,8 @@
-import org.eclipse.emf.parsley.examples.mail.Account
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.examples.mail.Folder
 import org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewGuiceModule
 import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFolderContainer
 import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFoldersView
-import org.eclipse.emf.ecore.resource.Resource
 
 /* org.eclipse.emf.parsley.examples.mail.unifiedfoldersview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends AccountsviewGuiceModule {
@@ -15,10 +14,15 @@ module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends Accounts
 		}
 	}
 	
-	labelProvider {
+	labelProvider 
+			extends org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider.LabelProviderGen {
 		text {
 			UnifiedFolderContainer -> containerName
-			Folder -> (eContainer as Account).email
+			// instead of 
+			// Folder -> (eContainer as Account).email
+			// we can rely on the label provider we inherit from
+			// and take the text of the container
+			Folder -> getText(eContainer)
 		}
 		image {
 			UnifiedFolderContainer -> containerName.toFirstLower + ".gif"

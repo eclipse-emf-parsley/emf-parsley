@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.eclipse.emf.parsley.examples.mail.messageview.binding;
 
 import org.eclipse.core.databinding.DataBindingContext;
@@ -33,7 +26,7 @@ public class FormControlFactoryGen extends FormControlFactory {
         SWT.MULTI, SWT.BORDER, 
         SWT.WRAP, SWT.V_SCROLL);
       t.setEditable(false);
-      _xblockexpression = (t);
+      _xblockexpression = t;
     }
     return _xblockexpression;
   }

@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider;
 
 import com.google.common.base.Objects;
@@ -38,22 +31,21 @@ public class LabelProviderGen extends ViewerLabelProvider {
   public Object image(final Folder it) {
     String _switchResult = null;
     String _name = it.getName();
-    final String getName = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(getName,"Inbox")) {
+      if (Objects.equal(_name, "Inbox")) {
         _matched=true;
         _switchResult = "inbox.gif";
       }
     }
     if (!_matched) {
-      if (Objects.equal(getName,"Sent")) {
+      if (Objects.equal(_name, "Sent")) {
         _matched=true;
         _switchResult = "sent.gif";
       }
     }
     if (!_matched) {
-      if (Objects.equal(getName,"Trash")) {
+      if (Objects.equal(_name, "Trash")) {
         _matched=true;
         _switchResult = "trash.gif";
       }

@@ -1,23 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.ui.provider;
 
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.parsley.examples.mail.Account;
 import org.eclipse.emf.parsley.examples.mail.Folder;
 import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFolderContainer;
-import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class LabelProviderGen extends ViewerLabelProvider {
+public class LabelProviderGen extends org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider.LabelProviderGen {
   @Inject
   public LabelProviderGen(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
@@ -30,8 +21,8 @@ public class LabelProviderGen extends ViewerLabelProvider {
   
   public String text(final Folder it) {
     EObject _eContainer = it.eContainer();
-    String _email = ((Account) _eContainer).getEmail();
-    return _email;
+    String _text = this.getText(_eContainer);
+    return _text;
   }
   
   public Object image(final UnifiedFolderContainer it) {
