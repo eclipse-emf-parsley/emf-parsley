@@ -14,6 +14,8 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import com.google.common.base.Predicate;
 
@@ -22,6 +24,55 @@ import com.google.common.base.Predicate;
  *
  */
 public class PolymorphicDispatcherExtensions {
+	
+	/**
+	 * Creates a {@link PolymorphicDispatcher} for methods based on {@link EClass} and
+	 * {@link EStructuralFeature}; the method signature is meant to be of the shape
+	 * 
+	 * <pre>
+	 * &lt;prefix&gt;_&lt;eClass's name&gt;_&lt;feature's name&gt;(&lt;numOfParams&gt;)
+	 * </pre>
+	 * @param target
+	 * @param eClass
+	 * @param feature
+	 * @param prefix
+	 * @param numOfParams
+	 * @return
+	 */
+	public static <T> PolymorphicDispatcher<T> createPolymorphicDispatcherBasedOnFeature(
+			Object target, EClass eClass, EStructuralFeature feature, String prefix, int numOfParams) {
+		return PolymorphicDispatcherExtensions
+				.createPolymorphicDispatcher(target,
+						featureBasedMethodPredicate(eClass, feature, prefix, numOfParams));
+	}
+
+	/**
+	 * Creates a {@link Predicate} for methods based on {@link EClass} and
+	 * {@link EStructuralFeature}; the method signature is meant to be of the shape
+	 * 
+	 * <pre>
+	 * &lt;prefix&gt;_&lt;eClass's name&gt;_&lt;feature's name&gt;(&lt;numOfParams&gt;)
+	 * </pre>
+	 * @param eClass
+	 * @param feature
+	 * @param prefix
+	 * @param numOfParams
+	 * @return
+	 */
+	public static Predicate<Method> featureBasedMethodPredicate(
+			EClass eClass, EStructuralFeature feature, String prefix, int numOfParams) {
+		return PolymorphicDispatcher.Predicates.forName(prefix + eClass.getName()
+				+ "_" + feature.getName(), numOfParams);
+	}
+
+	/**
+	 * Creates a {@link PolymorphicDispatcher} based on the method {@link Predicate} that
+	 * is meant to be invoked on the given target.
+	 * 
+	 * @param target
+	 * @param predicate
+	 * @return
+	 */
 	public static <T> PolymorphicDispatcher<T> createPolymorphicDispatcher(
 			final Object target, Predicate<Method> predicate) {
 		

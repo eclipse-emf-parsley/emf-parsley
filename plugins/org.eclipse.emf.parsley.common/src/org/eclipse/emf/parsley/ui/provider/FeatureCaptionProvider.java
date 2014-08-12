@@ -10,13 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
-import java.lang.reflect.Method;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
-
-import com.google.common.base.Predicate;
 
 /**
  * Provides captions for EStructuralFeatures that uses polymorphic dispatch to invoke methods at runtime.
@@ -44,15 +39,9 @@ public class FeatureCaptionProvider {
 	}
 
 	protected String polymorphicGetText(EStructuralFeature element) {
-		return PolymorphicDispatcherExtensions
-				.<String> createPolymorphicDispatcher(this,
-						getTextPredicate(element)).invoke(element);
-	}
-
-	protected Predicate<Method> getTextPredicate(EStructuralFeature feature) {
-		String methodName = "text_" + feature.getEContainingClass().getName()
-				+ "_" + feature.getName();
-		return PolymorphicDispatcher.Predicates.forName(methodName, 1);
+		return PolymorphicDispatcherExtensions.
+			<String>createPolymorphicDispatcherBasedOnFeature(
+				this, element.getEContainingClass(), element, "text_", 1).invoke(element);
 	}
 
 	protected String defaultText(EStructuralFeature element) {
