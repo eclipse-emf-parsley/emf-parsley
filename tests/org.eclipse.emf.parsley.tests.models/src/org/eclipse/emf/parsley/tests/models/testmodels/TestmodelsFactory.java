@@ -38,6 +38,24 @@ public interface TestmodelsFactory extends EFactory {
 	TestEClass createTestEClass();
 
 	/**
+	 * Returns a new object of class '<em>Base Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Base Class</em>'.
+	 * @generated
+	 */
+	BaseClass createBaseClass();
+
+	/**
+	 * Returns a new object of class '<em>Derived Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Derived Class</em>'.
+	 * @generated
+	 */
+	DerivedClass createDerivedClass();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

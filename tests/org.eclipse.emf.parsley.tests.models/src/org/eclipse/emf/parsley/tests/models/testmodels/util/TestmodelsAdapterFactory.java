@@ -79,6 +79,14 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 				return createTestEClassAdapter();
 			}
 			@Override
+			public Adapter caseBaseClass(BaseClass object) {
+				return createBaseClassAdapter();
+			}
+			@Override
+			public Adapter caseDerivedClass(DerivedClass object) {
+				return createDerivedClassAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -109,6 +117,34 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTestEClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClass <em>Base Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
+	 * @generated
+	 */
+	public Adapter createBaseClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass <em>Derived Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass
+	 * @generated
+	 */
+	public Adapter createDerivedClassAdapter() {
 		return null;
 	}
 

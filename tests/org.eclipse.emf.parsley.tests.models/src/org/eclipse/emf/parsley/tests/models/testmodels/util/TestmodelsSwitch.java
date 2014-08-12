@@ -79,6 +79,19 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestmodelsPackage.BASE_CLASS: {
+				BaseClass baseClass = (BaseClass)theEObject;
+				T result = caseBaseClass(baseClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestmodelsPackage.DERIVED_CLASS: {
+				DerivedClass derivedClass = (DerivedClass)theEObject;
+				T result = caseDerivedClass(derivedClass);
+				if (result == null) result = caseBaseClass(derivedClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -95,6 +108,36 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTestEClass(TestEClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Base Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Base Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBaseClass(BaseClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Derived Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Derived Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDerivedClass(DerivedClass object) {
 		return null;
 	}
 

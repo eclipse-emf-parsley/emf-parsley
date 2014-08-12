@@ -64,6 +64,8 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case TestmodelsPackage.TEST_ECLASS: return createTestEClass();
+			case TestmodelsPackage.BASE_CLASS: return createBaseClass();
+			case TestmodelsPackage.DERIVED_CLASS: return createDerivedClass();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -77,6 +79,26 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public TestEClass createTestEClass() {
 		TestEClassImpl testEClass = new TestEClassImpl();
 		return testEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BaseClass createBaseClass() {
+		BaseClassImpl baseClass = new BaseClassImpl();
+		return baseClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DerivedClass createDerivedClass() {
+		DerivedClassImpl derivedClass = new DerivedClassImpl();
+		return derivedClass;
 	}
 
 	/**
