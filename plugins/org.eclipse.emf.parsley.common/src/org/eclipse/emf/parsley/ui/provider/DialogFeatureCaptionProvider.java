@@ -10,17 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
-import java.lang.reflect.Method;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
-import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 /**
@@ -78,15 +74,9 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 
 	protected Label polymorphicGetLabel(Composite parent,
 			EStructuralFeature element) {
-		return PolymorphicDispatcherExtensions
-				.<Label> createPolymorphicDispatcher(this,
-						getLabelPredicate(element)).invoke(parent, element);
-	}
-
-	protected Predicate<Method> getLabelPredicate(EStructuralFeature feature) {
-		String methodName = "label_" + feature.getEContainingClass().getName()
-				+ "_" + feature.getName();
-		return PolymorphicDispatcher.Predicates.forName(methodName, 2);
+		return PolymorphicDispatcherExtensions.
+				<Label>createPolymorphicDispatcherBasedOnFeature(
+					this, element.getEContainingClass(), element, "label_", 2).invoke(parent, element);
 	}
 
 }
