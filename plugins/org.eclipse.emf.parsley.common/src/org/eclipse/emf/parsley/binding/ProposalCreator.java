@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
@@ -66,12 +67,13 @@ public class ProposalCreator {
 	public List<Object> proposals(EObject eObject, EStructuralFeature feature) {
 		
 		List<Object> proposals  = polymorphicCreateProposals(eObject, feature);
-		if(proposals != null){
+		if (proposals != null) {
 			return proposals;
 		}
 		
-		if (resource == null)
+		if (resource == null) {
 			retrieveResource(eObject);
+		}
 
 		return defaultProposals(feature);
 	}
@@ -98,27 +100,27 @@ public class ProposalCreator {
 	protected List<Object> findAllInstances(EClassifier type) {
 		List<Object> objects = new ArrayList<Object>();
 		
-		if (resource == null)
+		if (resource == null) {
 			return objects;
+		}
 		
-		TreeIterator<Object> allContents = EcoreUtil.getAllContents(
-				resource.getResourceSet().getResources(), true);
+		TreeIterator<Object> allContents = getAllContents();
 		while (allContents.hasNext()) {
 			Object o = allContents.next();
 			if (type.isInstance(o))
 				objects.add(o);
 		}
-		// the following does not seem to be necessary
-		// since it iterates on Ecore stuff... Lorenzo
-//		for (TreeIterator<Object> iter = EcoreUtil
-//				.getAllContents(EcoreUtil.getRootContainer(
-//						EcorePackage.eINSTANCE, true), false); iter.hasNext();) {
-//			Object next = iter.next();
-//			if ((type.isInstance(next)) && !objects.contains(next)) {
-//				objects.add(next);
-//			}
-//		}
 		return objects;
+	}
+
+	protected TreeIterator<Object> getAllContents() {
+		ResourceSet resourceSet = resource.getResourceSet();
+		
+		if (resourceSet == null) {
+			return EcoreUtil.getAllContents(resource, true);
+		} else {
+			return EcoreUtil.getAllContents(resourceSet.getResources(), true);
+		}
 	}
 	
 	private List<Object> polymorphicCreateProposals(EObject element,

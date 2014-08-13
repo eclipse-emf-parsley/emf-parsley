@@ -25,6 +25,8 @@ import org.junit.runners.Suite;
 	FeatureCaptionProviderTest.class,
 	DialogFeatureCaptionProviderTest.class,
 	FormFeatureCaptionProviderTest.class,
+	DialogControlFactoryTest.class,
+	FormControlFactoryTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
 	NotificationBufferTest.class,

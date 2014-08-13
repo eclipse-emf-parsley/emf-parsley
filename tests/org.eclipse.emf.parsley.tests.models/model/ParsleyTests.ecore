@@ -16,4 +16,26 @@
   <eClassifiers xsi:type="ecore:EClass" name="DerivedClass" eSuperTypes="#//BaseClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="derivedClassFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassForControls">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanObjectFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanDataTypeFeature"
+        eType="#//BooleanDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanPrimitiveDataTypeFeature"
+        eType="#//BooleanPrimitiveDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumFeature" eType="#//EnumForControls"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referenceToClassWithName"
+        eType="#//ClassWithName"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumForControls">
+    <eLiterals name="FIRST"/>
+    <eLiterals name="SECOND"/>
+    <eLiterals name="THIRD"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassWithName">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="BooleanDataType" instanceClassName="java.lang.Boolean"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BooleanPrimitiveDataType" instanceClassName="boolean"/>
 </ecore:EPackage>

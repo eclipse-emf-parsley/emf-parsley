@@ -10,6 +10,7 @@
 package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -66,8 +67,48 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 			case TestmodelsPackage.TEST_ECLASS: return createTestEClass();
 			case TestmodelsPackage.BASE_CLASS: return createBaseClass();
 			case TestmodelsPackage.DERIVED_CLASS: return createDerivedClass();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS: return createClassForControls();
+			case TestmodelsPackage.CLASS_WITH_NAME: return createClassWithName();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case TestmodelsPackage.ENUM_FOR_CONTROLS:
+				return createEnumForControlsFromString(eDataType, initialValue);
+			case TestmodelsPackage.BOOLEAN_DATA_TYPE:
+				return createBooleanDataTypeFromString(eDataType, initialValue);
+			case TestmodelsPackage.BOOLEAN_PRIMITIVE_DATA_TYPE:
+				return createBooleanPrimitiveDataTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case TestmodelsPackage.ENUM_FOR_CONTROLS:
+				return convertEnumForControlsToString(eDataType, instanceValue);
+			case TestmodelsPackage.BOOLEAN_DATA_TYPE:
+				return convertBooleanDataTypeToString(eDataType, instanceValue);
+			case TestmodelsPackage.BOOLEAN_PRIMITIVE_DATA_TYPE:
+				return convertBooleanPrimitiveDataTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -99,6 +140,82 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public DerivedClass createDerivedClass() {
 		DerivedClassImpl derivedClass = new DerivedClassImpl();
 		return derivedClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassForControls createClassForControls() {
+		ClassForControlsImpl classForControls = new ClassForControlsImpl();
+		return classForControls;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassWithName createClassWithName() {
+		ClassWithNameImpl classWithName = new ClassWithNameImpl();
+		return classWithName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnumForControls createEnumForControlsFromString(EDataType eDataType, String initialValue) {
+		EnumForControls result = EnumForControls.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEnumForControlsToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean createBooleanDataTypeFromString(EDataType eDataType, String initialValue) {
+		return (Boolean)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBooleanDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean createBooleanPrimitiveDataTypeFromString(EDataType eDataType, String initialValue) {
+		return (Boolean)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBooleanPrimitiveDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

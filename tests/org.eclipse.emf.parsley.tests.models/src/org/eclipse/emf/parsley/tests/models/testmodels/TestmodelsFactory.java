@@ -56,6 +56,24 @@ public interface TestmodelsFactory extends EFactory {
 	DerivedClass createDerivedClass();
 
 	/**
+	 * Returns a new object of class '<em>Class For Controls</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class For Controls</em>'.
+	 * @generated
+	 */
+	ClassForControls createClassForControls();
+
+	/**
+	 * Returns a new object of class '<em>Class With Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class With Name</em>'.
+	 * @generated
+	 */
+	ClassWithName createClassWithName();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

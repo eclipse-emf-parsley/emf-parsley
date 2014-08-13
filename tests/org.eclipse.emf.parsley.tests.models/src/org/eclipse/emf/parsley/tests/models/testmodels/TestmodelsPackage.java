@@ -11,7 +11,10 @@ package org.eclipse.emf.parsley.tests.models.testmodels;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -212,6 +215,167 @@ public interface TestmodelsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForControls()
+	 * @generated
+	 */
+	int CLASS_FOR_CONTROLS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Boolean Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BOOLEAN_FEATURE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Boolean Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Boolean Data Type Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Boolean Primitive Data Type Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Enum Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__ENUM_FEATURE = 4;
+
+	/**
+	 * The feature id for the '<em><b>String Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__STRING_FEATURE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Reference To Class With Name</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 6;
+
+	/**
+	 * The number of structural features of the '<em>Class For Controls</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 7;
+
+	/**
+	 * The number of operations of the '<em>Class For Controls</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassWithName()
+	 * @generated
+	 */
+	int CLASS_WITH_NAME = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_WITH_NAME__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Class With Name</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_WITH_NAME_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Class With Name</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_WITH_NAME_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
+	 * @generated
+	 */
+	int ENUM_FOR_CONTROLS = 5;
+
+
+	/**
+	 * The meta object id for the '<em>Boolean Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Boolean
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
+	 * @generated
+	 */
+	int BOOLEAN_DATA_TYPE = 6;
+
+
+	/**
+	 * The meta object id for the '<em>Boolean Primitive Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
+	 * @generated
+	 */
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 7;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass <em>Test EClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -308,6 +472,145 @@ public interface TestmodelsPackage extends EPackage {
 	EAttribute getDerivedClass_DerivedClassFeature();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls <em>Class For Controls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class For Controls</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+	 * @generated
+	 */
+	EClass getClassForControls();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#isBooleanFeature <em>Boolean Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Boolean Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#isBooleanFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_BooleanFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBooleanObjectFeature <em>Boolean Object Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Boolean Object Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBooleanObjectFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_BooleanObjectFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBooleanDataTypeFeature <em>Boolean Data Type Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Boolean Data Type Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBooleanDataTypeFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_BooleanDataTypeFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#isBooleanPrimitiveDataTypeFeature <em>Boolean Primitive Data Type Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Boolean Primitive Data Type Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#isBooleanPrimitiveDataTypeFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_BooleanPrimitiveDataTypeFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getEnumFeature <em>Enum Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enum Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getEnumFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_EnumFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeature <em>String Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_StringFeature();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getReferenceToClassWithName <em>Reference To Class With Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reference To Class With Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getReferenceToClassWithName()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EReference getClassForControls_ReferenceToClassWithName();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName <em>Class With Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class With Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
+	 * @generated
+	 */
+	EClass getClassWithName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName#getName()
+	 * @see #getClassWithName()
+	 * @generated
+	 */
+	EAttribute getClassWithName_Name();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Enum For Controls</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls
+	 * @generated
+	 */
+	EEnum getEnumForControls();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Boolean <em>Boolean Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Boolean Data Type</em>'.
+	 * @see java.lang.Boolean
+	 * @model instanceClass="java.lang.Boolean"
+	 * @generated
+	 */
+	EDataType getBooleanDataType();
+
+	/**
+	 * Returns the meta object for data type '<em>Boolean Primitive Data Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Boolean Primitive Data Type</em>'.
+	 * @model instanceClass="boolean"
+	 * @generated
+	 */
+	EDataType getBooleanPrimitiveDataType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -399,6 +702,106 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DERIVED_CLASS__DERIVED_CLASS_FEATURE = eINSTANCE.getDerivedClass_DerivedClassFeature();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForControls()
+		 * @generated
+		 */
+		EClass CLASS_FOR_CONTROLS = eINSTANCE.getClassForControls();
+		/**
+		 * The meta object literal for the '<em><b>Boolean Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BOOLEAN_FEATURE = eINSTANCE.getClassForControls_BooleanFeature();
+		/**
+		 * The meta object literal for the '<em><b>Boolean Object Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE = eINSTANCE.getClassForControls_BooleanObjectFeature();
+		/**
+		 * The meta object literal for the '<em><b>Boolean Data Type Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE = eINSTANCE.getClassForControls_BooleanDataTypeFeature();
+		/**
+		 * The meta object literal for the '<em><b>Boolean Primitive Data Type Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE = eINSTANCE.getClassForControls_BooleanPrimitiveDataTypeFeature();
+		/**
+		 * The meta object literal for the '<em><b>Enum Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__ENUM_FEATURE = eINSTANCE.getClassForControls_EnumFeature();
+		/**
+		 * The meta object literal for the '<em><b>String Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__STRING_FEATURE = eINSTANCE.getClassForControls_StringFeature();
+		/**
+		 * The meta object literal for the '<em><b>Reference To Class With Name</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = eINSTANCE.getClassForControls_ReferenceToClassWithName();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassWithName()
+		 * @generated
+		 */
+		EClass CLASS_WITH_NAME = eINSTANCE.getClassWithName();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_WITH_NAME__NAME = eINSTANCE.getClassWithName_Name();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
+		 * @generated
+		 */
+		EEnum ENUM_FOR_CONTROLS = eINSTANCE.getEnumForControls();
+		/**
+		 * The meta object literal for the '<em>Boolean Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Boolean
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
+		 * @generated
+		 */
+		EDataType BOOLEAN_DATA_TYPE = eINSTANCE.getBooleanDataType();
+		/**
+		 * The meta object literal for the '<em>Boolean Primitive Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
+		 * @generated
+		 */
+		EDataType BOOLEAN_PRIMITIVE_DATA_TYPE = eINSTANCE.getBooleanPrimitiveDataType();
 
 	}
 

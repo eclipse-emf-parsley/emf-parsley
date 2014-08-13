@@ -11,12 +11,18 @@ package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass;
+import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
@@ -47,6 +53,41 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass derivedClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classForControlsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classWithNameEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum enumForControlsEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType booleanDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType booleanPrimitiveDataTypeEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -195,6 +236,123 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getClassForControls() {
+		return classForControlsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_BooleanFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_BooleanObjectFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_BooleanDataTypeFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_BooleanPrimitiveDataTypeFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_EnumFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_StringFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassForControls_ReferenceToClassWithName() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClassWithName() {
+		return classWithNameEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassWithName_Name() {
+		return (EAttribute)classWithNameEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getEnumForControls() {
+		return enumForControlsEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBooleanDataType() {
+		return booleanDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBooleanPrimitiveDataType() {
+		return booleanPrimitiveDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TestmodelsFactory getTestmodelsFactory() {
 		return (TestmodelsFactory)getEFactoryInstance();
 	}
@@ -229,6 +387,25 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		derivedClassEClass = createEClass(DERIVED_CLASS);
 		createEAttribute(derivedClassEClass, DERIVED_CLASS__DERIVED_CLASS_FEATURE);
+
+		classForControlsEClass = createEClass(CLASS_FOR_CONTROLS);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BOOLEAN_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__ENUM_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_FEATURE);
+		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME);
+
+		classWithNameEClass = createEClass(CLASS_WITH_NAME);
+		createEAttribute(classWithNameEClass, CLASS_WITH_NAME__NAME);
+
+		// Create enums
+		enumForControlsEEnum = createEEnum(ENUM_FOR_CONTROLS);
+
+		// Create data types
+		booleanDataTypeEDataType = createEDataType(BOOLEAN_DATA_TYPE);
+		booleanPrimitiveDataTypeEDataType = createEDataType(BOOLEAN_PRIMITIVE_DATA_TYPE);
 	}
 
 	/**
@@ -273,6 +450,28 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		initEClass(derivedClassEClass, DerivedClass.class, "DerivedClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDerivedClass_DerivedClassFeature(), ecorePackage.getEString(), "derivedClassFeature", null, 0, 1, DerivedClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(classForControlsEClass, ClassForControls.class, "ClassForControls", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassForControls_BooleanFeature(), ecorePackage.getEBoolean(), "booleanFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_BooleanObjectFeature(), ecorePackage.getEBooleanObject(), "booleanObjectFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_BooleanDataTypeFeature(), this.getBooleanDataType(), "booleanDataTypeFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_BooleanPrimitiveDataTypeFeature(), this.getBooleanPrimitiveDataType(), "booleanPrimitiveDataTypeFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_EnumFeature(), this.getEnumForControls(), "enumFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_StringFeature(), ecorePackage.getEString(), "stringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClassForControls_ReferenceToClassWithName(), this.getClassWithName(), null, "referenceToClassWithName", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(classWithNameEClass, ClassWithName.class, "ClassWithName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassWithName_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassWithName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(enumForControlsEEnum, EnumForControls.class, "EnumForControls");
+		addEEnumLiteral(enumForControlsEEnum, EnumForControls.FIRST);
+		addEEnumLiteral(enumForControlsEEnum, EnumForControls.SECOND);
+		addEEnumLiteral(enumForControlsEEnum, EnumForControls.THIRD);
+
+		// Initialize data types
+		initEDataType(booleanDataTypeEDataType, Boolean.class, "BooleanDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(booleanPrimitiveDataTypeEDataType, boolean.class, "BooleanPrimitiveDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -1,0 +1,496 @@
+/**
+ */
+package org.eclipse.emf.parsley.tests.models.testmodels.impl;
+
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
+import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Class For Controls</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#isBooleanFeature <em>Boolean Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getBooleanObjectFeature <em>Boolean Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getBooleanDataTypeFeature <em>Boolean Data Type Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#isBooleanPrimitiveDataTypeFeature <em>Boolean Primitive Data Type Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getEnumFeature <em>Enum Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeature <em>String Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class ClassForControlsImpl extends MinimalEObjectImpl.Container implements ClassForControls {
+	/**
+	 * The default value of the '{@link #isBooleanFeature() <em>Boolean Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBooleanFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean BOOLEAN_FEATURE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isBooleanFeature() <em>Boolean Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBooleanFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean booleanFeature = BOOLEAN_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBooleanObjectFeature() <em>Boolean Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBooleanObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean BOOLEAN_OBJECT_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBooleanObjectFeature() <em>Boolean Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBooleanObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean booleanObjectFeature = BOOLEAN_OBJECT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBooleanDataTypeFeature() <em>Boolean Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBooleanDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean BOOLEAN_DATA_TYPE_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBooleanDataTypeFeature() <em>Boolean Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBooleanDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean booleanDataTypeFeature = BOOLEAN_DATA_TYPE_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isBooleanPrimitiveDataTypeFeature() <em>Boolean Primitive Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBooleanPrimitiveDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isBooleanPrimitiveDataTypeFeature() <em>Boolean Primitive Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBooleanPrimitiveDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean booleanPrimitiveDataTypeFeature = BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEnumFeature() <em>Enum Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnumFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EnumForControls ENUM_FEATURE_EDEFAULT = EnumForControls.FIRST;
+
+	/**
+	 * The cached value of the '{@link #getEnumFeature() <em>Enum Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnumFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected EnumForControls enumFeature = ENUM_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStringFeature() <em>String Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STRING_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStringFeature() <em>String Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected String stringFeature = STRING_FEATURE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getReferenceToClassWithName() <em>Reference To Class With Name</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReferenceToClassWithName()
+	 * @generated
+	 * @ordered
+	 */
+	protected ClassWithName referenceToClassWithName;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClassForControlsImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return TestmodelsPackage.Literals.CLASS_FOR_CONTROLS;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isBooleanFeature() {
+		return booleanFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBooleanFeature(boolean newBooleanFeature) {
+		boolean oldBooleanFeature = booleanFeature;
+		booleanFeature = newBooleanFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_FEATURE, oldBooleanFeature, booleanFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getBooleanObjectFeature() {
+		return booleanObjectFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBooleanObjectFeature(Boolean newBooleanObjectFeature) {
+		Boolean oldBooleanObjectFeature = booleanObjectFeature;
+		booleanObjectFeature = newBooleanObjectFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE, oldBooleanObjectFeature, booleanObjectFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean getBooleanDataTypeFeature() {
+		return booleanDataTypeFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBooleanDataTypeFeature(Boolean newBooleanDataTypeFeature) {
+		Boolean oldBooleanDataTypeFeature = booleanDataTypeFeature;
+		booleanDataTypeFeature = newBooleanDataTypeFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE, oldBooleanDataTypeFeature, booleanDataTypeFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isBooleanPrimitiveDataTypeFeature() {
+		return booleanPrimitiveDataTypeFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBooleanPrimitiveDataTypeFeature(boolean newBooleanPrimitiveDataTypeFeature) {
+		boolean oldBooleanPrimitiveDataTypeFeature = booleanPrimitiveDataTypeFeature;
+		booleanPrimitiveDataTypeFeature = newBooleanPrimitiveDataTypeFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE, oldBooleanPrimitiveDataTypeFeature, booleanPrimitiveDataTypeFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnumForControls getEnumFeature() {
+		return enumFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnumFeature(EnumForControls newEnumFeature) {
+		EnumForControls oldEnumFeature = enumFeature;
+		enumFeature = newEnumFeature == null ? ENUM_FEATURE_EDEFAULT : newEnumFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__ENUM_FEATURE, oldEnumFeature, enumFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getStringFeature() {
+		return stringFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringFeature(String newStringFeature) {
+		String oldStringFeature = stringFeature;
+		stringFeature = newStringFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE, oldStringFeature, stringFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassWithName getReferenceToClassWithName() {
+		if (referenceToClassWithName != null && referenceToClassWithName.eIsProxy()) {
+			InternalEObject oldReferenceToClassWithName = (InternalEObject)referenceToClassWithName;
+			referenceToClassWithName = (ClassWithName)eResolveProxy(oldReferenceToClassWithName);
+			if (referenceToClassWithName != oldReferenceToClassWithName) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME, oldReferenceToClassWithName, referenceToClassWithName));
+			}
+		}
+		return referenceToClassWithName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassWithName basicGetReferenceToClassWithName() {
+		return referenceToClassWithName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReferenceToClassWithName(ClassWithName newReferenceToClassWithName) {
+		ClassWithName oldReferenceToClassWithName = referenceToClassWithName;
+		referenceToClassWithName = newReferenceToClassWithName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME, oldReferenceToClassWithName, referenceToClassWithName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_FEATURE:
+				return isBooleanFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE:
+				return getBooleanObjectFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE:
+				return getBooleanDataTypeFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE:
+				return isBooleanPrimitiveDataTypeFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__ENUM_FEATURE:
+				return getEnumFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
+				return getStringFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
+				if (resolve) return getReferenceToClassWithName();
+				return basicGetReferenceToClassWithName();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_FEATURE:
+				setBooleanFeature((Boolean)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE:
+				setBooleanObjectFeature((Boolean)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE:
+				setBooleanDataTypeFeature((Boolean)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE:
+				setBooleanPrimitiveDataTypeFeature((Boolean)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__ENUM_FEATURE:
+				setEnumFeature((EnumForControls)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
+				setStringFeature((String)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
+				setReferenceToClassWithName((ClassWithName)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_FEATURE:
+				setBooleanFeature(BOOLEAN_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE:
+				setBooleanObjectFeature(BOOLEAN_OBJECT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE:
+				setBooleanDataTypeFeature(BOOLEAN_DATA_TYPE_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE:
+				setBooleanPrimitiveDataTypeFeature(BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__ENUM_FEATURE:
+				setEnumFeature(ENUM_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
+				setStringFeature(STRING_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
+				setReferenceToClassWithName((ClassWithName)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_FEATURE:
+				return booleanFeature != BOOLEAN_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_OBJECT_FEATURE:
+				return BOOLEAN_OBJECT_FEATURE_EDEFAULT == null ? booleanObjectFeature != null : !BOOLEAN_OBJECT_FEATURE_EDEFAULT.equals(booleanObjectFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_DATA_TYPE_FEATURE:
+				return BOOLEAN_DATA_TYPE_FEATURE_EDEFAULT == null ? booleanDataTypeFeature != null : !BOOLEAN_DATA_TYPE_FEATURE_EDEFAULT.equals(booleanDataTypeFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE:
+				return booleanPrimitiveDataTypeFeature != BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__ENUM_FEATURE:
+				return enumFeature != ENUM_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
+				return STRING_FEATURE_EDEFAULT == null ? stringFeature != null : !STRING_FEATURE_EDEFAULT.equals(stringFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
+				return referenceToClassWithName != null;
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (booleanFeature: ");
+		result.append(booleanFeature);
+		result.append(", booleanObjectFeature: ");
+		result.append(booleanObjectFeature);
+		result.append(", booleanDataTypeFeature: ");
+		result.append(booleanDataTypeFeature);
+		result.append(", booleanPrimitiveDataTypeFeature: ");
+		result.append(booleanPrimitiveDataTypeFeature);
+		result.append(", enumFeature: ");
+		result.append(enumFeature);
+		result.append(", stringFeature: ");
+		result.append(stringFeature);
+		result.append(')');
+		return result.toString();
+	}
+
+} //ClassForControlsImpl

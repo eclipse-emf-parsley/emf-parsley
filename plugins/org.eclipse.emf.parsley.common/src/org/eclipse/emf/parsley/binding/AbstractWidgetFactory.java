@@ -29,7 +29,7 @@ public abstract class AbstractWidgetFactory {
 	
 	protected Composite parent = null;
 	
-	public void init(Composite parent) {
+	protected void init(Composite parent) {
 		this.parent = parent;
 	}
 

@@ -69,10 +69,10 @@ import com.google.inject.Provider;
  */
 public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	@Inject
-	protected Provider<ILabelProvider> labelProviderProvider;
+	private Provider<ILabelProvider> labelProviderProvider;
 
 	@Inject
-	protected ProposalCreator proposalcreator;
+	private ProposalCreator proposalCreator;
 
 	protected EObject owner;
 	protected Resource resource;
@@ -88,6 +88,27 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 
 	public AbstractControlFactory() {
 
+	}
+
+	public Provider<ILabelProvider> getLabelProviderProvider() {
+		return labelProviderProvider;
+	}
+
+	public void setLabelProviderProvider(
+			Provider<ILabelProvider> labelProviderProvider) {
+		this.labelProviderProvider = labelProviderProvider;
+	}
+
+	protected ILabelProvider createLabelProvider() {
+		return getLabelProviderProvider().get();
+	}
+	
+	public ProposalCreator getProposalCreator() {
+		return proposalCreator;
+	}
+
+	public void setProposalCreator(ProposalCreator proposalCreator) {
+		this.proposalCreator = proposalCreator;
 	}
 
 	public boolean isReadonly() {
@@ -186,12 +207,13 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected ControlObservablePair createControlForList(
 			final EStructuralFeature feature) {
 		ControlObservablePair result = polymorphicGetObservableControl(feature);
-		if (result != null)
+		if (result != null) {
 			return result;
+		}
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(parent,
 				this, labelProviderProvider.get(), owner,
-				feature, proposalcreator, readonly);
+				feature, getProposalCreator(), readonly);
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair(
 				mfc, target);
@@ -202,8 +224,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		IObservableValue featureObservable = createFeatureObserveable(feature);
 		
 		Control control = polymorphicCreateControl(feature, featureObservable);
-		if (control != null)
+		if (control != null) {
 			return control;
+		}
 
 		ControlObservablePair retValAndTargetPair = createControlAndObservableValue(feature);
 		Control retVal = retValAndTargetPair.getControl();
@@ -219,8 +242,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected ControlObservablePair createControlAndObservableValue(
 			EStructuralFeature feature) {
 		ControlObservablePair result = polymorphicGetObservableControl(feature);
-		if (result != null)
+		if (result != null) {
 			return result;
+		}
 
 		if (isBooleanFeature(feature)) {
 			return createControlAndObservableValueForBoolean();
@@ -256,27 +280,28 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected ControlObservablePair createControlAndObservableValueForNonBooleanFeature(
 			EStructuralFeature feature) {
 		List<?> proposals = null;
-		if (!readonly)
+		if (!readonly) {
 			proposals = createProposals(feature);
+		}
 		if (hasPredefinedProposals(feature) && !readonly) {
 			return createControlAndObservableWithPredefinedProposals(proposals);
 		} else {
 			if (readonly && feature instanceof EReference)
-				return createControlAndObservableForEObject();
+				return createControlAndObservableForEObjectReadOnly();
 			return createControlAndObservableWithoutPredefinedProposals(proposals);
 		}
 	}
 
 	public List<?> createProposals(EStructuralFeature feature) {
-		proposalcreator.setResource(getResource());
-		return proposalcreator.proposals(owner, feature);
+		getProposalCreator().setResource(getResource());
+		return getProposalCreator().proposals(owner, feature);
 	}
 
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(
 			List<?> proposals) {
 		ComboViewer combo = createComboViewer(SWT.READ_ONLY);
 		combo.setContentProvider(new ArrayContentProvider());
-		combo.setLabelProvider(labelProviderProvider.get());
+		combo.setLabelProvider(createLabelProvider());
 		combo.setInput(proposals);
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		retValAndTargetPair.setControl(combo.getCombo());
@@ -298,13 +323,13 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		return retValAndTargetPair;
 	}
 
-	protected ControlObservablePair createControlAndObservableForEObject() {
+	protected ControlObservablePair createControlAndObservableForEObjectReadOnly() {
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		Text t = createText("");
-		t.setEditable(!readonly);
+		t.setEditable(false);
 		retValAndTargetPair.setControl(t);
 		retValAndTargetPair.setObservableValue(new EObjectTextObservable(
-				labelProviderProvider.get(), t));
+				createLabelProvider(), t));
 
 		return retValAndTargetPair;
 	}

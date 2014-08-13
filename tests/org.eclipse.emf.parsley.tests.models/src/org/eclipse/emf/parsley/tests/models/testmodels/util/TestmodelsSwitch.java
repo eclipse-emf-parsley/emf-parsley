@@ -92,6 +92,18 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestmodelsPackage.CLASS_FOR_CONTROLS: {
+				ClassForControls classForControls = (ClassForControls)theEObject;
+				T result = caseClassForControls(classForControls);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestmodelsPackage.CLASS_WITH_NAME: {
+				ClassWithName classWithName = (ClassWithName)theEObject;
+				T result = caseClassWithName(classWithName);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -138,6 +150,36 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDerivedClass(DerivedClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Class For Controls</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Class For Controls</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassForControls(ClassForControls object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Class With Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Class With Name</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassWithName(ClassWithName object) {
 		return null;
 	}
 

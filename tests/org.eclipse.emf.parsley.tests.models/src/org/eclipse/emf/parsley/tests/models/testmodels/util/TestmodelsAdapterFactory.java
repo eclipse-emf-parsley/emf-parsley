@@ -87,6 +87,14 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 				return createDerivedClassAdapter();
 			}
 			@Override
+			public Adapter caseClassForControls(ClassForControls object) {
+				return createClassForControlsAdapter();
+			}
+			@Override
+			public Adapter caseClassWithName(ClassWithName object) {
+				return createClassWithNameAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -145,6 +153,34 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDerivedClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls <em>Class For Controls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+	 * @generated
+	 */
+	public Adapter createClassForControlsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName <em>Class With Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
+	 * @generated
+	 */
+	public Adapter createClassWithNameAdapter() {
 		return null;
 	}
 

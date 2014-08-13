@@ -10,14 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
-import static org.junit.Assert.fail;
-
 import java.util.ArrayList;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
+import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.parsley.tests.ui.util.RunnableWithResult;
 import org.eclipse.emf.parsley.tests.ui.util.TestShell;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.junit.After;
@@ -104,17 +104,38 @@ public class AbstractShellBasedTest {
 		return arrayList.get(0);
 	}
 
-	protected void syncExecVoid(final Runnable toExecute) {
+	protected void syncExecVoid(final Runnable toExecute) throws Throwable {
+		final ArrayList<Throwable> arrayList = new ArrayList<Throwable>();
 		getDisplay().syncExec(new Runnable() {
 			public void run() {
 				try {
 					toExecute.run();
 				} catch (Throwable e) {
-					e.printStackTrace();
-					fail(e.getMessage());
+					arrayList.add(e);
 				}
 			}
 		});
+		if (!arrayList.isEmpty()) {
+			throw arrayList.get(0);
+		}
+	}
+
+	protected <T> T syncExecInRealm(final RunnableWithResult<T> toExecute) {
+		final ArrayList<T> arrayList = new ArrayList<T>();
+		getDisplay().syncExec(new Runnable() {
+			public void run() {
+				Realm.runWithDefault(SWTObservables.getRealm(Display.getDefault()), new Runnable() {
+					public void run() {
+						try {
+							arrayList.add(toExecute.run());
+						} catch (Throwable e) {
+							e.printStackTrace();
+							arrayList.add(null);
+						}
+					}
+				});
+			}});
+		return arrayList.get(0);
 	}
 	
 	protected Display getDisplay() {

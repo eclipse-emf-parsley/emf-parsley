@@ -10,23 +10,20 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
-import org.osgi.framework.BundleActivator;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator {
+public class EmfParsleyTestsActivator extends org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator {
 
-	private static BundleContext context;
-
-	static BundleContext getContext() {
-		return context;
-	}
+	private static EmfParsleyTestsActivator plugin;
 
 	/*
 	 * (non-Javadoc)
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
-		Activator.context = bundleContext;
+		super.start(bundleContext);
+		plugin = this;
 	}
 
 	/*
@@ -34,7 +31,17 @@ public class Activator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
-		Activator.context = null;
+		plugin = null;
+		super.stop(bundleContext);
+	}
+	
+	public static EmfParsleyTestsActivator getDefault() {
+		return plugin;
+	}
+
+	@Override
+	protected EmfParsleyGuiceModule createModule() {
+		return new EmfParsleyGuiceModule(getDefault());
 	}
 
 }
