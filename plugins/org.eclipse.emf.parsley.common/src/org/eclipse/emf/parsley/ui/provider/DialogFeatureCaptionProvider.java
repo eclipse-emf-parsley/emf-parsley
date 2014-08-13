@@ -36,7 +36,15 @@ import com.google.inject.Inject;
 public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 
 	@Inject
-	protected FeatureCaptionProvider delegate;
+	private FeatureCaptionProvider delegate;
+
+	public FeatureCaptionProvider getDelegate() {
+		return delegate;
+	}
+
+	public void setDelegate(FeatureCaptionProvider delegate) {
+		this.delegate = delegate;
+	}
 
 	public Label getLabel(Composite parent, EStructuralFeature element) {
 		Label lab = polymorphicGetLabel(parent, element);

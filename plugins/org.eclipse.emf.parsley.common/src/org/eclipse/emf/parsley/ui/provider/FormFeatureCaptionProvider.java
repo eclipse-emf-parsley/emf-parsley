@@ -27,7 +27,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  */
 public class FormFeatureCaptionProvider extends DialogFeatureCaptionProvider {
 
-	protected FormToolkit formToolkit;
+	private FormToolkit formToolkit;
 
 	@Override
 	protected Label createLabel(Composite parent, String text) {

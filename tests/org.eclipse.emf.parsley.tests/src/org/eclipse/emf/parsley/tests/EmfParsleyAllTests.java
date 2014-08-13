@@ -23,6 +23,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	FeaturesProviderTest.class,
 	FeatureCaptionProviderTest.class,
+	DialogFeatureCaptionProviderTest.class,
+	FormFeatureCaptionProviderTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
 	NotificationBufferTest.class,
