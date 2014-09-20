@@ -22,6 +22,7 @@ import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.binding.ProposalCreator
 
 class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	
@@ -99,6 +100,19 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		factory.readonly = true
 		val control = factory.createControl(testPackage.classForControls_StringFeature)
 		control.assertTextEditable(false)
+		control.assertText("")
+		eobj.stringFeature = "Foo"
+		control.assertText("Foo")
+	}
+
+	@Test def void testStringFeatureWithProposals() {
+		factory.proposalCreator = new ProposalCreator() {
+			def proposals_ClassForControls_stringFeature(ClassForControls e) {
+				return #["First Proposal", "Second Proposal"]
+			}
+		}
+		val control = factory.createControl(testPackage.classForControls_StringFeature)
+		control.assertTextEditable(true)
 		control.assertText("")
 		eobj.stringFeature = "Foo"
 		control.assertText("Foo")

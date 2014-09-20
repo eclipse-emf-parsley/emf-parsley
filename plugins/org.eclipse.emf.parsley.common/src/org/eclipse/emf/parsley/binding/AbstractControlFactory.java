@@ -55,7 +55,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
@@ -286,8 +289,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		if (hasPredefinedProposals(feature) && !readonly) {
 			return createControlAndObservableWithPredefinedProposals(proposals);
 		} else {
-			if (readonly && feature instanceof EReference)
+			if (readonly && feature instanceof EReference) {
 				return createControlAndObservableForEObjectReadOnly();
+			}
 			return createControlAndObservableWithoutPredefinedProposals(proposals);
 		}
 	}
@@ -336,10 +340,15 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 
 	protected void addContentProposalAdapter(Text t, List<?> proposals) {
 		if (proposals != null && !proposals.isEmpty()) {
-			// TODO prevent adding null to a list, for example a Collection Type
-			while (proposals.remove(null)) {
-				// clear null entries
-			}
+			Iterable<String> filteredNotNullToString = Iterables.transform(
+					Iterables.filter(proposals, Predicates.notNull()),
+					new Function<Object, String>() {
+
+						public String apply(Object input) {
+							return input.toString();
+						}
+
+					});
 			ControlDecoration field = new ControlDecoration(t, SWT.BORDER);
 			FieldDecoration requiredFieldIndicator = FieldDecorationRegistry
 					.getDefault().getFieldDecoration(
@@ -359,8 +368,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 								"Error while parse: " + string, e));
 			}
 			new ContentProposalAdapter(t, new TextContentAdapter(),
-					new SimpleContentProposalProvider(proposals
-							.toArray(new String[] {})), keyStroke,
+					new SimpleContentProposalProvider(
+							Iterables.toArray(filteredNotNullToString, String.class)), 
+							keyStroke,
 					null);
 		}
 	}
