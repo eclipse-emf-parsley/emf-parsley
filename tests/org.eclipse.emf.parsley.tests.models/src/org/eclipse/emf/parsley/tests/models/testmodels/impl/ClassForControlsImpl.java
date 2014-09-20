@@ -2,14 +2,17 @@
  */
 package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
@@ -29,6 +32,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeature <em>String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getMultiReferenceFeature <em>Multi Reference Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -164,6 +168,16 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected ClassWithName referenceToClassWithName;
+
+	/**
+	 * The cached value of the '{@link #getMultiReferenceFeature() <em>Multi Reference Feature</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultiReferenceFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ClassWithName> multiReferenceFeature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -353,6 +367,18 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ClassWithName> getMultiReferenceFeature() {
+		if (multiReferenceFeature == null) {
+			multiReferenceFeature = new EObjectResolvingEList<ClassWithName>(ClassWithName.class, this, TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE);
+		}
+		return multiReferenceFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -371,6 +397,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				if (resolve) return getReferenceToClassWithName();
 				return basicGetReferenceToClassWithName();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
+				return getMultiReferenceFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -380,6 +408,7 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -403,6 +432,10 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				setReferenceToClassWithName((ClassWithName)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
+				getMultiReferenceFeature().clear();
+				getMultiReferenceFeature().addAll((Collection<? extends ClassWithName>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -437,6 +470,9 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				setReferenceToClassWithName((ClassWithName)null);
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
+				getMultiReferenceFeature().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -463,6 +499,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return STRING_FEATURE_EDEFAULT == null ? stringFeature != null : !STRING_FEATURE_EDEFAULT.equals(stringFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				return referenceToClassWithName != null;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
+				return multiReferenceFeature != null && !multiReferenceFeature.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

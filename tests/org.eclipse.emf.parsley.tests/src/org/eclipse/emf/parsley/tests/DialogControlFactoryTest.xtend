@@ -13,12 +13,15 @@ package org.eclipse.emf.parsley.tests
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.parsley.binding.DialogControlFactory
+import org.eclipse.emf.parsley.binding.MultipleFeatureControl
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.junit.Before
 import org.junit.Test
+
+import static extension org.junit.Assert.*
 
 class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	
@@ -30,7 +33,8 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	
 	var DialogControlFactory factory
 	
-	@Before def void setupEObject() {
+	@Before
+	def void setupEObject() {
 		eobj = testFactory.createClassForControls
 		factory = createAndInitializeFactory
 	}
@@ -98,6 +102,59 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertText("")
 		eobj.stringFeature = "Foo"
 		control.assertText("Foo")
+	}
+
+	@Test def void testMultiReferenceFeatureEmpty() {
+		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
+		control.assertMultipleFeatureControl("", true)
+	}
+
+	@Test def void testMultiReferenceFeatureReadOnly() {
+		factory.readonly = true
+		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
+		control.assertMultipleFeatureControl("", false)
+	}
+
+	@Test def void testMultiReferenceFeatureWithInitialValues() {
+		eobj.multiReferenceFeature += createClassWithName("Res1")
+		eobj.multiReferenceFeature += createClassWithName("Res2")
+		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
+		control.assertMultipleFeatureControl("Class With Name Res1, Class With Name Res2", true)
+	}
+
+	@Test def void testMultiReferenceFeatureReadOnlyWithInitialValues() {
+		factory.readonly = true
+		eobj.multiReferenceFeature += createClassWithName("Res1")
+		eobj.multiReferenceFeature += createClassWithName("Res2")
+		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
+		// the button is not visible, but the label is still shown
+		control.assertMultipleFeatureControl("Class With Name Res1, Class With Name Res2", false)
+	}
+
+	@Test def void testMultiReferenceFeatureAndSelections() {
+		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
+		control.assertMultipleFeatureControl("", true)
+		
+		val mfc = control as MultipleFeatureControl
+		val ref1 = createClassWithName("Res1")
+		val ref2 = createClassWithName("Res2")
+		// force the selection in the control...
+		mfc.internalSelectionProvider.setSelectionProgrammatically(ref1, ref2)
+		control.assertMultipleFeatureControl("Class With Name Res1, Class With Name Res2", true)
+		// and verify that the object has the selected references
+		ref1.assertSame(eobj.multiReferenceFeature.get(0))
+		ref2.assertSame(eobj.multiReferenceFeature.get(1))
+		// force the selection in the control...
+		mfc.internalSelectionProvider.setSelectionProgrammatically(ref2)
+		control.assertMultipleFeatureControl("Class With Name Res2", true)
+		// and verify that the object has the selected references
+		ref2.assertSame(eobj.multiReferenceFeature.get(0))
+		1.assertEquals(eobj.multiReferenceFeature.size)
+		// remove all selections...
+		mfc.internalSelectionProvider.setSelectionProgrammatically()
+		control.assertMultipleFeatureControl("", true)
+		// and verify that the object has the selected references
+		0.assertEquals(eobj.multiReferenceFeature.size)
 	}
 
 	@Test def void testReferenceFeatureWithoutResourceSet() {

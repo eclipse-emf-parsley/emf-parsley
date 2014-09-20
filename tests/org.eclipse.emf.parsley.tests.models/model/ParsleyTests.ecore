@@ -27,6 +27,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referenceToClassWithName"
         eType="#//ClassWithName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multiReferenceFeature"
+        upperBound="-1" eType="#//ClassWithName"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnumForControls">
     <eLiterals name="FIRST"/>

@@ -62,8 +62,6 @@ public class MultipleFeatureControl extends Composite {
 
 	private Button button;
 
-	private boolean beQuiet;
-
 	public MultipleFeatureControl(final Composite parent, AbstractWidgetFactory widgetFactory, final ILabelProvider labelProvider,
 			final EObject object, final EStructuralFeature feature, final ProposalCreator proposalcreator,
 			boolean readonly) {
@@ -114,9 +112,7 @@ public class MultipleFeatureControl extends Composite {
 			for (Iterator<?> iterator = ((IStructuredSelection) getSelection()).iterator(); iterator.hasNext();) {
 				Object object = iterator.next();
 				l.add(object);
-
 			}
-
 		}
 		return l;
 
@@ -124,6 +120,14 @@ public class MultipleFeatureControl extends Composite {
 
 	private ISelection getSelection() {
 		return this.inernalProvider.getSelection();
+	}
+
+	public Label getLabel() {
+		return label;
+	}
+
+	public Button getButton() {
+		return button;
 	}
 
 	/*
@@ -164,13 +168,15 @@ public class MultipleFeatureControl extends Composite {
 	private void recalculateLabelText() {
 		StringBuffer buffy = new StringBuffer();
 		List<?> currSelection = unwrapSelection();
-		if (currSelection != null && !currSelection.isEmpty())
+		if (!currSelection.isEmpty()) {
 			for (Iterator<?> iterator = currSelection.iterator(); iterator.hasNext();) {
 				Object sel = iterator.next();
 				buffy.append(labelProvider.getText(sel));
-				if (iterator.hasNext())
+				if (iterator.hasNext()) {
 					buffy.append(", ");
+				}
 			}
+		}
 		label.setText(buffy.toString());
 	}
 
@@ -179,12 +185,11 @@ public class MultipleFeatureControl extends Composite {
 		public void setSelection(ISelection selection) {
 			this.selection = selection;
 			recalculateLabelText();
-			if (!beQuiet) {
-				// notify
-				// SelectionProviderMultipleSelectionObservableList$SelectionListener
-				for (ISelectionChangedListener currListener : listeners) {
-					currListener.selectionChanged(new SelectionChangedEvent(this, this.selection));
-				}
+			// notify
+			// SelectionProviderMultipleSelectionObservableList$SelectionListener
+			for (ISelectionChangedListener currListener : listeners) {
+				currListener.selectionChanged(new SelectionChangedEvent(this,
+						this.selection));
 			}
 		}
 
@@ -208,16 +213,6 @@ public class MultipleFeatureControl extends Composite {
 
 	public ISelectionProvider getInternalSelectionProvider() {
 		return inernalProvider;
-	}
-
-	public void quietClearSelection() {
-		beQuiet = true;
-		try {
-			this.setSelection(new StructuredSelection());
-		}
-		finally {
-			beQuiet = false;
-		}
 	}
 
 	public void setValue(Object newValue) {

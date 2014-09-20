@@ -369,10 +369,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		// disable unchangeable and unserializable
 		if (c != null) {
 			// don't override readonly behavior
-			if (c.isEnabled())
+			if (c.isEnabled()) {
 				c.setEnabled(f.isChangeable()
 					&& (!(f.getEType() instanceof EDataType && !((EDataType) f
 							.getEType()).isSerializable())));
+			}
 			c.setData(AbstractControlFactory.ESTRUCTURALFEATURE_KEY, f);
 			c.setData(AbstractControlFactory.EOBJECT_KEY, owner);
 			c.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));

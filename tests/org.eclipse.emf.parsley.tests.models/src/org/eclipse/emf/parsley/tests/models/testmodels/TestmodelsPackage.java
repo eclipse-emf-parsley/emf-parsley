@@ -288,13 +288,22 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 6;
 
 	/**
+	 * The feature id for the '<em><b>Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 7;
+
+	/**
 	 * The number of structural features of the '<em>Class For Controls</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 7;
+	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Class For Controls</em>' class.
@@ -559,6 +568,17 @@ public interface TestmodelsPackage extends EPackage {
 	EReference getClassForControls_ReferenceToClassWithName();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getMultiReferenceFeature <em>Multi Reference Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Multi Reference Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getMultiReferenceFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EReference getClassForControls_MultiReferenceFeature();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName <em>Class With Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -760,6 +780,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = eINSTANCE.getClassForControls_ReferenceToClassWithName();
+		/**
+		 * The meta object literal for the '<em><b>Multi Reference Feature</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = eINSTANCE.getClassForControls_MultiReferenceFeature();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
 		 * <!-- begin-user-doc -->

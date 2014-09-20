@@ -35,6 +35,9 @@ import org.junit.Before
 import static org.junit.Assert.*
 import org.eclipse.emf.edit.domain.EditingDomain
 import com.google.inject.Injector
+import org.eclipse.emf.parsley.binding.MultipleFeatureControl
+import org.eclipse.jface.viewers.ISelectionProvider
+import org.eclipse.jface.viewers.StructuredSelection
 
 abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	
@@ -74,7 +77,7 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	def protected EditingDomain getEditingDomain() {
 		return null
 	}
-	
+
 	def protected initialize(DialogControlFactory controlFactory, EObject obj) {
 		controlFactory.initializeCommon(obj)
 		controlFactory.init(getEditingDomain(), obj, shell)
@@ -150,6 +153,22 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 		val text = control as Text;
 		syncExecVoid[|
 			assertEquals(expectedText, text.text)
+		]
+	}
+
+	def protected assertMultipleFeatureControl(Control control, String expectedLabelText, boolean isButtonVisible) {
+		control.assertControlClass(MultipleFeatureControl)
+		val mfc = control as MultipleFeatureControl;
+		syncExecVoid[|
+			assertEquals("...", mfc.button.text)
+			assertEquals(expectedLabelText, mfc.label.text)
+			assertEquals(isButtonVisible, mfc.button.isVisible)
+		]
+	}
+
+	def protected void setSelectionProgrammatically(ISelectionProvider selectionProvider, EObject...elements) {
+		syncExecVoid[|
+			selectionProvider.setSelection(new StructuredSelection(elements))
 		]
 	}
 
