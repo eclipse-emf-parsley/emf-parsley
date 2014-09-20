@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls
@@ -32,7 +33,11 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Before def void setupEObject() {
 		eobj = testFactory.createClassForControls
 		factory = createAndInitializeFactory
-	} 
+	}
+
+	def override protected createResourceSet() {
+		new ResourceSetImpl
+	}
 	
 	@Test def void testBooleanFeature() {
 		val control = factory.createControl(testPackage.classForControls_BooleanFeature)

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
-import org.eclipse.emf.parsley.tests.FeatureResolverTest;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -27,6 +25,7 @@ import org.junit.runners.Suite;
 	FormFeatureCaptionProviderTest.class,
 	DialogControlFactoryTest.class,
 	FormControlFactoryTest.class,
+	FormControlFactoryWithEditingDomainTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
 	NotificationBufferTest.class,

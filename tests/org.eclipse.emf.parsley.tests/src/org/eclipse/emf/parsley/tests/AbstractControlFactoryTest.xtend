@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.binding.AbstractControlFactory
 import org.eclipse.emf.parsley.binding.DialogControlFactory
@@ -34,6 +33,8 @@ import org.junit.After
 import org.junit.Before
 
 import static org.junit.Assert.*
+import org.eclipse.emf.edit.domain.EditingDomain
+import com.google.inject.Injector
 
 abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	
@@ -41,16 +42,24 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	
 	var protected ResourceSet resourceSet;
 	
+	/**
+	 * This will be created on demand using the method getOrCreateInjector
+	 */
+	var private Injector injector = null;
+	
 	@Before
 	def void setupRealm() {
+		injector = null
 		realm = new TestDefaultRealm();
-		resourceSet = new ResourceSetImpl
+		resourceSet = createResourceSet
 	}
 
 	@After
 	def void disposeRealm() {
 		realm.dispose();
 	}
+
+	def protected abstract ResourceSet createResourceSet()
 
 	def protected createResourceInResouceSet() {
 		createResource => [
@@ -61,10 +70,14 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	def protected createResource() {
 		new ResourceImpl
 	}
+
+	def protected EditingDomain getEditingDomain() {
+		return null
+	}
 	
 	def protected initialize(DialogControlFactory controlFactory, EObject obj) {
 		controlFactory.initializeCommon(obj)
-		controlFactory.init(null, obj, shell)
+		controlFactory.init(getEditingDomain(), obj, shell)
 	}
 
 	def protected initialize(FormControlFactory controlFactory, EObject obj) {
@@ -72,28 +85,33 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 		// FormToolkit must be created in the UI thread
 		// and the initialization requires databinding, and thus the Realm
 		syncExecInRealm[|
-			controlFactory.init(null, obj, shell, new FormToolkit(display))
+			controlFactory.init(getEditingDomain(), obj, shell, new FormToolkit(display))
 			true
 		]
 	}
 
 	def protected initializeCommon(AbstractControlFactory controlFactory, EObject obj) {
 		controlFactory.proposalCreator = new ProposalCreator
-		val injector = Guice.createInjector(new EmfParsleyGuiceModule(EmfParsleyTestsActivator.getDefault) {
-			
-			override configure(Binder binder) {
-				val compound = getBindings();
-				compound.configure(binder);
-			}
-			
-			override bindIImageHelper() {
-				IImageHelper.NullImageHelper
-			}
-			
-		})
-		injector.injectMembers(controlFactory)
+		getOrCreateInjector.injectMembers(controlFactory)
 	}
 
+	def protected getOrCreateInjector() {
+		if (injector === null) {
+			injector = Guice.createInjector(new EmfParsleyGuiceModule(EmfParsleyTestsActivator.getDefault) {
+
+				override configure(Binder binder) {
+					val compound = getBindings();
+					compound.configure(binder);
+				}
+				
+				override bindIImageHelper() {
+					IImageHelper.NullImageHelper
+				}
+				
+			})
+		}
+		return injector
+	}
 
 	def protected createControl(AbstractControlFactory factory, EStructuralFeature feature) {
 		syncExecInRealm(|factory.create(feature))
