@@ -22,6 +22,7 @@ import org.eclipse.swt.SWT
 import org.junit.Test
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.binding.ControlObservablePair
+import static extension org.junit.Assert.*
 
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	
@@ -128,6 +129,21 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertText("")
 		o1.baseMultiReferenceFeature += createClassWithName("Bar")
 		control.assertText("")
+	}
+
+	/**
+	 * The Control in the ControlObservablePair is set to null
+	 */
+	@Test
+	def void testCustomControlNull() {
+		val o1 = createBaseClassObject
+		val factory = new DialogControlFactory {
+			def control_BaseClass_baseClassFeature(EStructuralFeature f) {
+				return new ControlObservablePair(null, null)
+			}
+		} => [initialize(o1)]
+		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
+		control.assertNull
 	}
 
 	/**

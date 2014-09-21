@@ -230,9 +230,10 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		IObservableValue controlObservable = retValAndTargetPair
 				.getObservableValue();
 
-		if (retVal != null && controlObservable != null) {
+		if (controlObservable != null) {
 			edbc.bindValue(controlObservable, featureObservable, null, null);
 		}
+		
 		return retVal;
 	}
 
