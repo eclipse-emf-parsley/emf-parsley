@@ -118,6 +118,26 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertText("Foo")
 	}
 
+	@Test def void testStringFeatureWithNullProposals() {
+		factory.proposalCreator = new ProposalCreator() {
+			def proposals_ClassForControls_stringFeature(ClassForControls e) {
+				return null
+			}
+		}
+		val control = factory.createControl(testPackage.classForControls_StringFeature)
+		control.assertTextEditable(true)
+	}
+
+	@Test def void testStringFeatureWithEmptyProposals() {
+		factory.proposalCreator = new ProposalCreator() {
+			def proposals_ClassForControls_stringFeature(ClassForControls e) {
+				return emptyList
+			}
+		}
+		val control = factory.createControl(testPackage.classForControls_StringFeature)
+		control.assertTextEditable(true)
+	}
+
 	@Test def void testMultiReferenceFeatureEmpty() {
 		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
 		control.assertMultipleFeatureControl("", true)
