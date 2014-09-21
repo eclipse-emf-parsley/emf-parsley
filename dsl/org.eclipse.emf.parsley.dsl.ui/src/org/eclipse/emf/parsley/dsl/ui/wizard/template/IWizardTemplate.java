@@ -20,11 +20,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
  */
 public interface IWizardTemplate {
 
-	public String getLabel();
+	String getLabel();
 
-	public String getDescription();
+	String getDescription();
 
-	public String getOrGenerateViewClass(IProject project, String projectName,
+	String getOrGenerateViewClass(IProject project, String projectName,
 			String packagePath, IProgressMonitor monitor) throws CoreException;
 
 }

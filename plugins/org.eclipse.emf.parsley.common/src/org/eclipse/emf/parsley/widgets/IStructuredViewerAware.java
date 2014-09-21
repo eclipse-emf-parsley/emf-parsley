@@ -14,8 +14,8 @@ import org.eclipse.jface.viewers.StructuredViewer;
 
 public interface IStructuredViewerAware {
 
-    public void setViewer(StructuredViewer viewer);
+    void setViewer(StructuredViewer viewer);
     
-    public StructuredViewer getViewer();
+    StructuredViewer getViewer();
 
 }
