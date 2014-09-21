@@ -177,12 +177,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		}
 	}
 
-	protected Predicate<Method> getControlPredicate(EStructuralFeature feature) {
-		String methodName = "control_" + owner.eClass().getName() + "_"
-				+ feature.getName();
-		return PolymorphicDispatcher.Predicates.forName(methodName, 1);
-	}
-
 	protected Control bindList(final EStructuralFeature feature) {
 		IObservableValue source = createFeatureObserveable(feature);
 

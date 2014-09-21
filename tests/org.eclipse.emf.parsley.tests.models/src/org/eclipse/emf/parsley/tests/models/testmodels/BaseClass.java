@@ -2,6 +2,7 @@
  */
 package org.eclipse.emf.parsley.tests.models.testmodels;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClass#getBaseClassFeature <em>Base Class Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClass#getBaseMultiReferenceFeature <em>Base Multi Reference Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,5 +48,21 @@ public interface BaseClass extends EObject {
 	 * @generated
 	 */
 	void setBaseClassFeature(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Base Multi Reference Feature</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Base Multi Reference Feature</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Base Multi Reference Feature</em>' reference list.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getBaseClass_BaseMultiReferenceFeature()
+	 * @model
+	 * @generated
+	 */
+	EList<ClassWithName> getBaseMultiReferenceFeature();
 
 } // BaseClass

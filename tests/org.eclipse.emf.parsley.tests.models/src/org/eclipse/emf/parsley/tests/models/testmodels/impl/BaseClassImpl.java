@@ -2,14 +2,18 @@
  */
 package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
 
 /**
@@ -20,6 +24,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl#getBaseClassFeature <em>Base Class Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl#getBaseMultiReferenceFeature <em>Base Multi Reference Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +50,16 @@ public class BaseClassImpl extends MinimalEObjectImpl.Container implements BaseC
 	 * @ordered
 	 */
 	protected String baseClassFeature = BASE_CLASS_FEATURE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getBaseMultiReferenceFeature() <em>Base Multi Reference Feature</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBaseMultiReferenceFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ClassWithName> baseMultiReferenceFeature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,11 +106,25 @@ public class BaseClassImpl extends MinimalEObjectImpl.Container implements BaseC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ClassWithName> getBaseMultiReferenceFeature() {
+		if (baseMultiReferenceFeature == null) {
+			baseMultiReferenceFeature = new EObjectResolvingEList<ClassWithName>(ClassWithName.class, this, TestmodelsPackage.BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE);
+		}
+		return baseMultiReferenceFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case TestmodelsPackage.BASE_CLASS__BASE_CLASS_FEATURE:
 				return getBaseClassFeature();
+			case TestmodelsPackage.BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE:
+				return getBaseMultiReferenceFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -105,11 +134,16 @@ public class BaseClassImpl extends MinimalEObjectImpl.Container implements BaseC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TestmodelsPackage.BASE_CLASS__BASE_CLASS_FEATURE:
 				setBaseClassFeature((String)newValue);
+				return;
+			case TestmodelsPackage.BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE:
+				getBaseMultiReferenceFeature().clear();
+				getBaseMultiReferenceFeature().addAll((Collection<? extends ClassWithName>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -126,6 +160,9 @@ public class BaseClassImpl extends MinimalEObjectImpl.Container implements BaseC
 			case TestmodelsPackage.BASE_CLASS__BASE_CLASS_FEATURE:
 				setBaseClassFeature(BASE_CLASS_FEATURE_EDEFAULT);
 				return;
+			case TestmodelsPackage.BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE:
+				getBaseMultiReferenceFeature().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -140,6 +177,8 @@ public class BaseClassImpl extends MinimalEObjectImpl.Container implements BaseC
 		switch (featureID) {
 			case TestmodelsPackage.BASE_CLASS__BASE_CLASS_FEATURE:
 				return BASE_CLASS_FEATURE_EDEFAULT == null ? baseClassFeature != null : !BASE_CLASS_FEATURE_EDEFAULT.equals(baseClassFeature);
+			case TestmodelsPackage.BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE:
+				return baseMultiReferenceFeature != null && !baseMultiReferenceFeature.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -10,25 +10,18 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.MultipleFeatureControl
+import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.binding.ProposalCreator
 
 class DialogControlFactoryTest extends AbstractControlFactoryTest {
-	
-	val testPackage = TestmodelsPackage.eINSTANCE
-	
-	val testFactory = TestmodelsFactory.eINSTANCE
 	
 	var protected ClassForControls eobj
 	
@@ -261,13 +254,4 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		new DialogControlFactory() => [initialize(eobj)]
 	}
 
-	def protected createClassWithName(Resource res, String n) {
-		createClassWithName(n) => [
-			res.contents += it
-		]
-	}
-
-	def protected createClassWithName(String n) {
-		testFactory.createClassWithName => [name = n]
-	}
 }

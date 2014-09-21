@@ -12,17 +12,25 @@ package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Binder
 import com.google.inject.Guice
+import com.google.inject.Injector
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
+import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.binding.AbstractControlFactory
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
+import org.eclipse.emf.parsley.binding.MultipleFeatureControl
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.eclipse.emf.parsley.tests.util.TestDefaultRealm
+import org.eclipse.jface.viewers.ISelectionProvider
+import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Button
 import org.eclipse.swt.widgets.Combo
@@ -33,17 +41,16 @@ import org.junit.After
 import org.junit.Before
 
 import static org.junit.Assert.*
-import org.eclipse.emf.edit.domain.EditingDomain
-import com.google.inject.Injector
-import org.eclipse.emf.parsley.binding.MultipleFeatureControl
-import org.eclipse.jface.viewers.ISelectionProvider
-import org.eclipse.jface.viewers.StructuredSelection
 
 abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	
 	var TestDefaultRealm realm;
 	
 	var protected ResourceSet resourceSet;
+	
+	val protected testPackage = TestmodelsPackage.eINSTANCE
+	
+	val protected testFactory = TestmodelsFactory.eINSTANCE
 	
 	/**
 	 * This will be created on demand using the method getOrCreateInjector
@@ -186,4 +193,15 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 			clazz.isAssignableFrom(control.class)
 		)
 	}
+
+	def protected createClassWithName(Resource res, String n) {
+		createClassWithName(n) => [
+			res.contents += it
+		]
+	}
+
+	def protected createClassWithName(String n) {
+		testFactory.createClassWithName => [name = n]
+	}
+
 }

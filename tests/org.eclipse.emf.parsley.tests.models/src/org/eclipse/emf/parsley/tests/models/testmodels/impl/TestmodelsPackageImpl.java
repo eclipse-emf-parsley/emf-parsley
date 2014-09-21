@@ -218,6 +218,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getBaseClass_BaseMultiReferenceFeature() {
+		return (EReference)baseClassEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDerivedClass() {
 		return derivedClassEClass;
 	}
@@ -229,6 +238,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 */
 	public EAttribute getDerivedClass_DerivedClassFeature() {
 		return (EAttribute)derivedClassEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDerivedClass_DerivedMultiReferenceFeature() {
+		return (EReference)derivedClassEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -393,9 +411,11 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		baseClassEClass = createEClass(BASE_CLASS);
 		createEAttribute(baseClassEClass, BASE_CLASS__BASE_CLASS_FEATURE);
+		createEReference(baseClassEClass, BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE);
 
 		derivedClassEClass = createEClass(DERIVED_CLASS);
 		createEAttribute(derivedClassEClass, DERIVED_CLASS__DERIVED_CLASS_FEATURE);
+		createEReference(derivedClassEClass, DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE);
 
 		classForControlsEClass = createEClass(CLASS_FOR_CONTROLS);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BOOLEAN_FEATURE);
@@ -457,9 +477,11 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		initEClass(baseClassEClass, BaseClass.class, "BaseClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBaseClass_BaseClassFeature(), ecorePackage.getEString(), "baseClassFeature", null, 0, 1, BaseClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBaseClass_BaseMultiReferenceFeature(), this.getClassWithName(), null, "baseMultiReferenceFeature", null, 0, -1, BaseClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(derivedClassEClass, DerivedClass.class, "DerivedClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDerivedClass_DerivedClassFeature(), ecorePackage.getEString(), "derivedClassFeature", null, 0, 1, DerivedClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDerivedClass_DerivedMultiReferenceFeature(), this.getClassWithName(), null, "derivedMultiReferenceFeature", null, 0, -1, DerivedClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classForControlsEClass, ClassForControls.class, "ClassForControls", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassForControls_BooleanFeature(), ecorePackage.getEBoolean(), "booleanFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

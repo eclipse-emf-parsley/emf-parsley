@@ -2,12 +2,16 @@
  */
 package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
 
@@ -19,6 +23,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl#getDerivedClassFeature <em>Derived Class Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl#getDerivedMultiReferenceFeature <em>Derived Multi Reference Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,6 +49,16 @@ public class DerivedClassImpl extends BaseClassImpl implements DerivedClass {
 	 * @ordered
 	 */
 	protected String derivedClassFeature = DERIVED_CLASS_FEATURE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getDerivedMultiReferenceFeature() <em>Derived Multi Reference Feature</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDerivedMultiReferenceFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ClassWithName> derivedMultiReferenceFeature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,11 +105,25 @@ public class DerivedClassImpl extends BaseClassImpl implements DerivedClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ClassWithName> getDerivedMultiReferenceFeature() {
+		if (derivedMultiReferenceFeature == null) {
+			derivedMultiReferenceFeature = new EObjectResolvingEList<ClassWithName>(ClassWithName.class, this, TestmodelsPackage.DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE);
+		}
+		return derivedMultiReferenceFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case TestmodelsPackage.DERIVED_CLASS__DERIVED_CLASS_FEATURE:
 				return getDerivedClassFeature();
+			case TestmodelsPackage.DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE:
+				return getDerivedMultiReferenceFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -104,11 +133,16 @@ public class DerivedClassImpl extends BaseClassImpl implements DerivedClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TestmodelsPackage.DERIVED_CLASS__DERIVED_CLASS_FEATURE:
 				setDerivedClassFeature((String)newValue);
+				return;
+			case TestmodelsPackage.DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE:
+				getDerivedMultiReferenceFeature().clear();
+				getDerivedMultiReferenceFeature().addAll((Collection<? extends ClassWithName>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -125,6 +159,9 @@ public class DerivedClassImpl extends BaseClassImpl implements DerivedClass {
 			case TestmodelsPackage.DERIVED_CLASS__DERIVED_CLASS_FEATURE:
 				setDerivedClassFeature(DERIVED_CLASS_FEATURE_EDEFAULT);
 				return;
+			case TestmodelsPackage.DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE:
+				getDerivedMultiReferenceFeature().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -139,6 +176,8 @@ public class DerivedClassImpl extends BaseClassImpl implements DerivedClass {
 		switch (featureID) {
 			case TestmodelsPackage.DERIVED_CLASS__DERIVED_CLASS_FEATURE:
 				return DERIVED_CLASS_FEATURE_EDEFAULT == null ? derivedClassFeature != null : !DERIVED_CLASS_FEATURE_EDEFAULT.equals(derivedClassFeature);
+			case TestmodelsPackage.DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE:
+				return derivedMultiReferenceFeature != null && !derivedMultiReferenceFeature.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

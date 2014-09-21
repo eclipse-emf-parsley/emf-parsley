@@ -150,13 +150,22 @@ public interface TestmodelsPackage extends EPackage {
 	int BASE_CLASS__BASE_CLASS_FEATURE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Base Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Base Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BASE_CLASS_FEATURE_COUNT = 1;
+	int BASE_CLASS_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Base Class</em>' class.
@@ -187,6 +196,15 @@ public interface TestmodelsPackage extends EPackage {
 	int DERIVED_CLASS__BASE_CLASS_FEATURE = BASE_CLASS__BASE_CLASS_FEATURE;
 
 	/**
+	 * The feature id for the '<em><b>Base Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_CLASS__BASE_MULTI_REFERENCE_FEATURE = BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE;
+
+	/**
 	 * The feature id for the '<em><b>Derived Class Feature</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,13 +214,22 @@ public interface TestmodelsPackage extends EPackage {
 	int DERIVED_CLASS__DERIVED_CLASS_FEATURE = BASE_CLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Derived Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE = BASE_CLASS_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Derived Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DERIVED_CLASS_FEATURE_COUNT = BASE_CLASS_FEATURE_COUNT + 1;
+	int DERIVED_CLASS_FEATURE_COUNT = BASE_CLASS_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Derived Class</em>' class.
@@ -460,6 +487,17 @@ public interface TestmodelsPackage extends EPackage {
 	EAttribute getBaseClass_BaseClassFeature();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClass#getBaseMultiReferenceFeature <em>Base Multi Reference Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Base Multi Reference Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.BaseClass#getBaseMultiReferenceFeature()
+	 * @see #getBaseClass()
+	 * @generated
+	 */
+	EReference getBaseClass_BaseMultiReferenceFeature();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass <em>Derived Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -479,6 +517,17 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDerivedClass_DerivedClassFeature();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass#getDerivedMultiReferenceFeature <em>Derived Multi Reference Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Derived Multi Reference Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass#getDerivedMultiReferenceFeature()
+	 * @see #getDerivedClass()
+	 * @generated
+	 */
+	EReference getDerivedClass_DerivedMultiReferenceFeature();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls <em>Class For Controls</em>}'.
@@ -707,6 +756,13 @@ public interface TestmodelsPackage extends EPackage {
 		 */
 		EAttribute BASE_CLASS__BASE_CLASS_FEATURE = eINSTANCE.getBaseClass_BaseClassFeature();
 		/**
+		 * The meta object literal for the '<em><b>Base Multi Reference Feature</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE = eINSTANCE.getBaseClass_BaseMultiReferenceFeature();
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl <em>Derived Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -722,6 +778,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DERIVED_CLASS__DERIVED_CLASS_FEATURE = eINSTANCE.getDerivedClass_DerivedClassFeature();
+		/**
+		 * The meta object literal for the '<em><b>Derived Multi Reference Feature</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE = eINSTANCE.getDerivedClass_DerivedMultiReferenceFeature();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
 		 * <!-- begin-user-doc -->

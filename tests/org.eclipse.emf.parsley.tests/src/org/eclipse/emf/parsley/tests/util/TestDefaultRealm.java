@@ -1,5 +1,3 @@
-package org.eclipse.emf.parsley.tests.util;
-
 /*******************************************************************************
  * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
@@ -10,6 +8,8 @@ package org.eclipse.emf.parsley.tests.util;
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
+package org.eclipse.emf.parsley.tests.util;
+
 import org.eclipse.core.databinding.observable.Realm;
 
 /**
