@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Binder
 import com.google.inject.Guice
 import com.google.inject.Injector
 import org.eclipse.emf.ecore.EObject
@@ -19,13 +18,11 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import org.eclipse.emf.edit.domain.EditingDomain
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.binding.AbstractControlFactory
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.MultipleFeatureControl
 import org.eclipse.emf.parsley.binding.ProposalCreator
-import org.eclipse.emf.parsley.runtime.ui.IImageHelper
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.eclipse.emf.parsley.tests.util.TestDefaultRealm
@@ -107,18 +104,7 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 
 	def protected getOrCreateInjector() {
 		if (injector === null) {
-			injector = Guice.createInjector(new EmfParsleyGuiceModule(EmfParsleyTestsActivator.getDefault) {
-
-				override configure(Binder binder) {
-					val compound = getBindings();
-					compound.configure(binder);
-				}
-				
-				override bindIImageHelper() {
-					IImageHelper.NullImageHelper
-				}
-				
-			})
+			injector = Guice.createInjector(new EmfParsleyGuiceModuleForTesting())
 		}
 		return injector
 	}

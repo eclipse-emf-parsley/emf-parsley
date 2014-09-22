@@ -20,6 +20,7 @@ import org.junit.Before
 import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.EmfParsleyConstants
 
 class EmfAbstractTest {
 
@@ -28,6 +29,15 @@ class EmfAbstractTest {
 	protected Writer wr = null
 	
 	protected Book b = null
+	
+	new() {
+		// the following is useless... but it's just to have coverage
+		// for the protected constructor of EmfParsleyConstants
+		// and the protected constructor is "required" by sonar...
+		new EmfParsleyConstants() {
+			
+		}
+	}
 	
 	@Before
 	def void setUp() {

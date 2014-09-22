@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -25,6 +26,8 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static EmfParsleyActivator plugin;
+	
+	private static final Logger LOGGER = Logger.getLogger(EmfParsleyActivator.class);
 
 	/**
 	 * The constructor
@@ -67,15 +70,20 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 
 	public static void log(Status status) {
 		EmfParsleyActivator p = getDefault();
-		if (p != null)
+		if (p != null) {
 			p.getLog().log(status);
-		else
-			System.err.println(status.toString());
+		} else {
+			LOGGER.error(status.toString());
+		}
 	}
 
 	public static void logError(String errorMessage) {
 		log(new Status(IStatus.ERROR, EmfParsleyActivator.PLUGIN_ID,
 				errorMessage));
+	}
+
+	public static void logError(String errorMessage, Throwable exception) {
+		LOGGER.error(errorMessage, exception);
 	}
 
 	public static void log(Throwable exception) {

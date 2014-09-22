@@ -17,8 +17,6 @@ import java.util.List;
 
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.databinding.EMFDataBindingContext;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
@@ -31,6 +29,7 @@ import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
+import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
@@ -61,6 +60,7 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.name.Named;
 
 /**
  * 
@@ -71,6 +71,10 @@ import com.google.inject.Provider;
  * 
  */
 public abstract class AbstractControlFactory extends AbstractWidgetFactory {
+	@Inject
+	@Named(EmfParsleyConstants.CONTENT_ASSIST_SHORTCUT)
+	private String contentAssistShortcut;
+	
 	@Inject
 	private Provider<ILabelProvider> labelProviderProvider;
 
@@ -212,9 +216,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 				this, labelProviderProvider.get(), owner,
 				feature, getProposalCreator(), readonly);
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
-		ControlObservablePair retValAndTargetPair = new ControlObservablePair(
-				mfc, target);
-		return retValAndTargetPair;
+		return new ControlObservablePair(mfc, target);
 	}
 
 	private Control bindValue(EStructuralFeature feature) {
@@ -351,16 +353,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			field.setImage(requiredFieldIndicator.getImage());
 			field.setDescriptionText(requiredFieldIndicator.getDescription());
 			KeyStroke keyStroke = null;
-			String string = "Ctrl+Space";
 			try {
-				keyStroke = KeyStroke.getInstance(string);
+				keyStroke = KeyStroke.getInstance(contentAssistShortcut);
 			} catch (ParseException e) {
 				EmfParsleyActivator
-						.getDefault()
-						.getLog()
-						.log(new Status(IStatus.ERROR,
-								EmfParsleyActivator.PLUGIN_ID,
-								"Error while parse: " + string, e));
+						.logError("Error while parsing keystroke: " + contentAssistShortcut, e);
 			}
 			new ContentProposalAdapter(t, new TextContentAdapter(),
 					new SimpleContentProposalProvider(
@@ -388,7 +385,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	public void dispose() {
 		edbc.dispose();
 		parent.dispose();
-		// toolkit.dispose();
 	}
 
 	public Composite getParent() {

@@ -66,6 +66,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
+import com.google.inject.name.Names;
 
 /**
  * Default Google Guice bindings.
@@ -90,6 +91,15 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 				plugin.getDialogSettings());
 	}
 
+	/**
+	 * The String constant for Content Assist Shortcut
+	 * @param binder
+	 */
+	public void configureContentAssistShortcut(Binder binder) {
+		binder.bind(String.class).annotatedWith
+			(Names.named(EmfParsleyConstants.CONTENT_ASSIST_SHORTCUT)).
+			toInstance("Ctrl+Space");
+	}
 
 	/**
 	 * Use this binding to provide your own implementation of getImages methods.
