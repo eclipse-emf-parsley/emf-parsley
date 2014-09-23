@@ -53,7 +53,7 @@ public abstract class AbstractDetailComposite extends Composite {
 	 */
 	public void init(EObject original, EditingDomain editingDomain) {
 		List<EStructuralFeature> features = featuresProvider
-				.getFeatures(original);
+				.getEObjectFeatures(original);
 
 		initControlFactory(editingDomain, original);
 

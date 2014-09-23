@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -35,10 +36,15 @@ import com.google.inject.Inject;
  * Provides the list of {@link EStructuralFeature} of an {@link EClass}. The
  * default is to return the list of all the features in the EClass, but the
  * programmer can customize it (for instance, by returning only a superset, or
- * using a different order) on an EClass-based strategy. The customization can
- * be done redefining buildMap and adding mappings.
+ * using a different order) on an EClass-based strategy.
  * 
- * @author Lorenzo Bettini
+ * The customization can be done redefining {@link #buildMap} or
+ * {@link #buildStringMap} and adding mappings.
+ * 
+ * In any case, the computation of features is cached, thus, the list of
+ * features for a given EClass will always be the same after the first invocation.
+ * 
+ * @author Lorenzo Bettini - initial API and implementation
  * 
  */
 public class FeaturesProvider {
@@ -46,12 +52,14 @@ public class FeaturesProvider {
 	@Inject
 	private FeatureResolver featureResolver;
 
+	private Map<EClass, List<EStructuralFeature>> eClassFeaturesCache = new HashMap<EClass, List<EStructuralFeature>>();
+
+	protected EClassToEStructuralFeatureMap map = null;
+	
+	protected EClassToEStructuralFeatureAsStringsMap stringMap = null;
+
 	public FeatureResolver getFeatureResolver() {
 		return featureResolver;
-	}
-
-	public void setFeatureResolver(FeatureResolver featureResolver) {
-		this.featureResolver = featureResolver;
 	}
 
 	public static class EClassToEStructuralFeatureMap extends
@@ -65,33 +73,57 @@ public class FeaturesProvider {
 
 	}
 
-	protected EClassToEStructuralFeatureMap map = null;
-
-	protected EClassToEStructuralFeatureAsStringsMap stringMap = null;
-
-	public List<EStructuralFeature> getFeatures(EObject eObject) {
-		if (eObject == null)
+	/**
+	 * Returns the list of features of the {@link EClass} of the specified
+	 * {@link EObject}, by calling {@link #getFeatures(EClass)}
+	 * @param eObject
+	 * @return if the eObject is null it returns an empty list
+	 */
+	public List<EStructuralFeature> getEObjectFeatures(EObject eObject) {
+		if (eObject == null) {
 			return Collections.emptyList();
+		}
 
 		return getFeatures(eObject.eClass());
 	}
 
+	/**
+	 * Returns the list of features of the {@link EClass}, using possible customizations
+	 * @param eClass
+	 * @return if the eClass is null it returns an empty list
+	 */
 	public List<EStructuralFeature> getFeatures(EClass eClass) {
-		if (eClass == null)
+		if (eClass == null) {
 			return Collections.emptyList();
+		}
 
-		List<EStructuralFeature> fromMap = getFromMap(eClass);
-		if (fromMap != null)
-			return fromMap;
-		else {
-			fromMap = getFromStringMap(eClass);
-			if (fromMap != null)
-				return fromMap;
+		List<EStructuralFeature> features = eClassFeaturesCache.get(eClass);
+		if (features != null) {
+			return features;
+		}
+
+		features = getFromMap(eClass);
+		if (features != null) {
+			eClassFeaturesCache.put(eClass, features);
+			return features;
+		} else {
+			features = getFromStringMap(eClass);
+			if (features != null) {
+				eClassFeaturesCache.put(eClass, features);
+				return features;
+			}
 		}
 
 		// default behavior
+		features = defaultFeatures(eClass);
+		eClassFeaturesCache.put(eClass, features);
+
+		return defaultFeatures(eClass);
+	}
+
+	protected List<EStructuralFeature> defaultFeatures(EClass eClass) {
 		EList<EStructuralFeature> eAllStructuralFeatures = eClass.getEAllStructuralFeatures();
-		Collection<EStructuralFeature> filtered = Collections2.filter(eAllStructuralFeatures, new Predicate<EStructuralFeature>() {
+		Collection<EStructuralFeature> features = Collections2.filter(eAllStructuralFeatures, new Predicate<EStructuralFeature>() {
 
 			public boolean apply(EStructuralFeature feature) {
 				// derived, unchangeable, container and containment features ignored
@@ -103,34 +135,38 @@ public class FeaturesProvider {
 						));
 			}
 		});
-		return new BasicEList<EStructuralFeature>(filtered);
+		return new BasicEList<EStructuralFeature>(features);
 	}
 
 	protected List<EStructuralFeature> getFromMap(EClass eClass) {
-		if (map == null)
+		if (map == null) {
 			buildMapInternal();
-
+		}
+		
 		return map.get(eClass);
 	}
 
 	protected List<EStructuralFeature> getFromStringMap(EClass eClass) {
-		if (stringMap == null)
+		if (stringMap == null) {
 			buildStringMapInternal();
+		}
 
 		List<String> list = stringMap.get(eClass.getInstanceClassName());
-		if (list == null)
+		if (list == null) {
 			return null;
+		}
 
 		LinkedList<EStructuralFeature> result = new LinkedList<EStructuralFeature>();
 
 		for (String featureName : list) {
-			EStructuralFeature feature = featureResolver.getFeature(eClass, featureName);
-			if (feature != null)
+			EStructuralFeature feature = getFeatureResolver().getFeature(eClass, featureName);
+			if (feature != null) {
 				result.add(feature);
-			else
+			} else {
 				EmfParsleyActivator.logError("cannot find feature '"
 						+ featureName + "' in EClass '" + eClass.getName()
 						+ "'");
+			}
 		}
 
 		return result;
@@ -141,8 +177,9 @@ public class FeaturesProvider {
 	}
 
 	public EClassToEStructuralFeatureMap getMap() {
-		if (map == null)
+		if (map == null) {
 			map = new EClassToEStructuralFeatureMap();
+		}
 		return map;
 	}
 
@@ -151,8 +188,9 @@ public class FeaturesProvider {
 	}
 
 	public EClassToEStructuralFeatureAsStringsMap getStringMap() {
-		if (stringMap == null)
+		if (stringMap == null) {
 			stringMap = new EClassToEStructuralFeatureAsStringsMap();
+		}
 		return stringMap;
 	}
 
@@ -168,7 +206,7 @@ public class FeaturesProvider {
 
 	/**
 	 * Derived classes should redefine this method to map an {@link EClass}'s
-	 * name to {@link EStructuralFeature}s' names; the {@link EClass}'s name
+	 * instanceClassName to {@link EStructuralFeature}s' names; the {@link EClass}'s name
 	 * should be obtained using getInstanceClassName().
 	 * 
 	 * @param stringMap

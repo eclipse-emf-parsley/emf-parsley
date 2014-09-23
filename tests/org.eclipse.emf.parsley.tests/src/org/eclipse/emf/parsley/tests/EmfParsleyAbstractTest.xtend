@@ -86,6 +86,11 @@ abstract class EmfParsleyAbstractTest {
 		return null
 	}
 
+	def protected <T> injectMembers(T o) {
+		getOrCreateInjector.injectMembers(o)
+		return o
+	}
+
 	def protected getOrCreateInjector() {
 		if (injector === null) {
 			injector = Guice.createInjector(new EmfParsleyGuiceModuleForTesting())

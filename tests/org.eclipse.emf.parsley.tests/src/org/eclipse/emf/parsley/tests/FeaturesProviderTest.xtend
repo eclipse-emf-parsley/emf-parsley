@@ -14,36 +14,119 @@ import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
-import org.eclipse.emf.parsley.ecore.FeatureResolver
 
-class FeaturesProviderTest {
+class FeaturesProviderTest extends EmfParsleyAbstractTest {
 	
 	var featuresProvider = new FeaturesProvider;
 	
 	@Before
-	def void setUp() {
+	def void setUpFeaturesProvider() {
 		featuresProvider = new FeaturesProvider
-		featuresProvider.featureResolver = new FeatureResolver
+		injectMembers(featuresProvider)
 	}
 	
 	def private void buildStringMap(EClass eClass, String...featuresNames) {
 		featuresProvider.addToStringMap(eClass, featuresNames);
 	}
 
+	@Test def void testMapCreationHappensOnlyOnce() {
+		featuresProvider.map => [
+			assertNotNull
+			assertSame(featuresProvider.map)
+		]
+		featuresProvider.stringMap => [
+			assertNotNull
+			assertSame(featuresProvider.stringMap)
+		]
+	}
+
+	@Test def void testNullEObject() {
+		featuresProvider.getEObjectFeatures(null).assertFeatureList("")
+	}
+
+	@Test def void testNullEClass() {
+		featuresProvider.getFeatures(null).assertFeatureList("")
+	}
+
+	@Test def void testEObjectFeatures() {
+		featuresProvider.getEObjectFeatures(testFactory.createTestEClass).
+			assertFeatureList("lowercaseNameFeature, UpperCaseNameFeature")
+	}
+
 	@Test def void testDefaultImplementationWithTestmodel() {
-		TestmodelsPackage::eINSTANCE.testEClass => [
+		testPackage.testEClass => [
 			assertFeatureList("lowercaseNameFeature, UpperCaseNameFeature")
 		]
 	}
 
+	@Test def void testDefaultImplementationWithTwoEClasses() {
+		testPackage.testEClass => [
+			assertFeatureList("lowercaseNameFeature, UpperCaseNameFeature")
+		]
+		EXTLibraryPackage::eINSTANCE.library => [
+			assertFeatureList("address, name, parentBranch, people")
+		]
+	}
+
+	@Test def void testCustomBuildMap() {
+		val customFeaturesProvider = new FeaturesProvider() {
+			override protected buildMap(EClassToEStructuralFeatureMap map) {
+				map.mapTo(testPackage.testEClass, 
+					testPackage.testEClass_LowercaseNameFeature
+				)
+			}
+		}
+		customFeaturesProvider.getFeatures(testPackage.testEClass) => [
+			assertFeatureList("lowercaseNameFeature")
+			// if called again, the same list is returned
+			assertSame(
+				customFeaturesProvider.getFeatures(testPackage.testEClass))
+		]
+	}
+
+	@Test def void testCustomBuildStringMap() {
+		val customFeaturesProvider = new FeaturesProvider() {
+			override protected buildStringMap(EClassToEStructuralFeatureAsStringsMap stringMap) {
+				stringMap.mapTo(testPackage.testEClass.instanceClassName, "lowercaseNameFeature")
+			}
+		}.injectMembers
+		customFeaturesProvider.getFeatures(testPackage.testEClass) => [
+			assertFeatureList("lowercaseNameFeature")
+			// if called again, the same list is returned
+			assertSame(
+				customFeaturesProvider.getFeatures(testPackage.testEClass))
+		]
+	}
+
+	@Test def void testCustomBuildMapHasPrecedenceOverBuildStringMap() {
+		val customFeaturesProvider = new FeaturesProvider() {
+			override protected buildMap(EClassToEStructuralFeatureMap map) {
+				map.mapTo(testPackage.testEClass, 
+					testPackage.testEClass_LowercaseNameFeature
+				)
+			}
+			override protected buildStringMap(EClassToEStructuralFeatureAsStringsMap stringMap) {
+				// this won't be called, since we already provide buildMap
+				stringMap.mapTo("TestEClass", "upperCaseNameFeature")
+			}
+			
+		}
+		customFeaturesProvider.getFeatures(testPackage.testEClass) => [
+			assertFeatureList("lowercaseNameFeature")
+			// if called again, the same list is returned
+			assertSame(
+				customFeaturesProvider.getFeatures(testPackage.testEClass))
+		]
+	}
+
 	@Test def void testFilterNotAppliedToCustomImplementation() {
-		TestmodelsPackage::eINSTANCE.testEClass => [
+		testPackage.testEClass => [
 			buildStringMap("lowercaseNameFeature", "notChangeableFeature")
 			// notChangeableFeature would be discarded by the default implementation
 			// but since we customized the feature provider, the filter is not applied
@@ -68,7 +151,7 @@ class FeaturesProviderTest {
 	}
 
 	@Test def void testUpperCaseFeatureNames() {
-		TestmodelsPackage::eINSTANCE.testEClass => [
+		testPackage.testEClass => [
 			buildStringMap("lowercaseNameFeature", "upperCaseNameFeature")
 			assertFeatureList("lowercaseNameFeature, UpperCaseNameFeature")
 		]

@@ -62,7 +62,7 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 
 	def protected initializeCommon(AbstractControlFactory controlFactory, EObject obj) {
 		controlFactory.proposalCreator = new ProposalCreator
-		getOrCreateInjector.injectMembers(controlFactory)
+		injectMembers(controlFactory)
 	}
 
 	def protected createControl(AbstractControlFactory factory, EStructuralFeature feature) {
