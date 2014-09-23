@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.MultipleFeatureControl
 import org.eclipse.emf.parsley.binding.ProposalCreator
@@ -33,10 +32,6 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		factory = createAndInitializeFactory
 	}
 
-	def override protected createResourceSet() {
-		new ResourceSetImpl
-	}
-	
 	@Test def void testBooleanFeature() {
 		val control = factory.createControl(testPackage.classForControls_BooleanFeature)
 		control.assertCheckbox(false)

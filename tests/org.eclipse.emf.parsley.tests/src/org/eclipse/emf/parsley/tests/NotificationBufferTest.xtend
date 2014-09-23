@@ -17,7 +17,7 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class NotificationBufferTest extends EmfAbstractTest {
+class NotificationBufferTest extends EmfParsleyAbstractTest {
 
 	protected NotificationBuffer buffer = null
 	

@@ -33,7 +33,7 @@ import org.junit.BeforeClass;
  * @author Lorenzo Bettini
  *
  */
-public class AbstractShellBasedTest {
+public class AbstractShellBasedTest extends EmfParsleyAbstractTest {
 	private static Thread uiThread;
 	
 	private static Shell shell;

@@ -10,21 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Guice
-import com.google.inject.Injector
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.binding.AbstractControlFactory
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.MultipleFeatureControl
 import org.eclipse.emf.parsley.binding.ProposalCreator
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.eclipse.emf.parsley.tests.util.TestDefaultRealm
 import org.eclipse.jface.viewers.ISelectionProvider
 import org.eclipse.jface.viewers.StructuredSelection
@@ -43,43 +35,14 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	
 	var TestDefaultRealm realm;
 	
-	var protected ResourceSet resourceSet;
-	
-	val protected testPackage = TestmodelsPackage.eINSTANCE
-	
-	val protected testFactory = TestmodelsFactory.eINSTANCE
-	
-	/**
-	 * This will be created on demand using the method getOrCreateInjector
-	 */
-	var private Injector injector = null;
-	
 	@Before
 	def void setupRealm() {
-		injector = null
 		realm = new TestDefaultRealm();
-		resourceSet = createResourceSet
 	}
 
 	@After
 	def void disposeRealm() {
 		realm.dispose();
-	}
-
-	def protected abstract ResourceSet createResourceSet()
-
-	def protected createResourceInResouceSet() {
-		createResource => [
-			resourceSet.resources += it
-		]
-	}
-
-	def protected createResource() {
-		new ResourceImpl
-	}
-
-	def protected EditingDomain getEditingDomain() {
-		return null
 	}
 
 	def protected initialize(DialogControlFactory controlFactory, EObject obj) {
@@ -100,13 +63,6 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	def protected initializeCommon(AbstractControlFactory controlFactory, EObject obj) {
 		controlFactory.proposalCreator = new ProposalCreator
 		getOrCreateInjector.injectMembers(controlFactory)
-	}
-
-	def protected getOrCreateInjector() {
-		if (injector === null) {
-			injector = Guice.createInjector(new EmfParsleyGuiceModuleForTesting())
-		}
-		return injector
 	}
 
 	def protected createControl(AbstractControlFactory factory, EStructuralFeature feature) {
@@ -178,16 +134,6 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 			", actual class: " + control.class.simpleName, 
 			clazz.isAssignableFrom(control.class)
 		)
-	}
-
-	def protected createClassWithName(Resource res, String n) {
-		createClassWithName(n) => [
-			res.contents += it
-		]
-	}
-
-	def protected createClassWithName(String n) {
-		testFactory.createClassWithName => [name = n]
 	}
 
 }

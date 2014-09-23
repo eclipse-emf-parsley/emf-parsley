@@ -16,7 +16,7 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class EmfCopyTest extends EmfAbstractTest {
+class EmfCopyTest extends EmfParsleyAbstractTest {
 
 	@Test def void testCloneDoesNotCopyBidirectional() {
 		wr.books.size.assertEquals(1)

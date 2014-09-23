@@ -10,25 +10,45 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import com.google.inject.Guice
+import com.google.inject.Injector
 import java.util.List
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.resource.impl.ResourceImpl
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.edit.domain.EditingDomain
+import org.eclipse.emf.parsley.EmfParsleyConstants
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.junit.Before
 
 import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.EmfParsleyConstants
 
-class EmfAbstractTest {
+abstract class EmfParsleyAbstractTest {
 
 	protected Library lib = null
 	
 	protected Writer wr = null
 	
 	protected Book b = null
+	
+	var protected ResourceSet resourceSet;
+	
+	val protected testPackage = TestmodelsPackage.eINSTANCE
+	
+	val protected testFactory = TestmodelsFactory.eINSTANCE
+	
+	/**
+	 * This will be created on demand using the method getOrCreateInjector
+	 */
+	var private Injector injector = null;
 	
 	new() {
 		// the following is useless... but it's just to have coverage
@@ -41,9 +61,36 @@ class EmfAbstractTest {
 	
 	@Before
 	def void setUp() {
+		injector = null
+		resourceSet = createResourceSet
 		lib = createTestLibrary
 		wr = lib.writers.head
 		b = lib.books.head
+	}
+
+	def protected ResourceSet createResourceSet() {
+		new ResourceSetImpl
+	}
+
+	def protected createResourceInResouceSet() {
+		createResource => [
+			resourceSet.resources += it
+		]
+	}
+
+	def protected createResource() {
+		new ResourceImpl
+	}
+
+	def protected EditingDomain getEditingDomain() {
+		return null
+	}
+
+	def protected getOrCreateInjector() {
+		if (injector === null) {
+			injector = Guice.createInjector(new EmfParsleyGuiceModuleForTesting())
+		}
+		return injector
 	}
 	
 	def protected assertBooks(Writer w, int expectedSize) {
@@ -82,4 +129,15 @@ class EmfAbstractTest {
 	def protected addTestBook(String t) {
 		lib.books += createTestBook(t)
 	}
+
+	def protected createClassWithName(Resource res, String n) {
+		createClassWithName(n) => [
+			res.contents += it
+		]
+	}
+
+	def protected createClassWithName(String n) {
+		testFactory.createClassWithName => [name = n]
+	}
+
 }
