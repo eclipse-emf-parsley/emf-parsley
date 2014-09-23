@@ -21,6 +21,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	FeaturesProviderTest.class,
 	FeatureCaptionProviderTest.class,
+	ProposalCreatorTest.class,
 	DialogFeatureCaptionProviderTest.class,
 	FormFeatureCaptionProviderTest.class,
 	DialogControlFactoryTest.class,
