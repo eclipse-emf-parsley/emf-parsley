@@ -71,7 +71,7 @@ public class ProposalCreator {
 			return proposals;
 		}
 		
-		if (resource == null) {
+		if (getResource() == null) {
 			retrieveResource(eObject);
 		}
 
@@ -100,7 +100,7 @@ public class ProposalCreator {
 	protected List<Object> findAllInstances(EClassifier type) {
 		List<Object> objects = new ArrayList<Object>();
 		
-		if (resource == null) {
+		if (getResource() == null) {
 			return objects;
 		}
 		
