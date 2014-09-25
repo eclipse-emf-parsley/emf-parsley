@@ -20,22 +20,24 @@ import com.google.inject.Inject;
 
 /**
  * Provides the list of EStructuralFeature of an EClass only for tables.
+ * 
+ * If there is no customization for an EClass, it defaults to the injected
+ * {@link FeaturesProvider}.
+ * 
  * @author Lorenzo Bettini, Francesco Guidieri
  * @see FeaturesProvider
- *
  */
-public class TableFeaturesProvider extends FeaturesProvider{
-	
+public class TableFeaturesProvider extends FeaturesProvider {
+
 	@Inject
 	protected FeaturesProvider featuresProvider;
-	
+
 	private List<Integer> weights;
-	
 
 	@Override
 	protected List<EStructuralFeature> getFromMap(EClass eClass) {
-		List<EStructuralFeature> columnDefinition=super.getFromMap(eClass);
-		if(columnDefinition!=null){
+		List<EStructuralFeature> columnDefinition = super.getFromMap(eClass);
+		if (columnDefinition != null) {
 			return columnDefinition;
 		}
 		return featuresProvider.getFromMap(eClass);
@@ -43,8 +45,8 @@ public class TableFeaturesProvider extends FeaturesProvider{
 
 	@Override
 	protected List<EStructuralFeature> getFromStringMap(EClass eClass) {
-		List<EStructuralFeature> columnDefinition=super.getFromStringMap(eClass);
-		if(columnDefinition!=null){
+		List<EStructuralFeature> columnDefinition = super.getFromStringMap(eClass);
+		if (columnDefinition != null) {
 			return columnDefinition;
 		}
 		return featuresProvider.getFromStringMap(eClass);
@@ -54,8 +56,7 @@ public class TableFeaturesProvider extends FeaturesProvider{
 		return weights;
 	}
 
-
 	public void setWeights(Integer... weights) {
-		this.weights=Lists.newArrayList(weights);
+		this.weights = Lists.newArrayList(weights);
 	}
 }

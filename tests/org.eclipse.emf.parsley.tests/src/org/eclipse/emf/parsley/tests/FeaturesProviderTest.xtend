@@ -20,15 +20,13 @@ import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.junit.Before
 import org.junit.Test
 
-import static org.eclipse.emf.parsley.tests.FeaturesProviderTest.*
-
 import static extension org.junit.Assert.*
 
 class FeaturesProviderTest extends EmfParsleyAbstractTest {
 	
-	private static final Logger LOGGER = Logger.getLogger(FeaturesProviderTest);
+	var protected Logger logger = Logger.getLogger(class);
 	
-	var featuresProvider = new FeaturesProvider;
+	var protected FeaturesProvider featuresProvider;
 	
 	@Before
 	def void setUpFeaturesProvider() {
@@ -38,6 +36,10 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 	
 	def private void buildStringMap(EClass eClass, String...featuresNames) {
 		featuresProvider.addToStringMap(eClass, featuresNames);
+	}
+
+	def private void buildMap(EClass eClass, EStructuralFeature...features) {
+		featuresProvider.getMap.put(eClass, features);
 	}
 
 	@Test def void testMapCreationHappensOnlyOnce() {
@@ -138,7 +140,7 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 		}.injectMembers
 		// the provider gracefully deals with non existant features
 		// and it logs the problem
-		LOGGER.info("*** ERROR IN THE LOG IS EXPECTED IN THIS TEST ***")
+		logger.info("*** ERROR IN THE LOG IS EXPECTED IN THIS TEST ***")
 		customFeaturesProvider.getFeatures(testPackage.testEClass) => [
 			assertFeatureList("")
 		]
@@ -162,9 +164,19 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 		]
 	}
 
-	@Test def void testEmployeeFeatures() {
+	@Test def void testEmployeeFeaturesWithBuildStringMap() {
 		EXTLibraryPackage::eINSTANCE.employee => [
 			buildStringMap("firstName", "manager")
+			assertFeatureList("firstName, manager")
+		]
+	}
+
+	@Test def void testEmployeeFeaturesWithBuildMap() {
+		EXTLibraryPackage.eINSTANCE.employee => [
+			buildMap(
+				EXTLibraryPackage.eINSTANCE.person_FirstName, 
+				EXTLibraryPackage.eINSTANCE.employee_Manager
+			)
 			assertFeatureList("firstName, manager")
 		]
 	}

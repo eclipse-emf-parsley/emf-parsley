@@ -20,6 +20,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	FeaturesProviderTest.class,
+	TableFeaturesProviderTest.class,
 	FeatureCaptionProviderTest.class,
 	ProposalCreatorTest.class,
 	DialogFeatureCaptionProviderTest.class,
