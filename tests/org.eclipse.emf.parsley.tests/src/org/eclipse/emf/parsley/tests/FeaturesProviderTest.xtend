@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
+import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
@@ -19,9 +20,13 @@ import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.junit.Before
 import org.junit.Test
 
+import static org.eclipse.emf.parsley.tests.FeaturesProviderTest.*
+
 import static extension org.junit.Assert.*
 
 class FeaturesProviderTest extends EmfParsleyAbstractTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(FeaturesProviderTest);
 	
 	var featuresProvider = new FeaturesProvider;
 	
@@ -122,6 +127,20 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 			// if called again, the same list is returned
 			assertSame(
 				customFeaturesProvider.getFeatures(testPackage.testEClass))
+		]
+	}
+
+	@Test def void testNonExistantFeatureInEClass() {
+		val customFeaturesProvider = new FeaturesProvider() {
+			override protected buildStringMap(EClassToEStructuralFeatureAsStringsMap stringMap) {
+				stringMap.mapTo(testPackage.testEClass.instanceClassName, "nonExistantNameFeature")
+			}
+		}.injectMembers
+		// the provider gracefully deals with non existant features
+		// and it logs the problem
+		LOGGER.info("*** ERROR IN THE LOG IS EXPECTED IN THIS TEST ***")
+		customFeaturesProvider.getFeatures(testPackage.testEClass) => [
+			assertFeatureList("")
 		]
 	}
 

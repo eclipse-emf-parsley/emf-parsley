@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.ecore.FeatureResolver;
 
 import com.google.common.base.Predicate;
@@ -162,10 +161,6 @@ public class FeaturesProvider {
 			EStructuralFeature feature = getFeatureResolver().getFeature(eClass, featureName);
 			if (feature != null) {
 				result.add(feature);
-			} else {
-				EmfParsleyActivator.logError("cannot find feature '"
-						+ featureName + "' in EClass '" + eClass.getName()
-						+ "'");
 			}
 		}
 
