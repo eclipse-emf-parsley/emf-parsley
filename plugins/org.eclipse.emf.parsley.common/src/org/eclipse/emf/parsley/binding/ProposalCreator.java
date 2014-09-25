@@ -16,7 +16,6 @@
  */
 package org.eclipse.emf.parsley.binding;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,8 +34,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
-
-import com.google.common.base.Predicate;
 
 /**
  * @author Dennis Huebner Initial
@@ -128,15 +125,12 @@ public class ProposalCreator {
 
 		// first try with a method with two parameters
 		// (EObject, EStructurealFeature)...
-		PolymorphicDispatcher<List<Object>> dispatcher = createPolymorphicDispatcher(
-				element, feature, 2);
-
-		List<Object> invoke = dispatcher.invoke(element, feature);
+		List<Object> invoke = createPolymorphicDispatcher(element, feature, 2)
+				.invoke(element, feature);
 
 		if (invoke == null) {
 			// ...then with a method with only EObject
-			dispatcher = createPolymorphicDispatcher(element, feature, 1);
-			invoke = dispatcher.invoke(element);
+			invoke = createPolymorphicDispatcher(element, feature, 1).invoke(element);
 		}
 
 		return invoke;
@@ -144,15 +138,8 @@ public class ProposalCreator {
 
 	private PolymorphicDispatcher<List<Object>> createPolymorphicDispatcher(
 			EObject object, EStructuralFeature feature, int numOfParams) {
-		return PolymorphicDispatcherExtensions.createPolymorphicDispatcher(this, getCreateProposalsPredicate(
-						object, feature, numOfParams));
-	}
-
-	protected Predicate<Method> getCreateProposalsPredicate(
-			EObject object, EStructuralFeature feature, int numOfParams) {
-		String methodName = "proposals_"
-				+ object.eClass().getName() + "_"
-				+ feature.getName();
-		return PolymorphicDispatcher.Predicates.forName(methodName, numOfParams);
+		return PolymorphicDispatcherExtensions.
+				<List<Object>>createPolymorphicDispatcherBasedOnFeature(
+						this, object.eClass(), feature, "proposals_", numOfParams);
 	}
 }

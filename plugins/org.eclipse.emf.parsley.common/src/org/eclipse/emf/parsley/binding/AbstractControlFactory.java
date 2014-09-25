@@ -12,7 +12,6 @@
  */
 package org.eclipse.emf.parsley.binding;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import org.eclipse.core.databinding.Binding;
@@ -55,7 +54,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
@@ -99,11 +97,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 
 	public Provider<ILabelProvider> getLabelProviderProvider() {
 		return labelProviderProvider;
-	}
-
-	public void setLabelProviderProvider(
-			Provider<ILabelProvider> labelProviderProvider) {
-		this.labelProviderProvider = labelProviderProvider;
 	}
 
 	protected ILabelProvider createLabelProvider() {
@@ -212,9 +205,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			return result;
 		}
 
-		MultipleFeatureControl mfc = new MultipleFeatureControl(parent,
+		MultipleFeatureControl mfc = new MultipleFeatureControl(getParent(),
 				this, labelProviderProvider.get(), owner,
-				feature, getProposalCreator(), readonly);
+				feature, getProposalCreator(), isReadonly());
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		return new ControlObservablePair(mfc, target);
 	}
@@ -265,7 +258,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected ControlObservablePair createControlAndObservableValueForBoolean() {
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		Button b = createButton("", SWT.CHECK);
-		b.setEnabled(!readonly);
+		b.setEnabled(!isReadonly());
 		retValAndTargetPair.setControl(b);
 		retValAndTargetPair.setObservableValue(SWTObservables
 				.observeSelection(b));
@@ -280,13 +273,13 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected ControlObservablePair createControlAndObservableValueForNonBooleanFeature(
 			EStructuralFeature feature) {
 		List<?> proposals = null;
-		if (!readonly) {
+		if (!isReadonly()) {
 			proposals = createProposals(feature);
 		}
-		if (hasPredefinedProposals(feature) && !readonly) {
+		if (hasPredefinedProposals(feature) && !isReadonly()) {
 			return createControlAndObservableWithPredefinedProposals(proposals);
 		} else {
-			if (readonly && feature instanceof EReference) {
+			if (isReadonly() && feature instanceof EReference) {
 				return createControlAndObservableForEObjectReadOnly();
 			}
 			return createControlAndObservableWithoutPredefinedProposals(proposals);
@@ -315,7 +308,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			List<?> proposals) {
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		Text t = createText("");
-		t.setEditable(!readonly);
+		t.setEditable(!isReadonly());
 		addContentProposalAdapter(t, proposals);
 		retValAndTargetPair.setControl(t);
 		retValAndTargetPair.setObservableValue(SWTObservables.observeText(t,
@@ -382,18 +375,14 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		}
 	}
 
+	@Override
 	public void dispose() {
+		super.dispose();
 		edbc.dispose();
-		parent.dispose();
-	}
-
-	public Composite getParent() {
-		return parent;
 	}
 
 	private ControlObservablePair polymorphicGetObservableControl(EStructuralFeature element) {
-		return PolymorphicDispatcherExtensions.
-				<ControlObservablePair>createPolymorphicDispatcher(this, getObservableControlPredicate(element)).
+		return this.<ControlObservablePair>createPolymorphicDispatcherForCreateControl(element, 1).
 					invoke(element);
 	}
 
@@ -405,7 +394,8 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	 */
 	private Control polymorphicCreateControl(EStructuralFeature element,
 			IObservableValue featureObservable) {
-		return createPolymorphicDispatcherForCreateControl(element, 2).invoke(edbc, featureObservable);
+		return this.<Control>createPolymorphicDispatcherForCreateControl(element, 2).
+				invoke(edbc, featureObservable);
 	}
 
 	/**
@@ -414,44 +404,22 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	 * @return
 	 */
 	private Control polymorphicCreateControl(EStructuralFeature element) {
-		return createPolymorphicDispatcherForCreateControl(element, 1).invoke(owner);
+		return this.<Control>createPolymorphicDispatcherForCreateControl(element, 1).
+				invoke(owner);
 	}
 
-	private PolymorphicDispatcher<Control> createPolymorphicDispatcherForCreateControl(
+	private <T> PolymorphicDispatcher<T> createPolymorphicDispatcherForCreateControl(
 			EStructuralFeature element, int numOfParams) {
-		return PolymorphicDispatcherExtensions.createPolymorphicDispatcher
-				(this, getCreateControlMethodPredicate(element, numOfParams));
-	}
-
-	protected Predicate<Method> getObservableControlPredicate(
-			EStructuralFeature feature) {
-		String methodName = "control_"
-				+ feature.getEContainingClass().getName() + "_"
-				+ feature.getName();
-		return PolymorphicDispatcher.Predicates.forName(methodName, 1);
-	}
-	
-	protected Predicate<Method> getCreateControlMethodPredicate(
-			EStructuralFeature feature, int numOfParams) {
-		String methodName = "control_"
-				+ feature.getEContainingClass().getName() + "_"
-				+ feature.getName();
-		return PolymorphicDispatcher.Predicates.forName(methodName, numOfParams);
+		return PolymorphicDispatcherExtensions.createPolymorphicDispatcherBasedOnFeature(
+				this, element.getEContainingClass(), element, "control_", numOfParams);
 	}
 
 	private IObservableValue polymorphicCreateObserveable(EditingDomain domain, EObject element,
 			EStructuralFeature feature) {
 		return PolymorphicDispatcherExtensions.
-				<IObservableValue>createPolymorphicDispatcher(this, getCreateObserveablePredicate(feature)).
+				<IObservableValue>createPolymorphicDispatcherBasedOnFeature(
+						this, feature.getEContainingClass(), feature, "observe_", 2).
 					invoke(domain, element);
 	}
 
-	protected Predicate<Method> getCreateObserveablePredicate(
-			EStructuralFeature feature) {
-		String methodName = "observe_"
-				+ feature.getEContainingClass().getName() + "_"
-				+ feature.getName();
-		return PolymorphicDispatcher.Predicates.forName(methodName, 2);
-	}
-	
 }

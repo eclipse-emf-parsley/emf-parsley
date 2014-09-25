@@ -68,7 +68,7 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 	protected String polymorphicGetText(EStructuralFeature element) {
 		String polymorphicGetText = super.polymorphicGetText(element);
 		if (polymorphicGetText == null)
-			return delegate.getText(element);
+			return getDelegate().getText(element);
 		return polymorphicGetText;
 	}
 

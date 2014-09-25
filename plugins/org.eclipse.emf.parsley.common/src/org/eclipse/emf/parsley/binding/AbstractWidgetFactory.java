@@ -72,4 +72,13 @@ public abstract class AbstractWidgetFactory {
 		}
 		return result;
 	}
+
+	public Composite getParent() {
+		return parent;
+	}
+
+	public void dispose() {
+		parent.dispose();
+	}
+
 }

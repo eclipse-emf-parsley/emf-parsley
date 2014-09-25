@@ -31,7 +31,7 @@ public class FormFeatureCaptionProvider extends DialogFeatureCaptionProvider {
 
 	@Override
 	protected Label createLabel(Composite parent, String text) {
-		Label lab = formToolkit.createLabel(parent, text);
+		Label lab = getFormToolkit().createLabel(parent, text);
 		lab.setLayoutData(new GridData());
 		return lab;
 	}
