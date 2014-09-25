@@ -21,7 +21,6 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -46,6 +45,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.parsley.examples.EmfParsleyExamplesViewsActivator;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils;
+import org.eclipse.emf.parsley.tests.ui.util.ImageTester;
 import org.eclipse.emf.parsley.tests.views.LibraryEmfView;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -55,8 +55,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -799,7 +797,7 @@ public class EmfParsleyAbstractTests {
 				try {
 					Image image = widget.getImage();
 					// System.out.println(image);
-					assertImageDataIs(expectedImage.getImageData(),
+					ImageTester.assertImageDataIs(expectedImage.getImageData(),
 							image.getImageData());
 				} catch (Exception ex) {
 					ex.printStackTrace();
@@ -928,31 +926,6 @@ public class EmfParsleyAbstractTests {
 		contextMenu(libraryNode, ACTION_CUT);
 		contextMenu(libraryNode, ACTION_PASTE);
 		contextMenu(libraryNode, ACTION_DELETE);
-	}
-
-	protected static void assertImageDataIs(ImageData expectedImageData,
-			ImageData actualImageData) {
-		if (expectedImageData.width != actualImageData.width
-				|| expectedImageData.height != actualImageData.height) {
-			fail(MessageFormat
-					.format("Image data do not have the same dimensions ({0}x{1} expected, got {2}x{3})",
-							expectedImageData.width, expectedImageData.height,
-							actualImageData.width, actualImageData.height));
-		}
-
-		for (int y = 0; y < expectedImageData.height; y++) {
-			for (int x = 0; x < expectedImageData.width; x++) {
-				int actualPixel = actualImageData.getPixel(x, y);
-				int expectedPixel = expectedImageData.getPixel(x, y);
-				RGB actualRGB = actualImageData.palette.getRGB(actualPixel);
-				RGB expectedRGB = expectedImageData.palette
-						.getRGB(expectedPixel);
-				if (!actualRGB.equals(expectedRGB)) {
-					fail(MessageFormat.format(
-							"Image data do not match at ({0},{1})", x, y));
-				}
-			}
-		}
 	}
 
 	protected void assertNoErrorsInProjectAfterAutoBuild() throws CoreException {

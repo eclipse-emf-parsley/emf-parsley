@@ -15,7 +15,7 @@ import org.osgi.framework.BundleContext;
 
 public class EmfParsleyTestsActivator extends org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator {
 
-	private static EmfParsleyTestsActivator plugin;
+	private static EmfParsleyTestsActivator plugin = new EmfParsleyTestsActivator();
 
 	/*
 	 * (non-Javadoc)

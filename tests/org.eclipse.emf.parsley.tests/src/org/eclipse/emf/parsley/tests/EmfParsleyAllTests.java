@@ -25,6 +25,7 @@ import org.junit.runners.Suite;
 	ProposalCreatorTest.class,
 	DialogFeatureCaptionProviderTest.class,
 	FormFeatureCaptionProviderTest.class,
+	ViewerLabelProviderTest.class,
 	DialogControlFactoryTest.class,
 	CustomDialogControlFactoryTest.class,
 	FormControlFactoryTest.class,
