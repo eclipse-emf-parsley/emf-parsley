@@ -38,8 +38,10 @@ public class FeatureResolver {
 		for (FeatureNamePath path : paths) {
 			EStructuralFeature feature = getFeature(eClass,
 					path.getFeatureName());
-			if (feature == null)
+			if (feature == null) {
 				continue;
+			}
+			
 			if (path.getPaths() == null) {
 				features.add(feature);
 			} else {
@@ -59,14 +61,16 @@ public class FeatureResolver {
 
 	public EStructuralFeature getFeature(EClass eClass, String featureName) {
 		EStructuralFeature feature = eClass.getEStructuralFeature(featureName);
-		if (feature != null)
+		if (feature != null) {
 			return feature;
+		}
 		
 		// try to search for the feature ignoring the case
 		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=421998
 		for (EStructuralFeature f : eClass.getEAllStructuralFeatures()) {
-			if (f.getName().equalsIgnoreCase(featureName))
+			if (f.getName().equalsIgnoreCase(featureName)) {
 				return f;
+			}
 		}
 		
 		EmfParsleyActivator.logError("cannot find feature '"
