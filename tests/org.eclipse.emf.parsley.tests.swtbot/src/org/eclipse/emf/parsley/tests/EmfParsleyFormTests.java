@@ -16,10 +16,14 @@ import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widget
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
@@ -31,14 +35,17 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
 import org.eclipse.swtbot.swt.finder.utils.MessageFormat;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.waits.WaitForObjectCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.junit.Test;
@@ -222,16 +229,18 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	}
 
 	@Test
-	public void testContentAssistInForm() throws Exception {
-		SWTBotView detailView = openTestView(CUSTOM_PROPOSALS_FORM_VIEW);
-		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
-				TEST_CONTAINER, TEST_CONTAINER_PLATFORM_URI);
-		getClassForControlsNode(rootOfEditorTree).select();
-		SWTFormsBot formbot = formBotFromView(detailView);
+	public void testContentAssistInFormContainsProposals() throws Exception {
+		SWTFormsBot formbot = setupFormForContentAssistTest();
 		SWTBotText text = formbot.textWithLabel(STRING_FEATURE_LABEL);
 		List<String> proposals = getContentAssistProposals(text);
 		assertEquals("[First Proposal, Second Proposal]", proposals.toString());
+		getEditor(EMF_TREE_EDITOR).close();
+	}
+
+	@Test
+	public void testContentAssistInFormAndSelect() throws Exception {
+		SWTFormsBot formbot = setupFormForContentAssistTest();
+		SWTBotText text = formbot.textWithLabel(STRING_FEATURE_LABEL);
 		// select the content assist proposal
 		selectContentAssistProposal(text, "Second Proposal");
 		// and check that the text has changed
@@ -239,22 +248,53 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 		getEditor(EMF_TREE_EDITOR).close();
 	}
 
+	private SWTFormsBot setupFormForContentAssistTest() throws CoreException,
+			InvocationTargetException, InterruptedException, IOException {
+		SWTBotView detailView = openTestView(CUSTOM_PROPOSALS_FORM_VIEW);
+		// select on the editor's tree
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
+				TEST_CONTAINER, TEST_CONTAINER_PLATFORM_URI);
+		getClassForControlsNode(rootOfEditorTree).select();
+		SWTFormsBot formbot = formBotFromView(detailView);
+		return formbot;
+	}
+
 	public List<String> getContentAssistProposals(SWTBotText text) {
-		final SWTBotTable autoCompleteTable = getContentAssistTable(text);
+		WaitForObjectCondition<SWTBotTable> autoCompleteAppears = autoCompleteAppears(text, tableWithRows());
+		waitUntil(autoCompleteAppears);
+		final SWTBotTable autoCompleteTable = autoCompleteAppears.get(0);
 		List<String> proposals = getRows(autoCompleteTable);
 		makeProposalsDisappear(text);
 		return proposals;
 	}
 
 	public void selectContentAssistProposal(SWTBotText text, String proposalText) {
-		final SWTBotTable autoCompleteTable = getContentAssistTable(text);
-		selectProposal(autoCompleteTable, proposalText);
+		WaitForObjectCondition<SWTBotTable> autoCompleteTable = autoCompleteAppears(text, tableWithRows());
+		waitUntil(autoCompleteTable);
+		selectProposal(autoCompleteTable.get(0), proposalText);
 	}
 
-
-	private SWTBotTable getContentAssistTable(final SWTBotText text) {
-		text.pressShortcut(SWT.CTRL, 0, ' ');
-		return getProposalTable(text);
+	private WaitForObjectCondition<SWTBotTable> autoCompleteAppears(final SWTBotText text, Matcher<SWTBotTable> tableMatcher) {
+		return new WaitForObjectCondition<SWTBotTable>(tableMatcher) {
+			protected List<SWTBotTable> findMatches() {
+				try {
+					text.pressShortcut(SWT.CTRL, 0, ' ');
+					SWTBotTable autoCompleteTable = getProposalTable(text);
+					if (matcher.matches(autoCompleteTable)) {
+						log.debug("matched table, returning");
+						return Arrays.asList(autoCompleteTable);
+					}
+				} catch (Throwable e) {
+					makeProposalsDisappear(text);
+				}
+				return null;
+			}
+			
+			public String getFailureMessage() {
+				return "Could not find auto complete proposal using matcher " + matcher;
+			}
+			
+		};
 	}
 
 	private SWTBotTable getProposalTable(SWTBotText text) {
@@ -267,6 +307,20 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 		} catch (Exception e) {
 			throw new QuickFixNotFoundException("Quickfix options not found. Giving up.", e); //$NON-NLS-1$
 		}
+	}
+
+	private Matcher<SWTBotTable> tableWithRows() {
+		return new AbstractMatcher<SWTBotTable>() {
+
+			protected boolean doMatch(Object item) {
+				List<String> rows = getRows((SWTBotTable) item);
+				return !rows.isEmpty();
+			}
+
+			public void describeTo(Description description) {
+				description.appendText("table with rows");
+			}
+		};
 	}
 
 	private SWTBotShell activatePopupShell(final SWTBotText text) {
@@ -322,7 +376,7 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	
 	private void selectProposal(final SWTBotTable proposalTable, final int proposalIndex) {
 		log.debug(MessageFormat.format("Trying to select proposal with index {0}", proposalIndex)); //$NON-NLS-1$
-		UIThreadRunnable.asyncExec(new VoidResult() {
+		UIThreadRunnable.syncExec(new VoidResult() {
 			public void run() {
 				Table table = proposalTable.widget;
 				log.debug(MessageFormat.format("Selecting row [{0}] {1} in {2}", proposalIndex, table.getItem(proposalIndex).getText(), //$NON-NLS-1$
@@ -342,5 +396,9 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 		// clear away all content assists for next retry.
 		log.debug("Making proposals disappear.");
 		text.setFocus();
+	}
+
+	private void waitUntil(WaitForObjectCondition<SWTBotTable> table) {
+		bot.waitUntil(table, SWTBotPreferences.TIMEOUT);
 	}
 }
