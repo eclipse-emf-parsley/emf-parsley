@@ -123,7 +123,7 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
-						return new Integer(stringValue);
+						return Integer.valueOf(stringValue);
 					}
 				};
 			}
@@ -151,7 +151,7 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
-						return new Short(stringValue);
+						return Short.valueOf(stringValue);
 					}
 				};
 			}
@@ -165,7 +165,7 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
-						return new Byte(stringValue);
+						return Byte.valueOf(stringValue);
 					}
 				};
 			}
