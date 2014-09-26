@@ -129,6 +129,12 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String TRANSITION_LABEL = "Transition";
 
+	protected static final String TEST_CONTAINER_LABEL = "Test Container";
+
+	protected static final String CLASS_FOR_CONTROLS_LABEL = "Class For Controls";
+
+	protected static final String STRING_FEATURE_LABEL = "stringFeature";
+
 	protected static final String EMF_TREE_EDITOR = "EMF Tree Editor";
 
 	protected static final String EMF_TREE_EDITOR_STATEMACHINE = "EMF Tree Editor Statemachine";
@@ -153,6 +159,8 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String MY_TEST_PROJECT = "MyTestProject";
 
+	protected static final String TEST_CONTAINER = "TestContainer.xmi";
+
 	public static final String MY_EXTLIBRARY_RELATIVE_PATH = MY_TEST_PROJECT
 			+ "/" + MY_EXTLIBRARY;
 
@@ -168,6 +176,12 @@ public class EmfParsleyAbstractTests {
 	protected static final String MY_STATEMACHINE_PLATFORM_URI = "platform:/resource/"
 			+ MY_STATEMACHINE_RELATIVE_PATH;
 
+	public static final String TEST_CONTAINER_RELATIVE_PATH = MY_TEST_PROJECT
+			+ "/" + TEST_CONTAINER;
+
+	protected static final String TEST_CONTAINER_PLATFORM_URI = "platform:/resource/"
+			+ TEST_CONTAINER_RELATIVE_PATH;
+	
 	protected static final String HARDCODED_LIBRARY_PLATFORM_URI = LibraryEmfView.resourceUri;
 
 	protected static final String LIBRARY_EMF_VIEW = "LibraryEmfView";
@@ -199,7 +213,9 @@ public class EmfParsleyAbstractTests {
 	protected static final String TEST_SAVEABLE_TREE_VIEW = "Library Test Saveable Tree View";
 
 	protected static final String TEST_SAVEABLE_VIEW_WITH_CUSTOM_CONTENT_PROVIDER = "Library Tree View With Custom Content Provider";
-	
+
+	protected static final String CUSTOM_PROPOSALS_FORM_VIEW = "Custom Proposals Form View";
+
 	protected static final String WRITER_S_ADDRESS_TEXT = "writer's address";
 
 	protected static final String ADDRESS_LABEL = "address";
@@ -469,6 +485,15 @@ public class EmfParsleyAbstractTests {
 		return treeItem.expand().getNode(TRANSITION_LABEL);
 	}
 
+	protected SWTBotTreeItem getClassForControlsNode(SWTBotTreeItem editorTreeRoot) {
+		return getTestContainerNode(editorTreeRoot).expand().
+				getNode(CLASS_FOR_CONTROLS_LABEL);
+	}
+
+	protected SWTBotTreeItem getTestContainerNode(final SWTBotTreeItem treeItem) {
+		return treeItem.expand().getNode(TEST_CONTAINER_LABEL);
+	}
+
 	protected void assertPropertyViewIsNotShown() {
 		try {
 			SWTBotView propertyView = bot.viewByTitle("Properties");
@@ -602,9 +627,10 @@ public class EmfParsleyAbstractTests {
 	protected void createProjectAndTestFiles() throws CoreException,
 			InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFile();
-		IFile file = createFile(MY_STATEMACHINE_RELATIVE_PATH,
-				localFileContents(MY_STATEMACHINE));
-		assertTrue(file.exists());
+		assertTrue(createFile(MY_STATEMACHINE_RELATIVE_PATH,
+				localFileContents(MY_STATEMACHINE)).exists());
+		assertTrue(createFile(TEST_CONTAINER_RELATIVE_PATH,
+				localFileContents(TEST_CONTAINER)).exists());
 	}
 
 	protected String localFileContents(String string) throws IOException {

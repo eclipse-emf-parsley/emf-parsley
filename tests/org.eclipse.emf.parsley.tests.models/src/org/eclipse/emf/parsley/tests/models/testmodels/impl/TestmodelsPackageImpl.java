@@ -23,6 +23,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
@@ -67,6 +68,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass classWithNameEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -353,6 +361,33 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTestContainer() {
+		return testContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestContainer_ClassesWithName() {
+		return (EReference)testContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestContainer_ClassesForControls() {
+		return (EReference)testContainerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEnumForControls() {
 		return enumForControlsEEnum;
 	}
@@ -403,6 +438,10 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		isCreated = true;
 
 		// Create classes and their features
+		testContainerEClass = createEClass(TEST_CONTAINER);
+		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_WITH_NAME);
+		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_CONTROLS);
+
 		testEClassEClass = createEClass(TEST_ECLASS);
 		createEAttribute(testEClassEClass, TEST_ECLASS__LOWERCASE_NAME_FEATURE);
 		createEAttribute(testEClassEClass, TEST_ECLASS__UPPER_CASE_NAME_FEATURE);
@@ -469,6 +508,10 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		derivedClassEClass.getESuperTypes().add(this.getBaseClass());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(testContainerEClass, TestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestContainer_ClassesWithName(), this.getClassWithName(), null, "classesWithName", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestContainer_ClassesForControls(), this.getClassForControls(), null, "classesForControls", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(testEClassEClass, TestEClass.class, "TestEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestEClass_LowercaseNameFeature(), ecorePackage.getEString(), "lowercaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestEClass_UpperCaseNameFeature(), ecorePackage.getEString(), "UpperCaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

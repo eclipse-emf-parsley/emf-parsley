@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<testmodels:TestContainer
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:testmodels="http:///org/eclipse/emf/parsley/tests/models/ParsleyTests.ecore/0.1.0">
+  <classesWithName
+      name="1"/>
+  <classesWithName
+      name="2"/>
+  <classesForControls/>
+</testmodels:TestContainer>

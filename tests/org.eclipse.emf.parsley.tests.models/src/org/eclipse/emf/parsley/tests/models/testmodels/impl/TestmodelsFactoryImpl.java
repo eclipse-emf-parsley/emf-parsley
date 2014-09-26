@@ -64,6 +64,7 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case TestmodelsPackage.TEST_CONTAINER: return createTestContainer();
 			case TestmodelsPackage.TEST_ECLASS: return createTestEClass();
 			case TestmodelsPackage.BASE_CLASS: return createBaseClass();
 			case TestmodelsPackage.DERIVED_CLASS: return createDerivedClass();
@@ -160,6 +161,16 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public ClassWithName createClassWithName() {
 		ClassWithNameImpl classWithName = new ClassWithNameImpl();
 		return classWithName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestContainer createTestContainer() {
+		TestContainerImpl testContainer = new TestContainerImpl();
+		return testContainer;
 	}
 
 	/**

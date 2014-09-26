@@ -73,6 +73,12 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case TestmodelsPackage.TEST_CONTAINER: {
+				TestContainer testContainer = (TestContainer)theEObject;
+				T result = caseTestContainer(testContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TestmodelsPackage.TEST_ECLASS: {
 				TestEClass testEClass = (TestEClass)theEObject;
 				T result = caseTestEClass(testEClass);
@@ -180,6 +186,21 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClassWithName(ClassWithName object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Test Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Test Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTestContainer(TestContainer object) {
 		return null;
 	}
 

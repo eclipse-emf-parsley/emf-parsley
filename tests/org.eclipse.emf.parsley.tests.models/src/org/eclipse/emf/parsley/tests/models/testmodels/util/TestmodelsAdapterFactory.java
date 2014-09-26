@@ -75,6 +75,10 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	protected TestmodelsSwitch<Adapter> modelSwitch =
 		new TestmodelsSwitch<Adapter>() {
 			@Override
+			public Adapter caseTestContainer(TestContainer object) {
+				return createTestContainerAdapter();
+			}
+			@Override
 			public Adapter caseTestEClass(TestEClass object) {
 				return createTestEClassAdapter();
 			}
@@ -181,6 +185,20 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClassWithNameAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer <em>Test Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
+	 * @generated
+	 */
+	public Adapter createTestContainerAdapter() {
 		return null;
 	}
 

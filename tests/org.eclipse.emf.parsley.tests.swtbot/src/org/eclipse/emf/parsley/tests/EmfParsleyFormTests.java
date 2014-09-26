@@ -10,19 +10,34 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable.syncExec;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.allOf;
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.widgetOfType;
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
+import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swtbot.eclipse.finder.exceptions.QuickFixNotFoundException;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.forms.finder.SWTFormsBot;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
+import org.eclipse.swtbot.swt.finder.results.WidgetResult;
+import org.eclipse.swtbot.swt.finder.utils.MessageFormat;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
@@ -35,6 +50,8 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
+	
+	protected final Logger log = Logger.getLogger(getClass());
 
 	@Test
 	public void detailViewShowsDetailsOnSelection() throws Exception {
@@ -202,5 +219,128 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 		formbot.label("Borrower: Foo");
 		
 		getEditor(EMF_TREE_EDITOR).close();
+	}
+
+	@Test
+	public void testContentAssistInForm() throws Exception {
+		SWTBotView detailView = openTestView(CUSTOM_PROPOSALS_FORM_VIEW);
+		// select on the editor's tree
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
+				TEST_CONTAINER, TEST_CONTAINER_PLATFORM_URI);
+		getClassForControlsNode(rootOfEditorTree).select();
+		SWTFormsBot formbot = formBotFromView(detailView);
+		SWTBotText text = formbot.textWithLabel(STRING_FEATURE_LABEL);
+		List<String> proposals = getContentAssistProposals(text);
+		assertEquals("[First Proposal, Second Proposal]", proposals.toString());
+		// select the content assist proposal
+		selectContentAssistProposal(text, "Second Proposal");
+		// and check that the text has changed
+		formbot.text("Second Proposal");
+		getEditor(EMF_TREE_EDITOR).close();
+	}
+
+	public List<String> getContentAssistProposals(SWTBotText text) {
+		final SWTBotTable autoCompleteTable = getContentAssistTable(text);
+		List<String> proposals = getRows(autoCompleteTable);
+		makeProposalsDisappear(text);
+		return proposals;
+	}
+
+	public void selectContentAssistProposal(SWTBotText text, String proposalText) {
+		final SWTBotTable autoCompleteTable = getContentAssistTable(text);
+		selectProposal(autoCompleteTable, proposalText);
+	}
+
+
+	private SWTBotTable getContentAssistTable(final SWTBotText text) {
+		text.pressShortcut(SWT.CTRL, 0, ' ');
+		return getProposalTable(text);
+	}
+
+	private SWTBotTable getProposalTable(SWTBotText text) {
+		log.debug("Finding table containing proposals.");
+		try {
+			Table table = bot.widget(widgetOfType(Table.class), activatePopupShell(text).widget);
+			SWTBotTable swtBotTable = new SWTBotTable(table);
+			log.debug(MessageFormat.format("Found table containing proposals -- {0}", getRows(swtBotTable)));
+			return swtBotTable;
+		} catch (Exception e) {
+			throw new QuickFixNotFoundException("Quickfix options not found. Giving up.", e); //$NON-NLS-1$
+		}
+	}
+
+	private SWTBotShell activatePopupShell(final SWTBotText text) {
+		log.debug("Activating quickfix shell."); //$NON-NLS-1$
+		try {
+			Shell mainWindow = syncExec(new WidgetResult<Shell>() {
+				public Shell run() {
+					return text.widget.getShell();
+				}
+			});
+
+			final List<Shell> shells = bot.shells("", mainWindow);
+			Shell widgetShell = syncExec(new WidgetResult<Shell>() {
+				public Shell run() {
+					for(int j=0; j<shells.size(); j++) {
+						Shell s = shells.get(j);
+						Control[] children = s.getChildren();
+						for (int i = 0; i < children.length; i++) {
+							//Select shell which has content assist table
+							if(children[i] instanceof Table) {
+								return s;
+							}
+						}
+					}
+					return shells.get(0);
+				}
+			});
+			SWTBotShell shell = new SWTBotShell(widgetShell);
+			shell.activate();
+			log.debug("Activated quickfix shell."); //$NON-NLS-1$
+			return shell;
+		} catch (Exception e) {
+			throw new QuickFixNotFoundException("Quickfix popup not found. Giving up.", e); //$NON-NLS-1$
+		}
+	}
+
+	private List<String> getRows(SWTBotTable table) {
+		int rowCount = table.rowCount();
+		List<String> result = new ArrayList<String>();
+		for (int i = 0; i < rowCount; i++)
+			result.add(table.cell(i, 0));
+		return result;
+	}
+
+	private void selectProposal(SWTBotTable proposalTable, String proposalText) {
+		log.debug(MessageFormat.format("Trying to select proposal {0}", proposalText)); //$NON-NLS-1$
+		if (proposalTable.containsItem(proposalText)) {
+			selectProposal(proposalTable, proposalTable.indexOf(proposalText));
+			return;
+		}
+		throw new QuickFixNotFoundException("Quickfix options not found. Giving up."); //$NON-NLS-1$
+	}
+	
+	private void selectProposal(final SWTBotTable proposalTable, final int proposalIndex) {
+		log.debug(MessageFormat.format("Trying to select proposal with index {0}", proposalIndex)); //$NON-NLS-1$
+		UIThreadRunnable.asyncExec(new VoidResult() {
+			public void run() {
+				Table table = proposalTable.widget;
+				log.debug(MessageFormat.format("Selecting row [{0}] {1} in {2}", proposalIndex, table.getItem(proposalIndex).getText(), //$NON-NLS-1$
+						table));
+				table.setSelection(proposalIndex);
+				Event event = new Event();
+				event.type = SWT.Selection;
+				event.widget = table;
+				event.item = table.getItem(proposalIndex);
+				table.notifyListeners(SWT.Selection, event);
+				table.notifyListeners(SWT.DefaultSelection, event);
+			}
+		});
+	}
+	
+	private void makeProposalsDisappear(SWTBotText text) {
+		// clear away all content assists for next retry.
+		log.debug("Making proposals disappear.");
+		text.setFocus();
 	}
 }

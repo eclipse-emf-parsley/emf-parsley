@@ -73,7 +73,93 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getTestEClass()
 	 * @generated
 	 */
-	int TEST_ECLASS = 0;
+	int TEST_ECLASS = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl <em>Base Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClass()
+	 * @generated
+	 */
+	int BASE_CLASS = 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl <em>Derived Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getDerivedClass()
+	 * @generated
+	 */
+	int DERIVED_CLASS = 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForControls()
+	 * @generated
+	 */
+	int CLASS_FOR_CONTROLS = 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassWithName()
+	 * @generated
+	 */
+	int CLASS_WITH_NAME = 5;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getTestContainer()
+	 * @generated
+	 */
+	int TEST_CONTAINER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Classes With Name</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__CLASSES_WITH_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Classes For Controls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__CLASSES_FOR_CONTROLS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Test Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Test Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER_OPERATION_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Lowercase Name Feature</b></em>' attribute.
@@ -129,17 +215,6 @@ public interface TestmodelsPackage extends EPackage {
 	 */
 	int TEST_ECLASS_OPERATION_COUNT = 0;
 
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl <em>Base Class</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClass()
-	 * @generated
-	 */
-	int BASE_CLASS = 1;
-
 	/**
 	 * The feature id for the '<em><b>Base Class Feature</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -175,16 +250,6 @@ public interface TestmodelsPackage extends EPackage {
 	 * @ordered
 	 */
 	int BASE_CLASS_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl <em>Derived Class</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getDerivedClass()
-	 * @generated
-	 */
-	int DERIVED_CLASS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Base Class Feature</b></em>' attribute.
@@ -239,17 +304,6 @@ public interface TestmodelsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DERIVED_CLASS_OPERATION_COUNT = BASE_CLASS_OPERATION_COUNT + 0;
-
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForControls()
-	 * @generated
-	 */
-	int CLASS_FOR_CONTROLS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Boolean Feature</b></em>' attribute.
@@ -341,17 +395,6 @@ public interface TestmodelsPackage extends EPackage {
 	 */
 	int CLASS_FOR_CONTROLS_OPERATION_COUNT = 0;
 
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl
-	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassWithName()
-	 * @generated
-	 */
-	int CLASS_WITH_NAME = 4;
-
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -387,7 +430,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
 	 * @generated
 	 */
-	int ENUM_FOR_CONTROLS = 5;
+	int ENUM_FOR_CONTROLS = 6;
 
 
 	/**
@@ -398,7 +441,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
 	 * @generated
 	 */
-	int BOOLEAN_DATA_TYPE = 6;
+	int BOOLEAN_DATA_TYPE = 7;
 
 
 	/**
@@ -408,7 +451,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
 	 * @generated
 	 */
-	int BOOLEAN_PRIMITIVE_DATA_TYPE = 7;
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 8;
 
 
 	/**
@@ -649,6 +692,38 @@ public interface TestmodelsPackage extends EPackage {
 	EAttribute getClassWithName_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer <em>Test Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Container</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
+	 * @generated
+	 */
+	EClass getTestContainer();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesWithName <em>Classes With Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Classes With Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesWithName()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EReference getTestContainer_ClassesWithName();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForControls <em>Classes For Controls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Classes For Controls</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForControls()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EReference getTestContainer_ClassesForControls();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -866,6 +941,29 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASS_WITH_NAME__NAME = eINSTANCE.getClassWithName_Name();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getTestContainer()
+		 * @generated
+		 */
+		EClass TEST_CONTAINER = eINSTANCE.getTestContainer();
+		/**
+		 * The meta object literal for the '<em><b>Classes With Name</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_CONTAINER__CLASSES_WITH_NAME = eINSTANCE.getTestContainer_ClassesWithName();
+		/**
+		 * The meta object literal for the '<em><b>Classes For Controls</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_CONTAINER__CLASSES_FOR_CONTROLS = eINSTANCE.getTestContainer_ClassesForControls();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 		 * <!-- begin-user-doc -->
