@@ -22,10 +22,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
@@ -36,6 +38,7 @@ import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
+import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
 import org.eclipse.swtbot.swt.finder.utils.MessageFormat;
@@ -59,6 +62,10 @@ import org.junit.runner.RunWith;
 public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	
 	protected final Logger log = Logger.getLogger(getClass());
+	
+	public EmfParsleyFormTests() {
+		log.setLevel(Level.DEBUG);
+	}
 
 	@Test
 	public void detailViewShowsDetailsOnSelection() throws Exception {
@@ -333,6 +340,12 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 			});
 
 			final List<Shell> shells = bot.shells("", mainWindow);
+			log.debug(MessageFormat.format("Obtained shells: {0}", 
+					syncExec(new Result<String>() {
+						public String run() {
+							return shells.toString();
+						}
+					}))); //$NON-NLS-1$
 			Shell widgetShell = syncExec(new WidgetResult<Shell>() {
 				public Shell run() {
 					for(int j=0; j<shells.size(); j++) {
@@ -340,7 +353,10 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 						Control[] children = s.getChildren();
 						for (int i = 0; i < children.length; i++) {
 							//Select shell which has content assist table
-							if(children[i] instanceof Table) {
+							log.debug(MessageFormat.format("Examining shell: {0}", 
+									children[i].getClass().getName()));
+							if(children[i] instanceof Composite) {
+								log.debug("Found Composite");
 								return s;
 							}
 						}
