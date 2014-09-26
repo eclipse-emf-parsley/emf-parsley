@@ -12,32 +12,68 @@
 	<artifactId>org.eclipse.emf.parsley.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<dependencies>
+		<dependency>
+			<!-- needed for running plain Junit tests with Maven surefire plugin -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+				<!-- Since these are plain Junit tests, we use maven surefire instead
+					of tycho surefire -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<executions>
+					<execution>
+						<!-- The execution id default-test must be left to tycho-surefire-plugin 
+							since it will execute it anyway -->
+						<id>MavenSurefirePluginTest</id>
+						<phase>test</phase>
+						<configuration>
+							<skip>${simple.tests.skip}</skip>
+							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
+								for jacoco agent -->
+							<argLine>${tycho.testArgLine} ${memoryArgs}</argLine>
+							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+							<includes>
+								<include>**/*Test.java</include>
+							</includes>
+							<excludes>
+								<exclude>**/*Abstract*Test.java</exclude>
+								<exclude>**/*Activator.java</exclude>
+							</excludes>
+						</configuration>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
-				<configuration>
-					<skip>${simple.tests.skip}</skip>
-					<useUIHarness>false</useUIHarness>
-					<useUIThread>false</useUIThread>
-					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-						for jacoco agent -->
-					<argLine>${tycho.testArgLine} ${memoryArgs}</argLine>
-					<includes>
-						<include>**/*Test.java</include>
-					</includes>
-					<excludes>
-						<exclude>**/*Abstract*Test.java</exclude>
-						<exclude>**/*Activator.java</exclude>
-					</excludes>
-				</configuration>
+				<executions>
+					<execution>
+						<id>default-test</id>
+						<phase>none</phase>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

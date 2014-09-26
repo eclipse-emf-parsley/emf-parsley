@@ -83,10 +83,17 @@
 			
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
+
+				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests</module>
+
 				<module>../../plugins/org.eclipse.emf.parsley.views</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
+		
+				<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
+
 				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 		
@@ -95,11 +102,6 @@
 				<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
 		
 				<module>../../doc/org.eclipse.emf.parsley.doc</module>
-		
-				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
-		
-				<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
-				<module>../../tests/org.eclipse.emf.parsley.tests</module>
 		
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
@@ -457,6 +459,19 @@
 					</executions>
 					<configuration>
 						<outputDirectory>xtend-gen</outputDirectory>
+					</configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<filesets>
+							<fileset>
+								<directory>${basedir}/xtend-gen</directory>
+							</fileset>
+						</filesets>
 					</configuration>
 				</plugin>
 
