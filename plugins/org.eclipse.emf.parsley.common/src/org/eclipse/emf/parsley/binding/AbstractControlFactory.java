@@ -286,7 +286,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		}
 	}
 
-	public List<?> createProposals(EStructuralFeature feature) {
+	public List<Object> createProposals(EStructuralFeature feature) {
 		getProposalCreator().setResource(getResource());
 		return getProposalCreator().proposals(owner, feature);
 	}

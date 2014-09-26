@@ -57,11 +57,12 @@ public class EmfParsleyUtil {
 	 * @param contents
 	 * @return
 	 */
-	public static Collection<?> ensureCollection(Object contents) {
+	@SuppressWarnings("unchecked")
+	public static Collection<Object> ensureCollection(Object contents) {
 		if (contents == null)
 			return Collections.emptyList();
 		if (contents instanceof Collection<?>)
-			return (Collection<?>) contents;
+			return (Collection<Object>) contents;
 		else if (contents instanceof Iterable<?>)
 			return Lists.newArrayList((Iterable<?>)contents);
 		else if (contents instanceof Iterator<?>)

@@ -106,7 +106,7 @@ public class MultipleFeatureControl extends Composite {
 		this.inernalProvider.setSelection(structuredSelection);
 	}
 
-	private List<?> unwrapSelection() {
+	private List<Object> unwrapSelection() {
 		List<Object> l = new ArrayList<Object>();
 		if (getSelection() != null && !getSelection().isEmpty() && getSelection() instanceof IStructuredSelection) {
 			for (Iterator<?> iterator = ((IStructuredSelection) getSelection()).iterator(); iterator.hasNext();) {

@@ -65,7 +65,7 @@ public class EditCommand extends AbstractOverrideableCommand {
 	}
 
 	@Override
-	public Collection<?> doGetAffectedObjects() {
+	public Collection<EObject> doGetAffectedObjects() {
 		return Collections.singleton(original);
 	}
 
