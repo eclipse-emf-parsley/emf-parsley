@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.cdo;
 
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
@@ -38,6 +39,8 @@ public class CDOResourceLoader extends ResourceLoader {
 
 	@Inject private EmptyResourceInitializer emptyResourceInitializer;
 	@Inject private CDOSessionManager sessionManager;
+	
+	private final Logger log = Logger.getLogger(getClass());
 	
 	@Override
 	public Resource getResource(ResourceSet resourceSet, URI resourceURI) {
@@ -67,7 +70,7 @@ public class CDOResourceLoader extends ResourceLoader {
 				((CDOTransaction)((CDOResource)resource).cdoView()).commit();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("getResource: " + resourceURI, e);
 			exception = e;
 		}
 

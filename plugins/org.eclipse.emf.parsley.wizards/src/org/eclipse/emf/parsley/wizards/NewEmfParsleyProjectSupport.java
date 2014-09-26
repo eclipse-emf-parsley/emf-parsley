@@ -10,14 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.wizards;
 
-import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
-import org.eclipse.emf.parsley.generator.common.EmfParsleyViewFilesGenerator;
-
 import java.io.ByteArrayInputStream;
 import java.net.URI;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -31,6 +29,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
+import org.eclipse.emf.parsley.generator.common.EmfParsleyViewFilesGenerator;
 import org.eclipse.emf.parsley.wizards.EmfParsleyChoiceTemplate.Choice;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
@@ -46,6 +46,8 @@ public class NewEmfParsleyProjectSupport {
 	static EmfParsleyProjectFilesGenerator filesGenerator = new EmfParsleyProjectFilesGenerator();
 
 	static EmfParsleyViewFilesGenerator viewGenerator = new EmfParsleyViewFilesGenerator();
+	
+	private static final Logger LOGGER = Logger.getLogger(NewEmfParsleyProjectSupport.class);
 
 	/**
 	 * We need to: - create the default Eclipse project - add the java and
@@ -125,7 +127,7 @@ public class NewEmfParsleyProjectSupport {
 
 			addNatures(project, createSubProgressMonitor(progressMonitor));
 		} catch (CoreException e) {
-			e.printStackTrace();
+			LOGGER.error("in createProject", e);
 			project = null;
 		}
 
@@ -225,7 +227,7 @@ public class NewEmfParsleyProjectSupport {
 					newProject.open(createSubProgressMonitor(progressMonitor));
 				}
 			} catch (CoreException e) {
-				e.printStackTrace();
+				LOGGER.error("in createBaseProject", e);
 			}
 		}
 

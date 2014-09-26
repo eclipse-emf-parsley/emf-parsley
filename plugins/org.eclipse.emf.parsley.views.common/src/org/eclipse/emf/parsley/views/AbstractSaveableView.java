@@ -14,6 +14,7 @@ package org.eclipse.emf.parsley.views;
 import java.io.IOException;
 import java.util.EventObject;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -35,6 +36,12 @@ import com.google.inject.Provider;
 
 public abstract class AbstractSaveableView extends ViewPart implements
 		ISaveablePart, IEditingDomainProvider {
+	private Resource resource;
+	
+	private boolean dirty;
+
+	private final Logger log = Logger.getLogger(getClass());
+
 	@Inject
 	protected Provider<AdapterFactoryEditingDomain> editingDomainProvider;
 
@@ -43,10 +50,6 @@ public abstract class AbstractSaveableView extends ViewPart implements
 
 	@Inject
 	protected ResourceSaveManager resourceSaveManager;
-
-	private Resource resource;
-
-	private boolean dirty;
 
 	protected AdapterFactoryEditingDomain editingDomain;
 
@@ -134,8 +137,7 @@ public abstract class AbstractSaveableView extends ViewPart implements
 		try {
 			saveResourceAndUpdateDirtyState();
 		} catch (IOException e) {
-			// TODO Serious log!
-			e.printStackTrace();
+			log.error("doSave", e);
 		}
 	}
 

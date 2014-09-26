@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.wizards;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -27,15 +28,17 @@ import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
  */
 public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 
+	private WizardNewProjectCreationPage _pageOne;
+	
+	private EmfParsleyChoiceTemplate _pageTwo;
+
+	private final Logger log = Logger.getLogger(getClass());
+
 	protected static final String WIZARD_PAGE = "Emf Parsley Project Wizard";
 	
 	protected static final String WIZARD_CHOICE_PAGE = "Emf Parsley Project Wizard Template";
 
 	protected static final String WIZARD_NAME = "New Emf Parsley Project";
-
-	private WizardNewProjectCreationPage _pageOne;
-	
-    private EmfParsleyChoiceTemplate _pageTwo;
 
 	/**
 	 * 
@@ -94,7 +97,7 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 		try {
 			getContainer().run(true, false, op);
 		} catch (Exception exception) {
-			exception.printStackTrace();
+			log.error("performFinish", exception);
 			return false;
 		}
 

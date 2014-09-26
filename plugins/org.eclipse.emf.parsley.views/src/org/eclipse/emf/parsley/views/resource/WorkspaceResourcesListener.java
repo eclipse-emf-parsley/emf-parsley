@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
@@ -34,10 +35,13 @@ import org.eclipse.ui.PlatformUI;
  * It works only if the resource is contained in the workspace.
  * 
  * @author Francesco Guidieri
+ * @author Lorenzo Bettini - logging
  */
 public class WorkspaceResourcesListener implements IResourceChangeListener{
 
 	private ResourceSet resourceSet;
+	
+	private final Logger log = Logger.getLogger(getClass());
 
 	public WorkspaceResourcesListener(ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
@@ -59,7 +63,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 		try {
 			delta.accept(visitor);
 		} catch (final CoreException e) {
-			e.printStackTrace();
+			log.error("manageEnvent", e);
 		}
 
 		final List<String> changedObjectUris = new ArrayList<String>();
@@ -114,7 +118,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 				try {
 					resource.load(Collections.EMPTY_MAP);
 				} catch (final IOException e) {
-					e.printStackTrace();
+					log.error("reload", e);
 				}
 			}
 			resourceSet.getResources().add(resource);

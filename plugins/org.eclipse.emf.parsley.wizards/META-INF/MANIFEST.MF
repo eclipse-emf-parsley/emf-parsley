@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.jdt.core;bundle-version="3.7.1",
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.parsley.wizards
+Import-Package: org.apache.log4j
