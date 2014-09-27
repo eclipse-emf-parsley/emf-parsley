@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * itemis AG - Initial contribution and API
+ * Lorenzo Bettini - added convertToImage
  *******************************************************************************/
 package org.eclipse.emf.parsley.runtime.ui;
 
@@ -20,6 +21,7 @@ import com.google.inject.ImplementedBy;
  * name or {@link ImageDescriptor}.
  * @author Sebastian Zarnekow
  * @author Michael Clay
+ * @author Lorenzo Bettini - added convertToImage
  */
 @ImplementedBy(IImageHelper.NullImageHelper.class)
 public interface IImageHelper {
@@ -28,6 +30,15 @@ public interface IImageHelper {
 	
 	Image getImage(ImageDescriptor imageDescriptor);
 	
+	/**
+	 * @param imageSpecification
+	 *            a {@link String}, an {@link ImageDescriptor} or an
+	 *            {@link Image}
+	 * @return the {@link Image} associated with the description or
+	 *         <code>null</code>
+	 */
+	Image convertToImage(Object imageSpecification);
+	
 	class NullImageHelper implements IImageHelper {
 
 		public Image getImage(String name) {
@@ -35,6 +46,10 @@ public interface IImageHelper {
 		}
 
 		public Image getImage(ImageDescriptor imageDescriptor) {
+			return null;
+		}
+
+		public Image convertToImage(Object imageDescription) {
 			return null;
 		}
 		

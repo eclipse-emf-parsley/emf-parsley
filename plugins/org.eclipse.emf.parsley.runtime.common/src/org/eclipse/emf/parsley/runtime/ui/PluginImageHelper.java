@@ -29,7 +29,7 @@ import com.google.inject.name.Named;
  * @author Sebastian Zarnekow
  */
 @Singleton
-public class PluginImageHelper implements IImageHelper, SynchronousBundleListener {
+public class PluginImageHelper extends AbstractImageHelper implements IImageHelper, SynchronousBundleListener {
 	private Map<ImageDescriptor, Image> registry = Maps.newHashMapWithExpectedSize(10);
 
 	@Inject

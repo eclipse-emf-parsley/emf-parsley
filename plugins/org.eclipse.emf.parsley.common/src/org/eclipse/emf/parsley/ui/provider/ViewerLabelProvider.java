@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
-import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
@@ -71,31 +70,13 @@ public class ViewerLabelProvider implements ILabelProvider {
 
 		Object imageObject = imageDispatcher.invoke(element);
 		if (imageObject != null) {
-			Image image = convertToImage(imageObject);
+			Image image = imageHelper.convertToImage(imageObject);
 			if (image != null) {
 				return image;
 			}
 		}
 
 		return getDelegateImage(element);
-	}
-
-	/**
-	 * @param imageDescription
-	 *            a {@link String}, an {@link ImageDescriptor} or an
-	 *            {@link Image}
-	 * @return the {@link Image} associated with the description or
-	 *         <code>null</code>
-	 */
-	protected Image convertToImage(Object imageDescription) {
-		if (imageDescription instanceof Image) {
-			return (Image) imageDescription;
-		} else if (imageDescription instanceof ImageDescriptor) {
-			return imageHelper.getImage((ImageDescriptor) imageDescription);
-		} else if (imageDescription instanceof String) {
-			return imageHelper.getImage((String) imageDescription);
-		}
-		return null;
 	}
 
 	protected Image getDelegateImage(Object element) {

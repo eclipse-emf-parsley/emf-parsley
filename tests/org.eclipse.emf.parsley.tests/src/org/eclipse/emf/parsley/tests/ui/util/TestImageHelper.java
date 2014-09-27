@@ -14,7 +14,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
+import org.eclipse.emf.parsley.runtime.ui.AbstractImageHelper;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Display;
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
-public class TestImageHelper implements IImageHelper {
+public class TestImageHelper extends AbstractImageHelper {
 
 	public Image getImage(String name) {
 		Image image = loadImageFromLocalTest(name);
