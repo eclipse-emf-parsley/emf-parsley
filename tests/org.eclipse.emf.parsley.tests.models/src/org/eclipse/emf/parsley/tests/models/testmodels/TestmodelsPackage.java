@@ -378,13 +378,40 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 7;
 
 	/**
+	 * The feature id for the '<em><b>Feature Map Entries</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = 8;
+
+	/**
+	 * The feature id for the '<em><b>Feature Map Entries1</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = 9;
+
+	/**
+	 * The feature id for the '<em><b>Feature Map Entries2</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 10;
+
+	/**
 	 * The number of structural features of the '<em>Class For Controls</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 8;
+	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 11;
 
 	/**
 	 * The number of operations of the '<em>Class For Controls</em>' class.
@@ -423,6 +450,117 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_WITH_NAME_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassForFeatureMapEntryImpl <em>Base Class For Feature Map Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassForFeatureMapEntryImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClassForFeatureMapEntry()
+	 * @generated
+	 */
+	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Base Class For Feature Map Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Base Class For Feature Map Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry1Impl <em>Class For Feature Map Entry1</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry1Impl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry1()
+	 * @generated
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY1 = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY1__NAME = BASE_CLASS_FOR_FEATURE_MAP_ENTRY__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Class For Feature Map Entry1</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY1_FEATURE_COUNT = BASE_CLASS_FOR_FEATURE_MAP_ENTRY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Class For Feature Map Entry1</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY1_OPERATION_COUNT = BASE_CLASS_FOR_FEATURE_MAP_ENTRY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry2Impl <em>Class For Feature Map Entry2</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry2Impl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry2()
+	 * @generated
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY2 = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY2__NAME = BASE_CLASS_FOR_FEATURE_MAP_ENTRY__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Class For Feature Map Entry2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY2_FEATURE_COUNT = BASE_CLASS_FOR_FEATURE_MAP_ENTRY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Class For Feature Map Entry2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_FEATURE_MAP_ENTRY2_OPERATION_COUNT = BASE_CLASS_FOR_FEATURE_MAP_ENTRY_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -430,7 +568,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
 	 * @generated
 	 */
-	int ENUM_FOR_CONTROLS = 6;
+	int ENUM_FOR_CONTROLS = 9;
 
 
 	/**
@@ -441,7 +579,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
 	 * @generated
 	 */
-	int BOOLEAN_DATA_TYPE = 7;
+	int BOOLEAN_DATA_TYPE = 10;
 
 
 	/**
@@ -451,7 +589,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
 	 * @generated
 	 */
-	int BOOLEAN_PRIMITIVE_DATA_TYPE = 8;
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 11;
 
 
 	/**
@@ -671,6 +809,39 @@ public interface TestmodelsPackage extends EPackage {
 	EReference getClassForControls_MultiReferenceFeature();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries <em>Feature Map Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Feature Map Entries</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_FeatureMapEntries();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries1 <em>Feature Map Entries1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Feature Map Entries1</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries1()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EReference getClassForControls_FeatureMapEntries1();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries2 <em>Feature Map Entries2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Feature Map Entries2</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries2()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EReference getClassForControls_FeatureMapEntries2();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName <em>Class With Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -690,6 +861,47 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getClassWithName_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry <em>Base Class For Feature Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Base Class For Feature Map Entry</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry
+	 * @generated
+	 */
+	EClass getBaseClassForFeatureMapEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry#getName()
+	 * @see #getBaseClassForFeatureMapEntry()
+	 * @generated
+	 */
+	EAttribute getBaseClassForFeatureMapEntry_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1 <em>Class For Feature Map Entry1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class For Feature Map Entry1</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1
+	 * @generated
+	 */
+	EClass getClassForFeatureMapEntry1();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2 <em>Class For Feature Map Entry2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class For Feature Map Entry2</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2
+	 * @generated
+	 */
+	EClass getClassForFeatureMapEntry2();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer <em>Test Container</em>}'.
@@ -926,6 +1138,27 @@ public interface TestmodelsPackage extends EPackage {
 		 */
 		EReference CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = eINSTANCE.getClassForControls_MultiReferenceFeature();
 		/**
+		 * The meta object literal for the '<em><b>Feature Map Entries</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = eINSTANCE.getClassForControls_FeatureMapEntries();
+		/**
+		 * The meta object literal for the '<em><b>Feature Map Entries1</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = eINSTANCE.getClassForControls_FeatureMapEntries1();
+		/**
+		 * The meta object literal for the '<em><b>Feature Map Entries2</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = eINSTANCE.getClassForControls_FeatureMapEntries2();
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -941,6 +1174,40 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASS_WITH_NAME__NAME = eINSTANCE.getClassWithName_Name();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassForFeatureMapEntryImpl <em>Base Class For Feature Map Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassForFeatureMapEntryImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClassForFeatureMapEntry()
+		 * @generated
+		 */
+		EClass BASE_CLASS_FOR_FEATURE_MAP_ENTRY = eINSTANCE.getBaseClassForFeatureMapEntry();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BASE_CLASS_FOR_FEATURE_MAP_ENTRY__NAME = eINSTANCE.getBaseClassForFeatureMapEntry_Name();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry1Impl <em>Class For Feature Map Entry1</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry1Impl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry1()
+		 * @generated
+		 */
+		EClass CLASS_FOR_FEATURE_MAP_ENTRY1 = eINSTANCE.getClassForFeatureMapEntry1();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry2Impl <em>Class For Feature Map Entry2</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForFeatureMapEntry2Impl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry2()
+		 * @generated
+		 */
+		EClass CLASS_FOR_FEATURE_MAP_ENTRY2 = eINSTANCE.getClassForFeatureMapEntry2();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
 		 * <!-- begin-user-doc -->

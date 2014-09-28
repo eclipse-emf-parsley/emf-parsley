@@ -70,6 +70,9 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 			case TestmodelsPackage.DERIVED_CLASS: return createDerivedClass();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS: return createClassForControls();
 			case TestmodelsPackage.CLASS_WITH_NAME: return createClassWithName();
+			case TestmodelsPackage.BASE_CLASS_FOR_FEATURE_MAP_ENTRY: return createBaseClassForFeatureMapEntry();
+			case TestmodelsPackage.CLASS_FOR_FEATURE_MAP_ENTRY1: return createClassForFeatureMapEntry1();
+			case TestmodelsPackage.CLASS_FOR_FEATURE_MAP_ENTRY2: return createClassForFeatureMapEntry2();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -161,6 +164,36 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public ClassWithName createClassWithName() {
 		ClassWithNameImpl classWithName = new ClassWithNameImpl();
 		return classWithName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BaseClassForFeatureMapEntry createBaseClassForFeatureMapEntry() {
+		BaseClassForFeatureMapEntryImpl baseClassForFeatureMapEntry = new BaseClassForFeatureMapEntryImpl();
+		return baseClassForFeatureMapEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassForFeatureMapEntry1 createClassForFeatureMapEntry1() {
+		ClassForFeatureMapEntry1Impl classForFeatureMapEntry1 = new ClassForFeatureMapEntry1Impl();
+		return classForFeatureMapEntry1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassForFeatureMapEntry2 createClassForFeatureMapEntry2() {
+		ClassForFeatureMapEntry2Impl classForFeatureMapEntry2 = new ClassForFeatureMapEntry2Impl();
+		return classForFeatureMapEntry2;
 	}
 
 	/**

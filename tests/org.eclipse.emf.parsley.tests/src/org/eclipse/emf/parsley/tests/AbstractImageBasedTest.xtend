@@ -47,8 +47,12 @@ abstract class AbstractImageBasedTest extends AbstractShellBasedTest {
 		loadImageFromLocalTest(TEST_IMAGE)
 	}
 
-	protected def getDefaultEMFImage() {
-		getEMFImageFromObject(getEMFImage(eobj))
+	protected def getDefaultEMFImageForClassForControls() {
+		getEMFImageFromObject(getEMFImage(testFactory.createClassForControls))
+	}
+
+	protected def getDefaultEMFImageForClassForFeatureMapEntry1() {
+		getEMFImageFromObject(getEMFImage(testFactory.createClassForFeatureMapEntry1))
 	}
 
 	protected def getEMFImageFromObject(Object object) {

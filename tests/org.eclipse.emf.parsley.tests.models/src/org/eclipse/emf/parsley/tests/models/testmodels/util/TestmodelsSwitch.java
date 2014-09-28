@@ -110,6 +110,26 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestmodelsPackage.BASE_CLASS_FOR_FEATURE_MAP_ENTRY: {
+				BaseClassForFeatureMapEntry baseClassForFeatureMapEntry = (BaseClassForFeatureMapEntry)theEObject;
+				T result = caseBaseClassForFeatureMapEntry(baseClassForFeatureMapEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestmodelsPackage.CLASS_FOR_FEATURE_MAP_ENTRY1: {
+				ClassForFeatureMapEntry1 classForFeatureMapEntry1 = (ClassForFeatureMapEntry1)theEObject;
+				T result = caseClassForFeatureMapEntry1(classForFeatureMapEntry1);
+				if (result == null) result = caseBaseClassForFeatureMapEntry(classForFeatureMapEntry1);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestmodelsPackage.CLASS_FOR_FEATURE_MAP_ENTRY2: {
+				ClassForFeatureMapEntry2 classForFeatureMapEntry2 = (ClassForFeatureMapEntry2)theEObject;
+				T result = caseClassForFeatureMapEntry2(classForFeatureMapEntry2);
+				if (result == null) result = caseBaseClassForFeatureMapEntry(classForFeatureMapEntry2);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -186,6 +206,51 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClassWithName(ClassWithName object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Base Class For Feature Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Base Class For Feature Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBaseClassForFeatureMapEntry(BaseClassForFeatureMapEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Class For Feature Map Entry1</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Class For Feature Map Entry1</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassForFeatureMapEntry1(ClassForFeatureMapEntry1 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Class For Feature Map Entry2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Class For Feature Map Entry2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassForFeatureMapEntry2(ClassForFeatureMapEntry2 object) {
 		return null;
 	}
 

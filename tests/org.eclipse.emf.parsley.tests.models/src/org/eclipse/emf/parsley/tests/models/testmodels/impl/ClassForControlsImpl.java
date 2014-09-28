@@ -5,6 +5,7 @@ package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
@@ -12,8 +13,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
@@ -33,6 +39,9 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeature <em>String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getMultiReferenceFeature <em>Multi Reference Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
  * </ul>
  * </p>
  *
@@ -178,6 +187,16 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EList<ClassWithName> multiReferenceFeature;
+
+	/**
+	 * The cached value of the '{@link #getFeatureMapEntries() <em>Feature Map Entries</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatureMapEntries()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeatureMap featureMapEntries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -379,6 +398,54 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FeatureMap getFeatureMapEntries() {
+		if (featureMapEntries == null) {
+			featureMapEntries = new BasicFeatureMap(this, TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES);
+		}
+		return featureMapEntries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ClassForFeatureMapEntry1> getFeatureMapEntries1() {
+		return getFeatureMapEntries().list(TestmodelsPackage.Literals.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ClassForFeatureMapEntry2> getFeatureMapEntries2() {
+		return getFeatureMapEntries().list(TestmodelsPackage.Literals.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES:
+				return ((InternalEList<?>)getFeatureMapEntries()).basicRemove(otherEnd, msgs);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1:
+				return ((InternalEList<?>)getFeatureMapEntries1()).basicRemove(otherEnd, msgs);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
+				return ((InternalEList<?>)getFeatureMapEntries2()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -399,6 +466,13 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return basicGetReferenceToClassWithName();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
 				return getMultiReferenceFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES:
+				if (coreType) return getFeatureMapEntries();
+				return ((FeatureMap.Internal)getFeatureMapEntries()).getWrapper();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1:
+				return getFeatureMapEntries1();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
+				return getFeatureMapEntries2();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -437,6 +511,17 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				getMultiReferenceFeature().clear();
 				getMultiReferenceFeature().addAll((Collection<? extends ClassWithName>)newValue);
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES:
+				((FeatureMap.Internal)getFeatureMapEntries()).set(newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1:
+				getFeatureMapEntries1().clear();
+				getFeatureMapEntries1().addAll((Collection<? extends ClassForFeatureMapEntry1>)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
+				getFeatureMapEntries2().clear();
+				getFeatureMapEntries2().addAll((Collection<? extends ClassForFeatureMapEntry2>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -473,6 +558,15 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
 				getMultiReferenceFeature().clear();
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES:
+				getFeatureMapEntries().clear();
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1:
+				getFeatureMapEntries1().clear();
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
+				getFeatureMapEntries2().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -501,6 +595,12 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return referenceToClassWithName != null;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
 				return multiReferenceFeature != null && !multiReferenceFeature.isEmpty();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES:
+				return featureMapEntries != null && !featureMapEntries.isEmpty();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1:
+				return !getFeatureMapEntries1().isEmpty();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
+				return !getFeatureMapEntries2().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -527,6 +627,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 		result.append(enumFeature);
 		result.append(", stringFeature: ");
 		result.append(stringFeature);
+		result.append(", featureMapEntries: ");
+		result.append(featureMapEntries);
 		result.append(')');
 		return result.toString();
 	}

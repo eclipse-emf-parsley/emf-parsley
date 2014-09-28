@@ -145,4 +145,12 @@ abstract class EmfParsleyAbstractTest {
 		testFactory.createClassWithName => [name = n]
 	}
 
+	def protected createClassForFeatureMapEntry1(String n) {
+		testFactory.createClassForFeatureMapEntry1 => [name = n]
+	}
+
+	def protected createClassForFeatureMapEntry2(String n) {
+		testFactory.createClassForFeatureMapEntry2 => [name = n]
+	}
+
 }

@@ -74,6 +74,33 @@ public interface TestmodelsFactory extends EFactory {
 	ClassWithName createClassWithName();
 
 	/**
+	 * Returns a new object of class '<em>Base Class For Feature Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Base Class For Feature Map Entry</em>'.
+	 * @generated
+	 */
+	BaseClassForFeatureMapEntry createBaseClassForFeatureMapEntry();
+
+	/**
+	 * Returns a new object of class '<em>Class For Feature Map Entry1</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class For Feature Map Entry1</em>'.
+	 * @generated
+	 */
+	ClassForFeatureMapEntry1 createClassForFeatureMapEntry1();
+
+	/**
+	 * Returns a new object of class '<em>Class For Feature Map Entry2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class For Feature Map Entry2</em>'.
+	 * @generated
+	 */
+	ClassForFeatureMapEntry2 createClassForFeatureMapEntry2();
+
+	/**
 	 * Returns a new object of class '<em>Test Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

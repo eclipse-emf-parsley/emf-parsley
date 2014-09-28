@@ -19,7 +19,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
+import org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
@@ -68,6 +71,27 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass classWithNameEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass baseClassForFeatureMapEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classForFeatureMapEntry1EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classForFeatureMapEntry2EClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -343,6 +367,33 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getClassForControls_FeatureMapEntries() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassForControls_FeatureMapEntries1() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassForControls_FeatureMapEntries2() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClassWithName() {
 		return classWithNameEClass;
 	}
@@ -354,6 +405,42 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 */
 	public EAttribute getClassWithName_Name() {
 		return (EAttribute)classWithNameEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBaseClassForFeatureMapEntry() {
+		return baseClassForFeatureMapEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBaseClassForFeatureMapEntry_Name() {
+		return (EAttribute)baseClassForFeatureMapEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClassForFeatureMapEntry1() {
+		return classForFeatureMapEntry1EClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClassForFeatureMapEntry2() {
+		return classForFeatureMapEntry2EClass;
 	}
 
 	/**
@@ -465,9 +552,19 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_FEATURE);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES);
+		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1);
+		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2);
 
 		classWithNameEClass = createEClass(CLASS_WITH_NAME);
 		createEAttribute(classWithNameEClass, CLASS_WITH_NAME__NAME);
+
+		baseClassForFeatureMapEntryEClass = createEClass(BASE_CLASS_FOR_FEATURE_MAP_ENTRY);
+		createEAttribute(baseClassForFeatureMapEntryEClass, BASE_CLASS_FOR_FEATURE_MAP_ENTRY__NAME);
+
+		classForFeatureMapEntry1EClass = createEClass(CLASS_FOR_FEATURE_MAP_ENTRY1);
+
+		classForFeatureMapEntry2EClass = createEClass(CLASS_FOR_FEATURE_MAP_ENTRY2);
 
 		// Create enums
 		enumForControlsEEnum = createEEnum(ENUM_FOR_CONTROLS);
@@ -506,6 +603,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		// Add supertypes to classes
 		derivedClassEClass.getESuperTypes().add(this.getBaseClass());
+		classForFeatureMapEntry1EClass.getESuperTypes().add(this.getBaseClassForFeatureMapEntry());
+		classForFeatureMapEntry2EClass.getESuperTypes().add(this.getBaseClassForFeatureMapEntry());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(testContainerEClass, TestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -535,9 +634,19 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getClassForControls_StringFeature(), ecorePackage.getEString(), "stringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_ReferenceToClassWithName(), this.getClassWithName(), null, "referenceToClassWithName", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_MultiReferenceFeature(), this.getClassWithName(), null, "multiReferenceFeature", null, 0, -1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_FeatureMapEntries(), ecorePackage.getEFeatureMapEntry(), "featureMapEntries", null, 0, -1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClassForControls_FeatureMapEntries1(), this.getClassForFeatureMapEntry1(), null, "featureMapEntries1", null, 0, -1, ClassForControls.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getClassForControls_FeatureMapEntries2(), this.getClassForFeatureMapEntry2(), null, "featureMapEntries2", null, 0, -1, ClassForControls.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(classWithNameEClass, ClassWithName.class, "ClassWithName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassWithName_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassWithName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(baseClassForFeatureMapEntryEClass, BaseClassForFeatureMapEntry.class, "BaseClassForFeatureMapEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBaseClassForFeatureMapEntry_Name(), ecorePackage.getEString(), "name", null, 0, 1, BaseClassForFeatureMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(classForFeatureMapEntry1EClass, ClassForFeatureMapEntry1.class, "ClassForFeatureMapEntry1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(classForFeatureMapEntry2EClass, ClassForFeatureMapEntry2.class, "ClassForFeatureMapEntry2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(enumForControlsEEnum, EnumForControls.class, "EnumForControls");
@@ -551,6 +660,38 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
+		addAnnotation
+		  (getClassForControls_FeatureMapEntries(), 
+		   source, 
+		   new String[] {
+			 "kind", "group"
+		   });	
+		addAnnotation
+		  (getClassForControls_FeatureMapEntries1(), 
+		   source, 
+		   new String[] {
+			 "group", "#featureMapEntries"
+		   });	
+		addAnnotation
+		  (getClassForControls_FeatureMapEntries2(), 
+		   source, 
+		   new String[] {
+			 "group", "#featureMapEntries"
+		   });
 	}
 
 } //TestmodelsPackageImpl

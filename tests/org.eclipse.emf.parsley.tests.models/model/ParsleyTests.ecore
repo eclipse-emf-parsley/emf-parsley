@@ -39,6 +39,26 @@
         eType="#//ClassWithName"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="multiReferenceFeature"
         upperBound="-1" eType="#//ClassWithName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureMapEntries" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="group"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureMapEntries1" upperBound="-1"
+        eType="#//ClassForFeatureMapEntry1" volatile="true" transient="true" derived="true"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="group" value="#featureMapEntries"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="featureMapEntries2" upperBound="-1"
+        eType="#//ClassForFeatureMapEntry2" volatile="true" transient="true" derived="true"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="group" value="#featureMapEntries"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnumForControls">
     <eLiterals name="FIRST"/>
@@ -50,4 +70,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="BooleanDataType" instanceClassName="java.lang.Boolean"/>
   <eClassifiers xsi:type="ecore:EDataType" name="BooleanPrimitiveDataType" instanceClassName="boolean"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BaseClassForFeatureMapEntry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassForFeatureMapEntry1" eSuperTypes="#//BaseClassForFeatureMapEntry"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassForFeatureMapEntry2" eSuperTypes="#//BaseClassForFeatureMapEntry"/>
 </ecore:EPackage>

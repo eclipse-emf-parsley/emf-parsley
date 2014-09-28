@@ -99,6 +99,18 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 				return createClassWithNameAdapter();
 			}
 			@Override
+			public Adapter caseBaseClassForFeatureMapEntry(BaseClassForFeatureMapEntry object) {
+				return createBaseClassForFeatureMapEntryAdapter();
+			}
+			@Override
+			public Adapter caseClassForFeatureMapEntry1(ClassForFeatureMapEntry1 object) {
+				return createClassForFeatureMapEntry1Adapter();
+			}
+			@Override
+			public Adapter caseClassForFeatureMapEntry2(ClassForFeatureMapEntry2 object) {
+				return createClassForFeatureMapEntry2Adapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -185,6 +197,48 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClassWithNameAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry <em>Base Class For Feature Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry
+	 * @generated
+	 */
+	public Adapter createBaseClassForFeatureMapEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1 <em>Class For Feature Map Entry1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1
+	 * @generated
+	 */
+	public Adapter createClassForFeatureMapEntry1Adapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2 <em>Class For Feature Map Entry2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2
+	 * @generated
+	 */
+	public Adapter createClassForFeatureMapEntry2Adapter() {
 		return null;
 	}
 

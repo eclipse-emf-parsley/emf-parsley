@@ -4,6 +4,7 @@ package org.eclipse.emf.parsley.tests.models.testmodels;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +22,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeature <em>String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getMultiReferenceFeature <em>Multi Reference Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
  * </ul>
  * </p>
  *
@@ -229,5 +233,56 @@ public interface ClassForControls extends EObject {
 	 * @generated
 	 */
 	EList<ClassWithName> getMultiReferenceFeature();
+
+	/**
+	 * Returns the value of the '<em><b>Feature Map Entries</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Feature Map Entries</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Feature Map Entries</em>' attribute list.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_FeatureMapEntries()
+	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 *        extendedMetaData="kind='group'"
+	 * @generated
+	 */
+	FeatureMap getFeatureMapEntries();
+
+	/**
+	 * Returns the value of the '<em><b>Feature Map Entries1</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Feature Map Entries1</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Feature Map Entries1</em>' containment reference list.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_FeatureMapEntries1()
+	 * @model containment="true" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="group='#featureMapEntries'"
+	 * @generated
+	 */
+	EList<ClassForFeatureMapEntry1> getFeatureMapEntries1();
+
+	/**
+	 * Returns the value of the '<em><b>Feature Map Entries2</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Feature Map Entries2</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Feature Map Entries2</em>' containment reference list.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_FeatureMapEntries2()
+	 * @model containment="true" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="group='#featureMapEntries'"
+	 * @generated
+	 */
+	EList<ClassForFeatureMapEntry2> getFeatureMapEntries2();
 
 } // ClassForControls

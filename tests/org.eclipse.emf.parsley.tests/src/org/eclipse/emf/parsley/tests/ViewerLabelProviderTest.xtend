@@ -40,6 +40,16 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 	}
 
 	@Test
+	def void testDefaultGetTextForFeatureMapEntry() {
+		eobj.featureMapEntries1 += createClassForFeatureMapEntry1("1")
+		eobj.featureMapEntries2 += createClassForFeatureMapEntry2("2")
+		"Class For Feature Map Entry1 1".
+			assertEquals(labelProvider.getText(eobj.featureMapEntries.get(0)))
+		"Class For Feature Map Entry2 2".
+			assertEquals(labelProvider.getText(eobj.featureMapEntries.get(1)))
+	}
+
+	@Test
 	def void testCustomText() {
 		val customLabelProvider = new ViewerLabelProvider(null) {
 			def text(ClassForControls e) {
@@ -58,7 +68,16 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 	def void testDefaultGetImage() {
 		labelProvider.getImage(eobj) => [
 			assertNotNull
-			getDefaultEMFImage.assertImageIs(it)
+			getDefaultEMFImageForClassForControls.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testDefaultGetImageForFeatureMapEntry() {
+		eobj.featureMapEntries1 += createClassForFeatureMapEntry1("1")
+		labelProvider.getImage(eobj.featureMapEntries.get(0)) => [
+			assertNotNull
+			getDefaultEMFImageForClassForFeatureMapEntry1.assertImageIs(it)
 		]
 	}
 	
@@ -111,7 +130,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 		// this will default to EMF image
 		customLabelProvider.getImage(eobj) => [
 			assertNotNull
-			getDefaultEMFImage.assertImageIs(it)
+			getDefaultEMFImageForClassForControls.assertImageIs(it)
 		]
 	}
 
