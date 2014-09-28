@@ -1,0 +1,66 @@
+/*******************************************************************************
+ * Copyright (c) 2014 RCP Vision (http://www.rcp-vision.com) and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * Lorenzo Bettini - Initial contribution and API
+ *******************************************************************************/
+package org.eclipse.emf.parsley.tests
+
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.edit.EMFEditPlugin
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
+import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass
+import org.junit.Before
+
+import static org.eclipse.emf.parsley.tests.ui.util.TestImageHelper.*
+
+abstract class AbstractImageBasedTest extends AbstractShellBasedTest {
+
+	var protected TestContainer testContainer
+
+	var protected ClassForControls eobj
+
+	var protected TestEClass eobj2
+
+	val protected TEST_IMAGE = "test_image.png"
+
+	@Before
+	def void setupEObject() {
+		testContainer = testFactory.createTestContainer
+		eobj = testFactory.createClassForControls
+		eobj2 = testFactory.createTestEClass
+	}
+
+	def protected getDelegateLabelProvider() {
+		getOrCreateInjector.getInstance(AdapterFactoryLabelProvider)
+	}
+
+	protected def loadTestImage() {
+		loadImageFromLocalTest(TEST_IMAGE)
+	}
+
+	protected def getDefaultEMFImage() {
+		getEMFImageFromObject(getEMFImage(eobj))
+	}
+
+	protected def getEMFImageFromObject(Object object) {
+		return ExtendedImageRegistry.INSTANCE.getImage(object);
+	}
+
+	protected def getEMFImage(EObject eObject) {
+		val eClass = eObject.eClass();
+		return URI.createURI(getEMFResourceLocator().getImage("full/obj16/Item").toString() + "#" + eClass.getName());
+	}
+
+	protected def getEMFResourceLocator() {
+		return EMFEditPlugin.INSTANCE;
+	}
+}

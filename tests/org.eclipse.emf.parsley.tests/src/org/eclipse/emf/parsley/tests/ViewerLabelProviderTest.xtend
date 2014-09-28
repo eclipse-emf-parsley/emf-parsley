@@ -10,38 +10,22 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.edit.EMFEditPlugin
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
-import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
 import org.junit.Test
 
-import static org.eclipse.emf.parsley.tests.ui.util.TestImageHelper.*
-
 import static extension org.eclipse.emf.parsley.tests.ui.util.ImageTester.*
 import static extension org.junit.Assert.*
-import org.eclipse.jface.resource.ImageDescriptor
 
-class ViewerLabelProviderTest extends AbstractShellBasedTest {
-
-	var protected ClassForControls eobj
-
-	var protected TestEClass eobj2
+class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
 	var ILabelProvider labelProvider
 	
-	val TEST_IMAGE = "test_image.png"
-
 	@Before
-	def void setupEObject() {
-		eobj = testFactory.createClassForControls
-		eobj2 = testFactory.createTestEClass
+	def void setupLabelProvider() {
 		labelProvider = getOrCreateInjector.getInstance(ILabelProvider)
 	}
 
@@ -131,28 +115,4 @@ class ViewerLabelProviderTest extends AbstractShellBasedTest {
 		]
 	}
 
-	def private getDelegateLabelProvider() {
-		getOrCreateInjector.getInstance(AdapterFactoryLabelProvider)
-	}
-	
-	private def loadTestImage() {
-		loadImageFromLocalTest(TEST_IMAGE)
-	}
-
-	private def getDefaultEMFImage() {
-		getEMFImageFromObject(getEMFImage(eobj))
-	}
-
-	def private getEMFImageFromObject(Object object) {
-		return ExtendedImageRegistry.INSTANCE.getImage(object);
-	}
-
-	def private getEMFImage(EObject eObject) {
-		val eClass = eObject.eClass();
-		return URI.createURI(getEMFResourceLocator().getImage("full/obj16/Item").toString() + "#" + eClass.getName());
-	}
-
-	def private getEMFResourceLocator() {
-		return EMFEditPlugin.INSTANCE;
-	}
 }

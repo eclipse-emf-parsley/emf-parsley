@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * Francesco Guidieri - initial API and implementation
+ * Lorenzo Bettini - uses IImageHelper https://bugs.eclipse.org/bugs/show_bug.cgi?id=445240
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
@@ -14,6 +15,8 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.EmfParsleyActivator;
+import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -25,8 +28,17 @@ import com.google.inject.Inject;
 
 /**
  * Provides a column provider for EStructuralFeatures that uses polymorphic dispatch to call methods at runtime.
- * If you define methods with a specific signature convention, the framework will select the correct implementation depending on the runtime type of the input.
- * You can define methods with a prefix 'text' or 'image' followed by the EClass and EStructuralFeature names separated by an underscore character, like in the example:
+ * 
+ * IMPORTANT: this class, for performance reasons, assumes that the EObject and the EStructuralFeature are
+ * consistent: such feature exists in the EObject's EClass.  If that is not the case, the corresponding value 
+ * will be nonsense, and no check is performed for this condition.  Uses of this class in the framework
+ * respect such assumption since they iterate over the features starting from the EObject's EClass.
+ * 
+ * If you define methods with a specific signature convention, the framework will select the correct
+ * implementation depending on the runtime type of the input.
+ * 
+ * You can define methods with a prefix 'text' or 'image' followed by the EClass and EStructuralFeature
+ * names separated by an underscore character, like in the example:
  *  
  * <pre>
  * {@code
@@ -39,12 +51,16 @@ import com.google.inject.Inject;
  * </pre>
  * 
  * @author Francesco Guidieri
+ * @author Lorenzo Bettini - uses IImageHelper https://bugs.eclipse.org/bugs/show_bug.cgi?id=445240
  * 
  */
 public class TableColumnLabelProvider extends ColumnLabelProvider {
 	protected EStructuralFeature eStructuralFeature;
 	
 	protected ILabelProvider labelProvider;
+	
+	@Inject
+	private IImageHelper imageHelper;
 
 	@Inject
 	public TableColumnLabelProvider() {
@@ -70,6 +86,10 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 
 	@Override
 	public String getText(Object element) {
+		if (element == null) {
+			return "";
+		}
+		
 		String ret=polymorphicGetText(element, geteStructuralFeature());
 		if(ret!=null) {
 			return ret;
@@ -78,8 +98,9 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			Object featureValue = getFeatureValue(element);
 			return featureValue != null ? getLabelProvider().getText(featureValue)
 					: "";
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			// avoid exceptions during rendering
+			EmfParsleyActivator.logError("TableColumnLabelProvider.getText", e);
 			return "";
 		}
 	}
@@ -89,13 +110,19 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 * @return
 	 */
 	protected Object getFeatureValue(Object element) {
-		EObject p = (EObject) element;
-		Object featureValue = p.eGet(geteStructuralFeature());
+		EObject eObject = (EObject) element;
+		// note that we assume that the EStructuralFeature exists in the
+		// EObject's EClass, see the comment in the class' documentation.
+		Object featureValue = eObject.eGet(geteStructuralFeature());
 		return featureValue;
 	}
 
 	@Override
 	public Image getImage(Object element) {
+		if (element == null) {
+			return null;
+		}
+		
 		Image ret=polymorphicGetImage(element, geteStructuralFeature());
 		return ret;
 	}
@@ -115,9 +142,13 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	
 	protected Image polymorphicGetImage(Object element,
 			EStructuralFeature feature) {
-		return PolymorphicDispatcherExtensions
-				.<Image> createPolymorphicDispatcher(this,
-						getImagePredicate(feature)).invoke(element);
+		Object invoke = PolymorphicDispatcherExtensions
+						.<Object> createPolymorphicDispatcher(this,
+								getImagePredicate(feature)).invoke(element);
+		if (invoke != null) {
+			return imageHelper.convertToImage(invoke);
+		}
+		return null;
 	}
 
 	protected Predicate<Method> getImagePredicate(EStructuralFeature feature) {

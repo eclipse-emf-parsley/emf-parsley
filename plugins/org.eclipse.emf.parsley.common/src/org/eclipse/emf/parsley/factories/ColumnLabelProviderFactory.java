@@ -61,13 +61,8 @@ public class ColumnLabelProviderFactory {
 	public CellLabelProvider createColumnLabelProvider(
 			EStructuralFeature eStructuralFeature,
 			ObservableListContentProvider cp) {
-		TableColumnLabelProvider columnProvider = tableColumnProviderProvider
-				.get();
-		columnProvider.seteStructuralFeature(eStructuralFeature);
-
 		IObservableMap observableMap = EMFProperties.value(eStructuralFeature)
 				.observeDetail(cp.getKnownElements());
-		// IObservableMap[] observableMaps=new IObservableMap[]{observableMap};
 		return new AdapterMapCellLabelProvider(observableMap,
 				labelProviderProvider.get());
 	}
