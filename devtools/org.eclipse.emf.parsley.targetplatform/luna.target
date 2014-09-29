@@ -10,7 +10,7 @@
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.net4j.sdk.feature.group" version="4.3.0.v20140308-0604"/>
 <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.3.0.v20140606-1557"/>
-<unit id="org.eclipse.sdk.feature.group" version="4.4.0.v20140606-1558"/>
+<unit id="org.eclipse.sdk.feature.group" version="4.4.0.v20140925-0400"/>
 <unit id="org.eclipse.emf.query.sdk.feature.group" version="1.8.0.201405281426"/>
 <repository location="http://download.eclipse.org/releases/luna"/>
 </location>
