@@ -74,7 +74,7 @@ import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
-import org.eclipse.emf.parsley.util.EmfParsleyUtil;
+import org.eclipse.emf.parsley.util.EmfParsleyUiUtil;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -1168,7 +1168,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	public void setStatusLineManager(ISelection selection) {
-		IStatusLineManager statusLineManager = EmfParsleyUtil
+		IStatusLineManager statusLineManager = EmfParsleyUiUtil
 				.getStatusLineManager();
 
 		if (statusLineManager != null) {

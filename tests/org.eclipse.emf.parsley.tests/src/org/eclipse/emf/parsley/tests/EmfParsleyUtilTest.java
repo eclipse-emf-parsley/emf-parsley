@@ -29,6 +29,16 @@ import com.google.common.collect.Lists;
  * 
  */
 public class EmfParsleyUtilTest {
+	
+	public EmfParsleyUtilTest() {
+		// the following is useless... but it's just to have coverage
+		// for the protected constructor of EmfParsleyConstants
+		// and the protected constructor is "required" by sonar...
+		new EmfParsleyUtil() {
+			
+		};
+	}
+	
 	@Test
 	public void testEnsureCollectionGivenNull() {
 		assertNotNull(EmfParsleyUtil.ensureCollection(null));
