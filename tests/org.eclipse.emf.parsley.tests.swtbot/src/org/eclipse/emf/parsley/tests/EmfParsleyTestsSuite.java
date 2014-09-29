@@ -21,7 +21,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	EmfParsleyEditingDomainTests.class,
 	EmfParsleyColumnLabelProviderTests.class,
-	EmfParsleyLabelProviderTests.class,
 	EmfParsleyProvidersTests.class,
 	EmfParsleyProvidersBasedOnViewTests.class,
 	EmfParsleyViewTests.class,

@@ -290,6 +290,15 @@ public class EmfParsleyAbstractTests {
 	protected static SWTWorkbenchBot bot;
 
 	protected static Map<String, String> editorNamesToId;
+	
+	public EmfParsleyAbstractTests() {
+		// the following is useless... but it's just to have coverage
+		// for the protected constructor of EmfParsleyConstants
+		// and the protected constructor is "required" by sonar...
+		new org.eclipse.emf.parsley.util.EmfParsleyUiUtil() {
+			
+		};
+	}
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
