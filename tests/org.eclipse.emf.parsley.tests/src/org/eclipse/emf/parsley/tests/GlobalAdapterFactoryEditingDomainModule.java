@@ -8,30 +8,24 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests.factories;
+package org.eclipse.emf.parsley.tests;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.edit.domain.GlobalAdapterFactoryEditingDomainProvider;
-import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
 
 import com.google.inject.Provider;
 
 public class GlobalAdapterFactoryEditingDomainModule extends
-		EmfParsleyGuiceModule {
+		EmfParsleyGuiceModuleForTesting {
 	protected static class TestEmptyResourceInitializer extends
 			EmptyResourceInitializer {
 		public void initialize(Resource resource) {
 			resource.getContents().add(
-					EXTLibraryFactory.eINSTANCE.createLibrary());
+					TestmodelsFactory.eINSTANCE.createClassWithName());
 		}
-	}
-
-	public GlobalAdapterFactoryEditingDomainModule(AbstractUIPlugin plugin) {
-		super(plugin);
 	}
 
 	@Override

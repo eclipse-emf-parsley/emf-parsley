@@ -15,19 +15,16 @@ import com.google.inject.Injector
 import com.google.inject.Module
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.resource.ResourceLoader
-import org.eclipse.emf.parsley.tests.factories.GlobalAdapterFactoryEditingDomainModule
-import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.junit.Test
-import org.junit.runner.RunWith
 
 import static extension org.junit.Assert.*
 
-@RunWith(SWTBotJunit4ClassRunner)
-class EmfParsleyEditingDomainTests {
+class EditingDomainTest {
 
 	@Test
 	def void testDefaultEditingDomainProvider() {
@@ -70,28 +67,38 @@ class EmfParsleyEditingDomainTests {
 		
 		// we act on the same Resource since we used the same
 		// EditingDomain
-		res1.library.name = "Changed"
-		"Changed".assertEquals(res2.library.name)
+		res1.classWithName.name = "Changed"
+		"Changed".assertEquals(res2.classWithName.name)
 	}
 
 	def private loadResourceWithContents(Injector injector) {
 		val e1 = injector.getProvider(AdapterFactoryEditingDomain).get
+		val resourceSet = e1.resourceSet
+
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+			(Resource.Factory.Registry.DEFAULT_EXTENSION, 
+			 new XMIResourceFactoryImpl());
+
+		resourceSet.getPackageRegistry().put
+			(TestmodelsPackage.eNS_URI, 
+			 TestmodelsPackage.eINSTANCE);
+
 		val resource = injector.getInstance(ResourceLoader).
-			getResource(e1, URI.createURI("dummy:/My.mail")).resource
+			getResource(e1, URI.createURI("http:///My.testmodels")).resource
 		resource.assertNotNull
 		resource
 	}
 
-	def private library(Resource resource) {
-		resource.contents.head as Library
+	def private classWithName(Resource resource) {
+		resource.contents.head as ClassWithName
 	}
 
 	def private createDefaultEditingDomainProviderInjector() {
-		createTestInjector(new EmfParsleyGuiceModule(EmfParsleyTestsActivator.^default))
+		createTestInjector(new EmfParsleyGuiceModuleForTesting)
 	}
 
 	def private createGlobalEditingDomainProviderInjector() {
-		createTestInjector(new GlobalAdapterFactoryEditingDomainModule(EmfParsleyTestsActivator.^default))
+		createTestInjector(new GlobalAdapterFactoryEditingDomainModule)
 	}
 
 	def private createTestInjector(Module module) {
