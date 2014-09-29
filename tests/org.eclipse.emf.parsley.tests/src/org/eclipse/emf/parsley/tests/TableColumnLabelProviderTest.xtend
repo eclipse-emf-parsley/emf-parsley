@@ -87,6 +87,26 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 	}
 
 	@Test
+	def void testCustomGetTextWithAssertionError() {
+		logger.info("*** EXCEPTION IN THE LOG IS EXPECTED IN THIS TEST ***")
+		"".assertEquals(new TableColumnLabelProvider {
+			override protected getFeatureValue(Object element) {
+				throw new AssertionError("TEST") 
+			}
+		}.initialize(testPackage.classForControls_StringFeature).getText(eobj))
+	}
+
+	@Test
+	def void testCustomGetTextWithRuntimeException() {
+		logger.info("*** EXCEPTION IN THE LOG IS EXPECTED IN THIS TEST ***")
+		"".assertEquals(new TableColumnLabelProvider {
+			override protected getFeatureValue(Object element) {
+				throw new NullPointerException("TEST")
+			}
+		}.initialize(testPackage.classForControls_StringFeature).getText(eobj))
+	}
+
+	@Test
 	def void testCustomText() {
 		val customProvider = new TableColumnLabelProvider {
 			def text_ClassForControls_stringFeature(ClassForControls e) {

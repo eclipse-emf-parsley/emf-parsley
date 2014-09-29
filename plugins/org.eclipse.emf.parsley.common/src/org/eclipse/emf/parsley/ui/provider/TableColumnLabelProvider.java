@@ -95,14 +95,25 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return ret;
 		}
 		try {
-			Object featureValue = getFeatureValue(element);
-			return featureValue != null ? getLabelProvider().getText(featureValue)
-					: "";
-		} catch (Throwable e) {
+			return defaultGetTextForFeatureValue(element);
+		} catch (AssertionError e) {
 			// avoid exceptions during rendering
-			EmfParsleyActivator.logError("TableColumnLabelProvider.getText", e);
-			return "";
+			return logErrorAndReturnEmptyString(e);
+		} catch (RuntimeException e) {
+			// avoid exceptions during rendering
+			return logErrorAndReturnEmptyString(e);
 		}
+	}
+
+	protected String defaultGetTextForFeatureValue(Object element) {
+		Object featureValue = getFeatureValue(element);
+		return featureValue != null ? getLabelProvider().getText(featureValue)
+				: "";
+	}
+
+	protected String logErrorAndReturnEmptyString(Throwable e) {
+		EmfParsleyActivator.logError("TableColumnLabelProvider.getText", e);
+		return "";
 	}
 
 	/**
