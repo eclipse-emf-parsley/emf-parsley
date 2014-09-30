@@ -155,40 +155,6 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 	}
 
 	@Test
-	public void detailViewShowsCustomDetailsOnSelection() throws Exception {
-		SWTBotView detailView = openTestView(LIBRARY_CUSTOM_DETAIL_VIEW);
-		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
-				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
-		getLibraryWriterNode(rootOfEditorTree).select();
-		SWTFormsBot formbot = formBotFromView(detailView);
-		formbot.label(ADDRESS_LABEL);
-		formbot.text(WRITER_S_ADDRESS_TEXT);
-		formbot.label(CUSTOM_FIRSTNAME_LABEL);
-		formbot.label(CUSTOM_SURNAME_LABEL);
-		// select on the outline view
-		getLibraryNode(getRootOfOutlineViewTree()).select();
-		formbot.label(ADDRESS_LABEL);
-		formbot.text(LIBRARY_S_ADDRESS_TEXT);
-		// the label for 'people'
-		formbot.label(PEOPLE_LABEL);
-		// the inner label listing all the people, before the button "..."
-		formbot.label(CUSTOM_PEOPLE_TEXT);
-	}
-
-	@Test
-	public void customControlOfWriterNode() throws Exception {
-		SWTBotView detailView = openTestView(LIBRARY_CUSTOM_DETAIL_VIEW);
-		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
-				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
-		getLibraryWriterNode(rootOfEditorTree).select();
-		SWTFormsBot formbot = formBotFromView(detailView);
-		formbot.label(ADDRESS_LABEL);
-		formbot.text(WRITER_NAME);
-	}
-
-	@Test
 	public void treeFormViewShowsOnSelection() throws Exception {
 		SWTBotView view = openTestView(EMF_TREE_FORM_DETAIL_VIEW);
 		// select on the editor's tree

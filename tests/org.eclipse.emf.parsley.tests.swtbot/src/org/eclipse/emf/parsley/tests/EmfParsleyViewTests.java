@@ -25,26 +25,10 @@ import org.junit.runner.RunWith;
 public class EmfParsleyViewTests extends EmfParsleyAbstractTests {
 
 	@Test
-	public void canOpenEmfTestView() throws Exception {
-		openTestView(LIBRARY_EMF_VIEW);
-		// bot.sleep(2000);
-		closeLibraryView(LIBRARY_EMF_VIEW);
-	}
-
-	@Test
 	public void emfTestViewHasTree() throws Exception {
 		SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
 		getWriterNode(getLibraryNode(view.bot().tree()
 				.getTreeItem(HARDCODED_LIBRARY_PLATFORM_URI)));
-		// bot.sleep(2000);
-		view.close();
-	}
-
-	@Test
-	public void emfTestViewHasTreeWithCustomLabels() throws Exception {
-		SWTBotView view = openTestView(LIBRARY_EMF_VIEW_CUSTOM_LABEL);
-		accessTreeWithCustomLabels(view.bot().tree()
-				.getTreeItem(HARDCODED_LIBRARY_PLATFORM_URI));
 		// bot.sleep(2000);
 		view.close();
 	}
