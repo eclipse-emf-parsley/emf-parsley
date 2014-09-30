@@ -126,6 +126,14 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertTextEditable(true)
 	}
 
+	@Test def void testFeatureMap() {
+		eobj.featureMapEntries1 += createClassForFeatureMapEntry1("1")
+		eobj.featureMapEntries2 += createClassForFeatureMapEntry2("2")
+		val control = factory.createControl(testPackage.classForControls_FeatureMapEntries)
+		// button is visible but not enabled
+		control.assertMultipleFeatureControl("Class For Feature Map Entry1 1, Class For Feature Map Entry2 2", true, false)
+	}
+
 	@Test def void testMultiReferenceFeatureEmpty() {
 		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
 		control.assertMultipleFeatureControl("", true)

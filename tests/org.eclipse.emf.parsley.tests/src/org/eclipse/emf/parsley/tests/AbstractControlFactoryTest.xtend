@@ -106,12 +106,17 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	}
 
 	def protected assertMultipleFeatureControl(Control control, String expectedLabelText, boolean isButtonVisible) {
+		assertMultipleFeatureControl(control, expectedLabelText, isButtonVisible, true)
+	}
+
+	def protected assertMultipleFeatureControl(Control control, String expectedLabelText, boolean isButtonVisible, boolean isButtonEnabled) {
 		control.assertControlClass(MultipleFeatureControl)
 		val mfc = control as MultipleFeatureControl;
 		syncExecVoid[|
 			assertEquals("...", mfc.button.text)
 			assertEquals(expectedLabelText, mfc.label.text)
 			assertEquals(isButtonVisible, mfc.button.isVisible)
+			assertEquals(isButtonEnabled, mfc.button.isEnabled)
 		]
 	}
 
