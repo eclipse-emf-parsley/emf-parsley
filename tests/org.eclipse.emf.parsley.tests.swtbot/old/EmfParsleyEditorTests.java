@@ -91,6 +91,54 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 		assertPropertyViewIsOpenedAndCloseIt();
 	}
 
+	//@Test
+	// this takes some time to test (due to timeout)
+	// and it does not make much sense as a test (Lorenzo)
+	public void testEditorWithNoMouseEvents() throws Exception {
+		// double click on Library node on the tree of the editor and outline
+		// view should NOT open the property view
+		getLibraryNode(
+				openEditorAndGetTreeRoot(EMF_TREE_EDITOR_NO_MOUSE, MY_EXTLIBRARY,
+						MY_EXT_LIBRARY_PLATFORM_URI)).doubleClick();
+		assertPropertyViewIsNotShown();
+		getLibraryNode(getRootOfOutlineViewTree()).doubleClick();
+		assertPropertyViewIsNotShown();
+	}
+
+	@Test
+	public void testEditorWithCustomLabels() throws Exception {
+		SWTBotTreeItem rootOfTree = openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR_CUSTOM_LABEL, MY_EXTLIBRARY,
+				MY_EXT_LIBRARY_PLATFORM_URI);
+		accessTreeWithCustomLabels(rootOfTree);
+		accessTreeWithCustomLabels(getRootOfOutlineViewTree());
+	}
+
+	@Test
+	public void testEditorWithCustomLibraryLabels() throws Exception {
+		SWTBotTreeItem rootOfTree = openEditorAndGetTreeRoot(
+				EMF_CUSTOM_LIBRARY_EDITOR, MY_EXTLIBRARY,
+				MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem treeItem = accessTreeWithCustomLibraryLabels(rootOfTree);
+		assertTreeItemImage(treeItem, getImageDescriptorFromTest("book2.png"));
+		treeItem = accessTreeWithCustomLibraryLabels(getRootOfOutlineViewTree());
+		assertTreeItemImage(treeItem, getImageDescriptorFromTest("book2.png"));
+	}
+
+	//@Test
+	// TODO this does not seem to work anymore...
+	// the image is the same, but probably some internal modifications
+	// or adjustments make the images differ from the binary point of view...
+	public void testEditorWithCustomLibraryLabelsInEditPlugin() throws Exception {
+		SWTBotTreeItem rootOfTree = openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR_CUSTOM_LABEL, MY_EXTLIBRARY,
+				MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem treeItem = accessTreeWithCustomLabels(rootOfTree);
+		assertTreeItemImage(treeItem, getImageDescriptorFromTest("custom_book.png"));
+		treeItem = accessTreeWithCustomLabels(getRootOfOutlineViewTree());
+		assertTreeItemImage(treeItem, getImageDescriptorFromTest("custom_book.png"));
+	}
+
 	@Test
 	public void canSelectInOutlineView() throws Exception {
 		SWTBotTreeItem editorTreeRoot = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
