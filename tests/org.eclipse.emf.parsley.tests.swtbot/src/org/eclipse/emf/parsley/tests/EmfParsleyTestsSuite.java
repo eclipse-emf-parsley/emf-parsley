@@ -20,7 +20,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	EmfParsleyProvidersTests.class,
-	EmfParsleyProvidersBasedOnViewTests.class,
 	EmfParsleyViewTests.class,
 	EmfParsleySaveableViewTests.class,
 	EmfParsleyEditorTests.class,
