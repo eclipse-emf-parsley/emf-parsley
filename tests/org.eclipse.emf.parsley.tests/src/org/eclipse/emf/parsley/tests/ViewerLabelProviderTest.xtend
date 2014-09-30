@@ -15,6 +15,7 @@ import com.google.inject.Guice
 import com.google.inject.name.Names
 import org.eclipse.emf.parsley.EmfParsleyConstants
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.viewers.ILabelProvider
@@ -23,6 +24,7 @@ import org.junit.Test
 
 import static extension org.eclipse.emf.parsley.tests.ui.util.ImageTester.*
 import static extension org.junit.Assert.*
+import java.util.List
 
 class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
@@ -66,22 +68,15 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testDefaultGetTextForIterableTooLong() {
-		testContainer.classesWithName => [
-			for (i : 0..<10) {
-				it += createClassWithName("" + i)
-			}
-		]
+		setupContainerWith10Elems
 		"Class With Name 0, Class With Name 1, Class With Name 2, Class With Name 3, Clas...".
 			assertEquals(labelProvider.getText(testContainer.classesWithName))
 	}
+	
 
 	@Test
 	def void testDefaultGetTextForIterableWithCustomConstants() {
-		testContainer.classesWithName => [
-			for (i : 0..<10) {
-				it += createClassWithName("" + i)
-			}
-		]
+		setupContainerWith10Elems
 		"Class With Name 0 - Class With Name 1 - Class With <continued>...".
 		assertEquals(
 			Guice.createInjector(
@@ -115,6 +110,17 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 			}
 		}.injectMembers
 		"Test".assertEquals(customLabelProvider.getText(eobj))
+	}
+
+	@Test
+	def void testCustomTextForList() {
+		setupContainerWith10Elems
+		val customLabelProvider = new ViewerLabelProvider(null) {
+			def text(List<ClassWithName> l) {
+				l.map[name].join(",")
+			}
+		}.injectMembers
+		"0,1,2,3,4,5,6,7,8,9".assertEquals(customLabelProvider.getText(testContainer.classesWithName))
 	}
 
 	@Test
@@ -192,4 +198,11 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 		]
 	}
 
+	private def setupContainerWith10Elems() {
+		testContainer.classesWithName => [
+			for (i : 0..<10) {
+				it += createClassWithName("" + i)
+			}
+		]
+	}
 }
