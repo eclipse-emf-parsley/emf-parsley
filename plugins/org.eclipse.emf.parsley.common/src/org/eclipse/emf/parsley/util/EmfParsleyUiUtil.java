@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.util;
 
+import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorSite;
@@ -41,7 +42,8 @@ public class EmfParsleyUiUtil {
 			} else {
 				return null;
 			}
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
+			EmfParsleyActivator.logError("getStatusLineManager", e);
 			return null;
 		}
 	}

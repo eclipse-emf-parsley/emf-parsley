@@ -65,6 +65,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
 import org.eclipse.emf.parsley.editors.outline.EmfEditorContentOutlineFactory;
@@ -998,7 +999,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				stream.close();
 			}
 		} catch (IOException e) {
-			// Ignore
+			EmfParsleyActivator.logError("EmfAbstractEditor.isPersisted", e);
 		}
 		return result;
 	}
