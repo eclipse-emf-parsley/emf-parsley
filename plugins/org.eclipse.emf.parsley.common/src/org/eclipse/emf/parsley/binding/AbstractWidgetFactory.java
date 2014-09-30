@@ -77,8 +77,4 @@ public abstract class AbstractWidgetFactory {
 		return parent;
 	}
 
-	public void dispose() {
-		parent.dispose();
-	}
-
 }

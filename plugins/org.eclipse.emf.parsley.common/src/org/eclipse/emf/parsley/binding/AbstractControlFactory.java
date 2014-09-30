@@ -65,7 +65,7 @@ import com.google.inject.name.Named;
  * Creates Control for an {@link EStructuralFeature}
  * 
  * @author Dennis Huebner initial code
- * @author Lorenzo Bettini refactoring for EmfParsley
+ * @author Lorenzo Bettini refactoring for Emf Parsley
  * 
  */
 public abstract class AbstractControlFactory extends AbstractWidgetFactory {
@@ -375,9 +375,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		}
 	}
 
-	@Override
 	public void dispose() {
-		super.dispose();
 		edbc.dispose();
 	}
 

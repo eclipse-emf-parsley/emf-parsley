@@ -19,6 +19,7 @@ import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.junit.After
 
 class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	
@@ -30,6 +31,14 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	def void setupEObject() {
 		eobj = testFactory.createClassForControls
 		factory = createAndInitializeFactory
+	}
+
+	@After
+	def void disposeFactory() {
+		syncExecInRealm[|
+			factory.dispose();
+			return null
+		]
 	}
 
 	@Test def void testBooleanFeature() {
