@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.ui.provider;
 
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -19,6 +20,7 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 /**
  * Default implementation for {@link ILabelProvider} that uses polymorphic dispatch to invoke methods at runtime.
@@ -32,6 +34,18 @@ public class ViewerLabelProvider implements ILabelProvider {
 
 	@Inject
 	private IImageHelper imageHelper;
+	
+	@Inject
+	@Named(EmfParsleyConstants.ITERABLE_STRING_SEPARATOR)
+	private String separator;
+
+	@Inject
+	@Named(EmfParsleyConstants.ITERABLE_STRING_ELLIPSES)
+	private String ellipses;
+
+	@Inject
+	@Named(EmfParsleyConstants.ITERABLE_STRING_MAX_LENGTH)
+	private int iterableStringMaxLength;
 
 	private PolymorphicDispatcher<String> textDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("text", 1, 1, this);
@@ -135,5 +149,25 @@ public class ViewerLabelProvider implements ILabelProvider {
 	 */
 	public Object image(Entry entry) {
 		return getImage(entry.getValue());
+	}
+
+	/**
+	 * Custom implementation for {@link Iterable} using separator, max length and ellipses
+	 * and calling getText on each element.
+	 * @param iterable
+	 * @return
+	 */
+	public String text(Iterable<?> iterable) {
+		StringBuilder builder = new StringBuilder();
+		for (Object object : iterable) {
+			if (builder.length() > 0) {
+				builder.append(separator);
+			}
+			builder.append(getText(object));
+			if (builder.length() > iterableStringMaxLength) {
+				return builder.substring(0, iterableStringMaxLength) + ellipses;
+			}
+		}
+		return builder.toString();
 	}
 }

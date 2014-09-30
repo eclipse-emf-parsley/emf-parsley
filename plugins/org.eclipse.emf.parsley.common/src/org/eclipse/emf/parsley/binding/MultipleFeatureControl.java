@@ -166,18 +166,7 @@ public class MultipleFeatureControl extends Composite {
 	 * @param selection
 	 */
 	private void recalculateLabelText() {
-		StringBuffer buffy = new StringBuffer();
-		List<?> currSelection = unwrapSelection();
-		if (!currSelection.isEmpty()) {
-			for (Iterator<?> iterator = currSelection.iterator(); iterator.hasNext();) {
-				Object sel = iterator.next();
-				buffy.append(labelProvider.getText(sel));
-				if (iterator.hasNext()) {
-					buffy.append(", ");
-				}
-			}
-		}
-		label.setText(buffy.toString());
+		label.setText(labelProvider.getText(unwrapSelection()));
 	}
 
 	class InternalSelectionProvider implements ISelectionProvider {

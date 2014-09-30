@@ -18,6 +18,12 @@ public class EmfParsleyConstants {
 
 	public static final String CONTENT_ASSIST_SHORTCUT = "contentAssistShortcut";
 
+	public static final String ITERABLE_STRING_SEPARATOR = "iterableStringSeparator";
+
+	public static final String ITERABLE_STRING_ELLIPSES = "iterableStringEllipses";
+
+	public static final String ITERABLE_STRING_MAX_LENGTH = "iterableStringMaxLength";
+
 	protected EmfParsleyConstants() {
 
 	}

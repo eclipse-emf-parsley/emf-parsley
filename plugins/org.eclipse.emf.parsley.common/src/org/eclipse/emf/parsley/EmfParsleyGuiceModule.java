@@ -98,7 +98,38 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 	public void configureContentAssistShortcut(Binder binder) {
 		binder.bind(String.class).annotatedWith
 			(Names.named(EmfParsleyConstants.CONTENT_ASSIST_SHORTCUT)).
-			toInstance("Ctrl+Space");
+				toInstance("Ctrl+Space");
+	}
+
+	/**
+	 * The String constant used as a separator for Iterable string representation
+	 * @param binder
+	 */
+	public void configureIterableStringSeparator(Binder binder) {
+		binder.bind(String.class).annotatedWith
+			(Names.named(EmfParsleyConstants.ITERABLE_STRING_SEPARATOR)).
+				toInstance(", ");
+	}
+
+	/**
+	 * The String constant used as a ellipses for Iterable string representation
+	 * when it is too long
+	 * @param binder
+	 */
+	public void configureIterableStringEllipses(Binder binder) {
+		binder.bind(String.class).annotatedWith
+			(Names.named(EmfParsleyConstants.ITERABLE_STRING_ELLIPSES)).
+				toInstance("...");
+	}
+
+	/**
+	 * The Integer constant used as the maximum length for Iterable string representation
+	 * @param binder
+	 */
+	public void configureIterableStringMaxLength(Binder binder) {
+		binder.bind(Integer.class).annotatedWith
+			(Names.named(EmfParsleyConstants.ITERABLE_STRING_MAX_LENGTH)).
+				toInstance(80);
 	}
 
 	/**

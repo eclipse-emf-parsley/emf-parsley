@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import com.google.inject.Binder
+import com.google.inject.Guice
+import com.google.inject.name.Names
+import org.eclipse.emf.parsley.EmfParsleyConstants
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.resource.ImageDescriptor
@@ -47,6 +51,60 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 			assertEquals(labelProvider.getText(eobj.featureMapEntries.get(0)))
 		"Class For Feature Map Entry2 2".
 			assertEquals(labelProvider.getText(eobj.featureMapEntries.get(1)))
+	}
+
+	@Test
+	def void testDefaultGetTextForIterable() {
+		testContainer.classesWithName => [
+			it += createClassWithName("1")
+			it += createClassWithName("2")
+			it += createClassWithName("3")
+		]
+		"Class With Name 1, Class With Name 2, Class With Name 3".
+			assertEquals(labelProvider.getText(testContainer.classesWithName))
+	}
+
+	@Test
+	def void testDefaultGetTextForIterableTooLong() {
+		testContainer.classesWithName => [
+			for (i : 0..<10) {
+				it += createClassWithName("" + i)
+			}
+		]
+		"Class With Name 0, Class With Name 1, Class With Name 2, Class With Name 3, Clas...".
+			assertEquals(labelProvider.getText(testContainer.classesWithName))
+	}
+
+	@Test
+	def void testDefaultGetTextForIterableWithCustomConstants() {
+		testContainer.classesWithName => [
+			for (i : 0..<10) {
+				it += createClassWithName("" + i)
+			}
+		]
+		"Class With Name 0 - Class With Name 1 - Class With <continued>...".
+		assertEquals(
+			Guice.createInjector(
+				new EmfParsleyGuiceModuleForTesting() {
+					override configureIterableStringSeparator(Binder binder) {
+						binder.bind(String).annotatedWith
+							(Names.named(EmfParsleyConstants.ITERABLE_STRING_SEPARATOR)).
+							toInstance(" - ");
+					}
+					override configureIterableStringEllipses(Binder binder) {
+						binder.bind(String).annotatedWith
+							(Names.named(EmfParsleyConstants.ITERABLE_STRING_ELLIPSES)).
+							toInstance(" <continued>...");
+					}
+					override configureIterableStringMaxLength(Binder binder) {
+						binder.bind(Integer).annotatedWith
+							(Names.named(EmfParsleyConstants.ITERABLE_STRING_MAX_LENGTH)).
+							toInstance(50);
+					}
+				}
+			).getInstance(ILabelProvider)
+			.getText(testContainer.classesWithName)
+		)
 	}
 
 	@Test
