@@ -34,12 +34,12 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 		injectMembers(featuresProvider)
 	}
 	
-	def private void buildStringMap(EClass eClass, String...featuresNames) {
-		featuresProvider.addToStringMap(eClass, featuresNames);
+	@Test def void testNullEObject() {
+		featuresProvider.getEObjectFeatures(null).assertFeatureList("")
 	}
 
-	def private void buildMap(EClass eClass, EStructuralFeature...features) {
-		featuresProvider.getMap.put(eClass, features);
+	@Test def void testNullEClass() {
+		featuresProvider.getFeatures(null).assertFeatureList("")
 	}
 
 	@Test def void testMapCreationHappensOnlyOnce() {
@@ -51,14 +51,6 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 			assertNotNull
 			assertSame(featuresProvider.stringMap)
 		]
-	}
-
-	@Test def void testNullEObject() {
-		featuresProvider.getEObjectFeatures(null).assertFeatureList("")
-	}
-
-	@Test def void testNullEClass() {
-		featuresProvider.getFeatures(null).assertFeatureList("")
 	}
 
 	@Test def void testEObjectFeatures() {
@@ -192,8 +184,16 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 		featuresProvider.getFeatures(eClass).assertFeatureList(expected)
 	}
 	
-	
 	def assertFeatureList(List<EStructuralFeature> features, CharSequence expected) {
 		expected.toString.assertEquals(features.map[name].join(", "))
 	}
+
+	def private void buildStringMap(EClass eClass, String...featuresNames) {
+		featuresProvider.addToStringMap(eClass, featuresNames);
+	}
+
+	def private void buildMap(EClass eClass, EStructuralFeature...features) {
+		featuresProvider.getMap.put(eClass, features);
+	}
+
 }
