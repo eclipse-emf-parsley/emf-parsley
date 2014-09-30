@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesWithName <em>Classes With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForControls <em>Classes For Controls</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getContained <em>Contained</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,5 +56,31 @@ public interface TestContainer extends EObject {
 	 * @generated
 	 */
 	EList<ClassForControls> getClassesForControls();
+
+	/**
+	 * Returns the value of the '<em><b>Contained</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contained</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contained</em>' containment reference.
+	 * @see #setContained(TestContainer)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getTestContainer_Contained()
+	 * @model containment="true"
+	 * @generated
+	 */
+	TestContainer getContained();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getContained <em>Contained</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Contained</em>' containment reference.
+	 * @see #getContained()
+	 * @generated
+	 */
+	void setContained(TestContainer value);
 
 } // TestContainer

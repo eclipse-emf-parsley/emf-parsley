@@ -21,6 +21,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	EmfParsleyUtilTest.class,
 	EditingDomainTest.class,
+	ViewerContentProviderTest.class,
 	FeaturesProviderTest.class,
 	TableFeaturesProviderTest.class,
 	FeatureCaptionProviderTest.class,

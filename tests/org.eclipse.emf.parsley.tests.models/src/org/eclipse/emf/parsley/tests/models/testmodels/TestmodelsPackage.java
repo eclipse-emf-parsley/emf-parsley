@@ -144,13 +144,22 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_CONTAINER__CLASSES_FOR_CONTROLS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Contained</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__CONTAINED = 2;
+
+	/**
 	 * The number of structural features of the '<em>Test Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER_FEATURE_COUNT = 2;
+	int TEST_CONTAINER_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Test Container</em>' class.
@@ -936,6 +945,17 @@ public interface TestmodelsPackage extends EPackage {
 	EReference getTestContainer_ClassesForControls();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getContained <em>Contained</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Contained</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getContained()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EReference getTestContainer_Contained();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1231,6 +1251,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TEST_CONTAINER__CLASSES_FOR_CONTROLS = eINSTANCE.getTestContainer_ClassesForControls();
+		/**
+		 * The meta object literal for the '<em><b>Contained</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_CONTAINER__CONTAINED = eINSTANCE.getTestContainer_Contained();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 		 * <!-- begin-user-doc -->

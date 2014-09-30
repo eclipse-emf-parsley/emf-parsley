@@ -7,6 +7,8 @@
         eType="#//ClassWithName" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classesForControls" upperBound="-1"
         eType="#//ClassForControls" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contained" eType="#//TestContainer"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestEClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowercaseNameFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

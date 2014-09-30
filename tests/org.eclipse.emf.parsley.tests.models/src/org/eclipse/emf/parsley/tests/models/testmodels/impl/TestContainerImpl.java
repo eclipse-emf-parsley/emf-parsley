@@ -4,6 +4,7 @@ package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -30,6 +32,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesWithName <em>Classes With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForControls <em>Classes For Controls</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getContained <em>Contained</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,6 +58,16 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * @ordered
 	 */
 	protected EList<ClassForControls> classesForControls;
+
+	/**
+	 * The cached value of the '{@link #getContained() <em>Contained</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContained()
+	 * @generated
+	 * @ordered
+	 */
+	protected TestContainer contained;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +117,49 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TestContainer getContained() {
+		return contained;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetContained(TestContainer newContained, NotificationChain msgs) {
+		TestContainer oldContained = contained;
+		contained = newContained;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TestmodelsPackage.TEST_CONTAINER__CONTAINED, oldContained, newContained);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContained(TestContainer newContained) {
+		if (newContained != contained) {
+			NotificationChain msgs = null;
+			if (contained != null)
+				msgs = ((InternalEObject)contained).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TestmodelsPackage.TEST_CONTAINER__CONTAINED, null, msgs);
+			if (newContained != null)
+				msgs = ((InternalEObject)newContained).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TestmodelsPackage.TEST_CONTAINER__CONTAINED, null, msgs);
+			msgs = basicSetContained(newContained, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.TEST_CONTAINER__CONTAINED, newContained, newContained));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -111,6 +167,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return ((InternalEList<?>)getClassesWithName()).basicRemove(otherEnd, msgs);
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_CONTROLS:
 				return ((InternalEList<?>)getClassesForControls()).basicRemove(otherEnd, msgs);
+			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
+				return basicSetContained(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -127,6 +185,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return getClassesWithName();
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_CONTROLS:
 				return getClassesForControls();
+			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
+				return getContained();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +208,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				getClassesForControls().clear();
 				getClassesForControls().addAll((Collection<? extends ClassForControls>)newValue);
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
+				setContained((TestContainer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -166,6 +229,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_CONTROLS:
 				getClassesForControls().clear();
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
+				setContained((TestContainer)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -182,6 +248,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return classesWithName != null && !classesWithName.isEmpty();
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_CONTROLS:
 				return classesForControls != null && !classesForControls.isEmpty();
+			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
+				return contained != null;
 		}
 		return super.eIsSet(featureID);
 	}

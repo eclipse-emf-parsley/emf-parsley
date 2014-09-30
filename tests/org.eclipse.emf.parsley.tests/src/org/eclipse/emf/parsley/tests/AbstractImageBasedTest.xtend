@@ -15,29 +15,12 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.EMFEditPlugin
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry
-import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
-import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
-import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass
-import org.junit.Before
 
 import static org.eclipse.emf.parsley.tests.ui.util.TestImageHelper.*
 
 abstract class AbstractImageBasedTest extends AbstractShellBasedTest {
 
-	var protected TestContainer testContainer
-
-	var protected ClassForControls eobj
-
-	var protected TestEClass eobj2
-
 	val protected TEST_IMAGE = "test_image.png"
-
-	@Before
-	def void setupEObject() {
-		testContainer = testFactory.createTestContainer
-		eobj = testFactory.createClassForControls
-		eobj2 = testFactory.createTestEClass
-	}
 
 	def protected getDelegateLabelProvider() {
 		getOrCreateInjector.getInstance(AdapterFactoryLabelProvider)
