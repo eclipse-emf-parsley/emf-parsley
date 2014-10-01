@@ -102,6 +102,12 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertText("Foo")
 	}
 
+	@Test def void testStringFeatureUnchangeable() {
+		val control = factory.createControl(testPackage.classForControls_UnchangeableStringFeature)
+		control.assertTextEnabled(false)
+		control.assertText("")
+	}
+
 	@Test def void testStringFeatureWithProposals() {
 		factory.proposalCreator = new ProposalCreator() {
 			def proposals_ClassForControls_stringFeature(ClassForControls e) {

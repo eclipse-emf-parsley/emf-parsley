@@ -376,7 +376,8 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		if (c != null) {
 			// don't override readonly behavior
 			if (c.isEnabled()) {
-				c.setEnabled(f.isChangeable()
+				c.setEnabled(
+					f.isChangeable()
 					&& (!(f.getEType() instanceof EDataType && !((EDataType) f
 							.getEType()).isSerializable())));
 			}

@@ -134,6 +134,14 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 		]
 	}
 
+	def protected assertTextEnabled(Control control, boolean expectedEnabled) {
+		control.assertControlClass(Text)
+		val text = control as Text;
+		syncExecVoid[|
+			assertEquals(expectedEnabled, text.isEnabled)
+		]
+	}
+
 	def protected assertControlClass(Control control, Class<? extends Control> clazz) {
 		assertTrue("expected class: " + clazz.simpleName + 
 			", actual class: " + control.class.simpleName, 

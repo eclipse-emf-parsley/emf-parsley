@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#isBooleanPrimitiveDataTypeFeature <em>Boolean Primitive Data Type Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeature <em>String Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getMultiReferenceFeature <em>Multi Reference Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
@@ -191,6 +192,21 @@ public interface ClassForControls extends EObject {
 	 * @generated
 	 */
 	void setStringFeature(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Unchangeable String Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Unchangeable String Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unchangeable String Feature</em>' attribute.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_UnchangeableStringFeature()
+	 * @model changeable="false"
+	 * @generated
+	 */
+	String getUnchangeableStringFeature();
 
 	/**
 	 * Returns the value of the '<em><b>Reference To Class With Name</b></em>' reference.

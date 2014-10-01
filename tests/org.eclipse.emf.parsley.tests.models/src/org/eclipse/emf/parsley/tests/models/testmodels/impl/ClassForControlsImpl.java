@@ -37,6 +37,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#isBooleanPrimitiveDataTypeFeature <em>Boolean Primitive Data Type Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeature <em>String Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getMultiReferenceFeature <em>Multi Reference Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
@@ -167,6 +168,26 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String stringFeature = STRING_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUnchangeableStringFeature() <em>Unchangeable String Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnchangeableStringFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String UNCHANGEABLE_STRING_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUnchangeableStringFeature() <em>Unchangeable String Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnchangeableStringFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected String unchangeableStringFeature = UNCHANGEABLE_STRING_FEATURE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getReferenceToClassWithName() <em>Reference To Class With Name</em>}' reference.
@@ -348,6 +369,15 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getUnchangeableStringFeature() {
+		return unchangeableStringFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ClassWithName getReferenceToClassWithName() {
 		if (referenceToClassWithName != null && referenceToClassWithName.eIsProxy()) {
 			InternalEObject oldReferenceToClassWithName = (InternalEObject)referenceToClassWithName;
@@ -461,6 +491,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return getEnumFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				return getStringFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
+				return getUnchangeableStringFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				if (resolve) return getReferenceToClassWithName();
 				return basicGetReferenceToClassWithName();
@@ -591,6 +623,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return enumFeature != ENUM_FEATURE_EDEFAULT;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				return STRING_FEATURE_EDEFAULT == null ? stringFeature != null : !STRING_FEATURE_EDEFAULT.equals(stringFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
+				return UNCHANGEABLE_STRING_FEATURE_EDEFAULT == null ? unchangeableStringFeature != null : !UNCHANGEABLE_STRING_FEATURE_EDEFAULT.equals(unchangeableStringFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				return referenceToClassWithName != null;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
@@ -627,6 +661,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 		result.append(enumFeature);
 		result.append(", stringFeature: ");
 		result.append(stringFeature);
+		result.append(", unchangeableStringFeature: ");
+		result.append(unchangeableStringFeature);
 		result.append(", featureMapEntries: ");
 		result.append(featureMapEntries);
 		result.append(')');

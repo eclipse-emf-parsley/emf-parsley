@@ -561,13 +561,22 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_CONTROLS__STRING_FEATURE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Unchangeable String Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE = 6;
+
+	/**
 	 * The feature id for the '<em><b>Reference To Class With Name</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 6;
+	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 7;
 
 	/**
 	 * The feature id for the '<em><b>Multi Reference Feature</b></em>' reference list.
@@ -576,7 +585,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 7;
+	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries</b></em>' attribute list.
@@ -585,7 +594,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = 8;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = 9;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries1</b></em>' containment reference list.
@@ -594,7 +603,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = 9;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = 10;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries2</b></em>' containment reference list.
@@ -603,7 +612,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 10;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 11;
 
 	/**
 	 * The number of structural features of the '<em>Class For Controls</em>' class.
@@ -612,7 +621,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 11;
+	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 12;
 
 	/**
 	 * The number of operations of the '<em>Class For Controls</em>' class.
@@ -1018,6 +1027,17 @@ public interface TestmodelsPackage extends EPackage {
 	EAttribute getClassForControls_StringFeature();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unchangeable String Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnchangeableStringFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_UnchangeableStringFeature();
+
+	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getReferenceToClassWithName <em>Reference To Class With Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1392,6 +1412,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASS_FOR_CONTROLS__STRING_FEATURE = eINSTANCE.getClassForControls_StringFeature();
+		/**
+		 * The meta object literal for the '<em><b>Unchangeable String Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE = eINSTANCE.getClassForControls_UnchangeableStringFeature();
 		/**
 		 * The meta object literal for the '<em><b>Reference To Class With Name</b></em>' reference feature.
 		 * <!-- begin-user-doc -->

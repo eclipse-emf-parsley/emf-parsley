@@ -40,6 +40,8 @@
         eType="#//BooleanPrimitiveDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumFeature" eType="#//EnumForControls"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unchangeableStringFeature"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referenceToClassWithName"
         eType="#//ClassWithName"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="multiReferenceFeature"
