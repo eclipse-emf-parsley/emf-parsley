@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.tests
 import java.util.List
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
 import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
 import org.junit.Test
@@ -39,6 +40,18 @@ class ProposalCreatorTest extends EmfParsleyAbstractTest {
 			}
 		}
 		proposalCreator.proposals(eobj, testPackage.classForControls_StringFeature).
+			assertProposals("First Proposal, Second Proposal")
+	}
+
+	@Test def void testCustomProposalsForBaseClassFeatureInDerivedClass() {
+		// although we pass a DerivedClass object we use the customization
+		// specified for BaseClass
+		val proposalCreator = new ProposalCreator() {
+			def proposals_BaseClass_baseClassFeature(BaseClass e) {
+				return #["First Proposal", "Second Proposal"]
+			}
+		}
+		proposalCreator.proposals(testFactory.createDerivedClass, testPackage.baseClass_BaseClassFeature).
 			assertProposals("First Proposal, Second Proposal")
 	}
 

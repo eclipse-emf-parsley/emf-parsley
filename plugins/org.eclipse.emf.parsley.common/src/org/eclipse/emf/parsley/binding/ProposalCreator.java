@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
@@ -32,7 +33,6 @@ import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 
 /**
@@ -41,6 +41,8 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
  * 
  */
 public class ProposalCreator {
+	private static final String PROPOSALS_PREFIX = "proposals_";
+
 	private Resource resource;
 	
 	public Resource getResource() {
@@ -120,26 +122,22 @@ public class ProposalCreator {
 		}
 	}
 	
-	private List<Object> polymorphicCreateProposals(EObject element,
-			EStructuralFeature feature) {
+	private List<Object> polymorphicCreateProposals(EObject element, EStructuralFeature feature) {
+		EClass eClass = element.eClass();
 
 		// first try with a method with two parameters
 		// (EObject, EStructurealFeature)...
-		List<Object> invoke = createPolymorphicDispatcher(element, feature, 2)
-				.invoke(element, feature);
+		List<Object> invoke = PolymorphicDispatcherExtensions
+				.<List<Object>> polymorphicInvokeBasedOnFeature(this, eClass,
+						feature, PROPOSALS_PREFIX, element, feature);
 
 		if (invoke == null) {
 			// ...then with a method with only EObject
-			invoke = createPolymorphicDispatcher(element, feature, 1).invoke(element);
+			invoke = PolymorphicDispatcherExtensions
+					.<List<Object>> polymorphicInvokeBasedOnFeature(this,
+							eClass, feature, PROPOSALS_PREFIX, element);
 		}
 
 		return invoke;
-	}
-
-	private PolymorphicDispatcher<List<Object>> createPolymorphicDispatcher(
-			EObject object, EStructuralFeature feature, int numOfParams) {
-		return PolymorphicDispatcherExtensions.
-				<List<Object>>createPolymorphicDispatcherBasedOnFeature(
-						this, object.eClass(), feature, "proposals_", numOfParams);
 	}
 }
