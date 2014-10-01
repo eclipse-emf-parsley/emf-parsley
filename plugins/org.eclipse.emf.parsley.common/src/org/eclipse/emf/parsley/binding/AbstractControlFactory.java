@@ -19,6 +19,7 @@ import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.databinding.EMFDataBindingContext;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -250,12 +251,19 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	}
 
 	protected boolean isBooleanFeature(EStructuralFeature feature) {
-		return feature.getEType().equals(EcorePackage.Literals.EBOOLEAN)
-				|| feature.getEType().equals(
-						EcorePackage.Literals.EBOOLEAN_OBJECT)
-				|| (feature.getEType() instanceof EDataType && (feature
-						.getEType().getInstanceClass() == Boolean.class || feature
-						.getEType().getInstanceClass() == Boolean.TYPE));
+		return isBooleanEType(feature) || isBooleanDataType(feature);
+	}
+
+	private boolean isBooleanEType(EStructuralFeature feature) {
+		EClassifier eType = feature.getEType();
+		return eType.equals(EcorePackage.Literals.EBOOLEAN)
+				|| eType.equals(EcorePackage.Literals.EBOOLEAN_OBJECT);
+	}
+
+	private boolean isBooleanDataType(EStructuralFeature feature) {
+		Class<?> instanceClass = feature.getEType().getInstanceClass();
+		return feature.getEType() instanceof EDataType
+				&& (instanceClass == Boolean.class || instanceClass == Boolean.TYPE);
 	}
 
 	protected ControlObservablePair createControlAndObservableValueForBoolean() {
