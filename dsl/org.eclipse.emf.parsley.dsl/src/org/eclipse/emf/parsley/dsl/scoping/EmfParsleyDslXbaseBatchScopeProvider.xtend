@@ -78,10 +78,17 @@ class EmfParsleyDslXbaseBatchScopeProvider extends XbaseWithAnnotationsBatchScop
 	}
 	
 	private def getterMethodForBoolean(String opName) {
-		opName.startsWith("is") && opName.length() > 2 && Character::isUpperCase(opName.charAt(2))
+		opName.getterMethodInternal("is")
 	}
 	
 	private def getterMethodForNonBoolean(String opName) {
-		opName.startsWith("get") && opName.length() > 3 && Character::isUpperCase(opName.charAt(3))
+		opName.getterMethodInternal("get")
 	}
+
+	private def getterMethodInternal(String opName, String prefix) {
+		opName.startsWith(prefix) && 
+			opName.length() > prefix.length && 
+			Character::isUpperCase(opName.charAt(prefix.length))
+	}
+
 }
