@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.widgets;
 
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -69,8 +70,8 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		dialogControlFactory.init(domain, model, this);
 	}
 
-	protected void createControlForFeature(EStructuralFeature feature) {
-		dialogFeatureCaptionProvider.getLabel(this, feature);
+	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
+		dialogFeatureCaptionProvider.getLabel(this, eClass, feature);
 		dialogControlFactory.create(feature);
 	}
 

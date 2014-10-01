@@ -48,6 +48,10 @@ abstract class EmfParsleyAbstractTest {
 	val protected testPackage = TestmodelsPackage.eINSTANCE
 	
 	val protected testFactory = TestmodelsFactory.eINSTANCE
+
+	val protected baseClass = testPackage.baseClass
+	
+	val protected derivedClass = testPackage.derivedClass
 	
 	var protected TestContainer testContainer
 

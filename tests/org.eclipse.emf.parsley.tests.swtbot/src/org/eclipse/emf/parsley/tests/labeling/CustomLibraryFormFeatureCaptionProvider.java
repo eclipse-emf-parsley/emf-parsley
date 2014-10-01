@@ -36,7 +36,7 @@ public class CustomLibraryFormFeatureCaptionProvider extends
 	}
 
 	public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
-		Label label = defaultLabel(parent, feature);
+		Label label = defaultLabel(parent, feature.getEContainingClass(), feature);
 		label.setBackground(getFormToolkit().getColors().getColor(
 				IFormColors.TITLE));
 		return label;

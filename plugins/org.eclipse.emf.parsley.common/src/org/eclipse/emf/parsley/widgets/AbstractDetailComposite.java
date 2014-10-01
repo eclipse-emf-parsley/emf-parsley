@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.widgets;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -58,7 +59,7 @@ public abstract class AbstractDetailComposite extends Composite {
 		initControlFactory(editingDomain, original);
 
 		for (final EStructuralFeature feature : features) {
-			createControlForFeature(feature);
+			createControlForFeature(original.eClass(), feature);
 		}
 
 		// toolkit.paintBordersFor(main);
@@ -69,7 +70,7 @@ public abstract class AbstractDetailComposite extends Composite {
 	protected abstract void initControlFactory(EditingDomain domain,
 			EObject model);
 
-	protected abstract void createControlForFeature(
+	protected abstract void createControlForFeature(final EClass eClass,
 			final EStructuralFeature feature);
 
 	public FeaturesProvider getFeaturesProvider() {

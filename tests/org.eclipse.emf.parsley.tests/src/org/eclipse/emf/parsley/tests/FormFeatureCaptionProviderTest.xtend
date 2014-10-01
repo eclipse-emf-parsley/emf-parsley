@@ -36,14 +36,14 @@ class FormFeatureCaptionProviderTest extends AbstractShellBasedTest {
 	@Test def void testDefaultText() {
 		val provider = new FormFeatureCaptionProvider() => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature
-		feature.name.assertEquals(provider.getText(feature))
+		feature.name.assertEquals(provider.getText(derivedClass, feature))
 	}
 
 	@Test def void testDefaultLabel() {
 		val provider = new FormFeatureCaptionProvider() => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature
 		feature.name.assertEquals(syncExec[|
-			provider.getLabel(shell, feature).text
+			provider.getLabel(shell, derivedClass, feature).text
 		])
 	}
 	
@@ -62,9 +62,9 @@ class FormFeatureCaptionProviderTest extends AbstractShellBasedTest {
 			}
 		} => [initialize]
 		
-		expectedText.assertEquals(provider.getText(testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
 		expectedLabelText.assertEquals(syncExec[|
-			provider.getLabel(shell, testFeature).text
+			provider.getLabel(shell, derivedClass, testFeature).text
 		])
 	}
 
@@ -81,7 +81,7 @@ class FormFeatureCaptionProviderTest extends AbstractShellBasedTest {
 		// the FormToolkit adapts the label using FormColors
 		// so we check that it is actually adapted
 		formColors.background.assertEquals(syncExec[|
-			provider.getLabel(shell, testFeature).background
+			provider.getLabel(shell, derivedClass, testFeature).background
 		])
 	}
 
@@ -95,9 +95,9 @@ class FormFeatureCaptionProviderTest extends AbstractShellBasedTest {
 			}
 		} => [initialize]
 		
-		expectedText.assertEquals(provider.getText(testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
 		expectedText.assertEquals(syncExec[|
-			provider.getLabel(shell, testFeature).text
+			provider.getLabel(shell, derivedClass, testFeature).text
 		])
 	}
 
@@ -110,7 +110,23 @@ class FormFeatureCaptionProviderTest extends AbstractShellBasedTest {
 			}
 		} => [initialize]
 		
-		expectedText.assertEquals(provider.getText(testPackage.baseClass_BaseClassFeature))
+		expectedText.assertEquals(provider.getText(
+			baseClass, testPackage.baseClass_BaseClassFeature
+		))
+	}
+
+	@Test def void testBaseClassFeatureInDerivedClass() {
+		val expectedText = "BaseClass.baseClassFeature"
+		
+		val provider = new FormFeatureCaptionProvider() {
+			def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {
+				return expectedText
+			}
+		} => [initialize]
+		
+		expectedText.assertEquals(provider.getText(
+			derivedClass, testPackage.baseClass_BaseClassFeature
+		))
 	}
 
 	def private initialize(FormFeatureCaptionProvider provider) {

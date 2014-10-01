@@ -11,30 +11,27 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
+import org.eclipse.swt.widgets.Composite
+import org.eclipse.swt.widgets.Label
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
-import org.eclipse.swt.widgets.Label
-import org.eclipse.swt.widgets.Composite
 
 class DialogFeatureCaptionProviderTest extends AbstractShellBasedTest {
-	
-	val testPackage = TestmodelsPackage.eINSTANCE
 	
 	@Test def void testDefaultText() {
 		val provider = new DialogFeatureCaptionProvider() => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature
-		feature.name.assertEquals(provider.getText(feature))
+		feature.name.assertEquals(provider.getText(derivedClass, feature))
 	}
 
 	@Test def void testDefaultLabel() {
 		val provider = new DialogFeatureCaptionProvider() => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature
 		feature.name.assertEquals(syncExec[|
-			provider.getLabel(shell, feature).text
+			provider.getLabel(shell, derivedClass, feature).text
 		])
 	}
 	
@@ -53,9 +50,9 @@ class DialogFeatureCaptionProviderTest extends AbstractShellBasedTest {
 			}
 		}
 		
-		expectedText.assertEquals(provider.getText(testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
 		expectedLabelText.assertEquals(syncExec[|
-			provider.getLabel(shell, testFeature).text
+			provider.getLabel(shell, derivedClass, testFeature).text
 		])
 	}
 
@@ -69,9 +66,9 @@ class DialogFeatureCaptionProviderTest extends AbstractShellBasedTest {
 			}
 		}
 		
-		expectedText.assertEquals(provider.getText(testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
 		expectedText.assertEquals(syncExec[|
-			provider.getLabel(shell, testFeature).text
+			provider.getLabel(shell, derivedClass, testFeature).text
 		])
 	}
 
@@ -84,7 +81,23 @@ class DialogFeatureCaptionProviderTest extends AbstractShellBasedTest {
 			}
 		}
 		
-		expectedText.assertEquals(provider.getText(testPackage.baseClass_BaseClassFeature))
+		expectedText.assertEquals(provider.getText(
+			baseClass, testPackage.baseClass_BaseClassFeature
+		))
+	}
+
+	@Test def void testBaseClassFeatureInDerivedClass() {
+		val expectedText = "BaseClass.baseClassFeature"
+		
+		val provider = new DialogFeatureCaptionProvider() {
+			def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {
+				return expectedText
+			}
+		}
+		
+		expectedText.assertEquals(provider.getText(
+			derivedClass, testPackage.baseClass_BaseClassFeature
+		))
 	}
 
 	def private initialize(DialogFeatureCaptionProvider provider) {

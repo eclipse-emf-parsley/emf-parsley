@@ -11,20 +11,17 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class FeatureCaptionProviderTest {
+class FeatureCaptionProviderTest extends EmfParsleyAbstractTest {
 	
-	val testPackage = TestmodelsPackage.eINSTANCE
-
 	@Test def void testDefault() {
 		val provider = new FeatureCaptionProvider()
 		val feature = testPackage.derivedClass_DerivedClassFeature
-		feature.name.assertEquals(provider.getText(feature))
+		feature.name.assertEquals(provider.getText(derivedClass, feature))
 	}
 	
 	@Test def void testDerivedClassFeatureInDerivedClass() {
@@ -36,7 +33,9 @@ class FeatureCaptionProviderTest {
 			}
 		}
 		
-		expectedText.assertEquals(provider.getText(testPackage.derivedClass_DerivedClassFeature))
+		expectedText.assertEquals(provider.getText(
+			derivedClass, testPackage.derivedClass_DerivedClassFeature
+		))
 	}
 
 	@Test def void testBaseClassFeatureInBaseClass() {
@@ -48,19 +47,23 @@ class FeatureCaptionProviderTest {
 			}
 		}
 		
-		expectedText.assertEquals(provider.getText(testPackage.baseClass_BaseClassFeature))
+		expectedText.assertEquals(provider.getText(
+			baseClass, testPackage.baseClass_BaseClassFeature
+		))
 	}
 
-//	@Test def void testBaseClassFeatureInDerivedClass() {
-//		val expectedText = "DerivedClass.baseClassFeature"
-//		
-//		val provider = new FeatureCaptionProvider() {
-//			def String text_DerivedClass_baseClassFeature(EStructuralFeature feature) {
-//				return expectedText
-//			}
-//		}
-//		
-//		expectedText.assertEquals(provider.getText(testPackage.baseClass_BaseClassFeature))
-//	}
+	@Test def void testBaseClassFeatureInDerivedClass() {
+		val expectedText = "DerivedClass.baseClassFeature"
+		
+		val provider = new FeatureCaptionProvider() {
+			def String text_DerivedClass_baseClassFeature(EStructuralFeature feature) {
+				return expectedText
+			}
+		}
+		
+		expectedText.assertEquals(provider.getText(
+			derivedClass, testPackage.baseClass_BaseClassFeature
+		))
+	}
 
 }

@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
@@ -39,13 +40,13 @@ import org.eclipse.swt.widgets.Composite;
 
 
 public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
-
 	
 	@Override
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
-			TableLayout layout, EStructuralFeature eStructuralFeature,
+			TableLayout layout, EClass eClass, EStructuralFeature eStructuralFeature,
 			IStructuredContentProvider contentProvider, int weight) {
-		TableViewerColumn viewerColumn= super.buildTableViewerColumn(tableViewer, layout, eStructuralFeature,
+		TableViewerColumn viewerColumn= super.buildTableViewerColumn(tableViewer, layout,
+				eClass, eStructuralFeature,
 				contentProvider, weight);
 
 		if(eStructuralFeature instanceof EAttribute){

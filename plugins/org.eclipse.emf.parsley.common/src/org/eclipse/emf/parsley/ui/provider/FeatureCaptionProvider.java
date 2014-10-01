@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 
@@ -30,21 +31,21 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
  */
 public class FeatureCaptionProvider {
 
-	public String getText(EStructuralFeature element) {
-		String text = polymorphicGetText(element);
+	public String getText(EClass eClass, EStructuralFeature feature) {
+		String text = polymorphicGetText(eClass, feature);
 		if (text != null) {
 			return text;
 		}
-		return defaultText(element);
+		return defaultText(feature);
 	}
 
-	protected String polymorphicGetText(EStructuralFeature element) {
+	protected String polymorphicGetText(EClass eClass, EStructuralFeature feature) {
 		return PolymorphicDispatcherExtensions.
-			<String>createPolymorphicDispatcherBasedOnFeature(
-				this, element.getEContainingClass(), element, "text_", 1).invoke(element);
+			<String>polymorphicInvokeBasedOnFeature
+				(this, eClass, feature, "text_", feature);
 	}
 
-	protected String defaultText(EStructuralFeature element) {
-		return element.getName();
+	protected String defaultText(EStructuralFeature feature) {
+		return feature.getName();
 	}
 }

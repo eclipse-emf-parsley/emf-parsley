@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.swt.SWT;
@@ -42,19 +43,19 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 		this.delegate = delegate;
 	}
 
-	public Label getLabel(Composite parent, EStructuralFeature element) {
-		Label lab = polymorphicGetLabel(parent, element);
+	public Label getLabel(Composite parent, EClass eClass, EStructuralFeature feature) {
+		Label lab = polymorphicGetLabel(parent, eClass, feature);
 		if (lab != null)
 			return lab;
-		return defaultLabel(parent, element);
+		return defaultLabel(parent, eClass, feature);
 	}
 
-	protected Label defaultLabel(Composite parent, EStructuralFeature element) {
-		return createLabel(parent, element);
+	protected Label defaultLabel(Composite parent, EClass eClass, EStructuralFeature feature) {
+		return createLabel(parent, eClass, feature);
 	}
 
-	protected Label createLabel(Composite parent, EStructuralFeature element) {
-		return createLabel(parent, getText(element));
+	protected Label createLabel(Composite parent, EClass eClass, EStructuralFeature feature) {
+		return createLabel(parent, getText(eClass, feature));
 	}
 
 	protected Label createLabel(Composite parent, String text) {
@@ -65,18 +66,18 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 	}
 
 	@Override
-	protected String polymorphicGetText(EStructuralFeature element) {
-		String polymorphicGetText = super.polymorphicGetText(element);
+	protected String polymorphicGetText(EClass eClass, EStructuralFeature feature) {
+		String polymorphicGetText = super.polymorphicGetText(eClass, feature);
 		if (polymorphicGetText == null)
-			return getDelegate().getText(element);
+			return getDelegate().getText(eClass, feature);
 		return polymorphicGetText;
 	}
 
-	protected Label polymorphicGetLabel(Composite parent,
-			EStructuralFeature element) {
+	protected Label polymorphicGetLabel(Composite parent, EClass eClass,
+			EStructuralFeature feature) {
 		return PolymorphicDispatcherExtensions.
-				<Label>createPolymorphicDispatcherBasedOnFeature(
-					this, element.getEContainingClass(), element, "label_", 2).invoke(parent, element);
+				<Label>polymorphicInvokeBasedOnFeature(
+					this, eClass, feature, "label_", parent, feature);
 	}
 
 }

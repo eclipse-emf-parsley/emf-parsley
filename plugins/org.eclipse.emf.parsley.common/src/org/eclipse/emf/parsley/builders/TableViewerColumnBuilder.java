@@ -77,25 +77,19 @@ public class TableViewerColumnBuilder {
 			if(featuresProvider.getWeights()!=null && featuresProvider.getWeights().size()>i){
 				weight=featuresProvider.getWeights().get(i++);
 			}
-			buildTableViewerColumn(tableViewer, layout, eStructuralFeature,
+			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature,
 					contentProvider,weight);
 		}
 	}
 	
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
-			TableLayout layout, EStructuralFeature eStructuralFeature,
-			IStructuredContentProvider contentProvider) {
-		return buildTableViewerColumn(tableViewer, layout, eStructuralFeature, contentProvider,DEFAULT_WEIGHT);
-	}
-
-	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
-			TableLayout layout, EStructuralFeature eStructuralFeature,
+			TableLayout layout, EClass eClass, EStructuralFeature eStructuralFeature,
 			IStructuredContentProvider contentProvider, int weight) {
 		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer,
 				eStructuralFeature, contentProvider);
 		TableColumn objectColumn = viewerColumn.getColumn();
 		layout.addColumnData(new ColumnWeightData(weight, 30, true));
-		objectColumn.setText(featureCaptionProvider.getText(eStructuralFeature));
+		objectColumn.setText(featureCaptionProvider.getText(eClass, eStructuralFeature));
 		objectColumn.setResizable(true);
 		return viewerColumn;
 	}
