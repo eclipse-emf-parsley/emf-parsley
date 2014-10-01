@@ -62,8 +62,6 @@ public abstract class AbstractDetailComposite extends Composite {
 			createControlForFeature(original.eClass(), feature);
 		}
 
-		// toolkit.paintBordersFor(main);
-
 		this.layout();
 	}
 	

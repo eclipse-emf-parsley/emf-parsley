@@ -322,39 +322,6 @@ public class NewEmfParsleyProjectSupport {
 				createSubProgressMonitor(progressMonitor));
 
 		progressMonitor.done();
-
-		/*
-		 * String[] prevNatures = description.getNatureIds(); String[]
-		 * newNatures = new String[prevNatures.length + 1];
-		 * System.arraycopy(prevNatures, 0, newNatures, 0, prevNatures.length);
-		 * newNatures[prevNatures.length] = JavaCore.NATURE_ID;
-		 * description.setNatureIds(newNatures);
-		 * 
-		 * IProgressMonitor monitor = null; project.setDescription(description,
-		 * monitor);
-		 * 
-		 * IJavaProject javaProject = JavaCore.create(project);
-		 * Set<IClasspathEntry> classPathEntries = new
-		 * HashSet<IClasspathEntry>(); IClasspathEntry[] rawClasspath =
-		 * javaProject.getRawClasspath();
-		 * classPathEntries.addAll(Arrays.asList(rawClasspath));
-		 * 
-		 * classPathEntries.add(JavaRuntime.getDefaultJREContainerEntry());
-		 * 
-		 * /* IResource srcFolder; IPreferenceStore store=
-		 * PreferenceConstants.getPreferenceStore(); String sourceFolderName=
-		 * store.getString(PreferenceConstants.SRCBIN_SRCNAME); if
-		 * (store.getBoolean(PreferenceConstants.SRCBIN_FOLDERS_IN_NEWPROJ) &&
-		 * sourceFolderName.length() > 0) { srcFolder=
-		 * javaProject.getProject().getFolder(sourceFolderName); } else {
-		 * srcFolder= javaProject.getProject(); }
-		 * classPathEntries.add(JavaCore.newSourceEntry
-		 * (srcFolder.getLocation()));
-		 * 
-		 * javaProject .setRawClasspath(classPathEntries .toArray(new
-		 * IClasspathEntry[classPathEntries.size()]), monitor);
-		 */
-
 	}
 
 }

@@ -50,8 +50,6 @@ public abstract class AbstractDetailDialog extends Dialog {
 			EObject original, EditingDomain domain) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.TITLE | SWT.MAX);
-		// setShellStyle(SWT.CLOSE | SWT.MAX | SWT.TITLE | SWT.BORDER
-		// | SWT.APPLICATION_MODAL | SWT.RESIZE | getDefaultOrientation());
 		this.title = title;
 		this.original = original;
 		this.domain = domain;
@@ -68,8 +66,6 @@ public abstract class AbstractDetailDialog extends Dialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite dialogArea = (Composite) super.createDialogArea(parent);
-		// DetailComponent detailComponent = new DetailComponent(dialogArea,
-		// SWT.NONE, this.eObject);
 		Composite composite = new Composite(dialogArea, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
 		final AbstractDetailComposite detailEmfComponent = createDetailComposite(composite);
@@ -81,7 +77,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 		return dialogArea;
 	}
 
-	abstract protected AbstractDetailComposite createDetailComposite(
+	protected abstract AbstractDetailComposite createDetailComposite(
 			Composite composite);
 
 	protected Composite createCustomArea(Composite parent) {

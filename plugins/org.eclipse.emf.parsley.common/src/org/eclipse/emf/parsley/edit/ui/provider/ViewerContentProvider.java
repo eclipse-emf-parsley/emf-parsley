@@ -39,17 +39,6 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	private PolymorphicDispatcher<Object> elementsDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("elements", 1, 1, this);
 
-//	/**
-//	 * This implements {@link IStructuredItemContentProvider#getElements
-//	 * IStructuredItemContentProvider.getElements} by forwarding the call to
-//	 * {@link #getChildren getChildren}. It seems that you almost always want
-//	 * getElements and getChildren to return the same thing, so this makes that
-//	 * easy.
-//	 */
-//	public Object[] getElements(Object inputElement) {
-//		return getChildren(inputElement);
-//	}
-
 	/**
 	 * This implements {@link ITreeItemContentProvider#hasChildren
 	 * ITreeItemContentProvider.hasChildren}. The default, non-optimized

@@ -23,13 +23,4 @@ public class EClassToEStructuralFeatureAsStringsMap extends
 	public void mapTo(String eClass, String... features) {
 		put(eClass, Lists.newArrayList(features));
 	}
-
-//	put(eClass, Lists.newArrayList(Iterables.transform(
-//			Lists.newArrayList(features),
-//			new Function<String, FeatureNamePath>() {
-//
-//				public FeatureNamePath apply(String input) {
-//					return new FeatureNameSinglePath(input);
-//				}
-//			})));
 }

@@ -63,13 +63,7 @@ public abstract class OnSelectionStructuredViewerAbstractView extends AbstractOn
 	protected void updateOnSelection(IWorkbenchPart sourcepart,
 			ISelection selection) {
 		Object element = getFirstSelectedElement(selection);
-//		if (element instanceof IResource) {
-//			IResource resource = (IResource) element;
-//			performUpdateOnSelection(resource);
-//			// viewer.expandAll();
-//			showEmfViewer();
-//			return;
-//		} else 
+
 		if (element instanceof Resource) {
 			Resource resource = (Resource) element;
 			performUpdateOnSelection(resource);
@@ -98,15 +92,6 @@ public abstract class OnSelectionStructuredViewerAbstractView extends AbstractOn
 	protected void performUpdateOnSelection(Resource resource) {
 		viewerInitializer.initialize(viewer, resource);
 	}
-
-//	/**
-//	 * @param resource
-//	 */
-//	protected void performUpdateOnSelection(IResource resource) {
-//		URI uri = URI.createPlatformResourceURI(resource.getFullPath()
-//				.toString(), true);
-//		viewerInitializer.initialize(viewer, uri);
-//	}
 
 	@Override
 	public void createPartControl(Composite parent) {

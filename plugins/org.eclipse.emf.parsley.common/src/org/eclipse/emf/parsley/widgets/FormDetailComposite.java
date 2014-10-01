@@ -48,14 +48,12 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		toolkit = new FormToolkit(parent.getDisplay());
 
 		toolkit.adapt(this);
-		//toolkit.paintBordersFor(this);
 		setLayout(new GridLayout(1, false));
 
 		scrolledForm = toolkit.createScrolledForm(this);
 		// make sure that the form takes all the space
 		scrolledForm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,
 				1, 1));
-		//toolkit.paintBordersFor(scrolledForm);
 		scrolledForm.getBody().setLayout(new GridLayout(2, false));
 
 		main = scrolledForm.getBody();

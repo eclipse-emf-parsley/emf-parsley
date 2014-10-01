@@ -72,10 +72,6 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 
 	protected void triggerViewerNotification(EObject edited) {
 		notificationBuffer.propagateBufferedNotifications();
-//		edited.eNotify(new ViewerNotification(new ENotificationImpl(
-//				(InternalEObject) edited, Notification.SET, edited.eClass()
-//						.getEAllStructuralFeatures().get(0).getFeatureID(),
-//				null, edited), edited, false, true));
 	}
 
 	public void rollback(EObject edited) {

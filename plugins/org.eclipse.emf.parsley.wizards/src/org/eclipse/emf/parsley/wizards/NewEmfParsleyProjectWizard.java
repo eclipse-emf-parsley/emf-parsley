@@ -28,9 +28,9 @@ import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
  */
 public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 
-	private WizardNewProjectCreationPage _pageOne;
+	private WizardNewProjectCreationPage pageOne;
 	
-	private EmfParsleyChoiceTemplate _pageTwo;
+	private EmfParsleyChoiceTemplate pageTwo;
 
 	private final Logger log = Logger.getLogger(getClass());
 
@@ -60,16 +60,16 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 	public void addPages() {
 		super.addPages();
 
-		_pageOne = new WizardNewProjectCreationPage(WIZARD_PAGE);
-		_pageOne.setTitle("Emf Component Project");
-		_pageOne.setDescription("Create a plugin project for Emf Parsley.");
+		pageOne = new WizardNewProjectCreationPage(WIZARD_PAGE);
+		pageOne.setTitle("Emf Component Project");
+		pageOne.setDescription("Create a plugin project for Emf Parsley.");
 		
-		_pageTwo = new EmfParsleyChoiceTemplate(WIZARD_CHOICE_PAGE);
-        _pageTwo.setTitle("View type choice");
-        _pageTwo.setDescription("Choose a View type.");
+		pageTwo = new EmfParsleyChoiceTemplate(WIZARD_CHOICE_PAGE);
+        pageTwo.setTitle("View type choice");
+        pageTwo.setDescription("Choose a View type.");
 
-		addPage(_pageOne);
-		addPage(_pageTwo);
+		addPage(pageOne);
+		addPage(pageTwo);
 	}
 
 	/*
@@ -79,17 +79,17 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 	 */
 	@Override
 	public boolean performFinish() {
-		final String name = _pageOne.getProjectName();
-		URI _location = null;
-		if (!_pageOne.useDefaults()) {
-			_location = _pageOne.getLocationURI();
-		} // else location == null
-		final URI location = _location;
+		final String name = pageOne.getProjectName();
+		URI loc = null;
+		if (!pageOne.useDefaults()) {
+			loc = pageOne.getLocationURI();
+		}
+		final URI location = loc;
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor)
 					throws InvocationTargetException {
-				NewEmfParsleyProjectSupport.createProject(name, location, _pageTwo.getChoice(),
+				NewEmfParsleyProjectSupport.createProject(name, location, pageTwo.getChoice(),
 						monitor);
 			}
 		};

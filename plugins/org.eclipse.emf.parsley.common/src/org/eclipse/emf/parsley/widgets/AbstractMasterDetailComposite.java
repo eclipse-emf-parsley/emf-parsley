@@ -71,10 +71,6 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		setLayout(new FillLayout());
 
 		SashForm sashForm = new SashForm(this, sashStyle);
-		// Lorenzo: these do not seem to be necessary, and they throw an exception
-		// when used with RAP
-		//GridLayoutFactory.fillDefaults().applyTo(sashForm);
-		//GridDataFactory.fillDefaults().grab(true, true).applyTo(sashForm);
 
 		pagebook = new PageBook(sashForm, SWT.BORDER);
 		detail = new Composite(sashForm, SWT.BORDER);
@@ -101,8 +97,9 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	protected abstract StructuredViewer createViewer(Composite parent);
 
 	protected void eObjectSelectionChanged(EObject selectedObject) {
-		if (detailForm != null)
+		if (detailForm != null) {
 			detailForm.dispose();
+		}
 
 		if (selectedObject != null) {
 			detailForm = createFormDetailComposite();

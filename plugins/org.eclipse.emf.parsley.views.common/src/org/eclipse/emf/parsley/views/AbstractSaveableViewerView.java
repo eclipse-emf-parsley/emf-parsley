@@ -28,7 +28,6 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableViewerView extends AbstractSaveableView implements IMenuListener, IViewerProvider {
 
 	@Inject
-//	private TreeActionBarContributor actionBarContributor;
 	private WorkbenchActionBarContributor actionBarContributor;
 
 	@Inject
@@ -65,8 +64,6 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	}
 
 	protected void addContextMenu(StructuredViewer viewer) {
-//		viewerInitializer.addContextMenu(viewer, actionBarContributor,
-//				editingDomain, this);
 		viewerInitializer.addContextMenu(viewer, actionBarContributor,
 				editingDomain, this, this);
 	}

@@ -456,10 +456,6 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
     	return DefaultAdapterFactoryEditingDomainProvider.class;
     }
 
-//	public Class<? extends AdapterFactoryEditingDomain> bindAdapterFactoryEditingDomain() {
-//		return InjectableAdapterFactoryEditingDomain.class;
-//	}
-	
 	/**
 	 * Use this method to specify an adapter factory
 	 * The default implementation is {@link InjectableAdapterFactory}

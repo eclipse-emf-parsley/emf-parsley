@@ -52,7 +52,6 @@ public class EmfParsleyDslProjectCreatorCustom extends
 		// don't add the components.dsl project dep
 		// otherwise the plugin will depend on xtext stuff
 		// which are not used by the generated code
-		// DSL_GENERATOR_PROJECT_NAME);
 	}
 	
 	@Override

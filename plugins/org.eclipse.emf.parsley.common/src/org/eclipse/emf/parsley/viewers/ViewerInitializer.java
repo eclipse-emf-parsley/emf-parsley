@@ -143,8 +143,6 @@ public class ViewerInitializer {
 				.createContextMenuFor(viewer, editingDomain);
 
 		menuManager.addMenuListener(menuListener);
-//		ViewerSelectionProvider viewerSelectionProvider = new ViewerSelectionProvider(viewer);
-//		viewerSelectionProvider.addSelectionChangedListener(treeActionBarContributor);
 		viewer.addSelectionChangedListener(treeActionBarContributor);
 		treeActionBarContributor.initialize(editingDomain);
 	}

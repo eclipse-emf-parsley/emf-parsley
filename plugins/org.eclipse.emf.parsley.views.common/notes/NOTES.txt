@@ -1,0 +1,39 @@
+We removed IResource management for RAP; maybe we can have a version for the workbench
+that reintroduces this? Lorenzo
+
+OnSelectionStructuredViewerAbstractView
+
+	protected void updateOnSelection(IWorkbenchPart sourcepart,
+			ISelection selection) {
+		Object element = getFirstSelectedElement(selection);
+//		if (element instanceof IResource) {
+//			IResource resource = (IResource) element;
+//			performUpdateOnSelection(resource);
+//			// viewer.expandAll();
+//			showEmfViewer();
+//			return;
+//		} else 
+		if (element instanceof Resource) {
+			Resource resource = (Resource) element;
+			performUpdateOnSelection(resource);
+			showEmfViewer();
+			return;
+		} else if (element instanceof EObject) {
+			EObject eObject = (EObject) element;
+			performUpdateOnSelection(eObject);
+			showEmfViewer();
+			return;
+		}
+
+		showText();
+	}
+	
+	//	/**
+//	 * @param resource
+//	 */
+//	protected void performUpdateOnSelection(IResource resource) {
+//		URI uri = URI.createPlatformResourceURI(resource.getFullPath()
+//				.toString(), true);
+//		viewerInitializer.initialize(viewer, uri);
+//	}
+	

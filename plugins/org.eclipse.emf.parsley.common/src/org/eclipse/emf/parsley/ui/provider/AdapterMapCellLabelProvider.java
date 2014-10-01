@@ -29,9 +29,8 @@ public class AdapterMapCellLabelProvider extends ObservableMapCellLabelProvider 
 	public void update(ViewerCell cell) {
 		Object element = cell.getElement();
 		Object value = attributeMaps[0].get(element);
-		//TODO Da finire
+		// TODO To finish
 		cell.setText(wrappedLabelProvider.getText(value)); 
-//		cell.setImage(wrappedLabelProvider.getImage(element)); 
 	}
 	
 
