@@ -29,7 +29,7 @@ public class OnTheFlyEditingStrategy implements IEditingStrategy {
 	private EditingDomainFinder editingDomainFinder;
 
 	public void prepare(EObject original) {
-
+		// nothing to prepare
 	}
 
 	public void update(EObject edited) {
@@ -41,6 +41,7 @@ public class OnTheFlyEditingStrategy implements IEditingStrategy {
 	}
 
 	public void rollback(EObject edited) {
+		// we don't rollback: it's already updated
 	}
 
 }

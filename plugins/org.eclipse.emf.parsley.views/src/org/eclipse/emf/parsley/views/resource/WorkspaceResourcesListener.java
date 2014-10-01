@@ -86,6 +86,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 	}
 	
 	protected void aftertResourcesChanged(List<String> changedObjectUris) {
+		// the default implementation does nothing
 	}
 
 	private class ResourceDeltaVisitor implements IResourceDeltaVisitor {

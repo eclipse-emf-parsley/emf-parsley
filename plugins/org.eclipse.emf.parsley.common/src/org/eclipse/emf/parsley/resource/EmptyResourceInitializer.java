@@ -22,6 +22,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 public class EmptyResourceInitializer {
 
 	public void initialize(Resource resource) {
-		
+		// the default implementation does nothing
 	}
 }

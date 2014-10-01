@@ -20,11 +20,14 @@ import org.eclipse.swt.events.MouseEvent;
  */
 public class NoOpMouseAdapter implements IEditorMouseListener {
 	public void mouseDoubleClick(MouseEvent event) {
+		// the default implementation does nothing
 	}
 
 	public void mouseDown(MouseEvent e) {
+		// the default implementation does nothing
 	}
 
 	public void mouseUp(MouseEvent e) {
+		// the default implementation does nothing
 	}
 }
