@@ -78,15 +78,17 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 	}
 	
 	public void setDescriptionText(String text) {
-		if (text == null) 	
+		if (text == null) {
 			text = "No Description available.";
+		}
 		descriptionBrowser.setText(text);
 	}
 
 	public void setDescriptionEnabled(boolean enabled) {
 		Control dcontrol = descriptionBrowser.getControl();
-		if (dcontrol != null)
+		if (dcontrol != null) {
 			dcontrol.setEnabled(enabled);
+		}
 	}
 
 	public void createControl(Composite parent) {
@@ -138,11 +140,12 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 		IWizardTemplate currentWizardSelection = null;
 		Iterator<?> iter = selection.iterator();
-		if (iter.hasNext())
+		if (iter.hasNext()) {
 			currentWizardSelection = (IWizardTemplate) iter.next();
+		}
 		if (currentWizardSelection == null) {
 			setDescriptionText(""); //$NON-NLS-1$
-		}else{
+		} else{
 			setDescriptionText(currentWizardSelection.getDescription());			
 		}
 		setPageComplete(currentWizardSelection!=null);

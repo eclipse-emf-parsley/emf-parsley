@@ -24,8 +24,9 @@ public class GlobalAdapterFactoryEditingDomainProvider extends DefaultAdapterFac
 	protected static AdapterFactoryEditingDomain singleton;
 	
 	public AdapterFactoryEditingDomain get() {
-		if (singleton == null)
+		if (singleton == null) {
 			singleton = super.get();
+		}
 		return singleton;
 	}
 

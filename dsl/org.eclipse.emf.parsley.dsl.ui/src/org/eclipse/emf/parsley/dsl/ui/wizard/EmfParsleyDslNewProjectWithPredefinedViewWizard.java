@@ -52,9 +52,11 @@ public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyD
 	}
 	
 	public boolean canFinish() {
-            if (mainPage.isPageComplete()) {
-				return true;
-			}else return selectPredefinedViewPage.isPageComplete();
+		if (mainPage.isPageComplete()) {
+			return true;
+		} else {
+			return selectPredefinedViewPage.isPageComplete();
+		}
     }
 
 }

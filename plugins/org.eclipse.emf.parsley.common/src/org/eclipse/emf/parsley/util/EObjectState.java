@@ -28,16 +28,19 @@ import com.google.common.collect.Lists;
 public class EObjectState extends HashMap<EStructuralFeature, Object> {
 
 	public EObjectState(EObject o) {
-		if (o == null)
+		if (o == null) {
 			return;
+		}
 		
 		for (EStructuralFeature f : o.eClass().getEAllStructuralFeatures()) {
-			if (!f.isChangeable() || f.isDerived())
+			if (!f.isChangeable() || f.isDerived()) {
 				continue;
+			}
 			
 			Object eGet = o.eGet(f);
-			if (eGet instanceof FeatureMap)
+			if (eGet instanceof FeatureMap) {
 				continue;
+			}
 			
 			if (eGet instanceof EList<?>) {
 				EList<?> list = (EList<?>) eGet;

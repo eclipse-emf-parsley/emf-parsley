@@ -45,8 +45,9 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 
 	public Label getLabel(Composite parent, EClass eClass, EStructuralFeature feature) {
 		Label lab = polymorphicGetLabel(parent, eClass, feature);
-		if (lab != null)
+		if (lab != null) {
 			return lab;
+		}
 		return defaultLabel(parent, eClass, feature);
 	}
 
@@ -68,8 +69,9 @@ public class DialogFeatureCaptionProvider extends FeatureCaptionProvider {
 	@Override
 	protected String polymorphicGetText(EClass eClass, EStructuralFeature feature) {
 		String polymorphicGetText = super.polymorphicGetText(eClass, feature);
-		if (polymorphicGetText == null)
+		if (polymorphicGetText == null) {
 			return getDelegate().getText(eClass, feature);
+		}
 		return polymorphicGetText;
 	}
 

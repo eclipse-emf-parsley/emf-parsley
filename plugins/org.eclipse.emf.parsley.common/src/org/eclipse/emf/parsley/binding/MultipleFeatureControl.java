@@ -127,25 +127,21 @@ public class MultipleFeatureControl extends Composite {
 		return button;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.swt.widgets.Control#setMenu(org.eclipse.swt.widgets.Menu)
-	 */
 	@Override
 	public void setMenu(Menu menu) {
-		if (label != null && !label.isDisposed())
+		if (label != null && !label.isDisposed()) {
 			label.setMenu(menu);
-		if (button != null && !button.isDisposed())
+		}
+		if (button != null && !button.isDisposed()) {
 			button.setMenu(menu);
-
+		}
 	}
 
 	@Override
 	public boolean setFocus() {
-		if (button != null)
+		if (button != null) {
 			return button.setFocus();
+		}
 		return super.setFocus();
 	}
 

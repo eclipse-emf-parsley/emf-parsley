@@ -41,8 +41,9 @@ public abstract class EmfParsleyAbstractActivator extends AbstractUIPlugin {
 	 * @return the singleton Injector for this plugin
 	 */
 	public Injector getInjector() {
-		if (injector == null)
+		if (injector == null) {
 			injector = createInjector(createModule());
+		}
 		return injector;
 	}
 

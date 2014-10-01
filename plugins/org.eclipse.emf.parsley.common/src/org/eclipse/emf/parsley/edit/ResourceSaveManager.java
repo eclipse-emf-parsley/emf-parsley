@@ -29,8 +29,9 @@ public class ResourceSaveManager {
 	}
 	
 	public boolean save(Resource resource, Map<?, ?> options) throws IOException {
-		if (!precondition(resource))
+		if (!precondition(resource)) {
 			return false;
+		}
 		resource.save(options);
 		return true;
 	}

@@ -75,10 +75,11 @@ public class OnSelectionFormView extends AbstractOnSelectionView {
 
 	@Override
 	public void setFocus() {
-		if (formComposite != null)
+		if (formComposite != null) {
 			formComposite.setFocus();
-		else
+		} else {
 			parent.setFocus();
+		}
 	}
 
 }

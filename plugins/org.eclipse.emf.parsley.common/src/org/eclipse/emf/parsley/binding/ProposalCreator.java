@@ -106,8 +106,9 @@ public class ProposalCreator {
 		TreeIterator<Object> allContents = getAllContents();
 		while (allContents.hasNext()) {
 			Object o = allContents.next();
-			if (type.isInstance(o))
+			if (type.isInstance(o)) {
 				objects.add(o);
+			}
 		}
 		return objects;
 	}

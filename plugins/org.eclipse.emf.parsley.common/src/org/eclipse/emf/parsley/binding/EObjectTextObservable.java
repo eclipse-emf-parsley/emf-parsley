@@ -47,8 +47,9 @@ public class EObjectTextObservable extends AbstractObservableValue {
 	
 	@Override
 	protected void doSetValue(Object value) {
-		if (!(value instanceof EObject))
+		if (!(value instanceof EObject)) {
 			return;
+		}
 		
 		current = (EObject) value;
 		

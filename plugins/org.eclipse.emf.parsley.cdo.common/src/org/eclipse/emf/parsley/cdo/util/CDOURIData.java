@@ -34,11 +34,13 @@ public class CDOURIData {
 
 	public static CDOURIData parse(URI uri) {
 		String server = uri.authority();
-		if (server == null)
+		if (server == null) {
 			throw new IllegalArgumentException("missing server in URI: " + uri);
+		}
 		String scheme = uri.scheme();
-		if (scheme == null || !scheme.equals("cdo"))
+		if (scheme == null || !scheme.equals("cdo")) {
 			throw new IllegalArgumentException("not a cdo scheme: " + uri);
+		}
 		String repository = uri.segment(0);
 		String resource = uri.segment(1);
 		return new CDOURIData(server, repository, resource);

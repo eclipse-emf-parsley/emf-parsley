@@ -87,8 +87,9 @@ public class ViewerInitializer {
 			IContentProvider contentProvider,
 			IBaseLabelProvider labelProvider) {
 		viewer.setContentProvider(contentProvider);
-		if (labelProvider != null)
+		if (labelProvider != null) {
 			viewer.setLabelProvider(labelProvider);
+		}
 		viewer.setInput(input);
 	}
 

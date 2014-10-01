@@ -62,8 +62,9 @@ public abstract class AbstractOnSelectionTableView extends
 	@Override
 	protected void updateOnSelection(IWorkbenchPart sourcepart,
 			ISelection selection) {
-		if (tableViewer == null)
+		if (tableViewer == null) {
 			return;
+		}
 		EObject eObject = getFirstSelectedEObject(selection);
 		tableViewer.setInput(null);
 		if (eObject != null) {
@@ -74,8 +75,9 @@ public abstract class AbstractOnSelectionTableView extends
 	protected void update(EObject eObject) {
 		EStructuralFeature feature = getEStructuralFeature();
 
-		if (!eObject.eClass().getEAllStructuralFeatures().contains(feature))
+		if (!eObject.eClass().getEAllStructuralFeatures().contains(feature)) {
 			return;
+		}
 
 		Object value = eObject.eGet(feature);
 		tableViewer.setInput(value);

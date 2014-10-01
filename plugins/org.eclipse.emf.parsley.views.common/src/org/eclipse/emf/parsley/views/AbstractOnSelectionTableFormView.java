@@ -69,8 +69,9 @@ public abstract class AbstractOnSelectionTableFormView extends
 	protected void update(EObject eObject) {
 		EStructuralFeature feature = getEStructuralFeature();
 
-		if (!eObject.eClass().getEAllStructuralFeatures().contains(feature))
+		if (!eObject.eClass().getEAllStructuralFeatures().contains(feature)) {
 			return;
+		}
 
 		Object value = eObject.eGet(feature);
 		tableFormDetailComposite.update(value);

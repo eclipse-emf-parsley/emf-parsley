@@ -233,8 +233,9 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	protected ISelectionProvider retrieveSelectionProvider() {
-		if (explicitSelectionProvider != null)
+		if (explicitSelectionProvider != null) {
 			return explicitSelectionProvider;
+		}
 
 		return activePart instanceof ISelectionProvider ? (ISelectionProvider) activePart
 				: activePart.getSite().getSelectionProvider();
@@ -282,8 +283,9 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	protected void ensureActionsAreInitialized() {
-		if (editingActionManager.getUndoAction() != null)
+		if (editingActionManager.getUndoAction() != null) {
 			return;
+		}
 		initializeActions(ActionBarsUtils.getActionBars(activePart));
 	}
 
