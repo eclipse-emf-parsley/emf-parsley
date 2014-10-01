@@ -54,22 +54,22 @@ public class ValidateResourceSaveManager extends ResourceSaveManager {
     protected String buildMessageString(Diagnostic diagnosticParent, int level) {
 		String messages = "";
 		for (Diagnostic diagnostic : diagnosticParent.getChildren()) {
-			messages = recoursiveAddMessage(messages, diagnostic, level);
+			messages = recursiveAddMessage(messages, diagnostic, level);
 		}
 		return messages;
 	}
 
-	protected String recoursiveAddMessage(String messages,
-			Diagnostic diagnostic, int level) {
-		if (diagnostic.getChildren().size() == 0) {
-			messages += "- " + diagnostic.getMessage() + "\n\n";
+	protected String recursiveAddMessage(String messages, Diagnostic diagnostic, int level) {
+		String result = messages;
+		if (diagnostic.getChildren().isEmpty()) {
+			result += "- " + diagnostic.getMessage() + "\n\n";
 		} else {
 			for (Diagnostic diagnosticChild : diagnostic.getChildren()) {
-				messages = recoursiveAddMessage(messages, diagnosticChild,
+				result = recursiveAddMessage(messages, diagnosticChild,
 						level);
 			}
 		}
-		return messages;
+		return result;
 	}
 
 }

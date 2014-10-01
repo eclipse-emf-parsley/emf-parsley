@@ -78,10 +78,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 	}
 	
 	public void setDescriptionText(String text) {
-		if (text == null) {
-			text = "No Description available.";
-		}
-		descriptionBrowser.setText(text);
+		descriptionBrowser.setText(text == null ? "No Description available." : text);
 	}
 
 	public void setDescriptionEnabled(boolean enabled) {
