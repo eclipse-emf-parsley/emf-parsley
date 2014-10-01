@@ -100,7 +100,7 @@ public class PolymorphicDispatcherExtensions {
 	 * @param numOfParams
 	 * @return
 	 */
-	public static <T> PolymorphicDispatcher<T> createPolymorphicDispatcherBasedOnFeature(
+	private static <T> PolymorphicDispatcher<T> createPolymorphicDispatcherBasedOnFeature(
 			Object target, EClass eClass, EStructuralFeature feature, String prefix, int numOfParams) {
 		return PolymorphicDispatcherExtensions
 				.createPolymorphicDispatcher(target,
@@ -120,7 +120,7 @@ public class PolymorphicDispatcherExtensions {
 	 * @param numOfParams
 	 * @return
 	 */
-	public static Predicate<Method> featureBasedMethodPredicate(
+	private static Predicate<Method> featureBasedMethodPredicate(
 			EClass eClass, EStructuralFeature feature, String prefix, int numOfParams) {
 		return PolymorphicDispatcher.Predicates.forName(prefix + eClass.getName()
 				+ "_" + feature.getName(), numOfParams);

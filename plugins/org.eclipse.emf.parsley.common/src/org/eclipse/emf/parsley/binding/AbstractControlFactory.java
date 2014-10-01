@@ -31,7 +31,6 @@ import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
@@ -69,6 +68,10 @@ import com.google.inject.name.Named;
  * 
  */
 public abstract class AbstractControlFactory extends AbstractWidgetFactory {
+	private static final String OBSERVE_PREFIX = "observe_";
+
+	private static final String CONTROL_PREFIX = "control_";
+
 	@Inject
 	@Named(EmfParsleyConstants.CONTENT_ASSIST_SHORTCUT)
 	private String contentAssistShortcut;
@@ -187,7 +190,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	}
 
 	private IObservableValue createFeatureObserveable(final EStructuralFeature feature) {
-		IObservableValue source=polymorphicCreateObserveable(domain, owner, feature);
+		IObservableValue source=polymorphicCreateObserveable(domain, feature);
 		if(source==null){	
 			if (domain != null){
 				source = EMFEditProperties.value(domain, feature).observe(owner);
@@ -379,45 +382,46 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		edbc.dispose();
 	}
 
-	private ControlObservablePair polymorphicGetObservableControl(EStructuralFeature element) {
-		return this.<ControlObservablePair>createPolymorphicDispatcherForCreateControl(element, 1).
-					invoke(element);
+	private ControlObservablePair polymorphicGetObservableControl(
+			EStructuralFeature feature) {
+		return PolymorphicDispatcherExtensions
+				.<ControlObservablePair> polymorphicInvokeBasedOnFeature(this,
+						owner.eClass(), feature, CONTROL_PREFIX, feature);
 	}
 
 	/**
-	 * Polymorphically invokes a create_EClass_feature(DataBindingContext, IObservableValue)
-	 * @param element
+	 * Polymorphically invokes a create_EClass_feature(DataBindingContext,
+	 * IObservableValue)
+	 * 
+	 * @param feature
 	 * @param featureObservable
 	 * @return
 	 */
-	private Control polymorphicCreateControl(EStructuralFeature element,
+	private Control polymorphicCreateControl(EStructuralFeature feature,
 			IObservableValue featureObservable) {
-		return this.<Control>createPolymorphicDispatcherForCreateControl(element, 2).
-				invoke(edbc, featureObservable);
+		return PolymorphicDispatcherExtensions
+				.<Control> polymorphicInvokeBasedOnFeature(this,
+						owner.eClass(), feature, CONTROL_PREFIX, edbc,
+						featureObservable);
 	}
 
 	/**
 	 * Polymorphically invokes a create_EClass_feature(EObject)
-	 * @param element
+	 * 
+	 * @param feature
 	 * @return
 	 */
-	private Control polymorphicCreateControl(EStructuralFeature element) {
-		return this.<Control>createPolymorphicDispatcherForCreateControl(element, 1).
-				invoke(owner);
+	private Control polymorphicCreateControl(EStructuralFeature feature) {
+		return PolymorphicDispatcherExtensions
+				.<Control> polymorphicInvokeBasedOnFeature(this,
+						owner.eClass(), feature, CONTROL_PREFIX, owner);
 	}
 
-	private <T> PolymorphicDispatcher<T> createPolymorphicDispatcherForCreateControl(
-			EStructuralFeature element, int numOfParams) {
-		return PolymorphicDispatcherExtensions.createPolymorphicDispatcherBasedOnFeature(
-				this, element.getEContainingClass(), element, "control_", numOfParams);
-	}
-
-	private IObservableValue polymorphicCreateObserveable(EditingDomain domain, EObject element,
+	private IObservableValue polymorphicCreateObserveable(EditingDomain domain,
 			EStructuralFeature feature) {
-		return PolymorphicDispatcherExtensions.
-				<IObservableValue>createPolymorphicDispatcherBasedOnFeature(
-						this, feature.getEContainingClass(), feature, "observe_", 2).
-					invoke(domain, element);
+		return PolymorphicDispatcherExtensions
+				.<IObservableValue> polymorphicInvokeBasedOnFeature(this,
+						owner.eClass(), feature, OBSERVE_PREFIX, domain, owner);
 	}
 
 }
