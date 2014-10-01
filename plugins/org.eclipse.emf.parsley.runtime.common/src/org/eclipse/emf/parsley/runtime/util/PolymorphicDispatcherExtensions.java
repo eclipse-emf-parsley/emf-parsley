@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.runtime.util;
 import java.lang.reflect.Method;
 import java.util.Collections;
 
-import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -25,6 +24,17 @@ import com.google.common.base.Predicate;
  */
 public class PolymorphicDispatcherExtensions {
 	
+	protected PolymorphicDispatcherExtensions() {
+		
+	}
+
+	public static <T> T polymorphicInvokeBasedOnFeature(
+			Object target, EClass eClass, EStructuralFeature feature, String prefix, Object...args) {
+		return PolymorphicDispatcherExtensions.
+				<T>createPolymorphicDispatcherBasedOnFeature(target,
+						eClass, feature, prefix, args.length).invoke(args);
+	}
+
 	/**
 	 * Creates a {@link PolymorphicDispatcher} for methods based on {@link EClass} and
 	 * {@link EStructuralFeature}; the method signature is meant to be of the shape
@@ -67,7 +77,8 @@ public class PolymorphicDispatcherExtensions {
 
 	/**
 	 * Creates a {@link PolymorphicDispatcher} based on the method {@link Predicate} that
-	 * is meant to be invoked on the given target.
+	 * is meant to be invoked on the given target; if no method is found polymorphically,
+	 * then it returns null.
 	 * 
 	 * @param target
 	 * @param predicate
@@ -77,15 +88,9 @@ public class PolymorphicDispatcherExtensions {
 			final Object target, Predicate<Method> predicate) {
 		
 		return new PolymorphicDispatcher<T>(Collections.singletonList(target), predicate) {
-			private PolymorphicDispatcher.ErrorHandler<T> controlHandler = 
-					new PolymorphicDispatcher.ExceptionLogHandler<T>(Logger.getLogger(target.getClass()));
-			
 			@Override
 			protected T handleNoSuchMethod(Object... params) {
-				if (PolymorphicDispatcher.ExceptionLogHandler.class
-						.equals(controlHandler.getClass()))
-					return null;
-				return super.handleNoSuchMethod(params);
+				return null;
 			}
 		};
 	}

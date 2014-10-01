@@ -19,6 +19,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	PolymorphicDispatcherTest.class,
 	EmfParsleyUtilTest.class,
 	EditingDomainTest.class,
 	ViewerContentProviderTest.class,
