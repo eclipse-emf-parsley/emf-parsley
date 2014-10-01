@@ -83,7 +83,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClass()
 	 * @generated
 	 */
-	int BASE_CLASS = 2;
+	int BASE_CLASS = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl <em>Derived Class</em>}' class.
@@ -93,7 +93,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getDerivedClass()
 	 * @generated
 	 */
-	int DERIVED_CLASS = 3;
+	int DERIVED_CLASS = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
@@ -103,7 +103,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForControls()
 	 * @generated
 	 */
-	int CLASS_FOR_CONTROLS = 4;
+	int CLASS_FOR_CONTROLS = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
@@ -113,7 +113,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassWithName()
 	 * @generated
 	 */
-	int CLASS_WITH_NAME = 5;
+	int CLASS_WITH_NAME = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
@@ -225,6 +225,34 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_ECLASS_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ABaseClassImpl <em>ABase Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ABaseClassImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getABaseClass()
+	 * @generated
+	 */
+	int ABASE_CLASS = 2;
+
+	/**
+	 * The number of structural features of the '<em>ABase Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABASE_CLASS_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>ABase Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABASE_CLASS_OPERATION_COUNT = 0;
+
+	/**
 	 * The feature id for the '<em><b>Base Class Feature</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -313,6 +341,170 @@ public interface TestmodelsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DERIVED_CLASS_OPERATION_COUNT = BASE_CLASS_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedDerivedClassImpl <em>Derived Derived Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedDerivedClassImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getDerivedDerivedClass()
+	 * @generated
+	 */
+	int DERIVED_DERIVED_CLASS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Base Class Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_DERIVED_CLASS__BASE_CLASS_FEATURE = DERIVED_CLASS__BASE_CLASS_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Base Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_DERIVED_CLASS__BASE_MULTI_REFERENCE_FEATURE = DERIVED_CLASS__BASE_MULTI_REFERENCE_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Derived Class Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_DERIVED_CLASS__DERIVED_CLASS_FEATURE = DERIVED_CLASS__DERIVED_CLASS_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Derived Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE = DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE;
+
+	/**
+	 * The number of structural features of the '<em>Derived Derived Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_DERIVED_CLASS_FEATURE_COUNT = DERIVED_CLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Derived Derived Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_DERIVED_CLASS_OPERATION_COUNT = DERIVED_CLASS_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl <em>Multiple Inheritance Class</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getMultipleInheritanceClass()
+	 * @generated
+	 */
+	int MULTIPLE_INHERITANCE_CLASS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Lowercase Name Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__LOWERCASE_NAME_FEATURE = TEST_ECLASS__LOWERCASE_NAME_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Upper Case Name Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__UPPER_CASE_NAME_FEATURE = TEST_ECLASS__UPPER_CASE_NAME_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Not Changeable Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__NOT_CHANGEABLE_FEATURE = TEST_ECLASS__NOT_CHANGEABLE_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Derived Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__DERIVED_FEATURE = TEST_ECLASS__DERIVED_FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Base Class Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__BASE_CLASS_FEATURE = TEST_ECLASS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Base Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__BASE_MULTI_REFERENCE_FEATURE = TEST_ECLASS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Derived Class Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__DERIVED_CLASS_FEATURE = TEST_ECLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Derived Multi Reference Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS__DERIVED_MULTI_REFERENCE_FEATURE = TEST_ECLASS_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Multiple Inheritance Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS_FEATURE_COUNT = TEST_ECLASS_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Multiple Inheritance Class</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_INHERITANCE_CLASS_OPERATION_COUNT = TEST_ECLASS_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Boolean Feature</b></em>' attribute.
@@ -466,7 +658,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClassForFeatureMapEntry()
 	 * @generated
 	 */
-	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY = 6;
+	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -503,7 +695,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry1()
 	 * @generated
 	 */
-	int CLASS_FOR_FEATURE_MAP_ENTRY1 = 7;
+	int CLASS_FOR_FEATURE_MAP_ENTRY1 = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -540,7 +732,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry2()
 	 * @generated
 	 */
-	int CLASS_FOR_FEATURE_MAP_ENTRY2 = 8;
+	int CLASS_FOR_FEATURE_MAP_ENTRY2 = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -577,7 +769,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
 	 * @generated
 	 */
-	int ENUM_FOR_CONTROLS = 9;
+	int ENUM_FOR_CONTROLS = 12;
 
 
 	/**
@@ -588,7 +780,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
 	 * @generated
 	 */
-	int BOOLEAN_DATA_TYPE = 10;
+	int BOOLEAN_DATA_TYPE = 13;
 
 
 	/**
@@ -598,7 +790,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
 	 * @generated
 	 */
-	int BOOLEAN_PRIMITIVE_DATA_TYPE = 11;
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 14;
 
 
 	/**
@@ -654,6 +846,16 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTestEClass_DerivedFeature();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass <em>ABase Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ABase Class</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass
+	 * @generated
+	 */
+	EClass getABaseClass();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClass <em>Base Class</em>}'.
@@ -718,6 +920,26 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDerivedClass_DerivedMultiReferenceFeature();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.DerivedDerivedClass <em>Derived Derived Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Derived Derived Class</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.DerivedDerivedClass
+	 * @generated
+	 */
+	EClass getDerivedDerivedClass();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.MultipleInheritanceClass <em>Multiple Inheritance Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Multiple Inheritance Class</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.MultipleInheritanceClass
+	 * @generated
+	 */
+	EClass getMultipleInheritanceClass();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls <em>Class For Controls</em>}'.
@@ -1047,6 +1269,15 @@ public interface TestmodelsPackage extends EPackage {
 		 */
 		EAttribute TEST_ECLASS__DERIVED_FEATURE = eINSTANCE.getTestEClass_DerivedFeature();
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ABaseClassImpl <em>ABase Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ABaseClassImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getABaseClass()
+		 * @generated
+		 */
+		EClass ABASE_CLASS = eINSTANCE.getABaseClass();
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl <em>Base Class</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1092,6 +1323,24 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE = eINSTANCE.getDerivedClass_DerivedMultiReferenceFeature();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedDerivedClassImpl <em>Derived Derived Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedDerivedClassImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getDerivedDerivedClass()
+		 * @generated
+		 */
+		EClass DERIVED_DERIVED_CLASS = eINSTANCE.getDerivedDerivedClass();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl <em>Multiple Inheritance Class</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getMultipleInheritanceClass()
+		 * @generated
+		 */
+		EClass MULTIPLE_INHERITANCE_CLASS = eINSTANCE.getMultipleInheritanceClass();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
 		 * <!-- begin-user-doc -->

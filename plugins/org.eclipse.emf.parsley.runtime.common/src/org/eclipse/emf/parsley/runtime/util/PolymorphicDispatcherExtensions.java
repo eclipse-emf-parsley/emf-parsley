@@ -28,11 +28,62 @@ public class PolymorphicDispatcherExtensions {
 		
 	}
 
+	/**
+	 * Creates and uses, that is, invokes, a {@link PolymorphicDispatcher} for methods based on {@link EClass} and
+	 * {@link EStructuralFeature}; the method signature is meant to be of the shape
+	 * 
+	 * <pre>
+	 * &lt;prefix&gt;_&lt;eClass's name&gt;_&lt;feature's name&gt;(&lt;numOfParams&gt;)
+	 * </pre>
+	 * 
+	 * It takes the inheritance hierarchy of the EClass into consideration: consider
+	 * 
+	 * <pre>
+	 * class BaseClass {
+	 *    String aFeature;
+	 * }
+	 * 
+	 * class DerivedClass extends BaseClass {}
+	 * </pre>
+	 * 
+	 * And the method
+	 * 
+	 * <pre>
+	 * &lt;prefix&gt;_BaseClass_aFeature(&lt;numOfParams&gt;)
+	 * </pre>
+	 * 
+	 * The method will be picked up even if we pass <tt>DerivedClass</tt> as the EClass.
+	 * 
+	 * @param target
+	 * @param eClass
+	 * @param feature
+	 * @param prefix
+	 * @param args
+	 * @return
+	 */
 	public static <T> T polymorphicInvokeBasedOnFeature(
 			Object target, EClass eClass, EStructuralFeature feature, String prefix, Object...args) {
+		T invoke = polymorphicInvokeBasedOnFeatureInternal(target, eClass, feature, prefix, args);
+		
+		if (invoke == null) {
+			for (EClass superType : eClass.getEAllSuperTypes()) {
+				// we don't need recursion, since all the superclasses will be
+				// transitively flattened
+				invoke = polymorphicInvokeBasedOnFeatureInternal(target, superType, feature, prefix, args);
+				if (invoke != null) {
+					return invoke;
+				}
+			}
+		}
+		
+		return invoke;
+	}
+	
+	private static <T> T polymorphicInvokeBasedOnFeatureInternal(
+			Object target, EClass eClass, EStructuralFeature feature, String prefix, Object...args) {
 		return PolymorphicDispatcherExtensions.
-				<T>createPolymorphicDispatcherBasedOnFeature(target,
-						eClass, feature, prefix, args.length).invoke(args);
+						<T>createPolymorphicDispatcherBasedOnFeature(target,
+								eClass, feature, prefix, args.length).invoke(args);
 	}
 
 	/**

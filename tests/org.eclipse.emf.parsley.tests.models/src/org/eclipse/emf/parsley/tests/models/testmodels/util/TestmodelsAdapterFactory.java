@@ -83,12 +83,24 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 				return createTestEClassAdapter();
 			}
 			@Override
+			public Adapter caseABaseClass(ABaseClass object) {
+				return createABaseClassAdapter();
+			}
+			@Override
 			public Adapter caseBaseClass(BaseClass object) {
 				return createBaseClassAdapter();
 			}
 			@Override
 			public Adapter caseDerivedClass(DerivedClass object) {
 				return createDerivedClassAdapter();
+			}
+			@Override
+			public Adapter caseDerivedDerivedClass(DerivedDerivedClass object) {
+				return createDerivedDerivedClassAdapter();
+			}
+			@Override
+			public Adapter caseMultipleInheritanceClass(MultipleInheritanceClass object) {
+				return createMultipleInheritanceClassAdapter();
 			}
 			@Override
 			public Adapter caseClassForControls(ClassForControls object) {
@@ -145,6 +157,20 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass <em>ABase Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass
+	 * @generated
+	 */
+	public Adapter createABaseClassAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.BaseClass <em>Base Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -169,6 +195,34 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDerivedClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.DerivedDerivedClass <em>Derived Derived Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.DerivedDerivedClass
+	 * @generated
+	 */
+	public Adapter createDerivedDerivedClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.MultipleInheritanceClass <em>Multiple Inheritance Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.MultipleInheritanceClass
+	 * @generated
+	 */
+	public Adapter createMultipleInheritanceClassAdapter() {
 		return null;
 	}
 

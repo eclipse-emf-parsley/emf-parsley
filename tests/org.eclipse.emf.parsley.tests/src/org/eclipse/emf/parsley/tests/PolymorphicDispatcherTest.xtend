@@ -22,6 +22,22 @@ class PolymorphicDispatcherTest extends EmfParsleyAbstractTest {
 
 	var Object target;
 	
+	val static IN_BASE_CLASS = "BaseClass.baseClassFeature"
+
+	val static IN_DERIVED_CLASS = "DerivedClass.baseClassFeature"
+	
+	static class Customize_BaseClass_baseClassFeature {
+		def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {
+			return IN_BASE_CLASS
+		}
+	}
+
+	static class Customize_DerivedClass_baseClassFeature {
+		def String text_DerivedClass_baseClassFeature(EStructuralFeature feature) {
+			return IN_DERIVED_CLASS
+		}
+	}
+	
 	new() {
 		// the following is useless... but it's just to have coverage
 		// for the protected constructor 
@@ -40,16 +56,49 @@ class PolymorphicDispatcherTest extends EmfParsleyAbstractTest {
 
 	@Test
 	def void testPolymorphicInvokeWithMethodForTheContainingEClass() {
-		val expectedText = "BaseClass.baseClassFeature"
-		
-		target = new Object() {
-			def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {
-				return expectedText
-			}
-		}
-		
-		expectedText.assertPolymorphicInvoke(
+		target = new Customize_BaseClass_baseClassFeature
+		IN_BASE_CLASS.assertPolymorphicInvoke(
 			testPackage.baseClass, testPackage.baseClass_BaseClassFeature
+		)
+	}
+
+	@Test
+	def void testPolymorphicInvokeWithBaseClassFeatureCustomizedForDerivedClass() {
+		// we have a customization for the feature (inherited from the base class)
+		// in the context of the derived class
+		target = new Customize_DerivedClass_baseClassFeature
+		IN_DERIVED_CLASS.assertPolymorphicInvoke(
+			testPackage.derivedClass, testPackage.baseClass_BaseClassFeature
+		)
+	}
+
+	@Test
+	def void testPolymorphicInvokeOnDerivedClassCustomizedForBaseClassFeature() {
+		// we have a customization for the feature in the context of the base class
+		// and we pass the derived class
+		target = new Customize_BaseClass_baseClassFeature
+		IN_BASE_CLASS.assertPolymorphicInvoke(
+			testPackage.derivedClass, testPackage.baseClass_BaseClassFeature
+		)
+	}
+
+	@Test
+	def void testPolymorphicInvokeOnDerivedDerivedClassCustomizedForBaseClassFeature() {
+		// we have a customization for the feature in the context of the base class
+		// and we pass the derived derived class
+		target = new Customize_BaseClass_baseClassFeature
+		IN_BASE_CLASS.assertPolymorphicInvoke(
+			testPackage.derivedDerivedClass, testPackage.baseClass_BaseClassFeature
+		)
+	}
+
+	@Test
+	def void testPolymorphicInvokeOnMultipleInheritanceClassCustomizedForBaseClassFeature() {
+		// we have a customization for the feature in the context of the base class
+		// and we pass a derived class with multiple inheritance (extending also the base class)
+		target = new Customize_BaseClass_baseClassFeature
+		IN_BASE_CLASS.assertPolymorphicInvoke(
+			testPackage.multipleInheritanceClass, testPackage.baseClass_BaseClassFeature
 		)
 	}
 

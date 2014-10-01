@@ -66,8 +66,11 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 		switch (eClass.getClassifierID()) {
 			case TestmodelsPackage.TEST_CONTAINER: return createTestContainer();
 			case TestmodelsPackage.TEST_ECLASS: return createTestEClass();
+			case TestmodelsPackage.ABASE_CLASS: return createABaseClass();
 			case TestmodelsPackage.BASE_CLASS: return createBaseClass();
 			case TestmodelsPackage.DERIVED_CLASS: return createDerivedClass();
+			case TestmodelsPackage.DERIVED_DERIVED_CLASS: return createDerivedDerivedClass();
+			case TestmodelsPackage.MULTIPLE_INHERITANCE_CLASS: return createMultipleInheritanceClass();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS: return createClassForControls();
 			case TestmodelsPackage.CLASS_WITH_NAME: return createClassWithName();
 			case TestmodelsPackage.BASE_CLASS_FOR_FEATURE_MAP_ENTRY: return createBaseClassForFeatureMapEntry();
@@ -131,6 +134,16 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ABaseClass createABaseClass() {
+		ABaseClassImpl aBaseClass = new ABaseClassImpl();
+		return aBaseClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BaseClass createBaseClass() {
 		BaseClassImpl baseClass = new BaseClassImpl();
 		return baseClass;
@@ -144,6 +157,26 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public DerivedClass createDerivedClass() {
 		DerivedClassImpl derivedClass = new DerivedClassImpl();
 		return derivedClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DerivedDerivedClass createDerivedDerivedClass() {
+		DerivedDerivedClassImpl derivedDerivedClass = new DerivedDerivedClassImpl();
+		return derivedDerivedClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MultipleInheritanceClass createMultipleInheritanceClass() {
+		MultipleInheritanceClassImpl multipleInheritanceClass = new MultipleInheritanceClassImpl();
+		return multipleInheritanceClass;
 	}
 
 	/**

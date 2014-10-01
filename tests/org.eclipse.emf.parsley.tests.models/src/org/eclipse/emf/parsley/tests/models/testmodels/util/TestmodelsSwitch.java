@@ -85,6 +85,12 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestmodelsPackage.ABASE_CLASS: {
+				ABaseClass aBaseClass = (ABaseClass)theEObject;
+				T result = caseABaseClass(aBaseClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TestmodelsPackage.BASE_CLASS: {
 				BaseClass baseClass = (BaseClass)theEObject;
 				T result = caseBaseClass(baseClass);
@@ -95,6 +101,25 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 				DerivedClass derivedClass = (DerivedClass)theEObject;
 				T result = caseDerivedClass(derivedClass);
 				if (result == null) result = caseBaseClass(derivedClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestmodelsPackage.DERIVED_DERIVED_CLASS: {
+				DerivedDerivedClass derivedDerivedClass = (DerivedDerivedClass)theEObject;
+				T result = caseDerivedDerivedClass(derivedDerivedClass);
+				if (result == null) result = caseDerivedClass(derivedDerivedClass);
+				if (result == null) result = caseBaseClass(derivedDerivedClass);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestmodelsPackage.MULTIPLE_INHERITANCE_CLASS: {
+				MultipleInheritanceClass multipleInheritanceClass = (MultipleInheritanceClass)theEObject;
+				T result = caseMultipleInheritanceClass(multipleInheritanceClass);
+				if (result == null) result = caseTestEClass(multipleInheritanceClass);
+				if (result == null) result = caseABaseClass(multipleInheritanceClass);
+				if (result == null) result = caseDerivedDerivedClass(multipleInheritanceClass);
+				if (result == null) result = caseDerivedClass(multipleInheritanceClass);
+				if (result == null) result = caseBaseClass(multipleInheritanceClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,6 +175,21 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ABase Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ABase Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseABaseClass(ABaseClass object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Base Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -176,6 +216,36 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDerivedClass(DerivedClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Derived Derived Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Derived Derived Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDerivedDerivedClass(DerivedDerivedClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Multiple Inheritance Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Multiple Inheritance Class</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMultipleInheritanceClass(MultipleInheritanceClass object) {
 		return null;
 	}
 

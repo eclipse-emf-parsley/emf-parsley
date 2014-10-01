@@ -38,6 +38,15 @@ public interface TestmodelsFactory extends EFactory {
 	TestEClass createTestEClass();
 
 	/**
+	 * Returns a new object of class '<em>ABase Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>ABase Class</em>'.
+	 * @generated
+	 */
+	ABaseClass createABaseClass();
+
+	/**
 	 * Returns a new object of class '<em>Base Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,6 +63,24 @@ public interface TestmodelsFactory extends EFactory {
 	 * @generated
 	 */
 	DerivedClass createDerivedClass();
+
+	/**
+	 * Returns a new object of class '<em>Derived Derived Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Derived Derived Class</em>'.
+	 * @generated
+	 */
+	DerivedDerivedClass createDerivedDerivedClass();
+
+	/**
+	 * Returns a new object of class '<em>Multiple Inheritance Class</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multiple Inheritance Class</em>'.
+	 * @generated
+	 */
+	MultipleInheritanceClass createMultipleInheritanceClass();
 
 	/**
 	 * Returns a new object of class '<em>Class For Controls</em>'.

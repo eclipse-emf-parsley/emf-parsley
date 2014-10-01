@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
@@ -25,7 +26,9 @@ import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass;
+import org.eclipse.emf.parsley.tests.models.testmodels.DerivedDerivedClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.MultipleInheritanceClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
@@ -50,6 +53,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass aBaseClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass baseClassEClass = null;
 	/**
 	 * <!-- begin-user-doc -->
@@ -57,6 +67,20 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass derivedClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass derivedDerivedClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multipleInheritanceClassEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,6 +256,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getABaseClass() {
+		return aBaseClassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBaseClass() {
 		return baseClassEClass;
 	}
@@ -279,6 +312,24 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 */
 	public EReference getDerivedClass_DerivedMultiReferenceFeature() {
 		return (EReference)derivedClassEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDerivedDerivedClass() {
+		return derivedDerivedClassEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMultipleInheritanceClass() {
+		return multipleInheritanceClassEClass;
 	}
 
 	/**
@@ -545,6 +596,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(testEClassEClass, TEST_ECLASS__NOT_CHANGEABLE_FEATURE);
 		createEAttribute(testEClassEClass, TEST_ECLASS__DERIVED_FEATURE);
 
+		aBaseClassEClass = createEClass(ABASE_CLASS);
+
 		baseClassEClass = createEClass(BASE_CLASS);
 		createEAttribute(baseClassEClass, BASE_CLASS__BASE_CLASS_FEATURE);
 		createEReference(baseClassEClass, BASE_CLASS__BASE_MULTI_REFERENCE_FEATURE);
@@ -552,6 +605,10 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		derivedClassEClass = createEClass(DERIVED_CLASS);
 		createEAttribute(derivedClassEClass, DERIVED_CLASS__DERIVED_CLASS_FEATURE);
 		createEReference(derivedClassEClass, DERIVED_CLASS__DERIVED_MULTI_REFERENCE_FEATURE);
+
+		derivedDerivedClassEClass = createEClass(DERIVED_DERIVED_CLASS);
+
+		multipleInheritanceClassEClass = createEClass(MULTIPLE_INHERITANCE_CLASS);
 
 		classForControlsEClass = createEClass(CLASS_FOR_CONTROLS);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BOOLEAN_FEATURE);
@@ -613,6 +670,10 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		// Add supertypes to classes
 		derivedClassEClass.getESuperTypes().add(this.getBaseClass());
+		derivedDerivedClassEClass.getESuperTypes().add(this.getDerivedClass());
+		multipleInheritanceClassEClass.getESuperTypes().add(this.getTestEClass());
+		multipleInheritanceClassEClass.getESuperTypes().add(this.getABaseClass());
+		multipleInheritanceClassEClass.getESuperTypes().add(this.getDerivedDerivedClass());
 		classForFeatureMapEntry1EClass.getESuperTypes().add(this.getBaseClassForFeatureMapEntry());
 		classForFeatureMapEntry2EClass.getESuperTypes().add(this.getBaseClassForFeatureMapEntry());
 
@@ -628,6 +689,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getTestEClass_NotChangeableFeature(), ecorePackage.getEString(), "notChangeableFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestEClass_DerivedFeature(), ecorePackage.getEString(), "derivedFeature", "", 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
+		initEClass(aBaseClassEClass, ABaseClass.class, "ABaseClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(baseClassEClass, BaseClass.class, "BaseClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBaseClass_BaseClassFeature(), ecorePackage.getEString(), "baseClassFeature", null, 0, 1, BaseClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBaseClass_BaseMultiReferenceFeature(), this.getClassWithName(), null, "baseMultiReferenceFeature", null, 0, -1, BaseClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -635,6 +698,10 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEClass(derivedClassEClass, DerivedClass.class, "DerivedClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDerivedClass_DerivedClassFeature(), ecorePackage.getEString(), "derivedClassFeature", null, 0, 1, DerivedClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDerivedClass_DerivedMultiReferenceFeature(), this.getClassWithName(), null, "derivedMultiReferenceFeature", null, 0, -1, DerivedClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(derivedDerivedClassEClass, DerivedDerivedClass.class, "DerivedDerivedClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(multipleInheritanceClassEClass, MultipleInheritanceClass.class, "MultipleInheritanceClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(classForControlsEClass, ClassForControls.class, "ClassForControls", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassForControls_BooleanFeature(), ecorePackage.getEBoolean(), "booleanFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
