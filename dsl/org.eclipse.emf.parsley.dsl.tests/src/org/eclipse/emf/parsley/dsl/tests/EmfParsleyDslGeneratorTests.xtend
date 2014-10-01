@@ -582,6 +582,7 @@ expectedFormFeatureCaptionProvider =
 '''
 package my.empty.ui.provider;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
@@ -615,8 +616,9 @@ public class FormFeatureCaptionProviderGen extends FormFeatureCaptionProvider {
   }
   
   public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
+    EClass _library = EXTLibraryPackage.eINSTANCE.getLibrary();
     EReference _library_Books = EXTLibraryPackage.eINSTANCE.getLibrary_Books();
-    Label _createLabel = this.createLabel(parent, _library_Books);
+    Label _createLabel = this.createLabel(parent, _library, _library_Books);
     return _createLabel;
   }
   
@@ -681,6 +683,7 @@ expectedDialogFeatureCaptionProvider =
 '''
 package my.empty.ui.provider;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
@@ -714,8 +717,9 @@ public class DialogFeatureCaptionProviderGen extends DialogFeatureCaptionProvide
   }
   
   public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
+    EClass _library = EXTLibraryPackage.eINSTANCE.getLibrary();
     EReference _library_Books = EXTLibraryPackage.eINSTANCE.getLibrary_Books();
-    Label _createLabel = this.createLabel(parent, _library_Books);
+    Label _createLabel = this.createLabel(parent, _library, _library_Books);
     return _createLabel;
   }
   

@@ -257,7 +257,7 @@ module my.empty {
 		}
 		label {
 			Library:name -> createLabel(parent, "Name")
-			Library:books -> createLabel(parent, EXTLibraryPackage.eINSTANCE.library_Books)
+			Library:books -> createLabel(parent, EXTLibraryPackage.eINSTANCE.library, EXTLibraryPackage.eINSTANCE.library_Books)
 			Writer:lastName -> {
 				new Label(parent, SWT.NONE) => [
 					l |
@@ -296,7 +296,7 @@ module my.empty {
 		}
 		label {
 			Library:name -> createLabel(parent, "Name")
-			Library:books -> createLabel(parent, EXTLibraryPackage.eINSTANCE.library_Books)
+			Library:books -> createLabel(parent, EXTLibraryPackage.eINSTANCE.library, EXTLibraryPackage.eINSTANCE.library_Books)
 			Writer:lastName -> {
 				new Label(parent, SWT.NONE) => [
 					l |
