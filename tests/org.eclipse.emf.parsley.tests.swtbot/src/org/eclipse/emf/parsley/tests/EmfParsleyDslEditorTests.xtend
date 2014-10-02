@@ -363,9 +363,7 @@ module my.test.proj {
 		
 		val editor = bot.editorByTitle("module.parsley")
 		
-		editor.setEditorContentsSaveAndWaitForAutoBuild(
-			"", false			
-		)
+		editor.toTextEditor.setText("")
 		
 		editor.toTextEditor.insertText(input.toString)
 		
@@ -373,7 +371,8 @@ module my.test.proj {
 		
 		editor.toTextEditor.navigateTo(lines, 50)
 		
-		new SWTBotEclipseEditorCustom(editor.reference, bot).
+		val swtbotEditor = new SWTBotEclipseEditorCustom(editor.reference, bot)
+		swtbotEditor.
 			autoCompleteProposal(textToInsert, 
 				proposal.toString
 			)
@@ -391,9 +390,7 @@ module my.test.proj {
 		
 		val editor = bot.editorByTitle("module.parsley")
 		
-		editor.setEditorContentsSaveAndWaitForAutoBuild(
-			"", false			
-		)
+		editor.toTextEditor.setText("")
 		
 		editor.toTextEditor.insertText(input.toString)
 		

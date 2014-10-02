@@ -76,6 +76,10 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			Class<?> superType) {
 
+		if (superType == null) {
+			return
+		}
+
 		val jvmTypeProvider = typeProviderFactory
 				.createTypeProvider(model.eResource().getResourceSet());
 		val interfaceToImplement = jvmTypeProvider
