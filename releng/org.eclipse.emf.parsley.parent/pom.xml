@@ -292,6 +292,42 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
 			</modules>
 		</profile>
+		
+		<profile>
+			<id>process-xtend-code</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		
+			<build>
+				<plugins>
+					<plugin>
+						<!-- See http://www.lorenzobettini.it/2014/10/analyzing-xtend-code-with-sonarqube/ -->
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>${maven-antrun-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>process-xtend-gen</id>
+								<phase>process-sources</phase>
+								<configuration>
+									<skip>!${process-xtend-gen}</skip>
+									<target>
+										<property name="project.basedir" value="${project.basedir}" />
+		
+										<ant antfile="${project.basedir}/../../releng/org.eclipse.emf.parsley.releng/process-xtend-gen.ant">
+											<target name="process-xtend-gen" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
 		<profile>
 			<id>eclipse-sign</id>
