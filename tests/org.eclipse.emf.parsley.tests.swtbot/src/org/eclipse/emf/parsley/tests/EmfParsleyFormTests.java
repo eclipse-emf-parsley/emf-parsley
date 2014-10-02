@@ -212,13 +212,15 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 
 	@Test
 	public void testContentAssistInFormAndSelect() throws Exception {
-		SWTFormsBot formbot = setupFormForContentAssistTest();
-		SWTBotText text = formbot.textWithLabel(STRING_FEATURE_LABEL);
-		// select the content assist proposal
-		selectContentAssistProposal(text, "Second Proposal");
-		// and check that the text has changed
-		formbot.text("Second Proposal");
-		getEditor(EMF_TREE_EDITOR).close();
+		if (!isIndigo()) {
+			SWTFormsBot formbot = setupFormForContentAssistTest();
+			SWTBotText text = formbot.textWithLabel(STRING_FEATURE_LABEL);
+			// select the content assist proposal
+			selectContentAssistProposal(text, "Second Proposal");
+			// and check that the text has changed
+			formbot.text("Second Proposal");
+			getEditor(EMF_TREE_EDITOR).close();
+		}
 	}
 
 	private SWTFormsBot setupFormForContentAssistTest() throws CoreException,
