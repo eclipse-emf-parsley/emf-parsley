@@ -114,6 +114,17 @@ Workflow {
                 // generates a more lightweight Antlr parser and lexer tailored for content assist
                 fragment = parser.antlr.XtextAntlrUiGeneratorFragment auto-inject {
                 	antlrParam = "-Xconversiontimeout" antlrParam = "10000"
+                	
+                	// Since Xtext 2.7.2 the following is required to avoid the error
+                	// "static initializer is exceeding the 65535 bytes limit"
+                	// in the UI project's content assist Antlr parser
+                	options = {
+					  classSplitting = true
+					  
+					  // lower number means more aggressive splitting
+					  // default was 2500, is now 1000
+					  fieldsPerClass = "500"
+					}
                 }
     
                 // generates junit test support classes into Generator#pathTestProject

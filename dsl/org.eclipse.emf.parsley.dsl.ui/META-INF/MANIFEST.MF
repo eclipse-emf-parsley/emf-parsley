@@ -6,7 +6,7 @@ Bundle-Version: 0.2.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
- org.eclipse.xtext.ui;bundle-version="[2.6.2,2.7.0)",
+ org.eclipse.xtext.ui;bundle-version="[2.7.2,2.8.0)",
  org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.ui.ide;bundle-version="3.5.0",
  org.eclipse.xtext.ui.shared,
@@ -25,7 +25,8 @@ Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
  org.eclipse.emf.parsley.views,
  org.eclipse.emf.parsley.generator.common,
  org.eclipse.emf.parsley.wizards,
- org.objectweb.asm;bundle-version="5.0.1"
+ org.objectweb.asm;bundle-version="5.0.1",
+ org.eclipse.jdt.debug.ui
 Import-Package: org.apache.log4j,
  org.eclipse.pde.internal.ui.parts,
  org.eclipse.xtext.xbase.lib
