@@ -62,7 +62,6 @@ import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
@@ -106,9 +105,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	 *            {@link IJvmDeclaredTypeAcceptor#accept(org.eclipse.xtext.common.types.JvmDeclaredType)
 	 *            accept(..)} method takes the constructed empty type for the
 	 *            pre-indexing phase. This one is further initialized in the
-	 *            indexing phase using the closure you pass to the returned
-	 *            {@link IPostIndexingInitializing#initializeLater(org.eclipse.xtext.xbase.lib.Procedures.Procedure1)
-	 *            initializeLater(..)}.
+	 *            indexing phase using the closure you pass as the last argument.
 	 * @param isPreIndexingPhase
 	 *            whether the method is called in a pre-indexing phase, i.e.
 	 *            when the global index is not yet fully updated. You must not
@@ -134,12 +131,12 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
 		val treeFormFactoryClass = element.inferTreeFormFactory(acceptor)
 		
-		acceptor.accept(moduleClass).initializeLater [
+		acceptor.accept(moduleClass) [
 			documentation = element.documentation
 			moduleClass.setSuperClassType(element, typeof(EmfParsleyGuiceModule))
 			
 			members += element.toConstructor() [
-				parameters += element.toParameter("plugin", element.newTypeRef(typeof(AbstractUIPlugin)))
+				parameters += element.toParameter("plugin", typeRef(AbstractUIPlugin))
 				body = [it.append("super(plugin);")]
 			]
 			
@@ -177,7 +174,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		if (dslElement.extendsClause != null)
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
 		else
-			e.superTypes += e.newTypeRef(defaultSuperClass)
+			e.superTypes += typeRef(defaultSuperClass)
 	}
 
 	def setSuperClassTypeAndFields(JvmGenericType e, WithFields dslElement, Class<?> defaultSuperClass) {
@@ -195,7 +192,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				visibility = JvmVisibility.PRIVATE
 				translateAnnotations(f.annotations)
 				if (f.extension) {
-					annotations += f.toAnnotation(typeof(Extension))
+					annotations += annotationRef(Extension)
 				}
 				initializer = initialExp
 			]
@@ -207,7 +204,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def void translateAnnotations(JvmAnnotationTarget target, List<XAnnotation> annotations) {
-		annotations.filterNull.filter[annotationType != null].translateAnnotationsTo(target);
+		target.addAnnotations(annotations.filterNull.filter[annotationType != null])
 	}
    	
    	def activatorQN(Module element) {
@@ -285,20 +282,20 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val labelProvider = element.labelProvider
 			val labelProviderClass = labelProvider.toClass(element.labelProviderQN)
-			acceptor.accept(labelProviderClass).initializeLater [
+			acceptor.accept(labelProviderClass) [
 				setSuperClassTypeAndFields(labelProvider, typeof(ViewerLabelProvider))
 				
 				members += labelProvider.toConstructor() [
 					parameters += labelProvider.
 						toParameter("delegate", 
-							element.newTypeRef(typeof(AdapterFactoryLabelProvider))
+							typeRef(AdapterFactoryLabelProvider)
 						)
 					body = [it.append("super(delegate);")]
-					annotations += element.toAnnotation(typeof(Inject))
+					annotations += annotationRef(Inject)
 				]
 				
 				for (labelSpecification : labelProvider.labelSpecifications) {
-					members += labelSpecification.toMethod("text", element.newTypeRef(typeof(String))) [
+					members += labelSpecification.toMethod("text", typeRef(String)) [
 						parameters += labelSpecification.toParameter(
 							if (labelSpecification.name != null)
 								labelSpecification.name
@@ -311,7 +308,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				}
 				
 				for (imageSpecification : labelProvider.imageSpecifications) {
-					members += imageSpecification.toMethod("image", element.newTypeRef(typeof(Object))) [
+					members += imageSpecification.toMethod("image", typeRef(Object)) [
 						parameters += imageSpecification.toParameter(
 							if (imageSpecification.name != null)
 								imageSpecification.name
@@ -333,7 +330,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val tableLabelProvider = element.tableLabelProvider
 			val tableLabelProviderClass = tableLabelProvider.toClass(element.tableLabelProviderQN)
-			acceptor.accept(tableLabelProviderClass).initializeLater [
+			acceptor.accept(tableLabelProviderClass) [
 				setSuperClassTypeAndFields(tableLabelProvider, typeof(TableColumnLabelProvider))
 					
 				for (labelSpecification : tableLabelProvider.labelSpecifications) {
@@ -341,7 +338,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						members += labelSpecification.toMethod("text_" + 
 							labelSpecification.parameterType.simpleName + "_" +
 							labelSpecification.feature.simpleName.propertyNameForGetterSetterMethod
-							, element.newTypeRef(typeof(String))
+							, typeRef(String)
 						) [
 							parameters += labelSpecification.toParameter(
 								"it"
@@ -357,7 +354,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						members += imageSpecification.toMethod("image_" + 
 							imageSpecification.parameterType.simpleName + "_" +
 							imageSpecification.feature.simpleName.propertyNameForGetterSetterMethod
-							, element.newTypeRef(typeof(Object))) [
+							, typeRef(Object)) [
 							parameters += imageSpecification.toParameter(
 									"it"
 								, imageSpecification.parameterType
@@ -377,7 +374,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val featureCaptionProvider = element.featureCaptionProvider
 			val propertyDescriptionProviderClass = featureCaptionProvider.toClass(element.featureCaptionProviderQN)
-			acceptor.accept(propertyDescriptionProviderClass).initializeLater [
+			acceptor.accept(propertyDescriptionProviderClass) [
 				setSuperClassTypeAndFields(featureCaptionProvider, typeof(FeatureCaptionProvider))
 				
 				inferMethodsForTextPropertyDescription(element, it, featureCaptionProvider.specifications)
@@ -397,10 +394,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				("text_" + 
 						spec.parameterType.simpleName + "_" +
 						spec.feature.simpleName.propertyNameForGetterSetterMethod, 
-					element.newTypeRef(typeof(String))
+					typeRef(String)
 				) [
 					parameters += spec.toParameter(
-						"it", element.newTypeRef(typeof(EStructuralFeature))
+						"it", typeRef(EStructuralFeature)
 					)
 					body = spec.expression
 				]
@@ -423,7 +420,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			null
 		else {
 			val descriptionProviderClass = element.toClass(name)
-			acceptor.accept(descriptionProviderClass).initializeLater [
+			acceptor.accept(descriptionProviderClass) [
 				setSuperClassTypeAndFields(element, superClass)
 				
 				inferMethodsForTextPropertyDescription(element, it, element.specifications)
@@ -445,13 +442,13 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				("label_" + 
 						spec.parameterType.simpleName + "_" +
 						spec.feature.simpleName.propertyNameForGetterSetterMethod, 
-					element.newTypeRef(typeof(Label))
+					typeRef(Label)
 				) [
 					parameters += spec.toParameter(
-						"parent", element.newTypeRef(typeof(Composite))
+						"parent", typeRef(Composite)
 					)
 					parameters += spec.toParameter(
-						"it", element.newTypeRef(typeof(EStructuralFeature))
+						"it", typeRef(EStructuralFeature)
 					)
 					body = spec.expression
 				]
@@ -474,17 +471,15 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			null
 		else {
 			val featureProviderClass = element.toClass(name)
-			acceptor.accept(featureProviderClass).initializeLater [
+			acceptor.accept(featureProviderClass) [
 				setSuperClassTypeAndFields(element, superClass)
 				
 				documentation = element.documentation
 				members += element.
 						toMethod("buildStringMap", Void::TYPE.getTypeForName(element)) [
-					annotations += element.toAnnotation(typeof(Override))
+					annotations += annotationRef(Override)
 					parameters += element.toParameter("stringMap",
-							element.newTypeRef(
-								typeof(EClassToEStructuralFeatureAsStringsMap)
-							)
+							typeRef(EClassToEStructuralFeatureAsStringsMap)
 					)
 					body = [
 						append("super.buildStringMap(stringMap);").newLine
@@ -520,7 +515,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			null
 		else {
 			val controlFactoryClass = e.toClass(name)
-			acceptor.accept(controlFactoryClass).initializeLater [
+			acceptor.accept(controlFactoryClass) [
 				setSuperClassTypeAndFields(e, superClass)
 				
 				documentation = e.documentation
@@ -548,13 +543,13 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					members += spec.
 					control_EClass_EStructuralFeature(spec.expression) [
 						parameters += spec.toParameter(
-							"dataBindingContext", e.newTypeRef(typeof(DataBindingContext))
+							"dataBindingContext", typeRef(DataBindingContext)
 						)
 						parameters += spec.toParameter(
-							"observableValue", e.newTypeRef(typeof(IObservableValue))
+							"observableValue", typeRef(IObservableValue)
 						)
 						body = [
-							append(spec.newTypeRef(typeof(Control)).type)
+							append(typeRef(Control).type)
 							append(''' control = «createControlMethodName»();''').newLine
 							append(
 							'''
@@ -568,17 +563,17 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					
 					members += spec.toMethod
 					(createControlMethodName, 
-						spec.newTypeRef(typeof(Control))) [
+						typeRef(Control)) [
 							visibility = JvmVisibility::PROTECTED
 							body = spec.expression
 					]
 					
 					members += spec.toMethod
 					(createTargetMethodName, 
-						spec.newTypeRef(typeof(IObservableValue))) [
+						typeRef(IObservableValue)) [
 							visibility = JvmVisibility::PROTECTED
 							parameters += spec.toParameter(
-								"it", e.newTypeRef(typeof(Control))
+								"it", typeRef(Control)
 							)
 							body = spec.target
 					]
@@ -593,20 +588,20 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val viewerContentProvider = element.viewerContentProvider
 			val viewerContentProviderClass = viewerContentProvider.toClass(element.viewerContentProviderQN)
-			acceptor.accept(viewerContentProviderClass).initializeLater [
+			acceptor.accept(viewerContentProviderClass) [
 				setSuperClassTypeAndFields(viewerContentProvider, typeof(ViewerContentProvider))
 				
 				members += viewerContentProvider.toConstructor() [
 					parameters += element.viewerContentProvider.
 						toParameter("adapterFactory", 
-							element.newTypeRef(typeof(AdapterFactory))
+							typeRef(AdapterFactory)
 						)
 					body = [it.append("super(adapterFactory);")]
-					annotations += element.toAnnotation(typeof(Inject))
+					annotations += annotationRef(Inject)
 				]
 				
 				for (specification : viewerContentProvider.elementsSpecifications) {
-					members += specification.toMethod("elements", element.newTypeRef(typeof(Object))) [
+					members += specification.toMethod("elements", typeRef(Object)) [
 						parameters += specification.toParameter(
 							if (specification.name != null)
 								specification.name
@@ -619,7 +614,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				}
 				
 				for (specification : viewerContentProvider.childrenSpecifications) {
-					members += specification.toMethod("children", element.newTypeRef(typeof(Object))) [
+					members += specification.toMethod("children", typeRef(Object)) [
 						parameters += specification.toParameter(
 							if (specification.name != null)
 								specification.name
@@ -641,7 +636,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val proposalCreator = element.proposalCreator
 			val proposalCreatorClass = proposalCreator.toClass(element.proposalCreatorQN)
-			acceptor.accept(proposalCreatorClass).initializeLater [
+			acceptor.accept(proposalCreatorClass) [
 				setSuperClassTypeAndFields(proposalCreator, typeof(ProposalCreator))
 				
 				for (spec : proposalCreator.proposalsSpecifications) {
@@ -654,13 +649,13 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						("proposals_" + 
 								spec.parameterType.simpleName + "_" +
 								spec.feature.simpleName.propertyNameForGetterSetterMethod, 
-							element.newTypeRef(typeof(List)).type.createTypeRef(wildCard)
+							typeRef(List).type.createTypeRef(wildCard)
 						) [
 							parameters += spec.toParameter(
 								"it", spec.parameterType
 							)
 							parameters += spec.toParameter(
-								"feature", spec.newTypeRef(typeof(EStructuralFeature))
+								"feature", typeRef(EStructuralFeature)
 							)
 							body = spec.expression
 						]
@@ -677,20 +672,20 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		else {
 			val treeFormFactory = element.treeFormFactory
 			val treeFormFactoryClass = treeFormFactory.toClass(element.treeFormFactoryQN)
-			acceptor.accept(treeFormFactoryClass).initializeLater [
+			acceptor.accept(treeFormFactoryClass) [
 				setSuperClassTypeAndFields(treeFormFactory, typeof(TreeFormFactory))
 				
-				members += treeFormFactory.toMethod('createComposite',element.newTypeRef(typeof(TreeFormComposite))) [
+				members += treeFormFactory.toMethod('createComposite', typeRef(TreeFormComposite)) [
 						parameters += element.treeFormFactory.toParameter(
-						"parent", element.newTypeRef(typeof(Composite))
+						"parent", typeRef(Composite)
 					)
 					parameters += element.treeFormFactory.toParameter(
-						"style", element.newTypeRef(typeof(int))
+						"style", typeRef(int)
 					)
-					annotations += element.toAnnotation(typeof(Override))
+					annotations += annotationRef(Override)
 					visibility = JvmVisibility::PROTECTED
 					body = [
-						append(element.newTypeRef(typeof(TreeFormComposite)).type)
+						append(typeRef(TreeFormComposite).type)
 						var weights=''', new int['''
 						if((element.treeFormFactory.treeWeight!=0) &&element.treeFormFactory.formWeight!=0){
 							weights=weights+'''] {'''+
@@ -718,7 +713,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	) {
 		exp.toMethod
 			(spec.methodNameForFormFeatureSpecification("control_"), 
-				spec.newTypeRef(typeof(Control))
+				typeRef(Control)
 			, init)
 	}
 	
@@ -731,11 +726,11 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def genBindMethod(EObject element, JvmGenericType type, Class<?> clazz) {
 		val wildCard = createJvmWildcardTypeReference
 		val upperBound = createJvmUpperBound
-		upperBound.typeReference = element.newTypeRef(clazz)
+		upperBound.typeReference = typeRef(clazz)
 		wildCard.constraints += upperBound
 		element.toMethod("bind" + clazz.simpleName, 
-				element.newTypeRef(typeof(Class), wildCard) ) [
-			annotations += element.toAnnotation(typeof(Override))
+				typeRef(Class, wildCard) ) [
+			annotations += annotationRef(Override)
 			body = [
 				append("return ")
 				append(type)
