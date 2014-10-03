@@ -1,8 +1,8 @@
 package org.eclipse.emf.parsley.examples.cdo.company.ui.products;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.parsley.examples.cdo.company.CompanyConstants;
 import org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;
-import org.eclipse.emf.common.util.URI;
 
 public class ProductsTreeFormView extends AbstractSaveableTreeFormView {
 

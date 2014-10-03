@@ -1,9 +1,8 @@
 package org.eclipse.emf.parsley.examples.cdo.company.ui.products;
 
-import org.osgi.framework.BundleContext;
-
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator;
+import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
