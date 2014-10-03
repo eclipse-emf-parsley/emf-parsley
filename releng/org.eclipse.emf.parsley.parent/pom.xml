@@ -527,7 +527,7 @@
 						<!-- <threshold>Medium</threshold> -->
 						<maxRank>15</maxRank>
 						<jvmArgs>-Xmx1024m</jvmArgs>
-						<excludeFilterFile>${project.basedir}/../../releng/org.eclipse.emf.parsley.site/excludeFilter.xml</excludeFilterFile>
+						<excludeFilterFile>${project.basedir}/../../releng/org.eclipse.emf.parsley.releng/excludeFilter.xml</excludeFilterFile>
 					</configuration>
 					<executions>
 						<execution>
