@@ -32,7 +32,7 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 	
 	private EmfParsleyChoiceTemplate pageTwo;
 
-	private final Logger log = Logger.getLogger(getClass());
+	private static Logger LOGGER = Logger.getLogger(NewEmfParsleyProjectWizard.class);
 
 	protected static final String WIZARD_PAGE = "Emf Parsley Project Wizard";
 	
@@ -97,7 +97,7 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 		try {
 			getContainer().run(true, false, op);
 		} catch (Exception exception) {
-			log.error("performFinish", exception);
+			LOGGER.error("performFinish", exception);
 			return false;
 		}
 

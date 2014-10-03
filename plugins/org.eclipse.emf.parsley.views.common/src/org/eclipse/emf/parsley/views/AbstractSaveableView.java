@@ -40,7 +40,7 @@ public abstract class AbstractSaveableView extends ViewPart implements
 	
 	private boolean dirty;
 
-	private final Logger log = Logger.getLogger(getClass());
+	private static Logger LOGGER = Logger.getLogger(AbstractSaveableView.class);
 
 	@Inject
 	protected Provider<AdapterFactoryEditingDomain> editingDomainProvider;
@@ -137,7 +137,7 @@ public abstract class AbstractSaveableView extends ViewPart implements
 		try {
 			saveResourceAndUpdateDirtyState();
 		} catch (IOException e) {
-			log.error("doSave", e);
+			LOGGER.error("doSave", e);
 		}
 	}
 

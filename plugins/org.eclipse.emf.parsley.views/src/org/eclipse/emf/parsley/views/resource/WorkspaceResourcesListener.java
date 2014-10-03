@@ -41,7 +41,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 
 	private ResourceSet resourceSet;
 	
-	private final Logger log = Logger.getLogger(getClass());
+	private static Logger LOGGER = Logger.getLogger(WorkspaceResourcesListener.class);
 
 	public WorkspaceResourcesListener(ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
@@ -63,7 +63,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 		try {
 			delta.accept(visitor);
 		} catch (final CoreException e) {
-			log.error("manageEnvent", e);
+			LOGGER.error("manageEnvent", e);
 		}
 
 		final List<String> changedObjectUris = new ArrayList<String>();
@@ -119,7 +119,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 				try {
 					resource.load(Collections.EMPTY_MAP);
 				} catch (final IOException e) {
-					log.error("reload", e);
+					LOGGER.error("reload", e);
 				}
 			}
 			resourceSet.getResources().add(resource);

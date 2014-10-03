@@ -40,7 +40,7 @@ public class CDOResourceLoader extends ResourceLoader {
 	@Inject private EmptyResourceInitializer emptyResourceInitializer;
 	@Inject private CDOSessionManager sessionManager;
 	
-	private final Logger log = Logger.getLogger(getClass());
+	private static Logger LOGGER = Logger.getLogger(CDOResourceLoader.class);
 	
 	@Override
 	public Resource getResource(ResourceSet resourceSet, URI resourceURI) {
@@ -70,7 +70,7 @@ public class CDOResourceLoader extends ResourceLoader {
 				((CDOTransaction)((CDOResource)resource).cdoView()).commit();
 			}
 		} catch (Exception e) {
-			log.error("getResource: " + resourceURI, e);
+			LOGGER.error("getResource: " + resourceURI, e);
 			exception = e;
 		}
 
