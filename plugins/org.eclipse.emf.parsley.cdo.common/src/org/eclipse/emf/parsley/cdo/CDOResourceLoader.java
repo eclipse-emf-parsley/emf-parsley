@@ -48,10 +48,10 @@ public class CDOResourceLoader extends ResourceLoader {
 		t.options().addConflictResolver(new CDOMergingConflictResolver());
 		t.options().addChangeSubscriptionPolicy(CDOAdapterPolicy.ALL);
 
-		if (!t.hasResource(CDOURIData.parse(resourceURI).resource)) {
+		if (!t.hasResource(CDOURIData.parse(resourceURI).getResource())) {
 			return null;
 		}
-		CDOResource resource = t.getResource(CDOURIData.parse(resourceURI).resource, true);
+		CDOResource resource = t.getResource(CDOURIData.parse(resourceURI).getResource(), true);
 		resourceSet.getResources().add(resource);
 		return resource;
 	}
@@ -80,7 +80,7 @@ public class CDOResourceLoader extends ResourceLoader {
 	public Resource createResource(ResourceSet resourceSet, URI resourceURI) {
 		CDOTransaction t =openTransaction(resourceURI);
 		
-		CDOResource resource = t.getOrCreateResource(CDOURIData.parse(resourceURI).resource);
+		CDOResource resource = t.getOrCreateResource(CDOURIData.parse(resourceURI).getResource());
 
 		resourceSet.getResources().add(resource);
 
@@ -94,8 +94,8 @@ public class CDOResourceLoader extends ResourceLoader {
 		
 		CDOURIData data = CDOURIData.parse(resourceURI);
 		
-		String server = data.server;
-		String repository = data.repository;
+		String server = data.getServer();
+		String repository = data.getRepository();
 		
 		CDOSession cdoSession = sessionManager.getSession(server,repository);
 		

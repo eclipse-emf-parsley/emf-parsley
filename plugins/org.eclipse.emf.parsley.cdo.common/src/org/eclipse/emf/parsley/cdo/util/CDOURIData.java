@@ -19,11 +19,11 @@ import org.eclipse.emf.common.util.URI;
  */
 public class CDOURIData {
 
-	public String server;
+	private String server;
 
-	public String repository;
+	private String repository;
 
-	public String resource;
+	private String resource;
 
 	public CDOURIData(String host, String sessionName, String resourceName) {
 		super();
@@ -32,13 +32,25 @@ public class CDOURIData {
 		this.resource = resourceName;
 	}
 
+	public String getServer() {
+		return server;
+	}
+
+	public String getRepository() {
+		return repository;
+	}
+
+	public String getResource() {
+		return resource;
+	}
+
 	public static CDOURIData parse(URI uri) {
 		String server = uri.authority();
 		if (server == null) {
 			throw new IllegalArgumentException("missing server in URI: " + uri);
 		}
 		String scheme = uri.scheme();
-		if (scheme == null || !scheme.equals("cdo")) {
+		if (!"cdo".equals(scheme)) {
 			throw new IllegalArgumentException("not a cdo scheme: " + uri);
 		}
 		String repository = uri.segment(0);

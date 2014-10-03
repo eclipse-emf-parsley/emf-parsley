@@ -36,11 +36,21 @@ public class CDOUriTests {
 	}
 
 	@Test
-	public void testCDOURIData() {
+	public void testCDOURIDataOk() {
 		URI uri = URI.createURI(CDO_LOCALHOST_2036_DEMO_RES2);
 		CDOURIData data = CDOURIData.parse(uri);
-		assertEquals("localhost:2036", data.server);
-		assertEquals("demo", data.repository);
-		assertEquals("res2", data.resource);
+		assertEquals("localhost:2036", data.getServer());
+		assertEquals("demo", data.getRepository());
+		assertEquals("res2", data.getResource());
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testCDOURIDataMissingCDOScheme() {
+		CDOURIData.parse(URI.createURI("foo://localhost:2036/demo/res2"));
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testCDOURIDataMissingScheme() {
+		CDOURIData.parse(URI.createURI("/res2"));
 	}
 }
