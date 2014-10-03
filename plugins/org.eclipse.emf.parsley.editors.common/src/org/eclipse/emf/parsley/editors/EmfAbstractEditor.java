@@ -122,7 +122,7 @@ import com.google.inject.Provider;
 public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		IEditingDomainProvider, ISelectionProvider, IMenuListener,
 		IViewerProvider, IGotoMarker {
-	public static abstract class XML extends EmfAbstractEditor {
+	public abstract static class XML extends EmfAbstractEditor {
 		public XML() {
 			try {
 				editingDomain.getResourceSet().getResourceFactoryRegistry()
@@ -316,7 +316,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				switch (notification.getFeatureID(Resource.class)) {
 				case Resource.RESOURCE__IS_LOADED:
 				case Resource.RESOURCE__ERRORS:
-				case Resource.RESOURCE__WARNINGS: {
+				case Resource.RESOURCE__WARNINGS:
 					Resource resource = (Resource) notification.getNotifier();
 					Diagnostic diagnostic = analyzeResourceProblems(resource,
 							null);
@@ -335,7 +335,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 								});
 					}
 					break;
-				}
 				}
 			} else {
 				super.notifyChanged(notification);
@@ -1177,25 +1176,22 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				Collection<?> collection = ((IStructuredSelection) selection)
 						.toList();
 				switch (collection.size()) {
-				case 0: {
+				case 0:
 					statusLineManager
 							.setMessage(getString("_UI_NoObjectSelected"));
 					break;
-				}
-				case 1: {
+				case 1:
 					String text = new AdapterFactoryItemDelegator(
 							adapterFactory).getText(collection.iterator()
 							.next());
 					statusLineManager.setMessage(getString(
 							"_UI_SingleObjectSelected", text));
 					break;
-				}
-				default: {
+				default:
 					statusLineManager.setMessage(getString(
 							"_UI_MultiObjectSelected",
 							Integer.toString(collection.size())));
 					break;
-				}
 				}
 			} else {
 				statusLineManager.setMessage("");
