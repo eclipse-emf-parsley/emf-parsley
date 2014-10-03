@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
  */
 public class GlobalAdapterFactoryEditingDomainProvider extends DefaultAdapterFactoryEditingDomainProvider {
 
-	protected static AdapterFactoryEditingDomain singleton;
+	private static AdapterFactoryEditingDomain singleton;
 	
 	public AdapterFactoryEditingDomain get() {
 		if (singleton == null) {
