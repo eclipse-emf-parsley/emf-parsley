@@ -26,9 +26,12 @@
 	<property name="checkout.location" location="${git.clone.dest}" />
 	<property name="releng.project" value="${checkout.location}/releng/org.eclipse.emf.parsley.releng"/>
 	<property name="commands.path" value="${releng.project}/commands"/>
-
+	<property name="target.definition.file" value="luna.target"/>
+	<property name="target.definition" value="${checkout.location}/devtools/org.eclipse.emf.parsley.targetplatform/${target.definition.file}"/>
+	
 	<property name="target.platform.dir" value="target.platform" />
 	<property name="eclipse.download" value="http://download.eclipse.org" />
+	<property name="eclipse.name" value="luna" />
 
 	<property name="buckminster.home" location="${user.home}/buckminster.parsley" />
 
@@ -53,6 +56,7 @@
 		<antcall target="cleanup" />
 		<antcall target="set.target.platform.path" />
 		<antcall target="clone.projects" />
+		<antcall target="import.target" />
 		<antcall target="resolve.commands" />
 		<antcall target="import.workspace.settings" />
 
@@ -88,6 +92,11 @@
 		<run_buckminster command="import ${remote.cquery}" />
 	</target>
 
+	<target name="import.target">
+		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
+		<run_buckminster command='importtargetdefinition -A "${target.definition}"' />
+	</target>
+
 	<target name="import.api.baseline">
 		<run_buckminster command='importtargetdefinition "${checkout.location}/releng/org.eclipse.xtext.releng/api-baseline/api-baseline.target"' />
 	</target>
@@ -97,8 +106,7 @@
 	</target>
 
 	<target name="resolve.commands" depends="copy-xtext-grammar-to-bin">
-		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
-		<echo message="IMPORTANT: Don't worry: Java compilation errors are expected." />
+		<echo message="IMPORTANT: We also run mwe2 to create Xtext languages artifacts." />
 		<run_buckminster command='--script "${commands.path}/headless-resolve-commands-contributor.bmscript"' />
 	</target>
 
@@ -125,10 +133,10 @@
 						<include name="org.eclipse.equinox.launcher_*.jar" />
 					</fileset>
 				</classpath>
+				<!-- <arg line='-L DEBUG' /> -->
 				<arg line='@{command}' />
 				<arg line='-data "${WORKSPACE}"' />
 				<arg line='-configuration "${WORKSPACE}/configuration"' />
-				<!-- <arg line='-L DEBUG' /> -->
 				<sysproperty key="projects.location" value="${checkout.location}" />
 				<sysproperty key="git.clone.dest" value="${git.clone.dest}" />
 				<sysproperty key="checkout.location" value="${checkout.location}" />
@@ -171,7 +179,7 @@
 				</fileset>
 			</classpath>
 			<arg line='-data "${director.dir}/workspace"' />
-			<arg line="-r ${eclipse.download}/tools/buckminster/headless-4.3,http://download.cloudsmith.com/buckminster/external-4.3,${eclipse.download}/modeling/tmf/xtext/updates/composite/releases" />
+			<arg line="-r ${eclipse.download}/tools/buckminster/headless-4.4,http://download.cloudsmith.com/buckminster/external-4.4,${eclipse.download}/modeling/tmf/xtext/updates/composite/releases" />
 			<arg line='-d "${buckminster.home}"' />
 			<arg line="-p Buckminster" />
 			<arg line="-roaming" />

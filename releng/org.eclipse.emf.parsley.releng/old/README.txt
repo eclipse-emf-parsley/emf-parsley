@@ -1,3 +1,5 @@
+THIS IS OLD STUFF AND IT DOES NOT WORK ANYMORE
+
 The build.cquery is used to materialize the target platform and the
 projects in the workspace.
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cspecExtension
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0"
+	xmlns="http://www.eclipse.org/buckminster/CSpec-1.0">
+	<dependencies>
+		<dependency name="org.eclipse.emf.parsley.targetplatform" 
+			componentType="buckminster" />
+		<dependency name="org.eclipse.emf.parsley.parent" 
+			componentType="buckminster" />
+		<dependency name="org.eclipse.emf.parsley.releng" 
+			componentType="buckminster" />
+	</dependencies>
+</cspecExtension>

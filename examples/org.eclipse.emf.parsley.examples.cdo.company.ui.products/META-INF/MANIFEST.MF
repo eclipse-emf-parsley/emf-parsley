@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.parsley.views,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.emf.parsley.cdo;bundle-version="0.1.1",
- org.eclipse.emf.parsley.examples.cdo.company.app;bundle-version="1.0.0",
+ org.eclipse.emf.parsley.examples.cdo.company.app,
  org.eclipse.emf.parsley.examples.cdo.company.model;bundle-version="0.1.0"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
