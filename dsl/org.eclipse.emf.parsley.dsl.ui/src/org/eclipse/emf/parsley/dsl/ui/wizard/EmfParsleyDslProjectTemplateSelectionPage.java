@@ -99,7 +99,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		container.setLayout(new GridLayout(2,false));
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
 		
-		new Label(container,SWT.NONE).setText("Select one of these Emf Parsley templates");;
+		new Label(container,SWT.NONE).setText("Select one of these Emf Parsley templates");
 		new Label(container,SWT.NONE);
 		
 		SashForm sashForm = new SashForm(container, SWT.HORIZONTAL);

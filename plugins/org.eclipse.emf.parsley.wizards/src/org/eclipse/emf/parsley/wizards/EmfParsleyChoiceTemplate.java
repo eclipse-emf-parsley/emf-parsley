@@ -27,7 +27,7 @@ public class EmfParsleyChoiceTemplate extends NewElementWizardPage {
     
 	public enum Choice {
 		NONE, TREEFORM, TABLEFORM
-	};
+	}
 	
     private Choice choice = Choice.NONE;
 
