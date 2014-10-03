@@ -155,7 +155,7 @@ public class FeaturesProvider {
 			return null;
 		}
 
-		LinkedList<EStructuralFeature> result = new LinkedList<EStructuralFeature>();
+		List<EStructuralFeature> result = new LinkedList<EStructuralFeature>();
 
 		for (String featureName : list) {
 			EStructuralFeature feature = getFeatureResolver().getFeature(eClass, featureName);

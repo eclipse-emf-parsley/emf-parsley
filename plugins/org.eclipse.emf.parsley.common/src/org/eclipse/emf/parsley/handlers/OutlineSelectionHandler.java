@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.handlers;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -44,7 +45,7 @@ public class OutlineSelectionHandler {
 				//
 				Object selectedElement = selectedElements.next();
 
-				ArrayList<Object> selectionList = new ArrayList<Object>();
+				List<Object> selectionList = new ArrayList<Object>();
 				selectionList.add(selectedElement);
 				while (selectedElements.hasNext()) {
 					selectionList.add(selectedElements.next());
