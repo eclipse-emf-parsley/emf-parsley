@@ -14,8 +14,6 @@ class TestInputs {
 	
 	def emptyModule() 
 '''
-import java.util.*
-
 module my.empty {
 	
 }
@@ -23,8 +21,6 @@ module my.empty {
 
 	def moduleWithExtends() 
 '''
-import java.util.*
-
 module my.empty extends org.eclipse.emf.parsley.dsl.tests.additional.MyTestGuiceModule {
 	
 }
@@ -32,8 +28,6 @@ module my.empty extends org.eclipse.emf.parsley.dsl.tests.additional.MyTestGuice
 
 	def emptyLabelProvider() 
 '''
-import java.util.*
-
 module my.empty {
 	labelProvider {
 		
@@ -43,8 +37,6 @@ module my.empty {
 
 	def emptyPropertyDescriptionProvider() 
 '''
-import java.util.*
-
 module my.empty {
 	featureCaptionProvider {
 		
@@ -54,8 +46,6 @@ module my.empty {
 
 	def emptyLabelSpecifications() 
 '''
-import java.util.*
-
 module my.empty {
 	labelProvider {
 		text {
@@ -70,8 +60,6 @@ module my.empty {
 
 	def emptyLabelSpecificationsForColumns() 
 '''
-import java.util.*
-
 module my.empty {
 	tableLabelProvider {
 		text {
@@ -87,8 +75,13 @@ module my.empty {
 
 	def labelProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Book
+import org.eclipse.emf.parsley.examples.library.BookOnTape
+import org.eclipse.emf.parsley.examples.library.Borrower
+import org.eclipse.emf.parsley.examples.library.Lendable
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+import org.eclipse.swt.graphics.ImageData
 
 module my.empty {
 	labelProvider {
@@ -112,7 +105,7 @@ module my.empty {
 				if (writer.name.nullOrEmpty) 
 					"noname.gif"
 				else
-					new org.eclipse.swt.graphics.ImageData("writer.jpeg")
+					new ImageData("writer.jpeg")
 		}
 	}
 }
@@ -165,8 +158,10 @@ module my.empty {
 
 	def tableLabelProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Book
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+import org.eclipse.swt.graphics.ImageData
 
 module my.empty {
 	tableLabelProvider {
@@ -181,7 +176,7 @@ module my.empty {
 				if (author.name.nullOrEmpty) 
 					"noname.gif"
 				else
-					new org.eclipse.swt.graphics.ImageData("writer.jpeg")
+					new ImageData("writer.jpeg")
 		}
 	}
 }
@@ -213,8 +208,8 @@ module my.empty {
 
 	def featureCaptionProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 
 module my.empty {
 	featureCaptionProvider {
@@ -229,8 +224,10 @@ module my.empty {
 
 	def featureCaptionProviderWithExtends() 
 '''
-import org.eclipse.emf.parsley.examples.library.*
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeatureCaptionProvider
+
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 
 module my.empty {
 	featureCaptionProvider extends TestFeatureCaptionProvider {
@@ -239,13 +236,14 @@ module my.empty {
 			Writer:lastName -> name.toFirstUpper // the implicit param is an EStructuralFeature
 		}
 	}
-}
-'''
+}'''
 
 	def formFeatureCaptionProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Label
 
 module my.empty {
@@ -283,8 +281,10 @@ module my.empty {
 
 	def dialogFeatureCaptionProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Label
 
 module my.empty {
@@ -322,8 +322,8 @@ module my.empty {
 
 	def featuresProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 
 module my.empty {
 	featuresProvider {
@@ -347,8 +347,8 @@ module my.empty {
 
 	def tableFeaturesProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 
 module my.empty {
 	tableFeaturesProvider {
@@ -372,8 +372,9 @@ module my.empty {
 
 	def formControlFactory()
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Borrower
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 
 module my.empty {
 	formControlFactory {
@@ -408,8 +409,10 @@ module my.empty {
 
 	def dialogControlFactory()
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Borrower
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+import org.eclipse.swt.SWT
 
 module my.empty {
 	dialogControlFactory {
@@ -444,8 +447,11 @@ module my.empty {
 
 	def proposalCreator()
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
+import org.eclipse.emf.parsley.examples.library.Book
+import org.eclipse.emf.parsley.examples.library.Borrower
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 
 module my.empty {
 	proposals {
@@ -486,9 +492,10 @@ module my.empty {
 
 	def viewerContentProvider() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.parsley.examples.library.Book
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 
 module my.empty {
 	viewerContentProvider {
@@ -517,9 +524,6 @@ module my.empty {
 
 	def emptyViewsSpecifications() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
-
 module my.empty {
 	parts {
 		
@@ -529,9 +533,7 @@ module my.empty {
 
 	def nonEmptyViewsSpecifications() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
-import org.eclipse.emf.parsley.views.*
+import org.eclipse.emf.parsley.views.AbstractSaveableTreeView
 
 module my.test {
 	parts {
@@ -545,9 +547,8 @@ module my.test {
 
 	def multipleViewsSpecifications() 
 '''
-import java.util.*
-import org.eclipse.emf.parsley.examples.library.*
-import org.eclipse.emf.parsley.views.*
+import org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView
+import org.eclipse.emf.parsley.views.AbstractSaveableTreeView
 
 module my.test {
 	parts {
