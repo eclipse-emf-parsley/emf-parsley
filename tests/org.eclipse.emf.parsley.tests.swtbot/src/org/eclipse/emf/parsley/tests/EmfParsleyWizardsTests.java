@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.tests;
 
 
+import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,13 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyWizardsTests extends EmfParsleyAbstractTests {
+	
+	public EmfParsleyWizardsTests() {
+		// just to avoid code coverage of protected constructor
+		new NewEmfParsleyProjectSupport() {
+			
+		};
+	}
 
 	@Test
 	public void canCreateProjectWithWizard() throws Exception {

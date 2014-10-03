@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.wizards;
 
 import java.io.ByteArrayInputStream;
 import java.net.URI;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,11 +44,17 @@ import org.eclipse.pde.core.project.IBundleProjectDescription;
  */
 public class NewEmfParsleyProjectSupport {
 
+	private static final String JAVA_EXTENSION = ".java";
+
 	static EmfParsleyProjectFilesGenerator filesGenerator = new EmfParsleyProjectFilesGenerator();
 
 	static EmfParsleyViewFilesGenerator viewGenerator = new EmfParsleyViewFilesGenerator();
 	
 	private static final Logger LOGGER = Logger.getLogger(NewEmfParsleyProjectSupport.class);
+	
+	protected NewEmfParsleyProjectSupport() {
+		// hide the implicit one
+	}
 
 	/**
 	 * We need to: - create the default Eclipse project - add the java and
@@ -93,26 +100,26 @@ public class NewEmfParsleyProjectSupport {
 
 			String simpleClassName = getSimpleNameProject(projectPackagePath);
 			String qualifiedNameView = null;
+			CharSequence contents = "";
 			switch (viewType) {
 			case TREEFORM:
 				qualifiedNameView = simpleClassName + "TreeFormView";
-				createProjectFile(project, projectPackagePath + "/"
-						+ qualifiedNameView.concat(".java"), viewGenerator
-						.generateTreeFormView(projectName, simpleClassName)
-						.toString(), createSubProgressMonitor(progressMonitor));
+				contents = viewGenerator.generateTreeFormView(projectName, simpleClassName);
 				break;
 			case TABLEFORM:
 				qualifiedNameView = simpleClassName + "TableView";
-				createProjectFile(project, projectPackagePath + "/"
-						+ qualifiedNameView.concat(".java"), viewGenerator
-						.generateTableView(projectName, simpleClassName)
-						.toString(), createSubProgressMonitor(progressMonitor));
+				contents = viewGenerator.generateTableView(projectName, simpleClassName);
 				break;
 			default:
 				// OK, no additional views to create
 			}
 
 			if (qualifiedNameView != null) {
+				createProjectFile(project, projectPackagePath + "/"
+						+ qualifiedNameView.concat(JAVA_EXTENSION),
+						contents.toString(),
+						createSubProgressMonitor(progressMonitor));
+
 				createProjectFile(
 						project,
 						"/plugin.xml",
@@ -140,7 +147,7 @@ public class NewEmfParsleyProjectSupport {
 			String projectPackagePath, IProgressMonitor progressMonitor)
 			throws CoreException {
 		createProjectFile(project, projectPackagePath + "/"
-				+ filesGenerator.activatorName(projectName) + ".java",
+				+ filesGenerator.activatorName(projectName) + JAVA_EXTENSION,
 				filesGenerator.generateActivator(projectName).toString(),
 				createSubProgressMonitor(progressMonitor));
 	}
@@ -151,7 +158,7 @@ public class NewEmfParsleyProjectSupport {
 		createProjectFile(project, projectPackagePath
 				+ "/"
 				+ filesGenerator.extFactoryName(projectName)
-				+ ".java", filesGenerator
+				+ JAVA_EXTENSION, filesGenerator
 				.generateExecutableExtensionFactory(projectName).toString(),
 				createSubProgressMonitor(progressMonitor));
 	}
@@ -162,7 +169,7 @@ public class NewEmfParsleyProjectSupport {
 		createProjectFile(project, projectPackagePath
 				+ "/"
 				+ filesGenerator.moduleName(projectName)
-				+ ".java", filesGenerator
+				+ JAVA_EXTENSION, filesGenerator
 				.generateModule(projectName, superClass).toString(),
 				createSubProgressMonitor(progressMonitor));
 	}
@@ -243,7 +250,6 @@ public class NewEmfParsleyProjectSupport {
 	 * @param newProject
 	 * @param paths
 	 * @param progressMonitor
-	 *            TODO
 	 * @throws CoreException
 	 */
 	public static void addToProjectStructure(IProject newProject,
@@ -272,7 +278,6 @@ public class NewEmfParsleyProjectSupport {
 	 * @param fileName
 	 * @param contents
 	 * @param progressMonitor
-	 *            TODO
 	 * @throws CoreException
 	 */
 	public static void createProjectFile(IProject project, String fileName,
@@ -280,7 +285,9 @@ public class NewEmfParsleyProjectSupport {
 			throws CoreException {
 		progressMonitor.subTask("Creating file " + fileName);
 		IFile iFile = project.getFile(fileName);
-		iFile.create(new ByteArrayInputStream(contents.getBytes()), true, null);
+		iFile.create(
+				new ByteArrayInputStream(contents.getBytes(Charset
+						.forName(iFile.getCharset()))), true, null);
 		progressMonitor.done();
 	}
 
