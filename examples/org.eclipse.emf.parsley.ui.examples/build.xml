@@ -35,7 +35,6 @@
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.messageview" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.unifiedfoldersview" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.feature" source="../../features/" />
-		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.site" source="../../releng/" />
 		<zip_example name="org.eclipse.emf.parsley.examples.firstexample" />
 		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4" />
 		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4.parsleypart" />
