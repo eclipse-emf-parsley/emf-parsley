@@ -25,7 +25,9 @@ import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
 @SuppressWarnings("restriction")
 public class EmfParsleyChoiceTemplate extends NewElementWizardPage {
     
-	public enum Choice { NONE, TREEFORM, TABLEFORM };
+	public enum Choice {
+		NONE, TREEFORM, TABLEFORM
+	};
 	
     private Choice choice = Choice.NONE;
 
