@@ -27,7 +27,9 @@
 	<property name="releng.project" value="${checkout.location}/releng/org.eclipse.emf.parsley.releng"/>
 	<property name="commands.path" value="${releng.project}/commands"/>
 	<property name="target.definition.file" value="luna.target"/>
+	<property name="target.rap.definition.file" value="kepler-rap.target"/>
 	<property name="target.definition" value="${checkout.location}/devtools/org.eclipse.emf.parsley.targetplatform/${target.definition.file}"/>
+	<property name="target.rap.definition" value="${checkout.location}/devtools/org.eclipse.emf.parsley.targetplatform/${target.rap.definition.file}"/>
 	
 	<property name="target.platform.dir" value="target.platform" />
 	<property name="eclipse.download" value="http://download.eclipse.org" />
@@ -74,6 +76,7 @@
 		<antcall target="cleanup" />
 		<antcall target="set.target.platform.path" />
 		<antcall target="clone.projects" />
+		<antcall target="import.rap.target" />
 		<antcall target="resolve.commands.rap" />
 		<antcall target="import.workspace.settings" />
 
@@ -95,6 +98,11 @@
 	<target name="import.target">
 		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
 		<run_buckminster command='importtargetdefinition -A "${target.definition}"' />
+	</target>
+
+	<target name="import.rap.target">
+		<echo message="IMPORTANT: Populating an empty target platform may take a while." />
+		<run_buckminster command='importtargetdefinition -A "${target.rap.definition}"' />
 	</target>
 
 	<target name="import.api.baseline">

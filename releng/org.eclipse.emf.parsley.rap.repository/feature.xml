@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.emf.parsley.rap.site"
+      id="org.eclipse.emf.parsley.rap.repository"
       label="Emf Parsley RAP Site"
       version="0.2.0.qualifier">
 

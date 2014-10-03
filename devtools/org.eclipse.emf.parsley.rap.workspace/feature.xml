@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.parsley.rap.workspace"
+      label="Emf Parsley RAP Workspace"
+      version="0.2.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.eclipse.org/emfparsley">
+      This feature project is used only to materialize the workspace for developers and contributors: it depends on all the features and bundles that must be imported in the workspace so that we can simply use a Buckminster cquery that points to this feature.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.emf.parsley.examples.rap.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.rap.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.rap.cdo.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.rap.repository"
+         version="0.0.0"/>
+
+</feature>
