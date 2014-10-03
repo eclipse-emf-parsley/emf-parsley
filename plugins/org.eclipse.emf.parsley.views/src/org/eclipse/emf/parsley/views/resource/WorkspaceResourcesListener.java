@@ -117,7 +117,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 			if (resource.isLoaded()) {
 				resource.unload();
 				try {
-					resource.load(Collections.EMPTY_MAP);
+					resource.load(Collections.emptyMap());
 				} catch (final IOException e) {
 					LOGGER.error("reload", e);
 				}
