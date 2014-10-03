@@ -72,9 +72,9 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 	public void createDescriptionIn(Composite composite) {
 		descriptionBrowser.createControl(composite);
 		Control c = descriptionBrowser.getControl();
-		GridData gd = new GridData(GridData.FILL_BOTH);
-		gd.widthHint = 200;
-		c.setLayoutData(gd);
+		GridData gridData = new GridData(GridData.FILL_BOTH);
+		gridData.widthHint = 200;
+		c.setLayoutData(gridData);
 	}
 	
 	public void setDescriptionText(String text) {
