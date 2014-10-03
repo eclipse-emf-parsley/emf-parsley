@@ -146,7 +146,7 @@ class EmfParsleyDslPluginXmlGeneratorTests extends EmfParsleyDslAbstractTests {
 		val access = new InMemoryFileSystemAccess();
 		val parsed = input.parseAndAssertNoError
 		pluginXmlGenerator.doGenerate(parsed.eResource(), access);
-		val entrySet = access.getFiles().entrySet()
+		val entrySet = access.getTextFiles().entrySet()
 		assertEqualsStrings(1, entrySet.size)
 		val e = entrySet.head
 		val name = e.getKey().substring(
