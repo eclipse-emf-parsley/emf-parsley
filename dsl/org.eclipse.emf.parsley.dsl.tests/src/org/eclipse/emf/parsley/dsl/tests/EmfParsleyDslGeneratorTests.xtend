@@ -15,7 +15,9 @@ import org.eclipse.emf.parsley.dsl.tests.util.CustomCompilationTestHelper
 import org.eclipse.emf.parsley.dsl.tests.util.EmfParsleyDslInjectorProviderCustom
 import org.eclipse.emf.parsley.dsl.tests.util.GeneratorExpectedResults
 import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.TemporaryFolder
 import org.eclipse.xtext.junit4.XtextRunner
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -24,6 +26,9 @@ import static org.junit.Assert.*
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProviderCustom))
 class EmfParsleyDslGeneratorTests extends EmfParsleyDslAbstractTests {
+	
+	@Rule
+	@Inject public TemporaryFolder temporaryFolder
  
 	@Inject extension CustomCompilationTestHelper
 
