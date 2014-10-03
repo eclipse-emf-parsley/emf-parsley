@@ -41,7 +41,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 
 	private ResourceSet resourceSet;
 	
-	private static Logger LOGGER = Logger.getLogger(WorkspaceResourcesListener.class);
+	private static final Logger LOGGER = Logger.getLogger(WorkspaceResourcesListener.class);
 
 	public WorkspaceResourcesListener(ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;

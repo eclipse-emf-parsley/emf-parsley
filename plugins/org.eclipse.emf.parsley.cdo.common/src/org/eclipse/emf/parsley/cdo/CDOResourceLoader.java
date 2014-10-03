@@ -40,7 +40,7 @@ public class CDOResourceLoader extends ResourceLoader {
 	@Inject private EmptyResourceInitializer emptyResourceInitializer;
 	@Inject private CDOSessionManager sessionManager;
 	
-	private static Logger LOGGER = Logger.getLogger(CDOResourceLoader.class);
+	private static final Logger LOGGER = Logger.getLogger(CDOResourceLoader.class);
 	
 	@Override
 	public Resource getResource(ResourceSet resourceSet, URI resourceURI) {

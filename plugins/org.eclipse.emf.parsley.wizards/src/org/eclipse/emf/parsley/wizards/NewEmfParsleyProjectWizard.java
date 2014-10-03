@@ -32,7 +32,7 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 	
 	private EmfParsleyChoiceTemplate pageTwo;
 
-	private static Logger LOGGER = Logger.getLogger(NewEmfParsleyProjectWizard.class);
+	private static final Logger LOGGER = Logger.getLogger(NewEmfParsleyProjectWizard.class);
 
 	protected static final String WIZARD_PAGE = "Emf Parsley Project Wizard";
 	
