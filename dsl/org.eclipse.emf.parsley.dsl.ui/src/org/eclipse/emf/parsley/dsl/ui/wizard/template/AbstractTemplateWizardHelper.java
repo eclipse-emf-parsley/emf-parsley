@@ -20,7 +20,7 @@ public abstract class AbstractTemplateWizardHelper implements IWizardTemplate{
 
 	protected static final String ABSTRACT_SAVEABLE="AbstractSaveable";
 
-	protected static EmfParsleyViewFilesGenerator viewFilesGenerator= new EmfParsleyViewFilesGenerator();
+	protected static final EmfParsleyViewFilesGenerator viewFilesGenerator= new EmfParsleyViewFilesGenerator();
 	
 	protected String getSimpleNameProject(String projectName) {
 		String simpleNameProject = null;
