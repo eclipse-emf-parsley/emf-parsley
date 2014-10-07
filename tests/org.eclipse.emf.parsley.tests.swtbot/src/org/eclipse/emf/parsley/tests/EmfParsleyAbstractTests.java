@@ -376,6 +376,7 @@ public class EmfParsleyAbstractTests {
 	@After
 	public void runAfterEveryTest() throws CoreException {
 		// bot.sleep(2000);
+		bot.saveAllEditors();
 		cleanWorkspace();
 		IResourcesSetupUtil.waitForAutoBuild();
 	}
