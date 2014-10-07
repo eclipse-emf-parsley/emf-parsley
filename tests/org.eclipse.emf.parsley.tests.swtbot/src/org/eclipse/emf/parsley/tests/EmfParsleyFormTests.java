@@ -219,7 +219,7 @@ public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
 			selectContentAssistProposal(text, "Second Proposal");
 			// and check that the text has changed
 			formbot.text("Second Proposal");
-			getEditor(EMF_TREE_EDITOR).close();
+			getEditor(EMF_TREE_EDITOR).saveAndClose();
 		}
 	}
 

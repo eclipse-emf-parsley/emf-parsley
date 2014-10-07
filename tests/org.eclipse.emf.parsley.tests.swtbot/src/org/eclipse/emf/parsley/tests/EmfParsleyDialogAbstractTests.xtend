@@ -18,9 +18,11 @@ public abstract class EmfParsleyDialogAbstractTests extends EmfParsleyAbstractTe
 
 	def protected assertDialog(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		item.doubleClick
-		bot.shell(dialogTitle).activate
+		val shell = bot.shell(dialogTitle)
+		shell.activate
 		proc.apply()
 		bot.button("OK").click()
+		waitForShellToClose(shell)
 	}
 
 	def protected assertDialogEdit(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
