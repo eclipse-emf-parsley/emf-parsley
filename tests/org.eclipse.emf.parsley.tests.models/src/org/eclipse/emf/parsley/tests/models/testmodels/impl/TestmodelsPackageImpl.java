@@ -24,6 +24,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEnt
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedDerivedClass;
@@ -116,6 +117,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass classForFeatureMapEntry2EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classForTableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -508,6 +516,33 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getClassForTable() {
+		return classForTableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassForTable_ClassWithName1() {
+		return (EReference)classForTableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassForTable_ClassWithName2() {
+		return (EReference)classForTableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTestContainer() {
 		return testContainerEClass;
 	}
@@ -537,6 +572,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 */
 	public EReference getTestContainer_Contained() {
 		return (EReference)testContainerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestContainer_ClassesForTable() {
+		return (EReference)testContainerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -598,6 +642,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_WITH_NAME);
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_CONTROLS);
 		createEReference(testContainerEClass, TEST_CONTAINER__CONTAINED);
+		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_TABLE);
 
 		testEClassEClass = createEClass(TEST_ECLASS);
 		createEAttribute(testEClassEClass, TEST_ECLASS__LOWERCASE_NAME_FEATURE);
@@ -642,6 +687,10 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		classForFeatureMapEntry1EClass = createEClass(CLASS_FOR_FEATURE_MAP_ENTRY1);
 
 		classForFeatureMapEntry2EClass = createEClass(CLASS_FOR_FEATURE_MAP_ENTRY2);
+
+		classForTableEClass = createEClass(CLASS_FOR_TABLE);
+		createEReference(classForTableEClass, CLASS_FOR_TABLE__CLASS_WITH_NAME1);
+		createEReference(classForTableEClass, CLASS_FOR_TABLE__CLASS_WITH_NAME2);
 
 		// Create enums
 		enumForControlsEEnum = createEEnum(ENUM_FOR_CONTROLS);
@@ -692,6 +741,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEReference(getTestContainer_ClassesWithName(), this.getClassWithName(), null, "classesWithName", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_ClassesForControls(), this.getClassForControls(), null, "classesForControls", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_Contained(), this.getTestContainer(), null, "contained", null, 0, 1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestContainer_ClassesForTable(), this.getClassForTable(), null, "classesForTable", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testEClassEClass, TestEClass.class, "TestEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestEClass_LowercaseNameFeature(), ecorePackage.getEString(), "lowercaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -736,6 +786,10 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEClass(classForFeatureMapEntry1EClass, ClassForFeatureMapEntry1.class, "ClassForFeatureMapEntry1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(classForFeatureMapEntry2EClass, ClassForFeatureMapEntry2.class, "ClassForFeatureMapEntry2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(classForTableEClass, ClassForTable.class, "ClassForTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getClassForTable_ClassWithName1(), this.getClassWithName(), null, "classWithName1", null, 0, 1, ClassForTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClassForTable_ClassWithName2(), this.getClassWithName(), null, "classWithName2", null, 0, 1, ClassForTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enumForControlsEEnum, EnumForControls.class, "EnumForControls");

@@ -128,6 +128,15 @@ public interface TestmodelsFactory extends EFactory {
 	ClassForFeatureMapEntry2 createClassForFeatureMapEntry2();
 
 	/**
+	 * Returns a new object of class '<em>Class For Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class For Table</em>'.
+	 * @generated
+	 */
+	ClassForTable createClassForTable();
+
+	/**
 	 * Returns a new object of class '<em>Test Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

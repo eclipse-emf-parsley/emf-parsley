@@ -153,13 +153,22 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_CONTAINER__CONTAINED = 2;
 
 	/**
+	 * The feature id for the '<em><b>Classes For Table</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__CLASSES_FOR_TABLE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Test Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER_FEATURE_COUNT = 3;
+	int TEST_CONTAINER_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Test Container</em>' class.
@@ -771,6 +780,52 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_FEATURE_MAP_ENTRY2_OPERATION_COUNT = BASE_CLASS_FOR_FEATURE_MAP_ENTRY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForTableImpl <em>Class For Table</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForTableImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForTable()
+	 * @generated
+	 */
+	int CLASS_FOR_TABLE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Class With Name1</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_TABLE__CLASS_WITH_NAME1 = 0;
+
+	/**
+	 * The feature id for the '<em><b>Class With Name2</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_TABLE__CLASS_WITH_NAME2 = 1;
+
+	/**
+	 * The number of structural features of the '<em>Class For Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_TABLE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Class For Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_TABLE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -778,7 +833,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
 	 * @generated
 	 */
-	int ENUM_FOR_CONTROLS = 12;
+	int ENUM_FOR_CONTROLS = 13;
 
 
 	/**
@@ -789,7 +844,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
 	 * @generated
 	 */
-	int BOOLEAN_DATA_TYPE = 13;
+	int BOOLEAN_DATA_TYPE = 14;
 
 
 	/**
@@ -799,7 +854,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
 	 * @generated
 	 */
-	int BOOLEAN_PRIMITIVE_DATA_TYPE = 14;
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 15;
 
 
 	/**
@@ -1155,6 +1210,38 @@ public interface TestmodelsPackage extends EPackage {
 	EClass getClassForFeatureMapEntry2();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable <em>Class For Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class For Table</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable
+	 * @generated
+	 */
+	EClass getClassForTable();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable#getClassWithName1 <em>Class With Name1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Class With Name1</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable#getClassWithName1()
+	 * @see #getClassForTable()
+	 * @generated
+	 */
+	EReference getClassForTable_ClassWithName1();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable#getClassWithName2 <em>Class With Name2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Class With Name2</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable#getClassWithName2()
+	 * @see #getClassForTable()
+	 * @generated
+	 */
+	EReference getClassForTable_ClassWithName2();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer <em>Test Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1196,6 +1283,17 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTestContainer_Contained();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForTable <em>Classes For Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Classes For Table</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForTable()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EReference getTestContainer_ClassesForTable();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}'.
@@ -1505,6 +1603,29 @@ public interface TestmodelsPackage extends EPackage {
 		 */
 		EClass CLASS_FOR_FEATURE_MAP_ENTRY2 = eINSTANCE.getClassForFeatureMapEntry2();
 		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForTableImpl <em>Class For Table</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForTableImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForTable()
+		 * @generated
+		 */
+		EClass CLASS_FOR_TABLE = eINSTANCE.getClassForTable();
+		/**
+		 * The meta object literal for the '<em><b>Class With Name1</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_TABLE__CLASS_WITH_NAME1 = eINSTANCE.getClassForTable_ClassWithName1();
+		/**
+		 * The meta object literal for the '<em><b>Class With Name2</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_TABLE__CLASS_WITH_NAME2 = eINSTANCE.getClassForTable_ClassWithName2();
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1534,6 +1655,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TEST_CONTAINER__CONTAINED = eINSTANCE.getTestContainer_Contained();
+		/**
+		 * The meta object literal for the '<em><b>Classes For Table</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_CONTAINER__CLASSES_FOR_TABLE = eINSTANCE.getTestContainer_ClassesForTable();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 		 * <!-- begin-user-doc -->

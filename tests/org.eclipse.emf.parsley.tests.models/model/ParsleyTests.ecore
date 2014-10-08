@@ -9,6 +9,8 @@
         eType="#//ClassForControls" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contained" eType="#//TestContainer"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classesForTable" upperBound="-1"
+        eType="#//ClassForTable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestEClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowercaseNameFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -82,4 +84,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassForFeatureMapEntry1" eSuperTypes="#//BaseClassForFeatureMapEntry"/>
   <eClassifiers xsi:type="ecore:EClass" name="ClassForFeatureMapEntry2" eSuperTypes="#//BaseClassForFeatureMapEntry"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassForTable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classWithName1" eType="#//ClassWithName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classWithName2" eType="#//ClassWithName"/>
+  </eClassifiers>
 </ecore:EPackage>

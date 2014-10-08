@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
@@ -33,6 +34,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesWithName <em>Classes With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForControls <em>Classes For Controls</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getContained <em>Contained</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForTable <em>Classes For Table</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +70,16 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * @ordered
 	 */
 	protected TestContainer contained;
+
+	/**
+	 * The cached value of the '{@link #getClassesForTable() <em>Classes For Table</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassesForTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ClassForTable> classesForTable;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,6 +172,18 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ClassForTable> getClassesForTable() {
+		if (classesForTable == null) {
+			classesForTable = new EObjectContainmentEList<ClassForTable>(ClassForTable.class, this, TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE);
+		}
+		return classesForTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -169,6 +193,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return ((InternalEList<?>)getClassesForControls()).basicRemove(otherEnd, msgs);
 			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
 				return basicSetContained(null, msgs);
+			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
+				return ((InternalEList<?>)getClassesForTable()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,6 +213,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return getClassesForControls();
 			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
 				return getContained();
+			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
+				return getClassesForTable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -211,6 +239,10 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
 				setContained((TestContainer)newValue);
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
+				getClassesForTable().clear();
+				getClassesForTable().addAll((Collection<? extends ClassForTable>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -232,6 +264,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
 				setContained((TestContainer)null);
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
+				getClassesForTable().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -250,6 +285,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return classesForControls != null && !classesForControls.isEmpty();
 			case TestmodelsPackage.TEST_CONTAINER__CONTAINED:
 				return contained != null;
+			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
+				return classesForTable != null && !classesForTable.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

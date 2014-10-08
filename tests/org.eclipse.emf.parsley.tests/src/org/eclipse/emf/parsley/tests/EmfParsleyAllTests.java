@@ -35,6 +35,8 @@ import org.junit.runners.Suite;
 	CustomDialogControlFactoryTest.class,
 	FormControlFactoryTest.class,
 	FormControlFactoryWithEditingDomainTest.class,
+	TableViewerBuilderTest.class,
+	TableViewerColumnBuilderTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
 	NotificationBufferTest.class,

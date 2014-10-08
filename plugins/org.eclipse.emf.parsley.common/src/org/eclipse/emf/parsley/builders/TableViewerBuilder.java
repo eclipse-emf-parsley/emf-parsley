@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.TableViewer;
 import com.google.inject.Inject;
 
 /**
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini - initial API and implementation
  * 
  */
 public class TableViewerBuilder {
@@ -33,17 +33,46 @@ public class TableViewerBuilder {
 	@Inject
 	protected ViewerInitializer viewerInitializer;
 
+	/**
+	 * Builds and fills with contents, which are assumed to be of the specified
+	 * {@link EClass}, a {@link TableViewer}; it defaults to using an
+	 * {@link ArrayContentProvider}
+	 * 
+	 * @param tableViewer
+	 * @param contents
+	 * @param eClass
+	 */
 	public void buildAndFill(TableViewer tableViewer, Object contents,
 			EClass eClass) {
 		buildAndFill(tableViewer, contents, eClass, new ArrayContentProvider());
 	}
 
+	/**
+	 * Builds and fills with contents, which are assumed to be of the specified
+	 * {@link EClass}, a {@link TableViewer}, and uses the specified content
+	 * provider.
+	 * 
+	 * @param tableViewer
+	 * @param contents
+	 * @param eClass
+	 * @param contentProvider
+	 */
 	public void buildAndFill(TableViewer tableViewer, Object contents,
 			EClass eClass, IStructuredContentProvider contentProvider) {
-		build(tableViewer, eClass, contentProvider);
-		fill(tableViewer, contents, contentProvider, null);
+		buildAndFill(tableViewer, contents, eClass, contentProvider, null);
 	}
 
+	/**
+	 * Builds and fills with contents, which are assumed to be of the specified
+	 * {@link EClass}, a {@link TableViewer}, and uses the specified content
+	 * provider and label provider.
+	 * 
+	 * @param tableViewer
+	 * @param contents
+	 * @param eClass
+	 * @param contentProvider
+	 * @param labelProvider
+	 */
 	public void buildAndFill(TableViewer tableViewer, Object contents,
 			EClass eClass, IStructuredContentProvider contentProvider,
 			IBaseLabelProvider labelProvider) {

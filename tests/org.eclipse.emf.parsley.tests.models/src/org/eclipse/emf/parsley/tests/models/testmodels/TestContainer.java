@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesWithName <em>Classes With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForControls <em>Classes For Controls</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getContained <em>Contained</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForTable <em>Classes For Table</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,5 +83,21 @@ public interface TestContainer extends EObject {
 	 * @generated
 	 */
 	void setContained(TestContainer value);
+
+	/**
+	 * Returns the value of the '<em><b>Classes For Table</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Classes For Table</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Classes For Table</em>' containment reference list.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getTestContainer_ClassesForTable()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ClassForTable> getClassesForTable();
 
 } // TestContainer

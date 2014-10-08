@@ -32,9 +32,10 @@ import com.google.inject.Inject;
 
 /**
  * Sets the columns of a TableViewer according to an EClass (adds a column for
- * each feature of the EClass).
+ * each feature of the EClass, retrieved using an njected
+ * {@link TableFeaturesProvider}).
  * 
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini - initial API and implementation
  * 
  */
 public class TableViewerColumnBuilder {
@@ -50,13 +51,14 @@ public class TableViewerColumnBuilder {
 	@Inject
 	protected TableFeaturesProvider featuresProvider;
 
-	public void buildTableViewer(TableViewer tableViewer, EClass eClass) {
-		buildTableViewer(tableViewer, eClass, null);
-	}
-
 	/**
+	 * Setups the columns of the given tableViewer using the features of the
+	 * given eClass; the features are retrieved using an injected
+	 * {@link TableFeaturesProvider}.
+	 * 
 	 * @param tableViewer
 	 * @param eClass
+	 * @param contentProvider
 	 */
 	public void buildTableViewer(TableViewer tableViewer, EClass eClass,
 			IStructuredContentProvider contentProvider) {

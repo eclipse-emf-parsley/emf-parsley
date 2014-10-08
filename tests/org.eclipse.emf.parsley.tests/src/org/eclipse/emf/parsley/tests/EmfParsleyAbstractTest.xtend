@@ -81,7 +81,7 @@ abstract class EmfParsleyAbstractTest {
 		wr = lib.writers.head
 		b = lib.books.head
 		testContainer = testFactory.createTestContainer
-		eobj = testFactory.createClassForControls
+		eobj = createClassForControls
 		eobj2 = testFactory.createTestEClass
 	}
 
@@ -164,6 +164,17 @@ abstract class EmfParsleyAbstractTest {
 
 	def protected createClassWithName(String n) {
 		testFactory.createClassWithName => [name = n]
+	}
+
+	def protected createClassForTable(String n) {
+		testFactory.createClassForTable => [
+			classWithName1 = createClassWithName(n)
+			classWithName2 = createClassWithName(n)
+		]
+	}
+
+	def protected createClassForControls() {
+		testFactory.createClassForControls
 	}
 
 	def protected createClassForFeatureMapEntry1(String n) {

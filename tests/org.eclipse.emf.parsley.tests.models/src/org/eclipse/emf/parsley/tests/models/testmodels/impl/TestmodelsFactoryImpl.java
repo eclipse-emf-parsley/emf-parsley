@@ -76,6 +76,7 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 			case TestmodelsPackage.BASE_CLASS_FOR_FEATURE_MAP_ENTRY: return createBaseClassForFeatureMapEntry();
 			case TestmodelsPackage.CLASS_FOR_FEATURE_MAP_ENTRY1: return createClassForFeatureMapEntry1();
 			case TestmodelsPackage.CLASS_FOR_FEATURE_MAP_ENTRY2: return createClassForFeatureMapEntry2();
+			case TestmodelsPackage.CLASS_FOR_TABLE: return createClassForTable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -227,6 +228,16 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public ClassForFeatureMapEntry2 createClassForFeatureMapEntry2() {
 		ClassForFeatureMapEntry2Impl classForFeatureMapEntry2 = new ClassForFeatureMapEntry2Impl();
 		return classForFeatureMapEntry2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassForTable createClassForTable() {
+		ClassForTableImpl classForTable = new ClassForTableImpl();
+		return classForTable;
 	}
 
 	/**
