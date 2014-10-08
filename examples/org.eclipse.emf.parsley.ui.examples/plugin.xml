@@ -239,11 +239,6 @@
                description="Mail Product Feature"
                name="org.eclipse.emf.parsley.examples.mail.product.feature">
          </projectDescriptor>
-         <projectDescriptor
-               contentURI="contents/org.eclipse.emf.parsley.examples.mail.product.site.zip"
-               description="Mail Product Site Feature"
-               name="org.eclipse.emf.parsley.examples.mail.product.site">
-         </projectDescriptor>
       </example>
    </extension>
    <extension
