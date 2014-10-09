@@ -10,12 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Binder
 import com.google.inject.Guice
-import com.google.inject.TypeLiteral
-import com.google.inject.name.Names
 import java.util.List
-import org.eclipse.emf.parsley.EmfParsleyConstants
 import org.eclipse.emf.parsley.builders.TableViewerBuilder
 import org.eclipse.jface.viewers.ColumnLayoutData
 import org.eclipse.jface.viewers.ColumnWeightData
@@ -42,12 +38,9 @@ class TableViewerColumnBuilderTest extends AbstractTableViewerTest {
 	def void testCustomColumnWeights() {
 		tableViewerBuilder = Guice.createInjector(
 				new EmfParsleyGuiceModuleForTesting() {
-					override configureTableColumnWeights(Binder binder) {
-						binder.bind(new TypeLiteral<List<Integer>>() {}).annotatedWith
-							(Names.named(EmfParsleyConstants.TABLE_COLUMN_WEIGHTS)).
-								toInstance(#[5,2]);
+					override valueTableColumnWeights() {
+						#[5,2]
 					}
-					
 				}
 			).getInstance(TableViewerBuilder)
 		buildAndFill(

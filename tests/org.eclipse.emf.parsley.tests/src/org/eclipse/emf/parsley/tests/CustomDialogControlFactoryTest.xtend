@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Binder
 import com.google.inject.Guice
-import com.google.inject.name.Names
 import org.apache.log4j.Logger
 import org.eclipse.core.databinding.observable.value.IObservableValue
 import org.eclipse.emf.databinding.EMFDataBindingContext
@@ -20,7 +18,6 @@ import org.eclipse.emf.databinding.EMFProperties
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.edit.domain.EditingDomain
-import org.eclipse.emf.parsley.EmfParsleyConstants
 import org.eclipse.emf.parsley.binding.ControlObservablePair
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
@@ -195,10 +192,8 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		// this will replace the string for content assist shortcut with
 		// an unparsable KeyStroke
 		val injector = Guice.createInjector(new EmfParsleyGuiceModuleForTesting() {
-			override configureContentAssistShortcut(Binder binder) {
-				binder.bind(String).annotatedWith
-					(Names.named(EmfParsleyConstants.CONTENT_ASSIST_SHORTCUT)).
-					toInstance("Foo+Space");
+			override valueContentAssistShortcut() {
+				"Foo+Space";
 			}
 		})
 		injector.injectMembers(factory)

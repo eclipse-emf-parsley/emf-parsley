@@ -54,9 +54,9 @@ import org.eclipse.emf.parsley.runtime.service.AbstractGenericModule;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.ui.PluginImageHelper;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
-import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
@@ -65,12 +65,11 @@ import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
-import com.google.inject.TypeLiteral;
-import com.google.inject.name.Names;
 
 /**
  * Default Google Guice bindings.
@@ -97,63 +96,45 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 
 	/**
 	 * The String constant for Content Assist Shortcut
-	 * @param binder
 	 */
-	public void configureContentAssistShortcut(Binder binder) {
-		binder.bind(String.class).annotatedWith
-			(Names.named(EmfParsleyConstants.CONTENT_ASSIST_SHORTCUT)).
-				toInstance("Ctrl+Space");
+	public String valueContentAssistShortcut() {
+		return "Ctrl+Space";
 	}
 
 	/**
 	 * The String constant used as a separator for Iterable string representation
-	 * @param binder
 	 */
-	public void configureIterableStringSeparator(Binder binder) {
-		binder.bind(String.class).annotatedWith
-			(Names.named(EmfParsleyConstants.ITERABLE_STRING_SEPARATOR)).
-				toInstance(", ");
+	public String valueIterableStringSeparator() {
+		return ", ";
 	}
 
 	/**
 	 * The String constant used as a ellipses for Iterable string representation
 	 * when it is too long
-	 * @param binder
 	 */
-	public void configureIterableStringEllipses(Binder binder) {
-		binder.bind(String.class).annotatedWith
-			(Names.named(EmfParsleyConstants.ITERABLE_STRING_ELLIPSES)).
-				toInstance("...");
+	public String valueIterableStringEllipses() {
+		return "...";
 	}
 
 	/**
 	 * The Integer constant used as the maximum length for Iterable string representation
-	 * @param binder
 	 */
-	public void configureIterableStringMaxLength(Binder binder) {
-		binder.bind(Integer.class).annotatedWith
-			(Names.named(EmfParsleyConstants.ITERABLE_STRING_MAX_LENGTH)).
-				toInstance(80);
+	public Integer valueIterableStringMaxLength() {
+		return 80;
 	}
 
 	/**
 	 * The Integer constant used as the default weight for a table's columns
-	 * @param binder
 	 */
-	public void configureDefaultTableColumnWeight(Binder binder) {
-		binder.bind(Integer.class).annotatedWith
-			(Names.named(EmfParsleyConstants.DEFAULT_TABLE_COLUMN_WEIGHT)).
-				toInstance(3);
+	public Integer valueDefaultTableColumnWeight() {
+		return 3;
 	}
 
 	/**
-	 * The Integer constant used as the default weight for a table's columns
-	 * @param binder
+	 * The list of Integer weights for a table's columns
 	 */
-	public void configureTableColumnWeights(Binder binder) {
-		binder.bind(new TypeLiteral<List<Integer>>() {}).annotatedWith
-			(Names.named(EmfParsleyConstants.TABLE_COLUMN_WEIGHTS)).
-				toInstance(Collections.<Integer>emptyList());
+	public List<Integer> valueTableColumnWeights() {
+		return Collections.<Integer>emptyList();
 	}
 
 	/**

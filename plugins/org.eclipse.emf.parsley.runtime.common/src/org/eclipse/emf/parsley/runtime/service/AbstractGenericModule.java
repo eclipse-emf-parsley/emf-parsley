@@ -52,6 +52,11 @@ public abstract class AbstractGenericModule implements Module {
 						result.add(new FreeModule(method, this));
 
 					}
+				} else if (method.getName().startsWith(FieldSetterModule.METHOD_PREFIX)) {
+					if (!method.getName().equals(FieldSetterModule.METHOD_PREFIX) 
+							&& method.getParameterTypes().length == 0) {
+						result.add(new FieldSetterModule(method, this));
+					}
 				}
 			} catch (Exception e) {
 				LOGGER.warn("Trying to use method " + method.toGenericString() + " for configuration failed", e);

@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Binder
 import com.google.inject.Guice
-import com.google.inject.name.Names
-import org.eclipse.emf.parsley.EmfParsleyConstants
+import java.util.List
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
@@ -24,7 +22,6 @@ import org.junit.Test
 
 import static extension org.eclipse.emf.parsley.tests.ui.util.ImageTester.*
 import static extension org.junit.Assert.*
-import java.util.List
 
 class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
@@ -81,20 +78,14 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 		assertEquals(
 			Guice.createInjector(
 				new EmfParsleyGuiceModuleForTesting() {
-					override configureIterableStringSeparator(Binder binder) {
-						binder.bind(String).annotatedWith
-							(Names.named(EmfParsleyConstants.ITERABLE_STRING_SEPARATOR)).
-							toInstance(" - ");
+					override valueIterableStringSeparator() {
+						" - "
 					}
-					override configureIterableStringEllipses(Binder binder) {
-						binder.bind(String).annotatedWith
-							(Names.named(EmfParsleyConstants.ITERABLE_STRING_ELLIPSES)).
-							toInstance(" <continued>...");
+					override valueIterableStringEllipses() {
+						" <continued>..."
 					}
-					override configureIterableStringMaxLength(Binder binder) {
-						binder.bind(Integer).annotatedWith
-							(Names.named(EmfParsleyConstants.ITERABLE_STRING_MAX_LENGTH)).
-							toInstance(50);
+					override valueIterableStringMaxLength() {
+						50
 					}
 				}
 			).getInstance(ILabelProvider)

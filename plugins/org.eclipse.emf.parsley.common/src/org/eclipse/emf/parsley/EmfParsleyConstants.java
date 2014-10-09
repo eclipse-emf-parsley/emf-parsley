@@ -16,17 +16,17 @@ package org.eclipse.emf.parsley;
  */
 public class EmfParsleyConstants {
 
-	public static final String CONTENT_ASSIST_SHORTCUT = "contentAssistShortcut";
+	public static final String CONTENT_ASSIST_SHORTCUT = "ContentAssistShortcut";
 
-	public static final String ITERABLE_STRING_SEPARATOR = "iterableStringSeparator";
+	public static final String ITERABLE_STRING_SEPARATOR = "IterableStringSeparator";
 
-	public static final String ITERABLE_STRING_ELLIPSES = "iterableStringEllipses";
+	public static final String ITERABLE_STRING_ELLIPSES = "IterableStringEllipses";
 
-	public static final String ITERABLE_STRING_MAX_LENGTH = "iterableStringMaxLength";
+	public static final String ITERABLE_STRING_MAX_LENGTH = "IterableStringMaxLength";
 	
-	public static final String DEFAULT_TABLE_COLUMN_WEIGHT = "defaultTableColumnWeight";
+	public static final String DEFAULT_TABLE_COLUMN_WEIGHT = "DefaultTableColumnWeight";
 
-	public static final String TABLE_COLUMN_WEIGHTS = "tableColumnWeights";
+	public static final String TABLE_COLUMN_WEIGHTS = "TableColumnWeights";
 
 	protected EmfParsleyConstants() {
 
