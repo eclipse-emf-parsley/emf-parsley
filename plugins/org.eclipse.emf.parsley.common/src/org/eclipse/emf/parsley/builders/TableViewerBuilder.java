@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 
@@ -59,33 +58,15 @@ public class TableViewerBuilder {
 	 */
 	public void buildAndFill(TableViewer tableViewer, Object contents,
 			EClass eClass, IStructuredContentProvider contentProvider) {
-		buildAndFill(tableViewer, contents, eClass, contentProvider, null);
-	}
-
-	/**
-	 * Builds and fills with contents, which are assumed to be of the specified
-	 * {@link EClass}, a {@link TableViewer}, and uses the specified content
-	 * provider and label provider.
-	 * 
-	 * @param tableViewer
-	 * @param contents
-	 * @param eClass
-	 * @param contentProvider
-	 * @param labelProvider
-	 */
-	public void buildAndFill(TableViewer tableViewer, Object contents,
-			EClass eClass, IStructuredContentProvider contentProvider,
-			IBaseLabelProvider labelProvider) {
 		build(tableViewer, eClass, contentProvider);
-		fill(tableViewer, contents, contentProvider, labelProvider);
+		fill(tableViewer, contents, contentProvider);
 	}
 
 	public void fill(TableViewer tableViewer, Object contents,
-			IStructuredContentProvider contentProvider,
-			IBaseLabelProvider labelProvider) {
+			IStructuredContentProvider contentProvider) {
 		viewerInitializer.initialize(tableViewer,
 				EmfParsleyUtil.ensureCollection(contents), contentProvider,
-				labelProvider);
+				null);
 	}
 	
 	public void build(TableViewer tableViewer, EClass eClass,
