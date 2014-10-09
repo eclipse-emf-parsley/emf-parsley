@@ -11,6 +11,9 @@
 
 package org.eclipse.emf.parsley;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -66,6 +69,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
+import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 
 /**
@@ -130,6 +134,26 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 		binder.bind(Integer.class).annotatedWith
 			(Names.named(EmfParsleyConstants.ITERABLE_STRING_MAX_LENGTH)).
 				toInstance(80);
+	}
+
+	/**
+	 * The Integer constant used as the default weight for a table's columns
+	 * @param binder
+	 */
+	public void configureDefaultTableColumnWeight(Binder binder) {
+		binder.bind(Integer.class).annotatedWith
+			(Names.named(EmfParsleyConstants.DEFAULT_TABLE_COLUMN_WEIGHT)).
+				toInstance(3);
+	}
+
+	/**
+	 * The Integer constant used as the default weight for a table's columns
+	 * @param binder
+	 */
+	public void configureTableColumnWeights(Binder binder) {
+		binder.bind(new TypeLiteral<List<Integer>>() {}).annotatedWith
+			(Names.named(EmfParsleyConstants.TABLE_COLUMN_WEIGHTS)).
+				toInstance(Collections.<Integer>emptyList());
 	}
 
 	/**

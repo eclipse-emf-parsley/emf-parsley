@@ -53,18 +53,6 @@ class TableFeaturesProviderTest extends FeaturesProviderTest {
 		tableFeaturesProvider = featuresProvider as TableFeaturesProvider
 	}
 	
-	@Test
-	def void testGetWeightsDefaultsToNull() {
-		tableFeaturesProvider.weights.assertNull
-	}
-
-	@Test
-	def void testSetWeightsCreatesList() {
-		tableFeaturesProvider.setWeights(0, 1)
-		new Integer(0).assertEquals(tableFeaturesProvider.weights.head)
-		new Integer(1).assertEquals(tableFeaturesProvider.weights.last)
-	}
-
 	@Test def void testTableFeaturesProviderCustomBuildMap() {
 		val customFeaturesProvider = new TableFeaturesProvider() {
 			override protected buildMap(EClassToEStructuralFeatureMap map) {

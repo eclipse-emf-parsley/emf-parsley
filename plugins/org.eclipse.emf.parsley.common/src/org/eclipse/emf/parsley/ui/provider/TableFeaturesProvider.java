@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
 /**
@@ -31,8 +30,6 @@ public class TableFeaturesProvider extends FeaturesProvider {
 
 	@Inject
 	protected FeaturesProvider featuresProvider;
-
-	private List<Integer> weights;
 
 	@Override
 	protected List<EStructuralFeature> getFromMap(EClass eClass) {
@@ -50,13 +47,5 @@ public class TableFeaturesProvider extends FeaturesProvider {
 			return columnDefinition;
 		}
 		return featuresProvider.getFromStringMap(eClass);
-	}
-
-	public List<Integer> getWeights() {
-		return weights;
-	}
-
-	public void setWeights(Integer... weights) {
-		this.weights = Lists.newArrayList(weights);
 	}
 }

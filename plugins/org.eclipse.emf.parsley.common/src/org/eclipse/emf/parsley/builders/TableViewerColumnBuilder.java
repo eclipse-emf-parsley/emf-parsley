@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.factories.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
@@ -29,6 +30,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 /**
  * Sets the columns of a TableViewer according to an EClass (adds a column for
@@ -40,7 +42,13 @@ import com.google.inject.Inject;
  */
 public class TableViewerColumnBuilder {
 
-	private static final int DEFAULT_WEIGHT = 3;
+	@Inject
+	@Named(EmfParsleyConstants.DEFAULT_TABLE_COLUMN_WEIGHT)
+	private int defaultWeight;
+
+	@Inject
+	@Named(EmfParsleyConstants.TABLE_COLUMN_WEIGHTS)
+	private List<Integer> weights;
 
 	@Inject
 	protected ColumnLabelProviderFactory columnLabelProviderFactory;
@@ -75,9 +83,9 @@ public class TableViewerColumnBuilder {
 				.getFeatures(eClass);
 		int i=0;
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
-			int weight=DEFAULT_WEIGHT;
-			if(featuresProvider.getWeights()!=null && featuresProvider.getWeights().size()>i){
-				weight=featuresProvider.getWeights().get(i++);
+			int weight=defaultWeight;
+			if(weights.size()>i){
+				weight=(Integer)weights.get(i++);
 			}
 			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature,
 					contentProvider,weight);
