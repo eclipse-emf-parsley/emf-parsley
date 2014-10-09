@@ -65,6 +65,10 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.JvmExecutable
+import org.eclipse.xtext.util.IAcceptor
+import org.eclipse.emf.parsley.dsl.model.TypeBinding
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -139,6 +143,15 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				parameters += element.toParameter("plugin", typeRef(AbstractUIPlugin))
 				body = [it.append("super(plugin);")]
 			]
+
+			val bindingsSpecification = element.bindingsSpecification
+			if (element.bindingsSpecification != null) {
+				for (binding : bindingsSpecification.bindings) {
+					switch (binding) {
+						TypeBinding: members += genBindMethod(binding)
+					}
+				}
+			}
 			
 			if (labelProviderClass != null)
 				members += element.labelProvider.genBindMethod(labelProviderClass, typeof(ILabelProvider))
@@ -723,19 +736,33 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					spec.feature.simpleName.propertyNameForGetterSetterMethod
 	}
 	
-	def genBindMethod(EObject element, JvmGenericType type, Class<?> clazz) {
-		val wildCard = createJvmWildcardTypeReference
-		val upperBound = createJvmUpperBound
-		upperBound.typeReference = typeRef(clazz)
-		wildCard.constraints += upperBound
-		element.toMethod("bind" + clazz.simpleName, 
-				typeRef(Class, wildCard) ) [
+	def private genBindMethod(EObject element, JvmGenericType type, Class<?> clazz) {
+		genBindMethod(element, typeRef(clazz)) [
 			annotations += annotationRef(Override)
 			body = [
 				append("return ")
 				append(type)
 				append(".class;")
 			]
+		]
+	}
+
+	def private genBindMethod(TypeBinding typeBinding) {
+		// we must trigger resolution of JvmTypeReference
+		// otherwise the parameterized Class type with wildcard
+		// will contain an unresolved type reference
+		genBindMethod(typeBinding, typeBinding.type.type.typeRef) [
+			body = typeBinding.getTo
+		]
+	}
+
+	def private genBindMethod(EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		val wildCard = createJvmWildcardTypeReference
+		val upperBound = createJvmUpperBound
+		upperBound.typeReference = typeRefToBind.cloneWithProxies
+		wildCard.constraints += upperBound
+		element.toMethod("bind" + typeRefToBind.simpleName, typeRef(Class, wildCard) ) [
+			acceptor.accept(it)
 		]
 	}
 }

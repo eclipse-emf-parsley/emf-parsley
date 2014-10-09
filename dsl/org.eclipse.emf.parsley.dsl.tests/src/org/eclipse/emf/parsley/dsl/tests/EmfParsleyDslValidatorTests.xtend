@@ -263,6 +263,42 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 		)
 	}
 
+	@Test
+	def void testWrongTypeBindingUsingClassReference() {
+		'''
+		import org.eclipse.jface.viewers.ILabelProvider
+		import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
+		
+		module my.empty {
+			bindings {
+				type ILabelProvider -> ViewerContentProvider
+			}
+		}
+		'''.parse.assertIncompatibleTypes(
+			XbasePackage.eINSTANCE.XFeatureCall,
+			"Class<? extends ILabelProvider>",
+			"Class<ViewerContentProvider>"
+		)
+	}
+
+	@Test
+	def void testWrongTypeBindingUsingExpression() {
+		'''
+		import org.eclipse.jface.viewers.ILabelProvider
+		import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+		
+		module my.empty {
+			bindings {
+				type ILabelProvider -> new ViewerLabelProvider(null)
+			}
+		}
+		'''.parse.assertIncompatibleTypes(
+			XbasePackage.eINSTANCE.XConstructorCall,
+			"Class<? extends ILabelProvider>",
+			"ViewerLabelProvider"
+		)
+	}
+
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {
 		// the wrong actual type is always Library in these tests
 		'''
@@ -284,6 +320,15 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 			TYPE_MISMATCH,
 			"Type mismatch: cannot convert from " + actualType.simpleName +
 				" to " + expectedType.simpleName
+		)
+	}
+
+	def private assertIncompatibleTypes(EObject e, EClass eClass, String expectedType, String actualType) {
+		e.assertError(
+			eClass,
+			IssueCodes.INCOMPATIBLE_TYPES,
+			"Type mismatch: cannot convert from " + actualType +
+				" to " + expectedType
 		)
 	}
 

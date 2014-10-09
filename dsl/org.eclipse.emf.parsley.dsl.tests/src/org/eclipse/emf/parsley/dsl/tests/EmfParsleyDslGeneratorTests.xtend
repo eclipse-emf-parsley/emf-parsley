@@ -1487,6 +1487,43 @@ public class TreeFormFactoryGen extends TreeFormFactory {
 		)
 	}
 
+	@Test
+	def testTypeBinding() {
+'''
+import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+
+module my.empty {
+	bindings {
+		type ILabelProvider -> ViewerLabelProvider
+	}
+}
+'''
+		.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule
+= '''
+package my.empty;
+
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  public Class<? extends ILabelProvider> bindILabelProvider() {
+    return ViewerLabelProvider.class;
+  }
+}
+''']
+		)
+	}
+
 
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
 			GeneratorExpectedResults expected) {

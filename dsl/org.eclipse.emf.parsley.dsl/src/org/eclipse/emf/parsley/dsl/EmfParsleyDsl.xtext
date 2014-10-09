@@ -12,6 +12,8 @@ Model:
 Module:
 	'module' name=QualifiedName (extendsClause=ExtendsClause)? '{'
 		(
+			(bindingsSpecification = BindingsSpecification)?
+			&
 			(labelProvider = LabelProvider)?
 			&
 			(tableLabelProvider = TableLabelProvider)?
@@ -42,6 +44,16 @@ Module:
 ;
 
 ExtendsClause: 'extends' superType=JvmTypeReference;
+
+BindingsSpecification:
+	{BindingsSpecification} 'bindings' '{'
+		bindings += Binding*
+	'}'
+;
+
+Binding:
+	{TypeBinding} 'type' type=JvmTypeReference '->' to=XExpression
+;
 
 LabelProvider:
 	{LabelProvider} 'labelProvider' (extendsClause=ExtendsClause)? '{'
