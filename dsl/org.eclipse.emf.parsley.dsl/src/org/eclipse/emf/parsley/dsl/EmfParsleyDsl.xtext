@@ -52,12 +52,16 @@ BindingsSpecification:
 ;
 
 Binding:
-	TypeBasedBinding
+	TypeBasedBinding | ValueBinding
 ;
 
 TypeBasedBinding:
 	{TypeBinding} 'type' type=JvmTypeReference '->' to=XExpression |
 	{ProviderBinding} 'provide' type=JvmTypeReference '->' to=XExpression
+;
+
+ValueBinding:
+	{ValueBinding} 'value' typeDecl=JvmTypeReference id=ValidID '->' to=XExpression
 ;
 
 LabelProvider:

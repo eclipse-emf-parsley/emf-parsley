@@ -19,10 +19,12 @@ import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.TypeBasedBinding
+import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
@@ -115,7 +117,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 				for (d : duplicates) {
 					val source = d.sourceElements.head
 					error(
-						"Duplicate binding for: " + d.returnType.simpleName,
+						duplicateBindingMessage(source, d),
 						source,
 						source.duplicateBindingFeature,
 						DUPLICATE_BINDING
@@ -173,10 +175,21 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		return Multimaps2.<K, T> newLinkedHashListMultimap();
 	}
 
+	def private duplicateBindingMessage(EObject source, JvmOperation method) {
+		"Duplicate binding for: " +
+		switch (source) {
+			TypeBasedBinding: method.returnType.simpleName
+			ValueBinding: source.id
+			default: method.returnType.simpleName
+		}
+	}
+
 	def private duplicateBindingFeature(EObject e) {
 		switch (e) {
 			TypeBasedBinding: modelPackage.typeBasedBinding_Type
+			ValueBinding: modelPackage.valueBinding_Id
 			default: null
 		}
 	}
+
 }

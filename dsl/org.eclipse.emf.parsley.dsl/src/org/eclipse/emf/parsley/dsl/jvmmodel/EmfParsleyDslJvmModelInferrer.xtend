@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.dsl.jvmmodel
 
 import com.google.inject.Inject
+import com.google.inject.Provider
 import java.util.List
 import org.eclipse.core.databinding.DataBindingContext
 import org.eclipse.core.databinding.observable.value.IObservableValue
@@ -30,7 +31,9 @@ import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
+import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 import org.eclipse.emf.parsley.dsl.model.TypeBinding
+import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.model.WithFields
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
@@ -70,8 +73,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
-import com.google.inject.Provider
-import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -748,6 +749,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				addBindMethod(binding)
 			} else if (binding instanceof ProviderBinding) {
 				addProvideMethod(binding)
+			} else if (binding instanceof ValueBinding) {
+				addValueMethod(binding)
 			}
 		}
 	}
@@ -761,6 +764,13 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def private addProvideMethod(JvmGenericType it, ProviderBinding binding) {
 		val method = genProvideMethod(binding)
+		if (method != null) {
+			members += method
+		}
+	}
+
+	def private addValueMethod(JvmGenericType it, ValueBinding binding) {
+		val method = genValueMethod(binding)
 		if (method != null) {
 			members += method
 		}
@@ -792,20 +802,38 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
+	def private genValueMethod(ValueBinding binding) {
+		if (binding.typeDecl == null || binding.id == null) {
+			return null
+		}
+		
+		genValueMethod(binding, binding.id, binding.typeDecl) [
+			body = binding.getTo
+		]
+	}
+
 	def private genBindMethod(EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
-		element.genMethodForGuiceModule("bind", typeRefToBind.simpleName, typeRefToBind.cloneWithProxies, acceptor)
+		element.genMethodForGuiceModuleWithWildcard("bind", typeRefToBind.simpleName, typeRefToBind.cloneWithProxies, acceptor)
 	}
 
 	def private genProvideMethod(EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
-		element.genMethodForGuiceModule("provide", typeRefToBind.simpleName, typeRef(Provider, typeRefToBind.cloneWithProxies), acceptor)
+		element.genMethodForGuiceModuleWithWildcard("provide", typeRefToBind.simpleName, typeRef(Provider, typeRefToBind.cloneWithProxies), acceptor)
 	}
 
-	def private genMethodForGuiceModule(EObject element, String prefix, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+	def private genValueMethod(EObject element, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		element.genMethodForGuiceModule("value", methodName, typeRefToBind.cloneWithProxies, acceptor)
+	}
+
+	def private genMethodForGuiceModuleWithWildcard(EObject element, String prefix, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
 		val wildCard = createJvmWildcardTypeReference
 		val upperBound = createJvmUpperBound
 		upperBound.typeReference = typeRefToBind.cloneWithProxies
 		wildCard.constraints += upperBound
-		element.toMethod(prefix + methodName, typeRef(Class, wildCard) ) [
+		element.genMethodForGuiceModule(prefix, methodName, typeRef(Class, wildCard), acceptor)
+	}
+
+	def private genMethodForGuiceModule(EObject element, String prefix, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		element.toMethod(prefix + methodName, typeRefToBind) [
 			acceptor.accept(it)
 		]
 	}

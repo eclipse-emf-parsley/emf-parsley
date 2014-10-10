@@ -103,6 +103,17 @@ class EmfParsleyDslSmokeTests {
 		'''.assertNoException
 	}
 
+	@Test
+	def void testValueBindingWithNoType() {
+		'''
+		module my.empty {
+			bindings {
+				value
+			}
+		}
+		'''.assertNoException
+	}
+
 	def private assertNoException(CharSequence s) {
 		s.parse.validate
 		// there must be no error in the log either

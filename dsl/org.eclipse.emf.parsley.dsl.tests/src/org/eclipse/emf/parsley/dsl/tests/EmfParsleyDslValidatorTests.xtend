@@ -430,6 +430,42 @@ Duplicate binding for: Class<? extends Provider<AdapterFactoryEditingDomain>>
 			)
 	}
 
+	@Test
+	def void testDuplicateValueBinding() {
+		'''
+		import java.util.List
+
+		module my.empty {
+			bindings {
+				value List<Integer> TableColumnWeights -> #[5, 2]
+				value List<String> TableColumnWeights -> #["foo", "bar"]
+			}
+		}
+		'''.parse.assertErrorMessages(
+'''
+Duplicate binding for: TableColumnWeights
+Duplicate binding for: TableColumnWeights
+'''
+		)
+	}
+
+	@Test
+	def void testDuplicateValueBindingErrorPosition() {
+		'''
+		import java.util.List
+
+		module my.empty {
+			bindings {
+				value List<Integer> TableColumnWeights -> #[5, 2]
+				value List<Integer> TableColumnWeights -> #[5, 2]
+			}
+		}
+		'''.parse.assertDuplicateBinding(
+				ModelPackage.eINSTANCE.valueBinding,
+				"TableColumnWeights"
+			)
+	}
+
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {
 		// the wrong actual type is always Library in these tests
 		'''
