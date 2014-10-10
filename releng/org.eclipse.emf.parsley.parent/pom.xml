@@ -97,7 +97,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 		
-				<module>../../examples/org.eclipse.emf.parsley.ui.examples</module>
+				<module>../../plugins/org.eclipse.emf.parsley.ui.examples</module>
 		
 				<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
 		
@@ -120,7 +120,7 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
 		
-				<module>../../features/org.eclipse.emf.parsley.tests.swtbot.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
 				
 				<!-- These examples are used in CDO swtbot tests -->
@@ -128,7 +128,7 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.model</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.treeform</module>
 		
-				<module>../../features/org.eclipse.emf.parsley.tests.swtbot.cdo.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo</module>
 		
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>

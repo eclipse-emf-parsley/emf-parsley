@@ -13,7 +13,7 @@
      ====================================================================== -->
 <project name="project" default="zip_all_examples">
 
-	<property name="source" location="../" />
+	<property name="source" location="../../examples/" />
 	<property name="target_xtext" location="contents" />
 
 	<macrodef name="zip_example">
