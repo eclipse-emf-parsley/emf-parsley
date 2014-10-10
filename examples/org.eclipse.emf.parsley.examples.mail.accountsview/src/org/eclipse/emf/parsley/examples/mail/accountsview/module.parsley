@@ -1,6 +1,10 @@
 import org.eclipse.emf.parsley.examples.mail.Account
 import org.eclipse.emf.parsley.examples.mail.Folder
 import org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView
+import org.eclipse.emf.parsley.resource.EmptyResourceInitializer
+import org.eclipse.emf.parsley.examples.mail.accountsview.custom.MailEmptyResourceInitializer
+import org.eclipse.emf.parsley.edit.IEditingStrategy
+import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
 
 /* org.eclipse.emf.parsley.examples.mail.accountsview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.accountsview {
@@ -11,6 +15,11 @@ module org.eclipse.emf.parsley.examples.mail.accountsview {
 			viewclass AccountsView
 			viewcategory org.eclipse.emf.parsley.examples.mail.accountsview
 		}
+	}
+
+	bindings {
+		type EmptyResourceInitializer -> MailEmptyResourceInitializer
+		type IEditingStrategy -> UndoableEditingStrategy
 	}
 	
 	labelProvider {
