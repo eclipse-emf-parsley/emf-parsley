@@ -1,8 +1,11 @@
 package org.eclipse.emf.parsley.examples.mail.accountsview;
 
+import com.google.inject.Provider;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
+import org.eclipse.emf.parsley.edit.domain.GlobalAdapterFactoryEditingDomainProvider;
 import org.eclipse.emf.parsley.examples.mail.accountsview.custom.MailEmptyResourceInitializer;
 import org.eclipse.emf.parsley.examples.mail.accountsview.edit.ui.provider.ViewerContentProviderGen;
 import org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider.LabelProviderGen;
@@ -26,6 +29,10 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   
   public Class<? extends IEditingStrategy> bindIEditingStrategy() {
     return UndoableEditingStrategy.class;
+  }
+  
+  public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
+    return GlobalAdapterFactoryEditingDomainProvider.class;
   }
   
   @Override
