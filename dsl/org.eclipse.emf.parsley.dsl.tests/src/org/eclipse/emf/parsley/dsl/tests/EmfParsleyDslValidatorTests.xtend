@@ -375,6 +375,61 @@ Duplicate binding for: Class<? extends ILabelProvider>
 		]
 	}
 
+	@Test
+	def void testWrongProviderBindingUsingClassReference() {
+		'''
+		import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+		
+		module my.empty {
+			bindings {
+				provide AdapterFactoryEditingDomain -> AdapterFactoryEditingDomain
+			}
+		}
+		'''.parse.assertIncompatibleTypes(
+			XbasePackage.eINSTANCE.XFeatureCall,
+			"Class<? extends Provider<AdapterFactoryEditingDomain>>",
+			"Class<AdapterFactoryEditingDomain>"
+		)
+	}
+
+	@Test
+	def void testDuplicateProviderBinding() {
+		'''
+		import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+		import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider
+		
+		module my.empty {
+			bindings {
+				provide AdapterFactoryEditingDomain -> DefaultAdapterFactoryEditingDomainProvider
+				provide AdapterFactoryEditingDomain -> DefaultAdapterFactoryEditingDomainProvider
+			}
+		}
+		'''.parse.assertErrorMessages(
+'''
+Duplicate binding for: Class<? extends Provider<AdapterFactoryEditingDomain>>
+Duplicate binding for: Class<? extends Provider<AdapterFactoryEditingDomain>>
+'''
+		)
+	}
+
+	@Test
+	def void testDuplicateProviderBindingErrorPosition() {
+		'''
+		import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+		import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider
+		
+		module my.empty {
+			bindings {
+				provide AdapterFactoryEditingDomain -> DefaultAdapterFactoryEditingDomainProvider
+				provide AdapterFactoryEditingDomain -> DefaultAdapterFactoryEditingDomainProvider
+			}
+		}
+		'''.parse.assertDuplicateBinding(
+				ModelPackage.eINSTANCE.providerBinding,
+				"Class<? extends Provider<AdapterFactoryEditingDomain>>"
+			)
+	}
+
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {
 		// the wrong actual type is always Library in these tests
 		'''

@@ -1524,6 +1524,64 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 		)
 	}
 
+	@Test
+	def testProviderBinding() {
+'''
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider
+import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestViewerLabelProviderProvider
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeaturesProviderProvider
+import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
+
+module my.empty {
+	bindings {
+		provide AdapterFactoryEditingDomain -> DefaultAdapterFactoryEditingDomainProvider
+		provide ViewerLabelProvider -> TestViewerLabelProviderProvider
+		// we can also use an expression, as long as the type is correct
+		provide FeaturesProvider -> (new TestFeaturesProviderProvider).class
+	}
+}
+'''
+		.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule
+= '''
+package my.empty;
+
+import com.google.inject.Provider;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeaturesProviderProvider;
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestViewerLabelProviderProvider;
+import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider;
+import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
+import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
+    return DefaultAdapterFactoryEditingDomainProvider.class;
+  }
+  
+  public Class<? extends Provider<ViewerLabelProvider>> provideViewerLabelProvider() {
+    return TestViewerLabelProviderProvider.class;
+  }
+  
+  public Class<? extends Provider<FeaturesProvider>> provideFeaturesProvider() {
+    TestFeaturesProviderProvider _testFeaturesProviderProvider = new TestFeaturesProviderProvider();
+    Class<? extends TestFeaturesProviderProvider> _class = _testFeaturesProviderProvider.getClass();
+    return _class;
+  }
+}
+''']
+		)
+	}
 
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
 			GeneratorExpectedResults expected) {

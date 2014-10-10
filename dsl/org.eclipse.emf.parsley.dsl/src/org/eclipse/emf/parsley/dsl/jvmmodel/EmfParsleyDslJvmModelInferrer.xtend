@@ -70,6 +70,8 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import com.google.inject.Provider
+import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -743,13 +745,22 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def handleBindingsSpecification(JvmGenericType it, BindingsSpecification bindingsSpecification) {
 		for (binding : bindingsSpecification.bindings) {
 			if (binding instanceof TypeBinding) {
-				addBindMethod(it, binding)
+				addBindMethod(binding)
+			} else if (binding instanceof ProviderBinding) {
+				addProvideMethod(binding)
 			}
 		}
 	}
 
 	def private addBindMethod(JvmGenericType it, TypeBinding typeBinding) {
 		val method = genBindMethod(typeBinding)
+		if (method != null) {
+			members += method
+		}
+	}
+
+	def private addProvideMethod(JvmGenericType it, ProviderBinding binding) {
+		val method = genProvideMethod(binding)
 		if (method != null) {
 			members += method
 		}
@@ -768,12 +779,33 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
+	def private genProvideMethod(ProviderBinding binding) {
+		if (binding.type == null) {
+			return null
+		}
+		
+		// we must trigger resolution of JvmTypeReference
+		// otherwise the parameterized Class type with wildcard
+		// will contain an unresolved type reference
+		genProvideMethod(binding, binding.type.type.typeRef) [
+			body = binding.getTo
+		]
+	}
+
 	def private genBindMethod(EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		element.genMethodForGuiceModule("bind", typeRefToBind.simpleName, typeRefToBind.cloneWithProxies, acceptor)
+	}
+
+	def private genProvideMethod(EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		element.genMethodForGuiceModule("provide", typeRefToBind.simpleName, typeRef(Provider, typeRefToBind.cloneWithProxies), acceptor)
+	}
+
+	def private genMethodForGuiceModule(EObject element, String prefix, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
 		val wildCard = createJvmWildcardTypeReference
 		val upperBound = createJvmUpperBound
 		upperBound.typeReference = typeRefToBind.cloneWithProxies
 		wildCard.constraints += upperBound
-		element.toMethod("bind" + typeRefToBind.simpleName, typeRef(Class, wildCard) ) [
+		element.toMethod(prefix + methodName, typeRef(Class, wildCard) ) [
 			acceptor.accept(it)
 		]
 	}

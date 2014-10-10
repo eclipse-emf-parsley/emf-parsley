@@ -18,7 +18,7 @@ import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
 import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.Module
-import org.eclipse.emf.parsley.dsl.model.TypeBinding
+import org.eclipse.emf.parsley.dsl.model.TypeBasedBinding
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
@@ -175,7 +175,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	def private duplicateBindingFeature(EObject e) {
 		switch (e) {
-			TypeBinding: modelPackage.typeBinding_Type
+			TypeBasedBinding: modelPackage.typeBasedBinding_Type
 			default: null
 		}
 	}

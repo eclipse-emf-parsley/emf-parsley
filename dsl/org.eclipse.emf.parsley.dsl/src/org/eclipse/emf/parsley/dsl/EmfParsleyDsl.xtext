@@ -52,7 +52,12 @@ BindingsSpecification:
 ;
 
 Binding:
-	{TypeBinding} 'type' type=JvmTypeReference '->' to=XExpression
+	TypeBasedBinding
+;
+
+TypeBasedBinding:
+	{TypeBinding} 'type' type=JvmTypeReference '->' to=XExpression |
+	{ProviderBinding} 'provide' type=JvmTypeReference '->' to=XExpression
 ;
 
 LabelProvider:
