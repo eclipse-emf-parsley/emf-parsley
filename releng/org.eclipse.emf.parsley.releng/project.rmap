@@ -85,14 +85,14 @@
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
-		<rm:provider componentTypes="osgi.bundle" readerType="local"
+		<rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="local"
 			mutable="false">
 			<rm:uri format="{0}/examples/{1}">
 				<bc:propertyRef key="projects.location" />
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
-		<rm:provider componentTypes="osgi.bundle" readerType="local"
+		<rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="local"
 			mutable="false">
 			<rm:uri format="{0}/tests/{1}">
 				<bc:propertyRef key="projects.location" />
@@ -132,7 +132,7 @@
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
-		<rm:provider componentTypes="osgi.bundle" readerType="git">
+		<rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="git">
 			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},tests/{1}">
 				<bc:propertyRef key="git.clone.dest" />
@@ -146,7 +146,7 @@
 				<bc:propertyRef key="buckminster.component" />
 			</rm:uri>
 		</rm:provider>
-		<rm:provider componentTypes="osgi.bundle" readerType="git">
+		<rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="git">
 			<rm:property key="git.remote.uri" value="${git.uri}"/>
 			<rm:uri format="{0},examples/{1}">
 				<bc:propertyRef key="git.clone.dest" />

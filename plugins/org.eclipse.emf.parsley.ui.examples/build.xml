@@ -34,11 +34,11 @@
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.mailsview" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.messageview" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.unifiedfoldersview" />
-		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.feature" source="../../features/" />
+		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.feature" />
 		<zip_example name="org.eclipse.emf.parsley.examples.firstexample" />
 		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4" />
 		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4.parsleypart" />
-		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4.product.feature" source="../../features/" />
+		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4.product.feature" />
 		<zip_example name="org.eclipse.emf.examples.library" />
 		<zip_example name="org.eclipse.emf.examples.library.edit" />
 		<zip_example name="org.eclipse.emf.parsley.examples.views" />
@@ -46,7 +46,7 @@
 		<zip_example name="org.eclipse.emf.parsley.examples.cdo.model" />
 		<zip_example name="org.eclipse.emf.parsley.examples.cdo.rcp" />
 		<zip_example name="org.eclipse.emf.parsley.examples.cdo.treeform" />
-		<zip_example name="org.eclipse.emf.parsley.examples.cdo.product.feature" source="../../features/" />
+		<zip_example name="org.eclipse.emf.parsley.examples.cdo.product.feature" />
 		<zip_example name="org.eclipse.emf.parsley.examples.cdo.rap" />
 		<zip_example name="org.eclipse.emf.parsley.examples.rap.targetplatform" />
 		<zip_example name="org.eclipse.emf.parsley.examples.rap.model" />
