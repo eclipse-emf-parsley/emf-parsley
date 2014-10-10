@@ -25,10 +25,12 @@ import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
+import org.eclipse.emf.parsley.dsl.model.BindingsSpecification
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
+import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.model.WithFields
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
@@ -52,12 +54,15 @@ import org.eclipse.swt.widgets.Label
 import org.eclipse.ui.plugin.AbstractUIPlugin
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmExecutable
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
@@ -65,10 +70,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.xtext.common.types.JvmTypeReference
-import org.eclipse.xtext.common.types.JvmExecutable
-import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.emf.parsley.dsl.model.TypeBinding
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -146,11 +147,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 			val bindingsSpecification = element.bindingsSpecification
 			if (element.bindingsSpecification != null) {
-				for (binding : bindingsSpecification.bindings) {
-					switch (binding) {
-						TypeBinding: members += genBindMethod(binding)
-					}
-				}
+				handleBindingsSpecification(it, bindingsSpecification)
 			}
 			
 			if (labelProviderClass != null)
@@ -182,7 +179,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 
    	}
-
+				
 	def setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
 		if (dslElement.extendsClause != null)
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
@@ -283,10 +280,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def treeFormFactoryQN(Module element) {
 		element.fullyQualifiedName + ".factory.TreeFormFactoryGen"
-	}
-
-	def partsClassQN(Module element) {
-		element.fullyQualifiedName + ".ui.parts.DummyPartsClass"
 	}
 
 	def inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
@@ -747,7 +740,26 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
+	def handleBindingsSpecification(JvmGenericType it, BindingsSpecification bindingsSpecification) {
+		for (binding : bindingsSpecification.bindings) {
+			if (binding instanceof TypeBinding) {
+				addBindMethod(it, binding)
+			}
+		}
+	}
+
+	def private addBindMethod(JvmGenericType it, TypeBinding typeBinding) {
+		val method = genBindMethod(typeBinding)
+		if (method != null) {
+			members += method
+		}
+	}
+
 	def private genBindMethod(TypeBinding typeBinding) {
+		if (typeBinding.type == null) {
+			return null
+		}
+		
 		// we must trigger resolution of JvmTypeReference
 		// otherwise the parameterized Class type with wildcard
 		// will contain an unresolved type reference

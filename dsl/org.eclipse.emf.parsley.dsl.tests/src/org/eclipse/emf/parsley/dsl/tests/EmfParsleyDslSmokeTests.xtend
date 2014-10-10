@@ -11,14 +11,22 @@
 package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
+import org.apache.log4j.ConsoleAppender
+import org.apache.log4j.Level
+import org.apache.log4j.Logger
+import org.apache.log4j.spi.LoggingEvent
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import static extension org.junit.Assert.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -26,6 +34,38 @@ class EmfParsleyDslSmokeTests {
 
 	@Inject extension ParseHelper<Model>
  	@Inject extension ValidationTestHelper
+ 	
+ 	private final static Logger LOG = Logger.getLogger(JvmModelAssociator);
+
+	/**
+	 * JvmModelAssociator does not throw exceptions but logs possible
+	 * errors; we use this class to record possible error events
+	 */
+	static class LogListener extends ConsoleAppender {
+		
+		val public events = newArrayList()
+		
+		override doAppend(LoggingEvent event) {
+			if (event.getLevel == Level.ERROR) {
+				events += event
+			}
+		}
+		
+	}
+	
+	var LogListener logListener
+
+	@Before
+	def void createAppender() {
+		logListener = new LogListener => [
+			LOG.addAppender(it)
+		]
+	}
+
+	@After
+	def void removeAppender() {
+		LOG.removeAppender(logListener)
+	}
 
 	@Test
 	def void testModuleWithNoName() {
@@ -41,7 +81,20 @@ class EmfParsleyDslSmokeTests {
 		'''.assertNoException
 	}
 
+	@Test
+	def void testTypeBindingWithNoType() {
+		'''
+		module my.empty {
+			bindings {
+				type
+			}
+		}
+		'''.assertNoException
+	}
+
 	def private assertNoException(CharSequence s) {
 		s.parse.validate
+		// there must be no error in the log either
+		assertTrue("Some error was reported in the LOG", logListener.events.empty)
 	}
 }
