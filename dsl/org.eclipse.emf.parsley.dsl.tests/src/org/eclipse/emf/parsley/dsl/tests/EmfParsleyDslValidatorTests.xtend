@@ -43,6 +43,7 @@ import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
 import java.util.List
 import org.eclipse.xtext.xbase.XbasePackage
 import org.eclipse.xtext.xbase.validation.IssueCodes
+import org.eclipse.xtext.diagnostics.Severity
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -299,6 +300,81 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 		)
 	}
 
+	@Test
+	def void testDuplicateTypeBinding() {
+		'''
+		import org.eclipse.jface.viewers.ILabelProvider
+		import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+		
+		module my.empty {
+			bindings {
+				type ILabelProvider -> ViewerLabelProvider
+			}
+			
+			// this is to be considered a duplicate binding
+			labelProvider {
+			}
+		}
+		'''.parse.assertErrorMessages(
+'''
+Duplicate binding for: Class<? extends ILabelProvider>
+Duplicate binding for: Class<? extends ILabelProvider>
+'''
+		)
+	}
+
+	@Test
+	def void testDuplicateTypeBinding2() {
+		'''
+		import org.eclipse.jface.viewers.ILabelProvider
+		import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+		
+		module my.empty {
+			bindings {
+				type ILabelProvider -> ViewerLabelProvider
+				type ILabelProvider -> ViewerLabelProvider
+			}
+			
+			// this is to be considered a duplicate binding
+			labelProvider {
+			}
+		}
+		'''.parse.assertErrorMessages(
+'''
+Duplicate binding for: Class<? extends ILabelProvider>
+Duplicate binding for: Class<? extends ILabelProvider>
+Duplicate binding for: Class<? extends ILabelProvider>
+'''
+		)
+	}
+
+	@Test
+	def void testDuplicateTypeBindingErrorPosition() {
+		'''
+		import org.eclipse.jface.viewers.ILabelProvider
+		import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
+		
+		module my.empty {
+			bindings {
+				type ILabelProvider -> ViewerLabelProvider
+			}
+			
+			// this is to be considered a duplicate binding
+			labelProvider {
+			}
+		}
+		'''.parse => [
+			assertDuplicateBinding(
+				ModelPackage.eINSTANCE.labelProvider,
+				"Class<? extends ILabelProvider>"
+			)
+			assertDuplicateBinding(
+				ModelPackage.eINSTANCE.typeBinding,
+				"Class<? extends ILabelProvider>"
+			)
+		]
+	}
+
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {
 		// the wrong actual type is always Library in these tests
 		'''
@@ -323,6 +399,14 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 		)
 	}
 
+	def private assertDuplicateBinding(EObject e, EClass eClass, String expectedType) {
+		e.assertError(
+			eClass,
+			DUPLICATE_BINDING,
+			"Duplicate binding for: " + expectedType
+		)
+	}
+
 	def private assertIncompatibleTypes(EObject e, EClass eClass, String expectedType, String actualType) {
 		e.assertError(
 			eClass,
@@ -337,6 +421,13 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 			ModelPackage.eINSTANCE.extendsClause,
 			CYCLIC_INHERITANCE,
 			'''The inheritance hierarchy of «className» contains cycles'''
+		)
+	}
+
+	def private assertErrorMessages(EObject elem, CharSequence expected) {
+		expected.toString.trim.assertEqualsStrings(
+			elem.validate.filter[severity == Severity.ERROR].
+				map[message].join("\n")
 		)
 	}
 }

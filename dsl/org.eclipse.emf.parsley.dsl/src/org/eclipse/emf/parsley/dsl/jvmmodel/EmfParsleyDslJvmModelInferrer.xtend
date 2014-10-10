@@ -117,7 +117,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	 *            <code>true</code>.
 	 */
    	def dispatch void infer(Module element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-   		if (element.name == null)
+   		if (element.name.empty)
    			return
    		
 		val moduleClass = element.toClass(element.moduleQN)

@@ -15,14 +15,18 @@ import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
+import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
+import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
-import org.eclipse.emf.parsley.dsl.model.FieldSpecification
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
 
 //import org.eclipse.xtext.validation.Check
 
@@ -39,8 +43,13 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val FINAL_FIELD_NOT_INITIALIZED = "org.eclipse.emf.parsley.dsl.FinalFieldNotInitialized";
 
+	public static val DUPLICATE_BINDING = "org.eclipse.emf.parsley.dsl.DuplicateBinding";
+
 	@Inject EmfParsleyDslTypeSystem typeSystem
 	@Inject extension EmfParsleyDslExpectedSuperTypes
+	@Inject extension IJvmModelAssociations
+	
+	val modelPackage = ModelPackage.eINSTANCE
 
 	@Check
 	def void checkViewSpecification(ViewSpecification viewSpecification) {
@@ -74,6 +83,45 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 				ModelPackage.Literals.FIELD_SPECIFICATION__NAME,
 				FINAL_FIELD_NOT_INITIALIZED
 			)
+		}
+	}
+
+	@Check
+	def void checkModule(Module module) {
+		// the inferred Guice module for this DSL Module element
+		// we create a single class for the Module and it is a Guice module
+		// so we can take the first element of the filter
+		val guiceModuleClass = module.jvmElements.filter(JvmGenericType).head
+		if (guiceModuleClass == null) {
+			return
+		}
+		
+		val methods = guiceModuleClass.declaredOperations
+		if (methods.empty) {
+			return
+		}
+		
+		val map = duplicatesMultimap
+		
+		// create a multimap using method names
+		for (m : methods) {
+			map.put(m.simpleName, m)
+		}
+		
+		// check if there are duplicates
+		for (entry : map.asMap.entrySet) {
+			val duplicates = entry.value
+			if (duplicates.size > 1) {
+				for (d : duplicates) {
+					val source = d.sourceElements.head
+					error(
+						"Duplicate binding for: " + d.returnType.simpleName,
+						source,
+						source.duplicateBindingFeature,
+						DUPLICATE_BINDING
+					);
+				}
+			}
 		}
 	}
 
@@ -119,5 +167,16 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		}
 		processedSuperTypes.remove(type);
 		return false;
+	}
+
+	def private <K, T> duplicatesMultimap() {
+		return Multimaps2.<K, T> newLinkedHashListMultimap();
+	}
+
+	def private duplicateBindingFeature(EObject e) {
+		switch (e) {
+			TypeBinding: modelPackage.typeBinding_Type
+			default: null
+		}
 	}
 }
