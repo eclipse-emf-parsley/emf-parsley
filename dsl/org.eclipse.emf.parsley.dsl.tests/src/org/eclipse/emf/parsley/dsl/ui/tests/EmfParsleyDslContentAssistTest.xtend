@@ -188,6 +188,27 @@ module my.test.proj {
 		// only EObject sutypes
 	}
 
+	@Test def void testProposalForValueBinding() {
+		newBuilder.append(
+'''
+module my.test.proj {
+	
+	bindings {
+		value '''
+		).assertProposals(
+'''
+Integer DefaultTableColumnWeight
+Integer IterableStringMaxLength
+List<Integer> TableColumnWeights
+List<Integer> TreeFormSashWeights
+String ContentAssistShortcut
+String IterableStringEllipses
+String IterableStringSeparator
+int TreeFormSashStyle'''
+		)
+		// only EObject sutypes
+	}
+
 	def private assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String...acceptableParts) {
 		for (p : builder.computeCompletionProposals) {
 			assertTrue(
@@ -197,4 +218,7 @@ module my.test.proj {
 		}
 	}
 
+	def private assertProposals(ContentAssistProcessorTestBuilder builder, CharSequence expected) {
+		builder.assertText(expected.toString.split("\\r?\\n"))
+	}
 }

@@ -33,6 +33,8 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 	@Inject IJvmTypeProvider.Factory typeProviderFactory;
 	
 	@Inject extension EmfParsleyDslExpectedSuperTypes
+	
+	@Inject EmfParsleyDslBindingProposalHelper bindingProposalHelper
 
 	override void completeViewSpecification_Type(EObject model,
 			Assignment assignment, ContentAssistContext context,
@@ -90,7 +92,6 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 				acceptor);
 	}
 
-
 	override void completeXFeatureCall_Feature(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
@@ -107,4 +108,9 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 
 		super.completeXFeatureCall_Feature(model, assignment, context, acceptor);
 	}
+
+	override completeValueBinding_TypeDecl(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		bindingProposalHelper.createBindingProposals(model, context, acceptor)
+	}
+	
 }
