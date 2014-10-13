@@ -1620,6 +1620,43 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 		)
 	}
 
+	@Test
+	def testValueBindingWithSubtype() {
+'''
+import java.util.ArrayList
+
+module my.empty {
+	bindings {
+		value ArrayList<Integer> TableColumnWeights -> newArrayList(5, 2)
+	}
+}
+'''
+		.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule
+= '''
+package my.empty;
+
+import java.util.ArrayList;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  public ArrayList<Integer> valueTableColumnWeights() {
+    ArrayList<Integer> _newArrayList = CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2));
+    return _newArrayList;
+  }
+}
+''']
+		)
+	}
+
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
 			GeneratorExpectedResults expected) {
 		input.compile [

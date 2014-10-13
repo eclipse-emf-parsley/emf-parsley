@@ -466,6 +466,24 @@ Duplicate binding for: TableColumnWeights
 			)
 	}
 
+	@Test
+	def void testNonCompliantValueBinding() {
+		'''
+		import java.util.List
+
+		module my.empty {
+			bindings {
+				// the correct type should be List<Integer>
+				value Integer TableColumnWeights -> 5
+			}
+		}
+		'''.parse.assertError(
+			ModelPackage.eINSTANCE.valueBinding,
+			NON_COMPLIANT_BINDING,
+			"Incorrect value binding: Integer is not compliant with inherited binding's type List<Integer>"
+		)
+	}
+
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {
 		// the wrong actual type is always Library in these tests
 		'''

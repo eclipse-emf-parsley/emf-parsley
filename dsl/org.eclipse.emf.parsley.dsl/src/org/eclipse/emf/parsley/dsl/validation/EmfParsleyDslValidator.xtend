@@ -47,6 +47,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val DUPLICATE_BINDING = "org.eclipse.emf.parsley.dsl.DuplicateBinding";
 
+	public static val NON_COMPLIANT_BINDING = "org.eclipse.emf.parsley.dsl.NonCompliantBinding";
+
 	@Inject EmfParsleyDslTypeSystem typeSystem
 	@Inject extension EmfParsleyDslExpectedSuperTypes
 	@Inject extension IJvmModelAssociations
@@ -103,6 +105,12 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 			return
 		}
 		
+		checkDuplicateBindings(methods)
+		
+		checkCorrectValueBindings(guiceModuleClass, methods, module)
+	}
+	
+	protected def checkDuplicateBindings(Iterable<JvmOperation> methods) {
 		val map = duplicatesMultimap
 		
 		// create a multimap using method names
@@ -127,6 +135,26 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		}
 	}
 
+	def checkCorrectValueBindings(JvmGenericType guiceModuleClass, Iterable<JvmOperation> methods, Module module) {
+		// These are all the value bindings in the superclass
+		val superClassValueBindings = 
+			(guiceModuleClass.superTypes.head.type as JvmGenericType).
+				allFeatures.filter(JvmOperation).
+				filter[simpleName.startsWith("value")]
+		// check that the return type of the value bindings in this module
+		// are compliant (they can be subtypes)
+		for (superBinding : superClassValueBindings) {
+			val matching = methods.findFirst[simpleName == superBinding.simpleName]
+			if (matching != null && !(typeSystem.isConformant(module, superBinding.returnType, matching.returnType))) {
+				error("Incorrect value binding: " + matching.returnType.simpleName +
+					" is not compliant with inherited binding's type " + superBinding.returnType.simpleName,
+					matching.sourceElements.head,
+					modelPackage.valueBinding_TypeDecl,
+					NON_COMPLIANT_BINDING);
+			}
+		}
+	}
+	
 	def protected checkType(EObject context, JvmTypeReference actualType, Class<?> expectedType,
 			EStructuralFeature feature) {
 		if (actualType != null) {

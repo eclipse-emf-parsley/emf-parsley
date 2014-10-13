@@ -114,6 +114,17 @@ class EmfParsleyDslSmokeTests {
 		'''.assertNoException
 	}
 
+	@Test
+	def void testValueBindingWithUnknownType() {
+		'''
+		module my.empty {
+			bindings {
+				value Foo TableColumnWeights
+			}
+		}
+		'''.assertNoException
+	}
+
 	def private assertNoException(CharSequence s) {
 		s.parse.validate
 		// there must be no error in the log either
