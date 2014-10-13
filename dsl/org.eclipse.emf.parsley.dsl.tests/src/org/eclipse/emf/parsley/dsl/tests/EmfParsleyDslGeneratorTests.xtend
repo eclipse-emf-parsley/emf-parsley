@@ -1491,11 +1491,13 @@ public class TreeFormFactoryGen extends TreeFormFactory {
 	def testTypeBinding() {
 '''
 import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.jface.viewers.IBaseLabelProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 
 module my.empty {
 	bindings {
 		type ILabelProvider -> ViewerLabelProvider
+		type IBaseLabelProvider -> ViewerLabelProvider
 	}
 }
 '''
@@ -1507,6 +1509,7 @@ package my.empty;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
@@ -1516,7 +1519,12 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     super(plugin);
   }
   
+  @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
+    return ViewerLabelProvider.class;
+  }
+  
+  public Class<? extends IBaseLabelProvider> bindIBaseLabelProvider() {
     return ViewerLabelProvider.class;
   }
 }
@@ -1565,6 +1573,7 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     super(plugin);
   }
   
+  @Override
   public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
     return DefaultAdapterFactoryEditingDomainProvider.class;
   }
@@ -1591,6 +1600,7 @@ import java.util.List
 module my.empty {
 	bindings {
 		value List<Integer> TableColumnWeights -> #[5, 2]
+		value String foo -> "foo"
 	}
 }
 '''
@@ -1612,8 +1622,13 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     super(plugin);
   }
   
+  @Override
   public List<Integer> valueTableColumnWeights() {
     return Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2)));
+  }
+  
+  public String valuefoo() {
+    return "foo";
   }
 }
 ''']
@@ -1648,6 +1663,7 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
     super(plugin);
   }
   
+  @Override
   public ArrayList<Integer> valueTableColumnWeights() {
     ArrayList<Integer> _newArrayList = CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2));
     return _newArrayList;

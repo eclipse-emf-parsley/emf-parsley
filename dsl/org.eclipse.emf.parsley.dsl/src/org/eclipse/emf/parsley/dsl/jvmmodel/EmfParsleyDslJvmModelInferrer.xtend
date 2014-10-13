@@ -733,8 +733,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 	
 	def private genBindMethod(EObject element, JvmGenericType type, Class<?> clazz) {
-		genBindMethod(element, typeRef(clazz)) [
-			annotations += annotationRef(Override)
+		genBindMethod(element, typeRef(clazz), true) [
 			body = [
 				append("return ")
 				append(type)
@@ -745,38 +744,22 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def handleBindingsSpecification(JvmGenericType it, BindingsSpecification bindingsSpecification) {
 		for (binding : bindingsSpecification.bindings) {
+			var JvmOperation method = null
 			if (binding instanceof TypeBinding) {
-				addBindMethod(binding)
+				method = genBindMethod(binding)
 			} else if (binding instanceof ProviderBinding) {
-				addProvideMethod(binding)
+				method = genProvideMethod(binding)
 			} else if (binding instanceof ValueBinding) {
-				addValueMethod(binding)
+				method = genValueMethod(binding)
+			}
+			
+			if (method != null) {
+				members += method
 			}
 		}
 	}
 
-	def private addBindMethod(JvmGenericType it, TypeBinding typeBinding) {
-		val method = genBindMethod(typeBinding)
-		if (method != null) {
-			members += method
-		}
-	}
-
-	def private addProvideMethod(JvmGenericType it, ProviderBinding binding) {
-		val method = genProvideMethod(binding)
-		if (method != null) {
-			members += method
-		}
-	}
-
-	def private addValueMethod(JvmGenericType it, ValueBinding binding) {
-		val method = genValueMethod(binding)
-		if (method != null) {
-			members += method
-		}
-	}
-
-	def private genBindMethod(TypeBinding typeBinding) {
+	def private genBindMethod(JvmGenericType it, TypeBinding typeBinding) {
 		if (typeBinding.type == null) {
 			return null
 		}
@@ -789,7 +772,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private genProvideMethod(ProviderBinding binding) {
+	def private genProvideMethod(JvmGenericType it, ProviderBinding binding) {
 		if (binding.type == null) {
 			return null
 		}
@@ -802,7 +785,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private genValueMethod(ValueBinding binding) {
+	def private genValueMethod(JvmGenericType it, ValueBinding binding) {
 		if (binding.typeDecl == null || binding.id == null) {
 			return null
 		}
@@ -812,30 +795,53 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private genBindMethod(EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
-		element.genMethodForGuiceModuleWithWildcard("bind", typeRefToBind.simpleName, typeRefToBind.cloneWithProxies, acceptor)
+
+	def private genBindMethod(EObject element, JvmTypeReference typeRefToBind, boolean shouldOverride, IAcceptor<JvmExecutable> acceptor) {
+		element.genMethodForGuiceModuleWithWildcard("bind" + typeRefToBind.simpleName,
+			typeRefToBind.cloneWithProxies, shouldOverride, acceptor
+		)
 	}
 
-	def private genProvideMethod(EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
-		element.genMethodForGuiceModuleWithWildcard("provide", typeRefToBind.simpleName, typeRef(Provider, typeRefToBind.cloneWithProxies), acceptor)
+	def private genBindMethod(JvmGenericType it, EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		val methodName = "bind" + typeRefToBind.simpleName
+		element.genMethodForGuiceModuleWithWildcard(methodName,
+			typeRefToBind.cloneWithProxies, shouldOverride(methodName), acceptor
+		)
 	}
 
-	def private genValueMethod(EObject element, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
-		element.genMethodForGuiceModule("value", methodName, typeRefToBind.cloneWithProxies, acceptor)
+	def private genProvideMethod(JvmGenericType it, EObject element, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		val methodName = "provide" + typeRefToBind.simpleName
+		element.genMethodForGuiceModuleWithWildcard(methodName, 
+			typeRef(Provider, typeRefToBind.cloneWithProxies), shouldOverride(methodName), acceptor
+		)
 	}
 
-	def private genMethodForGuiceModuleWithWildcard(EObject element, String prefix, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+	def private genValueMethod(JvmGenericType it, EObject element, String name, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
+		val methodName = "value" + name
+		element.genMethodForGuiceModule(methodName, typeRefToBind.cloneWithProxies, shouldOverride(methodName), acceptor)
+	}
+
+	def private genMethodForGuiceModuleWithWildcard(EObject element, String methodName, 
+		JvmTypeReference typeRefToBind, boolean shouldOverride, IAcceptor<JvmExecutable> acceptor
+	) {
 		val wildCard = createJvmWildcardTypeReference
 		val upperBound = createJvmUpperBound
 		upperBound.typeReference = typeRefToBind.cloneWithProxies
 		wildCard.constraints += upperBound
-		element.genMethodForGuiceModule(prefix, methodName, typeRef(Class, wildCard), acceptor)
+		element.genMethodForGuiceModule(methodName, typeRef(Class, wildCard), shouldOverride, acceptor)
 	}
 
-	def private genMethodForGuiceModule(EObject element, String prefix, String methodName, JvmTypeReference typeRefToBind, IAcceptor<JvmExecutable> acceptor) {
-		element.toMethod(prefix + methodName, typeRefToBind) [
+	def private genMethodForGuiceModule(EObject element, String methodName, JvmTypeReference typeRefToBind, boolean shouldOverride, IAcceptor<JvmExecutable> acceptor) {
+		element.toMethod(methodName, typeRefToBind) [
+			if (shouldOverride) {
+				annotations += annotationRef(Override)
+			}
 			acceptor.accept(it)
 		]
+	}
+
+	def private shouldOverride(JvmGenericType it, String methodName) {
+		allFeatures.filter(JvmOperation).exists[simpleName == methodName]
 	}
 }
 
