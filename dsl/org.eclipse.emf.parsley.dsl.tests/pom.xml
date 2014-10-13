@@ -93,7 +93,7 @@
 							<useUIThread>true</useUIThread>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${uiTestsArgs}</argLine>
+							<argLine>${tycho.testArgLine} ${uiTestsArgs} ${pdeTestsArgs}</argLine>
 							<includes>
 								<include>**/org/eclipse/emf/parsley/dsl/ui/tests/*Test.java</include>
 							</includes>

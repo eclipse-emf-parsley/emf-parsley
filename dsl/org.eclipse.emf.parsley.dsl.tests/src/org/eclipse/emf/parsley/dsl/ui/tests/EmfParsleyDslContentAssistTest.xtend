@@ -10,12 +10,22 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.tests
 
+import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslUiInjectorProvider
+import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
+import org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator
+import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
+import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
+import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.xbase.junit.ui.AbstractContentAssistTest
+import org.junit.AfterClass
+import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
@@ -23,6 +33,37 @@ import org.junit.runner.RunWith
  * @author Lorenzo Bettini
  */
 class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
+	
+	static IJavaProject pluginJavaProject
+	
+	val static PROJECT_NAME = "customPluginProject"
+	
+	@BeforeClass
+	def static void setUp() {
+		PDETargetPlatformUtils.setTargetPlatform();
+		
+		val injector = EmfParsleyDslActivator.getInstance().getInjector
+			(EmfParsleyDslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL);
+		
+		val projectHelper = injector.getInstance(PluginProjectHelper)
+		
+		pluginJavaProject = projectHelper.createJavaPluginProject
+			(PROJECT_NAME, newArrayList(
+				"org.eclipse.core.runtime",
+				"org.eclipse.ui",
+				EmfParsleyViewsActivator.PLUGIN_ID,
+				"org.eclipse.xtext.xbase.lib"))
+	}
+	
+	@AfterClass
+	def static void tearDown() {
+		pluginJavaProject.project.delete(true, new NullProgressMonitor)
+	}
+	
+	override getJavaProject(ResourceSet resourceSet) {
+		pluginJavaProject
+	}
+	
 	
 	@Test def void testImportCompletion() {
 		newBuilder.append('import java.util.Da').assertText('java.util.Date')
@@ -96,6 +137,13 @@ module my.test.proj {
 			List : '''			
 		).assertText('class', 'empty')
 		// these correspond to getClass and isEmpty
+	}
+
+	@Test def void testProposalsForModuleExtends() {
+		newBuilder.append(
+'''module my.test.proj extends '''			
+		).assertText(EmfParsleyGuiceModule.canonicalName)
+		// that's the only possible completion in this test
 	}
 
 }

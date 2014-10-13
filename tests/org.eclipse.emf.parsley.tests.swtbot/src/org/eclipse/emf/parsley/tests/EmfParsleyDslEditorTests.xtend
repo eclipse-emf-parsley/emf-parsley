@@ -224,22 +224,6 @@ module my.test.proj {
 	}
 
 	@Test
-	def void checkProposalForModuleExtends() {
-		assertProposal(
-'''
-module my.test.proj extends 
-''',
-		"",
-		"EmfParsleyGuiceModule - org.eclipse.emf.parsley",
-'''
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-
-module my.test.proj extends 
-EmfParsleyGuiceModule'''			
-		)
-	}
-
-	@Test
 	def void checkProposalForModuleExtendsIsGuiceModule() {
 		assertNoProposals(
 '''
