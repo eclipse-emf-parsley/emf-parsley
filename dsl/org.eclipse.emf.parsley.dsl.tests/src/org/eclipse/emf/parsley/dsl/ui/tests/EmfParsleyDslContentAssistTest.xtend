@@ -26,6 +26,8 @@ import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
+import org.eclipse.xtext.junit4.ui.ContentAssistProcessorTestBuilder
+import static extension org.junit.Assert.*
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
@@ -63,7 +65,6 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	override getJavaProject(ResourceSet resourceSet) {
 		pluginJavaProject
 	}
-	
 	
 	@Test def void testImportCompletion() {
 		newBuilder.append('import java.util.Da').assertText('java.util.Date')
@@ -141,9 +142,59 @@ module my.test.proj {
 
 	@Test def void testProposalsForModuleExtends() {
 		newBuilder.append(
-'''module my.test.proj extends '''			
+'''module my.test.proj extends '''
 		).assertText(EmfParsleyGuiceModule.canonicalName)
 		// that's the only possible completion in this test
+	}
+
+	@Test def void testProposalForTypeInViewSpecification() {
+		newBuilder.append(
+'''
+module my.test.proj {
+	
+	parts {
+		viewpart id {
+			viewname "View Name"
+			viewclass '''
+		).assertProposalSolutions(
+"View", "E4PartWrapper", "ContentOutline", "PropertySheet"
+		)
+		// only IViewPart sutypes
+	}
+
+	@Test def void testProposalForFeatureSpecification() {
+		newBuilder.append(
+'''
+module my.test.proj {
+	
+	featuresProvider {
+		features { '''
+		).assertProposalSolutions(
+"emf.ecore", "emf.edit.tree"
+		)
+		// only EObject sutypes
+	}
+
+	@Test def void testProposalForFeatureAssociatedExpression() {
+		newBuilder.append(
+'''
+module my.test.proj {
+	
+	featureCaptionProvider {
+		text { '''
+		).assertProposalSolutions(
+"emf.ecore", "emf.edit.tree"
+		)
+		// only EObject sutypes
+	}
+
+	def private assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String...acceptableParts) {
+		for (p : builder.computeCompletionProposals) {
+			assertTrue(
+				"proposal not expected: " + p.displayString,
+				acceptableParts.exists[p.displayString.contains(it)]
+			)
+		}
 	}
 
 }

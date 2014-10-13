@@ -69,7 +69,7 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 
 	def protected void showSubtypesOfEObjectForEmfFeatureAccess(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		showOnlySubtypesOf(model, context, acceptor, model.expectedSupertype);
+		showOnlySubtypesOf(model, context, acceptor, FEATURE_ASSOCIATED_EXPRESSION.expectedSupertype);
 	}
 
 	def protected void showOnlySubtypesOf(EObject model,
