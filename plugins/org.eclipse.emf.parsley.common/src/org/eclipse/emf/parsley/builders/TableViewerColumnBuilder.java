@@ -85,7 +85,7 @@ public class TableViewerColumnBuilder {
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
 			int weight=defaultWeight;
 			if(weights.size()>i){
-				weight=(Integer)weights.get(i++);
+				weight=weights.get(i++);
 			}
 			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature,
 					contentProvider,weight);
