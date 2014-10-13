@@ -10,19 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.google.common.collect.Iterables
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
+import org.eclipse.emf.parsley.util.EmfParsleyUtil
+import org.junit.Test
 
-import java.util.ArrayList;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
-import org.eclipse.emf.parsley.examples.library.Library;
-import org.eclipse.emf.parsley.util.EmfParsleyUtil;
-import org.junit.Test;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertNotNull
 
 /**
  * @author Lorenzo Bettini
@@ -30,7 +25,7 @@ import com.google.common.collect.Lists;
  */
 public class EmfParsleyUtilTest {
 	
-	public EmfParsleyUtilTest() {
+	new() {
 		// the following is useless... but it's just to have coverage
 		// for the protected constructor of EmfParsleyConstants
 		// and the protected constructor is "required" by sonar...
@@ -40,39 +35,53 @@ public class EmfParsleyUtilTest {
 	}
 	
 	@Test
-	public void testEnsureCollectionGivenNull() {
+	def void testEnsureCollectionGivenNull() {
 		assertNotNull(EmfParsleyUtil.ensureCollection(null));
 	}
 
 	@Test
-	public void testEnsureCollectionGivenSingleElement() {
+	def void testEnsureCollectionGivenSingleElement() {
 		assertEquals(1, EmfParsleyUtil.ensureCollection(new Integer(0)).size());
 	}
 
 	@Test
-	public void testEnsureCollectionGivenIterable() {
+	def void testEnsureCollectionGivenIterable() {
 		assertEquals(2, EmfParsleyUtil.ensureCollection(createIterable())
 				.size());
 	}
 
 	@Test
-	public void testEnsureCollectionGivenCollection() {
-		ArrayList<String> list = Lists.newArrayList("first", "second");
+	def void testEnsureCollectionGivenCollection() {
+		val list = newArrayList("first", "second");
 		assertEquals(list, EmfParsleyUtil.ensureCollection(list));
 	}
 
 	@Test
-	public void testEnsureCollectionGivenIterator() {
-		ArrayList<String> list = Lists.newArrayList("first", "second");
+	def void testEnsureCollectionGivenIterator() {
+		val list = newArrayList("first", "second");
 		assertEquals(list.size(),
 				EmfParsleyUtil.ensureCollection(list.iterator()).size());
 	}
 
-	protected Iterable<EObject> createIterable() {
-		Library library = EXTLibraryFactory.eINSTANCE.createLibrary();
+	@Test
+	def void testToIntArrayEmpty() {
+		val list = newArrayList();
+		assertEquals("",
+				EmfParsleyUtil.toIntArray(list).map[toString].join(""));
+	}
+
+	@Test
+	def void testToIntArray() {
+		val list = newArrayList(1, 2, 3);
+		assertEquals("1, 2, 3",
+				EmfParsleyUtil.toIntArray(list).map[toString].join(", "));
+	}
+
+	def protected Iterable<EObject> createIterable() {
+		val library = EXTLibraryFactory.eINSTANCE.createLibrary();
 		library.getBooks().add(EXTLibraryFactory.eINSTANCE.createBook());
 		library.getWriters().add(EXTLibraryFactory.eINSTANCE.createWriter());
-		Iterable<EObject> iterable = Iterables.<EObject> concat(
+		val iterable = Iterables.<EObject> concat(
 				library.getBooks(), library.getWriters());
 		return iterable;
 	}

@@ -61,7 +61,7 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	@Override
 	public void update(Object contents) {
 		tableViewerBuilder.fill(tableViewer, contents, new ArrayContentProvider());
-		pagebook.showPage(tableViewer.getControl());
+		getPagebook().showPage(tableViewer.getControl());
 	}
 
 	private void removeExistingColumns() {

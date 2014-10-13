@@ -28,6 +28,10 @@ public class EmfParsleyConstants {
 
 	public static final String TABLE_COLUMN_WEIGHTS = "TableColumnWeights";
 
+	public static final String TREE_FORM_SASH_STYLE = "TreeFormSashStyle";
+
+	public static final String TREE_FORM_SASH_WEIGHTS = "TreeFormSashWeights";
+
 	protected EmfParsleyConstants() {
 
 	}

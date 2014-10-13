@@ -48,19 +48,21 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	}
 
-	protected ViewerInitializer viewerInitializer;
+	private ViewerInitializer viewerInitializer;
 
-	protected FormFactory formFactory;
+	private FormFactory formFactory;
 
-	protected EmfSelectionHelper emfSelectionHelper;
+	private EmfSelectionHelper emfSelectionHelper;
 
 	private final StructuredViewer viewer;
 
-	protected final PageBook pagebook;
+	private final PageBook pagebook;
 
 	private final Composite detail;
 
-	protected FormDetailComposite detailForm;
+	private FormDetailComposite detailForm;
+
+	private SashForm sashForm;
 
 	public AbstractMasterDetailComposite(Composite parent, int style) {
 		this(parent, style, SWT.VERTICAL, new int[0]);
@@ -70,7 +72,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		super(parent, style);
 		setLayout(new FillLayout());
 
-		SashForm sashForm = new SashForm(this, sashStyle);
+		sashForm = new SashForm(this, sashStyle);
 
 		pagebook = new PageBook(sashForm, SWT.BORDER);
 		detail = new Composite(sashForm, SWT.BORDER);
@@ -138,6 +140,14 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	@Inject
 	public void setEmfSelectionHelper(EmfSelectionHelper emfSelectionHelper) {
 		this.emfSelectionHelper = emfSelectionHelper;
+	}
+
+	protected PageBook getPagebook() {
+		return pagebook;
+	}
+
+	public SashForm getSashForm() {
+		return sashForm;
 	}
 
 }

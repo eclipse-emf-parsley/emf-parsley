@@ -65,6 +65,7 @@ import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
@@ -134,6 +135,20 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 	 * The list of Integer weights for a table's columns
 	 */
 	public List<Integer> valueTableColumnWeights() {
+		return Collections.<Integer>emptyList();
+	}
+
+	/**
+	 * The int constant defining the Sash style in a TreeFormComposite
+	 */
+	public int valueTreeFormSashStyle() {
+		return SWT.VERTICAL;
+	}
+
+	/**
+	 * The list of Integer weights for the Sash of a TreeFormComposite
+	 */
+	public List<Integer> valueTreeFormSashWeights() {
 		return Collections.<Integer>emptyList();
 	}
 

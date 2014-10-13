@@ -25,10 +25,6 @@ import org.eclipse.swt.widgets.Composite;
  * 
  */
 public class TreeFormComposite extends AbstractMasterDetailComposite {
-
-	public TreeFormComposite(Composite parent, int style) {
-		this(parent, style, SWT.VERTICAL, new int[0]);
-	}
 	
 	public TreeFormComposite(Composite parent, int style, int sashStyle, int[] weights) {
 		super(parent, style, sashStyle, weights);

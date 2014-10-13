@@ -37,6 +37,7 @@ import org.junit.runners.Suite;
 	FormControlFactoryWithEditingDomainTest.class,
 	TableViewerBuilderTest.class,
 	TableViewerColumnBuilderTest.class,
+	TreeFormFactoryTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
 	NotificationBufferTest.class,

@@ -11,11 +11,16 @@
 package org.eclipse.emf.parsley.factories;
 
 
+import java.util.List;
+
+import org.eclipse.emf.parsley.EmfParsleyConstants;
+import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.widgets.TreeFormComposite;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 import com.google.inject.MembersInjector;
+import com.google.inject.name.Named;
 
 /**
  * @author Lorenzo Bettini
@@ -25,6 +30,14 @@ public class TreeFormFactory {
 
 	@Inject
 	protected MembersInjector<TreeFormComposite> treeFormCompositeMembersInjector;
+	
+	@Inject
+	@Named(EmfParsleyConstants.TREE_FORM_SASH_STYLE)
+	private int sashStyle;
+
+	@Inject
+	@Named(EmfParsleyConstants.TREE_FORM_SASH_WEIGHTS)
+	private List<Integer> weights;
 
 	@Inject
 	public TreeFormFactory() {
@@ -42,6 +55,6 @@ public class TreeFormFactory {
 	}
 
 	protected TreeFormComposite createComposite(Composite parent, int style) {
-		return new TreeFormComposite(parent, style);
+		return new TreeFormComposite(parent, style, sashStyle, EmfParsleyUtil.toIntArray(weights));
 	}
 }

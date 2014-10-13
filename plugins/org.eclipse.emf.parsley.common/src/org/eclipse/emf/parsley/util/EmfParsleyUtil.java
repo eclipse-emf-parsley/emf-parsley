@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.util;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import com.google.common.collect.Lists;
 
@@ -48,5 +49,19 @@ public class EmfParsleyUtil {
 		} else {
 			return Collections.singleton(contents);
 		}
+	}
+
+	/**
+	 * Given a List of Integer it returns an array of int
+	 * @param intList
+	 * @return
+	 */
+	public static int[] toIntArray(List<Integer> intList) {
+		int[] result = new int[intList.size()];
+		int i = 0;
+		for (Integer e : intList) {
+			result[i++] = e;
+		}
+		return result;
 	}
 }
