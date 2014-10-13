@@ -37,8 +37,6 @@ Module:
 			(viewerContentProvider = ViewerContentProvider)?
 			&
 			(partsSpecifications = PartsSpecifications)?
-			&
-			(treeFormFactory = TreeFormFactory)?
 		)
 	'}'
 ;
@@ -291,8 +289,7 @@ WithExtendsClause:
 
 WithFields:
 	LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
-	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |
-	TreeFormFactory
+	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider
 ;
 
 PartsSpecifications:
@@ -309,18 +306,4 @@ ViewSpecification:
 		'viewclass' type=JvmTypeReference
 		('viewcategory' category=QualifiedName)?
 	'}'
-;
-
-TreeFormFactory:
-	{TreeFormFactory} 'treeFormFactory' (extendsClause=ExtendsClause)? '{'
-		fields += FieldSpecification*
-		
-		orientation = TreeFormOrientation
-		('(' treeWeight = INT ':' formWeight = INT ')')?
-	'}'
-;
-
-enum TreeFormOrientation:
-	VERTICAL= 'vertical' | 
-	HORIZONTAL= 'horizontal'
 ;

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.validation
 
+import com.google.inject.Singleton
 import java.util.HashMap
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
@@ -17,6 +18,7 @@ import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
@@ -27,9 +29,6 @@ import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.ui.IViewPart
 
 import static org.eclipse.emf.parsley.dsl.model.ModelPackage.Literals.*
-import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
-import org.eclipse.emf.parsley.factories.TreeFormFactory
-import com.google.inject.Singleton
 
 /**
  * Utility class that associates to each DSL element that can 'extends'
@@ -73,7 +72,6 @@ class EmfParsleyDslExpectedSuperTypes {
 		expected.put(DIALOG_CONTROL_FACTORY, DialogControlFactory)
 		expected.put(PROPOSAL_CREATOR, ProposalCreator)
 		expected.put(VIEWER_CONTENT_PROVIDER, ViewerContentProvider)
-		expected.put(TREE_FORM_FACTORY, TreeFormFactory)
 	}
 
 	def getExpectedSupertype(EObject element) {

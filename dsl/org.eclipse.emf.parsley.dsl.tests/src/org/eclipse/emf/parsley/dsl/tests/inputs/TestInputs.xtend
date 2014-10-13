@@ -565,38 +565,4 @@ module my.test {
 }
 '''
 
-	def treeFormFactory() 
-'''
-module my.test.project {
-
-	
-	treeFormFactory {
-		horizontal
-	}
-}
-'''
-
-	def treeFormFactoryWithExtends() 
-'''
-import org.eclipse.emf.parsley.dsl.tests.inputs.TestTreeFormFactory
-
-module my.test.project {
-	treeFormFactory extends TestTreeFormFactory {
-		horizontal
-	}
-}
-'''
-
-	def treeFormFactoryWithWeights() 
-'''
-module my.test.project {
-
-	
-	treeFormFactory {
-		vertical(2:1)
-	}
-}
-
-'''
-
 }

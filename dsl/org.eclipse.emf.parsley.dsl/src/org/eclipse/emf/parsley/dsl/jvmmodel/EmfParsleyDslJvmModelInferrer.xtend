@@ -37,7 +37,6 @@ import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.model.WithFields
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
-import org.eclipse.emf.parsley.factories.TreeFormFactory
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
@@ -47,10 +46,8 @@ import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
-import org.eclipse.emf.parsley.widgets.TreeFormComposite
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
-import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Control
 import org.eclipse.swt.widgets.Label
@@ -137,7 +134,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val dialogControlFactoryClass = element.inferDialogControlFactory(acceptor)
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
-		val treeFormFactoryClass = element.inferTreeFormFactory(acceptor)
 		
 		acceptor.accept(moduleClass) [
 			documentation = element.documentation
@@ -176,9 +172,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.viewerContentProvider.genBindMethod(viewerContentProviderClass, typeof(IContentProvider))
 			if (proposalCreatorClass != null)
 				members += element.proposalCreator.genBindMethod(proposalCreatorClass, typeof(ProposalCreator))
-			if (treeFormFactoryClass != null)
-				members += element.treeFormFactory.genBindMethod(treeFormFactoryClass, typeof(TreeFormFactory))
-			
 		]
 
    	}
@@ -672,48 +665,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				}
 			]
 			proposalCreatorClass
-		}
-	}
-	
-	def inferTreeFormFactory(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.treeFormFactory == null)
-			null
-		else {
-			val treeFormFactory = element.treeFormFactory
-			val treeFormFactoryClass = treeFormFactory.toClass(element.treeFormFactoryQN)
-			acceptor.accept(treeFormFactoryClass) [
-				setSuperClassTypeAndFields(treeFormFactory, typeof(TreeFormFactory))
-				
-				members += treeFormFactory.toMethod('createComposite', typeRef(TreeFormComposite)) [
-						parameters += element.treeFormFactory.toParameter(
-						"parent", typeRef(Composite)
-					)
-					parameters += element.treeFormFactory.toParameter(
-						"style", typeRef(int)
-					)
-					annotations += annotationRef(Override)
-					visibility = JvmVisibility::PROTECTED
-					body = [
-						append(typeRef(TreeFormComposite).type)
-						var weights=''', new int['''
-						if((element.treeFormFactory.treeWeight!=0) &&element.treeFormFactory.formWeight!=0){
-							weights=weights+'''] {'''+
-							element.treeFormFactory.treeWeight +''','''+element.treeFormFactory.formWeight+'''}'''
-						} else{
-							weights=weights+'''0]'''
-						}
-						
-						
-						append(''' control = new TreeFormComposite (parent,	style, ''').
-						append(typeof(SWT).findDeclaredType(element)).append('''.''')
-						append(element.treeFormFactory.orientation.getName).append(weights.toString).
-						append(''');''').newLine
-						
-						append('''return control;''')
-					]
-				]
-			]
-			treeFormFactoryClass
 		}
 	}
 

@@ -25,11 +25,8 @@ public class LabelProviderGen extends ViewerLabelProvider {
       EList<SalesOrder> _salesOrders = customer.getSalesOrders();
       int _indexOf = _salesOrders.indexOf(it);
       int i = (_indexOf + 1);
-      String _plus = ("order " + Integer.valueOf(i));
-      String _plus_1 = (_plus + " made by ");
       String _name = customer.getName();
-      String _plus_2 = (_plus_1 + _name);
-      _xblockexpression = (_plus_2);
+      _xblockexpression = ((("order " + Integer.valueOf(i)) + " made by ") + _name);
     }
     return _xblockexpression;
   }

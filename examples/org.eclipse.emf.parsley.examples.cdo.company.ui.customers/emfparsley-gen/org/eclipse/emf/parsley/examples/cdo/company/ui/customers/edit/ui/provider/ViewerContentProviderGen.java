@@ -30,8 +30,7 @@ public class ViewerContentProviderGen extends ViewerContentProvider {
         EList<EObject> _contents_1 = it.getContents();
         EObject _get = _contents_1.get(0);
         final Company company = ((Company) _get);
-        EList<Customer> _customers = company.getCustomers();
-        _xblockexpression = (_customers);
+        _xblockexpression = company.getCustomers();
       }
       _xifexpression = _xblockexpression;
     }

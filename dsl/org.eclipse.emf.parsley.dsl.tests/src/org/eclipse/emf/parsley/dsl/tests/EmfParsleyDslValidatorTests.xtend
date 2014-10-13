@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
+import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
@@ -22,7 +23,6 @@ import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.examples.library.Library
-import org.eclipse.emf.parsley.factories.TreeFormFactory
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
@@ -32,18 +32,17 @@ import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.emf.parsley.views.AbstractSaveableTreeView
 import org.eclipse.ui.IViewPart
+import org.eclipse.xtext.diagnostics.Severity
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.eclipse.xtext.xbase.XbasePackage
+import org.eclipse.xtext.xbase.validation.IssueCodes
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
-import java.util.List
-import org.eclipse.xtext.xbase.XbasePackage
-import org.eclipse.xtext.xbase.validation.IssueCodes
-import org.eclipse.xtext.diagnostics.Severity
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -163,12 +162,6 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	def void testNotValidViewerContentProviderExtends() {
 		"viewerContentProvider".
 			assertExtendsTypeMismatch(ViewerContentProvider)
-	}
-
-	@Test
-	def void testNotValidTreeFormFactoryExtends() {
-		"treeFormFactory".
-			assertExtendsTypeMismatch(TreeFormFactory)
 	}
 
 	@Test
