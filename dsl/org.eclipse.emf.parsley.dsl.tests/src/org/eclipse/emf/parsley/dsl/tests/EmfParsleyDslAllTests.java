@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.tests;
 
-import org.eclipse.emf.parsley.dsl.tests.EmfParsleyDslGeneratorTests;
-import org.eclipse.emf.parsley.dsl.tests.EmfParsleyDslJvmModelInferrerTests;
-import org.eclipse.emf.parsley.dsl.tests.EmfParsleyDslParserTests;
-import org.eclipse.emf.parsley.dsl.tests.EmfParsleyDslPluginXmlGeneratorTests;
-import org.eclipse.emf.parsley.dsl.tests.EmfParsleyDslValidatorTests;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -28,6 +22,7 @@ import org.junit.runners.Suite;
 	EClassTests.class,
 	EmfParsleyDslGeneratorUtilsTests.class,
 	EmfParsleyDslParserTests.class,
+	EmfParsleyDslGuiceModuleHelperTests.class,
 	EmfParsleyDslSmokeTests.class,
 	EmfParsleyDslScopingTests.class,
 	EmfParsleyDslValidatorTests.class,

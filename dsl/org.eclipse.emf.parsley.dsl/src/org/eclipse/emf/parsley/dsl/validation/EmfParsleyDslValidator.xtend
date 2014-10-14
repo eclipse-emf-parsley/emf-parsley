@@ -29,6 +29,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
+import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 
 //import org.eclipse.xtext.validation.Check
 
@@ -51,6 +52,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	@Inject EmfParsleyDslTypeSystem typeSystem
 	@Inject extension EmfParsleyDslExpectedSuperTypes
+	@Inject extension EmfParsleyDslGuiceModuleHelper
 	@Inject extension IJvmModelAssociations
 	
 	val modelPackage = ModelPackage.eINSTANCE
@@ -95,7 +97,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		// the inferred Guice module for this DSL Module element
 		// we create a single class for the Module and it is a Guice module
 		// so we can take the first element of the filter
-		val guiceModuleClass = module.jvmElements.filter(JvmGenericType).head
+		val guiceModuleClass = module.moduleInferredType
 		if (guiceModuleClass == null) {
 			return
 		}
@@ -137,10 +139,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	def checkCorrectValueBindings(JvmGenericType guiceModuleClass, Iterable<JvmOperation> methods, Module module) {
 		// These are all the value bindings in the superclass
-		val superClassValueBindings = 
-			(guiceModuleClass.superTypes.head.type as JvmGenericType).
-				allFeatures.filter(JvmOperation).
-				filter[simpleName.startsWith("value")]
+		val superClassValueBindings = guiceModuleClass.allGuiceValueBindingsMethodsInSuperclass
 		// check that the return type of the value bindings in this module
 		// are compliant (they can be subtypes)
 		for (superBinding : superClassValueBindings) {
