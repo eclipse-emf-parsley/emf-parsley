@@ -12,15 +12,8 @@ package org.eclipse.emf.parsley.dsl.ui.wizard;
 
 import java.util.Iterator;
 
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionFormTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableFormTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTreeFormTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableFormTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTreeFormTemplateWizardHelper;
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTreeTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
+import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfigurationsFactory;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -46,16 +39,6 @@ import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
  */
 public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implements ISelectionChangedListener{
 
-	private static final TemplateWizardConfiguration[] INPUT = new TemplateWizardConfiguration[]{
-			SaveableTreeTemplateWizardHelper.singlethon,
-			SaveableTreeFormTemplateWizardHelper.singlethon,
-			SaveableTableTemplateWizardHelper.singlethon,
-			SaveableTableFormTemplateWizardHelper.singlethon,
-			OnSelectionFormTemplateWizardHelper.singlethon,
-			OnSelectionTreeFormTemplateWizardHelper.singlethon,
-			OnSelectionTableTemplateWizardHelper.singlethon,
-			OnSelectionTableFormTemplateWizardHelper.singlethon
-			};
 	public static final String ONSELECTION_CATEGORY = "On selection";
 	public static final String SAVEABLE_CATEGORY = "Saveable";
 
@@ -121,7 +104,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		});
 		
 		createDescriptionIn(sashForm);
-		templateSelectionViewer.setInput(INPUT);
+		templateSelectionViewer.setInput(new TemplateWizardConfigurationsFactory().createTemplateWizardConfigurations());
 		templateSelectionViewer.addSelectionChangedListener(this);
 		Dialog.applyDialogFont(container);
 		setPageComplete(false);
