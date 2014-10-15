@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.wizard;
 
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.IWizardTemplate;
+import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
 import org.eclipse.xtext.ui.wizard.DefaultProjectInfo;
 
 /**
@@ -19,13 +19,13 @@ import org.eclipse.xtext.ui.wizard.DefaultProjectInfo;
  */
 public class EmfParsleyDslProjectInfo extends DefaultProjectInfo {
 	
-	private IWizardTemplate selectedTemplate;
+	private TemplateWizardConfiguration selectedTemplate;
 	
-	public IWizardTemplate getSelectedTemplate() {
+	public TemplateWizardConfiguration getSelectedTemplate() {
 		return selectedTemplate;
 	}
 	
-	public void setSelectedTemplate(IWizardTemplate selectedTemplate) {
+	public void setSelectedTemplate(TemplateWizardConfiguration selectedTemplate) {
 		this.selectedTemplate = selectedTemplate;
 	}
 	

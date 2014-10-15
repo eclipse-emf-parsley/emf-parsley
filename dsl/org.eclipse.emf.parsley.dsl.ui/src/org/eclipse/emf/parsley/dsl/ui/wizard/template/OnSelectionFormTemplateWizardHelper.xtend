@@ -10,41 +10,28 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.wizard.template;
 
-import org.eclipse.core.resources.IProject
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport
-
 /**
  * @author Francesco Guidieri
  * 
  */
-public class OnSelectionFormTemplateWizardHelper extends AbstractTemplateWizardHelper{
+public class OnSelectionFormTemplateWizardHelper extends TemplateWizardConfiguration{
 	
-	public static final OnSelectionFormTemplateWizardHelper singlethon=new OnSelectionFormTemplateWizardHelper();
-	
-	override getLabel() {
-		"On selection Form View";
-	}
-
-
-	override getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		val className=getSimpleNameProject(packagePath) + "OnSelectionTreeView";
-		val classContent =viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString();
-		
-		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
-				 +className.concat(".java"), classContent,
-				NewEmfParsleyProjectSupport
-						.createSubProgressMonitor(monitor));
-		return projectName+"."+className;
-	}
-
-	override getDescription() {
+	public static final OnSelectionFormTemplateWizardHelper singlethon = new OnSelectionFormTemplateWizardHelper(
+		"On selection Form View",
+		"OnSelectionTreeView",
+		"",
+		[projectName, className | 
+			viewFilesGenerator.
+				generateConcreteForOnSelectionTableView(projectName, className).toString()
+		],
 		'''
 		<p>This wizard creates an Emf-Parsley plug-in with the following component:</p>
 		<li>On selection <b>form</b> view</li>
 		<p><b>No user change is needed to run the project</b></p>
 		'''
-	}
+	);
 
+	new(String label, String className, String postfix, (String,String)=>String classContentProvider, CharSequence description) {
+		super(label, className, postfix, classContentProvider, description)
+	}
 }

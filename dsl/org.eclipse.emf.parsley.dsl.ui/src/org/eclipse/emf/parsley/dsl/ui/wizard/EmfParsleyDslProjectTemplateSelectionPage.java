@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.dsl.ui.wizard;
 
 import java.util.Iterator;
 
-import org.eclipse.emf.parsley.dsl.ui.wizard.template.IWizardTemplate;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.OnSelectionTableTemplateWizardHelper;
@@ -21,6 +20,7 @@ import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableFormTemplateW
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTableTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTreeFormTemplateWizardHelper;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.SaveableTreeTemplateWizardHelper;
+import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -46,7 +46,7 @@ import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
  */
 public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implements ISelectionChangedListener{
 
-	private static final IWizardTemplate[] INPUT = new IWizardTemplate[]{
+	private static final TemplateWizardConfiguration[] INPUT = new TemplateWizardConfiguration[]{
 			SaveableTreeTemplateWizardHelper.singlethon,
 			SaveableTreeFormTemplateWizardHelper.singlethon,
 			SaveableTableTemplateWizardHelper.singlethon,
@@ -116,7 +116,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		templateSelectionViewer.setLabelProvider(new LabelProvider(){
 			@Override
 			public String getText(Object element) {
-				return ((IWizardTemplate)element).getLabel();
+				return ((TemplateWizardConfiguration)element).getLabel();
 			}
 		});
 		
@@ -128,22 +128,22 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		setControl(container);
 	}
 	
-	public IWizardTemplate getSelectedTemplate(){
-		return (IWizardTemplate) ((IStructuredSelection)templateSelectionViewer.getSelection()).getFirstElement();
+	public TemplateWizardConfiguration getSelectedTemplate(){
+		return (TemplateWizardConfiguration) ((IStructuredSelection)templateSelectionViewer.getSelection()).getFirstElement();
 	}
 	
 	public void selectionChanged(SelectionChangedEvent event) {
 		setErrorMessage(null);
 		IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-		IWizardTemplate currentWizardSelection = null;
+		TemplateWizardConfiguration currentWizardSelection = null;
 		Iterator<?> iter = selection.iterator();
 		if (iter.hasNext()) {
-			currentWizardSelection = (IWizardTemplate) iter.next();
+			currentWizardSelection = (TemplateWizardConfiguration) iter.next();
 		}
 		if (currentWizardSelection == null) {
 			setDescriptionText(""); //$NON-NLS-1$
 		} else{
-			setDescriptionText(currentWizardSelection.getDescription());			
+			setDescriptionText(currentWizardSelection.getDescription().toString());			
 		}
 		setPageComplete(currentWizardSelection!=null);
 		getContainer().updateButtons();
