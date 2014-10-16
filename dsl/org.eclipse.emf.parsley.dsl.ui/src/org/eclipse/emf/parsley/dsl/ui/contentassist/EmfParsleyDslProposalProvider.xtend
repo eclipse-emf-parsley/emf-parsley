@@ -110,6 +110,9 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 	}
 
 	override completeValueBinding_TypeDecl(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// show the standard Java type completions
+		completeJavaTypes(context, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, true, qualifiedNameValueConverter, createVisibilityFilter(context), acceptor)
+		// the completion for existing bindings will appear first
 		bindingProposalHelper.createBindingProposals(model, context, acceptor)
 	}
 	

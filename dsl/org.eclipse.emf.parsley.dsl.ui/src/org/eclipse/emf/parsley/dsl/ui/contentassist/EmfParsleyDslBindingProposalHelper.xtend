@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.dsl.ui.contentassist
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.jface.text.Region
@@ -45,19 +44,16 @@ class EmfParsleyDslBindingProposalHelper {
 	private EmfParsleyDslTypeSystem typeSystem;
 	
 	def createBindingProposals(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		if (model instanceof ValueBinding) {
-			createValueBindingProposals(model, context, acceptor)
-		}
-	}
-
-	def private createValueBindingProposals(ValueBinding binding, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		val module = binding.containingModule
+		// this can be called either with model == ValueBinding, in case you still haven't written
+		// anything after 'value' or with a JvmTypeReference if you started writing something, e.g.,
+		// 'value v' and press Ctrl+Space
+		val module = model.containingModule
 		
 		// These are all the value bindings in the superclass
 		val superClassValueBindings = module.allGuiceValueBindingsMethodsInSuperclass
 
 		for (op : superClassValueBindings) {
-			createProposals(binding, op, context, acceptor)
+			createProposals(model, op, context, acceptor)
 		}
 	}
 
@@ -76,6 +72,9 @@ class EmfParsleyDslBindingProposalHelper {
 					" - Override method from " + op.declaringType.simpleName,
 					StyledString.QUALIFIER_STYLER), labelProvider.getImage(op))
 		
+		// the high priority will make these proposals appear before
+		// the standard proposals for Java types
+		completionProposal.priority = 1500
 		completionProposal.setMatcher[name, prefix |
 			val delegate = context.getMatcher();
 			delegate.isCandidateMatchingPrefix(op.simpleName, prefix);

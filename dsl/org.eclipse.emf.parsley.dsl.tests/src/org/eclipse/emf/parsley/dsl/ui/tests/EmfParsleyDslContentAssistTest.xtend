@@ -194,19 +194,30 @@ module my.test.proj {
 module my.test.proj {
 	
 	bindings {
-		value '''
-		).assertProposals(
-'''
-Integer DefaultTableColumnWeight
-Integer IterableStringMaxLength
-List<Integer> TableColumnWeights
-List<Integer> TreeFormSashWeights
-String ContentAssistShortcut
-String IterableStringEllipses
-String IterableStringSeparator
-int TreeFormSashStyle'''
+		value valueT<|>'''
+		).assertProposalAtCursor(
+'''List<Integer> TableColumnWeights'''
 		)
-		// only EObject sutypes
+	}
+
+	@Test def void testProposalForValueBindingType() {
+		newBuilder.append(
+'''
+module my.test.proj {
+	
+	bindings {
+		value EObje<|>'''
+		).assertProposalAtCursor(
+'''org.eclipse.emf.ecore.EObject'''
+		).apply.expectContent(
+'''
+import org.eclipse.emf.ecore.EObject
+
+module my.test.proj {
+	
+	bindings {
+		value EObject<|>'''
+		)
 	}
 
 	def private assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String...acceptableParts) {
@@ -218,7 +229,7 @@ int TreeFormSashStyle'''
 		}
 	}
 
-	def private assertProposals(ContentAssistProcessorTestBuilder builder, CharSequence expected) {
-		builder.assertText(expected.toString.split("\\r?\\n"))
-	}
+//	def private assertProposals(ContentAssistProcessorTestBuilder builder, CharSequence expected) {
+//		builder.assertText(expected.toString.split("\\r?\\n"))
+//	}
 }
