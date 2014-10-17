@@ -74,15 +74,24 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		newBuilder.append('import LinkedHashSet').assertText('java.util.LinkedHashSet')
 	}
 	
-	@Test def void testTypeCompletion() {
-		newBuilder.append(
+	@Test def void testTypeCompletionInsertsImport() {
+		appendAndApplyProposalAndExpectContent(
 '''
 module my.parsley.project {
 	
 	labelProvider {
 		text {
-			LinkedHashSet'''			
-		).assertText('java.util.LinkedHashSet')
+			LinkedHashSet''',
+'java.util.LinkedHashSet',
+'''
+import java.util.LinkedHashSet
+
+module my.parsley.project {
+	
+	labelProvider {
+		text {
+			LinkedHashSet'''
+)
 	}
 
 	@Test def void testEmfFeatureForFeatureProvider() {
@@ -188,15 +197,21 @@ module my.test.proj {
 		// only EObject sutypes
 	}
 
-	@Test def void testProposalForValueBinding() {
-		newBuilder.append(
+	@Test def void testApplyProposalForValueBindingAlsoInsertsImport() {
+		appendAndApplyProposalAndExpectContent(
 '''
 module my.test.proj {
 	
 	bindings {
-		value valueT<|>'''
-		).assertProposalAtCursor(
-'''List<Integer> TableColumnWeights'''
+		value valueT''',
+'''List<Integer> TableColumnWeights''',
+'''
+import java.util.List
+
+module my.test.proj {
+	
+	bindings {
+		value List<Integer> TableColumnWeights'''
 		)
 	}
 
@@ -227,6 +242,20 @@ module my.test.proj {
 				acceptableParts.exists[p.displayString.contains(it)]
 			)
 		}
+	}
+
+	def private appendAndApplyProposalAndExpectContent(String model, String proposal, String expectedContent) {
+		// we must use appendAndApplyProposal and NOT assertProposal.apply because the ContentAssistProcessorTestBuilder
+		// will recreate an XtextDocument, and some ICompletionProposal proposals, like the one we use,
+		// ImportOrganizingProposal and ReplacingAppendable, don't use the passed document (ReplacingAppendable
+		// uses its internal stored document) and this would make our tests fail
+		newBuilder.
+		append(model).
+		appendAndApplyProposal(
+			"", // appendAndApplyProposals looks buggy: it does not append the passed String
+			// before computing the proposals, so we first append it and then pass an empty string
+			proposal
+		).expectContent(expectedContent)
 	}
 
 //	def private assertProposals(ContentAssistProcessorTestBuilder builder, CharSequence expected) {

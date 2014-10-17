@@ -85,26 +85,6 @@ viewpart id {
 	}
 
 	@Test
-	def void checkProposalForTypeInsertsImport() {
-		assertProposal(
-'''
-module «TEST_PROJ_NAME» {
-	labelProvider {
-		text {
-''',
-		"EClass",
-		"EClass - org.eclipse.emf.ecore",
-'''
-import org.eclipse.emf.ecore.EClass
-
-module my.emfparsley.proj {
-	labelProvider {
-		text {
-EClass'''			
-		)
-	}
-
-	@Test
 	def void checkOrganizeImportsInsertMissingImports() {
 		assertOrganizeImports(
 '''
