@@ -173,11 +173,6 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 			if (boolean.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Boolean.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
 				return new CheckboxCellEditor((Composite) getViewer().getControl()) {
 					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue(value);
-					}
-					
-					@Override
 					protected Object doGetValue() {
 						Boolean boolValue = (Boolean) super.doGetValue();
 						return boolValue;
@@ -186,11 +181,6 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 			}
 			if (Date.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
 				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue(value);
-					}
-					
 					@Override
 					protected Object doGetValue() {
 						String date = (String) super.doGetValue();

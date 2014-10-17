@@ -22,7 +22,6 @@ import org.eclipse.emf.parsley.util.ActionBarsUtils;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
@@ -130,11 +129,6 @@ public class WorkbenchActionBarContributor extends
 		});
 
 		addGlobalActions(submenuManager);
-	}
-
-	@Override
-	public void contributeToStatusLine(IStatusLineManager statusLineManager) {
-		super.contributeToStatusLine(statusLineManager);
 	}
 
 	@Override

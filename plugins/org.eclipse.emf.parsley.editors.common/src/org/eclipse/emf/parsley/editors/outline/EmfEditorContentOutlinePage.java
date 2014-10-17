@@ -58,9 +58,4 @@ public class EmfEditorContentOutlinePage extends ContentOutlinePage {
 				pageSite.getActionBars());
 	}
 
-	@Override
-	public TreeViewer getTreeViewer() {
-		return super.getTreeViewer();
-	}
-
 }

@@ -34,26 +34,19 @@ import org.eclipse.pde.ui.templates.PluginReference;
 @SuppressWarnings("restriction")
 public class TableViewTemplateSection extends OptionTemplateSection {
 	
-	public TableViewTemplateSection() {
-		setPageCount(1);
-		createOptions();
-	}
-	
 	private static final String KEY_PROJECT_NAME = "packageName";
 	private static final String KEY_PREFIX_CLASSESNAME = "prefixClassesname";
 	private static final String KEY_EDITABLE = "editableView";
 	
 	private static final String MASTERDETAIL_VIEWNAME = "org.eclipse.emf.parsley.view.masterdetail.TableMasterDetailView";
-	
-	public String getUsedExtensionPoint() {
-		// TODO Auto-generated method stub
-		return null;
+
+	public TableViewTemplateSection() {
+		setPageCount(1);
+		createOptions();
 	}
 	
-	@Override
-	public URL getTemplateLocation() {
-		// TODO Auto-generated method stub
-		return super.getTemplateLocation();
+	public String getUsedExtensionPoint() {
+		return null;
 	}
 	
 	public String[] getNewFiles() {

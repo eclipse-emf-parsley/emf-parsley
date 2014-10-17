@@ -608,17 +608,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	}
 
 	/**
-	 * This is here for the listener to be able to call it. <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	@Override
-	protected void firePropertyChange(int action) {
-		super.firePropertyChange(action);
-	}
-
-	/**
 	 * This sets the selection into whichever viewer is active. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
