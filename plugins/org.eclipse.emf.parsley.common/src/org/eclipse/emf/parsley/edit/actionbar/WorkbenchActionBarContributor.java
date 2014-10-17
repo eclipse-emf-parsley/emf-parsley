@@ -82,6 +82,8 @@ public class WorkbenchActionBarContributor extends
 
 	protected ISelectionProvider explicitSelectionProvider = null;
 
+	private boolean actionsInitialized = false;
+
 	public WorkbenchActionBarContributor() {
 		this(ADDITIONS_LAST_STYLE);
 	}
@@ -283,9 +285,10 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	protected void ensureActionsAreInitialized() {
-		if (editingActionManager.getUndoAction() != null) {
+		if (actionsInitialized) {
 			return;
 		}
+		actionsInitialized = true;
 		initializeActions(ActionBarsUtils.getActionBars(activePart));
 	}
 
