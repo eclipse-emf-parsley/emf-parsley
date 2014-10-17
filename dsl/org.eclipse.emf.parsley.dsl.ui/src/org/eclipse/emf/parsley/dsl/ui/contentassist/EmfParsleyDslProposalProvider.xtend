@@ -14,15 +14,26 @@ import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification
+import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
+import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslExpectedSuperTypes
+import org.eclipse.jface.text.Region
+import org.eclipse.jface.viewers.StyledString
+import org.eclipse.swt.graphics.Image
 import org.eclipse.xtext.Assignment
+import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.TypesPackage
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider
+import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
+import org.eclipse.xtext.xbase.ui.contentassist.ImportOrganizingProposal
+import org.eclipse.xtext.xbase.ui.contentassist.ReplacingAppendable
 
 import static org.eclipse.emf.parsley.dsl.model.ModelPackage.Literals.*
+
+import static extension org.eclipse.emf.parsley.dsl.util.EmfParsleyDslModelUtil.*
 
 /**
  * see http://www.eclipse.org/Xtext/documentation.html#contentAssist on how to customize content assistant
@@ -34,7 +45,13 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 	
 	@Inject extension EmfParsleyDslExpectedSuperTypes
 	
-	@Inject EmfParsleyDslBindingProposalHelper bindingProposalHelper
+	@Inject extension EmfParsleyDslGuiceModuleHelper
+	
+	@Inject
+	private ReplacingAppendable.Factory appendableFactory;
+
+	@Inject
+	private EmfParsleyDslTypeSystem typeSystem;
 
 	override void completeViewSpecification_Type(EObject model,
 			Assignment assignment, ContentAssistContext context,
@@ -113,7 +130,61 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 		// show the standard Java type completions
 		completeJavaTypes(context, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, true, qualifiedNameValueConverter, createVisibilityFilter(context), acceptor)
 		// the completion for existing bindings will appear first
-		bindingProposalHelper.createBindingProposals(model, context, acceptor)
+		createBindingProposals(model, context, acceptor)
+	}
+
+	def private createBindingProposals(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// this can be called either with model == ValueBinding, in case you still haven't written
+		// anything after 'value' or with a JvmTypeReference if you started writing something, e.g.,
+		// 'value v' and press Ctrl+Space
+		val module = model.containingModule
+		
+		// These are all the value bindings in the superclass
+		val superClassValueBindings = module.allGuiceValueBindingsMethodsInSuperclass
+
+		for (op : superClassValueBindings) {
+			createProposals(model, op, context, acceptor)
+		}
+	}
+
+	def private createProposals(EObject model, JvmOperation op, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		val document = context.getDocument();
+		val resource = model.eResource() as XtextResource;
+		val offset = context.getReplaceRegion().getOffset();
+		val appendable = appendableFactory.create(document, resource, offset, context.getReplaceRegion().getLength());
+		
+		// if the original method was MyType valueXXX(...) the proposal will be
+		// MyType XXX
+		appendable.append(typeSystem.toLightweightTypeReference(op.returnType, model))
+		appendable.append(" ")
+		appendable.append(op.simpleName.substring("value".length))
+		
+		val image = getImage(op);
+		val typeConverter = getTypeConverter(context.getResource());
+		val displayString = getStyledDisplayString(op, false, 0, op.getQualifiedName(), op.getSimpleName(), typeConverter);
+		
+		val completionProposal = createCompletionProposal(appendable, context.getReplaceRegion(),
+				displayString, image)
+		
+		// the high priority will make these proposals appear before
+		// the standard proposals for Java types
+		completionProposal.priority = 1500
+		completionProposal.setMatcher[name, prefix |
+			val delegate = context.getMatcher();
+			delegate.isCandidateMatchingPrefix(op.simpleName, prefix);
+		]
+
+		// the following two settings will make the Javadoc of the original method appear on the right
+		completionProposal.setAdditionalProposalInfo(op);
+		completionProposal.setHover(getHover());
+		
+		acceptor.accept(completionProposal)
+	}
+
+	def private ImportOrganizingProposal createCompletionProposal(ReplacingAppendable appendable, Region replaceRegion,
+			StyledString displayString, Image image) {
+		return new ImportOrganizingProposal(appendable, replaceRegion.getOffset(), replaceRegion.getLength(),
+				replaceRegion.getOffset(), image, displayString);
 	}
 	
 }
