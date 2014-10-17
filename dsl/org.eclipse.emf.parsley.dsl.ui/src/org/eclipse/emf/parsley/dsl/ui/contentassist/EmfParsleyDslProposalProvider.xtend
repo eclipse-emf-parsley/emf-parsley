@@ -22,6 +22,9 @@ import org.eclipse.jface.viewers.StyledString
 import org.eclipse.swt.graphics.Image
 import org.eclipse.xtext.Assignment
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.JvmWildcardTypeReference
 import org.eclipse.xtext.common.types.TypesPackage
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.common.types.xtext.ui.ITypesProposalProvider
@@ -126,38 +129,61 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 		super.completeXFeatureCall_Feature(model, assignment, context, acceptor);
 	}
 
-	override completeValueBinding_TypeDecl(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// show the standard Java type completions
-		completeJavaTypes(context, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, true, qualifiedNameValueConverter, createVisibilityFilter(context), acceptor)
+	override completeBinding_TypeDecl(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		createStandardJavaTypesProposals(context, acceptor)
 		// the completion for existing bindings will appear first
-		createBindingProposals(model, context, acceptor)
+		createBindingProposals(model, model.containingModule.allGuiceValueBindingsMethodsInSuperclass, context, acceptor) [
+			appendable, op |
+			// if the original method was MyType valueName(...) the proposal will be
+			// MyType Name
+			appendable.append(toLightweightTypeReference(op.returnType, model))
+			appendable.append(" ")
+			appendable.append(op.simpleName.substring("value".length))
+		]
 	}
 
-	def private createBindingProposals(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		// this can be called either with model == ValueBinding, in case you still haven't written
-		// anything after 'value' or with a JvmTypeReference if you started writing something, e.g.,
-		// 'value v' and press Ctrl+Space
-		val module = model.containingModule
-		
-		// These are all the value bindings in the superclass
-		val superClassValueBindings = module.allGuiceValueBindingsMethodsInSuperclass
+	override completeBinding_TypeToBind(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		createStandardJavaTypesProposals(context, acceptor)
+		// the completion for existing bindings will appear first
+		createBindingProposals(model, model.containingModule.allGuiceTypeBindingsMethodsInSuperclass, context, acceptor) [
+			appendable, op |
+			// if the original method was Class<? extends MyType> bindName(...) the proposal will be
+			// MyType
+			val returnType = op.returnType as JvmParameterizedTypeReference
+			val argument = returnType.arguments.head as JvmWildcardTypeReference
+			// Methods have already been filtered and the return type is of the shape Class<? extends MyType>
+			appendable.append(toLightweightTypeReference(argument.constraints.head.typeReference, model))
+		]
+	}
 
+	/**
+	 * show the standard Java type completions
+	 */
+	def private createStandardJavaTypesProposals(ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeJavaTypes(context, TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE, true, qualifiedNameValueConverter, createVisibilityFilter(context), acceptor)
+	}
+
+	def private createBindingProposals(EObject model, Iterable<JvmOperation> superClassValueBindings, ContentAssistContext context, 
+		ICompletionProposalAcceptor acceptor, (ReplacingAppendable, JvmOperation)=>void proposalTextStrategy
+	) {
 		for (op : superClassValueBindings) {
-			createProposals(model, op, context, acceptor)
+			createProposals(model, op, context, acceptor, proposalTextStrategy)
 		}
 	}
 
-	def private createProposals(EObject model, JvmOperation op, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	def private toLightweightTypeReference(JvmTypeReference typeRef, EObject model) {
+		typeSystem.toLightweightTypeReference(typeRef, model)
+	}
+
+	def private createProposals(EObject model, JvmOperation op, ContentAssistContext context, 
+		ICompletionProposalAcceptor acceptor, (ReplacingAppendable, JvmOperation)=>void proposalTextStrategy
+	) {
 		val document = context.getDocument();
 		val resource = model.eResource() as XtextResource;
 		val offset = context.getReplaceRegion().getOffset();
 		val appendable = appendableFactory.create(document, resource, offset, context.getReplaceRegion().getLength());
 		
-		// if the original method was MyType valueXXX(...) the proposal will be
-		// MyType XXX
-		appendable.append(typeSystem.toLightweightTypeReference(op.returnType, model))
-		appendable.append(" ")
-		appendable.append(op.simpleName.substring("value".length))
+		proposalTextStrategy.apply(appendable, op)
 		
 		val image = getImage(op);
 		val typeConverter = getTypeConverter(context.getResource());

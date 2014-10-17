@@ -14,6 +14,7 @@ import com.google.inject.Inject
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 
 class EmfParsleyDslGuiceModuleHelper {
@@ -24,12 +25,39 @@ class EmfParsleyDslGuiceModuleHelper {
 	}
 
 	def Iterable<JvmOperation> getAllGuiceValueBindingsMethodsInSuperclass(Module module) {
-		module.moduleInferredType?.allGuiceValueBindingsMethodsInSuperclass ?: emptyList
+		module.moduleInferredType.getAllGuiceValueBindingsMethodsInSuperclass
 	}
 
-	def getAllGuiceValueBindingsMethodsInSuperclass(JvmGenericType type) {
+	def Iterable<JvmOperation> getAllGuiceTypeBindingsMethodsInSuperclass(Module module) {
+		module.superTypeJvmOperations.filter[
+			simpleName.startsWith("bind")
+			&&
+			// for the moment we handle only bind methods that return Class<? extends Something>
+			(returnType as JvmParameterizedTypeReference).arguments.head != null
+		]
+	}
+
+	def Iterable<JvmOperation> getAllGuiceProviderBindingsMethodsInSuperclass(Module module) {
+		module.superTypeJvmOperations.filter[
+			simpleName.startsWith("provide")
+		]
+	}
+
+	def Iterable<JvmOperation> getAllGuiceValueBindingsMethodsInSuperclass(JvmGenericType type) {
 		// These are all the value bindings in the superclass
-		(type.superTypes.head.type as JvmGenericType).allFeatures.filter(JvmOperation).filter[
-			simpleName.startsWith("value")]
+		type.superTypeJvmOperations.filter[
+			simpleName.startsWith("value")
+		]
+	}
+
+	def private superTypeJvmOperations(Module module) {
+		module.moduleInferredType.superTypeJvmOperations
+	}
+
+	def private superTypeJvmOperations(JvmGenericType type) {
+		if (type == null) {
+			return emptyList
+		}
+		return (type.superTypes.head.type as JvmGenericType).allFeatures.filter(JvmOperation)
 	}
 }

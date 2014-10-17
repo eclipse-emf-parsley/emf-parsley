@@ -60,5 +60,60 @@ valueTreeFormSashWeights''',
 		module my.test.mod {}
 		'''.parse.module.allGuiceValueBindingsMethodsInSuperclass.map[simpleName].join("\n"))
 	}
+
+	@Test
+	def void testModuleGuiceTypeBindingsMethodsInSuperclass() {
+		// These are only the bind methods that return a Class<? extends Something>
+		assertEqualsStrings(
+		'''
+bindIImageHelper
+bindResourceLoader
+bindIEditorMouseListener
+bindIViewerMouseListener
+bindILabelProvider
+bindFeatureCaptionProvider
+bindFormFeatureCaptionProvider
+bindDialogFeatureCaptionProvider
+bindOutlineSelectionHandler
+bindViewerFactory
+bindTreeFormFactory
+bindFormFactory
+bindViewerInitializer
+bindFormControlFactory
+bindDialogControlFactory
+bindViewerContextMenuFactory
+bindColumnLabelProviderFactory
+bindTableColumnLabelProvider
+bindTableViewerBuilder
+bindTableViewerColumnBuilder
+bindWorkbenchActionBarContributor
+bindTreeActionBarContributor
+bindEmfActionManager
+bindEditingActionManager
+bindEditingDomainFinder
+bindFeaturesProvider
+bindFeatureResolver
+bindTableFeaturesProvider
+bindEmfSelectionHelper
+bindResourceSaveManager
+bindEmptyResourceInitializer
+bindIContentProvider
+bindProposalCreator
+bindIEditingStrategy
+bindAdapterFactory
+bindAdapterFactoryLabelProvider''',
+		'''
+		module my.test.mod {}
+		'''.parse.module.allGuiceTypeBindingsMethodsInSuperclass.map[simpleName].join("\n"))
+	}
+
+	@Test
+	def void testModuleGuiceProviderBindingsMethodsInSuperclass() {
+		assertEqualsStrings(
+		'''provideAdapterFactoryEditingDomain''',
+		'''
+		module my.test.mod {}
+		'''.parse.module.allGuiceProviderBindingsMethodsInSuperclass.map[simpleName].join("\n"))
+	}
 	
 }

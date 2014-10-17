@@ -18,18 +18,19 @@ import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
 import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.Module
-import org.eclipse.emf.parsley.dsl.model.TypeBasedBinding
+import org.eclipse.emf.parsley.dsl.model.ProviderBinding
+import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
+import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
-import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 
 //import org.eclipse.xtext.validation.Check
 
@@ -205,7 +206,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	def private duplicateBindingMessage(EObject source, JvmOperation method) {
 		"Duplicate binding for: " +
 		switch (source) {
-			TypeBasedBinding: method.returnType.simpleName
+			TypeBinding: method.returnType.simpleName
+			ProviderBinding: method.returnType.simpleName
 			ValueBinding: source.id
 			default: method.returnType.simpleName
 		}
@@ -213,7 +215,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	def private duplicateBindingFeature(EObject e) {
 		switch (e) {
-			TypeBasedBinding: modelPackage.typeBasedBinding_Type
+			TypeBinding: modelPackage.typeBinding_TypeToBind
+			ProviderBinding: modelPackage.providerBinding_Type
 			ValueBinding: modelPackage.valueBinding_Id
 			default: null
 		}

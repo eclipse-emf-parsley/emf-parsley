@@ -50,15 +50,8 @@ BindingsSpecification:
 ;
 
 Binding:
-	TypeBasedBinding | ValueBinding
-;
-
-TypeBasedBinding:
-	{TypeBinding} 'type' type=JvmTypeReference '->' to=XExpression |
-	{ProviderBinding} 'provide' type=JvmTypeReference '->' to=XExpression
-;
-
-ValueBinding:
+	{TypeBinding} 'type' typeToBind=JvmTypeReference '->' to=XExpression |
+	{ProviderBinding} 'provide' type=JvmTypeReference '->' to=XExpression |
 	{ValueBinding} 'value' typeDecl=JvmTypeReference id=ValidID '->' to=XExpression
 ;
 

@@ -711,14 +711,14 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private genBindMethod(JvmGenericType it, TypeBinding typeBinding) {
-		if (typeBinding.type == null) {
+		if (typeBinding.typeToBind == null) {
 			return null
 		}
 		
 		// we must trigger resolution of JvmTypeReference
 		// otherwise the parameterized Class type with wildcard
 		// will contain an unresolved type reference
-		genBindMethod(typeBinding, typeBinding.type.type.typeRef) [
+		genBindMethod(typeBinding, typeBinding.typeToBind.type.typeRef) [
 			body = typeBinding.getTo
 		]
 	}

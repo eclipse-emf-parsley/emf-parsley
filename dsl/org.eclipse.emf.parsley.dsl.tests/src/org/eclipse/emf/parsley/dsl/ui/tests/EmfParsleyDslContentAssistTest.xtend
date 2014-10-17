@@ -235,6 +235,24 @@ module my.test.proj {
 		)
 	}
 
+	@Test def void testProposalForTypeBinding() {
+		appendAndApplyProposalAndExpectContent(
+'''
+module my.test.proj {
+	
+	bindings {
+		type bindILa''',
+'''ILabelProvider''',
+'''
+import org.eclipse.jface.viewers.ILabelProvider
+
+module my.test.proj {
+	
+	bindings {
+		type ILabelProvider'''
+		)
+	}
+
 	def private assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String...acceptableParts) {
 		for (p : builder.computeCompletionProposals) {
 			assertTrue(
