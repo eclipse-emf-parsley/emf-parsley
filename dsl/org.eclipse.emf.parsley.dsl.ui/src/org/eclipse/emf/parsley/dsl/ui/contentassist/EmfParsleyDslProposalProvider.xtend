@@ -143,16 +143,50 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 	}
 
 	override completeBinding_TypeToBind(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeTypeOrProvideBinding(model, model.containingModule.allGuiceTypeBindingsMethodsInSuperclass, 
+			[
+				op |
+				// if the original method was Class<? extends MyType> bindName(...) the proposal will be
+				// MyType
+				op.extractWildcardUpperBound
+			],
+			assignment, context, acceptor
+		)
+	}
+
+	override completeBinding_Type(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeTypeOrProvideBinding(model, model.containingModule.allGuiceProviderBindingsMethodsInSuperclass, 
+			[
+				op |
+				// if the original method was Class<? extends Provider<MyType>> provideName(...) the proposal will be
+				// MyType
+				
+				// this will return Provider<MyType>
+				val providerType = op.extractWildcardUpperBound as JvmParameterizedTypeReference
+				// and this will return MyType
+				providerType.arguments.head
+			],
+			assignment, context, acceptor
+		)
+	}
+
+	def private extractWildcardUpperBound(JvmOperation op) {
+		val returnType = op.returnType as JvmParameterizedTypeReference
+		val argument = returnType.arguments.head as JvmWildcardTypeReference
+		argument.constraints.head.typeReference
+	}
+
+	def private completeTypeOrProvideBinding(EObject model, Iterable<JvmOperation> superClassValueBindings, 
+		(JvmOperation)=>JvmTypeReference typeExtractor,
+		Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor
+	) {
 		createStandardJavaTypesProposals(context, acceptor)
 		// the completion for existing bindings will appear first
-		createBindingProposals(model, model.containingModule.allGuiceTypeBindingsMethodsInSuperclass, context, acceptor) [
+		createBindingProposals(model, superClassValueBindings, context, acceptor) [
 			appendable, op |
-			// if the original method was Class<? extends MyType> bindName(...) the proposal will be
-			// MyType
-			val returnType = op.returnType as JvmParameterizedTypeReference
-			val argument = returnType.arguments.head as JvmWildcardTypeReference
+			val typeReference = typeExtractor.apply(op)
 			// Methods have already been filtered and the return type is of the shape Class<? extends MyType>
-			appendable.append(toLightweightTypeReference(argument.constraints.head.typeReference, model))
+			appendable.append(toLightweightTypeReference(typeReference, model))
 		]
 	}
 

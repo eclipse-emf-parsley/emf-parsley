@@ -253,6 +253,24 @@ module my.test.proj {
 		)
 	}
 
+	@Test def void testProposalForProviderBinding() {
+		appendAndApplyProposalAndExpectContent(
+'''
+module my.test.proj {
+	
+	bindings {
+		provide provideAda''',
+'''AdapterFactoryEditingDomain''',
+'''
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+
+module my.test.proj {
+	
+	bindings {
+		provide AdapterFactoryEditingDomain'''
+		)
+	}
+
 	def private assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String...acceptableParts) {
 		for (p : builder.computeCompletionProposals) {
 			assertTrue(
