@@ -12,8 +12,6 @@ package org.eclipse.emf.parsley.dsl.ui.contentassist
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
-import org.eclipse.emf.parsley.dsl.model.LabelSpecification
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslExpectedSuperTypes
@@ -110,23 +108,6 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 				context,
 				TypesPackage.Literals.JVM_PARAMETERIZED_TYPE_REFERENCE__TYPE,
 				acceptor);
-	}
-
-	override void completeXFeatureCall_Feature(EObject model,
-			Assignment assignment, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		if (model instanceof EmfFeatureAccess) {
-			createLocalVariableAndImplicitProposals(model, context, acceptor);
-			return;
-		}
-
-		if (model instanceof LabelSpecification) {
-			createLocalVariableAndImplicitProposals(context.getPreviousModel(),
-					context, acceptor);
-			return;
-		}
-
-		super.completeXFeatureCall_Feature(model, assignment, context, acceptor);
 	}
 
 	override completeBinding_TypeDecl(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

@@ -184,6 +184,19 @@ module my.test.proj {
 		// only EObject sutypes
 	}
 
+	@Test def void testProposalForControlFactoryFeatureSpecification() {
+		newBuilder.append(
+'''
+module my.test.proj {
+	
+	formControlFactory {
+		control { '''
+		).assertProposalSolutions(
+"emf.ecore", "emf.edit.tree"
+		)
+		// only EObject sutypes
+	}
+
 	@Test def void testProposalForFeatureAssociatedExpression() {
 		newBuilder.append(
 '''
@@ -268,6 +281,28 @@ module my.test.proj {
 	
 	bindings {
 		provide AdapterFactoryEditingDomain'''
+		)
+	}
+
+	@Test def void testProposalForXFeatureCall_Feature() {
+		appendAndApplyProposalAndExpectContent(
+'''
+import org.eclipse.emf.ecore.EClass
+
+module my.test.proj {
+	
+	labelProvider {
+		text {
+			EClass e -> { e.''',
+'''eAdapters''',
+'''
+import org.eclipse.emf.ecore.EClass
+
+module my.test.proj {
+	
+	labelProvider {
+		text {
+			EClass e -> { e.eAdapters'''
 		)
 	}
 
