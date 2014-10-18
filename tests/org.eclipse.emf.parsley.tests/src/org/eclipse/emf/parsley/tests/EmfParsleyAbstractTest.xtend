@@ -34,6 +34,7 @@ import org.junit.Before
 import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.util.EcoreUtil2
 
 abstract class EmfParsleyAbstractTest {
 
@@ -65,10 +66,13 @@ abstract class EmfParsleyAbstractTest {
 	var private Injector injector = null;
 	
 	new() {
-		// the following is useless... but it's just to have coverage
+		// the following are useless... but it's just to have coverage
 		// for the protected constructor of EmfParsleyConstants
 		// and the protected constructor is "required" by sonar...
 		new EmfParsleyConstants() {
+			
+		}
+		new EcoreUtil2() {
 			
 		}
 	}

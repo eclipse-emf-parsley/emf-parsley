@@ -24,6 +24,9 @@ import org.eclipse.emf.ecore.resource.Resource;
  * 
  */
 public class EmfCommandsUtil {
+	
+	protected EmfCommandsUtil() {
+	}
 
 	public static Command mostRecentCommand(final EventObject event) {
 		return ((CommandStack) event.getSource()).getMostRecentCommand();

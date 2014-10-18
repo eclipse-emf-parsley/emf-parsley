@@ -18,6 +18,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  */
 public class EcoreUtil2 {
+	
+	protected EcoreUtil2() {
+	}
 
 	/**
 	 * Clones the given EObject without resolving any proxies.

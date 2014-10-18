@@ -28,4 +28,4 @@ Inclusions (e.g.: **/*.class)
 
 
 Exclusions (e.g.: **/*Test*)
-**/*Internal*,**/*Sequencer*,**/*GrammarAccess*,**/antlr/*.*,**/internal/*.*,**/org/eclipse/emf/parsley/dsl/model/impl/*.*,**/org/eclipse/emf/parsley/dsl/model/util/*.*,**/org/eclipse/emf/parsley/rap/**/*.*,**/org/eclipse/emf/parsley/runtime/**/*.*
+**/EmfParsleyDslProjectCreator.class,**/EmfParsleyDslNewProjectWizard.class,**/Abstract*ProposalProvider*,**/*Internal*,**/*Sequencer*,**/*GrammarAccess*,**/antlr/*.*,**/internal/*.*,**/org/eclipse/emf/parsley/dsl/model/impl/*.*,**/org/eclipse/emf/parsley/dsl/model/util/*.*,**/org/eclipse/emf/parsley/rap/**/*.*,**/org/eclipse/emf/parsley/runtime/**/*.*

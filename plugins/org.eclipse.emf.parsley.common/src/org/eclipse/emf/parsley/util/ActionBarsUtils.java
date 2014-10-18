@@ -22,6 +22,9 @@ import org.eclipse.ui.IWorkbenchPart;
  * 
  */
 public class ActionBarsUtils {
+	
+	protected ActionBarsUtils() {
+	}
 
 	public static IActionBars getActionBars(IWorkbenchPart part) {
 		if (part instanceof IViewPart) {
