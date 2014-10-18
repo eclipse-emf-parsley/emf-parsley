@@ -58,6 +58,10 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 
 	/**
 	 * Encapsulation of the Undo and Redo stack(s).
+	 * 
+	 * It is crucial to use Stack (and not Deque) even if Sonarqube suggests the
+	 * other way around, because here we're in a multithreading context and
+	 * we need a synchronized data structure to make it thread-safe.
 	 */
 	private static class UndoRedoStack {
 
