@@ -59,7 +59,7 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 		return viewerColumn;
 	}
 	
-	class TableEditingSupport extends EditingSupport {
+	static class TableEditingSupport extends EditingSupport {
 
 		private ColumnViewer viewer;
 		private EStructuralFeature eStructuralFeature;
@@ -216,7 +216,7 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 		}
 	}
 
-	class ComboEditingSupport extends EditingSupport {
+	static class ComboEditingSupport extends EditingSupport {
 
 		private ColumnViewer viewer;
 		private EStructuralFeature feature;

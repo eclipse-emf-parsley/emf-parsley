@@ -651,7 +651,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * 
 	 * @generated
 	 */
-	public class ReverseAdapterFactoryContentProvider extends
+	public static class ReverseAdapterFactoryContentProvider extends
 			AdapterFactoryContentProvider {
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
