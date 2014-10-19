@@ -210,8 +210,4 @@ public class EditingActionManager {
 		return new EditingDomainValidateAction();
 	}
 
-	public UndoAction getUndoAction() {
-		return undoAction;
-	}
-
 }
