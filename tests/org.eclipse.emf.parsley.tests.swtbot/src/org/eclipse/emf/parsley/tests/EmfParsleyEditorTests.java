@@ -60,6 +60,24 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	}
 
 	@Test
+	public void changingSelectionUpdatesContextMenu() throws Exception {
+		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
+		clickOnContextMenu(libraryNode, NEW_CHILD, BOOK_ON_TAPE);
+		// check that the new item was created
+		libraryNode.expand().getNode(BOOK_ON_TAPE);
+		// change the selection to the writer node
+		libraryNode.expand().getNode(WRITER_LABEL).select();
+		// change the selection back to the created book node
+		SWTBotTreeItem bookOnTapeNode = libraryNode.expand().getNode(BOOK_ON_TAPE).select();
+		clickOnContextMenu(bookOnTapeNode, ACTION_DELETE);
+		// check that we did not remove the writer node
+		libraryNode.expand().getNode(WRITER_LABEL).select();
+		SWTBotEditor editor = assertEditorDirty(EMF_TREE_EDITOR);
+		editor.save();
+	}
+
+	@Test
 	public void canAccessStandardEditingActionsOnTreeEditor() throws Exception {
 		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
