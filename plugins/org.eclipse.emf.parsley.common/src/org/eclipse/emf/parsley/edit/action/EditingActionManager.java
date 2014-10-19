@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.action;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.CommandActionHandler;
 import org.eclipse.emf.edit.ui.action.ControlAction;
@@ -20,9 +23,8 @@ import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.action.PasteAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
-import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -34,6 +36,8 @@ import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.internal.WorkbenchImages;
 import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
+
+import com.google.common.collect.Lists;
 
 @SuppressWarnings("restriction")
 public class EditingActionManager {
@@ -49,6 +53,11 @@ public class EditingActionManager {
 	private UndoAction undoAction;
 
 	private RedoAction redoAction;
+	
+	private PolymorphicDispatcher<List<IMenuContributionSpecification>> menuContributionsDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("menuContributions", 1, 1, this);
+
+	private List<IMenuContributionSpecification> currentMenuContributions = Collections.emptyList();
 
 	public void initializeActions(IActionBars actionBars) {
 
@@ -154,6 +163,8 @@ public class EditingActionManager {
 			cutAction.updateSelection(structuredSelection);
 			copyAction.updateSelection(structuredSelection);
 			pasteAction.updateSelection(structuredSelection);
+			
+			updateMenuContributions(structuredSelection);
 		}
 	}
 
@@ -163,35 +174,75 @@ public class EditingActionManager {
 	}
 
 	public void menuAboutToShow(IMenuManager menuManager) {
-		menuManager.add(new ActionContributionItem(undoAction));
-		menuManager.add(new ActionContributionItem(redoAction));
-		menuManager.add(new Separator());
-		menuManager.add(new ActionContributionItem(cutAction));
-		menuManager.add(new ActionContributionItem(copyAction));
-		menuManager.add(new ActionContributionItem(pasteAction));
-		menuManager.add(new Separator());
-		menuManager.add(new ActionContributionItem(deleteAction));
-		menuManager.add(new Separator());
+		for (IMenuContributionSpecification menuContributionSpecification : currentMenuContributions) {
+			menuManager.add(menuContributionSpecification.getContributionItem());
+		}
+	}
+
+	protected void updateMenuContributions(IStructuredSelection selection) {
+		currentMenuContributions = menuContributionsDispatcher.invoke(selection);
+	}
+
+	protected List<IMenuContributionSpecification> menuContributions(IStructuredSelection selection) {
+		return Lists.newArrayList(
+				undoAction(),
+				redoAction(),
+				separator(),
+				cutAction(),
+				copyAction(),
+				pasteAction(),
+				separator(),
+				deleteAction(),
+				separator()
+		);
+	}
+
+	protected IMenuContributionSpecification separator() {
+		return new MenuSeparatorContributionSpecification();
+	}
+
+	protected IMenuContributionSpecification deleteAction() {
+		return new MenuCommandActionHandlerContributionSpecification(deleteAction);
 	}
 
 	protected DeleteAction createDeleteAction() {
 		return new DeleteAction(true);
 	}
 
+	protected IMenuContributionSpecification cutAction() {
+		return new MenuCommandActionHandlerContributionSpecification(cutAction);
+	}
+
 	protected CutAction createCutAction() {
 		return new CutAction();
+	}
+
+	protected IMenuContributionSpecification copyAction() {
+		return new MenuCommandActionHandlerContributionSpecification(copyAction);
 	}
 
 	protected CopyAction createCopyAction() {
 		return new CopyAction();
 	}
 
+	protected IMenuContributionSpecification pasteAction() {
+		return new MenuCommandActionHandlerContributionSpecification(pasteAction);
+	}
+
 	protected PasteAction createPasteAction() {
 		return new PasteAction();
 	}
 
+	protected IMenuContributionSpecification undoAction() {
+		return new MenuActionContributionSpecification(undoAction);
+	}
+
 	protected UndoAction createUndoAction() {
 		return new UndoAction();
+	}
+
+	protected IMenuContributionSpecification redoAction() {
+		return new MenuActionContributionSpecification(redoAction);
 	}
 
 	protected RedoAction createRedoAction() {
