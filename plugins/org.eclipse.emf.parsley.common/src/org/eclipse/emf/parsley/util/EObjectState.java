@@ -38,19 +38,21 @@ public class EObjectState extends HashMap<EStructuralFeature, Object> {
 			}
 			
 			Object eGet = o.eGet(f);
-			if (eGet instanceof FeatureMap) {
-				continue;
+			if (!(eGet instanceof FeatureMap)) {
+				updateMap(f, eGet);
 			}
-			
-			if (eGet instanceof EList<?>) {
-				EList<?> list = (EList<?>) eGet;
-				// make sure to store a copy of the list
-				// so that it will not be automatically cleared in
-				// case of bidirectional relations
-				put(f, Lists.newArrayList(list));
-			} else {
-				put(f, eGet);
-			}	
+		}
+	}
+
+	private void updateMap(EStructuralFeature f, Object eGet) {
+		if (eGet instanceof EList<?>) {
+			EList<?> list = (EList<?>) eGet;
+			// make sure to store a copy of the list
+			// so that it will not be automatically cleared in
+			// case of bidirectional relations
+			put(f, Lists.newArrayList(list));
+		} else {
+			put(f, eGet);
 		}
 	}
 
