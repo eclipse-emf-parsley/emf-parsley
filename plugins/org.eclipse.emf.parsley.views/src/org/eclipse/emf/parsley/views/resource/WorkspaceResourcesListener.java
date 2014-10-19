@@ -95,19 +95,18 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 
 		public boolean visit(final IResourceDelta delta) {
 			final int type = delta.getResource().getType();
-			if (type == IResource.FILE) {
-				if (delta.getKind() == IResourceDelta.CHANGED
+			if (type == IResource.FILE
+						&& delta.getKind() == IResourceDelta.CHANGED
 						&& delta.getFlags() != IResourceDelta.MARKERS) {
-					final String fullPath = delta.getFullPath().toString();
-					if (!(fullPath.contains(".git") || fullPath
-							.endsWith(".project"))) {
-						final Resource resource = resourceSet.getResource(
-								URI.createPlatformResourceURI(fullPath, true),
-								true);
-						reload(resource);
-						this.changedResources.add(resource);
-						return true;
-					}
+				final String fullPath = delta.getFullPath().toString();
+				if (!(fullPath.contains(".git") || fullPath
+						.endsWith(".project"))) {
+					final Resource resource = resourceSet.getResource(
+							URI.createPlatformResourceURI(fullPath, true),
+							true);
+					reload(resource);
+					this.changedResources.add(resource);
+					return true;
 				}
 			}
 			return true;

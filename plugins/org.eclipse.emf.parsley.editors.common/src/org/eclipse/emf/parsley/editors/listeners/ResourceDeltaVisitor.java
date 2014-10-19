@@ -42,25 +42,27 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 	}
 
 	public boolean visit(IResourceDelta delta) {
-		if (delta.getResource().getType() == IResource.FILE) {
-			if (delta.getKind() == IResourceDelta.REMOVED
-					|| delta.getKind() == IResourceDelta.CHANGED
-					&& delta.getFlags() != IResourceDelta.MARKERS) {
-				// see whether it's a resource of our resource set
-				Resource resource = resourceSet.getResource(URI
-						.createPlatformResourceURI(delta.getFullPath()
-								.toString(), true), false);
-				if (resource != null) {
-					if (delta.getKind() == IResourceDelta.REMOVED) {
-						removedResources.add(resource);
-					} else if (!savedResources.remove(resource)) {
-						changedResources.add(resource);
-					}
+		if (delta.getResource().getType() == IResource.FILE && deltaShouldBeHandled(delta)) {
+			// see whether it's a resource of our resource set
+			Resource resource = resourceSet.getResource(URI
+					.createPlatformResourceURI(delta.getFullPath()
+							.toString(), true), false);
+			if (resource != null) {
+				if (delta.getKind() == IResourceDelta.REMOVED) {
+					removedResources.add(resource);
+				} else if (!savedResources.remove(resource)) {
+					changedResources.add(resource);
 				}
 			}
 		}
 
 		return true;
+	}
+
+	private boolean deltaShouldBeHandled(IResourceDelta delta) {
+		return delta.getKind() == IResourceDelta.REMOVED
+				|| delta.getKind() == IResourceDelta.CHANGED
+				&& delta.getFlags() != IResourceDelta.MARKERS;
 	}
 
 	public Collection<Resource> getChangedResources() {
