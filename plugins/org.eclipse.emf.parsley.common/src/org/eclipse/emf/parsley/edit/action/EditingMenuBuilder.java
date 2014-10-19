@@ -119,12 +119,12 @@ public class EditingMenuBuilder {
 	public void updateSelection(ISelection selection) {
 		if (selection instanceof IStructuredSelection) {
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			deleteAction.updateSelection(structuredSelection);
-			cutAction.updateSelection(structuredSelection);
-			copyAction.updateSelection(structuredSelection);
-			pasteAction.updateSelection(structuredSelection);
 			
 			updateMenuContributions(structuredSelection);
+			
+			for (IMenuContributionSpecification menuContributionSpecification : currentMenuContributions) {
+				menuContributionSpecification.updateSelection(structuredSelection);
+			}
 		}
 	}
 
