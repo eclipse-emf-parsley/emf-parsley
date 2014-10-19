@@ -46,6 +46,8 @@ class EmfParsleyDslGuiceModuleHelperTests extends EmfParsleyDslAbstractTests {
 
 	@Test
 	def void testModuleGuiceValueBindingsMethodsInSuperclass() {
+		// ATTENTION: if you add a new value method in EmfParsleyGuiceModule this test
+		// will fail: you must fix it by updating the expected list in the CharSequence
 		assertEqualsStrings(
 		'''
 valueContentAssistShortcut
@@ -63,6 +65,8 @@ valueTreeFormSashWeights''',
 
 	@Test
 	def void testModuleGuiceTypeBindingsMethodsInSuperclass() {
+		// ATTENTION: if you add a new bind method in EmfParsleyGuiceModule this test
+		// will fail: you must fix it by updating the expected list in the CharSequence
 		// These are only the bind methods that return a Class<? extends Something>
 		assertEqualsStrings(
 		'''
@@ -90,6 +94,7 @@ bindWorkbenchActionBarContributor
 bindTreeActionBarContributor
 bindEmfActionManager
 bindEditingActionManager
+bindEditingMenuBuilder
 bindEditingDomainFinder
 bindFeaturesProvider
 bindFeatureResolver
@@ -109,6 +114,8 @@ bindAdapterFactoryLabelProvider''',
 
 	@Test
 	def void testModuleGuiceProviderBindingsMethodsInSuperclass() {
+		// ATTENTION: if you add a new provide method in EmfParsleyGuiceModule this test
+		// will fail: you must fix it by updating the expected list in the CharSequence
 		assertEqualsStrings(
 		'''provideAdapterFactoryEditingDomain''',
 		'''

@@ -31,6 +31,7 @@ import org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy;
 import org.eclipse.emf.parsley.edit.ResourceSaveManager;
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.emf.parsley.edit.action.EmfActionManager;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
@@ -365,14 +366,24 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 	}
 	
 	/**
-	 * Use this bind method to change the way Edit action (Copy, cut and paste) are added to context menu.
+	 * Use this bind method to change the way Edit actions (Copy, cut and paste) are added to context menu.
 	 * 
 	 * @return a specialization of {@link EditingActionManager}
 	 */
 	public Class<? extends EditingActionManager> bindEditingActionManager() {
 		return EditingActionManager.class;
 	}
-	
+
+	/**
+	 * Use this bind method to change the way the context and other menus are created for
+	 * Edit actions.
+	 * 
+	 * @return a specialization of {@link EditingMenuBuilder}
+	 */
+	public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
+		return EditingMenuBuilder.class;
+	}
+
 	/**
 	 * Use this method to specify how the editing domain can be found
 	 * @return a specialization of {@link EditingDomainFinder}

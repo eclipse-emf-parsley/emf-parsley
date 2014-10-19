@@ -12,10 +12,10 @@ package org.eclipse.emf.parsley.examples.cdo.treeform.customizations;
 
 
 import org.eclipse.emf.edit.ui.action.DeleteAction;
-import org.eclipse.emf.parsley.edit.action.EditingActionManager;
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.jface.dialogs.MessageDialog;
 
-public class AskForDeleteActionBarContributor extends EditingActionManager {
+public class AskForConfirmDeleteActionEditingMenuBuilder extends EditingMenuBuilder {
 
 	@Override
 	protected DeleteAction createDeleteAction() {
