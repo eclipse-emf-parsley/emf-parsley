@@ -41,7 +41,8 @@ import org.junit.runners.Suite;
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
 	NotificationBufferTest.class,
-	EmfCopyTest.class
+	EmfCopyTest.class,
+	EditingMenuBuilderTest.class
 })
 public class EmfParsleyAllTests {
 

@@ -24,12 +24,14 @@ import org.eclipse.emf.edit.ui.action.PasteAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
+import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.google.common.collect.Lists;
+import com.google.inject.Inject;
 
 /**
  * Creates the actions and builds the corresponding menu; this class does not
@@ -61,6 +63,9 @@ import com.google.common.collect.Lists;
  * @author Lorenzo Bettini - initial API and implementation
  */
 public class EditingMenuBuilder {
+	
+	@Inject
+	protected EmfSelectionHelper selectionHelper;
 
 	private CommandActionHandler deleteAction;
 
@@ -140,7 +145,8 @@ public class EditingMenuBuilder {
 	}
 
 	public void updateMenuContributions(ISelection selection) {
-		currentMenuContributions = menuContributionsDispatcher.invoke(selection);
+		currentMenuContributions = menuContributionsDispatcher
+				.invoke(selectionHelper.getFirstSelectedElement(selection));
 	}
 
 	/**
@@ -150,10 +156,10 @@ public class EditingMenuBuilder {
 	 * {@link IMenuContributionSpecification} accordingly; such methods will be selected
 	 * polymorphically.
 	 * 
-	 * @param selection
+	 * @param object
 	 * @return
 	 */
-	protected List<IMenuContributionSpecification> menuContributions(IStructuredSelection selection) {
+	protected List<IMenuContributionSpecification> menuContributions(Object object) {
 		return Lists.newArrayList(
 				actionUndo(),
 				actionRedo(),
