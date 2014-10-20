@@ -10,31 +10,41 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.action;
 
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.ActionContributionItem;
+import java.util.List;
+
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 /**
- * The implementation wrapping an actual {@link Action}
+ * The implementation wrapping a submenu
  * 
  * @author Lorenzo Bettini - initial contribution and API
  *
  */
-public class MenuActionContributionSpecification implements IMenuContributionSpecification {
+public class MenuSubmenuSpecification implements IMenuContributionSpecification {
 
-	private Action action;
+	private String text;
 	
-	public MenuActionContributionSpecification(Action action) {
-		this.action = action;
+	private List<IMenuContributionSpecification> subContributionSpecifications;
+	
+	public MenuSubmenuSpecification(String text, List<IMenuContributionSpecification> subContributionSpecifications) {
+		this.text = text;
+		this.subContributionSpecifications = subContributionSpecifications;
 	}
 
 	public void updateSelection(IStructuredSelection selection) {
-		// nothing to update for a standard Action
+		for (IMenuContributionSpecification m : subContributionSpecifications) {
+			m.updateSelection(selection);
+		}
 	}
 
 	public IContributionItem getContributionItem() {
-		return new ActionContributionItem(action);
+		MenuManager menuManager =  new MenuManager(text);
+		for (IMenuContributionSpecification m : subContributionSpecifications) {
+			menuManager.add(m.getContributionItem());
+		}
+		return menuManager;
 	}
 
 }

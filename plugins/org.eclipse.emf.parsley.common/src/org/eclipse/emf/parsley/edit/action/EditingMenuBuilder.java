@@ -111,7 +111,7 @@ public class EditingMenuBuilder {
 			
 			updateMenuContributions(structuredSelection);
 			
-			for (IMenuContributionSpecification menuContributionSpecification : currentMenuContributions) {
+			for (IMenuContributionSpecification menuContributionSpecification : getCurrentMenuContributions()) {
 				menuContributionSpecification.updateSelection(structuredSelection);
 			}
 		}
@@ -123,7 +123,7 @@ public class EditingMenuBuilder {
 	}
 
 	public void menuAboutToShow(IMenuManager menuManager) {
-		for (IMenuContributionSpecification menuContributionSpecification : currentMenuContributions) {
+		for (IMenuContributionSpecification menuContributionSpecification : getCurrentMenuContributions()) {
 			menuManager.add(menuContributionSpecification.getContributionItem());
 		}
 	}
@@ -159,6 +159,10 @@ public class EditingMenuBuilder {
 
 	protected IMenuContributionSpecification separator() {
 		return new MenuSeparatorContributionSpecification();
+	}
+
+	protected IMenuContributionSpecification submenu(String text, List<IMenuContributionSpecification> menuContributions) {
+		return new MenuSubmenuSpecification(text, menuContributions);
 	}
 
 	protected IMenuContributionSpecification actionDelete() {
@@ -227,10 +231,6 @@ public class EditingMenuBuilder {
 
 	protected RedoAction getRedoAction() {
 		return redoAction;
-	}
-
-	protected PolymorphicDispatcher<List<IMenuContributionSpecification>> getMenuContributionsDispatcher() {
-		return menuContributionsDispatcher;
 	}
 
 	protected List<IMenuContributionSpecification> getCurrentMenuContributions() {

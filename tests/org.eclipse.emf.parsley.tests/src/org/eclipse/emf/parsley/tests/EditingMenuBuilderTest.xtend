@@ -64,6 +64,37 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		editingMenuBuilder.assertMenuItemsGivenObject(eobj,
 		"&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, &Copy, &Paste")
 	}
+
+	@Test
+	def void testCustomMenuWithSubmenu() {
+		val editingMenuBuilder = new EditingMenuBuilder() {
+							
+			def protected menuContributions(ClassForControls o) {
+				#[
+					actionRedo(),
+					actionUndo(),
+					separator(),
+					submenu("Submenu1", #[
+						actionCopy(),
+						submenu("Submenu2", #[
+							actionCut()
+						])
+					]),
+					actionPaste()
+				]
+			}
+							
+		}.injectMembers.initializeEditingMenuBuilder
+		editingMenuBuilder.assertMenuItemsGivenObject(eobj,
+'''
+&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, Submenu1 -> [
+	&Copy, Submenu2 -> [
+		Cu&t
+	]
+]
+, &Paste'''
+		)
+	}
 	
 	override protected getEditingDomain() {
 		if (editingDomain === null) {
@@ -110,14 +141,19 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		editingMenuBuilder.updateSelection(sel)
 		editingMenuBuilder.menuAboutToShow(menuManager)
 		
-		expectedRepresentation.
+		expectedRepresentation.toString.
 		assertEquals(menuManager.items.map[menuItemToStringRepresentation].join(", "))
 	}
 
-	def private menuItemToStringRepresentation(IContributionItem item) {
+	def private CharSequence menuItemToStringRepresentation(IContributionItem item) {
 		switch (item) {
 			Separator: "separator"
 			ActionContributionItem: item.action.text
+			MenuManager: '''
+			«item.menuText» -> [
+				«item.items.map[menuItemToStringRepresentation].join(", ")»
+			]
+			'''
 			default: "unknown"
 		}
 	}
