@@ -99,20 +99,20 @@ public class EmfActionManager {
 		MenuManager submenuManager = null;
 
 		submenuManager = new MenuManager("&New Child");
-		populateManager(submenuManager, createChildActions, null);
+		populateManager(submenuManager, createChildActions);
 		menuManager.insertBefore("edit", submenuManager);
 
 		submenuManager = new MenuManager("N&ew Sibling");
-		populateManager(submenuManager, createSiblingActions, null);
+		populateManager(submenuManager, createSiblingActions);
 		menuManager.insertBefore("edit", submenuManager);
 	}
 
 	public void populateChildMenuManager(IMenuManager menuManager) {
-		populateManager(menuManager, createChildActions, null);
+		populateManager(menuManager, createChildActions);
 	}
 
 	public void populateSibilingMenuManager(IMenuManager menuManager) {
-		populateManager(menuManager, createSiblingActions, null);
+		populateManager(menuManager, createSiblingActions);
 	}
 
 	public void contributeToMenu(IMenuManager submenuManager) {
@@ -179,14 +179,10 @@ public class EmfActionManager {
 	}
 
 	protected void populateManager(IContributionManager manager,
-			Collection<? extends IAction> actions, String contributionID) {
+			Collection<? extends IAction> actions) {
 		if (actions != null) {
 			for (IAction action : actions) {
-				if (contributionID != null) {
-					manager.insertBefore(contributionID, action);
-				} else {
-					manager.add(action);
-				}
+				manager.add(action);
 			}
 		}
 	}
