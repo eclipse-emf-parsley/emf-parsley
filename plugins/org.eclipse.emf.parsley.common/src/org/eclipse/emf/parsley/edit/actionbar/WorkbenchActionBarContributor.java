@@ -181,8 +181,6 @@ public class WorkbenchActionBarContributor extends
 		ISelectionProvider selectionProvider = retrieveSelectionProvider();
 
 		if (selectionProvider != null) {
-			editingActionManager
-					.removeSelectionChangeListener(selectionProvider);
 			if (controlAction != null) {
 				selectionProvider.removeSelectionChangedListener(controlAction);
 			}
@@ -214,8 +212,6 @@ public class WorkbenchActionBarContributor extends
 		ISelectionProvider selectionProvider = retrieveSelectionProvider();
 
 		if (selectionProvider != null) {
-
-			editingActionManager.addSelectionListener(selectionProvider);
 
 			if (controlAction != null) {
 				selectionProvider.addSelectionChangedListener(controlAction);

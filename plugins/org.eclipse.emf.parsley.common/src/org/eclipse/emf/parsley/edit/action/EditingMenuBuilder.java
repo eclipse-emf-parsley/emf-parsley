@@ -27,7 +27,6 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 import com.google.common.collect.Lists;
@@ -97,14 +96,6 @@ public class EditingMenuBuilder {
 		redoAction = createRedoAction();
 	}
 
-	public void removeSelectionChangeListener(
-			ISelectionProvider selectionProvider) {
-		selectionProvider.removeSelectionChangedListener(deleteAction);
-		selectionProvider.removeSelectionChangedListener(cutAction);
-		selectionProvider.removeSelectionChangedListener(copyAction);
-		selectionProvider.removeSelectionChangedListener(pasteAction);
-	}
-
 	public void setEditingDomain(EditingDomain editingDomain) {
 		deleteAction.setEditingDomain(editingDomain);
 		cutAction.setEditingDomain(editingDomain);
@@ -112,13 +103,6 @@ public class EditingMenuBuilder {
 		pasteAction.setEditingDomain(editingDomain);
 		undoAction.setEditingDomain(editingDomain);
 		redoAction.setEditingDomain(editingDomain);
-	}
-
-	public void addSelectionListener(ISelectionProvider selectionProvider) {
-		selectionProvider.addSelectionChangedListener(deleteAction);
-		selectionProvider.addSelectionChangedListener(cutAction);
-		selectionProvider.addSelectionChangedListener(copyAction);
-		selectionProvider.addSelectionChangedListener(pasteAction);
 	}
 
 	public void updateSelection(ISelection selection) {
@@ -144,7 +128,7 @@ public class EditingMenuBuilder {
 		}
 	}
 
-	public void updateMenuContributions(ISelection selection) {
+	protected void updateMenuContributions(ISelection selection) {
 		currentMenuContributions = menuContributionsDispatcher
 				.invoke(selectionHelper.getFirstSelectedElement(selection));
 	}

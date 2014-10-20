@@ -15,7 +15,6 @@ import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
@@ -125,21 +124,12 @@ public class EditingActionManager {
 				editingMenuBuilder.getRedoAction());
 	}
 
-	public void removeSelectionChangeListener(
-			ISelectionProvider selectionProvider) {
-		editingMenuBuilder.removeSelectionChangeListener(selectionProvider);
-	}
-
 	public void setEditingDomain(EditingDomain editingDomain) {
 		editingMenuBuilder.setEditingDomain(editingDomain);
 	}
 
-	public void addSelectionListener(ISelectionProvider selectionProvider) {
-		editingMenuBuilder.addSelectionListener(selectionProvider);
-	}
-
 	public void updateSelection(ISelection selection) {
-		editingMenuBuilder.updateMenuContributions(selection);
+		editingMenuBuilder.updateSelection(selection);
 	}
 
 	public void updateUndoRedo() {
