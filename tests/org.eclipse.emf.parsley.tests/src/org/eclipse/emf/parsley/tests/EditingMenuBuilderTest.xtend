@@ -66,6 +66,25 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	}
 
 	@Test
+	def void testCustomDefaultMenu() {
+		val editingMenuBuilder = new EditingMenuBuilder() {
+			
+			override protected defaultMenuContributions(Object object) {
+				#[
+					actionRedo(),
+					actionUndo(),
+					separator(),
+					actionCopy(),
+					actionPaste()
+				]
+			}
+			
+		}.injectMembers.initializeEditingMenuBuilder
+		editingMenuBuilder.assertMenuItemsGivenObject(eobj,
+		"&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, &Copy, &Paste")
+	}
+
+	@Test
 	def void testCustomMenuWithSubmenu() {
 		val editingMenuBuilder = new EditingMenuBuilder() {
 							

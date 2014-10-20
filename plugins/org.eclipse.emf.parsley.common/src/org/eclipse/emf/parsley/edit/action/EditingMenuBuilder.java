@@ -144,6 +144,16 @@ public class EditingMenuBuilder {
 	 * @return
 	 */
 	protected List<IMenuContributionSpecification> menuContributions(Object object) {
+		return defaultMenuContributions(object);
+	}
+
+	/**
+	 * The default polymorphic implementation.
+	 * 
+	 * @param object
+	 * @return
+	 */
+	protected List<IMenuContributionSpecification> defaultMenuContributions(Object object) {
 		return Lists.newArrayList(
 				actionUndo(),
 				actionRedo(),
