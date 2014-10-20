@@ -16,6 +16,7 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 import org.eclipse.jface.viewers.ISelection
+import org.eclipse.emf.ecore.EObject
 
 class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 
@@ -34,15 +35,58 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	}
 
 	@Test
+	def void testDefaultEmfNewChildMenu() {
+		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
+		editingMenuBuilder.assertEmfMenuItemsGivenObject(lib,
+'''
+&New Child -> [
+	Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower
+]
+, N&ew Sibling -> [
+]
+'''
+		)
+	}
+
+	@Test
+	def void testDefaultEmfNewSiblingMenu() {
+		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
+		editingMenuBuilder.assertEmfMenuItemsGivenObject(wr,
+'''
+&New Child -> [
+]
+, N&ew Sibling -> [
+	Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower
+]
+'''
+		)
+	}
+
+	@Test
+	def void testDefaultEmfMenuWithEmptySelection() {
+		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
+		editingMenuBuilder.assertEmfMenuItemsGivenObject(createEmptySelection, "")
+	}
+
+	@Test
+	def void testEmfCreateActionsWithEmptySelection() {
+		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
+		assertTrue(editingMenuBuilder.createChildActions(createEmptySelection).empty)
+		assertTrue(editingMenuBuilder.createSiblingActions(createEmptySelection).empty)
+	}
+
+	@Test
+	def void testEmfCreateActionsWithNull() {
+		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
+		assertTrue(editingMenuBuilder.createChildActions(null).empty)
+		assertTrue(editingMenuBuilder.createSiblingActions(null).empty)
+	}
+
+
+	@Test
 	def void testWithNonStructuredSelection() {
 		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
-		editingMenuBuilder.assertMenuItemsGivenObject(new ISelection() {
-			
-			override isEmpty() {
-				true
-			}
-			
-		},
+		editingMenuBuilder.assertMenuItemsGivenObject(createEmptySelection,
 		"")
 	}
 
@@ -140,7 +184,6 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		]
 	}
 
-
 	def private createMenuManager() {
 		new MenuManager("#PopUp") => [
 			setRemoveAllWhenShown(true);
@@ -151,6 +194,14 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		new StructuredSelection(EmfParsleyUtil.ensureCollection(o).toArray)
 	}
 
+	def private createEmptySelection() {
+		new ISelection() {
+			override isEmpty() {
+				true
+			}
+		}
+	}
+
 	def private assertMenuItemsGivenObject(EditingMenuBuilder editingMenuBuilder, Object o, CharSequence expectedRepresentation) {
 		assertMenuItemsGivenObject(editingMenuBuilder, createSelection(o), expectedRepresentation)
 	}
@@ -159,6 +210,19 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		val menuManager = createMenuManager
 		editingMenuBuilder.updateSelection(sel)
 		editingMenuBuilder.menuAboutToShow(menuManager)
+		
+		expectedRepresentation.toString.
+		assertEquals(menuManager.items.map[menuItemToStringRepresentation].join(", "))
+	}
+
+	def private assertEmfMenuItemsGivenObject(EditingMenuBuilder editingMenuBuilder, EObject o, CharSequence expectedRepresentation) {
+		assertEmfMenuItemsGivenObject(editingMenuBuilder, createSelection(o), expectedRepresentation)
+	}
+
+	def private assertEmfMenuItemsGivenObject(EditingMenuBuilder editingMenuBuilder, ISelection sel, CharSequence expectedRepresentation) {
+		val menuManager = createMenuManager
+		editingMenuBuilder.updateSelection(sel)
+		editingMenuBuilder.emfMenuAboutToShow(menuManager)
 		
 		expectedRepresentation.toString.
 		assertEquals(menuManager.items.map[menuItemToStringRepresentation].join(", "))

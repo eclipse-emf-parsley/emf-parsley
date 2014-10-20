@@ -40,7 +40,7 @@ import com.google.inject.Inject;
 public class TreeActionBarContributor implements IMenuListener,
 		ISelectionChangedListener {
 
-	protected EditingDomain editingDomain;
+	private EditingDomain editingDomain;
 
 	@Inject
 	EmfActionManager emfActionManager;

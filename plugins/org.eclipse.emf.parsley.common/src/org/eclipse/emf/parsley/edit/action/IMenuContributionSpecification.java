@@ -15,7 +15,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 
 /**
  * An abstract specification of a menu item; mostly it will be a wrapper for an
- * {@link IContributionItem}.
+ * {@link IContributionItem} and an helper wrapper for actions; this way, we will
+ * have a common superclass for contributing to a MenuManager.
  * 
  * @author Lorenzo Bettini - initial contribution and API
  *

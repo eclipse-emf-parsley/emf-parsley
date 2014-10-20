@@ -10,13 +10,18 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.action;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.CommandActionHandler;
 import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.edit.ui.action.CopyAction;
+import org.eclipse.emf.edit.ui.action.CreateChildAction;
+import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.action.CutAction;
 import org.eclipse.emf.edit.ui.action.DeleteAction;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
@@ -26,8 +31,11 @@ import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.graphics.Image;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -65,6 +73,11 @@ public class EditingMenuBuilder {
 	
 	@Inject
 	protected EmfSelectionHelper selectionHelper;
+	
+	@Inject
+	private ILabelProvider labelProvider;
+	
+	private EditingDomain editingDomain;
 
 	private CommandActionHandler deleteAction;
 
@@ -81,7 +94,20 @@ public class EditingMenuBuilder {
 	private PolymorphicDispatcher<List<IMenuContributionSpecification>> menuContributionsDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("menuContributions", 1, 1, this);
 
+	private PolymorphicDispatcher<List<IMenuContributionSpecification>> emfMenuContributionsDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("emfMenuContributions", 1, 1, this);
+
 	private List<IMenuContributionSpecification> currentMenuContributions = Collections.emptyList();
+
+	private List<IMenuContributionSpecification> currentEmfMenuContributions = Collections.emptyList();
+
+	protected List<IMenuContributionSpecification> getCurrentEmfMenuContributions() {
+		return currentEmfMenuContributions;
+	}
+
+	protected List<IMenuContributionSpecification> getCurrentMenuContributions() {
+		return currentMenuContributions;
+	}
 
 	/**
 	 * Creates the action instances; this method is meant to be called
@@ -97,6 +123,7 @@ public class EditingMenuBuilder {
 	}
 
 	public void setEditingDomain(EditingDomain editingDomain) {
+		this.editingDomain = editingDomain;
 		deleteAction.setEditingDomain(editingDomain);
 		cutAction.setEditingDomain(editingDomain);
 		copyAction.setEditingDomain(editingDomain);
@@ -128,9 +155,28 @@ public class EditingMenuBuilder {
 		}
 	}
 
+	public void emfMenuAboutToShow(IMenuManager menuManager) {
+		for (IMenuContributionSpecification menuContributionSpecification : getCurrentEmfMenuContributions()) {
+			menuManager.add(menuContributionSpecification.getContributionItem());
+		}
+	}
+
 	protected void updateMenuContributions(ISelection selection) {
+		Object firstSelectedElement = selectionHelper
+				.getFirstSelectedElement(selection);
 		currentMenuContributions = menuContributionsDispatcher
-				.invoke(selectionHelper.getFirstSelectedElement(selection));
+				.invoke(firstSelectedElement);
+
+		currentEmfMenuContributions = emfMenuContributionsDispatcher
+				.invoke(firstSelectedElement);
+
+		if (currentEmfMenuContributions == null) {
+			// for creating new child and new sibling standard actions we need
+			// an
+			// ISelection
+			currentEmfMenuContributions = emfMenuContributionsDispatcher
+					.invoke(selection);
+		}
 	}
 
 	/**
@@ -145,6 +191,30 @@ public class EditingMenuBuilder {
 	 */
 	protected List<IMenuContributionSpecification> menuContributions(Object object) {
 		return defaultMenuContributions(object);
+	}
+
+	/**
+	 * The default implementation an Object is null.
+	 * 
+	 * @param object
+	 * @return
+	 */
+	protected List<IMenuContributionSpecification> emfMenuContributions(Object object) {
+		return null;
+	}
+
+	/**
+	 * The default implementation an {@link ISelection} for the contributions for EMF related actions that will appear in the menu;
+	 * Customizations of this class should provide a different overloaded implementation of
+	 * this method depending on the parameter, and return a different list of
+	 * {@link IMenuContributionSpecification} accordingly; such methods will be selected
+	 * polymorphically.
+	 * 
+	 * @param selection
+	 * @return
+	 */
+	protected List<IMenuContributionSpecification> emfMenuContributions(ISelection selection) {
+		return defaultEmfMenuContributions(selection);
 	}
 
 	/**
@@ -167,6 +237,18 @@ public class EditingMenuBuilder {
 		);
 	}
 
+	/**
+	 * The default polymorphic implementation.
+	 * 
+	 * @param selection
+	 * @return
+	 */
+	protected List<IMenuContributionSpecification> defaultEmfMenuContributions(ISelection selection) {
+		return Lists.newArrayList(
+				submenu("&New Child", createChildActions(selection)),
+				submenu("N&ew Sibling", createSiblingActions(selection))
+		);
+	}
 	protected IMenuContributionSpecification separator() {
 		return new MenuSeparatorContributionSpecification();
 	}
@@ -243,10 +325,6 @@ public class EditingMenuBuilder {
 		return redoAction;
 	}
 
-	protected List<IMenuContributionSpecification> getCurrentMenuContributions() {
-		return currentMenuContributions;
-	}
-
 	protected RedoAction createRedoAction() {
 		return new RedoAction();
 	}
@@ -261,6 +339,50 @@ public class EditingMenuBuilder {
 
 	public EditingDomainValidateAction createValidateAction() {
 		return new EditingDomainValidateAction();
+	}
+
+	/**
+	 * Creates the standard EMF "new child" action contributions
+	 * @param selection
+	 * @return
+	 */
+	public List<IMenuContributionSpecification> createChildActions(ISelection selection) {
+		Collection<?> descriptors = editingDomain.getNewChildDescriptors(selectionHelper.getFirstSelectedElement(selection), null);
+		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
+
+		for (Object descriptor : descriptors) {
+			CreateChildAction act = new CreateChildAction(editingDomain,
+					selection, descriptor);
+			Object imageObj = labelProvider
+					.getImage(((CommandParameter) descriptor).getValue());
+			act.setImageDescriptor(ImageDescriptor
+					.createFromImage((Image) imageObj));
+			actions.add(new MenuActionContributionSpecification(act));
+		}
+
+		return actions;
+	}
+
+	/**
+	 * Creates the standard EMF "new sibling" action contributions
+	 * @param selection
+	 * @return
+	 */
+	public List<IMenuContributionSpecification> createSiblingActions(ISelection selection) {
+		Collection<?> descriptors = editingDomain.getNewChildDescriptors(null, selectionHelper.getFirstSelectedElement(selection));
+		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
+
+		for (Object descriptor : descriptors) {
+			CreateSiblingAction act = new CreateSiblingAction(editingDomain,
+					selection, descriptor);
+			Object imageObj = labelProvider
+					.getImage(((CommandParameter) descriptor).getValue());
+			act.setImageDescriptor(ImageDescriptor
+					.createFromImage((Image) imageObj));
+			actions.add(new MenuActionContributionSpecification(act));
+		}
+
+		return actions;
 	}
 
 }
