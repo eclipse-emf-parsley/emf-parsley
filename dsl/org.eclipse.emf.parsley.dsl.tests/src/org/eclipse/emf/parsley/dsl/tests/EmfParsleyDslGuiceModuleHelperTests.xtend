@@ -92,7 +92,6 @@ bindTableViewerBuilder
 bindTableViewerColumnBuilder
 bindWorkbenchActionBarContributor
 bindTreeActionBarContributor
-bindEmfActionManager
 bindEditingActionManager
 bindEditingMenuBuilder
 bindEditingDomainFinder

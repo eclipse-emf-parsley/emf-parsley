@@ -32,7 +32,6 @@ import org.eclipse.emf.parsley.edit.ResourceSaveManager;
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
-import org.eclipse.emf.parsley.edit.action.EmfActionManager;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider;
@@ -357,16 +356,8 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 	}
 	
 	/**
-	 * Use this bind method to change the way Emf action (createChild, createSibiling, etc) are added to context menu.
-	 * 
-	 * @return a specialization of {@link EmfActionManager}
-	 */	
-	public Class<? extends EmfActionManager> bindEmfActionManager() {
-		return EmfActionManager.class;
-	}
-	
-	/**
-	 * Use this bind method to change the way Edit actions (Copy, cut and paste) are added to context menu.
+	 * Use this bind method to change the way Edit actions (Copy, cut and paste)
+	 * and EMF actions are added to context menu.
 	 * 
 	 * @return a specialization of {@link EditingActionManager}
 	 */

@@ -7,13 +7,13 @@
  * 
  * Contributors:
  * Francesco Guidieri - initial API and implementation
+ * Lorenzo Bettini - updated for using EditingMenuBuilder
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.actionbar;
 
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
-import org.eclipse.emf.parsley.edit.action.EmfActionManager;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
@@ -34,29 +34,23 @@ import com.google.inject.Inject;
  *  treeActionBarContributor.initialize(editingDomain);
  *  
  *  </pre>
- * @author Francesco Guidieri
- *
+ * @author Francesco Guidieri - initial API and implementation
+ * @author Lorenzo Bettini - updated for using EditingMenuBuilder
  */
 public class TreeActionBarContributor implements IMenuListener,
 		ISelectionChangedListener {
-
-	private EditingDomain editingDomain;
-
-	@Inject
-	EmfActionManager emfActionManager;
 
 	@Inject
 	EditingActionManager editingActionManager;
 
 	public void initialize(EditingDomain editingDomain) {
-		this.editingDomain = editingDomain;
 		editingActionManager.createActions();
 		editingActionManager.setEditingDomain(editingDomain);
 	}
 
 	public void menuAboutToShow(IMenuManager menuManager) {
 		menuManager.add(new Separator("edit"));
-		emfActionManager.menuAboutToShow(menuManager);
+		editingActionManager.emfMenuAboutToShow(menuManager);
 		editingActionManager.menuAboutToShow(menuManager);
 	}
 
@@ -64,7 +58,6 @@ public class TreeActionBarContributor implements IMenuListener,
 
 	public void selectionChanged(SelectionChangedEvent event) {
 		editingActionManager.updateSelection(event.getSelection());
-		emfActionManager.updateSelection(event.getSelection(), editingDomain);
 	}
 
 	protected StructuredViewer viewer;

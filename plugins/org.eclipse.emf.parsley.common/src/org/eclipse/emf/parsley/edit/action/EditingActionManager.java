@@ -140,6 +140,10 @@ public class EditingActionManager {
 		editingMenuBuilder.menuAboutToShow(menuManager);
 	}
 
+	public void emfMenuAboutToShow(IMenuManager menuManager) {
+		editingMenuBuilder.emfMenuAboutToShow(menuManager);
+	}
+
 	public EditingDomainValidateAction createValidateAction() {
 		return editingMenuBuilder.createValidateAction();
 	}

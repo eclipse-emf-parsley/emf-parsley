@@ -17,7 +17,6 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.emf.parsley.edit.action.EditingDomainValidateAction;
-import org.eclipse.emf.parsley.edit.action.EmfActionManager;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IMenuListener;
@@ -74,9 +73,6 @@ public class WorkbenchActionBarContributor extends
 	protected int style;
 
 	@Inject
-	protected EmfActionManager emfActionManager;
-	
-	@Inject
 	protected EditingActionManager editingActionManager;
 
 	protected ISelectionProvider explicitSelectionProvider = null;
@@ -120,7 +116,7 @@ public class WorkbenchActionBarContributor extends
 		submenuManager.add(new Separator("additions"));
 		submenuManager.add(new Separator("additions-end"));
 
-		emfActionManager.contributeToMenu(submenuManager);
+//		emfActionManager.contributeToMenu(submenuManager);
 
 		submenuManager.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager menuManager) {
@@ -271,7 +267,7 @@ public class WorkbenchActionBarContributor extends
 
 		addGlobalActions(menuManager);
 		
-		emfActionManager.menuAboutToShow(menuManager);
+		editingActionManager.emfMenuAboutToShow(menuManager);
 	}
 
 	protected void ensureActionsAreInitialized() {
@@ -307,9 +303,6 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	public void selectionChanged(SelectionChangedEvent event) {
-		EditingDomain domain = ((IEditingDomainProvider) activePart)
-				.getEditingDomain();
-		emfActionManager.updateSelection(event.getSelection(), domain);
 		editingActionManager.updateSelection(event.getSelection());
 	}
 
