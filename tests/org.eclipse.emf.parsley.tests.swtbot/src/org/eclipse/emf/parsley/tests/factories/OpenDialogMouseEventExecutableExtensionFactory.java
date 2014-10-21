@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests.factories;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
-import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 
 
 
@@ -29,7 +29,7 @@ public class OpenDialogMouseEventExecutableExtensionFactory extends
 	@Override
 	protected EmfParsleyGuiceModule getModule() {
 		return new EmfParsleyGuiceModule(
-				EmfParsleyTestsActivator.getDefault()) {
+				EmfParsleySwtBotTestsActivator.getDefault()) {
 
 			@Override
 			public Class<? extends IEditorMouseListener> bindIEditorMouseListener() {

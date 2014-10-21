@@ -9,7 +9,7 @@
  * Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.factories.editabletable;
-import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 import org.eclipse.emf.parsley.tests.factories.EmfParsleyTestsExecutableExtensionFactory;
 
 import com.google.inject.Injector;
@@ -25,7 +25,7 @@ public class EditableTableLibraryExecutableExtensionFactory extends
 
 	@Override
 	public Injector getInjector() {
-		return EmfParsleyTestsActivator.getDefault().getInjector(
+		return EmfParsleySwtBotTestsActivator.getDefault().getInjector(
 				this.getClass());
 	}
 

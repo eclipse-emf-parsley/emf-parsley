@@ -35,10 +35,10 @@ import org.osgi.framework.BundleContext;
 
 import com.google.inject.Injector;
 
-public class EmfParsleyTestsActivator extends AbstractUIPlugin {
+public class EmfParsleySwtBotTestsActivator extends AbstractUIPlugin {
 
 	// The shared instance
-	private static EmfParsleyTestsActivator plugin;
+	private static EmfParsleySwtBotTestsActivator plugin;
 
 	public static final String EMF_TREE_EDITOR = "org.eclipse.emf.parsley.editors.treeEditor";
 
@@ -62,7 +62,7 @@ public class EmfParsleyTestsActivator extends AbstractUIPlugin {
 	 */
 	private Map<String, Injector> injectorsMap = new HashMap<String, Injector>();
 
-	public EmfParsleyTestsActivator() {
+	public EmfParsleySwtBotTestsActivator() {
 	}
 
 	/*
@@ -95,7 +95,7 @@ public class EmfParsleyTestsActivator extends AbstractUIPlugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static EmfParsleyTestsActivator getDefault() {
+	public static EmfParsleySwtBotTestsActivator getDefault() {
 		return plugin;
 	}
 

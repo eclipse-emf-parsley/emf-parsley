@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests.factories;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.NoOpMouseAdapter;
-import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 
 /**
  * Uses a mouse adapter that does not react to mouse events.
@@ -26,7 +26,7 @@ public class NoMouseEventExecutableExtensionFactory extends
 
 	@Override
 	protected EmfParsleyGuiceModule getModule() {
-		return new EmfParsleyGuiceModule(EmfParsleyTestsActivator.getDefault()) {
+		return new EmfParsleyGuiceModule(EmfParsleySwtBotTestsActivator.getDefault()) {
 
 			@Override
 			public Class<? extends IEditorMouseListener> bindIEditorMouseListener() {

@@ -331,21 +331,21 @@ public class EmfParsleyAbstractTests {
 
 		editorNamesToId = new HashMap<String, String>();
 		editorNamesToId.put(EMF_TREE_EDITOR,
-				EmfParsleyTestsActivator.EMF_TREE_EDITOR);
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR);
 		editorNamesToId.put(EMF_TREE_EDITOR_STATEMACHINE,
-				EmfParsleyTestsActivator.EMF_TREE_EDITOR_FOR_STATEMACHINE);
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_FOR_STATEMACHINE);
 		editorNamesToId.put(EMF_TREE_EDITOR_NO_MOUSE,
-				EmfParsleyTestsActivator.EMF_TREE_EDITOR_NO_MOUSE_ID);
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_NO_MOUSE_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_FORM_DIALOG,
-				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_FORM_DIALOG_ID);
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_OPEN_FORM_DIALOG_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_DIALOG,
-				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_ID);
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_DIALOG_UNDOABLE,
-				EmfParsleyTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_UNDOABLE_ID);
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_OPEN_DIALOG_UNDOABLE_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_CUSTOM_LABEL,
-				EmfParsleyTestsActivator.EMF_TREE_EDITOR_CUSTOM_LABEL);
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_CUSTOM_LABEL);
 		editorNamesToId.put(EMF_CUSTOM_LIBRARY_EDITOR,
-				EmfParsleyTestsActivator.EMF_EDITOR_FOR_LIBRARY);
+				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_LIBRARY);
 		
 		// Change the perspective via the Open Perspective dialog
 		bot.menu("Window").menu("Open Perspective").menu("Other...").click();
@@ -650,7 +650,7 @@ public class EmfParsleyAbstractTests {
 	}
 
 	protected String localFileContents(String string) throws IOException {
-		return EmfParsleyTestsActivator.localFileContents(string);
+		return EmfParsleySwtBotTestsActivator.localFileContents(string);
 	}
 	
 	protected Library localLibrary(String extlibraryFileName) throws IOException {
@@ -660,7 +660,7 @@ public class EmfParsleyAbstractTests {
 
 	protected Resource localResource(String extlibraryFileName)
 			throws IOException {
-		File file = EmfParsleyTestsActivator.localFile(extlibraryFileName);
+		File file = EmfParsleySwtBotTestsActivator.localFile(extlibraryFileName);
 		URI uri = URI.createFileURI(file.getAbsolutePath());
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.getResource(uri, true);

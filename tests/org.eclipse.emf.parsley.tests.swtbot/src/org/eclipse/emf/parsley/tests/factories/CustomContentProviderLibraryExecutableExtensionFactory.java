@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.factories;
 
-import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 
 import com.google.inject.Injector;
 
@@ -25,7 +25,7 @@ public class CustomContentProviderLibraryExecutableExtensionFactory extends
 
 	@Override
 	public Injector getInjector() {
-		return EmfParsleyTestsActivator.getDefault().getInjector(
+		return EmfParsleySwtBotTestsActivator.getDefault().getInjector(
 				this.getClass());
 	}
 

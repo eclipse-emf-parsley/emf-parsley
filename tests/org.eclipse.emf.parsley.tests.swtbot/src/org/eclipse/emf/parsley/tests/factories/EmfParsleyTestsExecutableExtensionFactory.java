@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.tests.factories;
 
 
 import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
-import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
@@ -33,7 +33,7 @@ public class EmfParsleyTestsExecutableExtensionFactory extends
 	 */
 	@Override
 	protected Bundle getBundle() {
-		return EmfParsleyTestsActivator.getDefault().getBundle();
+		return EmfParsleySwtBotTestsActivator.getDefault().getBundle();
 	}
 
 	@Override

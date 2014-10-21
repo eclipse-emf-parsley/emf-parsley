@@ -14,7 +14,7 @@ package org.eclipse.emf.parsley.tests.factories;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator;
+import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 
@@ -46,7 +46,7 @@ public class CustomLabelExecutableExtensionFactory extends
 
 	@Override
 	protected EmfParsleyGuiceModule getModule() {
-		return new EmfParsleyGuiceModule(EmfParsleyTestsActivator.getDefault()) {
+		return new EmfParsleyGuiceModule(EmfParsleySwtBotTestsActivator.getDefault()) {
 
 			@Override
 			public Class<? extends ILabelProvider> bindILabelProvider() {
