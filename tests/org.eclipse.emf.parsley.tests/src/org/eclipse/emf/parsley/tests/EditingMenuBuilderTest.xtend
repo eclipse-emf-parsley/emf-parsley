@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
+import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.util.EmfParsleyUtil
 import org.eclipse.jface.action.ActionContributionItem
@@ -191,6 +192,26 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		// now there should be one
 		lib.employees.head.assertNotNull
 	}
+
+	@Test
+	def void testCustomAddCommand() {
+		val editingMenuBuilder = new EditingMenuBuilder() {
+							
+			def protected emfMenuContributions(Library o) {
+				#[
+					actionAdd("New Writer", o.writers, 
+						libraryFactory.createWriter => [
+							name = "This is a new writer"
+						]
+					)
+				]
+			}
+							
+		}.injectMembers.initializeEditingMenuBuilder
+		editingMenuBuilder.emfMenuManagerForSelection(lib).
+			executeAction("New Writer")
+		lib.writers.exists[name == "This is a new writer"].assertTrue
+	}
 	
 	override protected getEditingDomain() {
 		if (editingDomain === null) {
@@ -205,15 +226,17 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 
 	def private getAndInitializeEditingMenuBuilder(Injector injector) {
 		injector.getInstance(EditingMenuBuilder) => [
-			createActions
-			setEditingDomain(getEditingDomain)
+			emb | 
+			emb.createActions
+			emb.setEditingDomain(getEditingDomain)
 		]
 	}
 
 	def private initializeEditingMenuBuilder(EditingMenuBuilder editingMenuBuilder) {
 		editingMenuBuilder => [
-			createActions
-			setEditingDomain(getEditingDomain)
+			emb | 
+			emb.createActions
+			emb.setEditingDomain(getEditingDomain)
 		]
 	}
 
@@ -256,7 +279,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		val menuManager = emfMenuManagerForSelection(editingMenuBuilder, sel)
 		
 		expectedRepresentation.toString.
-		assertEquals(menuManager.items.map[menuItemToStringRepresentation].join(", "))
+		assertEquals(menuManager.menuItemsToStringRepresentation)
 	}
 
 	private def emfMenuManagerForSelection(EditingMenuBuilder editingMenuBuilder, EObject o) {
@@ -272,9 +295,16 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 
 	private def executeAction(MenuManager menuManager, String actionText) {
 		menuManager.items.filter(ActionContributionItem).findFirst[action.text == actionText] => [
-			it.assertNotNull
+			assertTrue(
+				"Could not find " + actionText + " in " + menuManager.menu,
+				it != null
+			)
 			action.run
 		]
+	}
+
+	def private CharSequence menuItemsToStringRepresentation(MenuManager menuManager) {
+		menuManager.items.map[menuItemToStringRepresentation].join(", ")
 	}
 
 	def private CharSequence menuItemToStringRepresentation(IContributionItem item) {
@@ -283,7 +313,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 			ActionContributionItem: item.action.text
 			MenuManager: '''
 			«item.menuText» -> [
-				«item.items.map[menuItemToStringRepresentation].join(", ")»
+				«item.menuItemsToStringRepresentation»
 			]
 			'''
 			default: "unknown"

@@ -15,6 +15,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.CommandActionHandler;
@@ -120,6 +122,10 @@ public class EditingMenuBuilder {
 		pasteAction = createPasteAction();
 		undoAction = createUndoAction();
 		redoAction = createRedoAction();
+	}
+
+	public EditingDomain getEditingDomain() {
+		return editingDomain;
 	}
 
 	public void setEditingDomain(EditingDomain editingDomain) {
@@ -340,6 +346,34 @@ public class EditingMenuBuilder {
 
 	public EditingDomainValidateAction createValidateAction() {
 		return new EditingDomainValidateAction();
+	}
+
+	/**
+	 * Creates a menu contribution for an action with the given text, that
+	 * will add the specified value to the specified list, when executed.
+	 * 
+	 * @param text
+	 * @param list
+	 * @param value
+	 * @return
+	 */
+	protected <T> MenuActionContributionSpecification actionAdd(String text,
+			EList<? super T> list, T value) {
+		AddCommand addCommand = addCommand(list, value);
+		addCommand.setDescription(text);
+		return new MenuActionContributionSpecification(new EmfCommandAction(text,
+				getEditingDomain(), addCommand));
+	}
+
+	/**
+	 * Creates a command for adding the specified value to the specified list.
+	 * 
+	 * @param list
+	 * @param value
+	 * @return
+	 */
+	protected <T> AddCommand addCommand(EList<? super T> list, T value) {
+		return new AddCommand(getEditingDomain(), list, value);
 	}
 
 	/**

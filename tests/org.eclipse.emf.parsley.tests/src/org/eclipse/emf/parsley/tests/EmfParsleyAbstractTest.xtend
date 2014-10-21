@@ -35,6 +35,7 @@ import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 
 import static extension org.junit.Assert.*
 import org.eclipse.emf.parsley.util.EcoreUtil2
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
 abstract class EmfParsleyAbstractTest {
 
@@ -49,6 +50,8 @@ abstract class EmfParsleyAbstractTest {
 	val protected testPackage = TestmodelsPackage.eINSTANCE
 	
 	val protected testFactory = TestmodelsFactory.eINSTANCE
+	
+	val protected libraryFactory = EXTLibraryFactory.eINSTANCE
 
 	val protected baseClass = testPackage.baseClass
 	
