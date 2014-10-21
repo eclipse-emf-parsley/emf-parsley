@@ -303,29 +303,11 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				]
 				
 				for (labelSpecification : labelProvider.labelSpecifications) {
-					members += labelSpecification.toMethod("text", typeRef(String)) [
-						parameters += labelSpecification.toParameter(
-							if (labelSpecification.name != null)
-								labelSpecification.name
-							else
-								"it"
-							, labelSpecification.parameterType
-						)
-						body = labelSpecification.expression
-					]
+					members += labelSpecification.specificationToMethod("text", typeRef(String))
 				}
 				
 				for (imageSpecification : labelProvider.imageSpecifications) {
-					members += imageSpecification.toMethod("image", typeRef(Object)) [
-						parameters += imageSpecification.toParameter(
-							if (imageSpecification.name != null)
-								imageSpecification.name
-							else
-								"it"
-							, imageSpecification.parameterType
-						)
-						body = imageSpecification.expression
-					]
+					members += imageSpecification.specificationToMethod("image", typeRef(Object))
 				}
 			]
 			labelProviderClass
@@ -385,34 +367,12 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(propertyDescriptionProviderClass) [
 				setSuperClassTypeAndFields(featureCaptionProvider, typeof(FeatureCaptionProvider))
 				
-				inferMethodsForTextPropertyDescription(element, it, featureCaptionProvider.specifications)
+				inferMethodsForTextCaptionSpecifications(element, it, featureCaptionProvider.specifications)
 			]
 			propertyDescriptionProviderClass
 		}
 	}
 	
-	def inferMethodsForTextPropertyDescription(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
-		for (spec : specifications) {
-			if (spec.feature?.simpleName != null) {
-				// associate the method to the expression, not to the whole
-				// spec, otherwise the 'feature' is logically
-				// contained in a method which should return a string
-				// and the validator would complain
-				members += spec.expression.toMethod
-				("text_" + 
-						spec.parameterType.simpleName + "_" +
-						spec.feature.simpleName.propertyNameForGetterSetterMethod, 
-					typeRef(String)
-				) [
-					parameters += spec.toParameter(
-						"it", typeRef(EStructuralFeature)
-					)
-					body = spec.expression
-				]
-			}
-		}
-	}
-
 	def inferFormFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		element.formFeatureCaptionProvider.inferDialogFeatureCaptionProviderWithLabel(
 			element.formFeatureCaptionProviderQN, typeof(FormFeatureCaptionProvider), acceptor)
@@ -431,36 +391,63 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(descriptionProviderClass) [
 				setSuperClassTypeAndFields(element, superClass)
 				
-				inferMethodsForTextPropertyDescription(element, it, element.specifications)
+				inferMethodsForTextCaptionSpecifications(element, it, element.specifications)
 				
-				inferMethodsForLabelPropertyDescription(element, it, element.labelSpecifications)			
+				inferMethodsForLabelCaptionSpecifications(element, it, element.labelSpecifications)			
 			]
 			descriptionProviderClass
 		}
 	}
+
+	def private inferMethodsForTextCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
+		inferMethodsForCaptionSpecifications(
+			it, specifications, "text_", typeRef(String)
+		) [
+			it, spec |
+			parameters += spec.toParameter(
+				"it", typeRef(EStructuralFeature)
+			)
+		]
+	}
 	
-	def inferMethodsForLabelPropertyDescription(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
+	def private inferMethodsForLabelCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
+		inferMethodsForCaptionSpecifications(
+			it, specifications, "label_", typeRef(Label)
+		) [
+			it, spec |
+			parameters += spec.toParameter(
+				"parent", typeRef(Composite)
+			)
+			parameters += spec.toParameter(
+				"it", typeRef(EStructuralFeature)
+			)
+		]
+	}
+
+	def private inferMethodsForCaptionSpecifications(JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications, 
+		String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator
+	) {
 		for (spec : specifications) {
-			if (spec.feature?.simpleName != null) {
-				// associate the method to the expression, not to the whole
-				// spec, otherwise the 'feature' is logically
-				// contained in a method which should return a label
-				// and the validator would complain
-				members += spec.expression.toMethod
-				("label_" + 
-						spec.parameterType.simpleName + "_" +
-						spec.feature.simpleName.propertyNameForGetterSetterMethod, 
-					typeRef(Label)
-				) [
-					parameters += spec.toParameter(
-						"parent", typeRef(Composite)
-					)
-					parameters += spec.toParameter(
-						"it", typeRef(EStructuralFeature)
-					)
-					body = spec.expression
-				]
-			}
+			featureAssociatedExpressionToMethod(spec, prefix, returnType, parameterCreator)
+		}
+	}
+
+	def private featureAssociatedExpressionToMethod(JvmGenericType it, FeatureAssociatedExpression spec, 
+			String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator) {
+		if (spec.feature?.simpleName != null) {
+			// associate the method to the expression, not to the whole
+			// spec, otherwise the 'feature' is logically
+			// contained in a method which should return a label
+			// and the validator would complain
+			members += spec.expression.toMethod
+			(prefix + 
+					spec.parameterType.simpleName + "_" +
+					spec.feature.simpleName.propertyNameForGetterSetterMethod, 
+				returnType
+			) [
+				parameterCreator.apply(it, spec)
+				body = spec.expression
+			]
 		}
 	}
 
@@ -609,29 +596,11 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				]
 				
 				for (specification : viewerContentProvider.elementsSpecifications) {
-					members += specification.toMethod("elements", typeRef(Object)) [
-						parameters += specification.toParameter(
-							if (specification.name != null)
-								specification.name
-							else
-								"it"
-							, specification.parameterType
-						)
-						body = specification.expression
-					]
+					members += specification.specificationToMethod("elements", typeRef(Object))
 				}
 				
 				for (specification : viewerContentProvider.childrenSpecifications) {
-					members += specification.toMethod("children", typeRef(Object)) [
-						parameters += specification.toParameter(
-							if (specification.name != null)
-								specification.name
-							else
-								"it"
-							, specification.parameterType
-						)
-						body = specification.expression
-					]
+					members += specification.specificationToMethod("children", typeRef(Object))
 				}
 			]
 			viewerContentProviderClass
@@ -647,27 +616,16 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(proposalCreatorClass) [
 				setSuperClassTypeAndFields(proposalCreator, typeof(ProposalCreator))
 				
-				for (spec : proposalCreator.proposalsSpecifications) {
-					if (spec.feature?.simpleName != null) {
-						// associate the method to the expression, not to the whole
-						// specification, otherwise the 'feature' is logically
-						// contained in a method which should return a list
-						// and the validator would complain
-						members += spec.expression.toMethod
-						("proposals_" + 
-								spec.parameterType.simpleName + "_" +
-								spec.feature.simpleName.propertyNameForGetterSetterMethod, 
-							typeRef(List).type.createTypeRef(wildCard)
-						) [
-							parameters += spec.toParameter(
-								"it", spec.parameterType
-							)
-							parameters += spec.toParameter(
-								"feature", typeRef(EStructuralFeature)
-							)
-							body = spec.expression
-						]
-					}
+				for (specification : proposalCreator.proposalsSpecifications) {
+					featureAssociatedExpressionToMethod(specification, "proposals_", typeRef(List).type.createTypeRef(wildCard)) [
+						it, spec |
+						parameters += spec.toParameter(
+							"it", spec.parameterType
+						)
+						parameters += spec.toParameter(
+							"feature", typeRef(EStructuralFeature)
+						)
+					]
 				}
 			]
 			proposalCreatorClass
@@ -686,21 +644,22 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				val returnType = typeRef(List, typeRef(IMenuContributionSpecification))
 				
 				for (specification : menuBuilder.menuSpecifications) {
-					members += specification.toMethod("menuContributions", returnType) [
-						parameters += specification.specificationParameter
-						body = specification.expression
-					]
+					members += specification.specificationToMethod("menuContributions", returnType)
 				}
 				
 				for (specification : menuBuilder.emfMenuSpecifications) {
-					members += specification.toMethod("emfMenuContributions", returnType) [
-						parameters += specification.specificationParameter
-						body = specification.expression
-					]
+					members += specification.specificationToMethod("emfMenuContributions", returnType)
 				}
 			]
 			menuBuilderClass
 		}
+	}
+
+	def private specificationToMethod(LabelSpecification specification, String methodName, JvmTypeReference returnType) {
+		specification.toMethod(methodName, returnType) [
+			parameters += specification.specificationParameter
+			body = specification.expression
+		]
 	}
 
 	def private specificationParameter(LabelSpecification specification) {
