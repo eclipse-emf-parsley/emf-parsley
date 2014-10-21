@@ -182,19 +182,19 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
    	}
 				
-	def setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
+	def private setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
 		if (dslElement.extendsClause != null)
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
 		else
 			e.superTypes += typeRef(defaultSuperClass)
 	}
 
-	def setSuperClassTypeAndFields(JvmGenericType e, WithFields dslElement, Class<?> defaultSuperClass) {
+	def private setSuperClassTypeAndFields(JvmGenericType e, WithFields dslElement, Class<?> defaultSuperClass) {
 		e.setSuperClassType(dslElement, defaultSuperClass)
 		e.processFields(dslElement)
 	}
 
-	def processFields(JvmGenericType it, WithFields dslElement) {
+	def private processFields(JvmGenericType it, WithFields dslElement) {
 		for (f : dslElement.fields) {
 			var type = f.type
 			val name = f.name
@@ -215,7 +215,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def void translateAnnotations(JvmAnnotationTarget target, List<XAnnotation> annotations) {
+	def private void translateAnnotations(JvmAnnotationTarget target, List<XAnnotation> annotations) {
 		target.addAnnotations(annotations.filterNull.filter[annotationType != null])
 	}
    	
@@ -284,7 +284,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		element.fullyQualifiedName + ".edit.action.MenuBuilderGen"
 	}
 
-	def inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.labelProvider == null)
 			null
 		else {
@@ -314,7 +314,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferTableLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferTableLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.tableLabelProvider == null)
 			null
 		else {
@@ -358,7 +358,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.featureCaptionProvider == null)
 			null
 		else {
@@ -373,17 +373,17 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferFormFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferFormFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		element.formFeatureCaptionProvider.inferDialogFeatureCaptionProviderWithLabel(
 			element.formFeatureCaptionProviderQN, typeof(FormFeatureCaptionProvider), acceptor)
 	}
 
-	def inferDialogFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferDialogFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		element.dialogFeatureCaptionProvider.inferDialogFeatureCaptionProviderWithLabel(
 			element.dialogFeatureCaptionProviderQN, typeof(DialogFeatureCaptionProvider), acceptor)
 	}
 
-	def inferDialogFeatureCaptionProviderWithLabel(AbstractFeatureCaptionProviderWithLabel element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferDialogFeatureCaptionProviderWithLabel(AbstractFeatureCaptionProviderWithLabel element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element == null)
 			null
 		else {
@@ -451,17 +451,17 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def inferFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		element.featuresProvider.inferFeatureProviderCommon(
 			element.featuresProviderQN, typeof(FeaturesProvider), acceptor)
 	}
 
-	def inferTableFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferTableFeatureProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		element.tableFeaturesProvider.
 			inferFeatureProviderCommon(element.tableFeaturesProviderQN, typeof(TableFeaturesProvider), acceptor)
 	}
 
-	def inferFeatureProviderCommon(AbstractFeatureProvider element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferFeatureProviderCommon(AbstractFeatureProvider element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element == null)
 			null
 		else {
@@ -497,15 +497,15 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def inferFormControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferFormControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
 		e.formControlFactory.inferControlFactory(e.formControlFactoryQN, typeof(FormControlFactory), acceptor)
 	}
 
-	def inferDialogControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferDialogControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
 		e.dialogControlFactory.inferControlFactory(e.dialogControlFactoryQN, typeof(DialogControlFactory), acceptor)
 	}
 
-	def inferControlFactory(AbstractControlFactory e, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferControlFactory(AbstractControlFactory e, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
 		if (e == null)
 			null
 		else {
@@ -521,7 +521,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 	
-	def inferMethodsForControlFactory(AbstractControlFactory e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
+	def private inferMethodsForControlFactory(AbstractControlFactory e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
 		for (spec: specifications) {
 			if (spec.feature?.simpleName != null) {
 				if (spec.target == null)
@@ -577,7 +577,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def inferViewerContentProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferViewerContentProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.viewerContentProvider == null)
 			null
 		else {
@@ -607,7 +607,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def inferProposalCreator(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferProposalCreator(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.proposalCreator == null)
 			null
 		else {
@@ -632,7 +632,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def inferMenuBuilder(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferMenuBuilder(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.menuBuilder == null)
 			null
 		else {
@@ -672,7 +672,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		)
 	}
 
-	def control_EClass_EStructuralFeature(
+	def private control_EClass_EStructuralFeature(
 			ControlFactorySpecification spec, XExpression exp, (JvmOperation)=>void init
 	) {
 		exp.toMethod
@@ -681,7 +681,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			, init)
 	}
 	
-	def methodNameForFormFeatureSpecification(ControlFactorySpecification spec, String prefix) {
+	def private methodNameForFormFeatureSpecification(ControlFactorySpecification spec, String prefix) {
 		prefix + 
 					spec.parameterType.simpleName + "_" +
 					spec.feature.simpleName.propertyNameForGetterSetterMethod
@@ -697,7 +697,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def handleBindingsSpecification(JvmGenericType it, BindingsSpecification bindingsSpecification) {
+	def private handleBindingsSpecification(JvmGenericType it, BindingsSpecification bindingsSpecification) {
 		for (binding : bindingsSpecification.bindings) {
 			var JvmOperation method = null
 			if (binding instanceof TypeBinding) {
