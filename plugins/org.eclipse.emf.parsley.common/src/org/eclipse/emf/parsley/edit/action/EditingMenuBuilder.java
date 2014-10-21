@@ -249,6 +249,7 @@ public class EditingMenuBuilder {
 				submenu("N&ew Sibling", createSiblingActions(selection))
 		);
 	}
+
 	protected IMenuContributionSpecification separator() {
 		return new MenuSeparatorContributionSpecification();
 	}

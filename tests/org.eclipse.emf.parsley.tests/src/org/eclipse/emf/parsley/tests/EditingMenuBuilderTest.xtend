@@ -1,6 +1,7 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Injector
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
@@ -10,17 +11,28 @@ import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.IContributionItem
 import org.eclipse.jface.action.MenuManager
 import org.eclipse.jface.action.Separator
+import org.eclipse.jface.viewers.ISelection
 import org.eclipse.jface.viewers.StructuredSelection
 import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.jface.viewers.ISelection
-import org.eclipse.emf.ecore.EObject
 
 class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 
 	var EditingDomain editingDomain = null
+	
+	/**
+	 * We will use it also for easily testing EMF actions, since there will
+	 * be no submenus
+	 */
+	static class FlattenedNewChildEditingMenuBuilder extends EditingMenuBuilder {
+							
+		override protected defaultEmfMenuContributions(ISelection selection) {
+			createChildActions(selection)
+		}
+						
+	}
 	
 	@Before
 	def void setEditingDomainToNull() {
@@ -59,6 +71,15 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower
 ]
 '''
+		)
+	}
+
+	@Test
+	def void testCustomEmfDefaultMenu() {
+		val editingMenuBuilder = new FlattenedNewChildEditingMenuBuilder().
+			injectMembers.initializeEditingMenuBuilder
+		editingMenuBuilder.assertEmfMenuItemsGivenObject(lib,
+'''Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower'''
 		)
 	}
 
@@ -158,6 +179,18 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 , &Paste'''
 		)
 	}
+
+	@Test
+	def void testExecuteNewChildMenu() {
+		val editingMenuBuilder = new FlattenedNewChildEditingMenuBuilder().
+			injectMembers.initializeEditingMenuBuilder
+		// before executing there must be no employee
+		lib.employees.head.assertNull
+		editingMenuBuilder.emfMenuManagerForSelection(lib).
+			executeAction("Employees Employee")
+		// now there should be one
+		lib.employees.head.assertNotNull
+	}
 	
 	override protected getEditingDomain() {
 		if (editingDomain === null) {
@@ -220,12 +253,28 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	}
 
 	def private assertEmfMenuItemsGivenObject(EditingMenuBuilder editingMenuBuilder, ISelection sel, CharSequence expectedRepresentation) {
-		val menuManager = createMenuManager
-		editingMenuBuilder.updateSelection(sel)
-		editingMenuBuilder.emfMenuAboutToShow(menuManager)
+		val menuManager = emfMenuManagerForSelection(editingMenuBuilder, sel)
 		
 		expectedRepresentation.toString.
 		assertEquals(menuManager.items.map[menuItemToStringRepresentation].join(", "))
+	}
+
+	private def emfMenuManagerForSelection(EditingMenuBuilder editingMenuBuilder, EObject o) {
+		emfMenuManagerForSelection(editingMenuBuilder, createSelection(o))
+	}
+
+	private def emfMenuManagerForSelection(EditingMenuBuilder editingMenuBuilder, ISelection sel) {
+		val menuManager = createMenuManager
+		editingMenuBuilder.updateSelection(sel)
+		editingMenuBuilder.emfMenuAboutToShow(menuManager)
+		menuManager
+	}
+
+	private def executeAction(MenuManager menuManager, String actionText) {
+		menuManager.items.filter(ActionContributionItem).findFirst[action.text == actionText] => [
+			it.assertNotNull
+			action.run
+		]
 	}
 
 	def private CharSequence menuItemToStringRepresentation(IContributionItem item) {
