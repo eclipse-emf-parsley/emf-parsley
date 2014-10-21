@@ -105,6 +105,14 @@ public class WorkbenchActionBarContributor extends
 		controlAction = editingActionManager.createControlAction();
 	}
 
+	/* (non-Javadoc)
+	 * 
+	 * (*) We used to call contributeToMenu(submenuManager)
+	 * 
+	 * but that does not seem to work (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=447954)
+	 * 
+	 * @see org.eclipse.ui.part.EditorActionBarContributor#contributeToMenu(org.eclipse.jface.action.IMenuManager)
+	 */
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
 		IMenuManager submenuManager = new MenuManager("Emf Parsley",
@@ -116,8 +124,8 @@ public class WorkbenchActionBarContributor extends
 		submenuManager.add(new Separator("additions"));
 		submenuManager.add(new Separator("additions-end"));
 
-//		emfActionManager.contributeToMenu(submenuManager);
-
+		// (*)
+		
 		submenuManager.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager menuManager) {
 				menuManager.updateAll(true);

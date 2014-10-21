@@ -102,6 +102,10 @@ public class EditingMenuBuilder {
 	private List<IMenuContributionSpecification> currentMenuContributions = Collections.emptyList();
 
 	private List<IMenuContributionSpecification> currentEmfMenuContributions = Collections.emptyList();
+	
+	// this will be used only for checking the default "null" result for polymorphic invocation
+	// avoiding to return null
+	private static final List<IMenuContributionSpecification> POLYMORPHIC_NULL_RESULT = new ArrayList<IMenuContributionSpecification>();
 
 	protected List<IMenuContributionSpecification> getCurrentEmfMenuContributions() {
 		return currentEmfMenuContributions;
@@ -176,10 +180,9 @@ public class EditingMenuBuilder {
 		currentEmfMenuContributions = emfMenuContributionsDispatcher
 				.invoke(firstSelectedElement);
 
-		if (currentEmfMenuContributions == null) {
+		if (POLYMORPHIC_NULL_RESULT == currentEmfMenuContributions) {
 			// for creating new child and new sibling standard actions we need
-			// an
-			// ISelection
+			// an ISelection
 			currentEmfMenuContributions = emfMenuContributionsDispatcher
 					.invoke(selection);
 		}
@@ -200,13 +203,13 @@ public class EditingMenuBuilder {
 	}
 
 	/**
-	 * The default implementation an Object is null.
+	 * The default implementation on Object.
 	 * 
 	 * @param object
 	 * @return
 	 */
 	protected List<IMenuContributionSpecification> emfMenuContributions(Object object) {
-		return null;
+		return POLYMORPHIC_NULL_RESULT;
 	}
 
 	/**
