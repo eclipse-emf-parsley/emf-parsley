@@ -12,18 +12,18 @@ package org.eclipse.emf.parsley.dsl.generator
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.parsley.dsl.jvmmodel.GeneratorUtils
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.emf.parsley.dsl.jvmmodel.EmfParsleyDslJvmModelInferrer
 
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
 
 class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 	
-	@Inject EmfParsleyDslJvmModelInferrer inferrer;
+	@Inject extension GeneratorUtils;
 
 	override doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for(module: resource.allContents.toIterable.filter(typeof(Module))) {
@@ -60,7 +60,7 @@ class EmfParsleyDslPluginXmlGenerator implements IGenerator {
       category="«if (viewSpecification.category == null || viewSpecification.category.empty)
   	"org.eclipse.emf.parsley" else
     viewSpecification.category»"
-      class="«inferrer.executableExtensionFactoryQN(viewSpecification)»:«viewSpecification.type.identifier»"
+      class="«executableExtensionFactoryQN(viewSpecification)»:«viewSpecification.type.identifier»"
       id="«viewSpecification.id»"
       name="«viewSpecification.viewName»"
       restorable="true">

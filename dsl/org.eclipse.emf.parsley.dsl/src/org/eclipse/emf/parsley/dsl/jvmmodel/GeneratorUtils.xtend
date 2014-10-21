@@ -10,15 +10,26 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.jvmmodel;
 
-import java.beans.Introspector;
+import com.google.inject.Inject
+import java.beans.Introspector
+import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.emf.parsley.dsl.model.PartSpecification
+import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+
+import static extension org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Lorenzo Bettini
  *
  */
-public class GeneratorUtils {
+class GeneratorUtils {
+	
+	@Inject extension IQualifiedNameProvider
+	
+	@Inject EmfParsleyProjectFilesGenerator projectFilesGenerator
 
-	public String getPropertyNameForGetterSetterMethod(String opName) {
+	def String getPropertyNameForGetterSetterMethod(String opName) {
 		if (opName.startsWith("get") && opName.length() > 3 && Character.isUpperCase(opName.charAt(3))) {
 			return Introspector.decapitalize(opName.substring(3));
 		}
@@ -29,4 +40,15 @@ public class GeneratorUtils {
 
 		return opName;
 	}
+
+	def executableExtensionFactoryQN(Module element) {
+   		element.fullyQualifiedName.toString + "." +
+   		projectFilesGenerator.extFactoryName(element.fullyQualifiedName.toString)
+   	}
+
+   	def executableExtensionFactoryQN(PartSpecification element) {
+   		element.getContainerOfType(typeof(Module)).executableExtensionFactoryQN
+   	}
+
+	
 }

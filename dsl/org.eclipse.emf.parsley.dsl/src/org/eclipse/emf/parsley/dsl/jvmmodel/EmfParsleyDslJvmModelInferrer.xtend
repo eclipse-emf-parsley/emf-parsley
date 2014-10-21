@@ -29,15 +29,16 @@ import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
 import org.eclipse.emf.parsley.dsl.model.BindingsSpecification
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
+import org.eclipse.emf.parsley.dsl.model.LabelSpecification
 import org.eclipse.emf.parsley.dsl.model.Module
-import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.model.WithFields
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
+import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
-import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
@@ -69,11 +70,6 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
-import static extension org.eclipse.xtext.EcoreUtil2.*
-import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
-import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
-import org.eclipse.emf.parsley.dsl.model.LabelSpecification
-
 /**
  * <p>Infers a JVM model from the source model.</p> 
  *
@@ -94,8 +90,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension TypesFactory
 	
 	@Inject extension GeneratorUtils
-	
-	@Inject EmfParsleyProjectFilesGenerator projectFilesGenerator
 
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
@@ -219,68 +213,55 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		target.addAnnotations(annotations.filterNull.filter[annotationType != null])
 	}
    	
-   	def activatorQN(Module element) {
-   		element.fullyQualifiedName + ".Activator"
-   	}
-   	
-   	def moduleQN(Module element) {
+   	def private moduleQN(Module element) {
    		element.fullyQualifiedName + ".EmfParsleyGuiceModuleGen"
    	}
 
-   	def executableExtensionFactoryQN(Module element) {
-   		element.fullyQualifiedName.toString + "." +
-   		projectFilesGenerator.extFactoryName(element.fullyQualifiedName.toString)
-   	}
-
-   	def executableExtensionFactoryQN(PartSpecification element) {
-   		element.getContainerOfType(typeof(Module)).executableExtensionFactoryQN
-   	}
-
-	def labelProviderQN(Module element) {
+	def private labelProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.LabelProviderGen"
 	}
 	
-	def tableLabelProviderQN(Module element) {
+	def private tableLabelProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.TableLabelProviderGen"
 	}
 	
-	def featureCaptionProviderQN(Module element) {
+	def private featureCaptionProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.FeatureCaptionProviderGen"
 	}
 
-	def formFeatureCaptionProviderQN(Module element) {
+	def private formFeatureCaptionProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.FormFeatureCaptionProviderGen"
 	}
 
-	def dialogFeatureCaptionProviderQN(Module element) {
+	def private dialogFeatureCaptionProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.DialogFeatureCaptionProviderGen"
 	}
 
-	def featuresProviderQN(Module element) {
+	def private featuresProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.FeaturesProviderGen"
 	}
 
-	def tableFeaturesProviderQN(Module element) {
+	def private tableFeaturesProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.TableFeaturesProviderGen"
 	}
 
-	def formControlFactoryQN(Module element) {
+	def private formControlFactoryQN(Module element) {
 		element.fullyQualifiedName + ".binding.FormControlFactoryGen"
 	}
 
-	def dialogControlFactoryQN(Module element) {
+	def private dialogControlFactoryQN(Module element) {
 		element.fullyQualifiedName + ".binding.DialogControlFactoryGen"
 	}
 
-	def viewerContentProviderQN(Module element) {
+	def private viewerContentProviderQN(Module element) {
 		element.fullyQualifiedName + ".edit.ui.provider.ViewerContentProviderGen"
 	}
 
-	def proposalCreatorQN(Module element) {
+	def private proposalCreatorQN(Module element) {
 		element.fullyQualifiedName + ".binding.ProposalCreatorGen"
 	}
 
-	def menuBuilderQN(Module element) {
+	def private menuBuilderQN(Module element) {
 		element.fullyQualifiedName + ".edit.action.MenuBuilderGen"
 	}
 
