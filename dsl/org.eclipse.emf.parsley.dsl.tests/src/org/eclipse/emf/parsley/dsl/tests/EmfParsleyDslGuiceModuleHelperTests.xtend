@@ -104,6 +104,7 @@ bindEmptyResourceInitializer
 bindIContentProvider
 bindProposalCreator
 bindIEditingStrategy
+bindConfigurator
 bindAdapterFactory
 bindAdapterFactoryLabelProvider''',
 		'''

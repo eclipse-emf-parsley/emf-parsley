@@ -16,6 +16,7 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.parsley,
  org.eclipse.emf.parsley.binding,
  org.eclipse.emf.parsley.builders,
+ org.eclipse.emf.parsley.config,
  org.eclipse.emf.parsley.dialogs,
  org.eclipse.emf.parsley.ecore,
  org.eclipse.emf.parsley.edit,

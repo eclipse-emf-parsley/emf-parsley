@@ -10,21 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.views;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
-import org.eclipse.emf.parsley.views.AbstractOnSelectionTableFormView;
+import org.eclipse.emf.parsley.views.OnSelectionTableFormView;
 
 
 /**
  * @author Lorenzo Bettini
  *
  */
-public class TestOnSelectionLibraryBooksTableFormView extends
-		AbstractOnSelectionTableFormView {
-
-	@Override
-	protected EStructuralFeature getEStructuralFeature() {
-		return EXTLibraryPackage.Literals.LIBRARY__BOOKS;
-	}
+public class TestOnSelectionLibraryBooksTableFormView extends OnSelectionTableFormView {
 
 }

@@ -10,18 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.views;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.parsley.tests.EmfParsleyAbstractTests;
-import org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;
+import org.eclipse.emf.parsley.views.SaveableTreeFormView;
 
-
-public class TestSaveableResourceTreeFormView extends
-		AbstractSaveableTreeFormView {
-
-	@Override
-	protected URI createResourceURI() {
-		return URI.createPlatformResourceURI(
-				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
-	}
+public class TestSaveableResourceTreeFormView extends SaveableTreeFormView {
 
 }

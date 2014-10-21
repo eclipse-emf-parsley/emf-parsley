@@ -11,28 +11,28 @@
 package org.eclipse.emf.parsley.tests.factories;
 
 
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.tests.EmfParsleyGuiceModuleWithConfigurator;
 import org.eclipse.emf.parsley.tests.binding.CustomLibraryFormControlFactory;
 import org.eclipse.emf.parsley.tests.binding.CustomLibraryProposalCreator;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFeatureCaptionProvider;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryFormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryLabelProvider;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryTableColumnLabelProvider;
-import org.eclipse.emf.parsley.tests.providers.TestTableFeaturesProvider;
 import org.eclipse.emf.parsley.tests.providers.TestFeaturesProvider;
+import org.eclipse.emf.parsley.tests.providers.TestTableFeaturesProvider;
 import org.eclipse.emf.parsley.tests.resource.TestEmptyLibraryResourceInitializer;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
-import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
+import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-public class CustomLibraryModule extends EmfParsleyGuiceModule {
+public class CustomLibraryModule extends EmfParsleyGuiceModuleWithConfigurator {
 	public CustomLibraryModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}

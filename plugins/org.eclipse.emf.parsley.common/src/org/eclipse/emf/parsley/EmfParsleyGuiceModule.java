@@ -24,6 +24,7 @@ import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.emf.parsley.builders.TableViewerColumnBuilder;
+import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.ecore.FeatureResolver;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
@@ -467,6 +468,15 @@ public class EmfParsleyGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends IEditingStrategy> bindIEditingStrategy() {
 		return OnTheFlyEditingStrategy.class;
+	}
+
+	/**
+	 * Use this method to customize a {@link Configurator}.
+	 * @return a specification of {@link Configurator}
+	 * @see UndoableEditingStrategy
+	 */
+	public Class<? extends Configurator> bindConfigurator() {
+		return Configurator.class;
 	}
 
 	/**

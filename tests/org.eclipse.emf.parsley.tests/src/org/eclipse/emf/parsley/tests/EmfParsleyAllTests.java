@@ -40,6 +40,7 @@ import org.junit.runners.Suite;
 	TreeFormFactoryTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
+	ConfiguratorTest.class,
 	NotificationBufferTest.class,
 	EmfCopyTest.class,
 	EditingMenuBuilderTest.class
