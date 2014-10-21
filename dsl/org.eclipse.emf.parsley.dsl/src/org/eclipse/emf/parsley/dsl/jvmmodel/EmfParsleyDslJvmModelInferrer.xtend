@@ -70,6 +70,9 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
+import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
+import org.eclipse.emf.parsley.dsl.model.LabelSpecification
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -134,6 +137,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val dialogControlFactoryClass = element.inferDialogControlFactory(acceptor)
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
+		val menuBuilderClass = element.inferMenuBuilder(acceptor)
 		
 		acceptor.accept(moduleClass) [
 			documentation = element.documentation
@@ -172,6 +176,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.viewerContentProvider.genBindMethod(viewerContentProviderClass, typeof(IContentProvider))
 			if (proposalCreatorClass != null)
 				members += element.proposalCreator.genBindMethod(proposalCreatorClass, typeof(ProposalCreator))
+			if (menuBuilderClass != null)
+				members += element.menuBuilder.genBindMethod(menuBuilderClass, typeof(EditingMenuBuilder))
 		]
 
    	}
@@ -274,8 +280,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		element.fullyQualifiedName + ".binding.ProposalCreatorGen"
 	}
 
-	def treeFormFactoryQN(Module element) {
-		element.fullyQualifiedName + ".factory.TreeFormFactoryGen"
+	def menuBuilderQN(Module element) {
+		element.fullyQualifiedName + ".edit.action.MenuBuilderGen"
 	}
 
 	def inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
@@ -666,6 +672,45 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			]
 			proposalCreatorClass
 		}
+	}
+
+	def inferMenuBuilder(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.menuBuilder == null)
+			null
+		else {
+			val menuBuilder = element.menuBuilder
+			val menuBuilderClass = menuBuilder.toClass(element.menuBuilderQN)
+			acceptor.accept(menuBuilderClass) [
+				setSuperClassTypeAndFields(menuBuilder, EditingMenuBuilder)
+				
+				val returnType = typeRef(List, typeRef(IMenuContributionSpecification))
+				
+				for (specification : menuBuilder.menuSpecifications) {
+					members += specification.toMethod("menuContributions", returnType) [
+						parameters += specification.specificationParameter
+						body = specification.expression
+					]
+				}
+				
+				for (specification : menuBuilder.emfMenuSpecifications) {
+					members += specification.toMethod("emfMenuContributions", returnType) [
+						parameters += specification.specificationParameter
+						body = specification.expression
+					]
+				}
+			]
+			menuBuilderClass
+		}
+	}
+
+	def private specificationParameter(LabelSpecification specification) {
+		specification.toParameter(
+			if (specification.name != null)
+				specification.name
+			else
+				"it"
+			, specification.parameterType
+		)
 	}
 
 	def control_EClass_EStructuralFeature(

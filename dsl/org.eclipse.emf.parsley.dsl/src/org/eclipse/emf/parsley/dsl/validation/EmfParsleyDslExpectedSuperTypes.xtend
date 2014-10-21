@@ -29,6 +29,7 @@ import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.ui.IViewPart
 
 import static org.eclipse.emf.parsley.dsl.model.ModelPackage.Literals.*
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 
 /**
  * Utility class that associates to each DSL element that can 'extends'
@@ -71,6 +72,7 @@ class EmfParsleyDslExpectedSuperTypes {
 		expected.put(FORM_CONTROL_FACTORY, FormControlFactory)
 		expected.put(DIALOG_CONTROL_FACTORY, DialogControlFactory)
 		expected.put(PROPOSAL_CREATOR, ProposalCreator)
+		expected.put(MENU_BUILDER, EditingMenuBuilder)
 		expected.put(VIEWER_CONTENT_PROVIDER, ViewerContentProvider)
 	}
 

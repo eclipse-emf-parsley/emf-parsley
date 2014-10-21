@@ -34,6 +34,8 @@ Module:
 			&
 			(proposalCreator = ProposalCreator)?
 			&
+			(menuBuilder = MenuBuilder)?
+			&
 			(viewerContentProvider = ViewerContentProvider)?
 			&
 			(partsSpecifications = PartsSpecifications)?
@@ -233,6 +235,24 @@ ProposalCreator:
 	'}'
 ;
 
+MenuBuilder:
+	{MenuBuilder} 'menuBuilder' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+	
+		((
+		'menus' '{'
+			menuSpecifications+=LabelSpecification*
+		'}'
+		)?
+		&
+		(
+		'emfMenus' '{'
+			emfMenuSpecifications+=LabelSpecification*
+		'}'
+		)?)
+	'}'
+;
+
 ViewerContentProvider:
 	{ViewerContentProvider} 'viewerContentProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
@@ -282,7 +302,8 @@ WithExtendsClause:
 
 WithFields:
 	LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
-	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider
+	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |
+	MenuBuilder
 ;
 
 PartsSpecifications:

@@ -1367,6 +1367,141 @@ public class ProposalCreatorGen extends TestProposalCreator {
 	}
 
 	@Test
+	def testMenuBuilder() {
+'''
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+
+module my.empty {
+	
+	menuBuilder {
+		val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+		
+		menus {
+			Object -> #[
+				actionRedo,
+				actionUndo,
+				separator,
+				actionCopy,
+				actionPaste
+			]
+			
+			Writer -> {
+				#[
+					actionUndo,
+					separator,
+					submenu("Submenu1", #[
+						actionCopy,
+						submenu("Submenu2", #[
+							actionCut
+						])
+					]),
+					actionPaste
+				]
+			}
+		}
+		
+		emfMenus {
+			Library lib -> newArrayList(
+				actionAdd("New Writer", lib.writers, 
+					libraryFactory.createWriter => [
+						name = "This is a new writer"
+					]
+				)
+			)
+		}
+	}
+}
+'''
+		.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import my.empty.edit.action.MenuBuilderGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
+    return MenuBuilderGen.class;
+  }
+}
+'''
+expectedMenuBuilder =
+'''
+package my.empty.edit.action;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
+import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification;
+import org.eclipse.emf.parsley.edit.action.MenuActionContributionSpecification;
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
+import org.eclipse.emf.parsley.examples.library.Library;
+import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+
+@SuppressWarnings("all")
+public class MenuBuilderGen extends EditingMenuBuilder {
+  private final EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+  
+  public EXTLibraryFactory getLibraryFactory() {
+    return this.libraryFactory;
+  }
+  
+  public List<IMenuContributionSpecification> menuContributions(final Object it) {
+    IMenuContributionSpecification _actionRedo = this.actionRedo();
+    IMenuContributionSpecification _actionUndo = this.actionUndo();
+    IMenuContributionSpecification _separator = this.separator();
+    IMenuContributionSpecification _actionCopy = this.actionCopy();
+    IMenuContributionSpecification _actionPaste = this.actionPaste();
+    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionRedo, _actionUndo, _separator, _actionCopy, _actionPaste));
+  }
+  
+  public List<IMenuContributionSpecification> menuContributions(final Writer it) {
+    IMenuContributionSpecification _actionUndo = this.actionUndo();
+    IMenuContributionSpecification _separator = this.separator();
+    IMenuContributionSpecification _actionCopy = this.actionCopy();
+    IMenuContributionSpecification _actionCut = this.actionCut();
+    IMenuContributionSpecification _submenu = this.submenu("Submenu2", Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionCut)));
+    IMenuContributionSpecification _submenu_1 = this.submenu("Submenu1", Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionCopy, _submenu)));
+    IMenuContributionSpecification _actionPaste = this.actionPaste();
+    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionUndo, _separator, _submenu_1, _actionPaste));
+  }
+  
+  public List<IMenuContributionSpecification> emfMenuContributions(final Library lib) {
+    EList<Writer> _writers = lib.getWriters();
+    Writer _createWriter = this.libraryFactory.createWriter();
+    final Procedure1<Writer> _function = new Procedure1<Writer>() {
+      public void apply(final Writer it) {
+        it.setName("This is a new writer");
+      }
+    };
+    Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
+    MenuActionContributionSpecification _actionAdd = this.<Writer>actionAdd("New Writer", _writers, _doubleArrow);
+    ArrayList<IMenuContributionSpecification> _newArrayList = CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionAdd);
+    return _newArrayList;
+  }
+}
+''']
+		)
+	}
+
+	@Test
 	def testViewsSpecifications() {
 		inputs.multipleViewsSpecifications.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -1637,6 +1772,9 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 				} else if (e.key.endsWith("ProposalCreatorGen.java")) {
 					if (expected.expectedProposalCreator != null)
 						assertEqualsStrings(expected.expectedProposalCreator, e.value)
+				} else if (e.key.endsWith("MenuBuilderGen.java")) {
+					if (expected.expectedMenuBuilder != null)
+						assertEqualsStrings(expected.expectedMenuBuilder, e.value)
 				} else if (e.key.endsWith("TreeFormFactoryGen.java")) {
 					if (expected.expectedTreeFormFactory != null)
 						assertEqualsStrings(expected.expectedTreeFormFactory, e.value)

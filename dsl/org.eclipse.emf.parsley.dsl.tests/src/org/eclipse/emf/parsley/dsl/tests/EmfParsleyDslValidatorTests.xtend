@@ -43,6 +43,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -162,6 +163,12 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	def void testNotValidViewerContentProviderExtends() {
 		"viewerContentProvider".
 			assertExtendsTypeMismatch(ViewerContentProvider)
+	}
+
+	@Test
+	def void testNotValidMenuBuilderExtends() {
+		"menuBuilder".
+			assertExtendsTypeMismatch(EditingMenuBuilder)
 	}
 
 	@Test
