@@ -116,7 +116,7 @@ public class TemplateWizardConfigurationsFactory {
 				"TreeFormView",
 				[ projectName, className |
 					viewFilesGenerator.generateConcreteForResourceTreeView(projectName, className,
-						ABSTRACT_SAVEABLE + "TreeView").toString()
+						ABSTRACT_SAVEABLE + "TreeFormView").toString()
 				],
 				createDescription("tree and a form", saveableView, 
 					'''
