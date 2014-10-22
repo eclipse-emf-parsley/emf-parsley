@@ -33,6 +33,15 @@ public class TemplateWizardConfigurationsFactory {
 		
 		newArrayList(
 			new TemplateWizardConfiguration(
+				"On selection Tree View",
+				"org.eclipse.emf.parsley.views.OnSelectionTreeView",
+				"",
+				[ projectName, className |
+					""
+				],
+				createDescription("tree", reactOnSelection, noUserChange)
+			),
+			new TemplateWizardConfiguration(
 				"On selection Form View",
 				"org.eclipse.emf.parsley.views.OnSelectionFormView",
 				"",
