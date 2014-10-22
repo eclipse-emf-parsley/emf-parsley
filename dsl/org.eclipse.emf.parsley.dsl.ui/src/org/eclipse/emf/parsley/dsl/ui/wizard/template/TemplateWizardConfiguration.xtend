@@ -82,14 +82,18 @@ public class TemplateWizardConfiguration {
 		return simpleNameProject;
 	}
 
-	def getOrGenerateViewClass(IProject project, String projectName,String packagePath, IProgressMonitor monitor) throws CoreException {
-		val className=getSimpleNameProject(packagePath) + className + postfix;
-		val classContent = classContentProvider.apply(projectName, className)
+	def getOrGenerateViewClass(IProject project, String projectName, String packagePath, IProgressMonitor monitor) throws CoreException {
+		val projectRelativeClassName=getSimpleNameProject(packagePath) + className + postfix;
+		val classContent = classContentProvider.apply(projectName, projectRelativeClassName)
 		
-		NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
-				 +className.concat(".java"), classContent,
+		if (!classContent.empty) {
+			NewEmfParsleyProjectSupport.createProjectFile(project,packagePath + "/"
+				 +projectRelativeClassName.concat(".java"), classContent,
 				NewEmfParsleyProjectSupport
 						.createSubProgressMonitor(monitor));
-		return projectName+"."+className;
+			return projectName+"."+projectRelativeClassName;
+		} else {
+			return className;
+		}
 	}
 }

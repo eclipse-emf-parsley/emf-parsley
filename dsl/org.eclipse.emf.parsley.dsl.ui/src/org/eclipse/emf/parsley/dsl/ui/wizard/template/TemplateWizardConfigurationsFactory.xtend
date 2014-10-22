@@ -34,10 +34,10 @@ public class TemplateWizardConfigurationsFactory {
 		newArrayList(
 			new TemplateWizardConfiguration(
 				"On selection Form View",
-				"OnSelectionTreeView",
+				"org.eclipse.emf.parsley.views.OnSelectionFormView",
 				"",
 				[ projectName, className |
-					viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString()
+					""
 				],
 				createDescription("form", reactOnSelection, noUserChange)
 			),
@@ -71,10 +71,10 @@ public class TemplateWizardConfigurationsFactory {
 			),
 			new TemplateWizardConfiguration(
 				"On selection Tree Form View",
-				"OnSelectionTreeFormView",
+				"org.eclipse.emf.parsley.views.OnSelectionTreeFormView",
 				"",
 				[ projectName, className |
-					viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString()
+					""
 				],
 				createDescription("tree and a form", reactOnSelection, noUserChange)
 			),

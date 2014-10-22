@@ -88,7 +88,7 @@ public class «simpleName» extends AbstractOnSelectionTableView {
 package «projectName»;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
+import org.eclipse.emf.parsley.views.AbstractOnSelectionTableFormView;
 
 public class «simpleName» extends AbstractOnSelectionTableFormView {
 
