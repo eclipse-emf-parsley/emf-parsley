@@ -1410,6 +1410,13 @@ module my.empty {
 					]
 				)
 			)
+			Writer -> #[
+				actionAdd("New book", books,
+					libraryFactory.createBook => [
+						title = "New book"
+					]
+				)
+			]
 		}
 	}
 }
@@ -1447,7 +1454,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification;
-import org.eclipse.emf.parsley.edit.action.MenuActionContributionSpecification;
+import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
@@ -1492,9 +1499,22 @@ public class MenuBuilderGen extends EditingMenuBuilder {
       }
     };
     Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
-    MenuActionContributionSpecification _actionAdd = this.<Writer>actionAdd("New Writer", _writers, _doubleArrow);
+    IMenuContributionSpecification _actionAdd = this.<Writer>actionAdd("New Writer", _writers, _doubleArrow);
     ArrayList<IMenuContributionSpecification> _newArrayList = CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionAdd);
     return _newArrayList;
+  }
+  
+  public List<IMenuContributionSpecification> emfMenuContributions(final Writer it) {
+    EList<Book> _books = it.getBooks();
+    Book _createBook = this.libraryFactory.createBook();
+    final Procedure1<Book> _function = new Procedure1<Book>() {
+      public void apply(final Book it) {
+        it.setTitle("New book");
+      }
+    };
+    Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);
+    IMenuContributionSpecification _actionAdd = this.<Book>actionAdd("New book", _books, _doubleArrow);
+    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionAdd));
   }
 }
 ''']

@@ -360,7 +360,7 @@ public class EditingMenuBuilder {
 	 * @param value
 	 * @return
 	 */
-	protected <T> MenuActionContributionSpecification actionAdd(String text,
+	protected <T> IMenuContributionSpecification actionAdd(String text,
 			EList<? super T> list, T value) {
 		AddCommand addCommand = addCommand(list, value);
 		addCommand.setDescription(text);
