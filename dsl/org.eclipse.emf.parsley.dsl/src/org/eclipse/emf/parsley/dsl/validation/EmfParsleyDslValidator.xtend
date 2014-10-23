@@ -46,6 +46,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	public static val CYCLIC_INHERITANCE = "org.eclipse.emf.parsley.dsl.CyclicInheritance";
 
 	public static val FINAL_FIELD_NOT_INITIALIZED = "org.eclipse.emf.parsley.dsl.FinalFieldNotInitialized";
+	
+	public static val TOO_LITTLE_TYPE_INFORMATION = "org.eclipse.emf.parsley.dsl.TooLittleTypeInformation";
 
 	public static val DUPLICATE_BINDING = "org.eclipse.emf.parsley.dsl.DuplicateBinding";
 
@@ -84,12 +86,18 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	}
 
 	@Check
-	def void checkFinalFieldIsInitialized(FieldSpecification f) {
+	def void checkFieldInitialization(FieldSpecification f) {
 		if (!f.writeable && f.right == null) {
 			error("The blank final field " + f.name + " may not have been initialized",
 				ModelPackage.Literals.FIELD_SPECIFICATION__NAME,
 				FINAL_FIELD_NOT_INITIALIZED
 			)
+		}
+		if (f.type == null && f.right == null) {
+			error("The field "+f.name+" needs an explicit type since there is no initialization expression to infer the type from.", 
+				f, ModelPackage.Literals.FIELD_SPECIFICATION__NAME,
+				TOO_LITTLE_TYPE_INFORMATION
+			);
 		}
 	}
 

@@ -265,6 +265,21 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	}
 
 	@Test
+	def void testMissingInitializerForFieldWithoutDeclaredType() {
+		'''
+		module my.test {
+			labelProvider {
+				var list
+			}
+		}
+		'''.parse.assertError(
+			ModelPackage.eINSTANCE.fieldSpecification,
+			TOO_LITTLE_TYPE_INFORMATION,
+			"The field list needs an explicit type since there is no initialization expression to infer the type from."
+		)
+	}
+
+	@Test
 	def void testWrongTypeBindingUsingClassReference() {
 		'''
 		import org.eclipse.jface.viewers.ILabelProvider

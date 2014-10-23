@@ -129,6 +129,7 @@ import java.util.List
 import com.google.inject.Inject
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestExtensions
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestExtensions2
 import org.eclipse.emf.parsley.examples.library.Library
 
 module my.empty {
@@ -136,8 +137,12 @@ module my.empty {
 		@Inject
 		var ILabelProvider parentLabelProvider;
 		
-		// 
+		// if you use extension you need the declared type
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=408323
 		val extension TestExtensions myExtensions = new TestExtensions();
+
+		// inferred type
+		val myExtensions2 = new TestExtensions2();
 		
 		// initialize it with a complex expression
 		val List<String> listOfString = new ArrayList() => [
@@ -149,6 +154,7 @@ module my.empty {
 			Library -> {
 				val myList = new ArrayList()
 				myList.printList() // extension method from TestExtensions
+				myExtensions2.printList2(myList) 
 				return 'result: ' + parentLabelProvider.getText(it)
 			}
 		}

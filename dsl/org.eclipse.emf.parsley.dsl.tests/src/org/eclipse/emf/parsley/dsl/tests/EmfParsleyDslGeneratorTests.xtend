@@ -307,6 +307,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestExtensions;
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestExtensions2;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -334,6 +335,12 @@ public class LabelProviderGen extends ViewerLabelProvider {
     return this.myExtensions;
   }
   
+  private final TestExtensions2 myExtensions2 = new TestExtensions2();
+  
+  public TestExtensions2 getMyExtensions2() {
+    return this.myExtensions2;
+  }
+  
   private final List<String> listOfString = ObjectExtensions.<ArrayList<String>>operator_doubleArrow(new ArrayList<String>(), new Procedure1<ArrayList<String>>() {
     public void apply(final ArrayList<String> it) {
       it.add("first");
@@ -353,6 +360,7 @@ public class LabelProviderGen extends ViewerLabelProvider {
   public String text(final Library it) {
     final ArrayList<Object> myList = new ArrayList<Object>();
     this.myExtensions.printList(myList);
+    this.myExtensions2.printList2(myList);
     String _text = this.parentLabelProvider.getText(it);
     return ("result: " + _text);
   }
@@ -361,7 +369,6 @@ public class LabelProviderGen extends ViewerLabelProvider {
 		)
 	}
 
-	
 	@Test
 	def testTableLabelProvider() {
 		inputs.tableLabelProvider.assertCorrectJavaCodeGeneration(
