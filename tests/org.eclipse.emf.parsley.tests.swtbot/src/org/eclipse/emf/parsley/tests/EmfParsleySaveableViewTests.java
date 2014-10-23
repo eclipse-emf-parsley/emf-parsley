@@ -21,6 +21,7 @@ import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -74,6 +75,20 @@ public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
 		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
 		createNewChild(libraryNode, BOOK_ON_TAPE);
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TREE_FORM_VIEW);
+	}
+
+	@Test
+	public void addingNewElementSelectsTheAddedElement()
+			throws Exception {
+		SWTBotTreeItem libraryNode = prepareSaveableTreeViewAndGetLibraryNode();
+		// to effectively execute this test, the tree must not be expanded
+		Assert.assertFalse(libraryNode.isExpanded());
+		createNewChild(libraryNode, BOOK_ON_TAPE);
+		// now the tree must be expanded
+		Assert.assertTrue(libraryNode.isExpanded());
+		// and the new added node must be selected
+		Assert.assertTrue(libraryNode.getNode(BOOK_ON_TAPE).isSelected());
+		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TREE_VIEW);
 	}
 
 	@Test
