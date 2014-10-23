@@ -15,6 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
@@ -36,7 +37,9 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	@Override
 	protected void postCommandStackChanged(Command mostRecentCommand) {
 		if (mostRecentCommand != null
-				&& mostRecentCommand instanceof CreateChildCommand) {
+				&& (mostRecentCommand instanceof CreateChildCommand
+						||
+						mostRecentCommand instanceof AddCommand)) {
 			setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 		}
 	}
