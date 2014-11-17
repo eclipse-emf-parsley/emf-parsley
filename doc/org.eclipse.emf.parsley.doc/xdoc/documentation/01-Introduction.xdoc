@@ -8,14 +8,24 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms
 that manage the model with the introspective EMF capabilities. 
 Using these components you can easily build forms, viewer or editors. 
 The framework provides basic UI implementations which are customizable 
-with Injection mechanism
-(based on link[http://code.google.com/p/google-guice][Google Guice]). 
+with Injection mechanism (based on link[http://code.google.com/p/google-guice][Google Guice]).
 
-You can use e[Emf Parsley] basically in 2 ways the easy and the hard one!
+section:Customizations[Customizations]
 
-section:CustomizationsTheEasyWay[Customizations: the Easy way]
+Basically e[Emf Parsley] provides some built-in components that can be customized in several way.
+There are 2 ways you can do it: the easy one and the hard one!
+
+section:Customizations_TheEasyWay[the Easy way]
 
 The framework provides a DSL that allows to customize the most relevant behaviors.
+Currently the following are permitted:
+ul[
+item[Content Provider]
+item[Label Provider]
+item[Guice Bindings]
+item[others..]
+]
+
 You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
 
 img[images/01-new-project-dsl-wizard.png][][ ][] 
@@ -25,8 +35,9 @@ to discover all features.
 
 img[images/01-dsl-content-assistant.png][][ ][] 
 
-section:CustomitationsTheHardWay[Customizations: the Hard way]
+section:Customitations_TheHardWay[the Hard way]
 
+This way is
 If you need a deeper degree of customizations, you can use the injection mechanism based on Google Guice.
 The framework has been designed for being completly customized in every detail. All you need to do is provide a custom
 implementation for a class that implements a specific aspect; then you need to write the corresponding

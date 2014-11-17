@@ -1,8 +1,8 @@
-chapter:Eclipse4[Eclipse 4]
+chapter:Eclipse4[Eclipse 4.x]
 
 Instead of using the Extension Point mechanism, EMF Parsley leverages from DSL and Google Guice Injection.
 
-Because of this, it is very easy to use it with Eclipse 4.
+Because of this, it is very easy to use it with Eclipse 4.x (e4).
 
 section:GetFirstExample[First Example Setup]
 
@@ -27,23 +27,23 @@ As a reminder, in section ref:GettingStarted[Getting Started] we reached the poi
 instance (but, of course, just defining a product you could have a standalone 3.x application) with a
 view (called "My Library Tree Form") that allowed to manage the model.
 
-section:PrepareForEclipse4Application[Preparing for a pure Eclipse 4 Application]
+section:PrepareForEclipse4Application[Preparing for a pure e4 Application]
 
-What we will do now is starting from the previous step and create an Eclipse 4 Application (on top of
-the previous plug-ins) that gets to the same result, but now with a pure Eclipse 4 Part.
+What we will do now is starting from the previous step and create an e4 Application (on top of
+the previous plug-ins) that gets to the same result, but now with a pure e4 Part.
 
 In order to do this we need to export the e["org.eclipse.emf.parsley.examples.firstexample"] package from the first plug-in.
 
 
-section:CreateEclipse4Application[Create an Eclipse 4 Application]
+section:CreateEclipse4Application[Create an e4 Application]
 
-Now let's create a new, empty, Eclipse 4 application, e.g. e["org.eclipse.emf.parsley.examples.firstexample.application"]
-(you can find details on how to create Eclipse 4 applications in link[http://www.rcp-vision.com/?p=4694&lang=en][our
+Now let's create a new, empty, e4 application, e.g. e["org.eclipse.emf.parsley.examples.firstexample.application"]
+(you can find details on how to create e4 applications in link[http://www.rcp-vision.com/?p=4694&lang=en][our
 tutorials]).
 
 Create a Part and ensure that the application starts.
 
-section:Eclipse4ApplicationAndEMFParsley[Using an EMF Parsley TreeComposite into an Eclipse 4 Part]
+section:Eclipse4ApplicationAndEMFParsley[Using a TreeComposite into an e4 Part]
 
 In the just created plug-in we need dependencies from the previous plug-ins: so open the e[org.eclipse.emf.parsley.examples.firstexample.application/MANIFEST.MF] file, go to e[Dependencies]
 tab and add the three previous plug-ins. Add also e["org.eclipse.emf.parsley"] plug-in.
@@ -56,14 +56,10 @@ code[Java][
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.widgets.Composite;
-]
 
-code[Java][
 // The part implements IMenuListener for context menu handling
 public class MyEclipse4Part implements IMenuListener
-]
 
-code[Java][
 //the parent composite
 private Composite parent;
 //the EMF Parley composite for showing a tree and a detail form
@@ -193,7 +189,7 @@ public void save(MDirtyable dirty) throws IOException {
 ]
 
 and, in the end, add the e[Save] handler along with the correspondent e[Command] and e[Menu]
-(you can find how to create handlers, commands and menus in an Eclipse 4 applications in link[http://www.rcp-vision.com/?p=4972&lang=en][our
+(you can find how to create handlers, commands and menus in an e4 applications in link[http://www.rcp-vision.com/?p=4972&lang=en][our
 tutorials])
 
 code[Java][

@@ -1,3 +1,5 @@
+document[Emf Parsley Sources]
+
 chapter:GettingSources[Getting Sources]
 
 If you want to get the sources of EMF Parsley,
@@ -10,8 +12,10 @@ version of Emf Parsley (see below).
 
 In both cases, you need a link[http://www.eclipse.org/Xtext/download.html]["Full eclipse"] 
 from Xtext website or use the link[http://www.eclipse.org/downloads/][eclipse DSL Package]
-(we use Xtend for many source files, and we do not put the generated files
+(we use Xtend for many sources files, and we do not put the generated files
 in the repository).
+
+section[Meterialization]
 
 We use link[http://www.eclipse.org/buckminster/][Buckminster] as the
 building and materialization infrastructure.
@@ -78,3 +82,7 @@ ant -Dgit.clone.dest=/myrepos/emf-parsley -DWORKSPACE=/myworkspaces/parsley -f w
 After the script terminates successfully, you can open the materialized
 workspace with Eclipse (an automatic build will also start for compiling
 Xtend files).  The workspace is already setup with the correct target platform.
+
+section[Oomph]
+
+Coming soon!
