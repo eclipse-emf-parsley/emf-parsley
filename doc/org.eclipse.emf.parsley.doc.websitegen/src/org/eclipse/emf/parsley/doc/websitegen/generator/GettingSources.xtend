@@ -1,11 +1,9 @@
 package org.eclipse.emf.parsley.doc.websitegen.generator
 
-
 import com.google.inject.Inject
 import java.io.File
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.Body
-import org.eclipse.emf.parsley.doc.websitegen.bootstrap.HtmlExtensions
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.PostProcessor
 import org.eclipse.emf.parsley.doc.websitegen.xdocgen.DocumentLoad
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
@@ -14,10 +12,7 @@ import org.eclipse.xtext.xdoc.xdoc.ImageRef
 
 import static extension com.google.common.io.Files.*
 
-
 class GettingSources extends  AbstractXdocBaseWebsite {
-	
-	static final val MENU_SECTION_MAX_LENGHT=21
 	
 	new() {
 		doc = docLoader.loadDocument(xdocDocumentRootFolder)
@@ -39,7 +34,6 @@ class GettingSources extends  AbstractXdocBaseWebsite {
 	
 	@Inject DocumentLoad docLoader
 	@Inject extension Body
-	@Inject extension HtmlExtensions
 	@Inject PostProcessor processor
 	
 	override website() {

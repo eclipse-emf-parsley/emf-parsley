@@ -5,6 +5,8 @@ import java.util.List
 import java.util.Map
 import org.eclipse.emf.common.notify.impl.AdapterImpl
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmAnnotationType
+import org.eclipse.xtext.common.types.JvmIdentifiableElement
 import org.eclipse.xtext.xdoc.xdoc.Anchor
 import org.eclipse.xtext.xdoc.xdoc.ChapterRef
 import org.eclipse.xtext.xdoc.xdoc.Code
@@ -26,12 +28,8 @@ import org.eclipse.xtext.xdoc.xdoc.TextOrMarkup
 import org.eclipse.xtext.xdoc.xdoc.TextPart
 import org.eclipse.xtext.xdoc.xdoc.Todo
 import org.eclipse.xtext.xdoc.xdoc.UnorderedList
-import org.eclipse.xtext.xdoc.xdoc.XdocPackage$Literals
 
 import static org.eclipse.emf.parsley.doc.websitegen.bootstrap.ParagraphState.*
-import org.eclipse.xtext.common.types.JvmAnnotationType
-import org.eclipse.xtext.common.types.JvmIdentifiableElement
-import org.eclipse.xtext.common.types.JvmDeclaredType
 
 class ArtificialIds extends AdapterImpl {
 	public Map<Identifiable, String> artificialHrefs = newHashMap() 	
@@ -40,7 +38,6 @@ class ArtificialIds extends AdapterImpl {
 class HtmlExtensions {
 	
 	@Inject extension CodeRefs
-	@Inject extension ImageExtensions
 	@Inject extension TargetPaths
 
 	def href(Identifiable it) {
@@ -140,8 +137,6 @@ class HtmlExtensions {
 	}
 	
 	def protected dispatch CharSequence toHtml(ImageRef it, ParagraphState state) {
-		val dimension = it.dimension
-		val caption = it.caption?.trim
 		'''
 «««			<div class="thumbnail">
 «««				<img src="«path»" alt="«caption»" «IF dimension!=null»width="«dimension.width»" height="«dimension.height»"«ENDIF»>

@@ -16,7 +16,7 @@ class DocumentLoad {
 	@Inject
 	Provider<XtextResourceSet> provider
 	
-	val validate = false
+	var validate = false
 	
 	def loadDocument(String ... baseDirs) {
 		val rs = provider.get

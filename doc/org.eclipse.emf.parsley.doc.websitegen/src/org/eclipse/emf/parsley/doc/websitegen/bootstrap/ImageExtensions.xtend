@@ -1,11 +1,11 @@
 package org.eclipse.emf.parsley.doc.websitegen.bootstrap
 
 import java.io.File
+import java.io.FileInputStream
 import javax.imageio.ImageIO
 import org.eclipse.emf.common.util.URI
-import org.eclipse.xtend.lib.Data
+import org.eclipse.xtend.lib.annotations.Data
 import org.eclipse.xtext.xdoc.xdoc.ImageRef
-import java.io.FileInputStream
 
 class ImageExtensions {
 	def getDimension(ImageRef imageRef) {

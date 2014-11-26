@@ -1,26 +1,17 @@
 package org.eclipse.emf.parsley.doc.websitegen.generator
 
+import com.google.inject.Inject
+import java.io.File
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.Body
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.HtmlExtensions
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.PostProcessor
-import org.eclipse.emf.parsley.doc.websitegen.bootstrap.XdocExtensions
-import com.google.inject.Binder
-import com.google.inject.Guice
-import com.google.inject.Inject
-import com.google.inject.Module
-import java.io.File
-import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.parsley.doc.websitegen.xdocgen.DocumentLoad
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import org.eclipse.xtext.xdoc.XdocRuntimeModule
-import org.eclipse.xtext.xdoc.XdocStandaloneSetup
-import org.eclipse.xtext.xdoc.xdoc.AbstractSection
 import org.eclipse.xtext.xdoc.xdoc.Document
 import org.eclipse.xtext.xdoc.xdoc.ImageRef
-import org.eclipse.emf.parsley.doc.websitegen.xdocgen.DocumentLoad
 
 import static extension com.google.common.io.Files.*
-import org.eclipse.xtext.xdoc.xdoc.Chapter
-import org.eclipse.xtext.xdoc.xdoc.Part
 
 class Documentation extends AbstractXdocBaseWebsite {
 	
