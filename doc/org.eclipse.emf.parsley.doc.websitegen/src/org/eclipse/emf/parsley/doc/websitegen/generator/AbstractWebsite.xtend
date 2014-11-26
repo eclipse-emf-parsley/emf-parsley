@@ -126,7 +126,7 @@ abstract class AbstractWebsite implements Resource {
 	
 	def Iterable<Pair<String,String>> topLevelMenu() {
 		newArrayList(
-			'EMFParsley.html' -> 'Home',
+			'index.html' -> 'Home',
 			'download.html' -> 'Download',
 			'documentation.html' -> 'Documentation',
 			'support.html' -> 'Support',
@@ -136,7 +136,7 @@ abstract class AbstractWebsite implements Resource {
 	
 	def Iterable<Pair<String,String>> topRightLevelMenu() {
 		newArrayList(
-			'EMFParsley.html' -> 'About',
+			'index.html' -> 'About',
 			'support.html' -> 'Contact Us',
 			'https://twitter.com/EmfParsley' -> '@EmfParsley'
 		)
