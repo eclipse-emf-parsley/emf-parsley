@@ -91,6 +91,7 @@ class Documentation extends AbstractXdocBaseWebsite {
 				<li class="divider"></li>
 			«ENDFOR»
 			«FOR part : doc.parts»
+				<li>«part.title.toHtmlText»</li>
 				«FOR chapter : part.chapters»
 					<li«printActiveMenu()»><a tabindex="-1" href="#par">«chapter.title.toHtmlText»</a></li>
 					«FOR section : chapter.subSections»
