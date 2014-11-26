@@ -1,30 +1,33 @@
 chapter:Introduction[Introduction]
 
-Emf Parsley is a lightweight framework that allows easy and quick development
-of EMF-based Applications. It can be configured to use all kind of EMF persistence 
-implementations (XMI, Teneo, CDO).
+ e[Emf Parsley] is a lightweight framework that allows easy and quick UI development
+upon EMF. Moreover e[Emf Parsley] provides a component-based toolset and a DSL to customize several behaviors in each component.
+It can be configured to use all kind of EMF persistence implementations (XMI, Teneo, CDO).
 
-It aims at providing a set of Components like Trees, Tables and Detail Forms 
-that manage the model with the introspective EMF capabilities. 
-Using these components you can easily build forms, viewer or editors. 
-The framework provides basic UI implementations which are customizable 
-with Injection mechanism (based on link[http://code.google.com/p/google-guice][Google Guice]).
+section:Components[Components]
+
+There are some components that can be used out-of-the-box and can be considered as a reference implementation
+of the mechanisms that are the bases of e[Emf Parsley] itslef. 
+
+ul[
+	item[e[Tree] ]
+	item[e[Form] ]
+	item[e[Table] ]
+	item[e[Search] coming soon]
+]
 
 section:Customizations[Customizations]
 
-Basically e[Emf Parsley] provides some built-in components that can be customized in several way.
-There are 2 ways you can do it: the easy one and the hard one!
+It aims at providing a complete set of block components (like Trees, Tables and Detail Forms) 
+that manage the model with the introspective EMF capabilities and can be used to easily build forms, viewer or editors. 
+All basic UI behaviours are easily customizable with Injection mechanism (based on link[http://code.google.com/p/google-guice][Google Guice]), you cshould
+be able e[customize almoust everything!] 
 
-section:Customizations_TheEasyWay[the Easy way]
+Unfortunatly you have to know some details about the internal implementation to inject your own customization 
+(see section the ref:Customitations_TheHardWay[Hard Way Section] for more details). For this reason  e[Emf Parsley]
+provides a DSL to easy customize your UI, as explained in the next section.
 
-The framework provides a DSL that allows to customize the most relevant behaviors.
-Currently the following are permitted:
-ul[
-item[Content Provider]
-item[Label Provider]
-item[Guice Bindings]
-item[others..]
-]
+section2:Customizations_TheEasyWay[The Easy way]
 
 You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
 
@@ -35,9 +38,31 @@ to discover all features.
 
 img[images/01-dsl-content-assistant.png][][ ][] 
 
-section:Customitations_TheHardWay[the Hard way]
+The DSL allows to customize the most relevant behaviors, currently the following are permitted:
 
-This way is
+ul[
+	item[e[parts] let you define your View Parts: a file plugin.xml_emfparsley_gen will be generated
+	to synchronize with your own plugin.xml]
+
+	item[e[bindings] section let you define which implementation will be used wiht Injection]
+
+	item[e[menu] section let you define the contextual menu for all viewers (e[Tree] and e[tables])]
+
+	item[e[features provider] is used to retrieve list of feature for a given EClass to build e[Tables]
+	and e[Forms]]
+
+	item[e[viewer content provider] mediates between the viewer's model and the viewer, to provide the
+	contents to be shown]
+
+	item[e[Label Provider] is used to retrieve the image and text rapresentation of the EStructuredFeature of a given EClass]
+
+	item[e[Caption Provider] provides captions for each feature. Different implementations can be defined for e[Dialogs] and e[Forms]]
+
+	item[e[Control Factory] provides a custom implementation of Controls for each feature. Different implementations can be defined forfor e[Dialogs] and e[Forms]]
+]
+
+section2:Customitations_TheHardWay[The Hard way]
+
 If you need a deeper degree of customizations, you can use the injection mechanism based on Google Guice.
 The framework has been designed for being completly customized in every detail. All you need to do is provide a custom
 implementation for a class that implements a specific aspect; then you need to write the corresponding

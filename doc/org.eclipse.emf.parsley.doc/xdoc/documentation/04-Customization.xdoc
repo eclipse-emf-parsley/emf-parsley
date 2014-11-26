@@ -2,6 +2,20 @@ chapter:Customization[Customization]
 
 section:ResourceManagers[Managing Resources]
 
+ul[
+	item[If you need a machanism to fill some data for the first time you use a model, you can provide
+	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
+	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
+	Loader]]
+]
+
+For what concern saving objects, there are some specific parts that can be customized:
+
+ul[
+	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
+	item[In some cases, it can be usefull to specify an editing domain to work with. In this case it can be used the ref:EditingDomainFinder[Editing Domain Finder].]
+]
+
 section2:ResourceLoader[Resource Loader]
 
 The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.

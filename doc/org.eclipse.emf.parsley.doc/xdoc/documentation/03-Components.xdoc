@@ -1,23 +1,7 @@
 chapter:Components[Components]
 
-EMF Parsley is strongly component-based and for each component you can customize several behaviors.
 
 In this section we will list firstly some of them that are commons for all components.
-
-ul[
-	item[If you need a machanism to fill some data for the first time you use a model, you can provide
-	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
-	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
-	Loader]]
-]
-
-For what concern saving objects, there are some specific parts that can be customized:
-
-ul[
-	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
-	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
-	item[In some cases, it can be usefull to specify an editing domain to work with. In this case it can be used the ref:EditingDomainFinder[Editing Domain Finder].]
-]
 
 The following sections describe the basic components provided, that are the foundations for all parts built upon e[Emf Parsley].
 For each component we present a set of customizations, just to get an idea of how it works. You can refer
@@ -37,9 +21,8 @@ e[label] with the name of the feature and a e[control] to access the data. It ca
 to create such a component, like in the code below.
 
 code[Java][
-	formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
-	formComposite.init(eObject);
-]
+formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
+formComposite.init(eObject);]
 
 The e[form component] can be customized in many way, in particular the feature list, the labels and the controls.  
 
