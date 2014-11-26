@@ -224,9 +224,7 @@ section2:SelectionChange[Selection Change Components]
 In this section we presents some components that are based on selection. These components extends the
 class codeRef[org.eclipse.emf.parsley.views.AbstractOnSelectionView].
 
-ul[
-	item[ref:EmfSelectionHelper[EmfSelectionHelper]]
-]
+
 
 section3:AbstractOnSelectionTableView[On Selection Table View (Abstract)]
 

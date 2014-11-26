@@ -5,7 +5,7 @@ In this section we will list firstly some of them that are commons for all compo
 
 The following sections describe the basic components provided, that are the foundations for all parts built upon e[Emf Parsley].
 For each component we present a set of customizations, just to get an idea of how it works. You can refer
-to ref:Customization[Customization Section] for a complete list.
+to ref:Customizations[Customization Section] for a complete list.
  
 
 section:FormComponent[Form Component]
@@ -36,7 +36,7 @@ ul[
 	Provider] to select the features or the order.]
 	item[The description on the left side of the form caan be customizzed via the ref:PropertyDescriptionProvider[Property
 	Description Provider].]
-	item[Otherwise to customize the controls on the right, you can use the ref:FormControlFactory[Form Control Factory].
+	item[Otherwise to customize the controls on the right, you can use the ref:ControlFactory[Control Factory].
 	]
 	item[Depending on the feature types, can be some fields that use predefined values (e.g. combo). You can provide
 	the exact proposal list via the ref:ProposalProvider[Proposal Provider].]
@@ -60,7 +60,7 @@ See the corrisponding sections for more details.
 ul[
 	item[The ref:ViewerContentProvider[Viewer Content Provider]]
 	item[The ref:ViewerLabelProvider[Viewer Label Provider]]
-	item[The ref:ViewerContextMenuFactory[Viewer Context Menu Factory]]
+	item[The ref:MenuBuilder[Menu Builder]]
 ]
 
 e[TODO]

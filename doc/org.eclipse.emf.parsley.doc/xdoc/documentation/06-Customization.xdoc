@@ -1,77 +1,67 @@
-chapter:Customization[Customization]
+chapter:Customizations[Customizations]
 
-section:ResourceManagers[Managing Resources]
-
-ul[
-	item[If you need a machanism to fill some data for the first time you use a model, you can provide
-	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
-	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
-	Loader]]
-]
-
-For what concern saving objects, there are some specific parts that can be customized:
-
-ul[
-	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
-	item[In some cases, it can be usefull to specify an editing domain to work with. In this case it can be used the ref:EditingDomainFinder[Editing Domain Finder].]
-]
-
-section2:ResourceLoader[Resource Loader]
-
-The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.
-This class uses internally the ref:EmptyResourceInitializer[Empty Resource Initializer].
+section:Providers[Providers]
 
 
-section2:EmptyResourceInitializer[Empty Resource Initializer]
+section2:ViewerLabelProvider[Viewer Label Provider]
 
-If you need to initialize your model, for the first use, you can define an implementation of codeRef[org.eclipse.emf.parsley.resource.EmptyResourceInitializer].
-When the main resource will be found empty, your code will be executed. 
-
-section2:EditingDomainFinder[Editing Domain Finder]
-
-The class codeRef[org.eclipse.emf.parsley.edit.EditingDomainFinder] can be inherited to provide a specific
-way to find the editign domain.
-
-
-section2:ResourceSaveManager[Resource Save Manager]
-
-Resource saving is delegated to codeRef[org.eclipse.emf.parsley.edit.ResourceSaveManager]
-which, by defaults only saves the passed codeRef[org.eclipse.emf.ecore.resource.Resource].
-You can inject your own save manager and implement the method code[precondition(Resource)], for
-instance, you may want to validate the resource before saving, and in case the validation
-fails to return code[false].  If the precondition is code[false] the default implementation
-will not save the resource (and in turn will return code[false]).
-
-section3:ValidateResourceSaveManager[Validate Resource Save Manager]
-
-We provide an example of custom resource save manager: codeRef[org.eclipse.emf.parsley.edit.ValidateResourceSaveManager],
-we show here only relevant parts to give an example:
+The Label Provider can be customized by providing a specific implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
+and injecting it in the spefic module e[(TODO)].
+EMF Parsley provides such an implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
+that is inteded to be surclassed by the programmer to provides specific implementations like in the example below.
 
 code[Java][
-public class ValidateResourceSaveManager extends ResourceSaveManager {
+public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 
-	@Override
-	protected boolean precondition(Resource resource) {
-		return super.precondition(resource) && validateModel(resource);
+	@Inject
+	public CustomLibraryLabelProvider(AdapterFactoryLabelProvider delegate) {
+		super(delegate);
 	}
 
-	protected boolean validateModel(Resource resource) {
-		for (EObject eObject : resource.getContents()) {
-			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
-			if (diagnostic.getSeverity() == Diagnostic.ERROR) {
-				// SKIPPED: present the errors
-				return false;
-			} else if (diagnostic.getSeverity() == Diagnostic.WARNING) {
-				// SKIPPED: present the warnings
-			}
-		}
-		return true;
+	public String text(Book book) {
+		return "Book: " + book.getTitle();
+	}
+
+	public String image(Book book) {
+		return "book2.png";
+	}
+
+	public String text(Borrower b) {
+		return "Borrower: " + b.getFirstName();
 	}
 }
 ]
 
+section2:ViewerContentProvider[Viewer Content Provider]
 
-section:Providers[Providers]
+The programmer can provide a specific implementation of codeRef[org.eclipse.jface.viewers.IContentProvider]
+by injecting it in the spefic module e[(TODO)]. EMF Parsley provides an implementation with the class
+codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider] that can be easily used to
+specify the children of all object on the tree, like in the example below.
+
+code[Java][
+public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
+
+	@Inject
+	public CustomLibraryViewerContentProvider(AdapterFactory adapterFactory) {
+		super(adapterFactory);
+	}
+
+	public Object children(Library library) {
+		return library.getBooks();
+	}
+
+	public Object children(Book book) {
+		ArrayList<Object> children = new ArrayList<Object>();
+		Writer author = book.getAuthor();
+		if (author != null) {
+			children.add(author);
+		}
+		children.addAll(book.getBorrowers());
+		return children;
+	}
+}
+]
 
 section2:FeaturesProvider[Features Provider]
 
@@ -195,7 +185,6 @@ public class LibraryEStructuralFeaturesAsStringsProvider extends
 }
 ]
 
-
 section3:TableFeaturesProvider[Table Features Provider]
 
 As an extension, you can use the codeRef[org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider]:
@@ -243,66 +232,6 @@ public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
 }
 ]
 
-section2:ViewerLabelProvider[Viewer Label Provider]
-
-The Label Provider can be customized by providing a specific implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
-and injecting it in the spefic module e[(TODO)].
-EMF Parsley provides such an implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
-that is inteded to be surclassed by the programmer to provides specific implementations like in the example below.
-
-code[Java][
-public class CustomLibraryLabelProvider extends ViewerLabelProvider {
-
-	@Inject
-	public CustomLibraryLabelProvider(AdapterFactoryLabelProvider delegate) {
-		super(delegate);
-	}
-
-	public String text(Book book) {
-		return "Book: " + book.getTitle();
-	}
-
-	public String image(Book book) {
-		return "book2.png";
-	}
-
-	public String text(Borrower b) {
-		return "Borrower: " + b.getFirstName();
-	}
-}
-]
-
-section2:ViewerContentProvider[Viewer Content Provider]
-
-The programmer can provide a specific implementation of codeRef[org.eclipse.jface.viewers.IContentProvider]
-by injecting it in the spefic module e[(TODO)]. EMF Parsley provides an implementation with the class
-codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider] that can be easily used to
-specify the children of all object on the tree, like in the example below.
-
-code[Java][
-public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
-
-	@Inject
-	public CustomLibraryViewerContentProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
-
-	public Object children(Library library) {
-		return library.getBooks();
-	}
-
-	public Object children(Book book) {
-		ArrayList<Object> children = new ArrayList<Object>();
-		Writer author = book.getAuthor();
-		if (author != null) {
-			children.add(author);
-		}
-		children.addAll(book.getBorrowers());
-		return children;
-	}
-}
-]
-
 section2:ProposalProvider[Proposal Provider]
 
  e[This can be done with Parsley DSL too!]
@@ -327,23 +256,78 @@ public List<?> proposals_Book_author(Book book) {
 }
 ]
 
-section2:ViewerContextMenuFactory[Viewer Context Menu Factory]
+section:Menu[Menu]
 
-codeRef[org.eclipse.emf.parsley.menus.ViewerContextMenuFactory]
+section2:MenuBuilder[Menu Builder]
 
-section2:TableColumnLabelProvider[Table Column Label Provider]
+codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder]
 
-codeRef[org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider]
+section:Resources[Resources]
+
+ul[
+	item[If you need a machanism to fill some data for the first time you use a model, you can provide
+	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
+	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
+	Loader]]
+]
+
+For what concern saving objects, there are some specific parts that can be customized:
+
+ul[
+	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
+]
+
+section2:ResourceLoader[Resource Loader]
+
+The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.
+This class uses internally the ref:EmptyResourceInitializer[Empty Resource Initializer].
 
 
-section:SelectionAndMenu[Selection And Menu]
+section2:EmptyResourceInitializer[Empty Resource Initializer]
 
-section2:EmfSelectionHelper[Emf Selection Helper]
+If you need to initialize your model, for the first use, you can define an implementation of codeRef[org.eclipse.emf.parsley.resource.EmptyResourceInitializer].
+When the main resource will be found empty, your code will be executed. 
 
-codeRef[org.eclipse.emf.parsley.util.EmfSelectionHelper]
+
+section2:ResourceSaveManager[Resource Save Manager]
+
+Resource saving is delegated to codeRef[org.eclipse.emf.parsley.edit.ResourceSaveManager]
+which, by defaults only saves the passed codeRef[org.eclipse.emf.ecore.resource.Resource].
+You can inject your own save manager and implement the method code[precondition(Resource)], for
+instance, you may want to validate the resource before saving, and in case the validation
+fails to return code[false].  If the precondition is code[false] the default implementation
+will not save the resource (and in turn will return code[false]).
+
+section3:ValidateResourceSaveManager[Validate Resource Save Manager]
+
+We provide an example of custom resource save manager: codeRef[org.eclipse.emf.parsley.edit.ValidateResourceSaveManager],
+we show here only relevant parts to give an example:
+
+code[Java][
+public class ValidateResourceSaveManager extends ResourceSaveManager {
+
+	@Override
+	protected boolean precondition(Resource resource) {
+		return super.precondition(resource) && validateModel(resource);
+	}
+
+	protected boolean validateModel(Resource resource) {
+		for (EObject eObject : resource.getContents()) {
+			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+			if (diagnostic.getSeverity() == Diagnostic.ERROR) {
+				// SKIPPED: present the errors
+				return false;
+			} else if (diagnostic.getSeverity() == Diagnostic.WARNING) {
+				// SKIPPED: present the warnings
+			}
+		}
+		return true;
+	}
+}
+]
 
 
-section:Builders[Builders]
+section:Tables[Tables]
 
 section2:TableViewerBuilder[Table Viewer Builder]
 
@@ -359,7 +343,6 @@ section2:TableViewerColumnBuilder[Table Viewer Column Builder]
 codeRef[org.eclipse.emf.parsley.builders.TableViewerColumnBuilder]
 
 ul[
-	item[ref:JfaceProviderFactory[JfaceProviderFactory]]
 	item[ref:PropertyDescriptionProvider[PropertyDescriptionProvider]]
 	item[ref:FeaturesProvider[FeaturesProvider]]
 ]
@@ -368,7 +351,9 @@ section3:TableViewerEditableColumnBuilder[Table Viewer Editable Column Builder]
 
 codeRef[org.eclipse.emf.parsley.builders.TableViewerEditableColumnBuilder]
 
+section2:TableColumnLabelProvider[Table Column Label Provider]
 
+codeRef[org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider]
 
 section:Factories[Factories]
 
@@ -378,23 +363,12 @@ codeRef[org.eclipse.emf.parsley.factories.FormFactory]
 
 ul[
 	item[ref:FormPropertyDescriptionProvider[FormPropertyDescriptionProvider]]
-	item[ref:FormControlFactory[Form Control Factory]]
-	item[ref:EditingDomainFinder[EditingDomainFinder]]
-	item[ref:JfaceProviderFactory[JfaceProviderFactory]]
+	item[ref:ControlFactory[Control Factory]]
 	item[ref:FeaturesProvider[FeaturesProvider]]
 ]
 
-section2:JfaceProviderFactory[Jface Provider Factory]
 
-codeRef[org.eclipse.emf.parsley.factories.ColumnLabelProviderFactory]
-
-ul[
-	item[ref:ViewerLabelProvider[ViewerLabelProvider]]
-	item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
-]
-
-
-section2:FormControlFactory[Form Control Factory]
+section2:ControlFactory[Control Factory]
 
  e[This can be done with Parsley DSL too!]
  
@@ -416,12 +390,6 @@ public Control control_Writer_name(DataBindingContext dbc,IObservableValue featu
 ]
 
 For more info, see the other parts that are used internally by the e[Form Control Factory]:
-
-ul[
-	item[ref:JfaceProviderFactory[JfaceProviderFactory]]
-]
-
-
 
 section2:TreeFormFactory[Tree Form Factory]
 
@@ -454,8 +422,6 @@ section2:ViewerInitializer[Viewer Initializer]
 codeRef[org.eclipse.emf.parsley.viewers.ViewerInitializer]
 
 ul[
-	item[e[AdapterFactoryEditingDomain]]
-	item[ref:ViewerContextMenuFactory[AdapterFactory]]
 	item[e[ILabelProvider]]
 	item[e[IContentProvider]]
 ]

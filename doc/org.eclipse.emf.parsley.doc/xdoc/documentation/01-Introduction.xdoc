@@ -1,4 +1,4 @@
-chapter:Introduction[Introduction]
+chapter:Overview[Overview]
 
  e[Emf Parsley] is a lightweight framework that allows easy and quick UI development
 upon EMF. Moreover e[Emf Parsley] provides a component-based toolset and a DSL to customize several behaviors in each component.
@@ -23,51 +23,54 @@ that manage the model with the introspective EMF capabilities and can be used to
 All basic UI behaviours are easily customizable with Injection mechanism (based on link[http://code.google.com/p/google-guice][Google Guice]), you cshould
 be able e[customize almoust everything!] 
 
-Unfortunatly you have to know some details about the internal implementation to inject your own customization 
-(see section the ref:Customitations_TheHardWay[Hard Way Section] for more details). For this reason  e[Emf Parsley]
-provides a DSL to easy customize your UI, as explained in the next section.
+You don't have to know all details about the internal implementation to inject your own customization because
+ e[Emf Parsley] provides a DSL to easy customize your UI, as explained in the next section.
+%%(see section the 
+%%%%ref:Customitations_TheHardWay[
+%%Hard Way Section for more details). For this reason  e[Emf Parsley]
+%%provides a DSL to easy customize your UI, as explained in the next section.
 
-section2:Customizations_TheEasyWay[The Easy way]
-
-You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
-
-img[images/01-new-project-dsl-wizard.png][][ ][] 
-
-Clicking the "Finish" button the wizard will open directly the dsl editor. You can use the content assistant
-to discover all features.
-
-img[images/01-dsl-content-assistant.png][][ ][] 
-
-The DSL allows to customize the most relevant behaviors, currently the following are permitted:
-
-ul[
-	item[e[parts] let you define your View Parts: a file plugin.xml_emfparsley_gen will be generated
-	to synchronize with your own plugin.xml]
-
-	item[e[bindings] section let you define which implementation will be used wiht Injection]
-
-	item[e[menu] section let you define the contextual menu for all viewers (e[Tree] and e[tables])]
-
-	item[e[features provider] is used to retrieve list of feature for a given EClass to build e[Tables]
-	and e[Forms]]
-
-	item[e[viewer content provider] mediates between the viewer's model and the viewer, to provide the
-	contents to be shown]
-
-	item[e[Label Provider] is used to retrieve the image and text rapresentation of the EStructuredFeature of a given EClass]
-
-	item[e[Caption Provider] provides captions for each feature. Different implementations can be defined for e[Dialogs] and e[Forms]]
-
-	item[e[Control Factory] provides a custom implementation of Controls for each feature. Different implementations can be defined forfor e[Dialogs] and e[Forms]]
-]
-
-section2:Customitations_TheHardWay[The Hard way]
-
-If you need a deeper degree of customizations, you can use the injection mechanism based on Google Guice.
-The framework has been designed for being completly customized in every detail. All you need to do is provide a custom
-implementation for a class that implements a specific aspect; then you need to write the corresponding
-e[bind] method to tell the dependency injection mechanism to use your own custom class.
-You can use the Java editor content assist to discover all bindings. 
-
-img[images/01-guice-module-content-assistant.png][][ ][] 
+%%section2:Customizations_TheEasyWay[The Easy way]
+%%
+%%You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
+%%
+%%img[images/01-new-project-dsl-wizard.png][][ ][] 
+%%
+%%Clicking the "Finish" button the wizard will open directly the dsl editor. You can use the content assistant
+%%to discover all features.
+%%
+%%img[images/01-dsl-content-assistant.png][][ ][] 
+%%
+%%The DSL allows to customize the most relevant behaviors, currently the following are permitted:
+%%
+%%ul[
+%%	item[e[parts] let you define your View Parts: a file plugin.xml_emfparsley_gen will be generated
+%%	to synchronize with your own plugin.xml]
+%%
+%%	item[e[bindings] section let you define which implementation will be used wiht Injection]
+%%
+%%	item[e[menu] section let you define the contextual menu for all viewers (e[Tree] and e[tables])]
+%%
+%%	item[e[features provider] is used to retrieve list of feature for a given EClass to build e[Tables]
+%%	and e[Forms]]
+%%
+%%	item[e[viewer content provider] mediates between the viewer's model and the viewer, to provide the
+%%	contents to be shown]
+%%
+%%	item[e[Label Provider] is used to retrieve the image and text rapresentation of the EStructuredFeature of a given EClass]
+%%
+%%	item[e[Caption Provider] provides captions for each feature. Different implementations can be defined for e[Dialogs] and e[Forms]]
+%%
+%%	item[e[Control Factory] provides a custom implementation of Controls for each feature. Different implementations can be defined forfor e[Dialogs] and e[Forms]]
+%%]
+%%
+%%section2:Customitations_TheHardWay[The Hard way]
+%%
+%%If you need a deeper degree of customizations, you can use the injection mechanism based on Google Guice.
+%%The framework has been designed for being completly customized in every detail. All you need to do is provide a custom
+%%implementation for a class that implements a specific aspect; then you need to write the corresponding
+%%e[bind] method to tell the dependency injection mechanism to use your own custom class.
+%%You can use the Java editor content assist to discover all bindings. 
+%%
+%%img[images/01-guice-module-content-assistant.png][][ ][] 
 

@@ -24,19 +24,24 @@ codelanguage-def[EmfParsley]
 	children,viewpart,viewname,viewclass,viewcategory
 ]
 
-part[Documentation]
+part[Getting Started]
+
+chapter-ref[Overview]
+
+chapter-ref[FirstExample]
+
+chapter-ref[RcpMail]
+
+part[Reference Documentation]
 
 chapter-ref[Introduction]
 
-chapter-ref[GettingStarted]
-
 chapter-ref[Components]
 
-chapter-ref[Customization]
+chapter-ref[Customizations]
 
 chapter-ref[DSL]
 
-chapter-ref[AdvancedComponents]
+chapter-ref[RAP]
 
 chapter-ref[Eclipse4]
-

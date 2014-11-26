@@ -1,23 +1,4 @@
-chapter:GettingStarted[Getting Started]
-
-To get started, you may download "Eclipse Modeling Tools" or "Eclipse IDE for Java and DSL Developers" from link[http://www.eclipse.org/downloads/][Eclipse
-Downloads].
-
-This will ensure you have EMF and related Tools installed and ready to go (you may as well use any other Eclipse package, provided that you have installed
-also EMF and its tools).
-
-section:Installation[Installation]
-
-Now select "Help" -> "Install New Software..." and in the "Work with:" field insert the EMF Parsley update
-site link[http://download.eclipse.org/emf-parsley/updates][http://download.eclipse.org/emf-parsley/updates]
-and install all features.
-Although sources are not strictly required, it might help when using EMF Parsley
-to have a look at its sources.
-
-img[images/emf-parsley-update-site.png][][ ][]
-
-
-section:FirstExample[First Example]
+chapter:FirstExample[First Example]
 
 The purpose of this first example is to make use of the classical EMF Library Model example and
 create a view for editing such models using an EMF Parsley enabled plug-in.
@@ -263,7 +244,3 @@ img[images/labelCustomization.png][][ ][]
  
  
  
-
-
-section:RCPMail[RCP Mail Example]
-
