@@ -490,7 +490,7 @@
    </extension>
    <extension point="org.eclipse.ui.editorActions">
       <editorContribution targetID="org.eclipse.emf.parsley.dsl.EmfParsleyDsl" 
-                          id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.ide.rulerActions">
+                          id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.rulerActions">
 	     <action
 	             label="Not Used"
 	             class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
@@ -501,26 +501,26 @@
    </extension>
    <extension point="org.eclipse.ui.popupMenus">
       <viewerContribution
-         targetID="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.ide.rulerContextMenu"
-         id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.ide.RulerPopupActions">
+         targetID="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.RulerContext"
+         id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.RulerPopupActions">
          <action
             label="Toggle Breakpoint"
             class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
             menubarPath="debug"
-            id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.ide.rulerContextMenu.toggleBreakpointAction">
+            id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.rulerContextMenu.toggleBreakpointAction">
          </action>
          <action
             label="Not used"
             class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
             menubarPath="debug"
-            id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.ide.rulerContextMenu.enableDisableBreakpointAction">
+            id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.rulerContextMenu.enableDisableBreakpointAction">
          </action>
          <action
            label="Breakpoint Properties"
            helpContextId="breakpoint_properties_action_context"
            class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.jdt.debug.ui.actions.JavaBreakpointPropertiesRulerActionDelegate"
            menubarPath="group.properties"
-           id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.ide.rulerContextMenu.openBreapointPropertiesAction">
+           id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.rulerContextMenu.openBreapointPropertiesAction">
          </action>
       </viewerContribution>
    </extension>
