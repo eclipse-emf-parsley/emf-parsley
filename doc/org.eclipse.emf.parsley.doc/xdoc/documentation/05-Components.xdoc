@@ -1,10 +1,8 @@
 chapter:Components[Components]
 
 
-In this section we will list firstly some of them that are commons for all components.
-
-The following sections describe the basic components provided, that are the foundations for all parts built upon e[Emf Parsley].
-For each component we present a set of customizations, just to get an idea of how it works. You can refer
+This section describes the components that are provided to be used out-of-the-box, that are the foundations for all parts built upon e[Emf Parsley].
+Afetr a brief description, for each component we present a set of customizations, just to get an idea of how it works. You can refer
 to ref:Customizations[Customization Section] for a complete list.
  
 
@@ -15,33 +13,35 @@ like in the image above.
 
 img[images/03-components-form.png][][ ][]
 
-For each codeRef[org.eclipse.emf.ecore.EStructuralFeature] defined for the codeRef[org.eclipse.emf.ecore.EClass]
-(that is the type of the object to rapresent), the component builds a row with a 
-e[label] with the name of the feature and a e[control] to access the data. It can be used the factory
-to create such a component, like in the code below.
+e[EMF Parsley] provides a factory that can be used to create such a component, like in the code below.
+Here you can see that can be configured only in 2 lines, the constructor phase and the build&fill phase. 
 
 code[Java][
 formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
 formComposite.init(eObject);]
 
-The e[form component] can be customized in many way, in particular the feature list, the labels and the controls.  
+Most of the job is done by the second line of code, that get the list of codeRef[org.eclipse.emf.ecore.EStructuralFeature] defined for the codeRef[org.eclipse.emf.ecore.EClass]
+(that is the type of the object to rapresent) and builds a row for each of them. Each row is composed
+by a e[label] with the name of the feature and a e[control] to access the data. 
+
+All these aspect can be customized in many way, for example feature list, the labels and the controls.  
 
 
-section2:Form_Customizations[Form Customizations]
+section2:FormComponent_features[Feature List Customization]
 
-The e[Form Component] can be customized in several way. Here the complete list.
+The e[list fo feature] displayed on the form can be customized via the ref:FeaturesProvider[Feature	Provider] to select the features or the order.
 
-ul[
-	item[The e[list fo feature] displayed on the form can be customized via the ref:FeaturesProvider[Feature
-	Provider] to select the features or the order.]
-	item[The description on the left side of the form caan be customizzed via the ref:PropertyDescriptionProvider[Property
-	Description Provider].]
-	item[Otherwise to customize the controls on the right, you can use the ref:ControlFactory[Control Factory].
-	]
-	item[Depending on the feature types, can be some fields that use predefined values (e.g. combo). You can provide
-	the exact proposal list via the ref:ProposalProvider[Proposal Provider].]
-]
+section2:FormComponent_captions[Caption Customization]
 
+The description on the left side of the form caan be customizzed via the ref:FormFeatureCaptionProvider[Caption Provider].
+
+section2:FormComponent_controls[Control Customization]
+
+Otherwise to customize the controls on the right, you can use the ref:ControlFactory[Control Factory].
+
+section2:FormComponent_proposals[Proposal Provider]
+
+Depending on the feature types, can be some fields that use predefined values (e.g. combo). You can provide the exact proposal list via the ref:ProposalProvider[Proposal Provider].
 
 
 section:TreeComponent[Tree Component]
@@ -51,20 +51,33 @@ Resource URI, and a simple EObject. This component use the EMF Meta-Model inform
 
 img[images/03-components-tree.png][][ ][]
 
-section2:Tree_Customizations[Tree Customizations]
+e[EMF Parsley] provides an initializer that can be used to create such a component, like in the code below.
+Here you can see that can be configured only in 2 lines, the constructor phase and the build&fill phase. 
+
+code[Java][treeViewer = new TreeViewer(parent);
+viewerInitializer.initialize(treeViewer, element);]
+
 
 The e[Tree Component]can be customized in several way via the standard EMF Edit facilities or with the EMF Parsley 
 codeinjection based mechanism. If you are familiar with Jface APIs, you can easily use the basic class with some facilties to define the specific implementation. 
 See the corrisponding sections for more details.
 
-ul[
-	item[The ref:ViewerContentProvider[Viewer Content Provider]]
-	item[The ref:ViewerLabelProvider[Viewer Label Provider]]
-	item[The ref:MenuBuilder[Menu Builder]]
-]
 
-e[TODO]
+section2:Tree_ContentProvider[Content Provider]
 
+An IContentProvider is used in Jface to retrieve the list of e[elements] and e[children] to be showed
+in the tree viewer. The ref:ViewerContentProvider[Viewer Content Provider] is the e[EMF Parsley] implementation of that interface,
+and by default uses the containment mechanisms to provide children as in EMF Edit framework, but it can
+be customized as weel.
+
+section2:Tree_LabelProvider[LabelProvider]
+
+The ref:ViewerLabelProvider[Viewer Label Provider] is the implementation ov a ILabelProvider interface
+and is responsible to provide the text and image rapresentation for each EObject visualized.
+
+section2:Tree_MenuBuilder[Menu Builder]
+
+The ref:MenuBuilder[Menu Builder] allow to fully customize the contextual menu.
 
 
 section:TreeFormComponent[Tree Form Component]
@@ -75,11 +88,25 @@ the tree. The component also combines a ref:FormComponent detail that display th
 
 img[images/03-components-treeform.png][][ ][]
 
-section2:TreeForm_Customizations[Tree Form Customization]
+e[EMF Parsley] provides a factory to create such a component.
+
+code[Java][treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
+treeFormComposite.update(application);]
+
 
 Since e[Tree Form Component] is a combination of  e[Tree Component] and  e[Form Component], all their customizations
 are avaible for it.
 
+section2:TreeForm_MenuBuilder[Adding Menu]
+
+TODO: Is it correct?
+
+code[Java][treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
+treeActionBarContributor.initialize(editingDomain);
+viewerInitializer.addContextMenu(treeFormComposite.getViewer(),
+treeActionBarContributor, editingDomain, this);
+treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
+treeFormComposite.update(application);]
 
 
 section:TableComponent[Table Component]
@@ -89,5 +116,17 @@ It uses metamodel infos to build column as needed.
 
 img[images/03-components-table.png][][ ][]
 
-todo[ To be continued ]
+code[Java][tableViewer = viewerFactory.createTableViewer(composite,SWT.BORDER | SWT.FULL_SELECTION, object, eClass);
+]
 
+section2:Table_features[Feature List Customization]
+
+The e[list fo feature] displayed on the form can be customized via the ref:TableFeaturesProvider[Table Feature Provider] to select the features or the order.
+
+section2:Table_captions[Caption Customization]
+
+The description on the left side of the form caan be customizzed via the ref:FeatureCaptionProvider[Caption Provider].
+
+section2:Table_MenuBuilder[Menu Builder]
+
+The ref:MenuBuilder[Menu Builder] allow to fully customize the contextual menu for the selected row.

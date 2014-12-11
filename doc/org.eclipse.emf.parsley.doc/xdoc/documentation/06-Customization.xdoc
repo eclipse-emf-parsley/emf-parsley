@@ -191,7 +191,7 @@ As an extension, you can use the codeRef[org.eclipse.emf.parsley.ui.provider.Tab
 the customizations will be applied only to ref:TableComponent[tables], not to ref:FormComponent[Forms].
 
 
-section2:PropertyDescriptionProvider[Feature Caption Provider]
+section2:FeatureCaptionProvider[Feature Caption Provider]
 
  e[This can be done with Parsley DSL too!]
  
@@ -215,7 +215,7 @@ public String text_Writer_name(final EStructuralFeature feature) {
 }
 ] 
 
-section3:FormPropertyDescriptionProvider[Form Feature Caption Provider]
+section3:FormFeatureCaptionProvider[Form Feature Caption Provider]
 
 The codeRef[org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider] can be used if you want
 to define the description only for the form. For example using the ref:TreeFormComponent[Tree
@@ -343,7 +343,7 @@ section2:TableViewerColumnBuilder[Table Viewer Column Builder]
 codeRef[org.eclipse.emf.parsley.builders.TableViewerColumnBuilder]
 
 ul[
-	item[ref:PropertyDescriptionProvider[PropertyDescriptionProvider]]
+	item[ref:FeatureCaptionProvider[PropertyDescriptionProvider]]
 	item[ref:FeaturesProvider[FeaturesProvider]]
 ]
 
@@ -362,7 +362,7 @@ section2:FormFactory[Form Factory]
 codeRef[org.eclipse.emf.parsley.factories.FormFactory]
 
 ul[
-	item[ref:FormPropertyDescriptionProvider[FormPropertyDescriptionProvider]]
+	item[ref:FormFeatureCaptionProvider[FormPropertyDescriptionProvider]]
 	item[ref:ControlFactory[Control Factory]]
 	item[ref:FeaturesProvider[FeaturesProvider]]
 ]
