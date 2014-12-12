@@ -1,13 +1,38 @@
 chapter:Customizations[Customizations]
 
+In this chapter we will describe how e[EMF Parsley] let you customize the standard behaviours.
+A DSL is provided to easily customize most common feature, but you can customize all aspect by doing
+manually. As a matter of fact each customization is explained in a single section, with the details on the DSL (if available) and the
+class for overriding by Java.
+
+As we deeply explained in the ref:Introduction, if you wnat to provide a specific implementation via
+Java, you can use the Google Guice injection mechanism, buy overriding the specific class with your own
+implementation. Note that an explicit contructor is needed, with the e[@Inject] annotation to make Guice
+correctly works.
+
 section:Providers[Providers]
 
 
 section2:ViewerLabelProvider[Viewer Label Provider]
 
-The Label Provider can be customized by providing a specific implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
+The Label Prorvider as in JFace allows to specify the representation of a given Object. e[EMF Parsley]
+provides an implementation that uses the information provided via the DSL, as you can see in the snippet
+below. 
+
+code[EmfParsley][labelProvider{
+	text{
+		Book -> "Book:"+title
+		Borrower -> "Borrower: "+firstName
+	}
+	image{
+		Book -> "book.png"
+	}
+}
+]
+
+However if you wnat to use your own implementation, you can do that by providing a specific implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
 and injecting it in the spefic module e[(TODO)].
-EMF Parsley provides such an implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
+e[EMF Parsley] provides such an implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
 that is inteded to be surclassed by the programmer to provides specific implementations like in the example below.
 
 code[Java][
@@ -23,7 +48,7 @@ public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 	}
 
 	public String image(Book book) {
-		return "book2.png";
+		return "book.png";
 	}
 
 	public String text(Borrower b) {
@@ -34,7 +59,26 @@ public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 
 section2:ViewerContentProvider[Viewer Content Provider]
 
-The programmer can provide a specific implementation of codeRef[org.eclipse.jface.viewers.IContentProvider]
+As in Jface, the Content Provider is used to get the elements to represent and for tree their children.
+e[EMF Parsley] provides an implementation that uses the DSL as in the code below.
+
+code[EmfParsley][viewerContentProvider{
+	elements{
+		Library -> books
+	}
+	children{
+		Library -> books
+		Book b-> {
+			new ArrayList()=>\[
+				add(b.author)
+				addAll(b.borrowers)
+			\]
+		}
+	}
+}]
+
+
+The developer can also provide a specific implementation of codeRef[org.eclipse.jface.viewers.IContentProvider]
 by injecting it in the spefic module e[(TODO)]. EMF Parsley provides an implementation with the class
 codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider] that can be easily used to
 specify the children of all object on the tree, like in the example below.
@@ -46,6 +90,10 @@ public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
 	public CustomLibraryViewerContentProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
+
+ 	public Object elements(Library library) {
+    	return library.getBooks();
+  	}
 
 	public Object children(Library library) {
 		return library.getBooks();
@@ -65,29 +113,19 @@ public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
 
 section2:FeaturesProvider[Features Provider]
 
- e[This can be done with Parsley DSL too!]
- 
-todo[TODO: merge delle 2 versioni]
-
-section3:FeatureProvider1[Prima versione]
-
-To customize the e[feature list] it can be injected a codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
+e[EMF Parsley] uses thi kinf of provider wherever a list of feature is requested for a certain EClass.
 The default is to return the list of all the features in the EClass, but the programmer can customize it (for instance,
-by returning only a superset, or using a different order) on an EClass-based strategy. The customization can be done 
-redefining buildMap and adding mappings.
+by returning only a superset, or using a different order) on an EClass-based strategy.
+Thus you can use the DSL to specify that list, as in the snipped below.
 
-code[Java][
-	protected void buildMap(EClassToEStructuralFeatureMap map) {
-		super.buildMap(map);
-		map.mapTo(LIBRARY,LIBRARY__NAME, ADDRESSABLE__ADDRESS);
+code[EmfParsley][featuresProvider{
+	features{
+		Book -> title, author, category, pages 		
 	}
-]
-
-In the example we specify that for the EClass e[Library] the feature that are to be displayed are e[name]
-and e[address].
-
-section3:FeatureProvider2[Seconda versione]
-
+}] 
+ 
+If we look at Java, there are more chances to customize this behaviour, but we need to go deep in some
+details of the e[Feature Provider] implementation. 
 
 When the framework builds components according to the
 codeRef[org.eclipse.emf.ecore.EStructuralFeature]s of a given
@@ -141,12 +179,8 @@ public class LibraryEStructuralFeaturesProvider extends
 		super.buildMap(map);
 		map.mapTo(LIBRARY,
 				LIBRARY__NAME, ADDRESSABLE__ADDRESS);
-		map.mapTo(PERSON,
-				PERSON__FIRST_NAME, PERSON__LAST_NAME,
-				ADDRESSABLE__ADDRESS);
-		map.mapTo(WRITER,
-				PERSON__FIRST_NAME, PERSON__LAST_NAME,
-				WRITER__BOOKS);
+		map.mapTo(PERSON, PERSON__FIRST_NAME, PERSON__LAST_NAME, ADDRESSABLE__ADDRESS);
+		map.mapTo(WRITER, PERSON__FIRST_NAME, PERSON__LAST_NAME, WRITER__BOOKS);
 	}
 }
 ]
