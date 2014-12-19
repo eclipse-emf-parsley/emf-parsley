@@ -1,6 +1,8 @@
 package org.eclipse.emf.parsley.examples.mail.mailsview;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.config.Configurator;
+import org.eclipse.emf.parsley.examples.mail.mailsview.config.ConfiguratorGen;
 import org.eclipse.emf.parsley.examples.mail.mailsview.ui.provider.FeaturesProviderGen;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -17,5 +19,10 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return FeaturesProviderGen.class;
+  }
+  
+  @Override
+  public Class<? extends Configurator> bindConfigurator() {
+    return ConfiguratorGen.class;
   }
 }

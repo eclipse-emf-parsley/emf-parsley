@@ -7,6 +7,7 @@ import org.eclipse.emf.parsley.examples.mail.Folder
 import org.eclipse.emf.parsley.examples.mail.accountsview.custom.MailEmptyResourceInitializer
 import org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView
 import org.eclipse.emf.parsley.resource.EmptyResourceInitializer
+import org.eclipse.emf.common.util.URI
 
 /* org.eclipse.emf.parsley.examples.mail.accountsview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.accountsview {
@@ -26,6 +27,15 @@ module org.eclipse.emf.parsley.examples.mail.accountsview {
 		// with this binding, a global EditingDomain will be used:
 		// other modules extending this module will share the EditingDomain
 		provide AdapterFactoryEditingDomain -> GlobalAdapterFactoryEditingDomainProvider
+	}
+
+	configurator {
+		val URI mailModelURI = URI.createFileURI(System.getProperty("user.home")
+			+ "/examples/mail/My.mail")
+		
+		resourceURI {
+			AccountsView -> mailModelURI
+		}
 	}
 	
 	labelProvider {

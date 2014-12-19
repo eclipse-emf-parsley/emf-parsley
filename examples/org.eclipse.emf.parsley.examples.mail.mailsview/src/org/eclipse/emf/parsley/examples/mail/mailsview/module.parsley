@@ -1,12 +1,20 @@
 import org.eclipse.emf.parsley.examples.mail.Mail
+import org.eclipse.emf.parsley.examples.mail.MailPackage
+import org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView
 
 /* org.eclipse.emf.parsley.examples.mail.mailsview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.mailsview {
 	parts {
 		viewpart org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView {
 			viewname "Mails View"
-			viewclass org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView
+			viewclass MailsView
 			viewcategory org.eclipse.emf.parsley.examples.mail.mailsview
+		}
+	}
+
+	configurator {
+		eStructuralFeature {
+			MailsView -> MailPackage.Literals.FOLDER__MAILS
 		}
 	}
 	
