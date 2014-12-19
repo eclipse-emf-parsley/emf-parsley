@@ -44,7 +44,7 @@ abstract class AbstractWebsite implements Resource {
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<meta name="description" content="«websiteDescription»">
-			<meta name="author" content="Francesco Guidieri">
+			<meta name="author" content="Francesco Guidieri, Paolo Bachini">
 			<link rel="icon" href="/favicon.ico">
 
 			<title>«websiteTitle»</title>
@@ -129,15 +129,15 @@ abstract class AbstractWebsite implements Resource {
 			'index.html' -> 'Home',
 			'download.html' -> 'Download',
 			'documentation.html' -> 'Documentation',
-			'support.html' -> 'Support',
-			'examples.html' -> 'Examples'
+			'sources.html' -> 'Sources',
+			'support.html' -> 'Support'
 		)
 	}
 	
 	def Iterable<Pair<String,String>> topRightLevelMenu() {
 		newArrayList(
-			'index.html' -> 'About',
 			'support.html' -> 'Contact Us',
+			'http://www.eclipse.org' -> 'Eclipse.org',
 			'https://twitter.com/EmfParsley' -> '@EmfParsley'
 		)
 	}
@@ -148,7 +148,7 @@ abstract class AbstractWebsite implements Resource {
 		<div class="navbar-fixed-top" style="background:url(img/bg-100x100.jpg)">
 			<div class="container" style="width:1150px;">
 				<div class="navbar-header">
-					<a href="EMFParsley.htm"><img class="featurette-image img-responsive" alt="" src="img/logo.gif"/></a>
+					<a href="Index.htm"><img class="featurette-image img-responsive" alt="" src="img/logo.gif"/></a>
 				</div>
 			</div>
 			<nav class="navbar navbar-default" role="navigation" style="background-color:transparent; border:0 none; margin:-31px 0px 3px 0px;min-height: 36px;">
@@ -166,7 +166,7 @@ abstract class AbstractWebsite implements Resource {
 						<ul class="nav navbar-nav pull-right mioli">
 							«FOR it : topRightLevelMenu»
 								«IF key.contains("twitter")»
-								<li style="border-right: 0 none;"><a target="_blank" href="«key»" id="twitterli"><img style="width:25px;float:left;margin-top: 5px;" alt="" src="img/twitter.png"/>«value»</a></li>
+								<li style="border-right: 0 none;"><a target="_blank" href="«key»" id="twitterli"><img style="width:25px;float:left;margin-top: 5px; margin-right:1px;" alt="" src="img/twitter.png"/>«value»</a></li>
 								«ELSE»
 								<li><a href="«key»">«value»</a></li>
 								«ENDIF»
@@ -207,7 +207,7 @@ abstract class AbstractWebsite implements Resource {
 
 	def footer()'''
 	<!-- FOOTER -->
-		<footer style="z-index: 1001;position:relative;background-color:#35414C;-webkit-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);-moz-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);box-shadow: 0px -3px 8px 0px rgba(30,51,72,1);margin-top:4.5%;">
+		<footer style="z-index: 1001;position:relative;background-color:#35414C;-webkit-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);-moz-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);box-shadow: 0px -3px 8px 0px rgba(30,51,72,1);margin-top:1%;">
 			<img width="100%" alt="" src="img/footer.jpg" />
 			<nav class="navbar navbar-default" role="navigation" style="background-color:transparent; border:0 none; margin:-97px 0px 31px 0px;min-height: 36px;">
 				<div class="container" style="width:37.6%;">
@@ -216,7 +216,7 @@ abstract class AbstractWebsite implements Resource {
 						<ul class="nav navbar-nav pull-right miolifooter">
 							<li><a href="">About</a></li>
 							<li><a href="">Contact Us</a></li>
-							<li style="border-right: 0 none;"><a target="_blank" href="https://twitter.com/EmfParsley" id="twitterfooter"><img style="width:25px;float:left;margin-top: -2px;" alt="" src="img/twitter.png"/>@EmfParsley</a></li>
+							<li style="border-right: 0 none;"><a target="_blank" href="https://twitter.com/EmfParsley" id="twitterfooter"><img style="width:25px;float:left;margin-top: -2px; margin-right:1px;" alt="" src="img/twitter.png"/>@EmfParsley</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div>
@@ -355,7 +355,35 @@ abstract class AbstractWebsite implements Resource {
 				if ($(this).blur) $(this).blur();
 			}
 		);
-		</script>
+		
+		$('#questiondiv').mouseover(function() {
+			$('#questiondiv').css('background-color','#D7EFDA');
+		});
+		$('#questiondiv').mouseout(function() {
+			$('#questiondiv').css('background-color','#e8f9ea');
+		});
+		
+		$('#bugdiv').mouseover(function() {
+			$('#bugdiv').css('background-color','#F0F2C6');
+		});
+		$('#bugdiv').mouseout(function() {
+			$('#bugdiv').css('background-color','rgb(246, 247, 227)');
+		});
+		
+		$('#suppdiv').mouseover(function() {
+			$('#suppdiv').css('background-color','#E8E8E8');
+		});
+		$('#suppdiv').mouseout(function() {
+			$('#suppdiv').css('background-color','rgb(242, 242, 242)');
+		});
+		
+		$('#twdiv').mouseover(function() {
+			$('#twdiv').css('background-color','#CFE5F7');
+		});
+		$('#twdiv').mouseout(function() {
+			$('#twdiv').css('background-color','#e8f3fc');
+		});
+	</script>
 	'''
 
 	
@@ -373,9 +401,6 @@ abstract class AbstractWebsite implements Resource {
 		<link href="css/main.css" rel="stylesheet">
 		<!-- Animate CSS -->
 		<link href="css/animate.css" rel="stylesheet">
-		<style>
-		.row {animation: bounceInRight 1.4s}
-		</style>
 		
 		<!--[if lt IE 9]>
 		<link href="css/iebugs.css" rel="stylesheet" type='text/css'>

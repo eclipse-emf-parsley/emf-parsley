@@ -15,10 +15,6 @@ ol {
 ol>li {
 	margin: 5px 0px}
 	
-h4 {
-font-size: 20px;
-margin-bottom: 7px!important;}
-
 h5 {
 font-size:16px;
 margin:16px 0px 3px 0px;}
@@ -150,20 +146,35 @@ text-decoration: none}
 	font-size: 22px;}
 	
 .text-parsley2 {
-    color: #00890b;
-	margin-bottom: 7px!important;
-	font-size: 21px;}
+    color: #5a5a5a;
+	font-size: 18px;
+	margin-bottom: 5px!important;}
 	
-/* Chrome, Safari, Opera */
-@-webkit-keyframes myfirst {
+@-webkit-keyframes myfirst {/* Chrome, Safari, Opera */
     from {top:-20000px;}
-    to {top:0px;}}
-/* Standard syntax */
-@keyframes myfirst {
+    to {top:0px;}
+}
+@keyframes myfirst {/* Standard syntax */
     from {top:-20000px;}
-    to {top:0px;}}
+    to {top:0px;}
+}
 
-#dwdc>img:hover{animation: rubberBand 0.8s}
+@-webkit-keyframes myZoomIn {/* Chrome, Safari, Opera */
+    from {opacity:0;
+		  -webkit-transform: scale3d(.3, .3, .3);
+          transform: scale3d(.3, .3, .3);}
+    to {opacity:1;
+	   -webkit-transform: scale3d(1, 1, 1);
+       transform: scale3d(1, 1, 1);}
+}
+@keyframes myZoomIn {/* Standard syntax */
+    from {opacity:0;
+		  -webkit-transform: scale3d(.3, .3, .3);
+          transform: scale3d(.3, .3, .3);}
+    to {opacity:1;
+	   -webkit-transform: scale3d(1, 1, 1);
+       transform: scale3d(1, 1, 1);}
+}
 
 .centered{
 	margin-left: auto;

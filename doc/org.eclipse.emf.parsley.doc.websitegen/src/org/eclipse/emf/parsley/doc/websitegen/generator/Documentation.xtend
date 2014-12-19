@@ -1,17 +1,26 @@
 package org.eclipse.emf.parsley.doc.websitegen.generator
 
-import com.google.inject.Inject
-import java.io.File
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.Body
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.HtmlExtensions
 import org.eclipse.emf.parsley.doc.websitegen.bootstrap.PostProcessor
-import org.eclipse.emf.parsley.doc.websitegen.xdocgen.DocumentLoad
+import org.eclipse.emf.parsley.doc.websitegen.bootstrap.XdocExtensions
+import com.google.inject.Binder
+import com.google.inject.Guice
+import com.google.inject.Inject
+import com.google.inject.Module
+import java.io.File
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import org.eclipse.xtext.xdoc.XdocRuntimeModule
+import org.eclipse.xtext.xdoc.XdocStandaloneSetup
+import org.eclipse.xtext.xdoc.xdoc.AbstractSection
 import org.eclipse.xtext.xdoc.xdoc.Document
 import org.eclipse.xtext.xdoc.xdoc.ImageRef
+import org.eclipse.emf.parsley.doc.websitegen.xdocgen.DocumentLoad
 
 import static extension com.google.common.io.Files.*
+import org.eclipse.xtext.xdoc.xdoc.Chapter
+import org.eclipse.xtext.xdoc.xdoc.Part
 
 class Documentation extends AbstractXdocBaseWebsite {
 	
@@ -66,6 +75,9 @@ class Documentation extends AbstractXdocBaseWebsite {
 		<!-- Marketing messaging and featurettes
 		================================================== -->
 		<!-- Wrap the rest of the page in another container to center all the content. -->
+		<style>
+			.row {animation: fadeInRightBig 1.5s}
+		</style>
 		<div class="containerdoc marketing">
 			<!-- SIDEBAR -->
 			<div style="position: fixed;" class="col-md-2">
@@ -82,7 +94,7 @@ class Documentation extends AbstractXdocBaseWebsite {
 	
 	
 	def menu(Document doc) '''
-		<ul class="dropdown-menu" style="animation: myfirst 1.5s;margin: 0px; max-width: 250px; display: block;box-shadow: 0 0px 7px rgba(0,0,0,.175);">
+		<ul class="dropdown-menu" style="animation: fadeInDownBig 1.5s; margin: 0px; max-width: 250px; display: block;box-shadow: 0 0px 7px rgba(0,0,0,.175);">
 			«FOR chapter : doc.chapters»
 				<li class="activemenu"><a tabindex="-1" href="#par">«chapter.title.toHtmlText»</a></li>
 				«FOR section : chapter.subSections»
@@ -91,7 +103,6 @@ class Documentation extends AbstractXdocBaseWebsite {
 				<li class="divider"></li>
 			«ENDFOR»
 			«FOR part : doc.parts»
-				<li>«part.title.toHtmlText»</li>
 				«FOR chapter : part.chapters»
 					<li«printActiveMenu()»><a tabindex="-1" href="#par">«chapter.title.toHtmlText»</a></li>
 					«FOR section : chapter.subSections»
@@ -99,8 +110,7 @@ class Documentation extends AbstractXdocBaseWebsite {
 					«ENDFOR»
 					<li class="divider"></li>
 				«ENDFOR»
-			«ENDFOR»			
-			«additionalLinks»
+			«ENDFOR»		
 		</ul>
 	'''
 	
@@ -123,12 +133,6 @@ class Documentation extends AbstractXdocBaseWebsite {
 		str
 	}
 	
-	def additionalLinks() '''
-		<li>&nbsp;</li>
-		<li style="color : #333;">Additional Resources
-		<li><a href="documentation/2.7.0/Xtext%20Documentation.pdf">Documentation <img src="images/pdf_icon.gif"></a>
-		<li><a href="http://download.eclipse.org/modeling/tmf/xtext/javadoc/2.7/">API Documentation (JavaDoc)</a>
-	'''
 	
 	override protected getDocument() {
 		doc

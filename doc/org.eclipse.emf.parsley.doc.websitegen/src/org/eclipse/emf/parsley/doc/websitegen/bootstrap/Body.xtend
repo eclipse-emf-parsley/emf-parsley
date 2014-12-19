@@ -36,7 +36,7 @@ class Body {
 					«content.toHtmlParagraph»
 				«ENDFOR»
 				«FOR subSection: section.sections»
-					«subSection.h2»
+			«subSection.h2»
 				«ENDFOR»
 			</div>
 		</div>
@@ -46,9 +46,9 @@ class Body {
 	def h2(AbstractSection section) '''
 		</br>
 		<div >
-			<h2 id="par" class="featurette-heading text-parsley">«section.title.toHtmlText»</h2>
+			<h2 id="par" class="featurette-heading text-parsley1">«section.title.toHtmlText»</h2>
 			«FOR content : section.contents»
-				«content.toHtmlParagraph»
+		«content.toHtmlParagraph»
 			«ENDFOR»
 			«FOR subSection: section.sections»
 				«subSection.h3»
@@ -58,7 +58,7 @@ class Body {
 	
 	def CharSequence h3(AbstractSection section) '''
 		</br>
-		<h3 class="featurette-heading text-parsley1">«section.title.toHtmlText»</h3>
+		<h3 class="featurette-heading text-parsley2">«section.title.toHtmlText»</h3>
 		«FOR content : section.contents»
 			«content.toHtmlParagraph»
 		«ENDFOR»

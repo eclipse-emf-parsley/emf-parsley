@@ -1,78 +1,66 @@
 package org.eclipse.emf.parsley.doc.websitegen.generator
 
-import com.google.inject.Inject
-import java.io.File
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.parsley.doc.websitegen.bootstrap.Body
-import org.eclipse.emf.parsley.doc.websitegen.bootstrap.PostProcessor
-import org.eclipse.emf.parsley.doc.websitegen.xdocgen.DocumentLoad
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
-import org.eclipse.xtext.xdoc.xdoc.Document
-import org.eclipse.xtext.xdoc.xdoc.ImageRef
-
-import static extension com.google.common.io.Files.*
-
-class Download extends  AbstractXdocBaseWebsite {
-	
-	new() {
-		doc = docLoader.loadDocument(xdocDocumentRootFolder)
-	}
-	
-//	override getStandaloneSetup() {
-//		new DocumentationSetup
-//	}
-	
-	def getXdocDocumentRootFolder() {
-		'../org.eclipse.emf.parsley.doc/xdoc/download'
-	}
+class Download extends AbstractWebsite {
 
 	override path() {
 		"download.html"
 	}
-	
-	val Document doc
-	
-	@Inject DocumentLoad docLoader
-	@Inject extension Body
-	@Inject PostProcessor processor
-	
-	override website() {
-		processor.postProcess(super.website())
-	}
-	
-	override generateTo(File targetDir) {
-		super.generateTo(targetDir)
-		copyImages(doc, targetDir)
-	}
-	
-	def copyImages(Document doc, File targetDir) {
-		val iter = EcoreUtil::getAllContents(doc.eResource.resourceSet, true)
-		iter.filter(typeof(ImageRef)).forEach[
-			val sources = new File(eResource.URI.trimSegments(1).toFileString, it.path)
-			if (!sources.exists)
-				throw new IllegalStateException("Referenced Image "+sources.canonicalPath+" does not exist in "+eResource.URI.lastSegment+" line "+NodeModelUtils::getNode(it).startLine)
-			val target = new File(targetDir, it.path)
-			println(target.canonicalPath)
-			
-			sources.newInputStreamSupplier.copy(target)
-		]
-	}
-	
-	override contents() '''
-		<!-- START THE FEATURETTES -->
-		<div id="page">  
-			<div class="inner">
-				«doc.body»
-			</div>
-			</br></br></br></br></br></br></br>
-			<!-- /END THE FEATURETTES -->
-		</div>
-	'''
-	
-	
-		
-	override protected getDocument() {
-		doc
-	}
-}
 
+	override contents() '''
+	<style>
+	.row {
+		animation: fadeInDownBig 1s;
+	}
+	
+	#baseanim {
+		padding:0px;
+		width: 50px;
+		margin: 8px 0px 0px -100px;
+	}
+	
+	#arrowanim {
+		padding:0px;
+		width: 22px;
+		margin: -12px 0px 0px -85px;
+		animation: mybounceInDown 2s;
+	}
+	</style>
+
+	<div class="container marketing" style="margin-top:2%;">
+		<div class="row featurette">
+			<div class="col-md-10 col-md-offset-1">
+				<img src="img/arrow_down.png" alt="" class="featurette-image img-responsive pull-left" id="arrowanim">
+				<img src="img/base.png" alt="" class="featurette-image img-responsive pull-left" id="baseanim">
+				<h1 class="featurette-heading text-parsley">EMF Parsley - Downloads</h1>
+				<p>
+					To install via the update site URL listed below, copy and paste it into the "Help &gt; Install new software" dialog.
+				</p>
+				<p>
+					N.B. All API are to be considered provisional!
+				</p>
+				<br><br>
+				<div>
+					<h2 class="featurette-heading text-parsley1">Update Sites</h2>
+					<ul>
+						<li>All Milestone Builds: <a href="http://download.eclipse.org/emf-parsley/updates">http://download.eclipse.org/emf-parsley/updates</a></li>
+						<li>0.2.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.2">http://download.eclipse.org/emf-parsley/updates/0.2</a>
+							 (EMF Parsley DSL requires Xtext 2.6.2, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+						<li>0.1.x: <a href="http://download.eclipse.org/emf-parsley/updates/updates-0.1">http://download.eclipse.org/emf-parsley/updates/updates-0.1</a></li>
+						<li>Latest Stable Snapshot Builds: <a href="https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/">https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/</a></li>
+					</ul>
+					<p>
+						All downloads are provided under the terms and conditions of the Eclipse Foundation Software User Agreement unless otherwise specified.
+					</p>
+				</div>
+				<br><br>
+				<div style="margin-bottom:9%;">
+				<h2 class="featurette-heading text-parsley1">Links</h2>
+				<p>
+					<a href="https://projects.eclipse.org/content/eclipse-public-license-1.0">Eclipse Public License 1.0</a>
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	'''
+}
