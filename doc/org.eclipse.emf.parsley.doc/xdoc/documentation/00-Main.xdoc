@@ -18,7 +18,7 @@ codelanguage-def[Java]
 
 codelanguage-def[EmfParsley]
 [
-	import,module,parts,labelProvider,text,image,
+	import,module,parts,labelProvider,text,image,elements,
 	propertyDescriptionProvider,featuresProvider,features,
 	formControlFactory,control,target,viewerContentProvider,
 	children,viewpart,viewname,viewclass,viewcategory,

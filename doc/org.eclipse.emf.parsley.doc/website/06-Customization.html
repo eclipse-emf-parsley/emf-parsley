@@ -1,0 +1,568 @@
+<br style="clear:both;height:1em;">
+	<div id="leftcol">
+		<div class="nav-logo">
+			<a href="index.php"><img src="logo.png" style="margin-left:10px; width:155px"/></a>
+		</div>
+		<ul id="leftnav">
+		<li class="partentry" >
+		Getting Started
+		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="01-Overview.php">Overview</a></div>
+		<ul style="display: none;" id="subToc_01-Overview.html">
+		<li id="01-Overview.html#Components.html" ><a href="01-Overview.php#Components.php" >Components</a></li>
+		<li id="01-Overview.html#Customizations.html" ><a href="01-Overview.php#Customizations.php" >Customizations</a></li>
+		</ul>
+		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; display:none"  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="02-FirstExample.php">First Example</a></div>
+		</li>
+		<li class="partentry" >
+		Reference Documentation
+		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="05-Components.php">Components</a></div>
+		<ul style="display: none;" id="subToc_05-Components.html">
+		<li id="05-Components.html#FormComponent.html" ><a href="05-Components.php#FormComponent.php" >Form Component</a></li>
+		<li id="05-Components.html#TreeComponent.html" ><a href="05-Components.php#TreeComponent.php" >Tree Component</a></li>
+		<li id="05-Components.html#TreeFormComponent.html" ><a href="05-Components.php#TreeFormComponent.php" >Tree Form Component</a></li>
+		<li id="05-Components.html#TableComponent.html" ><a href="05-Components.php#TableComponent.php" >Table Component</a></li>
+		</ul>
+		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="06-Customization.php">Customizations</a></div>
+		<ul style="display: none;" id="subToc_06-Customization.html">
+		<li id="06-Customization.html#Providers.html" ><a href="06-Customization.php#Providers.php" >Providers</a></li>
+		<li id="06-Customization.html#ContextualMenu.html" ><a href="06-Customization.php#ContextualMenu.php" >Contextual Menu</a></li>
+		<li id="06-Customization.html#Factories.html" ><a href="06-Customization.php#Factories.php" >Factories</a></li>
+		</ul>
+		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="06-DSL.php">EMF Parsley DSL</a></div>
+		<ul style="display: none;" id="subToc_06-DSL.html">
+		<li id="06-DSL.html#xbase.html" ><a href="06-DSL.php#xbase.php" >Xbase features</a></li>
+		</ul>
+		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; display:none"  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="08-RAP.php">RAP</a></div>
+		</li>
+		<li class="separator"><div class="separator">
+		<img src="triangle.gif" style="height:12px; margin-right: 2px; "  /><img src="triangle-90.gif" style="display:none; margin-right: 2px" height="12px" />
+		<a href="07-Eclipse4.php">Eclipse 4.x</a></div>
+		<ul style="display: none;" id="subToc_07-Eclipse4.html">
+		<li id="07-Eclipse4.html#GetFirstExample.html" ><a href="07-Eclipse4.php#GetFirstExample.php" >First Example Setup</a></li>
+		<li id="07-Eclipse4.html#PrepareForEclipse4Application.html" ><a href="07-Eclipse4.php#PrepareForEclipse4Application.php" >Preparing for a pure e4 Application</a></li>
+		<li id="07-Eclipse4.html#CreateEclipse4Application.html" ><a href="07-Eclipse4.php#CreateEclipse4Application.php" >Create an e4 Application</a></li>
+		<li id="07-Eclipse4.html#Eclipse4ApplicationAndEMFParsley.html" ><a href="07-Eclipse4.php#Eclipse4ApplicationAndEMFParsley.php" >Using a TreeComposite into an e4 Part</a></li>
+		<li id="07-Eclipse4.html#Eclipse4Save.html" ><a href="07-Eclipse4.php#Eclipse4Save.php" >Adding the dirty state and Save command</a></li>
+		</ul>
+		</li>
+		</ul>
+	</div>
+	<div id="midcolumn">
+		<a name="Customizations" ></a>
+		<h1>Customizations</h1>
+				<div class="toc">
+				  <ul>
+				    <li><a href="06-Customization.php#Providers.php" >Providers</a></li>
+				    <li><a href="06-Customization.php#ContextualMenu.php" >Contextual Menu</a></li>
+				    <li><a href="06-Customization.php#Factories.php" >Factories</a></li>
+				  </ul>
+				</div>
+				
+		<p>
+		In this chapter we will describe how <em>EMF Parsley</em> let you customize the standard behaviours.
+		A DSL is provided to easily customize most common feature, but you can customize all aspect by doing
+		manually. As a matter of fact each customization is explained in a single section, with the details on the DSL (if available) and the
+		class for overriding by Java.
+		</p>
+		<p>
+		As we deeply explained in the <a href="04-Introduction.php" title="Go to &quot;Introduction&quot;" >section Introduction</a>, if you wnat to provide a specific implementation via
+		Java, you can use the Google Guice injection mechanism, buy overriding the specific class with your own
+		implementation. Note that an explicit contructor is needed, with the <em>@Inject</em> annotation to make Guice
+		correctly works.
+		</p>
+		<a name="Providers" ></a>
+		<span style="float:left; border-top: 1px dotted #d4d4dd; margin-left: 0; margin-top: 5px;
+			padding: 5px 0;
+			padding-top: 5px;"></span><a style="float: right" href="#">Top</a>
+			<br style="clear:both"></br>
+			<h1>Providers</h1>
+			<div class="toc">
+			  <ul>
+			    <li><a href="06-Customization.php#ViewerLabelProvider.php" >Viewer Label Provider</a></li>
+			    <li><a href="06-Customization.php#ViewerContentProvider.php" >Viewer Content Provider</a></li>
+			    <li><a href="06-Customization.php#FeaturesProvider.php" >Features Provider</a></li>
+			    <li><a href="06-Customization.php#FeatureCaptionProvider.php" >Feature Caption Provider</a></li>
+			    <li><a href="06-Customization.php#ProposalProvider.php" >Proposal Provider</a></li>
+			  </ul>
+			</div>
+			<a name="ViewerLabelProvider" ></a>
+			<h2>Viewer Label Provider</h2>
+			<p>
+			The Label Prorvider as in JFace allows to specify the representation of a given Object. <em>EMF Parsley</em>
+			provides an implementation that uses the information provided via the DSL, as you can see in the snippet
+			below. 
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">labelProvider</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;<span class="string">"Book:"</span>+title<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Borrower&nbsp;-&gt;&nbsp;<span class="string">"Borrower:&nbsp;"</span>+firstName<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">image</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;<span class="string">"book.png"</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<p>
+			However if you wnat to use your own implementation, you can do that by providing a specific implementation of <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/jface/viewers/ILabelProvider.html" title="org.eclipse.jface.viewers.ILabelProvider">ILabelProvider</abbr></a>
+			and injecting it in the spefic module <em>(TODO)</em>.
+			<em>EMF Parsley</em> provides such an implementation with the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/ViewerLabelProvider.html" title="org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider">ViewerLabelProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/ViewerLabelProvider.java" title="View Source Code" >(src)</a>
+			that is inteded to be surclassed by the programmer to provides specific implementations like in the example below.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;CustomLibraryLabelProvider&nbsp;<span class="keyword">extends</span>&nbsp;ViewerLabelProvider&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;@Inject<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;CustomLibraryLabelProvider(AdapterFactoryLabelProvider&nbsp;delegate)&nbsp;{<br/>
+						<span class="keyword">super</span>(delegate);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;text(Book&nbsp;book)&nbsp;{<br/>
+						<span class="keyword">return</span>&nbsp;<span class="string">"Book:&nbsp;"</span>&nbsp;+&nbsp;book.getTitle();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;image(Book&nbsp;book)&nbsp;{<br/>
+						<span class="keyword">return</span>&nbsp;<span class="string">"book.png"</span>;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;text(Borrower&nbsp;b)&nbsp;{<br/>
+						<span class="keyword">return</span>&nbsp;<span class="string">"Borrower:&nbsp;"</span>&nbsp;+&nbsp;b.getFirstName();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<a name="ViewerContentProvider" ></a>
+			<h2>Viewer Content Provider</h2>
+			<p>
+			As in Jface, the Content Provider is used to get the elements to represent and for tree their children.
+			<em>EMF Parsley</em> provides an implementation that uses the DSL as in the code below.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">viewerContentProvider</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">elements</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;books<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">children</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;books<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;b-&gt;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">new</span>&nbsp;ArrayList()=&gt;[<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(b.author)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addAll(b.borrowers)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<p>
+			The developer can also provide a specific implementation of <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/jface/viewers/IContentProvider.html" title="org.eclipse.jface.viewers.IContentProvider">IContentProvider</abbr></a>
+			by injecting it in the spefic module <em>(TODO)</em>. EMF Parsley provides an implementation with the class
+			<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.html" title="org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider">ViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.java" title="View Source Code" >(src)</a> that can be easily used to
+			specify the children of all object on the tree, like in the example below.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;CustomLibraryViewerContentProvider&nbsp;<span class="keyword">extends</span>&nbsp;ViewerContentProvider&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;@Inject<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;CustomLibraryViewerContentProvider(AdapterFactory&nbsp;adapterFactory)&nbsp;{<br/>
+						<span class="keyword">super</span>(adapterFactory);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Object&nbsp;elements(Library&nbsp;library)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;library.getBooks();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Object&nbsp;children(Library&nbsp;library)&nbsp;{<br/>
+						<span class="keyword">return</span>&nbsp;library.getBooks();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Object&nbsp;children(Book&nbsp;book)&nbsp;{<br/>
+						ArrayList&lt;Object&gt;&nbsp;children&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;ArrayList&lt;Object&gt;();<br/>
+						Writer&nbsp;author&nbsp;=&nbsp;book.getAuthor();<br/>
+						<span class="keyword">if</span>&nbsp;(author&nbsp;!=&nbsp;null)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;children.add(author);<br/>
+						}<br/>
+						children.addAll(book.getBorrowers());<br/>
+						<span class="keyword">return</span>&nbsp;children;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<a name="FeaturesProvider" ></a>
+			<h2>Features Provider</h2>
+			<p>
+			<em>EMF Parsley</em> uses thi kinf of provider wherever a list of feature is requested for a certain EClass.
+			The default is to return the list of all the features in the EClass, but the programmer can customize it (for instance,
+			by returning only a superset, or using a different order) on an EClass-based strategy.
+			Thus you can use the DSL to specify that list, as in the snipped below.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">featuresProvider</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">features</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;title,&nbsp;author,&nbsp;category,&nbsp;pages&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			 
+			 
+			If we look at Java, there are more chances to customize this behaviour, but we need to go deep in some
+			details of the <em>Feature Provider</em> implementation. 
+			</p>
+			<p>
+			When the framework builds components according to the
+			<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="org.eclipse.emf.ecore.EStructuralFeature">EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>s of a given
+			<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="org.eclipse.emf.ecore.EClass">EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> it relies on an injected
+			<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider">FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
+			The default behavior is to simply return all the features of the a given EClass,
+			in the order they are defined in the EClass, as implemented by the method <span class="inlinecode">defaultFeatures</span> in <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider">FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
+			</p>
+			<p>
+			You can set the mappings, i.e., specify the structural
+			features you want to be used given an EClass, by implementing
+			the method <span class="inlinecode">buildMap</span>, which receives the
+			<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.EClassToEStructuralFeatureMap.html" title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider.EClassToEStructuralFeatureMap">FeaturesProvider.EClassToEStructuralFeatureMap</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>
+			that can be filled with the method <span class="inlinecode">mapTo</span>; 
+			for instance, using the EMF extended library
+			example, this customization will return only the <em>name</em> and <em>address</em> features
+			for <span class="inlinecode">Library</span>, the <em>firstName</em>, <em>lastName</em> and <em>address</em> for
+			<span class="inlinecode">Person</span>, and the <em>firstName</em>, <em>lastName</em> and <em>books</em> (but
+			not <em>address</em>) for <span class="inlinecode">Writer</span> (which inherits from <span class="inlinecode">Person</span>).
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">import</span>&nbsp;<span class="keyword">static</span>&nbsp;org.eclipse.emf.examples.extlibrary.EXTLibraryPackage.Literals.*;<br/>
+						<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.ui.provider.EStructuralFeaturesProvider;<br/>
+						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryEStructuralFeaturesProvider&nbsp;<span class="keyword">extends</span><br/>
+						FeaturesProvider&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;@Override<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;<span class="keyword">void</span>&nbsp;buildMap(EClassToEStructuralFeatureMap&nbsp;map)&nbsp;{<br/>
+						<span class="keyword">super</span>.buildMap(map);<br/>
+						map.mapTo(LIBRARY,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIBRARY__NAME,&nbsp;ADDRESSABLE__ADDRESS);<br/>
+						map.mapTo(PERSON,&nbsp;PERSON__FIRST_NAME,&nbsp;PERSON__LAST_NAME,&nbsp;ADDRESSABLE__ADDRESS);<br/>
+						map.mapTo(WRITER,&nbsp;PERSON__FIRST_NAME,&nbsp;PERSON__LAST_NAME,&nbsp;WRITER__BOOKS);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<p>
+			Another possibility is to build a map which relies on Strings
+			both for the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="org.eclipse.emf.ecore.EClass">EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> and for
+			the list of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="org.eclipse.emf.ecore.EStructuralFeature">EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>;
+			note that the name of the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="org.eclipse.emf.ecore.EClass">EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> should
+			be obtained by using <span class="inlinecode">getInstanceClassName()</span>; you can also
+			combine the two approaches.
+			</p>
+			<a name="TableFeaturesProvider" ></a>
+			<h3>Table Features Provider</h3>
+			<p>
+			As an extension, you can use the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.html" title="org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider">TableFeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.java" title="View Source Code" >(src)</a>:
+			the customizations will be applied only to <a href="05-Components.php#TableComponent.php" title="Go to &quot;Table Component&quot;">Tables</a>, not to <a href="05-Components.php#FormComponent.php" title="Go to &quot;Form Component&quot;">Forms</a>.
+			</p>
+			<a name="FeatureCaptionProvider" ></a>
+			<h2>Feature Caption Provider</h2>
+			<p>
+			The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider">FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a> provides captions for
+			the features in <a href="05-Components.php#TableComponent.php" title="Go to &quot;Table Component&quot;">Tables</a> and <a href="05-Components.php#FormComponent.php" title="Go to &quot;Form Component&quot;">Forms</a>.
+			Here you can see an example of the DSL.
+			 
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">featureCaptionProvider</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book:author&nbsp;-&gt;&nbsp;<span class="string">"Wrote&nbsp;by:"</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer:name&nbsp;-&gt;&nbsp;<span class="string">"Name:"</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			
+			 
+			The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider">FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a> provides captions for
+			the features. It can be customized, with injection (see Injection paragraph), to customize the caption label on the
+			left of each control in a form and the headers in a table's columns. 
+			The framework use a polimorphic mechanism to find customizations, so that It can
+			be written a method with a specific signature build by the keyword <em>'text'</em> followed by the EClass and the EStructuralFeature.
+			All parts of the name are separated by an underscore character and the method must accept a parameter of type EStructuralFeature.
+			</p>
+			<p>
+			In the following example we specify the caption text for the feature 'Author' of Book and the feature 'Name' for
+			Writer.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">public</span>&nbsp;String&nbsp;text_Book_author(<span class="keyword">final</span>&nbsp;EStructuralFeature&nbsp;feature)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="string">"Wrote&nbsp;by:"</span>;<br/>
+						}<br/>
+						<span class="keyword">public</span>&nbsp;String&nbsp;text_Writer_name(<span class="keyword">final</span>&nbsp;EStructuralFeature&nbsp;feature)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="string">"Name:"</span>;<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<a name="FormFeatureCaptionProvider" ></a>
+			<h3>Form Feature Caption Provider</h3>
+			<p>
+			The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.html" title="org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider">FormFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.java" title="View Source Code" >(src)</a> can be used if you want
+			to define the description only for the form. For example using the <a href="05-Components.php#TreeFormComponent.php" title="Go to &quot;Tree Form Component&quot;">Tree
+			Form</a> your definition will not be used in the tree.
+			</p>
+			<p>
+			In this case you can also define a method the returns directly the control, like in the example
+			below. In such methods there is another parameter that is the parent composite.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">public</span>&nbsp;Label&nbsp;label_Writer_name(Composite&nbsp;parent,&nbsp;EStructuralFeature&nbsp;feature)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Label&nbsp;label&nbsp;=&nbsp;defaultLabel(parent,&nbsp;feature);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;label.setBackground(getFormToolkit().getColors().getColor(IFormColors.TITLE));<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;label;<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<a name="ProposalProvider" ></a>
+			<h2>Proposal Provider</h2>
+			<p>
+			Some controls use a list of proposal to help the end user experince: for example the combo box has a
+			list of proposal, but also the simple text can use the proposal to assist and correct the hand-writed
+			values. For each feature it can be specified a list of proposals via the DSl.
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">proposals</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Book:author&nbsp;-&gt;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defaultProposals(feature).<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filter(Writer).<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filter[name.startsWith(<span class="string">"F"</span>)].toList<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			
+			 
+			This customization can be done also in Java, by extending the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/binding/ProposalCreator.html" title="org.eclipse.emf.parsley.binding.ProposalCreator">ProposalCreator</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/binding/ProposalCreator.java" title="View Source Code" >(src)</a>
+			and implementing the method <span class="inlinecode"><span class="keyword">public</span>&nbsp;List&lt;?&gt;&nbsp;proposals_Book_author(Book&nbsp;book)&nbsp;{...}</span>.
+			</p>
+		<a name="ContextualMenu" ></a>
+		<span style="float:left; border-top: 1px dotted #d4d4dd; margin-left: 0; margin-top: 5px;
+			padding: 5px 0;
+			padding-top: 5px;"></span><a style="float: right" href="#">Top</a>
+			<br style="clear:both"></br>
+			<h1>Contextual Menu</h1>
+			<div class="toc">
+			  <ul>
+			    <li><a href="06-Customization.php#MenuBuilder.php" >Menu Builder</a></li>
+			  </ul>
+			</div>
+			<p>
+			Contextual menu can be added to any viewer by usinf the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/viewers/ViewerInitializer.html" title="org.eclipse.emf.parsley.viewers.ViewerInitializer">ViewerInitializer</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/viewers/ViewerInitializer.java" title="View Source Code" >(src)</a>. 
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						@Inject&nbsp;ViewerInitializer&nbsp;viewerInitializer;<br/>
+						(...)<br/>
+						<br/>
+						treeActionBarContributor.initialize(editingDomain);<br/>
+						viewerInitializer.addContextMenu(treeFormComposite.getViewer(),<br/>
+						treeActionBarContributor,&nbsp;editingDomain,&nbsp;<span class="keyword">this</span>);<br/>
+						treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
+					</p>
+				</div>
+			</div>
+			</p>
+			<a name="MenuBuilder" ></a>
+			<h2>Menu Builder</h2>
+			<p>
+			<em>EMF Parsley</em> logically separate the menu into 2 parts. The first section contains all common edit commands
+			such as <em>copy</em> and <em>paste</em>. The second section regards EMF specific commands, such as for example <em>new child</em>.
+			You can use the DSL to fully customize the menu, as in the example below. 
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						menuBuilder{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;menus{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library-&gt;&nbsp;#[<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;submenu(<span class="string">"Edit"</span>,#[<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionCopy,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionCut,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;separator,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionPaste<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;])<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;emfMenus{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;#[<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionAdd(<span class="string">"Add&nbsp;a&nbsp;new&nbsp;book"</span>,&nbsp;books,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXTLibraryFactory.eINSTANCE.createBook&nbsp;=&gt;&nbsp;[<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title=<span class="string">"new&nbsp;book"</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<p>
+			You can customize menu also via Java, by extending the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.html" title="org.eclipse.emf.parsley.edit.action.EditingMenuBuilder">EditingMenuBuilder</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.java" title="View Source Code" >(src)</a>.
+			</p>
+		<a name="Factories" ></a>
+		<span style="float:left; border-top: 1px dotted #d4d4dd; margin-left: 0; margin-top: 5px;
+			padding: 5px 0;
+			padding-top: 5px;"></span><a style="float: right" href="#">Top</a>
+			<br style="clear:both"></br>
+			<h1>Factories</h1>
+			<div class="toc">
+			  <ul>
+			    <li><a href="06-Customization.php#FormControlFactory.php" >Form Control Factory</a></li>
+			    <li><a href="06-Customization.php#DialogControFactory.php" >Dialog Control Factory</a></li>
+			  </ul>
+			</div>
+			<a name="FormControlFactory" ></a>
+			<h2>Form Control Factory</h2>
+			<p>
+			 <em>EMF Parsley</em> let you customize the <em>form controls</em> via the DSL as in the following example.
+			 
+			 <div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">formControlFactory</span>&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">control</span>&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;{&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;books&nbsp;-&gt;&nbsp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createLabel(<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;books.map[title].join(<span class="string">",&nbsp;"</span>))<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;{&nbsp;createLabel(parent,&nbsp;<span class="string">""</span>)&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;{&nbsp;observeText&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toolkit.createLabel(parent,&nbsp;<span class="string">""</span>)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;observeText(SWT::Modify)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Borrower&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createText(firstName,&nbsp;SWT::MULTI,&nbsp;SWT::BORDER,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWT::WRAP,&nbsp;SWT::V_SCROLL)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			
+			 
+			If you want to customize the controls on the detail via Java, you can extend the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/binding/FormControlFactory.html" title="org.eclipse.emf.parsley.binding.FormControlFactory">FormControlFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/binding/FormControlFactory.java" title="View Source Code" >(src)</a>.
+			Using the same polimorphic mechanism of the labels, the programmer can write a method with the keyword <em>'control'</em>
+			followed by the EClass and EStructuralFeature undescore-character-separated. In the signature of the
+			method must be both the <em>DataBinding Context</em> and the <em>Feature Observable</em> that can be used for databinding. 
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">public</span>&nbsp;Control&nbsp;control_Writer_name(DataBindingContext&nbsp;dbc,IObservableValue&nbsp;featureObservable)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Creating&nbsp;the&nbsp;control<br/>
+						</span>&nbsp;&nbsp;&nbsp;&nbsp;Text&nbsp;text&nbsp;=&nbsp;getToolkit().createText(getParent(),&nbsp;<span class="string">""</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;text.setData(FormToolkit.KEY_DRAW_BORDER,&nbsp;FormToolkit.TREE_BORDER);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Binding&nbsp;the&nbsp;control&nbsp;to&nbsp;the&nbsp;feature&nbsp;observable<br/>
+						</span>&nbsp;&nbsp;&nbsp;&nbsp;dbc.bindValue(SWTObservables.observeText(text,&nbsp;SWT.Modify),&nbsp;&nbsp;&nbsp;&nbsp;featureObservable);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;text;<br/>
+						}
+					</p>
+				</div>
+			</div>
+			</p>
+			<a name="DialogControFactory" ></a>
+			<h2>Dialog Control Factory</h2>
+			<p>
+			If you want to customize controls in Dialog, you can use the specific DSL section <em>dialogControlFactory</em>: 
+			</p>
+			<p>
+			<div class="literallayout">
+				<div class="incode">
+					<p class="code">
+						<span class="keyword">dialogControlFactory</span>&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">control</span>&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}
+					</p>
+				</div>
+			</div>
+			
+			</p>
+		<div id="disqus_thread"></div>
+		<script type="text/javascript" src="documentationRoot.js"></script>
+		<script type="text/javascript">
+		    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		    var disqus_shortname = 'xtext'; // required: replace example with your forum shortname
+		
+		    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+		    var disqus_identifier = 'Customizations';
+		    var disqus_url = documentationRoot+'06-Customization.php';
+		
+		    /* * * DON'T EDIT BELOW THIS LINE * * */
+		    (function() {
+		        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		    })();
+		</script>
+ 		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</div>
+	<br style="clear:both;height:1em;">

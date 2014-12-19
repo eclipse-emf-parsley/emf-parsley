@@ -11,6 +11,7 @@ class Body {
 	
 	@Inject extension TargetPaths
 	
+	
 	def body(AbstractSection rootSection) '''
 			</br>
 			«FOR chapter: rootSection.sections.filter[!targetRootElement]»
@@ -21,11 +22,16 @@ class Body {
 	
 	var i=1;
 	
+	
 	def printHr(int j){
 		if(i<j){
 			i++
 			''' <hr style="width:64.6%;margin-bottom:28px;margin-top:30px;" class="col-md-8 col-md-offset-3"> '''	
 		}	
+	}
+
+	def protected String getColumnNum(){
+		"8"
 	}
 
 	def h1(AbstractSection section) '''

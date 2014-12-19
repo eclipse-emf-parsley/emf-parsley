@@ -106,7 +106,16 @@ var prettyPrint;
   var JAVA_KEYWORDS = [COMMON_KEYWORDS,
       "abstract,assert,boolean,byte,extends,final,finally,implements,import," +
       "instanceof,interface,null,native,package,strictfp,super,synchronized," +
-      "throws,transient,viewclass,viewname,viewpart,parts,features,featuresProvider,propertyDescriptionProvider,text,labelProvider"];
+      "throws,transient"];
+  var PARSLEY_KEYWORDS = [JAVA_KEYWORDS,
+	  "import,module,parts,labelProvider,text,image,elements," + 
+	  "propertyDescriptionProvider,featuresProvider,features," + 
+	  "formControlFactory,control,target,viewerContentProvider," + 
+	  "children,viewpart,viewname,viewclass,viewcategory," + 
+	  "for,new,switch,default,boolean,do,if,this,double,throw," + 
+	  "byte,else,case,enum,instanceof,return,featureCaptionProvider," + 
+	  "catch,extends,int,short,try,char,void,finally,long," + 
+	  "float,super,while,proposals,dialogControlFactory"];
   var CSHARP_KEYWORDS = [JAVA_KEYWORDS,
       "as,base,by,checked,decimal,delegate,descending,dynamic,event," +
       "fixed,foreach,from,group,implicit,in,internal,into,is,let," +
@@ -725,6 +734,10 @@ var prettyPrint;
           'keywords': JAVA_KEYWORDS,
           'cStyleComments': true
         }), ['java']);
+  registerLangHandler(sourceDecorator({
+          'keywords': PARSLEY_KEYWORDS,
+          'cStyleComments': true
+        }), ['parsley']);
   registerLangHandler(sourceDecorator({
           'keywords': SH_KEYWORDS,
           'hashComments': true,
