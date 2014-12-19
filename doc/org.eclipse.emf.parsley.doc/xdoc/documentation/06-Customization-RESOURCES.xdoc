@@ -1,0 +1,66 @@
+chapter:CustomizationsResources[TO DO - INSERT INTO Customizations]
+
+section:Resources[Resources]
+
+ul[
+	item[If you need a machanism to fill some data for the first time you use a model, you can provide
+	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
+	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
+	Loader]]
+]
+
+For what concern saving objects, there are some specific parts that can be customized:
+
+ul[
+	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
+]
+
+section2:ResourceLoader[Resource Loader]
+
+The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.
+This class uses internally the ref:EmptyResourceInitializer[Empty Resource Initializer].
+
+
+section2:EmptyResourceInitializer[Empty Resource Initializer]
+
+If you need to initialize your model, for the first use, you can define an implementation of codeRef[org.eclipse.emf.parsley.resource.EmptyResourceInitializer].
+When the main resource will be found empty, your code will be executed. 
+
+
+section2:ResourceSaveManager[Resource Save Manager]
+
+Resource saving is delegated to codeRef[org.eclipse.emf.parsley.edit.ResourceSaveManager]
+which, by defaults only saves the passed codeRef[org.eclipse.emf.ecore.resource.Resource].
+You can inject your own save manager and implement the method code[precondition(Resource)], for
+instance, you may want to validate the resource before saving, and in case the validation
+fails to return code[false].  If the precondition is code[false] the default implementation
+will not save the resource (and in turn will return code[false]).
+
+section3:ValidateResourceSaveManager[Validate Resource Save Manager]
+
+We provide an example of custom resource save manager: codeRef[org.eclipse.emf.parsley.edit.ValidateResourceSaveManager],
+we show here only relevant parts to give an example:
+
+code[Java][
+public class ValidateResourceSaveManager extends ResourceSaveManager {
+
+	@Override
+	protected boolean precondition(Resource resource) {
+		return super.precondition(resource) && validateModel(resource);
+	}
+
+	protected boolean validateModel(Resource resource) {
+		for (EObject eObject : resource.getContents()) {
+			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+			if (diagnostic.getSeverity() == Diagnostic.ERROR) {
+				// SKIPPED: present the errors
+				return false;
+			} else if (diagnostic.getSeverity() == Diagnostic.WARNING) {
+				// SKIPPED: present the warnings
+			}
+		}
+		return true;
+	}
+}
+]
+

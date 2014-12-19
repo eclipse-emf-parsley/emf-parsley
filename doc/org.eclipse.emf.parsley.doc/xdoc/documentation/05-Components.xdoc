@@ -17,6 +17,10 @@ e[EMF Parsley] provides a factory that can be used to create such a component, l
 Here you can see that can be configured only in 2 lines, the constructor phase and the build&fill phase. 
 
 code[Java][
+@Inject FormFactory formFactory;
+
+(...)
+
 formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
 formComposite.init(eObject);]
 
@@ -37,7 +41,7 @@ The description on the left side of the form caan be customizzed via the ref:For
 
 section2:FormComponent_controls[Control Customization]
 
-Otherwise to customize the controls on the right, you can use the ref:ControlFactory[Control Factory].
+Otherwise to customize the controls on the right, you can use the ref:FormControlFactory[Form Control Factory].
 
 section2:FormComponent_proposals[Proposal Provider]
 
@@ -54,7 +58,11 @@ img[images/03-components-tree.png][][ ][]
 e[EMF Parsley] provides an initializer that can be used to create such a component, like in the code below.
 Here you can see that can be configured only in 2 lines, the constructor phase and the build&fill phase. 
 
-code[Java][treeViewer = new TreeViewer(parent);
+code[Java][@Inject ViewerInitializer viewerInitializer;
+
+(...)
+
+treeViewer = new TreeViewer(parent);
 viewerInitializer.initialize(treeViewer, element);]
 
 
@@ -75,10 +83,10 @@ section2:Tree_LabelProvider[LabelProvider]
 The ref:ViewerLabelProvider[Viewer Label Provider] is the implementation ov a ILabelProvider interface
 and is responsible to provide the text and image rapresentation for each EObject visualized.
 
-section2:Tree_MenuBuilder[Menu Builder]
+section2:Tree_MenuBuilder[Adding Menu]
 
+The contextual menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section]
 The ref:MenuBuilder[Menu Builder] allow to fully customize the contextual menu.
-
 
 section:TreeFormComponent[Tree Form Component]
 
@@ -90,23 +98,17 @@ img[images/03-components-treeform.png][][ ][]
 
 e[EMF Parsley] provides a factory to create such a component.
 
-code[Java][treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
+code[Java][@Inject TreeFormFactory treeFormFactory;
+
+(...)
+
+treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
 treeFormComposite.update(application);]
 
 
 Since e[Tree Form Component] is a combination of  e[Tree Component] and  e[Form Component], all their customizations
 are avaible for it.
 
-section2:TreeForm_MenuBuilder[Adding Menu]
-
-TODO: Is it correct?
-
-code[Java][treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
-treeActionBarContributor.initialize(editingDomain);
-viewerInitializer.addContextMenu(treeFormComposite.getViewer(),
-treeActionBarContributor, editingDomain, this);
-treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
-treeFormComposite.update(application);]
 
 
 section:TableComponent[Table Component]
@@ -116,8 +118,18 @@ It uses metamodel infos to build column as needed.
 
 img[images/03-components-table.png][][ ][]
 
-code[Java][tableViewer = viewerFactory.createTableViewer(composite,SWT.BORDER | SWT.FULL_SELECTION, object, eClass);
+code[Java][@Inject ViewerFactory viewerFactory;
+
+(...)
+
+tableViewer = viewerFactory.createTableViewer(composite,SWT.BORDER | SWT.FULL_SELECTION, object, eClass);
 ]
+
+The class codeRef[org.eclipse.emf.parsley.builders.TableViewerColumnBuilder] has the responsability to
+build the columns of the Table, by using the ref:FeaturesProvider[Features Provider] to get the list
+of features and the ref:FeatureCaptionProvider[Feature Caption Provider] for the captions.
+The class codeRef[org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider] can be used to specify
+an implementation of ILabelProvider for each column. 
 
 section2:Table_features[Feature List Customization]
 
@@ -125,8 +137,9 @@ The e[list fo feature] displayed on the form can be customized via the ref:Table
 
 section2:Table_captions[Caption Customization]
 
-The description on the left side of the form caan be customizzed via the ref:FeatureCaptionProvider[Caption Provider].
+The description on the left side of the form can be customizzed via the ref:FeatureCaptionProvider[Caption Provider].
 
-section2:Table_MenuBuilder[Menu Builder]
+section2:Table_MenuBuilder[Adding Menu]
 
-The ref:MenuBuilder[Menu Builder] allow to fully customize the contextual menu for the selected row.
+The contextual menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section]
+The ref:MenuBuilder[Menu Builder] allow to fully customize the contextual menu.

@@ -132,31 +132,9 @@ codeRef[org.eclipse.emf.ecore.EStructuralFeature]s of a given
 codeRef[org.eclipse.emf.ecore.EClass] it relies on an injected
 codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
 The default behavior is to simply return all the features of the a given EClass,
-in the order they are defined in the EClass;
-you may want to provide a custom implementation by redefining
-the method code[List<EStructuralFeature> getFeatures(EClass)], or
-code[List<EStructuralFeature> getFeatures(EObject)],
-for instance by returning the features ordered according to their name
-(the following snippet uses an utility class from the framework)
+in the order they are defined in the EClass, as implemented by the method code[defaultFeatures] in codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
 
-code[Java][
-public class OrderedEStructuralFeaturesProvider 
-	extends FeaturesProvider {
-
-	@Inject
-	EStructuralFeatureNameComparator comparator;
-	
-	@Override
-	public List<EStructuralFeature> getFeatures(EClass eClass) {
-		List<EStructuralFeature> features = super.getFeatures(eClass);
-		Collections.sort(features, 
-			new EStructuralFeatureNameComparator());
-		return features;
-	}
-}
-]
-
-Alternatively, you can set the mappings, i.e., specify the structural
+You can set the mappings, i.e., specify the structural
 features you want to be used given an EClass, by implementing
 the method code[buildMap], which receives the
 codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider$EClassToEStructuralFeatureMap]
@@ -190,44 +168,27 @@ both for the codeRef[org.eclipse.emf.ecore.EClass] and for
 the list of codeRef[org.eclipse.emf.ecore.EStructuralFeature];
 note that the name of the codeRef[org.eclipse.emf.ecore.EClass] should
 be obtained by using code[getInstanceClassName()]; you can also
-combine the two approaches (in that case the map built with
-code[buildMap] has the precedence):
+combine the two approaches.
 
-code[Java][
-import static org.eclipse.emf.examples.extlibrary.EXTLibraryPackage.Literals.*;
-import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-
-public class LibraryEStructuralFeaturesAsStringsProvider extends
-		FeaturesProvider {
-
-	@Override
-	protected void buildMap(EClassToEStructuralFeatureMap map) {
-		super.buildMap(map);
-		map.mapTo(LIBRARY, LIBRARY__NAME, ADDRESSABLE__ADDRESS);
-	}
-
-	@Override
-	protected void buildStringMap(
-			EClassToEStructuralFeatureAsStringsMap stringMap) {
-		super.buildStringMap(stringMap);
-		stringMap.mapTo(PERSON.getInstanceClassName(), "firstName", "lastName",
-				"address");
-		stringMap.mapTo(WRITER.getInstanceClassName(), "firstName", "lastName",
-				"books");
-
-	}
-}
-]
 
 section3:TableFeaturesProvider[Table Features Provider]
 
 As an extension, you can use the codeRef[org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider]:
-the customizations will be applied only to ref:TableComponent[tables], not to ref:FormComponent[Forms].
+the customizations will be applied only to ref:TableComponent[Tables], not to ref:FormComponent[Forms].
 
 
 section2:FeatureCaptionProvider[Feature Caption Provider]
 
- e[This can be done with Parsley DSL too!]
+The codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider] provides captions for
+the features in ref:TableComponent[Tables] and ref:FormComponent[Forms].
+Here you can see an example of the DSL.
+ 
+code[EmfParsley][featureCaptionProvider{
+	text{
+		Book:author -> "Wrote by:"
+		Writer:name -> "Name:"
+	}
+}]
  
 The codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider] provides captions for
 the features. It can be customized, with injection (see Injection paragraph), to customize the caption label on the
@@ -268,145 +229,91 @@ public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
 
 section2:ProposalProvider[Proposal Provider]
 
- e[This can be done with Parsley DSL too!]
- 
 Some controls use a list of proposal to help the end user experince: for example the combo box has a
 list of proposal, but also the simple text can use the proposal to assist and correct the hand-writed
-values. For each feature it can be specified a list of proposals using a method that starts with the
-keyword e['proposals'] followed byt the EClass and Feature undescore-character-separated. 
+values. For each feature it can be specified a list of proposals via the DSl.
 
-code[Java][
-public List<?> proposals_Book_author(Book book) {
-	List<Object> proposals = new LinkedList<Object>();
-	Writer writer = EXTLibraryFactory.eINSTANCE.createWriter();
-	writer.setFirstName("Fake");
-	writer.setLastName("Writer");
-	proposals.add(writer);
-	writer = EXTLibraryFactory.eINSTANCE.createWriter();
-	writer.setFirstName("Fake");
-	writer.setLastName("Writer2");
-	proposals.add(writer);
-	return proposals;
-}
-]
+code[EmfParsley][proposals{
+	Book:author -> {
+		defaultProposals(feature).
+			filter(Writer).
+			filter\[name.startsWith("F")\].toList
+	}
+}]
+ 
+This customization can be done also in Java, by extending the class codeRef[org.eclipse.emf.parsley.binding.ProposalCreator]
+and implementing the method code[Java][public List<?> proposals_Book_author(Book book) {...}].
 
-section:Menu[Menu]
+section:ContextualMenu[Contextual Menu]
+
+Contextual menu can be added to any viewer by usinf the codeRef[org.eclipse.emf.parsley.viewers.ViewerInitializer]. 
+
+code[Java][@Inject ViewerInitializer viewerInitializer;
+(...)
+
+treeActionBarContributor.initialize(editingDomain);
+viewerInitializer.addContextMenu(treeFormComposite.getViewer(),
+treeActionBarContributor, editingDomain, this);
+treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);]
+
 
 section2:MenuBuilder[Menu Builder]
 
-codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder]
+e[EMF Parsley] logically separate the menu into 2 parts. The first section contains all common edit commands
+such as e[copy] and e[paste]. The second section regards EMF specific commands, such as for example e[new child].
+You can use the DSL to fully customize the menu, as in the example below. 
 
-section:Resources[Resources]
-
-ul[
-	item[If you need a machanism to fill some data for the first time you use a model, you can provide
-	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
-	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
-	Loader]]
-]
-
-For what concern saving objects, there are some specific parts that can be customized:
-
-ul[
-	item[ref:ResourceSaveManager[Resource Save Manager], if you want to manage the save.]
-]
-
-section2:ResourceLoader[Resource Loader]
-
-The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.
-This class uses internally the ref:EmptyResourceInitializer[Empty Resource Initializer].
-
-
-section2:EmptyResourceInitializer[Empty Resource Initializer]
-
-If you need to initialize your model, for the first use, you can define an implementation of codeRef[org.eclipse.emf.parsley.resource.EmptyResourceInitializer].
-When the main resource will be found empty, your code will be executed. 
-
-
-section2:ResourceSaveManager[Resource Save Manager]
-
-Resource saving is delegated to codeRef[org.eclipse.emf.parsley.edit.ResourceSaveManager]
-which, by defaults only saves the passed codeRef[org.eclipse.emf.ecore.resource.Resource].
-You can inject your own save manager and implement the method code[precondition(Resource)], for
-instance, you may want to validate the resource before saving, and in case the validation
-fails to return code[false].  If the precondition is code[false] the default implementation
-will not save the resource (and in turn will return code[false]).
-
-section3:ValidateResourceSaveManager[Validate Resource Save Manager]
-
-We provide an example of custom resource save manager: codeRef[org.eclipse.emf.parsley.edit.ValidateResourceSaveManager],
-we show here only relevant parts to give an example:
-
-code[Java][
-public class ValidateResourceSaveManager extends ResourceSaveManager {
-
-	@Override
-	protected boolean precondition(Resource resource) {
-		return super.precondition(resource) && validateModel(resource);
+code[EmfParsley][menuBuilder{
+	menus{
+		Library-> #\[
+			submenu("Edit",#\[
+				actionCopy,
+				actionCut,
+				separator,
+				actionPaste
+			\])
+		\]
 	}
-
-	protected boolean validateModel(Resource resource) {
-		for (EObject eObject : resource.getContents()) {
-			Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
-			if (diagnostic.getSeverity() == Diagnostic.ERROR) {
-				// SKIPPED: present the errors
-				return false;
-			} else if (diagnostic.getSeverity() == Diagnostic.WARNING) {
-				// SKIPPED: present the warnings
-			}
-		}
-		return true;
+	emfMenus{
+		Library -> #\[
+			actionAdd("Add a new book", books,
+				EXTLibraryFactory.eINSTANCE.createBook => \[
+					title="new book"
+				\]
+			)
+		\]
 	}
-}
-]
+}]
 
+You can customize menu also via Java, by extending the codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder].
 
-section:Tables[Tables]
-
-section2:TableViewerBuilder[Table Viewer Builder]
-
-codeRef[org.eclipse.emf.parsley.builders.TableViewerBuilder]
-
-ul[
-	item[ref:TableViewerColumnBuilder[TableViewerColumnBuilder]]
-	item[ref:ViewerInitializer[ViewerInitializer]]
-]
-
-section2:TableViewerColumnBuilder[Table Viewer Column Builder]
-
-codeRef[org.eclipse.emf.parsley.builders.TableViewerColumnBuilder]
-
-ul[
-	item[ref:FeatureCaptionProvider[PropertyDescriptionProvider]]
-	item[ref:FeaturesProvider[FeaturesProvider]]
-]
-
-section3:TableViewerEditableColumnBuilder[Table Viewer Editable Column Builder]
-
-codeRef[org.eclipse.emf.parsley.builders.TableViewerEditableColumnBuilder]
-
-section2:TableColumnLabelProvider[Table Column Label Provider]
-
-codeRef[org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider]
 
 section:Factories[Factories]
 
-section2:FormFactory[Form Factory]
 
-codeRef[org.eclipse.emf.parsley.factories.FormFactory]
+section2:FormControlFactory[Form Control Factory]
 
-ul[
-	item[ref:FormFeatureCaptionProvider[FormPropertyDescriptionProvider]]
-	item[ref:ControlFactory[Control Factory]]
-	item[ref:FeaturesProvider[FeaturesProvider]]
-]
-
-
-section2:ControlFactory[Control Factory]
-
- e[This can be done with Parsley DSL too!]
+ e[EMF Parsley] let you customize the e[form controls] via the DSL as in the following example.
  
-If you want to customize the controls on the right, it can be injected a specification of the class codeRef[org.eclipse.emf.parsley.binding.FormControlFactory].
+ code[EmfParsley][formControlFactory {
+	control {
+		Library : name -> { }
+		Writer : books -> 
+			createLabel(
+				books.map\[title\].join(", "))
+		Writer : name -> { createLabel(parent, "") }
+			target { observeText }
+		Writer : firstName -> 
+			toolkit.createLabel(parent, "")
+			target observeText(SWT::Modify)
+		Borrower : firstName -> {
+			createText(firstName, SWT::MULTI, SWT::BORDER,
+								SWT::WRAP, SWT::V_SCROLL)
+		}
+	}
+}]
+ 
+If you want to customize the controls on the detail via Java, you can extend the class codeRef[org.eclipse.emf.parsley.binding.FormControlFactory].
 Using the same polimorphic mechanism of the labels, the programmer can write a method with the keyword e['control']
 followed by the EClass and EStructuralFeature undescore-character-separated. In the signature of the
 method must be both the e[DataBinding Context] and the e[Feature Observable] that can be used for databinding. 
@@ -423,39 +330,12 @@ public Control control_Writer_name(DataBindingContext dbc,IObservableValue featu
 }
 ]
 
-For more info, see the other parts that are used internally by the e[Form Control Factory]:
+section2:DialogControFactory[Dialog Control Factory]
 
-section2:TreeFormFactory[Tree Form Factory]
+If you want to customize controls in Dialog, you can use the specific DSL section e[dialogControlFactory]: 
 
-codeRef[org.eclipse.emf.parsley.factories.TreeFormFactory]
-
-ul[
-	item[ref:ViewerInitializer[ViewerInitializer]]
-	item[ref:FormFactory[FormFactory]]
-]
-
-section2:ViewerFactory[Viewer Factory]
-
-codeRef[org.eclipse.emf.parsley.factories.ViewerFactory]
-
-ul[
-	item[ref:TableViewerBuilder[TableViewerBuilder]]
-	item[ref:ViewerInitializer[ViewerInitializer]]
-]
-
-section2:AdapterFactoryEditingDomain[Viewer Factory]
-
-AdapterFactoryEditingDomain
-
-AdapterFactory
-
-section:Viewers[Viewers]
-
-section2:ViewerInitializer[Viewer Initializer]
-
-codeRef[org.eclipse.emf.parsley.viewers.ViewerInitializer]
-
-ul[
-	item[e[ILabelProvider]]
-	item[e[IContentProvider]]
-]
+code[EmfParsley][dialogControlFactory {
+	control {
+		...
+	}
+}]
