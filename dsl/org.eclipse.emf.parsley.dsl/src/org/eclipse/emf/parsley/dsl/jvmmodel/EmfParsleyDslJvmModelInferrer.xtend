@@ -69,6 +69,10 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.emf.parsley.config.Configurator
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.resource.Resource
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -132,6 +136,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
 		val menuBuilderClass = element.inferMenuBuilder(acceptor)
+		val configuratorClass = element.inferConfigurator(acceptor)
 		
 		acceptor.accept(moduleClass) [
 			documentation = element.documentation
@@ -172,6 +177,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.proposalCreator.genBindMethod(proposalCreatorClass, typeof(ProposalCreator))
 			if (menuBuilderClass != null)
 				members += element.menuBuilder.genBindMethod(menuBuilderClass, typeof(EditingMenuBuilder))
+			if (configuratorClass != null)
+				members += element.configurator.genBindMethod(configuratorClass, typeof(Configurator))
 		]
 
    	}
@@ -267,6 +274,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def private menuBuilderQN(Module element) {
 		element.fullyQualifiedName + ".edit.action.MenuBuilderGen"
+	}
+
+	def private configuratorQN(Module element) {
+		element.fullyQualifiedName + ".config.ConfiguratorGen"
 	}
 
 	def private inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
@@ -637,6 +648,38 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				}
 			]
 			menuBuilderClass
+		}
+	}
+
+	def private inferConfigurator(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.configurator == null)
+			null
+		else {
+			val configurator = element.configurator
+			val configuratorClass = configurator.toClass(element.configuratorQN)
+			acceptor.accept(configuratorClass) [
+				setSuperClassTypeAndFields(configurator, Configurator)
+				
+				for (specification : configurator.resourceURISpecifications) {
+					members += specification.specificationToMethod("resourceURI", typeRef(URI))
+				}
+				
+				for (specification : configurator.EClassSpecifications) {
+					members += specification.specificationToMethod("eClass", typeRef(EClass))
+				}
+				
+				for (specification : configurator.EStructuralFeatureSpecifications) {
+					members += specification.specificationToMethod("eStructuralFeature", typeRef(EStructuralFeature))
+				}
+				
+				for (specification : configurator.contentsSpecifications) {
+					members += specification.specificationToMethod("contents", typeRef(Object)) => [
+						m |
+						m.parameters += specification.toParameter("resource", typeRef(Resource))
+					]
+				}
+			]
+			configuratorClass
 		}
 	}
 

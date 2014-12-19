@@ -1529,6 +1529,96 @@ public class MenuBuilderGen extends EditingMenuBuilder {
 	}
 
 	@Test
+	def testConfigurator() {
+		inputs.configuratorExample
+		.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import my.empty.config.ConfiguratorGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.config.Configurator;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends Configurator> bindConfigurator() {
+    return ConfiguratorGen.class;
+  }
+}
+'''
+expectedConfigurator =
+'''
+package my.empty.config;
+
+import com.google.common.collect.Iterables;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.parsley.config.Configurator;
+import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
+import org.eclipse.emf.parsley.examples.library.Library;
+import org.eclipse.emf.parsley.examples.library.Writer;
+
+@SuppressWarnings("all")
+public class ConfiguratorGen extends Configurator {
+  private final EXTLibraryPackage libraryPackage = EXTLibraryPackage.eINSTANCE;
+  
+  public EXTLibraryPackage getLibraryPackage() {
+    return this.libraryPackage;
+  }
+  
+  public URI resourceURI(final Library lib) {
+    URI _createFileURI = URI.createFileURI("file:/foo");
+    return _createFileURI;
+  }
+  
+  public URI resourceURI(final Writer it) {
+    return null;
+  }
+  
+  public EClass eClass(final Library lib) {
+    EClass _library = this.libraryPackage.getLibrary();
+    return _library;
+  }
+  
+  public EClass eClass(final Writer it) {
+    EClass _writer = this.libraryPackage.getWriter();
+    return _writer;
+  }
+  
+  public EStructuralFeature eStructuralFeature(final Library lib) {
+    EReference _library_Books = this.libraryPackage.getLibrary_Books();
+    return _library_Books;
+  }
+  
+  public EStructuralFeature eStructuralFeature(final Writer it) {
+    EReference _library_Writers = this.libraryPackage.getLibrary_Writers();
+    return _library_Writers;
+  }
+  
+  public Object contents(final Library lib, final Resource resource) {
+    EList<EObject> _contents = resource.getContents();
+    Iterable<Writer> _filter = Iterables.<Writer>filter(_contents, Writer.class);
+    return _filter;
+  }
+}
+''']
+		)
+	}
+
+	@Test
 	def testViewsSpecifications() {
 		inputs.multipleViewsSpecifications.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -1802,6 +1892,9 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 				} else if (e.key.endsWith("MenuBuilderGen.java")) {
 					if (expected.expectedMenuBuilder != null)
 						assertEqualsStrings(expected.expectedMenuBuilder, e.value)
+				} else if (e.key.endsWith("ConfiguratorGen.java")) {
+					if (expected.expectedConfigurator != null)
+						assertEqualsStrings(expected.expectedConfigurator, e.value)
 				} else if (e.key.endsWith("TreeFormFactoryGen.java")) {
 					if (expected.expectedTreeFormFactory != null)
 						assertEqualsStrings(expected.expectedTreeFormFactory, e.value)

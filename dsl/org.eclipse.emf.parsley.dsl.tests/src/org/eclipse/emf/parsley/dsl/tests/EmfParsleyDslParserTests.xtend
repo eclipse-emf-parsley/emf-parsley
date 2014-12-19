@@ -136,5 +136,9 @@ class EmfParsleyDslParserTests extends EmfParsleyDslAbstractTests {
 	def void testMultipleViewsSpecifications() {
 		inputs.multipleViewsSpecifications.parseAndAssertNoError
 	}
-	
+
+	@Test
+	def void testConfigurator() {
+		inputs.configuratorExample.parseAndAssertNoError
+	}
 }

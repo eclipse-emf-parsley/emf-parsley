@@ -36,6 +36,8 @@ Module:
 			&
 			(menuBuilder = MenuBuilder)?
 			&
+			(configurator = Configurator)?
+			&
 			(viewerContentProvider = ViewerContentProvider)?
 			&
 			(partsSpecifications = PartsSpecifications)?
@@ -258,6 +260,38 @@ MenuBuilder:
 	'}'
 ;
 
+Configurator:
+	{Configurator} 'configurator' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+	
+		(
+			(
+			'resourceURI' '{'
+				resourceURISpecifications+=LabelSpecification*
+			'}'
+			)?
+		&
+			(
+			'eClass' '{'
+				eClassSpecifications+=LabelSpecification*
+			'}'
+			)?
+		&
+			(
+			'eStructuralFeature' '{'
+				eStructuralFeatureSpecifications+=LabelSpecification*
+			'}'
+			)?
+		&
+			(
+			'contents' '{'
+				contentsSpecifications+=LabelSpecification*
+			'}'
+			)?
+		)
+	'}'
+;
+
 ViewerContentProvider:
 	{ViewerContentProvider} 'viewerContentProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
@@ -308,7 +342,7 @@ WithExtendsClause:
 WithFields:
 	LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
 	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |
-	MenuBuilder
+	MenuBuilder | Configurator
 ;
 
 PartsSpecifications:

@@ -528,6 +528,44 @@ module my.empty {
 }
 '''
 
+	def configuratorExample() {
+'''
+import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+import org.eclipse.emf.common.util.URI
+
+module my.empty {
+	
+	configurator {
+		val EXTLibraryPackage libraryPackage = EXTLibraryPackage.eINSTANCE;
+		
+		// the implementations below do not necessarily make sense:
+		// they are used only to test the DSL
+		
+		resourceURI {
+			Library lib -> URI.createFileURI("file:/foo")
+			Writer -> null
+		}
+		
+		eClass {
+			Library lib -> libraryPackage.library
+			Writer -> libraryPackage.writer
+		}
+		
+		eStructuralFeature {
+			Library lib -> libraryPackage.library_Books
+			Writer -> libraryPackage.library_Writers
+		}
+		
+		contents {
+			Library lib -> resource.^contents.filter(Writer)
+		}
+	}
+}
+'''
+	}
+
 	def emptyViewsSpecifications() 
 '''
 module my.empty {

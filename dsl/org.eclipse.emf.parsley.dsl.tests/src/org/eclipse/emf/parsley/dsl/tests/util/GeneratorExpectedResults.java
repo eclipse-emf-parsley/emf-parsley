@@ -30,6 +30,7 @@ public class GeneratorExpectedResults {
 	public CharSequence expectedViewerContentProvider;
 	public CharSequence expectedProposalCreator;
 	public CharSequence expectedMenuBuilder;
+	public CharSequence expectedConfigurator;
 	public CharSequence expectedTreeFormFactory;
 	public CharSequence expectedPluginXmlGen;
 }
