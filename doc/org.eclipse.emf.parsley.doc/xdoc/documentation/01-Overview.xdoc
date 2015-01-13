@@ -1,12 +1,12 @@
 chapter:Overview[Overview]
 
  e[Emf Parsley] is a lightweight framework that allows easy and quick UI development
-upon EMF. e[EMF Parsley] is built from EMF Edit framework addinf features like Tree, Form and Table builders with
-standard JFace databinding, providing a complete component-based toolset. Moreover a DSL allow to customize several behaviors in each component and can be configured to use all kind of EMF persistence implementations (XMI, Teneo, CDO).
+upon EMF. e[EMF Parsley] is built from EMF Edit framework features like Tree, Form and Table builders with
+standard JFace databinding, providing a complete component-based toolset. Moreover a DSL allows to customize several behaviors in each component and can be configured to use all kinds of EMF persistence implementations (XMI, Teneo, CDO).
 
 section:Components[Components]
 
-e[EMF Parsley] aims to provide a complete set of block components to visualize your model with the introspective EMF capabilities and can be used to easily build forms, viewer or editors. 
+e[EMF Parsley] aims to provide a complete set of block components to visualize your model with the introspective EMF capabilities and can be used to easily build forms, viewers or editors. 
 
 There are some components that can be used out-of-the-box and can be considered as a reference implementation
 of the mechanisms that are the bases of e[Emf Parsley] itslef. 
@@ -24,7 +24,7 @@ The main feature of e[EMF Parsley] is that you can customize all basic UI behavi
 You can get more info in the ref:Components, but you don't have to know all details about the internal implementation to inject your own customization because
  e[Emf Parsley] provides a DSL to easy customize your UI, as explained in the next section.
 
-section2:Customizations_DSL[Customize with the  DLS]
+section2:Customizations_DSL[Customize with the  DSL]
 
 You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
 

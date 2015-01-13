@@ -15,7 +15,7 @@ from Xtext website or use the link[http://www.eclipse.org/downloads/][eclipse DS
 (we use Xtend for many sources files, and we do not put the generated files
 in the repository).
 
-section[Meterialization]
+section[Materialization]
 
 We use link[http://www.eclipse.org/buckminster/][Buckminster] as the
 building and materialization infrastructure.
@@ -54,7 +54,7 @@ might also fail due to network problems; in that case, try and run the
 script again).
 
 Run the ant script located link[http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/workspace.ant][here]. 
-In unix you can use following command: 
+In Linux you can use following command: 
 
 code[
 wget -N http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.contributor/workspace.ant

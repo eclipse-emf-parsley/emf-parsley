@@ -76,7 +76,21 @@ class Documentation extends AbstractXdocBaseWebsite {
 		================================================== -->
 		<!-- Wrap the rest of the page in another container to center all the content. -->
 		<style>
-			.row {animation: fadeInRightBig 1.5s}
+			.row {
+				-webkit-animation: fadeInRightBig 1.5s;
+				-moz-animation: fadeInRightBig 1.5s;
+				-ms-animation: fadeInRightBig 1.5s;
+				-o-animation: fadeInRightBig 1.5s;
+				animation: fadeInRightBig 1.5s;
+			}
+			
+			.dropdown-menu {
+				-webkit-animation: fadeInDownBig 1.5s;
+				-moz-animation: fadeInDownBig 1.5s;
+				-ms-animation: fadeInDownBig 1.5s;
+				-o-animation: fadeInDownBig 1.5s;
+				animation: fadeInDownBig 1.5s;
+			}
 		</style>
 		<div class="containerdoc marketing">
 			<!-- SIDEBAR -->
@@ -94,7 +108,7 @@ class Documentation extends AbstractXdocBaseWebsite {
 	
 	
 	def menu(Document doc) '''
-		<ul class="dropdown-menu" style="animation: fadeInDownBig 1.5s; margin: 0px; max-width: 250px; display: block;box-shadow: 0 0px 7px rgba(0,0,0,.175);">
+		<ul class="dropdown-menu" style="margin: 0px; max-width: 250px; display: block;box-shadow: 0 0px 7px rgba(0,0,0,.175);">
 			«FOR chapter : doc.chapters»
 				<li class="activemenu"><a tabindex="-1" href="#par">«chapter.title.toHtmlText»</a></li>
 				«FOR section : chapter.subSections»
@@ -103,7 +117,6 @@ class Documentation extends AbstractXdocBaseWebsite {
 				<li class="divider"></li>
 			«ENDFOR»
 			«FOR part : doc.parts»
-				<li>«part.title.toHtmlText»</li>
 				«FOR chapter : part.chapters»
 					<li«printActiveMenu()»><a tabindex="-1" href="#par">«chapter.title.toHtmlText»</a></li>
 					«FOR section : chapter.subSections»

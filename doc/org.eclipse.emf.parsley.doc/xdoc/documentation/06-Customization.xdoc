@@ -132,18 +132,18 @@ codeRef[org.eclipse.emf.ecore.EStructuralFeature]s of a given
 codeRef[org.eclipse.emf.ecore.EClass] it relies on an injected
 codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
 The default behavior is to simply return all the features of the a given EClass,
-in the order they are defined in the EClass, as implemented by the method code[defaultFeatures] in codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
+in the order they are defined in the EClass, as implemented by the method e[defaultFeatures] in codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
 
 You can set the mappings, i.e., specify the structural
 features you want to be used given an EClass, by implementing
-the method code[buildMap], which receives the
+the method e[buildMap], which receives the
 codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider$EClassToEStructuralFeatureMap]
-that can be filled with the method code[mapTo]; 
+that can be filled with the method e[mapTo]; 
 for instance, using the EMF extended library
 example, this customization will return only the e[name] and e[address] features
-for code[Library], the e[firstName], e[lastName] and e[address] for
-code[Person], and the e[firstName], e[lastName] and e[books] (but
-not e[address]) for code[Writer] (which inherits from code[Person]).
+for e[Library], the e[firstName], e[lastName] and e[address] for
+e[Person], and the e[firstName], e[lastName] and e[books] (but
+not e[address]) for e[Writer] (which inherits from e[Person]).
 
 code[Java][
 import static org.eclipse.emf.examples.extlibrary.EXTLibraryPackage.Literals.*;
@@ -167,7 +167,7 @@ Another possibility is to build a map which relies on Strings
 both for the codeRef[org.eclipse.emf.ecore.EClass] and for
 the list of codeRef[org.eclipse.emf.ecore.EStructuralFeature];
 note that the name of the codeRef[org.eclipse.emf.ecore.EClass] should
-be obtained by using code[getInstanceClassName()]; you can also
+be obtained by using e[getInstanceClassName()]; you can also
 combine the two approaches.
 
 

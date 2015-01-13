@@ -9,6 +9,10 @@ class Download extends AbstractWebsite {
 	override contents() '''
 	<style>
 	.row {
+		-webkit-animation: fadeInDownBig 1s;
+		-moz-animation: fadeInDownBig 1s;
+		-ms-animation: fadeInDownBig 1s;
+		-o-animation: fadeInDownBig 1s;
 		animation: fadeInDownBig 1s;
 	}
 	
@@ -22,6 +26,10 @@ class Download extends AbstractWebsite {
 		padding:0px;
 		width: 22px;
 		margin: -12px 0px 0px -85px;
+		-webkit-animation: mybounceInDown 2s;
+		-moz-animation: mybounceInDown 2s;
+		-ms-animation: mybounceInDown 2s;
+		-o-animation: mybounceInDown 2s;
 		animation: mybounceInDown 2s;
 	}
 	</style>

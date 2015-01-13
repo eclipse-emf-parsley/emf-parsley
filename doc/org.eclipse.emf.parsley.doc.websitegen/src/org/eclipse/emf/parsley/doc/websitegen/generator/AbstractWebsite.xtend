@@ -176,7 +176,7 @@ abstract class AbstractWebsite implements Resource {
 				</div>
 			</nav>
 			<div style="background:url(img/bg1-100x100.jpg);">
-				<nav class="navbar navbar-default miomenubar" role="navigation" style="border-radius:0px; background: url('img/Home/menu.jpg') no-repeat; border: 0 none; -webkit-box-shadow: 0px 3px 8px 0px rgba(171,209,173,1);-moz-box-shadow: 0px 3px 8px 0px rgba(171,209,173,1);box-shadow: 0px 3px 8px 0px rgba(171,209,173,1);margin-bottom:0;">
+				<nav class="navbar navbar-default miomenubar" role="navigation" style="border-radius:0px; background: url('img/menu.jpg') no-repeat; border: 0 none; -webkit-box-shadow: 0px 3px 8px 0px rgba(171,209,173,1);-moz-box-shadow: 0px 3px 8px 0px rgba(171,209,173,1);box-shadow: 0px 3px 8px 0px rgba(171,209,173,1);margin-bottom:0;">
 					<div class="container">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">

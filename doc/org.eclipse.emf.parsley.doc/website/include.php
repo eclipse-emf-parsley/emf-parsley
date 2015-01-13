@@ -12,7 +12,8 @@
 	# these are optional
 	# $Nav->setLinkList(array());
 
-	$pageTitle 		= "Emf Parsley Sources";
+	$pageAuthor		= "Lorenzo Bettini, Vincenzo Caselli, Francesco Guidieri";
+	$pageTitle 		= "Emf Parsley Guide";
 
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="code.css"/>' . "\n\t");
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="book.css"/>' . "\n\t");
