@@ -36,7 +36,7 @@ class Index extends AbstractWebsite {
 			</div>
 			<div class="col-md-1" style="width:4%"></div>
 			<div class="embed-responsive embed-responsive-16by9">
-			  <iframe class="embed-responsive-item" style="border: 4px solid rgb(229, 236, 242);" wmode="Opaque" allowfullscreen="" src="http://www.youtube.com/embed/-S8mh5p-ChE?wmode=transparent"></iframe>
+			  <iframe class="embed-responsive-item" style="border: 4px solid rgb(229, 236, 242);" wmode="Opaque" allowfullscreen="" src="https://www.youtube.com/embed/-S8mh5p-ChE"></iframe>
 			</div>
 		</div>
 		<div class="row featurette" style="margin-top:8%;">

@@ -65,15 +65,27 @@ class GettingSources extends  AbstractXdocBaseWebsite {
 	}
 	
 	override contents() '''
+	
+		<style>
+		.row {
+		    -webkit-animation: zoomIn 1.5s;
+		    -moz-animation: zoomIn 1.5s;
+		    -ms-animation: zoomIn 1.5s;
+		    -o-animation: zoomIn 1.5s;
+		    animation: zoomIn 1.5s;
+		}
+		</style>
+
 		<!-- START THE FEATURETTES -->
 		<div id="page">  
 			<div class="inner">
-		«doc.body»
+		«doc.body(6)»
 			</div>
 			</br></br></br></br></br></br></br>
 			<!-- /END THE FEATURETTES -->
 		</div>
 	'''
+	
 	
 	
 		

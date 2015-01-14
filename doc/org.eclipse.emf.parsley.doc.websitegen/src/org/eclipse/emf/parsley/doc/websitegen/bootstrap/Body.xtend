@@ -12,10 +12,14 @@ class Body {
 	@Inject extension TargetPaths
 	
 	
-	def body(AbstractSection rootSection) '''
+	def body(AbstractSection rootSection){
+		body(rootSection,8)
+	}
+	
+	def body(AbstractSection rootSection, int columns) '''
 			</br>
 			«FOR chapter: rootSection.sections.filter[!targetRootElement]»
-				«chapter.h1»
+				«chapter.h1(columns)»
 				«printHr(rootSection.sections.filter[!targetRootElement].size)»
 			«ENDFOR»
 	'''
@@ -30,13 +34,11 @@ class Body {
 		}	
 	}
 
-	def protected String getColumnNum(){
-		"8"
-	}
+	
 
-	def h1(AbstractSection section) '''
+	def h1(AbstractSection section,int columns) '''
 		<div class="row featurette">
-			<div class="col-md-8 col-md-offset-3">
+			<div class="col-md-«columns» col-md-offset-3">
 				<h1 id="par" class="featurette-heading text-parsley">«section.title.toHtmlText»</h1>
 				«FOR content : section.contents»
 					«content.toHtmlParagraph»
