@@ -267,7 +267,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>kepler-rap</target-file-name>
+				<target-file-name>luna-rap</target-file-name>
 			</properties>
 		</profile>
 
