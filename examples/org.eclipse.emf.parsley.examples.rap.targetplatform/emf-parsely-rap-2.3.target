@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="Emf Parsley RAP 2.1" sequenceNumber="16">
+<target name="Emf Parsley RAP 2.3" sequenceNumber="1">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.rap.feature.feature.group" version="2.1.1.20130902-1345"/>
-<unit id="org.eclipse.rap.sdk.feature.feature.group" version="2.1.1.20130902-1345"/>
-<unit id="org.eclipse.rap.examples.feature.feature.group" version="2.1.1.20130902-1345"/>
-<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="2.1.1.20130909-0618"/>
-<repository location="http://download.eclipse.org/rt/rap/2.1/"/>
+<unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.sdk.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.examples.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/rt/rap/2.3/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.parsley.rap.sdk.feature.group" version="0.0.0"/>
