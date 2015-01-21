@@ -32,6 +32,7 @@
 <unit id="org.eclipse.emf.cdo.feature.group" version="4.3.0.v20140520-1823"/>
 <unit id="org.eclipse.emf.cdo.source.feature.group" version="4.3.0.v20140520-1823"/>
 <unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.10.1.v20140901-1055"/>
+<unit id="org.eclipse.emf.rap.source.feature.group" version="2.10.1.v20140901-1055"/>
 <unit id="org.eclipse.emf.databinding.feature.group" version="1.4.0.v20140901-1055"/>
 <unit id="org.eclipse.net4j.db.feature.group" version="4.3.0.v20140308-0604"/>
 <unit id="org.eclipse.net4j.db.source.feature.group" version="4.3.0.v20140308-0604"/>
