@@ -46,21 +46,6 @@ class HtmlExtensions {
 	@Inject extension TargetPaths
 
 
-	def htitle(Identifiable id) {
-		switch id {
-			Chapter : return id.title.toHtmlText
-			Section : return id.title.toHtmlText.limitLenght(21)
-			Section2 : {
-				val parentSection = id.eContainer as Section
-				return parentSection.title.toHtmlText.limitLenght(21)
-			}
-			Section3 : {
-				val parentSection = id.eContainer.eContainer as Section
-				return parentSection.title.toHtmlText.limitLenght(21)
-			}
-			default : id.href
-		}
-	}
 	
 	def limitLenght(CharSequence str, int maxLenght){
 		if(str.length>maxLenght){
@@ -72,8 +57,14 @@ class HtmlExtensions {
 		str
 	}
 
-	def href(Identifiable it) {
-		targetPath + "#" + hrefId
+	def href(Identifiable id) {
+			switch id {
+			Chapter : return '''href="#addref" rel="«id.title.toHtmlText»"'''
+			Section : return '''href="#addref" rel="«id.title.toHtmlText.limitLenght(21)»"'''
+			Section2 : return '''href="#«id.hrefId»"'''
+			Section3 : return '''href="#«id.hrefId»"'''
+			default : return ''''''
+			}
 	}
 
 	def hrefId(Identifiable id) {
@@ -144,7 +135,7 @@ class HtmlExtensions {
 		<a name="«name.quote»"></a>
 	'''
 	
-	def protected dispatch CharSequence toHtml(Ref it, ParagraphState state) '''<a href="#addref" rel="«ref.htitle»">«contents.toHtml(state)»</a>'''
+	def protected dispatch CharSequence toHtml(Ref it, ParagraphState state) '''<a «ref.href»>«contents.toHtml(state)»</a>'''
 	
 	def protected dispatch CharSequence toHtml(OrderedList it, ParagraphState state) { '''
 			<ol>

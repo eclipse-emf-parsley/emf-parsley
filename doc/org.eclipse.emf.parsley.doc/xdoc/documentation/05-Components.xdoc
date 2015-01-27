@@ -45,7 +45,7 @@ Otherwise to customize the controls on the right, you can use the ref:FormContro
 
 section2:FormComponent_proposals[Proposal Provider]
 
-Depending on the feature types, can be some fields that use predefined values (e.g. combo). You can provide the exact proposal list via the ref:ProposalProvider[Proposal Provider].
+Depending on the feature types, can be some fields that use predefined values (e.g. combo). You can provide the exact proposal list via the ref:ProposalProvider[Proposal Provider]
 
 
 section:TreeComponent[Tree Component]

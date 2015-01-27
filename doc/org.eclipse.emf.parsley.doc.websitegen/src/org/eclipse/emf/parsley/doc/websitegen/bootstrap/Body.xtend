@@ -66,7 +66,7 @@ class Body {
 	
 	def CharSequence h3(AbstractSection section) '''
 		</br>
-		<h3 class="featurette-heading text-parsley2">«section.title.toHtmlText»</h3>
+		<h3 class="featurette-heading text-parsley2">«section.title.toHtmlText»<a id="«section.hrefId»"></a></h3>
 		«FOR content : section.contents»
 			«content.toHtmlParagraph»
 		«ENDFOR»

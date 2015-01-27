@@ -242,7 +242,7 @@ code[EmfParsley][proposals{
 }]
  
 This customization can be done also in Java, by extending the class codeRef[org.eclipse.emf.parsley.binding.ProposalCreator]
-and implementing the method code[Java][public List<?> proposals_Book_author(Book book) {...}].
+and implementing the method code[Java][public List<?> proposals_Book_author(Book book) {...}]
 
 section:ContextualMenu[Contextual Menu]
 
