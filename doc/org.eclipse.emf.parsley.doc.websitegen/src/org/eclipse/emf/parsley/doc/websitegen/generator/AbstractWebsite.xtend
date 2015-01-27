@@ -51,6 +51,7 @@ abstract class AbstractWebsite implements Resource {
 			<link rel="SHORTCUT ICON" href="img/logo_nw.gif" /> 
 			«stylesheets»
 			«javaScriptDocumentStart»
+			«javaScriptAnalytics»
 		</head>
 		<body>
 			«navBar»
@@ -87,7 +88,19 @@ abstract class AbstractWebsite implements Resource {
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	'''
-	def analyticsAccount() { 'UA-2429174-3' }
+	
+	def javaScriptAnalytics() '''
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		  ga('create', 'UA-58549052-1', 'auto');
+		  ga('send', 'pageview');
+		
+		</script>
+	'''
 	
 	def CharSequence jsOnLoad() '''
 		«IF isPrettyPrint»
@@ -211,14 +224,7 @@ abstract class AbstractWebsite implements Resource {
 			<img width="100%" alt="" src="img/footer.jpg" />
 			<nav class="navbar navbar-default" role="navigation" style="background-color:transparent; border:0 none; margin:-97px 0px 31px 0px;min-height: 36px;">
 				<div class="container" style="width:37.6%;">
-				<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
-						<ul class="nav navbar-nav pull-right miolifooter">
-							<li><a href="">About</a></li>
-							<li><a href="">Contact Us</a></li>
-							<li style="border-right: 0 none;"><a target="_blank" href="https://twitter.com/EmfParsley" id="twitterfooter"><img style="width:25px;float:left;margin-top: -2px; margin-right:1px;" alt="" src="img/twitter.png"/>@EmfParsley</a></li>
-						</ul>
-					</div><!-- /.navbar-collapse -->
+				
 				</div>
 			</nav>
 			<nav class="navbar navbar-default" role="navigation" style="background-color:transparent; border:0 none; margin:-18px 0px 0px 0px;min-height: 36px;">
@@ -344,7 +350,7 @@ abstract class AbstractWebsite implements Resource {
 			var mieiaddref = $("a[href='#addref']");
 			mieiaddref.each(function(idx) {
 				var ref = $(".dropdown-menu a:contains("+$(this).attr('rel')+")").attr('href');
-				if(ref.length>0)
+				if(ref!=null && ref.length>0)
 					$(this).attr('href',ref);
 			});
 		});

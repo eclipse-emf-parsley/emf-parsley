@@ -4,7 +4,7 @@
 	$App->AddExtraHtmlHeader('
 	<script type="text/javascript">
 	function init() {
-		var docName = "00-Main.html";
+		var docName = "GettingSources.html";
 	    initTocMenu(docName);
 		highlightCurrentSection(docName);
 	}
@@ -61,7 +61,7 @@
 	}
 	</script>');
 	
-	$pageTitle 		= "Emf Parsley Guide";
+	$pageTitle 		= "Emf Parsley Sources";
 	
 	$html .=  file_get_contents('_index.html');
 

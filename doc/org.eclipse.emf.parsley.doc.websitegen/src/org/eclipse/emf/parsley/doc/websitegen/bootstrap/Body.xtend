@@ -70,5 +70,8 @@ class Body {
 		«FOR content : section.contents»
 			«content.toHtmlParagraph»
 		«ENDFOR»
+		«FOR subSection: section.sections»
+				«subSection.h3»
+			«ENDFOR»
 	'''
 }

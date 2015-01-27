@@ -21,10 +21,10 @@ ul[
 section:Customizations[Customizations]
 
 The main feature of e[EMF Parsley] is that you can customize all basic UI behaviours of the components with Injection mechanism (based on link[http://code.google.com/p/google-guice][Google Guice]).
-You can get more info in the ref:Components, but you don't have to know all details about the internal implementation to inject your own customization because
+You can get more info in the ref:Components[Components Section], but you don't have to know all details about the internal implementation to inject your own customization because
  e[Emf Parsley] provides a DSL to easy customize your UI, as explained in the next section.
 
-section2:Customizations_DSL[Customize with the  DSL]
+section2:Customizations_DSL[Customize with the DSL]
 
 You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
 

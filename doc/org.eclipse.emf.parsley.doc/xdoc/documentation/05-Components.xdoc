@@ -37,7 +37,7 @@ The e[list fo feature] displayed on the form can be customized via the ref:Featu
 
 section2:FormComponent_captions[Caption Customization]
 
-The description on the left side of the form caan be customizzed via the ref:FormFeatureCaptionProvider[Caption Provider].
+The description on the left side of the form can be customizzed via the ref:FormFeatureCaptionProvider[Form Feature Caption Provider].
 
 section2:FormComponent_controls[Control Customization]
 

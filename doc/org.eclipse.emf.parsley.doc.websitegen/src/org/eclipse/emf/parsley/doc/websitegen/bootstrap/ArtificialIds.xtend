@@ -30,6 +30,11 @@ import org.eclipse.xtext.xdoc.xdoc.Todo
 import org.eclipse.xtext.xdoc.xdoc.UnorderedList
 
 import static org.eclipse.emf.parsley.doc.websitegen.bootstrap.ParagraphState.*
+import org.eclipse.xtext.xdoc.xdoc.impl.SectionImpl
+import org.eclipse.xtext.xdoc.xdoc.Chapter
+import org.eclipse.xtext.xdoc.xdoc.Section
+import org.eclipse.xtext.xdoc.xdoc.Section2
+import org.eclipse.xtext.xdoc.xdoc.Section3
 
 class ArtificialIds extends AdapterImpl {
 	public Map<Identifiable, String> artificialHrefs = newHashMap() 	
@@ -39,6 +44,33 @@ class HtmlExtensions {
 	
 	@Inject extension CodeRefs
 	@Inject extension TargetPaths
+
+
+	def htitle(Identifiable id) {
+		switch id {
+			Chapter : return id.title.toHtmlText
+			Section : return id.title.toHtmlText.limitLenght(21)
+			Section2 : {
+				val parentSection = id.eContainer as Section
+				return parentSection.title.toHtmlText.limitLenght(21)
+			}
+			Section3 : {
+				val parentSection = id.eContainer.eContainer as Section
+				return parentSection.title.toHtmlText.limitLenght(21)
+			}
+			default : id.href
+		}
+	}
+	
+	def limitLenght(CharSequence str, int maxLenght){
+		if(str.length>maxLenght){
+			var whiteSpace=str.toString.indexOf(' ',maxLenght)
+			if(whiteSpace>0){
+				return str.subSequence(0,whiteSpace)+'''</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'''+str.subSequence(whiteSpace+1,str.length)
+			}
+		}
+		str
+	}
 
 	def href(Identifiable it) {
 		targetPath + "#" + hrefId
@@ -112,7 +144,7 @@ class HtmlExtensions {
 		<a name="«name.quote»"></a>
 	'''
 	
-	def protected dispatch CharSequence toHtml(Ref it, ParagraphState state) '''<a href="«ref.href»">«contents.toHtml(state)»</a>'''
+	def protected dispatch CharSequence toHtml(Ref it, ParagraphState state) '''<a href="#addref" rel="«ref.htitle»">«contents.toHtml(state)»</a>'''
 	
 	def protected dispatch CharSequence toHtml(OrderedList it, ParagraphState state) { '''
 			<ol>
@@ -151,7 +183,7 @@ class HtmlExtensions {
 	}
 	
 	def protected dispatch CharSequence toHtml(CodeRef it, ParagraphState state) {
-		val sourceCodeURI = element?.sourceCodeURI
+//		val sourceCodeURI = element?.sourceCodeURI
 		'''
 		«IF altText != null
 			»«altText.toHtml(state)»«
@@ -162,9 +194,10 @@ class HtmlExtensions {
 			ENDIF
 			»«element?.printName?.trim»</abbr>«
 		ENDIF»
-		«IF sourceCodeURI!=null
-			» <a href="«sourceCodeURI»">(src)</a>«
-		ENDIF»'''
+«««		«IF sourceCodeURI!=null
+«««			» <a href="«sourceCodeURI»">(src)</a>«
+«««		ENDIF»
+		'''
 	}
 	
 	def String printName(JvmIdentifiableElement e) {
