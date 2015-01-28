@@ -3,7 +3,7 @@ chapter:Components[Components]
 
 This section describes the components that are provided to be used out-of-the-box, that are the foundations for all parts built upon e[Emf Parsley].
 Afetr a brief description, for each component we present a set of customizations, just to get an idea of how it works. You can refer
-to ref:Customizations[Customization Section] for a complete list.
+to ref:Customizations[Customizations Section] for a complete list.
  
 
 section:FormComponent[Form Component]

@@ -4,7 +4,7 @@ chapter:Overview[Overview]
 upon EMF. e[EMF Parsley] is built from EMF Edit framework features like Tree, Form and Table builders with
 standard JFace databinding, providing a complete component-based toolset. Moreover a DSL allows to customize several behaviors in each component and can be configured to use all kinds of EMF persistence implementations (XMI, Teneo, CDO).
 
-section:Components[Components]
+section:ParsleyComponents[Parsley Components]
 
 e[EMF Parsley] aims to provide a complete set of block components to visualize your model with the introspective EMF capabilities and can be used to easily build forms, viewers or editors. 
 
@@ -18,10 +18,10 @@ ul[
 	item[e[Search] coming soon]
 ]
 
-section:Customizations[Customizations]
+section:Customize[Customize]
 
 The main feature of e[EMF Parsley] is that you can customize all basic UI behaviours of the components with Injection mechanism (based on link[http://code.google.com/p/google-guice][Google Guice]).
-You can get more info in the ref:Components[Components Section], but you don't have to know all details about the internal implementation to inject your own customization because
+You can get more info in the ref:Customizations[Customizations Section], but you don't have to know all details about the internal implementation to inject your own customization because
  e[Emf Parsley] provides a DSL to easy customize your UI, as explained in the next section.
 
 section2:Customizations_DSL[Customize with the DSL]
