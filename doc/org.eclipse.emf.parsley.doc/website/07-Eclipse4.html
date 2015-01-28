@@ -154,36 +154,45 @@
 						</span><span class="keyword">import</span>&nbsp;org.eclipse.emf.common.util.URI;<br/>
 						<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;<br/>
 						<span class="keyword">import</span>&nbsp;org.eclipse.swt.widgets.Composite;<br/>
+						<br/>
 						<span class="comment">//&nbsp;The&nbsp;part&nbsp;implements&nbsp;IMenuListener&nbsp;for&nbsp;context&nbsp;menu&nbsp;handling<br/>
 						</span><span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MyEclipse4Part&nbsp;<span class="keyword">implements</span>&nbsp;IMenuListener<br/>
+						<br/>
 						<span class="comment">//the&nbsp;parent&nbsp;composite<br/>
 						</span><span class="keyword">private</span>&nbsp;Composite&nbsp;parent;<br/>
 						<span class="comment">//the&nbsp;EMF&nbsp;Parley&nbsp;composite&nbsp;for&nbsp;showing&nbsp;a&nbsp;tree&nbsp;and&nbsp;a&nbsp;detail&nbsp;form<br/>
 						</span><span class="keyword">private</span>&nbsp;TreeFormComposite&nbsp;treeFormComposite;<br/>
 						<span class="comment">//the&nbsp;EMF&nbsp;Resource<br/>
 						</span><span class="keyword">private</span>&nbsp;Resource&nbsp;resource;<br/>
+						<br/>
 						<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;component&nbsp;for&nbsp;contributing&nbsp;to&nbsp;the&nbsp;tree&nbsp;context&nbsp;menu<br/>
 						</span><span class="keyword">private</span>&nbsp;TreeActionBarContributor&nbsp;treeActionBarContributor&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
-						.getInstance(TreeActionBarContributor.<span class="keyword">class</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(TreeActionBarContributor.<span class="keyword">class</span>);<br/>
+						<br/>
 						<br/>
 						<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;factory&nbsp;for&nbsp;the&nbsp;tree&nbsp;detail&nbsp;form<br/>
 						</span><span class="keyword">private</span>&nbsp;TreeFormFactory&nbsp;treeFormFactory&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
-						.getInstance(TreeFormFactory.<span class="keyword">class</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(TreeFormFactory.<span class="keyword">class</span>);<br/>
+						<br/>
 						<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;Resource&nbsp;loader<br/>
 						</span><span class="keyword">private</span>&nbsp;ResourceLoader&nbsp;resourceLoader&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
-						.getInstance(ResourceLoader.<span class="keyword">class</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(ResourceLoader.<span class="keyword">class</span>);<br/>
+						<br/>
 						<span class="comment">//Guice&nbsp;injected&nbsp;EMF&nbsp;Parsley&nbsp;editing&nbsp;domain<br/>
 						</span><span class="keyword">private</span>&nbsp;AdapterFactoryEditingDomain&nbsp;editingDomain&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
-						.getInstance(AdapterFactoryEditingDomain.<span class="keyword">class</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(AdapterFactoryEditingDomain.<span class="keyword">class</span>);<br/>
+						<br/>
 						<span class="comment">//Guice&nbsp;injected&nbsp;viewer&nbsp;initializer<br/>
 						</span><span class="keyword">private</span>&nbsp;ViewerInitializer&nbsp;viewerInitializer&nbsp;=&nbsp;(ViewerInitializer)&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
-						.getInstance(ViewerInitializer.<span class="keyword">class</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(ViewerInitializer.<span class="keyword">class</span>);<br/>
+						<br/>
 						<span class="comment">//Guice&nbsp;injected&nbsp;save&nbsp;manager<br/>
 						</span><span class="keyword">private</span>&nbsp;ResourceSaveManager&nbsp;resourceSaveManager&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector()<br/>
-						.getInstance(ResourceSaveManager.<span class="keyword">class</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.getInstance(ResourceSaveManager.<span class="keyword">class</span>);<br/>
+						<br/>
 						<span class="comment">//URI&nbsp;for&nbsp;EMF&nbsp;Resource<br/>
 						</span><span class="keyword">private</span>&nbsp;URI&nbsp;uri&nbsp;=&nbsp;URI.createFileURI(System.getProperty(<span class="string">"user.home"</span>)<br/>
-						+&nbsp;<span class="string">"/MyLibrary.library"</span>);
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>);
 					</p>
 				</div>
 			</div>
@@ -198,8 +207,10 @@
 						@PostConstruct<br/>
 						<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;postConstruct(Composite&nbsp;parent)&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.parent&nbsp;=&nbsp;parent;<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Initialize&nbsp;TreeFormFactory&nbsp;&amp;&nbsp;ResourceLoader<br/>
 						</span>&nbsp;&nbsp;&nbsp;&nbsp;init(treeFormFactory,&nbsp;resourceLoader);<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Prepare&nbsp;the&nbsp;menu&nbsp;action&nbsp;bar&nbsp;contributor&nbsp;upon&nbsp;the&nbsp;selection<br/>
 						</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);<br/>
 						}
@@ -224,8 +235,9 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//initialize&nbsp;and&nbsp;bind&nbsp;the&nbsp;context&nbsp;menu&nbsp;to&nbsp;the&nbsp;tree-form&nbsp;composite<br/>
 						</span>&nbsp;&nbsp;&nbsp;&nbsp;treeActionBarContributor.initialize(editingDomain);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;viewerInitializer.addContextMenu(<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite.getViewer(),&nbsp;treeActionBarContributor,&nbsp;editingDomain,&nbsp;<span class="keyword">this</span>);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite.getViewer(),&nbsp;treeActionBarContributor,&nbsp;editingDomain,&nbsp;<span class="keyword">this</span>);<br/>
 						}<br/>
+						<br/>
 						@Override<br/>
 						<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;menuAboutToShow(IMenuManager&nbsp;manager)&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;treeActionBarContributor.menuAboutToShow(manager);<br/>
@@ -281,7 +293,9 @@
 					<p class="code">
 						@PostConstruct<br/>
 						<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;postConstruct(Composite&nbsp;parent,&nbsp;MDirtyable&nbsp;dirtyable)&nbsp;{<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.dirtyable&nbsp;=&nbsp;dirtyable;<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.dirtyable.setDirty(false);
 					</p>
 				</div>
@@ -295,12 +309,12 @@
 				<div class="incode">
 					<p class="code">
 						editingDomain.getCommandStack().addCommandStackListener(<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">new</span>&nbsp;CommandStackListener()&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;commandStackChanged(EventObject&nbsp;event)&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(dirtyable&nbsp;!=&nbsp;null)<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dirtyable.setDirty(true);<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;});
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">new</span>&nbsp;CommandStackListener()&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;commandStackChanged(EventObject&nbsp;event)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(dirtyable&nbsp;!=&nbsp;null)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dirtyable.setDirty(true);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
 					</p>
 				</div>
 			</div>
@@ -315,9 +329,9 @@
 						@Persist<br/>
 						<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;save(MDirtyable&nbsp;dirty)&nbsp;<span class="keyword">throws</span>&nbsp;IOException&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(resourceSaveManager.save(resource))&nbsp;{<br/>
-						<span class="keyword">if</span>&nbsp;(dirty&nbsp;!=&nbsp;null)&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;dirty.setDirty(false);<br/>
-						}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(dirty&nbsp;!=&nbsp;null)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dirty.setDirty(false);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						}
 					</p>
@@ -334,14 +348,16 @@
 				<div class="incode">
 					<p class="code">
 						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;SaveHandler&nbsp;{<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;@Execute<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">void</span>&nbsp;execute(EPartService&nbsp;partService,&nbsp;@Named(IServiceConstants.ACTIVE_PART)&nbsp;MPart&nbsp;part)&nbsp;{<br/>
-						partService.savePart(part,&nbsp;false);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partService.savePart(part,&nbsp;false);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						}
 					</p>
 				</div>
 			</div>
+			
 			</p>
 		<div id="disqus_thread"></div>
 		<script type="text/javascript" src="documentationRoot.js"></script>

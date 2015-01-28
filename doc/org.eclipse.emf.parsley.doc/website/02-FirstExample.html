@@ -107,11 +107,11 @@
 			<div class="incode">
 				<p class="code">
 					<span class="keyword">parts</span>&nbsp;{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewpart</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.view.library.treeform&nbsp;{<br/>
-					<span class="keyword">viewname</span>&nbsp;<span class="string">"My&nbsp;Library&nbsp;Tree&nbsp;Form"</span><br/>
-					<span class="keyword">viewclass</span>&nbsp;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;}
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewpart</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.view.library.treeform&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewname</span>&nbsp;<span class="string">"My&nbsp;Library&nbsp;Tree&nbsp;Form"</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewclass</span>&nbsp;<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					}
 				</p>
 			</div>
 		</div>
@@ -141,10 +141,13 @@
 				<p class="code">
 					<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;<br/>
 					<span class="keyword">import</span>&nbsp;org.eclipse.emf.common.util.URI;<br/>
+					<br/>
 					<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryTreeFormView&nbsp;<span class="keyword">extends</span>&nbsp;AbstractSaveableTreeFormView&nbsp;{<br/>
+					<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;URI&nbsp;createResourceURI()&nbsp;{<br/>
-					<span class="keyword">return</span>&nbsp;URI.createFileURI(&nbsp;System.getProperty(<span class="string">"user.home"</span>)&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>&nbsp;);<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;URI.createFileURI(&nbsp;System.getProperty(<span class="string">"user.home"</span>)&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>&nbsp;);<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					<br/>
 					}
 				</p>
 			</div>
@@ -193,33 +196,35 @@
 		  	and implementations.</li>
 		  <li>override method <em>bindEmptyResourceInitializer()</em> providing a class for Resource initialization
 		  	
-		  		<div class="literallayout">
+		  <div class="literallayout">
 		  	<div class="incode">
 		  		<p class="code">
 		  			<span class="keyword">public</span>&nbsp;Class&lt;?&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&gt;&nbsp;bindEmptyResourceInitializer()&nbsp;{<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;LibraryEmptyResourceInitializer.<span class="keyword">class</span>;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		  			&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;LibraryEmptyResourceInitializer.<span class="keyword">class</span>;<br/>
+		  			}
 		  		</p>
 		  	</div>
 		  </div>
 		  
 		  </li>
 		  <li>create a new class <em>LibraryEmptyResourceInitializer</em> extending from <em>EmptyResourceInitializer</em> for Resource initialization
-		  		<div class="literallayout">
+		  <div class="literallayout">
 		  	<div class="incode">
 		  		<p class="code">
 		  			<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.resource.EmptyResourceInitializer;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.EXTLibraryFactory;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.Library;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryEmptyResourceInitializer&nbsp;&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&nbsp;{&nbsp;<br/>
-		  			&nbsp;&nbsp;<br/>
-		  			&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;initialize(Resource&nbsp;resource)&nbsp;{&nbsp;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>.initialize(resource);&nbsp;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;library&nbsp;=&nbsp;EXTLibraryFactory.eINSTANCE.createLibrary();&nbsp;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resource.getContents().add(library);&nbsp;<br/>
-		  			&nbsp;}&nbsp;<br/>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+		  			<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;<br/>
+		  			<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.EXTLibraryFactory;<br/>
+		  			<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.Library;<br/>
+		  			<br/>
+		  			<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryEmptyResourceInitializer&nbsp;&nbsp;<span class="keyword">extends</span>&nbsp;EmptyResourceInitializer&nbsp;{&nbsp;<br/>
+		  			&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+		  			&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;initialize(Resource&nbsp;resource)&nbsp;{&nbsp;<br/>
+		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>.initialize(resource);&nbsp;<br/>
+		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;library&nbsp;=&nbsp;EXTLibraryFactory.eINSTANCE.createLibrary();&nbsp;<br/>
+		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resource.getContents().add(library);&nbsp;<br/>
+		  			&nbsp;&nbsp;&nbsp;}<br/>
+		  			<br/>
+		  			}
 		  		</p>
 		  	</div>
 		  </div>
@@ -339,13 +344,14 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">parts</span>&nbsp;{&nbsp;<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-					<span class="keyword">featuresProvider</span>&nbsp;{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">features</span>&nbsp;{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;name<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;-&gt;&nbsp;name,&nbsp;address,&nbsp;books<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;author,&nbsp;title,&nbsp;category<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">featuresProvider</span>&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">features</span>&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;name<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;-&gt;&nbsp;name,&nbsp;address,&nbsp;books<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;author,&nbsp;title,&nbsp;category<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-					}<br/>
 					}
 				</p>
 			</div>
@@ -370,11 +376,11 @@
 			<div class="incode">
 				<p class="code">
 					<span class="keyword">propertyDescriptionProvider</span>&nbsp;{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
-					Book&nbsp;:&nbsp;author&nbsp;-&gt;&nbsp;<span class="string">&apos;Wrote&nbsp;by:&apos;</span><br/>
-					Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;<span class="string">&apos;Name:&apos;</span><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;}
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;:&nbsp;author&nbsp;-&gt;&nbsp;<span class="string">&apos;Wrote&nbsp;by:&apos;</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;<span class="string">&apos;Name:&apos;</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					}
 				</p>
 			</div>
 		</div>
@@ -387,10 +393,10 @@
 			<div class="incode">
 				<p class="code">
 					<span class="keyword">labelProvider</span>&nbsp;{<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
-					Book&nbsp;b&nbsp;-&gt;&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+&nbsp;b.title&nbsp;+&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+<span class="string">&apos;&nbsp;(by&nbsp;&apos;</span>+&nbsp;b.author.name&nbsp;+&nbsp;<span class="string">&apos;)&apos;</span><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;}
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;b&nbsp;-&gt;&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+&nbsp;b.title&nbsp;+&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+<span class="string">&apos;&nbsp;(by&nbsp;&apos;</span>+&nbsp;b.author.name&nbsp;+&nbsp;<span class="string">&apos;)&apos;</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+					}
 				</p>
 			</div>
 		</div>
@@ -406,11 +412,6 @@
 		</div>
 		</div>
 		
-		 
-		  
-		 
-		 
-		 
 		</p>
 		<div id="disqus_thread"></div>
 		<script type="text/javascript" src="documentationRoot.js"></script>

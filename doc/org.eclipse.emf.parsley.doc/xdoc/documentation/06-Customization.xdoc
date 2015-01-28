@@ -5,8 +5,8 @@ A DSL is provided to easily customize most common feature, but you can customize
 manually. As a matter of fact each customization is explained in a single section, with the details on the DSL (if available) and the
 class for overriding by Java.
 
-As we deeply explained in the ref:Introduction, if you wnat to provide a specific implementation via
-Java, you can use the Google Guice injection mechanism, buy overriding the specific class with your own
+As we hinted in the ref:Overview[Overview], if you want to provide a specific implementation via
+Java, you can use the Google Guice injection mechanism, but overriding the specific class with your own
 implementation. Note that an explicit contructor is needed, with the e[@Inject] annotation to make Guice
 correctly works.
 
@@ -19,7 +19,8 @@ The Label Prorvider as in JFace allows to specify the representation of a given 
 provides an implementation that uses the information provided via the DSL, as you can see in the snippet
 below. 
 
-code[EmfParsley][labelProvider{
+code[EmfParsley][
+labelProvider{
 	text{
 		Book -> "Book:"+title
 		Borrower -> "Borrower: "+firstName
@@ -62,7 +63,8 @@ section2:ViewerContentProvider[Viewer Content Provider]
 As in Jface, the Content Provider is used to get the elements to represent and for tree their children.
 e[EMF Parsley] provides an implementation that uses the DSL as in the code below.
 
-code[EmfParsley][viewerContentProvider{
+code[EmfParsley][
+viewerContentProvider{
 	elements{
 		Library -> books
 	}
@@ -118,11 +120,13 @@ The default is to return the list of all the features in the EClass, but the pro
 by returning only a superset, or using a different order) on an EClass-based strategy.
 Thus you can use the DSL to specify that list, as in the snipped below.
 
-code[EmfParsley][featuresProvider{
+code[EmfParsley][
+featuresProvider{
 	features{
 		Book -> title, author, category, pages 		
 	}
-}] 
+}
+] 
  
 If we look at Java, there are more chances to customize this behaviour, but we need to go deep in some
 details of the e[Feature Provider] implementation. 
@@ -183,12 +187,14 @@ The codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider] provides
 the features in ref:TableComponent[Tables] and ref:FormComponent[Forms].
 Here you can see an example of the DSL.
  
-code[EmfParsley][featureCaptionProvider{
+code[EmfParsley][
+featureCaptionProvider{
 	text{
 		Book:author -> "Wrote by:"
 		Writer:name -> "Name:"
 	}
-}]
+}
+]
  
 The codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider] provides captions for
 the features. It can be customized, with injection (see Injection paragraph), to customize the caption label on the
@@ -233,13 +239,15 @@ Some controls use a list of proposal to help the end user experince: for example
 list of proposal, but also the simple text can use the proposal to assist and correct the hand-writed
 values. For each feature it can be specified a list of proposals via the DSl.
 
-code[EmfParsley][proposals{
+code[EmfParsley][
+proposals{
 	Book:author -> {
 		defaultProposals(feature).
 			filter(Writer).
 			filter\[name.startsWith("F")\].toList
 	}
-}]
+}
+]
  
 This customization can be done also in Java, by extending the class codeRef[org.eclipse.emf.parsley.binding.ProposalCreator]
 and implementing the method code[Java][public List<?> proposals_Book_author(Book book) {...}]
@@ -248,14 +256,15 @@ section:ContextualMenu[Contextual Menu]
 
 Contextual menu can be added to any viewer by usinf the codeRef[org.eclipse.emf.parsley.viewers.ViewerInitializer]. 
 
-code[Java][@Inject ViewerInitializer viewerInitializer;
+code[Java][
+@Inject ViewerInitializer viewerInitializer;
 (...)
 
 treeActionBarContributor.initialize(editingDomain);
 viewerInitializer.addContextMenu(treeFormComposite.getViewer(),
 treeActionBarContributor, editingDomain, this);
-treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);]
-
+treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
+]
 
 section2:MenuBuilder[Menu Builder]
 
@@ -263,7 +272,8 @@ e[EMF Parsley] logically separate the menu into 2 parts. The first section conta
 such as e[copy] and e[paste]. The second section regards EMF specific commands, such as for example e[new child].
 You can use the DSL to fully customize the menu, as in the example below. 
 
-code[EmfParsley][menuBuilder{
+code[EmfParsley][
+menuBuilder{
 	menus{
 		Library-> #\[
 			submenu("Edit",#\[
@@ -283,7 +293,8 @@ code[EmfParsley][menuBuilder{
 			)
 		\]
 	}
-}]
+}
+]
 
 You can customize menu also via Java, by extending the codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder].
 
@@ -295,7 +306,8 @@ section2:FormControlFactory[Form Control Factory]
 
  e[EMF Parsley] let you customize the e[form controls] via the DSL as in the following example.
  
- code[EmfParsley][formControlFactory {
+ code[EmfParsley][
+ formControlFactory {
 	control {
 		Library : name -> { }
 		Writer : books -> 
@@ -311,7 +323,8 @@ section2:FormControlFactory[Form Control Factory]
 								SWT::WRAP, SWT::V_SCROLL)
 		}
 	}
-}]
+}
+]
  
 If you want to customize the controls on the detail via Java, you can extend the class codeRef[org.eclipse.emf.parsley.binding.FormControlFactory].
 Using the same polimorphic mechanism of the labels, the programmer can write a method with the keyword e['control']
@@ -334,8 +347,10 @@ section2:DialogControFactory[Dialog Control Factory]
 
 If you want to customize controls in Dialog, you can use the specific DSL section e[dialogControlFactory]: 
 
-code[EmfParsley][dialogControlFactory {
+code[EmfParsley][
+dialogControlFactory {
 	control {
 		...
 	}
-}]
+}
+]

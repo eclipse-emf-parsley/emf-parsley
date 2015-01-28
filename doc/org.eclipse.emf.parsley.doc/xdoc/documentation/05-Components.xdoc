@@ -22,7 +22,8 @@ code[Java][
 (...)
 
 formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
-formComposite.init(eObject);]
+formComposite.init(eObject);
+]
 
 Most of the job is done by the second line of code, that get the list of codeRef[org.eclipse.emf.ecore.EStructuralFeature] defined for the codeRef[org.eclipse.emf.ecore.EClass]
 (that is the type of the object to rapresent) and builds a row for each of them. Each row is composed
@@ -58,12 +59,14 @@ img[images/03-components-tree.png][][ ][]
 e[EMF Parsley] provides an initializer that can be used to create such a component, like in the code below.
 Here you can see that can be configured only in 2 lines, the constructor phase and the build&fill phase. 
 
-code[Java][@Inject ViewerInitializer viewerInitializer;
+code[Java][
+@Inject ViewerInitializer viewerInitializer;
 
 (...)
 
 treeViewer = new TreeViewer(parent);
-viewerInitializer.initialize(treeViewer, element);]
+viewerInitializer.initialize(treeViewer, element);
+]
 
 
 The e[Tree Component]can be customized in several way via the standard EMF Edit facilities or with the EMF Parsley 
@@ -98,13 +101,14 @@ img[images/03-components-treeform.png][][ ][]
 
 e[EMF Parsley] provides a factory to create such a component.
 
-code[Java][@Inject TreeFormFactory treeFormFactory;
+code[Java][
+@Inject TreeFormFactory treeFormFactory;
 
 (...)
 
 treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
-treeFormComposite.update(application);]
-
+treeFormComposite.update(application);
+]
 
 Since e[Tree Form Component] is a combination of  e[Tree Component] and  e[Form Component], all their customizations
 are avaible for it.
@@ -118,7 +122,8 @@ It uses metamodel infos to build column as needed.
 
 img[images/03-components-table.png][][ ][]
 
-code[Java][@Inject ViewerFactory viewerFactory;
+code[Java][
+@Inject ViewerFactory viewerFactory;
 
 (...)
 

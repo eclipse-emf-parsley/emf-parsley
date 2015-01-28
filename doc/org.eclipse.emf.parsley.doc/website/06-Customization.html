@@ -72,8 +72,8 @@
 		class for overriding by Java.
 		</p>
 		<p>
-		As we deeply explained in the <a href="04-Introduction.php" title="Go to &quot;Introduction&quot;" >section Introduction</a>, if you wnat to provide a specific implementation via
-		Java, you can use the Google Guice injection mechanism, buy overriding the specific class with your own
+		As we hinted in the <a href="01-Overview.php" title="Go to &quot;Overview&quot;">Overview</a>, if you want to provide a specific implementation via
+		Java, you can use the Google Guice injection mechanism, but overriding the specific class with your own
 		implementation. Note that an explicit contructor is needed, with the <em>@Inject</em> annotation to make Guice
 		correctly works.
 		</p>
@@ -127,18 +127,22 @@
 				<div class="incode">
 					<p class="code">
 						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;CustomLibraryLabelProvider&nbsp;<span class="keyword">extends</span>&nbsp;ViewerLabelProvider&nbsp;{<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;@Inject<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;CustomLibraryLabelProvider(AdapterFactoryLabelProvider&nbsp;delegate)&nbsp;{<br/>
-						<span class="keyword">super</span>(delegate);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>(delegate);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;text(Book&nbsp;book)&nbsp;{<br/>
-						<span class="keyword">return</span>&nbsp;<span class="string">"Book:&nbsp;"</span>&nbsp;+&nbsp;book.getTitle();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="string">"Book:&nbsp;"</span>&nbsp;+&nbsp;book.getTitle();<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;image(Book&nbsp;book)&nbsp;{<br/>
-						<span class="keyword">return</span>&nbsp;<span class="string">"book.png"</span>;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="string">"book.png"</span>;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;String&nbsp;text(Borrower&nbsp;b)&nbsp;{<br/>
-						<span class="keyword">return</span>&nbsp;<span class="string">"Borrower:&nbsp;"</span>&nbsp;+&nbsp;b.getFirstName();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="string">"Borrower:&nbsp;"</span>&nbsp;+&nbsp;b.getFirstName();<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						}
 					</p>
@@ -184,24 +188,28 @@
 				<div class="incode">
 					<p class="code">
 						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;CustomLibraryViewerContentProvider&nbsp;<span class="keyword">extends</span>&nbsp;ViewerContentProvider&nbsp;{<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;@Inject<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;CustomLibraryViewerContentProvider(AdapterFactory&nbsp;adapterFactory)&nbsp;{<br/>
-						<span class="keyword">super</span>(adapterFactory);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>(adapterFactory);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Object&nbsp;elements(Library&nbsp;library)&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;library.getBooks();<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;library.getBooks();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Object&nbsp;children(Library&nbsp;library)&nbsp;{<br/>
-						<span class="keyword">return</span>&nbsp;library.getBooks();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;library.getBooks();<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;Object&nbsp;children(Book&nbsp;book)&nbsp;{<br/>
-						ArrayList&lt;Object&gt;&nbsp;children&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;ArrayList&lt;Object&gt;();<br/>
-						Writer&nbsp;author&nbsp;=&nbsp;book.getAuthor();<br/>
-						<span class="keyword">if</span>&nbsp;(author&nbsp;!=&nbsp;null)&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;children.add(author);<br/>
-						}<br/>
-						children.addAll(book.getBorrowers());<br/>
-						<span class="keyword">return</span>&nbsp;children;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayList&lt;Object&gt;&nbsp;children&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;ArrayList&lt;Object&gt;();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;author&nbsp;=&nbsp;book.getAuthor();<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(author&nbsp;!=&nbsp;null)&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children.add(author);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children.addAll(book.getBorrowers());<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;children;<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						}
 					</p>
@@ -259,15 +267,17 @@
 					<p class="code">
 						<span class="keyword">import</span>&nbsp;<span class="keyword">static</span>&nbsp;org.eclipse.emf.examples.extlibrary.EXTLibraryPackage.Literals.*;<br/>
 						<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.ui.provider.EStructuralFeaturesProvider;<br/>
+						<br/>
 						<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;LibraryEStructuralFeaturesProvider&nbsp;<span class="keyword">extends</span><br/>
-						FeaturesProvider&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FeaturesProvider&nbsp;{<br/>
+						<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;@Override<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;<span class="keyword">void</span>&nbsp;buildMap(EClassToEStructuralFeatureMap&nbsp;map)&nbsp;{<br/>
-						<span class="keyword">super</span>.buildMap(map);<br/>
-						map.mapTo(LIBRARY,<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIBRARY__NAME,&nbsp;ADDRESSABLE__ADDRESS);<br/>
-						map.mapTo(PERSON,&nbsp;PERSON__FIRST_NAME,&nbsp;PERSON__LAST_NAME,&nbsp;ADDRESSABLE__ADDRESS);<br/>
-						map.mapTo(WRITER,&nbsp;PERSON__FIRST_NAME,&nbsp;PERSON__LAST_NAME,&nbsp;WRITER__BOOKS);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>.buildMap(map);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.mapTo(LIBRARY,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIBRARY__NAME,&nbsp;ADDRESSABLE__ADDRESS);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.mapTo(PERSON,&nbsp;PERSON__FIRST_NAME,&nbsp;PERSON__LAST_NAME,&nbsp;ADDRESSABLE__ADDRESS);<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.mapTo(WRITER,&nbsp;PERSON__FIRST_NAME,&nbsp;PERSON__LAST_NAME,&nbsp;WRITER__BOOKS);<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 						}
 					</p>
@@ -327,6 +337,7 @@
 						<span class="keyword">public</span>&nbsp;String&nbsp;text_Book_author(<span class="keyword">final</span>&nbsp;EStructuralFeature&nbsp;feature)&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="string">"Wrote&nbsp;by:"</span>;<br/>
 						}<br/>
+						<br/>
 						<span class="keyword">public</span>&nbsp;String&nbsp;text_Writer_name(<span class="keyword">final</span>&nbsp;EStructuralFeature&nbsp;feature)&nbsp;{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="string">"Name:"</span>;<br/>
 						}
@@ -424,8 +435,8 @@
 			<div class="literallayout">
 				<div class="incode">
 					<p class="code">
-						menuBuilder{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;menus{<br/>
+						<span class="keyword">menuBuilder</span>{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">menus</span>{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library-&gt;&nbsp;#[<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;submenu(<span class="string">"Edit"</span>,#[<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionCopy,<br/>
@@ -435,7 +446,7 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;])<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;emfMenus{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">emfMenus</span>{<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;#[<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionAdd(<span class="string">"Add&nbsp;a&nbsp;new&nbsp;book"</span>,&nbsp;books,<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXTLibraryFactory.eINSTANCE.createBook&nbsp;=&gt;&nbsp;[<br/>
@@ -473,21 +484,21 @@
 				<div class="incode">
 					<p class="code">
 						<span class="keyword">formControlFactory</span>&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">control</span>&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;{&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;books&nbsp;-&gt;&nbsp;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createLabel(<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;books.map[title].join(<span class="string">",&nbsp;"</span>))<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;{&nbsp;createLabel(parent,&nbsp;<span class="string">""</span>)&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;{&nbsp;observeText&nbsp;}<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toolkit.createLabel(parent,&nbsp;<span class="string">""</span>)<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;observeText(SWT::Modify)<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Borrower&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;{<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createText(firstName,&nbsp;SWT::MULTI,&nbsp;SWT::BORDER,<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWT::WRAP,&nbsp;SWT::V_SCROLL)<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						<span class="keyword">control</span>&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;{&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;books&nbsp;-&gt;&nbsp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createLabel(<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;books.map[title].join(<span class="string">",&nbsp;"</span>))<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;{&nbsp;createLabel(parent,&nbsp;<span class="string">""</span>)&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;{&nbsp;observeText&nbsp;}<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toolkit.createLabel(parent,&nbsp;<span class="string">""</span>)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;observeText(SWT::Modify)<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;Borrower&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;{<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createText(firstName,&nbsp;SWT::MULTI,&nbsp;SWT::BORDER,<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWT::WRAP,&nbsp;SWT::V_SCROLL)<br/>
 						&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+						}<br/>
 						}
 					</p>
 				</div>

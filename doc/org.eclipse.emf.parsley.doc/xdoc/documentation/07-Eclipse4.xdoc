@@ -166,13 +166,13 @@ public void postConstruct(Composite parent, MDirtyable dirtyable) {
 add to e[init] method the following code in order to update the dirty state
 
 code[Java][
-	editingDomain.getCommandStack().addCommandStackListener(
-				new CommandStackListener() {
-					public void commandStackChanged(EventObject event) {
-						if (dirtyable != null)
-							dirtyable.setDirty(true);
-					}
-				});
+editingDomain.getCommandStack().addCommandStackListener(
+			new CommandStackListener() {
+				public void commandStackChanged(EventObject event) {
+					if (dirtyable != null)
+						dirtyable.setDirty(true);
+				}
+			});
 ]
 
 and add the e[@Persist] method, which will be called when the part is saved
@@ -201,4 +201,3 @@ public class SaveHandler {
 	}
 }
 ]
-

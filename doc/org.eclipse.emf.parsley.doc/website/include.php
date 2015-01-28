@@ -12,7 +12,7 @@
 	# these are optional
 	# $Nav->setLinkList(array());
 
-	$pageTitle 		= "Emf Parsley Downloads";
+	$pageTitle 		= "Emf Parsley Sources";
 
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="code.css"/>' . "\n\t");
 	$App->AddExtraHtmlHeader('<link rel="stylesheet" type="text/css" href="book.css"/>' . "\n\t");
