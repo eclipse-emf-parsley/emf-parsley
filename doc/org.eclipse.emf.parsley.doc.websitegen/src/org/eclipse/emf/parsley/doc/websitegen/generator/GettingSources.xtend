@@ -28,7 +28,7 @@ class GettingSources extends  AbstractXdocBaseWebsite {
 //	}
 	
 	def getXdocDocumentRootFolder() {
-		'../org.eclipse.emf.parsley.doc/xdoc/sources'
+		'../org.eclipse.emf.parsley.dev.doc/xdoc/sources'
 	}
 
 	override path() {
