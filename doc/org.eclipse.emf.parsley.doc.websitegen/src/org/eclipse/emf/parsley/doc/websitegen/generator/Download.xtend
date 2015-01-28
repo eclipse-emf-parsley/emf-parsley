@@ -52,7 +52,7 @@ class Download extends AbstractWebsite {
 					<ul>
 						<li>All Milestone Builds: <a href="http://download.eclipse.org/emf-parsley/updates">http://download.eclipse.org/emf-parsley/updates</a></li>
 						<li>0.2.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.2">http://download.eclipse.org/emf-parsley/updates/0.2</a>
-							 (EMF Parsley DSL requires Xtext 2.6.2, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							 (EMF Parsley DSL requires Xtext 2.7.3, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
 						<li>0.1.x: <a href="http://download.eclipse.org/emf-parsley/updates/updates-0.1">http://download.eclipse.org/emf-parsley/updates/updates-0.1</a></li>
 						<li>Latest Stable Snapshot Builds: <a href="https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/">https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/</a></li>
 					</ul>
