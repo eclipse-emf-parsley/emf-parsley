@@ -1,4 +1,3 @@
 resolve "${projects.location}/releng/org.eclipse.emf.parsley.releng/project-contributor.cquery"
 
 launch --stderr --stdout -l "org.eclipse.emf.parsley.dsl/.launch/Generate Language Infrastructure (org.eclipse.emf.parsley.dsl).launch"
-launch --stderr --stdout -l "org.eclipse.emf.parsley.examples.fowlerdsl/.launch/Generate Language Infrastructure (org.eclipse.emf.parsley.examples.fowlerdsl).launch"

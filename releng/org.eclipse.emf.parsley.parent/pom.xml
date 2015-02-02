@@ -119,8 +119,6 @@
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
 		
 				<!-- These examples are used in swtbot tests -->
-				<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.fowlerdsl.ui</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.library.edit</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>

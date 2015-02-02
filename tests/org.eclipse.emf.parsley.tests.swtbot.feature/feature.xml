@@ -52,20 +52,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.examples.fowlerdsl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.examples.fowlerdsl.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.parsley.examples.library"
          download-size="0"
          install-size="0"
