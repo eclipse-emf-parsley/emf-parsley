@@ -121,13 +121,9 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String OUTLINE_VIEW = "Outline";
 
-	protected static final String STATEMACHINE_LABEL = "Statemachine";
+	protected static final String PARSLEY_MODEL_LABEL = "Model";
 
-	protected static final String EVENT_LABEL = "Event doorOpened";
-
-	protected static final String STATE_LABEL = "State idle";
-
-	protected static final String TRANSITION_LABEL = "Transition";
+	protected static final String PARSLEY_MODULE_LABEL = "Module MyTestModule";
 
 	protected static final String TEST_CONTAINER_LABEL = "Test Container";
 
@@ -137,7 +133,7 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String EMF_TREE_EDITOR = "EMF Tree Editor";
 
-	protected static final String EMF_TREE_EDITOR_STATEMACHINE = "EMF Tree Editor Statemachine";
+	protected static final String EMF_TREE_EDITOR_XTEXT = "EMF Tree Editor Xtext";
 
 	protected static final String EMF_TREE_EDITOR_NO_MOUSE = "EMF Tree Editor No Mouse Events";
 
@@ -155,7 +151,7 @@ public class EmfParsleyAbstractTests {
 
 	protected static final String MY2_EXTLIBRARY = "My2.extlibrary";
 
-	protected static final String MY_STATEMACHINE = "fowlerdsl.statemachine";
+	protected static final String MY_PARSLEY = "My.parsley";
 
 	protected static final String MY_TEST_PROJECT = "MyTestProject";
 
@@ -167,14 +163,14 @@ public class EmfParsleyAbstractTests {
 	public static final String MY2_EXTLIBRARY_RELATIVE_PATH = MY_TEST_PROJECT
 			+ "/" + MY2_EXTLIBRARY;
 
-	protected static final String MY_STATEMACHINE_RELATIVE_PATH = MY_TEST_PROJECT
-			+ "/" + MY_STATEMACHINE;
+	protected static final String MY_PARSLEY_RELATIVE_PATH = MY_TEST_PROJECT
+			+ "/" + MY_PARSLEY;
 
 	protected static final String MY_EXT_LIBRARY_PLATFORM_URI = "platform:/resource/"
 			+ MY_EXTLIBRARY_RELATIVE_PATH;
 
-	protected static final String MY_STATEMACHINE_PLATFORM_URI = "platform:/resource/"
-			+ MY_STATEMACHINE_RELATIVE_PATH;
+	protected static final String MY_PARSLEY_PLATFORM_URI = "platform:/resource/"
+			+ MY_PARSLEY_RELATIVE_PATH;
 
 	public static final String TEST_CONTAINER_RELATIVE_PATH = MY_TEST_PROJECT
 			+ "/" + TEST_CONTAINER;
@@ -332,8 +328,8 @@ public class EmfParsleyAbstractTests {
 		editorNamesToId = new HashMap<String, String>();
 		editorNamesToId.put(EMF_TREE_EDITOR,
 				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR);
-		editorNamesToId.put(EMF_TREE_EDITOR_STATEMACHINE,
-				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_FOR_STATEMACHINE);
+		editorNamesToId.put(EMF_TREE_EDITOR_XTEXT,
+				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_FOR_XTEXT);
 		editorNamesToId.put(EMF_TREE_EDITOR_NO_MOUSE,
 				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_NO_MOUSE_ID);
 		editorNamesToId.put(EMF_TREE_EDITOR_OPEN_FORM_DIALOG,
@@ -485,20 +481,12 @@ public class EmfParsleyAbstractTests {
 		return treeItem.expand().getNode(DAMAGED_VIDEO_LABEL);
 	}
 
-	protected SWTBotTreeItem getStatemachineNode(final SWTBotTreeItem treeItem) {
-		return treeItem.expand().getNode(STATEMACHINE_LABEL);
+	protected SWTBotTreeItem getParsleyModelNode(final SWTBotTreeItem treeItem) {
+		return treeItem.expand().getNode(PARSLEY_MODEL_LABEL);
 	}
 
-	protected SWTBotTreeItem getEventNode(final SWTBotTreeItem treeItem) {
-		return treeItem.expand().getNode(EVENT_LABEL);
-	}
-
-	protected SWTBotTreeItem getStateNode(final SWTBotTreeItem treeItem) {
-		return treeItem.expand().getNode(STATE_LABEL);
-	}
-
-	protected SWTBotTreeItem getTransitionNode(final SWTBotTreeItem treeItem) {
-		return treeItem.expand().getNode(TRANSITION_LABEL);
+	protected SWTBotTreeItem getParsleyModuleNode(final SWTBotTreeItem treeItem) {
+		return treeItem.expand().getNode(PARSLEY_MODULE_LABEL);
 	}
 
 	protected SWTBotTreeItem getClassForControlsNode(SWTBotTreeItem editorTreeRoot) {
@@ -643,8 +631,8 @@ public class EmfParsleyAbstractTests {
 	protected void createProjectAndTestFiles() throws CoreException,
 			InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFile();
-		assertTrue(createFile(MY_STATEMACHINE_RELATIVE_PATH,
-				localFileContents(MY_STATEMACHINE)).exists());
+		assertTrue(createFile(MY_PARSLEY_RELATIVE_PATH,
+				localFileContents(MY_PARSLEY)).exists());
 		assertTrue(createFile(TEST_CONTAINER_RELATIVE_PATH,
 				localFileContents(TEST_CONTAINER)).exists());
 	}
@@ -825,9 +813,8 @@ public class EmfParsleyAbstractTests {
 		return getProjectTree().getTreeItem(myTestProject);
 	}
 
-	protected void accessStateMachineNodes(SWTBotTreeItem root) {
-		getEventNode(getStatemachineNode(root));
-		getTransitionNode(getStateNode(getStatemachineNode(root)));
+	protected void accessXtextFileNodes(SWTBotTreeItem root) {
+		getParsleyModuleNode(getParsleyModelNode(root));
 	}
 
 	protected void assertTreeItemImage(SWTBotTreeItem item,

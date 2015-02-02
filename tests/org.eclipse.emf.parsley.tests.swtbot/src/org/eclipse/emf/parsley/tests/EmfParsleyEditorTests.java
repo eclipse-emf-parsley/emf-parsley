@@ -85,10 +85,10 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	}
 
 	@Test
-	public void canAccessEditorTreeOfStatemachine() throws Exception {
-		accessStateMachineNodes(openEditorAndGetTreeRoot(
-				EMF_TREE_EDITOR_STATEMACHINE, MY_STATEMACHINE,
-				MY_STATEMACHINE_PLATFORM_URI));
+	public void canAccessEditorTreeOfXtextFile() throws Exception {
+		accessXtextFileNodes(openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR_XTEXT, MY_PARSLEY,
+				MY_PARSLEY_PLATFORM_URI));
 	}
 
 	@Test
@@ -166,20 +166,17 @@ public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
 	}
 
 	@Test
-	public void selectionViewOnSelectionOnStatemachine() throws Exception {
+	public void selectionViewOnSelectionOnXtextFile() throws Exception {
 		SWTBotView selectionView = openTestView(LIBRARY_EMF_VIEW);
 		// select on the editor's tree
 		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(
-				EMF_TREE_EDITOR_STATEMACHINE, MY_STATEMACHINE,
-				MY_STATEMACHINE_PLATFORM_URI);
-		// we select the statemachine in the editor...
-		getStatemachineNode(rootOfEditorTree).select();
-		// and the selection view should show its children (so we must find the
-		// events)
-		getRootOfTreeFromView(LIBRARY_EMF_VIEW).getTreeItem(EVENT_LABEL);
-		// and states
-		getTransitionNode(getRootOfTreeFromView(LIBRARY_EMF_VIEW).getTreeItem(
-				STATE_LABEL));
+				EMF_TREE_EDITOR_XTEXT, MY_PARSLEY,
+				MY_PARSLEY_PLATFORM_URI);
+		// we select the Xtext Parsley model in the editor...
+		getParsleyModelNode(rootOfEditorTree).select();
+		
+		// and the selection view should show its children (the Xtext Parsley module)
+		getRootOfTreeFromView(LIBRARY_EMF_VIEW).getTreeItem(PARSLEY_MODULE_LABEL);
 		selectionView.close();
 	}
 }

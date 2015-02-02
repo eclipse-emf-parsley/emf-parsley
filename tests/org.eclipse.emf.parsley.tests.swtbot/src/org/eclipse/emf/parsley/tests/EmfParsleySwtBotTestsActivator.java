@@ -52,7 +52,7 @@ public class EmfParsleySwtBotTestsActivator extends AbstractUIPlugin {
 
 	public static final String EMF_TREE_EDITOR_CUSTOM_LABEL = "org.eclipse.emf.parsley.customLabel";
 
-	public static final String EMF_TREE_EDITOR_FOR_STATEMACHINE = "org.eclipse.emf.parsley.statemachine";
+	public static final String EMF_TREE_EDITOR_FOR_XTEXT = "org.eclipse.emf.parsley.xtext";
 
 	public static final String EMF_EDITOR_FOR_LIBRARY = "org.eclipse.emf.parsley.customLibrary";
 

@@ -43,11 +43,12 @@ public class EmfParsleyViewTests extends EmfParsleyAbstractTests {
 		// bot.sleep(2000);
 		getWriterNode(getLibraryNode(getRootOfTreeFromView(LIBRARY_EMF_VIEW)
 				.getTreeItem(MY_EXT_LIBRARY_PLATFORM_URI)));
-		getFileItemFromTestProject(MY_STATEMACHINE).select();
+		getFileItemFromTestProject(MY_PARSLEY).select();
 		// bot.sleep(2000);
 		SWTBotTreeItem root = getRootOfTreeFromView(LIBRARY_EMF_VIEW)
-				.getTreeItem(MY_STATEMACHINE_PLATFORM_URI);
-		accessStateMachineNodes(root);
+				.getTreeItem(MY_PARSLEY_PLATFORM_URI);
+		accessXtextFileNodes(root);
+		
 		view.close();
 	}
 

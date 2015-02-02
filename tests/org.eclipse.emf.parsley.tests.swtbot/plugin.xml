@@ -106,9 +106,9 @@
              class="org.eclipse.emf.parsley.editors.EmfParsleyEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
              contributorClass="org.eclipse.emf.parsley.editors.EmfParsleyEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
              default="false"
-             extensions="statemachine"
-             id="org.eclipse.emf.parsley.statemachine"
-             name="EMF Tree Editor Statemachine">
+             extensions="parsley"
+             id="org.eclipse.emf.parsley.xtext"
+             name="EMF Tree Editor Xtext">
        </editor>
     </extension>
     <extension
