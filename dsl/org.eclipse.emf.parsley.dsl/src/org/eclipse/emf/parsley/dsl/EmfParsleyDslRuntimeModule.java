@@ -20,7 +20,6 @@ import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImportedNamespaceScopePr
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslXbaseBatchScopeProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
-import org.eclipse.xtext.generator.OutputConfigurationProvider;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 
@@ -41,10 +40,6 @@ public class EmfParsleyDslRuntimeModule extends org.eclipse.emf.parsley.dsl.Abst
 		return EmfParsleyDslOutputConfigurationProvider.class;
 	}
 
-	public Class<? extends OutputConfigurationProvider> bindOutputConfigurationProvider() {
-		return EmfParsleyDslOutputConfigurationProvider.class;
-	}
-	
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
 		return EmfParsleyDslGenerator.class;
