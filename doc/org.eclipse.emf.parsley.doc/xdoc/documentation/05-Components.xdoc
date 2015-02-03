@@ -1,20 +1,20 @@
 chapter:Components[Components]
 
 
-This section describes the components that are provided to be used out-of-the-box, that are the foundations for all parts built upon e[Emf Parsley].
-Afetr a brief description, for each component we present a set of customizations, just to get an idea of how it works. You can refer
+This section describes the components that are provided to be used out-of-the-box, that are the foundations for all parts built upon e[EMF Parsley].
+Afetr a brief description, for each component we present a set of customizations, just to give an idea of how it works. You can refer
 to ref:Customizations[Customizations Section] for a complete list.
  
 
 section:FormComponent[Form Component]
 
-The e[Form Component] can be used to rapresent an codeRef[org.eclipse.emf.ecore.EObject] in a row-oriented form,
+The e[Form Component] can be used to rapresent an codeRef[org.eclipse.emf.ecore.EObject] in a form,
 like in the image above.
 
 img[images/03-components-form.png][][ ][]
 
 e[EMF Parsley] provides a factory that can be used to create such a component, like in the code below.
-Here you can see that can be configured only in 2 lines, the constructor phase and the build&fill phase. 
+Here you can see that a form can be configured in 2 lines, the constructor phase and the build&fill phase. 
 
 code[Java][
 @Inject FormFactory formFactory;
@@ -25,34 +25,37 @@ formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
 formComposite.init(eObject);
 ]
 
-Most of the job is done by the second line of code, that get the list of codeRef[org.eclipse.emf.ecore.EStructuralFeature] defined for the codeRef[org.eclipse.emf.ecore.EClass]
-(that is the type of the object to rapresent) and builds a row for each of them. Each row is composed
-by a e[label] with the name of the feature and a e[control] to access the data. 
+Most of the job is done by the second line of code, which gets the list of codeRef[org.eclipse.emf.ecore.EStructuralFeature] defined
+for the codeRef[org.eclipse.emf.ecore.EClass]
+(that is the type of the object to represent) and builds a row for each of them. Each row is composed
+by a e[caption] which defaults to the name of the feature and a e[control] to access the data. 
 
-All these aspect can be customized in many way, for example feature list, the labels and the controls.  
+All these aspects can be customized in many ways, for example you can customize the feature list, the captions and the controls.  
 
 
 section2:FormComponent_features[Feature List Customization]
 
-The e[list fo feature] displayed on the form can be customized via the ref:FeaturesProvider[Feature	Provider] to select the features or the order.
+The e[list of features] displayed on the form can be customized via the ref:FeaturesProvider[Feature Provider] 
+that returns the list of the features (in a given order).
 
 section2:FormComponent_captions[Caption Customization]
 
-The description on the left side of the form can be customizzed via the ref:FormFeatureCaptionProvider[Form Feature Caption Provider].
+The captions of the features shown in the form can be customizzed via the ref:FormFeatureCaptionProvider[Form Feature Caption Provider].
 
 section2:FormComponent_controls[Control Customization]
 
-Otherwise to customize the controls on the right, you can use the ref:FormControlFactory[Form Control Factory].
+The Controls in the form can be customized via the ref:FormControlFactory[Form Control Factory].
 
 section2:FormComponent_proposals[Proposal Provider]
 
-Depending on the feature types, can be some fields that use predefined values (e.g. combo). You can provide the exact proposal list via the ref:ProposalProvider[Proposal Provider]
+Depending on the feature types, some fields can have predefined values (e.g. combo). 
+You can provide the exact proposal list via the ref:ProposalProvider[Proposal Provider]
 
 
 section:TreeComponent[Tree Component]
 
-The e[Tree Component] provides a tree rapresentation of data that can be feeded with an EResource, a
-Resource URI, and a simple EObject. This component use the EMF Meta-Model information to display objects in the tree. 
+The e[Tree Component] provides a tree rapresentation of data that can be fed with an EResource, a
+Resource URI, and a simple EObject. This component uses the EMF Meta-Model information to display objects in the tree. 
 
 img[images/03-components-tree.png][][ ][]
 
@@ -83,18 +86,18 @@ be customized as weel.
 
 section2:Tree_LabelProvider[LabelProvider]
 
-The ref:ViewerLabelProvider[Viewer Label Provider] is the implementation ov a ILabelProvider interface
+The ref:ViewerLabelProvider[Viewer Label Provider] is the implementation of an ILabelProvider interface
 and is responsible to provide the text and image rapresentation for each EObject visualized.
 
 section2:Tree_MenuBuilder[Adding Menu]
 
-The contextual menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section]
-The ref:MenuBuilder[Menu Builder] allow to fully customize the contextual menu.
+The contextual menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section].
+The ref:MenuBuilder[Menu Builder] allows to fully customize the menus.
 
 section:TreeFormComponent[Tree Form Component]
 
-The e[Tree Form Component] contains a ref:TreeComponent that provides a tree rapresentation of data that can be feeded with
-an EResource, a Resource URI, and a simple EObject. This component use the EMF Meta-Model information to display objects in 
+The e[Tree Form Component] contains a ref:TreeComponent that provides a tree rapresentation of data that can be fed with
+an EResource, a Resource URI, and a simple EObject. This component uses the EMF Meta-Model information to display objects in 
 the tree. The component also combines a ref:FormComponent detail that display the current selected object.
 
 img[images/03-components-treeform.png][][ ][]
@@ -117,8 +120,8 @@ are avaible for it.
 
 section:TableComponent[Table Component]
 
-The e[Table Component] can rapresent data in a grid, once you have specified what kind of object need to be rapresented. 
-It uses metamodel infos to build column as needed.
+The e[Table Component] can rapresent data in a grid, once you have specified the type of objects to represent. 
+It uses metamodel information to build columns as needed.
 
 img[images/03-components-table.png][][ ][]
 
@@ -130,21 +133,22 @@ code[Java][
 tableViewer = viewerFactory.createTableViewer(composite,SWT.BORDER | SWT.FULL_SELECTION, object, eClass);
 ]
 
-The class codeRef[org.eclipse.emf.parsley.builders.TableViewerColumnBuilder] has the responsability to
+The class codeRef[org.eclipse.emf.parsley.builders.TableViewerColumnBuilder] has the responsibility to
 build the columns of the Table, by using the ref:FeaturesProvider[Features Provider] to get the list
-of features and the ref:FeatureCaptionProvider[Feature Caption Provider] for the captions.
+of features and the ref:FeatureCaptionProvider[Feature Caption Provider] for the column headers.
 The class codeRef[org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider] can be used to specify
-an implementation of ILabelProvider for each column. 
+an implementation of ILabelProvider for each cell in the table. 
 
 section2:Table_features[Feature List Customization]
 
-The e[list fo feature] displayed on the form can be customized via the ref:TableFeaturesProvider[Table Feature Provider] to select the features or the order.
+The e[list fo features] displayed on the table can be customized via the ref:TableFeaturesProvider[Table Feature Provider].
+This list of features will be used for building the columns of the table.
 
 section2:Table_captions[Caption Customization]
 
-The description on the left side of the form can be customizzed via the ref:FeatureCaptionProvider[Caption Provider].
+The headers of the table can be customizzed via the ref:FeatureCaptionProvider[Caption Provider].
 
 section2:Table_MenuBuilder[Adding Menu]
 
-The contextual menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section]
-The ref:MenuBuilder[Menu Builder] allow to fully customize the contextual menu.
+The context menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section]
+The ref:MenuBuilder[Menu Builder] allows to fully customize the menus.
