@@ -1,28 +1,35 @@
 chapter:Overview[Overview]
 
- e[Emf Parsley] is a lightweight framework that allows easy and quick UI development
-upon EMF. e[EMF Parsley] is built from EMF Edit framework features like Tree, Form and Table builders with
-standard JFace databinding, providing a complete component-based toolset. Moreover a DSL allows to customize several behaviors in each component and can be configured to use all kinds of EMF persistence implementations (XMI, Teneo, CDO).
+e[EMF Parsley] is a lightweight framework that allows easy and quick UI development based
+upon EMF. e[EMF Parsley] is built on top of the EMF Edit framework and it implements features like Trees, Forms and Table builders with
+standard JFace databinding, providing a complete component-based toolset.
+EMF Parsley can be configured to use all kinds of EMF persistence
+implementations (XMI, Teneo, CDO) 
+Moreover a DSL allows to easily customize several behaviors in each component.
 
 section:ParsleyComponents[Parsley Components]
 
-e[EMF Parsley] aims to provide a complete set of block components to visualize your model with the introspective EMF capabilities and can be used to easily build forms, viewers or editors. 
+e[EMF Parsley] aims to provide a complete set of components to visualize your model with the introspective EMF capabilities
+and can be used to easily build forms, viewers or editors. 
 
 There are some components that can be used out-of-the-box and can be considered as a reference implementation
-of the mechanisms that are the bases of e[Emf Parsley] itslef. 
+of the mechanisms that are the basis of e[EMF Parsley] itslef. 
 
 ul[
-	item[e[Tree] ]
-	item[e[Form] ]
-	item[e[Table] ]
-	item[e[Search] coming soon]
+	item[e[Trees] ]
+	item[e[Forms] ]
+	item[e[Tables] ]
+	item[e[Editors] ]
+	item[e[Search boxes] coming soon]
 ]
 
 section:Customize[Customize]
 
-The main feature of e[EMF Parsley] is that you can customize all basic UI behaviours of the components with Injection mechanism (based on link[http://code.google.com/p/google-guice][Google Guice]).
-You can get more info in the ref:Customizations[Customizations Section], but you don't have to know all details about the internal implementation to inject your own customization because
- e[Emf Parsley] provides a DSL to easy customize your UI, as explained in the next section.
+The main feature of e[EMF Parsley] is that you can customize all basic UI behaviours of the components with e[Dependency Injection]
+mechanisms (based on link[http://code.google.com/p/google-guice][Google Guice]).
+You can get more info in the ref:Customizations[Customizations Section], but you don't have to know all details
+about the internal implementation to inject your own customization because
+e[EMF Parsley] provides a DSL to easy customize your UI, as explained in the next section.
 
 section2:Customizations_DSL[Customize with the DSL]
 
@@ -30,7 +37,7 @@ You can use the DSL by creating a new project with the wizard "Create a new proj
 
 img[images/01-new-project-dsl-wizard.png][][ ][] 
 
-Clicking the "Finish" button the wizard will open directly the dsl editor. You can use the content assistant
+Clicking the "Finish" button the wizard will open directly the DSL editor. You can use the content assistant
 to discover all features.
 
 img[images/01-dsl-content-assistant.png][][ ][] 
@@ -38,24 +45,28 @@ img[images/01-dsl-content-assistant.png][][ ][]
 The DSL allows to customize the most relevant behaviors, currently the following are permitted:
 
 ul[
-	item[e[parts] let you define your View Parts: a file plugin.xml_emfparsley_gen will be generated
-	to synchronize with your own plugin.xml]
+	item[e[parts] lets you define your View Parts: a file e[plugin.xml_emfparsley_gen] will be generated
+	that is meant to be synchronized with your own e[plugin.xml]]
 
-	item[e[bindings] section let you define which implementation will be used wiht Injection]
+	item[e[bindings] section lets you define which implementation will be used with Injection]
 
-	item[e[menu] section let you define the contextual menu for all viewers (e[Tree] and e[tables])]
+	item[e[menu] section lets you define the contextual menu for all viewers (e[trees] and e[tables])]
 
-	item[e[features provider] is used to retrieve list of feature for a given EClass to build e[Tables]
-	and e[Forms]]
+	item[e[features provider] is used to retrieve the list of feature for a given EClass to build e[tables]
+	and e[forms]]
 
 	item[e[viewer content provider] mediates between the viewer's model and the viewer, to provide the
 	contents to be shown]
 
-	item[e[Label Provider] is used to retrieve the image and text rapresentation of the EStructuredFeature of a given EClass]
+	item[e[Label Provider] is used to retrieve the image and text rapresentation of the objects of a
+	tree viewer]
 
-	item[e[Caption Provider] provides captions for each feature. Different implementations can be defined for e[Dialogs] and e[Forms]]
+	item[e[Caption Provider] provides captions for each feature (namely, EStructuredFeature) of the object shown in a form,
+	in a dialog or in a table row. 
+	Different implementations can be defined for e[dialogs], e[forms] and e[tables].]
 
-	item[e[Control Factory] provides a custom implementation of Controls for each feature. Different implementations can be defined forfor e[Dialogs] and e[Forms]]
+	item[e[Control Factory] provides a custom implementation of the Controls for each feature shown in a form or a dialog. 
+	Different implementations can be defined forfor e[dialogs] and e[forms]]
 ]
 
 %%section2:Customitations_TheHardWay[The Hard way]

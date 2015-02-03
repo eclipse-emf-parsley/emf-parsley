@@ -19,6 +19,8 @@ item[org.eclipse.emf.examples.library.edit (the edit plug-in)]
 item[org.eclipse.emf.examples.library.editor (the editor plug-in)]
 ]
 
+The editor plug-in project can be removed.
+
 Please consider that here we are starting from this well known EMF model taken out-of-the-box from Eclipse,
 but you can start from your EMF model (in that case you may probably omit the ".edit" and ".editor" plugins, depending on your model).
 
@@ -76,6 +78,7 @@ public class LibraryTreeFormView extends AbstractSaveableTreeFormView {
 
 Now get back to e[module.parlsey] file, go just after e["viewclass"] keyword, type e["LibraryTreeFormView"]
 and e[Ctrl-Space]: the content assist will set automatically the correct qualified name
+(it will insert the class name, and add the corresponding import at the beginning of the file):
 
 code[EmfParsley][
 	viewclass org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
