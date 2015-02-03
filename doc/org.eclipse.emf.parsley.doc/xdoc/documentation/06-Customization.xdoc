@@ -1,21 +1,27 @@
 chapter:Customizations[Customizations]
 
-In this chapter we will describe how e[EMF Parsley] let you customize the standard behaviours.
-A DSL is provided to easily customize most common feature, but you can customize all aspect by doing
-manually. As a matter of fact each customization is explained in a single section, with the details on the DSL (if available) and the
-class for overriding by Java.
+In this chapter we will describe how e[EMF Parsley] lets you customize the standard behaviours.
+A DSL is provided to easily customize most common features, but you can also customize all aspects
+manually (i.e., in directly Java).
+As a matter of fact each customization is explained in a single section, with the details on how to do
+that with the DSL (if available) and in Java.
 
-As we hinted in the ref:Overview[Overview], if you want to provide a specific implementation via
-Java, you can use the Google Guice injection mechanism, but overriding the specific class with your own
-implementation. Note that an explicit contructor is needed, with the e[@Inject] annotation to make Guice
-correctly works.
+If you want to provide a specific implementation in
+Java, you can use the Google Guice injection mechanism, by overriding the specific class with your own
+implementation. Note that in some cases an explicit constructor is needed, with the e[@Inject] annotation to make Guice
+correctly works; when this is the case, the base class will already have such a constructor and you will only
+need to override it, but you will also need to add the e[@Inject] annotation explicitly.
+
+todo[TODO: Explain the concept of Guice module and the corresponding binding methdos]
+
+todo[TODO: Explain polymorphic implementations]
 
 section:Providers[Providers]
 
 
 section2:ViewerLabelProvider[Viewer Label Provider]
 
-The Label Prorvider as in JFace allows to specify the representation of a given Object. e[EMF Parsley]
+The Jface Label Prorvider allows to specify the representation of a given Object. e[EMF Parsley]
 provides an implementation that uses the information provided via the DSL, as you can see in the snippet
 below. 
 
@@ -31,10 +37,17 @@ labelProvider{
 }
 ]
 
-However if you wnat to use your own implementation, you can do that by providing a specific implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
+However if you want to customize the label provider in Java, you need to provide an implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
 and injecting it in the spefic module e[(TODO)].
-e[EMF Parsley] provides such an implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
-that is inteded to be surclassed by the programmer to provides specific implementations like in the example below.
+e[EMF Parsley] provides such a base implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
+that is meant to be subclassed by the programmer to provide specific implementations like in the example below.
+
+This class, like many others in our framework, relies on the e[polymorphic dispatcher] idiom to declaratively
+specify text and image representations for objects. It boils down to the fact that the only thing you need to do is 
+to implement a method that matches a specific signature: e[text] and e[image] for the String representation and
+the image, respectively.  These methods will need to specify as parameter the type of the object to represent. 
+For the image, you can either specify an image filename or an Image object.  File names for images are
+assumed to refer to files in the e[icons] folder of the containing plug-in.
 
 code[Java][
 public class CustomLibraryLabelProvider extends ViewerLabelProvider {
@@ -60,7 +73,7 @@ public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 
 section2:ViewerContentProvider[Viewer Content Provider]
 
-As in Jface, the Content Provider is used to get the elements to represent and for tree their children.
+As in Jface, the Content Provider is used to get the elements to represent in a tree and their children.
 e[EMF Parsley] provides an implementation that uses the DSL as in the code below.
 
 code[EmfParsley][
@@ -81,9 +94,9 @@ viewerContentProvider{
 
 
 The developer can also provide a specific implementation of codeRef[org.eclipse.jface.viewers.IContentProvider]
-by injecting it in the spefic module e[(TODO)]. EMF Parsley provides an implementation with the class
+by injecting it in the spefic module e[(TODO)]. EMF Parsley provides a base implementation with the class
 codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider] that can be easily used to
-specify the children of all object on the tree, like in the example below.
+specify the children of all object on the tree, like in the example below (again, this uses the polymorphic dispatch idiom).
 
 code[Java][
 public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
@@ -115,9 +128,9 @@ public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
 
 section2:FeaturesProvider[Features Provider]
 
-e[EMF Parsley] uses thi kinf of provider wherever a list of feature is requested for a certain EClass.
+e[EMF Parsley] uses this kind of provider wherever a list of features is requested for a certain EClass.
 The default is to return the list of all the features in the EClass, but the programmer can customize it (for instance,
-by returning only a superset, or using a different order) on an EClass-based strategy.
+by returning only a superset, or in a different order) on an EClass-based strategy.
 Thus you can use the DSL to specify that list, as in the snipped below.
 
 code[EmfParsley][
@@ -128,7 +141,7 @@ featuresProvider{
 }
 ] 
  
-If we look at Java, there are more chances to customize this behaviour, but we need to go deep in some
+If you want to customize it in Java, there are more ways to customize this behaviour, but we need to go deep in some
 details of the e[Feature Provider] implementation. 
 
 When the framework builds components according to the
@@ -136,7 +149,8 @@ codeRef[org.eclipse.emf.ecore.EStructuralFeature]s of a given
 codeRef[org.eclipse.emf.ecore.EClass] it relies on an injected
 codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
 The default behavior is to simply return all the features of the a given EClass,
-in the order they are defined in the EClass, as implemented by the method e[defaultFeatures] in codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
+in the order they are defined in the EClass, as implemented by the method e[defaultFeatures] in 
+codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
 
 You can set the mappings, i.e., specify the structural
 features you want to be used given an EClass, by implementing
@@ -180,6 +194,8 @@ section3:TableFeaturesProvider[Table Features Provider]
 As an extension, you can use the codeRef[org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider]:
 the customizations will be applied only to ref:TableComponent[Tables], not to ref:FormComponent[Forms].
 
+If there are no specific customization in the codeRef[org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider],
+we fall back to codeRef[org.eclipse.emf.parsley.ui.provider.FeaturesProvider].
 
 section2:FeatureCaptionProvider[Feature Caption Provider]
 
@@ -195,12 +211,13 @@ featureCaptionProvider{
 	}
 }
 ]
- 
-The codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider] provides captions for
-the features. It can be customized, with injection (see Injection paragraph), to customize the caption label on the
-left of each control in a form and the headers in a table's columns. 
-The framework use a polimorphic mechanism to find customizations, so that It can
-be written a method with a specific signature build by the keyword e['text'] followed by the EClass and the EStructuralFeature.
+
+If you want to customize it in Java, you need to derive from
+codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider]. 
+It can be customized, with injection e[TODO (see Injection paragraph)], to customize the caption label on the
+left of each control in a form and the headers in a table's column. 
+The framework uses a polimorphic mechanism to find customizations: it searches for
+methods with a specific signature: the name is built by the string e['text'] followed by the EClass and the EStructuralFeature.
 All parts of the name are separated by an underscore character and the method must accept a parameter of type EStructuralFeature.
 
 In the following example we specify the caption text for the feature 'Author' of Book and the feature 'Name' for
@@ -223,7 +240,8 @@ to define the description only for the form. For example using the ref:TreeFormC
 Form] your definition will not be used in the tree.
 
 In this case you can also define a method the returns directly the control, like in the example
-below. In such methods there is another parameter that is the parent composite.
+below. In such methods there is another parameter that is the parent composite (that is automatically
+passed by the framework).
 
 code[Java][
 public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
@@ -233,11 +251,18 @@ public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
 }
 ]
 
+If there is no customization in the codeRef[org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider]
+we fall back to codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider].
+
 section2:ProposalProvider[Proposal Provider]
 
-Some controls use a list of proposal to help the end user experince: for example the combo box has a
-list of proposal, but also the simple text can use the proposal to assist and correct the hand-writed
-values. For each feature it can be specified a list of proposals via the DSl.
+Some controls use a list of proposals to help the end user experince: for example a single value reference feature
+will be rendered by default with a combo box, automatically filled with all the possible targets for
+that reference; similarly for Enum features. You can customize the proposals, and you can specify proposals also
+for simple text fields (a content assist dialog will show up for text fields).
+
+For each feature you can specify a list of proposals via the DSL.  In the example below, we first
+compute the default proposals for that feature and then we filter the proposals.
 
 code[EmfParsley][
 proposals{
@@ -250,11 +275,13 @@ proposals{
 ]
  
 This customization can be done also in Java, by extending the class codeRef[org.eclipse.emf.parsley.binding.ProposalCreator]
-and implementing the method code[Java][public List<?> proposals_Book_author(Book book) {...}]
+and implementing the method code[Java][public List<?> proposals_Book_author(Book book) {...}].  This
+method follows the same convention on the signature name as explained in ref:FeatureCaptionProvider[Feature
+Provider].
 
 section:ContextualMenu[Contextual Menu]
 
-Contextual menu can be added to any viewer by usinf the codeRef[org.eclipse.emf.parsley.viewers.ViewerInitializer]. 
+A context menu can be added to any viewer by using the codeRef[org.eclipse.emf.parsley.viewers.ViewerInitializer]. 
 
 code[Java][
 @Inject ViewerInitializer viewerInitializer;
@@ -266,10 +293,13 @@ treeActionBarContributor, editingDomain, this);
 treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
 ]
 
+The contents of such menu are built automatically by the framework or customized by the programmer,
+as shown in the next section.
+
 section2:MenuBuilder[Menu Builder]
 
-e[EMF Parsley] logically separate the menu into 2 parts. The first section contains all common edit commands
-such as e[copy] and e[paste]. The second section regards EMF specific commands, such as for example e[new child].
+e[EMF Parsley] logically separates the menu into 2 parts. The first section contains all common edit commands
+such as e[copy] and e[paste]. The second section contains EMF specific commands, such as for example e[new child].
 You can use the DSL to fully customize the menu, as in the example below. 
 
 code[EmfParsley][
@@ -304,10 +334,10 @@ section:Factories[Factories]
 
 section2:FormControlFactory[Form Control Factory]
 
- e[EMF Parsley] let you customize the e[form controls] via the DSL as in the following example.
+e[EMF Parsley] lets you customize the e[form controls] via the DSL as in the following example.
  
- code[EmfParsley][
- formControlFactory {
+code[EmfParsley][
+formControlFactory {
 	control {
 		Library : name -> { }
 		Writer : books -> 
@@ -325,11 +355,14 @@ section2:FormControlFactory[Form Control Factory]
 	}
 }
 ]
+
+For each pair EClass, EStructuralFeature you can either simply return a Control or specify also the target
+for the databinding (see some examples above).
  
-If you want to customize the controls on the detail via Java, you can extend the class codeRef[org.eclipse.emf.parsley.binding.FormControlFactory].
+If you want to customize the controls in Java, you can extend the class codeRef[org.eclipse.emf.parsley.binding.FormControlFactory].
 Using the same polimorphic mechanism of the labels, the programmer can write a method with the keyword e['control']
-followed by the EClass and EStructuralFeature undescore-character-separated. In the signature of the
-method must be both the e[DataBinding Context] and the e[Feature Observable] that can be used for databinding. 
+followed by the EClass and EStructuralFeature undescore-character-separated. The method
+must accept as parameters the e[DataBinding Context] and the e[Feature Observable] that can be used for databinding. 
 
 code[Java][
 public Control control_Writer_name(DataBindingContext dbc,IObservableValue featureObservable) {
@@ -354,3 +387,5 @@ dialogControlFactory {
 	}
 }
 ]
+
+This customization is exactly as in the case of the form of the previous section.
