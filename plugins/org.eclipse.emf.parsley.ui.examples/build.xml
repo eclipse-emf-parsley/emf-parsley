@@ -23,7 +23,7 @@
 		<sequential>
 			<delete file="@{target}/@{name}.zip" />
 			<zip destfile="@{target}/@{name}.zip" basedir="@{source}/@{name}" 
-				excludes="bin,bin/**,xtend-gen,xtend-gen/**,emfparsley-gen,emfparsley-gen/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**,**/hs_*.log,**/Emf_Parsley_RAP_Launch.launch" />
+				excludes="bin,bin/**,xtend-gen,xtend-gen/**,emfparsley-gen,emfparsley-gen/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**,**/hs_*.log,**/*_Internal.launch" />
 		</sequential>
 	</macrodef>
 
