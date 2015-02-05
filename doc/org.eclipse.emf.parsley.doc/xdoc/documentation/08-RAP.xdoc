@@ -1,3 +1,73 @@
 chapter:RAP[RAP]
 
- 
+section:introduction[Introduction]
+
+As you may know link[http://eclipse.org/rap/][RAP (Remote Application Platform)] is a technology that allows you to run an Eclipse RCP application over the web.
+
+In order to obtain this goal you have to setup a specific RAP Target Platform, for instance the one that RAP itself provides once you install it.
+
+However when you want to use an Eclipse RCP framework over the RAP Platform, you generally have to deal with
+dependencies, since not all Eclipse frameworks are ready-to-use with RAP, especially those related with the SWT layer.
+
+EMF Parsley provides a proper RAP Target Platform that allows you to start leveraging Parsley potentials to the web the same way you have 
+learned to do with desktop (RCP) development.
+
+section:installRapTools[Installing the RAP Tools]
+
+To begin with, you need to install the RAP Tools into the IDE.
+This can be accomplished with the following steps:
+ol[
+	item[Help -> Install New Software ...]
+	item[select the main Eclipse Update site (e.g. e["http://download.eclipse.org/releases/luna"])]
+	item[expand category "Web, XML, Java EE and OSGi Enterprise Development"]
+	item[select "RAP Tools" and complete the installation, restarting the IDE at the end]
+	item[after IDE restarts just close the Welcome page]
+]
+
+
+section:rapSetTargetPlatform[Setup the EMF Parsley RAP Target Platform]
+
+After having installed EMF Parsley as described link[https://www.eclipse.org/emf-parsley/download.html][here] and
+created a new workspace, you can setup the EMF Parsley RAP Target Platform in the following way: 
+ol[
+	item[File -> New... -> Example...]
+	item[from Category "Emf Parsley Examples", select "Emf Parsley Rap Target Platform Example"]
+	item[press Next and Finish]
+	item[open the Target Definition file e[emf-parsely-rap-2.3.target]]
+	item[wait until the "Resolving Target Definition" job is done (check the status bar)]
+	item[when finished, click on hyperlink "Set as Target Platform"]
+]
+
+You will end up with a RAP-enabled workspace, enhanced by EMF and Parsley! 
+
+
+section:rapFirstExample[Running the Parsley RAP UI Example]
+
+Here is the fastest way to get a working web application with all the stuff put togheter:
+ol[
+	item[File -> New... -> Example...]
+	item[from Category "Emf Parsley Examples", select "Emf Parsley Rap Example"]
+	item[press Next and Finish]
+	item[expand plug-in e["org.eclipse.emf.parsley.examples.rap.ui"]]
+	item[right-click "Emf_Parsley_RAP_UI_Example.launch" and click "Run as" "Emf_Parsley_RAP_UI_Example"]
+]
+
+What you will get is a web application that allows you to interact with the model instance as you would
+do in a desktop (RCP) environment.
+
+img[images/08-rap-ui-example-running.png][][ ][]
+
+In this web application you can see two views: 
+ul[
+	item[the one on the left is a read-only view; it just reflects the model content, but it does not react to changes (the classic Eclipse dirty indicator is not triggered
+by changes) and you are not able to save. Its model is created in class e[org.eclipse.emf.parsley.examples.rap.ui.GuiceModule.CustomEmptyResourceInitializer]
+and is not persisted]
+	item[the view on the right is instead a Saveable view and therefore it not only triggers the dirty state after
+a change, but also allows you to save the modifications with the automatic dirty state reset. Its model
+is persisted in file e[System.getProperty("java.io.tmpdir")+"/My.model")] ]
+]
+
+Of course, since this is a web application, you can also open a browser on another pc or device on the same network and type the address,
+replacing 127.0.0.1 with the IP of the machine where the application was launched.
+
+
