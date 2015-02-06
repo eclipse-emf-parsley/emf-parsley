@@ -46,6 +46,22 @@
 							<goal>run</goal>
 						</goals>
 					</execution>
+					<execution>
+						<!-- this will create a .target file pointing to the repository we've just built;
+							we'll use that during another maven build to test that we can compile
+							the our RAP examples (see org.eclipse.emf.parsley.rap.test.parent) -->
+						<id>prepare-target-platform-for-rap-tests</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<ant antfile="${basedir}/../../tests/org.eclipse.emf.parsley.rap.test.targetplatform/create_test_target.ant" 
+									target="create-target-file" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
