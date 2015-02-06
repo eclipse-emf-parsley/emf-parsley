@@ -71,3 +71,68 @@ Of course, since this is a web application, you can also open a browser on anoth
 replacing 127.0.0.1 with the IP of the machine where the application was launched.
 
 
+
+section:rapCdoExample[Running the Parsley RAP CDO Example]
+
+The EMF default XMI persistence is certainly very handy to start with, but as soon as you want a more
+production-ready EMF persistence architecture, well, link[http://wiki.eclipse.org/CDO][CDO] is for sure the way to go.
+In fact with CDO you basically have an EMF model instance shared between clients, that also allows the
+clients to be synchronized with the model changes.
+
+
+In this example, in order to keep things simple, we will use CDO with an in-memory store (MEMStore) whose contents will be lost once the server is stopped.
+However CDO can be configured for usage with RDBMS, Object-oriented or NO-SQL databases (see link[http://eclipse.org/cdo/documentation/][here] for details)
+
+
+To start with we need a CDO Server running and we can obtain it with an example plugin that can be used
+both in an RCP and in a RAP workspace.
+
+ol[
+	item[File -> New... -> Example...]
+	item[from Category "Emf Parsley Examples", select "Emf Parsley Cdo Server Example"]
+	item[press Next and Finish]
+	item[expand plug-in e["org.eclipse.emf.parsley.examples.cdo.server"]]
+	item[right-click "CDOServerExample.launch" and click "Run as" "CDOServerExample"]
+	item[a message on the Console e["Repository\[demo\] started!"] informs that the CDO Server instance
+	is started!]
+]
+
+Now we can create the web application that will use the CDO server just started.
+
+ol[
+	item[File -> New... -> Example...]
+	item[from Category "Emf Parsley Examples", select "Emf Parsley Rap Cdo Example"]
+	item[press Next and Finish]
+]
+
+The plug-in projects created are:
+
+ul[
+	item[the Model (org.eclipse.emf.parsley.examples.cdo.model)]
+	item[a Parsley plug-in with a TreeForm (org.eclipse.emf.parsley.examples.cdo.treeform)]
+	item[the webapp (org.eclipse.emf.parsley.examples.cdo.rap)]
+]
+
+Then let's start the application
+
+ol[
+	item[expand plug-in e["org.eclipse.emf.parsley.examples.cdo.rap"]]
+	item[right-click "EMF-Parsley_Library_RAP.launch" and click "Run as" "EMF-Parsley_Library_RAP"]
+]
+
+If you happen to see this
+
+img[images/08-rap-refresh.png][][ ][]
+
+just press the refresh button and should see the following
+
+img[images/08-rap-cdo-1.png][][ ][]
+
+Now feel free to open the same address from more browsers window (yes, on different machines or devices, possibly)
+and see the power of this technology stack at work!
+
+img[images/08-rap-cdo-2.png][][ ][]
+
+
+
+
