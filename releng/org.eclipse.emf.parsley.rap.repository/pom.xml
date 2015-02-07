@@ -54,7 +54,7 @@
 						<phase>package</phase>
 						<configuration>
 							<target>
-								<ant antfile="${basedir}/../../tests/org.eclipse.emf.parsley.rap.test.targetplatform/create_test_target.ant" 
+								<ant antfile="${basedir}/../../devtools/org.eclipse.emf.parsley.targetplatform/create_test_target.ant" 
 									target="create-target-file" />
 							</target>
 						</configuration>
