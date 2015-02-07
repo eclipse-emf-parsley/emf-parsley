@@ -304,6 +304,7 @@
 				
 				<module>../../examples/org.eclipse.emf.parsley.examples.rap.model</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.rap.ui</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.server</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.model</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.treeform</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.rap</module>
