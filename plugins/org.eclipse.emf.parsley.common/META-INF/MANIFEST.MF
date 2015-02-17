@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Emf Parsley Common
 Bundle-SymbolicName: org.eclipse.emf.parsley.common;singleton:=true
-Bundle-Version: 0.2.0.qualifier
+Bundle-Version: 0.3.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.EmfParsleyActivator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibility:=reexport,
