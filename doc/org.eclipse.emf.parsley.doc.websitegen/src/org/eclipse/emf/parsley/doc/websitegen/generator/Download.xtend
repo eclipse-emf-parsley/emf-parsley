@@ -50,11 +50,20 @@ class Download extends AbstractWebsite {
 				<div>
 					<h2 class="featurette-heading text-parsley1">Update Sites</h2>
 					<ul>
-						<li>All Milestone Builds: <a href="http://download.eclipse.org/emf-parsley/updates">http://download.eclipse.org/emf-parsley/updates</a></li>
-						<li>0.2.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.2">http://download.eclipse.org/emf-parsley/updates/0.2</a>
+						<li>All Releases: <a href="http://download.eclipse.org/emf-parsley/updates">http://download.eclipse.org/emf-parsley/updates</a></li>
+						<li>0.3.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.3">http://download.eclipse.org/emf-parsley/updates/0.3</a>
 							 (EMF Parsley DSL requires Xtext 2.7.3, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
-						<li>0.1.x: <a href="http://download.eclipse.org/emf-parsley/updates/updates-0.1">http://download.eclipse.org/emf-parsley/updates/updates-0.1</a></li>
 						<li>Latest Stable Snapshot Builds: <a href="https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/">https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/</a></li>
+					</ul>
+					<p>
+						All downloads are provided under the terms and conditions of the Eclipse Foundation Software User Agreement unless otherwise specified.
+					</p>
+				</div>
+				<br><br>
+				<div>
+					<h2 class="featurette-heading text-parsley1">Old Milestones</h2>
+					<ul>
+						<li>These are old milestone releases: <a href="http://download.eclipse.org/emf-parsley/archive/updates">http://download.eclipse.org/emf-parsley/archive/updates</a></li>
 					</ul>
 					<p>
 						All downloads are provided under the terms and conditions of the Eclipse Foundation Software User Agreement unless otherwise specified.
