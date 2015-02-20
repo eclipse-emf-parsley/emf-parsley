@@ -12,7 +12,9 @@ dependencies, since not all Eclipse frameworks are ready-to-use with RAP, especi
 EMF Parsley provides a proper RAP Target Platform that allows you to start leveraging Parsley potentials to the web the same way you have 
 learned to do with desktop (RCP) development.
 
-section:installRapTools[Installing the RAP Tools]
+section:setupParsleyRAP[Setup]
+
+section2:installRapTools[Installing the RAP Tools]
 
 To begin with, you need to install the RAP Tools into the IDE.
 This can be accomplished with the following steps:
@@ -25,7 +27,7 @@ ol[
 ]
 
 
-section:rapSetTargetPlatform[Setup the EMF Parsley RAP Target Platform]
+section2:rapSetTargetPlatform[Setup the EMF Parsley RAP Target Platform]
 
 After having installed EMF Parsley as described link[https://www.eclipse.org/emf-parsley/download.html][here] and
 created a new workspace, you can setup the EMF Parsley RAP Target Platform in the following way: 
@@ -40,8 +42,9 @@ ol[
 
 You will end up with a RAP-enabled workspace, enhanced by EMF and Parsley! 
 
+section:rapExamples[Examples]
 
-section:rapFirstExample[Running the Parsley RAP UI Example]
+section2:rapFirstExample[Running the Parsley RAP UI Example]
 
 Here is the fastest way to get a working web application with all the stuff put togheter:
 ol[
@@ -72,7 +75,7 @@ replacing 127.0.0.1 with the IP of the machine where the application was launche
 
 
 
-section:rapCdoExample[Running the Parsley RAP CDO Example]
+section2:rapCdoExample[Running the Parsley RAP CDO Example]
 
 The EMF default XMI persistence is certainly very handy to start with, but as soon as you want a more
 production-ready EMF persistence architecture, well, link[http://wiki.eclipse.org/CDO][CDO] is for sure the way to go.
