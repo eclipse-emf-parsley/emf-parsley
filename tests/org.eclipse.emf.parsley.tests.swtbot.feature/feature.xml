@@ -37,10 +37,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.xtext.sdk"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.cdo.server"
          version="0.0.0"/>
 
