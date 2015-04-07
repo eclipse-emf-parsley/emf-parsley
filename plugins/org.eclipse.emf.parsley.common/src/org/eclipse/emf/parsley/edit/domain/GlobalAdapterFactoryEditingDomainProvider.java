@@ -23,6 +23,7 @@ public class GlobalAdapterFactoryEditingDomainProvider extends DefaultAdapterFac
 
 	private static AdapterFactoryEditingDomain singleton;
 	
+	@Override
 	public AdapterFactoryEditingDomain get() {
 		if (singleton == null) {
 			singleton = super.get();

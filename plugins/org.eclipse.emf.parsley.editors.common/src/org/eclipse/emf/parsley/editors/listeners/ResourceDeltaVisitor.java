@@ -41,6 +41,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 		this.savedResources = savedResources;
 	}
 
+	@Override
 	public boolean visit(IResourceDelta delta) {
 		if (delta.getResource().getType() == IResource.FILE && deltaShouldBeHandled(delta)) {
 			// see whether it's a resource of our resource set

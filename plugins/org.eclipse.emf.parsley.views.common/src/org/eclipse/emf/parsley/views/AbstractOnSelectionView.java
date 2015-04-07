@@ -35,6 +35,7 @@ public abstract class AbstractOnSelectionView extends ViewPart {
 
 	// the listener we register with the selection service
 	private ISelectionListener listener = new ISelectionListener() {
+		@Override
 		public void selectionChanged(IWorkbenchPart sourcepart,
 				ISelection selection) {
 			// we ignore our own selections
@@ -61,6 +62,7 @@ public abstract class AbstractOnSelectionView extends ViewPart {
 		return selectionHelper.getFirstSelectedEObject(selection);
 	}
 
+	@Override
 	public void dispose() {
 		// important: We need do unregister our listener when the view is
 		// disposed

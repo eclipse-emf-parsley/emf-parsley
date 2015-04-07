@@ -45,6 +45,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	 * approach simply tests whether whether {@link #getChildren getChildren}
 	 * returns any children.
 	 */
+	@Override
 	public boolean hasChildren(Object element) {
 		// Lorenzo: we need to call the super method anyway
 		// if the super method is not invoked the tree is not

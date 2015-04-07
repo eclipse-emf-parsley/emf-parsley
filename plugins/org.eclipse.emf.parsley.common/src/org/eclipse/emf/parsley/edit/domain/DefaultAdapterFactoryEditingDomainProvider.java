@@ -26,6 +26,7 @@ public class DefaultAdapterFactoryEditingDomainProvider implements Provider<Adap
 	@Inject
 	protected Provider<AdapterFactory> adapterFactoryProvider;
 	
+	@Override
 	public AdapterFactoryEditingDomain get() {
 		return new InjectableAdapterFactoryEditingDomain(adapterFactoryProvider.get());
 	}

@@ -51,6 +51,7 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 		tableFormComposite.setFocus();
 	}
 
+	@Override
 	public StructuredViewer getViewer() {
 		return tableFormComposite.getViewer();
 	}

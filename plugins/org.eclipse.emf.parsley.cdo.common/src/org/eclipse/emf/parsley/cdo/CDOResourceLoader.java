@@ -56,6 +56,7 @@ public class CDOResourceLoader extends ResourceLoader {
 		return resource;
 	}
 
+	@Override
 	public LoadResourceResponse getResource(AdapterFactoryEditingDomain editingDomain,
 			URI resourceURI) {
 		Resource resource = null;

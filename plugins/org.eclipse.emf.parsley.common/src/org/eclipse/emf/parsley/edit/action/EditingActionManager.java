@@ -91,9 +91,11 @@ public class EditingActionManager {
 
 	protected ISharedImages getSharedImages() {
 		return new ISharedImages() {
+			@Override
 			public Image getImage(String symbolicName) {
 				return getImageDescriptor(symbolicName).createImage();
 			}
+			@Override
 			public ImageDescriptor getImageDescriptor(String symbolicName) {
 				return (ImageDescriptor) WorkbenchImages.getImageDescriptor(symbolicName);
 			}

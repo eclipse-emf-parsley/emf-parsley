@@ -33,12 +33,14 @@ public class MenuSubmenuSpecification implements IMenuContributionSpecification 
 		this.subContributionSpecifications = subContributionSpecifications;
 	}
 
+	@Override
 	public void updateSelection(IStructuredSelection selection) {
 		for (IMenuContributionSpecification m : subContributionSpecifications) {
 			m.updateSelection(selection);
 		}
 	}
 
+	@Override
 	public IContributionItem getContributionItem() {
 		MenuManager menuManager =  new MenuManager(text);
 		for (IMenuContributionSpecification m : subContributionSpecifications) {

@@ -46,6 +46,7 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 	 * org.eclipse.emf.parsley.edit.IEditingStrategy#prepare(org.eclipse.emf
 	 * .ecore.EObject)
 	 */
+	@Override
 	public void prepare(EObject original) {
 		state = new EObjectState(original);
 		notificationBuffer = new NotificationBuffer(original);
@@ -57,10 +58,12 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 	 * otherwise modifications to the object are reflected in other views and
 	 * editors.
 	 */
+	@Override
 	public EditingDomain getEditingDomain(EObject edited) {
 		return null;
 	}
 
+	@Override
 	public void update(EObject edited) {
 		enableNotifications(edited);
 		EditingDomain domain = editingDomainFinder.getEditingDomainFor(edited);
@@ -74,6 +77,7 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 		notificationBuffer.propagateBufferedNotifications();
 	}
 
+	@Override
 	public void rollback(EObject edited) {
 		state.copyStateTo(edited);
 		enableNotifications(edited);

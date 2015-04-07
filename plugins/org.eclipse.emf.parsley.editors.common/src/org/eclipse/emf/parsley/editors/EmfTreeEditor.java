@@ -106,6 +106,7 @@ public class EmfTreeEditor extends EmfAbstractEditor {
 		return EcoreEditorPlugin.INSTANCE.getString(key);
 	}
 
+	@Override
 	protected boolean showOutlineView() {
 		return true;
 	}

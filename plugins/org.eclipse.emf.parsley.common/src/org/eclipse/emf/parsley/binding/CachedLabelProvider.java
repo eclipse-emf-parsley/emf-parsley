@@ -38,6 +38,7 @@ public class CachedLabelProvider implements ILabelProvider {
 		this.delegate = delegate;
 	}
 
+	@Override
 	public Image getImage(Object element) {
 		if (!imageCache.containsKey(element)) {
 			imageCache.put(element, delegate.getImage(element));
@@ -45,6 +46,7 @@ public class CachedLabelProvider implements ILabelProvider {
 		return imageCache.get(element);
 	}
 
+	@Override
 	public String getText(Object element) {
 		if (!textCache.containsKey(element)) {
 			textCache.put(element, delegate.getText(element));
@@ -52,20 +54,24 @@ public class CachedLabelProvider implements ILabelProvider {
 		return textCache.get(element);
 	}
 
+	@Override
 	public void dispose() {
 		imageCache.clear();
 		textCache.clear();
 		delegate.dispose();
 	}
 
+	@Override
 	public boolean isLabelProperty(Object element, String property) {
 		return delegate.isLabelProperty(element, property);
 	}
 
+	@Override
 	public void addListener(ILabelProviderListener listener) {
 		delegate.addListener(listener);
 	}
 
+	@Override
 	public void removeListener(ILabelProviderListener listener) {
 		delegate.removeListener(listener);
 	}

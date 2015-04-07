@@ -44,19 +44,23 @@ public class ViewerSelectionProvider implements ISelectionProvider {
 				.addSelectionChangedListener(createSelectionChangedListener());
 	}
 
+	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.add(listener);
 	}
 
+	@Override
 	public ISelection getSelection() {
 		return viewer.getSelection();
 	}
 
+	@Override
 	public void removeSelectionChangedListener(
 			ISelectionChangedListener listener) {
 		selectionChangedListeners.remove(listener);
 	}
 
+	@Override
 	public void setSelection(ISelection selection) {
 		for (ISelectionChangedListener listener : selectionChangedListeners) {
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
@@ -65,6 +69,7 @@ public class ViewerSelectionProvider implements ISelectionProvider {
 
 	protected ISelectionChangedListener createSelectionChangedListener() {
 		return new ISelectionChangedListener() {
+			@Override
 			public void selectionChanged(
 					SelectionChangedEvent selectionChangedEvent) {
 				setSelection(selectionChangedEvent.getSelection());

@@ -41,14 +41,17 @@ public interface IImageHelper {
 	
 	class NullImageHelper implements IImageHelper {
 
+		@Override
 		public Image getImage(String name) {
 			return null;
 		}
 
+		@Override
 		public Image getImage(ImageDescriptor imageDescriptor) {
 			return null;
 		}
 
+		@Override
 		public Image convertToImage(Object imageDescription) {
 			return null;
 		}

@@ -40,10 +40,12 @@ public class MultipleFeatureControlObservable extends AbstractObservableValue im
 		mfc.setValue(value);
 	}
 
+	@Override
 	public Object getValueType() {
 		return null;
 	}
 
+	@Override
 	public void selectionChanged(final SelectionChangedEvent event) {
 		fireValueChange(new ValueDiff() {
 

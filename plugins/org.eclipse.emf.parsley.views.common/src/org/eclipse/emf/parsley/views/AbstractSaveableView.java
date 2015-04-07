@@ -71,9 +71,11 @@ public abstract class AbstractSaveableView extends ViewPart implements
 		editingDomain = editingDomainProvider.get();
 		editingDomain.getCommandStack().addCommandStackListener(
 				new CommandStackListener() {
+					@Override
 					public void commandStackChanged(final EventObject event) {
 						getSite().getWorkbenchWindow().getShell().getDisplay()
 								.asyncExec(new Runnable() {
+									@Override
 									public void run() {
 										// Try to select the affected objects.
 										Command mostRecentCommand = EmfCommandsUtil
@@ -129,10 +131,12 @@ public abstract class AbstractSaveableView extends ViewPart implements
 		return resource;
 	}
 
+	@Override
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
 
+	@Override
 	public void doSave(IProgressMonitor monitor) {
 		try {
 			saveResourceAndUpdateDirtyState();
@@ -147,6 +151,7 @@ public abstract class AbstractSaveableView extends ViewPart implements
 		}
 	}
 
+	@Override
 	public boolean isDirty() {
 		return dirty;
 	}
@@ -155,13 +160,16 @@ public abstract class AbstractSaveableView extends ViewPart implements
 		this.dirty = dirty;
 	}
 
+	@Override
 	public void doSaveAs() {
 	}
 
+	@Override
 	public boolean isSaveAsAllowed() {
 		return false;
 	}
 
+	@Override
 	public boolean isSaveOnCloseNeeded() {
 		return false;
 	}

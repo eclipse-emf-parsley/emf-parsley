@@ -19,6 +19,7 @@ import org.eclipse.swt.graphics.Image;
  */
 public abstract class AbstractImageHelper implements IImageHelper {
 
+	@Override
 	public Image convertToImage(Object imageDescription) {
 		if (imageDescription instanceof Image) {
 			return (Image) imageDescription;

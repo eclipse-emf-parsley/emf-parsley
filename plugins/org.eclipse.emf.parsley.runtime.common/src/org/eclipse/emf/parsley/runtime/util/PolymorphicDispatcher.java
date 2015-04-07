@@ -41,6 +41,7 @@ public class PolymorphicDispatcher<RT> {
 	private List<MethodDesc> declaredMethodsOrderedBySpecificParameterType;
 
 	public static class DefaultErrorHandler<RT> implements ErrorHandler<RT> {
+		@Override
 		public RT handle(Object[] params, Throwable e) {
 			return Exceptions.throwUncheckedException(e);
 		}
@@ -52,6 +53,7 @@ public class PolymorphicDispatcher<RT> {
 			return new NullErrorHandler<RT>();
 		}
 
+		@Override
 		public RT handle(Object[] params, Throwable throwable) {
 			// ignore
 			return null;
@@ -70,6 +72,7 @@ public class PolymorphicDispatcher<RT> {
 			return new WarningErrorHandler<RT>(logger);
 		}
 		
+		@Override
 		public RT handle(Object[] params, Throwable throwable) {
 			logger.warn("Error in polymorphic dispatcher : "+throwable.getMessage(), throwable);
 			return null;
@@ -90,6 +93,7 @@ public class PolymorphicDispatcher<RT> {
 			this.minParams = minParams;
 		}
 
+		@Override
 		public boolean apply(Method param) {
 			return param.getName().equals(methodName) && param.getParameterTypes().length >= minParams
 					&& param.getParameterTypes().length <= maxParams;
@@ -249,6 +253,7 @@ public class PolymorphicDispatcher<RT> {
 	private final SimpleCache<List<Class<?>>, List<MethodDesc>> cache =
 		new SimpleCache<List<Class<?>>, List<MethodDesc>>(
 			new Function<List<Class<?>>, List<MethodDesc>>() {
+				@Override
 				public List<MethodDesc> apply(List<Class<?>> paramTypes) {
 					List<MethodDesc> result = new ArrayList<MethodDesc>();
 					Iterator<MethodDesc> iterator = declaredMethodsOrderedBySpecificParameterType.iterator();
@@ -350,6 +355,7 @@ public class PolymorphicDispatcher<RT> {
 			}
 		}
 		Collections.sort(cachedDescriptors, new Comparator<MethodDesc>() {
+			@Override
 			public int compare(MethodDesc o1, MethodDesc o2) {
 				return PolymorphicDispatcher.this.compare(o1, o2);
 			}
@@ -390,6 +396,7 @@ public class PolymorphicDispatcher<RT> {
 			return new ExceptionLogHandler<RT>(logger);
 		}
 		
+		@Override
 		public RT handle(Object[] params, Throwable throwable) {
 			if(!(throwable instanceof NoSuchMethodException)){
 				logger.warn("Error in polymorphic dispatcher : "+throwable.getMessage(), throwable);

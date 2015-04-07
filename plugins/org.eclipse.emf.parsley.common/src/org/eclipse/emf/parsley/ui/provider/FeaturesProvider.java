@@ -124,6 +124,7 @@ public class FeaturesProvider {
 		EList<EStructuralFeature> eAllStructuralFeatures = eClass.getEAllStructuralFeatures();
 		Collection<EStructuralFeature> features = Collections2.filter(eAllStructuralFeatures, new Predicate<EStructuralFeature>() {
 
+			@Override
 			public boolean apply(EStructuralFeature feature) {
 				// derived, unchangeable, container and containment features ignored
 				return feature.isChangeable()

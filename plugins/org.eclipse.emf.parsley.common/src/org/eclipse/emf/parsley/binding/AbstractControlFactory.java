@@ -345,6 +345,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 					Iterables.filter(proposals, Predicates.notNull()),
 					new Function<Object, String>() {
 
+						@Override
 						public String apply(Object input) {
 							return input.toString();
 						}

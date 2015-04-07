@@ -66,10 +66,12 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		this.labelProvider = labelProvider;
 	}
 
+	@Override
 	protected void initControlFactory(EditingDomain domain, EObject model) {
 		dialogControlFactory.init(domain, model, this);
 	}
 
+	@Override
 	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
 		dialogFeatureCaptionProvider.getLabel(this, eClass, feature);
 		dialogControlFactory.create(feature);

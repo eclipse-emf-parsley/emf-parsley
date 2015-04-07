@@ -60,6 +60,7 @@ public class ViewerLabelProvider implements ILabelProvider {
 		delegateLabelProvider = delegate;
 	}
 
+	@Override
 	public String getText(Object element) {
 		if (element == null) {
 			return "";
@@ -77,6 +78,7 @@ public class ViewerLabelProvider implements ILabelProvider {
 		return getDelegateLabelProvider().getText(element);
 	}
 
+	@Override
 	public Image getImage(Object element) {
 		if (element == null) {
 			return null;
@@ -97,18 +99,22 @@ public class ViewerLabelProvider implements ILabelProvider {
 		return getDelegateLabelProvider().getImage(element);
 	}
 
+	@Override
 	public void addListener(ILabelProviderListener listener) {
 		getDelegateLabelProvider().addListener(listener);
 	}
 
+	@Override
 	public void dispose() {
 		getDelegateLabelProvider().dispose();
 	}
 
+	@Override
 	public boolean isLabelProperty(Object element, String property) {
 		return getDelegateLabelProvider().isLabelProperty(element, property);
 	}
 
+	@Override
 	public void removeListener(ILabelProviderListener listener) {
 		getDelegateLabelProvider().removeListener(listener);
 	}

@@ -98,6 +98,7 @@ public abstract class AbstractOnSelectionTableView extends
 				.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 	}
 
+	@Override
 	public void setFocus() {
 		tableViewer.getTable().setFocus();
 	}

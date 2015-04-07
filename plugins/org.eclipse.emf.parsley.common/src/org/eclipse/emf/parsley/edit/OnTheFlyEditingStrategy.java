@@ -28,18 +28,22 @@ public class OnTheFlyEditingStrategy implements IEditingStrategy {
 	@Inject
 	private EditingDomainFinder editingDomainFinder;
 
+	@Override
 	public void prepare(EObject original) {
 		// nothing to prepare
 	}
 
+	@Override
 	public void update(EObject edited) {
 		// Nothing, it's already updated
 	}
 
+	@Override
 	public EditingDomain getEditingDomain(EObject edited) {
 		return editingDomainFinder.getEditingDomainFor(edited);
 	}
 
+	@Override
 	public void rollback(EObject edited) {
 		// we don't rollback: it's already updated
 	}

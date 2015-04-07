@@ -34,6 +34,7 @@ public class DetailDialog extends AbstractDetailDialog {
 		super(parentShell, title, original, domain);
 	}
 
+	@Override
 	protected AbstractDetailComposite createDetailComposite(Composite composite) {
 		return dialogFactory.createDialogDetailComposite(composite, SWT.NONE);
 	}

@@ -30,6 +30,7 @@ public class TreeFormComposite extends AbstractMasterDetailComposite {
 		super(parent, style, sashStyle, weights);
 	}
 
+	@Override
 	protected StructuredViewer createViewer(Composite parent) {
 		return new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 	}

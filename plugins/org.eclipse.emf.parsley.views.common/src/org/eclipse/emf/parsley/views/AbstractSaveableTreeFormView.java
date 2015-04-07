@@ -54,6 +54,7 @@ public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewe
 		treeFormComposite.setFocus();
 	}
 
+	@Override
 	public StructuredViewer getViewer() {
 		return treeFormComposite.getViewer();
 	}

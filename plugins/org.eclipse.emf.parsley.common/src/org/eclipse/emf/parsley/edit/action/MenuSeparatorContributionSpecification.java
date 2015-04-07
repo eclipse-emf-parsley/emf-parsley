@@ -25,10 +25,12 @@ public class MenuSeparatorContributionSpecification implements IMenuContribution
 	public MenuSeparatorContributionSpecification() {
 	}
 
+	@Override
 	public void updateSelection(IStructuredSelection selection) {
 		// nothing to update for a standard Action
 	}
 
+	@Override
 	public IContributionItem getContributionItem() {
 		return new Separator();
 	}

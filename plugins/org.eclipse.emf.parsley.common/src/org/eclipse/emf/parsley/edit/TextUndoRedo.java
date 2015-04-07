@@ -140,6 +140,7 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 	 * org.eclipse.swt.events.KeyListener#keyPressed(org.eclipse.swt.events.
 	 * KeyEvent)
 	 */
+	@Override
 	public void keyPressed(KeyEvent e) {
 		// Listen to CTRL+Z for Undo, to CTRL+Y or CTRL+SHIFT+Z for Redo
 		boolean isCtrl = (e.stateMask & SWT.CTRL) != 0;
@@ -162,6 +163,7 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 	 * org.eclipse.swt.events.KeyListener#keyReleased(org.eclipse.swt.events
 	 * .KeyEvent)
 	 */
+	@Override
 	public void keyReleased(KeyEvent e) {
 		// ignore
 	}
@@ -173,6 +175,7 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 	 * 
 	 * @param event
 	 */
+	@Override
 	public void modifyText(ModifyEvent event) {
 		if (isUndo) {
 			stack.pushRedo(currentTextInfo);

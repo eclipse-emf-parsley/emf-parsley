@@ -48,6 +48,7 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 		treeViewer.getTree().setFocus();
 	}
 
+	@Override
 	public StructuredViewer getViewer() {
 		return treeViewer;
 	}

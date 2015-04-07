@@ -38,6 +38,7 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 		super(parent, style);
 	}
 	
+	@Override
 	protected StructuredViewer createViewer(Composite parent) {
 		tableViewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
 		return tableViewer;

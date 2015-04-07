@@ -38,24 +38,28 @@ public class DialogControlFactory extends AbstractControlFactory {
 
 	}
 
+	@Override
 	public Label createLabel(Composite parent, String text) {
 		Label label = new Label(parent, SWT.NONE);
 		label.setText(text);
 		return label;
 	}
 
+	@Override
 	public Button createButton(Composite parent, String text, int style) {
 		Button button = new Button(parent, style);
 		button.setText(text);
 		return button;
 	}
 
+	@Override
 	public Text createText(Composite parent, String text, int style) {
 		Text t = new Text(parent, style);
 		t.setText(text);
 		return t;
 	}
 
+	@Override
 	public ComboViewer createComboViewer(Composite parent, int style) {
 		ComboViewer combo = new ComboViewer(parent, style);
 		return combo;

@@ -39,6 +39,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	protected class SelectionChangedListener implements
 			ISelectionChangedListener {
+		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			EObject selectedObject = emfSelectionHelper
 					.getFirstSelectedEObject(event.getSelection());
@@ -84,6 +85,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		}
 	}
 
+	@Override
 	public StructuredViewer getViewer() {
 		return viewer;
 	}

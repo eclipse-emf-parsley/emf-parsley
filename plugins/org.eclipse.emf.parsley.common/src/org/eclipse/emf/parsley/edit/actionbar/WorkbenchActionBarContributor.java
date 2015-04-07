@@ -127,6 +127,7 @@ public class WorkbenchActionBarContributor extends
 		// (*)
 		
 		submenuManager.addMenuListener(new IMenuListener() {
+			@Override
 			public void menuAboutToShow(IMenuManager menuManager) {
 				menuManager.updateAll(true);
 			}
@@ -258,6 +259,7 @@ public class WorkbenchActionBarContributor extends
 
 	}
 
+	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		if ((style & ADDITIONS_LAST_STYLE) == 0) {
 			menuManager.add(new Separator("additions"));
@@ -306,10 +308,12 @@ public class WorkbenchActionBarContributor extends
 		}
 	}
 
+	@Override
 	public void propertyChanged(Object source, int id) {
 		update();
 	}
 
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		editingActionManager.updateSelection(event.getSelection());
 	}

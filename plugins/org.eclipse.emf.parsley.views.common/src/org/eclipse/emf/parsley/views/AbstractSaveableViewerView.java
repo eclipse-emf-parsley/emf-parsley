@@ -48,6 +48,7 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 		final Collection<?> theSelection = collection;
 		if (theSelection != null && !theSelection.isEmpty()) {
 			Runnable runnable = new Runnable() {
+				@Override
 				public void run() {
 					// Try to select the items in the current viewer.
 					if (getViewer() != null) {
@@ -62,6 +63,7 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 		}
 	}
 
+	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		actionBarContributor.menuAboutToShow(menuManager);
 	}

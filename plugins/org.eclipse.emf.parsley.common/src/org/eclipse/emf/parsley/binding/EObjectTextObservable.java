@@ -36,6 +36,7 @@ public class EObjectTextObservable extends AbstractObservableValue {
 		this.text = text;
 	}
 
+	@Override
 	public Object getValueType() {
 		return null;
 	}

@@ -29,10 +29,12 @@ public class MenuActionContributionSpecification implements IMenuContributionSpe
 		this.action = action;
 	}
 
+	@Override
 	public void updateSelection(IStructuredSelection selection) {
 		// nothing to update for a standard Action
 	}
 
+	@Override
 	public IContributionItem getContributionItem() {
 		return new ActionContributionItem(action);
 	}

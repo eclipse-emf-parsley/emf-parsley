@@ -29,10 +29,12 @@ public class MenuCommandActionHandlerContributionSpecification implements IMenuC
 		this.action = action;
 	}
 
+	@Override
 	public void updateSelection(IStructuredSelection selection) {
 		action.updateSelection(selection);
 	}
 
+	@Override
 	public IContributionItem getContributionItem() {
 		return new ActionContributionItem(action);
 	}

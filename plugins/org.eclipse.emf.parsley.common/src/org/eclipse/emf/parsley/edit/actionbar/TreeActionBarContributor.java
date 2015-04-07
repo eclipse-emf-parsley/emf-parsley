@@ -48,6 +48,7 @@ public class TreeActionBarContributor implements IMenuListener,
 		editingActionManager.setEditingDomain(editingDomain);
 	}
 
+	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		menuManager.add(new Separator("edit"));
 		editingActionManager.emfMenuAboutToShow(menuManager);
@@ -56,6 +57,7 @@ public class TreeActionBarContributor implements IMenuListener,
 
 	protected SelectionChangedEvent lastSelectionChangedEvent;
 
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		editingActionManager.updateSelection(event.getSelection());
 	}

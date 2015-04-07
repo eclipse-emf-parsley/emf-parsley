@@ -88,10 +88,12 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		this.formControlFactory = formControlFactory;
 	}
 
+	@Override
 	public EditingDomainFinder getEditingDomainFinder() {
 		return editingDomainFinder;
 	}
 
+	@Override
 	@Inject
 	public void setEditingDomainFinder(EditingDomainFinder editingDomainFinder) {
 		this.editingDomainFinder = editingDomainFinder;
@@ -106,6 +108,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		this.labelProvider = labelProvider;
 	}
 
+	@Override
 	protected void initControlFactory(EditingDomain domain,
 			EObject model) {
 		scrolledForm.setText(getLabelProvider().getText(model));
@@ -114,6 +117,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		formControlFactory.init(domain, model, main, toolkit);
 	}
 
+	@Override
 	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
 		formFeatureCaptionProvider.getLabel(main, eClass, feature);
 		formControlFactory.create(feature);

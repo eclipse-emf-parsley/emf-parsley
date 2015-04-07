@@ -60,6 +60,7 @@ public abstract class OnSelectionStructuredViewerAbstractView extends AbstractOn
 		pagebook.showPage(viewer.getControl());
 	}
 
+	@Override
 	protected void updateOnSelection(IWorkbenchPart sourcepart,
 			ISelection selection) {
 		Object element = getFirstSelectedElement(selection);

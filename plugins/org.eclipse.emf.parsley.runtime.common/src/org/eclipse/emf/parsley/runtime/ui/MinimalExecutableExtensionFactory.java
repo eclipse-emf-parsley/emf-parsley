@@ -22,6 +22,7 @@ import static com.google.inject.Guice.createInjector;
 public abstract class MinimalExecutableExtensionFactory extends
 		AbstractGuiceAwareExecutableExtensionFactory {
 
+	@Override
 	protected Injector getInjector() {
 		return createInjector(getModule());
 	}

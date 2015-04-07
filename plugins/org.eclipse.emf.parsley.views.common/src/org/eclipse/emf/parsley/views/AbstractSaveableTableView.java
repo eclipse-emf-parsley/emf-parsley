@@ -67,6 +67,7 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 		tableViewer.getTable().setFocus();
 	}
 
+	@Override
 	public TableViewer getViewer() {
 		return tableViewer;
 	}

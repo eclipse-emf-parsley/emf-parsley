@@ -78,6 +78,7 @@ public abstract class AbstractOnSelectionTableFormView extends
 	}
 
 
+	@Override
 	public void setFocus() {
 		tableFormDetailComposite.getViewer().getControl().setFocus();
 	}

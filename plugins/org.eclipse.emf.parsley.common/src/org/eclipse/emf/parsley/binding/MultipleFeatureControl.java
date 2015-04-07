@@ -164,6 +164,7 @@ public class MultipleFeatureControl extends Composite {
 
 	class InternalSelectionProvider implements ISelectionProvider {
 
+		@Override
 		public void setSelection(ISelection selection) {
 			this.selection = selection;
 			recalculateLabelText();
@@ -177,14 +178,17 @@ public class MultipleFeatureControl extends Composite {
 
 		private java.util.List<ISelectionChangedListener> listeners = new ArrayList<ISelectionChangedListener>();
 
+		@Override
 		public void addSelectionChangedListener(ISelectionChangedListener listener) {
 			listeners.add(listener);
 		}
 
+		@Override
 		public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 			listeners.remove(listener);
 		}
 
+		@Override
 		public ISelection getSelection() {
 			return selection;
 		}
