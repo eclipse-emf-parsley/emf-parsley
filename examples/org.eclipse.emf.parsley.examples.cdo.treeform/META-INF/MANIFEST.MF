@@ -54,6 +54,6 @@ Import-Package: org.apache.commons.logging,
  org.eclipse.ui.views,
  org.eclipse.ui.views.contentoutline,
  org.eclipse.ui.views.properties;ui.views=split
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.examples.cdo.treeform,
  org.eclipse.emf.parsley.examples.cdo.view

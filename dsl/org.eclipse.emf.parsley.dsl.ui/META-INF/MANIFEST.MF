@@ -30,7 +30,7 @@ Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.pde.internal.ui.parts,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.dsl.ui.contentassist,
  org.eclipse.emf.parsley.dsl.ui.contentassist.antlr,
  org.eclipse.emf.parsley.dsl.ui.internal,
