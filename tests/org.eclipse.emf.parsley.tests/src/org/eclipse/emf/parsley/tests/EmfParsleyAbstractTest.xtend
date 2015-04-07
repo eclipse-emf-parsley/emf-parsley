@@ -59,9 +59,16 @@ abstract class EmfParsleyAbstractTest {
 	
 	var protected TestContainer testContainer
 
-	var protected ClassForControls eobj
+	/**
+	 * An instance to use for testing the creation of a Control
+	 * using an AbstractControlFactory
+	 */
+	var protected ClassForControls classForControlsInstance
 
-	var protected TestEClass eobj2
+	/**
+	 * An instance to use for testing Ecore related mechanisms
+	 */
+	var protected TestEClass testEClassInstance
 	
 	/**
 	 * This will be created on demand using the method getOrCreateInjector
@@ -88,8 +95,8 @@ abstract class EmfParsleyAbstractTest {
 		wr = lib.writers.head
 		b = lib.books.head
 		testContainer = testFactory.createTestContainer
-		eobj = createClassForControls
-		eobj2 = testFactory.createTestEClass
+		classForControlsInstance = createClassForControls
+		testEClassInstance = testFactory.createTestEClass
 	}
 
 	def protected ResourceSet createResourceSet() {

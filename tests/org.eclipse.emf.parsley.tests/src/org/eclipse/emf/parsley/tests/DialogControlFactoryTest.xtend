@@ -23,13 +23,17 @@ import org.junit.After
 
 class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	
-	var protected ClassForControls eobj
+	/**
+	 * An instance to use for testing the creation of a Control
+	 * using an AbstractControlFactory
+	 */
+	var protected ClassForControls classForControlsInstance
 	
 	var DialogControlFactory factory
 	
 	@Before
 	def void setupEObject() {
-		eobj = testFactory.createClassForControls
+		classForControlsInstance = testFactory.createClassForControls
 		factory = createAndInitializeFactory
 	}
 
@@ -44,28 +48,28 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test def void testBooleanFeature() {
 		val control = factory.createControl(testPackage.classForControls_BooleanFeature)
 		control.assertCheckbox(false)
-		eobj.booleanFeature = true
+		classForControlsInstance.booleanFeature = true
 		control.assertCheckbox(true)
 	}
 
 	@Test def void testBooleanObjectFeature() {
 		val control = factory.createControl(testPackage.classForControls_BooleanObjectFeature)
 		control.assertCheckbox(false)
-		eobj.booleanObjectFeature = true
+		classForControlsInstance.booleanObjectFeature = true
 		control.assertCheckbox(true)
 	}
 
 	@Test def void testBooleanDataTypeFeature() {
 		val control = factory.createControl(testPackage.classForControls_BooleanDataTypeFeature)
 		control.assertCheckbox(false)
-		eobj.booleanDataTypeFeature = true
+		classForControlsInstance.booleanDataTypeFeature = true
 		control.assertCheckbox(true)
 	}
 
 	@Test def void testBooleanPrimitiveDataTypeFeature() {
 		val control = factory.createControl(testPackage.classForControls_BooleanPrimitiveDataTypeFeature)
 		control.assertCheckbox(false)
-		eobj.booleanPrimitiveDataTypeFeature = true
+		classForControlsInstance.booleanPrimitiveDataTypeFeature = true
 		control.assertCheckbox(true)
 	}
 
@@ -74,14 +78,14 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		val control = factory.createControl(testPackage.classForControls_BooleanFeature)
 		control.assertEnabled(false)
 		control.assertCheckbox(false)
-		eobj.booleanFeature = true
+		classForControlsInstance.booleanFeature = true
 		control.assertCheckbox(true)
 	}
 
 	@Test def void testEnumFeature() {
 		val control = factory.createControl(testPackage.classForControls_EnumFeature)
 		control.assertCombo("FIRST, SECOND, THIRD", 0)
-		eobj.enumFeature = EnumForControls.THIRD
+		classForControlsInstance.enumFeature = EnumForControls.THIRD
 		control.assertCombo("FIRST, SECOND, THIRD", 2)
 	}
 
@@ -89,7 +93,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		val control = factory.createControl(testPackage.classForControls_StringFeature)
 		control.assertTextEditable(true)
 		control.assertText("")
-		eobj.stringFeature = "Foo"
+		classForControlsInstance.stringFeature = "Foo"
 		control.assertText("Foo")
 	}
 
@@ -98,12 +102,18 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		val control = factory.createControl(testPackage.classForControls_StringFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
-		eobj.stringFeature = "Foo"
+		classForControlsInstance.stringFeature = "Foo"
 		control.assertText("Foo")
 	}
 
 	@Test def void testStringFeatureUnchangeable() {
 		val control = factory.createControl(testPackage.classForControls_UnchangeableStringFeature)
+		control.assertTextEnabled(false)
+		control.assertText("")
+	}
+
+	@Test def void testStringFeatureDerived() {
+		val control = factory.createControl(testPackage.classForControls_DerivedStringFeature)
 		control.assertTextEnabled(false)
 		control.assertText("")
 	}
@@ -117,7 +127,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		val control = factory.createControl(testPackage.classForControls_StringFeature)
 		control.assertTextEditable(true)
 		control.assertText("")
-		eobj.stringFeature = "Foo"
+		classForControlsInstance.stringFeature = "Foo"
 		control.assertText("Foo")
 	}
 
@@ -142,8 +152,8 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	@Test def void testFeatureMap() {
-		eobj.featureMapEntries1 += createClassForFeatureMapEntry1("1")
-		eobj.featureMapEntries2 += createClassForFeatureMapEntry2("2")
+		classForControlsInstance.featureMapEntries1 += createClassForFeatureMapEntry1("1")
+		classForControlsInstance.featureMapEntries2 += createClassForFeatureMapEntry2("2")
 		val control = factory.createControl(testPackage.classForControls_FeatureMapEntries)
 		// button is visible but not enabled
 		control.assertMultipleFeatureControl("Class For Feature Map Entry1 1, Class For Feature Map Entry2 2", true, false)
@@ -161,16 +171,16 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	@Test def void testMultiReferenceFeatureWithInitialValues() {
-		eobj.multiReferenceFeature += createClassWithName("Res1")
-		eobj.multiReferenceFeature += createClassWithName("Res2")
+		classForControlsInstance.multiReferenceFeature += createClassWithName("Res1")
+		classForControlsInstance.multiReferenceFeature += createClassWithName("Res2")
 		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
 		control.assertMultipleFeatureControl("Class With Name Res1, Class With Name Res2", true)
 	}
 
 	@Test def void testMultiReferenceFeatureReadOnlyWithInitialValues() {
 		factory.readonly = true
-		eobj.multiReferenceFeature += createClassWithName("Res1")
-		eobj.multiReferenceFeature += createClassWithName("Res2")
+		classForControlsInstance.multiReferenceFeature += createClassWithName("Res1")
+		classForControlsInstance.multiReferenceFeature += createClassWithName("Res2")
 		val control = factory.createControl(testPackage.classForControls_MultiReferenceFeature)
 		// the button is not visible, but the label is still shown
 		control.assertMultipleFeatureControl("Class With Name Res1, Class With Name Res2", false)
@@ -187,19 +197,19 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		mfc.internalSelectionProvider.setSelectionProgrammatically(ref1, ref2)
 		control.assertMultipleFeatureControl("Class With Name Res1, Class With Name Res2", true)
 		// and verify that the object has the selected references
-		ref1.assertSame(eobj.multiReferenceFeature.get(0))
-		ref2.assertSame(eobj.multiReferenceFeature.get(1))
+		ref1.assertSame(classForControlsInstance.multiReferenceFeature.get(0))
+		ref2.assertSame(classForControlsInstance.multiReferenceFeature.get(1))
 		// force the selection in the control...
 		mfc.internalSelectionProvider.setSelectionProgrammatically(ref2)
 		control.assertMultipleFeatureControl("Class With Name Res2", true)
 		// and verify that the object has the selected references
-		ref2.assertSame(eobj.multiReferenceFeature.get(0))
-		1.assertEquals(eobj.multiReferenceFeature.size)
+		ref2.assertSame(classForControlsInstance.multiReferenceFeature.get(0))
+		1.assertEquals(classForControlsInstance.multiReferenceFeature.size)
 		// remove all selections...
 		mfc.internalSelectionProvider.setSelectionProgrammatically()
 		control.assertMultipleFeatureControl("", true)
 		// and verify that the object has the selected references
-		0.assertEquals(eobj.multiReferenceFeature.size)
+		0.assertEquals(classForControlsInstance.multiReferenceFeature.size)
 	}
 
 	@Test def void testReferenceFeatureWithoutResourceSet() {
@@ -209,34 +219,34 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 
 	@Test def void testReferenceFeatureWithResource() {
 		val res = createResource
-		res.contents += eobj
+		res.contents += classForControlsInstance
 		
 		createClassWithName(res, "Ref1")
 		val referred2 = createClassWithName(res, "Ref2")
 		val referred3 = createClassWithName(res, "Ref3")
 		
-		eobj.referenceToClassWithName = referred2
+		classForControlsInstance.referenceToClassWithName = referred2
 		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
 		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 1)
 		
-		eobj.referenceToClassWithName = referred3
+		classForControlsInstance.referenceToClassWithName = referred3
 		control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
 		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 2)
 	}
 
 	@Test def void testReferenceFeatureWithResourceSet() {
 		val res = createResourceInResouceSet
-		res.contents += eobj
+		res.contents += classForControlsInstance
 		
 		createClassWithName(res, "Ref1")
 		val referred2 = createClassWithName(res, "Ref2")
 		val referred3 = createClassWithName(res, "Ref3")
 		
-		eobj.referenceToClassWithName = referred2
+		classForControlsInstance.referenceToClassWithName = referred2
 		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
 		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 1)
 		
-		eobj.referenceToClassWithName = referred3
+		classForControlsInstance.referenceToClassWithName = referred3
 		control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
 		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 2)
 	}
@@ -245,7 +255,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		val res = createResourceInResouceSet
 		val res2 = createResourceInResouceSet
 		
-		res.contents += eobj
+		res.contents += classForControlsInstance
 		
 		createClassWithName(res, "Ref1")
 		val referred2 = createClassWithName(res2, "Ref2")
@@ -253,11 +263,11 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		
 		// note that the proposals are ordered differently w.r.t. the previous test
 		//  since they are in different resources.
-		eobj.referenceToClassWithName = referred2
+		classForControlsInstance.referenceToClassWithName = referred2
 		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
 		control.assertCombo("Class With Name Ref1, Class With Name Ref3, Class With Name Ref2", 2)
 		
-		eobj.referenceToClassWithName = referred3
+		classForControlsInstance.referenceToClassWithName = referred3
 		control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
 		control.assertCombo("Class With Name Ref1, Class With Name Ref3, Class With Name Ref2", 1)
 	}
@@ -269,7 +279,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	def protected createAndInitializeFactory() {
-		new DialogControlFactory() => [initialize(eobj)]
+		new DialogControlFactory() => [initialize(classForControlsInstance)]
 	}
 
 }

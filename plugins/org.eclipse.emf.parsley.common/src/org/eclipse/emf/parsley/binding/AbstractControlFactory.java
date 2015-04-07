@@ -377,14 +377,28 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			// don't override readonly behavior
 			if (c.isEnabled()) {
 				c.setEnabled(
-					f.isChangeable()
-					&& (!(f.getEType() instanceof EDataType && !((EDataType) f
-							.getEType()).isSerializable())));
+					isControlToBeEnabled(f));
 			}
 			c.setData(AbstractControlFactory.ESTRUCTURALFEATURE_KEY, f);
 			c.setData(AbstractControlFactory.EOBJECT_KEY, owner);
 			c.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		}
+	}
+
+	/**
+	 * Based on the {@link EStructuralFeature} passed as parameter, the method
+	 * must return whether the corresponding {@link Control} should be enabled or not.
+	 * The default behavior is not to enable controls representing a derived feature,
+	 * an unchangeable feature or any data type which is not serializable.
+	 * 
+	 * @param f
+	 * @return
+	 */
+	protected boolean isControlToBeEnabled(EStructuralFeature f) {
+		return !f.isDerived() &&
+				f.isChangeable()
+				&& (!(f.getEType() instanceof EDataType && !((EDataType) f
+						.getEType()).isSerializable()));
 	}
 
 	public void dispose() {

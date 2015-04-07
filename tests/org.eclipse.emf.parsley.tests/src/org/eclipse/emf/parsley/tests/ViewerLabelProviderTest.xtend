@@ -39,17 +39,17 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testDefaultGetText() {
-		"Class For Controls".assertEquals(labelProvider.getText(eobj))
+		"Class For Controls".assertEquals(labelProvider.getText(classForControlsInstance))
 	}
 
 	@Test
 	def void testDefaultGetTextForFeatureMapEntry() {
-		eobj.featureMapEntries1 += createClassForFeatureMapEntry1("1")
-		eobj.featureMapEntries2 += createClassForFeatureMapEntry2("2")
+		classForControlsInstance.featureMapEntries1 += createClassForFeatureMapEntry1("1")
+		classForControlsInstance.featureMapEntries2 += createClassForFeatureMapEntry2("2")
 		"Class For Feature Map Entry1 1".
-			assertEquals(labelProvider.getText(eobj.featureMapEntries.get(0)))
+			assertEquals(labelProvider.getText(classForControlsInstance.featureMapEntries.get(0)))
 		"Class For Feature Map Entry2 2".
-			assertEquals(labelProvider.getText(eobj.featureMapEntries.get(1)))
+			assertEquals(labelProvider.getText(classForControlsInstance.featureMapEntries.get(1)))
 	}
 
 	@Test
@@ -100,7 +100,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 				"Test"
 			}
 		}.injectMembers
-		"Test".assertEquals(customLabelProvider.getText(eobj))
+		"Test".assertEquals(customLabelProvider.getText(classForControlsInstance))
 	}
 
 	@Test
@@ -121,7 +121,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testDefaultGetImage() {
-		labelProvider.getImage(eobj) => [
+		labelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			getDefaultEMFImageForClassForControls.assertImageIs(it)
 		]
@@ -129,8 +129,8 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testDefaultGetImageForFeatureMapEntry() {
-		eobj.featureMapEntries1 += createClassForFeatureMapEntry1("1")
-		labelProvider.getImage(eobj.featureMapEntries.get(0)) => [
+		classForControlsInstance.featureMapEntries1 += createClassForFeatureMapEntry1("1")
+		labelProvider.getImage(classForControlsInstance.featureMapEntries.get(0)) => [
 			assertNotNull
 			getDefaultEMFImageForClassForFeatureMapEntry1.assertImageIs(it)
 		]
@@ -143,7 +143,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 				TEST_IMAGE
 			}
 		}.injectMembers
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
@@ -156,7 +156,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 				loadTestImage
 			}
 		}.injectMembers
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
@@ -169,7 +169,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 				ImageDescriptor.createFromImage(loadTestImage)
 			}
 		}.injectMembers
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
@@ -183,7 +183,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 			}
 		}.injectMembers
 		// this will default to EMF image
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			getDefaultEMFImageForClassForControls.assertImageIs(it)
 		]

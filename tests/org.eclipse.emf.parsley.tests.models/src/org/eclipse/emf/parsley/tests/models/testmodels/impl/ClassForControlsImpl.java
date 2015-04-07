@@ -38,6 +38,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeature <em>String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getDerivedStringFeature <em>Derived String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getMultiReferenceFeature <em>Multi Reference Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
@@ -188,6 +189,26 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String unchangeableStringFeature = UNCHANGEABLE_STRING_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDerivedStringFeature() <em>Derived String Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDerivedStringFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DERIVED_STRING_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDerivedStringFeature() <em>Derived String Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDerivedStringFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected String derivedStringFeature = DERIVED_STRING_FEATURE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getReferenceToClassWithName() <em>Reference To Class With Name</em>}' reference.
@@ -378,6 +399,27 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDerivedStringFeature() {
+		return derivedStringFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDerivedStringFeature(String newDerivedStringFeature) {
+		String oldDerivedStringFeature = derivedStringFeature;
+		derivedStringFeature = newDerivedStringFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE, oldDerivedStringFeature, derivedStringFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ClassWithName getReferenceToClassWithName() {
 		if (referenceToClassWithName != null && referenceToClassWithName.eIsProxy()) {
 			InternalEObject oldReferenceToClassWithName = (InternalEObject)referenceToClassWithName;
@@ -493,6 +535,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return getStringFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
 				return getUnchangeableStringFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
+				return getDerivedStringFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				if (resolve) return getReferenceToClassWithName();
 				return basicGetReferenceToClassWithName();
@@ -535,6 +579,9 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				setStringFeature((String)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
+				setDerivedStringFeature((String)newValue);
 				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				setReferenceToClassWithName((ClassWithName)newValue);
@@ -584,6 +631,9 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				setStringFeature(STRING_FEATURE_EDEFAULT);
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
+				setDerivedStringFeature(DERIVED_STRING_FEATURE_EDEFAULT);
+				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				setReferenceToClassWithName((ClassWithName)null);
 				return;
@@ -625,6 +675,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return STRING_FEATURE_EDEFAULT == null ? stringFeature != null : !STRING_FEATURE_EDEFAULT.equals(stringFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
 				return UNCHANGEABLE_STRING_FEATURE_EDEFAULT == null ? unchangeableStringFeature != null : !UNCHANGEABLE_STRING_FEATURE_EDEFAULT.equals(unchangeableStringFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
+				return DERIVED_STRING_FEATURE_EDEFAULT == null ? derivedStringFeature != null : !DERIVED_STRING_FEATURE_EDEFAULT.equals(derivedStringFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME:
 				return referenceToClassWithName != null;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE:
@@ -663,6 +715,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 		result.append(stringFeature);
 		result.append(", unchangeableStringFeature: ");
 		result.append(unchangeableStringFeature);
+		result.append(", derivedStringFeature: ");
+		result.append(derivedStringFeature);
 		result.append(", featureMapEntries: ");
 		result.append(featureMapEntries);
 		result.append(')');

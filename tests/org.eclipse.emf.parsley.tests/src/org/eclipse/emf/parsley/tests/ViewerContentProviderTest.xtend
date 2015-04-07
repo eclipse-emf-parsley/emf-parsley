@@ -133,7 +133,7 @@ class ViewerContentProviderTest extends EmfParsleyAbstractTest {
 
 	def private fillTestContainer() {
 		testContainer => [
-			classesForControls += eobj
+			classesForControls += classForControlsInstance
 			classesWithName += createClassWithName("Test")
 		]
 	}

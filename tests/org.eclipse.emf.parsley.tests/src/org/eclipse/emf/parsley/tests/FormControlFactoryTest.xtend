@@ -16,7 +16,7 @@ class FormControlFactoryTest extends DialogControlFactoryTest {
 	
 	def override protected createAndInitializeFactory() {
 		new FormControlFactory() => [
-			initialize(eobj)
+			initialize(classForControlsInstance)
 		]
 	}
 }

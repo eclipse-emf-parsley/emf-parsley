@@ -417,8 +417,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassForControls_ReferenceToClassWithName() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(7);
+	public EAttribute getClassForControls_DerivedStringFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -426,7 +426,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassForControls_MultiReferenceFeature() {
+	public EReference getClassForControls_ReferenceToClassWithName() {
 		return (EReference)classForControlsEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -435,8 +435,17 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getClassForControls_MultiReferenceFeature() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getClassForControls_FeatureMapEntries() {
-		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(9);
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -445,7 +454,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	public EReference getClassForControls_FeatureMapEntries1() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(10);
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -454,7 +463,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	public EReference getClassForControls_FeatureMapEntries2() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(11);
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -672,6 +681,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__ENUM_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES);
@@ -771,6 +781,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getClassForControls_EnumFeature(), this.getEnumForControls(), "enumFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_StringFeature(), ecorePackage.getEString(), "stringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_UnchangeableStringFeature(), ecorePackage.getEString(), "unchangeableStringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_DerivedStringFeature(), ecorePackage.getEString(), "derivedStringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_ReferenceToClassWithName(), this.getClassWithName(), null, "referenceToClassWithName", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_MultiReferenceFeature(), this.getClassWithName(), null, "multiReferenceFeature", null, 0, -1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_FeatureMapEntries(), ecorePackage.getEFeatureMapEntry(), "featureMapEntries", null, 0, -1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

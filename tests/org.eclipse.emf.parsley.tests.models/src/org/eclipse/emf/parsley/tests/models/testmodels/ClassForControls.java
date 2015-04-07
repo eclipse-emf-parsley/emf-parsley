@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeature <em>String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDerivedStringFeature <em>Derived String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getMultiReferenceFeature <em>Multi Reference Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
@@ -207,6 +208,32 @@ public interface ClassForControls extends EObject {
 	 * @generated
 	 */
 	String getUnchangeableStringFeature();
+
+	/**
+	 * Returns the value of the '<em><b>Derived String Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Derived String Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Derived String Feature</em>' attribute.
+	 * @see #setDerivedStringFeature(String)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_DerivedStringFeature()
+	 * @model derived="true"
+	 * @generated
+	 */
+	String getDerivedStringFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDerivedStringFeature <em>Derived String Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Derived String Feature</em>' attribute.
+	 * @see #getDerivedStringFeature()
+	 * @generated
+	 */
+	void setDerivedStringFeature(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Reference To Class With Name</b></em>' reference.

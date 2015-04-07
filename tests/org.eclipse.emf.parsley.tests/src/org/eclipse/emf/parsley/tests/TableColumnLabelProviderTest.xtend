@@ -42,10 +42,10 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testDefaultGetText() {
-		eobj.stringFeature = "Test"
+		classForControlsInstance.stringFeature = "Test"
 		"Test".assertEquals(
 			tableColumnLabelProvider.
-				forFeature(testPackage.classForControls_StringFeature).getText(eobj)
+				forFeature(testPackage.classForControls_StringFeature).getText(classForControlsInstance)
 		)
 	}
 
@@ -66,10 +66,10 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testGetTextWhenFeatureValueIsNullReturnsEmptyString() {
-		eobj.stringFeature = null
+		classForControlsInstance.stringFeature = null
 		"".assertEquals(
 			tableColumnLabelProvider.
-				forFeature(testPackage.classForControls_StringFeature).getText(eobj)
+				forFeature(testPackage.classForControls_StringFeature).getText(classForControlsInstance)
 		)
 	}
 
@@ -93,7 +93,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			override protected getFeatureValue(Object element) {
 				throw new AssertionError("TEST") 
 			}
-		}.initialize(testPackage.classForControls_StringFeature).getText(eobj))
+		}.initialize(testPackage.classForControls_StringFeature).getText(classForControlsInstance))
 	}
 
 	@Test
@@ -103,7 +103,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			override protected getFeatureValue(Object element) {
 				throw new NullPointerException("TEST")
 			}
-		}.initialize(testPackage.classForControls_StringFeature).getText(eobj))
+		}.initialize(testPackage.classForControls_StringFeature).getText(classForControlsInstance))
 	}
 
 	@Test
@@ -113,7 +113,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 				"Test"
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
-		"Test".assertEquals(customProvider.getText(eobj))
+		"Test".assertEquals(customProvider.getText(classForControlsInstance))
 	}
 
 	@Test
@@ -137,7 +137,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 				TEST_IMAGE
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
@@ -150,7 +150,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 				loadTestImage
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
@@ -163,7 +163,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 				ImageDescriptor.createFromImage(loadTestImage)
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
@@ -177,7 +177,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
 		// this will default to null
-		customLabelProvider.getImage(eobj) => [
+		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNull
 		]
 	}

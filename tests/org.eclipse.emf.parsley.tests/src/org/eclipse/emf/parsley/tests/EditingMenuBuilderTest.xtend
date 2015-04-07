@@ -43,7 +43,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	@Test
 	def void testDefaultMenu() {
 		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
-		editingMenuBuilder.assertMenuItemsGivenObject(eobj,
+		editingMenuBuilder.assertMenuItemsGivenObject(classForControlsInstance,
 		"&Undo @Ctrl+Z, &Redo @Ctrl+Y, separator, Cu&t, &Copy, &Paste, separator, &Delete, separator")
 	}
 
@@ -127,7 +127,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 			}
 							
 		}.injectMembers.initializeEditingMenuBuilder
-		editingMenuBuilder.assertMenuItemsGivenObject(eobj,
+		editingMenuBuilder.assertMenuItemsGivenObject(classForControlsInstance,
 		"&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, &Copy, &Paste")
 	}
 
@@ -146,7 +146,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 			}
 			
 		}.injectMembers.initializeEditingMenuBuilder
-		editingMenuBuilder.assertMenuItemsGivenObject(eobj,
+		editingMenuBuilder.assertMenuItemsGivenObject(classForControlsInstance,
 		"&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, &Copy, &Paste")
 	}
 
@@ -170,7 +170,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 			}
 							
 		}.injectMembers.initializeEditingMenuBuilder
-		editingMenuBuilder.assertMenuItemsGivenObject(eobj,
+		editingMenuBuilder.assertMenuItemsGivenObject(classForControlsInstance,
 '''
 &Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, Submenu1 -> [
 	&Copy, Submenu2 -> [
