@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Binder
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.emf.parsley.tests.ui.util.TestImageHelper
+import org.eclipse.emf.parsley.runtime.ui.ClassLoaderImageHelper
 
 /**
  * A custom module just for testing, avoiding to initialize
@@ -29,6 +29,6 @@ class EmfParsleyGuiceModuleForTesting extends EmfParsleyGuiceModule {
 	}
 	
 	override bindIImageHelper() {
-		TestImageHelper
+		ClassLoaderImageHelper
 	}
 }

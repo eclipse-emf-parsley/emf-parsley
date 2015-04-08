@@ -15,19 +15,20 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.EMFEditPlugin
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry
-
-import static org.eclipse.emf.parsley.tests.ui.util.TestImageHelper.*
+import org.eclipse.emf.parsley.runtime.ui.ClassLoaderImageHelper
 
 abstract class AbstractImageBasedTest extends AbstractShellBasedTest {
 
 	val protected TEST_IMAGE = "test_image.png"
+	
+	val protected ClassLoaderImageHelper imageHelper = new ClassLoaderImageHelper
 
 	def protected getDelegateLabelProvider() {
 		getOrCreateInjector.getInstance(AdapterFactoryLabelProvider)
 	}
 
 	protected def loadTestImage() {
-		loadImageFromLocalTest(TEST_IMAGE)
+		imageHelper.getImage(TEST_IMAGE)
 	}
 
 	protected def getDefaultEMFImageForClassForControls() {
