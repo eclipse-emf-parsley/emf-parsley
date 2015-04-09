@@ -10,25 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Binder
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.emf.parsley.runtime.ui.ClassLoaderImageHelper
+import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
 
 /**
- * A custom module just for testing, avoiding to initialize
- * things related to an OSGI environment
+ * A custom module just for testing.
  */
-class EmfParsleyGuiceModuleForTesting extends EmfParsleyGuiceModule {
-	new () {
-		super(EmfParsleyTestsActivator.getDefault)
-	}
-	
-	override configure(Binder binder) {
-		val compound = getBindings();
-		compound.configure(binder);
-	}
-	
-	override bindIImageHelper() {
-		ClassLoaderImageHelper
-	}
+class EmfParsleyGuiceModuleForTesting extends EmfParsleyJavaGuiceModule {
+
 }
