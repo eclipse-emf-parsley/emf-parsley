@@ -11,22 +11,24 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
-import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.tests.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
 class FeaturesProviderTest extends EmfParsleyAbstractTest {
 	
-	var protected Logger logger = Logger.getLogger(class);
-	
 	var protected FeaturesProvider featuresProvider;
+	
+	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(EmfParsleyActivator);
 	
 	@Before
 	def void setUpFeaturesProvider() {
@@ -130,12 +132,12 @@ class FeaturesProviderTest extends EmfParsleyAbstractTest {
 				stringMap.mapTo(testPackage.testEClass.instanceClassName, "nonExistantNameFeature")
 			}
 		}.injectMembers
-		// the provider gracefully deals with non existant features
+		// the provider gracefully deals with non existent features
 		// and it logs the problem
-		logger.info("*** ERROR IN THE LOG IS EXPECTED IN THIS TEST ***")
 		customFeaturesProvider.getFeatures(testPackage.testEClass) => [
 			assertFeatureList("")
 		]
+		logAppender.assertContainsMessage("cannot find feature 'nonExistantNameFeature' in EClass 'TestEClass'")
 	}
 
 	@Test def void testFilterNotAppliedToCustomImplementation() {

@@ -11,28 +11,28 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Guice
-import org.apache.log4j.Logger
 import org.eclipse.core.databinding.observable.value.IObservableValue
 import org.eclipse.emf.databinding.EMFDataBindingContext
 import org.eclipse.emf.databinding.EMFProperties
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.edit.domain.EditingDomain
+import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.binding.ControlObservablePair
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
+import org.eclipse.emf.parsley.tests.util.LogAppenderTestRule
 import org.eclipse.jface.databinding.swt.SWTObservables
 import org.eclipse.swt.SWT
+import org.junit.Rule
 import org.junit.Test
-
-import static org.eclipse.emf.parsley.tests.CustomDialogControlFactoryTest.*
 
 import static extension org.junit.Assert.*
 
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	
-	private static final Logger LOGGER = Logger.getLogger(CustomDialogControlFactoryTest);
+	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(EmfParsleyActivator);
 	
 	def override protected createResourceSet() {
 		new ResourceSetImpl
@@ -204,10 +204,10 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 			}
 		}
 		// during the parsing of the KeyStroke an exception will be logged
-		LOGGER.info("*** EXCEPTION IN THE LOG IS EXPECTED IN THIS TEST ***")
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		// but the Text will be created anyway (without ContentProposalAdapter)
 		control.assertTextEditable(true)
+		logAppender.assertContainsMessage("Error while parsing keystroke: Foo+Space")
 	}
 
 	def private createBaseClassObject() {

@@ -11,14 +11,16 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
-import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
+import org.eclipse.emf.parsley.tests.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.resource.ImageDescriptor
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.eclipse.emf.parsley.tests.ui.util.ImageTester.*
@@ -28,7 +30,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 
 	var TableColumnLabelProvider tableColumnLabelProvider
 	
-	var protected Logger logger = Logger.getLogger(class);
+	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(EmfParsleyActivator);
 	
 	@Before
 	def void setupLabelProvider() {
@@ -75,7 +77,6 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testGetTextWhenOjectClassDoesNotHaveFeature() {
-		logger.info("*** EXCEPTION IN THE LOG IS EXPECTED IN THIS TEST ***")
 		// testContainer, TestContainer, does not have the feature multiReferencFeature
 		// and it simply takes the value of the feature with the same ID in the
 		// EObject's class, which does not exist, throwing an exception
@@ -84,26 +85,27 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			tableColumnLabelProvider.
 				forFeature(testPackage.classForControls_MultiReferenceFeature).getText(testContainer)
 		)
+		assertExceptionInLog()
 	}
-
+	
 	@Test
 	def void testCustomGetTextWithAssertionError() {
-		logger.info("*** EXCEPTION IN THE LOG IS EXPECTED IN THIS TEST ***")
 		"".assertEquals(new TableColumnLabelProvider {
 			override protected getFeatureValue(Object element) {
 				throw new AssertionError("TEST") 
 			}
 		}.initialize(testPackage.classForControls_StringFeature).getText(classForControlsInstance))
+		assertExceptionInLog()
 	}
 
 	@Test
 	def void testCustomGetTextWithRuntimeException() {
-		logger.info("*** EXCEPTION IN THE LOG IS EXPECTED IN THIS TEST ***")
 		"".assertEquals(new TableColumnLabelProvider {
 			override protected getFeatureValue(Object element) {
 				throw new NullPointerException("TEST")
 			}
 		}.initialize(testPackage.classForControls_StringFeature).getText(classForControlsInstance))
+		assertExceptionInLog()
 	}
 
 	@Test
@@ -190,5 +192,9 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 		p => [
 			seteStructuralFeature(f)
 		]
+	}
+	
+	private def assertExceptionInLog() {
+		logAppender.assertContainsMessage("TableColumnLabelProvider.getText")
 	}
 }
