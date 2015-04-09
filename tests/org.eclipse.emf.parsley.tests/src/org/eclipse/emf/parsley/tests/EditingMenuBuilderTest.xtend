@@ -7,6 +7,7 @@ import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.util.EmfParsleyUtil
 import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.IContributionItem
@@ -15,11 +16,14 @@ import org.eclipse.jface.action.Separator
 import org.eclipse.jface.viewers.ISelection
 import org.eclipse.jface.viewers.StructuredSelection
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
+class EditingMenuBuilderTest {
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 
 	var EditingDomain editingDomain = null
 	
@@ -50,7 +54,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	@Test
 	def void testDefaultEmfNewChildMenu() {
 		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
-		editingMenuBuilder.assertEmfMenuItemsGivenObject(lib,
+		editingMenuBuilder.assertEmfMenuItemsGivenObject(library,
 '''
 &New Child -> [
 	Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower
@@ -64,7 +68,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	@Test
 	def void testDefaultEmfNewSiblingMenu() {
 		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
-		editingMenuBuilder.assertEmfMenuItemsGivenObject(wr,
+		editingMenuBuilder.assertEmfMenuItemsGivenObject(writer,
 '''
 &New Child -> [
 ]
@@ -79,7 +83,7 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 	def void testCustomEmfDefaultMenu() {
 		val editingMenuBuilder = new FlattenedNewChildEditingMenuBuilder().
 			injectMembers.initializeEditingMenuBuilder
-		editingMenuBuilder.assertEmfMenuItemsGivenObject(lib,
+		editingMenuBuilder.assertEmfMenuItemsGivenObject(library,
 '''Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower'''
 		)
 	}
@@ -186,11 +190,11 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 		val editingMenuBuilder = new FlattenedNewChildEditingMenuBuilder().
 			injectMembers.initializeEditingMenuBuilder
 		// before executing there must be no employee
-		lib.employees.head.assertNull
-		editingMenuBuilder.emfMenuManagerForSelection(lib).
+		library.employees.head.assertNull
+		editingMenuBuilder.emfMenuManagerForSelection(library).
 			executeAction("Employees Employee")
 		// now there should be one
-		lib.employees.head.assertNotNull
+		library.employees.head.assertNotNull
 	}
 
 	@Test
@@ -208,12 +212,12 @@ class EditingMenuBuilderTest extends EmfParsleyAbstractTest {
 			}
 							
 		}.injectMembers.initializeEditingMenuBuilder
-		editingMenuBuilder.emfMenuManagerForSelection(lib).
+		editingMenuBuilder.emfMenuManagerForSelection(library).
 			executeAction("New Writer")
-		lib.writers.exists[name == "This is a new writer"].assertTrue
+		library.writers.exists[name == "This is a new writer"].assertTrue
 	}
 	
-	override protected getEditingDomain() {
+	def protected getEditingDomain() {
 		if (editingDomain === null) {
 			editingDomain = getOrCreateInjector.getProvider(AdapterFactoryEditingDomain).get()
 		}

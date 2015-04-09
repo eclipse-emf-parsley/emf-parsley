@@ -11,55 +11,59 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.util.EcoreUtil2
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class EmfCopyTest extends EmfParsleyAbstractTest {
+class EmfCopyTest {
+
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 
 	@Test def void testCloneDoesNotCopyBidirectional() {
-		wr.books.size.assertEquals(1)
-		val copy = EcoreUtil2.clone(wr)
+		writer.books.size.assertEquals(1)
+		val copy = EcoreUtil2.clone(writer)
 		copy.books.size.assertEquals(0)
 	}
 
 	@Test def void testManualESet() {
-		val books = wr.booksByReflection
+		val books = writer.booksByReflection
 		books.size.assertEquals(1)
-		val copy = EcoreUtil2.clone(wr)
+		val copy = EcoreUtil2.clone(writer)
 		copy.addBooksByReflection(books)
-		wr.books.size.assertEquals(0)
+		writer.books.size.assertEquals(0)
 		copy.books.size.assertEquals(1)
 		// manual eSet preserves bidirectionality
-		b.author.assertSame(copy)
+		book.author.assertSame(copy)
 	}
 
 	@Test def void testCopyState() {
-		val state = EcoreUtil2.copyState(wr)
+		val state = EcoreUtil2.copyState(writer)
 		
-		wr.books.clear
-		wr.assertBooks(0)
-		b.author.assertNull
+		writer.books.clear
+		writer.assertBooks(0)
+		book.author.assertNull
 		
 		// this brings the book back to the author
-		state.copyStateTo(wr)
-		wr.assertBooks(1)
-		b.author.assertSame(wr)
+		state.copyStateTo(writer)
+		writer.assertBooks(1)
+		book.author.assertSame(writer)
 	}
 
 	@Test def void testReadOnlyCase() {
-		1.assertEquals(lib.books.size)
-		val state = EcoreUtil2.copyState(lib)
+		1.assertEquals(library.books.size)
+		val state = EcoreUtil2.copyState(library)
 		state.get(EXTLibraryPackage.eINSTANCE.library_Books).assertNull
 	}
 
 	@Test def void testFeatureMapCase() {
-		1.assertEquals(lib.people.size)
-		val state = EcoreUtil2.copyState(lib)
-		state.copyStateTo(lib)
-		1.assertEquals(lib.people.size)
-		1.assertEquals(lib.writers.size)
+		1.assertEquals(library.people.size)
+		val state = EcoreUtil2.copyState(library)
+		state.copyStateTo(library)
+		1.assertEquals(library.people.size)
+		1.assertEquals(library.writers.size)
 	}
 	
 }

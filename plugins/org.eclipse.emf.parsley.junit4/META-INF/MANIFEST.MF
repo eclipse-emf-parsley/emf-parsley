@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.eclipse.emf.parsley.junit4
 Bundle-Version: 0.3.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.emf.parsley.junit4.ui.util,
+Export-Package: org.eclipse.emf.parsley.junit4,
+ org.eclipse.emf.parsley.junit4.ui.util,
  org.eclipse.emf.parsley.junit4.util
 Import-Package: org.hamcrest.core,
  org.junit;version="4.5.0",
