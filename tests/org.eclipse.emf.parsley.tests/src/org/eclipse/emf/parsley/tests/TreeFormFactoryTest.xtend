@@ -1,12 +1,14 @@
 package org.eclipse.emf.parsley.tests
 
-import org.junit.Test
-import org.eclipse.emf.parsley.factories.TreeFormFactory
-import static extension org.junit.Assert.*
-import org.eclipse.swt.SWT
 import com.google.inject.Guice
+import org.eclipse.emf.parsley.factories.TreeFormFactory
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
+import org.eclipse.swt.SWT
+import org.junit.Test
 
-class TreeFormFactoryTest extends AbstractShellBasedTest {
+import static extension org.junit.Assert.*
+
+class TreeFormFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	
 	@Test
 	def void testDefaultSashProperties() {

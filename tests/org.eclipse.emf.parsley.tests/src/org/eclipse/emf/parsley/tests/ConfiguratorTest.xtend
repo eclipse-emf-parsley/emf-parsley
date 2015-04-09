@@ -10,8 +10,9 @@ import org.junit.Test
 import static extension org.junit.Assert.*
 import org.junit.Rule
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 
-class ConfiguratorTest {
+class ConfiguratorTest extends AbstractEmfParsleyTest {
 	
 	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 

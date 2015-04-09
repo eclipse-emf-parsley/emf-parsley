@@ -196,4 +196,13 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 			}
 		]
 	}
+	
+	private def getDefaultEMFImageForClassForControls() {
+		getEMFImageFromObject(getEMFImage(testFactory.createClassForControls))
+	}
+
+	private def getDefaultEMFImageForClassForFeatureMapEntry1() {
+		getEMFImageFromObject(getEMFImage(testFactory.createClassForFeatureMapEntry1))
+	}
+
 }

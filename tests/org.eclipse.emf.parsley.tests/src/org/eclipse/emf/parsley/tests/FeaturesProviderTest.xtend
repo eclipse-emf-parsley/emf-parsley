@@ -15,7 +15,9 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.junit.Before
@@ -24,11 +26,13 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class FeaturesProviderTest extends EmfParsleyAbstractTest {
+class FeaturesProviderTest extends AbstractEmfParsleyTest {
 	
 	var protected FeaturesProvider featuresProvider;
 	
 	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(EmfParsleyActivator);
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 	
 	@Before
 	def void setUpFeaturesProvider() {

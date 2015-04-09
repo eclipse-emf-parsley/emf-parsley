@@ -11,19 +11,24 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
+import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider
+import org.eclipse.swt.widgets.Composite
+import org.eclipse.swt.widgets.Label
+import org.eclipse.ui.forms.FormColors
+import org.eclipse.ui.forms.widgets.FormToolkit
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
-import org.eclipse.swt.widgets.Label
-import org.eclipse.swt.widgets.Composite
-import org.eclipse.ui.forms.widgets.FormToolkit
-import org.junit.Before
-import org.eclipse.ui.forms.FormColors
 
-class FormFeatureCaptionProviderTest extends AbstractShellBasedTest {
+class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 	
 	val testPackage = TestmodelsPackage.eINSTANCE
 	

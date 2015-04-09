@@ -11,25 +11,27 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
+import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.binding.ProposalCreator
-import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.ecore.EStructuralFeature
 
-class ProposalCreatorTest extends EmfParsleyAbstractTest {
-	
-	var protected ClassForControls eobj
+class ProposalCreatorTest extends AbstractEmfParsleyTest {
 	
 	var ProposalCreator defaultProposalCreator
 	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	
 	@Before
 	def void setupEObject() {
-		eobj = testFactory.createClassForControls
 		defaultProposalCreator = new ProposalCreator
 	}
 
@@ -39,7 +41,7 @@ class ProposalCreatorTest extends EmfParsleyAbstractTest {
 				return #["First Proposal", "Second Proposal"]
 			}
 		}
-		proposalCreator.proposals(eobj, testPackage.classForControls_StringFeature).
+		proposalCreator.proposals(classForControlsInstance, testPackage.classForControls_StringFeature).
 			assertProposals("First Proposal, Second Proposal")
 	}
 
@@ -64,38 +66,38 @@ class ProposalCreatorTest extends EmfParsleyAbstractTest {
 				return #["First Proposal", "Second Proposal"]
 			}
 		}
-		proposalCreator.proposals(eobj, testPackage.classForControls_StringFeature).
+		proposalCreator.proposals(classForControlsInstance, testPackage.classForControls_StringFeature).
 			assertProposals("First Proposal, Second Proposal")
 	}
 
 	@Test def void testDefaultProposalsForAttribute() {
 		defaultProposalCreator.
-			proposals(eobj, testPackage.classForControls_StringFeature).
+			proposals(classForControlsInstance, testPackage.classForControls_StringFeature).
 				assertNull
 	}
 
 	@Test def void testDefaultProposalsWithoutResourceSet() {
 		defaultProposalCreator.
-			proposals(eobj, testPackage.classForControls_ReferenceToClassWithName).
+			proposals(classForControlsInstance, testPackage.classForControls_ReferenceToClassWithName).
 				assertProposals("")
 	}
 
 	@Test def void testDefaultProposalsForEnumFeature() {
 		defaultProposalCreator.
-			proposals(eobj, testPackage.classForControls_EnumFeature).
+			proposals(classForControlsInstance, testPackage.classForControls_EnumFeature).
 				assertProposals("FIRST, SECOND, THIRD")
 	}
 
 	@Test def void testDefaultProposalsWithResource() {
 		val res = createResource
-		res.contents += eobj
+		res.contents += classForControlsInstance
 		
 		createClassWithName(res, "Ref1")
 		createClassWithName(res, "Ref2")
 		createClassWithName(res, "Ref3")
 
 		defaultProposalCreator.
-			proposals(eobj, testPackage.classForControls_ReferenceToClassWithName).
+			proposals(classForControlsInstance, testPackage.classForControls_ReferenceToClassWithName).
 				assertProposals("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3")
 	}
 
@@ -109,20 +111,20 @@ class ProposalCreatorTest extends EmfParsleyAbstractTest {
 		defaultProposalCreator.setResource(res)
 
 		defaultProposalCreator.
-			proposals(eobj, testPackage.classForControls_ReferenceToClassWithName).
+			proposals(classForControlsInstance, testPackage.classForControls_ReferenceToClassWithName).
 				assertProposals("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3")
 	}
 
 	@Test def void testDefaultProposalsWithResourceSet() {
 		val res = createResourceInResouceSet
-		res.contents += eobj
+		res.contents += classForControlsInstance
 		
 		createClassWithName(res, "Ref1")
 		createClassWithName(res, "Ref2")
 		createClassWithName(res, "Ref3")
 		
 		defaultProposalCreator.
-			proposals(eobj, testPackage.classForControls_ReferenceToClassWithName).
+			proposals(classForControlsInstance, testPackage.classForControls_ReferenceToClassWithName).
 				assertProposals("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3")
 	}
 
@@ -130,7 +132,7 @@ class ProposalCreatorTest extends EmfParsleyAbstractTest {
 		val res = createResourceInResouceSet
 		val res2 = createResourceInResouceSet
 		
-		res.contents += eobj
+		res.contents += classForControlsInstance
 		
 		createClassWithName(res, "Ref1")
 		createClassWithName(res2, "Ref2")
@@ -139,7 +141,7 @@ class ProposalCreatorTest extends EmfParsleyAbstractTest {
 		// note that the proposals are ordered differently w.r.t. the previous test
 		//  since they are in different resources.
 		defaultProposalCreator.
-			proposals(eobj, testPackage.classForControls_ReferenceToClassWithName).
+			proposals(classForControlsInstance, testPackage.classForControls_ReferenceToClassWithName).
 				assertProposals("Class With Name Ref1, Class With Name Ref3, Class With Name Ref2")
 	}
 

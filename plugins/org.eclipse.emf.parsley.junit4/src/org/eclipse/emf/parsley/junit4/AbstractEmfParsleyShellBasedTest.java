@@ -13,9 +13,14 @@ package org.eclipse.emf.parsley.junit4;
 import java.util.ArrayList;
 
 import org.eclipse.core.databinding.observable.Realm;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.EMFEditPlugin;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.junit.Rule;
@@ -26,7 +31,7 @@ import org.junit.Rule;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-public class AbstractEmfParsleyShellBasedTest {
+public class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
 
 	@Rule
 	public DisplayHelperTestRule displayHelperTestRule = new DisplayHelperTestRule();
@@ -95,4 +100,17 @@ public class AbstractEmfParsleyShellBasedTest {
 		return displayHelperTestRule.getDisplay();
 	}
 
+	protected Image getEMFImageFromObject(final Object object) {
+		return ExtendedImageRegistry.INSTANCE.getImage(object);
+	}
+
+	protected URI getEMFImage(final EObject eObject) {
+		return URI.createURI(this.getEMFResourceLocator()
+				.getImage("full/obj16/Item").toString()
+				+ "#" + eObject.eClass().getName());
+	}
+
+	protected EMFEditPlugin getEMFResourceLocator() {
+		return EMFEditPlugin.INSTANCE;
+	}
 }

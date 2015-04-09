@@ -11,13 +11,15 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.edit.NotificationBuffer
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.tests.util.TestAdapter
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class NotificationBufferTest extends EmfParsleyAbstractTest {
+class NotificationBufferTest {
 
 	protected NotificationBuffer buffer = null
 	
@@ -25,14 +27,15 @@ class NotificationBufferTest extends EmfParsleyAbstractTest {
 
 	protected TestAdapter adapter2
 	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	
 	@Before
-	override void setUp() {
-		super.setUp
-		buffer = new NotificationBuffer(lib)
+	def void setUp() {
+		buffer = new NotificationBuffer(library)
 		adapter1 = new TestAdapter
 		adapter2 = new TestAdapter
-		lib.eAdapters += adapter1
-		lib.eAdapters += adapter2
+		library.eAdapters += adapter1
+		library.eAdapters += adapter2
 	}
 	
 	@Test
@@ -89,7 +92,7 @@ class NotificationBufferTest extends EmfParsleyAbstractTest {
 	}
 	
 	def private assertAdaptersSize(int expected) {
-		expected.assertEquals(lib.eAdapters.size)
+		expected.assertEquals(library.eAdapters.size)
 	}
 
 	def private assertNotificationsInTestAdapters(CharSequence expected) {

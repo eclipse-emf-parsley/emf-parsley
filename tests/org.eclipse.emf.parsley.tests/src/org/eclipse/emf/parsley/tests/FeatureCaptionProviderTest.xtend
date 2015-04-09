@@ -11,12 +11,16 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class FeatureCaptionProviderTest extends EmfParsleyAbstractTest {
+class FeatureCaptionProviderTest {
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 	
 	@Test def void testDefault() {
 		val provider = new FeatureCaptionProvider()

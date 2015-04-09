@@ -11,15 +11,20 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Label
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class DialogFeatureCaptionProviderTest extends AbstractShellBasedTest {
+class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 	
 	@Test def void testDefaultText() {
 		val provider = new DialogFeatureCaptionProvider() => [initialize]

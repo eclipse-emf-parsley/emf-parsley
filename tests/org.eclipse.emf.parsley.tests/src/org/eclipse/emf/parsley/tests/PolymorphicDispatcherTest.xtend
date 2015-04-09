@@ -13,18 +13,24 @@ package org.eclipse.emf.parsley.tests
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
+import org.junit.Rule
 import org.junit.Test
+
+import static org.eclipse.emf.parsley.tests.PolymorphicDispatcherTest.*
 
 import static extension org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions.*
 import static extension org.junit.Assert.*
 
-class PolymorphicDispatcherTest extends EmfParsleyAbstractTest {
+class PolymorphicDispatcherTest {
 
 	var Object target;
 	
 	val static IN_BASE_CLASS = "BaseClass.baseClassFeature"
 
 	val static IN_DERIVED_CLASS = "DerivedClass.baseClassFeature"
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 	
 	static class Customize_BaseClass_baseClassFeature {
 		def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {

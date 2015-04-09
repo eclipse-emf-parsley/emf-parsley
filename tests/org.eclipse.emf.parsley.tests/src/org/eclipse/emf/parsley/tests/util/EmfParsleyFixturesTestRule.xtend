@@ -10,10 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.util
 
-import com.google.inject.Guice
-import com.google.inject.Injector
 import java.util.List
-import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
@@ -24,19 +21,18 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
-import org.eclipse.emf.parsley.tests.EmfParsleyGuiceModuleForTesting
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
 import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.junit.rules.TestRule
+import org.junit.runner.Description
+import org.junit.runners.model.Statement
 
 import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 
 import static extension org.junit.Assert.*
-import org.junit.rules.TestRule
-import org.junit.runners.model.Statement
-import org.junit.runner.Description
 
 /**
  * Objects and other elements used in tests.
@@ -77,11 +73,6 @@ class EmfParsleyFixturesTestRule implements TestRule {
 	 */
 	var protected TestEClass testEClassInstance
 	
-	/**
-	 * This will be created on demand using the method getOrCreateInjector
-	 */
-	var private Injector injector = null;
-
 	override apply(Statement base, Description description) {
 		return [
 			setup();
@@ -90,7 +81,6 @@ class EmfParsleyFixturesTestRule implements TestRule {
 	}
 	
 	def void setup() {
-		injector = null
 		resourceSet = createResourceSet
 		lib = createTestLibrary
 		wr = lib.writers.head
@@ -128,6 +118,18 @@ class EmfParsleyFixturesTestRule implements TestRule {
 		libraryFactory
 	}
 
+	def getDerivedClass() {
+		derivedClass
+	}
+
+	def getBaseClass() {
+		baseClass
+	}
+
+	def getTestFactory() {
+		testFactory
+	}
+
 	def ResourceSet createResourceSet() {
 		new ResourceSetImpl
 	}
@@ -146,22 +148,6 @@ class EmfParsleyFixturesTestRule implements TestRule {
 		return null
 	}
 
-	def <T> injectMembers(T o) {
-		getOrCreateInjector.injectMembers(o)
-		return o
-	}
-
-	def getOrCreateInjector() {
-		if (injector === null) {
-			injector = Guice.createInjector(new EmfParsleyGuiceModuleForTesting())
-		}
-		return injector
-	}
-
-	def getAdapterFactory() {
-		getOrCreateInjector.getInstance(AdapterFactory)
-	}
-	
 	def assertBooks(Writer w, int expectedSize) {
 		expectedSize.assertEquals(w.books.size)
 	}

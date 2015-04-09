@@ -15,14 +15,13 @@ import org.eclipse.core.databinding.observable.value.IObservableValue
 import org.eclipse.emf.databinding.EMFDataBindingContext
 import org.eclipse.emf.databinding.EMFProperties
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.binding.ControlObservablePair
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
-import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
+import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
 import org.eclipse.jface.databinding.swt.SWTObservables
 import org.eclipse.swt.SWT
 import org.junit.Rule
@@ -33,10 +32,6 @@ import static extension org.junit.Assert.*
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	
 	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(EmfParsleyActivator);
-	
-	def override protected createResourceSet() {
-		new ResourceSetImpl
-	}
 	
 	/**
 	 * Test the polymorphic method pattern

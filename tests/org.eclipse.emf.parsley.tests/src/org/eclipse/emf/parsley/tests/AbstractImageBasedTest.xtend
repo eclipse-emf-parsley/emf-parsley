@@ -10,49 +10,28 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.edit.EMFEditPlugin
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry
-import org.eclipse.emf.parsley.runtime.ui.ClassLoaderImageHelper
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
+import org.eclipse.emf.parsley.runtime.ui.IImageHelper
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
+import org.junit.Rule
 
-abstract class AbstractImageBasedTest extends AbstractShellBasedTest {
+abstract class AbstractImageBasedTest extends AbstractEmfParsleyShellBasedTest {
 
 	val protected TEST_IMAGE = "test_image.png"
 	
-	val protected ClassLoaderImageHelper imageHelper = new ClassLoaderImageHelper
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 
 	def protected getDelegateLabelProvider() {
 		getOrCreateInjector.getInstance(AdapterFactoryLabelProvider)
 	}
 
 	def protected getImageHelper() {
-		imageHelper
+		getOrCreateInjector.getInstance(IImageHelper)
 	}
 
 	protected def loadTestImage() {
 		imageHelper.getImage(TEST_IMAGE)
 	}
 
-	protected def getDefaultEMFImageForClassForControls() {
-		getEMFImageFromObject(getEMFImage(testFactory.createClassForControls))
-	}
-
-	protected def getDefaultEMFImageForClassForFeatureMapEntry1() {
-		getEMFImageFromObject(getEMFImage(testFactory.createClassForFeatureMapEntry1))
-	}
-
-	protected def getEMFImageFromObject(Object object) {
-		return ExtendedImageRegistry.INSTANCE.getImage(object);
-	}
-
-	protected def getEMFImage(EObject eObject) {
-		val eClass = eObject.eClass();
-		return URI.createURI(getEMFResourceLocator().getImage("full/obj16/Item").toString() + "#" + eClass.getName());
-	}
-
-	protected def getEMFResourceLocator() {
-		return EMFEditPlugin.INSTANCE;
-	}
 }

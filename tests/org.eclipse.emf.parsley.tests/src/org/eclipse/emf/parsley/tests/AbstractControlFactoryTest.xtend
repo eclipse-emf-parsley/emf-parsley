@@ -17,7 +17,9 @@ import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.MultipleFeatureControl
 import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.jface.viewers.ISelectionProvider
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.swt.SWT
@@ -28,12 +30,15 @@ import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.forms.widgets.FormToolkit
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 
 import static org.junit.Assert.*
 
-abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
+abstract class AbstractControlFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	
 	var TestDefaultRealm realm;
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 	
 	@Before
 	def void setupRealm() {
@@ -43,6 +48,14 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	@After
 	def void disposeRealm() {
 		realm.dispose();
+	}
+
+	def protected getEditingDomain() {
+		return fixtures.editingDomain
+	}
+
+	def protected createResourceSet() {
+		return fixtures.createResourceSet
 	}
 
 	def protected initialize(DialogControlFactory controlFactory, EObject obj) {

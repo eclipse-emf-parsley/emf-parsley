@@ -10,17 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.EmfParsleyActivator
-import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
-import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
 class ClassLoaderImageHelperTest extends AbstractImageBasedTest {
 	
-	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(EmfParsleyActivator);
-
 	@Test def void testGetImageOk() {
 		loadTestImage.assertNotNull
 	}
@@ -28,4 +23,5 @@ class ClassLoaderImageHelperTest extends AbstractImageBasedTest {
 	@Test def void testGetImageNonExistent() {
 		getImageHelper.getImage("non-existent.png").assertNull
 	}
+
 }
