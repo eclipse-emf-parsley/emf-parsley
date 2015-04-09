@@ -48,10 +48,14 @@ abstract class AbstractControlFactoryTest extends AbstractShellBasedTest {
 	def protected initialize(DialogControlFactory controlFactory, EObject obj) {
 		controlFactory.initializeCommon(obj)
 		controlFactory.init(getEditingDomain(), obj, shell)
+		// shell must be visibile since we need to check visibility of some controls
+		shell.open
 	}
 
 	def protected initialize(FormControlFactory controlFactory, EObject obj) {
 		controlFactory.initializeCommon(obj)
+		// shell must be visibile since we need to check visibility of some controls
+		shell.open
 		// FormToolkit must be created in the UI thread
 		// and the initialization requires databinding, and thus the Realm
 		syncExecInRealm[|

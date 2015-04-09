@@ -11,29 +11,82 @@
 package org.eclipse.emf.parsley.tests;
 
 import java.util.ArrayList;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 import org.eclipse.core.databinding.observable.Realm;
-import org.eclipse.emf.parsley.tests.ui.util.DisplayHelperTestRule;
 import org.eclipse.emf.parsley.tests.ui.util.RunnableWithResult;
+import org.eclipse.emf.parsley.tests.ui.util.TestShell;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.junit.Rule;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  * A base class for tests that require a {@link Display} and a {@link Shell}.
  * 
- * The tests that derive from this class are meant to be run as Junit tests
+ * The tests that derived from this class are meant to be run as Junit tests
  * (NOT as Plug-in Junit tests).
  * 
  * @author Lorenzo Bettini
  *
  */
 public class AbstractShellBasedTest extends EmfParsleyAbstractTest {
-	@Rule public DisplayHelperTestRule displayHelperTestRule = new DisplayHelperTestRule();
+	private static Thread uiThread;
 	
+	private static Shell shell;
+	
+	private final static CyclicBarrier swtBarrier = new CyclicBarrier(2);
+	
+	@BeforeClass
+	public static void setupApp() {
+		if (uiThread == null) {
+			uiThread = new Thread(new Runnable() {
+
+				public void run() {
+					try {	
+						while (true) {
+							// open and layout the shell
+							TestShell window = new TestShell();
+							window.open();
+							shell = window.getShell();
+
+							// wait for the test setup
+							swtBarrier.await();
+	
+							// run the event loop
+							window.eventLoop(Display.getDefault());
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			uiThread.setDaemon(true);
+			uiThread.start();
+		}
+	}
+
+	@Before
+	public final void setupShell() throws InterruptedException, BrokenBarrierException {
+		// synchronize with the thread opening the shell
+		swtBarrier.await();
+	}
+
+	@After
+	public void closeShell() throws InterruptedException {
+		// close the shell
+		getDisplay().syncExec(new Runnable() {
+			public void run() {
+				shell.close();
+			}
+		});
+	}
+
 	protected Shell getShell() {
-		return displayHelperTestRule.getShell();
+		return shell;
 	}
 
 	protected <T> T syncExec(final RunnableWithResult<T> toExecute) {
@@ -86,6 +139,6 @@ public class AbstractShellBasedTest extends EmfParsleyAbstractTest {
 	}
 	
 	protected Display getDisplay() {
-		return displayHelperTestRule.getDisplay();
+		return Display.getDefault();
 	}
 }
