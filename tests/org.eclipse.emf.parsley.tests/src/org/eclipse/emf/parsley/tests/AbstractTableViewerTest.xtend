@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.parsley.builders.TableViewerBuilder
 import org.eclipse.jface.viewers.TableViewer
@@ -22,8 +21,6 @@ abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 	var protected TableViewerBuilder tableViewerBuilder
 	
 	var protected TableViewer tableViewer
-
-	var protected Logger logger = Logger.getLogger(class);
 
 	val protected numOfElements = 10
 

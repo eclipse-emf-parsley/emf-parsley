@@ -22,7 +22,7 @@ import org.eclipse.emf.parsley.binding.ControlObservablePair
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
-import org.eclipse.emf.parsley.tests.util.LogAppenderTestRule
+import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.jface.databinding.swt.SWTObservables
 import org.eclipse.swt.SWT
 import org.junit.Rule

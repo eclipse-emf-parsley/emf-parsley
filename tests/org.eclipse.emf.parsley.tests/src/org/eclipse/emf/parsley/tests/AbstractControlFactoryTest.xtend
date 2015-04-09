@@ -17,7 +17,7 @@ import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.MultipleFeatureControl
 import org.eclipse.emf.parsley.binding.ProposalCreator
-import org.eclipse.emf.parsley.tests.util.TestDefaultRealm
+import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm
 import org.eclipse.jface.viewers.ISelectionProvider
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.swt.SWT

@@ -11,7 +11,7 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.EmfParsleyActivator
-import org.eclipse.emf.parsley.tests.util.LogAppenderTestRule
+import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.junit.Rule
 import org.junit.Test
 

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
-import org.eclipse.emf.parsley.tests.util.LogAppenderTestRule
+import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.resource.ImageDescriptor
@@ -23,7 +23,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-import static extension org.eclipse.emf.parsley.tests.ui.util.ImageTester.*
+import static extension org.eclipse.emf.parsley.junit4.ui.util.ImageTester.*
 import static extension org.junit.Assert.*
 
 class TableColumnLabelProviderTest extends AbstractImageBasedTest {

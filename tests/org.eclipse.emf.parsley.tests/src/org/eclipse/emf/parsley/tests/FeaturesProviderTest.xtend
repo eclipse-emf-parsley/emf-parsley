@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
-import org.eclipse.emf.parsley.tests.util.LogAppenderTestRule
+import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
 import org.junit.Before

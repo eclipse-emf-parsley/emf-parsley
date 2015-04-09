@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.parsley.examples.EmfParsleyExamplesViewsActivator;
 import org.eclipse.emf.parsley.examples.library.Library;
-import org.eclipse.emf.parsley.tests.ui.util.ImageTester;
+import org.eclipse.emf.parsley.junit4.ui.util.ImageTester;
 import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils;
 import org.eclipse.emf.parsley.tests.views.LibraryEmfView;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;

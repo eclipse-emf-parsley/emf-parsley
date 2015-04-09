@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests.ui.util;
+package org.eclipse.emf.parsley.junit4.ui.util;
 
 import static org.junit.Assert.fail;
 

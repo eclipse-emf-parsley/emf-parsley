@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests.ui.util;
+package org.eclipse.emf.parsley.junit4.ui.util;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -71,6 +71,7 @@ public class DisplayHelperTestRule implements TestRule {
 		disposeDisplay();
 	}
 
+	@Override
 	public Statement apply(final Statement base, Description description) {
 		return new Statement() {
 			@Override

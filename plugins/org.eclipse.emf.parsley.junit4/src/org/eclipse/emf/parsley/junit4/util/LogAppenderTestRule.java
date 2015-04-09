@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests.util;
+package org.eclipse.emf.parsley.junit4.util;
 
 import static org.eclipse.xtext.xbase.lib.IterableExtensions.join;
 import static org.eclipse.xtext.xbase.lib.IterableExtensions.map;

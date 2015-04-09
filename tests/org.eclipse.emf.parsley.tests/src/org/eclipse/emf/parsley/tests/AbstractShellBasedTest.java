@@ -13,8 +13,8 @@ package org.eclipse.emf.parsley.tests;
 import java.util.ArrayList;
 
 import org.eclipse.core.databinding.observable.Realm;
-import org.eclipse.emf.parsley.tests.ui.util.DisplayHelperTestRule;
-import org.eclipse.emf.parsley.tests.ui.util.RunnableWithResult;
+import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
+import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;

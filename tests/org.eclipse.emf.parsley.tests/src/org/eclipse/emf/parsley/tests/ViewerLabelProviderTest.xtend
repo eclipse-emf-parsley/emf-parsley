@@ -20,7 +20,7 @@ import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
 import org.junit.Test
 
-import static extension org.eclipse.emf.parsley.tests.ui.util.ImageTester.*
+import static extension org.eclipse.emf.parsley.junit4.ui.util.ImageTester.*
 import static extension org.junit.Assert.*
 
 class ViewerLabelProviderTest extends AbstractImageBasedTest {
