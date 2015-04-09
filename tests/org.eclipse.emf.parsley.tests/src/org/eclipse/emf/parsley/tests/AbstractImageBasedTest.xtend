@@ -27,6 +27,10 @@ abstract class AbstractImageBasedTest extends AbstractShellBasedTest {
 		getOrCreateInjector.getInstance(AdapterFactoryLabelProvider)
 	}
 
+	def protected getImageHelper() {
+		imageHelper
+	}
+
 	protected def loadTestImage() {
 		imageHelper.getImage(TEST_IMAGE)
 	}

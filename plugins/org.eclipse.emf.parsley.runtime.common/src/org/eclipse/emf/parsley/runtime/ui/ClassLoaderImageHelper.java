@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.runtime.ui;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -33,24 +31,19 @@ public class ClassLoaderImageHelper extends AbstractImageHelper implements IImag
 
 	/**
 	 * Loads the image with the path specified in the parameter;
-	 * it returns null in case the name does not represent a valid {@link URI}.
+	 * it returns null in case the specified image cannot be loaded.
 	 * 
 	 * @param name
 	 * @return
 	 */
 	protected Image loadImageFromClassLoader(String name) {
 		URL url = getClass().getClassLoader().getResource(name);
-		URI uri = null;
-		
-		try {
-			uri = url.toURI();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+
+		if (url == null) {
+			return null;
 		}
-		
-		String path = uri.getPath();
-		
-		return new Image(Display.getDefault(), path);
+
+		return new Image(Display.getDefault(), url.getPath());
 	}
 
 	@Override
