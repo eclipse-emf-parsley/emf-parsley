@@ -12,17 +12,16 @@ package org.eclipse.emf.parsley.junit4;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
-import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Rule;
 
 /**
@@ -31,7 +30,7 @@ import org.junit.Rule;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-public class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
+public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
 
 	@Rule
 	public DisplayHelperTestRule displayHelperTestRule = new DisplayHelperTestRule();
@@ -56,7 +55,7 @@ public class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
 		return arrayList.get(0);
 	}
 
-	protected void syncExecVoid(final Runnable toExecute) throws Throwable {
+	protected void syncExecVoid(final Runnable toExecute) {
 		final ArrayList<Throwable> arrayList = new ArrayList<Throwable>();
 		getDisplay().syncExec(new Runnable() {
 			@Override
@@ -69,31 +68,8 @@ public class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
 			}
 		});
 		if (!arrayList.isEmpty()) {
-			throw arrayList.get(0);
+			throw Exceptions.sneakyThrow(arrayList.get(0));
 		}
-	}
-
-	protected <T> T syncExecInRealm(final RunnableWithResult<T> toExecute) {
-		final ArrayList<T> arrayList = new ArrayList<T>();
-		getDisplay().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				Realm.runWithDefault(
-						SWTObservables.getRealm(Display.getDefault()),
-						new Runnable() {
-							@Override
-							public void run() {
-								try {
-									arrayList.add(toExecute.run());
-								} catch (Throwable e) {
-									e.printStackTrace();
-									arrayList.add(null);
-								}
-							}
-						});
-			}
-		});
-		return arrayList.get(0);
 	}
 
 	protected Display getDisplay() {

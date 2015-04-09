@@ -23,7 +23,7 @@ import com.google.inject.Injector;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-public class AbstractEmfParsleyTest {
+public abstract class AbstractEmfParsleyTest {
 
 	/**
 	 * This will be created on demand using the method getOrCreateInjector
