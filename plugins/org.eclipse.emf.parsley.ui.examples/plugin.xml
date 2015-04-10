@@ -99,6 +99,34 @@
        </description>
     </wizard>
  </extension>
+  <extension
+       point="org.eclipse.ui.newWizards">
+    <wizard
+          category="org.eclipse.emf.parsley.wizards/org.eclipse.emf.parsley.project.Examples"
+          class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+          icon="icons/genproject.gif"
+          id="org.eclipse.emf.parsley.examples.EditorsExamples"
+          name="Emf Parsley Editors Examples"
+          project="true">
+       <description>
+          Emf Parsley Editors Examples
+       </description>
+    </wizard>
+ </extension>
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <wizard
+          category="org.eclipse.ui.Examples/org.eclipse.emf.parsley.ui.Examples"
+          class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+          icon="icons/genproject.gif"
+          id="org.eclipse.emf.parsley.examples.EditorsExamples"
+          name="Emf Parsley Editors Examples"
+          project="true">
+       <description>
+          Emf Parsley Editors Examples
+       </description>
+    </wizard>
+ </extension>
 	<extension point="org.eclipse.ui.newWizards">
 		<wizard	id="org.eclipse.emf.parsley.examples.CdoServerExampleWizard" 
 			name="Emf Parsley Cdo Server Example" 
@@ -272,6 +300,18 @@
                contentURI="contents/org.eclipse.emf.parsley.examples.views.zip"
                description="Emf Parsley Views Examples"
                name="org.eclipse.emf.parsley.examples.views">
+         </projectDescriptor>
+      </example>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            pageImage="icons/genproject.gif"
+            wizardID="org.eclipse.emf.parsley.examples.EditorsExamples">
+         <projectDescriptor
+               contentURI="contents/org.eclipse.emf.parsley.examples.editors.zip"
+               description="Emf Parsley Editors Examples"
+               name="org.eclipse.emf.parsley.examples.editors">
          </projectDescriptor>
       </example>
    </extension>

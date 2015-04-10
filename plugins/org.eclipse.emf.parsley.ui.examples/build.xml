@@ -42,6 +42,7 @@
 		<zip_example name="org.eclipse.emf.examples.library" />
 		<zip_example name="org.eclipse.emf.examples.library.edit" />
 		<zip_example name="org.eclipse.emf.parsley.examples.views" />
+		<zip_example name="org.eclipse.emf.parsley.examples.editors" />
 		<zip_example name="org.eclipse.emf.parsley.examples.cdo.server" />
 		<zip_example name="org.eclipse.emf.parsley.examples.cdo.model" />
 		<zip_example name="org.eclipse.emf.parsley.examples.cdo.rcp" />

@@ -125,6 +125,7 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.library.edit</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.editors</module>
 		
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>

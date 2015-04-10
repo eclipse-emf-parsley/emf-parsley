@@ -270,7 +270,9 @@ public class EmfParsleyAbstractTests {
 	protected static final String EMF_PARSLEY_FIRST_EXAMPLE = "Emf Parsley First Example";
 
 	protected static final String EMF_PARSLEY_VIEWS_EXAMPLES = "Emf Parsley Views Examples";
-	
+
+	protected static final String EMF_PARSLEY_EDITORS_EXAMPLES = "Emf Parsley Editors Examples";
+
 	protected static final String EMF_PARSLEY_E4_EXAMPLE = "Emf Parsley Eclipse 4 Part Example";
 
 	protected static final String EMF_PARSLEY_CDO_SERVER_EXAMPLE = "Emf Parsley Cdo Server Example";

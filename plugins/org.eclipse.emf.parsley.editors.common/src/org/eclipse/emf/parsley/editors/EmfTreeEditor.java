@@ -26,8 +26,7 @@ import org.eclipse.swt.widgets.Tree;
 
 
 /**
- * @author Lorenzo Bettini
- * 
+ * @author Lorenzo Bettini - initial API and implementation
  */
 public class EmfTreeEditor extends EmfAbstractEditor {
 

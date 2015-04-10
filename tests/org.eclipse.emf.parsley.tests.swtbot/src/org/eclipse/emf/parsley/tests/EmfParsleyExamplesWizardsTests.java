@@ -46,6 +46,13 @@ public class EmfParsleyExamplesWizardsTests extends
 	}
 
 	@Test
+	public void canCreateExamplesExamplesProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_EDITORS_EXAMPLES,
+				"org.eclipse.emf.parsley.examples.editors");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
 	public void canCreateE4ExamplesProjectWithWizard() throws Exception {
 		if (isIndigo())
 			return; // this test would fail since e4 is not in the target platform in Indigo

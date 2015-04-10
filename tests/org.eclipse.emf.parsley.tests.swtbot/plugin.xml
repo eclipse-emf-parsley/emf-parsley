@@ -103,8 +103,8 @@
     <extension
           point="org.eclipse.ui.editors">
        <editor
-             class="org.eclipse.emf.parsley.editors.EmfParsleyEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-             contributorClass="org.eclipse.emf.parsley.editors.EmfParsleyEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+             class="org.eclipse.emf.parsley.examples.editors.EmfParsleyExamplesEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+             contributorClass="org.eclipse.emf.parsley.examples.editors.EmfParsleyExamplesEditorsExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
              default="false"
              extensions="parsley"
              id="org.eclipse.emf.parsley.xtext"

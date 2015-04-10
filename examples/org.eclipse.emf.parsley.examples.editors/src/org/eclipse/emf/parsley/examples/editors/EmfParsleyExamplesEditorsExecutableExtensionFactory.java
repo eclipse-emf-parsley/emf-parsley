@@ -8,21 +8,20 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.editors;
+package org.eclipse.emf.parsley.examples.editors;
 
 import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
 import org.osgi.framework.Bundle;
 
-
-public class EmfParsleyEditorsExecutableExtensionFactory extends
+/**
+ * @author Lorenzo Bettini - initial API and implementation
+ */
+public class EmfParsleyExamplesEditorsExecutableExtensionFactory extends
 		EmfParsleyExtensionFactory {
 
 	@Override
 	protected Bundle getBundle() {
-		return EmfParsleyEditorsActivator.getDefault().getBundle();
+		return EmfParsleyExamplesEditorsActivator.getDefault().getBundle();
 	}
 
-
-
-	
 }
