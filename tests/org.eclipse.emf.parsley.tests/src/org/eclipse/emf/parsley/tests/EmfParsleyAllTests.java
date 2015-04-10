@@ -45,7 +45,8 @@ import org.junit.runners.Suite;
 	NotificationBufferTest.class,
 	EmfCopyTest.class,
 	EditingMenuBuilderTest.class,
-	ClassLoaderImageHelperTest.class
+	ClassLoaderImageHelperTest.class,
+	ShellBasedTest.class
 })
 public class EmfParsleyAllTests {
 

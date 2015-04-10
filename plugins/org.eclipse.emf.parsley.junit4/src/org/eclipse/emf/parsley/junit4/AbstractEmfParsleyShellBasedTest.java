@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.junit4;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.EMFEditPlugin;
@@ -27,10 +28,17 @@ import org.junit.Rule;
 /**
  * Base class for Junit tests that require a Shell.
  * 
+ * Inherited classes can use {@link #getShell()} and {@link #getDisplay()};
+ * note that by default the returned {@link Shell} will NOT be visible: if your tests
+ * need to check visibility of controls, then you need to call {@link Shell#open()}
+ * explicitly.
+ * 
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
 public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(AbstractEmfParsleyShellBasedTest.class);
 
 	@Rule
 	public DisplayHelperTestRule displayHelperTestRule = new DisplayHelperTestRule();
@@ -39,6 +47,14 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 		return displayHelperTestRule.getShell();
 	}
 
+	/**
+	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)},
+	 * and returns the result; note that possible assertions within the runnable will NOT
+	 * make a test fail: the result will be null, and the exception will be logged.
+	 * 
+	 * @param toExecute
+	 * @return
+	 */
 	protected <T> T syncExec(final RunnableWithResult<T> toExecute) {
 		final ArrayList<T> arrayList = new ArrayList<T>();
 		getDisplay().syncExec(new Runnable() {
@@ -47,7 +63,7 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 				try {
 					arrayList.add(toExecute.run());
 				} catch (Throwable e) {
-					e.printStackTrace();
+					LOGGER.error("Exception in runnable: " + e.getMessage(), e);
 					arrayList.add(null);
 				}
 			}
@@ -55,6 +71,14 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 		return arrayList.get(0);
 	}
 
+	/**
+	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)};
+	 * In the runnable you can assert with Junit and if an assertion fails this method will
+	 * make the test fail, propagating the failure.
+	 * 
+	 * @param toExecute
+	 * @return
+	 */
 	protected void syncExecVoid(final Runnable toExecute) {
 		final ArrayList<Throwable> arrayList = new ArrayList<Throwable>();
 		getDisplay().syncExec(new Runnable() {
