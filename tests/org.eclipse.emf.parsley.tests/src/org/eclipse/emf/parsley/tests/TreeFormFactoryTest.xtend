@@ -1,6 +1,5 @@
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Guice
 import org.eclipse.emf.parsley.factories.TreeFormFactory
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.swt.SWT
@@ -24,7 +23,7 @@ class TreeFormFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	@Test
 	def void testCustomSashProperties() {
 		syncExecVoid[
-			val sashForm = Guice.createInjector(
+			val sashForm = createInjector(
 					new EmfParsleyGuiceModuleForTesting {
 						override valueTreeFormSashStyle() {
 							return SWT.HORIZONTAL;

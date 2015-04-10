@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Guice
 import com.google.inject.Injector
 import com.google.inject.Module
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.resource.ResourceLoader
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
@@ -24,7 +24,7 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class EditingDomainTest {
+class EditingDomainTest extends AbstractEmfParsleyTest {
 
 	@Test
 	def void testDefaultEditingDomainProvider() {
@@ -102,6 +102,6 @@ class EditingDomainTest {
 	}
 
 	def private createTestInjector(Module module) {
-		Guice.createInjector(module);
+		createInjector(module);
 	}
 }

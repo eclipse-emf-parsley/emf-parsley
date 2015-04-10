@@ -16,6 +16,7 @@ import org.junit.Before;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Module;
 
 /**
  * Base class for Junit tests and Emf Parsley.
@@ -42,10 +43,27 @@ public abstract class AbstractEmfParsleyTest {
 
 	public Injector getOrCreateInjector() {
 		if ((this.injector == null)) {
-			this.injector = Guice
-					.createInjector(new EmfParsleyJavaGuiceModule());
+			this.injector = createInjector();
 		}
 		return this.injector;
+	}
+
+	/**
+	 * Creates an {@link Injector} using {@link EmfParsleyJavaGuiceModule}, which
+	 * is appropriate for Junit tests.
+	 */
+	protected Injector createInjector() {
+		return createInjector(new EmfParsleyJavaGuiceModule());
+	}
+
+	/**
+	 * Creates an {@link Injector} with the specified {@link Module}.
+	 * 
+	 * @param module
+	 * @return
+	 */
+	protected Injector createInjector(Module module) {
+		return Guice.createInjector(module);
 	}
 
 	public AdapterFactory getAdapterFactory() {

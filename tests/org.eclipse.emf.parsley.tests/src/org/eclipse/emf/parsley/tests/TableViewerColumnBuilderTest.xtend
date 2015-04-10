@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Guice
 import java.util.List
 import org.eclipse.emf.parsley.builders.TableViewerBuilder
 import org.eclipse.jface.viewers.ColumnLayoutData
@@ -36,7 +35,7 @@ class TableViewerColumnBuilderTest extends AbstractTableViewerTest {
 
 	@Test
 	def void testCustomColumnWeights() {
-		tableViewerBuilder = Guice.createInjector(
+		tableViewerBuilder = createInjector(
 				new EmfParsleyGuiceModuleForTesting() {
 					override valueTableColumnWeights() {
 						#[5,2]

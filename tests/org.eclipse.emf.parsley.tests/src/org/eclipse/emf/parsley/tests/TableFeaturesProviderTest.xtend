@@ -10,7 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Guice
+import org.eclipse.emf.parsley.tests.TableFeaturesProviderTest.TestCustomFeaturesProviderForCustomBuildMap
+import org.eclipse.emf.parsley.tests.TableFeaturesProviderTest.TestCustomFeaturesProviderForCustomBuildStringMap
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
@@ -72,7 +73,7 @@ class TableFeaturesProviderTest extends FeaturesProviderTest {
 	@Test def void testTableFeaturesProviderCustomBuildMapDelegated() {
 		// the customization is not in the TableFeaturesProvider but in 
 		// FeaturesProvider to which TableFeaturesProvider delegates to
-		val customFeaturesProvider = Guice.createInjector(
+		val customFeaturesProvider = createInjector(
 			new EmfParsleyGuiceModuleForTesting() {
 				override bindFeaturesProvider() {
 					TestCustomFeaturesProviderForCustomBuildMap
@@ -103,7 +104,7 @@ class TableFeaturesProviderTest extends FeaturesProviderTest {
 	@Test def void testTableFeaturesProviderCustomBuildStringMapDelegated() {
 		// the customization is not in the TableFeaturesProvider but in 
 		// FeaturesProvider to which TableFeaturesProvider delegates to
-		val customFeaturesProvider = Guice.createInjector(
+		val customFeaturesProvider = createInjector(
 			new EmfParsleyGuiceModuleForTesting() {
 				override bindFeaturesProvider() {
 					TestCustomFeaturesProviderForCustomBuildStringMap

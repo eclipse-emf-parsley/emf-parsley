@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Guice
 import java.util.List
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
@@ -76,7 +75,7 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 		setupContainerWith10Elems
 		"Class With Name 0 - Class With Name 1 - Class With <continued>...".
 		assertEquals(
-			Guice.createInjector(
+			createInjector(
 				new EmfParsleyGuiceModuleForTesting() {
 					override valueIterableStringSeparator() {
 						" - "

@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Guice
 import org.eclipse.core.databinding.observable.value.IObservableValue
 import org.eclipse.emf.databinding.EMFDataBindingContext
 import org.eclipse.emf.databinding.EMFProperties
@@ -186,7 +185,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		val factory = new DialogControlFactory => [initialize(createBaseClassObject)]
 		// this will replace the string for content assist shortcut with
 		// an unparsable KeyStroke
-		val injector = Guice.createInjector(new EmfParsleyGuiceModuleForTesting() {
+		val injector = createInjector(new EmfParsleyGuiceModuleForTesting() {
 			override valueContentAssistShortcut() {
 				"Foo+Space";
 			}
