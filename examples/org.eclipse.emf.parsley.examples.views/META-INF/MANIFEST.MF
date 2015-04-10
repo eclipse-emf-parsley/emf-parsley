@@ -3,13 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley Views Examples
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.views;singleton:=true
 Bundle-Version: 0.3.0.qualifier
-Bundle-Activator: org.eclipse.emf.parsley.examples.EmfParsleyExamplesViewsActivator
+Bundle-Activator: org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsActivator
 Require-Bundle: org.eclipse.ui;bundle-version="3.5.0",
  org.eclipse.core.runtime;bundle-version="3.5.0",
  org.eclipse.emf.parsley,
  org.eclipse.emf.parsley.views
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.emf.parsley.examples,
- org.eclipse.emf.parsley.examples.views
+Export-Package: org.eclipse.emf.parsley.examples.views
 Bundle-Vendor: Eclipse Modeling Project

@@ -6,7 +6,7 @@
          point="org.eclipse.ui.views">
       <view
             category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.examples.EmfParsleyExamplesExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionTreeView"
+            class="org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionTreeView"
             icon="icons/view.jpg"
             id="org.eclipse.emf.parsley.emftreeview"
             name="Emf Tree View"
@@ -14,7 +14,7 @@
       </view>
       <view
             category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.examples.EmfParsleyExamplesExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionListView"
+            class="org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionListView"
             icon="icons/view.jpg"
             id="org.eclipse.emf.parsley.emflistview"
             name="Emf List View"
@@ -22,7 +22,7 @@
       </view>
       <view
             category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.examples.EmfParsleyExamplesExecutableExtensionFactory:org.eclipse.emf.parsley.examples.views.OnSelectionShowAllTableView"
+            class="org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsExecutableExtensionFactory:org.eclipse.emf.parsley.examples.views.OnSelectionShowAllTableView"
             icon="icons/view.jpg"
             id="org.eclipse.emf.parsley.showalltableview"
             name="Emf Show All Table View"
@@ -30,7 +30,7 @@
       </view>
       <view
             category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.examples.EmfParsleyExamplesExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionFormView"
+            class="org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionFormView"
             icon="icons/view.jpg"
             id="org.eclipse.emf.parsley.formview"
             name="Emf Form View"
@@ -38,7 +38,7 @@
       </view>
       <view
             category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.examples.EmfParsleyExamplesExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionReadOnlyFormView"
+            class="org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionReadOnlyFormView"
             icon="icons/view.jpg"
             id="org.eclipse.emf.parsley.readonlyformview"
             name="Emf Read Only Form View"
@@ -46,7 +46,7 @@
       </view>
       <view
             category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.examples.EmfParsleyExamplesExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionTreeFormView"
+            class="org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionTreeFormView"
             icon="icons/view.jpg"
             id="org.eclipse.emf.parsley.treeformview"
             name="Emf Tree Form View"
@@ -54,7 +54,7 @@
       </view>
       <view
             category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.examples.EmfParsleyExamplesExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionTableFormView"
+            class="org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionTableFormView"
             icon="icons/view.jpg"
             id="org.eclipse.emf.parsley.tableformview"
             name="Emf Table Form View"

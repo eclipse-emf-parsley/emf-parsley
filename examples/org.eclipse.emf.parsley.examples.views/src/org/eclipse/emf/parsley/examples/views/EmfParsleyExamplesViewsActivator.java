@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.examples;
+package org.eclipse.emf.parsley.examples.views;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

@@ -8,24 +8,24 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.examples;
+package org.eclipse.emf.parsley.examples.views;
 
 
+import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.builders.TableViewerColumnBuilder;
-import org.eclipse.emf.parsley.builders.TableViewerEditableColumnBuilder;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 
-public class EmfParsleyExamplesModule extends EmfParsleyGuiceModule {
+public class EmfParsleyExamplesViewsExecutableExtensionFactory extends
+		EmfParsleyExtensionFactory {
 
-	public EmfParsleyExamplesModule(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
-	
 	@Override
-	public Class<? extends TableViewerColumnBuilder> bindTableViewerColumnBuilder() {
-		return TableViewerEditableColumnBuilder.class;
+	protected Bundle getBundle() {
+		return EmfParsleyExamplesViewsActivator.getDefault().getBundle();
 	}
 
+	@Override
+	protected EmfParsleyGuiceModule getModule() {
+		return new EmfParsleyExamplesViewsModule(EmfParsleyExamplesViewsActivator.getDefault());
+	}
 
 }
