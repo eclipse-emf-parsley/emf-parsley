@@ -1,0 +1,27 @@
+chapter:AdvancedFeatures[Advanced Features]
+
+In this chapter we describe some advanced features.
+
+section:Testing[Testing Framework]
+
+We provide some utility classes for testing e[EMF Parsley] components in the feature
+"Emf Parsley Junit4 Support".  By deriving from one of the abstract classes in our
+testing bundle, you will be able to write tests that are meant to be run as Junit test,
+that is to say, NOT as Plug-in Junit tests.  Thus, you will not need a running Eclipse product
+to execute such tests: they will be much faster.  Indeed, many parts of Parsley can
+be tested even without a running Eclipse.
+
+ul[
+	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest]: this provides
+	a few utility methods, e.g., for creating an codeRef[com.google.inject.Injector].]
+	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest]: this allows
+	to run Junit tests that require a codeRef[org.eclipse.swt.widgets.Display] and a
+	codeRef[org.eclipse.swt.widgets.Shell].]
+	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest]: an extension
+	of the previous class for tests that also require databinding capabilities, e.g.,
+	tests for codeRef[org.eclipse.swt.widgets.Control] elements; this provides many assert
+	methods for several kinds of controls, such as e[assertCheckbox], e[assertCombo], etc.]
+]
+
+We use these classes for testing most of our classes; you might want to have a look
+at the project e[org.eclipse.emf.parsley.tests] for some usage examples.
