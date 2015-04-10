@@ -18,6 +18,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -53,13 +54,14 @@ import org.junit.Before;
  */
 public abstract class AbstractEmfParsleyControlBasedTest extends
 		AbstractEmfParsleyShellBasedTest {
+	
+	private static final Logger LOGGER = Logger.getLogger(AbstractEmfParsleyControlBasedTest.class);
 
 	private TestDefaultRealm realm;
 
 	@Before
 	public void setupRealm() {
-		TestDefaultRealm _testDefaultRealm = new TestDefaultRealm();
-		this.realm = _testDefaultRealm;
+		this.realm = new TestDefaultRealm();
 	}
 
 	@After
@@ -249,6 +251,15 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 				clazz.isAssignableFrom(controlClass));
 	}
 
+	/**
+	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)}
+	 * and {@link Realm#runWithDefault(Realm, Runnable)},
+	 * and returns the result; note that possible assertions within the runnable will NOT
+	 * make a test fail: the result will be null, and the exception will be logged.
+	 * 
+	 * @param toExecute
+	 * @return
+	 */
 	protected <T> T syncExecInRealm(final RunnableWithResult<T> toExecute) {
 		final ArrayList<T> arrayList = new ArrayList<T>();
 		getDisplay().syncExec(new Runnable() {
@@ -262,7 +273,9 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 								try {
 									arrayList.add(toExecute.run());
 								} catch (Throwable e) {
-									e.printStackTrace();
+									LOGGER.error(
+											"Exception in runnable: "
+													+ e.getMessage(), e);
 									arrayList.add(null);
 								}
 							}

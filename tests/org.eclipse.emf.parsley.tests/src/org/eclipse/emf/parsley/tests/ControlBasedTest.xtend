@@ -10,54 +10,48 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.swt.widgets.Button
+import org.eclipse.swt.SWT
 
 /**
- * Check that failures in shell based tests are caught and reported, and other tests.
+ * Check that failures in control based tests are caught and reported, and other tests.
  * 
  * @author Lorenzo Bettini
  */
-class ShellBasedTest extends AbstractEmfParsleyShellBasedTest {
+class ControlBasedTest extends AbstractEmfParsleyControlBasedTest {
 	
-	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(AbstractEmfParsleyShellBasedTest);
+	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(AbstractEmfParsleyControlBasedTest);
 
 	@Test
-	def void testSyncExecSuccess() {
-		syncExec[
+	def void testSyncExecInRealmSuccess() {
+		syncExecInRealm[
 			return true
 		].assertTrue
 	}
 	
 	@Test
-	def void testSyncExecWithFailureReturnsNull() {
-		syncExec[
+	def void testSyncExecInRealmWithFailureReturnsNull() {
+		syncExecInRealm[
 			fail("intentional failure")
 			return true
 		].assertNull
 		logAppender.assertContainsMessage("Exception in runnable: intentional failure")
 	}
 
+	@Test
+	def void testEditingDomainIsNullByDefault() {
+		editingDomain.assertNull
+	}
+
 	@Test(expected=AssertionError)
-	def void testSyncExecVoidWithFailureMakesTheTestFail() {
-		syncExecVoid[
-			fail("intentional failure")
-		]
-	}
-
-	@Test
-	def void testSyncExecVoidSuccess() {
-		syncExecVoid[
-			assertTrue(true)
-		]
-	}
-
-	@Test
-	def void testShellIsClosedByDefault() {
-		assertFalse("Shell should not be visible.", shell.isVisible)
+	def void testNotACheckboxIsDetected() {
+		// this should throw an AssertionError
+		assertCheckbox(new Button(shell, SWT.None), false)
 	}
 }
