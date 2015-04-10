@@ -12,6 +12,20 @@ implementation. Note that in some cases an explicit constructor is needed, with 
 correctly works; when this is the case, the base class will already have such a constructor and you will only
 need to override it, but you will also need to add the e[@Inject] annotation explicitly.
 
+Although one can specify any Guice codeRef[com.google.inject.Module], e[EMF Parsley] ships with
+some default base class modules that should be used for specifying custom
+Guice bindings.  The default base class is
+codeRef[org.eclipse.emf.parsley.EmfParsleyGuiceModule] that is suitable to be used
+in an OSGI environment, like Eclipse itself or RAP (see also ref:RAP[EMF Parsley RAP support]).
+Our project wizards will automatically use such module as the base class.
+For CDO we have a specialized base module.
+
+We also have a module to be used in a non OSGI environment, e.g., a pure Java environment:
+codeRef[org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule] (this is the base class of
+codeRef[org.eclipse.emf.parsley.EmfParsleyGuiceModule]).  This is useful also for
+testing purposes, for writing plain Junit tests (i.e., not Plug-in Junit tests).
+This is also used in our testing framework (see ref:Testing[EMF Parsley Testing Framework]).
+
 todo[TODO: Explain the concept of Guice module and the corresponding binding methdos]
 
 todo[TODO: Explain polymorphic implementations]
