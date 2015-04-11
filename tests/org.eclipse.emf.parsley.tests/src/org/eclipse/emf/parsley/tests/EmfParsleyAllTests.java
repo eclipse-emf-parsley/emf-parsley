@@ -20,7 +20,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ProtectedConstructorTest.class,
-	ProposalCreatorTest.class,
 	PolymorphicDispatcherTest.class,
 	EmfParsleyUtilTest.class,
 	EditingDomainTest.class,
