@@ -328,12 +328,12 @@
 			<modules>
 				<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
 
-				<!-- <module>../../plugins/org.eclipse.emf.parsley.runtime.common</module> -->
+				<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
 
-				<!-- <module>../../plugins/org.eclipse.emf.parsley.runtime</module> -->
+				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.views</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
