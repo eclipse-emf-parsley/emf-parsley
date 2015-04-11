@@ -35,7 +35,8 @@ public class EmfParsleyChoiceTemplate extends NewElementWizardPage {
         super(name);
     }
     
-    public void createControl(Composite parent) {
+    @Override
+	public void createControl(Composite parent) {
         Composite composite = new Composite(parent, SWT.NULL);
         
         initializeDialogUnits(parent);

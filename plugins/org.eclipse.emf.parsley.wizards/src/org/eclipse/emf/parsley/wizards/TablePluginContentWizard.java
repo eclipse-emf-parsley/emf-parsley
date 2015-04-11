@@ -19,12 +19,14 @@ public class TablePluginContentWizard extends NewPluginTemplateWizard {
 
 	 protected IFieldData fData;
 	 
+	@Override
 	public void init(IFieldData data) {
 	   super.init(data);
 	   fData = data;
 	   // not available in Indigo: setWindowTitle
 	}
 
+	@Override
 	public ITemplateSection[] createTemplateSections() {
 	   return new ITemplateSection[] {new TableViewTemplateSection()};
 	}

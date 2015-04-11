@@ -31,6 +31,7 @@ public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyD
 		super(projectCreator);
 	}
 	
+	@Override
 	public void addPages() {
 		mainPage = new EmfParsleyDslNewProjectCreationPage("basicNewProjectPage");
 		mainPage.setTitle("EmfParsleyDsl Project");
@@ -51,6 +52,7 @@ public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyD
 		return projectInfo;
 	}
 	
+	@Override
 	public boolean canFinish() {
 		if (mainPage.isPageComplete()) {
 			return true;

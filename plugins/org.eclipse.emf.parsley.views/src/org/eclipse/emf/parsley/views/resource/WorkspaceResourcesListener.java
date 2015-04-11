@@ -47,9 +47,11 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 		this.resourceSet = resourceSet;
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 	}
+	@Override
 	public void resourceChanged(final IResourceChangeEvent event) {
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
+			@Override
 			public void run() {
 				manageEvent(event);
 			}
@@ -93,6 +95,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 
 		private final Collection<Resource> changedResources = new ArrayList<Resource>();
 
+		@Override
 		public boolean visit(final IResourceDelta delta) {
 			final int type = delta.getResource().getType();
 			if (type == IResource.FILE

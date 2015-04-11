@@ -71,6 +71,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		}
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 
@@ -115,6 +116,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		return (TemplateWizardConfiguration) ((IStructuredSelection)templateSelectionViewer.getSelection()).getFirstElement();
 	}
 	
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		setErrorMessage(null);
 		IStructuredSelection selection = (IStructuredSelection) event.getSelection();

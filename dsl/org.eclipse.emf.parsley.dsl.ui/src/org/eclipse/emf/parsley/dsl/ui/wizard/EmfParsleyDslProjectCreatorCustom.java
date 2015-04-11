@@ -43,6 +43,7 @@ public class EmfParsleyDslProjectCreatorCustom extends
 	 * @return the names of the bundles that a new project requires. May not be
 	 *         <code>null</code>
 	 */
+	@Override
 	protected List<String> getRequiredBundles() {
 		return Lists.newArrayList(
 				"org.eclipse.core.runtime",

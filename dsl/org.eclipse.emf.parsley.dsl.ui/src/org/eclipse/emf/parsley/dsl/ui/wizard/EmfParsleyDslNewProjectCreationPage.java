@@ -47,6 +47,7 @@ public class EmfParsleyDslNewProjectCreationPage extends
 		GridData gd = new GridData();
 		fUseTemplate.setLayoutData(gd);
 		fUseTemplate.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getContainer().updateButtons();
 			}

@@ -45,10 +45,12 @@ public class TableViewTemplateSection extends OptionTemplateSection {
 		createOptions();
 	}
 	
+	@Override
 	public String getUsedExtensionPoint() {
 		return null;
 	}
 	
+	@Override
 	public String[] getNewFiles() {
 		return new String[] { "icons/" };
 	}
@@ -68,6 +70,7 @@ public class TableViewTemplateSection extends OptionTemplateSection {
 		return Platform.getResourceBundle(EmfParsleyWizardsActivator.getDefault().getBundle());
 	}
 	
+	@Override
 	public void addPages(Wizard wizard) {
 		WizardPage page = createPage(0, IHelpContextIds.TEMPLATE_INTRO);
 		page.setTitle("Table Master Detail Template");
@@ -81,6 +84,7 @@ public class TableViewTemplateSection extends OptionTemplateSection {
 		addOption(KEY_EDITABLE, "Is editable", true, 0);
 	}
 	
+	@Override
 	protected void updateModel(IProgressMonitor monitor) throws CoreException {
 		String projectId = project.getDescription().getName();
 		addOption(KEY_PROJECT_NAME, "Project Name", projectId, 0);

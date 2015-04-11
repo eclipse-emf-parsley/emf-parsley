@@ -52,11 +52,13 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
 	 * org.eclipse.jface.viewers.IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		setNeedsProgressMonitor(true);
 		setWindowTitle(WIZARD_NAME);
 	}
 
+	@Override
 	public void addPages() {
 		super.addPages();
 
@@ -87,6 +89,7 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 		final URI location = loc;
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
+			@Override
 			public void run(IProgressMonitor monitor)
 					throws InvocationTargetException {
 				NewEmfParsleyProjectSupport.createProject(name, location, pageTwo.getChoice(),
