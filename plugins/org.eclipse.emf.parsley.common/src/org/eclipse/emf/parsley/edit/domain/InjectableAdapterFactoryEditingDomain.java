@@ -33,7 +33,9 @@ public class InjectableAdapterFactoryEditingDomain extends
 		super(adapterFactory, new BasicCommandStack(),
 				new HashMap<Resource, Boolean>());
 
+		// in the future we might try and computePlatformURIMap
+		// using the target platform.
 		getResourceSet().getURIConverter().getURIMap()
-				.putAll(EcorePlugin.computePlatformURIMap());
+				.putAll(EcorePlugin.computePlatformURIMap(false));
 	}
 }
