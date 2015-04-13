@@ -10,60 +10,58 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.parsley.tests.utils.SWTBotEclipseEditorCustom
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
-import org.eclipse.emf.parsley.tests.utils.SWTBotEclipseEditorCustom
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
 public class EmfParsleyDslEditorTests extends EmfParsleyDslUiAbstractTests {
 
-	@Test
-	def void checkPluginXmlGen() {
-		createDslProjectWithWizard
-		
-		val editor = bot.editorByTitle("module.parsley")
-		
-		editor.setEditorContentsSaveAndWaitForAutoBuild(
-'''
-module «TEST_PROJ_NAME» {
-	
-	// parts should trigger generation of «PLUGIN_XML_EMFPARSLEY_GEN»
-	
-	parts {
-		viewpart id {
-			viewname "View Name"
-			viewclass org.eclipse.emf.parsley.views.AbstractSaveableTreeView
-			// viewcategory my.category
-		}
-	}
-}
-'''			
-		)
-		
-		// now the generated plugin xml file should be available
-		val projTree = getProjectTreeItem(TEST_PROJ_NAME)
-		projTree.expand.getNode(PLUGIN_XML_EMFPARSLEY_GEN)
-		
-		editor.setEditorContentsSaveAndWaitForAutoBuild(
-'''
-module «TEST_PROJ_NAME» {
-	// removed parts
-	
-	// «PLUGIN_XML_EMFPARSLEY_GEN» should be removed
-}
-'''			
-		)
-		
-		// now the generated plugin xml file must have been removed
-		Assert::assertTrue(
-			PLUGIN_XML_EMFPARSLEY_GEN + " still present!",
-			projTree.nodes.forall [ it != PLUGIN_XML_EMFPARSLEY_GEN ]
-		)
-	}
+	// This is now checked in org.eclipse.emf.parsley.dsl.ui.tests.EmfParsleyDslWorkbenchTest.testPluginXmlGeneration()
+//	@Test
+//	def void checkPluginXmlGen() {
+//		createDslProjectWithWizard
+//		
+//		val editor = bot.editorByTitle("module.parsley")
+//		
+//		editor.setEditorContentsSaveAndWaitForAutoBuild(
+//'''
+//module «TEST_PROJ_NAME» {
+//	
+//	// parts should trigger generation of «PLUGIN_XML_EMFPARSLEY_GEN»
+//	
+//	parts {
+//		viewpart id {
+//			viewname "View Name"
+//			viewclass org.eclipse.emf.parsley.views.AbstractSaveableTreeView
+//			// viewcategory my.category
+//		}
+//	}
+//}
+//'''			
+//		)
+//		
+//		// now the generated plugin xml file should be available
+//		val projTree = getProjectTreeItem(TEST_PROJ_NAME)
+//		projTree.expand.getNode(PLUGIN_XML_EMFPARSLEY_GEN)
+//		
+//		editor.setEditorContentsSaveAndWaitForAutoBuild(
+//'''
+//module «TEST_PROJ_NAME» {
+//	// removed parts
+//	
+//	// «PLUGIN_XML_EMFPARSLEY_GEN» should be removed
+//}
+//'''			
+//		)
+//		
+//		// now the generated plugin xml file must have been removed
+//		Assert::assertTrue(
+//			PLUGIN_XML_EMFPARSLEY_GEN + " still present!",
+//			projTree.nodes.forall [ it != PLUGIN_XML_EMFPARSLEY_GEN ]
+//		)
+//	}
 
 	@Test
 	def void checkTemplateProposalForViewSpecification() {

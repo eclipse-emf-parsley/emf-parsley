@@ -29,11 +29,11 @@ import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.xtext.junit4.ui.ContentAssistProcessorTestBuilder
 import static extension org.junit.Assert.*
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
 /**
  * @author Lorenzo Bettini
  */
+@RunWith(typeof(XtextRunner))
+@InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
 class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	
 	static IJavaProject pluginJavaProject

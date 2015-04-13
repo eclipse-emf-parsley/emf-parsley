@@ -1,13 +1,21 @@
 package org.eclipse.emf.parsley.dsl.tests.util.ui
 
 import com.google.inject.Inject
+import java.io.FileFilter
+import java.io.FileNotFoundException
 import java.util.List
+import org.eclipse.core.resources.IMarker
+import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.xtext.junit4.ui.util.JavaProjectSetupUtil
 import org.eclipse.xtext.ui.XtextProjectHelper
 import org.eclipse.xtext.ui.util.PluginProjectFactory
+
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.junit.Assert.*
+import java.io.File
 
 /**
  * Utility class for creating a Plug-in project for testing.
@@ -38,4 +46,48 @@ class PluginProjectHelper {
 		return JavaProjectSetupUtil.findJavaProject(projectName);
 	}
 
+	def assertNoErrors() {
+		val markers = root.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE).
+			filter[
+				getAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO) == IMarker.SEVERITY_ERROR
+			]
+		assertEquals(
+			"unexpected errors:\n" +
+			markers.map[getAttribute(IMarker.LOCATION) + 
+				", " + getAttribute(IMarker.MESSAGE)].join("\n"),
+			0, 
+			markers.size
+		)
+	}
+
+	def void clearJdtIndex() {
+		val jdtMetadata = JavaCore.getPlugin().getStateLocation().toFile();
+		var success = false;
+		try {
+			cleanFolder(jdtMetadata);
+			success = true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		System.err.println("Clean up index " + jdtMetadata.getAbsolutePath() + ": " + success);
+	}
+
+	def void cleanFolder(File parentFolder) throws FileNotFoundException {
+		cleanFolder(parentFolder, [true]);
+	}
+
+	def void cleanFolder(File parentFolder, FileFilter myFilter) throws FileNotFoundException {
+		if (!parentFolder.exists()) {
+			throw new FileNotFoundException(parentFolder.getAbsolutePath());
+		}
+		val File[] contents = parentFolder.listFiles(myFilter);
+		for (var j = 0; j < contents.length; j++) {
+			val File file = contents.get(j);
+			if (file.isDirectory()) {
+				cleanFolder(file, myFilter);
+			} else {
+				file.delete();
+			}
+		}
+	}
 }
