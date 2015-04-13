@@ -1,6 +1,5 @@
-import java.util.*
-import library.*
-import org.eclipse.emf.parsley.cdo.*
+import library.Book
+import org.eclipse.emf.parsley.cdo.CDOEmfParsleyModule
 import org.eclipse.emf.parsley.examples.cdo.view.TreeFormCDOView
 
 /* org.eclipse.emf.parsley.examples.cdo.treeform Emf Parsley Dsl Module file */

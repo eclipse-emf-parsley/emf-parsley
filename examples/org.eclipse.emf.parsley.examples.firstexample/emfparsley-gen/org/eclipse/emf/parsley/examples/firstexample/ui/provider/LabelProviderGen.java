@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 package org.eclipse.emf.parsley.examples.firstexample.ui.provider;
 
 import com.google.common.base.Objects;
@@ -32,12 +25,10 @@ public class LabelProviderGen extends ViewerLabelProvider {
       Writer _author_1 = b.getAuthor();
       String _name = _author_1.getName();
       String _plus_2 = (" (by " + _name);
-      String _plus_3 = (_plus_2 + ")");
-      _xifexpression = _plus_3;
+      _xifexpression = (_plus_2 + ")");
     } else {
       _xifexpression = "";
     }
-    String _plus_4 = (_plus_1 + _xifexpression);
-    return _plus_4;
+    return (_plus_1 + _xifexpression);
   }
 }

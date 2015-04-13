@@ -34,6 +34,7 @@ public class ViewerContentProviderGen extends ViewerContentProvider {
     TreeIterator<EObject> _allContents = _resource.getAllContents();
     Iterator<Folder> _filter = Iterators.<Folder>filter(_allContents, Folder.class);
     final Function1<Folder, Boolean> _function = new Function1<Folder, Boolean>() {
+      @Override
       public Boolean apply(final Folder it) {
         String _name = it.getName();
         String _containerName = c.getContainerName();

@@ -18,8 +18,8 @@ module org.eclipse.emf.parsley.examples.cdo.company.ui.customers extends Company
 	viewerContentProvider{
 		elements{
 			Resource -> {
-				if(contents.size>0){
-					val company = contents.get(0) as Company
+				if(^contents.size>0){
+					val company = ^contents.get(0) as Company
 					company.customers	
 				}
 			}
