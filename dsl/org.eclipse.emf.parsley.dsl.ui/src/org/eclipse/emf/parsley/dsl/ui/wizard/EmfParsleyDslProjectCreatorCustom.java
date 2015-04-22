@@ -28,12 +28,12 @@ import com.google.common.collect.Lists;
  * @author Lorenzo Bettini
  * 
  */
-public class EmfParsleyDslProjectCreatorCustom extends
-		EmfParsleyDslProjectCreator {
+public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreator {
 	static EmfParsleyDslNewProjectFiles filesGenerator = new EmfParsleyDslNewProjectFiles();
 
 	static EmfParsleyProjectFilesGenerator projectFilesGenerator = new EmfParsleyProjectFilesGenerator();
-		@Override
+
+	@Override
 	protected List<String> getAllFolders() {
 		return ImmutableList.of(SRC_ROOT,
 				EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN);

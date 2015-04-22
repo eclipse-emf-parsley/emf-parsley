@@ -28,16 +28,20 @@ module «projectName» {
 '''
 
 	def dslFileWithView(String projectName, String viewId) {
-		exampleDslFile(projectName, 
-'''
-parts {
-	viewpart «projectName» {
-		viewname "«projectName.prefixFromProject»"
-		viewclass «viewId»
-	}
-}
-'''
-		)
+		'''
+		import «viewId»
+
+		«exampleDslFile(projectName, 
+			'''
+			parts {
+				viewpart «projectName» {
+					viewname "«projectName.prefixFromProject»"
+					viewclass «viewId.prefixFromProject»
+				}
+			}
+			'''
+		)»
+		'''
 	}
 	
 }
