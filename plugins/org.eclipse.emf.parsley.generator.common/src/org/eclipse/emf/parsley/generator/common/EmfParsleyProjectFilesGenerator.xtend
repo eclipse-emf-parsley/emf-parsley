@@ -10,24 +10,21 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.generator.common
 
+import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
+
+/**
+ * @author Lorenzo Bettini - initial API and implementation
+ */
 class EmfParsleyProjectFilesGenerator {
 
-	def prefixFromProject(String projectName) {
-		var prefixName = projectName
-		val dotIndex = projectName.lastIndexOf(".")
-		if (dotIndex > 0)
-			prefixName = projectName.substring(dotIndex+1)
-		return prefixName.toFirstUpper
-	}
-
 	def activatorName(String projectName)
-	'''«projectName.prefixFromProject»Activator'''
+	'''«projectName.buildClassNameFromProject»Activator'''
 
 	def moduleName(String projectName)
-	'''«projectName.prefixFromProject»GuiceModule'''
+	'''«projectName.buildClassNameFromProject»GuiceModule'''
 
 	def extFactoryName(String projectName)
-	'''«projectName.prefixFromProject»ExecutableExtensionFactory'''
+	'''«projectName.buildClassNameFromProject»ExecutableExtensionFactory'''
 
 	def generateManifest(String projectName)
 '''

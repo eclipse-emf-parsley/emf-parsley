@@ -10,16 +10,65 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.wizard.template;
 
-import org.eclipse.emf.parsley.generator.common.EmfParsleyViewFilesGenerator
+import org.eclipse.emf.parsley.views.OnSelectionFormView
+import org.eclipse.emf.parsley.views.OnSelectionTableFormView
+import org.eclipse.emf.parsley.views.OnSelectionTableView
+import org.eclipse.emf.parsley.views.OnSelectionTreeFormView
+import org.eclipse.emf.parsley.views.OnSelectionTreeView
+import org.eclipse.emf.parsley.views.SaveableTableFormView
+import org.eclipse.emf.parsley.views.SaveableTableView
+import org.eclipse.emf.parsley.views.SaveableTreeFormView
+import org.eclipse.emf.parsley.views.SaveableTreeView
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
 public class TemplateWizardConfigurationsFactory {
 
-	protected static final String ABSTRACT_SAVEABLE = "AbstractSaveable";
+	static class TemplateWizardConfigurationForOnSelectionTableView extends TemplateWizardConfiguration {
+	
+		new(String label, CharSequence description, Class<?> superClass) {
+			super(label, description, superClass)
+		}
 
-	protected static final EmfParsleyViewFilesGenerator viewFilesGenerator = new EmfParsleyViewFilesGenerator();
+		override getConfiguratorElements(String projectName) {
+			getProjectFilesGenerator.
+				genEStructuralFeature(getPartClassName(projectName)).
+					toString
+		}
+	}
+
+	static class TemplateWizardConfigurationForSaveableTableView extends TemplateWizardConfiguration {
+	
+		new(String label, CharSequence description, Class<?> superClass) {
+			super(label, description, superClass)
+		}
+
+		override getConfiguratorElements(String projectName) {
+			val partClassName = getPartClassName(projectName)
+			'''
+			«getProjectFilesGenerator.
+				genContents(partClassName)»
+			«getProjectFilesGenerator.
+				genEClass(partClassName)»
+			«getProjectFilesGenerator.
+				genResourceURI(partClassName)»
+			'''
+		}
+	}
+
+	static class TemplateWizardConfigurationForSaveableTreeView extends TemplateWizardConfiguration {
+	
+		new(String label, CharSequence description, Class<?> superClass) {
+			super(label, description, superClass)
+		}
+
+		override getConfiguratorElements(String projectName) {
+			getProjectFilesGenerator.
+				genResourceURI(getPartClassName(projectName)).
+					toString
+		}
+	}
 
 	def createTemplateWizardConfigurations() {
 		val reactOnSelection = "The view reacts on selection from other components."
@@ -34,120 +83,80 @@ public class TemplateWizardConfigurationsFactory {
 		newArrayList(
 			new TemplateWizardConfiguration(
 				"On selection Tree View",
-				"org.eclipse.emf.parsley.views.OnSelectionTreeView",
-				"",
-				[ projectName, className |
-					""
-				],
-				createDescription("tree", reactOnSelection, noUserChange)
+				createDescription("tree", reactOnSelection, noUserChange),
+				OnSelectionTreeView
 			),
 			new TemplateWizardConfiguration(
 				"On selection Form View",
-				"org.eclipse.emf.parsley.views.OnSelectionFormView",
-				"",
-				[ projectName, className |
-					""
-				],
-				createDescription("form", reactOnSelection, noUserChange)
+				createDescription("form", reactOnSelection, noUserChange),
+				OnSelectionFormView
 			),
-			new TemplateWizardConfiguration(
+			new TemplateWizardConfigurationForOnSelectionTableView(
 				"On selection Table Form View",
-				"OnSelectionTableFormView",
-				"",
-				[ projectName, className |
-					viewFilesGenerator.generateConcreteForOnSelectionTableFormView(projectName, className).toString()
-				],
 				createDescription("table and a form", reactOnSelection,
 					'''
 					«theUserMustSpecify»
 					«structuralFeature»
 					'''
-				)
+				),
+				OnSelectionTableFormView
 			),
-			new TemplateWizardConfiguration(
+			new TemplateWizardConfigurationForOnSelectionTableView(
 				"On selection Table View",
-				"OnSelectionTableView",
-				"",
-				[ projectName, className |
-					viewFilesGenerator.generateConcreteForOnSelectionTableView(projectName, className).toString()
-				],
 				createDescription("table", reactOnSelection,
 					'''
 					«theUserMustSpecify»
 					«structuralFeature»
 					'''
-				)
+				),
+				OnSelectionTableView
 			),
 			new TemplateWizardConfiguration(
 				"On selection Tree Form View",
-				"org.eclipse.emf.parsley.views.OnSelectionTreeFormView",
-				"",
-				[ projectName, className |
-					""
-				],
-				createDescription("tree and a form", reactOnSelection, noUserChange)
+				createDescription("tree and a form", reactOnSelection, noUserChange),
+				OnSelectionTreeFormView
 			),
-			new TemplateWizardConfiguration(
+			new TemplateWizardConfigurationForSaveableTableView(
 				"Saveable Table Form View",
-				"",
-				"TableFormView",
-				[ projectName, className |
-					viewFilesGenerator.generateConcreteForResourceTableView(projectName, className,
-						ABSTRACT_SAVEABLE + "TableFormView").toString()
-				],
 				createDescription("table and a form", saveableView, 
 					'''
 					«theUserMustSpecify»
 					«resourceURI»
 					«eclassToRepresentAndHowToReachResource»
 					'''
-				)
+				),
+				SaveableTableFormView
 			),
-			new TemplateWizardConfiguration(
+			new TemplateWizardConfigurationForSaveableTableView(
 				"Saveable Table View",
-				"",
-				"TableView",
-				[ projectName, className |
-					viewFilesGenerator.generateConcreteForResourceTableView(projectName, className,
-						ABSTRACT_SAVEABLE + "TableView").toString()
-				],
 				createDescription("table", saveableView, 
 					'''
 					«theUserMustSpecify»
 					«resourceURI»
 					«eclassToRepresentAndHowToReachResource»
 					'''
-				)
+				),
+				SaveableTableView
 			),
-			new TemplateWizardConfiguration(
+			new TemplateWizardConfigurationForSaveableTreeView(
 				"Saveable Tree Form View",
-				"",
-				"TreeFormView",
-				[ projectName, className |
-					viewFilesGenerator.generateConcreteForResourceTreeView(projectName, className,
-						ABSTRACT_SAVEABLE + "TreeFormView").toString()
-				],
 				createDescription("tree and a form", saveableView, 
 					'''
 					«theUserMustSpecify»
 					«resourceURI»
 					'''
-				)
+				),
+				SaveableTreeFormView
 			),
-			new TemplateWizardConfiguration(
+			new TemplateWizardConfigurationForSaveableTreeView(
 				"Saveable Tree View",
-				"",
-				"TreeView",
-				[ projectName, className |
-					viewFilesGenerator.generateConcreteForResourceTreeView(projectName, className,
-						ABSTRACT_SAVEABLE + "TreeView").toString()
-				],
 				createDescription("tree", saveableView, 
 					'''
 					«theUserMustSpecify»
 					«resourceURI»
 					'''
-				)
+				),
+				SaveableTreeView
 			)
 		)
 	}

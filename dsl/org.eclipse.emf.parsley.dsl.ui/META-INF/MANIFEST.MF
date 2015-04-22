@@ -35,5 +35,6 @@ Export-Package: org.eclipse.emf.parsley.dsl.ui.contentassist,
  org.eclipse.emf.parsley.dsl.ui.contentassist.antlr,
  org.eclipse.emf.parsley.dsl.ui.internal,
  org.eclipse.emf.parsley.dsl.ui.quickfix,
- org.eclipse.emf.parsley.dsl.ui.wizard
+ org.eclipse.emf.parsley.dsl.ui.wizard,
+ org.eclipse.emf.parsley.dsl.ui.wizard.template
 Bundle-Activator: org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator

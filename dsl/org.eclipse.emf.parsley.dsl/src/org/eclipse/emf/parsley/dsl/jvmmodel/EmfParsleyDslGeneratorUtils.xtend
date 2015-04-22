@@ -23,7 +23,7 @@ import static extension org.eclipse.xtext.EcoreUtil2.*
  * @author Lorenzo Bettini
  *
  */
-class GeneratorUtils {
+class EmfParsleyDslGeneratorUtils {
 	
 	@Inject extension IQualifiedNameProvider
 	

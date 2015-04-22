@@ -12,17 +12,6 @@ package org.eclipse.emf.parsley.generator.common
 
 class EmfParsleyViewFilesGenerator {
 
-	def generateViewClass(String projectName, String className, String extendsClass)
-'''
-package «projectName»;
-
-import org.eclipse.emf.parsley.views.«extendsClass»;
-
-public class «className» extends «extendsClass» {
-	
-}
-'''
-
 	def generateConcreteForResourceTreeView(String projectName, String className, String extendsClass)
 '''
 package «projectName»;

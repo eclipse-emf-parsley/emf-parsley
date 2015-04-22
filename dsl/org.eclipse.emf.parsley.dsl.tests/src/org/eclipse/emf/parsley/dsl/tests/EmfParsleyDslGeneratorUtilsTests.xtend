@@ -10,14 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.tests
 
-import org.eclipse.emf.parsley.dsl.jvmmodel.GeneratorUtils
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.dsl.jvmmodel.EmfParsleyDslGeneratorUtils
 
 class EmfParsleyDslGeneratorUtilsTests {
 
-	extension GeneratorUtils utils = new GeneratorUtils
+	extension EmfParsleyDslGeneratorUtils utils = new EmfParsleyDslGeneratorUtils
 
 	@Test
 	def testGetPropertyNameForGetterSetterMethod() {

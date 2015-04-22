@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
+import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
 import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator;
 import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
@@ -83,18 +84,25 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		NewEmfParsleyProjectSupport.createModule(project, projectName,
 				projectPackagePath, "EmfParsleyGuiceModuleGen", monitor);
 		
-		String dslFile = "";
-		if(getProjectInfo().getSelectedTemplate()!=null){
-			String superclassViewID=getProjectInfo().getSelectedTemplate().
-						 getOrGenerateViewClass(project,
-								projectName, projectPackagePath, monitor);
-			dslFile = filesGenerator.dslFileWithView(projectName,superclassViewID).toString();	
-		}else{
-			dslFile = filesGenerator.exampleDslFile(projectName).toString();
+		String dslFileContents = "";
+		TemplateWizardConfiguration selectedTemplate = getProjectInfo().getSelectedTemplate();
+		if (selectedTemplate != null) {
+			String partClassName = selectedTemplate.getPartClassName(projectName);
+			String partClassFQN = selectedTemplate.getPartClassFQN(projectName);
+			String partContents = selectedTemplate.getContentsForPart(projectName);
+			NewEmfParsleyProjectSupport.createProjectFile(project,
+					projectPackagePath + "/" + partClassName.concat(".java"),
+					partContents, NewEmfParsleyProjectSupport
+							.createSubProgressMonitor(monitor));
+			dslFileContents = filesGenerator.
+				genDslModuleWithViewPart(projectName, partClassFQN, selectedTemplate.getConfiguratorContents(projectName))
+					.toString();
+		} else {
+			dslFileContents = filesGenerator.genEmptyDslModule(projectName).toString();
 		}
 		
 		NewEmfParsleyProjectSupport.createProjectFile(project,
-				projectPackagePath + "/module.parsley", dslFile,
+				projectPackagePath + "/module.parsley", dslFileContents,
 				NewEmfParsleyProjectSupport
 						.createSubProgressMonitor(monitor));
 

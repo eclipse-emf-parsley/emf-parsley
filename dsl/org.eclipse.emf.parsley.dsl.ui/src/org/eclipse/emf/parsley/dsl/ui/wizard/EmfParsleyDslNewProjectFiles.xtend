@@ -12,13 +12,15 @@ package org.eclipse.emf.parsley.dsl.ui.wizard
 
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator
 
+import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
+
 class EmfParsleyDslNewProjectFiles extends EmfParsleyProjectFilesGenerator {
 
-	def exampleDslFile(String projectName) {
-		exampleDslFile(projectName, "")
+	def genEmptyDslModule(String projectName) {
+		genDslModule(projectName, "")
 	}
 	
-	def exampleDslFile(String projectName, CharSequence additional)
+	def genDslModule(String projectName, CharSequence additional)
 '''
 /* «projectName» Emf Parsley Dsl Module file */
 module «projectName» {
@@ -27,21 +29,83 @@ module «projectName» {
 }
 '''
 
-	def dslFileWithView(String projectName, String viewId) {
+	def genDslModuleWithViewPart(String projectName, String viewFQN, String configuratorContents) {
 		'''
-		import «viewId»
+		import «viewFQN»
 
-		«exampleDslFile(projectName, 
+		«genDslModule(projectName, 
 			'''
 			parts {
 				viewpart «projectName» {
-					viewname "«projectName.prefixFromProject»"
-					viewclass «viewId.prefixFromProject»
+					viewname "«projectName.buildClassNameFromProject»"
+					viewclass «viewFQN.buildClassNameFromProject»
 				}
 			}
+			
+			«configuratorContents»
 			'''
 		)»
 		'''
 	}
+
+	def genConfigurator(CharSequence contents) {
+		'''
+		configurator {
+			«contents»
+		}
+		'''
+	}
+
+	def genResourceURI(CharSequence className) {
+		'''
+		resourceURI {
+			«className» -> {
+				// TODO create and return a org.eclipse.emf.common.util.URI
+				return null;
+			}
+		}
+		'''
+	}
+
+	def genContents(CharSequence className) {
+		'''
+		contents {
+			«className» -> {
+				// TODO return the contents from the resource
+				// e.g., resource.^contents.get(0)
+			}
+		}
+		'''
+	}
+
+	def genEClass(CharSequence className) {
+		'''
+		eClass {
+			«className» -> {
+				// TODO return the EClass to represent
+			}
+		}
+		'''
+	}
+
+	def genEStructuralFeature(CharSequence className) {
+		'''
+		eStructuralFeature {
+			«className» -> {
+				// TODO return the EStructuralFeature to get the elements to represent
+			}
+		}
+		'''
+	}
+
+	def genViewClass(String projectName, String className, String extendsClass)
+'''
+package «projectName»;
+
+public class «className» extends «extendsClass» {
+	
+}
+'''
+
 	
 }

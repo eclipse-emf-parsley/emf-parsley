@@ -93,7 +93,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	
 	@Inject extension TypesFactory
 	
-	@Inject extension GeneratorUtils
+	@Inject extension EmfParsleyDslGeneratorUtils
 
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the

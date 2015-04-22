@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.dsl.generator
 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.parsley.dsl.jvmmodel.GeneratorUtils
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
@@ -20,10 +19,11 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
+import org.eclipse.emf.parsley.dsl.jvmmodel.EmfParsleyDslGeneratorUtils
 
 class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 	
-	@Inject extension GeneratorUtils;
+	@Inject extension EmfParsleyDslGeneratorUtils;
 
 	override doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for(module: resource.allContents.toIterable.filter(typeof(Module))) {

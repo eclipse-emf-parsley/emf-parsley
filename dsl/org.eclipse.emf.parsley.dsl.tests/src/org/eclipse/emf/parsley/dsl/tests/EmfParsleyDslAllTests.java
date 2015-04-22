@@ -28,7 +28,11 @@ import org.junit.runners.Suite;
 	EmfParsleyDslValidatorTests.class,
 	EmfParsleyDslPluginXmlGeneratorTests.class,
 	EmfParsleyDslGeneratorTests.class,
-	EmfParsleyDslOrganizeImportsTest.class
+	EmfParsleyDslOrganizeImportsTest.class,
+	EmfParsleyDslNewProjectFilesTests.class,
+	EmfParsleyProjectFilesGeneratorUtilTests.class,
+	EmfParsleyTemplateWizardConfigurationTests.class,
+	EmfParsleyTemplateWizardConfigurationFactoryTests.class
 })
 public class EmfParsleyDslAllTests {
 

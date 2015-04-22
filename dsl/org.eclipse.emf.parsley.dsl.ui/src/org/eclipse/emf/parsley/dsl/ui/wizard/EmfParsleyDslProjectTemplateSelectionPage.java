@@ -105,7 +105,9 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		});
 		
 		createDescriptionIn(sashForm);
-		templateSelectionViewer.setInput(new TemplateWizardConfigurationsFactory().createTemplateWizardConfigurations());
+		templateSelectionViewer.setInput(
+				new TemplateWizardConfigurationsFactory().
+					createTemplateWizardConfigurations());
 		templateSelectionViewer.addSelectionChangedListener(this);
 		Dialog.applyDialogFont(container);
 		setPageComplete(false);
