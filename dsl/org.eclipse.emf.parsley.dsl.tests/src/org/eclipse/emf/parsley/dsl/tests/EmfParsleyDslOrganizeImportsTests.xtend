@@ -29,7 +29,7 @@ import static org.junit.Assert.*
  */
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslOrganizeImportsTest {
+class EmfParsleyDslOrganizeImportsTests {
 	
 	@Inject extension ParseHelper<Model> 
 	@Inject ImportOrganizer importOrganizer
