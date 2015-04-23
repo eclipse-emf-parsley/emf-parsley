@@ -57,6 +57,20 @@ public class TestConfigurator extends Configurator {
 				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
+	public Object contents(TestSaveableResourceTableFormView requestor, Resource resource) {
+		Library library=(Library) resource.getContents().get(0);
+		return library.getBooks();
+	}
+
+	public EClass eClass(TestSaveableResourceTableFormView requestor) {
+		return EXTLibraryPackage.Literals.BOOK;
+	}
+	
+	public URI resourceURI(TestSaveableResourceTableFormView requestor) {
+		return URI.createPlatformResourceURI(
+				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+	}
+
 	public EStructuralFeature eStructuralFeature(TestOnSelectionLibraryBooksTableView requestor) {
 		return EXTLibraryPackage.Literals.LIBRARY__BOOKS;
 	}
