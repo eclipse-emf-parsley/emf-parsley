@@ -15,14 +15,14 @@ import org.eclipse.emf.parsley.examples.mail.Account;
 import org.eclipse.emf.parsley.examples.mail.Folder;
 import org.eclipse.emf.parsley.examples.mail.Mail;
 import org.eclipse.emf.parsley.examples.mail.MailFactory;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 
 
 /**
  * @author Lorenzo Bettini
  * 
  */
-public class MailEmptyResourceInitializer extends EmptyResourceInitializer {
+public class MailResourceManager extends ResourceManager {
 	
 	int counter = 0;
 

@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.examples.rap.ui;
 
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.parsley.factories.TreeFormFactory;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.widgets.TreeFormComposite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -25,7 +24,7 @@ import com.google.inject.Inject;
 public class View extends ViewPart {
 	public static final String ID = "org.eclipse.emf.parsley.examples.rap.ui.view";
 
-	@Inject private EmptyResourceInitializer emptyResourceInitializer;
+	@Inject private ResourceManager resourceManager;
 	
 	@Inject private TreeFormFactory treeFormFactory;
 	
@@ -40,7 +39,7 @@ public class View extends ViewPart {
 				SWT.BORDER);
 		
 		Resource resource = new ResourceImpl();
-		emptyResourceInitializer.initialize(resource);
+		resourceManager.initialize(resource);
 		
 		treeFormComposite.update(resource);
 	}

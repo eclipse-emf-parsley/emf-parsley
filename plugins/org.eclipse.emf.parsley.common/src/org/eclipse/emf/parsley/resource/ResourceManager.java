@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,14 +13,22 @@ package org.eclipse.emf.parsley.resource;
 import org.eclipse.emf.ecore.resource.Resource;
 
 /**
- * This is used when a loaded resource is empty, so that the programmer
- * can add default contents.
+ * ResourceManager is responsible for tasks concerning a {@link Resource}.
  * 
- * @author Lorenzo Bettini
- *
+ * @author Lorenzo Bettini - initial API and implementation
+ * 
  */
-public class EmptyResourceInitializer {
+public class ResourceManager {
 
+	/**
+	 * This method is called by the framework when a loaded resource has to be
+	 * initialized; subclasses can redefine it in order to put some contents in
+	 * the empty resource.
+	 * 
+	 * The default implementation is empty
+	 * 
+	 * @param resource
+	 */
 	public void initialize(Resource resource) {
 		// the default implementation does nothing
 	}

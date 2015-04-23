@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.cdo.util.CDOURIData;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
 import org.eclipse.emf.parsley.resource.LoadResourceResponse;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.spi.cdo.CDOMergingConflictResolver;
@@ -37,7 +36,6 @@ import com.google.inject.Inject;
  */
 public class CDOResourceLoader extends ResourceLoader {
 
-	@Inject private EmptyResourceInitializer emptyResourceInitializer;
 	@Inject private CDOSessionManager sessionManager;
 	
 	private static final Logger LOGGER = Logger.getLogger(CDOResourceLoader.class);
@@ -67,7 +65,7 @@ public class CDOResourceLoader extends ResourceLoader {
 			resource = getResource(editingDomain.getResourceSet(), resourceURI);
 			if(resource==null){
 				resource = createResource(editingDomain.getResourceSet(), resourceURI);
-				emptyResourceInitializer.initialize(resource);
+				getResourceManager().initialize(resource);
 				((CDOTransaction)((CDOResource)resource).cdoView()).commit();
 			}
 		} catch (Exception e) {

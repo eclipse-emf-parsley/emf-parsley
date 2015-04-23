@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.examples.cdo.treeform;
 
-import org.eclipse.emf.parsley.examples.cdo.treeform.customizations.TreeformCDOEmptyResourceInitializer;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.examples.cdo.treeform.customizations.TreeformCDOResourceManager;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-
 
 public class TreeformGuiceModule extends EmfParsleyGuiceModuleGen {
 
@@ -22,8 +21,7 @@ public class TreeformGuiceModule extends EmfParsleyGuiceModuleGen {
 	}
 
 	@Override
-	public Class<? extends EmptyResourceInitializer> bindEmptyResourceInitializer() {
-		return TreeformCDOEmptyResourceInitializer.class;
+	public Class<? extends ResourceManager> bindResourceManager() {
+		return TreeformCDOResourceManager.class;
 	}
-
 }

@@ -20,10 +20,9 @@ import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.util.ConcurrentAccessException;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 
-public class TreeformCDOEmptyResourceInitializer extends
-		EmptyResourceInitializer {
+public class TreeformCDOResourceManager extends ResourceManager {
 
 	@Override
 	public void initialize(Resource resource) {

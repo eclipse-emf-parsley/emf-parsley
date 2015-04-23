@@ -18,23 +18,27 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import com.google.inject.Inject;
 
 /**
- * ResourceLoader is responsible for loading the resource.
- * @author Lorenzo Bettini
+ * ResourceLoader is responsible for loading a {@link Resource}.
  * 
+ * @author Lorenzo Bettini
  */
 public class ResourceLoader {
 
 	@Inject
-	private EmptyResourceInitializer emptyResourceInitializer;
+	private ResourceManager resourceManager;
 
 	public Resource getResource(ResourceSet resourceSet, URI resourceURI) {
 		Resource resource = resourceSet.getResource(resourceURI, true);
 		if (resource.getContents().isEmpty()) {
-			emptyResourceInitializer.initialize(resource);
+			resourceManager.initialize(resource);
 		}
 		return resource;
 	}
 
+	protected ResourceManager getResourceManager() {
+		return resourceManager;
+	}
+	
 	/**
 	 * Tries to load the resource using the resource set of the editing domain
 	 * and returns a {@link LoadResourceResponse}.
@@ -55,7 +59,7 @@ public class ResourceLoader {
 			resource = editingDomain.getResourceSet().getResource(resourceURI,
 					false);
 			if (resource != null && resource.getContents().isEmpty()) {
-				emptyResourceInitializer.initialize(resource);
+				resourceManager.initialize(resource);
 			}
 		}
 

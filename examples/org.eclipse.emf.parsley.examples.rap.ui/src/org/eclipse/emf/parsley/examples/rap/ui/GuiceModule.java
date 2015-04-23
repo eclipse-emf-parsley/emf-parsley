@@ -17,7 +17,7 @@ import org.eclipse.emf.parsley.examples.rap.model.Element;
 import org.eclipse.emf.parsley.examples.rap.model.Item;
 import org.eclipse.emf.parsley.examples.rap.model.Model;
 import org.eclipse.emf.parsley.examples.rap.model.ModelFactory;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -26,8 +26,8 @@ import com.google.inject.Inject;
 
 public class GuiceModule extends EmfParsleyGuiceModule {
 
-	public static class CustomEmptyResourceInitializer extends
-			EmptyResourceInitializer {
+	public static class CustomResourceManager extends
+			ResourceManager {
 		public void initialize(org.eclipse.emf.ecore.resource.Resource resource) {
 			Model model = ModelFactory.eINSTANCE.createModel();
 			model.setName("My Model");
@@ -105,7 +105,7 @@ public class GuiceModule extends EmfParsleyGuiceModule {
 	}
 
 	@Override
-	public Class<? extends EmptyResourceInitializer> bindEmptyResourceInitializer() {
-		return CustomEmptyResourceInitializer.class;
+	public Class<? extends ResourceManager> bindResourceManager() {
+		return CustomResourceManager.class;
 	}
 }

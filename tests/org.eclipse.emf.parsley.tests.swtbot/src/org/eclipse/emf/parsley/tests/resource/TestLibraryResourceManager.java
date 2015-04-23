@@ -16,14 +16,14 @@ import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 
 /**
  * @author Lorenzo Bettini
  * 
  */
-public class TestEmptyLibraryResourceInitializer extends
-		EmptyResourceInitializer {
+public class TestLibraryResourceManager extends
+		ResourceManager {
 
 	@Override
 	public void initialize(Resource resource) {

@@ -4,7 +4,7 @@ section:Resources[Resources]
 
 ul[
 	item[If you need a machanism to fill some data for the first time you use a model, you can provide
-	a specific implementation of ref:EmptyResourceInitializer[Emty Resource Initializer].]
+	a specific implementation of ref:ResourceManager[Resource Manager].]
 	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
 	Loader]]
 ]
@@ -18,14 +18,17 @@ ul[
 section2:ResourceLoader[Resource Loader]
 
 The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.
-This class uses internally the ref:EmptyResourceInitializer[Empty Resource Initializer].
+This class uses internally the ref:ResourceManager[Resource Manager].
 
 
-section2:EmptyResourceInitializer[Empty Resource Initializer]
+section2:ResourceManager[Resource Manager]
 
-If you need to initialize your model, for the first use, you can define an implementation of codeRef[org.eclipse.emf.parsley.resource.EmptyResourceInitializer].
-When the main resource will be found empty, your code will be executed. 
+Tasks concerning an EMF codeRef[org.eclipse.emf.ecore.resource.Resource] are
+delegated to codeRef[org.eclipse.emf.parsley.resource.ResourceManager].
 
+One of such tasks is initializing the resource, e.g., when, after loading, it is
+found empty.  You can derive from this class (and bind it in the Guice module) and provide a custom implementation 
+of the method e[initialize].
 
 section2:ResourceSaveManager[Resource Save Manager]
 

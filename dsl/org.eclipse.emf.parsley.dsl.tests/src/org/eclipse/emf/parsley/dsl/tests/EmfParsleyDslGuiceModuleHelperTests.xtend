@@ -100,7 +100,7 @@ bindFeatureResolver
 bindTableFeaturesProvider
 bindEmfSelectionHelper
 bindResourceSaveManager
-bindEmptyResourceInitializer
+bindResourceManager
 bindIContentProvider
 bindProposalCreator
 bindIEditingStrategy

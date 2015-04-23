@@ -49,8 +49,8 @@ import org.eclipse.emf.parsley.listeners.IViewerMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
 import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.runtime.service.AbstractGenericModule;
 import org.eclipse.emf.parsley.runtime.ui.ClassLoaderImageHelper;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
@@ -426,11 +426,13 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 	
 	/**
-	 * Use this method to customize the resource initialization.
-	 * @return a specification of {@link EmptyResourceInitializer}
+	 * Use this method to customize tasks concerning a resource,
+	 * for example, its initialization.
+	 * 
+	 * @return a specification of {@link ResourceManager}
 	 */
-	public Class<? extends EmptyResourceInitializer> bindEmptyResourceInitializer() {
-		return EmptyResourceInitializer.class;
+	public Class<? extends ResourceManager> bindResourceManager() {
+		return ResourceManager.class;
 	}
 
 	/**

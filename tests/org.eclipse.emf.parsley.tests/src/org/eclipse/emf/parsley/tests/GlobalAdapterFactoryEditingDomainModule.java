@@ -13,15 +13,14 @@ package org.eclipse.emf.parsley.tests;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.edit.domain.GlobalAdapterFactoryEditingDomainProvider;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
 
 import com.google.inject.Provider;
 
 public class GlobalAdapterFactoryEditingDomainModule extends
 		EmfParsleyGuiceModuleForTesting {
-	protected static class TestEmptyResourceInitializer extends
-			EmptyResourceInitializer {
+	protected static class TestResourceManager extends ResourceManager {
 		public void initialize(Resource resource) {
 			resource.getContents().add(
 					TestmodelsFactory.eINSTANCE.createClassWithName());
@@ -34,7 +33,7 @@ public class GlobalAdapterFactoryEditingDomainModule extends
 	}
 
 	@Override
-	public Class<? extends EmptyResourceInitializer> bindEmptyResourceInitializer() {
-		return TestEmptyResourceInitializer.class;
+	public Class<? extends ResourceManager> bindResourceManager() {
+		return TestResourceManager.class;
 	}
 }

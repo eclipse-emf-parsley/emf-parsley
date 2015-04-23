@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests.factories;
 
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
-import org.eclipse.emf.parsley.resource.EmptyResourceInitializer;
+import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.tests.EmfParsleyGuiceModuleWithConfigurator;
 import org.eclipse.emf.parsley.tests.binding.CustomLibraryFormControlFactory;
 import org.eclipse.emf.parsley.tests.binding.CustomLibraryProposalCreator;
@@ -23,7 +23,7 @@ import org.eclipse.emf.parsley.tests.labeling.CustomLibraryLabelProvider;
 import org.eclipse.emf.parsley.tests.labeling.CustomLibraryTableColumnLabelProvider;
 import org.eclipse.emf.parsley.tests.providers.TestFeaturesProvider;
 import org.eclipse.emf.parsley.tests.providers.TestTableFeaturesProvider;
-import org.eclipse.emf.parsley.tests.resource.TestEmptyLibraryResourceInitializer;
+import org.eclipse.emf.parsley.tests.resource.TestLibraryResourceManager;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
@@ -68,8 +68,8 @@ public class CustomLibraryModule extends EmfParsleyGuiceModuleWithConfigurator {
 	}
 
 	@Override
-	public Class<? extends EmptyResourceInitializer> bindEmptyResourceInitializer() {
-		return TestEmptyLibraryResourceInitializer.class;
+	public Class<? extends ResourceManager> bindResourceManager() {
+		return TestLibraryResourceManager.class;
 	}
 
 	@Override
