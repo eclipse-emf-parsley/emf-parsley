@@ -12,16 +12,16 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem
 
-public abstract class EmfParsleyDialogAbstractTests extends EmfParsleyAbstractTests {
+public abstract class EmfParsleyDialogAbstractTests extends EmfParsleySWTBotAbstractTests {
 
-	protected var editorName = EMF_TREE_EDITOR_OPEN_DIALOG
+	protected var editorName = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_TREE_EDITOR_OPEN_DIALOG
 
 	def protected assertDialog(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		item.doubleClick
-		val shell = bot.shell(dialogTitle)
+		val shell = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.shell(dialogTitle)
 		shell.activate
 		proc.apply()
-		bot.button("OK").click()
+		org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.button("OK").click()
 		waitForShellToClose(shell)
 	}
 
@@ -40,7 +40,7 @@ public abstract class EmfParsleyDialogAbstractTests extends EmfParsleyAbstractTe
 	}
 	
 	def protected getRootOfEditor() {
-		getRootOfTreeEditor(editorName, MY_EXT_LIBRARY_PLATFORM_URI)
+		getRootOfTreeEditor(editorName, org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXT_LIBRARY_PLATFORM_URI)
 	}
 	
 	def protected libraryNode() {

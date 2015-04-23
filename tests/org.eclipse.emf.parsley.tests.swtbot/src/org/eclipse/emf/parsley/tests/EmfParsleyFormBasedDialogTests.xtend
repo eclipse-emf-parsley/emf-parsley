@@ -17,40 +17,40 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyFormBasedDialogTests extends EmfParsleyAbstractTests {
+public class EmfParsleyFormBasedDialogTests extends EmfParsleySWTBotAbstractTests {
 
 	@Test
 	def void checkOpenDialogOnTreeElements() {
-		openEmfEditorOnTestFile(EMF_TREE_EDITOR_OPEN_FORM_DIALOG,
-				MY_EXTLIBRARY)
+		openEmfEditorOnTestFile(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_TREE_EDITOR_OPEN_FORM_DIALOG,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY)
 		
-		libraryNode.assertDialog(LIBRARY_LABEL) [
+		libraryNode.assertDialog(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_LABEL) [
 			assertFormControlsOfLibraryNode(true)
 		]
 		
-		writerNode.assertDialog(WRITER_LABEL) [
+		writerNode.assertDialog(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.WRITER_LABEL) [
 			assertFormControlsOfWriterNode(true)
 		]
 	}
 
 	@Test
 	def void checkDialogDatabinding() {
-		openEmfEditorOnTestFile(EMF_TREE_EDITOR_OPEN_FORM_DIALOG,
-				MY_EXTLIBRARY)
+		openEmfEditorOnTestFile(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_TREE_EDITOR_OPEN_FORM_DIALOG,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY)
 		
-		libraryNode.assertDialogEdit(LIBRARY_LABEL) [
-			modifyFormText(LIBRARY_NAME)
+		libraryNode.assertDialogEdit(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_LABEL) [
+			modifyFormText(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_NAME)
 		]
 		
 	}
 
 	def private assertDialog(SWTBotTreeItem item, String dialogTitle, (SWTFormsBot)=>void proc) {
 		item.doubleClick
-		val shell = bot.shell(dialogTitle)
+		val shell = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.shell(dialogTitle)
 		shell.activate
 		val formbot = new SWTFormsBot(shell.widget)
 		proc.apply(formbot)
-		bot.button("OK").click()
+		org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.button("OK").click()
 		waitForShellToClose(shell)
 	}
 
@@ -61,15 +61,15 @@ public class EmfParsleyFormBasedDialogTests extends EmfParsleyAbstractTests {
 	}
 	
 	private def assertEditorDirty() {
-		EMF_TREE_EDITOR_OPEN_FORM_DIALOG.assertEditorDirty
+		org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_TREE_EDITOR_OPEN_FORM_DIALOG.assertEditorDirty
 	}
 	
 	private def saveEditor() {
-		getEditor(EMF_TREE_EDITOR_OPEN_FORM_DIALOG).save
+		getEditor(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_TREE_EDITOR_OPEN_FORM_DIALOG).save
 	}
 	
 	def private getRootOfEditor() {
-		getRootOfTreeEditor(EMF_TREE_EDITOR_OPEN_FORM_DIALOG, MY_EXT_LIBRARY_PLATFORM_URI)
+		getRootOfTreeEditor(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_TREE_EDITOR_OPEN_FORM_DIALOG, org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXT_LIBRARY_PLATFORM_URI)
 	}
 	
 	def private libraryNode() {

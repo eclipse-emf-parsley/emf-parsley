@@ -31,7 +31,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class EmfParsleySaveableViewTests extends EmfParsleyAbstractTests {
+public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 
 	boolean treeFormViewOpened = false;
 	

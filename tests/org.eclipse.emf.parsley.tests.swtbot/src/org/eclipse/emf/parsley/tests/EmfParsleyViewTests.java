@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class EmfParsleyViewTests extends EmfParsleyAbstractTests {
+public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 
 	@Test
 	public void emfTestViewHasTree() throws Exception {

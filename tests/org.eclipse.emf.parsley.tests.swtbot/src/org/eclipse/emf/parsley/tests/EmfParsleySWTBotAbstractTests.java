@@ -97,7 +97,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class EmfParsleyAbstractTests {
+public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
 
@@ -289,7 +289,7 @@ public class EmfParsleyAbstractTests {
 
 	protected static Map<String, String> editorNamesToId;
 	
-	public EmfParsleyAbstractTests() {
+	public EmfParsleySWTBotAbstractTests() {
 		// the following are useless... but it's just to have coverage
 		// for the protected constructor of EmfParsleyConstants
 		// and the protected constructor is "required" by sonar...

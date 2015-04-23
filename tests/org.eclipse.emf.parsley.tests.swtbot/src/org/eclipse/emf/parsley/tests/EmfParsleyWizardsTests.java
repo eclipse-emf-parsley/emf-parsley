@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class EmfParsleyWizardsTests extends EmfParsleyAbstractTests {
+public class EmfParsleyWizardsTests extends EmfParsleySWTBotAbstractTests {
 	
 	public EmfParsleyWizardsTests() {
 		// just to avoid code coverage of protected constructor

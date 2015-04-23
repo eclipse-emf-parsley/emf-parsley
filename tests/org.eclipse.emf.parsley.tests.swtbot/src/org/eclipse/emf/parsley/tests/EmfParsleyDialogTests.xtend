@@ -20,13 +20,13 @@ public class EmfParsleyDialogTests extends EmfParsleyDialogAbstractTests {
 	@Test
 	def void checkOpenDialogOnTreeElements() {
 		openEmfEditorOnTestFile(editorName,
-				MY_EXTLIBRARY)
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY)
 		
-		libraryNode.assertDialog(LIBRARY_LABEL) [|
+		libraryNode.assertDialog(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_LABEL) [|
 			assertDialogControlsOfLibraryNode(true)
 		]
 		
-		writerNode.assertDialog(WRITER_LABEL) [|
+		writerNode.assertDialog(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.WRITER_LABEL) [|
 			assertDialogControlsOfWriterNode(true)
 		]
 	}
@@ -34,10 +34,10 @@ public class EmfParsleyDialogTests extends EmfParsleyDialogAbstractTests {
 	@Test
 	def void checkDialogDatabinding() {
 		openEmfEditorOnTestFile(editorName,
-				MY_EXTLIBRARY)
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY)
 		
-		libraryNode.assertDialogEdit(LIBRARY_LABEL) [|
-			modifyText(LIBRARY_NAME)
+		libraryNode.assertDialogEdit(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_LABEL) [|
+			modifyText(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_NAME)
 		]
 		
 	}

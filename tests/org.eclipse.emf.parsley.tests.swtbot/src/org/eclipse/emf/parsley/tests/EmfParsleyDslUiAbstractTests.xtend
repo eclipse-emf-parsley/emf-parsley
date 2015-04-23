@@ -14,13 +14,13 @@ import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyDslUiAbstractTests extends EmfParsleyAbstractTests {
+public class EmfParsleyDslUiAbstractTests extends EmfParsleySWTBotAbstractTests {
 
 	protected val TEST_PROJ_NAME = "my.emfparsley.proj"
 
 	def createDslProjectWithWizard() {
-		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME);
+		createProjectWithoutTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 }

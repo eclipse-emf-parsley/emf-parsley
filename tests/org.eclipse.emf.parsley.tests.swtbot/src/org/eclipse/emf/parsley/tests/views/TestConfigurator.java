@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
-import org.eclipse.emf.parsley.tests.EmfParsleyAbstractTests;
+import org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests;
 
 /**
  * A {@link Configurator} used in tests to provide the needed configurations for
@@ -30,17 +30,17 @@ public class TestConfigurator extends Configurator {
 
 	public URI resourceURI(TestSaveableTreeView requestor) {
 		return URI.createPlatformResourceURI(
-				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
 	public URI resourceURI(TestSaveableTreeView2 requestor) {
 		return URI.createPlatformResourceURI(
-				EmfParsleyAbstractTests.MY2_EXTLIBRARY_RELATIVE_PATH, true);
+				EmfParsleySWTBotAbstractTests.MY2_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
 	public URI resourceURI(TestSaveableResourceTreeFormView requestor) {
 		return URI.createPlatformResourceURI(
-				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
 	public Object contents(TestSaveableResourceTableView requestor, Resource resource) {
@@ -54,7 +54,7 @@ public class TestConfigurator extends Configurator {
 	
 	public URI resourceURI(TestSaveableResourceTableView requestor) {
 		return URI.createPlatformResourceURI(
-				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
 	public Object contents(TestSaveableResourceTableFormView requestor, Resource resource) {
@@ -68,7 +68,7 @@ public class TestConfigurator extends Configurator {
 	
 	public URI resourceURI(TestSaveableResourceTableFormView requestor) {
 		return URI.createPlatformResourceURI(
-				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
 	public EStructuralFeature eStructuralFeature(TestOnSelectionLibraryBooksTableView requestor) {

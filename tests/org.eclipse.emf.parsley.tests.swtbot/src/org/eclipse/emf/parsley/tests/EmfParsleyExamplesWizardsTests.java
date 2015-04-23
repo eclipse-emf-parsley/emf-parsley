@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyExamplesWizardsTests extends
-		EmfParsleyAbstractTests {
+		EmfParsleySWTBotAbstractTests {
 
 	@Test
 	public void canCreateMailExampleProjectWithWizard() throws Exception {

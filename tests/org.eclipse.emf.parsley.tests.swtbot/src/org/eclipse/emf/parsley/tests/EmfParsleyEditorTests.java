@@ -24,7 +24,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class EmfParsleyEditorTests extends EmfParsleyAbstractTests {
+public class EmfParsleyEditorTests extends EmfParsleySWTBotAbstractTests {
 
 	public void canCreateProject() throws Exception {
 		createMyTestProject();

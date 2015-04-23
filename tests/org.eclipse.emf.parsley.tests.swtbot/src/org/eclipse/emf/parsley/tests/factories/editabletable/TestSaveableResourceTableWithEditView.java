@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
-import org.eclipse.emf.parsley.tests.EmfParsleyAbstractTests;
+import org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests;
 import org.eclipse.emf.parsley.views.AbstractSaveableTableView;
 import org.eclipse.swt.SWT;
 
@@ -35,7 +35,7 @@ public class TestSaveableResourceTableWithEditView extends AbstractSaveableTable
 	@Override
 	protected URI createResourceURI() {
 		return URI.createPlatformResourceURI(
-				EmfParsleyAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 	
 	@Override

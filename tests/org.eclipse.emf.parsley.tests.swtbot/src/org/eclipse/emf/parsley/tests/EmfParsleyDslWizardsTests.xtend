@@ -34,72 +34,72 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	
 	@Test
 	def canCreateDslProjectWithWizardAndTreeFormTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 	
 	@Test
 	def canCreateDslProjectWithWizardAndTreeTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 	
 	@Test
 	def canCreateDslProjectWithWizardAndTableFormTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 	
 	@Test
 	def canCreateDslProjectWithWizardAndTableTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 	
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTreeTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTreeFormTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 	
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTableTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 	
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionFormTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTableFormTemplate() {
-		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}

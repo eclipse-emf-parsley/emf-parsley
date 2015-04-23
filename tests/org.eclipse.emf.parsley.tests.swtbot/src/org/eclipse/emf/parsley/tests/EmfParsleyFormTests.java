@@ -59,7 +59,7 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class EmfParsleyFormTests extends EmfParsleyAbstractTests {
+public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 	
 	protected final Logger log = Logger.getLogger(getClass());
 	

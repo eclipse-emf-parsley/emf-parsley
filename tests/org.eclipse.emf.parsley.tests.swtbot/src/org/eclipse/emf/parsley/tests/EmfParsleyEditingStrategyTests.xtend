@@ -22,15 +22,15 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTest
 
 	@Before
 	def void setup() {
-		editorName = EMF_TREE_EDITOR_OPEN_DIALOG_UNDOABLE
+		editorName = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_TREE_EDITOR_OPEN_DIALOG_UNDOABLE
 	}
 
 	@Test
 	def void checkDialogCancel() {
-		openEmfEditorOnTestFile(editorName, MY_EXTLIBRARY)
+		openEmfEditorOnTestFile(editorName, org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY)
 
-		libraryNode.assertDialogEditAndCancel(LIBRARY_LABEL) [ |
-			modifyText(LIBRARY_NAME)
+		libraryNode.assertDialogEditAndCancel(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_LABEL) [ |
+			modifyText(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_NAME)
 		]
 
 		// library label has not changed
@@ -40,10 +40,10 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTest
 	@Test
 	def void checkDialogEditAndUndoAndRedo() {
 		openEmfEditorOnTestFile(editorName,
-				MY_EXTLIBRARY)
+				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY)
 		
-		libraryNode.assertDialogEdit(LIBRARY_LABEL) [|
-			modifyText(LIBRARY_NAME)
+		libraryNode.assertDialogEdit(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_LABEL) [|
+			modifyText(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_NAME)
 		]
 		
 		editMenuItemForModifiedLibrary().undo
@@ -64,7 +64,7 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTest
 	}
 	
 	protected def editMenuItemForModifiedLibrary() {
-		"Edit " + LIBRARY_LABEL + " MODIFIED"
+		"Edit " + org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.LIBRARY_LABEL + " MODIFIED"
 	}
 
 	def protected assertDialogEditAndCancel(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
@@ -74,13 +74,13 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTest
 
 	def protected assertDialogCancel(SWTBotTreeItem item, String dialogTitle, ()=>void proc) {
 		item.doubleClick
-		val shell = bot.shell(dialogTitle)
+		val shell = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.shell(dialogTitle)
 		shell.activate
 		proc.apply()
 		// tree refresh (upon Cancel and rollback) is asynchronous so we must
 		// wait for refresh to end, with a sync operation
 		Display.getDefault().syncExec() [|
-			bot.button("Cancel").click()
+			org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.button("Cancel").click()
 			shell.waitForShellToClose
 		]
 	}
