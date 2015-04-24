@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.util
 
+import com.google.inject.Injector
 import java.util.List
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
@@ -148,6 +151,10 @@ class EmfParsleyFixturesTestRule implements TestRule {
 		return null
 	}
 
+	def createAdapterFactoryEditingDomain(Injector injector) {
+		injector.getProvider(AdapterFactoryEditingDomain).get
+	}
+
 	def assertBooks(Writer w, int expectedSize) {
 		expectedSize.assertEquals(w.books.size)
 	}
@@ -213,5 +220,21 @@ class EmfParsleyFixturesTestRule implements TestRule {
 	def createClassForFeatureMapEntry2(String n) {
 		testFactory.createClassForFeatureMapEntry2 => [name = n]
 	}
-	
+
+	/**
+	 * Registers XMI resource factory and registers TestmodelsPackage
+	 * so that testable resources can be loaded with
+	 * URI.createURI("http:///My.testmodels")
+	 */
+	def setupResouceFactory(ResourceSet resourceSet) {
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+			(Resource.Factory.Registry.DEFAULT_EXTENSION, 
+			 new XMIResourceFactoryImpl());
+
+		resourceSet.getPackageRegistry().put
+			(TestmodelsPackage.eNS_URI, 
+			 TestmodelsPackage.eINSTANCE);
+		
+		return resourceSet
+	}
 }

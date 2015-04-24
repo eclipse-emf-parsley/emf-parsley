@@ -29,9 +29,7 @@ public class ResourceLoader {
 
 	public Resource getResource(ResourceSet resourceSet, URI resourceURI) {
 		Resource resource = resourceSet.getResource(resourceURI, true);
-		if (resource.getContents().isEmpty()) {
-			resourceManager.initialize(resource);
-		}
+		initializeEmptyResource(resource);
 		return resource;
 	}
 
@@ -58,11 +56,15 @@ public class ResourceLoader {
 			exception = e;
 			resource = editingDomain.getResourceSet().getResource(resourceURI,
 					false);
-			if (resource != null && resource.getContents().isEmpty()) {
-				resourceManager.initialize(resource);
-			}
+			initializeEmptyResource(resource);
 		}
 
 		return new LoadResourceResponse(resource, exception);
+	}
+
+	protected void initializeEmptyResource(Resource resource) {
+		if (resource != null && resource.getContents().isEmpty()) {
+			getResourceManager().initialize(resource);
+		}
 	}
 }

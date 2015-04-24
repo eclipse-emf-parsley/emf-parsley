@@ -22,6 +22,7 @@ import org.junit.runners.Suite;
 	ProtectedConstructorTest.class,
 	PolymorphicDispatcherTest.class,
 	EmfParsleyUtilTest.class,
+	ResourceLoaderTest.class,
 	EditingDomainTest.class,
 	ViewerContentProviderTest.class,
 	FeaturesProviderTest.class,

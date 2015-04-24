@@ -14,17 +14,20 @@ import com.google.inject.Injector
 import com.google.inject.Module
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.resource.ResourceLoader
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
+import org.eclipse.emf.parsley.tests.util.GlobalAdapterFactoryEditingDomainModule
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
 class EditingDomainTest extends AbstractEmfParsleyTest {
+	
+	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
 
 	@Test
 	def void testDefaultEditingDomainProvider() {
@@ -72,16 +75,10 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 	}
 
 	def private loadResourceWithContents(Injector injector) {
-		val e1 = injector.getProvider(AdapterFactoryEditingDomain).get
+		val e1 = injector.createAdapterFactoryEditingDomain
 		val resourceSet = e1.resourceSet
 
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
-			(Resource.Factory.Registry.DEFAULT_EXTENSION, 
-			 new XMIResourceFactoryImpl());
-
-		resourceSet.getPackageRegistry().put
-			(TestmodelsPackage.eNS_URI, 
-			 TestmodelsPackage.eINSTANCE);
+		resourceSet.setupResouceFactory
 
 		val resource = injector.getInstance(ResourceLoader).
 			getResource(e1, URI.createURI("http:///My.testmodels")).resource
