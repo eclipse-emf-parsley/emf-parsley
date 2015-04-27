@@ -403,3 +403,48 @@ dialogControlFactory {
 ]
 
 This customization is exactly as in the case of the form of the previous section.
+
+section:Resources[Resources]
+
+ul[
+	item[If you need a machanism to fill some data for the first time you use a model, you can provide
+	a specific implementation of ref:ResourceManager[Resource Manager].]
+	item[If you want to interact with Resource Loading, you can provide a specific ref:ResourceLoader[Resource
+	Loader]]
+]
+
+Concerning saving objects, there are some specific parts that can be customized:
+
+ul[
+	item[ref:ResourceSaveStrategy[Resource Save Strategy], if you want to manage the save.]
+]
+
+section2:ResourceLoader[Resource Loader]
+
+The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.
+This class uses internally the ref:ResourceManager[Resource Manager].
+
+
+section2:ResourceManager[Resource Manager]
+
+Tasks concerning an EMF codeRef[org.eclipse.emf.ecore.resource.Resource] are
+delegated to codeRef[org.eclipse.emf.parsley.resource.ResourceManager].
+
+One of such tasks is initializing the resource, e.g., when, after loading, it is
+found empty.  You can derive from this class (and bind it in the Guice module) and provide a custom implementation 
+of the method e[initialize].
+
+Saving a resource is also delegated to this class, using the method e[save],
+which is expected to return a boolean value representing whether saving
+has succeeded (the default implementation simply saves the resource and returns true).
+
+section2:ResourceSaveStrategy[Resource Save Strategy]
+
+Resource saving is delegated to codeRef[org.eclipse.emf.parsley.resource.ResourceSaveStrategy]
+which, by defaults only saves the passed codeRef[org.eclipse.emf.ecore.resource.Resource],
+by delegating to codeRef[org.eclipse.emf.parsley.resource.ResourceManager]
+(see ref:ResourceManager[]).
+You can inject your own save strategy and customize the saving strategy, for
+instance, you may want to validate the resource before saving
+(a usable example of this strategy is
+codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy]).
