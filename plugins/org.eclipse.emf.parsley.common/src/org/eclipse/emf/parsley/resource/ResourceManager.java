@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.resource;
 
+import java.io.IOException;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 /**
@@ -31,5 +33,18 @@ public class ResourceManager {
 	 */
 	public void initialize(Resource resource) {
 		// the default implementation does nothing
+	}
+
+	/**
+	 * Saves the passed {@link Resource} and returns whether the resource
+	 * has been actually saved.
+	 * 
+	 * @param resource
+	 * @return
+	 * @throws IOException
+	 */
+	public boolean save(Resource resource) throws IOException {
+		resource.save(null);
+		return true;
 	}
 }

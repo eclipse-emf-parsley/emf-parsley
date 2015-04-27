@@ -99,7 +99,7 @@ bindFeaturesProvider
 bindFeatureResolver
 bindTableFeaturesProvider
 bindEmfSelectionHelper
-bindResourceSaveManager
+bindResourceSaveStrategy
 bindResourceManager
 bindIContentProvider
 bindProposalCreator

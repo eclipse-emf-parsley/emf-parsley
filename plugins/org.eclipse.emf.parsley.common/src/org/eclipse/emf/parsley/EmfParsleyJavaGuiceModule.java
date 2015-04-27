@@ -29,7 +29,6 @@ import org.eclipse.emf.parsley.ecore.FeatureResolver;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy;
-import org.eclipse.emf.parsley.edit.ResourceSaveManager;
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
@@ -51,6 +50,7 @@ import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.resource.ResourceManager;
+import org.eclipse.emf.parsley.resource.ResourceSaveStrategy;
 import org.eclipse.emf.parsley.runtime.service.AbstractGenericModule;
 import org.eclipse.emf.parsley.runtime.ui.ClassLoaderImageHelper;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
@@ -411,10 +411,10 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	
 	/**
 	 * Use this method to customize save mechanism
-	 * @return a specification of {@link ResourceSaveManager}
+	 * @return a specification of {@link ResourceSaveStrategy}
 	 */
-	public Class<? extends ResourceSaveManager> bindResourceSaveManager() {
-		return ResourceSaveManager.class;
+	public Class<? extends ResourceSaveStrategy> bindResourceSaveStrategy() {
+		return ResourceSaveStrategy.class;
 	}
 
 	/**

@@ -23,6 +23,7 @@ import org.junit.runners.Suite;
 	PolymorphicDispatcherTest.class,
 	EmfParsleyUtilTest.class,
 	ResourceLoaderTest.class,
+	ResourceSaveStrategyTest.class,
 	EditingDomainTest.class,
 	ViewerContentProviderTest.class,
 	FeaturesProviderTest.class,

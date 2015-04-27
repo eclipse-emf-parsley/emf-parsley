@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,35 +8,32 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-
-package org.eclipse.emf.parsley.edit;
+package org.eclipse.emf.parsley.resource;
 
 import java.io.IOException;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import com.google.inject.Inject;
+
 /**
- * Handles saving of {@link Resource}
+ * Strategy for saving a {@link Resource}
  * 
  * @author Lorenzo Bettini
  *
  */
-public class ResourceSaveManager {
-
-	public boolean save(Resource resource) throws IOException {
-		return save(resource, null);
-	}
+public class ResourceSaveStrategy {
 	
-	public boolean save(Resource resource, Map<?, ?> options) throws IOException {
-		if (!precondition(resource)) {
-			return false;
-		}
-		resource.save(options);
-		return true;
-	}
+	private @Inject ResourceManager resourceManager;
 
-	protected boolean precondition(Resource resource) {
-		return true;
+	/**
+	 * Simply delegates saving to the {@link ResourceManager}.
+	 * 
+	 * @param resource
+	 * @return
+	 * @throws IOException
+	 */
+	public boolean save(Resource resource) throws IOException {
+		return resourceManager.save(resource);
 	}
 }

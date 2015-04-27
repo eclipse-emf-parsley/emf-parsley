@@ -237,4 +237,8 @@ class EmfParsleyFixturesTestRule implements TestRule {
 		
 		return resourceSet
 	}
+
+	def createAndSetupResourceSet() {
+		createResourceSet.setupResouceFactory
+	}
 }

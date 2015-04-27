@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.parsley.edit.ResourceSaveManager;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
+import org.eclipse.emf.parsley.resource.ResourceSaveStrategy;
 import org.eclipse.emf.parsley.util.EmfCommandsUtil;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.ISaveablePart;
@@ -49,7 +49,7 @@ public abstract class AbstractSaveableView extends ViewPart implements
 	protected ResourceLoader resourceLoader;
 
 	@Inject
-	protected ResourceSaveManager resourceSaveManager;
+	protected ResourceSaveStrategy resourceSaveStrategy;
 
 	protected AdapterFactoryEditingDomain editingDomain;
 
@@ -146,7 +146,7 @@ public abstract class AbstractSaveableView extends ViewPart implements
 	}
 
 	protected void saveResourceAndUpdateDirtyState() throws IOException {
-		if (resourceSaveManager.save(resource)) {
+		if (resourceSaveStrategy.save(resource)) {
 			setDirtyAndFirePropertyChange(false);
 		}
 	}

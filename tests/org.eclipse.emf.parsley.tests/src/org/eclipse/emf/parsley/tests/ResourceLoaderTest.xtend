@@ -46,7 +46,7 @@ class ResourceLoaderTest extends AbstractEmfParsleyTest {
 		val injector = getOrCreateInjector
 		injector.injectMembers(resourceLoader)
 		val resource = resourceLoader.getResource(
-			createResourceSet.setupResouceFactory,
+			createAndSetupResourceSet,
 			URI.createURI(LOCAL_RESOURCE_URI)
 		)
 		assertFalse("resource should not be empty", resource.contents.empty)
@@ -57,7 +57,7 @@ class ResourceLoaderTest extends AbstractEmfParsleyTest {
 		val injector = getOrCreateInjector
 		injector.injectMembers(resourceLoader)
 		val resource = resourceLoader.getResource(
-			createResourceSet.setupResouceFactory,
+			createAndSetupResourceSet,
 			URI.createURI(LOCAL_EMPTY_RESOURCE_URI)
 		)
 		assertTrue("resource should be empty", resource.contents.empty)
