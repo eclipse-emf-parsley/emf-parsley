@@ -41,6 +41,8 @@ Module:
 			(viewerContentProvider = ViewerContentProvider)?
 			&
 			(partsSpecifications = PartsSpecifications)?
+			&
+			(resourceManager = ResourceManager)?
 		)
 	'}'
 ;
@@ -310,6 +312,24 @@ ViewerContentProvider:
 	'}'
 ;
 
+ResourceManager:
+	{ResourceManager} 'resourceManager' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+	
+		((
+		'initializeResource' initializeBody=SimpleMethodSpecification
+		)?
+		&
+		(
+		'saveResource' saveBody=SimpleMethodSpecification
+		)?)
+	'}'
+;
+
+SimpleMethodSpecification:
+	body=XBlockExpression
+;
+
 // a utility base class for rules which access features of an EClass
 // IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
 EmfFeatureAccess:
@@ -339,10 +359,11 @@ WithExtendsClause:
 	Module | WithFields
 ;
 
+// IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
 WithFields:
 	LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
 	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |
-	MenuBuilder | Configurator
+	MenuBuilder | Configurator | ResourceManager
 ;
 
 PartsSpecifications:

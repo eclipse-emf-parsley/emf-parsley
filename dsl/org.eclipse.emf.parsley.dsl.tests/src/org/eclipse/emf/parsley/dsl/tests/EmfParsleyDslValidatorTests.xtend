@@ -45,6 +45,7 @@ import org.junit.runner.RunWith
 import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.config.Configurator
+import org.eclipse.emf.parsley.resource.ResourceManager
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -176,6 +177,12 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	def void testNotValidConfiguratorExtends() {
 		"configurator".
 			assertExtendsTypeMismatch(Configurator)
+	}
+
+	@Test
+	def void testNotValidResourceManagerExtends() {
+		"resourceManager".
+			assertExtendsTypeMismatch(ResourceManager)
 	}
 
 	@Test
@@ -504,6 +511,19 @@ Duplicate binding for: TableColumnWeights
 			NON_COMPLIANT_BINDING,
 			"Incorrect value binding: Integer is not compliant with inherited binding's type List<Integer>"
 		)
+	}
+
+	@Test
+	def void testResouceManagerEmptySaveMethod() {
+		'''
+		module my.empty {
+			resourceManager {
+				saveResource {
+				}
+			}
+		}
+		'''.
+		parse.assertErrorMessages("Type mismatch: cannot convert from null to boolean")
 	}
 
 	def private assertExtendsTypeMismatch(String keyword, Class<?> expectedType) {

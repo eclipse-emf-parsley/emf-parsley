@@ -1619,6 +1619,92 @@ public class ConfiguratorGen extends Configurator {
 	}
 
 	@Test
+	def testResourceManager() {
+		inputs.resourceManagerExample
+		.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import my.empty.resource.ResourceManagerGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.resource.ResourceManager;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends ResourceManager> bindResourceManager() {
+    return ResourceManagerGen.class;
+  }
+}
+'''
+expectedResourceManager =
+'''
+package my.empty.resource;
+
+import java.io.IOException;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
+import org.eclipse.emf.parsley.examples.library.Library;
+import org.eclipse.emf.parsley.resource.ResourceManager;
+
+@SuppressWarnings("all")
+public class ResourceManagerGen extends ResourceManager {
+  private final EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+  
+  public EXTLibraryFactory getLibraryFactory() {
+    return this.libraryFactory;
+  }
+  
+  @Override
+  public void initialize(final Resource it) {
+    EList<EObject> _contents = it.getContents();
+    Library _createLibrary = this.libraryFactory.createLibrary();
+    _contents.add(_createLibrary);
+  }
+  
+  @Override
+  public boolean save(final Resource it) throws IOException {
+    it.save(null);
+    return true;
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testEmptyResourceManager() {
+		'''
+		module m {
+			resourceManager {
+			}
+		}
+		'''
+		.assertCorrectJavaCodeGeneration
+	}
+
+	@Test
+	def testEmptyResourceManagerMethods() {
+		'''
+		module m {
+			resourceManager {
+				initializeResource {}
+			}
+		}
+		'''
+		.assertCorrectJavaCodeGeneration
+	}
+
+	@Test
 	def testViewsSpecifications() {
 		inputs.multipleViewsSpecifications.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -1849,6 +1935,10 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 		)
 	}
 
+	def private assertCorrectJavaCodeGeneration(CharSequence input) {
+		input.assertCorrectJavaCodeGeneration(new GeneratorExpectedResults)
+	}
+
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
 			GeneratorExpectedResults expected) {
 		input.compile [
@@ -1895,9 +1985,9 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 				} else if (e.key.endsWith("ConfiguratorGen.java")) {
 					if (expected.expectedConfigurator != null)
 						assertEqualsStrings(expected.expectedConfigurator, e.value)
-				} else if (e.key.endsWith("TreeFormFactoryGen.java")) {
-					if (expected.expectedTreeFormFactory != null)
-						assertEqualsStrings(expected.expectedTreeFormFactory, e.value)
+				} else if (e.key.endsWith("ResourceManagerGen.java")) {
+					if (expected.expectedResourceManager!= null)
+						assertEqualsStrings(expected.expectedResourceManager, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
 					if (expected.expectedPluginXmlGen != null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)

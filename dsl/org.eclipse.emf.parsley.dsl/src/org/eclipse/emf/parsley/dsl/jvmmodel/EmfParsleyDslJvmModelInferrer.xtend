@@ -16,13 +16,17 @@ import java.util.List
 import org.eclipse.core.databinding.DataBindingContext
 import org.eclipse.core.databinding.observable.value.IObservableValue
 import org.eclipse.emf.common.notify.AdapterFactory
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.FormControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.config.Configurator
 import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
@@ -32,6 +36,7 @@ import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
 import org.eclipse.emf.parsley.dsl.model.LabelSpecification
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.ProviderBinding
+import org.eclipse.emf.parsley.dsl.model.SimpleMethodSpecification
 import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
@@ -39,6 +44,7 @@ import org.eclipse.emf.parsley.dsl.model.WithFields
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
+import org.eclipse.emf.parsley.resource.ResourceManager
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
@@ -69,10 +75,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.emf.parsley.config.Configurator
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.ecore.resource.Resource
+import java.io.IOException
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -137,6 +140,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
 		val menuBuilderClass = element.inferMenuBuilder(acceptor)
 		val configuratorClass = element.inferConfigurator(acceptor)
+		val resourceManagerClass = element.inferResourceManager(acceptor)
 		
 		acceptor.accept(moduleClass) [
 			documentation = element.documentation
@@ -179,6 +183,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.menuBuilder.genBindMethod(menuBuilderClass, typeof(EditingMenuBuilder))
 			if (configuratorClass != null)
 				members += element.configurator.genBindMethod(configuratorClass, typeof(Configurator))
+			if (resourceManagerClass != null)
+				members += element.resourceManager.genBindMethod(resourceManagerClass, typeof(ResourceManager))
 		]
 
    	}
@@ -278,6 +284,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def private configuratorQN(Module element) {
 		element.fullyQualifiedName + ".config.ConfiguratorGen"
+	}
+
+	def private resourceManagerQN(Module element) {
+		element.fullyQualifiedName + ".resource.ResourceManagerGen"
 	}
 
 	def private inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
@@ -468,7 +478,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				documentation = element.documentation
 				members += element.
 						toMethod("buildStringMap", Void::TYPE.getTypeForName(element)) [
-					annotations += annotationRef(Override)
+					addOverrideAnnotation
 					parameters += element.toParameter("stringMap",
 							typeRef(EClassToEStructuralFeatureAsStringsMap)
 					)
@@ -683,6 +693,41 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
+	def private inferResourceManager(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.resourceManager == null)
+			null
+		else {
+			val resourceManager = element.resourceManager
+			val resourceManagerClass = resourceManager.toClass(element.resourceManagerQN)
+			acceptor.accept(resourceManagerClass) [
+				setSuperClassTypeAndFields(resourceManager, ResourceManager)
+
+				resourceManagerElementToMethod
+					(resourceManager.initializeBody, "initialize", Void.TYPE.typeRef, null)
+				resourceManagerElementToMethod
+					(resourceManager.saveBody, "save", Boolean.TYPE.typeRef) [
+						exceptions += IOException.typeRef
+					]
+			]
+			resourceManagerClass
+		}
+	}
+
+	def private resourceManagerElementToMethod(JvmDeclaredType it, 
+		SimpleMethodSpecification m, String methodName,
+		JvmTypeReference returnType, (JvmOperation)=>void additionalSetup
+	) {
+		if (m != null) {
+			val method = m.toMethod(methodName, returnType) [
+							addOverrideAnnotation
+							parameters += m.toParameter("it", typeRef(Resource))
+							body = m.body
+						]
+			additionalSetup?.apply(method)
+			members += method
+		}
+	}
+
 	def private specificationToMethod(LabelSpecification specification, String methodName, JvmTypeReference returnType) {
 		specification.toMethod(methodName, returnType) [
 			parameters += specification.specificationParameter
@@ -817,14 +862,19 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def private genMethodForGuiceModule(EObject element, String methodName, JvmTypeReference typeRefToBind, boolean shouldOverride, IAcceptor<JvmExecutable> acceptor) {
 		element.toMethod(methodName, typeRefToBind) [
 			if (shouldOverride) {
-				annotations += annotationRef(Override)
+				addOverrideAnnotation(it)
 			}
 			acceptor.accept(it)
 		]
 	}
-
+	
 	def private shouldOverride(JvmGenericType it, String methodName) {
 		allFeatures.filter(JvmOperation).exists[simpleName == methodName]
 	}
+
+	private def addOverrideAnnotation(JvmOperation it) {
+		annotations += annotationRef(Override)
+	}
+
 }
 

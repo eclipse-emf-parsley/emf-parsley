@@ -438,6 +438,33 @@ Saving a resource is also delegated to this class, using the method e[save],
 which is expected to return a boolean value representing whether saving
 has succeeded (the default implementation simply saves the resource and returns true).
 
+In the DSL, you can specify a e[resourceManager] block, and within that block
+you can specify e[initializeResource] and e[saveResource], which correspond to
+e[inizialize] and e[save] methods, respectively.  In both cases, inside the
+block expression, the resource is available with the name e[it]; for example
+
+code[EmfParsley][
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
+
+...
+
+resourceManager {
+	val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+	
+	initializeResource {
+		// it is of type org.eclipse.emf.ecore.resource.Resource
+		it.getContents() += libraryFactory.createLibrary
+	}
+	saveResource {
+		// it is of type org.eclipse.emf.ecore.resource.Resource
+		it.save(null)
+		return true
+	}
+}
+
+...
+]
+
 section2:ResourceSaveStrategy[Resource Save Strategy]
 
 Resource saving is delegated to codeRef[org.eclipse.emf.parsley.resource.ResourceSaveStrategy]

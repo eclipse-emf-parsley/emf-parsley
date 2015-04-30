@@ -125,6 +125,28 @@ class EmfParsleyDslSmokeTests {
 		'''.assertNoException
 	}
 
+	@Test
+	def void testResourceManagerInitializeWithNoBody() {
+		'''
+		module my.empty {
+			resourceManager {
+				initializeResource
+			}
+		}
+		'''.assertNoException
+	}
+
+	@Test
+	def void testResourceManagerSaveWithNoBody() {
+		'''
+		module my.empty {
+			resourceManager {
+				saveSave
+			}
+		}
+		'''.assertNoException
+	}
+
 	def private assertNoException(CharSequence s) {
 		s.parse.validate
 		// there must be no error in the log either

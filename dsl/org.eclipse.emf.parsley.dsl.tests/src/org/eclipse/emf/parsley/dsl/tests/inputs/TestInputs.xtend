@@ -566,6 +566,27 @@ module my.empty {
 '''
 	}
 
+	def resourceManagerExample() {
+'''
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
+
+module my.empty {
+
+	resourceManager {
+		val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+		
+		initializeResource {
+			getContents() += libraryFactory.createLibrary
+		}
+		saveResource {
+			it.save(null)
+			return true
+		}
+	}
+}
+'''
+	}
+
 	def emptyViewsSpecifications() 
 '''
 module my.empty {

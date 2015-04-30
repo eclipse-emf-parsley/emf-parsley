@@ -31,6 +31,6 @@ public class GeneratorExpectedResults {
 	public CharSequence expectedProposalCreator;
 	public CharSequence expectedMenuBuilder;
 	public CharSequence expectedConfigurator;
-	public CharSequence expectedTreeFormFactory;
 	public CharSequence expectedPluginXmlGen;
+	public CharSequence expectedResourceManager;
 }
