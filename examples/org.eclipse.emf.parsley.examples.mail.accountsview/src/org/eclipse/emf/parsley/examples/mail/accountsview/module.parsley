@@ -5,9 +5,7 @@ import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
 import org.eclipse.emf.parsley.edit.domain.GlobalAdapterFactoryEditingDomainProvider
 import org.eclipse.emf.parsley.examples.mail.Account
 import org.eclipse.emf.parsley.examples.mail.Folder
-import org.eclipse.emf.parsley.examples.mail.accountsview.custom.MailResourceManager
 import org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView
-import org.eclipse.emf.parsley.resource.ResourceManager
 
 /* org.eclipse.emf.parsley.examples.mail.accountsview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.accountsview {
@@ -21,7 +19,6 @@ module org.eclipse.emf.parsley.examples.mail.accountsview {
 	}
 
 	bindings {
-		type ResourceManager -> MailResourceManager
 		type IEditingStrategy -> UndoableEditingStrategy
 		
 		// with this binding, a global EditingDomain will be used:
@@ -38,10 +35,38 @@ module org.eclipse.emf.parsley.examples.mail.accountsview {
 		}
 	}
 	
+	resourceManager extends MailResourceManager {
+		initializeResource {
+			// we use utility methods defined in the superclass
+			createAccount("Lorenzo", "lorenzo@foobar") => [
+				account |
+				getContents += account
+				createDefaultFolders(account)
+			]
+			
+			createAccount("Francesco", "francesco@foobar") => [
+				account |
+				getContents += account
+				createDefaultFolders(account)
+			]
+			
+			createAccount("Vicenzo", "vincenzo@foobar") => [
+				account |
+				getContents += account
+				createDefaultFolders(account)
+			]
+		}
+	}
+	
 	labelProvider {
 		image {
 			Account -> "account.gif"
 			Folder -> {
+				// the label provider is used also by the menu builder
+				// which uses freshly created Folder (and the name will be null)
+				if (name == null)
+					return "folder.gif"
+				
 				switch (name) {
 					case "Inbox" : "inbox.gif"
 					case "Sent" : "sent.gif"

@@ -8,9 +8,8 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.examples.mail.accountsview.custom;
+package org.eclipse.emf.parsley.examples.mail.accountsview.resource;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.examples.mail.Account;
 import org.eclipse.emf.parsley.examples.mail.Folder;
 import org.eclipse.emf.parsley.examples.mail.Mail;
@@ -19,29 +18,16 @@ import org.eclipse.emf.parsley.resource.ResourceManager;
 
 
 /**
+ * This will be used as the base class for the resourceManager
+ * specified in the module.parsley; this class contains some utility
+ * methods.
+ * 
  * @author Lorenzo Bettini
  * 
  */
 public class MailResourceManager extends ResourceManager {
 	
 	int counter = 0;
-
-	@Override
-	public void initialize(Resource resource) {
-		super.initialize(resource);
-
-		Account account = createAccount("Lorenzo", "lorenzo@foobar");
-		resource.getContents().add(account);
-		createDefaultFolders(account);
-
-		account = createAccount("Lorenzo2", "lorenzo2@foobar");
-		resource.getContents().add(account);
-		createDefaultFolders(account);
-
-		account = createAccount("Lorenzo3", "lorenzo3@foobar");
-		resource.getContents().add(account);
-		createDefaultFolders(account);
-	}
 
 	protected Account createAccount(String name, String email) {
 		Account account = MailFactory.eINSTANCE.createAccount();

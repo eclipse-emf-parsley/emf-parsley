@@ -29,30 +29,31 @@ public class LabelProviderGen extends ViewerLabelProvider {
   }
   
   public Object image(final Folder it) {
-    String _switchResult = null;
-    String _name = it.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "Inbox")) {
-        _matched=true;
-        _switchResult = "inbox.gif";
+    String _xblockexpression = null;
+    {
+      String _name = it.getName();
+      boolean _equals = Objects.equal(_name, null);
+      if (_equals) {
+        return "folder.gif";
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "Sent")) {
-        _matched=true;
-        _switchResult = "sent.gif";
+      String _switchResult = null;
+      String _name_1 = it.getName();
+      switch (_name_1) {
+        case "Inbox":
+          _switchResult = "inbox.gif";
+          break;
+        case "Sent":
+          _switchResult = "sent.gif";
+          break;
+        case "Trash":
+          _switchResult = "trash.gif";
+          break;
+        default:
+          _switchResult = "folder.gif";
+          break;
       }
+      _xblockexpression = _switchResult;
     }
-    if (!_matched) {
-      if (Objects.equal(_name, "Trash")) {
-        _matched=true;
-        _switchResult = "trash.gif";
-      }
-    }
-    if (!_matched) {
-      _switchResult = "folder.gif";
-    }
-    return _switchResult;
+    return _xblockexpression;
   }
 }
