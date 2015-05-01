@@ -150,7 +150,7 @@ Thus you can use the DSL to specify that list, as in the snipped below.
 code[EmfParsley][
 featuresProvider{
 	features{
-		Book -> title, author, category, pages 		
+		Book -> title, author, category, pages
 	}
 }
 ] 
@@ -475,3 +475,9 @@ You can inject your own save strategy and customize the saving strategy, for
 instance, you may want to validate the resource before saving
 (a usable example of this strategy is
 codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy]).
+
+section:Configurator[Configurator]
+
+todo[TODO: document Configurator
+https://bugs.eclipse.org/bugs/show_bug.cgi?id=466074]
+

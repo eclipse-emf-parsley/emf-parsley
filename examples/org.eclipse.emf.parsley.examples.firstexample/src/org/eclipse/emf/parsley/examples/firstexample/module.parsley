@@ -1,18 +1,34 @@
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.examples.extlibrary.Book
+import org.eclipse.emf.examples.extlibrary.EXTLibraryFactory
 import org.eclipse.emf.examples.extlibrary.Library
 import org.eclipse.emf.examples.extlibrary.Writer
-import org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
+import org.eclipse.emf.parsley.examples.firstexample.FirstexampleSaveableTreeFormView
 
 /* org.eclipse.emf.parsley.examples.firstexample Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.firstexample {
-
-	parts { 
-	    viewpart org.eclipse.emf.parsley.examples.firstexample.view.library.treeform { 
-	        viewname "My Library Tree Form" 
-	        viewclass LibraryTreeFormView
-	    } 
-	} 
 	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.firstexample {
+			viewname "My Library Tree Form"
+			viewclass FirstexampleSaveableTreeFormView
+		}
+	}
+	
+	configurator {
+		resourceURI {
+			FirstexampleSaveableTreeFormView -> {
+				return URI.createFileURI( System.getProperty("user.home") + "/MyLibrary.library" );
+			}
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			it.getContents += EXTLibraryFactory.eINSTANCE.createLibrary
+		}
+	}
+
 	 featuresProvider { 
         features { 
             Library -> name 
@@ -20,14 +36,14 @@ module org.eclipse.emf.parsley.examples.firstexample {
             Book -> author, title, category 
         } 
     } 
-    
+
     featureCaptionProvider { 
 	    text { 
-	        Book : author -> 'Wrote by:' 
-	        Writer : name -> 'Name:' 
-	    } 
+	        Book : author -> "Wrote by:" 
+	        Writer : name -> "Name:"
+	    }
 	}
-	
+
 	labelProvider { 
 	    text { 
 	        Book b -> {
@@ -36,6 +52,6 @@ module org.eclipse.emf.parsley.examples.firstexample {
 	        		' (by '+ b.author.name + ')'
 	        	else ''
 	        }
-	    } 
-	} 
+	    }
+	}
 }

@@ -1,7 +1,8 @@
 chapter:FirstExample[First Example]
 
 The purpose of this first example is to make use of the classical EMF Library Model example and
-create a view for editing such models using an EMF Parsley enabled plug-in.
+create a view for editing such models using an EMF Parsley enabled plug-in.  We will use
+one of the saveable views shipped with Parsley: a Tree Form View.
 
 So let's start by creating the model plug-in with
 
@@ -24,120 +25,180 @@ The editor plug-in project can be removed.
 Please consider that here we are starting from this well known EMF model taken out-of-the-box from Eclipse,
 but you can start from your EMF model (in that case you may probably omit the ".edit" and ".editor" plugins, depending on your model).
 
-
 Now you can create your first example with the appropriate wizard.
 
 ol[
 	item[select "File" -> "New" -> "Project..."]
-	item[from the "Emf Parsley" category select "Emf Parsley Dsl based Project"]
+	item[from the "Emf Parsley" category select "Emf Parsley Dsl based Project"
+	
+	img[images/01-new-project-dsl-wizard.png][][ ][] 
+	
+	]
 	item[click "Next"]
-	item[give a name to the project (e.g. "org.eclipse.emf.parsley.examples.firstexample")]
+	item[give a name to the project (e.g. "org.eclipse.emf.parsley.examples.firstexample")
+	and make sure the checkbox about using one of the templates is checked
+	
+	img[images/01-new-project-dsl-wizard2.png][][ ][] 
+	
+	]
+	item[click "Next"]
+	item[Select "Saveable Tree Form View"
+	
+	img[images/01-new-project-dsl-wizard3.png][][ ][] 
+	
+	]
 	item[click "Finish"]
 ]
  
-The generated project has some classes and a e[module.parlsey] file, which opens automatically.
-Just type the following content into the {} block (note that context assist is available)
+The generated project has some classes and a e[module.parlsey] file, which opens automatically:
 
 code[EmfParsley][
-parts {
-	viewpart org.eclipse.emf.parsley.examples.firstexample.view.library.treeform {
-		viewname "My Library Tree Form"
-		viewclass 
+import org.eclipse.emf.parsley.examples.firstexample.FirstexampleSaveableTreeFormView
+
+/* org.eclipse.emf.parsley.examples.firstexample Emf Parsley Dsl Module file */
+module org.eclipse.emf.parsley.examples.firstexample {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.firstexample {
+			viewname "Firstexample"
+			viewclass FirstexampleSaveableTreeFormView
+		}
+	}
+	
+	configurator {
+		resourceURI {
+			FirstexampleSaveableTreeFormView -> {
+				// TODO create and return a org.eclipse.emf.common.util.URI
+				return null;
+			}
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
 	}
 }
 ]
 
-Here above we have just declared a view part with
- 
-ol[
-	item[id e["org.eclipse.emf.parsley.examples.firstexample.view.library.treeform"]]
-	item[name e["Library Tree Form"]]
-	item[class: not yet set, we are going to create
-		 e["org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView"]]
+The e[viewpart] corresponds to the standard Eclipse view part extension point; the Parsley
+DSL will generate a e[plugin.xml_emfparsley_gen]
+into the root folder of your project. Just copy this file into e["plugin.xml"]. Parsley
+will never override your e[plugin.xml] file; each time you modify the module file, the
+e[plugin.xml_emfparsley_gen] will be generated: it is up to you to keep the generated file
+synchronized with your e["plugin.xml"].  The easiest way is to select to the files,
+and use the context menu "Compare With" => "Each Other".
+
+The wizard will also generate a view part class into the project
+(in this example, e[FirstexampleSaveableTreeFormView]); you can add other controls
+into that view, or customize other behaviors.  Note that the Parsley DSL will never
+touch the files into the e[src] source folder.  On the contrary, files generated into
+e[emfparsley-gen] source folder must never be manually modified, since its contents will
+be regenerated each time you modify the e[module.parsley] file.
+
+For example, let's change the view name into "My Library Tree Form":
+
+code[EmfParsley][
+...
+module org.eclipse.emf.parsley.examples.firstexample {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.firstexample {
+			viewname "My Library Tree Form"
+			...
 ]
 
-So there is still an error, in fact we need to create the declared class. 
-e[Suggestion:] Just copy the above qualified class name (e["org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView"]), 
-select the project, right-click and select File -> New -> Class. Now paste the clipboard content into e["Name:"] field: the
-package and class name will be automatically splitted into right fields. Then click e["Finish"].
+Let's save the file, wait for Eclipse to rebuild, and update the
+e[plugin.xml] with the new e[plugin.xml_emfparsley_gen].
 
-Now modify the view class code with this content:
+(Other e[viewpart] sections can be created; content assist is available for that).
 
-code[Java][
-import org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView;
-import org.eclipse.emf.common.util.URI;
+In the generated e[module.parsley], there is a e[configurator] section, with
+a e[TODO] comment (The e[Configurator] is detailed in the section ref:Configurator[Configurator]):
 
-public class LibraryTreeFormView extends AbstractSaveableTreeFormView {
-
-	protected URI createResourceURI() {
-		return URI.createFileURI( System.getProperty("user.home") + "/MyLibrary.library" );
+code[EmfParsley][
+configurator {
+	resourceURI {
+		FirstexampleSaveableTreeFormView -> {
+			// TODO create and return a org.eclipse.emf.common.util.URI
+			return null;
+		}
 	}
-
 }
 ]
 
-Now get back to e[module.parlsey] file, go just after e["viewclass"] keyword, type e["LibraryTreeFormView"]
-and e[Ctrl-Space]: the content assist will set automatically the correct qualified name
-(it will insert the class name, and add the corresponding import at the beginning of the file):
-
-code[EmfParsley][
-	viewclass org.eclipse.emf.parsley.examples.firstexample.views.LibraryTreeFormView
-]
-
-when you save the above file you will notice that a new file (e["plugin.xml_emfparsley_gen"]) 
-is generated into the root folder of your project. Just copy this file into e["plugin.xml"].
-
-Let's focus briefly on the above e[createResourceURI()] method: our goal is allowing to manage 
-a library model instance which persists on a EMF Resource.
+Let's focus on the above e[resourceURI]: our goal is allowing to manage 
+a library model instance which persists on a EMF codeRef[org.eclipse.emf.ecore.resource.Resource].
+So we must specify the codeRef[org.eclipse.emf.common.util.URI] of the resource
+that will be edited by our tree form view.
 In this example we choose to use the EMF default persistence (XMI), but you can provide any URI 
 (e.g. using Teneo, CDO or any other EMF Resource Persistence implementation)
-In particular here we choose to persist the Resource in a XMI file named e["MyLibrary.library"] into the user home
-folder (you might want to change it with any other path). 
+In particular here we choose to persist the Resource in a XMI file named e["MyLibrary.library"]
+into the user home folder (you might want to change it with any other path).
+To achieve this, we just need to create such a URI (recall that content assist is available
+when typing Xbase expressions):
 
-We need a e[Dependency] from the model plug-in: so open e[MANIFEST.MF] file, go to e[Dependencies]
+code[EmfParsley][
+configurator {
+	resourceURI {
+		FirstexampleSaveableTreeFormView -> {
+			return URI.createFileURI( System.getProperty("user.home") + "/MyLibrary.library" );
+		}
+	}
+}
+]
+
+If you simply copy and paste the above return statement, you'll get an error about
+unresolvable Java type URI; "Organize Imports" context menu (or its shortcut "Ctrl+Shift+O")
+can be used to automatically add the missing import (make sure you select
+codeRef[org.eclipse.emf.common.util.URI]).
+
+Note that the specified URI, will be used for loading the resource only for our specific
+view (the resource will be automatically created if it does not exist).
+
+In the e[module.parsley] there is another section that has been generated by the wizard:
+
+code[EmfParsley][
+resourceManager {
+	initializeResource {
+		// Optional: initialize an empty Resource
+		// 'it' is of type Resource
+		// e.g., it.getContents += myFactory.createMyClass
+	}
+}
+]
+
+We can use this section to initialize our resource when it is empty
+(i.e., the first time the resource is created); (The e[resourceManager]
+is detailed in section ref:ResourceManager[Resource Manager]).
+
+In this example, we want to initialize an empty resource with a
+e[Library] object; so
+we first need a e[Dependency] from the model plug-in: so open e[MANIFEST.MF] file, go to e[Dependencies]
 tab, press e["Add..."] button in e["Required Plug-ins"] section and insert e["org.eclipse.emf.examples.library"]
 among dependencies.
 
-Before executing this code we need to do some little more work in order to initialize the Resource.
+Now we can implement the e[initializeResource] method
+(as described in the comment, the codeRef[org.eclipse.emf.ecore.resource.Resource]
+to initialized is available through the parameter e[it]); the Library object
+is created using the standard EMF API: we need the factory of the library model:
 
-An easy way to overcome this issue can be the following:
-
-ol[
-	item[open the class *GuiceModule (FirstexampleGuiceModule in this example) that the wizard created for you.
-	Note that this is a key	class for all customizations; it allows to override several methods in order to provide custom behaviors
-	and implementations.]
-	item[override method e[bindResourceManager()] providing a class for Resource initialization
-	
-code[Java][
-@Override
-public Class<? extends ResourceManager> bindResourceManager() {
-	return LibraryResourceManager.class;
-}
-]
-	]
-	item[create a new class e[LibraryResourceManager] extending from codeRef[org.eclipse.emf.parsley.resource.ResourceManager] for Resource initialization
-code[Java][
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.examples.extlibrary.EXTLibraryFactory;
-import org.eclipse.emf.examples.extlibrary.Library;
-import org.eclipse.emf.parsley.resource.ResourceManager;
-
-public class LibraryResourceManager extends ResourceManager {
-
-	public void initialize(Resource resource) {
-		super.initialize(resource);
-		Library library = EXTLibraryFactory.eINSTANCE.createLibrary();
-		resource.getContents().add(library);
+code[EmfParsley][
+resourceManager {
+	initializeResource {
+		it.getContents += EXTLibraryFactory.eINSTANCE.createLibrary
 	}
-
 }
 ]
-		The method e[initialize()] will be executed only when the Resource is empty
-		(i.e., it has no contents).
-	]
-]
 
-now get back to the e[MANIFEST.MF] and run the example
+Again, use the content assist while typing, e.g., for automatically importing the
+type e[EXTLibraryFactory], or use the "Organize Imports" functionality.
+
+Now, we are ready to execute this example:
+let's get back to the e[MANIFEST.MF] and run the example
 
 img[images/first-example-launch.png][][ ][]
 
@@ -192,15 +253,13 @@ code[EmfParsley][
 import org.eclipse.emf.examples.extlibrary.*
 ]
 
-and then defining the features to show
+and then defining the features to show (the e[featuresProvider] is detailed
+in section ref:FeaturesProvider[Features Provider]):
 
 code[EmfParsley][
 module ... {
 
-	parts { 
-		...	
-	}
-	
+...
 	featuresProvider {
         features {
             Library -> name
@@ -213,31 +272,42 @@ module ... {
 
 Remeber that code completion is available, just exploit it since it helps a lot.
 
-If you restart now the application you will see that, when selecting an object, only the declared attributes
-will be shown. Furthermore, they are shown in the specified order.
+If you restart now the application you will see that, when selecting an object, only the features
+specified in the above section will be shown for each specified classes.
+Furthermore, they are shown in the specified order.
 
-Did you run the application in Debug mode? Well, then you can change fields and order, save and see the
+NOTE: Did you run the application in Debug mode? Well, then you can change fields and order, save and see the
 changes without even restarting the application.
 
-Do you want to change text used for attribute labels in the detail? Just add the following:
+Do you want to change text used for attribute captions in the form for a specific
+class? Just add the following
+(e[featureCaptionProvider] is detailed in section ref:FeatureCaptionProvider[Feature Caption Provider]):
 
 code[EmfParsley][
-propertyDescriptionProvider {
-	text {
-		Book : author -> 'Wrote by:'
-		Writer : name -> 'Name:'
-	}
+...
+featureCaptionProvider { 
+    text { 
+        Book : author -> "Wrote by:"
+        Writer : name -> "Name:"
+    }
 }
 ]
  
 Or do you want to change the label shown on the tree nodes on the upper side and as detail title? 
 Maybe want to format the book label like this?
+(e[labelProvider] is detailed in section ref:ViewerLabelProvider[Viewer Label Provider]):
  
 code[EmfParsley][
-labelProvider {
-	text {
-		Book b -> '"' + b.title + '"' +' (by '+ b.author.name + ')'
-	}
+...
+labelProvider { 
+    text { 
+        Book b -> {
+        	'"' + b.title + '"' +
+        	if (b.author != null)
+        		' (by '+ b.author.name + ')'
+        	else ''
+        }
+    }
 }
 ]
  

@@ -19,7 +19,7 @@ codelanguage-def[Java]
 codelanguage-def[EmfParsley]
 [
 	import,module,parts,labelProvider,text,image,elements,
-	propertyDescriptionProvider,featuresProvider,features,
+	featuresProvider,features,
 	formControlFactory,control,target,viewerContentProvider,
 	children,viewpart,viewname,viewclass,viewcategory,
 	for,new,switch,default,boolean,do,if,this,double,throw,null,
@@ -27,7 +27,8 @@ codelanguage-def[EmfParsley]
 	byte,else,case,enum,instanceof,return,featureCaptionProvider,val,var,
 	catch,extends,int,short,try,char,void,finally,long,
 	float,super,while,proposals,dialogControlFactory,
-	menuBuilder,menus,emfMenus,resourceManager,initializeResource,saveResource
+	menuBuilder,menus,emfMenus,resourceManager,initializeResource,saveResource,
+	configurator,resourceURI
 ]
 
 part[Getting Started]
