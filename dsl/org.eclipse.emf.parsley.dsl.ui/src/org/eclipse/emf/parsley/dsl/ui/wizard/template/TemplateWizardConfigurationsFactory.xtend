@@ -38,7 +38,26 @@ public class TemplateWizardConfigurationsFactory {
 		}
 	}
 
-	static class TemplateWizardConfigurationForSaveableTableView extends TemplateWizardConfiguration {
+	static class TemplateWizardConfigurationForSaveableView extends TemplateWizardConfiguration {
+	
+		new(String label, CharSequence description, Class<?> superClass) {
+			super(label, description, superClass)
+		}
+
+		override getResourceManager() {
+			'''
+			
+			«getProjectFilesGenerator.
+				genResourceManager(
+					getProjectFilesGenerator.genInitializeResource
+				)»
+			'''
+			.toString
+		}
+		
+	}
+
+	static class TemplateWizardConfigurationForSaveableTableView extends TemplateWizardConfigurationForSaveableView {
 	
 		new(String label, CharSequence description, Class<?> superClass) {
 			super(label, description, superClass)
@@ -57,7 +76,7 @@ public class TemplateWizardConfigurationsFactory {
 		}
 	}
 
-	static class TemplateWizardConfigurationForSaveableTreeView extends TemplateWizardConfiguration {
+	static class TemplateWizardConfigurationForSaveableTreeView extends TemplateWizardConfigurationForSaveableView {
 	
 		new(String label, CharSequence description, Class<?> superClass) {
 			super(label, description, superClass)

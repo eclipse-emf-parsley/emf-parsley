@@ -58,7 +58,7 @@ module mypackage.testproject {
 	}
 
 	@Test
-	def void testConfiguratorGen() {
+	def void testGenConfigurator() {
 		generator.genConfigurator(
 			'''
 			«generator.genResourceURI("MyClass")»
@@ -95,6 +95,24 @@ configurator {
 '''
 		)
 	}
+
+	@Test
+	def void testGenResourceManager() {
+		generator.genResourceManager(
+			generator.genInitializeResource
+		).assertGeneratedContentEqualsTo(
+'''
+resourceManager {
+	initializeResource {
+		// Optional: initialize an empty Resource
+		// 'it' is of type Resource
+		// e.g., it.getContents += myFactory.createMyClass
+	}
+}
+'''
+		)
+	}
+
 
 	@Test
 	def void testViewGen() {

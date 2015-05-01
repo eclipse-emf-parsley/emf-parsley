@@ -88,15 +88,12 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		TemplateWizardConfiguration selectedTemplate = getProjectInfo().getSelectedTemplate();
 		if (selectedTemplate != null) {
 			String partClassName = selectedTemplate.getPartClassName(projectName);
-			String partClassFQN = selectedTemplate.getPartClassFQN(projectName);
 			String partContents = selectedTemplate.getContentsForPart(projectName);
 			NewEmfParsleyProjectSupport.createProjectFile(project,
 					projectPackagePath + "/" + partClassName.concat(".java"),
 					partContents, NewEmfParsleyProjectSupport
 							.createSubProgressMonitor(monitor));
-			dslFileContents = filesGenerator.
-				genDslModuleWithViewPart(projectName, partClassFQN, selectedTemplate.getConfiguratorContents(projectName))
-					.toString();
+			dslFileContents = selectedTemplate.getParsleyModuleContents(projectName);
 		} else {
 			dslFileContents = filesGenerator.genEmptyDslModule(projectName).toString();
 		}

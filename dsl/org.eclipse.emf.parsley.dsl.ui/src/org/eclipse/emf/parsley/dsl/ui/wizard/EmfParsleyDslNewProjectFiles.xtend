@@ -98,6 +98,24 @@ module «projectName» {
 		'''
 	}
 
+	def genResourceManager(CharSequence contents) {
+		'''
+		resourceManager {
+			«contents»
+		}
+		'''
+	}
+
+	def genInitializeResource() {
+		'''
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
+		'''
+	}
+
 	def genViewClass(String projectName, String className, String extendsClass)
 '''
 package «projectName»;

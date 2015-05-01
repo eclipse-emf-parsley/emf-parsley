@@ -166,6 +166,14 @@ module my.project.name {
 			}
 		}
 	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
+	}
 }
 '''.assertGenerated(5)
 	}
@@ -204,6 +212,14 @@ module my.project.name {
 			}
 		}
 	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
+	}
 }
 '''.assertGenerated(6)
 	}
@@ -231,6 +247,14 @@ module my.project.name {
 			}
 		}
 	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
+	}
 }
 '''.assertGenerated(7)
 	}
@@ -256,6 +280,14 @@ module my.project.name {
 				// TODO create and return a org.eclipse.emf.common.util.URI
 				return null;
 			}
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
 		}
 	}
 }

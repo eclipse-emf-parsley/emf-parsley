@@ -59,7 +59,11 @@ public class TemplateWizardConfiguration {
 
 	def getParsleyModuleContents(String projectName) {
 		projectFilesGenerator.genDslModuleWithViewPart(
-			projectName, getPartClassFQN(projectName), getConfiguratorContents(projectName)
+			projectName, getPartClassFQN(projectName),
+			'''
+			«getConfiguratorContents(projectName)»
+			«getResourceManager»
+			'''
 		).toString
 	}
 
@@ -77,6 +81,15 @@ public class TemplateWizardConfiguration {
 	 * subclasses should override it.
 	 */
 	def String getConfiguratorElements(String projectName) {
+		""
+	}
+
+	/**
+	 * This should return the resourceManager section in
+	 * the generated Parsley module; the default implementation is empty,
+	 * subclasses should override it.
+	 */
+	def String getResourceManager() {
 		""
 	}
 

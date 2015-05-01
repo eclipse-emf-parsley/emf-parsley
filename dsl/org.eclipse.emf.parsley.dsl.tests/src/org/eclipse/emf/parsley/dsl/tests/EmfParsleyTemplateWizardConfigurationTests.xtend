@@ -123,7 +123,52 @@ module my.project.myname {
 			createEmptyConfiguration.getParsleyModuleContents("my.project.myname")
 		)
 	}
+
+	@Test
+	def void testDefaultGetResourceManager() {
+		"".assertEquals(
+			createEmptyConfiguration.getResourceManager()
+		)
+	}
+
+	@Test
+	def void testParsleyModuleContentsWithResourceManager() {
+'''
+import my.project.myname.MynameSaveableTreeView
+
+/* my.project.myname Emf Parsley Dsl Module file */
+module my.project.myname {
 	
+	parts {
+		viewpart my.project.myname {
+			viewname "Myname"
+			viewclass MynameSaveableTreeView
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
+	}
+}
+'''
+		.toString.assertEquals(
+			new TemplateWizardConfiguration(null, null, SaveableTreeView) {
+				
+				override getResourceManager() {
+					getProjectFilesGenerator.genResourceManager(
+						getProjectFilesGenerator.genInitializeResource
+					).toString
+				}
+				
+			}.getParsleyModuleContents("my.project.myname")
+		)
+	}
+
+
 	private def createEmptyConfiguration() {
 		new TemplateWizardConfiguration(null, null, SaveableTreeView)
 	}	
