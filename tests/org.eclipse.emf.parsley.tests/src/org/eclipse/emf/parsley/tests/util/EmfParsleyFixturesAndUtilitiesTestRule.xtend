@@ -78,6 +78,8 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	var protected TestEClass testEClassInstance
 
 	val static TEST_RESOURCE_URI = "resources/TestResource.xmi"
+
+	val static TEST_LIBRARY_RESOURCE_URI = "resources/TestLibraryResource.xmi"
 	
 	override apply(Statement base, Description description) {
 		return [
@@ -238,6 +240,10 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 			(TestmodelsPackage.eNS_URI, 
 			 TestmodelsPackage.eINSTANCE);
 		
+		resourceSet.getPackageRegistry().put
+			(EXTLibraryPackage.eNS_URI, 
+			 EXTLibraryPackage.eINSTANCE);
+		
 		return resourceSet
 	}
 
@@ -256,4 +262,23 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 		val resource = resourceSet.getResource(URI.createURI(TEST_RESOURCE_URI), true)
 		return resource
 	}
+
+	def createTestLibrayResource() {
+		val resourceSet = createAndSetupResourceSet
+		val resource = resourceSet.createResource(URI.createURI(TEST_LIBRARY_RESOURCE_URI))
+		return resource
+	}
+
+	def createTestLibrayResourceAndInitialize() {
+		return createTestLibrayResource => [
+			contents += createTestLibrary
+		]
+	}
+
+	def loadTestLibraryResource() {
+		val resourceSet = createAndSetupResourceSet
+		val resource = resourceSet.getResource(URI.createURI(TEST_LIBRARY_RESOURCE_URI), true)
+		return resource
+	}
+
 }

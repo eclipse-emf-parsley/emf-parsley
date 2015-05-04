@@ -6,8 +6,10 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.util.EmfParsleyUtil
 import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.IContributionItem
@@ -20,7 +22,8 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.eclipse.emf.ecore.resource.Resource.IOWrappedException
+import org.eclipse.emf.ecore.xmi.DanglingHREFException
 
 class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	
@@ -216,6 +219,46 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 		editingMenuBuilder.emfMenuManagerForSelection(library).
 			executeAction("New Writer")
 		library.writers.exists[name == "This is a new writer"].assertTrue
+	}
+
+	@Test(expected=DanglingHREFException)
+	def void testCustomAddCommand_Bug466219() {
+		// this will recreate the context of
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=466219
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+		
+		val editingMenuBuilder = new EditingMenuBuilder() {
+							
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionAdd("New Book for Writer", (w.eContainer as Library).books, 
+						libraryFactory.createBook => [
+							title = "This is a new book"
+							author = w
+						]
+					)
+				]
+			}
+							
+		}.injectMembers.initializeEditingMenuBuilder
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+		val addedBook = library.books.findFirst[title == "This is a new book"]
+		addedBook.assertNotNull
+		addedBook.author.assertSame(writerForMenu)
+		
+		// retrigger menu creation, this will create a dangling reference
+		// the writer will reference a book which is not yet in the resource
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu)
+		// and will never be in the resource
+
+		try {
+			resource.save(null)
+		} catch (IOWrappedException e) {
+			throw e.cause
+		}
 	}
 	
 	def protected getEditingDomain() {
