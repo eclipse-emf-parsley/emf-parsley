@@ -4,6 +4,8 @@ import org.eclipse.emf.examples.extlibrary.EXTLibraryFactory
 import org.eclipse.emf.examples.extlibrary.Library
 import org.eclipse.emf.examples.extlibrary.Writer
 import org.eclipse.emf.parsley.examples.firstexample.FirstexampleSaveableTreeFormView
+import org.eclipse.emf.parsley.edit.IEditingStrategy
+import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
 
 /* org.eclipse.emf.parsley.examples.firstexample Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.firstexample {
@@ -13,6 +15,11 @@ module org.eclipse.emf.parsley.examples.firstexample {
 			viewname "My Library Tree Form"
 			viewclass FirstexampleSaveableTreeFormView
 		}
+	}
+
+	bindings {
+		type IEditingStrategy -> UndoableEditingStrategy
+		value int TreeFormSashStyle -> SWT.HORIZONTAL
 	}
 	
 	configurator {
@@ -29,29 +36,62 @@ module org.eclipse.emf.parsley.examples.firstexample {
 		}
 	}
 
-	 featuresProvider { 
-        features { 
+	featuresProvider {
+        features {
             Library -> name 
             Writer -> name, address, books 
             Book -> author, title, category 
-        } 
-    } 
+        }
+    }
 
-    featureCaptionProvider { 
-	    text { 
-	        Book : author -> "Wrote by:" 
+    featureCaptionProvider {
+	    text {
+	        Book : author -> "Wrote by:"
 	        Writer : name -> "Name:"
 	    }
 	}
 
-	labelProvider { 
-	    text { 
-	        Book b -> {
-	        	'"' + b.title + '"' +
-	        	if (b.author != null)
-	        		' (by '+ b.author.name + ')'
-	        	else ''
-	        }
+	labelProvider {
+	    text {
+	        Book b -> { '"' + b.title + '"' }
+	        Writer w -> { w.name }
 	    }
+	}
+
+	menuBuilder {
+		val factory = EXTLibraryFactory.eINSTANCE
+		
+		emfMenus {
+			Writer w -> #[
+				actionAdd(
+					"New book",
+					(w.eContainer as Library).books,
+					factory.createBook,
+					[ book |
+						book.title = "A new book" 
+						book.author = w
+					]
+				)
+			]
+			Book b -> #[
+				actionAdd(
+					"New writer",
+					(b.eContainer as Library).writers,
+					factory.createWriter,
+					[ writer |
+						writer.name = "A new writer"
+						writer.books += b
+					]
+				)
+			]
+		}
+	}
+
+	viewerContentProvider {
+		children {
+			Library -> {
+				writers + books
+			}
+		}
 	}
 }

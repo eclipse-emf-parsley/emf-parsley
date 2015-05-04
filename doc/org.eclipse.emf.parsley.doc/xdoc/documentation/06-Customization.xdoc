@@ -26,9 +26,12 @@ codeRef[org.eclipse.emf.parsley.EmfParsleyGuiceModule]).  This is useful also fo
 testing purposes, for writing plain Junit tests (i.e., not Plug-in Junit tests).
 This is also used in our testing framework (see ref:Testing[EMF Parsley Testing Framework]).
 
+todo[TODO: Explain polymorphic implementations]
+
+section:GuiceBindings[Guice Bindings]
+
 todo[TODO: Explain the concept of Guice module and the corresponding binding methdos]
 
-todo[TODO: Explain polymorphic implementations]
 
 section:Providers[Providers]
 
@@ -356,7 +359,7 @@ when the menu is selected (Note that it is up to you to specify a
 containment list); the DSL will issue an error if the object cannot be
 added to the list (because it is not of the right type).
 The object should be created using the standard EMF API (i.e., using
-the EMF package for your model).
+the EMF factory for your model).
 
 IMPORTANT: do not initialize any reference feature of the created EObject
 upon object creation; i.e., do not do something like the following

@@ -242,6 +242,8 @@ As you can see you can entirely manage the EMF model instance: creating, modifyi
 Whenever the current selection on the upper side of the view changes, then the lower side shows the detail
 of this selection.
 
+img[images/first-example-default.png][][ ][]
+
 However, up to this point, you have no control over the field to be shown and its order; for example
 you may want just the e["name"] attribute for the Library and e["name", "address" and "books"] attributes
 for Writers and maybe e["title", "authors" and "category"] for Books.
@@ -299,16 +301,150 @@ Maybe want to format the book label like this?
  
 code[EmfParsley][
 ...
-labelProvider { 
-    text { 
-        Book b -> {
-        	'"' + b.title + '"' +
-        	if (b.author != null)
-        		' (by '+ b.author.name + ')'
-        	else ''
-        }
+labelProvider {
+    text {
+        Book b -> { '"' + b.title + '"' }
+        Writer w -> { w.name }
     }
 }
 ]
- 
-img[images/labelCustomization.png][][ ][]
+
+The result of all the above customizations is shown in the following screenshot
+(compare it with the previous screenshot):
+
+img[images/first-example-customized.png][][ ][]
+
+Now, let's customize the context menus; by default,
+Parsley will generate context menus using EMF.Edit:
+
+img[images/first-example-default-menus.png][][ ][]
+
+We will now customize the context menu for books and writers, using
+the e[menuBuilder] in the DSL (context menu customization is detailed
+in section ref:ContextualMenu[Contextual Menu]).
+What we want to achieve is to have a context menu for a e[Writer]
+to add a new book in the library, and set its author to the
+selected writer (similarly, we want a context menu for a e[Book]
+to add a new writer in the library, and set the selected book as
+one of the new writer's books):
+
+code[EmfParsley][
+...
+menuBuilder {
+	val factory = EXTLibraryFactory.eINSTANCE
+	
+	emfMenus {
+		Writer w -> #\[
+			actionAdd(
+				"New book",
+				(w.eContainer as Library).books,
+				factory.createBook,
+				\[ book |
+					book.title = "A new book" 
+					book.author = w
+				\]
+			)
+		\]
+		Book b -> #\[
+			actionAdd(
+				"New writer",
+				(b.eContainer as Library).writers,
+				factory.createWriter,
+				\[ writer |
+					writer.name = "A new writer"
+					writer.books += b
+				\]
+			)
+		\]
+	}
+}
+]
+
+In this code we use Xbase features like list literals (e[#\[...\]]) and
+lambda expressions.
+
+If you now restart the application, you see that the new
+context menu appears on writer elements:
+
+img[images/first-example-custom-menus1.png][][ ][]
+
+And selecting such a menu on a writer will add a new book, with
+a title, and whose author is the selected writer:
+
+img[images/first-example-custom-menus2.png][][ ][]
+
+You may want to try the new context menu on a book as well.
+
+Now, let's customize the contents shown in the tree view: by default,
+as you can see from the previous screenshots, the tree will show all
+the contents of the library.  If we want to show only the writers and
+the books we can specify this section in the DSL
+(the customization of the content provider is detailed in
+section ref:ViewerContentProvider[Viewer Content Provider]):
+
+code[EmfParsley][
+...
+viewerContentProvider {
+	children {
+		Library -> {
+			writers + books
+		}
+	}
+}
+]
+
+and the result can be seen in the following screenshot:
+
+img[images/first-example-custom-contents1.png][][ ][]
+
+By default, double-clicking on a tree viewer of a saveable view will
+show a dialog to edit that object (if you customized the
+e[featuresProvider], the dialog will use your customized version);
+by default, if you edit a field in such dialog, the modifications will
+be applied immediately to the resource: this can be seen in the
+labels of the tree which are automatically updated and in the dirty state of
+the view:
+
+img[images/first-example-default-dialog.png][][ ][]
+
+Such a strategy for editing is delegated to an injected
+codeRef[org.eclipse.emf.parsley.edit.IEditingStrategy], which is
+implemented by default by codeRef[org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy].
+
+One may want to avoid this automatic update of the resource, and
+have the changes applied only when the "OK" dialog button is pressed
+(if "Cancel" is pressed, no changes should be applied at all).
+To achieve this behavior, it is enough to bind the alternative implementation
+codeRef[org.eclipse.emf.parsley.edit.UndoableEditingStrategy], in the Guice module.
+This can be achieved in the DSL using the e[binding] section
+(Guice bindings are detailed in section ref:GuiceBindings[Guice Bindings]):
+
+code[EmfParsley][
+...
+bindings {
+	type IEditingStrategy -> UndoableEditingStrategy
+}
+]
+
+We strongly suggest you use the content assist to discover default
+bindings, since they also show Javadoc for each default binding:
+
+img[images/first-example-custom-binding1.png][][ ][]
+
+Besides types, you can also bind (i.e., inject) specific values
+that are used in the framework; for example, you can change the
+orientation of the tree form sash as follows
+
+code[EmfParsley][
+...
+bindings {
+	type IEditingStrategy -> UndoableEditingStrategy
+	value int TreeFormSashStyle -> SWT.HORIZONTAL
+}
+]
+
+and see the result:
+
+img[images/first-example-custom-orientation.png][][ ][]
+
+This ends the first tutorial.
