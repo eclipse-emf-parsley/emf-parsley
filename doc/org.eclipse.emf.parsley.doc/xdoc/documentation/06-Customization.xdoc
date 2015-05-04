@@ -539,6 +539,139 @@ codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy]).
 
 section:Configurator[Configurator]
 
-todo[TODO: document Configurator
-https://bugs.eclipse.org/bugs/show_bug.cgi?id=466074]
+In Parsley, instead of using abstract classes, we often provide concrete
+classes that implement superclass' abstract methods (or interface methods)
+by delegating to an injected codeRef[org.eclipse.emf.parsley.config.Configurator].
+Such configurator calls methods in its hierarchy using polymorphic dispatch;
+in particular, the first argument passed to these methods is the object
+requesting that specific service to the configurator; typically it will be
+a UI object, e.g., a view part.
 
+These are the methods that can be customized declaratively:
+
+code[Java][
+/**
+ * Returns the {@link URI} of the resource for the requestor for any use the requestor may need it
+ * @param requestor
+ * @return
+ */
+public URI resourceURI(Object requestor) {
+	return null;
+}
+
+/**
+ * Returns the {@link EClass} for the requestor
+ * @param requestor
+ * @return
+ */
+public EClass eClass(Object requestor) {
+	return null;
+}
+
+/**
+ * Returns the {@link EStructuralFeature} for the requestor
+ * @param requestor
+ * @return
+ */
+public EStructuralFeature eStructuralFeature(Object requestor) {
+	return null;
+}
+
+/**
+ * Returns the contents from the resource for the requestor
+ * @param requestor
+ * @param resource
+ * @return
+ */
+public Object contents(Object requestor, Resource resource) {
+	return null;
+}
+]
+
+The idea is that clients that use such an injected instance should call
+the e[get] methods, e.g., e[getContents], while the customization should be defined
+using polymorphic dispatch, e.g.,
+
+code[Java][
+class MyConfigurator extends Configurator {
+
+	public Object contents(MyView1 view1, Resource resource) {
+		return ...;
+	}
+
+	public Object contents(MyOtherView view, Resource resource) {
+		return ...;
+	}
+}
+]
+
+In the DSL, you can specify a e[configurator] section, e.g.,
+(the requestor object can be accessed using the implicit variable
+e[it], while additional parameters can be accessed through their names,
+as named in the original codeRef[org.eclipse.emf.parsley.config.Configurator]
+class, e.g., e[resource] for e[contents]):
+
+code[EmfParsley][
+module my.project {
+
+	configurator {
+		resourceURI {
+			MyTreeFormView -> {
+				return ...;
+			}
+		}
+		eClass {
+			MyTreeView -> {
+				return ...;
+			}
+		}
+		eStructuralFeature {
+			MyTreeFormView -> {
+				return ...;
+			}
+			MyFormView -> {
+				return ...;
+			}
+		}
+		contents {
+			MyTreeView -> {
+				return ...;
+			}
+		}
+	}
+}
+]
+
+The project wizard will generate in the e[module.parsley] the
+required e[configurator] sections, depending on the specific template chosen,
+with some e[// TODO] comments to help implementing them, e.g.,
+
+code[EmfParsley][
+module my.project {
+
+	configurator {
+		contents {
+			MyView -> {
+				// TODO return the contents from the resource
+				// e.g., resource.^contents.get(0)
+			}
+		}
+		eClass {
+			MyView -> {
+				// TODO return the EClass to represent
+			}
+		}
+		resourceURI {
+			MyView -> {
+				// TODO create and return a org.eclipse.emf.common.util.URI
+				return null;
+			}
+		}
+		eStructuralFeature {
+			MyView -> {
+				// TODO return the EStructuralFeature to get the elements to represent
+			}
+		}
+	}
+}
+]
