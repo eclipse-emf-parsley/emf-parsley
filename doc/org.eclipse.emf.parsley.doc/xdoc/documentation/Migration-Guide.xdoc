@@ -1,0 +1,17 @@
+chapter:MigrationGuide[Migration Guide]
+
+section:ThreeFour[From 0.3 to 0.4]
+
+ul[
+item[e[EmptyResourceInitializer] has been removed: you should now use
+codeRef[org.eclipse.emf.parsley.resource.ResourceManager],
+see section ref:ResourceManager[Resource Manager]]
+item[e[ResourceSaveManager] has been removed: you should now use
+codeRef[org.eclipse.emf.parsley.resource.ResourceSaveStrategy],
+see section ref:ResourceSaveStrategy[Resource Save Strategy]
+]
+item[Project wizards have been redesigned: they generate a e[module.parsley]
+that uses the e[configurator] for specifying required information
+(see section ref:Configurator[Configurator] and the updated
+first example, section ref:FirstExample[First Example])]
+]
