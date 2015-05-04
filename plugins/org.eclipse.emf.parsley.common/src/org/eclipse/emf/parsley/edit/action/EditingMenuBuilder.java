@@ -30,6 +30,7 @@ import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.action.PasteAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
+import org.eclipse.emf.parsley.runtime.util.IAcceptor;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.action.IMenuManager;
@@ -362,10 +363,27 @@ public class EditingMenuBuilder {
 	 */
 	protected <T> IMenuContributionSpecification actionAdd(String text,
 			EList<? super T> list, T value) {
+		return actionAdd(text, list, value, null);
+	}
+
+	/**
+	 * Creates a menu contribution for an action with the given text, that
+	 * will add the specified value to the specified list, when executed; the
+	 * passed addedObjectInizialier will be executed after the object has been
+	 * added to the specified list.
+	 * 
+	 * @param text
+	 * @param list
+	 * @param value
+	 * @param addedObjectInitialier
+	 * @return
+	 */
+	protected <T> IMenuContributionSpecification actionAdd(String text,
+			EList<? super T> list, T value, IAcceptor<T> addedObjectInitialier) {
 		AddCommand addCommand = addCommand(list, value);
 		addCommand.setDescription(text);
-		return new MenuActionContributionSpecification(new EmfCommandAction(text,
-				getEditingDomain(), addCommand));
+		return new MenuActionContributionSpecification(new EmfCommandAction<T>(text,
+				getEditingDomain(), addCommand, addedObjectInitialier));
 	}
 
 	/**

@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.edit.action;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.parsley.runtime.util.IAcceptor;
 import org.eclipse.jface.action.Action;
 
 /**
@@ -20,7 +21,7 @@ import org.eclipse.jface.action.Action;
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
-public class EmfCommandAction extends Action {
+public class EmfCommandAction<T> extends Action {
 
 	/**
 	 * This records the editing domain and it has to be passed during the
@@ -33,10 +34,18 @@ public class EmfCommandAction extends Action {
 	 */
 	private Command command;
 
-	public EmfCommandAction(String text, EditingDomain editingDomain, Command command) {
+	/**
+	 * This will be used to initialize the object that has been added by this
+	 * action.
+	 */
+	private IAcceptor<T> addedObjectInitializer;
+
+	public EmfCommandAction(String text, EditingDomain editingDomain, Command command,
+			IAcceptor<T> addedObjectInitializer) {
 		super(text);
 		this.editingDomain = editingDomain;
 		this.command = command;
+		this.addedObjectInitializer = addedObjectInitializer;
 	}
 
 	/**
@@ -45,5 +54,12 @@ public class EmfCommandAction extends Action {
 	@Override
 	public void run() {
 		editingDomain.getCommandStack().execute(command);
+
+		if (addedObjectInitializer != null) {
+			@SuppressWarnings("unchecked")
+			T addedObject = (T) command.getAffectedObjects().iterator().next();
+			addedObjectInitializer.accept(addedObject);
+		}
+
 	}
 }

@@ -312,6 +312,15 @@ as shown in the next section.
 
 section2:MenuBuilder[Menu Builder]
 
+e[EMF Parsley] uses the standard EMF.Edit features to build the contextual menus of
+viewers (thus you will get by default the standard "New Child" and "New Sibling"
+sections in the context menu).
+
+You can customize context menus on a per class basis 
+by extending the codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder]
+(and injecting it in the Guice module).  However, we suggest to use the
+DSL for this task, as detailed in the following.
+
 e[EMF Parsley] logically separates the menu into 2 parts. The first section contains all common edit commands
 such as e[copy] and e[paste]. The second section contains EMF specific commands, such as for example e[new child].
 You can use the DSL to fully customize the menu, as in the example below. 
@@ -329,19 +338,68 @@ menuBuilder{
 		\]
 	}
 	emfMenus{
-		Library -> #\[
-			actionAdd("Add a new book", books,
-				EXTLibraryFactory.eINSTANCE.createBook => \[
-					title="new book"
-				\]
-			)
+		Library lib -> #\[
+			actionAdd("Add a new book", lib.books,
+				EXTLibraryFactory.eINSTANCE.createBook)
 		\]
 	}
 }
 ]
 
-You can customize menu also via Java, by extending the codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder].
+For each EClass of your meta-model you can specify a list of menu items
+(the #\[\] is the Xbase syntax for a list literal)
+Content assist is available to select the editing actions, the separator and
+also methods for EMF menu part.  In the e[emfMenus] section, you can use
+the method e[actionAdd], specifying the label for the menu,
+the containment list in the model, and the object to add in such list
+when the menu is selected (Note that it is up to you to specify a
+containment list); the DSL will issue an error if the object cannot be
+added to the list (because it is not of the right type).
+The object should be created using the standard EMF API (i.e., using
+the EMF package for your model).
 
+IMPORTANT: do not initialize any reference feature of the created EObject
+upon object creation; i.e., do not do something like the following
+
+code[EmfParsley][
+emfMenus{
+	Writer w -> #\[
+		actionAdd("Add a new book for the writer",
+			(w.eContainer as Library).books,
+			// WRONG: don't do that
+			EXTLibraryFactory.eINSTANCE.createBook => \[
+				author = w
+			\]
+		)
+	\]
+}
+]
+
+Since the object is created when the contextual menu is created, NOT
+when the menu is selected; if you do something like in the code above,
+you will end up with a resource with dangling references (which cannot be
+saved).
+
+If you want to specify further initialization instructions for the
+created object you can pass a lambda expression as another argument
+to e[actionAdd]: that lambda will be executed ONLY after the menu
+has been selected, i.e., ONLY after the created
+object is part of the resource:
+
+code[EmfParsley][
+emfMenus{
+	Writer w -> #\[
+		actionAdd("Add a new book for the writer",
+			(w.eContainer as Library).books,
+			EXTLibraryFactory.eINSTANCE.createBook,
+			// CORRECT: the lambda will be executed when the menu
+			// is selected and the object has been added to
+			// the resource
+			\[ book | book.author = w \]
+		)
+	\]
+}
+]
 
 section:Factories[Factories]
 

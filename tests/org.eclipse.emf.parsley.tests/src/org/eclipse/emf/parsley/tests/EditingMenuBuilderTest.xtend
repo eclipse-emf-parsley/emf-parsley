@@ -260,6 +260,46 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 			throw e.cause
 		}
 	}
+
+	@Test
+	def void testCustomAddCommandAndInitializer() {
+		// see also
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=466219
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+		
+		val editingMenuBuilder = new EditingMenuBuilder() {
+							
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionAdd("New Book for Writer", (w.eContainer as Library).books, 
+						libraryFactory.createBook => [
+							title = "This is a new book"
+						],
+						[
+							// initialize the added object only after it has
+							// been added effectively
+							// https://bugs.eclipse.org/bugs/show_bug.cgi?id=466219
+							book |
+							book.author = w
+						]
+					)
+				]
+			}
+							
+		}.injectMembers.initializeEditingMenuBuilder
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+		val addedBook = library.books.findFirst[title == "This is a new book"]
+		addedBook.assertNotNull
+		addedBook.author.assertSame(writerForMenu)
+		
+		// retrigger menu creation
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu)
+
+		resource.save(null)
+	}
 	
 	def protected getEditingDomain() {
 		if (editingDomain === null) {
