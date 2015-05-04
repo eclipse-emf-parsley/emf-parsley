@@ -9,12 +9,12 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 import org.junit.Rule
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class ConfiguratorTest extends AbstractEmfParsleyTest {
 	
-	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	@Test
 	def void testDefaultResourceURI() {

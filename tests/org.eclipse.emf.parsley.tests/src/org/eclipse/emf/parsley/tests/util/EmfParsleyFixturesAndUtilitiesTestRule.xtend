@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.tests.util
 
 import com.google.inject.Injector
 import java.util.List
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
@@ -38,12 +39,12 @@ import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 import static extension org.junit.Assert.*
 
 /**
- * Objects and other elements used in tests.
+ * Objects, utility methods and other elements used in tests.
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-class EmfParsleyFixturesTestRule implements TestRule {
+class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	
 	protected Library lib = null
 	
@@ -75,6 +76,8 @@ class EmfParsleyFixturesTestRule implements TestRule {
 	 * An instance to use for testing Ecore related mechanisms
 	 */
 	var protected TestEClass testEClassInstance
+
+	val static TEST_RESOURCE_URI = "resources/TestResource.xmi"
 	
 	override apply(Statement base, Description description) {
 		return [
@@ -240,5 +243,17 @@ class EmfParsleyFixturesTestRule implements TestRule {
 
 	def createAndSetupResourceSet() {
 		createResourceSet.setupResouceFactory
+	}
+
+	def createTestResource() {
+		val resourceSet = createAndSetupResourceSet
+		val resource = resourceSet.createResource(URI.createURI(TEST_RESOURCE_URI))
+		return resource
+	}
+
+	def loadTestResource() {
+		val resourceSet = createAndSetupResourceSet
+		val resource = resourceSet.getResource(URI.createURI(TEST_RESOURCE_URI), true)
+		return resource
 	}
 }

@@ -13,17 +13,17 @@ package org.eclipse.emf.parsley.tests
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class ViewerContentProviderTest extends AbstractEmfParsleyTest {
 
-	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	var ViewerContentProvider contentProvider
 	

@@ -11,12 +11,12 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.junit.Rule
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 abstract class AbstractControlFactoryTest extends AbstractEmfParsleyControlBasedTest {
 	
-	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 	
 	override protected getEditingDomain() {
 		return fixtures.editingDomain

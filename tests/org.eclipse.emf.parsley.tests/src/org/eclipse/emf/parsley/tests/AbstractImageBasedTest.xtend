@@ -13,14 +13,14 @@ package org.eclipse.emf.parsley.tests
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.junit.Rule
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 abstract class AbstractImageBasedTest extends AbstractEmfParsleyShellBasedTest {
 
 	val protected TEST_IMAGE = "test_image.png"
 	
-	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	def protected getDelegateLabelProvider() {
 		getOrCreateInjector.getInstance(AdapterFactoryLabelProvider)

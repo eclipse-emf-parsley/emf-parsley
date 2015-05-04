@@ -18,16 +18,16 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.resource.ResourceLoader
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.tests.util.GlobalAdapterFactoryEditingDomainModule
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class EditingDomainTest extends AbstractEmfParsleyTest {
 	
-	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	@Test
 	def void testDefaultEditingDomainProvider() {

@@ -8,7 +8,6 @@ import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.emf.parsley.util.EmfParsleyUtil
 import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.IContributionItem
@@ -21,10 +20,11 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	
-	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	var EditingDomain editingDomain = null
 	

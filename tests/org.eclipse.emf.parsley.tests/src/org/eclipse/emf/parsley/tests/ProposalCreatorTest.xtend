@@ -16,19 +16,19 @@ import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule
 import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class ProposalCreatorTest extends AbstractEmfParsleyTest {
 	
 	var ProposalCreator defaultProposalCreator
 	
-	@Rule public extension EmfParsleyFixturesTestRule fixtures = new EmfParsleyFixturesTestRule()
+	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 	
 	@Before
 	def void setupEObject() {
