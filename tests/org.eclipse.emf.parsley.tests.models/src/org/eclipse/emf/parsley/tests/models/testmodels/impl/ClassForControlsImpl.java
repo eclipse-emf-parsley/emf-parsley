@@ -30,6 +30,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#isBooleanFeature <em>Boolean Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getBooleanObjectFeature <em>Boolean Object Feature</em>}</li>
@@ -45,7 +46,6 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

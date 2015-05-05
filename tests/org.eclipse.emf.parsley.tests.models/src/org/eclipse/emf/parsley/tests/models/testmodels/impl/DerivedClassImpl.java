@@ -21,11 +21,11 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl#getDerivedClassFeature <em>Derived Class Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl#getDerivedMultiReferenceFeature <em>Derived Multi Reference Feature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -20,11 +20,11 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForTableImpl#getClassWithName1 <em>Class With Name1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForTableImpl#getClassWithName2 <em>Class With Name2</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

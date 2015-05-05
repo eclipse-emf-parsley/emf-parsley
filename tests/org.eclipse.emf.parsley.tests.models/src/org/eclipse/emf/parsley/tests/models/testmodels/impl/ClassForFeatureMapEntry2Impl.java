@@ -11,8 +11,6 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Class For Feature Map Entry2</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

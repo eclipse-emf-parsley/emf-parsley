@@ -22,13 +22,13 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl#getBaseClassFeature <em>Base Class Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl#getBaseMultiReferenceFeature <em>Base Multi Reference Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl#getDerivedClassFeature <em>Derived Class Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.MultipleInheritanceClassImpl#getDerivedMultiReferenceFeature <em>Derived Multi Reference Feature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

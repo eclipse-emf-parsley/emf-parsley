@@ -24,13 +24,13 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassImpl#getLowercaseNameFeature <em>Lowercase Name Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassImpl#getUpperCaseNameFeature <em>Upper Case Name Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassImpl#getNotChangeableFeature <em>Not Changeable Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassImpl#getDerivedFeature <em>Derived Feature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

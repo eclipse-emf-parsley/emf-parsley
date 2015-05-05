@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#isBooleanFeature <em>Boolean Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBooleanObjectFeature <em>Boolean Object Feature</em>}</li>
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls()
  * @model

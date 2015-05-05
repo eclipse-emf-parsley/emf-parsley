@@ -22,11 +22,11 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl#getBaseClassFeature <em>Base Class Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.BaseClassImpl#getBaseMultiReferenceFeature <em>Base Multi Reference Feature</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

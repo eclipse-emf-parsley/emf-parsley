@@ -18,10 +18,10 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

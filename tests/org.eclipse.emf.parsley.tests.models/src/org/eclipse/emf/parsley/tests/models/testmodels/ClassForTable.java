@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable#getClassWithName1 <em>Class With Name1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable#getClassWithName2 <em>Class With Name2</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForTable()
  * @model
