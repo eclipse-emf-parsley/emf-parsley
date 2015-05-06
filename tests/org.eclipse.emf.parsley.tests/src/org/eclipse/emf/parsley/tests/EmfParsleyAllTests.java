@@ -49,7 +49,8 @@ import org.junit.runners.Suite;
 	EditingMenuBuilderTest.class,
 	ClassLoaderImageHelperTest.class,
 	ShellBasedTest.class,
-	ControlBasedTest.class
+	ControlBasedTest.class,
+	ValidationRunnerTest.class
 })
 public class EmfParsleyAllTests {
 

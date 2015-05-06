@@ -137,6 +137,15 @@ public interface TestmodelsFactory extends EFactory {
 	ClassForTable createClassForTable();
 
 	/**
+	 * Returns a new object of class '<em>Class For Validation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class For Validation</em>'.
+	 * @generated
+	 */
+	ClassForValidation createClassForValidation();
+
+	/**
 	 * Returns a new object of class '<em>Test Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

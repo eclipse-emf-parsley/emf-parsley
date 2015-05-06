@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
@@ -36,6 +37,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForControls <em>Classes For Controls</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getContained <em>Contained</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForTable <em>Classes For Table</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getObjectsForValidation <em>Objects For Validation</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,6 +82,16 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * @ordered
 	 */
 	protected EList<ClassForTable> classesForTable;
+
+	/**
+	 * The cached value of the '{@link #getObjectsForValidation() <em>Objects For Validation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectsForValidation()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ClassForValidation> objectsForValidation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,6 +196,18 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ClassForValidation> getObjectsForValidation() {
+		if (objectsForValidation == null) {
+			objectsForValidation = new EObjectContainmentEList<ClassForValidation>(ClassForValidation.class, this, TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION);
+		}
+		return objectsForValidation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -195,6 +219,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return basicSetContained(null, msgs);
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
 				return ((InternalEList<?>)getClassesForTable()).basicRemove(otherEnd, msgs);
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
+				return ((InternalEList<?>)getObjectsForValidation()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -215,6 +241,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return getContained();
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
 				return getClassesForTable();
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
+				return getObjectsForValidation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -243,6 +271,10 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				getClassesForTable().clear();
 				getClassesForTable().addAll((Collection<? extends ClassForTable>)newValue);
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
+				getObjectsForValidation().clear();
+				getObjectsForValidation().addAll((Collection<? extends ClassForValidation>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -267,6 +299,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
 				getClassesForTable().clear();
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
+				getObjectsForValidation().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -287,6 +322,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return contained != null;
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_TABLE:
 				return classesForTable != null && !classesForTable.isEmpty();
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
+				return objectsForValidation != null && !objectsForValidation.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

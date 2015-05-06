@@ -127,6 +127,10 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 				return createClassForTableAdapter();
 			}
 			@Override
+			public Adapter caseClassForValidation(ClassForValidation object) {
+				return createClassForValidationAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -311,6 +315,20 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClassForTableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation <em>Class For Validation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation
+	 * @generated
+	 */
+	public Adapter createClassForValidationAdapter() {
 		return null;
 	}
 

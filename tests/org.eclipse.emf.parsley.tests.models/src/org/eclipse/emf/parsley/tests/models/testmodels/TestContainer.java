@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForControls <em>Classes For Controls</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getContained <em>Contained</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesForTable <em>Classes For Table</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getObjectsForValidation <em>Objects For Validation</em>}</li>
  * </ul>
  *
  * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getTestContainer()
@@ -99,5 +100,21 @@ public interface TestContainer extends EObject {
 	 * @generated
 	 */
 	EList<ClassForTable> getClassesForTable();
+
+	/**
+	 * Returns the value of the '<em><b>Objects For Validation</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Objects For Validation</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Objects For Validation</em>' containment reference list.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getTestContainer_ObjectsForValidation()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ClassForValidation> getObjectsForValidation();
 
 } // TestContainer

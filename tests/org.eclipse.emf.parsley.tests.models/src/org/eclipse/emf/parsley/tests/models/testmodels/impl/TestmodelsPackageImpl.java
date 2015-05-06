@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass;
@@ -25,6 +26,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedDerivedClass;
@@ -34,6 +36,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
+import org.eclipse.emf.parsley.tests.models.testmodels.util.TestmodelsValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -130,6 +133,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass classForValidationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass testContainerEClass = null;
 
 	/**
@@ -204,6 +214,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		// Initialize created meta-data
 		theTestmodelsPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theTestmodelsPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return TestmodelsValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theTestmodelsPackage.freeze();
@@ -552,6 +571,24 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getClassForValidation() {
+		return classForValidationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForValidation_NotEmpty() {
+		return (EAttribute)classForValidationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTestContainer() {
 		return testContainerEClass;
 	}
@@ -590,6 +627,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 */
 	public EReference getTestContainer_ClassesForTable() {
 		return (EReference)testContainerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestContainer_ObjectsForValidation() {
+		return (EReference)testContainerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -652,6 +698,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_CONTROLS);
 		createEReference(testContainerEClass, TEST_CONTAINER__CONTAINED);
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_TABLE);
+		createEReference(testContainerEClass, TEST_CONTAINER__OBJECTS_FOR_VALIDATION);
 
 		testEClassEClass = createEClass(TEST_ECLASS);
 		createEAttribute(testEClassEClass, TEST_ECLASS__LOWERCASE_NAME_FEATURE);
@@ -701,6 +748,9 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		classForTableEClass = createEClass(CLASS_FOR_TABLE);
 		createEReference(classForTableEClass, CLASS_FOR_TABLE__CLASS_WITH_NAME1);
 		createEReference(classForTableEClass, CLASS_FOR_TABLE__CLASS_WITH_NAME2);
+
+		classForValidationEClass = createEClass(CLASS_FOR_VALIDATION);
+		createEAttribute(classForValidationEClass, CLASS_FOR_VALIDATION__NOT_EMPTY);
 
 		// Create enums
 		enumForControlsEEnum = createEEnum(ENUM_FOR_CONTROLS);
@@ -752,6 +802,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEReference(getTestContainer_ClassesForControls(), this.getClassForControls(), null, "classesForControls", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_Contained(), this.getTestContainer(), null, "contained", null, 0, 1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_ClassesForTable(), this.getClassForTable(), null, "classesForTable", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestContainer_ObjectsForValidation(), this.getClassForValidation(), null, "objectsForValidation", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testEClassEClass, TestEClass.class, "TestEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestEClass_LowercaseNameFeature(), ecorePackage.getEString(), "lowercaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -802,6 +853,9 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEReference(getClassForTable_ClassWithName1(), this.getClassWithName(), null, "classWithName1", null, 0, 1, ClassForTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForTable_ClassWithName2(), this.getClassWithName(), null, "classWithName2", null, 0, 1, ClassForTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(classForValidationEClass, ClassForValidation.class, "ClassForValidation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassForValidation_NotEmpty(), ecorePackage.getEString(), "notEmpty", null, 0, 1, ClassForValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(enumForControlsEEnum, EnumForControls.class, "EnumForControls");
 		addEEnumLiteral(enumForControlsEEnum, EnumForControls.FIRST);
@@ -818,6 +872,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
 	}
 
 	/**
@@ -845,6 +901,22 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		   source, 
 		   new String[] {
 			 "group", "#featureMapEntries"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		addAnnotation
+		  (classForValidationEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "NotEmpty"
 		   });
 	}
 

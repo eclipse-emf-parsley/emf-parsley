@@ -99,18 +99,33 @@ public class LogAppenderTestRule implements TestRule {
 	}
 
 	public void assertContainsMessage(String messagePart) {
-		String eventsToString = join(map(logListener.getEvents(), new Functions.Function1<LoggingEvent, String>() {
-	        @Override
-	        public String apply(final LoggingEvent it) {
-	          return it.getMessage().toString();
-	        }
-	      }), ",");
+		String eventsToString = eventsToString();
 		
 		Assert.assertTrue("No messagePart found in " + eventsToString,
 			eventsToString.contains(messagePart)
 		);
 	}
 
+	protected String eventsToString() {
+		String eventsToString = join(map(logListener.getEvents(), new Functions.Function1<LoggingEvent, String>() {
+	        @Override
+	        public String apply(final LoggingEvent it) {
+	          return it.getMessage().toString();
+	        }
+	      }), ",");
+		return eventsToString;
+	}
+
+	public void assertEmpty() {
+		Assert.assertTrue("Found messages: " + eventsToString(),
+			logListener.getEvents().size() == 0
+		);
+	}
+
+	public Logger getLogger() {
+		return logger;
+	}
+	
 	static class LogListener extends NullAppender {
 
 		private List<LoggingEvent> events = new ArrayList<LoggingEvent>();
