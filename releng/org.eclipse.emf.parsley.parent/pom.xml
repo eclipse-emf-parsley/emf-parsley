@@ -94,6 +94,7 @@
 
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.views</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.views</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>

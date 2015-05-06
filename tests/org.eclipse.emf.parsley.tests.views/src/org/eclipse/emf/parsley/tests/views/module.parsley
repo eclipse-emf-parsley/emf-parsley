@@ -1,0 +1,34 @@
+import org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+
+/**
+ * Defines Parsley parts acting on parsley.tests.models,
+ * for testing purposes.
+ * 
+ * The resources edited by these views are expected to be found
+ * on a project called "MyTestProject" in the workbench.
+ */
+module org.eclipse.emf.parsley.tests.views {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.tests.views {
+			viewname "Test Model Tree Form View"
+			viewclass ViewsSaveableTreeFormView
+		}
+	}
+	
+	configurator {
+		resourceURI {
+			ViewsSaveableTreeFormView -> {
+				return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");
+			}
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			getContents += TestmodelsFactory.eINSTANCE.createTestContainer
+		}
+	}
+}
