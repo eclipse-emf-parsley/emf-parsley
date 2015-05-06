@@ -8,6 +8,10 @@ import org.eclipse.emf.parsley.validation.LogIssueReporter
 import org.eclipse.emf.parsley.validation.ValidationRunner
 import org.junit.Rule
 import org.junit.Test
+import org.eclipse.emf.parsley.validation.DiagnosticUtil
+
+import static extension org.junit.Assert.*
+import org.eclipse.emf.common.util.Diagnostic
 
 class ValidationRunnerTest extends AbstractEmfParsleyTest {
 	
@@ -29,6 +33,21 @@ class ValidationRunnerTest extends AbstractEmfParsleyTest {
 			objectsForValidation += testFactory.createClassForValidation
 		]
 		createValidationRunner.validate(container, createLogIssueReporter)
+		logAppender.assertContainsMessage("ERROR: the field 'notEmpty' cannot be empty,ERROR: the field 'notEmpty' cannot be empty")
+	}
+
+	@Test
+	def void testValidateResourceContents() {
+		val resource = createResource => [
+			// resource with two root objects
+			getContents += testFactory.createTestContainer => [
+				objectsForValidation += testFactory.createClassForValidation
+			]
+			getContents += testFactory.createTestContainer => [
+				objectsForValidation += testFactory.createClassForValidation
+			]
+		]
+		createValidationRunner.validate(resource, createLogIssueReporter)
 		logAppender.assertContainsMessage("ERROR: the field 'notEmpty' cannot be empty,ERROR: the field 'notEmpty' cannot be empty")
 	}
 
@@ -55,11 +74,39 @@ class ValidationRunnerTest extends AbstractEmfParsleyTest {
 
 	@Test
 	def void testNoIssue() {
+		val currentLevel = logAppender.logger.level
+		logAppender.logger.level = Level.INFO
 		val objectForValidation = testFactory.createClassForValidation => [
 			notEmpty = "abc"
 		]
 		createValidationRunner.validate(objectForValidation, createLogIssueReporter)
-		logAppender.assertEmpty
+		logAppender.assertContainsMessage("OK: Diagnosis")
+		logAppender.logger.level = currentLevel
+	}
+
+	@Test
+	def void testOkDiagnosticIsLogged() {
+		val objectForValidation = testFactory.createClassForValidation => [
+			notEmpty = "abc"
+		]
+		1.assertEquals(
+			createValidationRunner.validate(objectForValidation, createLogIssueReporter).size)
+	}
+
+	@Test
+	def void testFilterErrors() {
+		val container = testFactory.createTestContainer => [
+			objectsForValidation += testFactory.createClassForValidation // this will issue an error
+			objectsForValidation += testFactory.createClassForValidation => [
+				notEmpty = "a" // this will issue a warning
+			]
+		]
+		val diagnostic = createValidationRunner.validate(container)
+		val diagnosticUtil = createDiagnosticUtil
+		assertEquals(2, diagnosticUtil.flatten(diagnostic).size)
+		val errors = diagnosticUtil.errors(diagnostic)
+		assertEquals(1, errors.size)
+		assertTrue(errors.head.severity == Diagnostic.ERROR)
 	}
 
 	def private createValidationRunner() {
@@ -68,5 +115,9 @@ class ValidationRunnerTest extends AbstractEmfParsleyTest {
 
 	def private createLogIssueReporter() {
 		getOrCreateInjector.getInstance(LogIssueReporter)
+	}
+
+	def private createDiagnosticUtil() {
+		getOrCreateInjector.getInstance(DiagnosticUtil)
 	}
 }

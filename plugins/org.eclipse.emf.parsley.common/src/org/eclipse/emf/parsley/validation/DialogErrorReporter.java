@@ -12,48 +12,33 @@ package org.eclipse.emf.parsley.validation;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.util.Diagnostic;
 
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 
 /**
+ * Reports error issues using a {@link DiagnosticDialog}.
+ * 
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
-public class LogIssueReporter implements IssueReporter {
-
-	private static final Logger LOGGER = Logger.getLogger(LogIssueReporter.class);
+public class DialogErrorReporter implements IssueReporter {
 
 	@Inject
 	private DiagnosticUtil diagnosticUtil;
 
 	@Override
 	public List<Diagnostic> report(Diagnostic diagnostic) {
-		List<Diagnostic> diagnostics = diagnosticUtil.flatten(diagnostic);
-		for (Diagnostic d : diagnostics) {
-			int severity = d.getSeverity();
-			if (severity == Diagnostic.ERROR) {
-				logError(d);
-			} else if (severity == Diagnostic.WARNING) {
-				logWarning(d);
-			} else {
-				logInfo(d);
-			}
+		List<Diagnostic> errors = Lists.newArrayList(diagnosticUtil.errors(diagnostic));
+
+		if (errors.size() > 0) {
+			DiagnosticDialog.open(null, "Validation Errors", "Problems encountered during validation", diagnostic,
+					Diagnostic.ERROR);
 		}
-		return diagnostics;
-	}
 
-	protected void logInfo(Diagnostic d) {
-		LOGGER.info(diagnosticUtil.format(d));
-	}
-
-	protected void logWarning(Diagnostic d) {
-		LOGGER.warn(diagnosticUtil.format(d));
-	}
-
-	protected void logError(Diagnostic d) {
-		LOGGER.error(diagnosticUtil.format(d));
+		return errors;
 	}
 
 }

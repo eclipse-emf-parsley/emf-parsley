@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.validation;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.Diagnostic;
 
 /**
@@ -20,5 +22,12 @@ import org.eclipse.emf.common.util.Diagnostic;
  */
 public interface IssueReporter {
 
-	void report(Diagnostic diagnostic);
+	/**
+	 * This method should report the diagnostics, possibly after
+	 * filtering, and return the list of the reported diagnostics.
+	 * 
+	 * @param diagnostic
+	 * @return
+	 */
+	List<Diagnostic> report(Diagnostic diagnostic);
 }

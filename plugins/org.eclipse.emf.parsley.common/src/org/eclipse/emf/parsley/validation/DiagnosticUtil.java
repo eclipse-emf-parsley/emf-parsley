@@ -10,12 +10,16 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.validation;
 
+import static com.google.common.collect.Iterables.filter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
+
+import com.google.common.base.Predicate;
 
 /**
  * @author Lorenzo Bettini - initial API and implementation
@@ -33,10 +37,30 @@ public class DiagnosticUtil {
 		}
 	};
 
+	/**
+	 * Flattens possible nested diagnostics
+	 * @param diagnostic
+	 * @return
+	 */
 	public List<Diagnostic> flatten(Diagnostic diagnostic) {
 		List<Diagnostic> flattened = new ArrayList<Diagnostic>();
 		traverseDiagnostic(flattened, diagnostic);
 		return flattened;
+	}
+
+	/**
+	 * Returns only errors, that is, Diagnostic where {@link Diagnostic#getSeverity()}
+	 * is {@link Diagnostic#ERROR}.
+	 * @param diagnostic
+	 * @return
+	 */
+	public Iterable<Diagnostic> errors(Diagnostic diagnostic) {
+		return filter(flatten(diagnostic), new Predicate<Diagnostic>() {
+			@Override
+			public boolean apply(Diagnostic input) {
+				return input.getSeverity() == Diagnostic.ERROR;
+			}
+		});
 	}
 
 	protected void traverseDiagnostic(List<Diagnostic> diagnostics, Diagnostic diagnostic) {
@@ -49,6 +73,11 @@ public class DiagnosticUtil {
 		}
 	}
 
+	/**
+	 * Formats the {@link Diagnostic} into a String.
+	 * @param d
+	 * @return
+	 */
 	public String format(Diagnostic d) {
 		return severityStrings.get(d.getSeverity()) + ": " + d.getMessage();
 	}

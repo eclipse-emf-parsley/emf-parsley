@@ -3,6 +3,8 @@ package org.eclipse.emf.parsley.tests.views;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.resource.ResourceManager;
+import org.eclipse.emf.parsley.resource.ResourceSaveStrategy;
+import org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy;
 import org.eclipse.emf.parsley.tests.views.config.ConfiguratorGen;
 import org.eclipse.emf.parsley.tests.views.resource.ResourceManagerGen;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -18,6 +20,11 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
     super(plugin);
+  }
+  
+  @Override
+  public Class<? extends ResourceSaveStrategy> bindResourceSaveStrategy() {
+    return ValidateBeforeSaveStrategy.class;
   }
   
   @Override

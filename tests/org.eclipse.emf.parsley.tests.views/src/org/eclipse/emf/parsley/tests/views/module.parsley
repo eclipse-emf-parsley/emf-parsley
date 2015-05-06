@@ -1,6 +1,8 @@
 import org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+import org.eclipse.emf.parsley.resource.ResourceSaveStrategy
+import org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy
 
 /**
  * Defines Parsley parts acting on parsley.tests.models,
@@ -16,6 +18,10 @@ module org.eclipse.emf.parsley.tests.views {
 			viewname "Test Model Tree Form View"
 			viewclass ViewsSaveableTreeFormView
 		}
+	}
+	
+	bindings {
+		type ResourceSaveStrategy -> ValidateBeforeSaveStrategy
 	}
 	
 	configurator {

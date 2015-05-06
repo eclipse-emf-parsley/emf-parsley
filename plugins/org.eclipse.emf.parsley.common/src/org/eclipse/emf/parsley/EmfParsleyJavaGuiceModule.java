@@ -62,6 +62,11 @@ import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
+import org.eclipse.emf.parsley.validation.DialogErrorReporter;
+import org.eclipse.emf.parsley.validation.IssueReporter;
+import org.eclipse.emf.parsley.validation.LogIssueReporter;
+import org.eclipse.emf.parsley.validation.ValidationRunner;
+import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -469,6 +474,32 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends Configurator> bindConfigurator() {
 		return Configurator.class;
+	}
+
+	/**
+	 * Use this method to customize a {@link IssueReporter},
+	 * the default implementation is {@link DialogErrorReporter}.
+	 * @return an implementation of {@link IssueReporter}
+	 * @see LogIssueReporter	
+	 */
+	public Class<? extends IssueReporter> bindIssueReporter() {
+		return DialogErrorReporter.class;
+	}
+
+	/**
+	 * Use this method to customize a {@link ValidationRunner}.
+	 * @return an implementation of {@link ValidationRunner}
+	 */
+	public Class<? extends ValidationRunner> bindValidationRunner() {
+		return ValidationRunner.class;
+	}
+
+	/**
+	 * Use this method to customize a {@link DiagnosticUtil}.
+	 * @return an implementation of {@link DiagnosticUtil}
+	 */
+	public Class<? extends DiagnosticUtil> bindDiagnosticUtil() {
+		return DiagnosticUtil.class;
 	}
 
 	/**

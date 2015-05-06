@@ -105,6 +105,9 @@ bindIContentProvider
 bindProposalCreator
 bindIEditingStrategy
 bindConfigurator
+bindIssueReporter
+bindValidationRunner
+bindDiagnosticUtil
 bindAdapterFactory
 bindAdapterFactoryLabelProvider''',
 		'''
