@@ -23,7 +23,7 @@ codelanguage-def[EmfParsley]
 	formControlFactory,control,target,viewerContentProvider,
 	children,viewpart,viewname,viewclass,viewcategory,
 	for,new,switch,default,boolean,do,if,this,double,throw,null,
-	true,false,it,
+	true,false,it,as,
 	byte,else,case,enum,instanceof,return,featureCaptionProvider,val,var,
 	catch,extends,int,short,try,char,void,finally,long,
 	float,super,while,proposals,dialogControlFactory,
