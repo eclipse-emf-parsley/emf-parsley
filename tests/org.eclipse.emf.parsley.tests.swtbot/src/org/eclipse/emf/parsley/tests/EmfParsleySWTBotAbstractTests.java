@@ -899,14 +899,14 @@ public class EmfParsleySWTBotAbstractTests {
 				imageFileName);
 	}
 
-	protected SWTBotView openTestView(String libraryView) {
+	protected SWTBotView openTestView(String viewName) {
 		bot.menu("Window").menu("Show View").menu("Other...").click();
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
-		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(libraryView);
+		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(viewName);
 		bot.button("OK").click();
 		waitForShellToClose(shell);
-		return getLibraryView(libraryView);
+		return getLibraryView(viewName);
 	}
 
 	protected void waitForShellToClose(SWTBotShell shell) {
@@ -1128,13 +1128,30 @@ public class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void saveViewAndAssertNotDirty(final String viewName) {
+		saveView(viewName);
+		assertSaveableViewIsDirty(false, viewName);
+	}
+
+	protected void saveView(final String viewName) {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				getViewAsSaveablePart(viewName).doSave(
 						new NullProgressMonitor());
 			}
 		});
-		assertSaveableViewIsDirty(false, viewName);
+	}
+
+	/**
+	 * Useful for actions like Save that can show blocking dialogs
+	 * @param viewName
+	 */
+	protected void saveViewAsync(final String viewName) {
+		Display.getDefault().asyncExec(new Runnable() {
+			public void run() {
+				getViewAsSaveablePart(viewName).doSave(
+						new NullProgressMonitor());
+			}
+		});
 	}
 
 	protected void assertEditorDirtySaveEditorAndAssertNotDirty(String editorName) {

@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -34,8 +35,8 @@ public class DialogErrorReporter implements IssueReporter {
 		List<Diagnostic> errors = Lists.newArrayList(diagnosticUtil.errors(diagnostic));
 
 		if (errors.size() > 0) {
-			DiagnosticDialog.open(null, "Validation Errors", "Problems encountered during validation", diagnostic,
-					Diagnostic.ERROR);
+			DiagnosticDialog.open(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Validation Errors",
+					"Problems encountered during validation", diagnostic, Diagnostic.ERROR);
 		}
 
 		return errors;

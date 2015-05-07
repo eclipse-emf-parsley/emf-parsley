@@ -21,6 +21,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	EmfParsleyViewTests.class,
 	EmfParsleySaveableViewTests.class,
+	EmfParsleyTestViewsTests.class,
 	EmfParsleyEditorTests.class,
 	EmfParsleyFormBasedDialogTests.class,
 	EmfParsleyFormTests.class,
