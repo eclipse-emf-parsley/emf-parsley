@@ -695,7 +695,8 @@ by delegating to codeRef[org.eclipse.emf.parsley.resource.ResourceManager]
 You can inject your own save strategy and customize the saving strategy, for
 instance, you may want to validate the resource before saving
 (a usable example of this strategy is
-codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy]).
+codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy],
+see also section ref:Validation[Validation]).
 
 section:Configurator[Configurator]
 
@@ -835,3 +836,89 @@ module my.project {
 	}
 }
 ]
+
+section:Validation[Validation]
+
+EMF Parsley supports standard EMF validation automatically, e.g., via the context menu
+"Validate"; thus, if you already have constraints implemented for your meta-model, the
+validation action will check them.
+
+EMF validation can also be triggered manually using an injected codeRef[org.eclipse.emf.parsley.validation.ValidationRunner],
+which provides methods for validating a single codeRef[org.eclipse.emf.ecore.EObject] or an entire
+codeRef[org.eclipse.emf.ecore.resource.Resource].  These e[validate] methods return an EMF
+codeRef[org.eclipse.emf.common.util.Diagnostic] that can be used to find out possible errors, warnings
+and infos collected during the validation.
+
+There are overloaded versions of e[validate] methods that also take an
+codeRef[org.eclipse.emf.parsley.validation.IssueReporter]:
+
+code[Java][
+/**
+ * Validates, reports diagnostics through the passed {@link IssueReporter}
+ * and returns the list of reported diagnostics.
+ * 
+ * @param eObject
+ * @param reporter
+ * @return
+ */
+public List<Diagnostic> validate(EObject eObject, IssueReporter reporter) {
+	return reporter.report(validate(eObject));
+}
+
+/**
+ * Validates, reports diagnostics through the passed {@link IssueReporter}
+ * and returns the list of reported diagnostics.
+ * 
+ * @param resource
+ * @param reporter
+ * @return
+ */
+public List<Diagnostic> validate(Resource resource, IssueReporter reporter) {
+	return reporter.report(validate(resource));
+}
+]
+
+The reporter is asked to report the collected diagnostic and it is expected to return
+the list of issues effectively reported.  For example, an issue reporter can
+report only errors (e.g., diagnostic whose severity is e[Diagnostic.ERROR]), while
+ignoring warnings and other diagnostic information.
+
+We provide a utility class that can be injected, codeRef[org.eclipse.emf.parsley.validation.DiagnosticUtil],
+with utility methods, like flattening diagnostic into a list (EMF diagnostic are typically nested in
+a tree form), to quickly select only the errors, and to have a string representation.
+
+The default implementation of codeRef[org.eclipse.emf.parsley.validation.IssueReporter]
+is codeRef[org.eclipse.emf.parsley.validation.DialogErrorReporter], which uses an EMF
+dialog to report ONLY errors.  Another implementation that can be used for testing purposes
+is codeRef[org.eclipse.emf.parsley.validation.LogIssueReporter], which logs diagnostic using
+the corresponding log4j methods (i.e., e[error], e[warn], e[info]).
+
+An example of use of the above classes can be found in codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy]
+(see section ref:ResourceSaveStrategy[Resource Save Strategy]):
+
+code[Java][
+public class ValidateBeforeSaveStrategy extends ResourceSaveStrategy {
+
+	@Inject
+	private ValidationRunner validationRunner;
+	
+	@Inject
+	private IssueReporter issueReporter;
+
+    @Override
+	public boolean save(Resource resource) throws IOException {
+		if (!precondition(resource)) {
+			return false;
+		}
+		return super.save(resource);
+	}
+    
+	protected boolean precondition(Resource resource) {
+		return validationRunner.validate(resource, issueReporter).size() == 0;
+	}
+}
+]
+
+Thus, if you use a codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy],
+with the default Guice bindings, upon saving, if validation finds errors, it will
+cancel the saving and it will show a dialog with errors.

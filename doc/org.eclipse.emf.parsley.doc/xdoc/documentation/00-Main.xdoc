@@ -13,7 +13,7 @@ codelanguage-def[Java]
 	catch,extends,int,short,try,
 	char,final,interface,static,void,
 	class,finally,long,strictfp,volatile,
-	float,native,super,while
+	float,native,super,while,true,false
 ]
 
 codelanguage-def[EmfParsley]
