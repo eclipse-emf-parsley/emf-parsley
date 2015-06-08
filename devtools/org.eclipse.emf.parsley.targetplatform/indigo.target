@@ -18,7 +18,7 @@
 <repository location="http://download.eclipse.org/modeling/emf/cdo/updates/releases/4.2"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.8.2.v201504100559"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.8.3.v201506010551"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
