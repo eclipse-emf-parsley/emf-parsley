@@ -14,6 +14,7 @@ package org.eclipse.emf.parsley.builders;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -44,6 +45,7 @@ public class TableViewerBuilder {
 	public void buildAndFill(TableViewer tableViewer, Object contents,
 			EClass eClass) {
 		buildAndFill(tableViewer, contents, eClass, new ArrayContentProvider());
+//		buildAndFill2(tableViewer, contents, eClass, new ObservableListContentProvider());
 	}
 
 	/**
@@ -61,6 +63,12 @@ public class TableViewerBuilder {
 		build(tableViewer, eClass, contentProvider);
 		fill(tableViewer, contents, contentProvider);
 	}
+	
+	public void buildAndFill2(TableViewer tableViewer, Object contents,
+			EClass eClass, ObservableListContentProvider contentProvider) {
+		build2(tableViewer, eClass, contentProvider);
+		fill(tableViewer, contents, contentProvider);
+	}
 
 	public void fill(TableViewer tableViewer, Object contents,
 			IStructuredContentProvider contentProvider) {
@@ -72,5 +80,10 @@ public class TableViewerBuilder {
 	public void build(TableViewer tableViewer, EClass eClass,
 			IStructuredContentProvider contentProvider) {
 		columnBuilder.buildTableViewer(tableViewer, eClass, contentProvider);
+	}
+	
+	public void build2(TableViewer tableViewer, EClass eClass,
+			ObservableListContentProvider contentProvider) {
+		columnBuilder.buildTableViewer2(tableViewer, eClass, contentProvider);
 	}
 }

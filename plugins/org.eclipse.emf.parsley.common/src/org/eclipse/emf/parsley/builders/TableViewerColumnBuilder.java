@@ -14,12 +14,15 @@ package org.eclipse.emf.parsley.builders;
 
 import java.util.List;
 
+import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.factories.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
+import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+import org.eclipse.jface.databinding.viewers.ObservableMapCellLabelProvider;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableLayout;
@@ -87,7 +90,33 @@ public class TableViewerColumnBuilder {
 			if(weights.size()>i){
 				weight=weights.get(i++);
 			}
+			
 			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature,
+					contentProvider,weight);
+		}
+	}
+	
+	public void buildTableViewer2(TableViewer tableViewer, EClass eClass,
+			ObservableListContentProvider contentProvider) {
+		final Table table = tableViewer.getTable();
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+
+		TableLayout layout = new TableLayout();
+		table.setLayout(layout);
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+
+		List<EStructuralFeature> typeFeatures = featuresProvider
+				.getFeatures(eClass);
+		int i=0;
+		for (EStructuralFeature eStructuralFeature : typeFeatures) {
+			int weight=defaultWeight;
+			if(weights.size()>i){
+				weight=weights.get(i++);
+			}
+			
+			buildTableViewerColumn2(tableViewer, layout, eClass, eStructuralFeature,
 					contentProvider,weight);
 		}
 	}
@@ -104,6 +133,23 @@ public class TableViewerColumnBuilder {
 		return viewerColumn;
 	}
 
+	protected TableViewerColumn buildTableViewerColumn2(TableViewer tableViewer,
+			TableLayout layout, EClass eClass, EStructuralFeature eStructuralFeature,
+			ObservableListContentProvider contentProvider, int weight) {
+		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer,
+				eStructuralFeature, contentProvider);
+		TableColumn objectColumn = viewerColumn.getColumn();
+		viewerColumn.getColumn().setText(featureCaptionProvider.getText(eClass, eStructuralFeature));
+		layout.addColumnData(new ColumnWeightData(weight, 30, true));
+		viewerColumn.setLabelProvider(new ObservableMapCellLabelProvider(
+		    EMFProperties.value(eStructuralFeature).observeDetail(contentProvider.getKnownElements())
+		  )
+		);		
+		objectColumn.setResizable(true);
+		return viewerColumn;
+	}
+
+	
 	protected TableViewerColumn createTableViewerColumn(
 			TableViewer tableViewer, EStructuralFeature eStructuralFeature,
 			IStructuredContentProvider contentProvider) {
