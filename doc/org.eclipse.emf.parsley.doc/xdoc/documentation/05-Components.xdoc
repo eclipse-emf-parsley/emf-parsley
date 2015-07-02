@@ -148,6 +148,18 @@ section2:Table_captions[Caption Customization]
 
 The headers of the table can be customizzed via the ref:FeatureCaptionProvider[Caption Provider].
 
+section2:Table_columns_width[Column width Customization]
+
+All columns have the same size by default, but they can be customizzed via the ref:Configurator[Configurator]
+for instance in the DSL, like in the example below.
+
+code[EmfParsley][
+
+bindings{
+	value List<Integer> TableColumnWeights -> #\[10,20,30,40\]
+}
+]
+
 section2:Table_MenuBuilder[Adding Menu]
 
 The context menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section]
