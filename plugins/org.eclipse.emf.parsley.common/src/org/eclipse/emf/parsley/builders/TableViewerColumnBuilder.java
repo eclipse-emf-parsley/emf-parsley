@@ -23,12 +23,14 @@ import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapCellLabelProvider;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
@@ -77,11 +79,16 @@ public class TableViewerColumnBuilder {
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 
-		TableLayout layout = new TableLayout();
-		table.setLayout(layout);
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-
+		Layout layout=null;
+		
+		if(tableViewer.getTable().getParent().getLayout() instanceof TableColumnLayout){
+			layout = (TableColumnLayout)tableViewer.getTable().getParent().getLayout();
+		}else{
+			layout = new TableLayout();
+			table.setLayout(layout);
+			table.setHeaderVisible(true);
+			table.setLinesVisible(true);
+		}
 		List<EStructuralFeature> typeFeatures = featuresProvider
 				.getFeatures(eClass);
 		int i=0;
@@ -122,12 +129,17 @@ public class TableViewerColumnBuilder {
 	}
 	
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
-			TableLayout layout, EClass eClass, EStructuralFeature eStructuralFeature,
+			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature,
 			IStructuredContentProvider contentProvider, int weight) {
 		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer,
 				eStructuralFeature, contentProvider);
 		TableColumn objectColumn = viewerColumn.getColumn();
-		layout.addColumnData(new ColumnWeightData(weight, 30, true));
+		if (layout instanceof TableColumnLayout) {
+			((TableColumnLayout)layout).setColumnData(viewerColumn.getColumn(), new ColumnWeightData(weight, 30, true));
+		}else if(layout instanceof TableLayout){
+			((TableLayout)layout).addColumnData(new ColumnWeightData(weight, 30, true));
+		}
+		
 		objectColumn.setText(featureCaptionProvider.getText(eClass, eStructuralFeature));
 		objectColumn.setResizable(true);
 		return viewerColumn;

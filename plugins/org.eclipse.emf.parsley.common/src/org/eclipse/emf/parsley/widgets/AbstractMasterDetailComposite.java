@@ -24,7 +24,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.PageBook;
 
 import com.google.inject.Inject;
 
@@ -57,9 +56,9 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	private final StructuredViewer viewer;
 
-	private final PageBook pagebook;
+	private final Composite masterComposite;
 
-	private final Composite detail;
+	private final Composite detailComposite;
 
 	private FormDetailComposite detailForm;
 
@@ -71,14 +70,15 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	
 	public AbstractMasterDetailComposite(Composite parent, int style, int sashStyle, int[] weights) {
 		super(parent, style);
-		setLayout(new FillLayout());
-
+		setLayout( new FillLayout());
 		sashForm = new SashForm(this, sashStyle);
 
-		pagebook = new PageBook(sashForm, SWT.BORDER);
-		detail = new Composite(sashForm, SWT.BORDER);
-		detail.setLayout(new FillLayout());
-		viewer = createViewer(pagebook);
+		masterComposite = new Composite(sashForm, SWT.NONE);
+		masterComposite.setLayout( new FillLayout());
+		
+		detailComposite = new Composite(sashForm, SWT.NONE);
+		detailComposite.setLayout( new FillLayout());
+		viewer = createViewer(masterComposite);
 		viewer.addSelectionChangedListener(new SelectionChangedListener());
 		if(weights.length>0){
 			sashForm.setWeights(weights);
@@ -93,7 +93,6 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	public void update(Object element) {
 		if (element != null) {
 			viewerInitializer.initialize(viewer, element);	
-			pagebook.showPage(viewer.getControl());
 		}
 
 	}
@@ -108,12 +107,12 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		if (selectedObject != null) {
 			detailForm = createFormDetailComposite();
 			detailForm.init(selectedObject);
-			detail.layout(true);
+			detailComposite.layout(true);
 		}
 	}
 
 	protected FormDetailComposite createFormDetailComposite() {
-		return formFactory.createFormDetailComposite(detail,
+		return formFactory.createFormDetailComposite(detailComposite,
 				SWT.BORDER);
 	}
 
@@ -142,10 +141,6 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	@Inject
 	public void setEmfSelectionHelper(EmfSelectionHelper emfSelectionHelper) {
 		this.emfSelectionHelper = emfSelectionHelper;
-	}
-
-	protected PageBook getPagebook() {
-		return pagebook;
 	}
 
 	public SashForm getSashForm() {

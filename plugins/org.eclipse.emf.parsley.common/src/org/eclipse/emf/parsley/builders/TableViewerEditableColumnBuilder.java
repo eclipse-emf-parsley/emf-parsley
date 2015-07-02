@@ -32,18 +32,18 @@ import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Layout;
 
 
 public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 	
 	@Override
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
-			TableLayout layout, EClass eClass, EStructuralFeature eStructuralFeature,
+			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature,
 			IStructuredContentProvider contentProvider, int weight) {
 		TableViewerColumn viewerColumn= super.buildTableViewerColumn(tableViewer, layout,
 				eClass, eStructuralFeature,

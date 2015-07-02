@@ -16,6 +16,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
+import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -29,7 +30,7 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView {
 
 	@Inject
-	protected TableViewerBuilder tableViewerBuilder;
+	protected ViewerFactory viewerFactory;
 
 	protected TableViewer tableViewer;
 
@@ -37,10 +38,8 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		tableViewer = new TableViewer(parent, createTableStyles());
-
-		tableViewerBuilder.buildAndFill(tableViewer,
-				getContents(getResource()), getEClass());
+		tableViewer = viewerFactory.createTableViewer(parent, createTableStyles(), 
+											getContents(getResource()), getEClass());
 		
 		addContextMenu(tableViewer);
 		

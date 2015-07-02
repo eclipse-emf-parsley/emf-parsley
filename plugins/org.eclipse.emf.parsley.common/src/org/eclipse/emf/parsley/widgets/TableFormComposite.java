@@ -13,11 +13,13 @@ package org.eclipse.emf.parsley.widgets;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
@@ -40,7 +42,11 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	
 	@Override
 	protected StructuredViewer createViewer(Composite parent) {
-		tableViewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
+		Composite viewerContainer = new Composite(parent, SWT.BORDER);
+		TableColumnLayout layout = new TableColumnLayout();
+		viewerContainer.setLayout(layout);
+		tableViewer = new TableViewer(viewerContainer, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
+		viewerContainer.setLayoutData(new GridData());
 		return tableViewer;
 	}
 	
@@ -62,7 +68,6 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	@Override
 	public void update(Object contents) {
 		tableViewerBuilder.fill(tableViewer, contents, new ArrayContentProvider());
-		getPagebook().showPage(tableViewer.getControl());
 	}
 
 	private void removeExistingColumns() {

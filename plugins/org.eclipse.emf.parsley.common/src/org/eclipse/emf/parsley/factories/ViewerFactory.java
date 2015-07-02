@@ -16,8 +16,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 
@@ -65,8 +67,12 @@ public class ViewerFactory {
 
 	public TableViewer createTableViewer(Composite parent, int style,
 			Object content, EClass type) {
-		TableViewer tableViewer = new TableViewer(parent, style);
+		Composite viewerContainer = new Composite(parent, SWT.NONE);
+		TableColumnLayout layout = new TableColumnLayout();
+		viewerContainer.setLayout(layout);
+		TableViewer tableViewer = new TableViewer(viewerContainer, style);
 		tableViewerBuilder.buildAndFill(tableViewer, content, type);
+		
 		return tableViewer;
 	}
 
