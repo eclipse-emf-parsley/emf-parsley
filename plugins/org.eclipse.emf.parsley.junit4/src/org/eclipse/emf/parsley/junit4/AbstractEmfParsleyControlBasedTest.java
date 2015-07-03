@@ -109,8 +109,8 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 
 	protected void initializeCommon(
 			final AbstractControlFactory controlFactory, final EObject obj) {
-		controlFactory.setProposalCreator(new ProposalCreator());
 		injectMembers(controlFactory);
+		controlFactory.setProposalCreator(new ProposalCreator());
 	}
 
 	protected Control createControl(final AbstractControlFactory factory,

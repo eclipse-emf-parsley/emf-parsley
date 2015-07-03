@@ -7,7 +7,7 @@
  * 
  * Contributors: 
  *   itemis AG - Initial API and implementation
- *   Lorenzo Bettini - refactoring for EmfParsley
+ *   Lorenzo Bettini, Francesco Guidieri - refactoring for EmfParsley
  *
  */
 package org.eclipse.emf.parsley.binding;
@@ -19,13 +19,10 @@ import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.databinding.EMFDataBindingContext;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.impl.EEnumImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
@@ -35,7 +32,6 @@ import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
-import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
@@ -70,6 +66,7 @@ import com.google.inject.name.Named;
  * 
  */
 public abstract class AbstractControlFactory extends AbstractWidgetFactory {
+
 	private static final String OBSERVE_PREFIX = "observe_";
 
 	private static final String CONTROL_PREFIX = "control_";
@@ -82,7 +79,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	private Provider<ILabelProvider> labelProviderProvider;
 
 	@Inject
-	private ProposalCreator proposalCreator;
+	private FeatureHelper featureHelper;
 
 	protected EObject owner;
 	protected Resource resource;
@@ -109,11 +106,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	}
 	
 	public ProposalCreator getProposalCreator() {
-		return proposalCreator;
+		return featureHelper.getProposalCreator();
 	}
 
 	public void setProposalCreator(ProposalCreator proposalCreator) {
-		this.proposalCreator = proposalCreator;
+		featureHelper.setProposalCreator(proposalCreator);
 	}
 
 	public boolean isReadonly() {
@@ -147,12 +144,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		this.owner = owner;
 	}
 
-	protected Resource getResource() {
-		if (resource == null) {
-			resource = owner.eResource();
-		}
-		return resource;
-	}
 
 	public Control create(EStructuralFeature feature) {
 		Control control = null;
@@ -160,9 +151,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		control = polymorphicCreateControl(feature);
 		if (control == null) {
 			if (feature.isMany()) {
-				control = bindList(feature);
+				control = createAndBindList(feature);
 			} else {
-				control = bindValue(feature);
+				control = createAndBindValue(feature);
 			}
 			setupControl(feature, control);
 		}
@@ -179,7 +170,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		}
 	}
 
-	protected Control bindList(final EStructuralFeature feature) {
+	protected Control createAndBindList(final EStructuralFeature feature) {
 		IObservableValue source = createFeatureObserveable(feature);
 
 		ControlObservablePair retValAndTargetPair = createControlForList(feature);
@@ -212,12 +203,12 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(getParent(),
 				this, labelProviderProvider.get(), owner,
-				feature, getProposalCreator(), isReadonly());
+				feature, featureHelper.getProposalCreator(), isReadonly());
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		return new ControlObservablePair(mfc, target);
 	}
-
-	private Control bindValue(EStructuralFeature feature) {
+	
+	Control createAndBindValue(EStructuralFeature feature) {
 		IObservableValue featureObservable = createFeatureObserveable(feature);
 		
 		Control control = polymorphicCreateControl(feature, featureObservable);
@@ -244,27 +235,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			return result;
 		}
 
-		if (isBooleanFeature(feature)) {
+		if (featureHelper.isBooleanFeature(feature)) {
 			return createControlAndObservableValueForBoolean();
 		} else {
 			return createControlAndObservableValueForNonBooleanFeature(feature);
 		}
-	}
-
-	protected boolean isBooleanFeature(EStructuralFeature feature) {
-		return isBooleanEType(feature) || isBooleanDataType(feature);
-	}
-
-	private boolean isBooleanEType(EStructuralFeature feature) {
-		EClassifier eType = feature.getEType();
-		return eType.equals(EcorePackage.Literals.EBOOLEAN)
-				|| eType.equals(EcorePackage.Literals.EBOOLEAN_OBJECT);
-	}
-
-	private boolean isBooleanDataType(EStructuralFeature feature) {
-		Class<?> instanceClass = feature.getEType().getInstanceClass();
-		return feature.getEType() instanceof EDataType
-				&& (instanceClass == Boolean.class || instanceClass == Boolean.TYPE);
 	}
 
 	protected ControlObservablePair createControlAndObservableValueForBoolean() {
@@ -276,18 +251,13 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		return retValAndTargetPair;
 	}
 
-	protected boolean hasPredefinedProposals(EStructuralFeature feature) {
-		return feature instanceof EReference
-				|| feature.getEType() instanceof EEnumImpl;
-	}
-
 	protected ControlObservablePair createControlAndObservableValueForNonBooleanFeature(
 			EStructuralFeature feature) {
 		List<?> proposals = null;
 		if (!isReadonly()) {
-			proposals = createProposals(feature);
+			proposals = featureHelper.createProposals(owner, feature);
 		}
-		if (hasPredefinedProposals(feature) && !isReadonly()) {
+		if (featureHelper.hasPredefinedProposals(feature) && !isReadonly()) {
 			return createControlAndObservableWithPredefinedProposals(proposals);
 		} else {
 			if (isReadonly() && feature instanceof EReference) {
@@ -295,11 +265,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			}
 			return createControlAndObservableWithoutPredefinedProposals(proposals);
 		}
-	}
-
-	public List<Object> createProposals(EStructuralFeature feature) {
-		getProposalCreator().setResource(getResource());
-		return getProposalCreator().proposals(owner, feature);
 	}
 
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(
@@ -376,7 +341,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			// don't override readonly behavior
 			if (c.isEnabled()) {
 				c.setEnabled(
-					isControlToBeEnabled(f));
+					featureHelper.isEditable(f));
 			}
 			c.setData(AbstractControlFactory.ESTRUCTURALFEATURE_KEY, f);
 			c.setData(AbstractControlFactory.EOBJECT_KEY, owner);
@@ -384,21 +349,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		}
 	}
 
-	/**
-	 * Based on the {@link EStructuralFeature} passed as parameter, the method
-	 * must return whether the corresponding {@link Control} should be enabled or not.
-	 * The default behavior is not to enable controls representing a derived feature,
-	 * an unchangeable feature or any data type which is not serializable.
-	 * 
-	 * @param f
-	 * @return
-	 */
-	protected boolean isControlToBeEnabled(EStructuralFeature f) {
-		return !f.isDerived() &&
-				f.isChangeable()
-				&& (!(f.getEType() instanceof EDataType && !((EDataType) f
-						.getEType()).isSerializable()));
-	}
 
 	public void dispose() {
 		edbc.dispose();
