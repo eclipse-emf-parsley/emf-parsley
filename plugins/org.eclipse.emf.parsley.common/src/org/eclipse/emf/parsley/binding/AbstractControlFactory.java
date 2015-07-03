@@ -36,6 +36,7 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.ControlDecoration;
@@ -271,8 +272,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		Button b = createButton("", SWT.CHECK);
 		b.setEnabled(!isReadonly());
 		retValAndTargetPair.setControl(b);
-		retValAndTargetPair.setObservableValue(SWTObservables
-				.observeSelection(b));
+		retValAndTargetPair.setObservableValue(WidgetProperties.selection().observe(b));
 		return retValAndTargetPair;
 	}
 
@@ -322,9 +322,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		t.setEditable(!isReadonly());
 		addContentProposalAdapter(t, proposals);
 		retValAndTargetPair.setControl(t);
-		retValAndTargetPair.setObservableValue(SWTObservables.observeText(t,
-				SWT.Modify));
-
+		retValAndTargetPair.setObservableValue(WidgetProperties.text(SWT.Modify).observe(t));
 		return retValAndTargetPair;
 	}
 
