@@ -21,6 +21,7 @@ import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -63,6 +64,11 @@ public class DialogControlFactory extends AbstractControlFactory {
 	public ComboViewer createComboViewer(Composite parent, int style) {
 		ComboViewer combo = new ComboViewer(parent, style);
 		return combo;
+	}
+	
+	@Override
+	public DateTime createDateTime(Composite parent, int style) {
+		return new DateTime(parent,style);
 	}
 
 }

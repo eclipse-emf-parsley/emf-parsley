@@ -15,6 +15,7 @@ import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -64,6 +65,16 @@ public abstract class AbstractWidgetFactory {
 	}
 
 	public abstract ComboViewer createComboViewer(Composite parent, int style);
+
+	public DateTime createDateTime() {
+		return createDateTime(parent, SWT.DROP_DOWN);
+	}
+	
+	public DateTime createDateTime(Composite parent) {
+		return createDateTime(parent, SWT.DROP_DOWN);
+	}
+	
+	public abstract DateTime createDateTime(Composite parent, int style);
 	
 	protected int aggregateStyles(int...styles) {
 		int result = 0;
