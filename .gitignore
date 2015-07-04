@@ -5,12 +5,14 @@ bin/
 logs.zip
 *.orig
 .svn/
-xtend-gen
 src-gen
 target/
 *.java._trace
 *.smap
 hs_*.log
+
+# we ignore its contents, not the whole directory
+# xtend-gen
 
 buildroot/
 buildroot-RAP/
