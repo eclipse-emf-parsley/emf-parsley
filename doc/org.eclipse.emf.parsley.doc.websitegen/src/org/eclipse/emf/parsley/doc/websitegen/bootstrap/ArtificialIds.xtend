@@ -1,6 +1,5 @@
 package org.eclipse.emf.parsley.doc.websitegen.bootstrap
 
-import com.google.inject.Inject
 import java.util.List
 import java.util.Map
 import org.eclipse.emf.common.notify.impl.AdapterImpl
@@ -8,6 +7,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmAnnotationType
 import org.eclipse.xtext.common.types.JvmIdentifiableElement
 import org.eclipse.xtext.xdoc.xdoc.Anchor
+import org.eclipse.xtext.xdoc.xdoc.Chapter
 import org.eclipse.xtext.xdoc.xdoc.ChapterRef
 import org.eclipse.xtext.xdoc.xdoc.Code
 import org.eclipse.xtext.xdoc.xdoc.CodeBlock
@@ -19,7 +19,10 @@ import org.eclipse.xtext.xdoc.xdoc.Item
 import org.eclipse.xtext.xdoc.xdoc.Link
 import org.eclipse.xtext.xdoc.xdoc.OrderedList
 import org.eclipse.xtext.xdoc.xdoc.Ref
+import org.eclipse.xtext.xdoc.xdoc.Section
+import org.eclipse.xtext.xdoc.xdoc.Section2
 import org.eclipse.xtext.xdoc.xdoc.Section2Ref
+import org.eclipse.xtext.xdoc.xdoc.Section3
 import org.eclipse.xtext.xdoc.xdoc.SectionRef
 import org.eclipse.xtext.xdoc.xdoc.Table
 import org.eclipse.xtext.xdoc.xdoc.TableData
@@ -30,11 +33,6 @@ import org.eclipse.xtext.xdoc.xdoc.Todo
 import org.eclipse.xtext.xdoc.xdoc.UnorderedList
 
 import static org.eclipse.emf.parsley.doc.websitegen.bootstrap.ParagraphState.*
-import org.eclipse.xtext.xdoc.xdoc.impl.SectionImpl
-import org.eclipse.xtext.xdoc.xdoc.Chapter
-import org.eclipse.xtext.xdoc.xdoc.Section
-import org.eclipse.xtext.xdoc.xdoc.Section2
-import org.eclipse.xtext.xdoc.xdoc.Section3
 
 class ArtificialIds extends AdapterImpl {
 	public Map<Identifiable, String> artificialHrefs = newHashMap() 	
@@ -42,8 +40,8 @@ class ArtificialIds extends AdapterImpl {
 
 class HtmlExtensions {
 	
-	@Inject extension CodeRefs
-	@Inject extension TargetPaths
+//	@Inject extension CodeRefs
+//	@Inject extension TargetPaths
 
 
 	
