@@ -4,12 +4,14 @@ import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/org/eclipse/emf/parsley/dsl/EmfParsleyDsl.xtext"
 var file.extensions = "parsley"
 var projectName = "org.eclipse.emf.parsley.dsl"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
 var encoding = "UTF-8"
+//var grammarURI = "classpath:/org/eclipse/emf/parsley/dsl/EmfParsleyDsl.xtext"
+// use platform URI to make it easy for Oomph
+var grammarURI = "platform:/resource/${projectName}/src/org/eclipse/emf/parsley/dsl/EmfParsleyDsl.xtext"
 
 Workflow {
     bean = StandaloneSetup {
