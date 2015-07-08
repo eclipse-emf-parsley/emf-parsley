@@ -655,6 +655,7 @@
 								<plugin id="org.eclipse.emf.parsley.rap.views" />
 
 								<plugin id="org.eclipse.emf.rap" />
+								<plugin id="org.eclipse.swtbot.go" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
@@ -666,6 +667,7 @@
 								<feature id="org.eclipse.emf.mwe2.runtime.sdk" />
 								<feature id="org.eclipse.swtbot.eclipse" />
 								<feature id="org.eclipse.swtbot.forms" />
+								<feature id="org.eclipse.swtbot" />
 								<feature id="org.eclipse.emf.cdo.server" />
 							</excludes>
 						</configuration>

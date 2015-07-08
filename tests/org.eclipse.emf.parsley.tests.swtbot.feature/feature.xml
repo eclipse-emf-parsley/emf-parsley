@@ -25,10 +25,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.swtbot.eclipse"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.swtbot.forms"
          version="0.0.0"/>
 
@@ -38,6 +34,10 @@
 
    <includes
          id="org.eclipse.emf.cdo.server"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.swtbot"
          version="0.0.0"/>
 
    <plugin
@@ -80,6 +80,13 @@
 
    <plugin
          id="org.eclipse.emf.parsley.tests.views"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.swtbot.go"
          download-size="0"
          install-size="0"
          version="0.0.0"
