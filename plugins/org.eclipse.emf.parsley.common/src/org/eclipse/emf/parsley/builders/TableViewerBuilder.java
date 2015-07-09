@@ -11,7 +11,13 @@
 
 package org.eclipse.emf.parsley.builders;
 
+import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.property.list.IListProperty;
+import org.eclipse.emf.databinding.EMFProperties;
+import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
@@ -48,6 +54,11 @@ public class TableViewerBuilder {
 //		buildAndFill2(tableViewer, contents, eClass, new ObservableListContentProvider());
 	}
 
+	
+	public void buildAndFill(TableViewer tableViewer, Object contents,
+			EClass eClass,EReference eReference) {
+		buildAndFill2(tableViewer, contents, eClass, eReference, new ObservableListContentProvider());
+	}
 	/**
 	 * Builds and fills with contents, which are assumed to be of the specified
 	 * {@link EClass}, a {@link TableViewer}, and uses the specified content
@@ -63,11 +74,12 @@ public class TableViewerBuilder {
 		build(tableViewer, eClass, contentProvider);
 		fill(tableViewer, contents, contentProvider);
 	}
+
 	
-	public void buildAndFill2(TableViewer tableViewer, Object contents,
-			EClass eClass, ObservableListContentProvider contentProvider) {
+	public void buildAndFill2(TableViewer tableViewer, Object object,
+			EClass eClass, EReference eReference, ObservableListContentProvider contentProvider) {
 		build2(tableViewer, eClass, contentProvider);
-		fill(tableViewer, contents, contentProvider);
+		fill2(tableViewer, object, eReference);
 	}
 
 	public void fill(TableViewer tableViewer, Object contents,
@@ -75,6 +87,16 @@ public class TableViewerBuilder {
 		viewerInitializer.initialize(tableViewer,
 				EmfParsleyUtil.ensureCollection(contents), contentProvider,
 				null);
+	}
+	
+	public void fill2(TableViewer tableViewer, Object object,EStructuralFeature eReference) {
+		IObservableList observableList= new EMFProperties().list(eReference).observe(object);
+		tableViewer.setInput(observableList);
+	}
+	
+	
+	public void build2(TableViewer tableViewer, EClass eClass) {
+		build2(tableViewer, eClass, new ObservableListContentProvider());
 	}
 	
 	public void build(TableViewer tableViewer, EClass eClass,
@@ -85,5 +107,6 @@ public class TableViewerBuilder {
 	public void build2(TableViewer tableViewer, EClass eClass,
 			ObservableListContentProvider contentProvider) {
 		columnBuilder.buildTableViewer2(tableViewer, eClass, contentProvider);
+		tableViewer.setContentProvider(contentProvider);
 	}
 }

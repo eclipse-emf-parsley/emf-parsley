@@ -14,6 +14,7 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -38,6 +39,9 @@ public abstract class AbstractOnSelectionTableView extends
 
 	@Inject
 	protected ViewerFactory viewerFactory;
+	
+	@Inject
+	private TableViewerBuilder tableViewerBuilder;
 
 	@Inject
 	protected FeaturesProvider featuresProvider;
@@ -79,8 +83,10 @@ public abstract class AbstractOnSelectionTableView extends
 			return;
 		}
 
-		Object value = eObject.eGet(feature);
-		tableViewer.setInput(value);
+//		Object value = eObject.eGet(feature);
+//		tableViewer.setInput(value);
+		
+		tableViewerBuilder.fill2(tableViewer, eObject, feature);
 	}
 
 	protected void createTableViewer() {
@@ -89,8 +95,8 @@ public abstract class AbstractOnSelectionTableView extends
 		scrolledComposite.setExpandHorizontal(true);
 		scrolledComposite.setExpandVertical(true);
 
-		tableViewer = viewerFactory.createTableViewer(scrolledComposite,
-				SWT.BORDER | SWT.FULL_SELECTION, null, getEClass());
+		tableViewer = viewerFactory.createTableViewer2(scrolledComposite,
+				SWT.BORDER | SWT.FULL_SELECTION, getEClass());
 
 		Table table = tableViewer.getTable();
 		scrolledComposite.setContent(table);

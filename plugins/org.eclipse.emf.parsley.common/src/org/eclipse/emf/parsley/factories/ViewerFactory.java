@@ -70,6 +70,13 @@ public class ViewerFactory {
 		return tableViewer;
 	}
 
+
+	public TableViewer createTableViewer2(Composite parent, int style, EClass type) {
+		TableViewer tableViewer = new TableViewer(parent, style);
+		tableViewerBuilder.build2(tableViewer, type);
+		return tableViewer;
+	}
+
 	protected void update(TreeViewer treeViewer,
 			AdapterFactoryEditingDomain editingDomain) {
 		viewerInitializer.initialize(treeViewer, editingDomain);
