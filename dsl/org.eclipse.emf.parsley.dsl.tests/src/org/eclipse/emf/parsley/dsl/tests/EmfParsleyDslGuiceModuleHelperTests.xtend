@@ -108,6 +108,7 @@ bindConfigurator
 bindIssueReporter
 bindValidationRunner
 bindDiagnosticUtil
+bindFeatureHelper
 bindAdapterFactory
 bindAdapterFactoryLabelProvider''',
 		'''

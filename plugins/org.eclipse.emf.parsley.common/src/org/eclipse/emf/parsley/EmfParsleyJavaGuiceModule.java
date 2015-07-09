@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.binding.DialogControlFactory;
+import org.eclipse.emf.parsley.binding.FeatureHelper;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;
@@ -500,6 +501,14 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends DiagnosticUtil> bindDiagnosticUtil() {
 		return DiagnosticUtil.class;
+	}
+
+	/**
+	 * Use this method to customize a {@link FeatureHelper}.
+	 * @return an implementation of {@link FeatureHelper}
+	 */
+	public Class<? extends FeatureHelper> bindFeatureHelper() {
+		return FeatureHelper.class;
 	}
 
 	/**

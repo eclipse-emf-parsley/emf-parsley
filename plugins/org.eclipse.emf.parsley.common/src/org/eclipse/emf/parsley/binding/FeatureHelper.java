@@ -22,34 +22,39 @@ import org.eclipse.emf.ecore.impl.EEnumImpl;
 
 import com.google.inject.Inject;
 
+/**
+ * Some helper methods for {@link EStructuralFeature}.
+ * 
+ * @author Francesco Guidieri - initial API and implementation
+ */
 public class FeatureHelper {
 
 	@Inject
 	private ProposalCreator proposalCreator;
-	
+
 	/**
-	 * Whether the {@link EStructuralFeature} is considered as editable.
-	 * The default behavior is not to consider as editable a derived feature,
-	 * an unchangeable feature or any data type which is not serializable.
+	 * Whether the {@link EStructuralFeature} is considered as editable. The
+	 * default behavior is not to consider as editable a derived feature, an
+	 * unchangeable feature or any data type which is not serializable.
 	 * 
 	 * @param f
 	 * @return
 	 */
 	public boolean isEditable(EStructuralFeature f) {
 		return !f.isDerived() &&
-				f.isChangeable()
-				&& (!(f.getEType() instanceof EDataType && !((EDataType) f
-						.getEType()).isSerializable()));
+				f.isChangeable() &&
+				(
+						!(f.getEType() instanceof EDataType &&
+								!((EDataType) f.getEType()).isSerializable()));
 	}
-	
+
 	public boolean isBooleanFeature(EStructuralFeature feature) {
 		return isBooleanEType(feature) || isBooleanDataType(feature);
 	}
 
 	private boolean isBooleanEType(EStructuralFeature feature) {
 		EClassifier eType = feature.getEType();
-		return eType.equals(EcorePackage.Literals.EBOOLEAN)
-				|| eType.equals(EcorePackage.Literals.EBOOLEAN_OBJECT);
+		return eType.equals(EcorePackage.Literals.EBOOLEAN) || eType.equals(EcorePackage.Literals.EBOOLEAN_OBJECT);
 	}
 
 	private boolean isBooleanDataType(EStructuralFeature feature) {
@@ -59,15 +64,14 @@ public class FeatureHelper {
 	}
 
 	public boolean hasPredefinedProposals(EStructuralFeature feature) {
-		return feature instanceof EReference
-				|| feature.getEType() instanceof EEnumImpl;
+		return feature instanceof EReference || feature.getEType() instanceof EEnumImpl;
 	}
 
 	public List<Object> createProposals(EObject owner, EStructuralFeature feature) {
 		getProposalCreator().setResource(owner.eResource());
 		return getProposalCreator().proposals(owner, feature);
 	}
-	
+
 	public ProposalCreator getProposalCreator() {
 		return proposalCreator;
 	}
