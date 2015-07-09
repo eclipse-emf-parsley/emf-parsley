@@ -15,7 +15,6 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.parsley.builders.TableViewerBuilder;
 import org.eclipse.emf.parsley.factories.ViewerFactory;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;

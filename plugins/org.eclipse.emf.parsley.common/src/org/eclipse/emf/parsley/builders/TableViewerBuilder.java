@@ -12,9 +12,7 @@
 package org.eclipse.emf.parsley.builders;
 
 import org.eclipse.core.databinding.observable.list.IObservableList;
-import org.eclipse.core.databinding.property.list.IListProperty;
 import org.eclipse.emf.databinding.EMFProperties;
-import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -90,7 +88,7 @@ public class TableViewerBuilder {
 	}
 	
 	public void fill2(TableViewer tableViewer, Object object,EStructuralFeature eReference) {
-		IObservableList observableList= new EMFProperties().list(eReference).observe(object);
+		IObservableList observableList = EMFProperties.list(eReference).observe(object);
 		tableViewer.setInput(observableList);
 	}
 	
