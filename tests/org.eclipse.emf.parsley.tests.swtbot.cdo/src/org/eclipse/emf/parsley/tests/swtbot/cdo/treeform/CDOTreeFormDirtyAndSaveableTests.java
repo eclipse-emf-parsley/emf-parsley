@@ -29,82 +29,80 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 
-
 	private static final String TEST_CDO_FORM_VIEW = "Test CDO form view";
-	private static int SLOWDOWN=1000;
+	private static int SLOWDOWN = 1000;
 
 	@BeforeClass
-	public static void prepare() throws Exception{
-		
+	public static void prepare() throws Exception {
 		startCDOServer();
 		closeWelcomePage();
 		openTestView(TEST_CDO_FORM_VIEW);
 	}
-	
+
+	@After
+	public void slowdown() {
+		someSleep();
+	}
+
+	private void someSleep() {
+		bot.sleep(SLOWDOWN);
+	}
+
 	@Test
-	public void testView(){
+	public void testView() {
 		Assert.assertNotNull(getLibraryView(TEST_CDO_FORM_VIEW));
 	}
 
 	@Test
-	public void testDirtyForSelectedBook(){
-		SWTBotView botView=getLibraryView(TEST_CDO_FORM_VIEW);
+	public void testDirtyForSelectedBook() {
+		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Book Domain Specific Languages");
 		botView.bot().textWithLabel("title").setText("My Tyltle");
-		botView.bot().sleep(50);
+		someSleep();
 		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
 		forceSaveView(botView);
 		Assert.assertFalse(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
-//		botView.close();
 	}
 
-	
 	@Test
-	public void testDirtyForSelectedAuthor(){
-		SWTBotView botView=getLibraryView(TEST_CDO_FORM_VIEW);
+	public void testDirtyForSelectedAuthor() {
+		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Author Ed Merks");
 		botView.bot().textWithLabel("name").setText("My Name");
-		botView.bot().sleep(50);
+		someSleep();
 		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
 		forceSaveView(botView);
 		Assert.assertFalse(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
-//		botView.close();
 	}
-	
-	@After
-	public void slowdown() {
-		bot.sleep(SLOWDOWN);
-	}
-	
+
 	private SWTBotTreeItem getLibraryNode(SWTBotView botView) {
 		SWTBotTreeItem libraryNode = botView.bot().tree().expandNode("Library");
 		return libraryNode;
 	}
 
-//	private void forceCloseView(SWTBotView botView) {
-//		botView.close();
-//		bot.waitUntil(Conditions.shellIsActive("Save Resource"),5000);
-//		SWTBotShell shell = bot.shell("Save Resource");
-//		Assert.assertNotNull(shell);
-//		shell.activate();
-//		bot.button("No").click();
-//		bot.waitUntil(shellCloses(shell), 50000);
-//	}
-	
-	private void forceSaveView(SWTBotView botView){
+	// private void forceCloseView(SWTBotView botView) {
+	// botView.close();
+	// bot.waitUntil(Conditions.shellIsActive("Save Resource"),5000);
+	// SWTBotShell shell = bot.shell("Save Resource");
+	// Assert.assertNotNull(shell);
+	// shell.activate();
+	// bot.button("No").click();
+	// bot.waitUntil(shellCloses(shell), 50000);
+	// }
+
+	private void forceSaveView(SWTBotView botView) {
 		final IViewPart view = botView.getViewReference().getView(false);
-		if(view instanceof ISaveablePart){	
+		if (view instanceof ISaveablePart) {
 			Display.getDefault().syncExec(new Runnable() {
 				public void run() {
-					((ISaveablePart)view).doSave(
-							new NullProgressMonitor());
+					((ISaveablePart) view).doSave(new NullProgressMonitor());
 				}
 			});
-		}else{
-			throw new RuntimeException("View " +view.getTitle() + " is not saveable!");
+		} else {
+			throw new RuntimeException("View " + view.getTitle() + " is not saveable!");
 		}
 	}
-	
+
 }
