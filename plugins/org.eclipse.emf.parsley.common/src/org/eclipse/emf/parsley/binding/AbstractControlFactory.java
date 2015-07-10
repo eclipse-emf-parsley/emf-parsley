@@ -32,7 +32,6 @@ import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.ControlDecoration;
@@ -247,7 +246,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		Button b = createButton("", SWT.CHECK);
 		b.setEnabled(!isReadonly());
 		retValAndTargetPair.setControl(b);
-		retValAndTargetPair.setObservableValue(WidgetProperties.selection().observe(b));
+		retValAndTargetPair.setObservableValue(DatabindingUtil.observeSelection(b));
 		return retValAndTargetPair;
 	}
 
@@ -287,7 +286,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		t.setEditable(!isReadonly());
 		addContentProposalAdapter(t, proposals);
 		retValAndTargetPair.setControl(t);
-		retValAndTargetPair.setObservableValue(WidgetProperties.text(SWT.Modify).observe(t));
+		retValAndTargetPair.setObservableValue(DatabindingUtil.observeText(t, SWT.Modify));
 		return retValAndTargetPair;
 	}
 

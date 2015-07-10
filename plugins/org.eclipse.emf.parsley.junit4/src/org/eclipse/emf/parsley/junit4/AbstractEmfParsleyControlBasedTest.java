@@ -52,6 +52,7 @@ import org.junit.Before;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
+@SuppressWarnings("deprecation")
 public abstract class AbstractEmfParsleyControlBasedTest extends
 		AbstractEmfParsleyShellBasedTest {
 	

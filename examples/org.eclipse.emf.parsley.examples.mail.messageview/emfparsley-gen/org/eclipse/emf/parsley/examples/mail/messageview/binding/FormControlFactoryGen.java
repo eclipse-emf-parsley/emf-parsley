@@ -2,9 +2,9 @@ package org.eclipse.emf.parsley.examples.mail.messageview.binding;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.emf.parsley.binding.DatabindingUtil;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
-import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
@@ -32,7 +32,7 @@ public class FormControlFactoryGen extends FormControlFactory {
   }
   
   protected IObservableValue createTarget_Mail_message(final Control it) {
-    ISWTObservableValue _observeText = SWTObservables.observeText(it, SWT.Modify);
+    ISWTObservableValue _observeText = DatabindingUtil.observeText(it, SWT.Modify);
     return _observeText;
   }
 }

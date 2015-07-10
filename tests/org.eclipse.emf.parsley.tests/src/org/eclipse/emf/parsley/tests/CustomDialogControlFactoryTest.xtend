@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.binding.ControlObservablePair
+import org.eclipse.emf.parsley.binding.DatabindingUtil
 import org.eclipse.emf.parsley.binding.DialogControlFactory
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
-import org.eclipse.jface.databinding.swt.SWTObservables
 import org.eclipse.swt.SWT
 import org.junit.Rule
 import org.junit.Test
@@ -70,7 +70,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 				// by default the editable is true, thus setting it to false
 				// gives us evidence that this method was called
 				text.editable = false
-				val targetObservableValue = SWTObservables.observeText(text, SWT.Modify)
+				val targetObservableValue = DatabindingUtil.observeText(text, SWT.Modify)
 				edbc.bindValue(targetObservableValue, modelObservableValue, null, null);
 				return text
 			}
@@ -101,7 +101,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 				// by default the editable is true, thus setting it to false
 				// gives us evidence that this method was called
 				text.editable = false
-				return new ControlObservablePair(text, SWTObservables.observeText(text, SWT.Modify))
+				return new ControlObservablePair(text, DatabindingUtil.observeText(text, SWT.Modify))
 			}
 		} => [initialize(o1)]
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
@@ -121,7 +121,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		val factory = new DialogControlFactory {
 			def control_BaseClass_baseMultiReferenceFeature(EStructuralFeature f) {
 				val text = createText("")
-				return new ControlObservablePair(text, SWTObservables.observeText(text, SWT.Modify))
+				return new ControlObservablePair(text, DatabindingUtil.observeText(text, SWT.Modify))
 			}
 		} => [initialize(o1)]
 		// we create a Text for a multi feature so the text will stay empty anyway
@@ -132,6 +132,29 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		o1.baseMultiReferenceFeature += createClassWithName("Bar")
 		control.assertText("")
 	}
+
+	/**
+	 * As above, but for a without specifying SWT.Modify
+	 */
+	@Test
+	def void testCustomControlWithControlObservablePair2() {
+		val o1 = createBaseClassObject
+		val factory = new DialogControlFactory {
+			def control_BaseClass_baseClassFeature(EStructuralFeature f) {
+				val text = createText("")
+				// by default the editable is true, thus setting it to false
+				// gives us evidence that this method was called
+				text.editable = false
+				return new ControlObservablePair(text, DatabindingUtil.observeText(text))
+			}
+		} => [initialize(o1)]
+		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
+		control.assertTextEditable(false)
+		control.assertText("")
+		o1.baseClassFeature = "Foo"
+		control.assertText("Foo")
+	}
+
 
 	/**
 	 * The Control in the ControlObservablePair is set to null

@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.scoping
 
-import org.eclipse.jface.databinding.swt.SWTObservables
-import org.eclipse.swt.widgets.Control
+import org.eclipse.emf.parsley.binding.DatabindingUtil
+import org.eclipse.swt.widgets.Widget
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures
 
 class EmfParsleyDslImplicitlyImportedFeatures extends ImplicitlyImportedFeatures {
 	override protected getExtensionClasses() {
-		(super.getExtensionClasses() + #[typeof(Control), typeof(SWTObservables)])
+		(super.getExtensionClasses() + #[typeof(Widget), typeof(DatabindingUtil)])
 			.toList
 	}
 }
