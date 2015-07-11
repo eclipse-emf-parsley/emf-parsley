@@ -44,6 +44,10 @@
         eType="#//BooleanPrimitiveDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumFeature" eType="#//EnumForControls"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringDataTypeFeature"
+        eType="#//StringDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unserializableStringDataTypeFeature"
+        eType="#//UnserializableStringDataType" transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unchangeableStringFeature"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="derivedStringFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -83,6 +87,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="BooleanDataType" instanceClassName="java.lang.Boolean"/>
   <eClassifiers xsi:type="ecore:EDataType" name="BooleanPrimitiveDataType" instanceClassName="boolean"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="StringDataType" instanceClassName="java.lang.String"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="UnserializableStringDataType" instanceClassName="java.lang.String"
+      serializable="false"/>
   <eClassifiers xsi:type="ecore:EClass" name="BaseClassForFeatureMapEntry">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

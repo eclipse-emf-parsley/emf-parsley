@@ -38,6 +38,8 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#isBooleanPrimitiveDataTypeFeature <em>Boolean Primitive Data Type Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeature <em>String Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringDataTypeFeature <em>String Data Type Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getUnserializableStringDataTypeFeature <em>Unserializable String Data Type Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getDerivedStringFeature <em>Derived String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getReferenceToClassWithName <em>Reference To Class With Name</em>}</li>
@@ -169,6 +171,46 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String stringFeature = STRING_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStringDataTypeFeature() <em>String Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STRING_DATA_TYPE_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStringDataTypeFeature() <em>String Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected String stringDataTypeFeature = STRING_DATA_TYPE_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUnserializableStringDataTypeFeature() <em>Unserializable String Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnserializableStringDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUnserializableStringDataTypeFeature() <em>Unserializable String Data Type Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUnserializableStringDataTypeFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected String unserializableStringDataTypeFeature = UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getUnchangeableStringFeature() <em>Unchangeable String Feature</em>}' attribute.
@@ -390,6 +432,48 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getStringDataTypeFeature() {
+		return stringDataTypeFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringDataTypeFeature(String newStringDataTypeFeature) {
+		String oldStringDataTypeFeature = stringDataTypeFeature;
+		stringDataTypeFeature = newStringDataTypeFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE, oldStringDataTypeFeature, stringDataTypeFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getUnserializableStringDataTypeFeature() {
+		return unserializableStringDataTypeFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUnserializableStringDataTypeFeature(String newUnserializableStringDataTypeFeature) {
+		String oldUnserializableStringDataTypeFeature = unserializableStringDataTypeFeature;
+		unserializableStringDataTypeFeature = newUnserializableStringDataTypeFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE, oldUnserializableStringDataTypeFeature, unserializableStringDataTypeFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getUnchangeableStringFeature() {
 		return unchangeableStringFeature;
 	}
@@ -533,6 +617,10 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return getEnumFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				return getStringFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
+				return getStringDataTypeFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
+				return getUnserializableStringDataTypeFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
 				return getUnchangeableStringFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
@@ -579,6 +667,12 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				setStringFeature((String)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
+				setStringDataTypeFeature((String)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
+				setUnserializableStringDataTypeFeature((String)newValue);
 				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
 				setDerivedStringFeature((String)newValue);
@@ -631,6 +725,12 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				setStringFeature(STRING_FEATURE_EDEFAULT);
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
+				setStringDataTypeFeature(STRING_DATA_TYPE_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
+				setUnserializableStringDataTypeFeature(UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT);
+				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
 				setDerivedStringFeature(DERIVED_STRING_FEATURE_EDEFAULT);
 				return;
@@ -673,6 +773,10 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return enumFeature != ENUM_FEATURE_EDEFAULT;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE:
 				return STRING_FEATURE_EDEFAULT == null ? stringFeature != null : !STRING_FEATURE_EDEFAULT.equals(stringFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
+				return STRING_DATA_TYPE_FEATURE_EDEFAULT == null ? stringDataTypeFeature != null : !STRING_DATA_TYPE_FEATURE_EDEFAULT.equals(stringDataTypeFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
+				return UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT == null ? unserializableStringDataTypeFeature != null : !UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT.equals(unserializableStringDataTypeFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
 				return UNCHANGEABLE_STRING_FEATURE_EDEFAULT == null ? unchangeableStringFeature != null : !UNCHANGEABLE_STRING_FEATURE_EDEFAULT.equals(unchangeableStringFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE:
@@ -713,6 +817,10 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 		result.append(enumFeature);
 		result.append(", stringFeature: ");
 		result.append(stringFeature);
+		result.append(", stringDataTypeFeature: ");
+		result.append(stringDataTypeFeature);
+		result.append(", unserializableStringDataTypeFeature: ");
+		result.append(unserializableStringDataTypeFeature);
 		result.append(", unchangeableStringFeature: ");
 		result.append(unchangeableStringFeature);
 		result.append(", derivedStringFeature: ");

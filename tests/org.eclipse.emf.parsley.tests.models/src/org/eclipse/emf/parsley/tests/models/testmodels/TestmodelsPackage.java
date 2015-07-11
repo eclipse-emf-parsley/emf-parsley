@@ -579,13 +579,31 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_CONTROLS__STRING_FEATURE = 5;
 
 	/**
+	 * The feature id for the '<em><b>String Data Type Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Unserializable String Data Type Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE = 7;
+
+	/**
 	 * The feature id for the '<em><b>Unchangeable String Feature</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE = 6;
+	int CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Derived String Feature</b></em>' attribute.
@@ -594,7 +612,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE = 7;
+	int CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Reference To Class With Name</b></em>' reference.
@@ -603,7 +621,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 8;
+	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 10;
 
 	/**
 	 * The feature id for the '<em><b>Multi Reference Feature</b></em>' reference list.
@@ -612,7 +630,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 9;
+	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries</b></em>' attribute list.
@@ -621,7 +639,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = 10;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = 12;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries1</b></em>' containment reference list.
@@ -630,7 +648,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = 11;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = 13;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries2</b></em>' containment reference list.
@@ -639,7 +657,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 12;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 14;
 
 	/**
 	 * The number of structural features of the '<em>Class For Controls</em>' class.
@@ -648,7 +666,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 13;
+	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 15;
 
 	/**
 	 * The number of operations of the '<em>Class For Controls</em>' class.
@@ -913,6 +931,28 @@ public interface TestmodelsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>String Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getStringDataType()
+	 * @generated
+	 */
+	int STRING_DATA_TYPE = 17;
+
+
+	/**
+	 * The meta object id for the '<em>Unserializable String Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getUnserializableStringDataType()
+	 * @generated
+	 */
+	int UNSERIALIZABLE_STRING_DATA_TYPE = 18;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClass <em>Test EClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1135,6 +1175,28 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getClassForControls_StringFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringDataTypeFeature <em>String Data Type Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Data Type Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringDataTypeFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_StringDataTypeFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnserializableStringDataTypeFeature <em>Unserializable String Data Type Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unserializable String Data Type Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnserializableStringDataTypeFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_UnserializableStringDataTypeFeature();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}'.
@@ -1425,6 +1487,28 @@ public interface TestmodelsPackage extends EPackage {
 	EDataType getBooleanPrimitiveDataType();
 
 	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>String Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>String Data Type</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
+	 * @generated
+	 */
+	EDataType getStringDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>Unserializable String Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Unserializable String Data Type</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String" serializeable="false"
+	 * @generated
+	 */
+	EDataType getUnserializableStringDataType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1608,6 +1692,20 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASS_FOR_CONTROLS__STRING_FEATURE = eINSTANCE.getClassForControls_StringFeature();
+		/**
+		 * The meta object literal for the '<em><b>String Data Type Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE = eINSTANCE.getClassForControls_StringDataTypeFeature();
+		/**
+		 * The meta object literal for the '<em><b>Unserializable String Data Type Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE = eINSTANCE.getClassForControls_UnserializableStringDataTypeFeature();
 		/**
 		 * The meta object literal for the '<em><b>Unchangeable String Feature</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1816,6 +1914,24 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType BOOLEAN_PRIMITIVE_DATA_TYPE = eINSTANCE.getBooleanPrimitiveDataType();
+		/**
+		 * The meta object literal for the '<em>String Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getStringDataType()
+		 * @generated
+		 */
+		EDataType STRING_DATA_TYPE = eINSTANCE.getStringDataType();
+		/**
+		 * The meta object literal for the '<em>Unserializable String Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getUnserializableStringDataType()
+		 * @generated
+		 */
+		EDataType UNSERIALIZABLE_STRING_DATA_TYPE = eINSTANCE.getUnserializableStringDataType();
 
 	}
 

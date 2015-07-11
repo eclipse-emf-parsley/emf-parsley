@@ -97,6 +97,8 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 				return createBooleanDataTypeFromString(eDataType, initialValue);
 			case TestmodelsPackage.BOOLEAN_PRIMITIVE_DATA_TYPE:
 				return createBooleanPrimitiveDataTypeFromString(eDataType, initialValue);
+			case TestmodelsPackage.STRING_DATA_TYPE:
+				return createStringDataTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -116,6 +118,8 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 				return convertBooleanDataTypeToString(eDataType, instanceValue);
 			case TestmodelsPackage.BOOLEAN_PRIMITIVE_DATA_TYPE:
 				return convertBooleanPrimitiveDataTypeToString(eDataType, instanceValue);
+			case TestmodelsPackage.STRING_DATA_TYPE:
+				return convertStringDataTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -314,6 +318,24 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	 * @generated
 	 */
 	public String convertBooleanPrimitiveDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String createStringDataTypeFromString(EDataType eDataType, String initialValue) {
+		return (String)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStringDataTypeToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

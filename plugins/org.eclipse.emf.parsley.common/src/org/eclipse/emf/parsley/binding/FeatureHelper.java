@@ -43,9 +43,12 @@ public class FeatureHelper {
 	public boolean isEditable(EStructuralFeature f) {
 		return !f.isDerived() &&
 				f.isChangeable() &&
-				(
-						!(f.getEType() instanceof EDataType &&
-								!((EDataType) f.getEType()).isSerializable()));
+				!isNotSerializableDataType(f);
+	}
+
+	private boolean isNotSerializableDataType(EStructuralFeature f) {
+		return f.getEType() instanceof EDataType &&
+				!((EDataType) f.getEType()).isSerializable();
 	}
 
 	public boolean isBooleanFeature(EStructuralFeature feature) {
@@ -60,7 +63,8 @@ public class FeatureHelper {
 	private boolean isBooleanDataType(EStructuralFeature feature) {
 		Class<?> instanceClass = feature.getEType().getInstanceClass();
 		return feature.getEType() instanceof EDataType
-				&& (instanceClass == Boolean.class || instanceClass == Boolean.TYPE);
+				&& (instanceClass == Boolean.class
+					|| instanceClass == Boolean.TYPE);
 	}
 
 	public boolean hasPredefinedProposals(EStructuralFeature feature) {

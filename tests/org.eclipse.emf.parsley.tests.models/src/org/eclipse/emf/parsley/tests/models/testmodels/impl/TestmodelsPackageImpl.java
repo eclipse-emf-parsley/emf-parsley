@@ -164,6 +164,20 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	private EDataType booleanPrimitiveDataTypeEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType stringDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType unserializableStringDataTypeEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -427,7 +441,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClassForControls_UnchangeableStringFeature() {
+	public EAttribute getClassForControls_StringDataTypeFeature() {
 		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -436,7 +450,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClassForControls_DerivedStringFeature() {
+	public EAttribute getClassForControls_UnserializableStringDataTypeFeature() {
 		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -445,8 +459,26 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getClassForControls_UnchangeableStringFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_DerivedStringFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getClassForControls_ReferenceToClassWithName() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(8);
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -455,24 +487,6 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	public EReference getClassForControls_MultiReferenceFeature() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getClassForControls_FeatureMapEntries() {
-		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getClassForControls_FeatureMapEntries1() {
 		return (EReference)classForControlsEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -481,8 +495,26 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getClassForControls_FeatureMapEntries() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassForControls_FeatureMapEntries1() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getClassForControls_FeatureMapEntries2() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(12);
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -670,6 +702,24 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getStringDataType() {
+		return stringDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getUnserializableStringDataType() {
+		return unserializableStringDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TestmodelsFactory getTestmodelsFactory() {
 		return (TestmodelsFactory)getEFactoryInstance();
 	}
@@ -727,6 +777,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BOOLEAN_PRIMITIVE_DATA_TYPE_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__ENUM_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME);
@@ -758,6 +810,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		// Create data types
 		booleanDataTypeEDataType = createEDataType(BOOLEAN_DATA_TYPE);
 		booleanPrimitiveDataTypeEDataType = createEDataType(BOOLEAN_PRIMITIVE_DATA_TYPE);
+		stringDataTypeEDataType = createEDataType(STRING_DATA_TYPE);
+		unserializableStringDataTypeEDataType = createEDataType(UNSERIALIZABLE_STRING_DATA_TYPE);
 	}
 
 	/**
@@ -831,6 +885,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getClassForControls_BooleanPrimitiveDataTypeFeature(), this.getBooleanPrimitiveDataType(), "booleanPrimitiveDataTypeFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_EnumFeature(), this.getEnumForControls(), "enumFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_StringFeature(), ecorePackage.getEString(), "stringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_StringDataTypeFeature(), this.getStringDataType(), "stringDataTypeFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_UnserializableStringDataTypeFeature(), this.getUnserializableStringDataType(), "unserializableStringDataTypeFeature", null, 0, 1, ClassForControls.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_UnchangeableStringFeature(), ecorePackage.getEString(), "unchangeableStringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_DerivedStringFeature(), ecorePackage.getEString(), "derivedStringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_ReferenceToClassWithName(), this.getClassWithName(), null, "referenceToClassWithName", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -865,6 +921,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		// Initialize data types
 		initEDataType(booleanDataTypeEDataType, Boolean.class, "BooleanDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(booleanPrimitiveDataTypeEDataType, boolean.class, "BooleanPrimitiveDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(stringDataTypeEDataType, String.class, "StringDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(unserializableStringDataTypeEDataType, String.class, "UnserializableStringDataType", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

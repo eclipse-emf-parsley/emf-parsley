@@ -121,6 +121,10 @@ public class TestmodelsValidator extends EObjectValidator {
 				return validateBooleanDataType((Boolean)value, diagnostics, context);
 			case TestmodelsPackage.BOOLEAN_PRIMITIVE_DATA_TYPE:
 				return validateBooleanPrimitiveDataType((Boolean)value, diagnostics, context);
+			case TestmodelsPackage.STRING_DATA_TYPE:
+				return validateStringDataType((String)value, diagnostics, context);
+			case TestmodelsPackage.UNSERIALIZABLE_STRING_DATA_TYPE:
+				return validateUnserializableStringDataType((String)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -339,6 +343,24 @@ public class TestmodelsValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBooleanPrimitiveDataType(boolean booleanPrimitiveDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStringDataType(String stringDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateUnserializableStringDataType(String unserializableStringDataType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
