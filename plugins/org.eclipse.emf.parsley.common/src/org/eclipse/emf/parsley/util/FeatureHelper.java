@@ -8,7 +8,7 @@
  * Contributors:
  * Francesco Guidieri, Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.util;
 
 import java.util.List;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EEnumImpl;
+import org.eclipse.emf.parsley.binding.ProposalCreator;
 
 import com.google.inject.Inject;
 

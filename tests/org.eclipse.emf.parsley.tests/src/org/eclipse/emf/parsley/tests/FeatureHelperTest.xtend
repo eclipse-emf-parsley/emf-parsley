@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.parsley.binding.FeatureHelper
+import org.eclipse.emf.parsley.util.FeatureHelper
 import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
