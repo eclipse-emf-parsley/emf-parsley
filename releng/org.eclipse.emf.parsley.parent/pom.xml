@@ -182,7 +182,7 @@
 		</profile>
 		
 		<profile>
-			<id>rcp-build-luna</id>
+			<id>rcp-build-mars</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -192,9 +192,23 @@
 			</modules>
 			
 			<properties>
+				<target-file-name>mars</target-file-name>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>rcp-build-luna</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+			</modules>
+			
+			<properties>
 				<target-file-name>luna</target-file-name>
 			</properties>
-			
 		</profile>
 
 		<profile>
