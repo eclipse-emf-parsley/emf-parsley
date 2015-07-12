@@ -81,6 +81,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	@Inject
 	private FeatureHelper featureHelper;
 
+	@Inject
+	private ProposalCreator proposalCreator;
+
 	protected EObject owner;
 	protected Resource resource;
 	protected EditingDomain domain;
@@ -106,11 +109,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	}
 	
 	public ProposalCreator getProposalCreator() {
-		return featureHelper.getProposalCreator();
+		return proposalCreator;
 	}
 
 	public void setProposalCreator(ProposalCreator proposalCreator) {
-		featureHelper.setProposalCreator(proposalCreator);
+		this.proposalCreator = proposalCreator;
 	}
 
 	public boolean isReadonly() {
@@ -144,6 +147,12 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		this.owner = owner;
 	}
 
+	protected Resource getResource() {
+		if (resource == null) {
+			resource = owner.eResource();
+		}
+		return resource;
+	}
 
 	public Control create(EStructuralFeature feature) {
 		Control control = null;
@@ -203,7 +212,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(getParent(),
 				this, labelProviderProvider.get(), owner,
-				feature, featureHelper.getProposalCreator(), isReadonly());
+				feature, getProposalCreator(), isReadonly());
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		return new ControlObservablePair(mfc, target);
 	}
@@ -255,7 +264,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			EStructuralFeature feature) {
 		List<?> proposals = null;
 		if (!isReadonly()) {
-			proposals = featureHelper.createProposals(owner, feature);
+			proposals = createProposals(feature);
 		}
 		if (featureHelper.hasPredefinedProposals(feature) && !isReadonly()) {
 			return createControlAndObservableWithPredefinedProposals(proposals);
@@ -265,6 +274,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			}
 			return createControlAndObservableWithoutPredefinedProposals(proposals);
 		}
+	}
+
+	public List<Object> createProposals(EStructuralFeature feature) {
+		getProposalCreator().setResource(getResource());
+		return getProposalCreator().proposals(owner, feature);
 	}
 
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(

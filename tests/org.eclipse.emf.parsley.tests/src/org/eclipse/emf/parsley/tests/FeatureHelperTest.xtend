@@ -10,14 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.parsley.util.FeatureHelper
-import org.eclipse.emf.parsley.binding.ProposalCreator
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
-import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.emf.parsley.util.FeatureHelper
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -106,36 +103,6 @@ class FeatureHelperTest extends AbstractEmfParsleyTest {
 		assertNotPredefinedProposals(testPackage.classForControls_StringFeature)
 	}
 
-	@Test def void testProposalsForEnum() {
-		assertProposals(classForControlsInstance, testPackage.classForControls_EnumFeature,
-			"FIRST, SECOND, THIRD"
-		)
-	}
-
-	@Test def void testProposalsForReference() {
-		val res = createResource
-		res.contents += classForControlsInstance
-		
-		createClassWithName(res, "Ref1")
-		createClassWithName(res, "Ref2")
-		createClassWithName(res, "Ref3")
-
-		assertProposals(classForControlsInstance, testPackage.classForControls_ReferenceToClassWithName,
-				"Class With Name Ref1, Class With Name Ref2, Class With Name Ref3")
-	}
-
-	@Test def void testCustomProposals() {
-		val proposalCreator = new ProposalCreator() {
-			def proposals_ClassForControls_stringFeature(ClassForControls e) {
-				return #["First Proposal", "Second Proposal"]
-			}
-		}
-		featureHelper.proposalCreator = proposalCreator
-		assertProposals(classForControlsInstance, testPackage.classForControls_StringFeature,
-			"First Proposal, Second Proposal")
-	}
-
-
 	def private assertBooleanFeature(EStructuralFeature feature) {
 		featureHelper.isBooleanFeature(feature).assertTrue
 	}
@@ -160,12 +127,4 @@ class FeatureHelperTest extends AbstractEmfParsleyTest {
 		featureHelper.hasPredefinedProposals(feature).assertFalse
 	}
 
-	def private assertProposals(EObject o, EStructuralFeature f, CharSequence expected) {
-		val labelProvider = getOrCreateInjector.getInstance(ILabelProvider)
-		
-		expected.toString.assertEquals
-			(featureHelper.createProposals(o, f).map[
-				labelProvider.getText(it)
-			].join(", "))
-	}
 }

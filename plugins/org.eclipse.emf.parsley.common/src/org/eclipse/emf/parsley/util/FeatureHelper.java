@@ -10,18 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.util;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EEnumImpl;
-import org.eclipse.emf.parsley.binding.ProposalCreator;
-
-import com.google.inject.Inject;
 
 /**
  * Some helper methods for {@link EStructuralFeature}.
@@ -29,9 +23,6 @@ import com.google.inject.Inject;
  * @author Francesco Guidieri - initial API and implementation
  */
 public class FeatureHelper {
-
-	@Inject
-	private ProposalCreator proposalCreator;
 
 	/**
 	 * Whether the {@link EStructuralFeature} is considered as editable. The
@@ -70,19 +61,6 @@ public class FeatureHelper {
 
 	public boolean hasPredefinedProposals(EStructuralFeature feature) {
 		return feature instanceof EReference || feature.getEType() instanceof EEnumImpl;
-	}
-
-	public List<Object> createProposals(EObject owner, EStructuralFeature feature) {
-		getProposalCreator().setResource(owner.eResource());
-		return getProposalCreator().proposals(owner, feature);
-	}
-
-	public ProposalCreator getProposalCreator() {
-		return proposalCreator;
-	}
-
-	public void setProposalCreator(ProposalCreator proposalCreator) {
-		this.proposalCreator = proposalCreator;
 	}
 
 }
