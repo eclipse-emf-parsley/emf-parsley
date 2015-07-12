@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.EmfParsleyConstants
-import org.eclipse.emf.parsley.util.EcoreUtil2
 import org.junit.Test
 
 class ProtectedConstructorTest {
@@ -21,9 +20,6 @@ class ProtectedConstructorTest {
 		// for the protected constructor of EmfParsleyConstants
 		// and the protected constructor is "required" by sonar...
 		new EmfParsleyConstants() {
-			
-		}
-		new EcoreUtil2() {
 			
 		}
 	}

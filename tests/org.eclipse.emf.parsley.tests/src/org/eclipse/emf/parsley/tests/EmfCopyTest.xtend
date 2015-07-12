@@ -22,6 +22,19 @@ class EmfCopyTest {
 
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
+	new() {
+		// just to cover the protected constructor
+		new EcoreUtil2() {
+			
+		}
+	}
+
+	@Test def void testCopyStateNull() {
+		EcoreUtil2.copyState(null) => [
+			assertEquals(0, size)
+		]
+	}
+
 	@Test def void testCloneDoesNotCopyBidirectional() {
 		writer.books.size.assertEquals(1)
 		val copy = EcoreUtil2.clone(writer)
@@ -56,6 +69,12 @@ class EmfCopyTest {
 		1.assertEquals(library.books.size)
 		val state = EcoreUtil2.copyState(library)
 		state.get(EXTLibraryPackage.eINSTANCE.library_Books).assertNull
+	}
+
+	@Test def void testDerivedCase() {
+		classForControlsInstance.derivedStringFeature = "test"
+		val state = EcoreUtil2.copyState(classForControlsInstance)
+		state.get(testPackage.classForControls_DerivedStringFeature).assertNull
 	}
 
 	@Test def void testFeatureMapCase() {
