@@ -12,16 +12,13 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.widgets.FormWidgetFactory
 import org.eclipse.ui.forms.widgets.FormToolkit
-import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
 class FormWidgetFactoryTest extends DialogWidgetFactoryTest {
 
-	@Before
-	override void setupFactory() {
-		super.setupFactory
+	override void setupWidgetFactory() {
 		factory = getOrCreateInjector.getInstance(FormWidgetFactory)
 		(factory as FormWidgetFactory).init(shell, new FormToolkit(shell.display))
 	}

@@ -37,6 +37,7 @@ import org.junit.runners.Suite;
 	FeatureHelperTest.class,
 	DialogWidgetFactoryTest.class,
 	FormWidgetFactoryTest.class,
+	DialogControlFactoryAsWidgetFactoryTest.class,
 	DialogControlFactoryTest.class,
 	CustomDialogControlFactoryTest.class,
 	FormControlFactoryTest.class,

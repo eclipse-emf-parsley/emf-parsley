@@ -31,7 +31,7 @@ import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.emf.parsley.util.FeatureHelper;
-import org.eclipse.emf.parsley.widgets.AbstractWidgetFactory;
+import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
@@ -49,6 +49,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.DateTime;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import com.google.common.base.Function;
@@ -66,7 +68,7 @@ import com.google.inject.name.Named;
  * @author Lorenzo Bettini refactoring for Emf Parsley
  * 
  */
-public abstract class AbstractControlFactory extends AbstractWidgetFactory {
+public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	private static final String OBSERVE_PREFIX = "observe_";
 
@@ -89,6 +91,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected Resource resource;
 	protected EditingDomain domain;
 	protected EMFDataBindingContext edbc;
+	protected IWidgetFactory widgetFactory;
 
 	protected boolean readonly = false;
 
@@ -100,6 +103,8 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	public AbstractControlFactory() {
 
 	}
+
+	protected abstract IWidgetFactory createWidgetFactory();
 
 	public Provider<ILabelProvider> getLabelProviderProvider() {
 		return labelProviderProvider;
@@ -142,7 +147,8 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	 * @see IEditingStrategy
 	 */
 	public void init(EditingDomain domain, EObject owner, Composite parent) {
-		super.init(parent);
+		widgetFactory = createWidgetFactory();
+		init(parent);
 		this.edbc = new EMFDataBindingContext();
 		this.domain = domain;
 		this.owner = owner;
@@ -408,6 +414,81 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		return PolymorphicDispatcherExtensions
 				.<IObservableValue> polymorphicInvokeBasedOnFeature(this,
 						owner.eClass(), feature, OBSERVE_PREFIX, domain, owner);
+	}
+
+	@Override
+	public Label createLabel(String text) {
+		return widgetFactory.createLabel(text);
+	}
+
+	@Override
+	public Label createLabel(Composite parent, String text) {
+		return widgetFactory.createLabel(parent, text);
+	}
+
+	@Override
+	public Button createButton(String text, int... styles) {
+		return widgetFactory.createButton(text, styles);
+	}
+
+	@Override
+	public Button createButton(Composite parent, String text, int style) {
+		return widgetFactory.createButton(parent, text, style);
+	}
+
+	@Override
+	public Text createText(String text) {
+		return widgetFactory.createText(text);
+	}
+
+	@Override
+	public Text createText(String text, int... styles) {
+		return widgetFactory.createText(text, styles);
+	}
+
+	@Override
+	public Text createText(Composite parent, String text) {
+		return widgetFactory.createText(parent, text);
+	}
+
+	@Override
+	public Text createText(Composite parent, String text, int style) {
+		return widgetFactory.createText(parent, text, style);
+	}
+
+	@Override
+	public ComboViewer createComboViewer(int... styles) {
+		return widgetFactory.createComboViewer(styles);
+	}
+
+	@Override
+	public ComboViewer createComboViewer(Composite parent, int style) {
+		return widgetFactory.createComboViewer(parent, style);
+	}
+
+	@Override
+	public DateTime createDateTime() {
+		return widgetFactory.createDateTime();
+	}
+
+	@Override
+	public DateTime createDateTime(int... styles) {
+		return widgetFactory.createDateTime(styles);
+	}
+
+	@Override
+	public DateTime createDateTime(Composite parent) {
+		return widgetFactory.createDateTime(parent);
+	}
+
+	@Override
+	public DateTime createDateTime(Composite parent, int style) {
+		return widgetFactory.createDateTime(parent, style);
+	}
+
+	@Override
+	public Composite getParent() {
+		return widgetFactory.getParent();
 	}
 
 }

@@ -950,6 +950,7 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -985,7 +986,8 @@ public class FormControlFactoryGen extends FormControlFactory {
   }
   
   protected Control createControl_Writer_name() {
-    return this.createLabel(this.parent, "");
+    Composite _parent = this.getParent();
+    return this.createLabel(_parent, "");
   }
   
   protected IObservableValue createTarget_Writer_name(final Control it) {
@@ -1002,7 +1004,8 @@ public class FormControlFactoryGen extends FormControlFactory {
   
   protected Control createControl_Writer_firstName() {
     FormToolkit _toolkit = this.getToolkit();
-    Label _createLabel = _toolkit.createLabel(this.parent, "");
+    Composite _parent = this.getParent();
+    Label _createLabel = _toolkit.createLabel(_parent, "");
     return _createLabel;
   }
   
@@ -1079,6 +1082,7 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -1113,7 +1117,8 @@ public class DialogControlFactoryGen extends DialogControlFactory {
   }
   
   protected Control createControl_Writer_name() {
-    return this.createLabel(this.parent, "");
+    Composite _parent = this.getParent();
+    return this.createLabel(_parent, "");
   }
   
   protected IObservableValue createTarget_Writer_name(final Control it) {
@@ -1129,7 +1134,8 @@ public class DialogControlFactoryGen extends DialogControlFactory {
   }
   
   protected Control createControl_Writer_firstName() {
-    Label _createLabel = this.createLabel(this.parent, "");
+    Composite _parent = this.getParent();
+    Label _createLabel = this.createLabel(_parent, "");
     return _createLabel;
   }
   

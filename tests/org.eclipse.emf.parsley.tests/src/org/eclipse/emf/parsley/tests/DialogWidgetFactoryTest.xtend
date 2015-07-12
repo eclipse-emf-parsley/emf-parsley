@@ -14,6 +14,7 @@ import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.widgets.DialogWidgetFactory
+import org.eclipse.emf.parsley.widgets.IWidgetFactory
 import org.eclipse.swt.SWT
 import org.junit.Before
 import org.junit.Rule
@@ -31,13 +32,17 @@ class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
 	 */
 	var protected ClassForControls classForControlsInstance
 	
-	var protected DialogWidgetFactory factory
+	var protected IWidgetFactory factory
 	
 	val static TEST_TEXT = "Test"
 
 	@Before
 	def void setupFactory() {
 		classForControlsInstance = testFactory.createClassForControls
+		setupWidgetFactory()
+	}
+	
+	protected def setupWidgetFactory() {
 		factory = getOrCreateInjector.getInstance(DialogWidgetFactory)
 		factory.init(shell)
 	}
@@ -61,6 +66,17 @@ class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
 		control.assertText(TEST_TEXT)
 	}
 
+	@Test def void testTextWithParent() {
+		val control = factory.createText(shell, TEST_TEXT)
+		control.assertText(TEST_TEXT)
+	}
+
+	@Test def void testTextWithParentAndStyle() {
+		val control = factory.createText(shell, TEST_TEXT, SWT.NO_SCROLL)
+		control.assertText(TEST_TEXT)
+		control.assertStyle(SWT.NO_SCROLL)
+	}
+
 	@Test def void testTextWithStyle() {
 		val control = factory.createText(TEST_TEXT, SWT.NO_SCROLL)
 		control.assertText(TEST_TEXT)
@@ -72,12 +88,22 @@ class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
 		control.assertStyle(SWT.NO_SCROLL)
 	}
 
+	@Test def void testComboWithParent() {
+		val control = factory.createComboViewer(shell, SWT.NO_SCROLL)
+		control.assertStyle(SWT.NO_SCROLL)
+	}
+
 	@Test def void testDateTime() {
 		factory.createDateTime()
 	}
 
 	@Test def void testDateTimeWithStyle() {
 		val control = factory.createDateTime(SWT.NO_SCROLL)
+		control.assertStyle(SWT.NO_SCROLL)
+	}
+
+	@Test def void testDateTimeWithParentAndStyle() {
+		val control = factory.createDateTime(shell, SWT.NO_SCROLL)
 		control.assertStyle(SWT.NO_SCROLL)
 	}
 

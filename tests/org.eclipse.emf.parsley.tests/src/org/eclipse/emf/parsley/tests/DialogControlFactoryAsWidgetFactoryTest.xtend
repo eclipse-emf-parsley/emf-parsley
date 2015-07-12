@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.binding.FormControlFactory
-import org.junit.Test
+import org.eclipse.emf.parsley.binding.DialogControlFactory
 
-import static extension org.junit.Assert.*
+class DialogControlFactoryAsWidgetFactoryTest extends DialogWidgetFactoryTest {
 
-class FormControlFactoryTest extends DialogControlFactoryTest {
-	
-	def override protected createAndInitializeFactory() {
-		new FormControlFactory() => [
-			initialize(classForControlsInstance)
-		]
+	override void setupWidgetFactory() {
+		factory = new DialogControlFactory() => [initialize(classForControlsInstance)]
 	}
 
-	@Test def void testToolkit() {
-		(factory as FormControlFactory).toolkit.assertNotNull
-	}
 }

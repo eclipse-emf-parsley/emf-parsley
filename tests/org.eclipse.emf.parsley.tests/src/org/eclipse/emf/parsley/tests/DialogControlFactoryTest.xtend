@@ -29,7 +29,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	 */
 	var protected ClassForControls classForControlsInstance
 	
-	var DialogControlFactory factory
+	var protected DialogControlFactory factory
 	
 	@Before
 	def void setupEObject() {

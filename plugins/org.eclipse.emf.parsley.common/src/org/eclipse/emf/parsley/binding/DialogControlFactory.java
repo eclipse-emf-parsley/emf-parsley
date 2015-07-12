@@ -17,13 +17,11 @@
 package org.eclipse.emf.parsley.binding;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.jface.viewers.ComboViewer;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Button;
+import org.eclipse.emf.parsley.widgets.DialogWidgetFactory;
+import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DateTime;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
+
+import com.google.inject.Inject;
 
 /**
  * 
@@ -34,41 +32,17 @@ import org.eclipse.swt.widgets.Text;
  * 
  */
 public class DialogControlFactory extends AbstractControlFactory {
-
-	public DialogControlFactory() {
-
-	}
-
-	@Override
-	public Label createLabel(Composite parent, String text) {
-		Label label = new Label(parent, SWT.NONE);
-		label.setText(text);
-		return label;
-	}
-
-	@Override
-	public Button createButton(Composite parent, String text, int style) {
-		Button button = new Button(parent, style);
-		button.setText(text);
-		return button;
-	}
-
-	@Override
-	public Text createText(Composite parent, String text, int style) {
-		Text t = new Text(parent, style);
-		t.setText(text);
-		return t;
-	}
-
-	@Override
-	public ComboViewer createComboViewer(Composite parent, int style) {
-		ComboViewer combo = new ComboViewer(parent, style);
-		return combo;
-	}
 	
+	@Inject
+	private DialogWidgetFactory dialogWidgetFactory;
+
 	@Override
-	public DateTime createDateTime(Composite parent, int style) {
-		return new DateTime(parent,style);
+	protected IWidgetFactory createWidgetFactory() {
+		return dialogWidgetFactory;
 	}
 
+	@Override
+	public void init(Composite parent) {
+		dialogWidgetFactory.init(parent);
+	}
 }
