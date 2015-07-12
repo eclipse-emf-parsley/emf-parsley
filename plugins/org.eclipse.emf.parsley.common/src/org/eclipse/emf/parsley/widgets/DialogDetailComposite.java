@@ -34,7 +34,7 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 	public DialogDetailComposite(Composite parent, int style) {
 		super(parent, style);
 
-		setLayout(new GridLayout(1, false));
+		setLayout(new GridLayout(2, false));
 	}
 
 	public DialogFeatureCaptionProvider getDialogFeatureCaptionProvider() {
