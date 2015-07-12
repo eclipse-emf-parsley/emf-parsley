@@ -566,6 +566,25 @@ emfMenus{
 
 section:Factories[Factories]
 
+section2:WidgetFactory[Widget Factory]
+
+The actual creation of text field, buttons, labels, etc. is delegated to an
+implementation of codeRef[org.eclipse.emf.parsley.widgets.IWidgetFactory], which has several methods
+like e[createText], e[createLabel], etc.  We provide two implementations of such interface
+
+ul[
+item[codeRef[org.eclipse.emf.parsley.widgets.DialogWidgetFactory]]
+item[codeRef[org.eclipse.emf.parsley.widgets.FormWidgetFactory] which is a specialization of the above,
+specific for forms.]
+]
+
+Usually, you do not need to customize such factories, which are used internally by the framework,
+like in ref:FormControlFactory[] and ref:DialogControFactory[].
+
+You may want to customize such factories in case all your controls must have a specific style;
+in such case, just inherit from our base classes
+(there is no DSL section for such customizations, since they can be made in plain Java easily)
+and bind such custom implementations in the Guice module.
 
 section2:FormControlFactory[Form Control Factory]
 
