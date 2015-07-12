@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.binding.DialogControlFactory;
-import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -24,8 +23,6 @@ import org.eclipse.swt.widgets.Composite;
 import com.google.inject.Inject;
 
 public class DialogDetailComposite extends AbstractDetailComposite {
-
-	protected DialogFeatureCaptionProvider dialogFeatureCaptionProvider;
 
 	protected DialogControlFactory dialogControlFactory;
 
@@ -35,16 +32,6 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		super(parent, style);
 
 		setLayout(new GridLayout(2, false));
-	}
-
-	public DialogFeatureCaptionProvider getDialogFeatureCaptionProvider() {
-		return dialogFeatureCaptionProvider;
-	}
-
-	@Inject
-	public void setDialogFeatureCaptionProviderr(
-			DialogFeatureCaptionProvider formPropertyDescriptionProvider) {
-		this.dialogFeatureCaptionProvider = formPropertyDescriptionProvider;
 	}
 
 	public DialogControlFactory getDialogControlFactory() {
@@ -73,8 +60,7 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 
 	@Override
 	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
-		dialogFeatureCaptionProvider.getLabel(this, eClass, feature);
-		dialogControlFactory.create(feature);
+		dialogControlFactory.createEditingField(feature);
 	}
 
 }

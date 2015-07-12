@@ -13,6 +13,8 @@ package org.eclipse.emf.parsley.binding;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.widgets.FormWidgetFactory;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.swt.widgets.Composite;
@@ -30,15 +32,24 @@ public class FormControlFactory extends DialogControlFactory {
 	@Inject
 	private FormWidgetFactory formWidgetFactory;
 
+	@Inject
+	private FormFeatureCaptionProvider formFeatureCaptionProvider;
+
 	@Override
 	protected IWidgetFactory createWidgetFactory() {
 		return formWidgetFactory;
+	}
+
+	@Override
+	protected FeatureLabelCaptionProvider createFeatureLabelCaptionProvider() {
+		return formFeatureCaptionProvider;
 	}
 
 	public void init(EditingDomain domain, EObject owner, Composite parent, FormToolkit toolkit) {
 		this.toolkit = toolkit;
 		init(domain, owner, parent);
 		formWidgetFactory.init(parent, toolkit);
+		formFeatureCaptionProvider.setFormToolkit(toolkit);
 	}
 
 	public FormToolkit getToolkit() {

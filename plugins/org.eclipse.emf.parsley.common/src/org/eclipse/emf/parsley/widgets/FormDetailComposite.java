@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
-import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -29,8 +28,6 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import com.google.inject.Inject;
 
 public class FormDetailComposite extends AbstractDetailComposite {
-
-	protected FormFeatureCaptionProvider formFeatureCaptionProvider;
 
 	protected FormControlFactory formControlFactory;
 
@@ -52,12 +49,11 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 		scrolledForm = toolkit.createScrolledForm(this);
 		// make sure that the form takes all the space
-		scrolledForm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true,
-				1, 1));
+		scrolledForm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		scrolledForm.getBody().setLayout(new GridLayout(2, false));
 
 		main = scrolledForm.getBody();
-		
+
 		setBackgroundMode(SWT.INHERIT_FORCE);
 	}
 
@@ -65,17 +61,6 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	public void dispose() {
 		super.dispose();
 		toolkit.dispose();
-	}
-
-	public FormFeatureCaptionProvider getFormFeatureCaptionProvider() {
-		return formFeatureCaptionProvider;
-	}
-
-	@Inject
-	public void setFormFeatureCaptionProvider(
-			FormFeatureCaptionProvider formFeatureCaptionProvider) {
-		this.formFeatureCaptionProvider = formFeatureCaptionProvider;
-		this.formFeatureCaptionProvider.setFormToolkit(toolkit);
 	}
 
 	public FormControlFactory getFormControlFactory() {
@@ -119,8 +104,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	@Override
 	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
-		formFeatureCaptionProvider.getLabel(main, eClass, feature);
-		formControlFactory.create(feature);
+		formControlFactory.createEditingField(feature);
 	}
 
 }

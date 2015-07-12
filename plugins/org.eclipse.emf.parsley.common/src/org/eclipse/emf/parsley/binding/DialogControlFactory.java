@@ -17,6 +17,8 @@
 package org.eclipse.emf.parsley.binding;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.widgets.DialogWidgetFactory;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.swt.widgets.Composite;
@@ -32,9 +34,12 @@ import com.google.inject.Inject;
  * 
  */
 public class DialogControlFactory extends AbstractControlFactory {
-	
+
 	@Inject
 	private DialogWidgetFactory dialogWidgetFactory;
+
+	@Inject
+	private DialogFeatureCaptionProvider dialogFeatureCaptionProvider;
 
 	@Override
 	protected IWidgetFactory createWidgetFactory() {
@@ -44,5 +49,10 @@ public class DialogControlFactory extends AbstractControlFactory {
 	@Override
 	public void init(Composite parent) {
 		dialogWidgetFactory.init(parent);
+	}
+
+	@Override
+	protected FeatureLabelCaptionProvider createFeatureLabelCaptionProvider() {
+		return dialogFeatureCaptionProvider;
 	}
 }

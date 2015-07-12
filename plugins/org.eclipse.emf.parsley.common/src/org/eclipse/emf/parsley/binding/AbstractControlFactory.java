@@ -30,6 +30,7 @@ import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
+import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.util.FeatureHelper;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.bindings.keys.KeyStroke;
@@ -91,7 +92,17 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	protected Resource resource;
 	protected EditingDomain domain;
 	protected EMFDataBindingContext edbc;
+
+	/**
+	 * This will be created by the abstract method {@link #createWidgetFactory()}
+	 */
 	protected IWidgetFactory widgetFactory;
+
+	/**
+	 * This will be created by the abstract method
+	 * {@link #createFeatureLabelCaptionProvider()}
+	 */
+	protected FeatureLabelCaptionProvider featureLabelCaptionProvider;
 
 	protected boolean readonly = false;
 
@@ -104,7 +115,22 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	}
 
+	/**
+	 * Concrete implementation should create a {@link IWidgetFactory} according
+	 * to the specific widgets (e.g., for dialogs or forms).
+	 * 
+	 * @return the concrete implementation
+	 */
 	protected abstract IWidgetFactory createWidgetFactory();
+
+	/**
+	 * Concrete implementation should create a
+	 * {@link FeatureLabelCaptionProvider} according to the specific widgets
+	 * (e.g., for dialogs or forms).
+	 * 
+	 * @return the concrete implementation
+	 */
+	protected abstract FeatureLabelCaptionProvider createFeatureLabelCaptionProvider();
 
 	public Provider<ILabelProvider> getLabelProviderProvider() {
 		return labelProviderProvider;
@@ -149,6 +175,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	public void init(EditingDomain domain, EObject owner, Composite parent) {
 		widgetFactory = createWidgetFactory();
 		init(parent);
+		featureLabelCaptionProvider = createFeatureLabelCaptionProvider();
 		this.edbc = new EMFDataBindingContext();
 		this.domain = domain;
 		this.owner = owner;
@@ -161,6 +188,24 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return resource;
 	}
 
+	/**
+	 * Creates a caption label and a {@link Control} for the passed {@link EStructuralFeature}
+	 * of the {@link EObject} handled by this factory.
+	 * 
+	 * @param feature the {@link EStructuralFeature} for the creation
+	 */
+	public void createEditingField(EStructuralFeature feature) {
+		featureLabelCaptionProvider.getLabel(getParent(), owner.eClass(), feature);
+		create(feature);
+	}
+
+	/**
+	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
+	 * of the {@link EObject} handled by this factory.
+	 * 
+	 * @param feature the {@link EStructuralFeature} for the creation of control
+	 * @return a {@link Control}
+	 */
 	public Control create(EStructuralFeature feature) {
 		Control control = null;
 
