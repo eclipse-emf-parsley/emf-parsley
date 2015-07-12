@@ -1,7 +1,7 @@
 package org.eclipse.emf.parsley.examples.mail.messageview;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.binding.FormControlFactory;
+import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.examples.mail.messageview.binding.FormControlFactoryGen;
 import org.eclipse.emf.parsley.examples.mail.messageview.ui.provider.FeatureCaptionProviderGen;
 import org.eclipse.emf.parsley.examples.mail.messageview.ui.provider.FeaturesProviderGen;

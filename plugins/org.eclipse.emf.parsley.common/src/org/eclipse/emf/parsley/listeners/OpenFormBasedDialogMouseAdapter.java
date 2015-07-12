@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.listeners;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.dialogs.DetailFormBasedDialog;
-import org.eclipse.emf.parsley.factories.DialogFactory;
+import org.eclipse.emf.parsley.dialogs.DialogFactory;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.widgets.Shell;

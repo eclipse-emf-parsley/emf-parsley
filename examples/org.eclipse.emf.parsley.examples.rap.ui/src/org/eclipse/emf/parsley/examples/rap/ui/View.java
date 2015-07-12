@@ -12,9 +12,9 @@ package org.eclipse.emf.parsley.examples.rap.ui;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.emf.parsley.factories.TreeFormFactory;
+import org.eclipse.emf.parsley.composite.TreeFormComposite;
+import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.emf.parsley.resource.ResourceManager;
-import org.eclipse.emf.parsley.widgets.TreeFormComposite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;

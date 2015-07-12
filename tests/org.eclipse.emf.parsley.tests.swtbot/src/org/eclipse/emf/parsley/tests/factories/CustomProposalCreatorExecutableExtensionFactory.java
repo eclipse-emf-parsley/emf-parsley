@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.tests.factories;
 
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.binding.ProposalCreator;
+import org.eclipse.emf.parsley.composite.ProposalCreator;
 import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 import org.eclipse.emf.parsley.tests.binding.CustomProposalCreator;
 

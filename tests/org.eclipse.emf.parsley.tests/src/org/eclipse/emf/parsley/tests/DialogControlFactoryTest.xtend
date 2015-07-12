@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.binding.DialogControlFactory
-import org.eclipse.emf.parsley.binding.MultipleFeatureControl
-import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.composite.DialogControlFactory
+import org.eclipse.emf.parsley.composite.MultipleFeatureControl
+import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls
 import org.junit.Before

@@ -18,11 +18,11 @@ import java.util.List;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.emf.parsley.binding.DatabindingUtil;
-import org.eclipse.emf.parsley.binding.FormControlFactory;
+import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;

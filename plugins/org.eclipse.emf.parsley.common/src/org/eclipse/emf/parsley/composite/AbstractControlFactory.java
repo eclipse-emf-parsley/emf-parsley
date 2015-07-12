@@ -10,7 +10,7 @@
  *   Lorenzo Bettini, Francesco Guidieri - refactoring for EmfParsley
  *
  */
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.composite;
 
 import java.util.List;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
+import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.emf.parsley.util.FeatureHelper;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.bindings.keys.KeyStroke;

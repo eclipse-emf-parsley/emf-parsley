@@ -14,7 +14,7 @@
  * </copyright>
  *
  */
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.composite;
 
 import java.util.ArrayList;
 import java.util.Iterator;

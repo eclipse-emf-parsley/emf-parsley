@@ -9,7 +9,7 @@
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini - refactoring for EmfParsley
  *******************************************************************************/
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.core.databinding.observable.value.AbstractObservableValue;
 import org.eclipse.core.databinding.observable.value.ValueDiff;

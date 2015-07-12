@@ -9,7 +9,7 @@
  * Francesco Guidieri - initial API and implementation
  * Lorenzo Bettini - aligned to other composites
  *******************************************************************************/
-package org.eclipse.emf.parsley.widgets;
+package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.builders.TableViewerBuilder;

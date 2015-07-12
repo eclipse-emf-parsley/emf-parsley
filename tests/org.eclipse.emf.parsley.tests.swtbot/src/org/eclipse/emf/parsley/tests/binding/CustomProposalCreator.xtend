@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.binding
 
-import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 
 class CustomProposalCreator extends ProposalCreator {

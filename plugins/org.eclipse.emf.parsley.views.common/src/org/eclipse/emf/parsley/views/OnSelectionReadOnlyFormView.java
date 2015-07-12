@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-import org.eclipse.emf.parsley.widgets.FormDetailComposite;
+import org.eclipse.emf.parsley.composite.FormDetailComposite;
 import org.eclipse.swt.SWT;
 
 /**

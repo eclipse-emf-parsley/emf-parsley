@@ -13,7 +13,7 @@ import $packageName$.$prefixClassesname$CDOSessionManager;
 import org.eclipse.emf.parsley.cdo.CDOEmfParsleyModule;
 import org.eclipse.emf.parsley.cdo.CDOSessionManager;
 import org.eclipse.emf.parsley.view.masterdetail.ViewConfigurator;
-import org.eclipse.emf.parsley.binding.FormControlFactory;
+import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.ui.provider.FormPropertyDescriptionProvider;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;

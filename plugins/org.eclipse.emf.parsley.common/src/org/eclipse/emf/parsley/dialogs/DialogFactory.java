@@ -8,14 +8,12 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.factories;
+package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.dialogs.DetailDialog;
-import org.eclipse.emf.parsley.dialogs.DetailFormBasedDialog;
-import org.eclipse.emf.parsley.widgets.AbstractDetailComposite;
-import org.eclipse.emf.parsley.widgets.DialogDetailComposite;
+import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
+import org.eclipse.emf.parsley.composite.DialogDetailComposite;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 

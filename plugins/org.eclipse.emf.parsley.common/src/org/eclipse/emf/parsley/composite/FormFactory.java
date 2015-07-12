@@ -8,11 +8,9 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.factories;
+package org.eclipse.emf.parsley.composite;
 
 
-import org.eclipse.emf.parsley.widgets.FormDetailComposite;
-import org.eclipse.emf.parsley.widgets.FormDetailReadOnlyComposite;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;

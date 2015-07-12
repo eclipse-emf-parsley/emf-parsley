@@ -15,9 +15,9 @@ import java.util.HashMap
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.emf.parsley.binding.DialogControlFactory
-import org.eclipse.emf.parsley.binding.FormControlFactory
-import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.composite.DialogControlFactory
+import org.eclipse.emf.parsley.composite.FormControlFactory
+import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider

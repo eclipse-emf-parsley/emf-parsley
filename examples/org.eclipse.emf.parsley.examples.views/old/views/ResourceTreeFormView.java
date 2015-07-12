@@ -7,8 +7,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.examples.views;
 
-import org.eclipse.emf.parsley.factories.TreeFormFactory;
-import org.eclipse.emf.parsley.widgets.TreeFormComposite;
+import org.eclipse.emf.parsley.composite.TreeFormFactory;
+import org.eclipse.emf.parsley.composite.TreeFormComposite;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;

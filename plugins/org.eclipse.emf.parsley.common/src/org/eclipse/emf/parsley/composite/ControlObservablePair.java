@@ -9,7 +9,7 @@
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.swt.widgets.Control;

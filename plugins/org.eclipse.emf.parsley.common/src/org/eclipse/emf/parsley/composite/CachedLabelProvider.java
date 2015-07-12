@@ -9,7 +9,7 @@
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini - refactoring for EmfParsley
  *******************************************************************************/
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.composite;
 
 import java.util.HashMap;
 import java.util.Map;

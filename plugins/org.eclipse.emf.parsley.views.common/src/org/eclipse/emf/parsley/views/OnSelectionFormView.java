@@ -12,8 +12,8 @@ package org.eclipse.emf.parsley.views;
 
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.parsley.factories.FormFactory;
-import org.eclipse.emf.parsley.widgets.FormDetailComposite;
+import org.eclipse.emf.parsley.composite.FormDetailComposite;
+import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;

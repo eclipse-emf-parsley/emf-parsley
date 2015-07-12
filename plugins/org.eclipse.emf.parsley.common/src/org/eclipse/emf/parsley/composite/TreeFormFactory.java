@@ -8,14 +8,13 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.factories;
+package org.eclipse.emf.parsley.composite;
 
 
 import java.util.List;
 
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
-import org.eclipse.emf.parsley.widgets.TreeFormComposite;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;

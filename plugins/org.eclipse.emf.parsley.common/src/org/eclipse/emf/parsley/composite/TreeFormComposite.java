@@ -9,7 +9,7 @@
  * Lorenzo Bettini - initial API and implementation
  * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.widgets;
+package org.eclipse.emf.parsley.composite;
 
 
 import org.eclipse.jface.viewers.StructuredViewer;

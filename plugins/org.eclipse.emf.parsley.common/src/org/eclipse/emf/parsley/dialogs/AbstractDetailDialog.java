@@ -15,7 +15,7 @@ package org.eclipse.emf.parsley.dialogs;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.widgets.AbstractDetailComposite;
+import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.layout.GridDataFactory;

@@ -14,8 +14,8 @@ Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibili
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.parsley,
- org.eclipse.emf.parsley.binding,
  org.eclipse.emf.parsley.builders,
+ org.eclipse.emf.parsley.composite,
  org.eclipse.emf.parsley.config,
  org.eclipse.emf.parsley.dialogs,
  org.eclipse.emf.parsley.ecore,

@@ -7,8 +7,8 @@
  *******************************************************************************/
 package $packageName$.internal.guice;
 
-import org.eclipse.emf.parsley.binding.ControlObservablePair;
-import org.eclipse.emf.parsley.binding.FormControlFactory;
+import org.eclipse.emf.parsley.composite.ControlObservablePair;
+import org.eclipse.emf.parsley.composite.FormControlFactory;
 
 //import org.eclipse.emf.ecore.EStructuralFeature;
 //import org.eclipse.jface.databinding.swt.SWTObservables;

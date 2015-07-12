@@ -1,6 +1,6 @@
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.factories.TreeFormFactory
+import org.eclipse.emf.parsley.composite.TreeFormFactory
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.swt.SWT
 import org.junit.Test

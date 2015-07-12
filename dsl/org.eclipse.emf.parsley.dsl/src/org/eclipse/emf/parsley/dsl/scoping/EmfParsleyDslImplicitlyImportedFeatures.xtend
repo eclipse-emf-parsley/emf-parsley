@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.scoping
 
-import org.eclipse.emf.parsley.binding.DatabindingUtil
+import org.eclipse.emf.parsley.util.DatabindingUtil
 import org.eclipse.swt.widgets.Widget
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures
 

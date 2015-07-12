@@ -13,8 +13,8 @@ package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.factories.FormFactory;
-import org.eclipse.emf.parsley.widgets.AbstractDetailComposite;
+import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
+import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;

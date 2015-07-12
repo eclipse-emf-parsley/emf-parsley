@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.core.databinding.observable.value.AbstractObservableValue;
 import org.eclipse.emf.ecore.EObject;

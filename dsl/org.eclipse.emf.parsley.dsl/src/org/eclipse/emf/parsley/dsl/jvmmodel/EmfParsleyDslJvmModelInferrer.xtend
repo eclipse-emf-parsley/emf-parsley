@@ -23,9 +23,9 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.emf.parsley.binding.DialogControlFactory
-import org.eclipse.emf.parsley.binding.FormControlFactory
-import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.composite.DialogControlFactory
+import org.eclipse.emf.parsley.composite.FormControlFactory
+import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.config.Configurator
 import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel

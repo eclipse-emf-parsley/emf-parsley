@@ -11,8 +11,8 @@
 package org.eclipse.emf.parsley.tests.factories;
 
 
-import org.eclipse.emf.parsley.binding.FormControlFactory;
-import org.eclipse.emf.parsley.binding.ProposalCreator;
+import org.eclipse.emf.parsley.composite.FormControlFactory;
+import org.eclipse.emf.parsley.composite.ProposalCreator;
 import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.tests.EmfParsleyGuiceModuleWithConfigurator;
 import org.eclipse.emf.parsley.tests.binding.CustomLibraryFormControlFactory;

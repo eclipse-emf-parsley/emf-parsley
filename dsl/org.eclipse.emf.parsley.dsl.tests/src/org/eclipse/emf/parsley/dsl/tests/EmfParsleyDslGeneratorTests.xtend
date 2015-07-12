@@ -919,7 +919,7 @@ package my.empty;
 
 import my.empty.binding.FormControlFactoryGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.binding.FormControlFactory;
+import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
@@ -942,12 +942,12 @@ import java.util.List;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.parsley.binding.DatabindingUtil;
-import org.eclipse.emf.parsley.binding.FormControlFactory;
+import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -1051,7 +1051,7 @@ package my.empty;
 
 import my.empty.binding.DialogControlFactoryGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.binding.DialogControlFactory;
+import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
@@ -1074,12 +1074,12 @@ import java.util.List;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.parsley.binding.DatabindingUtil;
-import org.eclipse.emf.parsley.binding.DialogControlFactory;
+import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -1281,7 +1281,7 @@ package my.empty;
 
 import my.empty.binding.ProposalCreatorGen;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.binding.ProposalCreator;
+import org.eclipse.emf.parsley.composite.ProposalCreator;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
@@ -1302,7 +1302,7 @@ package my.empty.binding;
 
 import java.util.List;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.binding.ProposalCreator;
+import org.eclipse.emf.parsley.composite.ProposalCreator;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;

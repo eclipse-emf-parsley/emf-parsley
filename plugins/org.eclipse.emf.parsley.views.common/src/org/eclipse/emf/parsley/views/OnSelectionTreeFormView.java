@@ -11,8 +11,8 @@
 package org.eclipse.emf.parsley.views;
 
 
-import org.eclipse.emf.parsley.factories.TreeFormFactory;
-import org.eclipse.emf.parsley.widgets.TreeFormComposite;
+import org.eclipse.emf.parsley.composite.TreeFormComposite;
+import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;

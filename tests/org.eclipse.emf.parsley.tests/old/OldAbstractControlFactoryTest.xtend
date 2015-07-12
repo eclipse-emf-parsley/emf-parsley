@@ -12,11 +12,11 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.parsley.binding.AbstractControlFactory
-import org.eclipse.emf.parsley.binding.DialogControlFactory
-import org.eclipse.emf.parsley.binding.FormControlFactory
-import org.eclipse.emf.parsley.binding.MultipleFeatureControl
-import org.eclipse.emf.parsley.binding.ProposalCreator
+import org.eclipse.emf.parsley.composite.AbstractControlFactory
+import org.eclipse.emf.parsley.composite.DialogControlFactory
+import org.eclipse.emf.parsley.composite.FormControlFactory
+import org.eclipse.emf.parsley.composite.MultipleFeatureControl
+import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesTestRule

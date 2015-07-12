@@ -14,7 +14,7 @@
  * </copyright>
  *
  */
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.binding.DialogControlFactory
+import org.eclipse.emf.parsley.composite.DialogControlFactory
 
 class DialogControlFactoryAsWidgetFactoryTest extends DialogWidgetFactoryTest {
 

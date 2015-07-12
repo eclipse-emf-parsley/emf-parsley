@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.widgets;
+package org.eclipse.emf.parsley.composite;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.binding.FormControlFactory
+import org.eclipse.emf.parsley.composite.FormControlFactory
 import org.junit.Test
 
 import static extension org.junit.Assert.*

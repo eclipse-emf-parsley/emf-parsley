@@ -451,7 +451,7 @@ proposals{
 }
 ]
  
-This customization can be done also in Java, by extending the class codeRef[org.eclipse.emf.parsley.binding.ProposalCreator]
+This customization can be done also in Java, by extending the class codeRef[org.eclipse.emf.parsley.composite.ProposalCreator]
 and implementing the method code[Java][public List<?> proposals_Book_author(Book book) {...}].  This
 method follows the same convention on the signature name as explained in ref:FeatureCaptionProvider[Feature
 Provider].
@@ -613,7 +613,7 @@ formControlFactory {
 For each pair EClass, EStructuralFeature you can either simply return a Control or specify also the target
 for the databinding (see some examples above).
  
-If you want to customize the controls in Java, you can extend the class codeRef[org.eclipse.emf.parsley.binding.FormControlFactory].
+If you want to customize the controls in Java, you can extend the class codeRef[org.eclipse.emf.parsley.composite.FormControlFactory].
 Using the same polimorphic mechanism of the labels, the programmer can write a method with the keyword e['control']
 followed by the EClass and EStructuralFeature undescore-character-separated. The method
 must accept as parameters the e[DataBinding Context] and the e[Feature Observable] that can be used for databinding. 

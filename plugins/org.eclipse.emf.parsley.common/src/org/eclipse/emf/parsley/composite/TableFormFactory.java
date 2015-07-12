@@ -8,11 +8,10 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.factories;
+package org.eclipse.emf.parsley.composite;
 
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.widgets.TableFormComposite;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;

@@ -8,14 +8,13 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.widgets;
+package org.eclipse.emf.parsley.composite;
 
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.binding.FormControlFactory;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
