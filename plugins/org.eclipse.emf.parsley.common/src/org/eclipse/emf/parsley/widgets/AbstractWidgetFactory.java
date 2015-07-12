@@ -9,7 +9,7 @@
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.parsley.binding;
+package org.eclipse.emf.parsley.widgets;
 
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.SWT;
@@ -20,63 +20,82 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * An abstraction for creating {@link Label}, {@link Text}, {@link Button}, etc.
- * It will be implemented creating standard controls and form controls.
+ * An implementation of {@link IWidgetFactory} with some defaults for some
+ * overloaded methods.
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-public abstract class AbstractWidgetFactory {
-	
+public abstract class AbstractWidgetFactory implements IWidgetFactory {
+
 	protected Composite parent = null;
-	
-	protected void init(Composite parent) {
+
+	@Override
+	public void init(Composite parent) {
 		this.parent = parent;
 	}
 
+	@Override
 	public Label createLabel(String text) {
 		return createLabel(parent, text);
 	}
 
+	@Override
 	public abstract Label createLabel(Composite parent, String text);
 
-	public Button createButton(String text, int...styles) {
+	@Override
+	public Button createButton(String text, int... styles) {
 		return createButton(parent, text, aggregateStyles(styles));
 	}
 
+	@Override
 	public abstract Button createButton(Composite parent, String text, int style);
 
+	@Override
 	public Text createText(String text) {
 		return createText(parent, text);
 	}
 
-	public Text createText(String text, int...styles) {
+	@Override
+	public Text createText(String text, int... styles) {
 		return createText(parent, text, aggregateStyles(styles));
 	}
 
+	@Override
 	public Text createText(Composite parent, String text) {
 		return createText(parent, text, SWT.BORDER);
 	}
 
+	@Override
 	public abstract Text createText(Composite parent, String text, int style);
 
-	public ComboViewer createComboViewer(int...styles) {
+	@Override
+	public ComboViewer createComboViewer(int... styles) {
 		return createComboViewer(parent, aggregateStyles(styles));
 	}
 
+	@Override
 	public abstract ComboViewer createComboViewer(Composite parent, int style);
 
+	@Override
 	public DateTime createDateTime() {
 		return createDateTime(parent, SWT.DROP_DOWN);
 	}
-	
+
+	@Override
+	public DateTime createDateTime(int... styles) {
+		return createDateTime(parent, aggregateStyles(styles));
+	}
+
+	@Override
 	public DateTime createDateTime(Composite parent) {
 		return createDateTime(parent, SWT.DROP_DOWN);
 	}
-	
+
+	@Override
 	public abstract DateTime createDateTime(Composite parent, int style);
-	
-	protected int aggregateStyles(int...styles) {
+
+	protected int aggregateStyles(int... styles) {
 		int result = 0;
 		for (int s : styles) {
 			result |= s;
@@ -84,6 +103,7 @@ public abstract class AbstractWidgetFactory {
 		return result;
 	}
 
+	@Override
 	public Composite getParent() {
 		return parent;
 	}

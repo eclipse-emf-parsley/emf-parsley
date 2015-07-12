@@ -35,6 +35,8 @@ import org.junit.runners.Suite;
 	ViewerLabelProviderTest.class,
 	TableColumnLabelProviderTest.class,
 	FeatureHelperTest.class,
+	DialogWidgetFactoryTest.class,
+	FormWidgetFactoryTest.class,
 	DialogControlFactoryTest.class,
 	CustomDialogControlFactoryTest.class,
 	FormControlFactoryTest.class,

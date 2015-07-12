@@ -31,6 +31,7 @@ import org.eclipse.emf.parsley.binding.ProposalCreator;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm;
 import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
@@ -38,6 +39,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -135,6 +137,30 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 				assertEquals(checked, button.getSelection());
 			}
 		});
+	}
+
+	protected void assertLabel(final Control control, final String expectedText) {
+		assertControlClass(control, Label.class);
+		final Label label = ((Label) control);
+		syncExecVoid(new Runnable() {
+			@Override
+			public void run() {
+				assertEquals(expectedText, label.getText());
+			}
+		});
+	}
+
+	protected void assertStyle(final Control control, final int expectedStyle) {
+		syncExecVoid(new Runnable() {
+			@Override
+			public void run() {
+				assertTrue((control.getStyle() & expectedStyle) > 0);
+			}
+		});
+	}
+
+	protected void assertStyle(final ComboViewer comboViewer, final int expectedStyle) {
+		assertStyle(comboViewer.getCombo(), expectedStyle);
 	}
 
 	protected void assertEnabled(final Control control,

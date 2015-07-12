@@ -23,6 +23,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
+import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -62,7 +63,7 @@ public class MultipleFeatureControl extends Composite {
 
 	private Button button;
 
-	public MultipleFeatureControl(final Composite parent, AbstractWidgetFactory widgetFactory, final ILabelProvider labelProvider,
+	public MultipleFeatureControl(final Composite parent, IWidgetFactory widgetFactory, final ILabelProvider labelProvider,
 			final EObject object, final EStructuralFeature feature, final ProposalCreator proposalcreator,
 			boolean readonly) {
 		super(parent, SWT.NONE);
