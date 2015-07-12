@@ -74,7 +74,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	@Inject
 	@Named(EmfParsleyConstants.CONTENT_ASSIST_SHORTCUT)
 	private String contentAssistShortcut;
-	
+
 	@Inject
 	private Provider<ILabelProvider> labelProviderProvider;
 
@@ -88,9 +88,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected Resource resource;
 	protected EditingDomain domain;
 	protected EMFDataBindingContext edbc;
-	
+
 	protected boolean readonly = false;
-	
+
 	public static final String EOBJECT_KEY = EcorePackage.Literals.EOBJECT
 			.getName();
 	public static final String ESTRUCTURALFEATURE_KEY = EcorePackage.Literals.ESTRUCTURAL_FEATURE
@@ -107,7 +107,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	protected ILabelProvider createLabelProvider() {
 		return getLabelProviderProvider().get();
 	}
-	
+
 	public ProposalCreator getProposalCreator() {
 		return proposalCreator;
 	}
@@ -166,9 +166,9 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			}
 			setupControl(feature, control);
 		}
-		
+
 		registerUndo(control);
-		
+
 		return control;
 	}
 
@@ -192,11 +192,11 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 	}
 
 	private IObservableValue createFeatureObserveable(final EStructuralFeature feature) {
-		IObservableValue source=polymorphicCreateObserveable(domain, feature);
-		if(source==null){	
-			if (domain != null){
+		IObservableValue source = polymorphicCreateObserveable(domain, feature);
+		if (source == null) {
+			if (domain != null) {
 				source = EMFEditProperties.value(domain, feature).observe(owner);
-			}else{
+			} else {
 				source = EMFProperties.value(feature).observe(owner);
 			}
 		}
@@ -216,10 +216,10 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		return new ControlObservablePair(mfc, target);
 	}
-	
+
 	Control createAndBindValue(EStructuralFeature feature) {
 		IObservableValue featureObservable = createFeatureObserveable(feature);
-		
+
 		Control control = polymorphicCreateControl(feature, featureObservable);
 		if (control != null) {
 			return control;
@@ -233,7 +233,7 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 		if (controlObservable != null) {
 			edbc.bindValue(controlObservable, featureObservable, null, null);
 		}
-		
+
 		return retVal;
 	}
 
@@ -362,7 +362,6 @@ public abstract class AbstractControlFactory extends AbstractWidgetFactory {
 			c.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		}
 	}
-
 
 	public void dispose() {
 		edbc.dispose();
