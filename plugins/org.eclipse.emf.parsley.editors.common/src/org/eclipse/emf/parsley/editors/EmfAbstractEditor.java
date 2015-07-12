@@ -832,7 +832,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * 
 	 * @generated
 	 */
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
