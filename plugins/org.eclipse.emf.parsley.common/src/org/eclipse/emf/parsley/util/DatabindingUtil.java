@@ -26,6 +26,10 @@ import org.eclipse.swt.widgets.Widget;
  */
 public class DatabindingUtil {
 
+	protected DatabindingUtil() {
+
+	}
+
 	/**
 	 * Returns an observable observing the text attribute of the provided
 	 * <code>control</code>. The supported types are:

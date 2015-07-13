@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.EmfParsleyConstants
 import org.junit.Test
+import org.eclipse.emf.parsley.util.DatabindingUtil
 
 class ProtectedConstructorTest {
 	
@@ -20,6 +21,9 @@ class ProtectedConstructorTest {
 		// for the protected constructor of EmfParsleyConstants
 		// and the protected constructor is "required" by sonar...
 		new EmfParsleyConstants() {
+			
+		}
+		new DatabindingUtil() {
 			
 		}
 	}

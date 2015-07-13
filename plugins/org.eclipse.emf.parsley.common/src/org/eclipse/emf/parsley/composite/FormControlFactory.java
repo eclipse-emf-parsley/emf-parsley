@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
@@ -23,7 +22,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import com.google.inject.Inject;
 
 /**
- * Creates Control for an {@link EStructuralFeature}
+ * A customization for forms.
  */
 public class FormControlFactory extends DialogControlFactory {
 

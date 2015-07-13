@@ -16,7 +16,6 @@
  */
 package org.eclipse.emf.parsley.composite;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.widgets.DialogWidgetFactory;
@@ -26,8 +25,7 @@ import org.eclipse.swt.widgets.Composite;
 import com.google.inject.Inject;
 
 /**
- * 
- * Creates Control for an {@link EStructuralFeature}
+ * An implementation specific for dialogs.
  * 
  * @author Dennis Huebner initial code
  * @author Lorenzo Bettini refactoring for EmfParsley
