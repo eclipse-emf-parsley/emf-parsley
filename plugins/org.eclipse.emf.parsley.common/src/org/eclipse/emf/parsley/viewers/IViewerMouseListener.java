@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.listeners;
+package org.eclipse.emf.parsley.viewers;
 
 import org.eclipse.swt.events.MouseListener;
 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.listeners;
 
+import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.swt.events.MouseListener;
 
 /**

@@ -40,7 +40,6 @@ import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelPro
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
-import org.eclipse.emf.parsley.listeners.IViewerMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
 import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
@@ -65,6 +64,7 @@ import org.eclipse.emf.parsley.validation.LogIssueReporter;
 import org.eclipse.emf.parsley.validation.ValidationRunner;
 import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory;
+import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.emf.parsley.viewers.TableViewerBuilder;
 import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
