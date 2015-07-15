@@ -9,6 +9,8 @@ If you get compiler errors, a simple "Organize Imports" should fix
 the imports.  If you use the DSL a simple regeneration should fix things.]
 item[e[IViewerMouseListener] has been moved from the e[listeners]
 package to the e[viewers] package.]
+item[classes in e[editor.outline] have been moved into e[editors]
+package.]
 ]
 
 section:ThreeFour[From 0.3 to 0.4]

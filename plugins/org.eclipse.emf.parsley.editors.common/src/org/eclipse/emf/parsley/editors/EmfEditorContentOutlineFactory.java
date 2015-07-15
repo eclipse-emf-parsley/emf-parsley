@@ -8,9 +8,8 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.editors.outline;
+package org.eclipse.emf.parsley.editors;
 
-import org.eclipse.emf.parsley.editors.EmfAbstractEditor;
 import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 
 

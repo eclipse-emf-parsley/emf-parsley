@@ -68,8 +68,6 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
-import org.eclipse.emf.parsley.editors.outline.EmfEditorContentOutlineFactory;
-import org.eclipse.emf.parsley.editors.outline.EmfEditorContentOutlinePage;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
