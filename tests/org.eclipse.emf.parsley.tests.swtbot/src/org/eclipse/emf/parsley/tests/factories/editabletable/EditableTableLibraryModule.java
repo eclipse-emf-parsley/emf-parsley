@@ -9,9 +9,9 @@
  * Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.factories.editabletable;
-import org.eclipse.emf.parsley.builders.TableViewerColumnBuilder;
-import org.eclipse.emf.parsley.builders.TableViewerEditableColumnBuilder;
 import org.eclipse.emf.parsley.tests.factories.CustomLibraryModule;
+import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
+import org.eclipse.emf.parsley.viewers.TableViewerEditableColumnBuilder;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 public final class EditableTableLibraryModule extends

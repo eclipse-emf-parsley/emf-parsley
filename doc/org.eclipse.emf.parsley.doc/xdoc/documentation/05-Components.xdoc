@@ -133,7 +133,7 @@ code[Java][
 tableViewer = viewerFactory.createTableViewer(composite,SWT.BORDER | SWT.FULL_SELECTION, object, eClass);
 ]
 
-The class codeRef[org.eclipse.emf.parsley.builders.TableViewerColumnBuilder] has the responsibility to
+The class codeRef[org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder] has the responsibility to
 build the columns of the Table, by using the ref:FeaturesProvider[Features Provider] to get the list
 of features and the ref:FeatureCaptionProvider[Feature Caption Provider] for the column headers.
 The class codeRef[org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider] can be used to specify

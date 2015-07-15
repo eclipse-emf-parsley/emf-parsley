@@ -9,7 +9,7 @@
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.parsley.builders;
+package org.eclipse.emf.parsley.viewers;
 
 
 import java.util.List;
@@ -18,7 +18,6 @@ import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
-import org.eclipse.emf.parsley.factories.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;

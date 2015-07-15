@@ -1,5 +1,14 @@
 chapter:MigrationGuide[Migration Guide]
 
+section:FourFive[From 0.4 to 0.5]
+
+ul[
+item[the packages e[factories] and e[builders] have been removed
+and their classes have been moved to other packages.
+If you get compiler errors, a simple "Organize Imports" should fix
+the imports.  If you use the DSL a simple regeneration should fix things.]
+]
+
 section:ThreeFour[From 0.3 to 0.4]
 
 ul[

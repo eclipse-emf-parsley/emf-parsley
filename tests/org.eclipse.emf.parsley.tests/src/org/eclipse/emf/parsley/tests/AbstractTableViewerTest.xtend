@@ -11,7 +11,7 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.parsley.builders.TableViewerBuilder
+import org.eclipse.emf.parsley.viewers.TableViewerBuilder
 import org.eclipse.jface.viewers.TableViewer
 import org.eclipse.swt.SWT
 import org.junit.Before

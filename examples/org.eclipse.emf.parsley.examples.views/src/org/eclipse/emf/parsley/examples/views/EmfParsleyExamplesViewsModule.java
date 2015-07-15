@@ -12,8 +12,8 @@ package org.eclipse.emf.parsley.examples.views;
 
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.builders.TableViewerColumnBuilder;
-import org.eclipse.emf.parsley.builders.TableViewerEditableColumnBuilder;
+import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
+import org.eclipse.emf.parsley.viewers.TableViewerEditableColumnBuilder;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 public class EmfParsleyExamplesViewsModule extends EmfParsleyGuiceModule {

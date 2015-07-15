@@ -8,7 +8,7 @@
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.builders;
+package org.eclipse.emf.parsley.viewers;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

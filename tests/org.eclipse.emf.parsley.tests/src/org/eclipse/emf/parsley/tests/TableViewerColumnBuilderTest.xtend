@@ -11,7 +11,7 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
-import org.eclipse.emf.parsley.builders.TableViewerBuilder
+import org.eclipse.emf.parsley.viewers.TableViewerBuilder
 import org.eclipse.jface.viewers.ColumnLayoutData
 import org.eclipse.jface.viewers.ColumnWeightData
 import org.eclipse.swt.widgets.Layout
