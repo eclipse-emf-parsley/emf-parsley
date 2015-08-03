@@ -26,6 +26,13 @@ module my.empty extends org.eclipse.emf.parsley.dsl.tests.additional.MyTestGuice
 }
 '''
 
+	def moduleWithExtendsJavaGuiceModule() 
+'''
+module my.empty extends org.eclipse.emf.parsley.dsl.tests.additional.MyTestJavaGuiceModule {
+	
+}
+'''
+
 	def emptyLabelProvider() 
 '''
 module my.empty {

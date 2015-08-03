@@ -14,15 +14,18 @@ import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
+import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
 import org.eclipse.emf.parsley.composite.DialogControlFactory
 import org.eclipse.emf.parsley.composite.FormControlFactory
 import org.eclipse.emf.parsley.composite.ProposalCreator
+import org.eclipse.emf.parsley.config.Configurator
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.resource.ResourceManager
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
@@ -43,9 +46,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
-import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
-import org.eclipse.emf.parsley.config.Configurator
-import org.eclipse.emf.parsley.resource.ResourceManager
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
@@ -96,7 +96,7 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 		inputsWithErrors.notValidModuleExtends.parseModel.
 			assertTypeMismatch(
 				ModelPackage.eINSTANCE.extendsClause,
-				EmfParsleyGuiceModule,
+				EmfParsleyJavaGuiceModule,
 				Library
 			)
 	}

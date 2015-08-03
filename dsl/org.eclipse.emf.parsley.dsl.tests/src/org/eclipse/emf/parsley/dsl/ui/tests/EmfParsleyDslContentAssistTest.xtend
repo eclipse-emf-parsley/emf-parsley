@@ -12,6 +12,8 @@ package org.eclipse.emf.parsley.dsl.ui.tests
 
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule
+import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslUiInjectorProvider
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
 import org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator
@@ -20,14 +22,14 @@ import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
 import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.ui.ContentAssistProcessorTestBuilder
 import org.eclipse.xtext.xbase.junit.ui.AbstractContentAssistTest
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
-import org.eclipse.xtext.junit4.ui.ContentAssistProcessorTestBuilder
-import static extension org.junit.Assert.*
+
+import static org.junit.Assert.*
 
 /**
  * @author Lorenzo Bettini
@@ -152,8 +154,11 @@ module my.test.proj {
 	@Test def void testProposalsForModuleExtends() {
 		newBuilder.append(
 '''module my.test.proj extends '''
-		).assertText(EmfParsleyGuiceModule.canonicalName)
-		// that's the only possible completion in this test
+		).assertText(
+			EmfParsleyGuiceModule.canonicalName,
+			EmfParsleyJavaGuiceModule.canonicalName
+		)
+		// these are the the only possible completions in this test
 	}
 
 	@Test def void testProposalForTypeInViewSpecification() {

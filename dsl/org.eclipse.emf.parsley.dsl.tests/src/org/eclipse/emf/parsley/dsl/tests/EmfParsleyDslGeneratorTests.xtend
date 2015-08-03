@@ -57,7 +57,7 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 	def testModuleWithExtends() {
 		inputs.moduleWithExtends.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
-expectedModule = 			
+expectedModule =
 '''
 package my.empty;
 
@@ -68,6 +68,28 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class EmfParsleyGuiceModuleGen extends MyTestGuiceModule {
   public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
     super(plugin);
+  }
+}
+''']
+		)
+	}
+
+	@Test
+	def testModuleWithExtendsJavaGuiceModule() {
+		// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=474140
+		inputs.moduleWithExtendsJavaGuiceModule.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import org.eclipse.emf.parsley.dsl.tests.additional.MyTestJavaGuiceModule;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends MyTestJavaGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    // not used
   }
 }
 ''']

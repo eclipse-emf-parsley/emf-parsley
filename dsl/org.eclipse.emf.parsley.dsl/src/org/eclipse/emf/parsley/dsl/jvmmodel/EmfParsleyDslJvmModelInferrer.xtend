@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.dsl.jvmmodel
 
 import com.google.inject.Inject
 import com.google.inject.Provider
+import java.io.IOException
 import java.util.List
 import org.eclipse.core.databinding.DataBindingContext
 import org.eclipse.core.databinding.observable.value.IObservableValue
@@ -41,6 +42,7 @@ import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.model.WithFields
+import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
@@ -75,7 +77,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import java.io.IOException
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -97,6 +98,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension TypesFactory
 	
 	@Inject extension EmfParsleyDslGeneratorUtils
+
+	@Inject extension EmfParsleyDslTypeSystem
 
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
@@ -148,7 +151,16 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			
 			members += element.toConstructor() [
 				parameters += element.toParameter("plugin", typeRef(AbstractUIPlugin))
-				body = [it.append("super(plugin);")]
+				// EmfParsleyJavaGuiceModule does not have a constructor with AbstractUIPlugin
+				// so we must not call super in the generated constructor
+				// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=474140 
+				val extendsClause = element.extendsClause
+				if (extendsClause != null && 
+					!(element.isConformant(EmfParsleyGuiceModule, extendsClause.superType))) {
+					body = '''// not used'''
+				} else {
+					body = '''super(plugin);'''
+				}
 			]
 
 			val bindingsSpecification = element.bindingsSpecification

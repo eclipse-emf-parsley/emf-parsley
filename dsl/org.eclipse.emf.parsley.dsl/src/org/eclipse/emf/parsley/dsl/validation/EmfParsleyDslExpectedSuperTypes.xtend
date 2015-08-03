@@ -14,11 +14,14 @@ import com.google.inject.Singleton
 import java.util.HashMap
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule
+import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
 import org.eclipse.emf.parsley.composite.DialogControlFactory
 import org.eclipse.emf.parsley.composite.FormControlFactory
 import org.eclipse.emf.parsley.composite.ProposalCreator
+import org.eclipse.emf.parsley.config.Configurator
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
+import org.eclipse.emf.parsley.resource.ResourceManager
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider
@@ -29,9 +32,6 @@ import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.ui.IViewPart
 
 import static org.eclipse.emf.parsley.dsl.model.ModelPackage.Literals.*
-import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
-import org.eclipse.emf.parsley.config.Configurator
-import org.eclipse.emf.parsley.resource.ResourceManager
 
 /**
  * Utility class that associates to each DSL element that can 'extends'
@@ -59,7 +59,7 @@ class EmfParsleyDslExpectedSuperTypes {
 	val expected = new HashMap<EClass, Class<?>>
 
 	new() {
-		expected.put(MODULE, EmfParsleyGuiceModule)
+		expected.put(MODULE, EmfParsleyJavaGuiceModule)
 		expected.put(VIEW_SPECIFICATION, IViewPart)
 		expected.put(FEATURE_SPECIFICATION, EObject)
 		expected.put(FEATURE_ASSOCIATED_EXPRESSION, EObject)
