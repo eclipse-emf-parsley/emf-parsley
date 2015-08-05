@@ -166,14 +166,8 @@ public class TableViewerColumnBuilder {
 			IStructuredContentProvider contentProvider) {
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(
 				tableViewer, SWT.NONE);
-		if (contentProvider != null) {
-			tableViewerColumn.setLabelProvider(columnLabelProviderFactory
-					.createColumnLabelProvider(eStructuralFeature,
-							contentProvider));
-		} else {
 			tableViewerColumn.setLabelProvider(columnLabelProviderFactory
 					.createColumnLabelProvider(eStructuralFeature));
-		}
 		return tableViewerColumn;
 	}
 }

@@ -11,16 +11,10 @@
 package org.eclipse.emf.parsley.viewers;
 
 
-import org.eclipse.core.databinding.observable.map.IObservableMap;
-import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.ui.provider.AdapterMapCellLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
-import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
-import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -45,26 +39,6 @@ public class ColumnLabelProviderFactory {
 				.get();
 		columnProvider.seteStructuralFeature(eStructuralFeature);
 		return columnProvider;
-	}
-
-	public CellLabelProvider createColumnLabelProvider(
-			EStructuralFeature eStructuralFeature,
-			IStructuredContentProvider contentProvider) {
-		if (contentProvider instanceof ObservableListContentProvider) {
-			return createColumnLabelProvider(eStructuralFeature,
-					(ObservableListContentProvider) contentProvider);
-		} else {
-			return createColumnLabelProvider(eStructuralFeature);
-		}
-	}
-
-	public CellLabelProvider createColumnLabelProvider(
-			EStructuralFeature eStructuralFeature,
-			ObservableListContentProvider cp) {
-		IObservableMap observableMap = EMFProperties.value(eStructuralFeature)
-				.observeDetail(cp.getKnownElements());
-		return new AdapterMapCellLabelProvider(observableMap,
-				labelProviderProvider.get());
 	}
 
 }
