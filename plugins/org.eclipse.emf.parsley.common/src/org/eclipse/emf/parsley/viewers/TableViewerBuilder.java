@@ -33,8 +33,6 @@ public class TableViewerBuilder {
 	@Inject
 	protected TableViewerColumnBuilder columnBuilder;
 
-	@Inject
-	protected ViewerInitializer viewerInitializer;
 
 	/**
 	 * Builds and fills with contents, which are assumed to be of the specified
@@ -81,9 +79,8 @@ public class TableViewerBuilder {
 
 	public void fill(TableViewer tableViewer, Object contents,
 			IStructuredContentProvider contentProvider) {
-		viewerInitializer.initialize(tableViewer,
-				EmfParsleyUtil.ensureCollection(contents), contentProvider,
-				null);
+		tableViewer.setContentProvider(contentProvider);
+		tableViewer.setInput(EmfParsleyUtil.ensureCollection(contents));
 	}
 	
 	public void fill2(TableViewer tableViewer, Object object,EStructuralFeature eReference) {
