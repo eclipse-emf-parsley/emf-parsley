@@ -12,16 +12,18 @@ package org.eclipse.emf.parsley.viewers;
 
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.jface.layout.TableColumnLayout;
-import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.emf.parsley.resource.ResourceLoader;
+import org.eclipse.jface.viewers.IBaseLabelProvider;
+import org.eclipse.jface.viewers.IContentProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
  * Factory for viewers for EMF resources.
@@ -32,62 +34,77 @@ import com.google.inject.Inject;
 public class ViewerFactory {
 
 	@Inject
-	protected ViewerInitializer viewerInitializer;
+	protected ViewerContextMenuHelper contextMenuHelper;
+
 	@Inject
-	protected TableViewerBuilder tableViewerBuilder;
+	protected Provider<IContentProvider> contentProviderProvider;
+	
+	@Inject
+	protected Provider<ILabelProvider> labelProviderProvider;
+	
+	@Inject
+	protected ResourceLoader resourceLoader;
 
-	public TreeViewer createTreeViewer(Composite parent, int style,
-			URI resourceURI) {
+	@Inject
+	protected Provider<AdapterFactoryEditingDomain> editingDomainProvider;
+
+	
+
+	public TreeViewer createTreeViewer(Composite parent, int style,Object obj) {
 		TreeViewer treeViewer = new TreeViewer(parent, style);
-		update(treeViewer, resourceURI);
+		initialize(treeViewer, obj);
 		return treeViewer;
 	}
 
-	public TreeViewer createTreeViewer(Tree tree, URI resourceURI) {
+	public TreeViewer createTreeViewer(Tree tree, Object obj) {
 		TreeViewer treeViewer = new TreeViewer(tree);
-		update(treeViewer, resourceURI);
+		initialize(treeViewer, obj);
 		return treeViewer;
 	}
 
-	public TreeViewer createTreeViewer(Composite parent, int style,
-			AdapterFactoryEditingDomain editingDomain) {
-		TreeViewer treeViewer = new TreeViewer(parent, style);
-		update(treeViewer, editingDomain);
-		return treeViewer;
-	}
 
 	public TreeViewer createTreeViewer(Tree tree,
 			AdapterFactoryEditingDomain editingDomain) {
 		TreeViewer treeViewer = new TreeViewer(tree);
-		update(treeViewer, editingDomain);
+		initialize(treeViewer, editingDomain);
 		return treeViewer;
 	}
 
-	public TableViewer createTableViewer(Composite parent, int style,
-			Object content, EClass type) {
-		Composite viewerContainer = new Composite(parent, SWT.NONE);
-		TableColumnLayout layout = new TableColumnLayout();
-		viewerContainer.setLayout(layout);
-		TableViewer tableViewer = new TableViewer(viewerContainer, style);
-		tableViewerBuilder.buildAndFill(tableViewer, content, type);
-		
-		return tableViewer;
+	public void initialize(StructuredViewer viewer, Object object) {
+		Object input;
+		if(object instanceof URI){
+			AdapterFactoryEditingDomain editingDomain=(AdapterFactoryEditingDomain)loadResource((URI)object);
+			input= editingDomain.getResourceSet();
+		}else if(object instanceof AdapterFactoryEditingDomain){
+			AdapterFactoryEditingDomain editingDomain=(AdapterFactoryEditingDomain) object;
+			input= editingDomain.getResourceSet();
+		}else{
+			input=object;
+		}
+		initialize(viewer, input, contentProviderProvider.get(),
+				labelProviderProvider.get());
 	}
 
-
-	public TableViewer createTableViewer2(Composite parent, int style, EClass type) {
-		TableViewer tableViewer = new TableViewer(parent, style);
-		tableViewerBuilder.build2(tableViewer, type);
-		return tableViewer;
+	/**
+	 * @param viewer
+	 * @param input
+	 * @param contentProvider
+	 * @param labelProvider
+	 *            can be null (in that case it is not set)
+	 */
+	public void initialize(StructuredViewer viewer, Object input,
+			IContentProvider contentProvider,
+			IBaseLabelProvider labelProvider) {
+		viewer.setContentProvider(contentProvider);
+		if (labelProvider != null) {
+			viewer.setLabelProvider(labelProvider);
+		}
+		viewer.setInput(input);
 	}
-
-	protected void update(TreeViewer treeViewer,
-			AdapterFactoryEditingDomain editingDomain) {
-		viewerInitializer.initialize(treeViewer, editingDomain);
+	
+	protected AdapterFactoryEditingDomain loadResource(URI resourceURI) {
+		AdapterFactoryEditingDomain editingDomain = editingDomainProvider.get();
+		resourceLoader.getResource(editingDomain, resourceURI);
+		return editingDomain;
 	}
-
-	protected void update(TreeViewer treeViewer, URI resourceURI) {
-		viewerInitializer.initialize(treeViewer, resourceURI);
-	}
-
 }

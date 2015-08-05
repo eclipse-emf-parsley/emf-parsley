@@ -12,10 +12,13 @@
 package org.eclipse.emf.parsley.composite;
 
 
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+
+import com.google.inject.Inject;
 
 /**
  * A generic composite with a Tree and a Form with details of the selected
@@ -26,6 +29,8 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class TreeFormComposite extends AbstractMasterDetailComposite {
 	
+	private ViewerFactory viewerFactory;
+	
 	public TreeFormComposite(Composite parent, int style, int sashStyle, int[] weights) {
 		super(parent, style, sashStyle, weights);
 	}
@@ -35,4 +40,19 @@ public class TreeFormComposite extends AbstractMasterDetailComposite {
 		return new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 	}
 
+	@Override
+	public void update(Object element) {
+		if (element != null) {
+			viewerFactory.initialize(getViewer(), element);	
+		}
+	}
+	
+	public ViewerFactory getViewerFactory() {
+		return viewerFactory;
+	}
+
+	@Inject
+	public void setViewerFactory(ViewerFactory viewerInitializer) {
+		this.viewerFactory = viewerInitializer;
+	}
 }

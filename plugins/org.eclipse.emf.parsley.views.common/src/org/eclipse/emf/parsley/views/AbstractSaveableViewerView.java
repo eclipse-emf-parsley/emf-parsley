@@ -18,7 +18,7 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
-import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -32,7 +32,7 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	private WorkbenchActionBarContributor actionBarContributor;
 
 	@Inject
-	private ViewerInitializer viewerInitializer;
+	private ViewerContextMenuHelper contextMenuHelper;
 
 	@Override
 	protected void postCommandStackChanged(Command mostRecentCommand) {
@@ -69,12 +69,12 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	}
 
 	protected void addContextMenu(StructuredViewer viewer) {
-		viewerInitializer.addContextMenu(viewer, actionBarContributor,
+		contextMenuHelper.addContextMenu(viewer, actionBarContributor,
 				editingDomain, this, this);
 	}
 
 	protected void addMouseListener(StructuredViewer viewer) {
-		viewerInitializer.addMouseListener(viewer);
+		contextMenuHelper.addMouseListener(viewer);
 	}
 
 }

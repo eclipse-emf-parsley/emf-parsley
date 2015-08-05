@@ -74,7 +74,7 @@ import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.util.EmfParsleyUiUtil;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -404,7 +404,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	};
 
 	@Inject
-	protected ViewerFactory treeViewerFactory;
+	protected ViewerFactory viewerFactory;
 
 	@Inject
 	protected Provider<IEditorMouseListener> mouseAdapterProvider;
@@ -425,7 +425,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	protected ViewerContextMenuFactory viewerContextMenuFactory;
 
 	@Inject
-	protected ViewerInitializer viewerInitializer;
+	protected ViewerContextMenuHelper contextMenuHelper;
 
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
@@ -733,7 +733,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	}
 
 	public void createContextMenuFor(StructuredViewer viewer) {
-		viewerInitializer.addContextMenu(viewer,
+		contextMenuHelper.addContextMenu(viewer,
 				(WorkbenchActionBarContributor) getActionBarContributor(),
 				editingDomain, this, this);
 

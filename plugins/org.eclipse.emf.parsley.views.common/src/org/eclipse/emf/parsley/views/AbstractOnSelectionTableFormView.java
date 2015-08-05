@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
@@ -35,9 +34,6 @@ import com.google.inject.Inject;
  */
 public abstract class AbstractOnSelectionTableFormView extends
 		AbstractOnSelectionView {
-
-	@Inject
-	protected ViewerFactory viewerFactory;
 
 	@Inject
 	protected FeaturesProvider featuresProvider;

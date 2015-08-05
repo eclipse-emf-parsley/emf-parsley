@@ -11,14 +11,14 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.parsley.viewers.TableViewerBuilder
 import org.eclipse.jface.viewers.TableViewer
 import org.eclipse.swt.SWT
 import org.junit.Before
+import org.eclipse.emf.parsley.viewers.TableViewerFactory
 
 abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
-	var protected TableViewerBuilder tableViewerBuilder
+	var protected TableViewerFactory tableViewerFactory
 	
 	var protected TableViewer tableViewer
 
@@ -26,14 +26,14 @@ abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
 	@Before
 	def void setupTableViewerStuff() {
-		tableViewerBuilder = getOrCreateInjector.getInstance(TableViewerBuilder)
+		tableViewerFactory = getOrCreateInjector.getInstance(TableViewerFactory)
 		tableViewer = createTableViewer
 		createContents
 	}
 
 	def protected buildAndFill(Object contents, EClass eClass) {
 		syncExecVoid[
-			tableViewerBuilder.buildAndFill(
+			tableViewerFactory.buildAndFill(
 				tableViewer, contents, eClass
 			)
 		]

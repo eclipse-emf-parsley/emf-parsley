@@ -458,7 +458,7 @@ Provider].
 
 section:ContextualMenu[Contextual Menu]
 
-A context menu can be added to any viewer by using the codeRef[org.eclipse.emf.parsley.viewers.ViewerInitializer]. 
+A context menu can be added to any viewer by using the codeRef[org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper]. 
 
 code[Java][
 @Inject ViewerInitializer viewerInitializer;

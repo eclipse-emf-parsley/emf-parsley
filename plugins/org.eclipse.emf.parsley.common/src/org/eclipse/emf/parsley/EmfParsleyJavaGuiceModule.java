@@ -65,10 +65,10 @@ import org.eclipse.emf.parsley.validation.ValidationRunner;
 import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
-import org.eclipse.emf.parsley.viewers.TableViewerBuilder;
+import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
@@ -264,10 +264,10 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 
 	/**
 	 * Use this bind to change the viewers initialization mechanisms from resources. 
-	 * @return a specialization of {@link ViewerInitializer}
+	 * @return a specialization of {@link ViewerContextMenuHelper}
 	 */
-	public Class<? extends ViewerInitializer> bindViewerInitializer() {
-		return ViewerInitializer.class;
+	public Class<? extends ViewerContextMenuHelper> bindViewerContextMenuHelper() {
+		return ViewerContextMenuHelper.class;
 	}
 
 	/**
@@ -318,16 +318,16 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 
 	/**
 	 * Use this bind to change the way tables are built and initialized from resources. 
-	 * @return a specialization of {@link TableViewerBuilder}
+	 * @return a specialization of {@link TableViewerFactory}
 	 */
-	public Class<? extends TableViewerBuilder> bindTableViewerBuilder() {
-		return TableViewerBuilder.class;
+	public Class<? extends TableViewerFactory> bindTableViewerFactory() {
+		return TableViewerFactory.class;
 	}
 
 	/**
 	 * Use this bind to change the way columns for table are built. 
 	 * @return a specialization of {@link TableViewerColumnBuilder}
-	 * @see TableViewerBuilder
+	 * @see TableViewerFactory
 	 */
 	public Class<? extends TableViewerColumnBuilder> bindTableViewerColumnBuilder() {
 		return TableViewerColumnBuilder.class;

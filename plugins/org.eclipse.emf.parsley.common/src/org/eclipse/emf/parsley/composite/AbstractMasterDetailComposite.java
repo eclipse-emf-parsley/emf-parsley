@@ -15,7 +15,6 @@ package org.eclipse.emf.parsley.composite;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
-import org.eclipse.emf.parsley.viewers.ViewerInitializer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -46,8 +45,6 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		}
 
 	}
-
-	private ViewerInitializer viewerInitializer;
 
 	private FormFactory formFactory;
 
@@ -89,12 +86,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		return viewer;
 	}
 
-	public void update(Object element) {
-		if (element != null) {
-			viewerInitializer.initialize(viewer, element);	
-		}
-
-	}
+	
 
 	protected abstract StructuredViewer createViewer(Composite parent);
 
@@ -113,15 +105,6 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	protected FormDetailComposite createFormDetailComposite() {
 		return formFactory.createFormDetailComposite(detailComposite,
 				SWT.BORDER);
-	}
-
-	public ViewerInitializer getViewerInitializer() {
-		return viewerInitializer;
-	}
-
-	@Inject
-	public void setViewerInitializer(ViewerInitializer viewerInitializer) {
-		this.viewerInitializer = viewerInitializer;
 	}
 
 	public FormFactory getFormFactory() {
@@ -146,4 +129,5 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		return sashForm;
 	}
 
+	public abstract void update(Object contents);
 }

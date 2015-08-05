@@ -18,9 +18,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
@@ -28,11 +31,10 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - initial API and implementation
  * 
  */
-public class TableViewerBuilder {
+public class TableViewerFactory {
 
 	@Inject
 	protected TableViewerColumnBuilder columnBuilder;
-
 
 	/**
 	 * Builds and fills with contents, which are assumed to be of the specified
@@ -102,5 +104,26 @@ public class TableViewerBuilder {
 			ObservableListContentProvider contentProvider) {
 		columnBuilder.buildTableViewer2(tableViewer, eClass, contentProvider);
 		tableViewer.setContentProvider(contentProvider);
+	}
+	
+	public TableViewer createTableViewer(Composite parent, int style, EClass type) {
+		TableViewer tableViewer = internal_createTableViewer(parent, style);
+		build2(tableViewer, type);
+		return tableViewer;
+	}
+
+	public TableViewer createTableViewer(Composite parent, int style, EClass type, Object content) {
+		TableViewer tableViewer = internal_createTableViewer(parent, style);
+		buildAndFill(tableViewer, content, type);
+		return tableViewer;
+	}
+
+
+	private TableViewer internal_createTableViewer(Composite parent, int style) {
+		Composite viewerContainer = new Composite(parent, SWT.NONE);
+		TableColumnLayout layout = new TableColumnLayout();
+		viewerContainer.setLayout(layout);
+		TableViewer tableViewer = new TableViewer(viewerContainer, style);
+		return tableViewer;
 	}
 }

@@ -12,7 +12,7 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.viewers.TableViewerBuilder;
+import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -33,7 +33,7 @@ import com.google.inject.Inject;
  */
 public class TableFormComposite extends AbstractMasterDetailComposite {
 	
-	private TableViewerBuilder tableViewerBuilder;
+	private TableViewerFactory tableViewerFactory;
 	private TableViewer tableViewer;
 	
 	public TableFormComposite(Composite parent, int style) {
@@ -52,22 +52,22 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	
 	public void buildTable(EClass type, IStructuredContentProvider contentProvider){
 		removeExistingColumns();
-		tableViewerBuilder.build(tableViewer, type,  contentProvider);
+		tableViewerFactory.build(tableViewer, type,  contentProvider);
 	}
 
-	public TableViewerBuilder getTableViewerBuilder() {
-		return tableViewerBuilder;
+	public TableViewerFactory getTableViewerFactory() {
+		return tableViewerFactory;
 	}
 
 	@Inject
-	public void setTableViewerBuilder(TableViewerBuilder tableViewerBuilder) {
-		this.tableViewerBuilder = tableViewerBuilder;
+	public void setTableViewerFactory(TableViewerFactory tableViewerBuilder) {
+		this.tableViewerFactory = tableViewerBuilder;
 	}
 	
 	
 	@Override
 	public void update(Object contents) {
-		tableViewerBuilder.fill(tableViewer, contents, new ArrayContentProvider());
+		tableViewerFactory.fill(tableViewer, contents, new ArrayContentProvider());
 	}
 
 	private void removeExistingColumns() {

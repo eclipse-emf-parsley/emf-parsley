@@ -11,7 +11,8 @@
 package org.eclipse.emf.parsley.editors;
 
 
-import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
+import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.IPageSite;
@@ -28,7 +29,7 @@ public class EmfEditorContentOutlinePage extends ContentOutlinePage {
 	protected EmfAbstractEditor editor;
 
 	@Inject
-	protected ViewerInitializer viewerInitializer;
+	protected ViewerFactory viewerFactory;
 
 	public void init(EmfAbstractEditor editor) {
 		this.editor = editor;
@@ -42,7 +43,7 @@ public class EmfEditorContentOutlinePage extends ContentOutlinePage {
 		editor.setContentOutlineViewer(contentOutlineViewer);
 
 		// Set up the tree viewer.
-		viewerInitializer.initialize(contentOutlineViewer,
+		viewerFactory.initialize(contentOutlineViewer,
 				editor.getEditingDomain());
 		// Make sure our popups work.
 		editor.createContextMenuFor(contentOutlineViewer);

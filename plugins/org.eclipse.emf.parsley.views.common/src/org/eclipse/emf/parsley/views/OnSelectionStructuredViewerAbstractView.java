@@ -14,7 +14,8 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
+import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
@@ -41,7 +42,7 @@ public abstract class OnSelectionStructuredViewerAbstractView extends AbstractOn
 	private StructuredViewer viewer;
 
 	@Inject
-	protected ViewerInitializer viewerInitializer;
+	protected ViewerFactory viewerFactory;
 
 	public OnSelectionStructuredViewerAbstractView() {
 	}
@@ -84,14 +85,14 @@ public abstract class OnSelectionStructuredViewerAbstractView extends AbstractOn
 	 * @param eObject
 	 */
 	protected void performUpdateOnSelection(EObject eObject) {
-		viewerInitializer.initialize(viewer, eObject);
+		viewerFactory.initialize(viewer, eObject);
 	}
 
 	/**
 	 * @param resource
 	 */
 	protected void performUpdateOnSelection(Resource resource) {
-		viewerInitializer.initialize(viewer, resource);
+		viewerFactory.initialize(viewer, resource);
 	}
 
 	@Override
@@ -135,6 +136,6 @@ public abstract class OnSelectionStructuredViewerAbstractView extends AbstractOn
 	}
 
 	public void init(URI resourceURI) {
-		viewerInitializer.initialize(viewer, resourceURI);
+		viewerFactory.initialize(viewer, resourceURI);
 	}
 }

@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.viewers.ViewerFactory;
+import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.emf.parsley.views.AbstractOnSelectionView;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
@@ -43,7 +43,7 @@ import com.google.inject.Inject;
 public class OnSelectionShowAllTableView extends AbstractOnSelectionView {
 
 	@Inject
-	protected ViewerFactory viewerFactory;
+	protected TableViewerFactory tableViewerFactory;
 
 	@Inject
 	protected FeaturesProvider featuresProvider;
@@ -123,8 +123,8 @@ public class OnSelectionShowAllTableView extends AbstractOnSelectionView {
 		Label lblNewLabel = new Label(composite, SWT.NONE);
 		lblNewLabel.setText(label);
 
-		TableViewer tableViewer = viewerFactory.createTableViewer(composite,
-				SWT.BORDER | SWT.FULL_SELECTION, object, eClass);
+		TableViewer tableViewer = tableViewerFactory.createTableViewer(composite,
+				SWT.BORDER | SWT.FULL_SELECTION, eClass, object);
 
 		Table table = tableViewer.getTable();
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));

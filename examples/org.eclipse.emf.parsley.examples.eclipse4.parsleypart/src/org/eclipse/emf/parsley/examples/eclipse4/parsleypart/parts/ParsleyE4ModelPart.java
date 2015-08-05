@@ -21,7 +21,7 @@ import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.examples.eclipse4.parsleypart.ParsleypartActivator;
-import org.eclipse.emf.parsley.viewers.ViewerInitializer;
+import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.swt.SWT;
@@ -41,7 +41,7 @@ public class ParsleyE4ModelPart implements IMenuListener {
 	// Guice injected EMF Parsley editing domain
 	private AdapterFactoryEditingDomain editingDomain;
 	// Guice injected viewer initializer
-	private ViewerInitializer viewerInitializer;
+	private ViewerContextMenuHelper contextMenuHelper;
 	
 	private TreeFormComposite treeFormComposite;
 	
@@ -57,7 +57,7 @@ public class ParsleyE4ModelPart implements IMenuListener {
 		// Guice injected EMF Parsley editing domain
 		editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class);
 		// Guice injected viewer initializer
-		viewerInitializer = injector.getInstance(ViewerInitializer.class);
+		contextMenuHelper = injector.getInstance(ViewerContextMenuHelper.class);
 		
 		// Initialize Parsley Tree Form:  
 		// 1) create the tree-form composite
@@ -66,7 +66,7 @@ public class ParsleyE4ModelPart implements IMenuListener {
 
 		// 2) initialize and bind the context menu to the tree-form composite
 		treeActionBarContributor.initialize(editingDomain);
-		viewerInitializer.addContextMenu(treeFormComposite.getViewer(),
+		contextMenuHelper.addContextMenu(treeFormComposite.getViewer(),
 				treeActionBarContributor, editingDomain, this);
 		// 3) prepare the menu action bar contributor upon the selection
 		treeFormComposite.getViewer().addSelectionChangedListener(
