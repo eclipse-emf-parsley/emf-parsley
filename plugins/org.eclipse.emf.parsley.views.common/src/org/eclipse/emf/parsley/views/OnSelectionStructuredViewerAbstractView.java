@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+s * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;

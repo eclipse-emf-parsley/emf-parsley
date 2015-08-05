@@ -34,9 +34,6 @@ import com.google.inject.Provider;
 public class ViewerFactory {
 
 	@Inject
-	protected ViewerContextMenuHelper contextMenuHelper;
-
-	@Inject
 	protected Provider<IContentProvider> contentProviderProvider;
 	
 	@Inject

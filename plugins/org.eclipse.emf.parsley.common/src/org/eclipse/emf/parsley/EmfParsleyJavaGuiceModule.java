@@ -42,7 +42,7 @@ import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
 import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
-import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
+import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.resource.ResourceSaveStrategy;
@@ -58,17 +58,16 @@ import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.emf.parsley.util.FeatureHelper;
+import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.emf.parsley.validation.DialogErrorReporter;
 import org.eclipse.emf.parsley.validation.IssueReporter;
 import org.eclipse.emf.parsley.validation.LogIssueReporter;
 import org.eclipse.emf.parsley.validation.ValidationRunner;
-import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
-import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
+import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
@@ -286,14 +285,6 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends DialogControlFactory> bindDialogControlFactory() {
 		return DialogControlFactory.class;
-	}
-	
-	/**
-	 * Use this bind to provide a factory for context menu
-	 * @return a specialization of {@link ViewerContextMenuFactory}
-	 */
-	public Class<? extends ViewerContextMenuFactory> bindViewerContextMenuFactory() {
-		return ViewerContextMenuFactory.class;
 	}
 
 	/**

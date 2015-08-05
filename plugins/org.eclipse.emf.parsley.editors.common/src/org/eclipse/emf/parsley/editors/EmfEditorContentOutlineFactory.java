@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.editors;
 
-import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
-
-
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
@@ -22,8 +19,6 @@ import com.google.inject.Provider;
  */
 public class EmfEditorContentOutlineFactory {
 
-	@Inject
-	protected Provider<ViewerContextMenuHelper> contextMenuHelperProvider;
 	
 	@Inject
 	protected Provider<EmfEditorContentOutlinePage> outlinePageProvider;

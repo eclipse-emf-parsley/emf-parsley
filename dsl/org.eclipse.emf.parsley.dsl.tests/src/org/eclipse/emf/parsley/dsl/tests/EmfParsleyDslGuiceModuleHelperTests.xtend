@@ -85,7 +85,6 @@ bindFormFactory
 bindViewerContextMenuHelper
 bindFormControlFactory
 bindDialogControlFactory
-bindViewerContextMenuFactory
 bindColumnLabelProviderFactory
 bindTableColumnLabelProvider
 bindTableViewerFactory

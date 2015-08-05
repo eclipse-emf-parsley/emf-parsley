@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+s * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.editors;
 
 
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.IPageSite;

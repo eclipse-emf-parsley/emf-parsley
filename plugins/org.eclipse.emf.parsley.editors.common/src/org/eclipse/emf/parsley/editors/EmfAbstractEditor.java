@@ -70,11 +70,10 @@ import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
-import org.eclipse.emf.parsley.menus.ViewerContextMenuFactory;
+import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.util.EmfParsleyUiUtil;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -422,9 +421,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	protected ResourceLoader resourceLoader;
 
 	@Inject
-	protected ViewerContextMenuFactory viewerContextMenuFactory;
-
-	@Inject
 	protected ViewerContextMenuHelper contextMenuHelper;
 
 	/**
@@ -733,9 +729,9 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	}
 
 	public void createContextMenuFor(StructuredViewer viewer) {
-		contextMenuHelper.addContextMenu(viewer,
-				(WorkbenchActionBarContributor) getActionBarContributor(),
-				editingDomain, this, this);
+		contextMenuHelper.addViewerContextMenu(viewer,
+				editingDomain,
+				this, this, (WorkbenchActionBarContributor) getActionBarContributor());
 
 		IEditorMouseListener listener = getMouseAdapter();
 		viewer.getControl().addMouseListener(listener);

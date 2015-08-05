@@ -17,22 +17,21 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CreateChildCommand;
-import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
-import org.eclipse.emf.parsley.viewers.ViewerContextMenuHelper;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
+import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
-public abstract class AbstractSaveableViewerView extends AbstractSaveableView implements IMenuListener, IViewerProvider {
-
-	@Inject
-	private WorkbenchActionBarContributor actionBarContributor;
+public abstract class AbstractSaveableViewerView extends AbstractSaveableView implements IViewerProvider {
 
 	@Inject
 	private ViewerContextMenuHelper contextMenuHelper;
+	
+	@Inject
+	protected Provider<IViewerMouseListener> viewerMouseListenerProvider;
 
 	@Override
 	protected void postCommandStackChanged(Command mostRecentCommand) {
@@ -63,18 +62,19 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 		}
 	}
 
-	@Override
-	public void menuAboutToShow(IMenuManager menuManager) {
-		actionBarContributor.menuAboutToShow(menuManager);
-	}
+	
 
 	protected void addContextMenu(StructuredViewer viewer) {
-		contextMenuHelper.addContextMenu(viewer, actionBarContributor,
-				editingDomain, this, this);
+		contextMenuHelper.addViewerContextMenu(viewer, editingDomain, this);
 	}
 
-	protected void addMouseListener(StructuredViewer viewer) {
-		contextMenuHelper.addMouseListener(viewer);
+	/**
+	 * Adds the {@link IViewerMouseListener} specified in the guice module.
+	 * 
+	 * @param viewer
+	 */
+	public void addMouseListener(StructuredViewer viewer) {
+		viewer.getControl().addMouseListener(viewerMouseListenerProvider.get());
 	}
 
 }
