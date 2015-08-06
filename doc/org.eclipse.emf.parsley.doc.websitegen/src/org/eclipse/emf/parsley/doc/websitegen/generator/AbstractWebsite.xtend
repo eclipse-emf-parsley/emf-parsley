@@ -161,7 +161,7 @@ abstract class AbstractWebsite implements Resource {
 		<div class="navbar-fixed-top" style="background:url(img/bg-100x100.jpg)">
 			<div class="container" style="width:1150px;">
 				<div class="navbar-header">
-					<a href="Index.htm"><img class="featurette-image img-responsive" alt="" src="img/logo.gif"/></a>
+					<a href="index.html"><img class="img-responsive" alt="" src="img/logo.gif"/></a>
 				</div>
 			</div>
 			<nav class="navbar navbar-default" role="navigation" style="background-color:transparent; border:0 none; margin:-31px 0px 3px 0px;min-height: 36px;">
@@ -220,7 +220,7 @@ abstract class AbstractWebsite implements Resource {
 
 	def footer()'''
 	<!-- FOOTER -->
-		<footer style="z-index: 1001;position:relative;background-color:#35414C;-webkit-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);-moz-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);box-shadow: 0px -3px 8px 0px rgba(30,51,72,1);margin-top:1%;">
+		<footer style="z-index: 1001;position:relative;background-color:#35414C;-webkit-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);-moz-box-shadow: 0px -3px 8px 0px rgba(171,209,173,1);box-shadow: 0px -3px 8px 0px rgba(30,51,72,1);margin-top:1.3%;">
 			<img width="100%" alt="" src="img/footer.jpg" />
 			<nav class="navbar navbar-default" role="navigation" style="background-color:transparent; border:0 none; margin:-97px 0px 31px 0px;min-height: 36px;">
 				<div class="container" style="width:37.6%;">
@@ -239,7 +239,7 @@ abstract class AbstractWebsite implements Resource {
 					</div><!-- /.navbar-collapse -->
 				</div>
 			</nav>
-			<p class="terms" style="margin:0px;padding:21px 0px 6px 20px;"><a target="_blank" href="http://www.eclipse.org/legal/privacy.php">Privacy Policy</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a target="_blank" href="http://www.eclipse.org/legal/termsofuse.php">Terms of Use</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a target="_blank" href="http://www.eclipse.org/legal/copyright.php">Copyright Agent</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a target="_blank" href="http://www.eclipse.org/legal/">Legal</a><a class="pull-right" style="z-index: 1001;position:relative;margin:-38px 15px 0px 0px;" href="#top" id="topbutton"><img alt="Back to top" src="img/arrow_up.png"/></a></p>
+			<p class="terms" style="margin:0px;padding:21px 0px 6px 20px;"><a target="_blank" href="http://www.eclipse.org/legal/privacy.php">Privacy Policy</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a target="_blank" href="http://www.eclipse.org/legal/termsofuse.php">Terms of Use</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a target="_blank" href="http://www.eclipse.org/legal/copyright.php">Copyright Agent</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a target="_blank" href="http://www.eclipse.org/legal/">Legal</a><a class="pull-right" style="z-index: 1001;position:relative;margin:-38px 4% 0px 0px;" href="#top" id="topbutton"><img alt="Back to top" src="img/arrow_up.png"/></a></p>
 		</footer>
 	'''
 
@@ -284,6 +284,13 @@ abstract class AbstractWebsite implements Resource {
 			$('a#topbutton > img').attr('src','img/arrow_up.png');
 		});
 		
+		$('.scrollup').mouseover(function() {
+			$('a.scrollup').css('opacity', '1');
+		});
+		$('.scrollup').mouseout(function() {
+			$('a.scrollup').css('opacity', '0.35');
+		});
+		
 		//gestione scroll verticale
 		$(function() {
 		  $('a[href*=#]').click(function() {
@@ -301,6 +308,15 @@ abstract class AbstractWebsite implements Resource {
 		  });
 		});
 		
+		$(window).scroll(function() {
+			var y = $(this).scrollTop();
+			if (y < 800)
+				$('a.scrollup').fadeOut();
+			else
+				$('a.scrollup').fadeIn();
+		});
+		//prevscroll
+		var prevscroll = 0;
 		$(window).on("scrollstop", function() {
 			var scrollposition = $('html,body').scrollTop()+210;
 			if(/chrome/.test(navigator.userAgent.toLowerCase()))
@@ -317,23 +333,40 @@ abstract class AbstractWebsite implements Resource {
 					$("a[href='#par"+parid+"']").parent().addClass("activemenu");
 				}
 			});
-		})
+			//inizio prevscroll
+			//Gestione scroll del menu laterale in base alla posizione della pagina
+			var menuScrollSize = '-250px';
+			var pageScrollThreshold = 16730;
+			if($(window).height()<$(".dropdown-menu").height()+190){
+				if(prevscroll<scrollposition){
+					if(scrollposition>pageScrollThreshold)
+						$(".dropdown-menu").css('top', menuScrollSize);
+				} else	
+					$(".dropdown-menu").css('top', '0px');
+				prevscroll=scrollposition;
+			} else if($(".dropdown-menu").css('top')!=null && $(".dropdown-menu").css('top')==menuScrollSize){
+				$(".dropdown-menu").css('top', '0px');
+			}
+			//fine prevscroll
+		});
 		
 		$(document).ready(function() {
 			//Setto link attivo nel menu
 			var mieili = $('.miomenu li');
 			mieili.each(function(idx) {
 				var indirizzo = $(this).children().attr('href');
-				if(indirizzo.length>0 && window.location.href.indexOf(indirizzo)>0){
+				if(indirizzo!=null && indirizzo.length>0 && (window.location.href.indexOf(indirizzo)>0 || (window.location.href=='http://www.eclipse.org/emf-parsley/' || window.location.href=='https://www.eclipse.org/emf-parsley/' && indirizzo.indexOf('index')>0))){
 					 $(this).addClass('mioactive');
+					 return false;
 				}
 			});
 			//Setto link attivo nel footer
 			mieili = $('.miolifooter li');
 			mieili.each(function(idx) {
 				var indirizzo = $(this).children().attr('href');
-				if(indirizzo.length>0 && window.location.href.indexOf(indirizzo)>0){
+				if(indirizzo!=null && indirizzo.length>0 && (window.location.href.indexOf(indirizzo)>0 || (window.location.href=='http://www.eclipse.org/emf-parsley/' || window.location.href=='https://www.eclipse.org/emf-parsley/' && indirizzo.indexOf('index')>0))){
 					 $(this).children().addClass('mioactivefooter');
+					 return false;
 				}
 			});
 			

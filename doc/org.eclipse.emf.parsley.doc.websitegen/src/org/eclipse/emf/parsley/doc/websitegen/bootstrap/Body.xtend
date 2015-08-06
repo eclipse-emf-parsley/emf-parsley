@@ -18,6 +18,9 @@ class Body {
 	
 	def body(AbstractSection rootSection, int columns) '''
 			</br>
+			<!-- scrollup ICON -->
+			<a class="scrollup" href="#top"></a>
+			<!-- scrollup ICON -->
 			«FOR chapter: rootSection.sections.filter[!targetRootElement]»
 				«chapter.h1(columns)»
 				«printHr(rootSection.sections.filter[!targetRootElement].size)»

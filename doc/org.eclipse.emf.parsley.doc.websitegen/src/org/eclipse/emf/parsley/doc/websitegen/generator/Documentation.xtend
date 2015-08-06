@@ -82,6 +82,18 @@ class Documentation extends AbstractXdocBaseWebsite {
 				-o-animation: fadeInDownBig 1.5s;
 				animation: fadeInDownBig 1.5s;
 			}
+			
+			.scrollup {
+				background: url(img/up.png) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+				bottom: 6%;
+				display: none;
+				opacity: 0.35;  /* modifica anche in mouseout */
+				position: fixed;
+				right: 4%;
+				z-index: 900;
+				width: 45px;
+				height: 45px;
+			}
 		</style>
 		<div class="containerdoc marketing">
 			<!-- SIDEBAR -->
