@@ -382,7 +382,7 @@ public class EmfParsleySWTBotAbstractTests {
 		// bot.sleep(2000);
 		bot.saveAllEditors();
 		cleanWorkspace();
-		IResourcesSetupUtil.waitForAutoBuild();
+		IResourcesSetupUtil.waitForBuild();
 	}
 
 	protected static void closeWelcomePage() throws InterruptedException {
@@ -766,7 +766,7 @@ public class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void waitForBuild() throws CoreException {
-		IResourcesSetupUtil.waitForAutoBuild();
+		IResourcesSetupUtil.waitForBuild();
 		
 		// ensure that all queued workspace operations and locks are released
 		try {

@@ -107,7 +107,7 @@ module «TEST_PROJECT» {
 }
 '''
 		)
-		waitForAutoBuild
+		waitForBuild
 		
 		assertTrue(project.getFile("/" + PLUGIN_XML_EMFPARSLEY_GEN).exists())
 		
@@ -120,7 +120,7 @@ module «TEST_PROJECT» {
 }
 '''		
 		)
-		waitForAutoBuild
+		waitForBuild
 
 		assertFalse(project.getFile("/" + PLUGIN_XML_EMFPARSLEY_GEN).exists())
 	}
@@ -132,7 +132,7 @@ module «TEST_PROJECT» {
 		val project = root.getProject(TEST_PROJECT)
 		assertTrue(project.exists())
 		cleanBuild
-		waitForAutoBuild
+		waitForBuild
 		return project
 	}
 
