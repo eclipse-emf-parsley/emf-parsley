@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.After;
 import org.junit.Assert;
@@ -41,6 +42,8 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 
 	boolean treeViewOpened = false;
 
+	boolean treeMultipleRootsViewOpened = false;
+
 	@Before
 	public void runBefore() {
 		treeFormViewOpened = false;
@@ -59,6 +62,8 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 			closeLibraryView(TEST_SAVEABLE_TABLE_VIEW);
 		if (treeViewOpened)
 			closeLibraryView(TEST_SAVEABLE_TREE_VIEW);
+		if (treeMultipleRootsViewOpened)
+			closeLibraryView(TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
 		super.runAfterEveryTest();
 	}
 
@@ -173,6 +178,30 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		checkDoubleClickDialog(libraryNode, TEST_SAVEABLE_TREE_FORM_VIEW);
 	}
 
+	@Test
+	public void treeViewWithMultipleRootsIsRefreshedWhenNewElementIsAdded() throws Exception {
+		SWTBotTree tree = prepareSaveableTreeViewForMultipleRootElements();
+		SWTBotTreeItem[] allItems = tree.getAllItems();
+		SWTBotTreeItem firstElement = allItems[0];
+		int initialSize = allItems.length;
+		clickOnContextMenu(firstElement, NEW_SIBLING, "Book");
+		allItems = tree.getAllItems();
+		assertEquals(initialSize + 1, allItems.length);
+		SWTBotTreeItem addedSibling = allItems[1];
+		assertEquals("Book: null", addedSibling.getText());
+	}
+
+	@Test
+	public void treeViewWithMultipleRootsIsRefreshedWhenElementIsDeleted() throws Exception {
+		SWTBotTree tree = prepareSaveableTreeViewForMultipleRootElements();
+		SWTBotTreeItem[] allItems = tree.getAllItems();
+		SWTBotTreeItem firstElement = allItems[0];
+		int initialSize = allItems.length;
+		clickOnContextMenu(firstElement, ACTION_DELETE);
+		allItems = tree.getAllItems();
+		assertEquals(initialSize - 1, allItems.length);
+	}
+
 	protected void checkDoubleClickDialog(SWTBotTreeItem libraryNode, String viewName) {
 		libraryNode.doubleClick();
 		bot.shell(LIBRARY_LABEL);
@@ -226,7 +255,6 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		return table;
 	}
 
-
 	protected SWTBotTreeItem prepareSaveableTreeViewAndGetLibraryNode()
 			throws CoreException, InvocationTargetException,
 			InterruptedException, IOException {
@@ -238,4 +266,14 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		return libraryNode;
 	}
 
+	protected SWTBotTree prepareSaveableTreeViewForMultipleRootElements()
+			throws CoreException, InvocationTargetException,
+			InterruptedException, IOException {
+		createProjectAndTestFiles();
+		openTestView(TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
+		treeMultipleRootsViewOpened = true;
+		SWTBotTree tree = getRootOfTreeFromView(
+				TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
+		return tree;
+	}
 }

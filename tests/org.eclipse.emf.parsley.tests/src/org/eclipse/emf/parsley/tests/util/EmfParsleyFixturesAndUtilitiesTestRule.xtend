@@ -93,7 +93,7 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 		lib = createTestLibrary
 		wr = lib.writers.head
 		b = lib.books.head
-		testContainer = testFactory.createTestContainer
+		testContainer = createTestContainer
 		classForControlsInstance = createClassForControls
 		testEClassInstance = testFactory.createTestEClass
 	}
@@ -104,6 +104,10 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 
 	def getTestContainer() {
 		testContainer
+	}
+
+	def setTestContainer(TestContainer testContainer) {
+		this.testContainer = testContainer
 	}
 
 	def getClassForControlsInstance() {
@@ -212,6 +216,28 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 			classWithName1 = createClassWithName(n)
 			classWithName2 = createClassWithName(n)
 		]
+	}
+
+	def createTestContainerInResource() {
+		testFactory.createTestContainer => [
+			createResourceInResouceSet.contents += it
+		]
+	}
+
+	def createTestContainer(Resource res, String name) {
+		createTestContainer(res) => [
+			it.name = name
+		]
+	}
+
+	def createTestContainer(Resource res) {
+		testFactory.createTestContainer => [
+			res.contents += it
+		]
+	}
+
+	def createTestContainer() {
+		testFactory.createTestContainer
 	}
 
 	def createClassForControls() {

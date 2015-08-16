@@ -11,19 +11,33 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.jface.viewers.TreeViewer
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.eclipse.emf.ecore.resource.Resource
+import java.util.ArrayList
+import org.eclipse.core.runtime.AssertionFailedException
+import org.eclipse.emf.parsley.tests.util.NonStructuredViewer
 
-class ViewerContentProviderTest extends AbstractEmfParsleyTest {
+class ViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
+
+	val static CLASS_FOR_CONTROLS_LABEL = "Class For Controls"
+
+	val static CLASS_WITH_NAME_TEST = "Class With Name Test"
+
+	val static TEST_CONTAINER = "Test Container"
+
+	val static IN_ANOTHER_CONTAINER = "another container"
 
 	var ViewerContentProvider contentProvider
 	
@@ -77,22 +91,32 @@ class ViewerContentProviderTest extends AbstractEmfParsleyTest {
 
 	@Test
 	def void testCustomGetElements() {
-		"Class For Controls".
+		CLASS_FOR_CONTROLS_LABEL.
 		assertArray(
-			new ViewerContentProvider(null) {
+			new ViewerContentProvider(adapterFactory) {
 				def elements(TestContainer e) {
 					// don't return classesWithName
 					e.classesForControls
 				}
-			}.injectMembers.getElements(fillTestContainer)
+			}.injectMembers.
+			getElements(fillTestContainer)
+		)
+	}
+
+	@Test
+	def void testCustomGetElementsFromResource() {
+		CLASS_FOR_CONTROLS_LABEL.
+		assertArray(
+			getContentProviderWithCustomGetElements().
+				getElements(fillTestContainer.eResource)
 		)
 	}
 
 	@Test
 	def void testCustomGetChildren() {
-		"Class For Controls".
+		CLASS_FOR_CONTROLS_LABEL.
 		assertArray(
-			new ViewerContentProvider(null) {
+			new ViewerContentProvider(adapterFactory) {
 				def children(TestContainer e) {
 					// don't return classesWithName
 					e.classesForControls
@@ -136,16 +160,267 @@ class ViewerContentProviderTest extends AbstractEmfParsleyTest {
 		contentProvider.getParent(testContainer).assertNull
 	}
 
+	@Test
+	def void testElementsAreRefreshedWhenNewElementIsAdded() {
+		// this tests the default behavior, when getElements
+		// is not customized
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			contentProvider)
+		treeViewer.expandAll
+		assertAllLabels(treeViewer,
+			'''
+			«TEST_CONTAINER»
+			  «CLASS_WITH_NAME_TEST»
+			  «CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls += createClassForControls
+		]
+		assertAllLabels(treeViewer,
+			'''
+			«TEST_CONTAINER»
+			  «CLASS_WITH_NAME_TEST»
+			  «CLASS_FOR_CONTROLS_LABEL»
+			  «CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+	}
+
+	/**
+	 * This only tests elements containing null, then the setup of the tree viewer
+	 * will fail due to the null element in the viewer.
+	 */
+	@Test(expected=AssertionFailedException)
+	def void smokeTestCustomGetElementsContainsNull() {
+		testContainer = createTestContainerInResource
+		setupTreeViewer(testContainer.eResource,
+			new ViewerContentProvider(adapterFactory) {
+				def elements(Resource resource) {
+					new ArrayList() => [
+						add(null)
+					]
+				}
+			}.injectMembers)
+	}
+
+	/**
+	 * This only tests that we gracefully handle refresh also on
+	 * non structured viewers.
+	 */
+	@Test
+	def void smokeTestCustomGetElementsForNonStructuredViewer() {
+		fillTestContainer
+		new NonStructuredViewer(shell) => [
+			it.contentProvider = getContentProviderWithCustomGetElements()
+			it.input = testContainer.eResource
+		]
+		execAndFlushPendingEvents[
+			testContainer.classesForControls += createClassForControls
+		]
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenNewElementIsAdded() {
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls += createClassForControls
+		]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenNewElementIsAdded2() {
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls += createClassForControls
+			testContainer.classesForControls += createClassForControls
+		]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenNewElementIsAddedToAnAddedContainer() {
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			createTestContainer(testContainer.eResource, IN_ANOTHER_CONTAINER) => [
+				classesForControls += createClassForControls()
+				classesForControls.head => [
+					stringFeature = (eContainer as TestContainer).name	
+				]
+			]
+		]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL» «IN_ANOTHER_CONTAINER»
+			'''
+		)
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenNewElementIsAddedToAnEmptyContainer() {
+		testContainer = createTestContainerInResource
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, "")
+		execAndFlushPendingEvents[
+			testContainer.classesForControls += createClassForControls
+		]
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenNewElementIsAddedToAnEmptyResource() {
+		val resource = createResourceInResouceSet
+		val treeViewer = setupTreeViewer(resource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, "")
+		execAndFlushPendingEvents[
+			createTestContainer(resource).classesForControls += createClassForControls
+		]
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenNewElementIsAddedAndAddedAgain() {
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[testContainer.classesForControls += createClassForControls]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+		execAndFlushPendingEvents[testContainer.classesForControls += createClassForControls]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenExistingElementIsRemoved() {
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls -= testContainer.classesForControls.head
+		]
+		assertAllLabels(treeViewer, "")
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenContentsAreCleared() {
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls.clear
+			true
+		]
+		assertAllLabels(treeViewer, "")
+	}
+
+	@Test
+	def void testRootElementsAreRefreshedWhenNewElementsAreAddedAndThenRemoved() {
+		fillTestContainer
+		val treeViewer = setupTreeViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertAllLabels(treeViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls += createClassForControls
+			testContainer.classesForControls += createClassForControls
+		]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls -= testContainer.classesForControls.head
+		]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls -= testContainer.classesForControls.head
+		]
+		assertAllLabels(treeViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+	}
+	
+	private def getContentProviderWithCustomGetElements() {
+		new ViewerContentProvider(adapterFactory) {
+			def elements(Resource resource) {
+				// don't return classesWithName
+				resource.allContents.
+					filter(TestContainer).toIterable.
+					map[classesForControls].flatten
+			}
+		}.injectMembers
+	}
+
 	def private fillTestContainer() {
-		testContainer => [
+		testContainer = createTestContainerInResource => [
 			classesForControls += classForControlsInstance
 			classesWithName += createClassWithName("Test")
 		]
+		return testContainer
 	}
 
 	def private assertArray(CharSequence expected, Object[] a) {
 		expected.toString.assertEquals(
 			a.map[labelProvider.getText(it)].join(", ")
 		)
+	}
+
+	/**
+	 * In order to make the tests reliable for viewer refreshing, it is crucial
+	 * to use a Resource as input, not an EObject
+	 */
+	def private setupTreeViewer(Resource resouce, IContentProvider contentProvider) {
+		new TreeViewer(shell) => [
+			it.contentProvider = contentProvider
+			it.labelProvider = labelProvider
+			it.input = resouce
+		]
 	}
 }

@@ -26,6 +26,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
 import org.eclipse.emf.parsley.tests.factories.CustomContentProviderLibraryExecutableExtensionFactory;
 import org.eclipse.emf.parsley.tests.factories.CustomContentProviderLibraryModule;
+import org.eclipse.emf.parsley.tests.factories.CustomElementsContentProviderLibraryExecutableExtensionFactory;
+import org.eclipse.emf.parsley.tests.factories.CustomElementsContentProviderLibraryModule;
 import org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory;
 import org.eclipse.emf.parsley.tests.factories.CustomLibraryModule;
 import org.eclipse.emf.parsley.tests.factories.resourcelistening.ResourceListeningLibraryExecutableExtensionFactory;
@@ -111,7 +113,12 @@ public class EmfParsleySwtBotTestsActivator extends AbstractUIPlugin {
 				injector = createInjector(new CustomContentProviderLibraryModule(
 						this));
 				injectorsMap.put(cName.getCanonicalName(), injector);
-			}  else if (ResourceListeningLibraryExecutableExtensionFactory.class
+			} else if (CustomElementsContentProviderLibraryExecutableExtensionFactory.class
+					.equals(cName)) {
+				injector = createInjector(new CustomElementsContentProviderLibraryModule(
+						this));
+				injectorsMap.put(cName.getCanonicalName(), injector);
+			} else if (ResourceListeningLibraryExecutableExtensionFactory.class
 					.equals(cName)) {
 				injector = createInjector(new ResourceListeningLibraryModule(	
 						this));

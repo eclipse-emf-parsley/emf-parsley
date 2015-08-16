@@ -19,11 +19,14 @@ import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Rule;
+import static org.junit.Assert.*;
 
 /**
  * Base class for Junit tests that require a Shell.
@@ -39,6 +42,8 @@ import org.junit.Rule;
 public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
 	
 	private static final Logger LOGGER = Logger.getLogger(AbstractEmfParsleyShellBasedTest.class);
+
+	protected static int TAB_INDENT = 2;
 
 	@Rule
 	public DisplayHelperTestRule displayHelperTestRule = new DisplayHelperTestRule();
@@ -100,6 +105,31 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 		return displayHelperTestRule.getDisplay();
 	}
 
+	/**
+	 * Executes the passed lambda and flushes the pending events before returning.
+	 * 
+	 * @see #flushPendingEvents()
+	 * 
+	 * @param toExecute
+	 * @return
+	 */
+	protected <T> T execAndFlushPendingEvents(final RunnableWithResult<T> toExecute) {
+		T result = toExecute.run();
+		flushPendingEvents();
+		return result;
+	}
+
+	/**
+	 * Makes sure that all pending events are dispatched and executed; this is
+	 * crucial if you want to test viewer updates that are executed with
+	 * {@link Display#asyncExec(Runnable)}: for example, you modify an EMF
+	 * model, you flush pending events, and you check that a viewer has been
+	 * updated as expected.
+	 */
+	protected void flushPendingEvents() {
+		displayHelperTestRule.flushPendingEvents();
+	}
+
 	protected Image getEMFImageFromObject(final Object object) {
 		return ExtendedImageRegistry.INSTANCE.getImage(object);
 	}
@@ -112,5 +142,43 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 
 	protected EMFEditPlugin getEMFResourceLocator() {
 		return EMFEditPlugin.INSTANCE;
+	}
+
+	/**
+	 * A string representation of the tree is built where children are indented
+	 * of TAB_INDENT number of tabs; this string representation is then compared
+	 * with the expected representation.
+	 * 
+	 * @param treeViewer
+	 * @param expected
+	 */
+	protected void assertAllLabels(TreeViewer treeViewer, CharSequence expected) {
+		assertEquals(expected.toString().trim().replaceAll("\r", ""),
+				treeItemsRepresentation(getTreeItems(treeViewer)).trim().replaceAll("\r", ""));
+	}
+
+	protected TreeItem[] getTreeItems(TreeViewer treeViewer) {
+		return treeViewer.getTree().getItems();
+	}
+
+	protected String treeItemsRepresentation(TreeItem[] items) {
+		StringBuffer buffer = new StringBuffer();
+		// skip the root node
+		treeItemsRepresentation(items, buffer, 0);
+		return buffer.toString();
+	}
+
+	private void treeItemsRepresentation(TreeItem[] items, StringBuffer buffer, int tabs) {
+		for (TreeItem item : items) {
+			treeItemRepresentation(item, buffer, tabs);
+		}
+	}
+
+	private void treeItemRepresentation(TreeItem item, StringBuffer buffer, int tabs) {
+		for (int i = 0; i < tabs; ++i) {
+			buffer.append(" ");
+		}
+		buffer.append(item.getText().toString() + "\n");
+		treeItemsRepresentation(item.getItems(), buffer, tabs + TAB_INDENT);
 	}
 }

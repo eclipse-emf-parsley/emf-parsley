@@ -33,6 +33,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesWithName <em>Classes With Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForControls <em>Classes For Controls</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getContained <em>Contained</em>}</li>
@@ -43,6 +44,26 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * @generated
  */
 public class TestContainerImpl extends MinimalEObjectImpl.Container implements TestContainer {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getClassesWithName() <em>Classes With Name</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -110,6 +131,27 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	protected EClass eStaticClass() {
 		return TestmodelsPackage.Literals.TEST_CONTAINER;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.TEST_CONTAINER__NAME, oldName, name));
 	}
 
 	/**
@@ -233,6 +275,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case TestmodelsPackage.TEST_CONTAINER__NAME:
+				return getName();
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_WITH_NAME:
 				return getClassesWithName();
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_CONTROLS:
@@ -256,6 +300,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case TestmodelsPackage.TEST_CONTAINER__NAME:
+				setName((String)newValue);
+				return;
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_WITH_NAME:
 				getClassesWithName().clear();
 				getClassesWithName().addAll((Collection<? extends ClassWithName>)newValue);
@@ -287,6 +334,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case TestmodelsPackage.TEST_CONTAINER__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_WITH_NAME:
 				getClassesWithName().clear();
 				return;
@@ -314,6 +364,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case TestmodelsPackage.TEST_CONTAINER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_WITH_NAME:
 				return classesWithName != null && !classesWithName.isEmpty();
 			case TestmodelsPackage.TEST_CONTAINER__CLASSES_FOR_CONTROLS:
@@ -326,6 +378,22 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return objectsForValidation != null && !objectsForValidation.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TestContainerImpl

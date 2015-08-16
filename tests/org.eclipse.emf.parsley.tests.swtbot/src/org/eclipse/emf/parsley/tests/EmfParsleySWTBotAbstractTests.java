@@ -210,6 +210,8 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String TEST_SAVEABLE_VIEW_WITH_CUSTOM_CONTENT_PROVIDER = "Library Tree View With Custom Content Provider";
 
+	protected static final String TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER = "Library Tree View With Custom Elements Content Provider";
+
 	protected static final String CUSTOM_PROPOSALS_FORM_VIEW = "Custom Proposals Form View";
 
 	protected static final String WRITER_S_ADDRESS_TEXT = "writer's address";

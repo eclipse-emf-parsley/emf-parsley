@@ -630,8 +630,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTestContainer_ClassesWithName() {
-		return (EReference)testContainerEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTestContainer_Name() {
+		return (EAttribute)testContainerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -639,7 +639,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTestContainer_ClassesForControls() {
+	public EReference getTestContainer_ClassesWithName() {
 		return (EReference)testContainerEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -648,7 +648,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTestContainer_Contained() {
+	public EReference getTestContainer_ClassesForControls() {
 		return (EReference)testContainerEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -657,7 +657,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTestContainer_ClassesForTable() {
+	public EReference getTestContainer_Contained() {
 		return (EReference)testContainerEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -666,8 +666,17 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTestContainer_ObjectsForValidation() {
+	public EReference getTestContainer_ClassesForTable() {
 		return (EReference)testContainerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestContainer_ObjectsForValidation() {
+		return (EReference)testContainerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -744,6 +753,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		// Create classes and their features
 		testContainerEClass = createEClass(TEST_CONTAINER);
+		createEAttribute(testContainerEClass, TEST_CONTAINER__NAME);
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_WITH_NAME);
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_CONTROLS);
 		createEReference(testContainerEClass, TEST_CONTAINER__CONTAINED);
@@ -852,6 +862,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(testContainerEClass, TestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestContainer_Name(), ecorePackage.getEString(), "name", null, 0, 1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_ClassesWithName(), this.getClassWithName(), null, "classesWithName", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_ClassesForControls(), this.getClassForControls(), null, "classesForControls", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_Contained(), this.getTestContainer(), null, "contained", null, 0, 1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -126,13 +126,22 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_CONTAINER = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__NAME = 0;
+
+	/**
 	 * The feature id for the '<em><b>Classes With Name</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER__CLASSES_WITH_NAME = 0;
+	int TEST_CONTAINER__CLASSES_WITH_NAME = 1;
 
 	/**
 	 * The feature id for the '<em><b>Classes For Controls</b></em>' containment reference list.
@@ -141,7 +150,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER__CLASSES_FOR_CONTROLS = 1;
+	int TEST_CONTAINER__CLASSES_FOR_CONTROLS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Contained</b></em>' containment reference.
@@ -150,7 +159,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER__CONTAINED = 2;
+	int TEST_CONTAINER__CONTAINED = 3;
 
 	/**
 	 * The feature id for the '<em><b>Classes For Table</b></em>' containment reference list.
@@ -159,7 +168,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER__CLASSES_FOR_TABLE = 3;
+	int TEST_CONTAINER__CLASSES_FOR_TABLE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Objects For Validation</b></em>' containment reference list.
@@ -168,7 +177,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER__OBJECTS_FOR_VALIDATION = 4;
+	int TEST_CONTAINER__OBJECTS_FOR_VALIDATION = 5;
 
 	/**
 	 * The number of structural features of the '<em>Test Container</em>' class.
@@ -177,7 +186,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER_FEATURE_COUNT = 5;
+	int TEST_CONTAINER_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Test Container</em>' class.
@@ -1401,6 +1410,17 @@ public interface TestmodelsPackage extends EPackage {
 	EClass getTestContainer();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getName()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EAttribute getTestContainer_Name();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getClassesWithName <em>Classes With Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1853,6 +1873,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TEST_CONTAINER = eINSTANCE.getTestContainer();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_CONTAINER__NAME = eINSTANCE.getTestContainer_Name();
 		/**
 		 * The meta object literal for the '<em><b>Classes With Name</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
