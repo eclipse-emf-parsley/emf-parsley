@@ -22,7 +22,7 @@ import org.eclipse.swt.SWT;
 public class TestSaveableResourceTableWithEditView extends AbstractSaveableTableView {
 
 	@Override
-	protected Object getContents(Resource resource) {
+	public Object getContents(Resource resource) {
 		Library library=(Library) resource.getContents().get(0);
 		return library.getBooks();
 	}

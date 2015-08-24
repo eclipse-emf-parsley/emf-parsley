@@ -14,17 +14,13 @@ package org.eclipse.emf.parsley.viewers;
 
 import java.util.List;
 
-import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
-import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
-import org.eclipse.jface.databinding.viewers.ObservableMapCellLabelProvider;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
@@ -72,8 +68,7 @@ public class TableViewerColumnBuilder {
 	 * @param eClass
 	 * @param contentProvider
 	 */
-	public void buildTableViewer(TableViewer tableViewer, EClass eClass,
-			IStructuredContentProvider contentProvider) {
+	public void buildTableViewer(TableViewer tableViewer, EClass eClass) {
 		final Table table = tableViewer.getTable();
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
@@ -98,40 +93,16 @@ public class TableViewerColumnBuilder {
 			}
 			
 			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature,
-					contentProvider,weight);
+					weight);
 		}
 	}
 	
-	public void buildTableViewer2(TableViewer tableViewer, EClass eClass,
-			ObservableListContentProvider contentProvider) {
-		final Table table = tableViewer.getTable();
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-
-		TableLayout layout = new TableLayout();
-		table.setLayout(layout);
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-
-		List<EStructuralFeature> typeFeatures = featuresProvider
-				.getFeatures(eClass);
-		int i=0;
-		for (EStructuralFeature eStructuralFeature : typeFeatures) {
-			int weight=defaultWeight;
-			if(weights.size()>i){
-				weight=weights.get(i++);
-			}
-			
-			buildTableViewerColumn2(tableViewer, layout, eClass, eStructuralFeature,
-					contentProvider,weight);
-		}
-	}
+	
 	
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
-			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature,
-			IStructuredContentProvider contentProvider, int weight) {
+			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature, int weight) {
 		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer,
-				eStructuralFeature, contentProvider);
+				eStructuralFeature);
 		TableColumn objectColumn = viewerColumn.getColumn();
 		if (layout instanceof TableColumnLayout) {
 			((TableColumnLayout)layout).setColumnData(viewerColumn.getColumn(), new ColumnWeightData(weight, 30, true));
@@ -144,26 +115,9 @@ public class TableViewerColumnBuilder {
 		return viewerColumn;
 	}
 
-	protected TableViewerColumn buildTableViewerColumn2(TableViewer tableViewer,
-			TableLayout layout, EClass eClass, EStructuralFeature eStructuralFeature,
-			ObservableListContentProvider contentProvider, int weight) {
-		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer,
-				eStructuralFeature, contentProvider);
-		TableColumn objectColumn = viewerColumn.getColumn();
-		viewerColumn.getColumn().setText(featureCaptionProvider.getText(eClass, eStructuralFeature));
-		layout.addColumnData(new ColumnWeightData(weight, 30, true));
-		viewerColumn.setLabelProvider(new ObservableMapCellLabelProvider(
-		    EMFProperties.value(eStructuralFeature).observeDetail(contentProvider.getKnownElements())
-		  )
-		);		
-		objectColumn.setResizable(true);
-		return viewerColumn;
-	}
-
 	
 	protected TableViewerColumn createTableViewerColumn(
-			TableViewer tableViewer, EStructuralFeature eStructuralFeature,
-			IStructuredContentProvider contentProvider) {
+			TableViewer tableViewer, EStructuralFeature eStructuralFeature) {
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(
 				tableViewer, SWT.NONE);
 			tableViewerColumn.setLabelProvider(columnLabelProviderFactory

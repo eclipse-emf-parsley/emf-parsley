@@ -14,8 +14,6 @@ package org.eclipse.emf.parsley.composite;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -49,11 +47,6 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 		viewerContainer.setLayoutData(new GridData());
 		return tableViewer;
 	}
-	
-	public void buildTable(EClass type, IStructuredContentProvider contentProvider){
-		removeExistingColumns();
-		tableViewerFactory.build(tableViewer, type,  contentProvider);
-	}
 
 	public TableViewerFactory getTableViewerFactory() {
 		return tableViewerFactory;
@@ -67,18 +60,11 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	
 	@Override
 	public void update(Object contents) {
-		tableViewerFactory.fill(tableViewer, contents, new ArrayContentProvider());
-	}
-
-	private void removeExistingColumns() {
-		for (int i=tableViewer.getTable().getColumns().length;i>0;i--) {
-			tableViewer.getTable().getColumns()[i-1].dispose();
-		}
-		tableViewer.getTable().pack();
+		tableViewer.setInput(contents);
 	}
 
 	public void buildTable(EClass eType) {
-		buildTable(eType, new ArrayContentProvider());
+		tableViewerFactory.initialize(tableViewer, eType);
 	}
 	
 }

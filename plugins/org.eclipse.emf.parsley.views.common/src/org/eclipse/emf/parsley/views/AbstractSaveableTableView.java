@@ -12,9 +12,9 @@
 package org.eclipse.emf.parsley.views;
 
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.parsley.edit.ui.provider.IResourceContentsProvider;
+import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
 import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -26,10 +26,13 @@ import com.google.inject.Inject;
  * @author Francesco Guidieri - Initial contribution and API
  * @author Lorenzo Bettini - some cleanup
  */
-public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView {
+public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView implements IResourceContentsProvider {
 
 	@Inject
 	protected TableViewerFactory tableViewerFactory;
+
+	@Inject
+	private ViewerContentProviderFactory contentProviderFactory;
 
 	protected TableViewer tableViewer;
 
@@ -37,9 +40,10 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		tableViewer = tableViewerFactory.createTableViewer(parent, createTableStyles(), 
-											getEClass(), getContents(getResource()));
-		
+		tableViewer = tableViewerFactory.
+				createTableViewer(parent, createTableStyles(), getEClass(),
+				contentProviderFactory.createViewerContentProviderForResource(this));
+		tableViewer.setInput(getResource());
 		addContextMenu(tableViewer);
 		
 		getSite().setSelectionProvider(tableViewer);
@@ -48,12 +52,6 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 	protected int createTableStyles() {
 		return SWT.BORDER | SWT.FULL_SELECTION;
 	}
-
-	/**
-	 * @param resource
-	 * @return the contents from the passed resource to be shown in the table
-	 */
-	protected abstract Object getContents(Resource resource);
 
 	/**
 	 * @return the {@link EClass} for objects to be shown in the table
@@ -70,10 +68,4 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 		return tableViewer;
 	}
 
-	@Override
-	protected void mostRecentCommandAffectsResource(Command mostRecentCommand) {
-		super.mostRecentCommandAffectsResource(mostRecentCommand);
-		// for TableViewer the refresh does not seem to be automatic
-		tableViewer.refresh();
-	}
 }

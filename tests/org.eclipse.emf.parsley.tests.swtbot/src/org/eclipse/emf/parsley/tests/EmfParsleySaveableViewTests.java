@@ -120,8 +120,10 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	@Test
 	public void canPerformDeleteActionOnSaveableTableView() throws Exception {
 		SWTBotTable table = prepareSaveableTableView();
+		assertTableItemsSize(table, 2);
 		table.select(0); // otherwise context menu might not be created
 		clickOnContextMenu(table, ACTION_DELETE);
+		assertTableItemsSize(table, 1);
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TABLE_VIEW);
 	}
 
@@ -139,8 +141,10 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	@Test
 	public void canPerformDeleteActionOnSaveableTableFormView() throws Exception {
 		SWTBotTable table = prepareSaveableTableFormView();
+		assertTableItemsSize(table, 2);
 		table.select(0); // otherwise context menu might not be created
 		clickOnContextMenu(table, ACTION_DELETE);
+		assertTableItemsSize(table, 1);
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TABLE_FORM_VIEW);
 	}
 

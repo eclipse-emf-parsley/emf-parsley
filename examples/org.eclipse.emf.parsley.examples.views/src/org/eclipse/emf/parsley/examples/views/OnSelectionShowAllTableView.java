@@ -18,8 +18,10 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
+import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.emf.parsley.views.AbstractOnSelectionView;
+import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -123,8 +125,13 @@ public class OnSelectionShowAllTableView extends AbstractOnSelectionView {
 		Label lblNewLabel = new Label(composite, SWT.NONE);
 		lblNewLabel.setText(label);
 
-		TableViewer tableViewer = tableViewerFactory.createTableViewer(composite,
-				SWT.BORDER | SWT.FULL_SELECTION, eClass, object);
+		Composite viewerContainer = new Composite(parent, SWT.NONE);
+		TableColumnLayout layout = new TableColumnLayout();
+		viewerContainer.setLayout(layout);
+		TableViewer tableViewer = new TableViewer(viewerContainer, SWT.BORDER | SWT.FULL_SELECTION);
+
+		tableViewerFactory.initialize(tableViewer, eClass);
+		tableViewer.setInput(EmfParsleyUtil.ensureCollection(object));
 
 		Table table = tableViewer.getTable();
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));

@@ -19,9 +19,7 @@ import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.inject.Inject;
@@ -82,22 +80,12 @@ public abstract class AbstractOnSelectionTableView extends
 //		Object value = eObject.eGet(feature);
 //		tableViewer.setInput(value);
 		
-		tableViewerFactory.fill2(tableViewer, eObject, feature);
+		tableViewerFactory.fill(tableViewer, eObject, feature);
 	}
 
 	protected void createTableViewer() {
-		ScrolledComposite scrolledComposite = new ScrolledComposite(parent,
-				SWT.V_SCROLL | SWT.BORDER);
-		scrolledComposite.setExpandHorizontal(true);
-		scrolledComposite.setExpandVertical(true);
-
-		tableViewer = tableViewerFactory.createTableViewer(scrolledComposite,
+		tableViewer = tableViewerFactory.createTableViewer(parent,
 				SWT.BORDER | SWT.FULL_SELECTION, getEClass());
-
-		Table table = tableViewer.getTable();
-		scrolledComposite.setContent(table);
-		scrolledComposite.setMinSize(table
-				.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 	}
 
 	@Override

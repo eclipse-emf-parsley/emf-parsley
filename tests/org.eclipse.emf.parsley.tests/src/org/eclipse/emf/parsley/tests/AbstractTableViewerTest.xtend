@@ -15,6 +15,7 @@ import org.eclipse.jface.viewers.TableViewer
 import org.eclipse.swt.SWT
 import org.junit.Before
 import org.eclipse.emf.parsley.viewers.TableViewerFactory
+import org.eclipse.emf.parsley.util.EmfParsleyUtil
 
 abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
@@ -33,9 +34,10 @@ abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
 	def protected buildAndFill(Object contents, EClass eClass) {
 		syncExecVoid[
-			tableViewerFactory.buildAndFill(
-				tableViewer, contents, eClass
+			tableViewerFactory.initialize(
+				tableViewer, eClass
 			)
+			tableViewer.input = EmfParsleyUtil.ensureCollection(contents)
 		]
 	}
 

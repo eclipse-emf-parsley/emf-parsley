@@ -49,9 +49,22 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	 */
 	private Set<Object> customElementsParents = new HashSet<Object>();
 
-	@Inject
+	/**
+	 * If you use this constructor, you then must make sure to inject other
+	 * members, using, for instance, injectMembers.
+	 */
+	public ViewerContentProvider() {
+		this(null);
+	}
+
 	public ViewerContentProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	@Override
+	@Inject
+	public void setAdapterFactory(AdapterFactory adapterFactory) {
+		super.setAdapterFactory(adapterFactory);
 	}
 
 	/**

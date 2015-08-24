@@ -31,7 +31,6 @@ import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
@@ -44,10 +43,10 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 	@Override
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
 			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature,
-			IStructuredContentProvider contentProvider, int weight) {
+			int weight) {
 		TableViewerColumn viewerColumn= super.buildTableViewerColumn(tableViewer, layout,
 				eClass, eStructuralFeature,
-				contentProvider, weight);
+				weight);
 
 		if(eStructuralFeature instanceof EAttribute){
 			if(isPredefinedValueEditing((EAttribute)eStructuralFeature)){

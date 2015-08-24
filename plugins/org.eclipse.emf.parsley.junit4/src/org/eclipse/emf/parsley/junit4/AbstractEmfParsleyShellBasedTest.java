@@ -19,10 +19,12 @@ import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Rule;
@@ -142,6 +144,26 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 
 	protected EMFEditPlugin getEMFResourceLocator() {
 		return EMFEditPlugin.INSTANCE;
+	}
+
+	/**
+	 * A string representation of the table is built; this string representation is then compared
+	 * with the expected representation.
+	 * 
+	 * @param tableViewer
+	 * @param expected
+	 */
+	protected void assertTable(TableViewer tableViewer, CharSequence expected) {
+		assertEquals(expected.toString().trim().replaceAll("\r", ""),
+				tableItemsRepresentation(tableViewer.getTable().getItems()).trim().replaceAll("\r", ""));
+	}
+
+	protected String tableItemsRepresentation(TableItem[] items) {
+		StringBuffer buffer = new StringBuffer();
+		for (TableItem item : items) {
+			buffer.append(item.getText().toString() + "\n");
+		}
+		return buffer.toString();
 	}
 
 	/**

@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import java.util.ArrayList
 import org.eclipse.core.runtime.AssertionFailedException
 import org.eclipse.emf.parsley.tests.util.NonStructuredViewer
+import org.eclipse.jface.viewers.TableViewer
 
 class ViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 
@@ -386,9 +387,90 @@ class ViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 			'''
 		)
 	}
+
+	@Test
+	def void testElementsForTableViewer() {
+		// this tests the default behavior, when getElements
+		// is not customized
+		fillTestContainer
+		val tableViewer = setupTableViewer(testContainer.eResource,
+			contentProvider)
+		assertTable(tableViewer, TEST_CONTAINER)
+	}
+
+	@Test
+	def void testCustomElementsForTableViewer() {
+		// this tests the default behavior, when getElements
+		// is not customized
+		fillTestContainer
+		val tableViewer = setupTableViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertTable(tableViewer, CLASS_FOR_CONTROLS_LABEL)
+	}
+
+	@Test
+	def void testTableElementsAreRefreshedWhenNewElementsAreAddedAndThenRemoved() {
+		fillTestContainer
+		val tableViewer = setupTableViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertTable(tableViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls += createClassForControls
+			testContainer.classesForControls += createClassForControls
+		]
+		assertTable(tableViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls -= testContainer.classesForControls.head
+		]
+		assertTable(tableViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls -= testContainer.classesForControls.head
+		]
+		assertTable(tableViewer,
+			'''
+			«CLASS_FOR_CONTROLS_LABEL»
+			'''
+		)
+	}
+
+	@Test
+	def void testTableElementsAreRefreshedWhenExistingElementIsRemoved() {
+		fillTestContainer
+		val tableViewer = setupTableViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertTable(tableViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls -= testContainer.classesForControls.head
+		]
+		assertTable(tableViewer, "")
+	}
+
+	@Test
+	def void testTableElementsAreRefreshedWhenContentsAreCleared() {
+		fillTestContainer
+		val tableViewer = setupTableViewer(testContainer.eResource,
+			getContentProviderWithCustomGetElements())
+		assertTable(tableViewer, CLASS_FOR_CONTROLS_LABEL)
+		execAndFlushPendingEvents[
+			testContainer.classesForControls.clear
+			true
+		]
+		assertTable(tableViewer, "")
+	}
 	
 	private def getContentProviderWithCustomGetElements() {
-		new ViewerContentProvider(adapterFactory) {
+		new ViewerContentProvider() {
 			def elements(Resource resource) {
 				// don't return classesWithName
 				resource.allContents.
@@ -418,6 +500,20 @@ class ViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	 */
 	def private setupTreeViewer(Resource resouce, IContentProvider contentProvider) {
 		new TreeViewer(shell) => [
+			it.contentProvider = contentProvider
+			it.labelProvider = labelProvider
+			it.input = resouce
+		]
+	}
+
+	/**
+	 * In order to make the tests reliable for viewer refreshing, it is crucial
+	 * to use a Resource as input, not an EObject; here we're not interested in columns,
+	 * just in the rows, so we set a label provider which is usually not needed for
+	 * table viewers (since we have column label providers).
+	 */
+	def private setupTableViewer(Resource resouce, IContentProvider contentProvider) {
+		new TableViewer(shell) => [
 			it.contentProvider = contentProvider
 			it.labelProvider = labelProvider
 			it.input = resouce

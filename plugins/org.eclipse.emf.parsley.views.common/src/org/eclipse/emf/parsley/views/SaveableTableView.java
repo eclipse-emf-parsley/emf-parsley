@@ -35,7 +35,7 @@ public class SaveableTableView extends AbstractSaveableTableView {
 	}
 
 	@Override
-	protected Object getContents(Resource resource) {
+	public Object getContents(Resource resource) {
 		return configurator.getContents(this, resource);
 	}
 

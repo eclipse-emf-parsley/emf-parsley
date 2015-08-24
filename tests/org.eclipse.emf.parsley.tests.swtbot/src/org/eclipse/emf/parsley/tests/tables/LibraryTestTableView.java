@@ -20,6 +20,7 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.VideoCassette;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
+import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -95,7 +96,8 @@ public class LibraryTestTableView extends ViewPart {
 		TableViewer tableViewer = new TableViewer(composite, SWT.BORDER
 				| SWT.FULL_SELECTION);
 		
-		tableViewerFactory.buildAndFill(tableViewer, object, eClass);
+		tableViewerFactory.initialize(tableViewer, eClass);
+		tableViewer.setInput(EmfParsleyUtil.ensureCollection(object));
 
 		Table table = tableViewer.getTable();
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
