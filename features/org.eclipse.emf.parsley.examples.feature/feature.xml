@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.examples.feature"
       label="Emf Parsley Examples"
-      version="0.4.0.qualifier"
+      version="0.5.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.ui.examples">
 
