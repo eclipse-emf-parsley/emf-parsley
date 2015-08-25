@@ -32,6 +32,32 @@ class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest 
 		feature.name.assertEquals(provider.getText(derivedClass, feature))
 	}
 
+	@Test def void testCustomDefaultText() {
+		// custom defaultText should have precedence over the
+		// delegated FeatureCaptionProvider.defaultText
+		val provider = new DialogFeatureCaptionProvider() {
+			override protected defaultText(EStructuralFeature feature) {
+				"default"
+			}
+		}.injectMembers
+		val feature = testPackage.derivedClass_DerivedClassFeature
+		"default".assertEquals(provider.getText(derivedClass, feature))
+	}
+
+	@Test def void testDelegatedCustomGetText() {
+		// the DialogFeatureCaptionProvider has no customization,
+		// but the custom FeatureCaptionProvider has a customization
+		// and we check that we delegate to it
+		val provider = new DialogFeatureCaptionProvider() => [initialize]
+		provider.delegate = new FeatureCaptionProvider() {
+			def String text_DerivedClass_derivedClassFeature(EStructuralFeature feature) {
+				return "custom"
+			}
+		}
+		val feature = testPackage.derivedClass_DerivedClassFeature
+		"custom".assertEquals(provider.getText(derivedClass, feature))
+	}
+
 	@Test def void testDefaultLabel() {
 		val provider = new DialogFeatureCaptionProvider() => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature

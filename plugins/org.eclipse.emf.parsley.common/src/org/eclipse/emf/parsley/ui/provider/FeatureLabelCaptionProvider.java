@@ -70,7 +70,7 @@ public class FeatureLabelCaptionProvider extends FeatureCaptionProvider {
 	protected String polymorphicGetText(EClass eClass, EStructuralFeature feature) {
 		String polymorphicGetText = super.polymorphicGetText(eClass, feature);
 		if (polymorphicGetText == null) {
-			return getDelegate().getText(eClass, feature);
+			return getDelegate().polymorphicGetText(eClass, feature);
 		}
 		return polymorphicGetText;
 	}
