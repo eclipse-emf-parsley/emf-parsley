@@ -58,7 +58,7 @@ public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Book Domain Specific Languages");
-		botView.bot().textWithLabel("title").setText("My Tyltle");
+		botView.bot().textWithLabel("Title").setText("My Tyltle");
 		someSleep();
 		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
 		forceSaveView(botView);
@@ -70,7 +70,7 @@ public class CDOTreeFormDirtyAndSaveableTests extends CDOAbstractTests {
 		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Author Ed Merks");
-		botView.bot().textWithLabel("name").setText("My Name");
+		botView.bot().textWithLabel("Name").setText("My Name");
 		someSleep();
 		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
 		forceSaveView(botView);

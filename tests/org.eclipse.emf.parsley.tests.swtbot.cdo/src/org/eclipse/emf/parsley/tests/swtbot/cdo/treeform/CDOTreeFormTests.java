@@ -63,8 +63,8 @@ public class CDOTreeFormTests extends CDOAbstractTests {
 		SWTBotView botView=getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Book Domain Specific Languages");
-		Assert.assertEquals(botView.bot().textWithLabel("title").getText(),"Domain Specific Languages");
-		Assert.assertEquals(botView.bot().textWithLabel("pages").getText(),"0");
+		Assert.assertEquals(botView.bot().textWithLabel("Title").getText(),"Domain Specific Languages");
+		Assert.assertEquals(botView.bot().textWithLabel("Pages").getText(),"0");
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class CDOTreeFormTests extends CDOAbstractTests {
 		SWTBotView botView=getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
 		libraryNode.select("Author Ed Merks");
-		Assert.assertEquals(botView.bot().textWithLabel("name").getText(),"Ed Merks");
+		Assert.assertEquals(botView.bot().textWithLabel("Name").getText(),"Ed Merks");
 	}
 	
 	@After

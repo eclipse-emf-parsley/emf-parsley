@@ -129,7 +129,7 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String CLASS_FOR_CONTROLS_LABEL = "Class For Controls";
 
-	protected static final String STRING_FEATURE_LABEL = "stringFeature";
+	protected static final String STRING_FEATURE_LABEL = "String Feature";
 
 	protected static final String EMF_TREE_EDITOR = "EMF Tree Editor";
 
@@ -216,15 +216,23 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String WRITER_S_ADDRESS_TEXT = "writer's address";
 
-	protected static final String ADDRESS_LABEL = "address";
-	
-	protected static final String BORROWERS_LABEL = "borrowers";
-	
-	protected static final String AUTHOR_LABEL = "author";
+	protected static final String ADDRESS_LABEL = "Address";
 
-	protected static final String FIRSTNAME_LABEL = "firstName";
+	protected static final String ADDRESS_COLUMN_HEADER = "address";
 
-	protected static final String DAMAGED_LABEL = "damaged";
+	protected static final String BORROWERS_LABEL = "Borrowers";
+	
+	protected static final String BORROWERS_COLUMN_HEADER = "borrowers";
+	
+	protected static final String AUTHOR_LABEL = "Author";
+
+	protected static final String AUTHOR_COLUMN_HEADER = "author";
+
+	protected static final String FIRSTNAME_LABEL = "First Name";
+
+	protected static final String FIRSTNAME_COLUMN_HEADER = "firstName";
+
+	protected static final String DAMAGED_LABEL = "Damaged";
 
 	protected static final String CUSTOM_FIRSTNAME_LABEL = "First name";
 

@@ -10,10 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
-import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Label
@@ -24,7 +26,6 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	
@@ -47,8 +48,8 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	@Test def void testDefaultLabel() {
 		val provider = new FormFeatureCaptionProvider() => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature
-		feature.name.assertEquals(syncExec[|
-			provider.getLabel(shell, derivedClass, feature).text
+		"Derived Class Feature".assertEquals(syncExec[|
+			provider.getLabel(shell, derivedClass.createInstance, feature).text
 		])
 	}
 	
@@ -67,9 +68,9 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 			}
 		} => [initialize]
 		
-		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass.createInstance, testFeature))
 		expectedLabelText.assertEquals(syncExec[|
-			provider.getLabel(shell, derivedClass, testFeature).text
+			provider.getLabel(shell, derivedClass.createInstance, testFeature).text
 		])
 	}
 
@@ -86,7 +87,7 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 		// the FormToolkit adapts the label using FormColors
 		// so we check that it is actually adapted
 		formColors.background.assertEquals(syncExec[|
-			provider.getLabel(shell, derivedClass, testFeature).background
+			provider.getLabel(shell, derivedClass.createInstance, testFeature).background
 		])
 	}
 
@@ -100,9 +101,9 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 			}
 		} => [initialize]
 		
-		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass.createInstance, testFeature))
 		expectedText.assertEquals(syncExec[|
-			provider.getLabel(shell, derivedClass, testFeature).text
+			provider.getLabel(shell, derivedClass.createInstance, testFeature).text
 		])
 	}
 
@@ -116,7 +117,7 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 		} => [initialize]
 		
 		expectedText.assertEquals(provider.getText(
-			baseClass, testPackage.baseClass_BaseClassFeature
+			baseClass.createInstance, testPackage.baseClass_BaseClassFeature
 		))
 	}
 
@@ -130,15 +131,18 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 		} => [initialize]
 		
 		expectedText.assertEquals(provider.getText(
-			derivedClass, testPackage.baseClass_BaseClassFeature
+			derivedClass.createInstance, testPackage.baseClass_BaseClassFeature
 		))
 	}
 
 	def private initialize(FormFeatureCaptionProvider provider) {
-		provider.delegate = new FeatureCaptionProvider
 		syncExecVoid[|
 			provider.formToolkit = new FormToolkit(display)
 		]
+		provider.injectMembers
 	}
 
+	def private createInstance(EClass eClass) {
+		EcoreUtil.create(eClass)
+	}
 }

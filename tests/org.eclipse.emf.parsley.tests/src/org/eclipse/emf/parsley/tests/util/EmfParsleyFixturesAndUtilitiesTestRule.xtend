@@ -60,6 +60,8 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	
 	val protected libraryFactory = EXTLibraryFactory.eINSTANCE
 
+	val protected libraryPackage = EXTLibraryPackage.eINSTANCE
+
 	val protected baseClass = testPackage.baseClass
 	
 	val protected derivedClass = testPackage.derivedClass
@@ -116,6 +118,10 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 
 	def getLibrary() {
 		lib
+	}
+
+	def getLibraryPackage() {
+		libraryPackage
 	}
 
 	def getWriter() {

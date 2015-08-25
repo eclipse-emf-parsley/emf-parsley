@@ -196,7 +196,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * @param feature the {@link EStructuralFeature} for the creation
 	 */
 	public void createEditingField(EStructuralFeature feature) {
-		featureLabelCaptionProvider.getLabel(getParent(), owner.eClass(), feature);
+		featureLabelCaptionProvider.getLabel(getParent(), owner, feature);
 		create(feature);
 	}
 

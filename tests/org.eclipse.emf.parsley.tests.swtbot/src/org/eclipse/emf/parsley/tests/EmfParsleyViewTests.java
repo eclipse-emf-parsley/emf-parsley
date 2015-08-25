@@ -80,7 +80,7 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 	@Test
 	public void testLibraryTestTableView() throws Exception {
 		SWTBotView view = openTestView(LIBRARY_TEST_EMF_TABLE_VIEW);
-		getTableHeader(ADDRESS_LABEL);
+		getTableHeader(ADDRESS_COLUMN_HEADER);
 		// the writers table is the third one
 		getTableHeader(2, CUSTOM_FIRSTNAME_LABEL);
 		view.close();
@@ -93,7 +93,7 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
 		libraryNode.select();
 		// the table should show the books
-		getTableHeader(AUTHOR_LABEL);
+		getTableHeader(AUTHOR_COLUMN_HEADER);
 		
 		getWriterNode(libraryNode).select();
 		// the table won't show anything
@@ -108,7 +108,7 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
 		libraryNode.select();
 		// the table should show the books
-		getTableHeader(AUTHOR_LABEL);
+		getTableHeader(AUTHOR_COLUMN_HEADER);
 
 		// now test the form
 		bot.table().select(0);

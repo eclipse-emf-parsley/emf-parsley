@@ -33,7 +33,7 @@ public class EmfParsleyTestViewsTests extends EmfParsleySWTBotAbstractTests {
 
 	private static final String OBJECT_FOR_VALIDATION = "Class For Validation";
 
-	private static final String NOT_EMPTY_LABEL = "notEmpty";
+	private static final String NOT_EMPTY_LABEL = "Not Empty";
 
 	@Before
 	public void setupProject() {

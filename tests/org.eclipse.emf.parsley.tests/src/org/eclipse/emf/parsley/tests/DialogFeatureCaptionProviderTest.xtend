@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
 import org.eclipse.swt.widgets.Composite
@@ -20,14 +23,22 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
+
+	val static DERIVED_CLASS_FEATURE_PROP_DESCRIPTION = "Derived Class Feature"
+
+	@Test def void testDefaultTextWithInstance() {
+		val provider = createCaptionProvider
+		val feature = testPackage.derivedClass_DerivedClassFeature
+		DERIVED_CLASS_FEATURE_PROP_DESCRIPTION.
+			assertEquals(provider.getText(derivedClass.createInstance, feature))
+	}
 	
 	@Test def void testDefaultText() {
-		val provider = new DialogFeatureCaptionProvider() => [initialize]
+		val provider = createCaptionProvider
 		val feature = testPackage.derivedClass_DerivedClassFeature
 		feature.name.assertEquals(provider.getText(derivedClass, feature))
 	}
@@ -48,21 +59,21 @@ class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest 
 		// the DialogFeatureCaptionProvider has no customization,
 		// but the custom FeatureCaptionProvider has a customization
 		// and we check that we delegate to it
-		val provider = new DialogFeatureCaptionProvider() => [initialize]
+		val provider = createCaptionProvider
 		provider.delegate = new FeatureCaptionProvider() {
 			def String text_DerivedClass_derivedClassFeature(EStructuralFeature feature) {
 				return "custom"
 			}
-		}
+		}.injectMembers
 		val feature = testPackage.derivedClass_DerivedClassFeature
-		"custom".assertEquals(provider.getText(derivedClass, feature))
+		"custom".assertEquals(provider.getText(derivedClass.createInstance, feature))
 	}
 
 	@Test def void testDefaultLabel() {
-		val provider = new DialogFeatureCaptionProvider() => [initialize]
+		val provider = createCaptionProvider
 		val feature = testPackage.derivedClass_DerivedClassFeature
-		feature.name.assertEquals(syncExec[|
-			provider.getLabel(shell, derivedClass, feature).text
+		DERIVED_CLASS_FEATURE_PROP_DESCRIPTION.assertEquals(syncExec[|
+			provider.getLabel(shell, derivedClass.createInstance, feature).text
 		])
 	}
 	
@@ -81,9 +92,9 @@ class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest 
 			}
 		}
 		
-		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass.createInstance, testFeature))
 		expectedLabelText.assertEquals(syncExec[|
-			provider.getLabel(shell, derivedClass, testFeature).text
+			provider.getLabel(shell, derivedClass.createInstance, testFeature).text
 		])
 	}
 
@@ -97,9 +108,9 @@ class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest 
 			}
 		}
 		
-		expectedText.assertEquals(provider.getText(derivedClass, testFeature))
+		expectedText.assertEquals(provider.getText(derivedClass.createInstance, testFeature))
 		expectedText.assertEquals(syncExec[|
-			provider.getLabel(shell, derivedClass, testFeature).text
+			provider.getLabel(shell, derivedClass.createInstance, testFeature).text
 		])
 	}
 
@@ -113,7 +124,7 @@ class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest 
 		}
 		
 		expectedText.assertEquals(provider.getText(
-			baseClass, testPackage.baseClass_BaseClassFeature
+			baseClass.createInstance, testPackage.baseClass_BaseClassFeature
 		))
 	}
 
@@ -127,11 +138,26 @@ class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest 
 		}
 		
 		expectedText.assertEquals(provider.getText(
-			derivedClass, testPackage.baseClass_BaseClassFeature
+			derivedClass.createInstance, testPackage.baseClass_BaseClassFeature
 		))
 	}
 
-	def private initialize(DialogFeatureCaptionProvider provider) {
-		provider.delegate = new FeatureCaptionProvider
+	@Test def void testNoPropertyDescriptionFallsBackToFeatureName() {
+		val provider = createCaptionProvider
+		
+		// we simulate the absence of a property description specifying
+		// a feature that is not present in the object's EClass
+		val feature = testPackage.testContainer_ClassesForControls
+		feature.name.assertEquals(provider.getText(
+			derivedClass.createInstance, feature
+		))
+	}
+
+	def private createCaptionProvider() {
+		getOrCreateInjector.getInstance(DialogFeatureCaptionProvider)
+	}
+
+	def private createInstance(EClass eClass) {
+		EcoreUtil.create(eClass)
 	}
 }

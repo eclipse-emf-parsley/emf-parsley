@@ -141,13 +141,13 @@ public class EmfParsleyEditorTests extends EmfParsleySWTBotAbstractTests {
 		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
 				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
 		getLibraryWriterNode(rootOfEditorTree).select();
-		getTableHeader(ADDRESS_LABEL);
-		getTableHeader(FIRSTNAME_LABEL);
+		getTableHeader(ADDRESS_COLUMN_HEADER);
+		getTableHeader(FIRSTNAME_COLUMN_HEADER);
 		// the books table is the second one
-		getTableHeader(1, BORROWERS_LABEL);
+		getTableHeader(1, BORROWERS_COLUMN_HEADER);
 		// select on the outline view
 		getLibraryNode(getRootOfOutlineViewTree()).select();
-		getTableHeader(ADDRESS_LABEL);
+		getTableHeader(ADDRESS_COLUMN_HEADER);
 		tableView.close();
 	}
 
