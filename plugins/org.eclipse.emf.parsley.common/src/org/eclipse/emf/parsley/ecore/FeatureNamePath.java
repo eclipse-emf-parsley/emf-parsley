@@ -38,16 +38,8 @@ public class FeatureNamePath {
 		return featureName;
 	}
 
-	public void setFeatureName(String featureName) {
-		this.featureName = featureName;
-	}
-
 	public List<FeatureNamePath> getPaths() {
 		return paths;
-	}
-
-	public void setPaths(List<FeatureNamePath> paths) {
-		this.paths = paths;
 	}
 
 }

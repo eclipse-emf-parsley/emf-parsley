@@ -36,9 +36,9 @@ public class FeatureResolver {
 	protected void collectFeatures(EClass eClass, List<FeatureNamePath> paths,
 			List<EStructuralFeature> features) {
 		for (FeatureNamePath path : paths) {
-			EStructuralFeature feature = getFeature(eClass,
-					path.getFeatureName());
+			EStructuralFeature feature = getFeature(eClass, path.getFeatureName());
 			if (feature == null) {
+				// the error has already been logged by getFeature
 				continue;
 			}
 			
@@ -52,7 +52,7 @@ public class FeatureResolver {
 					collectFeatures(eC, path.getPaths(), features);
 				} else {
 					EmfParsleyActivator.logError("feature '"
-							+ feature.getName() + "' in EClass '" + eClass.getName() + "'" +
+							+ feature.getName() + "' in EClass '" + getEClassDescription(eClass) + "'" +
 							" is not an EClass.");
 				}
 			}
@@ -74,7 +74,12 @@ public class FeatureResolver {
 		}
 		
 		EmfParsleyActivator.logError("cannot find feature '"
-					+ featureName + "' in EClass '" + eClass.getName() + "'");
+					+ featureName + "' in EClass '" + getEClassDescription(eClass) + "'");
 		return null;
 	}
+
+	protected String getEClassDescription(EClass eClass) {
+		return eClass.getName() + " (" + eClass.getInstanceClassName() + ")";
+	}
+
 }

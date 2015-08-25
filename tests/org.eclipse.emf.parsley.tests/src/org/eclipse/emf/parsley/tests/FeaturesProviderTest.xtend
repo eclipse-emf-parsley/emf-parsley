@@ -141,7 +141,10 @@ class FeaturesProviderTest extends AbstractEmfParsleyTest {
 		customFeaturesProvider.getFeatures(testPackage.testEClass) => [
 			assertFeatureList("")
 		]
-		logAppender.assertContainsMessage("cannot find feature 'nonExistantNameFeature' in EClass 'TestEClass'")
+		logAppender.
+			assertContainsMessage
+			("cannot find feature 'nonExistantNameFeature' in EClass 'TestEClass" +
+				" (org.eclipse.emf.parsley.tests.models.testmodels.TestEClass)'")
 	}
 
 	@Test def void testFilterNotAppliedToCustomImplementation() {
