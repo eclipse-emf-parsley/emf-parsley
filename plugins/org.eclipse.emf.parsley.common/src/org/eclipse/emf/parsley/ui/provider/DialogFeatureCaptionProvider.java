@@ -11,11 +11,7 @@
 package org.eclipse.emf.parsley.ui.provider;
 
 /**
- * Provides labels for EStructuralFeatures for dialogs. With respect to the
- * superclass {@link FeatureCaptionProvider} you can also specify the Label,
- * besides its text. If a custom PropertyDescriptionProvider is provided
- * (through injection) then it tries to get the text also from that one, before
- * using the default text.
+ * Provides labels for EStructuralFeatures for dialogs.
  * 
  * @author Lorenzo Bettini
  * 

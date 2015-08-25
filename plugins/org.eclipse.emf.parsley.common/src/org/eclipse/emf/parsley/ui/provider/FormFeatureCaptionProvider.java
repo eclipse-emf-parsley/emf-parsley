@@ -16,11 +16,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
- * Provides labels for EStructuralFeatures for FormToolkit. With respect to the
- * superclass {@link FeatureCaptionProvider} you can also specify the Label,
- * besides its text.  If a custom PropertyDescriptionProvider is provided (through
- * injection) then it tries to get the text also from that one, before
- * using the default text.
+ * Provides labels for EStructuralFeatures using {@link FormToolkit}.
  * 
  * @author Lorenzo Bettini - Initial Contribution and API
  * 

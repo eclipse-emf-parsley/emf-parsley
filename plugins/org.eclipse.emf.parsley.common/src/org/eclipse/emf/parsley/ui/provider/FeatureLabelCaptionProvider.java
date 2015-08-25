@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 /**
  * Provides {@link Label} elements for EStructuralFeatures. With respect to the
  * superclass {@link FeatureCaptionProvider} you can also specify the Label,
- * besides its text.  If a custom PropertyDescriptionProvider is provided (through
+ * besides its text.  If a custom {@link FeatureCaptionProvider} is provided (through
  * injection) then it tries to get the text also from that one, before
  * using the default text.
  * 
