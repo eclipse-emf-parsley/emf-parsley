@@ -123,7 +123,6 @@ public class TableViewerFactory {
 		Composite viewerContainer = new Composite(parent, SWT.NONE);
 		TableColumnLayout layout = new TableColumnLayout();
 		viewerContainer.setLayout(layout);
-		TableViewer tableViewer = new TableViewer(viewerContainer, style);
-		return tableViewer;
+		return new TableViewer(viewerContainer, style);
 	}
 }

@@ -70,7 +70,7 @@ public class ViewerFactory {
 	public void initialize(StructuredViewer viewer, Object object) {
 		Object input;
 		if(object instanceof URI){
-			AdapterFactoryEditingDomain editingDomain=(AdapterFactoryEditingDomain)loadResource((URI)object);
+			AdapterFactoryEditingDomain editingDomain=loadResource((URI)object);
 			input= editingDomain.getResourceSet();
 		}else if(object instanceof AdapterFactoryEditingDomain){
 			AdapterFactoryEditingDomain editingDomain=(AdapterFactoryEditingDomain) object;
