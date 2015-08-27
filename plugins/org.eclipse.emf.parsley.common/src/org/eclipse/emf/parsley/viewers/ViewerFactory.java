@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.viewers;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
@@ -22,6 +25,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -50,6 +54,9 @@ public class ViewerFactory {
 
 	@Inject
 	private TableViewerColumnBuilder columnBuilder;
+
+	@Inject
+	private TreeViewerColumnBuilder treeColumnBuilder;
 
 	@Inject
 	private TableViewerContentProviderFactory tableViewerContentProviderFactory;
@@ -110,6 +117,14 @@ public class ViewerFactory {
 	 */
 	public void buildColumns(TableViewer tableViewer, EClass eClass) {
 		buildColumns(tableViewer, eClass, tableViewerContentProviderFactory.createTableViewerContentProvider(eClass));
+	}
+
+	public void buildColumns(TreeViewer treeViewer, EClass eClass) {
+		treeColumnBuilder.buildTreeViewer(treeViewer, eClass);
+	}
+
+	public void buildColumns(TreeViewer treeViewer, List<EStructuralFeature> typeFeatures) {
+		treeColumnBuilder.buildTreeViewer(treeViewer, typeFeatures);
 	}
 
 	private void initialize(StructuredViewer viewer, Object input, IContentProvider contentProvider,

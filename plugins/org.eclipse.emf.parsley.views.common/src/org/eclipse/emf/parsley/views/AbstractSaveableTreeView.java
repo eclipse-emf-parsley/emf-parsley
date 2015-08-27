@@ -36,10 +36,15 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		treeViewer = new TreeViewer(parent);
-		viewerFactory.initialize(treeViewer, getContents(getResource()));
+		treeViewer = createAndInitializeTreeViewer(parent);
 
 		afterCreateViewer();
+	}
+
+	protected TreeViewer createAndInitializeTreeViewer(Composite parent) {
+		TreeViewer treeViewer = new TreeViewer(parent);
+		viewerFactory.initialize(treeViewer, getContents(getResource()));
+		return treeViewer;
 	}
 
 	@Override

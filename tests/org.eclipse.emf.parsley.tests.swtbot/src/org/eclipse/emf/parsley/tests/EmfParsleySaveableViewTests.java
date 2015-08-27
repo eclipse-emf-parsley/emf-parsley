@@ -204,6 +204,22 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
+	public void hasColumnsOnSaveableTreeWithColumnsView()
+			throws Exception {
+		SWTBotTree tree = prepareSaveableTreeWithColumnsView();
+		tree.expandNode("Library My Library");
+		assertEquals(tree.columns().size(), 6);
+	}
+
+	@Test
+	public void hasColumnsOnSaveableTreeWithSpecificColumnsView()
+			throws Exception {
+		SWTBotTree tree = prepareSaveableTreeWithSpecificColumnsView();
+		tree.expandNode("Library My Library");
+		assertEquals(tree.columns().size(), 3);
+	}
+
+	@Test
 	public void undoRedoDeleteActionUpdatesDirtyStateCorrectly() throws Exception {
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=479700
 		SWTBotTreeItem libraryNode = prepareSaveableTreeViewAndGetLibraryNode();
@@ -281,4 +297,23 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		SWTBotTree tree = getRootOfTreeFromView(TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
 		return tree;
 	}
+
+	protected SWTBotTree prepareSaveableTreeWithColumnsView()
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
+		createProjectAndTestFiles();
+		openTestView(TEST_SAVEABLE_TREE_WITH_COLUMNS_VIEW);
+		SWTBotTree tree = getRootOfTreeFromView(
+				TEST_SAVEABLE_TREE_WITH_COLUMNS_VIEW);
+		return tree;
+	}
+
+	protected SWTBotTree prepareSaveableTreeWithSpecificColumnsView()
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
+		createProjectAndTestFiles();
+		openTestView(TEST_SAVEABLE_TREE_WITH_SPECIFIC_COLUMNS_VIEW);
+		SWTBotTree tree = getRootOfTreeFromView(
+				TEST_SAVEABLE_TREE_WITH_SPECIFIC_COLUMNS_VIEW);
+		return tree;
+	}
+
 }

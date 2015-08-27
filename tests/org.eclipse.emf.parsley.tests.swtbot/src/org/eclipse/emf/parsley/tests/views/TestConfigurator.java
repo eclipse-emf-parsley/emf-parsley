@@ -34,7 +34,17 @@ public class TestConfigurator extends Configurator {
 		return URI.createPlatformResourceURI(
 				EmfParsleySWTBotAbstractTests.MY2_EXTLIBRARY_RELATIVE_PATH, true);
 	}
+	
+	public URI resourceURI(TestSaveableTreeViewWithColumns requestor) {
+		return URI.createPlatformResourceURI(
+				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+	}
 
+	public URI resourceURI(TestSaveableTreeViewWithSpecificColumns requestor) {
+		return URI.createPlatformResourceURI(
+				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
+	}
+	
 	public URI resourceURI(TestSaveableResourceTreeFormView requestor) {
 		return URI.createPlatformResourceURI(
 				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);

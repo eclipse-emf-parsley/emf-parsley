@@ -34,7 +34,7 @@ import com.google.inject.name.Named;
 
 /**
  * Sets the columns of a TableViewer according to an EClass (adds a column for
- * each feature of the EClass, retrieved using an njected
+ * each feature of the EClass, retrieved using an injected
  * {@link TableFeaturesProvider}).
  * 
  * @author Lorenzo Bettini - initial API and implementation
@@ -73,8 +73,8 @@ public class TableViewerColumnBuilder {
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 
-		Layout layout=null;
-		
+		Layout layout = null;
+
 		final Layout tableParentLayout = tableViewer.getTable().getParent().getLayout();
 		if (tableParentLayout instanceof TableColumnLayout) {
 			layout = tableParentLayout;
@@ -96,15 +96,15 @@ public class TableViewerColumnBuilder {
 		}
 	}
 
-	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
-			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature, int weight) {
-		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer,
-				eStructuralFeature);
+	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer, Layout layout, EClass eClass,
+			EStructuralFeature eStructuralFeature, int weight) {
+		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer, eStructuralFeature);
 		TableColumn objectColumn = viewerColumn.getColumn();
 		if (layout instanceof TableColumnLayout) {
-			((TableColumnLayout)layout).setColumnData(viewerColumn.getColumn(), new ColumnWeightData(weight, 30, true));
-		}else if(layout instanceof TableLayout){
-			((TableLayout)layout).addColumnData(new ColumnWeightData(weight, 30, true));
+			((TableColumnLayout) layout).setColumnData(viewerColumn.getColumn(),
+					new ColumnWeightData(weight, 30, true));
+		} else if (layout instanceof TableLayout) {
+			((TableLayout) layout).addColumnData(new ColumnWeightData(weight, 30, true));
 		}
 
 		objectColumn.setText(featureCaptionProvider.getText(eClass, eStructuralFeature));
@@ -116,7 +116,7 @@ public class TableViewerColumnBuilder {
 			TableViewer tableViewer, EStructuralFeature eStructuralFeature) {
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(
 				tableViewer, SWT.NONE);
-			tableViewerColumn.setLabelProvider(columnLabelProviderFactory
+		tableViewerColumn.setLabelProvider(columnLabelProviderFactory
 					.createColumnLabelProvider(eStructuralFeature));
 		return tableViewerColumn;
 	}

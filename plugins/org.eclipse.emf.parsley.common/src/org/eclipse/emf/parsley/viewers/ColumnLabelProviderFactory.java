@@ -20,18 +20,18 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 /**
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini, Francesco Guidieri
  * 
  * factory for ColumnLabelProvider
  * 
  */
 public class ColumnLabelProviderFactory {
+	
+	@Inject
+	private Provider<GenericColumnLabelProvider> genericColumnLabelProviderProvider;
 
 	@Inject
-	protected Provider<ILabelProvider> labelProviderProvider;
-
-	@Inject
-	protected Provider<TableColumnLabelProvider> tableColumnProviderProvider;
+	private Provider<TableColumnLabelProvider> tableColumnProviderProvider;
 
 	public ColumnLabelProvider createColumnLabelProvider(
 			EStructuralFeature eStructuralFeature) {
@@ -40,5 +40,10 @@ public class ColumnLabelProviderFactory {
 		columnProvider.seteStructuralFeature(eStructuralFeature);
 		return columnProvider;
 	}
+	
+	public ColumnLabelProvider createColumnLabelProvider(){
+		return genericColumnLabelProviderProvider.get();
+	}
+	
 
 }

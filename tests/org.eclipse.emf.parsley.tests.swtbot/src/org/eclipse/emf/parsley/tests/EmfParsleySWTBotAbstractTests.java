@@ -215,6 +215,10 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static final String TEST_SAVEABLE_TABLE_VIEW = "Library Test Saveable Table View";
 
 	protected static final String TEST_SAVEABLE_TREE_VIEW = "Library Test Saveable Tree View";
+	
+	protected static final String TEST_SAVEABLE_TREE_WITH_COLUMNS_VIEW = "Library Test Saveable Tree View With Colunms";
+
+	protected static final String TEST_SAVEABLE_TREE_WITH_SPECIFIC_COLUMNS_VIEW = "Library Test Saveable Tree View With Specific Colunms";
 
 	protected static final String TEST_SAVEABLE_VIEW_WITH_CUSTOM_CONTENT_PROVIDER = "Library Tree View With Custom Content Provider";
 
