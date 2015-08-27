@@ -15,7 +15,7 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.edit.ui.provider.IResourceContentsProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
-import org.eclipse.emf.parsley.viewers.TableViewerFactory;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -29,7 +29,7 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView implements IResourceContentsProvider {
 
 	@Inject
-	protected TableViewerFactory tableViewerFactory;
+	protected ViewerFactory viewerFactory;
 
 	@Inject
 	private ViewerContentProviderFactory contentProviderFactory;
@@ -40,7 +40,7 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		tableViewer = tableViewerFactory.
+		tableViewer = viewerFactory.
 				createTableViewer(parent, createTableStyles(), getEClass(),
 				contentProviderFactory.createViewerContentProviderForResource(this));
 		tableViewer.setInput(getResource());

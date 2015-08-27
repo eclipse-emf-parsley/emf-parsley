@@ -12,7 +12,7 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.viewers.TableViewerFactory;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
@@ -31,7 +31,7 @@ import com.google.inject.Inject;
  */
 public class TableFormComposite extends AbstractMasterDetailComposite {
 	
-	private TableViewerFactory tableViewerFactory;
+	private ViewerFactory viewerFactory;
 	private TableViewer tableViewer;
 	
 	public TableFormComposite(Composite parent, int style) {
@@ -48,13 +48,13 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 		return tableViewer;
 	}
 
-	public TableViewerFactory getTableViewerFactory() {
-		return tableViewerFactory;
+	public ViewerFactory getViewerFactory() {
+		return viewerFactory;
 	}
 
 	@Inject
-	public void setTableViewerFactory(TableViewerFactory tableViewerBuilder) {
-		this.tableViewerFactory = tableViewerBuilder;
+	public void setViewerFactory(ViewerFactory tableViewerBuilder) {
+		this.viewerFactory = tableViewerBuilder;
 	}
 	
 	
@@ -64,7 +64,7 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	}
 
 	public void buildTable(EClass eType) {
-		tableViewerFactory.initialize(tableViewer, eType);
+		viewerFactory.buildColumns(tableViewer, eType);
 	}
 	
 }

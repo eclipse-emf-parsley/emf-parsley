@@ -48,8 +48,8 @@ public class EmfTreeEditor extends EmfAbstractEditor {
 		handleProblems(response);
 
 		Tree tree = new Tree(getContainer(), SWT.MULTI);
-		TreeViewer emfTreeViewer = viewerFactory.createTreeViewer(tree,
-				editingDomain);
+		TreeViewer emfTreeViewer = new TreeViewer(tree);
+		viewerFactory.initialize(emfTreeViewer, editingDomain);
 		selectionViewer = emfTreeViewer;
 		setSelectionOnRoot(selectionViewer);
 

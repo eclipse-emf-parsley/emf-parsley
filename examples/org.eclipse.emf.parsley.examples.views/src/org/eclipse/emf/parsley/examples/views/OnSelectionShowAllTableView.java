@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
-import org.eclipse.emf.parsley.viewers.TableViewerFactory;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.emf.parsley.views.AbstractOnSelectionView;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ISelection;
@@ -45,7 +45,7 @@ import com.google.inject.Inject;
 public class OnSelectionShowAllTableView extends AbstractOnSelectionView {
 
 	@Inject
-	protected TableViewerFactory tableViewerFactory;
+	protected ViewerFactory viewerFactory;
 
 	@Inject
 	protected FeaturesProvider featuresProvider;
@@ -130,7 +130,7 @@ public class OnSelectionShowAllTableView extends AbstractOnSelectionView {
 		viewerContainer.setLayout(layout);
 		TableViewer tableViewer = new TableViewer(viewerContainer, SWT.BORDER | SWT.FULL_SELECTION);
 
-		tableViewerFactory.initialize(tableViewer, eClass);
+		viewerFactory.buildColumns(tableViewer, eClass);
 		tableViewer.setInput(EmfParsleyUtil.ensureCollection(object));
 
 		Table table = tableViewer.getTable();

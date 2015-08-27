@@ -11,13 +11,13 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
+import org.eclipse.emf.parsley.viewers.ViewerFactory
 import org.eclipse.jface.viewers.ColumnLayoutData
 import org.eclipse.jface.viewers.ColumnWeightData
 import org.eclipse.swt.widgets.Layout
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.viewers.TableViewerFactory
 
 class TableViewerColumnBuilderTest extends AbstractTableViewerTest {
 
@@ -35,13 +35,13 @@ class TableViewerColumnBuilderTest extends AbstractTableViewerTest {
 
 	@Test
 	def void testCustomColumnWeights() {
-		tableViewerFactory = createInjector(
+		viewerFactory = createInjector(
 				new EmfParsleyGuiceModuleForTesting() {
 					override valueTableColumnWeights() {
 						#[5,2]
 					}
 				}
-			).getInstance(TableViewerFactory)
+			).getInstance(ViewerFactory)
 		buildAndFill(
 			testContainer.classesForControls, testPackage.classForControls
 		)

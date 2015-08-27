@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.emf.parsley.viewers.TableViewerFactory;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -35,7 +35,7 @@ public abstract class AbstractOnSelectionTableView extends
 		AbstractOnSelectionView {
 
 	@Inject
-	private TableViewerFactory tableViewerFactory;
+	private ViewerFactory viewerFactory;
 
 	@Inject
 	protected FeaturesProvider featuresProvider;
@@ -80,11 +80,11 @@ public abstract class AbstractOnSelectionTableView extends
 //		Object value = eObject.eGet(feature);
 //		tableViewer.setInput(value);
 		
-		tableViewerFactory.fill(tableViewer, eObject, feature);
+		viewerFactory.fill(tableViewer, eObject, feature);
 	}
 
 	protected void createTableViewer() {
-		tableViewer = tableViewerFactory.createTableViewer(parent,
+		tableViewer = viewerFactory.createTableViewer(parent,
 				SWT.BORDER | SWT.FULL_SELECTION, getEClass());
 	}
 

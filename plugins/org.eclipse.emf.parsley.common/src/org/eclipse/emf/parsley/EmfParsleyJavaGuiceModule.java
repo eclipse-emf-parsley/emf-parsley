@@ -66,7 +66,6 @@ import org.eclipse.emf.parsley.validation.ValidationRunner;
 import org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
-import org.eclipse.emf.parsley.viewers.TableViewerFactory;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -305,14 +304,6 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */		
 	public Class<? extends TableColumnLabelProvider> bindTableColumnLabelProvider() {
 		return TableColumnLabelProvider.class;
-	}
-
-	/**
-	 * Use this bind to change the way tables are built and initialized from resources. 
-	 * @return a specialization of {@link TableViewerFactory}
-	 */
-	public Class<? extends TableViewerFactory> bindTableViewerFactory() {
-		return TableViewerFactory.class;
 	}
 
 	/**

@@ -87,7 +87,6 @@ bindFormControlFactory
 bindDialogControlFactory
 bindColumnLabelProviderFactory
 bindTableColumnLabelProvider
-bindTableViewerFactory
 bindTableViewerColumnBuilder
 bindWorkbenchActionBarContributor
 bindTreeActionBarContributor

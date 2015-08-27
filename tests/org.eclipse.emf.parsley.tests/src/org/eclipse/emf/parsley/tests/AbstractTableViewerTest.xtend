@@ -11,15 +11,15 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.parsley.util.EmfParsleyUtil
+import org.eclipse.emf.parsley.viewers.ViewerFactory
 import org.eclipse.jface.viewers.TableViewer
 import org.eclipse.swt.SWT
 import org.junit.Before
-import org.eclipse.emf.parsley.viewers.TableViewerFactory
-import org.eclipse.emf.parsley.util.EmfParsleyUtil
 
 abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
-	var protected TableViewerFactory tableViewerFactory
+	var protected ViewerFactory viewerFactory
 	
 	var protected TableViewer tableViewer
 
@@ -27,14 +27,14 @@ abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
 	@Before
 	def void setupTableViewerStuff() {
-		tableViewerFactory = getOrCreateInjector.getInstance(TableViewerFactory)
+		viewerFactory = getOrCreateInjector.getInstance(ViewerFactory)
 		tableViewer = createTableViewer
 		createContents
 	}
 
 	def protected buildAndFill(Object contents, EClass eClass) {
 		syncExecVoid[
-			tableViewerFactory.initialize(
+			viewerFactory.buildColumns(
 				tableViewer, eClass
 			)
 			tableViewer.input = EmfParsleyUtil.ensureCollection(contents)
