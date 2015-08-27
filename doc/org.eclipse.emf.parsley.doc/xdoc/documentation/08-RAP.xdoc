@@ -20,7 +20,7 @@ To begin with, you need to install the RAP Tools into the IDE.
 This can be accomplished with the following steps:
 ol[
 	item[Help -> Install New Software ...]
-	item[select the main Eclipse Update site (e.g. e["http://download.eclipse.org/releases/luna"])]
+	item[select the main Eclipse Update site]
 	item[expand category "Web, XML, Java EE and OSGi Enterprise Development"]
 	item[select "RAP Tools" and complete the installation, restarting the IDE at the end]
 	item[after IDE restarts just close the Welcome page]
@@ -35,7 +35,7 @@ ol[
 	item[File -> New... -> Example...]
 	item[from Category "Emf Parsley Examples", select "Emf Parsley Rap Target Platform Example"]
 	item[press Next and Finish]
-	item[open the Target Definition file e[emf-parsely-rap-2.3.target]]
+	item[open the Target Definition file e[emf-parsely-rap.target]]
 	item[wait until the "Resolving Target Definition" job is done (check the status bar)]
 	item[when finished, click on hyperlink "Set as Target Platform"]
 ]

@@ -3,7 +3,7 @@
 
 	<property name="local.target.name" value="rap-examples-test.target"/>
 	<property name="local.target" location="${ant.file}/../${local.target.name}"/>
-	<property name="orig.target" location="../../examples/org.eclipse.emf.parsley.examples.rap.targetplatform/emf-parsely-rap-2.3.target"/>
+	<property name="orig.target" location="../../examples/org.eclipse.emf.parsley.examples.rap.targetplatform/emf-parsely-rap.target"/>
 	<property name="local.mirror.path.input" location="../../target/repository/"/>
 	<property name="local.mirror.url.input" value="file:${local.mirror.path}"/>
 	

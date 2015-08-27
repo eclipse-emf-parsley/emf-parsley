@@ -296,7 +296,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>luna-rap</target-file-name>
+				<target-file-name>mars-rap</target-file-name>
 			</properties>
 
 		</profile>

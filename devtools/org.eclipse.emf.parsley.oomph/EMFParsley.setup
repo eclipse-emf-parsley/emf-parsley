@@ -639,7 +639,7 @@
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://download.eclipse.org/rt/rap/2.3/"/>
+              url="http://download.eclipse.org/rt/rap/3.0/"/>
         </repositoryList>
         <repositoryList
             name="Kepler">
