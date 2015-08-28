@@ -13,9 +13,10 @@ package org.eclipse.emf.parsley.views;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
+import org.eclipse.emf.parsley.edit.ui.provider.IResourceContentsProvider;
+import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -27,21 +28,24 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - aligned to {@link AbstractSaveableTableView}
  *
  */
-public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView	{
+public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView implements IResourceContentsProvider {
 
 	@Inject
-	protected TableFormFactory tableFormFactory;
+	private TableFormFactory tableFormFactory;
 
-	protected TableFormComposite tableFormComposite;
+	@Inject
+	private ViewerContentProviderFactory contentProviderFactory;
+
+	private TableFormComposite tableFormComposite;
 
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
 		tableFormComposite = tableFormFactory
-				.createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass());
-
-		tableFormComposite.update(getContents(getResource()));
+			.createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass(),
+					contentProviderFactory.createViewerContentProviderForResource(this));
+		tableFormComposite.update(getResource());
 
 		addContextMenu(tableFormComposite.getViewer());
 	}
@@ -55,17 +59,11 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 	public StructuredViewer getViewer() {
 		return tableFormComposite.getViewer();
 	}
-	
+
 	/**
 	 * @return the {@link EClass} for objects to be shown in the table
 	 */
 	protected abstract EClass getEClass();
-	
-	/**
-	 * @param resource
-	 * @return the contents from the passed resource to be shown in the table
-	 */
-	protected abstract Object getContents(Resource resource);
 
 	@Override
 	protected void mostRecentCommandAffectsResource(Command mostRecentCommand) {

@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
-import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
+import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
@@ -36,19 +36,21 @@ public abstract class AbstractOnSelectionTableFormView extends
 		AbstractOnSelectionView {
 
 	@Inject
-	protected FeaturesProvider featuresProvider;
+	private TableFormFactory tableFormFactory;
 
 	@Inject
-	protected TableFormFactory tableFormFactory;
+	private ViewerContentProviderFactory contentProviderFactory;
 
-	protected TableFormComposite tableFormDetailComposite;
+	private TableFormComposite tableFormDetailComposite;
 
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		tableFormDetailComposite = tableFormFactory.createTableFormMasterDetailComposite(parent,
-				SWT.BORDER, getEClass());
+		tableFormDetailComposite = tableFormFactory.
+			createTableFormMasterDetailComposite(parent,
+				SWT.BORDER, getEClass(),
+				contentProviderFactory.createViewerContentProviderForFeature(getEStructuralFeature()));
 	}
 
 	@Override
@@ -69,8 +71,7 @@ public abstract class AbstractOnSelectionTableFormView extends
 			return;
 		}
 
-		Object value = eObject.eGet(feature);
-		tableFormDetailComposite.update(value);
+		tableFormDetailComposite.update(eObject);
 	}
 
 

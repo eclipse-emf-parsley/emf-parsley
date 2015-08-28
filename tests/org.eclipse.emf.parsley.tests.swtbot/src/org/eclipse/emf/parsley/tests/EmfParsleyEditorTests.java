@@ -135,23 +135,6 @@ public class EmfParsleyEditorTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
-	public void tableViewShowsTablesOnSelection() throws Exception {
-		SWTBotView tableView = openTestView(EMF_SHOW_ALL_TABLE_VIEW);
-		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
-				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
-		getLibraryWriterNode(rootOfEditorTree).select();
-		getTableHeader(ADDRESS_COLUMN_HEADER);
-		getTableHeader(FIRSTNAME_COLUMN_HEADER);
-		// the books table is the second one
-		getTableHeader(1, BORROWERS_COLUMN_HEADER);
-		// select on the outline view
-		getLibraryNode(getRootOfOutlineViewTree()).select();
-		getTableHeader(ADDRESS_COLUMN_HEADER);
-		tableView.close();
-	}
-
-	@Test
 	public void selectionViewOnSelection() throws Exception {
 		SWTBotView selectionView = openTestView(LIBRARY_EMF_VIEW);
 		// select on the editor's tree

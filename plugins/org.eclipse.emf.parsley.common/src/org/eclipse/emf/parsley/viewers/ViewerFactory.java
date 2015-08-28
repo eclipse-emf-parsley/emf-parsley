@@ -11,15 +11,11 @@
 package org.eclipse.emf.parsley.viewers;
 
 
-import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.jface.layout.TableColumnLayout;
-import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -41,30 +37,30 @@ import com.google.inject.Provider;
 public class ViewerFactory {
 
 	@Inject
-	protected Provider<IContentProvider> contentProviderProvider;
+	private Provider<IContentProvider> contentProviderProvider;
 	
 	@Inject
-	protected Provider<ILabelProvider> labelProviderProvider;
+	private Provider<ILabelProvider> labelProviderProvider;
 	
 	@Inject
-	protected ResourceLoader resourceLoader;
+	private ResourceLoader resourceLoader;
 
 	@Inject
-	protected Provider<AdapterFactoryEditingDomain> editingDomainProvider;
+	private Provider<AdapterFactoryEditingDomain> editingDomainProvider;
 	
 	@Inject
-	protected TableViewerColumnBuilder columnBuilder;
+	private TableViewerColumnBuilder columnBuilder;
 
 	public void initialize(StructuredViewer viewer, Object object) {
 		Object input;
-		if(object instanceof URI){
-			AdapterFactoryEditingDomain editingDomain=loadResource((URI)object);
-			input= editingDomain.getResourceSet();
-		}else if(object instanceof AdapterFactoryEditingDomain){
-			AdapterFactoryEditingDomain editingDomain=(AdapterFactoryEditingDomain) object;
-			input= editingDomain.getResourceSet();
-		}else{
-			input=object;
+		if (object instanceof URI) {
+			AdapterFactoryEditingDomain editingDomain = loadResource((URI) object);
+			input = editingDomain.getResourceSet();
+		} else if (object instanceof AdapterFactoryEditingDomain) {
+			AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) object;
+			input = editingDomain.getResourceSet();
+		} else {
+			input = object;
 		}
 		initialize(viewer, input, contentProviderProvider.get(), labelProviderProvider.get());
 	}
@@ -78,25 +74,10 @@ public class ViewerFactory {
 		viewer.setInput(input);
 	}
 
-	public TableViewer createTableViewer(Composite parent, int style, EClass type) {
-		TableViewer tableViewer = createTableViewer(parent, style);
-		buildColumns(tableViewer, type);
-		return tableViewer;
-	}
-
 	public TableViewer createTableViewer(Composite parent, int style, EClass type, IStructuredContentProvider contentProvider) {
 		TableViewer tableViewer = createTableViewer(parent, style);
 		buildColumns(tableViewer, type, contentProvider);
 		return tableViewer;
-	}
-
-	public void fill(TableViewer tableViewer, Object object, EStructuralFeature eReference) {
-		IObservableList observableList = EMFProperties.list(eReference).observe(object);
-		tableViewer.setInput(observableList);
-	}
-
-	public void buildColumns(TableViewer tableViewer, EClass eClass) {
-		buildColumns(tableViewer, eClass, new ArrayContentProvider());
 	}
 
 	public void buildColumns(TableViewer tableViewer, EClass eClass, 
@@ -104,18 +85,18 @@ public class ViewerFactory {
 		tableViewer.setContentProvider(contentProvider);
 		columnBuilder.buildTableViewer(tableViewer, eClass);
 	}
-	
+
 	private AdapterFactoryEditingDomain loadResource(URI resourceURI) {
 		AdapterFactoryEditingDomain editingDomain = editingDomainProvider.get();
 		resourceLoader.getResource(editingDomain, resourceURI);
 		return editingDomain;
 	}
-	
+
 	private TableViewer createTableViewer(Composite parent, int style) {
 		Composite viewerContainer = new Composite(parent, SWT.BORDER);
 		TableColumnLayout layout = new TableColumnLayout();
 		viewerContainer.setLayout(layout);
 		return new TableViewer(viewerContainer, style);
 	}
-	
+
 }

@@ -14,6 +14,7 @@ package org.eclipse.emf.parsley.composite;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -63,8 +64,8 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 		tableViewer.setInput(contents);
 	}
 
-	public void buildTable(EClass eType) {
-		viewerFactory.buildColumns(tableViewer, eType);
+	public void buildTable(EClass eType, IStructuredContentProvider contentProvider) {
+		viewerFactory.buildColumns(tableViewer, eType, contentProvider);
 	}
 	
 }

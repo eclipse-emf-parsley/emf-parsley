@@ -36,7 +36,8 @@ import org.eclipse.xtext.EcoreUtil2;
 import com.google.inject.Inject;
 
 /**
- * OnSelectionTreeView with hardcoded resource URI
+ * An example of use of low level features to manually create a view
+ * with hardcoded resource URI.
  * 
  * @author Lorenzo Bettini
  * 
@@ -46,10 +47,10 @@ public class LibraryTestTableView extends ViewPart {
 	public static final String resourceUri = "platform:/plugin/org.eclipse.emf.parsley.tests.swtbot/models/My.extlibrary";
 
 	@Inject
-	protected ViewerFactory viewerFactory;
+	private ViewerFactory viewerFactory;
 
 	@Inject
-	protected ResourceLoader resourceLoader;
+	private ResourceLoader resourceLoader;
 
 	private Composite composite;
 

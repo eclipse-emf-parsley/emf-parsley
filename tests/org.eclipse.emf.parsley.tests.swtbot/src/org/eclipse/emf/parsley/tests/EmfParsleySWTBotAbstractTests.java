@@ -185,23 +185,19 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static final String LIBRARY_EMF_VIEW_CUSTOM_LABEL = "LibraryEmfView Custom Label";
 
 	protected static final String EMF_DETAIL_VIEW = "Emf Form View";
-	
+
 	protected static final String EMF_DETAIL_READONLY_VIEW = "Emf Read Only Form View";
 
 	protected static final String EMF_TREE_FORM_DETAIL_VIEW = "Emf Tree Form View";
 
 	protected static final String LIBRARY_CUSTOM_DETAIL_VIEW = "Library Emf Detail View";
 
-	protected static final String EMF_SHOW_ALL_TABLE_VIEW = "Emf Show All Table View";
-
-	protected static final String LIBRARY_TEST_EMF_TABLE_VIEW = "Library Test Table";
-	
 	protected static final String LIBRARY_BOOKS_TABLE_VIEW = "Library Books Table View";
 
 	protected static final String LIBRARY_BOOKS_TABLE_FORM_VIEW = "Library Books Table Form View";
 
 	protected static final String TEST_SAVEABLE_TREE_FORM_VIEW = "Library Test Saveable Resource Tree Form View";
-	
+
 	protected static final String TEST_SAVEABLE_TABLE_FORM_VIEW = "Library Test Saveable Resource Table Form View";
 
 	protected static final String TEST_SAVEABLE_TABLE_VIEW = "Library Test Saveable Table View";
@@ -221,9 +217,9 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static final String ADDRESS_COLUMN_HEADER = "address";
 
 	protected static final String BORROWERS_LABEL = "Borrowers";
-	
+
 	protected static final String BORROWERS_COLUMN_HEADER = "borrowers";
-	
+
 	protected static final String AUTHOR_LABEL = "Author";
 
 	protected static final String AUTHOR_COLUMN_HEADER = "author";
@@ -276,7 +272,7 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static final String NEW_EMF_PARSLEY_DSL_PROJECT = "Emf Parsley Dsl Based Project";
 
 	protected static final String EMF_PARSLEY_MAIL_RCP_EXAMPLE = "Emf Parsley Mail RCP Example";
-	
+
 	protected static final String EMF_PARSLEY_FIRST_EXAMPLE = "Emf Parsley First Example";
 
 	protected static final String EMF_PARSLEY_VIEWS_EXAMPLES = "Emf Parsley Views Examples";
@@ -286,9 +282,9 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static final String EMF_PARSLEY_E4_EXAMPLE = "Emf Parsley Eclipse 4 Part Example";
 
 	protected static final String EMF_PARSLEY_CDO_SERVER_EXAMPLE = "Emf Parsley Cdo Server Example";
-	
+
 	protected static final String EMF_PARSLEY_CDO_EXAMPLE = "Emf Parsley Cdo Example";
-	
+
 	protected static final String EMF_PARSLEY_RAP_TP_EXAMPLE = "Emf Parsley Rap Target Platform Example";
 
 	protected static final String EMF_PARSLEY_RAP_CDO_EXAMPLE = "Emf Parsley Rap Cdo Example";
@@ -298,7 +294,7 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static SWTWorkbenchBot bot;
 
 	protected static Map<String, String> editorNamesToId;
-	
+
 	public EmfParsleySWTBotAbstractTests() {
 		// the following are useless... but it's just to have coverage
 		// for the protected constructor of EmfParsleyConstants

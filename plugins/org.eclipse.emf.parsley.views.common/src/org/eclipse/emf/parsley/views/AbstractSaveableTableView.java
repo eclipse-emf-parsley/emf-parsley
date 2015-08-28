@@ -29,12 +29,12 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView implements IResourceContentsProvider {
 
 	@Inject
-	protected ViewerFactory viewerFactory;
+	private ViewerFactory viewerFactory;
 
 	@Inject
 	private ViewerContentProviderFactory contentProviderFactory;
 
-	protected TableViewer tableViewer;
+	private TableViewer tableViewer;
 
 	@Override
 	public void createPartControl(Composite parent) {

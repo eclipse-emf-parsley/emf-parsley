@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.composite;
 
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
@@ -32,10 +33,10 @@ public class TableFormFactory {
 	}
 
 	public TableFormComposite createTableFormMasterDetailComposite(
-			Composite parent, int style, EClass type) {
+			Composite parent, int style, EClass type, IStructuredContentProvider contentProvider) {
 		TableFormComposite tableFormComposite = new TableFormComposite(parent,style);
 		tableFormCompositeMembersInjector.injectMembers(tableFormComposite);
-		tableFormComposite.buildTable(type);
+		tableFormComposite.buildTable(type, contentProvider);
 		return tableFormComposite;
 	}
 	

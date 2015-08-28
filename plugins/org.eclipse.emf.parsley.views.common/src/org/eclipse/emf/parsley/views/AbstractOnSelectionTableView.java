@@ -14,7 +14,7 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
+import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
@@ -38,11 +38,11 @@ public abstract class AbstractOnSelectionTableView extends
 	private ViewerFactory viewerFactory;
 
 	@Inject
-	protected FeaturesProvider featuresProvider;
+	private ViewerContentProviderFactory contentProviderFactory;
 
-	protected Composite parent;
+	private Composite parent;
 
-	protected TableViewer tableViewer;
+	private TableViewer tableViewer;
 
 	public AbstractOnSelectionTableView() {
 	}
@@ -77,15 +77,13 @@ public abstract class AbstractOnSelectionTableView extends
 			return;
 		}
 
-//		Object value = eObject.eGet(feature);
-//		tableViewer.setInput(value);
-		
-		viewerFactory.fill(tableViewer, eObject, feature);
+		tableViewer.setInput(eObject);
 	}
 
 	protected void createTableViewer() {
 		tableViewer = viewerFactory.createTableViewer(parent,
-				SWT.BORDER | SWT.FULL_SELECTION, getEClass());
+			SWT.BORDER | SWT.FULL_SELECTION, getEClass(),
+			contentProviderFactory.createViewerContentProviderForFeature(getEStructuralFeature()));
 	}
 
 	@Override
