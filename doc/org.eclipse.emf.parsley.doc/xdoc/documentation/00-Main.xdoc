@@ -18,13 +18,15 @@ codelanguage-def[Java]
 
 codelanguage-def[EmfParsley]
 [
-	import,module,parts,labelProvider,text,image,elements,
+	import,module,parts,labelProvider,text,image,elements,label,
 	featuresProvider,features,
 	formControlFactory,control,target,viewerContentProvider,
 	children,viewpart,viewname,viewclass,viewcategory,
 	for,new,switch,default,boolean,do,if,this,double,throw,null,
 	true,false,it,as,
-	byte,else,case,enum,instanceof,return,featureCaptionProvider,val,var,
+	byte,else,case,enum,instanceof,return,
+	featureCaptionProvider,formFeatureCaptionProvider,dialogFeatureCaptionProvider,
+	val,var,
 	catch,extends,int,short,try,char,void,finally,long,
 	float,super,while,proposals,dialogControlFactory,
 	menuBuilder,menus,emfMenus,resourceManager,initializeResource,saveResource,

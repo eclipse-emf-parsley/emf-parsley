@@ -11,6 +11,28 @@ item[e[IViewerMouseListener] has been moved from the e[listeners]
 package to the e[viewers] package.]
 item[classes in e[editor.outline] have been moved into e[editors]
 package.]
+item[The creation of caption labels for forms and dialogs has slightly
+changed, concerning the default behavior
+(link[https://bugs.eclipse.org/bugs/show_bug.cgi?id=472691][https://bugs.eclipse.org/bugs/show_bug.cgi?id=472691]):
+we take the text from codeRef[org.eclipse.emf.edit.provider.IItemPropertyDescriptor] if
+the EObject provides it. (This does not happen for table column headers, since we don't have
+any EObject when we build the table columns).
+If you used to call this method on a
+codeRef[org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider] or
+codeRef[org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider]
+
+code[Java][
+public Label getLabel(Composite parent, EClass eClass, EStructuralFeature feature)
+]
+
+be warned that this method has changed its signature into
+
+code[Java][
+public Label getLabel(Composite parent, EObject o, EStructuralFeature feature)
+]
+
+and of course also its semantics, since you need to pass an EObject not its EClass.
+]
 ]
 
 section:ThreeFour[From 0.3 to 0.4]

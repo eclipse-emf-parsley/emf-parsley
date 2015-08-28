@@ -287,18 +287,18 @@ class? Just add the following
 
 code[EmfParsley][
 ...
-featureCaptionProvider { 
-    text { 
-        Book : author -> "Wrote by:"
+featureCaptionProvider {
+    text {
+        Book : author -> "Written by:"
         Writer : name -> "Name:"
     }
 }
 ]
- 
-Or do you want to change the label shown on the tree nodes on the upper side and as detail title? 
+
+Or do you want to change the label shown on the tree nodes on the upper side and as detail title?
 Maybe want to format the book label like this?
 (e[labelProvider] is detailed in section ref:ViewerLabelProvider[Viewer Label Provider]):
- 
+
 code[EmfParsley][
 ...
 labelProvider {

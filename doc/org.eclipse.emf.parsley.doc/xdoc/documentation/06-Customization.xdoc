@@ -379,20 +379,20 @@ section2:FeatureCaptionProvider[Feature Caption Provider]
 The codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider] provides captions for
 the features in ref:TableComponent[Tables] and ref:FormComponent[Forms].
 Here you can see an example of the DSL.
- 
+
 code[EmfParsley][
 featureCaptionProvider{
 	text{
-		Book:author -> "Wrote by:"
+		Book:author -> "Written by:"
 		Writer:name -> "Name:"
 	}
 }
 ]
 
 If you want to customize it in Java, you need to derive from
-codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider]. 
-It can be customized, with injection e[TODO (see Injection paragraph)], to customize the caption label on the
-left of each control in a form and the headers in a table's column. 
+codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider].
+It can be customized, with injection ref:GuiceBindings[]: this
+way you can customize the caption label for controls in a form, dialog, and the headers in a table's column.
 The framework uses a polimorphic mechanism to find customizations: it searches for
 methods with a specific signature: the name is built by the string e['text'] followed by the EClass and the EStructuralFeature.
 All parts of the name are separated by an underscore character and the method must accept a parameter of type EStructuralFeature.
@@ -402,21 +402,28 @@ Writer.
 
 code[Java][
 public String text_Book_author(final EStructuralFeature feature) {
-	return "Wrote by:";
+	return "Written by:";
 }
 
 public String text_Writer_name(final EStructuralFeature feature) {
 	return "Name:";
 }
-] 
+]
 
-section3:FormFeatureCaptionProvider[Form Feature Caption Provider]
+If no customization is provided, the text will be computed using the feature's name.
+This will always be the default for table column headers (since no object is available
+when building the table); while for form and dialog captions we use a slightly different
+default strategy, as shown in ref:FormFeatureCaptionProvider[Form and Dialog Feature Caption Provider].
 
-The codeRef[org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider] can be used if you want
-to define the description only for the form. For example using the ref:TreeFormComponent[Tree
-Form] your definition will not be used in the tree.
+section3:FormFeatureCaptionProvider[Form and Dialog Feature Caption Provider]
 
-In this case you can also define a method the returns directly the control, like in the example
+The codeRef[org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider]
+(codeRef[org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider], respectively)
+can be used if you want to define the description only for forms (for dialogs, respectively).
+For example using the ref:TreeFormComponent[Tree Form] your definition will not be used in the tree.
+
+In this case you can also define a method the returns directly the
+codeRef[org.eclipse.swt.widgets.Label], like in the example
 below. In such methods there is another parameter that is the parent composite (that is automatically
 passed by the framework).
 
@@ -428,8 +435,39 @@ public Label label_Writer_name(Composite parent, EStructuralFeature feature) {
 }
 ]
 
+In the DSL you have the corresponding two sections available:
+
+code[EmfParsley][
+formFeatureCaptionProvider{
+	text{
+		Book:author -> "Written by:"
+	}
+	label{
+		Writer:name -> createLabel(parent, "Name")
+	}
+}
+
+dialogFeatureCaptionProvider{
+	text{
+		Book:author -> "Author:"
+	}
+	label{
+		Writer:name -> createLabel(parent, "Writer's name")
+	}
+}
+]
+
 If there is no customization in the codeRef[org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider]
-we fall back to codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider].
+(codeRef[org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider], respectively),
+the following steps are executed to create the text for the label:
+
+ul[
+item[we take possible customizations from codeRef[org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider]
+if available, otherwise:]
+item[we take the text from codeRef[org.eclipse.emf.edit.provider.IItemPropertyDescriptor] if
+the EObject provides it, otherwise:]
+item[we take the feature name]
+]
 
 section2:ProposalProvider[Proposal Provider]
 
