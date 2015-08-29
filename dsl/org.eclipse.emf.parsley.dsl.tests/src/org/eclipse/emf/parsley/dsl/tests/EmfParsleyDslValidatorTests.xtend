@@ -47,6 +47,8 @@ import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
 
+import static extension org.junit.Assert.*
+
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
 class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
@@ -514,6 +516,130 @@ Duplicate binding for: TableColumnWeights
 	}
 
 	@Test
+	def void testDuplicateSpecifications() {
+		val input = '''
+				import java.util.List
+				import org.eclipse.emf.ecore.EClass
+				import org.eclipse.emf.ecore.EObject
+				import org.eclipse.emf.ecore.EStructuralFeature
+				
+				module my.empty {
+					labelProvider {
+						text {
+							EClass -> ""
+							EObject -> ""
+							// we the parameter to distinguish
+							// the two duplicate elements
+							EClass c -> ""
+							List<String> -> ""
+						}
+					}
+					formFeatureCaptionProvider {
+						text {
+							EClass : name -> ""
+							EStructuralFeature : transient -> ""
+							// we ad an additional space before : to distinguish
+							// the two duplicate elements
+							EClass  : name -> ""
+							EStructuralFeature : derived -> ""
+						}
+					}
+				}
+				'''
+		input.parse => [
+			4.assertEquals(validate.size)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.labelSpecification,
+				input.indexOf("EClass ->"), 'EClass -> ""'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.labelSpecification,
+				input.indexOf("EClass c"), 'EClass c -> ""'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.featureAssociatedExpression,
+				input.indexOf("EClass  : name"), 'EClass  : name -> ""'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.featureAssociatedExpression,
+				input.indexOf("EClass : name"), 'EClass : name -> ""'.length
+			)
+		]
+	}
+
+	@Test
+	def void testDuplicateSpecificationsWithObservableTarget() {
+		val input = '''
+				import org.eclipse.emf.ecore.EClass
+				
+				module my.empty {
+					formControlFactory {
+						control {
+							EClass : name -> { createLabel(parent, "") } target { observeText }
+							// we ad an additional space before : to distinguish
+							// the two duplicate elements
+							EClass  : name -> { createLabel(parent, "") } target { observeText }
+						}
+					}
+				}
+				'''
+		input.parse => [
+			2.assertEquals(validate.size)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.controlFactorySpecification,
+				input.indexOf("EClass : name ->"),
+				'EClass : name -> { createLabel(parent, "") } target { observeText }'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.controlFactorySpecification,
+				input.indexOf("EClass  : name ->"),
+				'EClass  : name -> { createLabel(parent, "") } target { observeText }'.length
+			)
+		]
+	}
+
+	@Test
+	def void testDuplicateFields() {
+		val input = '''
+				module my.empty {
+					labelProvider {
+						val int e1 = 0
+						val int e2 = 0
+						val String e1 = null
+					}
+					formFeatureCaptionProvider {
+						val int f1 = 0
+						val int f2 = 0
+						val String f1 = null
+					}
+				}
+				'''
+		input.parse => [
+			4.assertEquals(validate.size)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.fieldSpecification,
+				input.indexOf("val int e1"),
+				'val int e1 = 0'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.fieldSpecification,
+				input.indexOf("val String e1"),
+				'val String e1 = null'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.fieldSpecification,
+				input.indexOf("val int f1"),
+				'val int f1 = 0'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.fieldSpecification,
+				input.indexOf("val String f1"),
+				'val String f1 = null'.length
+			)
+		]
+	}
+
+	@Test
 	def void testResouceManagerEmptySaveMethod() {
 		'''
 		module my.empty {
@@ -555,6 +681,15 @@ Duplicate binding for: TableColumnWeights
 			eClass,
 			DUPLICATE_BINDING,
 			"Duplicate binding for: " + expectedType
+		)
+	}
+
+	def private assertDuplicateElement(EObject e, EClass eClass, int offset, int length) {
+		e.assertError(
+			eClass,
+			DUPLICATE_ELEMENT,
+			offset, length,
+			"Duplicate element"
 		)
 	}
 

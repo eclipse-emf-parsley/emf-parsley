@@ -72,7 +72,6 @@ import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.util.IAcceptor
-import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
@@ -453,11 +452,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def private featureAssociatedExpressionToMethod(JvmGenericType it, FeatureAssociatedExpression spec, 
 			String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator) {
 		if (spec.feature?.simpleName != null) {
-			// associate the method to the expression, not to the whole
-			// spec, otherwise the 'feature' is logically
-			// contained in a method which should return a label
-			// and the validator would complain
-			members += spec.expression.toMethod
+			members += spec.toMethod
 			(prefix + 
 					spec.parameterType.simpleName + "_" +
 					spec.feature.simpleName.propertyNameForGetterSetterMethod, 
@@ -544,7 +539,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			if (spec.feature?.simpleName != null) {
 				if (spec.target == null)
 					members += spec.
-					control_EClass_EStructuralFeature(spec.expression) [
+					control_EClass_EStructuralFeature() [
 						parameters += spec.toParameter(
 							"it", spec.parameterType
 						)
@@ -554,7 +549,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					val createControlMethodName = spec.methodNameForFormFeatureSpecification("createControl_")
 					val createTargetMethodName = spec.methodNameForFormFeatureSpecification("createTarget_")
 					members += spec.
-					control_EClass_EStructuralFeature(spec.expression) [
+					control_EClass_EStructuralFeature() [
 						parameters += spec.toParameter(
 							"dataBindingContext", typeRef(DataBindingContext)
 						)
@@ -758,9 +753,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private control_EClass_EStructuralFeature(
-			ControlFactorySpecification spec, XExpression exp, (JvmOperation)=>void init
+			ControlFactorySpecification spec, (JvmOperation)=>void init
 	) {
-		exp.toMethod
+		spec.toMethod
 			(spec.methodNameForFormFeatureSpecification("control_"), 
 				typeRef(Control)
 			, init)

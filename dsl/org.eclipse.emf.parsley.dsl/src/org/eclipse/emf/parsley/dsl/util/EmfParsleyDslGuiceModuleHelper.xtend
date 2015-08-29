@@ -11,17 +11,27 @@
 package org.eclipse.emf.parsley.dsl.util
 
 import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.xbase.typesystem.^override.OverrideHelper
+import org.eclipse.xtext.xbase.typesystem.^override.IResolvedOperation
 
 class EmfParsleyDslGuiceModuleHelper {
 	@Inject extension IJvmModelAssociations
 
+	@Inject extension OverrideHelper
+
 	def getModuleInferredType(Module module) {
-		module.jvmElements.filter(JvmGenericType).head
+		module.inferredJavaTypes.head
+	}
+
+	def getInferredJavaTypes(EObject o) {
+		o.jvmElements.filter(JvmGenericType)
 	}
 
 	def Iterable<JvmOperation> getAllGuiceValueBindingsMethodsInSuperclass(Module module) {
@@ -48,6 +58,22 @@ class EmfParsleyDslGuiceModuleHelper {
 		type.superTypeJvmOperations.filter[
 			simpleName.startsWith("value")
 		]
+	}
+
+	def getAllWithExtendsClauseInferredJavaTypes(Module module) {
+		module.allWithExtendsClause.map[inferredJavaTypes].flatten
+	}
+
+	def getAllWithExtendsClause(Module module) {
+		module.eContents.filter(WithExtendsClause)
+	}
+
+	def getJavaResolvedFeatures(JvmGenericType type) {
+		type.getResolvedFeatures()
+	}
+
+	def getJavaMethodResolvedErasedSignature(IResolvedOperation op) {
+		op.resolvedErasureSignature
 	}
 
 	def private superTypeJvmOperations(Module module) {

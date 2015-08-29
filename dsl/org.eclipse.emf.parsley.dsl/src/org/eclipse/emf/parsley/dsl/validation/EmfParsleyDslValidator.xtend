@@ -51,6 +51,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val DUPLICATE_BINDING = "org.eclipse.emf.parsley.dsl.DuplicateBinding";
 
+	public static val DUPLICATE_ELEMENT = "org.eclipse.emf.parsley.dsl.DuplicateElement";
+
 	public static val NON_COMPLIANT_BINDING = "org.eclipse.emf.parsley.dsl.NonCompliantBinding";
 
 	@Inject EmfParsleyDslTypeSystem typeSystem
@@ -119,9 +121,13 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		checkDuplicateBindings(methods)
 		
 		checkCorrectValueBindings(guiceModuleClass, methods, module)
+		
+		for (t : module.allWithExtendsClauseInferredJavaTypes) {
+			checkDuplicateSpecifications(t)
+		}
 	}
 	
-	protected def checkDuplicateBindings(Iterable<JvmOperation> methods) {
+	private def checkDuplicateBindings(Iterable<JvmOperation> methods) {
 		val map = duplicatesMultimap
 		
 		// create a multimap using method names
@@ -141,6 +147,43 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 						source.duplicateBindingFeature,
 						DUPLICATE_BINDING
 					);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Since for fields we generate getter/setter, checking duplicate Java methods
+	 * will automatically check for duplicate fields as well.
+	 */
+	private def checkDuplicateSpecifications(JvmGenericType inferredType) {
+		val inferredFeatures = inferredType.javaResolvedFeatures
+		val methods = inferredFeatures.declaredOperations
+		val map = duplicatesMultimap
+		// since they may be more than one Java method associated to the same
+		// source, we avoid reporting errors on the same source more than once
+		// e.g., for control factory specifications
+		val errorSourceSeen = newHashSet()
+		
+		// create a multimap using method erased signature as key
+		for (m : methods) {
+			map.put(m.javaMethodResolvedErasedSignature, m.declaration)
+		}
+		
+		// check if there are duplicates
+		for (entry : map.asMap.entrySet) {
+			val duplicates = entry.value
+			if (duplicates.size > 1) {
+				for (d : duplicates) {
+					val source = d.sourceElements.head
+					if (errorSourceSeen.add(source)) {
+						error(
+							"Duplicate element",
+							source,
+							null,
+							DUPLICATE_ELEMENT
+						);
+					}
 				}
 			}
 		}
