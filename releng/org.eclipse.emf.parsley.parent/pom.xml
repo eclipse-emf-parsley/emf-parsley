@@ -50,7 +50,7 @@
 		<!-- see http://sonarqube.15.x6.nabble.com/sonar-issue-ignore-multicriteria-td5021722.html 
 			and http://stackoverflow.com/questions/21825469/configure-sonar-sonar-issue-ignore-multicriteria-through-maven 
 			for the multicriteria property -->
-		<sonar.issue.ignore.multicriteria>e1,e2,e3,e4,e5,e6</sonar.issue.ignore.multicriteria>
+		<sonar.issue.ignore.multicriteria>e1,e2,e3,e4,e5,e6,e7</sonar.issue.ignore.multicriteria>
 	
 		<!-- standard convention for method names: in the outline tree provider 
 			we must use methods that start with _ and they'd violate the rule squid:S00100 -->
@@ -77,6 +77,10 @@
 		<!-- In our junit4 bundle we really need to catch Throwable. -->
 		<sonar.issue.ignore.multicriteria.e6.ruleKey>squid:S1181</sonar.issue.ignore.multicriteria.e6.ruleKey>
 		<sonar.issue.ignore.multicriteria.e6.resourceKey>**/junit4/*.java</sonar.issue.ignore.multicriteria.e6.resourceKey>
+
+		<!-- In our junit4 bundle we really need to call Thread.run. -->
+		<sonar.issue.ignore.multicriteria.e7.ruleKey>squid:S1217</sonar.issue.ignore.multicriteria.e7.ruleKey>
+		<sonar.issue.ignore.multicriteria.e7.resourceKey>**/junit4/**/*.java</sonar.issue.ignore.multicriteria.e7.resourceKey>
 
 		<findbugs.skip>false</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
