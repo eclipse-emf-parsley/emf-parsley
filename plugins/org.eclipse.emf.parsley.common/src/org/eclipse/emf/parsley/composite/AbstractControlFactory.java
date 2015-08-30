@@ -47,6 +47,7 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -220,16 +221,16 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 			setupControl(feature, control);
 		}
 
-		registerUndo(control);
+		registerUndoRedo(control);
 
 		return control;
 	}
 
-	protected void registerUndo(Control control) {
+	protected KeyListener registerUndoRedo(Control control) {
 		if (control instanceof Text) {
-			Text text = (Text) control;
-			new TextUndoRedo(text);
+			return new TextUndoRedo((Text) control);
 		}
+		return null;
 	}
 
 	protected Control createAndBindList(final EStructuralFeature feature) {
@@ -369,7 +370,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return retValAndTargetPair;
 	}
 
-	protected void addContentProposalAdapter(Text t, List<?> proposals) {
+	protected ContentProposalAdapter addContentProposalAdapter(Text t, List<?> proposals) {
 		if (proposals != null && !proposals.isEmpty()) {
 			Iterable<String> filteredNotNullToString = Iterables.transform(
 					Iterables.filter(proposals, Predicates.notNull()),
@@ -394,12 +395,13 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 				EmfParsleyActivator
 						.logError("Error while parsing keystroke: " + contentAssistShortcut, e);
 			}
-			new ContentProposalAdapter(t, new TextContentAdapter(),
+			return new ContentProposalAdapter(t, new TextContentAdapter(),
 					new SimpleContentProposalProvider(
 							Iterables.toArray(filteredNotNullToString, String.class)), 
 							keyStroke,
 					null);
 		}
+		return null;
 	}
 
 	private void setupControl(EStructuralFeature f, Control c) {

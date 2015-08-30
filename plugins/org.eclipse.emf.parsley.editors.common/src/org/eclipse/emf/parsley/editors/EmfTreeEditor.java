@@ -53,7 +53,7 @@ public class EmfTreeEditor extends EmfAbstractEditor {
 		selectionViewer = emfTreeViewer;
 		setSelectionOnRoot(selectionViewer);
 
-		new AdapterFactoryTreeEditor(emfTreeViewer.getTree(), adapterFactory);
+		createAdapterFactoryTreeEditor(emfTreeViewer);
 
 		createContextMenuFor(selectionViewer);
 		
@@ -81,6 +81,10 @@ public class EmfTreeEditor extends EmfAbstractEditor {
 		});
 
 		updateProblemIndication();
+	}
+
+	protected AdapterFactoryTreeEditor createAdapterFactoryTreeEditor(TreeViewer emfTreeViewer) {
+		return new AdapterFactoryTreeEditor(emfTreeViewer.getTree(), adapterFactory);
 	}
 
 	protected void handleProblems(LoadResourceResponse response) {
