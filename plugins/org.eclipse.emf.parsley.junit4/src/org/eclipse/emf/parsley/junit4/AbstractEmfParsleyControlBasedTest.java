@@ -211,6 +211,18 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 		});
 	}
 
+	protected void modifyText(final Control control, final String newText) {
+		assertControlClass(control, Text.class);
+		final Text text = ((Text) control);
+		syncExecVoid(new Runnable() {
+			@Override
+			public void run() {
+				text.setText(newText);
+			}
+		});
+		assertText(control, newText);
+	}
+
 	protected void assertMultipleFeatureControl(final Control control,
 			final String expectedLabelText, final boolean isButtonVisible) {
 		assertMultipleFeatureControl(control, expectedLabelText,
