@@ -669,13 +669,22 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 14;
 
 	/**
+	 * The feature id for the '<em><b>Single Containment Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE = 15;
+
+	/**
 	 * The number of structural features of the '<em>Class For Controls</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 15;
+	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 16;
 
 	/**
 	 * The number of operations of the '<em>Class For Controls</em>' class.
@@ -1285,6 +1294,17 @@ public interface TestmodelsPackage extends EPackage {
 	EReference getClassForControls_FeatureMapEntries2();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getSingleContainmentReference <em>Single Containment Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Single Containment Reference</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getSingleContainmentReference()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EReference getClassForControls_SingleContainmentReference();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName <em>Class With Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1775,6 +1795,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = eINSTANCE.getClassForControls_FeatureMapEntries2();
+		/**
+		 * The meta object literal for the '<em><b>Single Containment Reference</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE = eINSTANCE.getClassForControls_SingleContainmentReference();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
 		 * <!-- begin-user-doc -->

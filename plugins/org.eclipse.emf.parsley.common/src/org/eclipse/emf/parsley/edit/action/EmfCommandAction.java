@@ -40,6 +40,10 @@ public class EmfCommandAction<T> extends Action {
 	 */
 	private IAcceptor<T> addedObjectInitializer;
 
+	public EmfCommandAction(String text, EditingDomain editingDomain, Command command) {
+		this(text, editingDomain, command, null);
+	}
+
 	public EmfCommandAction(String text, EditingDomain editingDomain, Command command,
 			IAcceptor<T> addedObjectInitializer) {
 		super(text);

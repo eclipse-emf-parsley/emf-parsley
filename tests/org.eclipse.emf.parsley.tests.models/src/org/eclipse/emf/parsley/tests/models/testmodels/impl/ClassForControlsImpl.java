@@ -47,6 +47,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getSingleContainmentReference <em>Single Containment Reference</em>}</li>
  * </ul>
  *
  * @generated
@@ -281,6 +282,16 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected FeatureMap featureMapEntries;
+
+	/**
+	 * The cached value of the '{@link #getSingleContainmentReference() <em>Single Containment Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingleContainmentReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected ClassWithName singleContainmentReference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -584,6 +595,49 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ClassWithName getSingleContainmentReference() {
+		return singleContainmentReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSingleContainmentReference(ClassWithName newSingleContainmentReference, NotificationChain msgs) {
+		ClassWithName oldSingleContainmentReference = singleContainmentReference;
+		singleContainmentReference = newSingleContainmentReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE, oldSingleContainmentReference, newSingleContainmentReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSingleContainmentReference(ClassWithName newSingleContainmentReference) {
+		if (newSingleContainmentReference != singleContainmentReference) {
+			NotificationChain msgs = null;
+			if (singleContainmentReference != null)
+				msgs = ((InternalEObject)singleContainmentReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE, null, msgs);
+			if (newSingleContainmentReference != null)
+				msgs = ((InternalEObject)newSingleContainmentReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE, null, msgs);
+			msgs = basicSetSingleContainmentReference(newSingleContainmentReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE, newSingleContainmentReference, newSingleContainmentReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -593,6 +647,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return ((InternalEList<?>)getFeatureMapEntries1()).basicRemove(otherEnd, msgs);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
 				return ((InternalEList<?>)getFeatureMapEntries2()).basicRemove(otherEnd, msgs);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
+				return basicSetSingleContainmentReference(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -637,6 +693,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return getFeatureMapEntries1();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
 				return getFeatureMapEntries2();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
+				return getSingleContainmentReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -695,6 +753,9 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				getFeatureMapEntries2().clear();
 				getFeatureMapEntries2().addAll((Collection<? extends ClassForFeatureMapEntry2>)newValue);
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
+				setSingleContainmentReference((ClassWithName)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -749,6 +810,9 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
 				getFeatureMapEntries2().clear();
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
+				setSingleContainmentReference((ClassWithName)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -791,6 +855,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return !getFeatureMapEntries1().isEmpty();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2:
 				return !getFeatureMapEntries2().isEmpty();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
+				return singleContainmentReference != null;
 		}
 		return super.eIsSet(featureID);
 	}

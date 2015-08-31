@@ -63,22 +63,35 @@ module org.eclipse.emf.parsley.examples.firstexample {
 		
 		emfMenus {
 			Writer w -> #[
-				actionAdd(
-					"New book",
-					(w.eContainer as Library).books,
-					factory.createBook,
-					[ book |
-						book.title = "A new book" 
+				actionChange("New book", w.eContainer as Library,
+					[
+						library |
+						val book = factory.createBook
+						library.books += book
+						book.title = "A new book"
+						book.author = w	
+					]
+				),
+				// in this variant undo will only unset the book's author,
+				// but it will not remove the added code from the library
+				// since we record changes concerning the writer only
+				actionChange("New book (variant)", w,
+					[
+						writer |
+						val library = writer.eContainer as Library
+						val book = factory.createBook
+						library.books += book
+						book.title = "A new book"
 						book.author = w
 					]
 				)
 			]
 			Book b -> #[
-				actionAdd(
-					"New writer",
-					(b.eContainer as Library).writers,
-					factory.createWriter,
-					[ writer |
+				actionChange("New writer", b.eContainer as Library,
+					[
+						library |
+						val writer = factory.createWriter
+						library.writers += writer
 						writer.name = "A new writer"
 						writer.books += b
 					]

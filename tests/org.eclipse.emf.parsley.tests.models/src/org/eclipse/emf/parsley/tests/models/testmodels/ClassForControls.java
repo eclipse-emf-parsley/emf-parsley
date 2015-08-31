@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries <em>Feature Map Entries</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getSingleContainmentReference <em>Single Containment Reference</em>}</li>
  * </ul>
  *
  * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls()
@@ -381,5 +382,31 @@ public interface ClassForControls extends EObject {
 	 * @generated
 	 */
 	EList<ClassForFeatureMapEntry2> getFeatureMapEntries2();
+
+	/**
+	 * Returns the value of the '<em><b>Single Containment Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Single Containment Reference</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Single Containment Reference</em>' containment reference.
+	 * @see #setSingleContainmentReference(ClassWithName)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_SingleContainmentReference()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ClassWithName getSingleContainmentReference();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getSingleContainmentReference <em>Single Containment Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Single Containment Reference</em>' containment reference.
+	 * @see #getSingleContainmentReference()
+	 * @generated
+	 */
+	void setSingleContainmentReference(ClassWithName value);
 
 } // ClassForControls

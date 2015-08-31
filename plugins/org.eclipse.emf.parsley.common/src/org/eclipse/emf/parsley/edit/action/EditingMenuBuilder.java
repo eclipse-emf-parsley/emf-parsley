@@ -15,8 +15,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.CommandActionHandler;
@@ -74,6 +76,35 @@ import com.google.inject.Inject;
  */
 public class EditingMenuBuilder {
 	
+	/**
+	 * Customization for executing a lambda; it also implements getAffectedObjects()
+	 * which is crucial for dirty state handling.
+	 * 
+	 * @author Lorenzo Bettini
+	 *
+	 * @param <T>
+	 */
+	private static class CustomChangeCommand<T extends Notifier> extends ChangeCommand {
+		private final T element;
+		private final IAcceptor<T> changeImplementation;
+
+		private CustomChangeCommand(T element, IAcceptor<T> changeImplementation) {
+			super(element);
+			this.element = element;
+			this.changeImplementation = changeImplementation;
+		}
+
+		@Override
+		protected void doExecute() {
+			changeImplementation.accept(element);
+		}
+
+		@Override
+		public Collection<?> getAffectedObjects() {
+			return changeDescription.getObjectChanges().keySet();
+		}
+	}
+
 	@Inject
 	protected EmfSelectionHelper selectionHelper;
 	
@@ -395,6 +426,47 @@ public class EditingMenuBuilder {
 	 */
 	protected <T> AddCommand addCommand(EList<? super T> list, T value) {
 		return new AddCommand(getEditingDomain(), list, value);
+	}
+
+	/**
+	 * Creates a menu contribution for an action with the given text, that will
+	 * modify the model, when executed, by running the passed lambda
+	 * changeImplementation; the specified element will be passed to the lambda
+	 * and represents the model's element that will be changed.
+	 * 
+	 * All modifications that concern such element will be recorded so that
+	 * undo/redo will work. Important: only the changes concerning the element
+	 * will be recorded: if during the modification you also change other
+	 * elements in the model, such changes will not be tracked. If you want to
+	 * track also those changes, you need to make sure to specify a container of
+	 * the element (you can even specify its Resource to keep track of all the
+	 * changes in the object's resource). However, recall that the element you
+	 * specify is the argument passed to the lamba.
+	 * 
+	 * @param text
+	 * @param element
+	 * @param changeImplementation
+	 * @return
+	 */
+	protected <T extends Notifier> IMenuContributionSpecification actionChange(String text, T element,
+			IAcceptor<T> changeImplementation) {
+		ChangeCommand changeCommand = changeCommand(element, changeImplementation);
+		changeCommand.setDescription(text);
+		return new MenuActionContributionSpecification(
+				new EmfCommandAction<T>(text, getEditingDomain(), changeCommand));
+	}
+
+	/**
+	 * Creates a command for modifying the element, tracking all the changes
+	 * that concern such element in order to implement undo/redo.
+	 * 
+	 * @param element
+	 * @param changeImplementation
+	 * @return
+	 */
+	protected <T extends Notifier> ChangeCommand changeCommand(final T element,
+			final IAcceptor<T> changeImplementation) {
+		return new CustomChangeCommand<T>(element, changeImplementation);
 	}
 
 	/**

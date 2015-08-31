@@ -550,36 +550,19 @@ menuBuilder{
 For each EClass of your meta-model you can specify a list of menu items
 (the #\[\] is the Xbase syntax for a list literal)
 Content assist is available to select the editing actions, the separator and
-also methods for EMF menu part.  In the e[emfMenus] section, you can use
-the method e[actionAdd], specifying the label for the menu,
+also methods for EMF menu part.
+
+In the e[emfMenus] section, you can use some methods of
+the codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder] class,
+as detailed in the following.
+
+The method e[actionAdd], specifying the label for the menu,
 the containment list in the model, and the object to add in such list
 when the menu is selected (Note that it is up to you to specify a
 containment list); the DSL will issue an error if the object cannot be
 added to the list (because it is not of the right type).
 The object should be created using the standard EMF API (i.e., using
 the EMF factory for your model).
-
-IMPORTANT: do not initialize any reference feature of the created EObject
-upon object creation; i.e., do not do something like the following
-
-code[EmfParsley][
-emfMenus{
-	Writer w -> #\[
-		actionAdd("Add a new book for the writer",
-			(w.eContainer as Library).books,
-			// WRONG: don't do that
-			EXTLibraryFactory.eINSTANCE.createBook => \[
-				author = w
-			\]
-		)
-	\]
-}
-]
-
-Since the object is created when the contextual menu is created, NOT
-when the menu is selected; if you do something like in the code above,
-you will end up with a resource with dangling references (which cannot be
-saved).
 
 If you want to specify further initialization instructions for the
 created object you can pass a lambda expression as another argument
@@ -593,14 +576,93 @@ emfMenus{
 		actionAdd("Add a new book for the writer",
 			(w.eContainer as Library).books,
 			EXTLibraryFactory.eINSTANCE.createBook,
-			// CORRECT: the lambda will be executed when the menu
-			// is selected and the object has been added to
-			// the resource
+			\[ book | book.title = "A new book" \]
+		)
+	\]
+}
+]
+
+IMPORTANT: do not set any reference feature of the created EObject in the lambda,
+i.e., do not do something like the following
+
+code[EmfParsley][
+emfMenus{
+	Writer w -> #\[
+		actionAdd("Add a new book for the writer",
+			(w.eContainer as Library).books,
+			EXTLibraryFactory.eINSTANCE.createBook,
+			// WRONG: don't do that
 			\[ book | book.author = w \]
 		)
 	\]
 }
 ]
+
+This will not work if you undo the command: the writer that has been added
+to the library will be removed, and the book.author will be a dangling reference!
+as a consequence the resource cannot be saved.
+
+If you want to implement more complex menu commands that do not
+only add elements to a container, you can use the method
+e[actionChange], specifying the label for the menu, the model's element
+that will be affected by the changes specified as a lambda expression
+(the third argument).  The lambda expression will also get the specified
+model's element as argument.  The model's element can also be the whole
+resource itself (formally, it can be any EMF codeRef[org.eclipse.emf.common.notify.Notifier]).
+
+It is crucial to specify the correct model's element to make undo/redo work
+correctly: all the modifications performed in the lambda expression that concern the
+specified element will be recorded, in order to implement undo/redo.
+
+For example, this command, that will add a new book to the library, and sets
+its author to the selected writer will work as expected, and selecting
+undo will effectively remove the book from the writer's list and from the library:
+
+code[EmfParsley][
+emfMenus{
+	Writer w -> #\[
+		actionChange("New book", w.eContainer as Library,
+			\[
+				library |
+				val book = factory.createBook
+				library.books += book
+				book.title = "A new book"
+				book.author = w
+			\]
+		),
+	\]
+}
+]
+
+This works since we specify the containing library as the model's element, thus,
+all modifications that concern the library will be recorded.
+
+On the contrary, this variant, will perform exacty the same actions on the model, but selecting
+undo will only remove the book from the writer's list, and the book will still
+be present in the library:
+
+code[EmfParsley][
+emfMenus{
+	Writer w -> #\[
+		// in this variant undo will only unset the book's author,
+		// but it will not remove the added code from the library
+		// since we record changes concerning the writer only
+		actionChange("New book (variant)", w,
+			\[
+				writer |
+				val library = writer.eContainer as Library
+				val book = factory.createBook
+				library.books += book
+				book.title = "A new book"
+				book.author = w
+			\]
+		)
+	\]
+}
+]
+
+This happens since we specified the writer as the model's element, thus only
+the changes that concern the writer will be undone.
 
 section:Factories[Factories]
 

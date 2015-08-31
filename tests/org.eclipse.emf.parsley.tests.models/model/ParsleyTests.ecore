@@ -77,6 +77,8 @@
         <details key="group" value="#featureMapEntries"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="singleContainmentReference"
+        eType="#//ClassWithName" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnumForControls">
     <eLiterals name="FIRST"/>

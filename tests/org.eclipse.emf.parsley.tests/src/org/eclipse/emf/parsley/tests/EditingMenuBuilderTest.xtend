@@ -2,6 +2,8 @@ package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Injector
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.Resource.IOWrappedException
+import org.eclipse.emf.ecore.xmi.DanglingHREFException
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
@@ -10,6 +12,7 @@ import org.eclipse.emf.parsley.examples.library.Writer
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.eclipse.emf.parsley.util.EmfCommandsUtil
 import org.eclipse.emf.parsley.util.EmfParsleyUtil
 import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.IContributionItem
@@ -21,28 +24,33 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+import static org.eclipse.emf.parsley.tests.EditingMenuBuilderTest.*
+
 import static extension org.junit.Assert.*
-import org.eclipse.emf.ecore.resource.Resource.IOWrappedException
-import org.eclipse.emf.ecore.xmi.DanglingHREFException
+import org.eclipse.emf.edit.command.ChangeCommand
+import org.eclipse.emf.common.command.CommandStackListener
+import org.eclipse.emf.parsley.examples.library.Book
 
 class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
-	
+
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	var EditingDomain editingDomain = null
-	
+
+	val static THIS_IS_A_NEW_BOOK = "This is a new book"
+
 	/**
 	 * We will use it also for easily testing EMF actions, since there will
 	 * be no submenus
 	 */
 	static class FlattenedNewChildEditingMenuBuilder extends EditingMenuBuilder {
-							
+
 		override protected defaultEmfMenuContributions(ISelection selection) {
 			createChildActions(selection)
 		}
-						
+
 	}
-	
+
 	@Before
 	def void setEditingDomainToNull() {
 		editingDomain = null
@@ -112,7 +120,6 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 		assertTrue(editingMenuBuilder.createSiblingActions(null).empty)
 	}
 
-
 	@Test
 	def void testWithNonStructuredSelection() {
 		val editingMenuBuilder = getAndInitializeEditingMenuBuilder
@@ -123,7 +130,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	@Test
 	def void testCustomMenu() {
 		val editingMenuBuilder = new EditingMenuBuilder() {
-							
+
 			def protected menuContributions(ClassForControls o) {
 				#[
 					actionRedo(),
@@ -133,7 +140,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 					actionPaste()
 				]
 			}
-							
+
 		}.injectMembers.initializeEditingMenuBuilder
 		editingMenuBuilder.assertMenuItemsGivenObject(classForControlsInstance,
 		"&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, &Copy, &Paste")
@@ -142,7 +149,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	@Test
 	def void testCustomDefaultMenu() {
 		val editingMenuBuilder = new EditingMenuBuilder() {
-			
+
 			override protected defaultMenuContributions(Object object) {
 				#[
 					actionRedo(),
@@ -152,7 +159,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 					actionPaste()
 				]
 			}
-			
+
 		}.injectMembers.initializeEditingMenuBuilder
 		editingMenuBuilder.assertMenuItemsGivenObject(classForControlsInstance,
 		"&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, &Copy, &Paste")
@@ -161,7 +168,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	@Test
 	def void testCustomMenuWithSubmenu() {
 		val editingMenuBuilder = new EditingMenuBuilder() {
-							
+
 			def protected menuContributions(ClassForControls o) {
 				#[
 					actionRedo(),
@@ -176,7 +183,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 					actionPaste()
 				]
 			}
-							
+
 		}.injectMembers.initializeEditingMenuBuilder
 		editingMenuBuilder.assertMenuItemsGivenObject(classForControlsInstance,
 '''
@@ -204,7 +211,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	@Test
 	def void testCustomAddCommand() {
 		val editingMenuBuilder = new EditingMenuBuilder() {
-							
+
 			def protected emfMenuContributions(Library o) {
 				#[
 					actionAdd("New Writer", o.writers, 
@@ -214,7 +221,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 					)
 				]
 			}
-							
+
 		}.injectMembers.initializeEditingMenuBuilder
 		editingMenuBuilder.emfMenuManagerForSelection(library).
 			executeAction("New Writer")
@@ -227,28 +234,27 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=466219
 		val resource = createTestLibrayResourceAndInitialize
 		val library = resource.contents.head as Library
-		
+
 		val editingMenuBuilder = new EditingMenuBuilder() {
-							
+
 			def protected emfMenuContributions(Writer w) {
 				#[
 					actionAdd("New Book for Writer", (w.eContainer as Library).books, 
 						libraryFactory.createBook => [
-							title = "This is a new book"
+							title = THIS_IS_A_NEW_BOOK
 							author = w
 						]
 					)
 				]
 			}
-							
+
 		}.injectMembers.initializeEditingMenuBuilder
 		val writerForMenu = library.writers.head
 		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
 			executeAction("New Book for Writer")
-		val addedBook = library.books.findFirst[title == "This is a new book"]
-		addedBook.assertNotNull
+		val addedBook = library.getAddedNewBook
 		addedBook.author.assertSame(writerForMenu)
-		
+
 		// retrigger menu creation, this will create a dangling reference
 		// the writer will reference a book which is not yet in the resource
 		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu)
@@ -267,14 +273,14 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=466219
 		val resource = createTestLibrayResourceAndInitialize
 		val library = resource.contents.head as Library
-		
+
 		val editingMenuBuilder = new EditingMenuBuilder() {
-							
+
 			def protected emfMenuContributions(Writer w) {
 				#[
 					actionAdd("New Book for Writer", (w.eContainer as Library).books, 
 						libraryFactory.createBook => [
-							title = "This is a new book"
+							title = THIS_IS_A_NEW_BOOK
 						],
 						[
 							// initialize the added object only after it has
@@ -286,21 +292,365 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 					)
 				]
 			}
-							
+
 		}.injectMembers.initializeEditingMenuBuilder
 		val writerForMenu = library.writers.head
 		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
 			executeAction("New Book for Writer")
-		val addedBook = library.books.findFirst[title == "This is a new book"]
-		addedBook.assertNotNull
+		val addedBook = library.getAddedNewBook
 		addedBook.author.assertSame(writerForMenu)
-		
+
 		// retrigger menu creation
 		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu)
 
 		resource.save(null)
 	}
-	
+
+	@Test
+	def void testChangeCommand() {
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+		
+		val editingMenuBuilder = new EditingMenuBuilder() {
+
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionChange("New Book for Writer", w,
+						[
+							writer |
+							val newBook = libraryFactory.createBook => [
+								title = THIS_IS_A_NEW_BOOK
+							]
+							(w.eContainer as Library).books += newBook
+							newBook.author = writer
+						] 
+					)
+				]
+			}
+
+		}.injectMembers.initializeEditingMenuBuilder
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+		val addedBook = library.getAddedNewBook
+		addedBook.author.assertSame(writerForMenu)
+
+		// retrigger menu creation
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu)
+
+		resource.save(null)
+	}
+
+	@Test
+	def void testChangeCommandUndoRedoOnSelectedObject() {
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+
+		val editingMenuBuilder = new EditingMenuBuilder() {
+
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionUndo,
+					actionRedo,
+					actionChange("New Book for Writer", w,
+						[
+							writer |
+							val newBook = libraryFactory.createBook => [
+								title = THIS_IS_A_NEW_BOOK
+							]
+							// this change will NOT be recorded, since we track
+							// only the specified writer as the element
+							(w.eContainer as Library).books += newBook
+							// this change will be recorded
+							newBook.author = writer
+						] 
+					)
+				]
+			}
+
+		}.injectMembers.initializeEditingMenuBuilder
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+		val addedBook = library.getAddedNewBook
+		addedBook.author.assertSame(writerForMenu)
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeUndo
+
+		// since we track change only on the writer, the added book is still
+		// in the library
+		addedBook.eContainer.assertSame(library)
+		// but its author is not the writer anymore
+		addedBook.author.assertNull
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeRedo
+
+		addedBook.author.assertSame(writerForMenu)
+
+		resource.save(null)
+	}
+
+	@Test
+	def void testChangeCommandAffectedObjects() {
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+
+		val editingMenuBuilder = new EditingMenuBuilder() {
+
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionUndo,
+					actionRedo,
+					actionChange("New Book for Writer", w,
+						[
+							writer |
+							val newBook = libraryFactory.createBook => [
+								title = THIS_IS_A_NEW_BOOK
+							]
+							// this change will NOT be recorded, since we track
+							// only the specified writer as the element
+							(w.eContainer as Library).books += newBook
+							// this change will be recorded
+							newBook.author = writer
+						] 
+					)
+				]
+			}
+
+		}.injectMembers.initializeEditingMenuBuilder
+
+		commandStackListener[
+			event |
+			val command = EmfCommandsUtil.mostRecentCommand(event) as ChangeCommand
+			command.affectedObjects => [
+				contains(library.writers.head).assertTrue
+				// the added book is not recorded as an affected object
+				contains(library.getAddedNewBook).assertFalse
+				1.assertEquals(size)
+			]
+		]
+
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+		val addedBook = library.getAddedNewBook
+		addedBook.author.assertSame(writerForMenu)
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeUndo
+
+		// since we track change only on the writer, the added book is still
+		// in the library
+		addedBook.eContainer.assertSame(library)
+		// but its author is not the writer anymore
+		addedBook.author.assertNull
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeRedo
+
+		addedBook.author.assertSame(writerForMenu)
+
+		resource.save(null)
+	}
+
+	@Test
+	def void testChangeCommandUndoRedoOnSelectedObjectContainer() {
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+
+		val editingMenuBuilder = new EditingMenuBuilder() {
+
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionUndo,
+					actionRedo,
+					actionChange("New Book for Writer", (w.eContainer as Library),
+						[
+							library |
+							val newBook = libraryFactory.createBook => [
+								// this change will NOT be recorded, since
+								// the book is not yet part of the library
+								title = THIS_IS_A_NEW_BOOK
+							]
+							// both changes will be recorded since we specified
+							// the library as the element
+							library.books += newBook
+							newBook.author = w
+						] 
+					)
+				]
+			}
+
+		}.injectMembers.initializeEditingMenuBuilder
+
+		commandStackListener[
+			event |
+			val command = EmfCommandsUtil.mostRecentCommand(event) as ChangeCommand
+			command.affectedObjects => [
+				contains(library.writers.head).assertTrue
+				// since we get notifications for undo as well, we can't retrieve
+				// the book as affected object from the library, since after an undo
+				// the book has been removed
+				findFirst[it instanceof Book].assertNotNull
+			]
+		]
+
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+		val addedBook = library.getAddedNewBook
+		addedBook.author.assertSame(writerForMenu)
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeUndo
+
+		// since we track change on the library, the added book is removed from the library
+		addedBook.eContainer.assertNotSame(library)
+		// and its author is unset
+		addedBook.author.assertNull
+		// (1) note that the book's title is still set, since that
+		// change had not been recorded (see the above menu implementation)
+		THIS_IS_A_NEW_BOOK.assertEquals(addedBook.title)
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeRedo
+
+		addedBook.eContainer.assertSame(library)
+		addedBook.author.assertSame(writerForMenu)
+
+		resource.save(null)
+	}
+
+	@Test
+	def void testChangeCommandUndoRedoOnSelectedObjectContainer2() {
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+
+		val editingMenuBuilder = new EditingMenuBuilder() {
+
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionUndo,
+					actionRedo,
+					actionChange("New Book for Writer", (w.eContainer as Library),
+						[
+							library |
+							val newBook = libraryFactory.createBook
+							// both changes will be recorded since we specified
+							// the library as the element
+							library.books += newBook
+							newBook.author = w
+							newBook.title = THIS_IS_A_NEW_BOOK
+						] 
+					)
+				]
+			}
+
+		}.injectMembers.initializeEditingMenuBuilder
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+		val addedBook = library.getAddedNewBook
+		addedBook.author.assertSame(writerForMenu)
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeUndo
+
+		// since we track change on the library, the added book is removed from the library
+		addedBook.eContainer.assertNotSame(library)
+		// and its author is unset
+		addedBook.author.assertNull
+		// also its title is null, since the title had been set after
+		// the book was added to the library, so such change had been recorded
+		addedBook.title.assertNull
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeRedo
+
+		addedBook.eContainer.assertSame(library)
+		addedBook.author.assertSame(writerForMenu)
+		THIS_IS_A_NEW_BOOK.assertEquals(addedBook.title)
+
+		resource.save(null)
+	}
+
+	@Test
+	def void testChangeCommandUndoRedoOnSelectedObjectResource() {
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+
+		val editingMenuBuilder = new EditingMenuBuilder() {
+
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionUndo,
+					actionRedo,
+					actionChange("New Book for Writer", w.eResource,
+						[
+							resource |
+							val newBook = libraryFactory.createBook => [
+								title = THIS_IS_A_NEW_BOOK
+							]
+							val newLibrary = libraryFactory.createLibrary => [
+								name = "A new library"
+							]
+							// all changes concerning the resource will be recorded
+							resource.contents += newLibrary
+							newLibrary.books += newBook
+							newBook.author = w
+						] 
+					)
+				]
+			}
+
+		}.injectMembers.initializeEditingMenuBuilder
+
+		commandStackListener[
+			event |
+			val command = EmfCommandsUtil.mostRecentCommand(event) as ChangeCommand
+			command.affectedObjects => [
+				contains(library.writers.head).assertTrue
+				// since we get notifications for undo as well, we can't retrieve
+				// the book as affected object from the library, since after an undo
+				// the book has been removed
+				findFirst[it instanceof Book].assertNotNull
+			]
+		]
+
+		val writerForMenu = library.writers.head
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("New Book for Writer")
+
+		// the book's library is not the original one
+		val addedLibrary = resource.contents.last as Library
+		val addedBook = addedLibrary.getAddedNewBook
+		addedBook.author.assertSame(writerForMenu)
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeUndo
+
+		// since we track change on the resource, the added book is removed from the library
+		addedBook.eContainer.assertNotSame(library)
+		// the added library is removed from the resource
+		addedLibrary.eResource.assertNotSame(resource)
+		// and its author is unset
+		addedBook.author.assertNull
+		// see (1) for the reason why the book still has its title
+		THIS_IS_A_NEW_BOOK.assertEquals(addedBook.title)
+		"A new library".assertEquals(addedLibrary.name)
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeRedo
+
+		addedBook.eContainer.assertSame(addedLibrary)
+		addedLibrary.eResource.assertSame(resource)
+		addedBook.author.assertSame(writerForMenu)
+
+		resource.save(null)
+	}
+
 	def protected getEditingDomain() {
 		if (editingDomain === null) {
 			editingDomain = getOrCreateInjector.getProvider(AdapterFactoryEditingDomain).get()
@@ -391,6 +741,14 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 		]
 	}
 
+	private def executeUndo(MenuManager menuManager) {
+		menuManager.executeAction("&Undo @Ctrl+Z")
+	}
+
+	private def executeRedo(MenuManager menuManager) {
+		menuManager.executeAction("&Redo @Ctrl+Y")
+	}
+
 	def private CharSequence menuItemsToStringRepresentation(MenuManager menuManager) {
 		menuManager.items.map[menuItemToStringRepresentation].join(", ")
 	}
@@ -406,5 +764,15 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 			'''
 			default: "unknown"
 		}
+	}
+
+	def private getAddedNewBook(Library library) {
+		val addedBook = library.books.findFirst[title == THIS_IS_A_NEW_BOOK]
+		addedBook.assertNotNull
+		return addedBook
+	}
+
+	def private commandStackListener(CommandStackListener listener) {
+		editingDomain.commandStack.addCommandStackListener(listener)
 	}
 }

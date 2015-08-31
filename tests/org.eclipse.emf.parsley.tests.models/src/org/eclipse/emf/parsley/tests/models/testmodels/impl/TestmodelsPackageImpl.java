@@ -522,6 +522,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getClassForControls_SingleContainmentReference() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClassWithName() {
 		return classWithNameEClass;
 	}
@@ -796,6 +805,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2);
+		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE);
 
 		classWithNameEClass = createEClass(CLASS_WITH_NAME);
 		createEAttribute(classWithNameEClass, CLASS_WITH_NAME__NAME);
@@ -905,6 +915,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getClassForControls_FeatureMapEntries(), ecorePackage.getEFeatureMapEntry(), "featureMapEntries", null, 0, -1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_FeatureMapEntries1(), this.getClassForFeatureMapEntry1(), null, "featureMapEntries1", null, 0, -1, ClassForControls.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_FeatureMapEntries2(), this.getClassForFeatureMapEntry2(), null, "featureMapEntries2", null, 0, -1, ClassForControls.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getClassForControls_SingleContainmentReference(), this.getClassWithName(), null, "singleContainmentReference", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classWithNameEClass, ClassWithName.class, "ClassWithName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassWithName_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassWithName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

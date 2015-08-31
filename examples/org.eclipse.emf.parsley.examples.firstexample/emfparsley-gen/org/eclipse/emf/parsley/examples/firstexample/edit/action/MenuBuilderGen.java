@@ -23,34 +23,47 @@ public class MenuBuilderGen extends EditingMenuBuilder {
   
   public List<IMenuContributionSpecification> emfMenuContributions(final Writer w) {
     EObject _eContainer = w.eContainer();
-    EList<Book> _books = ((Library) _eContainer).getBooks();
-    Book _createBook = this.factory.createBook();
-    final IAcceptor<Book> _function = new IAcceptor<Book>() {
+    final IAcceptor<Library> _function = new IAcceptor<Library>() {
       @Override
-      public void accept(final Book book) {
+      public void accept(final Library library) {
+        final Book book = MenuBuilderGen.this.factory.createBook();
+        EList<Book> _books = library.getBooks();
+        _books.add(book);
         book.setTitle("A new book");
         book.setAuthor(w);
       }
     };
-    IMenuContributionSpecification _actionAdd = this.<Book>actionAdd(
-      "New book", _books, _createBook, _function);
-    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionAdd));
+    IMenuContributionSpecification _actionChange = this.<Library>actionChange("New book", ((Library) _eContainer), _function);
+    final IAcceptor<Writer> _function_1 = new IAcceptor<Writer>() {
+      @Override
+      public void accept(final Writer writer) {
+        EObject _eContainer = writer.eContainer();
+        final Library library = ((Library) _eContainer);
+        final Book book = MenuBuilderGen.this.factory.createBook();
+        EList<Book> _books = library.getBooks();
+        _books.add(book);
+        book.setTitle("A new book");
+        book.setAuthor(w);
+      }
+    };
+    IMenuContributionSpecification _actionChange_1 = this.<Writer>actionChange("New book (variant)", w, _function_1);
+    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionChange, _actionChange_1));
   }
   
   public List<IMenuContributionSpecification> emfMenuContributions(final Book b) {
     EObject _eContainer = b.eContainer();
-    EList<Writer> _writers = ((Library) _eContainer).getWriters();
-    Writer _createWriter = this.factory.createWriter();
-    final IAcceptor<Writer> _function = new IAcceptor<Writer>() {
+    final IAcceptor<Library> _function = new IAcceptor<Library>() {
       @Override
-      public void accept(final Writer writer) {
+      public void accept(final Library library) {
+        final Writer writer = MenuBuilderGen.this.factory.createWriter();
+        EList<Writer> _writers = library.getWriters();
+        _writers.add(writer);
         writer.setName("A new writer");
         EList<Book> _books = writer.getBooks();
         _books.add(b);
       }
     };
-    IMenuContributionSpecification _actionAdd = this.<Writer>actionAdd(
-      "New writer", _writers, _createWriter, _function);
-    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionAdd));
+    IMenuContributionSpecification _actionChange = this.<Library>actionChange("New writer", ((Library) _eContainer), _function);
+    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionChange));
   }
 }

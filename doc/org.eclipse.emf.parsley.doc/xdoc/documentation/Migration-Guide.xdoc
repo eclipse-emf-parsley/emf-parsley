@@ -33,6 +33,19 @@ public Label getLabel(Composite parent, EObject o, EStructuralFeature feature)
 
 and of course also its semantics, since you need to pass an EObject not its EClass.
 ]
+item[a new method is available in codeRef[org.eclipse.emf.parsley.edit.action.EditingMenuBuilder],
+e[actionChange]: If you want to implement more complex menu commands that do not
+only add elements to a container, you can use the method
+e[actionChange], specifying the label for the menu, the model's element
+that will be affected by the changes specified as a lambda expression
+(the third argument).  The lambda expression will also get the specified
+model's element as argument.  (This is related to
+link[https://bugs.eclipse.org/bugs/show_bug.cgi?id=475188][https://bugs.eclipse.org/bugs/show_bug.cgi?id=475188]).
+Please also have a look at the updated documentation of section ref:ContextualMenu[Contextual Menu]:
+the already existing e[actionAdd] should be used with care, since it might leave the model
+with dangling references -- with that respect we also updated the first example
+ref:FirstExample[First Example], so that
+it uses e[actionChange] to implement correctly what we used to achieve with e[actionAdd].]
 ]
 
 section:ThreeFour[From 0.3 to 0.4]
