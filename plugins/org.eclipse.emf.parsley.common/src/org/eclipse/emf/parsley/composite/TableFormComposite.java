@@ -14,7 +14,6 @@ package org.eclipse.emf.parsley.composite;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -31,22 +30,13 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini
  */
 public class TableFormComposite extends AbstractMasterDetailComposite {
-	
+
 	private ViewerFactory viewerFactory;
+
 	private TableViewer tableViewer;
-	
+
 	public TableFormComposite(Composite parent, int style) {
 		super(parent, style);
-	}
-	
-	@Override
-	protected StructuredViewer createViewer(Composite parent) {
-		Composite viewerContainer = new Composite(parent, SWT.BORDER);
-		TableColumnLayout layout = new TableColumnLayout();
-		viewerContainer.setLayout(layout);
-		tableViewer = new TableViewer(viewerContainer, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
-		viewerContainer.setLayoutData(new GridData());
-		return tableViewer;
 	}
 
 	public ViewerFactory getViewerFactory() {
@@ -57,15 +47,24 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	public void setViewerFactory(ViewerFactory tableViewerBuilder) {
 		this.viewerFactory = tableViewerBuilder;
 	}
-	
-	
+
+	@Override
+	protected StructuredViewer createViewer(Composite parent) {
+		Composite viewerContainer = new Composite(parent, SWT.BORDER);
+		TableColumnLayout layout = new TableColumnLayout();
+		viewerContainer.setLayout(layout);
+		tableViewer = new TableViewer(viewerContainer, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
+		viewerContainer.setLayoutData(new GridData());
+		return tableViewer;
+	}
+
 	@Override
 	public void update(Object contents) {
 		tableViewer.setInput(contents);
 	}
 
-	public void buildTable(EClass eType, IStructuredContentProvider contentProvider) {
-		viewerFactory.buildColumns(tableViewer, eType, contentProvider);
+	public void buildTable(EClass eType) {
+		viewerFactory.buildColumns(tableViewer, eType);
 	}
-	
+
 }

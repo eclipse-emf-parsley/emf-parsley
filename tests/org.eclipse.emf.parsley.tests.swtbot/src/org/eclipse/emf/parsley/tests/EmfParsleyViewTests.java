@@ -80,14 +80,26 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 	@Test
 	public void testOnSelectionLibraryBooksTableView() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_VIEW);
-		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
-				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
-		libraryNode.select();
-		// the table should show the books
+		// the table should already show the column headers
 		getTableHeader(AUTHOR_COLUMN_HEADER);
-		
+
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
+
+		// select the library
+		libraryNode.select();
+		// the table shows the books, select a table row
+		bot.table().select(0);
+
+		// select the resource
+		resourceNode.select();
+		// the table shows the books, select a table row
+		bot.table().select(0);
+
 		getWriterNode(libraryNode).select();
 		// the table won't show anything
+		assertTableItemsCount(bot.table(), 0);
 
 		view.close();
 	}
@@ -95,19 +107,29 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 	@Test
 	public void testOnSelectionLibraryBooksTableFormView() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_FORM_VIEW);
-		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
-				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
-		libraryNode.select();
-		// the table should show the books
+		// the table should already show the column headers
 		getTableHeader(AUTHOR_COLUMN_HEADER);
 
-		// now test the form
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
+
+		// select the library
+		libraryNode.select();
+		// the table shows the books, select a table row
 		bot.table().select(0);
+
+		// select the resource
+		resourceNode.select();
+		// the table shows the books, select a table row
+		bot.table().select(0);
+
+		// now test the form: the book is already selected in the table
 		SWTFormsBot formbot = formBotFromView(view);
 		formbot.label(AUTHOR_LABEL);
 
 		getWriterNode(libraryNode).select();
-		// the table won't show anything
+		assertTableItemsCount(bot.table(), 0);
 
 		view.close();
 	}

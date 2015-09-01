@@ -101,6 +101,7 @@ bindEmfSelectionHelper
 bindResourceSaveStrategy
 bindResourceManager
 bindIContentProvider
+bindTableViewerContentProvider
 bindProposalCreator
 bindIEditingStrategy
 bindConfigurator

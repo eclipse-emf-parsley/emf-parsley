@@ -14,6 +14,7 @@ package org.eclipse.emf.parsley.viewers;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
@@ -38,18 +39,21 @@ public class ViewerFactory {
 
 	@Inject
 	private Provider<IContentProvider> contentProviderProvider;
-	
+
 	@Inject
 	private Provider<ILabelProvider> labelProviderProvider;
-	
+
 	@Inject
 	private ResourceLoader resourceLoader;
 
 	@Inject
 	private Provider<AdapterFactoryEditingDomain> editingDomainProvider;
-	
+
 	@Inject
 	private TableViewerColumnBuilder columnBuilder;
+
+	@Inject
+	private TableViewerContentProviderFactory tableViewerContentProviderFactory;
 
 	public void initialize(StructuredViewer viewer, Object object) {
 		Object input;
@@ -74,10 +78,19 @@ public class ViewerFactory {
 		viewer.setInput(input);
 	}
 
+	public TableViewer createTableViewer(Composite parent, int style, EClass type) {
+		return createTableViewer(parent, style, type,
+				tableViewerContentProviderFactory.createTableViewerContentProvider(type));
+	}
+
 	public TableViewer createTableViewer(Composite parent, int style, EClass type, IStructuredContentProvider contentProvider) {
 		TableViewer tableViewer = createTableViewer(parent, style);
 		buildColumns(tableViewer, type, contentProvider);
 		return tableViewer;
+	}
+
+	public void buildColumns(TableViewer tableViewer, EClass eClass) {
+		buildColumns(tableViewer, eClass, tableViewerContentProviderFactory.createTableViewerContentProvider(eClass));
 	}
 
 	public void buildColumns(TableViewer tableViewer, EClass eClass, 

@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.composite;
 
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
@@ -25,19 +24,18 @@ import com.google.inject.MembersInjector;
 public class TableFormFactory {
 
 	@Inject
-	protected MembersInjector<TableFormComposite> tableFormCompositeMembersInjector;
+	private MembersInjector<TableFormComposite> tableFormCompositeMembersInjector;
 
 	@Inject
 	public TableFormFactory() {
 
 	}
 
-	public TableFormComposite createTableFormMasterDetailComposite(
-			Composite parent, int style, EClass type, IStructuredContentProvider contentProvider) {
-		TableFormComposite tableFormComposite = new TableFormComposite(parent,style);
+	public TableFormComposite createTableFormMasterDetailComposite(Composite parent, int style, EClass type) {
+		TableFormComposite tableFormComposite = new TableFormComposite(parent, style);
 		tableFormCompositeMembersInjector.injectMembers(tableFormComposite);
-		tableFormComposite.buildTable(type, contentProvider);
+		tableFormComposite.buildTable(type);
 		return tableFormComposite;
 	}
-	
+
 }

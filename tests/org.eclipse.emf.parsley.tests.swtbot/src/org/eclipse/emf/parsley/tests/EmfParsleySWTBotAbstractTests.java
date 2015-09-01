@@ -1242,4 +1242,12 @@ public class EmfParsleySWTBotAbstractTests {
 		}
 	}
 
+	protected void assertTableItemsCount(final SWTBotTable table, final int expected) {
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				assertEquals(expected, table.widget.getItemCount());
+			}
+		});
+	}
 }

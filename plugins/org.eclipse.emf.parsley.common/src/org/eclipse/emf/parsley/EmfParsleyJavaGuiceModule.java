@@ -38,6 +38,7 @@ import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainPro
 import org.eclipse.emf.parsley.edit.provider.InjectableAdapterFactory;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelProvider;
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
@@ -433,12 +434,22 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 
 	/**
-	 * Use this binding to implement a custom label provider.
+	 * Use this binding to implement a custom content provider.
 	 * Default implementation is {@link ViewerContentProvider}
 	 * @return an implementation of {@link IContentProvider}
 	 */
 	public Class<? extends IContentProvider> bindIContentProvider() {
 		return ViewerContentProvider.class;
+	}
+
+	/**
+	 * Use this binding to implement a custom content provider for
+	 * table viewers.
+	 * Default implementation is {@link TableViewerContentProvider}
+	 * @return an implementation of {@link TableViewerContentProvider}
+	 */
+	public Class<? extends TableViewerContentProvider> bindTableViewerContentProvider() {
+		return TableViewerContentProvider.class;
 	}
 
 	/**

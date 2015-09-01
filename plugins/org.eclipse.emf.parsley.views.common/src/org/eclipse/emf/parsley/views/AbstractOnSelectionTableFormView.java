@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
-import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
@@ -28,18 +27,16 @@ import com.google.inject.Inject;
 
 /**
  * A View that visualizes a table with the list of elements of an EObject (it also acts as a
- * selection provider), filtered by the specified type (EClass) and feature.
+ * selection provider), filtered by the specified type (EClass) and a form.
  *
  * @author Francesco Guidieri - Initial contribution and API
+ * @author Lorenzo Bettini - new API for table content provider
  */
 public abstract class AbstractOnSelectionTableFormView extends
 		AbstractOnSelectionView {
 
 	@Inject
 	private TableFormFactory tableFormFactory;
-
-	@Inject
-	private ViewerContentProviderFactory contentProviderFactory;
 
 	private TableFormComposite tableFormDetailComposite;
 
@@ -49,31 +46,16 @@ public abstract class AbstractOnSelectionTableFormView extends
 
 		tableFormDetailComposite = tableFormFactory.
 			createTableFormMasterDetailComposite(parent,
-				SWT.BORDER, getEClass(),
-				contentProviderFactory.createViewerContentProviderForFeature(getEStructuralFeature()));
+				SWT.BORDER, getEClass());
 	}
 
 	@Override
 	protected void updateOnSelection(IWorkbenchPart sourcepart,
 			ISelection selection) {
-
-		EObject eObject = getFirstSelectedEObject(selection);
-		tableFormDetailComposite.update(null);
-		if (eObject != null) {
-			update(eObject);
-		}
+		Object selected = getFirstSelectedElement(selection);
+		// the content provider is able to handle any input
+		tableFormDetailComposite.update(selected);
 	}
-
-	protected void update(EObject eObject) {
-		EStructuralFeature feature = getEStructuralFeature();
-
-		if (!eObject.eClass().getEAllStructuralFeatures().contains(feature)) {
-			return;
-		}
-
-		tableFormDetailComposite.update(eObject);
-	}
-
 
 	@Override
 	public void setFocus() {

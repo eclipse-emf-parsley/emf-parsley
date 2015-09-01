@@ -10,11 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TableViewer;
@@ -29,6 +27,7 @@ import com.google.inject.Inject;
  * selection provider), filtered by the specified type.
  *
  * @author Francesco Guidieri - Initial contribution and API
+ * @author Lorenzo Bettini - new API for table content provider
  *
  */
 public abstract class AbstractOnSelectionTableView extends
@@ -37,15 +36,9 @@ public abstract class AbstractOnSelectionTableView extends
 	@Inject
 	private ViewerFactory viewerFactory;
 
-	@Inject
-	private ViewerContentProviderFactory contentProviderFactory;
-
 	private Composite parent;
 
 	private TableViewer tableViewer;
-
-	public AbstractOnSelectionTableView() {
-	}
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -60,30 +53,14 @@ public abstract class AbstractOnSelectionTableView extends
 	@Override
 	protected void updateOnSelection(IWorkbenchPart sourcepart,
 			ISelection selection) {
-		if (tableViewer == null) {
-			return;
-		}
-		EObject eObject = getFirstSelectedEObject(selection);
-		tableViewer.setInput(null);
-		if (eObject != null) {
-			update(eObject);
-		}
-	}
-
-	protected void update(EObject eObject) {
-		EStructuralFeature feature = getEStructuralFeature();
-
-		if (!eObject.eClass().getEAllStructuralFeatures().contains(feature)) {
-			return;
-		}
-
-		tableViewer.setInput(eObject);
+		Object selected = getFirstSelectedElement(selection);
+		// the content provider is able to handle any input
+		tableViewer.setInput(selected);
 	}
 
 	protected void createTableViewer() {
 		tableViewer = viewerFactory.createTableViewer(parent,
-			SWT.BORDER | SWT.FULL_SELECTION, getEClass(),
-			contentProviderFactory.createViewerContentProviderForFeature(getEStructuralFeature()));
+			SWT.BORDER | SWT.FULL_SELECTION, getEClass());
 	}
 
 	@Override

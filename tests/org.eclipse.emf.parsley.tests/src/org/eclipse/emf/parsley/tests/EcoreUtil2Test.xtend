@@ -10,15 +10,19 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import java.util.List
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.util.EcoreUtil2
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
 
-class EmfCopyTest {
+class EcoreUtil2Test extends AbstractEmfParsleyTest {
 
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
@@ -54,11 +58,11 @@ class EmfCopyTest {
 
 	@Test def void testCopyState() {
 		val state = EcoreUtil2.copyState(writer)
-		
+
 		writer.books.clear
 		writer.assertBooks(0)
 		book.author.assertNull
-		
+
 		// this brings the book back to the author
 		state.copyStateTo(writer)
 		writer.assertBooks(1)
@@ -84,5 +88,54 @@ class EmfCopyTest {
 		1.assertEquals(library.people.size)
 		1.assertEquals(library.writers.size)
 	}
-	
+
+	@Test def void testGetAllContentsOfTypeFromEObject() {
+		testContainer.classesWithName += createClassWithName("1")
+		testContainer.classesWithName += createClassWithName("2")
+		testContainer.contained = createTestContainer => [
+			classesWithName += createClassWithName("3")
+			classesForControls += createClassForControls
+			classesWithName += createClassWithName("4")
+		]
+		EcoreUtil2.getAllContentsOfType(testContainer, testPackage.classWithName).
+			assertList("Class With Name 1, Class With Name 2, Class With Name 3, Class With Name 4")
+		EcoreUtil2.getAllContentsOfType(testContainer.contained, ClassWithName).
+			assertList("Class With Name 3, Class With Name 4")
+	}
+
+	@Test def void testGetAllContentsOfTypeFromEObjectWithNoMatching() {
+		testContainer.classesForControls += createClassForControls
+		EcoreUtil2.getAllContentsOfType(testContainer, testPackage.classWithName).
+			assertList("")
+	}
+
+	@Test def void testGetAllContentsOfTypeFromResource() {
+		testContainer.classesWithName += createClassWithName("1")
+		testContainer.classesWithName += createClassWithName("2")
+		testContainer.contained = createTestContainer => [
+			classesWithName += createClassWithName("3")
+			classesWithName += createClassWithName("4")
+		]
+		val resource = createResource
+		resource.contents += testContainer
+		resource.contents += createTestContainer => [
+			classesWithName += createClassWithName("5")
+			classesForControls += createClassForControls
+			classesWithName += createClassWithName("6")
+		]
+		EcoreUtil2.getAllContentsOfType(resource, testPackage.classWithName).
+			assertList("Class With Name 1, Class With Name 2, Class With Name 3, Class With Name 4, Class With Name 5, Class With Name 6")
+	}
+
+	@Test def void testGetAllContentsOfTypeFromEmptyResource() {
+		val resource = createResource
+		EcoreUtil2.getAllContentsOfType(resource, testPackage.classWithName).
+			assertList("")
+	}
+	def private assertList(List<?> list, CharSequence expected) {
+		val labelProvider = getOrCreateInjector.getInstance(ILabelProvider)
+		expected.toString.assertEquals(
+			list.map[labelProvider.getText(it)].join(", ")
+		)
+	}
 }

@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
 import org.eclipse.emf.parsley.edit.ui.provider.IResourceContentsProvider;
-import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProviderFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -33,9 +32,6 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 	@Inject
 	private TableFormFactory tableFormFactory;
 
-	@Inject
-	private ViewerContentProviderFactory contentProviderFactory;
-
 	private TableFormComposite tableFormComposite;
 
 	@Override
@@ -43,8 +39,7 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 		super.createPartControl(parent);
 
 		tableFormComposite = tableFormFactory
-			.createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass(),
-					contentProviderFactory.createViewerContentProviderForResource(this));
+			.createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass());
 		tableFormComposite.update(getResource());
 
 		addContextMenuAndDragAndDrop(tableFormComposite.getViewer());
