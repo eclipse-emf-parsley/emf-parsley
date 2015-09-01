@@ -45,7 +45,36 @@ Please also have a look at the updated documentation of section ref:ContextualMe
 the already existing e[actionAdd] should be used with care, since it might leave the model
 with dangling references -- with that respect we also updated the first example
 ref:FirstExample[First Example], so that
-it uses e[actionChange] to implement correctly what we used to achieve with e[actionAdd].]
+it uses e[actionChange] to implement correctly what we used to achieve with e[actionAdd].
+]
+item[Adding context menu to a viewer has been extremely simplified
+(link[https://bugs.eclipse.org/bugs/show_bug.cgi?id=455727][https://bugs.eclipse.org/bugs/show_bug.cgi?id=455727]):
+A context menu can be added to any codeRef[org.eclipse.jface.viewers.StructuredViewer] by using an
+injected codeRef[org.eclipse.emf.parsley.menus.ViewerContextMenuHelper]. This provides some
+methods for adding the context menu
+
+code[Java][
+@Inject ViewerContextMenuHelper contextMenuHelper;
+(...)
+
+// simplest form
+contextMenuHelper.addViewerContextMenu(viewer);
+
+// if you have an AdapterFactoryEditingDomain already
+contextMenuHelper.addViewerContextMenu(viewer, editingDomain);
+
+// if you're inside an IWorkbenchPart
+contextMenuHelper.addViewerContextMenu(viewer, editingDomain, part);
+]
+]
+item[Drag and drop support has been separated from context menu support
+(link[https://bugs.eclipse.org/bugs/show_bug.cgi?id=475914][https://bugs.eclipse.org/bugs/show_bug.cgi?id=475914]):
+thus, adding context menu does NOT automatically add drag and drop.
+
+Drag and drop can be added to any codeRef[org.eclipse.jface.viewers.StructuredViewer] by using an
+injected codeRef[org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper],
+using its methods e[addDragAndDrop].
+]
 ]
 
 section:ThreeFour[From 0.3 to 0.4]

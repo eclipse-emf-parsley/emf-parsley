@@ -72,7 +72,8 @@ public class ViewerContextMenuHelper {
 	public void addViewerContextMenu(StructuredViewer viewer,
 			AdapterFactoryEditingDomain editingDomain,
 			IWorkbenchPart activePart,
-			IMenuListener menuListener, WorkbenchActionBarContributor actionBarContributor) {
+			IMenuListener menuListener,
+			WorkbenchActionBarContributor actionBarContributor) {
 
 		MenuManager menuManager = createContextMenu(viewer, editingDomain);
 		activePart.getSite().registerContextMenu(menuManager,
@@ -85,6 +86,14 @@ public class ViewerContextMenuHelper {
 		actionBarContributor.setActivePart(activePart);
 	}
 
+	/**
+	 * Adds a context menu to the passed {@link StructuredViewer}.
+	 * 
+	 * @param viewer
+	 * @param editingDomain
+	 *            should be created by injection
+	 * @param activePart
+	 */
 	public void addViewerContextMenu(StructuredViewer viewer,
 			AdapterFactoryEditingDomain editingDomain, IWorkbenchPart activePart) {
 
@@ -98,10 +107,22 @@ public class ViewerContextMenuHelper {
 		workbenchActionBarContributor.setActivePart(activePart);
 	}
 
+	/**
+	 * Adds a context menu to the passed {@link StructuredViewer}.
+	 * 
+	 * @param viewer
+	 */
 	public void addViewerContextMenu(StructuredViewer viewer){
 		addViewerContextMenu(viewer, editingDomainProvider.get());
 	}
 
+	/**
+	 * Adds a context menu to the passed {@link StructuredViewer}.
+	 * 
+	 * @param viewer
+	 * @param editingDomain
+	 *            should be created by injection
+	 */
 	public void addViewerContextMenu(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
 		createContextMenu(viewer, editingDomain, treeActionBarContributor);
 		viewer.addSelectionChangedListener(treeActionBarContributor);

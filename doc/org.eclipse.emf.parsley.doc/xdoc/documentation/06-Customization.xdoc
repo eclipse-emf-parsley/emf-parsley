@@ -496,16 +496,22 @@ Provider].
 
 section:ContextualMenu[Contextual Menu]
 
-A context menu can be added to any viewer by using the codeRef[org.eclipse.emf.parsley.menus.ViewerContextMenuHelper]. 
+A context menu can be added to any codeRef[org.eclipse.jface.viewers.StructuredViewer] by using an
+injected codeRef[org.eclipse.emf.parsley.menus.ViewerContextMenuHelper]. This provides some
+methods for adding the context menu
 
 code[Java][
-@Inject ViewerInitializer viewerInitializer;
+@Inject ViewerContextMenuHelper contextMenuHelper;
 (...)
 
-treeActionBarContributor.initialize(editingDomain);
-viewerInitializer.addContextMenu(treeFormComposite.getViewer(),
-treeActionBarContributor, editingDomain, this);
-treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
+// simplest form
+contextMenuHelper.addViewerContextMenu(viewer);
+
+// if you have an AdapterFactoryEditingDomain already
+contextMenuHelper.addViewerContextMenu(viewer, editingDomain);
+
+// if you're inside an IWorkbenchPart
+contextMenuHelper.addViewerContextMenu(viewer, editingDomain, part);
 ]
 
 The contents of such menu are built automatically by the framework or customized by the programmer,
@@ -663,6 +669,14 @@ emfMenus{
 
 This happens since we specified the writer as the model's element, thus only
 the changes that concern the writer will be undone.
+
+section:DND[Drag and Drop]
+
+Drag and drop can be added to any codeRef[org.eclipse.jface.viewers.StructuredViewer] by using an
+injected codeRef[org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper],
+using its methods e[addDragAndDrop].
+
+Currently, drag and drop is completely delegated to EMF.Edit.
 
 section:Factories[Factories]
 

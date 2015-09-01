@@ -58,43 +58,20 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.widgets.Composite;
 
 // The part implements IMenuListener for context menu handling
-public class MyEclipse4Part implements IMenuListener
+public class MyEclipse4Part implements IMenuListener {
 
-//the parent composite
-private Composite parent;
-//the EMF Parley composite for showing a tree and a detail form
-private TreeFormComposite treeFormComposite;
-//the EMF Resource
-private Resource resource;
-
-//Guice injected EMF Parsley component for contributing to the tree context menu
-private TreeActionBarContributor treeActionBarContributor = FirstexampleActivator.getDefault().getInjector()
-		.getInstance(TreeActionBarContributor.class);
-
-
-//Guice injected EMF Parsley factory for the tree detail form
-private TreeFormFactory treeFormFactory = FirstexampleActivator.getDefault().getInjector()
-		.getInstance(TreeFormFactory.class);
-
-//Guice injected EMF Parsley Resource loader
-private ResourceLoader resourceLoader = FirstexampleActivator.getDefault().getInjector()
-		.getInstance(ResourceLoader.class);
-
-//Guice injected EMF Parsley editing domain
-private AdapterFactoryEditingDomain editingDomain = FirstexampleActivator.getDefault().getInjector()
-		.getInstance(AdapterFactoryEditingDomain.class);
-
-//Guice injected viewer initializer
-private ViewerInitializer viewerInitializer = (ViewerInitializer) FirstexampleActivator.getDefault().getInjector()
-		.getInstance(ViewerInitializer.class);
-
-//Guice injected save manager
-private ResourceSaveManager resourceSaveManager = FirstexampleActivator.getDefault().getInjector()
-		.getInstance(ResourceSaveManager.class);
-
-//URI for EMF Resource
-private URI uri = URI.createFileURI(System.getProperty("user.home")
+	//the parent composite
+	private Composite parent;
+	//the EMF Parley composite for showing a tree and a detail form
+	private TreeFormComposite treeFormComposite;
+	//the EMF Resource
+	private Resource resource;
+	//URI for EMF Resource
+	private URI uri = URI.createFileURI(System.getProperty("user.home")
 		+ "/MyLibrary.library");
+
+	// Guice injector
+	private Injector injector = FirstexampleActivator.getDefault().getInjector();
 ]
 
 
@@ -105,33 +82,27 @@ code[Java][
 public void postConstruct(Composite parent) {
 	this.parent = parent;
 
-	// Initialize TreeFormFactory & ResourceLoader
-	init(treeFormFactory, resourceLoader);
+	AdapterFactoryEditingDomain editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class)
 
-	// Prepare the menu action bar contributor upon the selection
-	treeFormComposite.getViewer().addSelectionChangedListener(treeActionBarContributor);
-}
-]
-
-and add the following methods:
-
-code[Java][
-public void init(TreeFormFactory treeFormFactory, ResourceLoader resourceLoader) {
-	//create the tree-form composite
-	treeFormComposite = treeFormFactory.createTreeFormMasterDetailComposite(parent, SWT.BORDER);
+	ResourceLoader resourceLoader = injector.getInstance(ResourceLoader.class)
 	//load the resource
 	resource = resourceLoader.getResource(editingDomain, uri).getResource();
+
+	TreeFormFactory treeFormFactory = injector.getInstance(TreeFormFactory.class);
+	//create the tree-form composite
+	treeFormComposite = treeFormFactory.createTreeFormMasterDetailComposite(parent, SWT.BORDER);
+
+	// Guice injected viewer context menu helper
+	ViewerContextMenuHelper contextMenuHelper = injector.getInstance(ViewerContextMenuHelper.class);
+	// Guice injected viewer drag and drop helper
+	ViewerDragAndDropHelper dragAndDropHelper = injector.getInstance(ViewerDragAndDropHelper.class);
+
+	// set context menu and drag and drop
+	contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer());
+	dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer());
+
 	//update the composite
 	treeFormComposite.update(resource);
-	//initialize and bind the context menu to the tree-form composite
-	treeActionBarContributor.initialize(editingDomain);
-	viewerInitializer.addContextMenu(
-			treeFormComposite.getViewer(), treeActionBarContributor, editingDomain, this);
-}
-
-@Override
-public void menuAboutToShow(IMenuManager manager) {
-	treeActionBarContributor.menuAboutToShow(manager);
 }
 ]
 
@@ -180,10 +151,9 @@ and add the e[@Persist] method, which will be called when the part is saved
 code[Java][
 @Persist
 public void save(MDirtyable dirty) throws IOException {
-	if (resourceSaveManager.save(resource)) {
-		if (dirty != null) {
-			dirty.setDirty(false);
-		}
+	resource.save(null);
+	if (dirty != null) {
+		dirty.setDirty(false);
 	}
 }
 ]
