@@ -1,12 +1,15 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Injector
+import org.eclipse.emf.common.command.CommandStackListener
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource.IOWrappedException
 import org.eclipse.emf.ecore.xmi.DanglingHREFException
+import org.eclipse.emf.edit.command.ChangeCommand
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
+import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
@@ -27,9 +30,7 @@ import org.junit.Test
 import static org.eclipse.emf.parsley.tests.EditingMenuBuilderTest.*
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.edit.command.ChangeCommand
-import org.eclipse.emf.common.command.CommandStackListener
-import org.eclipse.emf.parsley.examples.library.Book
+import java.util.EventObject
 
 class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 
@@ -302,6 +303,70 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 
 		// retrigger menu creation
 		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu)
+
+		resource.save(null)
+	}
+
+	@Test
+	def void testAddCommandUndoRedoAffectedObjects() {
+		// see also
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=476289
+		val resource = createTestLibrayResourceAndInitialize
+		val library = resource.contents.head as Library
+
+		val editingMenuBuilder = new EditingMenuBuilder() {
+
+			def protected emfMenuContributions(Writer w) {
+				#[
+					actionUndo,
+					actionRedo,
+					actionAdd("Custom New Book",
+						(w.eContainer as Library).books, 
+						libraryFactory.createBook =>
+							[title = THIS_IS_A_NEW_BOOK]
+					)
+				]
+			}
+
+		}.injectMembers.initializeEditingMenuBuilder
+
+		val writerForMenu = library.writers.head
+
+		oneTimeCommandStackListener[
+			mostRecentCommand.affectedObjects => [
+				1.assertEquals(size)
+				head.assertSame(library.getAddedNewBook)
+			]
+		]
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeAction("Custom New Book")
+		val addedBook = library.getAddedNewBook
+
+		oneTimeCommandStackListener[
+			// after an undo, the affected object must be the container
+			mostRecentCommand.affectedObjects => [
+				1.assertEquals(size)
+				head.assertSame(library)
+			]
+		]
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeUndo
+		addedBook.eContainer.assertNull
+
+		oneTimeCommandStackListener[
+			// after the redo, the book will be added back,
+			// so that must be the affected object
+			mostRecentCommand.affectedObjects => [
+				1.assertEquals(size)
+				head.assertSame(library.getAddedNewBook)
+			]
+		]
+
+		editingMenuBuilder.emfMenuManagerForSelection(writerForMenu).
+			executeRedo
+		addedBook.eContainer.assertSame(library)
 
 		resource.save(null)
 	}
@@ -775,4 +840,26 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	def private commandStackListener(CommandStackListener listener) {
 		editingDomain.commandStack.addCommandStackListener(listener)
 	}
+
+	/**
+	 * The listener will get only one event.
+	 */
+	def private oneTimeCommandStackListener(CommandStackListener listener) {
+		val commandStack = editingDomain.commandStack
+		val wrapper = new CommandStackListener() {
+			var executed = false
+			override commandStackChanged(EventObject event) {
+				if (!executed) {
+					executed = true
+					listener.commandStackChanged(event)
+				}
+			}
+		}
+		commandStack.addCommandStackListener(wrapper)
+	}
+
+	def private mostRecentCommand(EventObject event) {
+		EmfCommandsUtil.mostRecentCommand(event)
+	}
+
 }

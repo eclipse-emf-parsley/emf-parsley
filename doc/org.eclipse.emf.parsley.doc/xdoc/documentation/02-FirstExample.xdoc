@@ -383,6 +383,35 @@ img[images/first-example-custom-menus2.png][][ ][]
 
 You may want to try the new context menu on a book as well.
 
+We also add another context menu for books, using e[actionAdd]:
+specifying the label for the menu,
+the containment list in the model, the object to add in such list
+and a lambda expression that will be executed ONLY after the menu
+has been selected.  In this example, this menu available for
+a book object will add a new book to the library with the same
+name of the selected book:
+
+code[EmfParsley][
+...
+menuBuilder {
+	val factory = EXTLibraryFactory.eINSTANCE
+	
+	emfMenus {
+		// ... as above
+		Book b -> #\[
+			actionChange(
+				// ... as above
+			),
+			actionAdd("New book (same title)",
+				(b.eContainer as Library).books,
+				factory.createBook,
+				\[title = b.title\]
+			)
+		\]
+	}
+}
+]
+
 Now, let's customize the contents shown in the tree view: by default,
 as you can see from the previous screenshots, the tree will show all
 the contents of the library.  If we want to show only the writers and

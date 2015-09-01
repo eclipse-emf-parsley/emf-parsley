@@ -64,6 +64,17 @@ public class MenuBuilderGen extends EditingMenuBuilder {
       }
     };
     IMenuContributionSpecification _actionChange = this.<Library>actionChange("New writer", ((Library) _eContainer), _function);
-    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionChange));
+    EObject _eContainer_1 = b.eContainer();
+    EList<Book> _books = ((Library) _eContainer_1).getBooks();
+    Book _createBook = this.factory.createBook();
+    final IAcceptor<Book> _function_1 = new IAcceptor<Book>() {
+      @Override
+      public void accept(final Book it) {
+        String _title = b.getTitle();
+        it.setTitle(_title);
+      }
+    };
+    IMenuContributionSpecification _actionAdd = this.<Book>actionAdd("New book (same title)", _books, _createBook, _function_1);
+    return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionChange, _actionAdd));
   }
 }

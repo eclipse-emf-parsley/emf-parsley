@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.util;
 
+import java.util.Collection;
 import java.util.EventObject;
 
 import org.eclipse.emf.common.command.Command;
@@ -24,7 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
  * 
  */
 public class EmfCommandsUtil {
-	
+
 	protected EmfCommandsUtil() {
 	}
 
@@ -33,9 +34,10 @@ public class EmfCommandsUtil {
 	}
 
 	public static boolean affectsResource(Command command, Resource resource) {
-		for (Object o : command.getAffectedObjects()) {
-			if (o instanceof EObject
-					&& resource.equals(((EObject) o).eResource())) {
+		Collection<?> affectedObjects = command.getAffectedObjects();
+		for (Object o : affectedObjects) {
+			if (o instanceof EObject &&
+					resource.equals(((EObject) o).eResource())) {
 				return true;
 			}
 		}

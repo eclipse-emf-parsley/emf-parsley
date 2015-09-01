@@ -95,6 +95,11 @@ module org.eclipse.emf.parsley.examples.firstexample {
 						writer.name = "A new writer"
 						writer.books += b
 					]
+				),
+				actionAdd("New book (same title)",
+					(b.eContainer as Library).books,
+					factory.createBook,
+					[title = b.title]
 				)
 			]
 		}

@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -75,10 +76,10 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - initial API and implementation
  */
 public class EditingMenuBuilder {
-	
+
 	/**
-	 * Customization for executing a lambda; it also implements getAffectedObjects()
-	 * which is crucial for dirty state handling.
+	 * Customization for executing a lambda; it also implements
+	 * getAffectedObjects() which is crucial for dirty state handling.
 	 * 
 	 * @author Lorenzo Bettini
 	 *
@@ -105,12 +106,37 @@ public class EditingMenuBuilder {
 		}
 	}
 
+	/**
+	 * Custom implementation of doUndo to make getAffectedObjects() work
+	 * correctly in our context, see
+	 * https://bugs.eclipse.org/bugs/show_bug.cgi?id=476289
+	 * 
+	 * @author Lorenzo Bettini
+	 * 
+	 * @param <T>
+	 */
+	private static class CustomAddCommand<T> extends AddCommand {
+
+		public CustomAddCommand(EditingDomain domain, EList<? super T> list, T value) {
+			super(domain, list, value);
+		}
+
+		@Override
+		public void doUndo() {
+			// we must save the container, before undoing, since that
+			// will remove the object from the container
+			EObject eContainer = ((EObject) collection.iterator().next()).eContainer();
+			super.doUndo();
+			affectedObjects = Collections.singleton(eContainer);
+		}
+	}
+
 	@Inject
 	protected EmfSelectionHelper selectionHelper;
-	
+
 	@Inject
 	private ILabelProvider labelProvider;
-	
+
 	private EditingDomain editingDomain;
 
 	private CommandActionHandler deleteAction;
@@ -425,7 +451,7 @@ public class EditingMenuBuilder {
 	 * @return
 	 */
 	protected <T> AddCommand addCommand(EList<? super T> list, T value) {
-		return new AddCommand(getEditingDomain(), list, value);
+		return new CustomAddCommand<T>(getEditingDomain(), list, value);
 	}
 
 	/**
