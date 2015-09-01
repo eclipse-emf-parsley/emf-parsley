@@ -9,6 +9,9 @@ Model:
 	importSection=XImportSection?
 	module = Module;
 
+// if you add another element, please make sure that you update inheritance
+// relations (see, e.g., WithExtendsClause rule) and also the
+// label provider
 Module:
 	'module' name=QualifiedName (extendsClause=ExtendsClause)? '{'
 		(
