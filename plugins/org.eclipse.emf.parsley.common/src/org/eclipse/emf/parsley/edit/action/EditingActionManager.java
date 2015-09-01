@@ -97,7 +97,7 @@ public class EditingActionManager {
 			}
 			@Override
 			public ImageDescriptor getImageDescriptor(String symbolicName) {
-				return (ImageDescriptor) WorkbenchImages.getImageDescriptor(symbolicName);
+				return WorkbenchImages.getImageDescriptor(symbolicName);
 			}
 		};
 	}

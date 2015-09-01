@@ -51,13 +51,13 @@ public class TableViewerColumnBuilder {
 	private List<Integer> weights;
 
 	@Inject
-	protected ColumnLabelProviderFactory columnLabelProviderFactory;
+	private ColumnLabelProviderFactory columnLabelProviderFactory;
 
 	@Inject
-	protected FeatureCaptionProvider featureCaptionProvider;
+	private FeatureCaptionProvider featureCaptionProvider;
 
 	@Inject
-	protected TableFeaturesProvider featuresProvider;
+	private TableFeaturesProvider featuresProvider;
 
 	/**
 	 * Setups the columns of the given tableViewer using the features of the
@@ -75,30 +75,27 @@ public class TableViewerColumnBuilder {
 
 		Layout layout=null;
 		
-		if(tableViewer.getTable().getParent().getLayout() instanceof TableColumnLayout){
-			layout = (TableColumnLayout)tableViewer.getTable().getParent().getLayout();
-		}else{
+		final Layout tableParentLayout = tableViewer.getTable().getParent().getLayout();
+		if (tableParentLayout instanceof TableColumnLayout) {
+			layout = tableParentLayout;
+		} else {
 			layout = new TableLayout();
 			table.setLayout(layout);
 			table.setHeaderVisible(true);
 			table.setLinesVisible(true);
 		}
-		List<EStructuralFeature> typeFeatures = featuresProvider
-				.getFeatures(eClass);
-		int i=0;
+		List<EStructuralFeature> typeFeatures = featuresProvider.getFeatures(eClass);
+		int i = 0;
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
-			int weight=defaultWeight;
-			if(weights.size()>i){
-				weight=weights.get(i++);
+			int weight = defaultWeight;
+			if (weights.size() > i) {
+				weight = weights.get(i++);
 			}
-			
-			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature,
-					weight);
+
+			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature, weight);
 		}
 	}
-	
-	
-	
+
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
 			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature, int weight) {
 		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer,
@@ -109,13 +106,12 @@ public class TableViewerColumnBuilder {
 		}else if(layout instanceof TableLayout){
 			((TableLayout)layout).addColumnData(new ColumnWeightData(weight, 30, true));
 		}
-		
+
 		objectColumn.setText(featureCaptionProvider.getText(eClass, eStructuralFeature));
 		objectColumn.setResizable(true);
 		return viewerColumn;
 	}
 
-	
 	protected TableViewerColumn createTableViewerColumn(
 			TableViewer tableViewer, EStructuralFeature eStructuralFeature) {
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(

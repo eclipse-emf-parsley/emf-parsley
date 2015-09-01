@@ -281,8 +281,8 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 		}
 	}
 	
-	private boolean isPredefinedValueEditing(EAttribute eStructuralFeature) {
-		return ((EAttribute)eStructuralFeature).getEAttributeType() instanceof EEnum;
+	private boolean isPredefinedValueEditing(EAttribute attribute) {
+		return attribute.getEAttributeType() instanceof EEnum;
 	}
 
 }
