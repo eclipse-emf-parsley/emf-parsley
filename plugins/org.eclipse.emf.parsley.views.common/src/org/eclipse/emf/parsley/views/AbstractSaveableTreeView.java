@@ -37,9 +37,9 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 		treeViewer = new TreeViewer(parent);
 		viewerFactory.initialize(treeViewer, getContents(getResource()));
 
-		addContextMenu(treeViewer);
+		addContextMenuAndDragAndDrop(treeViewer);
 		addMouseListener(treeViewer);
-		
+
 		getSite().setSelectionProvider(treeViewer);
 	}
 

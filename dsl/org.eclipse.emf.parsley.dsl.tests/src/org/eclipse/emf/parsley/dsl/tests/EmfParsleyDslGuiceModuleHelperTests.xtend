@@ -83,6 +83,7 @@ bindViewerFactory
 bindTreeFormFactory
 bindFormFactory
 bindViewerContextMenuHelper
+bindViewerDragAndDropHelper
 bindFormControlFactory
 bindDialogControlFactory
 bindColumnLabelProviderFactory

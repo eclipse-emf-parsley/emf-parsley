@@ -36,6 +36,7 @@ import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider;
 import org.eclipse.emf.parsley.edit.provider.InjectableAdapterFactory;
+import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
@@ -261,11 +262,19 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 
 	/**
-	 * Use this bind to change the viewers initialization mechanisms from resources. 
+	 * Use this bind to change the viewers context menu mechanisms. 
 	 * @return a specialization of {@link ViewerContextMenuHelper}
 	 */
 	public Class<? extends ViewerContextMenuHelper> bindViewerContextMenuHelper() {
 		return ViewerContextMenuHelper.class;
+	}
+
+	/**
+	 * Use this bind to change the viewers drag and drop mechanisms. 
+	 * @return a specialization of {@link ViewerDragAndDropHelper}
+	 */
+	public Class<? extends ViewerDragAndDropHelper> bindViewerDragAndDropHelper() {
+		return ViewerDragAndDropHelper.class;
 	}
 
 	/**

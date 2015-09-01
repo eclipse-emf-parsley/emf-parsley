@@ -47,7 +47,7 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 					contentProviderFactory.createViewerContentProviderForResource(this));
 		tableFormComposite.update(getResource());
 
-		addContextMenu(tableFormComposite.getViewer());
+		addContextMenuAndDragAndDrop(tableFormComposite.getViewer());
 	}
 
 	@Override

@@ -11,9 +11,6 @@
 package org.eclipse.emf.parsley.menus;
 
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
-import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
-import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
@@ -23,8 +20,6 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -32,32 +27,20 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 /**
- * @author Lorenzo Bettini
- * 
+ * @author Lorenzo Bettini - Initial contribution and API
+ * @author Francesco Guidieri - refactoring for
+ *         https://bugs.eclipse.org/bugs/show_bug.cgi?id=455727
  */
 public class ViewerContextMenuHelper {
 
 	@Inject
 	private Provider<AdapterFactoryEditingDomain> editingDomainProvider;
-	
+
 	@Inject
 	private TreeActionBarContributor treeActionBarContributor;
-	
+
 	@Inject
 	private WorkbenchActionBarContributor workbenchActionBarContributor;
-
-	
-
-	protected void addDragAndDrop(StructuredViewer viewer,
-			AdapterFactoryEditingDomain editingDomain) {
-		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
-		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(
-				viewer));
-		viewer.addDropSupport(dndOperations, transfers,
-				new EditingDomainViewerDropAdapter(editingDomain,
-						viewer));
-	}
 
 	protected MenuManager createMenuManager() {
 		MenuManager menuManager = new MenuManager("#PopUp");
@@ -65,9 +48,6 @@ public class ViewerContextMenuHelper {
 		menuManager.setRemoveAllWhenShown(true);
 		return menuManager;
 	}
-
-
-
 
 	/**
 	 * Adds a context menu to the passed {@link StructuredViewer}.
@@ -97,7 +77,7 @@ public class ViewerContextMenuHelper {
 		MenuManager menuManager = createContextMenu(viewer, editingDomain);
 		activePart.getSite().registerContextMenu(menuManager,
 				new UnwrappingSelectionProvider(viewer));
-		
+
 		menuManager.addMenuListener(menuListener);
 
 		bridgeSelectionProviderAndActionBarContributor(viewer, actionBarContributor);
@@ -112,9 +92,9 @@ public class ViewerContextMenuHelper {
 
 		activePart.getSite().registerContextMenu(menuManager,
 				new UnwrappingSelectionProvider(viewer));
-		
+
 		bridgeSelectionProviderAndActionBarContributor(viewer, workbenchActionBarContributor);
-		
+
 		workbenchActionBarContributor.setActivePart(activePart);
 	}
 
@@ -122,19 +102,16 @@ public class ViewerContextMenuHelper {
 		addViewerContextMenu(viewer, editingDomainProvider.get());
 	}
 
-	public void addViewerContextMenu(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain){
-		
+	public void addViewerContextMenu(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
 		createContextMenu(viewer, editingDomain, treeActionBarContributor);
 		viewer.addSelectionChangedListener(treeActionBarContributor);
 		treeActionBarContributor.initialize(editingDomain);
 	}
-	
 
 	private MenuManager createContextMenu(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
 		MenuManager menuManager = createMenuManager();
 		Menu menu = menuManager.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		addDragAndDrop(viewer, editingDomain);
 		return menuManager;
 	}
 
@@ -151,12 +128,9 @@ public class ViewerContextMenuHelper {
 
 	private void bridgeSelectionProviderAndActionBarContributor(StructuredViewer viewer,
 			WorkbenchActionBarContributor actionBarContributor) {
-		ViewerSelectionProvider viewerSelectionProvider = new ViewerSelectionProvider(
-				viewer);
-		actionBarContributor
-		.setExplicitSelectionProvider(viewerSelectionProvider);
-		viewerSelectionProvider
-		.addSelectionChangedListener(actionBarContributor);
+		ViewerSelectionProvider viewerSelectionProvider = new ViewerSelectionProvider(viewer);
+		actionBarContributor.setExplicitSelectionProvider(viewerSelectionProvider);
+		viewerSelectionProvider.addSelectionChangedListener(actionBarContributor);
 	}
 
 }

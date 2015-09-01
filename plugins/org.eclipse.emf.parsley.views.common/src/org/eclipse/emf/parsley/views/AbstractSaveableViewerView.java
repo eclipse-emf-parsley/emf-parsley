@@ -17,6 +17,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CreateChildCommand;
+import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -29,7 +30,10 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 
 	@Inject
 	private ViewerContextMenuHelper contextMenuHelper;
-	
+
+	@Inject
+	private ViewerDragAndDropHelper dragAndDropHelper;
+
 	@Inject
 	protected Provider<IViewerMouseListener> viewerMouseListenerProvider;
 
@@ -62,10 +66,9 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 		}
 	}
 
-	
-
-	protected void addContextMenu(StructuredViewer viewer) {
+	protected void addContextMenuAndDragAndDrop(StructuredViewer viewer) {
 		contextMenuHelper.addViewerContextMenu(viewer, editingDomain, this);
+		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
 	}
 
 	/**

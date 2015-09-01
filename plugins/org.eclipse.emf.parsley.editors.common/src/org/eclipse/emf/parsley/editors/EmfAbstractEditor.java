@@ -67,6 +67,7 @@ import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
+import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
@@ -423,6 +424,9 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Inject
 	protected ViewerContextMenuHelper contextMenuHelper;
 
+	@Inject
+	protected ViewerDragAndDropHelper dragAndDropHelper;
+
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -732,6 +736,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		contextMenuHelper.addViewerContextMenu(viewer,
 				editingDomain,
 				this, this, (WorkbenchActionBarContributor) getActionBarContributor());
+		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
 
 		IEditorMouseListener listener = getMouseAdapter();
 		viewer.getControl().addMouseListener(listener);

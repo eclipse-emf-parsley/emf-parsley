@@ -18,6 +18,7 @@ import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
+import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.examples.eclipse4.parsleypart.ParsleypartActivator;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.swt.SWT;
@@ -27,16 +28,11 @@ import com.google.inject.Injector;
 
 public class ParsleyE4ModelPart {
 
-	//Guice injector
-	private Injector injector=ParsleypartActivator.getDefault().getInjector();
+	// Guice injector
+	private Injector injector = ParsleypartActivator.getDefault().getInjector();
 
-	// Guice injected EMF Parsley factory for the tree detail form
-	private TreeFormFactory treeFormFactory;
-	// Guice injected viewer initializer
-	private ViewerContextMenuHelper contextMenuFactory;
-	
 	private TreeFormComposite treeFormComposite;
-	
+
 	@Inject
 	MApplication application;
 
@@ -44,23 +40,25 @@ public class ParsleyE4ModelPart {
 	@PostConstruct
 	public void postConstruct(Composite parent) {
 		// Guice injected EMF Parsley factory for the tree detail form
-		treeFormFactory = injector.getInstance(TreeFormFactory.class);
-		// Guice injected viewer initializer
-		contextMenuFactory = injector.getInstance(ViewerContextMenuHelper.class);
-		
-		// Initialize Parsley Tree Form:  
-		// 1) create the tree-form composite
-		treeFormComposite = treeFormFactory
-				.createTreeFormComposite(parent, SWT.BORDER);
+		TreeFormFactory treeFormFactory = injector.getInstance(TreeFormFactory.class);
+		// Guice injected viewer context menu helper
+		ViewerContextMenuHelper contextMenuHelper = injector.getInstance(ViewerContextMenuHelper.class);
+		// Guice injected viewer drag and drop helper
+		ViewerDragAndDropHelper dragAndDropHelper = injector.getInstance(ViewerDragAndDropHelper.class);
 
-		// 2) initialize and bind the context menu to the tree-form composite
-		contextMenuFactory.addViewerContextMenu(treeFormComposite.getViewer());
-		
+		// Initialize Parsley Tree Form:
+		// 1) create the tree-form composite
+		treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
+
+		// 2) initialize the context menu to the tree-form composite
+		contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer());
+
+		// 3) set drag and drop to the tree-form composite
+		dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer());
+
 		// 4) fill the data
 		treeFormComposite.update(application);
 	}
-
-	
 
 	@Focus
 	public void onFocus() {

@@ -44,8 +44,8 @@ public abstract class AbstractSaveableTableView extends AbstractSaveableViewerVi
 				createTableViewer(parent, createTableStyles(), getEClass(),
 				contentProviderFactory.createViewerContentProviderForResource(this));
 		tableViewer.setInput(getResource());
-		addContextMenu(tableViewer);
-		
+		addContextMenuAndDragAndDrop(tableViewer);
+
 		getSite().setSelectionProvider(tableViewer);
 	}
 
