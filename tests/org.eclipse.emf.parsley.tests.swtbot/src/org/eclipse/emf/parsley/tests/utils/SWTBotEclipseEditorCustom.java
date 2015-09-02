@@ -201,6 +201,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 	private void selectProposal(final SWTBotTable proposalTable, final int proposalIndex) {
 		log.debug(MessageFormat.format("Trying to select proposal with index {0}", proposalIndex)); //$NON-NLS-1$
 		UIThreadRunnable.asyncExec(new VoidResult() {
+			@Override
 			public void run() {
 				Table table = proposalTable.widget;
 				log.debug(MessageFormat.format("Selecting row [{0}] {1} in {2}", proposalIndex, table.getItem(proposalIndex).getText(), //$NON-NLS-1$
@@ -495,6 +496,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 	/**
 	 * @see SWTBotStyledText#setFocus()
 	 */
+	@Override
 	public void setFocus() {
 		styledText.setFocus();
 	}
@@ -645,10 +647,12 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 	private Matcher<SWTBotTable> tableWithRow(final String itemText) {
 		return new AbstractMatcher<SWTBotTable>() {
 
+			@Override
 			protected boolean doMatch(Object item) {
 				return ((SWTBotTable) item).containsItem(itemText);
 			}
 
+			@Override
 			public void describeTo(Description description) {
 				description.appendText("table with item (").appendText(itemText).appendText(")");
 			}
@@ -659,6 +663,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 		final String lowerCaseText = itemText.toLowerCase();
 		return new AbstractMatcher<SWTBotTable>() {
 
+			@Override
 			protected boolean doMatch(Object item) {
 				List<String> rows = getRows((SWTBotTable) item);
 				for (String row : rows) {
@@ -669,6 +674,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 				return false;
 			}
 
+			@Override
 			public void describeTo(Description description) {
 				description.appendText("table with item (").appendText(itemText).appendText(")");
 			}
@@ -677,6 +683,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 
 	private WaitForObjectCondition<SWTBotTable> quickFixAppears(Matcher<SWTBotTable> tableMatcher) {
 		return new WaitForObjectCondition<SWTBotTable>(tableMatcher) {
+			@Override
 			protected List<SWTBotTable> findMatches() {
 				try {
 					activateQuickFixShell();
@@ -689,6 +696,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 				return null;
 			}
 
+			@Override
 			public String getFailureMessage() {
 				return "Could not find auto complete proposal using matcher " + matcher;
 			}
@@ -705,6 +713,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 		log.debug("Activating quickfix shell."); //$NON-NLS-1$
 		try {
 			Shell mainWindow = syncExec(new WidgetResult<Shell>() {
+				@Override
 				public Shell run() {
 					return styledText.widget.getShell();
 				}
@@ -712,6 +721,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 
 			final List<Shell> shells = bot.shells("", mainWindow);
 			Shell widgetShell = syncExec(new WidgetResult<Shell>() {
+				@Override
 				public Shell run() {
 					for(int j=0; j<shells.size(); j++) {
 						Shell s = shells.get(j);
@@ -737,6 +747,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 
 	private WaitForObjectCondition<SWTBotTable> autoCompleteAppears(Matcher<SWTBotTable> tableMatcher) {
 		return new WaitForObjectCondition<SWTBotTable>(tableMatcher) {
+			@Override
 			protected List<SWTBotTable> findMatches() {
 				try {
 					activateAutoCompleteShell();
@@ -751,6 +762,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 				return null;
 			}
 
+			@Override
 			public String getFailureMessage() {
 				return "Could not find auto complete proposal using matcher " + matcher;
 			}
@@ -765,6 +777,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 	private void invokeAction(final String actionId) {
 		final IAction action = ((ITextEditor) partReference.getEditor(false)).getAction(actionId);
 		syncExec(new VoidResult() {
+			@Override
 			public void run() {
 				log.debug(MessageFormat.format("Activating action with id {0}", actionId));
 				action.run();

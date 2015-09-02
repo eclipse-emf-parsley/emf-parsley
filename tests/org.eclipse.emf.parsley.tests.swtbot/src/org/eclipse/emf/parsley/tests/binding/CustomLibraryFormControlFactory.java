@@ -55,6 +55,7 @@ public class CustomLibraryFormControlFactory extends FormControlFactory {
 	public Control control_Writer_books(Writer writer) {
 		return createLabel(
 				join(map(writer.getBooks(), new Function1<Book, String>() {
+					@Override
 					public String apply(Book book) {
 						return book.getTitle();
 					}

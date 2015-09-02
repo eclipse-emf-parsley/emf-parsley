@@ -26,6 +26,7 @@ public class WaitForBuildCondition extends DefaultCondition {
 		this.workspace = ResourcesPlugin.getWorkspace();
 	}
 
+	@Override
 	public boolean test() {
 		return done;
 	}
@@ -42,6 +43,7 @@ public class WaitForBuildCondition extends DefaultCondition {
 		workspace.addResourceChangeListener(myResourceChangeListener);
 	}
 
+	@Override
 	public String getFailureMessage() {
 		return "failed waiting for building";
 	}
@@ -54,6 +56,7 @@ class MyResourceChangeListener implements IResourceChangeListener {
 		this.condition = condition;
 	}
 
+	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
 		if (event.getBuildKind() == IResourceChangeEvent.POST_BUILD)
 			condition.done();

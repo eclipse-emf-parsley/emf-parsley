@@ -393,6 +393,7 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static void closeWelcomePage() throws InterruptedException {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				if (PlatformUI.getWorkbench().getIntroManager().getIntro() != null) {
 					PlatformUI
@@ -606,6 +607,7 @@ public class EmfParsleySWTBotAbstractTests {
 	protected SWTBotTree getSWTBotTree(final SWTBotTreeItem treeItem) {
 		return new SWTBotTree(
 				UIThreadRunnable.syncExec(new WidgetResult<Tree>() {
+					@Override
 					public Tree run() {
 						return treeItem.widget.getParent();
 					}
@@ -777,6 +779,7 @@ public class EmfParsleySWTBotAbstractTests {
 		// ensure that all queued workspace operations and locks are released
 		try {
 			ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
+				@Override
 				public void run(IProgressMonitor monitor) throws CoreException {
 					// nothing to do!
 				}
@@ -786,6 +789,7 @@ public class EmfParsleySWTBotAbstractTests {
 		}
 
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					IResourcesSetupUtil.cleanBuild();
@@ -830,6 +834,7 @@ public class EmfParsleySWTBotAbstractTests {
 		final TreeItem widget = item.widget;
 		// part of test that requires UI-thread
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					Image image = widget.getImage();
@@ -846,6 +851,7 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected void assertStatusLine(final String expectedStatusLineText) {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				IWorkbenchPart activePart = PlatformUI.getWorkbench()
 						.getActiveWorkbenchWindow().getActivePage()
@@ -1004,6 +1010,7 @@ public class EmfParsleySWTBotAbstractTests {
 	protected void assertTextComponent(SWTFormsBot formbot, String text, final boolean editable) {
 		final SWTBotText t = formbot.text(text);
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				Assert.assertEquals(editable, t.widget.getEditable());
 			}
@@ -1013,6 +1020,7 @@ public class EmfParsleySWTBotAbstractTests {
 	protected void assertTextComponent(String text, final boolean editable) {
 		final SWTBotText t = bot.text(text);
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				Assert.assertEquals(editable, t.widget.getEditable());
 			}
@@ -1023,6 +1031,7 @@ public class EmfParsleySWTBotAbstractTests {
 			final boolean isChecked, final boolean isEnabled) {
 		final SWTBotCheckBox b = formbot.checkBox(index);
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				Assert.assertEquals(isEnabled, b.isEnabled());
 				Assert.assertEquals(isChecked, b.isChecked());
@@ -1140,6 +1149,7 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected void saveView(final String viewName) {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				getViewAsSaveablePart(viewName).doSave(
 						new NullProgressMonitor());
@@ -1153,6 +1163,7 @@ public class EmfParsleySWTBotAbstractTests {
 	 */
 	protected void saveViewAsync(final String viewName) {
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				getViewAsSaveablePart(viewName).doSave(
 						new NullProgressMonitor());
@@ -1194,6 +1205,7 @@ public class EmfParsleySWTBotAbstractTests {
 		while (count < retries) {
 			System.out.println("Checking that tree item " + treeItem.getText() + " has children...");
 			List<SWTBotTreeItem> foundItems = UIThreadRunnable.syncExec(new ListResult<SWTBotTreeItem>() {
+				@Override
 				public List<SWTBotTreeItem> run() {
 					TreeItem[] items = treeItem.widget.getItems();
 					List<SWTBotTreeItem> results = new ArrayList<SWTBotTreeItem>();

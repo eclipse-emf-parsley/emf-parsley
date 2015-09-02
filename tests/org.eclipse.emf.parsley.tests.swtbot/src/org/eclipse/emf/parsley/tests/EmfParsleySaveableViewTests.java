@@ -52,6 +52,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		tableFormViewOpened = false;
 	}
 
+	@Override
 	@After
 	public void runAfterEveryTest() throws CoreException {
 		if (treeFormViewOpened)
@@ -224,6 +225,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	protected void assertTableItemsSize(final SWTBotTable table,
 			final int expectedSize) {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				assertEquals(expectedSize, table.widget.getItems().length);
 			}

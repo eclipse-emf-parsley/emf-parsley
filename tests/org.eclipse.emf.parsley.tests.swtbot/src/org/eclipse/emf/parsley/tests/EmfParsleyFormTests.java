@@ -254,6 +254,7 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 
 	private WaitForObjectCondition<SWTBotTable> autoCompleteAppears(final SWTBotText text, Matcher<SWTBotTable> tableMatcher) {
 		return new WaitForObjectCondition<SWTBotTable>(tableMatcher) {
+			@Override
 			protected List<SWTBotTable> findMatches() {
 				try {
 					text.pressShortcut(SWT.CTRL, 0, ' ');
@@ -268,6 +269,7 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 				return null;
 			}
 			
+			@Override
 			public String getFailureMessage() {
 				return "Could not find auto complete proposal using matcher " + matcher;
 			}
@@ -290,11 +292,13 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 	private Matcher<SWTBotTable> tableWithRows() {
 		return new AbstractMatcher<SWTBotTable>() {
 
+			@Override
 			protected boolean doMatch(Object item) {
 				List<String> rows = getRows((SWTBotTable) item);
 				return !rows.isEmpty();
 			}
 
+			@Override
 			public void describeTo(Description description) {
 				description.appendText("table with rows");
 			}
@@ -305,6 +309,7 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 		log.debug("Activating quickfix shell."); //$NON-NLS-1$
 		try {
 			Shell mainWindow = syncExec(new WidgetResult<Shell>() {
+				@Override
 				public Shell run() {
 					return text.widget.getShell();
 				}
@@ -313,11 +318,13 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 			final List<Shell> shells = bot.shells("", mainWindow);
 			log.debug(MessageFormat.format("Obtained shells: {0}", 
 					syncExec(new Result<String>() {
+						@Override
 						public String run() {
 							return shells.toString();
 						}
 					}))); //$NON-NLS-1$
 			Shell widgetShell = syncExec(new WidgetResult<Shell>() {
+				@Override
 				public Shell run() {
 					for(int j=0; j<shells.size(); j++) {
 						Shell s = shells.get(j);
@@ -364,6 +371,7 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 	private void selectProposal(final SWTBotTable proposalTable, final int proposalIndex) {
 		log.debug(MessageFormat.format("Trying to select proposal with index {0}", proposalIndex)); //$NON-NLS-1$
 		UIThreadRunnable.syncExec(new VoidResult() {
+			@Override
 			public void run() {
 				Table table = proposalTable.widget;
 				log.debug(MessageFormat.format("Selecting row [{0}] {1} in {2}", proposalIndex, table.getItem(proposalIndex).getText(), //$NON-NLS-1$
