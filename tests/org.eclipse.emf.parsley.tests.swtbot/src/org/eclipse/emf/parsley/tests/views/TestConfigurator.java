@@ -12,11 +12,8 @@ package org.eclipse.emf.parsley.tests.views;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
-import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests;
 
 /**
@@ -43,23 +40,13 @@ public class TestConfigurator extends Configurator {
 				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
-	public Object contents(TestSaveableResourceTableView requestor, Resource resource) {
-		Library library=(Library) resource.getContents().get(0);
-		return library.getBooks();
-	}
-
 	public EClass eClass(TestSaveableResourceTableView requestor) {
 		return EXTLibraryPackage.Literals.BOOK;
 	}
-	
+
 	public URI resourceURI(TestSaveableResourceTableView requestor) {
 		return URI.createPlatformResourceURI(
 				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
-	}
-
-	public Object contents(TestSaveableResourceTableFormView requestor, Resource resource) {
-		Library library=(Library) resource.getContents().get(0);
-		return library.getBooks();
 	}
 
 	public EClass eClass(TestSaveableResourceTableFormView requestor) {
@@ -71,11 +58,11 @@ public class TestConfigurator extends Configurator {
 				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
-	public EStructuralFeature eStructuralFeature(TestOnSelectionLibraryBooksTableView requestor) {
-		return EXTLibraryPackage.Literals.LIBRARY__BOOKS;
+	public EClass eClass(TestOnSelectionLibraryBooksTableView requestor) {
+		return EXTLibraryPackage.Literals.BOOK;
 	}
 
-	public EStructuralFeature eStructuralFeature(TestOnSelectionLibraryBooksTableFormView requestor) {
-		return EXTLibraryPackage.Literals.LIBRARY__BOOKS;
+	public EClass eClass(TestOnSelectionLibraryBooksTableFormView requestor) {
+		return EXTLibraryPackage.Literals.BOOK;
 	}
 }

@@ -35,17 +35,16 @@ public class «className» extends «extendsClass» {
 '''
 package «projectName»;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.views.AbstractOnSelectionTableView;
 
 public class «simpleName» extends AbstractOnSelectionTableView {
 
 	@Override
-	protected EStructuralFeature getEStructuralFeature() {
-		// TODO How to reach the contents from the selected object
+	protected EClass getEClass() {
+		// TODO the type of objects to show
 		return null;
 	}
-	
 
 }
 '''
@@ -55,17 +54,16 @@ public class «simpleName» extends AbstractOnSelectionTableView {
 '''
 package «projectName»;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.views.AbstractOnSelectionTableFormView;
 
 public class «simpleName» extends AbstractOnSelectionTableFormView {
 
 	@Override
-	protected EStructuralFeature getEStructuralFeature() {
-		// TODO How to reach the contents from the selected object
+	protected EClass getEClass() {
+		// TODO the type of objects to show
 		return null;
 	}
-	
 
 }
 '''

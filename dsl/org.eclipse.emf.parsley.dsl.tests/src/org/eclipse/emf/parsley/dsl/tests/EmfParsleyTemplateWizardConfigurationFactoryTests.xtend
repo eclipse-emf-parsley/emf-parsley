@@ -77,9 +77,9 @@ module my.project.name {
 	}
 	
 	configurator {
-		eStructuralFeature {
+		eClass {
 			NameOnSelectionTableFormView -> {
-				// TODO return the EStructuralFeature to get the elements to represent
+				// TODO return the EClass of objects to be shown
 			}
 		}
 	}
@@ -103,9 +103,9 @@ module my.project.name {
 	}
 	
 	configurator {
-		eStructuralFeature {
+		eClass {
 			NameOnSelectionTableView -> {
-				// TODO return the EStructuralFeature to get the elements to represent
+				// TODO return the EClass of objects to be shown
 			}
 		}
 	}
@@ -150,7 +150,7 @@ module my.project.name {
 	configurator {
 		eClass {
 			NameSaveableTableFormView -> {
-				// TODO return the EClass to represent
+				// TODO return the EClass of objects to be shown
 			}
 		}
 		resourceURI {
@@ -190,7 +190,7 @@ module my.project.name {
 	configurator {
 		eClass {
 			NameSaveableTableView -> {
-				// TODO return the EClass to represent
+				// TODO return the EClass of objects to be shown
 			}
 		}
 		resourceURI {

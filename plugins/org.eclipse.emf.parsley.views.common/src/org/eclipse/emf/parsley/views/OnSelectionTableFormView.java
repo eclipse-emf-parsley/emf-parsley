@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.config.Configurator;
 
 import com.google.inject.Inject;
@@ -29,8 +28,8 @@ public class OnSelectionTableFormView extends AbstractOnSelectionTableFormView {
 	private Configurator configurator;
 
 	@Override
-	protected EStructuralFeature getEStructuralFeature() {
-		return configurator.getEStructuralFeature(this);
+	protected EClass getEClass() {
+		return configurator.getEClass(this);
 	}
-	
+
 }

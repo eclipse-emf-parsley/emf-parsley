@@ -76,10 +76,25 @@ injected codeRef[org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper],
 using its methods e[addDragAndDrop].
 ]
 item[
-Saveable table views do not require an implementation of the method
+Saveable table views and table views reacting on selection
+do not require an implementation of the method
 e[getContents()], which has also been removed from the API, from the
 codeRef[org.eclipse.emf.parsley.config.Configurator] methods, and from
 the e[configurator] section in the DSL: contents retrieval is completely
+delegated to the new codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider],
+whose default implementation is able to automatically retrieve all the
+contents of a given type (i.e., EClass) automatically.
+]
+item[
+Similarly, table views reacting on selection
+do not require an implementation of the method
+e[getEStructuralFeature()]: they require an implementation of
+e[getEClass()] which specifies the type of the objects to be
+shown in the table.
+e[getEStructuralFeature()] has also been removed from the API, from the
+codeRef[org.eclipse.emf.parsley.config.Configurator] methods, and from
+the e[configurator] section in the DSL: contents retrieval is not
+performed using a feature (which is limitative): it is completely
 delegated to the new codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider],
 whose default implementation is able to automatically retrieve all the
 contents of a given type (i.e., EClass) automatically.

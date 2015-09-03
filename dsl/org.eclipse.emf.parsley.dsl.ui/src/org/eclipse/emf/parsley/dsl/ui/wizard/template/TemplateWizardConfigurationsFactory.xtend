@@ -33,7 +33,7 @@ public class TemplateWizardConfigurationsFactory {
 
 		override getConfiguratorElements(String projectName) {
 			getProjectFilesGenerator.
-				genEStructuralFeature(getPartClassName(projectName)).
+				genEClass(getPartClassName(projectName)).
 					toString
 		}
 	}
@@ -92,10 +92,9 @@ public class TemplateWizardConfigurationsFactory {
 		val saveableView = "This view reads the content from a resource and can save changes."
 		val noUserChange = "<p><b>No user change is needed to run the project</b></p>"
 		val theUserMustSpecify = "<p><b>The user must specify:</b></p>"
-		val structuralFeature = "<li>the EStructuralFeature for getting the contents from the resource</li>"
 		val resourceURI = "<li>the resource URI</li>"
-		val eclassToRepresent = "<li>the EClass to be represented</li>"
-		
+		val eclassToRepresent = "<li>the EClass of objects to be shown</li>"
+
 		newArrayList(
 			new TemplateWizardConfiguration(
 				"On selection Tree View",
@@ -112,7 +111,7 @@ public class TemplateWizardConfigurationsFactory {
 				createDescription("table and a form", reactOnSelection,
 					'''
 					«theUserMustSpecify»
-					«structuralFeature»
+					«eclassToRepresent»
 					'''
 				),
 				OnSelectionTableFormView
@@ -122,7 +121,7 @@ public class TemplateWizardConfigurationsFactory {
 				createDescription("table", reactOnSelection,
 					'''
 					«theUserMustSpecify»
-					«structuralFeature»
+					«eclassToRepresent»
 					'''
 				),
 				OnSelectionTableView

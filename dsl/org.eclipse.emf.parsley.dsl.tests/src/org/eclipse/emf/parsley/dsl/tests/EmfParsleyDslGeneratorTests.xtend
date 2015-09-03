@@ -1588,8 +1588,6 @@ package my.empty.config;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
@@ -1620,16 +1618,6 @@ public class ConfiguratorGen extends Configurator {
   public EClass eClass(final Writer it) {
     EClass _writer = this.libraryPackage.getWriter();
     return _writer;
-  }
-  
-  public EStructuralFeature eStructuralFeature(final Library lib) {
-    EReference _library_Books = this.libraryPackage.getLibrary_Books();
-    return _library_Books;
-  }
-  
-  public EStructuralFeature eStructuralFeature(final Writer it) {
-    EReference _library_Writers = this.libraryPackage.getLibrary_Writers();
-    return _library_Writers;
   }
 }
 ''']

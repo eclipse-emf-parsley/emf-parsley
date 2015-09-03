@@ -559,11 +559,6 @@ module my.empty {
 			Library lib -> libraryPackage.library
 			Writer -> libraryPackage.writer
 		}
-		
-		eStructuralFeature {
-			Library lib -> libraryPackage.library_Books
-			Writer -> libraryPackage.library_Writers
-		}
 	}
 }
 '''

@@ -71,17 +71,7 @@ module «projectName» {
 		'''
 		eClass {
 			«className» -> {
-				// TODO return the EClass to represent
-			}
-		}
-		'''
-	}
-
-	def genEStructuralFeature(CharSequence className) {
-		'''
-		eStructuralFeature {
-			«className» -> {
-				// TODO return the EStructuralFeature to get the elements to represent
+				// TODO return the EClass of objects to be shown
 			}
 		}
 		'''

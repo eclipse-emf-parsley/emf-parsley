@@ -13,8 +13,6 @@ package org.eclipse.emf.parsley.views;
 
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
 import org.eclipse.jface.viewers.ISelection;
@@ -26,7 +24,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.inject.Inject;
 
 /**
- * A View that visualizes a table with the list of elements of an EObject (it also acts as a
+ * A View that shows a table with the list of elements of an EObject (it also acts as a
  * selection provider), filtered by the specified type (EClass) and a form.
  *
  * @author Francesco Guidieri - Initial contribution and API
@@ -63,19 +61,11 @@ public abstract class AbstractOnSelectionTableFormView extends
 	}
 
 	/**
-	 * @return the {@link EStructuralFeature} to retrieve the values of the
-	 *         selected {@link EObject} to show on the table
-	 */
-	protected abstract EStructuralFeature getEStructuralFeature();
-
-	/**
-	 * The default implementation uses the {@link EStructuralFeature} returned by
-	 * {@link #getEStructuralFeature()}
+	 * {@link EClass} to build the table columns.
+	 * 
 	 * @return the {@link EClass} to build the table columns
 	 */
-	protected EClass getEClass() {
-		return (EClass) getEStructuralFeature().getEType();
-	}
+	protected abstract EClass getEClass();
 
 	public StructuredViewer getViewer() {
 		return tableFormDetailComposite.getViewer();

@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.config;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 
 /**
@@ -31,9 +30,6 @@ public class Configurator {
 
 	private PolymorphicDispatcher<EClass> getEClassDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("eClass", 1, 1, this);
-
-	private PolymorphicDispatcher<EStructuralFeature> getEStructuralFeatureDispatcher = PolymorphicDispatcher
-			.createForSingleTarget("eStructuralFeature", 1, 1, this);
 
 	/**
 	 * Returns the {@link URI} of the resource for the requestor
@@ -68,24 +64,6 @@ public class Configurator {
 	 * @return
 	 */
 	public EClass eClass(Object requestor) {
-		return null;
-	}
-
-	/**
-	 * Returns the {@link EStructuralFeature} for the requestor for any use the requestor may need it
-	 * @param requestor
-	 * @return
-	 */
-	public EStructuralFeature getEStructuralFeature(Object requestor) {
-		return getEStructuralFeatureDispatcher.invoke(requestor);
-	}
-
-	/**
-	 * Returns the {@link EStructuralFeature} for the requestor
-	 * @param requestor
-	 * @return
-	 */
-	public EStructuralFeature eStructuralFeature(Object requestor) {
 		return null;
 	}
 

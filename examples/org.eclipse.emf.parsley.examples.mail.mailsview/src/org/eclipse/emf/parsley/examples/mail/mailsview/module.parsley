@@ -13,8 +13,8 @@ module org.eclipse.emf.parsley.examples.mail.mailsview {
 	}
 
 	configurator {
-		eStructuralFeature {
-			MailsView -> MailPackage.Literals.FOLDER__MAILS
+		eClass {
+			MailsView -> MailPackage.Literals.MAIL
 		}
 	}
 	

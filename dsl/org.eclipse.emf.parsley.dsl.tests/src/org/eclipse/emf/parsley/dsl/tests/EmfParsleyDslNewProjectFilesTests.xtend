@@ -63,7 +63,6 @@ module mypackage.testproject {
 			'''
 			«generator.genResourceURI("MyClass")»
 			«generator.genEClass("MyClass")»
-			«generator.genEStructuralFeature("MyClass")»
 			'''
 		).assertGeneratedContentEqualsTo(
 '''
@@ -76,12 +75,7 @@ configurator {
 	}
 	eClass {
 		MyClass -> {
-			// TODO return the EClass to represent
-		}
-	}
-	eStructuralFeature {
-		MyClass -> {
-			// TODO return the EStructuralFeature to get the elements to represent
+			// TODO return the EClass of objects to be shown
 		}
 	}
 }

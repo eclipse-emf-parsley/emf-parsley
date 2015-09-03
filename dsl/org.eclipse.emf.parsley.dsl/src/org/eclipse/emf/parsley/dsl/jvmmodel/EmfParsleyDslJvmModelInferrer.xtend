@@ -684,10 +684,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				for (specification : configurator.EClassSpecifications) {
 					members += specification.specificationToMethod("eClass", typeRef(EClass))
 				}
-				
-				for (specification : configurator.EStructuralFeatureSpecifications) {
-					members += specification.specificationToMethod("eStructuralFeature", typeRef(EStructuralFeature))
-				}
 			]
 			configuratorClass
 		}

@@ -43,21 +43,6 @@ class ConfiguratorTest extends AbstractEmfParsleyTest {
 		.getEClass(this).assertEquals(testPackage.ABaseClass)
 	}
 
-	@Test
-	def void testDefaultGetEStructuralFeature() {
-		configurator.getEStructuralFeature(this).assertNull
-	}
-
-	@Test
-	def void testCustomGetEStructuralFeature() {
-		new Configurator() {
-			def eStructuralFeature(ConfiguratorTest requestor) {
-				testPackage.baseClass_BaseClassFeature
-			}
-		}
-		.getEStructuralFeature(this).assertEquals(testPackage.baseClass_BaseClassFeature)
-	}
-
 	def private getConfigurator() {
 		new Configurator().injectMembers
 	}
