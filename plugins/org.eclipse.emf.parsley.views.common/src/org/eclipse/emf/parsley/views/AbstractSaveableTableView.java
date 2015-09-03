@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.views;
 
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.edit.ui.provider.IResourceContentsProvider;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -25,7 +24,7 @@ import com.google.inject.Inject;
  * @author Francesco Guidieri - Initial contribution and API
  * @author Lorenzo Bettini - some cleanup
  */
-public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView implements IResourceContentsProvider {
+public abstract class AbstractSaveableTableView extends AbstractSaveableViewerView {
 
 	@Inject
 	private ViewerFactory viewerFactory;

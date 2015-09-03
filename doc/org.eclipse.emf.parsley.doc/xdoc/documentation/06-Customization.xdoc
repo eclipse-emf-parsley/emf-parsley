@@ -870,30 +870,20 @@ public EClass eClass(Object requestor) {
 public EStructuralFeature eStructuralFeature(Object requestor) {
 	return null;
 }
-
-/**
- * Returns the contents from the resource for the requestor
- * @param requestor
- * @param resource
- * @return
- */
-public Object contents(Object requestor, Resource resource) {
-	return null;
-}
 ]
 
 The idea is that clients that use such an injected instance should call
-the e[get] methods, e.g., e[getContents], while the customization should be defined
+the e[get] methods, e.g., e[getEClass], while the customization should be defined
 using polymorphic dispatch, e.g.,
 
 code[Java][
 class MyConfigurator extends Configurator {
 
-	public Object contents(MyView1 view1, Resource resource) {
+	public EClass eClass(MyView1 view1) {
 		return ...;
 	}
 
-	public Object contents(MyOtherView view, Resource resource) {
+	public EClass eClass(MyOtherView view) {
 		return ...;
 	}
 }
@@ -901,9 +891,7 @@ class MyConfigurator extends Configurator {
 
 In the DSL, you can specify a e[configurator] section, e.g.,
 (the requestor object can be accessed using the implicit variable
-e[it], while additional parameters can be accessed through their names,
-as named in the original codeRef[org.eclipse.emf.parsley.config.Configurator]
-class, e.g., e[resource] for e[contents]):
+e[it]):
 
 code[EmfParsley][
 module my.project {
@@ -927,11 +915,6 @@ module my.project {
 				return ...;
 			}
 		}
-		contents {
-			MyTreeView -> {
-				return ...;
-			}
-		}
 	}
 }
 ]
@@ -944,12 +927,6 @@ code[EmfParsley][
 module my.project {
 
 	configurator {
-		contents {
-			MyView -> {
-				// TODO return the contents from the resource
-				// e.g., resource.^contents.get(0)
-			}
-		}
 		eClass {
 			MyView -> {
 				// TODO return the EClass to represent

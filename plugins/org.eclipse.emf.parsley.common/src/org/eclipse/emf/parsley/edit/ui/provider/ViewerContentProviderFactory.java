@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 
 import com.google.inject.Inject;
@@ -32,26 +31,6 @@ public class ViewerContentProviderFactory {
 
 	@Inject
 	private MembersInjector<ViewerContentProvider> viewerContentProviderMembersInjector;
-
-	/**
-	 * Creates a {@link ViewerContentProvider} that implements getElements for a
-	 * {@link Resource} by forwarding to the passed
-	 * {@link IResourceContentsProvider}.
-	 * 
-	 * @param resourceContentsProvider
-	 */
-	public ViewerContentProvider createViewerContentProviderForResource(final IResourceContentsProvider resourceContentsProvider) {
-		ViewerContentProvider instance = new ViewerContentProvider() {
-
-			@Override
-			public List<Object> elements(Object o) {
-				return new ArrayList<Object>(
-						EmfParsleyUtil.ensureCollection(resourceContentsProvider.getContents((Resource) o)));
-			}
-		};
-		viewerContentProviderMembersInjector.injectMembers(instance);
-		return instance;
-	}
 
 	/**
 	 * Creates a {@link ViewerContentProvider} that implements getElements returning the value of the given

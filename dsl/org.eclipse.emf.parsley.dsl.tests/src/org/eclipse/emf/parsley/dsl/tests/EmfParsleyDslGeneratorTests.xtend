@@ -1586,14 +1586,10 @@ expectedConfigurator =
 '''
 package my.empty.config;
 
-import com.google.common.collect.Iterables;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.examples.library.Library;
@@ -1634,12 +1630,6 @@ public class ConfiguratorGen extends Configurator {
   public EStructuralFeature eStructuralFeature(final Writer it) {
     EReference _library_Writers = this.libraryPackage.getLibrary_Writers();
     return _library_Writers;
-  }
-  
-  public Object contents(final Library lib, final Resource resource) {
-    EList<EObject> _contents = resource.getContents();
-    Iterable<Writer> _filter = Iterables.<Writer>filter(_contents, Writer.class);
-    return _filter;
   }
 }
 ''']

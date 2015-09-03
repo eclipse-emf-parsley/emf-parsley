@@ -104,12 +104,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 public class «simpleName»TableView extends AbstractSaveableTableView {
 
 	@Override
-	public Object getContents(Resource resource) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	protected EClass getEClass() {
 		// TODO Auto-generated method stub
 		return null;

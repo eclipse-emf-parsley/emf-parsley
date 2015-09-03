@@ -287,12 +287,6 @@ Configurator:
 				eStructuralFeatureSpecifications+=LabelSpecification*
 			'}'
 			)?
-		&
-			(
-			'contents' '{'
-				contentsSpecifications+=LabelSpecification*
-			'}'
-			)?
 		)
 	'}'
 ;

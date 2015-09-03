@@ -75,6 +75,15 @@ Drag and drop can be added to any codeRef[org.eclipse.jface.viewers.StructuredVi
 injected codeRef[org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper],
 using its methods e[addDragAndDrop].
 ]
+item[
+Saveable table views do not require an implementation of the method
+e[getContents()], which has also been removed from the API, from the
+codeRef[org.eclipse.emf.parsley.config.Configurator] methods, and from
+the e[configurator] section in the DSL: contents retrieval is completely
+delegated to the new codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider],
+whose default implementation is able to automatically retrieve all the
+contents of a given type (i.e., EClass) automatically.
+]
 ]
 
 section:ThreeFour[From 0.3 to 0.4]

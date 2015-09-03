@@ -30,7 +30,7 @@ codelanguage-def[EmfParsley]
 	catch,extends,int,short,try,char,void,finally,long,
 	float,super,while,proposals,dialogControlFactory,
 	menuBuilder,menus,emfMenus,resourceManager,initializeResource,saveResource,
-	configurator,resourceURI,eClass,eStructuralFeature,contents,
+	configurator,resourceURI,eClass,eStructuralFeature,
 	bindings,type,provide,value
 ]
 

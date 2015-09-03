@@ -62,7 +62,6 @@ module mypackage.testproject {
 		generator.genConfigurator(
 			'''
 			«generator.genResourceURI("MyClass")»
-			«generator.genContents("MyClass")»
 			«generator.genEClass("MyClass")»
 			«generator.genEStructuralFeature("MyClass")»
 			'''
@@ -73,12 +72,6 @@ configurator {
 		MyClass -> {
 			// TODO create and return a org.eclipse.emf.common.util.URI
 			return null;
-		}
-	}
-	contents {
-		MyClass -> {
-			// TODO return the contents from the resource
-			// e.g., resource.^contents.get(0)
 		}
 	}
 	eClass {

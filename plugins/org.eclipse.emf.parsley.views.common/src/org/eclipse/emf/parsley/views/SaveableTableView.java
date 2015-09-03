@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.views;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.config.Configurator;
 
 import com.google.inject.Inject;
@@ -32,11 +31,6 @@ public class SaveableTableView extends AbstractSaveableTableView {
 	@Override
 	protected URI createResourceURI() {
 		return configurator.createResourceURI(this);
-	}
-
-	@Override
-	public Object getContents(Resource resource) {
-		return configurator.getContents(this, resource);
 	}
 
 	@Override

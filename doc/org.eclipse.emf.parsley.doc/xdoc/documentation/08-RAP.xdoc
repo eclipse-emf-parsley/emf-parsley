@@ -63,7 +63,7 @@ img[images/08-rap-ui-example-running.png][][ ][]
 In this web application you can see two views: 
 ul[
 	item[the one on the left is a read-only view; it just reflects the model content, but it does not react to changes (the classic Eclipse dirty indicator is not triggered
-by changes) and you are not able to save. Its model is created in class e[org.eclipse.emf.parsley.examples.rap.ui.GuiceModule.CustomEmptyResourceInitializer]
+by changes) and you are not able to save. Its model is created in class e[org.eclipse.emf.parsley.examples.rap.ui.GuiceModule.CustomResourceManager]
 and is not persisted]
 	item[the view on the right is instead a Saveable view and therefore it not only triggers the dirty state after
 a change, but also allows you to save the modifications with the automatic dirty state reset. Its model

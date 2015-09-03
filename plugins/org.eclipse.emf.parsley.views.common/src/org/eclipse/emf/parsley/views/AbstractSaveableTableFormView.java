@@ -15,7 +15,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
-import org.eclipse.emf.parsley.edit.ui.provider.IResourceContentsProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -27,7 +26,7 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - aligned to {@link AbstractSaveableTableView}
  *
  */
-public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView implements IResourceContentsProvider {
+public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView {
 
 	@Inject
 	private TableFormFactory tableFormFactory;

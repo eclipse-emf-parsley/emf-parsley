@@ -67,8 +67,6 @@ public class TemplateWizardConfigurationsFactory {
 			val partClassName = getPartClassName(projectName)
 			'''
 			«getProjectFilesGenerator.
-				genContents(partClassName)»
-			«getProjectFilesGenerator.
 				genEClass(partClassName)»
 			«getProjectFilesGenerator.
 				genResourceURI(partClassName)»
@@ -96,8 +94,7 @@ public class TemplateWizardConfigurationsFactory {
 		val theUserMustSpecify = "<p><b>The user must specify:</b></p>"
 		val structuralFeature = "<li>the EStructuralFeature for getting the contents from the resource</li>"
 		val resourceURI = "<li>the resource URI</li>"
-		val eclassToRepresentAndHowToReachResource = "<li>how to reach the contents from the resource</li>" +
-					"<li>the EClass to be represented</li>"
+		val eclassToRepresent = "<li>the EClass to be represented</li>"
 		
 		newArrayList(
 			new TemplateWizardConfiguration(
@@ -141,7 +138,7 @@ public class TemplateWizardConfigurationsFactory {
 					'''
 					«theUserMustSpecify»
 					«resourceURI»
-					«eclassToRepresentAndHowToReachResource»
+					«eclassToRepresent»
 					'''
 				),
 				SaveableTableFormView
@@ -152,7 +149,7 @@ public class TemplateWizardConfigurationsFactory {
 					'''
 					«theUserMustSpecify»
 					«resourceURI»
-					«eclassToRepresentAndHowToReachResource»
+					«eclassToRepresent»
 					'''
 				),
 				SaveableTableView

@@ -1,16 +1,13 @@
 package org.eclipse.emf.parsley.tests
 
-import java.util.List
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.config.Configurator
-import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.junit.Rule
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class ConfiguratorTest extends AbstractEmfParsleyTest {
 	
@@ -59,23 +56,6 @@ class ConfiguratorTest extends AbstractEmfParsleyTest {
 			}
 		}
 		.getEStructuralFeature(this).assertEquals(testPackage.baseClass_BaseClassFeature)
-	}
-
-	@Test
-	def void testDefaultGetContents() {
-		val resource = createResource
-		configurator.getContents(this, resource).assertNull
-	}
-
-	@Test
-	def void testCustomGetContents() {
-		val resource = createResource()
-		(new Configurator() {
-			def contents(ConfiguratorTest requestor, Resource resource) {
-				testContainer.classesForControls
-			}
-		}
-		.getContents(this, resource) as List<ClassForControls>).assertNotNull
 	}
 
 	def private getConfigurator() {

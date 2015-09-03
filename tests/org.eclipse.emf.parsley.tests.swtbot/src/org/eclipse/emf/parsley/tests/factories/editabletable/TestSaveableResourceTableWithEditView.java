@@ -12,20 +12,12 @@ package org.eclipse.emf.parsley.tests.factories.editabletable;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
-import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests;
 import org.eclipse.emf.parsley.views.AbstractSaveableTableView;
 import org.eclipse.swt.SWT;
 
 public class TestSaveableResourceTableWithEditView extends AbstractSaveableTableView {
-
-	@Override
-	public Object getContents(Resource resource) {
-		Library library=(Library) resource.getContents().get(0);
-		return library.getBooks();
-	}
 
 	@Override
 	protected EClass getEClass() {

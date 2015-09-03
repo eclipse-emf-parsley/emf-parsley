@@ -148,12 +148,6 @@ module my.project.name {
 	}
 	
 	configurator {
-		contents {
-			NameSaveableTableFormView -> {
-				// TODO return the contents from the resource
-				// e.g., resource.^contents.get(0)
-			}
-		}
 		eClass {
 			NameSaveableTableFormView -> {
 				// TODO return the EClass to represent
@@ -194,12 +188,6 @@ module my.project.name {
 	}
 	
 	configurator {
-		contents {
-			NameSaveableTableView -> {
-				// TODO return the contents from the resource
-				// e.g., resource.^contents.get(0)
-			}
-		}
 		eClass {
 			NameSaveableTableView -> {
 				// TODO return the EClass to represent

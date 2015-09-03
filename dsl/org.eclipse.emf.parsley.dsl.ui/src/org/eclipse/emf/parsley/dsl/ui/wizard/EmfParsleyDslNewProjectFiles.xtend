@@ -67,17 +67,6 @@ module «projectName» {
 		'''
 	}
 
-	def genContents(CharSequence className) {
-		'''
-		contents {
-			«className» -> {
-				// TODO return the contents from the resource
-				// e.g., resource.^contents.get(0)
-			}
-		}
-		'''
-	}
-
 	def genEClass(CharSequence className) {
 		'''
 		eClass {

@@ -564,10 +564,6 @@ module my.empty {
 			Library lib -> libraryPackage.library_Books
 			Writer -> libraryPackage.library_Writers
 		}
-		
-		contents {
-			Library lib -> resource.^contents.filter(Writer)
-		}
 	}
 }
 '''

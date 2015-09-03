@@ -13,12 +13,11 @@ package org.eclipse.emf.parsley.config;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 
 /**
  * This configures several aspects of many components in Emf Parsley, such as,
- * for instance, the Resource of a view, the features for the objects to
+ * for instance, the Resource of a view, the EClass for the objects to
  * be presented in a view, etc; the configuration will take place polymorphically
  * according to the requestor, passed as a parameter of the methods.
  * 
@@ -26,7 +25,7 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
  *
  */
 public class Configurator {
-	
+
 	private PolymorphicDispatcher<URI> createResourceUriDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("resourceURI", 1, 1, this);
 
@@ -35,9 +34,6 @@ public class Configurator {
 
 	private PolymorphicDispatcher<EStructuralFeature> getEStructuralFeatureDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("eStructuralFeature", 1, 1, this);
-
-	private PolymorphicDispatcher<Object> getContentsDispatcher = PolymorphicDispatcher
-			.createForSingleTarget("contents", 2, 2, this);
 
 	/**
 	 * Returns the {@link URI} of the resource for the requestor
@@ -93,23 +89,4 @@ public class Configurator {
 		return null;
 	}
 
-	/**
-	 * Returns the contents from the resource for the requestor for any use the requestor may need it
-	 * @param requestor
-	 * @param resource
-	 * @return
-	 */
-	public Object getContents(Object requestor, Resource resource) {
-		return getContentsDispatcher.invoke(requestor, resource);
-	}
-
-	/**
-	 * Returns the contents from the resource for the requestor
-	 * @param requestor
-	 * @param resource
-	 * @return
-	 */
-	public Object contents(Object requestor, Resource resource) {
-		return null;
-	}
 }
