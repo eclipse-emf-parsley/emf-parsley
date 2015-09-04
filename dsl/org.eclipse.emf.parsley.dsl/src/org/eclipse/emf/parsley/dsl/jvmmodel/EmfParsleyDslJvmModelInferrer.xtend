@@ -45,6 +45,7 @@ import org.eclipse.emf.parsley.dsl.model.WithFields
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.resource.ResourceManager
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
@@ -139,6 +140,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val formControlFactoryClass = element.inferFormControlFactory(acceptor)
 		val dialogControlFactoryClass = element.inferDialogControlFactory(acceptor)
 		val viewerContentProviderClass = element.inferViewerContentProvider(acceptor)
+		val tableViewerContentProviderClass = element.inferTableViewerContentProvider(acceptor)
 		val proposalCreatorClass = element.inferProposalCreator(acceptor)
 		val menuBuilderClass = element.inferMenuBuilder(acceptor)
 		val configuratorClass = element.inferConfigurator(acceptor)
@@ -188,6 +190,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.dialogControlFactory.genBindMethod(dialogControlFactoryClass, typeof(DialogControlFactory))
 			if (viewerContentProviderClass != null)
 				members += element.viewerContentProvider.genBindMethod(viewerContentProviderClass, typeof(IContentProvider))
+			if (tableViewerContentProviderClass != null)
+				members += element.tableViewerContentProvider.genBindMethod(tableViewerContentProviderClass, typeof(TableViewerContentProvider))
 			if (proposalCreatorClass != null)
 				members += element.proposalCreator.genBindMethod(proposalCreatorClass, typeof(ProposalCreator))
 			if (menuBuilderClass != null)
@@ -283,6 +287,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def private viewerContentProviderQN(Module element) {
 		element.fullyQualifiedName + ".edit.ui.provider.ViewerContentProviderGen"
+	}
+
+	def private tableViewerContentProviderQN(Module element) {
+		element.fullyQualifiedName + ".edit.ui.provider.TableViewerContentProviderGen"
 	}
 
 	def private proposalCreatorQN(Module element) {
@@ -599,14 +607,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(viewerContentProviderClass) [
 				setSuperClassTypeAndFields(viewerContentProvider, typeof(ViewerContentProvider))
 				
-				members += viewerContentProvider.toConstructor() [
-					parameters += element.viewerContentProvider.
-						toParameter("adapterFactory", 
-							typeRef(AdapterFactory)
-						)
-					body = [it.append("super(adapterFactory);")]
-					annotations += annotationRef(Inject)
-				]
+				members += toConstructorWithInjectedAdapterFactory(viewerContentProvider)
 				
 				for (specification : viewerContentProvider.elementsSpecifications) {
 					members += specification.specificationToMethod("elements", typeRef(Object))
@@ -618,6 +619,36 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			]
 			viewerContentProviderClass
 		}
+	}
+
+	def private inferTableViewerContentProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+		if (element.tableViewerContentProvider == null)
+			null
+		else {
+			val viewerContentProvider = element.tableViewerContentProvider
+			val viewerContentProviderClass = viewerContentProvider.toClass(element.tableViewerContentProviderQN)
+			acceptor.accept(viewerContentProviderClass) [
+				setSuperClassTypeAndFields(viewerContentProvider, typeof(TableViewerContentProvider))
+				
+				members += toConstructorWithInjectedAdapterFactory(viewerContentProvider)
+				
+				for (specification : viewerContentProvider.elementsSpecifications) {
+					members += specification.specificationToMethod("elements", typeRef(Object))
+				}
+			]
+			viewerContentProviderClass
+		}
+	}
+
+	private def toConstructorWithInjectedAdapterFactory(EObject e) {
+		e.toConstructor() [
+			parameters += e.
+				toParameter("adapterFactory", 
+					typeRef(AdapterFactory)
+				)
+			body = [it.append("super(adapterFactory);")]
+			annotations += annotationRef(Inject)
+		]
 	}
 
 	def private inferProposalCreator(Module element, IJvmDeclaredTypeAcceptor acceptor) {

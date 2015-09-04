@@ -23,6 +23,7 @@ import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.resource.ResourceManager
@@ -167,6 +168,12 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	def void testNotValidViewerContentProviderExtends() {
 		"viewerContentProvider".
 			assertExtendsTypeMismatch(ViewerContentProvider)
+	}
+
+	@Test
+	def void testNotValidTableViewerContentProviderExtends() {
+		"tableViewerContentProvider".
+			assertExtendsTypeMismatch(TableViewerContentProvider)
 	}
 
 	@Test

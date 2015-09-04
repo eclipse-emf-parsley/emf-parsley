@@ -525,6 +525,25 @@ module my.empty {
 }
 '''
 
+	def tableViewerContentProvider() 
+'''
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.parsley.examples.library.Book
+import org.eclipse.emf.parsley.examples.library.Library
+import org.eclipse.emf.parsley.examples.library.Writer
+
+module my.empty {
+	tableViewerContentProvider {
+		elements {
+			Resource -> allContents.filter(Library)
+			Library -> books + writers
+			Writer writer -> writer.books
+			Book -> author // implit 'it' param
+		}
+	}
+}
+'''
+
 	def viewerContentProviderWithExtends() 
 '''
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestViewerContentProvider

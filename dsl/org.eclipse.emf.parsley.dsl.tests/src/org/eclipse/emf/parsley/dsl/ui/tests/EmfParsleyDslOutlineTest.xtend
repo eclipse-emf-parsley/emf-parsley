@@ -126,6 +126,12 @@ module my.proj {
 		}
 	}
 
+	tableViewerContentProvider {
+		elements {
+			
+		}
+	}
+
 	menuBuilder {
 		menus {
 			
@@ -150,6 +156,7 @@ my.proj
   tableFeaturesProvider
   tableLabelProvider
   viewerContentProvider
+  tableViewerContentProvider
   menuBuilder
 '''
 		)

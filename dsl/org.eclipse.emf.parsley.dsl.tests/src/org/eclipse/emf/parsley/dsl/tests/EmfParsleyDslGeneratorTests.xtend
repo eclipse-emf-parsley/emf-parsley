@@ -1271,6 +1271,83 @@ public class ViewerContentProviderGen extends ViewerContentProvider {
 	}
 
 	@Test
+	def testTableViewerContentProvider() {
+		inputs.tableViewerContentProvider.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import my.empty.edit.ui.provider.TableViewerContentProviderGen;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+  
+  @Override
+  public Class<? extends TableViewerContentProvider> bindTableViewerContentProvider() {
+    return TableViewerContentProviderGen.class;
+  }
+}
+'''
+expectedTableViewerContentProvider =
+'''
+package my.empty.edit.ui.provider;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.inject.Inject;
+import java.util.Iterator;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
+import org.eclipse.emf.parsley.examples.library.Book;
+import org.eclipse.emf.parsley.examples.library.Library;
+import org.eclipse.emf.parsley.examples.library.Writer;
+
+@SuppressWarnings("all")
+public class TableViewerContentProviderGen extends TableViewerContentProvider {
+  @Inject
+  public TableViewerContentProviderGen(final AdapterFactory adapterFactory) {
+    super(adapterFactory);
+  }
+  
+  public Object elements(final Resource it) {
+    TreeIterator<EObject> _allContents = it.getAllContents();
+    Iterator<Library> _filter = Iterators.<Library>filter(_allContents, Library.class);
+    return _filter;
+  }
+  
+  public Object elements(final Library it) {
+    EList<Book> _books = it.getBooks();
+    EList<Writer> _writers = it.getWriters();
+    Iterable<EObject> _plus = Iterables.<EObject>concat(_books, _writers);
+    return _plus;
+  }
+  
+  public Object elements(final Writer writer) {
+    EList<Book> _books = writer.getBooks();
+    return _books;
+  }
+  
+  public Object elements(final Book it) {
+    Writer _author = it.getAuthor();
+    return _author;
+  }
+}
+''']
+		)
+	}
+
+	@Test
 	def testViewerContentProviderWithExtends() {
 		inputs.viewerContentProviderWithExtends.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
@@ -1979,6 +2056,9 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 				} else if (e.key.endsWith("DialogControlFactoryGen.java")) {
 					if (expected.expectedDialogControlFactory != null)
 						assertEqualsStrings(expected.expectedDialogControlFactory, e.value)
+				} else if (e.key.endsWith("TableViewerContentProviderGen.java")) {
+					if (expected.expectedTableViewerContentProvider != null)
+						assertEqualsStrings(expected.expectedTableViewerContentProvider, e.value)
 				} else if (e.key.endsWith("ViewerContentProviderGen.java")) {
 					if (expected.expectedViewerContentProvider != null)
 						assertEqualsStrings(expected.expectedViewerContentProvider, e.value)

@@ -43,6 +43,8 @@ Module:
 			&
 			(viewerContentProvider = ViewerContentProvider)?
 			&
+			(tableViewerContentProvider = TableViewerContentProvider)?
+			&
 			(partsSpecifications = PartsSpecifications)?
 			&
 			(resourceManager = ResourceManager)?
@@ -303,6 +305,18 @@ ViewerContentProvider:
 	'}'
 ;
 
+TableViewerContentProvider:
+	{TableViewerContentProvider} 'tableViewerContentProvider' (extendsClause=ExtendsClause)? '{'
+		fields += FieldSpecification*
+		
+		(
+		'elements' '{'
+			elementsSpecifications+=LabelSpecification*
+		'}'
+		)?
+	'}'
+;
+
 ResourceManager:
 	{ResourceManager} 'resourceManager' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
@@ -353,7 +367,8 @@ WithExtendsClause:
 // IMPORTANT: update EmfParsleyDslExpectedSuperTypes if you add another element
 WithFields:
 	LabelProvider | TableLabelProvider | FeatureCaptionProvider | AbstractFeatureCaptionProviderWithLabel |
-	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator | ViewerContentProvider |
+	AbstractFeatureProvider | AbstractControlFactory | ProposalCreator |
+	ViewerContentProvider | TableViewerContentProvider |
 	MenuBuilder | Configurator | ResourceManager
 ;
 

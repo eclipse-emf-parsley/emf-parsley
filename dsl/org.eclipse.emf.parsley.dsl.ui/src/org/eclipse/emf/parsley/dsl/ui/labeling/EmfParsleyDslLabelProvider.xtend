@@ -28,11 +28,12 @@ import org.eclipse.emf.parsley.dsl.model.ProposalCreator
 import org.eclipse.emf.parsley.dsl.model.ResourceManager
 import org.eclipse.emf.parsley.dsl.model.TableFeaturesProvider
 import org.eclipse.emf.parsley.dsl.model.TableLabelProvider
+import org.eclipse.emf.parsley.dsl.model.TableViewerContentProvider
 import org.eclipse.emf.parsley.dsl.model.ViewerContentProvider
 import org.eclipse.emf.parsley.dsl.services.EmfParsleyDslGrammarAccess
+import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.xbase.ui.labeling.XbaseImages2
 import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider
-import org.eclipse.xtext.common.types.JvmVisibility
 
 /**
  * Provides labels for a EObjects.
@@ -104,6 +105,10 @@ class EmfParsleyDslLabelProvider extends XbaseLabelProvider {
 
 	def text(ViewerContentProvider e) {
 		g.viewerContentProviderAccess.viewerContentProviderKeyword_1.value
+	}
+
+	def text(TableViewerContentProvider e) {
+		g.tableViewerContentProviderAccess.tableViewerContentProviderKeyword_1.value
 	}
 
 	def text(PartsSpecifications e) {

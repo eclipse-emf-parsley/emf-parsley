@@ -10,28 +10,28 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.factories;
 
-
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.composite.ProposalCreator;
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
+import org.eclipse.emf.parsley.tests.EmfParsleyGuiceModuleWithConfigurator;
 import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
-import org.eclipse.emf.parsley.tests.binding.CustomProposalCreator;
+import org.eclipse.emf.parsley.tests.providers.CustomLibraryTableViewerContentProvider;
 
 /**
- * Uses a custom proposals provider
+ * Uses a custom table viewer content provider
  * 
  * @author Lorenzo Bettini
  * 
  */
-public class CustomProposalCreatorExecutableExtensionFactory extends
-		EmfParsleyTestsExecutableExtensionFactory {
+public class CustomLibraryTableViewerContentProviderExecutableExtensionFactory
+		extends EmfParsleyTestsExecutableExtensionFactory {
 
 	@Override
 	protected EmfParsleyGuiceModule getModule() {
-		return new EmfParsleyGuiceModule(EmfParsleySwtBotTestsActivator.getDefault()) {
+		return new EmfParsleyGuiceModuleWithConfigurator(EmfParsleySwtBotTestsActivator.getDefault()) {
 
 			@Override
-			public Class<? extends ProposalCreator> bindProposalCreator() {
-				return CustomProposalCreator.class;
+			public Class<? extends TableViewerContentProvider> bindTableViewerContentProvider() {
+				return CustomLibraryTableViewerContentProvider.class;
 			}
 
 		};

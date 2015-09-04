@@ -300,9 +300,9 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 		new TableViewerContentProvider(type) {
 			override elements(Resource resource) {
 				// don't return classesWithName
-				newArrayList(resource.allContents.
+				resource.allContents.
 					filter(TestContainer).toIterable.
-					map[classesForControls].flatten)
+					map[classesForControls].flatten
 			}
 		}.injectMembers
 	}

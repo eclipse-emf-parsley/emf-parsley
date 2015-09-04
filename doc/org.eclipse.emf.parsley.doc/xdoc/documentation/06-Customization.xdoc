@@ -250,7 +250,9 @@ public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 
 section2:ViewerContentProvider[Viewer Content Provider]
 
-As in Jface, the Content Provider is used to get the elements to represent in a tree and their children.
+As in Jface, the Content Provider is used to get the elements to represent in a tree and their children
+(as detailed in ref:TableViewerContentProvider[Table Viewer Content Provider], for tables
+we use a different content provider).
 e[EMF Parsley] provides an implementation that uses the DSL as in the code below.
 
 code[EmfParsley][
@@ -302,6 +304,53 @@ public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
 	}
 }
 ]
+
+section2:TableViewerContentProvider[Table Viewer Content Provider]
+
+For table viewers we use a customized content provider, which inherits from
+the one described in ref:ViewerContentProvider[Viewer Content Provider];
+for tables we only need to specify how the root e[elements] are computed
+(no children are needed for tables).
+
+This content provider, codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider],
+must be configured with the codeRef[org.eclipse.emf.ecore.EClass] of the objects that
+will be shown in the table, so the e[setEClass] must be called before this content provider is
+used.  This setup is already automatically performed in views that are shipped with Parsley; in
+case you need to setup a table viewer yourself with this content provider, we strongly suggest
+you inject a codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory]
+and use its method e[createTableViewerContentProvider(EClass type)].
+
+With the information about the codeRef[org.eclipse.emf.ecore.EClass] this content provider
+is able to automatically retrieve all the contents of that type from a codeRef[org.eclipse.emf.ecore.resource.Resource]
+or any codeRef[org.eclipse.emf.ecore.EObject], by retrieving inspecting all the containment
+references of that type, recursively in the model.
+
+In case you want to optimize the retrieval of contents, or in case you want to
+show elements of the specified type which are not contained in an codeRef[org.eclipse.emf.ecore.EObject]
+(because they are references with containment set to false), you can inject your own
+custom codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider]
+and define e[elements] methods (again, this uses the polymorphic dispatch idiom).
+
+In the DSL this can be done using the specific section.
+
+code[EmfParsley][
+tableViewerContentProvider{
+	elements{
+		Library lib -> {
+			// this is just an optimization: since books are contained in the library
+			// the default content provider will retrieve them automatically
+			lib.books
+		}
+		Writer w {
+			// writers' books would not be retrieved by the default content provider
+			// since they are NOT 'contained' in a writer.
+			w.books
+		}
+	}
+}]
+
+IMPORTANT: customizations specified in a codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider]
+will NOT be reused by a codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider].
 
 section2:FeaturesProvider[Features Provider]
 

@@ -32,6 +32,7 @@ import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.ui.IViewPart
 
 import static org.eclipse.emf.parsley.dsl.model.ModelPackage.Literals.*
+import org.eclipse.emf.parsley.dsl.model.TableViewerContentProvider
 
 /**
  * Utility class that associates to each DSL element that can 'extends'
@@ -78,6 +79,7 @@ class EmfParsleyDslExpectedSuperTypes {
 		expected.put(CONFIGURATOR, Configurator)
 		expected.put(RESOURCE_MANAGER, ResourceManager)
 		expected.put(VIEWER_CONTENT_PROVIDER, ViewerContentProvider)
+		expected.put(TABLE_VIEWER_CONTENT_PROVIDER, TableViewerContentProvider)
 	}
 
 	def getExpectedSupertype(EObject element) {

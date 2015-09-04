@@ -84,6 +84,8 @@ the e[configurator] section in the DSL: contents retrieval is completely
 delegated to the new codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider],
 whose default implementation is able to automatically retrieve all the
 contents of a given type (i.e., EClass) automatically.
+The DSL provides the new e[tableViewerContentProvider] specification,
+see the new section ref:TableViewerContentProvider[Table Viewer Content Provider].
 ]
 item[
 Similarly, table views reacting on selection

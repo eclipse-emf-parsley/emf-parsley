@@ -188,6 +188,20 @@
        </view>
        <view
              category="org.eclipse.emf.parsley"
+             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryTableViewerContentProviderExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryBooksTableView"
+             id="org.eclipse.emf.parsley.tests.views.librarybookstableviewcustomcontentprovider"
+             name="Library Books Table View With Custom Content Provider"
+             restorable="true">
+       </view>
+       <view
+             category="org.eclipse.emf.parsley"
+             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryTableViewerContentProviderExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryBooksTableFormView"
+             id="org.eclipse.emf.parsley.tests.views.librarybookstableformviewcustomcontentprovider"
+             name="Library Books Table Form View With Custom Content Provider"
+             restorable="true">
+       </view>
+       <view
+             category="org.eclipse.emf.parsley"
              class="org.eclipse.emf.parsley.tests.factories.CustomContentProviderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableTreeView2"
              id="org.eclipse.emf.parsley.tests.views.testsaveabletreeviewcontentprovider"
              name="Library Tree View With Custom Content Provider"

@@ -105,6 +105,35 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
+	public void testOnSelectionLibraryBooksTableViewWithCustomContentProvider() throws Exception {
+		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_VIEW_CUSTOM_PROVIDER);
+		// the table should already show the column headers
+		getTableHeader(AUTHOR_COLUMN_HEADER);
+
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
+
+		// select the library
+		libraryNode.select();
+		// the table shows the books, select a table row
+		bot.table().select(0);
+
+		// select the resource
+		resourceNode.select();
+		// the table shows the books, select a table row
+		bot.table().select(0);
+
+		getWriterNode(libraryNode).select();
+		// since the custom content provider shows the writer's book
+		// when a writer is selected, the table shows books,
+		// differently from the previous test
+		bot.table().select(0);
+
+		view.close();
+	}
+
+	@Test
 	public void testOnSelectionLibraryBooksTableFormView() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_FORM_VIEW);
 		// the table should already show the column headers
@@ -130,6 +159,43 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 
 		getWriterNode(libraryNode).select();
 		assertTableItemsCount(bot.table(), 0);
+
+		view.close();
+	}
+
+	@Test
+	public void testOnSelectionLibraryBooksTableFormViewWithCustomContentProvider() throws Exception {
+		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_FORM_VIEW_CUSTOM_PROVIDER);
+		// the table should already show the column headers
+		getTableHeader(AUTHOR_COLUMN_HEADER);
+
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
+
+		// select the library
+		libraryNode.select();
+		// the table shows the books, select a table row
+		bot.table().select(0);
+
+		// select the resource
+		resourceNode.select();
+		// the table shows the books, select a table row
+		bot.table().select(0);
+
+		// now test the form: the book is already selected in the table
+		SWTFormsBot formbot = formBotFromView(view);
+		formbot.label(AUTHOR_LABEL);
+
+		getWriterNode(libraryNode).select();
+		// since the custom content provider shows the writer's book
+		// when a writer is selected, the table shows books,
+		// differently from the previous test
+		bot.table().select(0);
+
+		// now test the form: the book is already selected in the table
+		formbot = formBotFromView(view);
+		formbot.label(AUTHOR_LABEL);
 
 		view.close();
 	}

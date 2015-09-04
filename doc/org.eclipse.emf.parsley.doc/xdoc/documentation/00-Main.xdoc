@@ -20,7 +20,7 @@ codelanguage-def[EmfParsley]
 [
 	import,module,parts,labelProvider,text,image,elements,label,
 	featuresProvider,features,
-	formControlFactory,control,target,viewerContentProvider,
+	formControlFactory,control,target,viewerContentProvider,tableViewerContentProvider,
 	children,viewpart,viewname,viewclass,viewcategory,
 	for,new,switch,default,boolean,do,if,this,double,throw,null,
 	true,false,it,as,

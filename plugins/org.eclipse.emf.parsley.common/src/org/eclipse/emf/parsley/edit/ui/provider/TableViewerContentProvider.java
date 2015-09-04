@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.ui.provider;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -67,11 +65,11 @@ public class TableViewerContentProvider extends ViewerContentProvider {
 		return super.getElements(element);
 	}
 
-	public List<EObject> elements(Resource resource) {
+	public Object elements(Resource resource) {
 		return EcoreUtil2.getAllContentsOfType(resource, getEClass());
 	}
 
-	public List<EObject> elements(EObject ele) {
+	public Object elements(EObject ele) {
 		return EcoreUtil2.getAllContentsOfType(ele, getEClass());
 	}
 }
