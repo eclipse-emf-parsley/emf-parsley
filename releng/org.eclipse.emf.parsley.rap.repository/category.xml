@@ -6,22 +6,10 @@
    <feature id="org.eclipse.emf.parsley.rap.cdo.sdk" version="0.0.0">
       <category name="emfparsley.rap.category"/>
    </feature>
-   <feature id="org.eclipse.emf.parsley.rap.requirements" version="0.0.0">
-      <category name="emfparsley.rap.category"/>
-   </feature>
-   <feature id="org.eclipse.emf.parsley.rap.cdo.requirements" version="0.0.0">
-      <category name="emfparsley.rap.category"/>
-   </feature>
    <feature id="org.eclipse.emf.parsley.rap.sdk.source" version="0.0.0">
       <category name="emfparsley.rap.category.source"/>
    </feature>
    <feature id="org.eclipse.emf.parsley.rap.cdo.sdk.source" version="0.0.0">
-      <category name="emfparsley.rap.category.source"/>
-   </feature>
-   <feature id="org.eclipse.emf.parsley.rap.requirements.source" version="0.0.0">
-      <category name="emfparsley.rap.category.source"/>
-   </feature>
-   <feature id="org.eclipse.emf.parsley.rap.cdo.requirements.source" version="0.0.0">
       <category name="emfparsley.rap.category.source"/>
    </feature>
    <category-def name="emfparsley.rap.category" label="Emf Parsley RAP">

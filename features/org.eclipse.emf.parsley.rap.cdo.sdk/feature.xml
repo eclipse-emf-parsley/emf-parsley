@@ -20,10 +20,6 @@ EMF CDO Parsley runtime for the Rich Ajax Platform.
       %license
    </license>
 
-   <includes
-         id="org.eclipse.emf.parsley.rap.cdo.requirements"
-         version="0.0.0"/>
-
    <plugin
          id="org.eclipse.emf.parsley.cdo.common"
          download-size="0"

@@ -294,10 +294,8 @@
 				<module>../../plugins/org.eclipse.emf.parsley.rap.cdo</module>
 				<module>../../plugins/org.eclipse.emf.parsley.rap.views</module>
 				
-				<module>../../releng/org.eclipse.emf.parsley.rap.requirements</module>
 				<module>../../features/org.eclipse.emf.parsley.rap.sdk</module>
 
-				<module>../../releng/org.eclipse.emf.parsley.rap.cdo.requirements</module>
 				<module>../../features/org.eclipse.emf.parsley.rap.cdo.sdk</module>
 				
 				<module>../../releng/org.eclipse.emf.parsley.rap.repository</module>
