@@ -16,6 +16,12 @@
       %license
    </license>
 
+   <requires>
+      <import feature="org.eclipse.e4.rcp" />
+      <import feature="org.eclipse.emf.ecore" />
+      <import feature="org.eclipse.emf.common" />
+   </requires>
+
    <plugin
          id="org.eclipse.emf.parsley.examples.eclipse4"
          download-size="0"

@@ -58,10 +58,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.widgets.Composite;
 
 // The part implements IMenuListener for context menu handling
-public class MyEclipse4Part implements IMenuListener {
+public class MyEclipse4Part {
 
-	//the parent composite
-	private Composite parent;
 	//the EMF Parley composite for showing a tree and a detail form
 	private TreeFormComposite treeFormComposite;
 	//the EMF Resource
@@ -80,17 +78,16 @@ Modify the e[@PostConstruct] method with this code:
 code[Java][
 @PostConstruct
 public void postConstruct(Composite parent) {
-	this.parent = parent;
 
-	AdapterFactoryEditingDomain editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class)
+	AdapterFactoryEditingDomain editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class);
 
-	ResourceLoader resourceLoader = injector.getInstance(ResourceLoader.class)
+	ResourceLoader resourceLoader = injector.getInstance(ResourceLoader.class);
 	//load the resource
 	resource = resourceLoader.getResource(editingDomain, uri).getResource();
 
 	TreeFormFactory treeFormFactory = injector.getInstance(TreeFormFactory.class);
 	//create the tree-form composite
-	treeFormComposite = treeFormFactory.createTreeFormMasterDetailComposite(parent, SWT.BORDER);
+	treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
 
 	// Guice injected viewer context menu helper
 	ViewerContextMenuHelper contextMenuHelper = injector.getInstance(ViewerContextMenuHelper.class);
@@ -98,8 +95,8 @@ public void postConstruct(Composite parent) {
 	ViewerDragAndDropHelper dragAndDropHelper = injector.getInstance(ViewerDragAndDropHelper.class);
 
 	// set context menu and drag and drop
-	contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer());
-	dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer());
+	contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer(), editingDomain);
+	dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer(), editingDomain);
 
 	//update the composite
 	treeFormComposite.update(resource);
@@ -120,28 +117,17 @@ Let's start with adding the following attribute to the part
 
 code[Java][
 @Inject
-MDirtyable dirtyable;
+MDirtyable dirty;
 ]
 
-initialize it in the e[@PostConstruct] method
-
-code[Java][
-@PostConstruct
-public void postConstruct(Composite parent, MDirtyable dirtyable) {
-
-		this.dirtyable = dirtyable;
-
-		this.dirtyable.setDirty(false);
-]
-
-add to e[init] method the following code in order to update the dirty state
+add to e[@PostConstruct] method the following code in order to update the dirty state
 
 code[Java][
 editingDomain.getCommandStack().addCommandStackListener(
 			new CommandStackListener() {
 				public void commandStackChanged(EventObject event) {
-					if (dirtyable != null)
-						dirtyable.setDirty(true);
+					if (dirty != null)
+						dirty.setDirty(true);
 				}
 			});
 ]
@@ -163,6 +149,8 @@ and, in the end, add the e[Save] handler along with the correspondent e[Command]
 tutorials])
 
 code[Java][
+import javax.inject.Named;
+
 public class SaveHandler {
 
 	@Execute

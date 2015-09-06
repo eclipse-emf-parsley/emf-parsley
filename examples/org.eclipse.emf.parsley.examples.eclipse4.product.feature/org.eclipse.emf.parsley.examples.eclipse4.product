@@ -17,7 +17,7 @@
    </plugins>
 
    <features>
-      <feature id="org.eclipse.emf.parsley.examples.eclipse4.product.feature" version="0.1.0.qualifier"/>
+      <feature id="org.eclipse.emf.parsley.examples.eclipse4.product.feature"/>
    </features>
 
 

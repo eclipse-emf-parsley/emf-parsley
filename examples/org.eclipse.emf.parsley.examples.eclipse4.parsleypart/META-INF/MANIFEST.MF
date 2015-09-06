@@ -10,10 +10,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.parsley.views,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.e4.core.di,
- org.eclipse.e4.ui.model.workbench, 
+ org.eclipse.e4.ui.model.workbench,
  org.eclipse.e4.ui.workbench,
  org.eclipse.e4.ui.di,
- javax.annotation
+ javax.annotation,
+ org.eclipse.equinox.event
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
