@@ -706,7 +706,7 @@ public class EmfParsleySWTBotAbstractTests {
 		
 		assertProjectIsCreated(projectName, shell);
 	}
-	
+
 	protected void createExampleProjectsInWorkspace(String exampleDescription,
 			String... expectedProjects) {
 		bot.menu("File").menu("New").menu("Project...").click();
@@ -778,7 +778,7 @@ public class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void waitForBuild() throws CoreException {
-		IResourcesSetupUtil.waitForBuild();
+		IResourcesSetupUtil.reallyWaitForAutoBuild();
 		
 		// ensure that all queued workspace operations and locks are released
 		try {

@@ -23,9 +23,14 @@
 		<sequential>
 			<delete file="@{target}/@{name}.zip" />
 			<zip destfile="@{target}/@{name}.zip" basedir="@{source}/@{name}" 
-				excludes="bin,bin/**,xtend-gen,xtend-gen/**,emfparsley-gen,emfparsley-gen/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**,**/hs_*.log,**/*_Internal.launch" />
+				excludes="bin,bin/**,xtend-gen,xtend-gen/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**,**/hs_*.log,**/*_Internal.launch" />
 		</sequential>
 	</macrodef>
+	
+	<!--
+		https://bugs.eclipse.org/bugs/show_bug.cgi?id=476717
+			excludes="bin,bin/**,xtend-gen,xtend-gen/**,emfparsley-gen,emfparsley-gen/**,**/*._trace,**/*.smap,.antlr-generator*.jar,target,target/**,nodist,nodist/**,old,old/**,**/hs_*.log,**/*_Internal.launch" />
+	-->
 
 	<target name="zip_all_examples">
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.rcp" />
