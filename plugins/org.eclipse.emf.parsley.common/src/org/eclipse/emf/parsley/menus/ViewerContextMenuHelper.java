@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -27,6 +28,8 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 /**
+ * Provides utility methods for adding context menu to a viewer.
+ * 
  * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - refactoring for
  *         https://bugs.eclipse.org/bugs/show_bug.cgi?id=455727
@@ -50,7 +53,7 @@ public class ViewerContextMenuHelper {
 	}
 
 	/**
-	 * Adds a context menu to the passed {@link StructuredViewer}.
+	 * Adds a context menu to the passed {@link Viewer}.
 	 * 
 	 * The passed {@link IMenuListener} should implement a method like
 	 * 
@@ -69,7 +72,7 @@ public class ViewerContextMenuHelper {
 	 * @param actionBarContributor
 	 *            should be created by injection
 	 */
-	public void addViewerContextMenu(StructuredViewer viewer,
+	public void addViewerContextMenu(Viewer viewer,
 			AdapterFactoryEditingDomain editingDomain,
 			IWorkbenchPart activePart,
 			IMenuListener menuListener,
@@ -123,20 +126,20 @@ public class ViewerContextMenuHelper {
 	 * @param editingDomain
 	 *            should be created by injection
 	 */
-	public void addViewerContextMenu(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
+	public void addViewerContextMenu(Viewer viewer, AdapterFactoryEditingDomain editingDomain) {
 		createContextMenu(viewer, editingDomain, treeActionBarContributor);
 		viewer.addSelectionChangedListener(treeActionBarContributor);
 		treeActionBarContributor.initialize(editingDomain);
 	}
 
-	private MenuManager createContextMenu(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
+	private MenuManager createContextMenu(Viewer viewer, AdapterFactoryEditingDomain editingDomain) {
 		MenuManager menuManager = createMenuManager();
 		Menu menu = menuManager.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
 		return menuManager;
 	}
 
-	private MenuManager createContextMenu(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain, final IMenuListener menuListener) {
+	private MenuManager createContextMenu(Viewer viewer, AdapterFactoryEditingDomain editingDomain, final IMenuListener menuListener) {
 		MenuManager menuManager = createContextMenu(viewer, editingDomain);
 		menuManager.addMenuListener(new IMenuListener() {
 			@Override
@@ -147,7 +150,7 @@ public class ViewerContextMenuHelper {
 		return menuManager;
 	}
 
-	private void bridgeSelectionProviderAndActionBarContributor(StructuredViewer viewer,
+	private void bridgeSelectionProviderAndActionBarContributor(Viewer viewer,
 			WorkbenchActionBarContributor actionBarContributor) {
 		ViewerSelectionProvider viewerSelectionProvider = new ViewerSelectionProvider(viewer);
 		actionBarContributor.setExplicitSelectionProvider(viewerSelectionProvider);

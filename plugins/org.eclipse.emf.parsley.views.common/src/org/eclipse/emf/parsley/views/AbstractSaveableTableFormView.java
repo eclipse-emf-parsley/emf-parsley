@@ -41,7 +41,7 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 			.createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass());
 		tableFormComposite.update(getResource());
 
-		addContextMenuAndDragAndDrop(tableFormComposite.getViewer());
+		afterCreateViewer();
 	}
 
 	@Override

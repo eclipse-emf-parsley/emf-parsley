@@ -23,9 +23,9 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewerView{
 
 	@Inject
-	protected TreeFormFactory treeFormFactory;
+	private TreeFormFactory treeFormFactory;
 
-	protected TreeFormComposite treeFormComposite;
+	private TreeFormComposite treeFormComposite;
 
 	protected Object getContents(Resource resource) {
 		return resource;
@@ -40,13 +40,11 @@ public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewe
 
 		treeFormComposite.update(getContents(getResource()));
 
-		addContextMenuAndDragAndDrop(treeFormComposite.getViewer());
-		addMouseListener(treeFormComposite.getViewer());
+		afterCreateViewer();
 	}
 
 	public void forceReloadResource(){
 		treeFormComposite.update(getContents(getResource()));
-
 	}
 
 	@Override

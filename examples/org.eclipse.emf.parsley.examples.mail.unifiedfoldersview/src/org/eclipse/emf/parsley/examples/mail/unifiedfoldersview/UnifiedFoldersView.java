@@ -21,7 +21,7 @@ public class UnifiedFoldersView extends AccountsView {
 	protected void mostRecentCommandAffectsResource(Command mostRecentCommand) {
 		super.mostRecentCommandAffectsResource(mostRecentCommand);
 		// if a child changes the parent is not refreshed by default
-		getTreeViewer().refresh();
-		getTreeViewer().expandAll();
+		getViewer().refresh();
+		getViewer().expandAll();
 	}
 }

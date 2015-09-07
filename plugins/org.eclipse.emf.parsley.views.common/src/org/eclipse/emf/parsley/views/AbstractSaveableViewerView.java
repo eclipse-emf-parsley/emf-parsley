@@ -14,19 +14,24 @@ package org.eclipse.emf.parsley.views;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
+import org.eclipse.emf.parsley.viewers.IStructuredViewerProvider;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StructuredViewer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-public abstract class AbstractSaveableViewerView extends AbstractSaveableView implements IViewerProvider {
+/**
+ * A common saveable view based on a viewer.
+ * 
+ * @author Francesco Guidieri - Initial contribution and API
+ * @author Lorenzo Bettini - some refactoring
+ */
+public abstract class AbstractSaveableViewerView extends AbstractSaveableView implements IStructuredViewerProvider {
 
 	@Inject
 	private ViewerContextMenuHelper contextMenuHelper;
@@ -35,7 +40,22 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	private ViewerDragAndDropHelper dragAndDropHelper;
 
 	@Inject
-	protected Provider<IViewerMouseListener> viewerMouseListenerProvider;
+	private Provider<IViewerMouseListener> viewerMouseListenerProvider;
+
+	/**
+	 * This assumes that the viewer has already been created, that is,
+	 * {@link #getViewer()} must not return null.
+	 */
+	protected void afterCreateViewer() {
+		addContextMenuToViewer();
+		addDragAndDropToViewer();
+		addMouseListenerToViewer();
+		setViewerAsSelectionProvider();
+	}
+
+	protected void setViewerAsSelectionProvider() {
+		getSite().setSelectionProvider(getViewer());
+	}
 
 	@Override
 	protected void postCommandStackChanged(Command mostRecentCommand) {
@@ -66,9 +86,12 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 		}
 	}
 
-	protected void addContextMenuAndDragAndDrop(StructuredViewer viewer) {
-		contextMenuHelper.addViewerContextMenu(viewer, editingDomain, this);
-		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
+	protected void addContextMenuToViewer() {
+		contextMenuHelper.addViewerContextMenu(getViewer(), editingDomain, this);
+	}
+
+	protected void addDragAndDropToViewer() {
+		dragAndDropHelper.addDragAndDrop(getViewer(), editingDomain);
 	}
 
 	/**
@@ -76,8 +99,8 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	 * 
 	 * @param viewer
 	 */
-	public void addMouseListener(StructuredViewer viewer) {
-		viewer.getControl().addMouseListener(viewerMouseListenerProvider.get());
+	public void addMouseListenerToViewer() {
+		getViewer().getControl().addMouseListener(viewerMouseListenerProvider.get());
 	}
 
 }

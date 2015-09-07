@@ -8,27 +8,20 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.composite;
+package org.eclipse.emf.parsley.viewers;
 
+import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.swt.widgets.Composite;
 
-public class StructuredViewerAwareComposite extends Composite implements IStructuredViewerAware {
+/**
+ * Common interfaces for objects that provide a {@link StructuredViewer}
+ * 
+ * @author Lorenzo Bettini - Initial contribution and API
+ *
+ */
+public interface IStructuredViewerProvider extends IViewerProvider {
 
-    private StructuredViewer viewer;
-
-    public StructuredViewerAwareComposite(Composite parent, int style) {
-        super(parent, style);
-    }
-
-    @Override
-	public void setViewer(StructuredViewer viewer) {
-        this.viewer = viewer;
-    }
-
-    @Override
-	public StructuredViewer getViewer() {
-        return viewer;
-    }
+	@Override
+	StructuredViewer getViewer();
 
 }

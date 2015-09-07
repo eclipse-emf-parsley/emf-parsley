@@ -10,15 +10,17 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
+/**
+ * @author Lorenzo Bettini - Initial contribution and API
+ *
+ */
 public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerView {
 
 	@Inject
@@ -37,10 +39,7 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 		treeViewer = new TreeViewer(parent);
 		viewerFactory.initialize(treeViewer, getContents(getResource()));
 
-		addContextMenuAndDragAndDrop(treeViewer);
-		addMouseListener(treeViewer);
-
-		getSite().setSelectionProvider(treeViewer);
+		afterCreateViewer();
 	}
 
 	@Override
@@ -49,11 +48,7 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 	}
 
 	@Override
-	public StructuredViewer getViewer() {
-		return treeViewer;
-	}
-
-	public TreeViewer getTreeViewer() {
+	public TreeViewer getViewer() {
 		return treeViewer;
 	}
 
