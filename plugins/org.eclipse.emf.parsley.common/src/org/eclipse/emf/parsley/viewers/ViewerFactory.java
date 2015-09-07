@@ -79,13 +79,8 @@ public class ViewerFactory {
 	}
 
 	public TableViewer createTableViewer(Composite parent, int style, EClass type) {
-		return createTableViewer(parent, style, type,
-				tableViewerContentProviderFactory.createTableViewerContentProvider(type));
-	}
-
-	public TableViewer createTableViewer(Composite parent, int style, EClass type, IStructuredContentProvider contentProvider) {
 		TableViewer tableViewer = createTableViewer(parent, style);
-		buildColumns(tableViewer, type, contentProvider);
+		buildColumns(tableViewer, type);
 		return tableViewer;
 	}
 
@@ -93,7 +88,7 @@ public class ViewerFactory {
 		buildColumns(tableViewer, eClass, tableViewerContentProviderFactory.createTableViewerContentProvider(eClass));
 	}
 
-	public void buildColumns(TableViewer tableViewer, EClass eClass, 
+	private void buildColumns(TableViewer tableViewer, EClass eClass, 
 			IStructuredContentProvider contentProvider) {
 		tableViewer.setContentProvider(contentProvider);
 		columnBuilder.buildTableViewer(tableViewer, eClass);

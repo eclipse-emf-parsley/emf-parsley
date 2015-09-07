@@ -19,7 +19,7 @@ class TableViewerBuilderTest extends AbstractTableViewerTest {
 	@Test
 	def void testTableRowSize() {
 		buildAndFill(
-			testContainer.classesWithName, testPackage.classWithName
+			testContainer, testPackage.classWithName
 		)
 		syncExecVoid[
 			numOfElements.assertEquals(tableViewer.table.items.length)
@@ -29,7 +29,7 @@ class TableViewerBuilderTest extends AbstractTableViewerTest {
 	@Test
 	def void testTableRowTextForString() {
 		buildAndFill(
-			testContainer.classesWithName, testPackage.classWithName
+			testContainer, testPackage.classWithName
 		)
 		syncExecVoid[
 			"name 0".assertEquals(
@@ -41,7 +41,7 @@ class TableViewerBuilderTest extends AbstractTableViewerTest {
 	@Test
 	def void testTableRowTextForEObject() {
 		buildAndFill(
-			testContainer.classesForTable, testPackage.classForTable
+			testContainer, testPackage.classForTable
 		)
 		syncExecVoid[
 			"Class With Name name 0".assertEquals(

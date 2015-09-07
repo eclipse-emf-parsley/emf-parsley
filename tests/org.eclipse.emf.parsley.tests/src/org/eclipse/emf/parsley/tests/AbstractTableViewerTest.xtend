@@ -11,12 +11,10 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.parsley.util.EmfParsleyUtil
 import org.eclipse.emf.parsley.viewers.ViewerFactory
 import org.eclipse.jface.viewers.TableViewer
 import org.eclipse.swt.SWT
 import org.junit.Before
-import org.eclipse.jface.viewers.ArrayContentProvider
 
 abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
@@ -35,10 +33,8 @@ abstract class AbstractTableViewerTest extends AbstractImageBasedTest {
 
 	def protected buildAndFill(Object contents, EClass eClass) {
 		syncExecVoid[
-			viewerFactory.buildColumns(
-				tableViewer, eClass, new ArrayContentProvider
-			)
-			tableViewer.input = EmfParsleyUtil.ensureCollection(contents)
+			viewerFactory.buildColumns(tableViewer, eClass)
+			tableViewer.input = contents
 		]
 	}
 
