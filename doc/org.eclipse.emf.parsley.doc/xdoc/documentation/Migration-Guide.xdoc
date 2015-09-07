@@ -3,6 +3,9 @@ chapter:MigrationGuide[Migration Guide]
 section:FourFive[From 0.4 to 0.5]
 
 ul[
+item[e[ViewerInitializer] has been removed: all creation and initialization of viewers
+is performed using codeRef[org.eclipse.emf.parsley.viewers.ViewerFactory]; its API has been
+revised and simplified.]
 item[the packages e[factories] and e[builders] have been removed
 and their classes have been moved to other packages.
 If you get compiler errors, a simple "Organize Imports" should fix

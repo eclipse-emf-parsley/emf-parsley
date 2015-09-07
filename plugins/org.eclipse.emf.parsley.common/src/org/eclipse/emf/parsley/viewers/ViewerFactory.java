@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.viewers;
 
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -55,41 +54,72 @@ public class ViewerFactory {
 	@Inject
 	private TableViewerContentProviderFactory tableViewerContentProviderFactory;
 
+	/**
+	 * Initializes the viewer, and uses as input the resource specified by an
+	 * {@link URI}.
+	 * 
+	 * @param viewer
+	 * @param uri
+	 */
+	public void initialize(StructuredViewer viewer, URI uri) {
+		initialize(viewer, loadResource(uri));
+	}
+
+	/**
+	 * Initializes the viewer, and uses as input the resource set of the
+	 * specified editingDomain.
+	 * 
+	 * @param viewer
+	 * @param editingDomain
+	 */
+	public void initialize(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
+		initialize(viewer, editingDomain.getResourceSet());
+	}
+
+	/**
+	 * Initializes the viewer, and uses as input the specified object.
+	 * 
+	 * @param viewer
+	 * @param object
+	 */
 	public void initialize(StructuredViewer viewer, Object object) {
-		Object input;
-		if (object instanceof URI) {
-			AdapterFactoryEditingDomain editingDomain = loadResource((URI) object);
-			input = editingDomain.getResourceSet();
-		} else if (object instanceof AdapterFactoryEditingDomain) {
-			AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) object;
-			input = editingDomain.getResourceSet();
-		} else {
-			input = object;
-		}
-		initialize(viewer, input, contentProviderProvider.get(), labelProviderProvider.get());
+		initialize(viewer, object, contentProviderProvider.get(), labelProviderProvider.get());
 	}
 
-	public void initialize(StructuredViewer viewer, Object input,
-			IContentProvider contentProvider, IBaseLabelProvider labelProvider) {
-		viewer.setContentProvider(contentProvider);
-		if (labelProvider != null) {
-			viewer.setLabelProvider(labelProvider);
-		}
-		viewer.setInput(input);
-	}
-
+	/**
+	 * Creates a {@link TableViewer} that will represent objects of the
+	 * specified type.
+	 * 
+	 * @param parent
+	 * @param style
+	 * @param type
+	 * @return
+	 */
 	public TableViewer createTableViewer(Composite parent, int style, EClass type) {
 		TableViewer tableViewer = createTableViewer(parent, style);
 		buildColumns(tableViewer, type);
 		return tableViewer;
 	}
 
+	/**
+	 * Initializes the specified {@link TableViewer} building its columns
+	 * according to the specified type.
+	 * 
+	 * @param tableViewer
+	 * @param eClass
+	 */
 	public void buildColumns(TableViewer tableViewer, EClass eClass) {
 		buildColumns(tableViewer, eClass, tableViewerContentProviderFactory.createTableViewerContentProvider(eClass));
 	}
 
-	private void buildColumns(TableViewer tableViewer, EClass eClass, 
-			IStructuredContentProvider contentProvider) {
+	private void initialize(StructuredViewer viewer, Object input, IContentProvider contentProvider,
+			IBaseLabelProvider labelProvider) {
+		viewer.setContentProvider(contentProvider);
+		viewer.setLabelProvider(labelProvider);
+		viewer.setInput(input);
+	}
+
+	private void buildColumns(TableViewer tableViewer, EClass eClass, IStructuredContentProvider contentProvider) {
 		tableViewer.setContentProvider(contentProvider);
 		columnBuilder.buildTableViewer(tableViewer, eClass);
 	}

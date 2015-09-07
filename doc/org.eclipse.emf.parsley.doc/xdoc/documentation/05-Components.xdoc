@@ -1,10 +1,13 @@
 chapter:Components[Components]
 
-
 This section describes the components that are provided to be used out-of-the-box, that are the foundations for all parts built upon e[EMF Parsley].
 Afetr a brief description, for each component we present a set of customizations, just to give an idea of how it works. You can refer
 to ref:Customizations[Customizations Section] for a complete list.
- 
+
+Components and viewers have to be created using the factories we provide
+(e.g., for viewers we provide codeRef[org.eclipse.emf.parsley.viewers.ViewerFactory]);
+such factories provide specific e[create] methods that require all the needed parameters.
+These factories must be injected.
 
 section:FormComponent[Form Component]
 
@@ -59,16 +62,16 @@ Resource URI, and a simple EObject. This component uses the EMF Meta-Model infor
 
 img[images/03-components-tree.png][][ ][]
 
-e[EMF Parsley] provides an initializer that can be used to create such a component, like in the code below.
+e[EMF Parsley] provides a factory that can be used to create such a component, like in the code below.
 Here you can see that can be configured only in 2 lines, the constructor phase and the build&fill phase. 
 
 code[Java][
-@Inject ViewerInitializer viewerInitializer;
+@Inject ViewerFactory viewerFactory;
 
 (...)
 
 treeViewer = new TreeViewer(parent);
-viewerInitializer.initialize(treeViewer, element);
+viewerFactory.initialize(treeViewer, element);
 ]
 
 
@@ -91,7 +94,8 @@ and is responsible to provide the text and image rapresentation for each EObject
 
 section2:Tree_MenuBuilder[Adding Menu]
 
-The contextual menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section].
+The contextual menu can be added to the viewer via an injected
+codeRef[org.eclipse.emf.parsley.menus.ViewerContextMenuHelper], as explained in the ref:ContextualMenu[Menu section].
 The ref:MenuBuilder[Menu Builder] allows to fully customize the menus.
 
 section:TreeFormComponent[Tree Form Component]
@@ -121,7 +125,9 @@ are avaible for it.
 section:TableComponent[Table Component]
 
 The e[Table Component] can rapresent data in a grid, once you have specified the type of objects to represent. 
-It uses metamodel information to build columns as needed.
+It uses metamodel information to build columns as needed, and a
+codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider] to retrieve
+the contents of the specified type (see also ref:TableViewerContentProvider[]).
 
 img[images/03-components-table.png][][ ][]
 
@@ -130,7 +136,7 @@ code[Java][
 
 (...)
 
-tableViewer = viewerFactory.createTableViewer(composite,SWT.BORDER | SWT.FULL_SELECTION, object, eClass);
+tableViewer = viewerFactory.createTableViewer(composite, SWT.BORDER | SWT.FULL_SELECTION, eClass);
 ]
 
 The class codeRef[org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder] has the responsibility to
@@ -162,5 +168,6 @@ bindings{
 
 section2:Table_MenuBuilder[Adding Menu]
 
-The context menu can be added to the viewer via the ViewerInitializer, as explained in the ref:ContextualMenu[Menu section]
+The contextual menu can be added to the viewer via an injected
+codeRef[org.eclipse.emf.parsley.menus.ViewerContextMenuHelper], as explained in the ref:ContextualMenu[Menu section].
 The ref:MenuBuilder[Menu Builder] allows to fully customize the menus.
