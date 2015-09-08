@@ -36,7 +36,6 @@ public class ParsleyE4ModelPart {
 	@Inject
 	MApplication application;
 
-	@Inject
 	@PostConstruct
 	public void postConstruct(Composite parent) {
 		// Guice injected EMF Parsley factory for the tree detail form
