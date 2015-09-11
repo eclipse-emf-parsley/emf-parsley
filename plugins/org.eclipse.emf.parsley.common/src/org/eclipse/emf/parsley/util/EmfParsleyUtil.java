@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.util;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -46,6 +47,8 @@ public class EmfParsleyUtil {
 			return Lists.newArrayList((Iterable<?>) contents);
 		} else if (contents instanceof Iterator<?>) {
 			return Lists.newArrayList((Iterator<?>) contents);
+		} else if (contents.getClass().isArray()) {
+			return Arrays.asList((Object[]) contents);
 		} else {
 			return Collections.singleton(contents);
 		}

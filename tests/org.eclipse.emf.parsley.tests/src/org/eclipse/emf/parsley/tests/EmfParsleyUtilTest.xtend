@@ -45,6 +45,12 @@ public class EmfParsleyUtilTest {
 	}
 
 	@Test
+	def void testEnsureCollectionGivenArray() {
+		assertEquals(2, EmfParsleyUtil.ensureCollection(createArray())
+				.size());
+	}
+
+	@Test
 	def void testEnsureCollectionGivenIterable() {
 		assertEquals(2, EmfParsleyUtil.ensureCollection(createIterable())
 				.size());
@@ -75,6 +81,11 @@ public class EmfParsleyUtilTest {
 		val list = newArrayList(1, 2, 3);
 		assertEquals("1, 2, 3",
 				EmfParsleyUtil.toIntArray(list).map[toString].join(", "));
+	}
+
+	def protected Object[] createArray() {
+		val Object[] arr = #{ EXTLibraryFactory.eINSTANCE.createBook(), EXTLibraryFactory.eINSTANCE.createBook() };
+		return arr;
 	}
 
 	def protected Iterable<EObject> createIterable() {
