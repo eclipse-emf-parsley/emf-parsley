@@ -54,7 +54,6 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 		TableColumnLayout layout = new TableColumnLayout();
 		viewerContainer.setLayout(layout);
 		tableViewer = new TableViewer(viewerContainer, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
-		viewerContainer.setLayoutData(new GridData());
 		return tableViewer;
 	}
 
