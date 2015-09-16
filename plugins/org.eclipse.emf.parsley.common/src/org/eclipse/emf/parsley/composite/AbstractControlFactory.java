@@ -414,7 +414,11 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 			}
 			c.setData(AbstractControlFactory.ESTRUCTURALFEATURE_KEY, f);
 			c.setData(AbstractControlFactory.EOBJECT_KEY, owner);
-			c.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			// set default layout data if not already set by a custom
+			// polymorphic implementation or from the DSL
+			if (c.getLayoutData()==null) {
+				c.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			}
 		}
 	}
 

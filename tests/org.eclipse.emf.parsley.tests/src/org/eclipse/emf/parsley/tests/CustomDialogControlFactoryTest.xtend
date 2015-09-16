@@ -27,11 +27,12 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.swt.layout.FillLayout
 
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
-	
+
 	@Rule public val LogAppenderTestRule logAppender = new LogAppenderTestRule(EmfParsleyActivator);
-	
+
 	/**
 	 * Test the polymorphic method pattern
 	 * 
@@ -155,6 +156,26 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertText("Foo")
 	}
 
+	@Test
+	def void testCustomControlWithControlObservablePairAndLayout() {
+		// check that the layout data explicitly set is not overwritten
+		// by the default control setup
+		val o1 = createBaseClassObject
+		val factory = new DialogControlFactory {
+			def control_BaseClass_baseClassFeature(EStructuralFeature f) {
+				val text = createText("")
+				text.layoutData = new FillLayout()
+				return new ControlObservablePair(text, DatabindingUtil.observeText(text))
+			}
+		} => [initialize(o1)]
+		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
+		control.assertText("")
+		syncExecVoid[
+			assertTrue("expected FillLayout but was " + control.layoutData.class.simpleName,
+				control.layoutData instanceof FillLayout
+			)
+		]
+	}
 
 	/**
 	 * The Control in the ControlObservablePair is set to null

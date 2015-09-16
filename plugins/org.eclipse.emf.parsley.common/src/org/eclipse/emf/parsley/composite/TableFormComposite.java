@@ -17,7 +17,6 @@ import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;

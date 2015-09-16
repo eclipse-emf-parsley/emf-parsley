@@ -6,6 +6,7 @@ import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
@@ -20,15 +21,13 @@ public class FormControlFactoryGen extends FormControlFactory {
   }
   
   protected Control createControl_Mail_message() {
-    Text _xblockexpression = null;
-    {
-      final Text t = this.createText("", 
-        SWT.MULTI, SWT.BORDER, 
-        SWT.WRAP, SWT.V_SCROLL);
-      t.setEditable(false);
-      _xblockexpression = t;
-    }
-    return _xblockexpression;
+    final Text t = this.createText("", 
+      SWT.MULTI, SWT.BORDER, 
+      SWT.WRAP, SWT.V_SCROLL);
+    t.setEditable(false);
+    GridData _gridData = new GridData(GridData.FILL_BOTH);
+    t.setLayoutData(_gridData);
+    return t;
   }
   
   protected IObservableValue createTarget_Mail_message(final Control it) {

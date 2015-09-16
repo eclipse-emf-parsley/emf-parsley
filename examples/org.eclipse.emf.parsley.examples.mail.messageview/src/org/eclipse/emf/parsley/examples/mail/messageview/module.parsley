@@ -1,5 +1,6 @@
 import org.eclipse.emf.parsley.examples.mail.Mail
 import org.eclipse.emf.parsley.examples.mail.messageview.views.MessageView
+import org.eclipse.swt.layout.GridData
 
 /* org.eclipse.emf.parsley.examples.mail.messageview Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.messageview {
@@ -29,7 +30,8 @@ module org.eclipse.emf.parsley.examples.mail.messageview {
       						SWT.WRAP, SWT.V_SCROLL
 						)
 					t.editable = false
-					t
+					t.layoutData = new GridData(GridData.FILL_BOTH)
+					return t
 				}
 				target observeText(SWT::Modify)
 		}
