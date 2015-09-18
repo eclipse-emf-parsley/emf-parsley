@@ -46,11 +46,24 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 	 */
 	@Override
 	protected List<String> getRequiredBundles() {
-		return Lists.newArrayList(
-				"org.eclipse.core.runtime",
+		List<String> requiredBundles = Lists.newArrayList("org.eclipse.core.runtime");
+		if (getProjectInfo().isRapOption()) {
+			//Case RAP (single sourcing)
+			requiredBundles.addAll( Lists.newArrayList(
+				"org.eclipse.ui;resolution:=optional",
+				"org.eclipse.rap.ui;resolution:=optional",
+				EmfParsleyViewsActivator.PLUGIN_ID+";resolution:=optional",
+				"org.eclipse.emf.parsley.rap.views;resolution:=optional")
+			);
+		} else {
+			//Case RCP
+			requiredBundles.addAll( Lists.newArrayList(
 				"org.eclipse.ui",
-				EmfParsleyViewsActivator.PLUGIN_ID,
-				"org.eclipse.xtext.xbase.lib");
+				EmfParsleyViewsActivator.PLUGIN_ID)
+			);
+		}
+		requiredBundles.add("org.eclipse.xtext.xbase.lib");
+		return requiredBundles;
 		// don't add the components.dsl project dep
 		// otherwise the plugin will depend on xtext stuff
 		// which are not used by the generated code

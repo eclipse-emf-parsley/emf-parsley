@@ -20,13 +20,22 @@ import org.eclipse.xtext.ui.wizard.DefaultProjectInfo;
 public class EmfParsleyDslProjectInfo extends DefaultProjectInfo {
 	
 	private TemplateWizardConfiguration selectedTemplate;
-	
+	private boolean isRapOption;
+
 	public TemplateWizardConfiguration getSelectedTemplate() {
 		return selectedTemplate;
 	}
 	
 	public void setSelectedTemplate(TemplateWizardConfiguration selectedTemplate) {
 		this.selectedTemplate = selectedTemplate;
+	}
+	
+	public boolean isRapOption() {
+		return isRapOption;
+	}
+
+	public void setRapOption(boolean isRapOption) {
+		this.isRapOption = isRapOption;
 	}
 	
 }

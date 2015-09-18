@@ -27,6 +27,7 @@ public class EmfParsleyDslNewProjectCreationPage extends
 		WizardNewProjectCreationPage {
 
 	private Button fUseTemplate;
+	private Button btnRapOption;
 
 	public EmfParsleyDslNewProjectCreationPage(String pageName) {
 		super(pageName);
@@ -40,12 +41,15 @@ public class EmfParsleyDslNewProjectCreationPage extends
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 		super.createControl(container);
+		
+		Composite composite = new Composite(container, SWT.NONE);
+		composite.setLayout(new GridLayout(1, false));
+		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
-		fUseTemplate = new Button(container, SWT.CHECK);
+		fUseTemplate = new Button(composite, SWT.CHECK);
+		fUseTemplate.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		fUseTemplate
 				.setText("Create a Parsley plug-in using one of the templates");
-		GridData gd = new GridData();
-		fUseTemplate.setLayoutData(gd);
 		fUseTemplate.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -54,8 +58,17 @@ public class EmfParsleyDslNewProjectCreationPage extends
 		});
 		fUseTemplate.setSelection(true);
 		
+		btnRapOption = new Button(composite, SWT.CHECK);
+		btnRapOption.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		btnRapOption.setText("Prepare for Remote Application Platform (RAP)");
+
+		
 		setControl(container);
 		 
+	}
+	
+	public boolean isRapOption() {
+		return btnRapOption.getSelection();
 	}
 	
 	@Override

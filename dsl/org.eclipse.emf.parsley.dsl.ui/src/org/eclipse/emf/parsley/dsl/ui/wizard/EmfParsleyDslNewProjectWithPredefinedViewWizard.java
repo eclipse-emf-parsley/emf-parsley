@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.wizard;
 
-import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.xtext.ui.wizard.IProjectCreator;
 import org.eclipse.xtext.ui.wizard.IProjectInfo;
 
@@ -23,7 +22,7 @@ import com.google.inject.Inject;
 public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyDslNewProjectWizard{
 
 	private EmfParsleyDslProjectTemplateSelectionPage selectPredefinedViewPage;
-	private WizardNewProjectCreationPage mainPage;
+	private EmfParsleyDslNewProjectCreationPage mainPage;
 
 	@Inject
 	public EmfParsleyDslNewProjectWithPredefinedViewWizard(
@@ -49,6 +48,7 @@ public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyD
 		org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectInfo projectInfo = new org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectInfo();
 		projectInfo.setProjectName(mainPage.getProjectName());
 		projectInfo.setSelectedTemplate(selectPredefinedViewPage.getSelectedTemplate());
+		projectInfo.setRapOption(mainPage.isRapOption());
 		return projectInfo;
 	}
 	
