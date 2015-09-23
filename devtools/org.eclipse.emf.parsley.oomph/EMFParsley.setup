@@ -378,6 +378,8 @@
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <requirement
             name="org.eclipse.xtext.xdoc.feature.feature.group"/>
+        <requirement
+            name="org.eclipse.rap.tools.feature.feature.group"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
