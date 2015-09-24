@@ -58,13 +58,13 @@ public abstract class AbstractSaveableView extends ViewPart implements
 		initializeEditingDomain();
 
 		URI uri = createResourceURI();
-		loadResource(uri);
+		resource = loadResource(uri);
 	}
 
 	protected abstract URI createResourceURI();
 
-	protected void loadResource(URI uri) {
-		resource = resourceLoader.getResource(editingDomain, uri).getResource();
+	protected Resource loadResource(URI uri) {
+		return resourceLoader.getResource(editingDomain, uri).getResource();
 	}
 
 	protected void initializeEditingDomain() {
