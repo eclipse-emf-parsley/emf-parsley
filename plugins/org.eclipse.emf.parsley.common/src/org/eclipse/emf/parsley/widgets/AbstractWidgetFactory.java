@@ -67,6 +67,11 @@ public abstract class AbstractWidgetFactory implements IWidgetFactory {
 	}
 
 	@Override
+	public Text createText(Composite parent, int... styles) {
+		return createText(parent, "", aggregateStyles(styles));
+	}
+
+	@Override
 	public abstract Text createText(Composite parent, String text, int style);
 
 	@Override

@@ -42,6 +42,8 @@ public interface IWidgetFactory {
 
 	Text createText(Composite parent, String text);
 
+	Text createText(Composite parent, int... style);
+
 	Text createText(Composite parent, String text, int style);
 
 	ComboViewer createComboViewer(int... styles);
@@ -57,5 +59,6 @@ public interface IWidgetFactory {
 	DateTime createDateTime(Composite parent, int style);
 
 	Composite getParent();
+
 
 }

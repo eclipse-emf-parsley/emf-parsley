@@ -504,6 +504,11 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	}
 
 	@Override
+	public Text createText(Composite parent, int... styles) {
+		return widgetFactory.createText(parent, styles);
+	}
+
+	@Override
 	public Text createText(Composite parent, String text, int style) {
 		return widgetFactory.createText(parent, text, style);
 	}
