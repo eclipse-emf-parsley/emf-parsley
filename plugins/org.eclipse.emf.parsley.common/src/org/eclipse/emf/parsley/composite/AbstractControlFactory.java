@@ -245,7 +245,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return retVal;
 	}
 
-	private IObservableValue createFeatureObserveable(final EStructuralFeature feature) {
+	protected IObservableValue createFeatureObserveable(final EStructuralFeature feature) {
 		IObservableValue source = polymorphicCreateObserveable(domain, feature);
 		if (source == null) {
 			if (domain != null) {
