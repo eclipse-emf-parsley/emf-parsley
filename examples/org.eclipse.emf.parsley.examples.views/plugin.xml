@@ -52,10 +52,6 @@
             name="Emf Table Form View"
             restorable="true">
       </view>
-      <category
-            id="org.eclipse.emf.parsley"
-            name="Emf Parsley">
-      </category>
    </extension>
 
 </plugin>

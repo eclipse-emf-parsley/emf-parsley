@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley Views
-Bundle-SymbolicName: org.eclipse.emf.parsley.views
+Bundle-SymbolicName: org.eclipse.emf.parsley.views;singleton:=true
 Bundle-Version: 0.5.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
 Bundle-Vendor: Eclipse Modeling Project
