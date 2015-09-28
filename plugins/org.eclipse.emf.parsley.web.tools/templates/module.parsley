@@ -1,0 +1,100 @@
+import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
+//import org.eclipse.emf.common.util.URI
+//import products.Group
+//import products.ProductsPackage
+//import products.User
+
+module org.eclipse.emf.parsley.web.tools.servlets extends EmfParsleyJavaGuiceModule {
+	
+//	tableFeaturesProvider {
+//		features {
+//			User -> name, surname, group, active
+//			Group -> name
+//		}
+//	}
+//
+//	featureCaptionProvider {
+//		text {
+//			User: name -> "First name"
+//			User: surname -> "Last name"
+//			User: group -> "Group"
+//			Group: name -> "Group name"
+//		}
+//	}
+//	
+//	featuresProvider{
+//		features{
+//			User -> name, surname, group, active
+//			Group -> name
+//		}
+//	}
+//	
+//	labelProvider {
+//		text {
+//			User -> name 
+//		}
+//		image {
+//		}
+//	}
+//	
+//	formFeatureCaptionProvider {
+//		text {
+//			User:name -> "Name:"
+//			User:surname -> "Surname:"
+//			User:group -> "Group:"
+//			Group:name -> "Group name"
+//		}
+//	}
+//	
+//	tableViewerContentProvider {
+//		elements {
+//			String s -> {
+//	            switch (s) {
+//	              case "UserList" : MyList.listUser
+//	              case "GroupList" : MyList.listGroup
+//	            }
+//	          }
+//		}
+//	}
+//
+//	configurator {
+////		resourceURI { 
+////			String s -> {
+////            switch (s) {
+////              case "UserList" : URI.createURI("hibernate://?dsname=MyDb&query1=from User u WHERE u.active=true")
+////              case "GroupList" : URI.createURI("hibernate://?dsname=MyDb&query1=from Group")
+////            }
+////          }
+////		}
+//        eClass {
+//          String s -> {
+//            switch (s) {
+//              case "UserList" : ProductsPackage.Literals.USER
+//              case "GroupList" : ProductsPackage.Literals.GROUP
+//            }
+//          }
+//        }
+//	}
+//	
+//	proposals {
+//		User : group -> MyList.listGroup
+//	}
+////	
+////	proposals {
+////		User : group -> HbHelper.INSTANCE.createRegisterDataStore("MyDb")
+////							.getSessionFactory().openStatelessSession()
+////								.createQuery("SELECT g FROM Group g").list()
+////	}
+////
+////		dialogControlFactory {
+////		control {
+////			User : surname -> {
+////				createText("", SWT.MULTI, SWT.WRAP, SWT.V_SCROLL)
+//////				createComboViewer(SWT.NONE).combo
+////			}
+//////			target observeText(SWT::Modify)
+////		}
+////	}
+	
+	
+}
