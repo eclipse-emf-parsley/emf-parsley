@@ -104,6 +104,11 @@ public abstract class Control extends Widget {
         this.layoutData = layoutData;
     }
 
+    public Object getLayoutData () {
+//    	checkWidget ();
+    	return layoutData;
+    }
+
     public void addKeyListener(KeyListener listener) {
         // checkWidget();
         if (listener == null)
