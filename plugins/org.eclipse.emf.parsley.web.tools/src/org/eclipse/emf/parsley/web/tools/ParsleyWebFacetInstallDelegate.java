@@ -335,7 +335,7 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 
     }
 
-    private void checkForImportedPlugins(String pluginId, Bundle bundle) {
+    private void checkForImportedPlugins(final String pluginId, final Bundle bundle) {
     	IProject[] workspaceProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
     	boolean found = false;
     	for (IProject iProject : workspaceProjects) {
