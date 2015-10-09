@@ -17,7 +17,7 @@ ul[
 item[Download and start Oomph: link[https://wiki.eclipse.org/Eclipse_Oomph_Installer][https://wiki.eclipse.org/Eclipse_Oomph_Installer]]
 item[On the initial page, click on the Switch to advanced mode button in the top right]
 item[On the Product page, select Eclipse IDE for Eclipse Committers.]
-item[On the Projects page, example the "EMF Parsley" node.]
+item[On the Projects page, expand the "EMF Parsley" node.]
 item[either double-click on "RCP" or "RAP" for setting up the workspace for either the RCP version of
 Parsley or the RAP version (it is likely that you choose the former).]
 item[Choose your preferred installation settings on the Variables page:
