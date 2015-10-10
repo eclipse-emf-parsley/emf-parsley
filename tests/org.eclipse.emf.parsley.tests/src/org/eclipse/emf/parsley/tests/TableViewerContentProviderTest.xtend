@@ -29,6 +29,7 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.util.ResourceAndEObject
 
 class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 
@@ -191,7 +192,7 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 		testContainer = createTestContainerInResource
 		setupTableViewer(testContainer.eResource,
 			new TableViewerContentProvider(testPackage.classForControls) {
-				override elements(Resource resource) {
+				def elements(Resource resource) {
 					new ArrayList() => [
 						add(null)
 					]
@@ -223,6 +224,24 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 		val tableViewer = setupTableViewer(testContainer.eResource,
 			testPackage.classWithName)
 		assertTable(tableViewer, CLASS_WITH_NAME_TEST)
+	}
+
+	@Test
+	def void testElementsForTableViewerWithResourceAndEObject() {
+		// this tests the case of a Resource which is also an EObject
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=479417
+		val resource = new ResourceAndEObject
+		resource.contents += createClassWithName("Test")
+		val tableViewer = setupTableViewer(resource,
+			testPackage.classWithName)
+		assertTable(tableViewer, CLASS_WITH_NAME_TEST)
+	}
+
+	@Test
+	def void testElementsForTableViewerWithInputNotEObject() {
+		val tableViewer = setupTableViewer("input",
+			testPackage.classWithName)
+		assertTable(tableViewer, "")
 	}
 
 	@Test
@@ -298,7 +317,7 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 
 	private def getContentProviderWithCustomGetElements(EClass type) {
 		new TableViewerContentProvider(type) {
-			override elements(Resource resource) {
+			def elements(Resource resource) {
 				// don't return classesWithName
 				resource.allContents.
 					filter(TestContainer).toIterable.
@@ -327,11 +346,11 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	 * just in the rows, so we set a label provider which is usually not needed for
 	 * table viewers (since we have column label providers).
 	 */
-	def private setupTableViewer(Resource resouce, TableViewerContentProvider contentProvider) {
+	def private setupTableViewer(Resource resource, TableViewerContentProvider contentProvider) {
 		new TableViewer(shell) => [
 			it.contentProvider = contentProvider
 			it.labelProvider = labelProvider
-			it.input = resouce
+			it.input = resource
 		]
 	}
 
@@ -341,11 +360,19 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	 * just in the rows, so we set a label provider which is usually not needed for
 	 * table viewers (since we have column label providers).
 	 */
-	def private setupTableViewer(Resource resouce, EClass type) {
+	def private setupTableViewer(Resource resource, EClass type) {
 		new TableViewer(shell) => [
 			it.contentProvider = contentProvider(type)
 			it.labelProvider = labelProvider
-			it.input = resouce
+			it.input = resource
+		]
+	}
+
+	def private setupTableViewer(Object input, EClass type) {
+		new TableViewer(shell) => [
+			it.contentProvider = contentProvider(type)
+			it.labelProvider = labelProvider
+			it.input = input
 		]
 	}
 
