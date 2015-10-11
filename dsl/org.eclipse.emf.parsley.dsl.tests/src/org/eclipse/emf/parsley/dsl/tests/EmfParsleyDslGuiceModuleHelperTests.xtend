@@ -109,6 +109,7 @@ bindIssueReporter
 bindValidationRunner
 bindDiagnosticUtil
 bindFeatureHelper
+bindAsyncCommandStackListener
 bindAdapterFactory
 bindAdapterFactoryLabelProvider''',
 		'''

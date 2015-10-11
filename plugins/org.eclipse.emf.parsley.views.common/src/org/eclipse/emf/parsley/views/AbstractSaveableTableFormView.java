@@ -60,7 +60,7 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 	protected abstract EClass getEClass();
 
 	@Override
-	protected void mostRecentCommandAffectsResource(Command mostRecentCommand) {
+	public void mostRecentCommandAffectsResource(Command mostRecentCommand) {
 		super.mostRecentCommandAffectsResource(mostRecentCommand);
 		// for TableViewer the refresh does not seem to be automatic
 		tableFormComposite.getViewer().refresh();

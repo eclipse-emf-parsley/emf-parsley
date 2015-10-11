@@ -57,7 +57,8 @@ import org.junit.runners.Suite;
 	ClassLoaderImageHelperTest.class,
 	ShellBasedTest.class,
 	ControlBasedTest.class,
-	ValidationRunnerTest.class
+	ValidationRunnerTest.class,
+	AsyncCommandStackListenerTest.class
 })
 public class EmfParsleyAllTests {
 

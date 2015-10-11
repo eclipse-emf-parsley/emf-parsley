@@ -41,6 +41,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelPro
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
+import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
 import org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter;
@@ -511,6 +512,14 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends FeatureHelper> bindFeatureHelper() {
 		return FeatureHelper.class;
+	}
+
+	/**
+	 * Use this method to customize a {@link AsyncCommandStackListener}.
+	 * @return an implementation of {@link AsyncCommandStackListener}
+	 */
+	public Class<? extends AsyncCommandStackListener> bindAsyncCommandStackListener() {
+		return AsyncCommandStackListener.class;
 	}
 
 	/**

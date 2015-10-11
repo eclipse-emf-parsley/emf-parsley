@@ -22,7 +22,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.EventObject;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -39,8 +38,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.MarkerHelper;
@@ -70,6 +67,8 @@ import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
+import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerClient;
+import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerHelper;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
@@ -119,7 +118,7 @@ import com.google.inject.Provider;
  */
 public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		IEditingDomainProvider, ISelectionProvider, IMenuListener,
-		IViewerProvider, IGotoMarker {
+		IViewerProvider, IGotoMarker, AsyncCommandStackListenerClient {
 	public abstract static class XML extends EmfAbstractEditor {
 		public XML() {
 			try {
@@ -427,6 +426,9 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Inject
 	protected ViewerDragAndDropHelper dragAndDropHelper;
 
+	@Inject
+	private AsyncCommandStackListenerHelper commandStackListenerHelper;
+
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -584,36 +586,26 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	protected void initializeEditingDomain() {
 		editingDomain = editingDomainProvider.get();
-		adapterFactory = (ComposedAdapterFactory) editingDomain
-				.getAdapterFactory();
+		adapterFactory = (ComposedAdapterFactory) editingDomain.getAdapterFactory();
 		// Add a listener to set the most recent command's affected objects to
 		// be the selection of the viewer with focus.
-		editingDomain.getCommandStack().addCommandStackListener(
-				new CommandStackListener() {
-					@Override
-					public void commandStackChanged(final EventObject event) {
-						getContainer().getDisplay().asyncExec(new Runnable() {
-							@Override
-							public void run() {
-								firePropertyChange(IEditorPart.PROP_DIRTY);
+		commandStackListenerHelper.addCommandStackListener(editingDomain, getSite().getWorkbenchWindow().getShell(),
+				this);
+	}
 
-								// Try to select the affected objects.
-								//
-								Command mostRecentCommand = ((CommandStack) event
-										.getSource()).getMostRecentCommand();
-								if (mostRecentCommand != null) {
-									setSelectionToViewer(mostRecentCommand
-											.getAffectedObjects());
-								}
-								if (propertySheetPage != null
-										&& !propertySheetPage.getControl()
-												.isDisposed()) {
-									propertySheetPage.refresh();
-								}
-							}
-						});
-					}
-				});
+	@Override
+	public void mostRecentCommandAffectsResource(Command mostRecentCommand) {
+		firePropertyChange(IEditorPart.PROP_DIRTY);
+	}
+
+	@Override
+	public void postCommandStackChanged(Command mostRecentCommand) {
+		if (mostRecentCommand != null) {
+			setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+		}
+		if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
+			propertySheetPage.refresh();
+		}
 	}
 
 	/**
