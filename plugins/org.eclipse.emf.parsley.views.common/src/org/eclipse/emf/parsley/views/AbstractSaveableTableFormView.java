@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.views;
 
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
@@ -59,10 +58,4 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 	 */
 	protected abstract EClass getEClass();
 
-	@Override
-	protected void mostRecentCommandAffectsResource(Command mostRecentCommand) {
-		super.mostRecentCommandAffectsResource(mostRecentCommand);
-		// for TableViewer the refresh does not seem to be automatic
-		tableFormComposite.getViewer().refresh();
-	}
 }

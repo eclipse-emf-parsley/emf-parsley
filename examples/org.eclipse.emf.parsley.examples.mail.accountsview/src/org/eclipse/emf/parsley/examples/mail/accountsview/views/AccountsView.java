@@ -25,9 +25,9 @@ public class AccountsView extends SaveableTreeView {
 	 * The ID of the view as specified by the extension.
 	 */
 	public static final String ID = "org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView";
-	
+
 	@Override
-	protected void mostRecentCommandAffectsResource(Command mostRecentCommand) {
+	public void mostRecentCommandAffectsResource(Command mostRecentCommand) {
 		try {
 			saveResourceAndUpdateDirtyState();
 		} catch (IOException e) {
