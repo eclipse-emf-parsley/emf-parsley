@@ -18,16 +18,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.config.Configurator;
-import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.emf.parsley.util.FeatureHelper;
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import com.google.inject.Injector;
 
@@ -59,20 +52,20 @@ public class JsonSaveServlet extends JsonParsleyServlet {
         final String entity = request.getParameter(SWITCH_PARAMETER);
 
         try {
-            final JSONObject jsonEntity = (JSONObject) new JSONParser().parse(data);
-            String id = jsonEntity.get(OBJECT_ID_PARAMETER).toString();
-            System.out.println(id);
-            EObject eObject = (EObject) Application.getInstance(request).get(id);
-            System.out.println(eObject);
-
-            final ViewerLabelProvider labelProvider = (ViewerLabelProvider) injector.getInstance(ILabelProvider.class);
-
-            if (eObject == null) {
-                EClass clazz = configurator.getEClass(entity);
-                eObject = EcoreUtil.create(clazz);
-            }
-
-            final EObject eObject1 = eObject;
+//            final JSONObject jsonEntity = (JSONObject) new JSONParser().parse(data);
+//            String id = jsonEntity.get(OBJECT_ID_PARAMETER).toString();
+//            System.out.println(id);
+//            EObject eObject = (EObject) Application.getInstance(request).get(id);
+//            System.out.println(eObject);
+//
+//            final ViewerLabelProvider labelProvider = (ViewerLabelProvider) injector.getInstance(ILabelProvider.class);
+//
+//            if (eObject == null) {
+//                EClass clazz = configurator.getEClass(entity);
+//                eObject = EcoreUtil.create(clazz);
+//            }
+//
+//            final EObject eObject1 = eObject;
             // Application.getInstance(request).getDisplay().syncExec(new Runnable() {
             // @Override
             // public void run() {
