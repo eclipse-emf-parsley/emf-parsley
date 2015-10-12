@@ -17,6 +17,9 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -33,6 +36,11 @@ import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.IViewPart;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import com.google.inject.Injector;
 
@@ -55,10 +63,12 @@ public class JsonTableServlet extends JsonParsleyServlet {
         out.write("[");
 
         String s = request.getParameter(SWITCH_PARAMETER);
+        System.out.println(s);
 
         IViewPart viewpartClass;
 		try {
-			viewpartClass = (IViewPart) Class.forName("it.rcpvision.web.parsley.demo.webapp1.parts.UsersView").newInstance();
+			String partQN = getPartQN(s);
+			viewpartClass = (IViewPart) Class.forName(partQN).newInstance();
 
 			ResourceLoader loader = injector.getInstance(ResourceLoader.class);
 
@@ -114,5 +124,21 @@ public class JsonTableServlet extends JsonParsleyServlet {
         out.write("]");
         closeOutput(out);
     }
+
+	private String getPartQN(String viewId) throws ParserConfigurationException, SAXException, IOException {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		//NOTE: plugin.xml must be on the classpath, e.g. into /src folder
+		Document doc = db.parse(getClass().getResourceAsStream("/plugin.xml"));
+		NodeList viewNodes = doc.getElementsByTagName("view");
+		for (int i = 0; i < viewNodes.getLength(); i++) {
+			Node viewNode = viewNodes.item(i);
+			NamedNodeMap attrs = viewNode.getAttributes();
+			if (viewId.equals(attrs.getNamedItem("id").getNodeValue())) {
+				return attrs.getNamedItem("class").getNodeValue().split(":")[1];
+			}
+		}
+		return null;
+	}
 
 }
