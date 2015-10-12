@@ -573,7 +573,7 @@
         password="${eclipse.user.password}">
       <query
           summary="EMF Parsley Bugs"
-          url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_severity=blocker&amp;bug_severity=critical&amp;bug_severity=major&amp;bug_severity=normal&amp;bug_severity=minor&amp;bug_severity=trivial"/>
+          url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED"/>
     </setupTask>
     <setupTask
         xsi:type="mylyn:MylynQueriesTask"
