@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.ui.provider;
 
+import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -22,9 +24,9 @@ import com.google.inject.Inject;
  * Declarative ContentProvider specific for table viewer, implementing
  * getElements retrieving all the contents of a specific {@link EClass}.
  * 
- * The {@link EClass} must be set before this content provider is used.
- * We provide a specific factory for conveniently create instances of
- * this content provider.
+ * The {@link EClass} must be set before this content provider is used. We
+ * provide a specific factory for conveniently create instances of this content
+ * provider.
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  * 
@@ -34,9 +36,8 @@ public class TableViewerContentProvider extends ViewerContentProvider {
 	private EClass eClass;
 
 	/**
-	 * Meant for testing: If you use this constructor, you
-	 * then must make sure to inject other members, using, for instance,
-	 * injectMembers.
+	 * Meant for testing: If you use this constructor, you then must make sure
+	 * to inject other members, using, for instance, injectMembers.
 	 */
 	public TableViewerContentProvider(EClass eClass) {
 		this.eClass = eClass;
@@ -65,11 +66,22 @@ public class TableViewerContentProvider extends ViewerContentProvider {
 		return super.getElements(element);
 	}
 
-	public Object elements(Resource resource) {
-		return EcoreUtil2.getAllContentsOfType(resource, getEClass());
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object> elements(Object o) {
+		// since we can get an object which is both a Resource and an EObject
+		// e.g., CDOResource, we can't have two elements methods since we would
+		// get an ambiguous methods exception from the polymorphic dispatcher
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=479417
+		if (o instanceof Resource) {
+			Object result = EcoreUtil2.getAllContentsOfType((Resource) o, getEClass());
+			return (List<Object>) result;
+		}
+		if (o instanceof EObject) {
+			Object result = EcoreUtil2.getAllContentsOfType((EObject) o, getEClass());
+			return (List<Object>) result;
+		}
+		return super.elements(o);
 	}
 
-	public Object elements(EObject ele) {
-		return EcoreUtil2.getAllContentsOfType(ele, getEClass());
-	}
 }
