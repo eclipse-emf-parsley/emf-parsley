@@ -122,7 +122,9 @@ bindAdapterFactoryLabelProvider''',
 		// ATTENTION: if you add a new provide method in EmfParsleyGuiceModule this test
 		// will fail: you must fix it by updating the expected list in the CharSequence
 		assertEqualsStrings(
-		'''provideAdapterFactoryEditingDomain''',
+		'''
+provideAdapterFactoryEditingDomain
+provideEditingDomain''',
 		'''
 		module my.test.mod {}
 		'''.parse.module.allGuiceProviderBindingsMethodsInSuperclass.map[simpleName].join("\n"))

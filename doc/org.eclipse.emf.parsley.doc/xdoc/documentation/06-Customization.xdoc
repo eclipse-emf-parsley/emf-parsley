@@ -762,7 +762,7 @@ emfMenus{
 				book.title = "A new book"
 				book.author = w
 			\]
-		),
+		)
 	\]
 }
 ]

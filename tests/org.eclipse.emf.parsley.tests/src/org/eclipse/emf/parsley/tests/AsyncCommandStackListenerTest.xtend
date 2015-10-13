@@ -6,7 +6,6 @@ import org.eclipse.emf.common.command.AbstractCommand
 import org.eclipse.emf.common.command.Command
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerHelper
@@ -54,7 +53,7 @@ class AsyncCommandStackListenerTest extends AbstractEmfParsleyControlBasedTest {
 	@Before
 	def void initialize() {
 		val injector = getOrCreateInjector
-		editingDomain = injector.getProvider(AdapterFactoryEditingDomain).get()
+		editingDomain = injector.getProvider(EditingDomain).get()
 		client = new TestableCommandStackListenerClient
 		helper = injector.getInstance(AsyncCommandStackListenerHelper)
 		resource = new ResourceImpl

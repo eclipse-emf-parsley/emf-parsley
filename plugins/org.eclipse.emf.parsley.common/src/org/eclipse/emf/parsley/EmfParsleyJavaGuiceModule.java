@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
@@ -35,6 +36,7 @@ import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider;
+import org.eclipse.emf.parsley.edit.domain.DefaultEditingDomainProvider;
 import org.eclipse.emf.parsley.edit.provider.InjectableAdapterFactory;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelProvider;
@@ -334,7 +336,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	public Class<? extends WorkbenchActionBarContributor> bindWorkbenchActionBarContributor() {
 		return WorkbenchActionBarContributor.class;
 	}
-	
+
 	/**
 	 * Use this bind to provide your implementation of a of <b>action bar contributor</b>  without a workbench.
 	 * This scenario can be used where you have a view instead of an editor, for example in a <b>e4 application</b>.  
@@ -344,7 +346,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	public Class<? extends TreeActionBarContributor> bindTreeActionBarContributor() {
 		return TreeActionBarContributor.class;
 	}
-	
+
 	/**
 	 * Use this bind method to change the way Edit actions (Copy, cut and paste)
 	 * and EMF actions are added to context menu.
@@ -407,7 +409,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	public Class<? extends EmfSelectionHelper> bindEmfSelectionHelper() {
 		return EmfSelectionHelper.class;
 	}
-	
+
 	/**
 	 * Use this method to customize save mechanism
 	 * @return a specification of {@link ResourceSaveStrategy}
@@ -423,7 +425,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	public Diagnostician bindDiagnostician() {
 		return Diagnostician.INSTANCE;
 	}
-	
+
 	/**
 	 * Use this method to customize tasks concerning a resource,
 	 * for example, its initialization.
@@ -524,12 +526,24 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 
 	/**
 	 * Use this method to specify a provider for {@link AdapterFactoryEditingDomain}.
-	 * The default implementation in {@link DefaultAdapterFactoryEditingDomainProvider}
+	 * The default implementation is {@link DefaultAdapterFactoryEditingDomainProvider}
 	 * @return an implementation of {@link Provider} for {@link AdapterFactoryEditingDomain}
 	 */
 	public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
-    	return DefaultAdapterFactoryEditingDomainProvider.class;
-    }
+		return DefaultAdapterFactoryEditingDomainProvider.class;
+	}
+
+	/**
+	 * Use this method to specify a provider for {@link EditingDomain}. The
+	 * default implementation is {@link DefaultEditingDomainProvider}, which
+	 * simply delegates to an injected
+	 * {@link DefaultAdapterFactoryEditingDomainProvider}.
+	 * 
+	 * @return an implementation of {@link Provider} for {@link EditingDomain}
+	 */
+	public Class<? extends Provider<EditingDomain>> provideEditingDomain() {
+		return DefaultEditingDomainProvider.class;
+	}
 
 	/**
 	 * Use this method to specify an adapter factory

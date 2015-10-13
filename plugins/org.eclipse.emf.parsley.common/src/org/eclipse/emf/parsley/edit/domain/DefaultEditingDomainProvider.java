@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,22 +9,29 @@
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.emf.parsley.edit;
+package org.eclipse.emf.parsley.edit.domain;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-/**
- * Retrieves the EditingDomain for an EObject. The default implementation simply
- * uses {@link AdapterFactoryEditingDomain#getEditingDomainFor(EObject)}.
- * 
- * @author Lorenzo Bettini
- * 
- */
-public class EditingDomainFinder {
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
-	public EditingDomain getEditingDomainFor(EObject object) {
-		return AdapterFactoryEditingDomain.getEditingDomainFor(object);
+/**
+ * The default implementation is to delegate to a {@link Provider} for
+ * {@link AdapterFactoryEditingDomain}.
+ * 
+ * @author Lorenzo Bettini - Initial contribution and API
+ *
+ */
+public class DefaultEditingDomainProvider implements Provider<EditingDomain> {
+
+	@Inject
+	private Provider<AdapterFactoryEditingDomain> delegateProvider;
+
+	@Override
+	public EditingDomain get() {
+		return delegateProvider.get();
 	}
+
 }

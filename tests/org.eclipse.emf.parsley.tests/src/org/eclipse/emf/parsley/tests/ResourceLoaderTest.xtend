@@ -2,17 +2,17 @@ package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Injector
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.resource.ResourceLoader
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.tests.util.ModuleWithResourceInitializer
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 import static org.junit.Assert.*
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class ResourceLoaderTest extends AbstractEmfParsleyTest {
 	
@@ -85,7 +85,7 @@ class ResourceLoaderTest extends AbstractEmfParsleyTest {
 	@Test
 	def void testNonEmptyResourceIsNotInitialized() {
 		val injector = createInjector(new ModuleWithResourceInitializer)
-		val editingDomain = injector.createAdapterFactoryEditingDomain
+		val editingDomain = injector.createEditingDomain
 		val response = getResourceFromLoader(injector, editingDomain)
 		val el = response.resource.contents.head
 		assertNotNull(el)
@@ -95,11 +95,11 @@ class ResourceLoaderTest extends AbstractEmfParsleyTest {
 	}
 
 	private def getResourceFromLoader(Injector injector) {
-		val editingDomain = injector.createAdapterFactoryEditingDomain
+		val editingDomain = injector.createEditingDomain
 		getResourceFromLoader(injector, editingDomain)
 	}
 	
-	private def getResourceFromLoader(Injector injector, AdapterFactoryEditingDomain e1) {
+	private def getResourceFromLoader(Injector injector, EditingDomain e1) {
 		val resourceSet = e1.resourceSet
 		resourceSet.setupResouceFactory
 		

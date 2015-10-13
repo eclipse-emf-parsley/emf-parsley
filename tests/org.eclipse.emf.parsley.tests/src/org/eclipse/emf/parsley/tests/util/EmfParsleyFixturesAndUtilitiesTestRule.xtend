@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
@@ -183,8 +182,8 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 		return null
 	}
 
-	def createAdapterFactoryEditingDomain(Injector injector) {
-		injector.getInstance(AdapterFactoryEditingDomain)
+	def createEditingDomain(Injector injector) {
+		injector.getInstance(EditingDomain)
 	}
 
 	def assertBooks(Writer w, int expectedSize) {
