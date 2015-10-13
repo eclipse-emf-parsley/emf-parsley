@@ -301,6 +301,16 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String EMF_PARSLEY_RAP_EXAMPLE = "Emf Parsley Rap Example";
 
+	protected static final String TEST_MODEL_TREE_FORM_VIEW = "Test Model Tree Form View";
+
+	protected static final String TEST_MODEL_EDITABLE_TABLE_VIEW = "Test Model Editable Table View";
+
+	protected static final String NEW_OBJECT_FOR_VALIDATION = "Objects For Validation Class For Validation";
+
+	protected static final String OBJECT_FOR_VALIDATION = "Class For Validation";
+
+	protected static final String NOT_EMPTY_LABEL = "Not Empty";
+
 	protected static SWTWorkbenchBot bot;
 
 	protected static Map<String, String> editorNamesToId;
@@ -930,7 +940,7 @@ public class EmfParsleySWTBotAbstractTests {
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(viewName);
 		bot.button("OK").click();
 		waitForShellToClose(shell);
-		return getLibraryView(viewName);
+		return getView(viewName);
 	}
 
 	protected void waitForShellToClose(SWTBotShell shell) {
@@ -955,12 +965,12 @@ public class EmfParsleySWTBotAbstractTests {
 		return text;
 	}
 
-	protected SWTBotView getLibraryView(String libraryView) {
-		return bot.viewByTitle(libraryView);
+	protected SWTBotView getView(String title) {
+		return bot.viewByTitle(title);
 	}
 
-	protected void closeLibraryView(String libraryView) {
-		getLibraryView(libraryView).close();
+	protected void closeView(String title) {
+		getView(title).close();
 	}
 
 	protected void getTableHeader(int tableIndex, String tableHeader) {
@@ -1148,7 +1158,7 @@ public class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected ISaveablePart getViewAsSaveablePart(String viewName) {
-		SWTBotView view = getLibraryView(viewName);
+		SWTBotView view = getView(viewName);
 		IViewPart viewPart = view.getViewReference().getView(false);
 		ISaveablePart viewAsSaveablePart = (ISaveablePart) viewPart;
 		return viewAsSaveablePart;

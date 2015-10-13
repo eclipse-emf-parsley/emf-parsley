@@ -56,15 +56,15 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	@After
 	public void runAfterEveryTest() throws CoreException {
 		if (treeFormViewOpened)
-			closeLibraryView(TEST_SAVEABLE_TREE_FORM_VIEW);
+			closeView(TEST_SAVEABLE_TREE_FORM_VIEW);
 		if (tableFormViewOpened)
-			closeLibraryView(TEST_SAVEABLE_TABLE_FORM_VIEW);
+			closeView(TEST_SAVEABLE_TABLE_FORM_VIEW);
 		if (tableViewOpened)
-			closeLibraryView(TEST_SAVEABLE_TABLE_VIEW);
+			closeView(TEST_SAVEABLE_TABLE_VIEW);
 		if (treeViewOpened)
-			closeLibraryView(TEST_SAVEABLE_TREE_VIEW);
+			closeView(TEST_SAVEABLE_TREE_VIEW);
 		if (treeMultipleRootsViewOpened)
-			closeLibraryView(TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
+			closeView(TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
 		super.runAfterEveryTest();
 	}
 

@@ -7,11 +7,14 @@
  * 
  * Contributors:
  * Francesco Guidieri - initial API and implementation
+ * Lorenzo Bettini - https://bugs.eclipse.org/bugs/show_bug.cgi?id=479683
  *******************************************************************************/
 package org.eclipse.emf.parsley.viewers;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -24,8 +27,8 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
@@ -37,9 +40,19 @@ import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
+import com.google.inject.Inject;
 
+
+/**
+ * This assumes that the objects of the table are {@link EObject}s.
+ * 
+ * @author Francesco Guidieri - initial API and implementation
+ *
+ */
 public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
-	
+	@Inject
+	private EditingDomainFinder editingDomainFinder;
+
 	@Override
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
 			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature,
@@ -50,34 +63,52 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 
 		if(eStructuralFeature instanceof EAttribute){
 			if(isPredefinedValueEditing((EAttribute)eStructuralFeature)){
-				viewerColumn.setEditingSupport(new ComboEditingSupport(tableViewer, eStructuralFeature));	
+				viewerColumn.setEditingSupport(new ComboEditingSupport(tableViewer, eStructuralFeature, editingDomainFinder));	
 			}else{
-				viewerColumn.setEditingSupport(new TableEditingSupport(tableViewer, eStructuralFeature));
+				viewerColumn.setEditingSupport(new TableEditingSupport(tableViewer, eStructuralFeature, editingDomainFinder));
 			}
 		}
 		return viewerColumn;
 	}
-	
+
+	/**
+	 * Custom and reusable implementation of {@link TextCellEditor#doSetValue(Object)}
+	 * that converts the value to String.
+	 * 
+	 * @author Lorenzo Bettini
+	 *
+	 */
+	private static class TextCellEditorCommon extends TextCellEditor {
+		public TextCellEditorCommon(Composite parent) {
+			super(parent);
+		}
+
+		@Override
+		protected void doSetValue(Object value) {
+			super.doSetValue("" + value);
+		}
+
+	}
+
 	static class TableEditingSupport extends EditingSupport {
 
 		private ColumnViewer viewer;
 		private EStructuralFeature eStructuralFeature;
+		private EditingDomainFinder editingDomainFinder;
 
-		public TableEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature) {
+		public TableEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature, EditingDomainFinder editingDomainFinder) {
 			super(viewer);
 			this.viewer=viewer;
 			this.eStructuralFeature=eStructuralFeature;
+			this.editingDomainFinder = editingDomainFinder;
 		}
 		
 		@Override
 		protected CellEditor getCellEditor(Object element) {
-			if (BigDecimal.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
+			final Class<?> instanceClass = eStructuralFeature.getEType().getInstanceClass();
+			final Composite control = (Composite) getViewer().getControl();
+			if (BigDecimal.class.equals(instanceClass)) {
+				return new TextCellEditorCommon(control) {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
@@ -85,13 +116,8 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (BigInteger.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
+			if (BigInteger.class.equals(instanceClass)) {
+				return new TextCellEditorCommon(control) {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
@@ -99,13 +125,8 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (double.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Double.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
+			if (double.class.equals(instanceClass) || Double.class.equals(instanceClass)) {
+				return new TextCellEditorCommon(control) {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
@@ -113,13 +134,8 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (int.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Integer.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
+			if (int.class.equals(instanceClass) || Integer.class.equals(instanceClass)) {
+				return new TextCellEditorCommon(control) {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
@@ -127,13 +143,8 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (float.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Float.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
+			if (float.class.equals(instanceClass) || Float.class.equals(instanceClass)) {
+				return new TextCellEditorCommon(control) {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
@@ -141,13 +152,8 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (short.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Short.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
+			if (short.class.equals(instanceClass) || Short.class.equals(instanceClass)) {
+				return new TextCellEditorCommon(control) {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
@@ -155,13 +161,8 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (byte.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Byte.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
+			if (byte.class.equals(instanceClass) || Byte.class.equals(instanceClass)) {
+				return new TextCellEditorCommon(control) {
 					@Override
 					protected Object doGetValue() {
 						String stringValue = (String) super.doGetValue();
@@ -169,8 +170,14 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (boolean.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Boolean.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new CheckboxCellEditor((Composite) getViewer().getControl()) {
+			if (boolean.class.equals(instanceClass) || Boolean.class.equals(instanceClass)) {
+				return new CheckboxCellEditor(control) {
+					@Override
+					protected void doSetValue(Object value) {
+						// it requires the passed value to be a Boolean
+						super.doSetValue(Boolean.valueOf(""+value));
+					}
+					
 					@Override
 					protected Object doGetValue() {
 						Boolean boolValue = (Boolean) super.doGetValue();
@@ -178,16 +185,20 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					}
 				};
 			}
-			if (Date.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
+			if (Date.class.equals(instanceClass)) {
+				return new TextCellEditor(control) {
 					@Override
 					protected Object doGetValue() {
 						String date = (String) super.doGetValue();
-						return date;
+						try {
+							return new SimpleDateFormat("yyyy-MM-DD").parse(date);
+						} catch (ParseException e) {
+							return date;
+						}
 					}
 				};
 			}
-			return new TextCellEditor((Composite)getViewer().getControl());	
+			return new TextCellEditor(control);	
 		}
 
 		@Override
@@ -197,20 +208,19 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 
 		@Override
 		protected Object getValue(Object element) {
-			EObject eObjiect=(EObject) element;
-			return  eObjiect.eGet(eStructuralFeature)!=null?eObjiect.eGet(eStructuralFeature):"";
+			EObject eObject = (EObject) element;
+			final Object eGet = eObject.eGet(eStructuralFeature);
+			return eGet != null ? eGet : "";
 		}
 
 		@Override
 		protected void setValue(Object element, Object value) {
-			if(element instanceof EObject){
-				EObject eObject = (EObject) element;
-				if(eObject.eGet(eStructuralFeature)!=null && !eObject.eGet(eStructuralFeature).equals(value)){
-					EditingDomain domain=AdapterFactoryEditingDomain.getEditingDomainFor(eObject);
-					Command setCommand=new SetCommand(domain,eObject,eStructuralFeature,value);
-					domain.getCommandStack().execute(setCommand);
-					viewer.refresh();
-				}
+			EObject eObject = (EObject) element;
+			if(eObject.eGet(eStructuralFeature)==null || !eObject.eGet(eStructuralFeature).equals(value)){
+				EditingDomain domain=editingDomainFinder.getEditingDomainFor(eObject);
+				Command setCommand=new SetCommand(domain,eObject,eStructuralFeature,value);
+				domain.getCommandStack().execute(setCommand);
+				viewer.refresh();
 			}
 		}
 	}
@@ -220,11 +230,13 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 		private ColumnViewer viewer;
 		private EStructuralFeature feature;
 		private List<EEnumLiteral> literals;
+		private EditingDomainFinder editingDomainFinder;
 
-		public ComboEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature) {
+		public ComboEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature, EditingDomainFinder editingDomainFinder) {
 			super(viewer);
 			this.viewer=viewer;
 			this.feature=eStructuralFeature;
+			this.editingDomainFinder = editingDomainFinder;
 		}
 		
 		@Override
@@ -250,15 +262,13 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 
 		@Override
 		protected Object getValue(Object element) {
-			if(element!=null && element instanceof EObject){
-				EObject eObject=(EObject) element;
-				if(eObject.eGet(feature) instanceof Enumerator){
-					Enumerator typeEnum=(Enumerator) eObject.eGet(feature);
-					for (int i = 0; i < literals.size(); i++) {
-						EEnumLiteral literal= literals.get(i);
-						if(literal!=null && literal.getLiteral().equals(typeEnum.getLiteral())){
-							return i;
-						}
+			EObject eObject=(EObject) element;
+			if(eObject.eGet(feature) instanceof Enumerator){
+				Enumerator typeEnum=(Enumerator) eObject.eGet(feature);
+				for (int i = 0; i < literals.size(); i++) {
+					EEnumLiteral literal= literals.get(i);
+					if(literal!=null && literal.getLiteral().equals(typeEnum.getLiteral())){
+						return i;
 					}
 				}
 			}
@@ -272,7 +282,7 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 			if(eObject.eGet(feature) instanceof Enumerator && i>=0 && i<literals.size()){
 				Enumerator typeEnum=(Enumerator) eObject.eGet(feature);
 				if(typeEnum!=null && !typeEnum.getLiteral().equals(literals.get(i))){
-					EditingDomain domain=AdapterFactoryEditingDomain.getEditingDomainFor(eObject);
+					EditingDomain domain=editingDomainFinder.getEditingDomainFor(eObject);
 					Command setCommand=new SetCommand(domain,eObject,feature,literals.get(i).getInstance());
 					domain.getCommandStack().execute(setCommand);
 					viewer.refresh();

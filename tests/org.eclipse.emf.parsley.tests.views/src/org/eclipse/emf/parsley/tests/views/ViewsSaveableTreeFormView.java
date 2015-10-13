@@ -1,5 +1,7 @@
 package org.eclipse.emf.parsley.tests.views;
 
-public class ViewsSaveableTreeFormView extends org.eclipse.emf.parsley.views.SaveableTreeFormView {
+import org.eclipse.emf.parsley.views.SaveableTreeFormView;
+
+public class ViewsSaveableTreeFormView extends SaveableTreeFormView {
 	
 }

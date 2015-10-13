@@ -450,7 +450,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClassForControls_UnserializableStringDataTypeFeature() {
+	public EAttribute getClassForControls_StringFeatureWithDefault() {
 		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -459,7 +459,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClassForControls_UnchangeableStringFeature() {
+	public EAttribute getClassForControls_UnserializableStringDataTypeFeature() {
 		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -468,7 +468,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClassForControls_DerivedStringFeature() {
+	public EAttribute getClassForControls_UnchangeableStringFeature() {
 		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -477,8 +477,8 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassForControls_ReferenceToClassWithName() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(10);
+	public EAttribute getClassForControls_DerivedStringFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -486,7 +486,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassForControls_MultiReferenceFeature() {
+	public EReference getClassForControls_ReferenceToClassWithName() {
 		return (EReference)classForControlsEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -495,8 +495,17 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getClassForControls_MultiReferenceFeature() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getClassForControls_FeatureMapEntries() {
-		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(12);
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -505,15 +514,6 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	public EReference getClassForControls_FeatureMapEntries1() {
-		return (EReference)classForControlsEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getClassForControls_FeatureMapEntries2() {
 		return (EReference)classForControlsEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -522,8 +522,134 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getClassForControls_SingleContainmentReference() {
+	public EReference getClassForControls_FeatureMapEntries2() {
 		return (EReference)classForControlsEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getClassForControls_SingleContainmentReference() {
+		return (EReference)classForControlsEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_BigDecimalFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_BigIntegerFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_DoubleFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_DoubleObjectFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_IntFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_IntObjectFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_FloatFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_FloatObjectFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_ShortFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_ShortObjectFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_ByteFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_ByteObjectFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForControls_DateFeature() {
+		return (EAttribute)classForControlsEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -797,6 +923,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__ENUM_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE);
 		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE);
@@ -806,6 +933,19 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2);
 		createEReference(classForControlsEClass, CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__DOUBLE_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__INT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__FLOAT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__SHORT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BYTE_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE);
+		createEAttribute(classForControlsEClass, CLASS_FOR_CONTROLS__DATE_FEATURE);
 
 		classWithNameEClass = createEClass(CLASS_WITH_NAME);
 		createEAttribute(classWithNameEClass, CLASS_WITH_NAME__NAME);
@@ -907,6 +1047,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getClassForControls_EnumFeature(), this.getEnumForControls(), "enumFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_StringFeature(), ecorePackage.getEString(), "stringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_StringDataTypeFeature(), this.getStringDataType(), "stringDataTypeFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_StringFeatureWithDefault(), ecorePackage.getEString(), "stringFeatureWithDefault", "default", 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_UnserializableStringDataTypeFeature(), this.getUnserializableStringDataType(), "unserializableStringDataTypeFeature", null, 0, 1, ClassForControls.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_UnchangeableStringFeature(), ecorePackage.getEString(), "unchangeableStringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForControls_DerivedStringFeature(), ecorePackage.getEString(), "derivedStringFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -916,6 +1057,19 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEReference(getClassForControls_FeatureMapEntries1(), this.getClassForFeatureMapEntry1(), null, "featureMapEntries1", null, 0, -1, ClassForControls.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_FeatureMapEntries2(), this.getClassForFeatureMapEntry2(), null, "featureMapEntries2", null, 0, -1, ClassForControls.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForControls_SingleContainmentReference(), this.getClassWithName(), null, "singleContainmentReference", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_BigDecimalFeature(), ecorePackage.getEBigDecimal(), "bigDecimalFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_BigIntegerFeature(), ecorePackage.getEBigInteger(), "bigIntegerFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_DoubleFeature(), ecorePackage.getEDouble(), "doubleFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_DoubleObjectFeature(), ecorePackage.getEDoubleObject(), "doubleObjectFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_IntFeature(), ecorePackage.getEInt(), "intFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_IntObjectFeature(), ecorePackage.getEIntegerObject(), "intObjectFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_FloatFeature(), ecorePackage.getEFloat(), "floatFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_FloatObjectFeature(), ecorePackage.getEFloatObject(), "floatObjectFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_ShortFeature(), ecorePackage.getEShort(), "shortFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_ShortObjectFeature(), ecorePackage.getEShortObject(), "shortObjectFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_ByteFeature(), ecorePackage.getEByte(), "byteFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_ByteObjectFeature(), ecorePackage.getEByteObject(), "byteObjectFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForControls_DateFeature(), ecorePackage.getEDate(), "dateFeature", null, 0, 1, ClassForControls.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classWithNameEClass, ClassWithName.class, "ClassWithName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassWithName_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassWithName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

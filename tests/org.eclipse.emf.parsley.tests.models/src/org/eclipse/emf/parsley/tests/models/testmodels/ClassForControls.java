@@ -2,6 +2,9 @@
  */
 package org.eclipse.emf.parsley.tests.models.testmodels;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -22,6 +25,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeature <em>String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringDataTypeFeature <em>String Data Type Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeatureWithDefault <em>String Feature With Default</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnserializableStringDataTypeFeature <em>Unserializable String Data Type Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDerivedStringFeature <em>Derived String Feature</em>}</li>
@@ -31,6 +35,19 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getSingleContainmentReference <em>Single Containment Reference</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigDecimalFeature <em>Big Decimal Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigIntegerFeature <em>Big Integer Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleFeature <em>Double Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleObjectFeature <em>Double Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntFeature <em>Int Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntObjectFeature <em>Int Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatFeature <em>Float Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatObjectFeature <em>Float Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortFeature <em>Short Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortObjectFeature <em>Short Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteFeature <em>Byte Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteObjectFeature <em>Byte Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDateFeature <em>Date Feature</em>}</li>
  * </ul>
  *
  * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls()
@@ -224,6 +241,33 @@ public interface ClassForControls extends EObject {
 	void setStringDataTypeFeature(String value);
 
 	/**
+	 * Returns the value of the '<em><b>String Feature With Default</b></em>' attribute.
+	 * The default value is <code>"default"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>String Feature With Default</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>String Feature With Default</em>' attribute.
+	 * @see #setStringFeatureWithDefault(String)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_StringFeatureWithDefault()
+	 * @model default="default"
+	 * @generated
+	 */
+	String getStringFeatureWithDefault();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeatureWithDefault <em>String Feature With Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>String Feature With Default</em>' attribute.
+	 * @see #getStringFeatureWithDefault()
+	 * @generated
+	 */
+	void setStringFeatureWithDefault(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Unserializable String Data Type Feature</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -408,5 +452,343 @@ public interface ClassForControls extends EObject {
 	 * @generated
 	 */
 	void setSingleContainmentReference(ClassWithName value);
+
+	/**
+	 * Returns the value of the '<em><b>Big Decimal Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Big Decimal Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Big Decimal Feature</em>' attribute.
+	 * @see #setBigDecimalFeature(BigDecimal)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_BigDecimalFeature()
+	 * @model
+	 * @generated
+	 */
+	BigDecimal getBigDecimalFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigDecimalFeature <em>Big Decimal Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Big Decimal Feature</em>' attribute.
+	 * @see #getBigDecimalFeature()
+	 * @generated
+	 */
+	void setBigDecimalFeature(BigDecimal value);
+
+	/**
+	 * Returns the value of the '<em><b>Big Integer Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Big Integer Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Big Integer Feature</em>' attribute.
+	 * @see #setBigIntegerFeature(BigInteger)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_BigIntegerFeature()
+	 * @model
+	 * @generated
+	 */
+	BigInteger getBigIntegerFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigIntegerFeature <em>Big Integer Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Big Integer Feature</em>' attribute.
+	 * @see #getBigIntegerFeature()
+	 * @generated
+	 */
+	void setBigIntegerFeature(BigInteger value);
+
+	/**
+	 * Returns the value of the '<em><b>Double Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Double Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Double Feature</em>' attribute.
+	 * @see #setDoubleFeature(double)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_DoubleFeature()
+	 * @model
+	 * @generated
+	 */
+	double getDoubleFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleFeature <em>Double Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Double Feature</em>' attribute.
+	 * @see #getDoubleFeature()
+	 * @generated
+	 */
+	void setDoubleFeature(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Double Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Double Object Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Double Object Feature</em>' attribute.
+	 * @see #setDoubleObjectFeature(Double)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_DoubleObjectFeature()
+	 * @model
+	 * @generated
+	 */
+	Double getDoubleObjectFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleObjectFeature <em>Double Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Double Object Feature</em>' attribute.
+	 * @see #getDoubleObjectFeature()
+	 * @generated
+	 */
+	void setDoubleObjectFeature(Double value);
+
+	/**
+	 * Returns the value of the '<em><b>Int Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Int Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Int Feature</em>' attribute.
+	 * @see #setIntFeature(int)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_IntFeature()
+	 * @model
+	 * @generated
+	 */
+	int getIntFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntFeature <em>Int Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Int Feature</em>' attribute.
+	 * @see #getIntFeature()
+	 * @generated
+	 */
+	void setIntFeature(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Int Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Int Object Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Int Object Feature</em>' attribute.
+	 * @see #setIntObjectFeature(Integer)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_IntObjectFeature()
+	 * @model
+	 * @generated
+	 */
+	Integer getIntObjectFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntObjectFeature <em>Int Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Int Object Feature</em>' attribute.
+	 * @see #getIntObjectFeature()
+	 * @generated
+	 */
+	void setIntObjectFeature(Integer value);
+
+	/**
+	 * Returns the value of the '<em><b>Float Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Float Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Float Feature</em>' attribute.
+	 * @see #setFloatFeature(float)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_FloatFeature()
+	 * @model
+	 * @generated
+	 */
+	float getFloatFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatFeature <em>Float Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Float Feature</em>' attribute.
+	 * @see #getFloatFeature()
+	 * @generated
+	 */
+	void setFloatFeature(float value);
+
+	/**
+	 * Returns the value of the '<em><b>Float Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Float Object Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Float Object Feature</em>' attribute.
+	 * @see #setFloatObjectFeature(Float)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_FloatObjectFeature()
+	 * @model
+	 * @generated
+	 */
+	Float getFloatObjectFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatObjectFeature <em>Float Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Float Object Feature</em>' attribute.
+	 * @see #getFloatObjectFeature()
+	 * @generated
+	 */
+	void setFloatObjectFeature(Float value);
+
+	/**
+	 * Returns the value of the '<em><b>Short Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Short Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Short Feature</em>' attribute.
+	 * @see #setShortFeature(short)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_ShortFeature()
+	 * @model
+	 * @generated
+	 */
+	short getShortFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortFeature <em>Short Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Short Feature</em>' attribute.
+	 * @see #getShortFeature()
+	 * @generated
+	 */
+	void setShortFeature(short value);
+
+	/**
+	 * Returns the value of the '<em><b>Short Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Short Object Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Short Object Feature</em>' attribute.
+	 * @see #setShortObjectFeature(Short)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_ShortObjectFeature()
+	 * @model
+	 * @generated
+	 */
+	Short getShortObjectFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortObjectFeature <em>Short Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Short Object Feature</em>' attribute.
+	 * @see #getShortObjectFeature()
+	 * @generated
+	 */
+	void setShortObjectFeature(Short value);
+
+	/**
+	 * Returns the value of the '<em><b>Byte Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Byte Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Byte Feature</em>' attribute.
+	 * @see #setByteFeature(byte)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_ByteFeature()
+	 * @model
+	 * @generated
+	 */
+	byte getByteFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteFeature <em>Byte Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Byte Feature</em>' attribute.
+	 * @see #getByteFeature()
+	 * @generated
+	 */
+	void setByteFeature(byte value);
+
+	/**
+	 * Returns the value of the '<em><b>Byte Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Byte Object Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Byte Object Feature</em>' attribute.
+	 * @see #setByteObjectFeature(Byte)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_ByteObjectFeature()
+	 * @model
+	 * @generated
+	 */
+	Byte getByteObjectFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteObjectFeature <em>Byte Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Byte Object Feature</em>' attribute.
+	 * @see #getByteObjectFeature()
+	 * @generated
+	 */
+	void setByteObjectFeature(Byte value);
+
+	/**
+	 * Returns the value of the '<em><b>Date Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Date Feature</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Date Feature</em>' attribute.
+	 * @see #setDateFeature(Date)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForControls_DateFeature()
+	 * @model
+	 * @generated
+	 */
+	Date getDateFeature();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDateFeature <em>Date Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Date Feature</em>' attribute.
+	 * @see #getDateFeature()
+	 * @generated
+	 */
+	void setDateFeature(Date value);
 
 } // ClassForControls
