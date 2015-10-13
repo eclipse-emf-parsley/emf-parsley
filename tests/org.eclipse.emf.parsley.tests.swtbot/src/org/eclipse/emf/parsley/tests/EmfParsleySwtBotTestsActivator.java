@@ -58,6 +58,8 @@ public class EmfParsleySwtBotTestsActivator extends AbstractUIPlugin {
 
 	public static final String EMF_EDITOR_FOR_LIBRARY = "org.eclipse.emf.parsley.customLibrary";
 
+	public static final String EMF_EDITOR_FOR_MENU_LIBRARY = "org.eclipse.emf.parsley.customMenuLibrary";
+
 	/**
 	 * This will only simulate generated code by the wizard to make sure a
 	 * singleton injector is used.
