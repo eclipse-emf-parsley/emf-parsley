@@ -92,17 +92,15 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 
 	static class TableEditingSupport extends EditingSupport {
 
-		private ColumnViewer viewer;
 		private EStructuralFeature eStructuralFeature;
 		private EditingDomainFinder editingDomainFinder;
 
 		public TableEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature, EditingDomainFinder editingDomainFinder) {
 			super(viewer);
-			this.viewer=viewer;
 			this.eStructuralFeature=eStructuralFeature;
 			this.editingDomainFinder = editingDomainFinder;
 		}
-		
+
 		@Override
 		protected CellEditor getCellEditor(Object element) {
 			final Class<?> instanceClass = eStructuralFeature.getEType().getInstanceClass();
@@ -220,21 +218,18 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 				EditingDomain domain=editingDomainFinder.getEditingDomainFor(eObject);
 				Command setCommand=new SetCommand(domain,eObject,eStructuralFeature,value);
 				domain.getCommandStack().execute(setCommand);
-				viewer.refresh();
 			}
 		}
 	}
 
 	static class ComboEditingSupport extends EditingSupport {
 
-		private ColumnViewer viewer;
 		private EStructuralFeature feature;
 		private List<EEnumLiteral> literals;
 		private EditingDomainFinder editingDomainFinder;
 
 		public ComboEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature, EditingDomainFinder editingDomainFinder) {
 			super(viewer);
-			this.viewer=viewer;
 			this.feature=eStructuralFeature;
 			this.editingDomainFinder = editingDomainFinder;
 		}
@@ -252,8 +247,6 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 			return new ComboBoxCellEditor((Composite)getViewer().getControl(), descriptions);
 			
 		}
-
-		
 
 		@Override
 		protected boolean canEdit(Object element) {
@@ -285,7 +278,6 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 					EditingDomain domain=editingDomainFinder.getEditingDomainFor(eObject);
 					Command setCommand=new SetCommand(domain,eObject,feature,literals.get(i).getInstance());
 					domain.getCommandStack().execute(setCommand);
-					viewer.refresh();
 				}
 			}
 		}
