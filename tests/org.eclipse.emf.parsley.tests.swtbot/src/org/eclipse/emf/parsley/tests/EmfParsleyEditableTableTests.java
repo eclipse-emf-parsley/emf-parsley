@@ -98,19 +98,8 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 
 	@Test
 	public void testEnumCell() {
-		table.click(ROW, ENUM_FEATURE);
-		final String firstValue = EnumForControls.get(EnumForControls.FIRST_VALUE).toString();
-		final String secondValue = EnumForControls.get(EnumForControls.SECOND_VALUE).toString();
-		bot.ccomboBox(firstValue).
-			setSelection(secondValue);
-		leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
-		assertDirtyAndSave();
-		undo("Set");
-		assertEquals(firstValue, table.cell(ROW, ENUM_FEATURE));
-		assertDirtyAndSave();
-		redo("Set");
-		assertEquals(secondValue, table.cell(ROW, ENUM_FEATURE));
-		assertDirtyAndSave();
+		clickComboCell(ENUM_FEATURE, EnumForControls.get(EnumForControls.FIRST_VALUE).toString(),
+				EnumForControls.get(EnumForControls.SECOND_VALUE).toString());
 	}
 
 	@Test
@@ -200,7 +189,7 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		String newValue = "2000-11-11";
 		// don't specify the whole effective new value:
 		// it might contain CET or EST depending on the system
-		String effectiveNewValue = "Tue Jan 11 00:00:00";
+		String effectiveNewValue = "Sat Nov 11 00:00:00";
 		table.click(ROW, column);
 		bot.text(originalValue).setText(newValue);
 		// we leave the cell by clicking on the enum cell
@@ -234,15 +223,26 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		assertSaveableViewIsDirty(false, TEST_MODEL_EDITABLE_TABLE_VIEW);
 	}
 
+	/**
+	 * Uses the combo to select true for the boolean feature
+	 * 
+	 * @param column
+	 * @param originalValue
+	 */
 	private void clickBooleanCell(int column, String originalValue) {
+		clickComboCell(column, originalValue, "true");
+	}
+
+	private void clickComboCell(int column, String firstValue, String secondValue) {
 		table.click(ROW, column);
-		assertEquals("true", table.cell(ROW, column));
+		bot.ccomboBox(firstValue).setSelection(secondValue);
+		leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
 		assertDirtyAndSave();
 		undo("Set");
-		assertEquals(originalValue, table.cell(ROW, column));
+		assertEquals(firstValue, table.cell(ROW, column));
 		assertDirtyAndSave();
 		redo("Set");
-		assertEquals("true", table.cell(ROW, column));
+		assertEquals(secondValue, table.cell(ROW, column));
 		assertDirtyAndSave();
 	}
 
