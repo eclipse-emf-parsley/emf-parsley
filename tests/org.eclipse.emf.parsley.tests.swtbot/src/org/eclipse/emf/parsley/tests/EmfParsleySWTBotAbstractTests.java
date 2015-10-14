@@ -147,6 +147,8 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String EMF_CUSTOM_LIBRARY_EDITOR = "EMF Custom Library Editor";
 
+	protected static final String EMF_CUSTOM_MENU_LIBRARY_EDITOR = "EMF Custom Menu Library Editor";
+
 	protected static final String MY_EXTLIBRARY = "My.extlibrary";
 
 	protected static final String MY2_EXTLIBRARY = "My2.extlibrary";
@@ -267,6 +269,10 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String NEW_CHILD = "New Child";
 
+	protected static final String CUSTOM_NEW_BOOK = "New book";
+
+	protected static final String CUSTOM_NEW_BOOK_TITLE = "Book A new book";
+
 	protected static final String NEW_SIBLING = "New Sibling";
 
 	protected static final String EMF_PARSLEY_PROJECT = "EmfParsleyProject";
@@ -354,6 +360,8 @@ public class EmfParsleySWTBotAbstractTests {
 				EmfParsleySwtBotTestsActivator.EMF_TREE_EDITOR_CUSTOM_LABEL);
 		editorNamesToId.put(EMF_CUSTOM_LIBRARY_EDITOR,
 				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_LIBRARY);
+		editorNamesToId.put(EMF_CUSTOM_MENU_LIBRARY_EDITOR,
+				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_MENU_LIBRARY);
 		
 		// Change the perspective via the Open Perspective dialog
 		bot.menu("Window").menu("Open Perspective").menu("Other...").click();

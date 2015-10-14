@@ -123,6 +123,17 @@
        </editor>
     </extension>
     <extension
+          point="org.eclipse.ui.editors">
+       <editor
+             class="org.eclipse.emf.parsley.tests.factories.CustomMenuBuilderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.editors.TestEditor"
+             contributorClass="org.eclipse.emf.parsley.tests.factories.CustomMenuBuilderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+             default="false"
+             extensions="extlibrary"
+             id="org.eclipse.emf.parsley.customMenuLibrary"
+             name="EMF Custom Menu Library Editor">
+       </editor>
+    </extension>
+    <extension
           point="org.eclipse.ui.views">
        <view
              category="org.eclipse.emf.parsley"

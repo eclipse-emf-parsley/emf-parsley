@@ -61,6 +61,7 @@ public class EmfParsleyTestViewsTests extends EmfParsleySWTBotAbstractTests {
 		openTestModelTreeFormView();
 		createNewObjectForValidation();
 		getTestModelTreeFormViewForm().textWithLabel(NOT_EMPTY_LABEL).setText("a");
+		assertSaveableViewIsDirty(true, TEST_MODEL_TREE_FORM_VIEW);
 		saveTestModelTreeFormView();
 		assertSaveableViewIsDirty(false, TEST_MODEL_TREE_FORM_VIEW);
 	}

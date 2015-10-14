@@ -22,7 +22,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.parsley.common,
  org.eclipse.emf.parsley.examples.cdo.treeform,
  org.eclipse.emf.parsley.examples.cdo.model,
- org.eclipse.xtend.standalone;resolution:=optional,
  org.eclipse.emf.parsley.examples.cdo.server,
  org.eclipse.swtbot.junit4_x;bundle-version="2.2.1"
 Bundle-ActivationPolicy: lazy

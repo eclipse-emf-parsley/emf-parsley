@@ -60,6 +60,20 @@ public class EmfParsleyEditorTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
+	public void canAccessCustomContextMenuOfLibrary() throws Exception {
+		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
+				EMF_CUSTOM_MENU_LIBRARY_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
+		SWTBotTreeItem writerNode = getWriterNode(libraryNode);
+		clickOnContextMenu(writerNode, CUSTOM_NEW_BOOK);
+		// check that the new item was created
+		libraryNode.expand().getNode(CUSTOM_NEW_BOOK_TITLE);
+		SWTBotEditor editor = assertEditorDirty(EMF_CUSTOM_MENU_LIBRARY_EDITOR);
+		undo("Do Command");
+		assertEditorNotDirty(EMF_CUSTOM_MENU_LIBRARY_EDITOR);
+		editor.save();
+	}
+
+	@Test
 	public void changingSelectionUpdatesContextMenu() throws Exception {
 		SWTBotTreeItem libraryNode = getLibraryNode(openEditorAndGetTreeRoot(
 				EMF_TREE_EDITOR, MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI));
