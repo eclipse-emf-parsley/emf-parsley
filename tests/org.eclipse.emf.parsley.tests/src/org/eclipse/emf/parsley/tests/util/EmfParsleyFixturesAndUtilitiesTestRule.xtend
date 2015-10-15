@@ -158,6 +158,12 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 		]
 	}
 
+	def createResourceInResouceSet(ResourceSet resourceSet) {
+		createResource => [
+			resourceSet.resources += it
+		]
+	}
+
 	def createResource() {
 		new ResourceImpl
 	}

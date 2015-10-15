@@ -48,6 +48,8 @@ import org.junit.runners.Suite;
 	FormControlFactoryWithEditingDomainTest.class,
 	TableViewerBuilderTest.class,
 	TableViewerColumnBuilderTest.class,
+	TableViewerEditingSupportTest.class,
+	TableViewerCellEditorFactoryTest.class,
 	TreeFormFactoryTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
