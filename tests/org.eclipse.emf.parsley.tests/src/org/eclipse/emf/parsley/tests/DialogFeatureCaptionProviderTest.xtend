@@ -25,7 +25,7 @@ import org.junit.Test
 import static extension org.junit.Assert.*
 
 class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
-	
+
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	val static DERIVED_CLASS_FEATURE_PROP_DESCRIPTION = "Derived Class Feature"

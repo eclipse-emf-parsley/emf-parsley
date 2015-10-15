@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.parsley.edit.provider.AdapterFactoryHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -50,7 +50,7 @@ public class FeatureLabelCaptionProvider extends FeatureCaptionProvider {
 	private FeatureCaptionProvider delegate;
 
 	@Inject
-	private AdapterFactory adapterFactory;
+	private AdapterFactoryHelper adapterFactoryHelper;
 
 	public FeatureCaptionProvider getDelegate() {
 		return delegate;
@@ -117,10 +117,9 @@ public class FeatureLabelCaptionProvider extends FeatureCaptionProvider {
 	 * @return
 	 */
 	protected String defaultText(EObject o, EStructuralFeature feature) {
-		IItemPropertyDescriptor propertyDescriptor = ((IItemPropertySource) adapterFactory.adapt(o, IItemPropertySource.class)).
-			getPropertyDescriptor(o, feature);
-		// the property descriptor could be null if the model's edit plugin's item provider
-		// does not specify a descriptor for the given feature
+		IItemPropertyDescriptor propertyDescriptor = adapterFactoryHelper.getItemPropertyDescriptor(o, feature);
+		// the property descriptor could be null if the model's edit plugin's
+		// item provider does not specify a descriptor for the given feature
 		if (propertyDescriptor == null) {
 			return defaultText(feature);
 		}
