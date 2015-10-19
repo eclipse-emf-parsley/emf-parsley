@@ -647,6 +647,44 @@ Duplicate binding for: TableColumnWeights
 	}
 
 	@Test
+	def void testDuplicateViewParts() {
+		val input = '''
+				import org.eclipse.emf.parsley.views.SaveableTreeFormView
+
+				module my.empty {
+					parts {
+						viewpart myId1 {
+							viewname "Test Model Tree Form View"
+							viewclass SaveableTreeFormView
+						}
+						viewpart myId2 {
+							viewname "Test Model Tree Form View 2"
+							viewclass SaveableTreeFormView
+						}
+						// this is a duplicate since it has the same id
+						viewpart myId1 {
+							viewname "Test Model Tree Form View 3"
+							viewclass SaveableTreeFormView
+						}
+					}
+				}
+				'''
+		input.parse => [
+			2.assertEquals(validate.size)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.viewSpecification,
+				input.indexOf("myId1"),
+				'myId1'.length
+			)
+			assertDuplicateElement(
+				ModelPackage.eINSTANCE.viewSpecification,
+				input.lastIndexOf("myId1"),
+				'myId1'.length
+			)
+		]
+	}
+
+	@Test
 	def void testResouceManagerEmptySaveMethod() {
 		'''
 		module my.empty {
