@@ -18,6 +18,12 @@
 <unit id="org.eclipse.xpand" version="0.0.0"/>
 <unit id="org.eclipse.xtend" version="0.0.0"/>
 <unit id="org.eclipse.xtend.typesystem.emf" version="0.0.0"/>
+<unit id="org.eclipse.jst.server_adapters.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.server_adapters.ext.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.server_ui.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.wst.server_adapters.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.web_ui.feature.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/releases/mars/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">

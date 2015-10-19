@@ -108,6 +108,9 @@
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
 
+				<module>../../plugins/org.eclipse.emf.parsley.web.servlets</module>
+				<module>../../plugins/org.eclipse.emf.parsley.web.tools</module>
+
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.views</module>
@@ -137,6 +140,7 @@
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
+				<module>../../features/org.eclipse.emf.parsley.web.feature</module>
 		
 				<!-- These examples are used in swtbot tests -->
 				<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
