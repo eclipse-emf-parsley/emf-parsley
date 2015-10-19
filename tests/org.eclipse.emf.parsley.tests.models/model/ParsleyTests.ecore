@@ -47,6 +47,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringDataTypeFeature"
         eType="#//StringDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringFeatureWithDefault"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="default"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unserializableStringDataTypeFeature"
         eType="#//UnserializableStringDataType" transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unchangeableStringFeature"
@@ -79,11 +81,24 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="singleContainmentReference"
         eType="#//ClassWithName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bigDecimalFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bigIntegerFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doubleFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doubleObjectFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intObjectFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="floatFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="floatObjectFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloatObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortObjectFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShortObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="byteFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="byteObjectFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnumForControls">
-    <eLiterals name="FIRST"/>
-    <eLiterals name="SECOND"/>
-    <eLiterals name="THIRD"/>
+    <eLiterals name="FIRST" value="1"/>
+    <eLiterals name="SECOND" value="2"/>
+    <eLiterals name="THIRD" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassWithName">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

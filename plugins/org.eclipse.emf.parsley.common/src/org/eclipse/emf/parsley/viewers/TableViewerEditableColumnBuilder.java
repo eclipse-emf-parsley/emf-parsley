@@ -7,39 +7,55 @@
  * 
  * Contributors:
  * Francesco Guidieri - initial API and implementation
+ * Lorenzo Bettini - https://bugs.eclipse.org/bugs/show_bug.cgi?id=479683
  *******************************************************************************/
 package org.eclipse.emf.parsley.viewers;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.ui.provider.PropertyDescriptor.EDataTypeCellEditor;
+import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.jface.viewers.CellEditor;
-import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.ColumnViewer;
-import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Layout;
 
+import com.google.inject.Inject;
 
+
+/**
+ * This assumes that the objects of the table are {@link EObject}s.
+ * 
+ * @author Francesco Guidieri - initial API and implementation
+ *
+ */
 public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
-	
+	@Inject
+	private EditingDomainFinder editingDomainFinder;
+
+	@Inject
+	private ILabelProvider labelProvider;
+
 	@Override
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer,
 			Layout layout, EClass eClass, EStructuralFeature eStructuralFeature,
@@ -49,145 +65,57 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 				weight);
 
 		if(eStructuralFeature instanceof EAttribute){
-			if(isPredefinedValueEditing((EAttribute)eStructuralFeature)){
-				viewerColumn.setEditingSupport(new ComboEditingSupport(tableViewer, eStructuralFeature));	
-			}else{
-				viewerColumn.setEditingSupport(new TableEditingSupport(tableViewer, eStructuralFeature));
-			}
+			viewerColumn.setEditingSupport(new TableEditingSupport(tableViewer, eStructuralFeature, editingDomainFinder, labelProvider));
 		}
 		return viewerColumn;
 	}
-	
+
 	static class TableEditingSupport extends EditingSupport {
 
-		private ColumnViewer viewer;
 		private EStructuralFeature eStructuralFeature;
+		private EditingDomainFinder editingDomainFinder;
+		private ILabelProvider labelProvider;
 
-		public TableEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature) {
+		public TableEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature, EditingDomainFinder editingDomainFinder, ILabelProvider labelProvider) {
 			super(viewer);
-			this.viewer=viewer;
 			this.eStructuralFeature=eStructuralFeature;
+			this.editingDomainFinder = editingDomainFinder;
+			this.labelProvider = labelProvider;
 		}
-		
+
 		@Override
 		protected CellEditor getCellEditor(Object element) {
-			if (BigDecimal.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
+			final EClassifier eType = eStructuralFeature.getEType();
+			final Composite composite = (Composite) getViewer().getControl();
+			final Class<?> instanceClass = eType.getInstanceClass();
+
+			if (eType instanceof EDataType) {
+				if (instanceClass == Boolean.class) {
+					return getCellEditorForBoolean(composite, new Object[] { null, Boolean.FALSE, Boolean.TRUE });
+				} else if (instanceClass == Boolean.TYPE) {
+					return getCellEditorForBoolean(composite, new Object[] { Boolean.FALSE, Boolean.TRUE });
+				} else if (eType instanceof EEnum) {
+					EEnum eEnum = (EEnum) eType;
+					List<Enumerator> enumerators = new ArrayList<Enumerator>();
+					for (EEnumLiteral eEnumLiteral : eEnum.getELiterals()) {
+						enumerators.add(eEnumLiteral.getInstance());
 					}
-					
-					@Override
-					protected Object doGetValue() {
-						String stringValue = (String) super.doGetValue();
-						return new BigDecimal(stringValue);
-					}
-				};
+					return new ExtendedComboBoxCellEditor(composite, enumerators, getEditLabelProvider(), false);
+				}
+
+				EDataType eDataType = (EDataType) eType;
+				return new EDataTypeCellEditor(eDataType, composite);
 			}
-			if (BigInteger.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
-					@Override
-					protected Object doGetValue() {
-						String stringValue = (String) super.doGetValue();
-						return new BigInteger(stringValue);
-					}
-				};
-			}
-			if (double.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Double.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
-					@Override
-					protected Object doGetValue() {
-						String stringValue = (String) super.doGetValue();
-						return new Double(stringValue);
-					}
-				};
-			}
-			if (int.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Integer.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
-					@Override
-					protected Object doGetValue() {
-						String stringValue = (String) super.doGetValue();
-						return Integer.valueOf(stringValue);
-					}
-				};
-			}
-			if (float.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Float.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
-					@Override
-					protected Object doGetValue() {
-						String stringValue = (String) super.doGetValue();
-						return new Float(stringValue);
-					}
-				};
-			}
-			if (short.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Short.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
-					@Override
-					protected Object doGetValue() {
-						String stringValue = (String) super.doGetValue();
-						return Short.valueOf(stringValue);
-					}
-				};
-			}
-			if (byte.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Byte.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected void doSetValue(Object value) {
-						super.doSetValue("" + value);
-					}
-					
-					@Override
-					protected Object doGetValue() {
-						String stringValue = (String) super.doGetValue();
-						return Byte.valueOf(stringValue);
-					}
-				};
-			}
-			if (boolean.class.equals(eStructuralFeature.getEType().getInstanceClass()) || Boolean.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new CheckboxCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected Object doGetValue() {
-						Boolean boolValue = (Boolean) super.doGetValue();
-						return boolValue;
-					}
-				};
-			}
-			if (Date.class.equals(eStructuralFeature.getEType().getInstanceClass())) {
-				return new TextCellEditor((Composite) getViewer().getControl()) {
-					@Override
-					protected Object doGetValue() {
-						String date = (String) super.doGetValue();
-						return date;
-					}
-				};
-			}
-			return new TextCellEditor((Composite)getViewer().getControl());	
+
+			return new TextCellEditor(composite);	
+		}
+
+		protected ExtendedComboBoxCellEditor getCellEditorForBoolean(final Composite composite, Object[] values) {
+			return new ExtendedComboBoxCellEditor(composite, Arrays.asList(values), getEditLabelProvider(), false);
+		}
+
+		private ILabelProvider getEditLabelProvider() {
+			return labelProvider;
 		}
 
 		@Override
@@ -197,92 +125,19 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 
 		@Override
 		protected Object getValue(Object element) {
-			EObject eObjiect=(EObject) element;
-			return  eObjiect.eGet(eStructuralFeature)!=null?eObjiect.eGet(eStructuralFeature):"";
+			EObject eObject = (EObject) element;
+			return eObject.eGet(eStructuralFeature);
 		}
 
 		@Override
 		protected void setValue(Object element, Object value) {
-			if(element instanceof EObject){
-				EObject eObject = (EObject) element;
-				if(eObject.eGet(eStructuralFeature)!=null && !eObject.eGet(eStructuralFeature).equals(value)){
-					EditingDomain domain=AdapterFactoryEditingDomain.getEditingDomainFor(eObject);
-					Command setCommand=new SetCommand(domain,eObject,eStructuralFeature,value);
-					domain.getCommandStack().execute(setCommand);
-					viewer.refresh();
-				}
+			EObject eObject = (EObject) element;
+			if(eObject.eGet(eStructuralFeature)==null || !eObject.eGet(eStructuralFeature).equals(value)){
+				EditingDomain domain=editingDomainFinder.getEditingDomainFor(eObject);
+				Command setCommand=new SetCommand(domain,eObject,eStructuralFeature,value);
+				domain.getCommandStack().execute(setCommand);
 			}
 		}
-	}
-
-	static class ComboEditingSupport extends EditingSupport {
-
-		private ColumnViewer viewer;
-		private EStructuralFeature feature;
-		private List<EEnumLiteral> literals;
-
-		public ComboEditingSupport(ColumnViewer viewer, EStructuralFeature eStructuralFeature) {
-			super(viewer);
-			this.viewer=viewer;
-			this.feature=eStructuralFeature;
-		}
-		
-		@Override
-		protected CellEditor getCellEditor(Object element) {
-			
-			EEnum eEnum=(EEnum) ((EAttribute)feature).getEAttributeType();
-			literals=eEnum.getELiterals();
-			String[] descriptions = new String[literals.size()];
-			int i=0;
-			for (EEnumLiteral literal: literals) {
-				descriptions[i++]=literal.getName();
-			}
-			return new ComboBoxCellEditor((Composite)getViewer().getControl(), descriptions);
-			
-		}
-
-		
-
-		@Override
-		protected boolean canEdit(Object element) {
-			return true;
-		}
-
-		@Override
-		protected Object getValue(Object element) {
-			if(element!=null && element instanceof EObject){
-				EObject eObject=(EObject) element;
-				if(eObject.eGet(feature) instanceof Enumerator){
-					Enumerator typeEnum=(Enumerator) eObject.eGet(feature);
-					for (int i = 0; i < literals.size(); i++) {
-						EEnumLiteral literal= literals.get(i);
-						if(literal!=null && literal.getLiteral().equals(typeEnum.getLiteral())){
-							return i;
-						}
-					}
-				}
-			}
-			return  -1;
-		}
-
-		@Override
-		protected void setValue(Object element, Object value) {
-			Integer i=(Integer)value;
-			EObject eObject=(EObject) element;
-			if(eObject.eGet(feature) instanceof Enumerator && i>=0 && i<literals.size()){
-				Enumerator typeEnum=(Enumerator) eObject.eGet(feature);
-				if(typeEnum!=null && !typeEnum.getLiteral().equals(literals.get(i))){
-					EditingDomain domain=AdapterFactoryEditingDomain.getEditingDomainFor(eObject);
-					Command setCommand=new SetCommand(domain,eObject,feature,literals.get(i).getInstance());
-					domain.getCommandStack().execute(setCommand);
-					viewer.refresh();
-				}
-			}
-		}
-	}
-	
-	private boolean isPredefinedValueEditing(EAttribute attribute) {
-		return attribute.getEAttributeType() instanceof EEnum;
 	}
 
 }

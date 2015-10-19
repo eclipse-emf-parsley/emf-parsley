@@ -597,13 +597,22 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE = 6;
 
 	/**
+	 * The feature id for the '<em><b>String Feature With Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT = 7;
+
+	/**
 	 * The feature id for the '<em><b>Unserializable String Data Type Feature</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE = 7;
+	int CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Unchangeable String Feature</b></em>' attribute.
@@ -612,7 +621,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE = 8;
+	int CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Derived String Feature</b></em>' attribute.
@@ -621,7 +630,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE = 9;
+	int CLASS_FOR_CONTROLS__DERIVED_STRING_FEATURE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Reference To Class With Name</b></em>' reference.
@@ -630,7 +639,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 10;
+	int CLASS_FOR_CONTROLS__REFERENCE_TO_CLASS_WITH_NAME = 11;
 
 	/**
 	 * The feature id for the '<em><b>Multi Reference Feature</b></em>' reference list.
@@ -639,7 +648,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 11;
+	int CLASS_FOR_CONTROLS__MULTI_REFERENCE_FEATURE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries</b></em>' attribute list.
@@ -648,7 +657,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = 12;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES = 13;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries1</b></em>' containment reference list.
@@ -657,7 +666,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = 13;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES1 = 14;
 
 	/**
 	 * The feature id for the '<em><b>Feature Map Entries2</b></em>' containment reference list.
@@ -666,7 +675,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 14;
+	int CLASS_FOR_CONTROLS__FEATURE_MAP_ENTRIES2 = 15;
 
 	/**
 	 * The feature id for the '<em><b>Single Containment Reference</b></em>' containment reference.
@@ -675,7 +684,124 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE = 15;
+	int CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Big Decimal Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Big Integer Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE = 18;
+
+	/**
+	 * The feature id for the '<em><b>Double Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__DOUBLE_FEATURE = 19;
+
+	/**
+	 * The feature id for the '<em><b>Double Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE = 20;
+
+	/**
+	 * The feature id for the '<em><b>Int Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__INT_FEATURE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Int Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE = 22;
+
+	/**
+	 * The feature id for the '<em><b>Float Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__FLOAT_FEATURE = 23;
+
+	/**
+	 * The feature id for the '<em><b>Float Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE = 24;
+
+	/**
+	 * The feature id for the '<em><b>Short Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__SHORT_FEATURE = 25;
+
+	/**
+	 * The feature id for the '<em><b>Short Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE = 26;
+
+	/**
+	 * The feature id for the '<em><b>Byte Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BYTE_FEATURE = 27;
+
+	/**
+	 * The feature id for the '<em><b>Byte Object Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE = 28;
+
+	/**
+	 * The feature id for the '<em><b>Date Feature</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_CONTROLS__DATE_FEATURE = 29;
 
 	/**
 	 * The number of structural features of the '<em>Class For Controls</em>' class.
@@ -684,7 +810,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 16;
+	int CLASS_FOR_CONTROLS_FEATURE_COUNT = 30;
 
 	/**
 	 * The number of operations of the '<em>Class For Controls</em>' class.
@@ -1206,6 +1332,17 @@ public interface TestmodelsPackage extends EPackage {
 	EAttribute getClassForControls_StringDataTypeFeature();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeatureWithDefault <em>String Feature With Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Feature With Default</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getStringFeatureWithDefault()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_StringFeatureWithDefault();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getUnserializableStringDataTypeFeature <em>Unserializable String Data Type Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1303,6 +1440,149 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getClassForControls_SingleContainmentReference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigDecimalFeature <em>Big Decimal Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Big Decimal Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigDecimalFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_BigDecimalFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigIntegerFeature <em>Big Integer Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Big Integer Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getBigIntegerFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_BigIntegerFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleFeature <em>Double Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Double Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_DoubleFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleObjectFeature <em>Double Object Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Double Object Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDoubleObjectFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_DoubleObjectFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntFeature <em>Int Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Int Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_IntFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntObjectFeature <em>Int Object Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Int Object Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getIntObjectFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_IntObjectFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatFeature <em>Float Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Float Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_FloatFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatObjectFeature <em>Float Object Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Float Object Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getFloatObjectFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_FloatObjectFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortFeature <em>Short Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Short Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_ShortFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortObjectFeature <em>Short Object Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Short Object Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getShortObjectFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_ShortObjectFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteFeature <em>Byte Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Byte Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_ByteFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteObjectFeature <em>Byte Object Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Byte Object Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getByteObjectFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_ByteObjectFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDateFeature <em>Date Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date Feature</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls#getDateFeature()
+	 * @see #getClassForControls()
+	 * @generated
+	 */
+	EAttribute getClassForControls_DateFeature();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName <em>Class With Name</em>}'.
@@ -1740,6 +2020,13 @@ public interface TestmodelsPackage extends EPackage {
 		 */
 		EAttribute CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE = eINSTANCE.getClassForControls_StringDataTypeFeature();
 		/**
+		 * The meta object literal for the '<em><b>String Feature With Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT = eINSTANCE.getClassForControls_StringFeatureWithDefault();
+		/**
 		 * The meta object literal for the '<em><b>Unserializable String Data Type Feature</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1802,6 +2089,97 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE = eINSTANCE.getClassForControls_SingleContainmentReference();
+		/**
+		 * The meta object literal for the '<em><b>Big Decimal Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE = eINSTANCE.getClassForControls_BigDecimalFeature();
+		/**
+		 * The meta object literal for the '<em><b>Big Integer Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE = eINSTANCE.getClassForControls_BigIntegerFeature();
+		/**
+		 * The meta object literal for the '<em><b>Double Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__DOUBLE_FEATURE = eINSTANCE.getClassForControls_DoubleFeature();
+		/**
+		 * The meta object literal for the '<em><b>Double Object Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE = eINSTANCE.getClassForControls_DoubleObjectFeature();
+		/**
+		 * The meta object literal for the '<em><b>Int Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__INT_FEATURE = eINSTANCE.getClassForControls_IntFeature();
+		/**
+		 * The meta object literal for the '<em><b>Int Object Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE = eINSTANCE.getClassForControls_IntObjectFeature();
+		/**
+		 * The meta object literal for the '<em><b>Float Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__FLOAT_FEATURE = eINSTANCE.getClassForControls_FloatFeature();
+		/**
+		 * The meta object literal for the '<em><b>Float Object Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE = eINSTANCE.getClassForControls_FloatObjectFeature();
+		/**
+		 * The meta object literal for the '<em><b>Short Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__SHORT_FEATURE = eINSTANCE.getClassForControls_ShortFeature();
+		/**
+		 * The meta object literal for the '<em><b>Short Object Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE = eINSTANCE.getClassForControls_ShortObjectFeature();
+		/**
+		 * The meta object literal for the '<em><b>Byte Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BYTE_FEATURE = eINSTANCE.getClassForControls_ByteFeature();
+		/**
+		 * The meta object literal for the '<em><b>Byte Object Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE = eINSTANCE.getClassForControls_ByteObjectFeature();
+		/**
+		 * The meta object literal for the '<em><b>Date Feature</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_CONTROLS__DATE_FEATURE = eINSTANCE.getClassForControls_DateFeature();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
 		 * <!-- begin-user-doc -->

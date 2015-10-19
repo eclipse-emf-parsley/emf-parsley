@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.validation
 
+import com.google.common.collect.ListMultimap
 import com.google.inject.Inject
+import java.util.List
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
@@ -18,6 +20,7 @@ import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
 import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.ValueBinding
@@ -113,6 +116,11 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 			return
 		}
 		
+		val partsSpecifications = module.partsSpecifications
+		if (partsSpecifications != null) {
+			checkDuplicateViewSpecifications(partsSpecifications.parts)
+		}
+		
 		val methods = guiceModuleClass.declaredOperations
 		if (methods.empty) {
 			return
@@ -135,21 +143,16 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 			map.put(m.simpleName, m)
 		}
 		
-		// check if there are duplicates
-		for (entry : map.asMap.entrySet) {
-			val duplicates = entry.value
-			if (duplicates.size > 1) {
-				for (d : duplicates) {
-					val source = d.sourceElements.head
-					error(
-						duplicateBindingMessage(source, d),
-						source,
-						source.duplicateBindingFeature,
-						DUPLICATE_BINDING
-					);
-				}
-			}
-		}
+		checkDuplicates(map) [
+			d |
+			val source = d.sourceElements.head
+			error(
+				duplicateBindingMessage(source, d),
+				source,
+				source.duplicateBindingFeature,
+				DUPLICATE_BINDING
+			);
+		]
 	}
 
 	/**
@@ -170,20 +173,45 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 			map.put(m.javaMethodResolvedErasedSignature, m.declaration)
 		}
 		
+		checkDuplicates(map) [
+			d |
+			val source = d.sourceElements.head
+			if (errorSourceSeen.add(source)) {
+				error(
+					"Duplicate element",
+					source,
+					null,
+					DUPLICATE_ELEMENT
+				);
+			}
+		]
+	}
+
+	private def checkDuplicateViewSpecifications(List<PartSpecification> parts) {
+		val map = duplicatesMultimap
+		
+		for (p : parts.filter(ViewSpecification)) {
+			map.put(p.id, p)
+		}
+		
+		checkDuplicates(map) [
+			d |
+			error(
+				"Duplicate element",
+				d,
+				modelPackage.viewSpecification_Id,
+				DUPLICATE_ELEMENT
+			);
+		]
+	}
+
+	private def <T> checkDuplicates(ListMultimap<String, T> map, (T)=>void errorReporter) {
 		// check if there are duplicates
 		for (entry : map.asMap.entrySet) {
 			val duplicates = entry.value
 			if (duplicates.size > 1) {
 				for (d : duplicates) {
-					val source = d.sourceElements.head
-					if (errorSourceSeen.add(source)) {
-						error(
-							"Duplicate element",
-							source,
-							null,
-							DUPLICATE_ELEMENT
-						);
-					}
+					errorReporter.apply(d)
 				}
 			}
 		}

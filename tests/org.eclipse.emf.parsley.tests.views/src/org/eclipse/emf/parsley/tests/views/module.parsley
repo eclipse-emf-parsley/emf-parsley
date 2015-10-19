@@ -1,8 +1,13 @@
-import org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
 import org.eclipse.emf.parsley.resource.ResourceSaveStrategy
 import org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+import org.eclipse.emf.parsley.tests.views.ViewsSaveableEditableTableView
+import org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder
+import org.eclipse.emf.parsley.viewers.TableViewerEditableColumnBuilder
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 
 /**
  * Defines Parsley parts acting on parsley.tests.models,
@@ -18,10 +23,15 @@ module org.eclipse.emf.parsley.tests.views {
 			viewname "Test Model Tree Form View"
 			viewclass ViewsSaveableTreeFormView
 		}
+		viewpart org.eclipse.emf.parsley.tests.editabletable {
+			viewname "Test Model Editable Table View"
+			viewclass ViewsSaveableEditableTableView
+		}
 	}
 	
 	bindings {
 		type ResourceSaveStrategy -> ValidateBeforeSaveStrategy
+		type TableViewerColumnBuilder -> TableViewerEditableColumnBuilder
 	}
 	
 	configurator {
@@ -29,12 +39,44 @@ module org.eclipse.emf.parsley.tests.views {
 			ViewsSaveableTreeFormView -> {
 				return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");
 			}
+			ViewsSaveableEditableTableView -> {
+				return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");
+			}
+		}
+		eClass {
+			ViewsSaveableEditableTableView -> {
+				TestmodelsPackage.Literals.CLASS_FOR_CONTROLS
+			}
 		}
 	}
 	
 	resourceManager {
+		val factory = TestmodelsFactory.eINSTANCE
+		
 		initializeResource {
-			getContents += TestmodelsFactory.eINSTANCE.createTestContainer
+			getContents += factory.createTestContainer => [
+				classesForControls += factory.createClassForControls
+			]
+		}
+	}
+	
+	tableFeaturesProvider {
+		features {
+			// we specify the features in the give order so that we can refer
+			// to the corresponding column in the SWTBot test for editable tables
+			// IMPORTANT: changing the order will break the SWTBot test
+			ClassForControls -> 
+				booleanFeature, booleanObjectFeature, booleanDataTypeFeature,
+				booleanPrimitiveDataTypeFeature,
+				enumFeature,
+				stringFeature, stringDataTypeFeature, stringFeatureWithDefault,
+				bigDecimalFeature, bigIntegerFeature,
+				doubleFeature, doubleObjectFeature,
+				intFeature, intObjectFeature,
+				floatFeature ,floatObjectFeature,
+				shortFeature, shortObjectFeature,
+				byteFeature, byteObjectFeature,
+				dateFeature
 		}
 	}
 }

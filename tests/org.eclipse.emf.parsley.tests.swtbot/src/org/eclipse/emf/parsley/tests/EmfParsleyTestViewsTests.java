@@ -24,16 +24,6 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyTestViewsTests extends EmfParsleySWTBotAbstractTests {
-	
-	private static final String TEST_MODEL_TREE_FORM_VIEW = "Test Model Tree Form View";
-
-	private static final String TEST_CONTAINER = "Test Container";
-
-	private static final String NEW_OBJECT_FOR_VALIDATION = "Objects For Validation Class For Validation";
-
-	private static final String OBJECT_FOR_VALIDATION = "Class For Validation";
-
-	private static final String NOT_EMPTY_LABEL = "Not Empty";
 
 	@Before
 	public void setupProject() {
@@ -82,7 +72,7 @@ public class EmfParsleyTestViewsTests extends EmfParsleySWTBotAbstractTests {
 	
 	protected SWTBotTreeItem getTestContainerNode() {
 		return getRootOfTreeFromView(
-				TEST_MODEL_TREE_FORM_VIEW).getTreeItem(TEST_CONTAINER);
+				TEST_MODEL_TREE_FORM_VIEW).getTreeItem(TEST_CONTAINER_LABEL);
 	}
 
 	protected SWTBotShell getValidationErrorsDialog() {

@@ -26,7 +26,7 @@ public enum EnumForControls implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FIRST(0, "FIRST", "FIRST"),
+	FIRST(1, "FIRST", "FIRST"),
 
 	/**
 	 * The '<em><b>SECOND</b></em>' literal object.
@@ -36,7 +36,7 @@ public enum EnumForControls implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SECOND(0, "SECOND", "SECOND"),
+	SECOND(2, "SECOND", "SECOND"),
 
 	/**
 	 * The '<em><b>THIRD</b></em>' literal object.
@@ -46,7 +46,7 @@ public enum EnumForControls implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	THIRD(0, "THIRD", "THIRD");
+	THIRD(3, "THIRD", "THIRD");
 
 	/**
 	 * The '<em><b>FIRST</b></em>' literal value.
@@ -61,7 +61,7 @@ public enum EnumForControls implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FIRST_VALUE = 0;
+	public static final int FIRST_VALUE = 1;
 
 	/**
 	 * The '<em><b>SECOND</b></em>' literal value.
@@ -76,7 +76,7 @@ public enum EnumForControls implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SECOND_VALUE = 0;
+	public static final int SECOND_VALUE = 2;
 
 	/**
 	 * The '<em><b>THIRD</b></em>' literal value.
@@ -91,7 +91,7 @@ public enum EnumForControls implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int THIRD_VALUE = 0;
+	public static final int THIRD_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>Enum For Controls</b></em>' enumerators.
@@ -161,6 +161,8 @@ public enum EnumForControls implements Enumerator {
 	public static EnumForControls get(int value) {
 		switch (value) {
 			case FIRST_VALUE: return FIRST;
+			case SECOND_VALUE: return SECOND;
+			case THIRD_VALUE: return THIRD;
 		}
 		return null;
 	}

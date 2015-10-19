@@ -2,7 +2,10 @@
  */
 package org.eclipse.emf.parsley.tests.models.testmodels.impl;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Collection;
+import java.util.Date;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -39,6 +42,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getEnumFeature <em>Enum Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeature <em>String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringDataTypeFeature <em>String Data Type Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getStringFeatureWithDefault <em>String Feature With Default</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getUnserializableStringDataTypeFeature <em>Unserializable String Data Type Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getUnchangeableStringFeature <em>Unchangeable String Feature</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getDerivedStringFeature <em>Derived String Feature</em>}</li>
@@ -48,6 +52,19 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries1 <em>Feature Map Entries1</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFeatureMapEntries2 <em>Feature Map Entries2</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getSingleContainmentReference <em>Single Containment Reference</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getBigDecimalFeature <em>Big Decimal Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getBigIntegerFeature <em>Big Integer Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getDoubleFeature <em>Double Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getDoubleObjectFeature <em>Double Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getIntFeature <em>Int Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getIntObjectFeature <em>Int Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFloatFeature <em>Float Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getFloatObjectFeature <em>Float Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getShortFeature <em>Short Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getShortObjectFeature <em>Short Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getByteFeature <em>Byte Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getByteObjectFeature <em>Byte Object Feature</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl#getDateFeature <em>Date Feature</em>}</li>
  * </ul>
  *
  * @generated
@@ -194,6 +211,26 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	protected String stringDataTypeFeature = STRING_DATA_TYPE_FEATURE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getStringFeatureWithDefault() <em>String Feature With Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringFeatureWithDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STRING_FEATURE_WITH_DEFAULT_EDEFAULT = "default";
+
+	/**
+	 * The cached value of the '{@link #getStringFeatureWithDefault() <em>String Feature With Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStringFeatureWithDefault()
+	 * @generated
+	 * @ordered
+	 */
+	protected String stringFeatureWithDefault = STRING_FEATURE_WITH_DEFAULT_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getUnserializableStringDataTypeFeature() <em>Unserializable String Data Type Feature</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -292,6 +329,266 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected ClassWithName singleContainmentReference;
+
+	/**
+	 * The default value of the '{@link #getBigDecimalFeature() <em>Big Decimal Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBigDecimalFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final BigDecimal BIG_DECIMAL_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBigDecimalFeature() <em>Big Decimal Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBigDecimalFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected BigDecimal bigDecimalFeature = BIG_DECIMAL_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBigIntegerFeature() <em>Big Integer Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBigIntegerFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final BigInteger BIG_INTEGER_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBigIntegerFeature() <em>Big Integer Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBigIntegerFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected BigInteger bigIntegerFeature = BIG_INTEGER_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDoubleFeature() <em>Double Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoubleFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double DOUBLE_FEATURE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getDoubleFeature() <em>Double Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoubleFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected double doubleFeature = DOUBLE_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDoubleObjectFeature() <em>Double Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoubleObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Double DOUBLE_OBJECT_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDoubleObjectFeature() <em>Double Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDoubleObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Double doubleObjectFeature = DOUBLE_OBJECT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIntFeature() <em>Int Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int INT_FEATURE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getIntFeature() <em>Int Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected int intFeature = INT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIntObjectFeature() <em>Int Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Integer INT_OBJECT_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIntObjectFeature() <em>Int Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Integer intObjectFeature = INT_OBJECT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFloatFeature() <em>Float Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFloatFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final float FLOAT_FEATURE_EDEFAULT = 0.0F;
+
+	/**
+	 * The cached value of the '{@link #getFloatFeature() <em>Float Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFloatFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected float floatFeature = FLOAT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFloatObjectFeature() <em>Float Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFloatObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Float FLOAT_OBJECT_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFloatObjectFeature() <em>Float Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFloatObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Float floatObjectFeature = FLOAT_OBJECT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getShortFeature() <em>Short Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final short SHORT_FEATURE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getShortFeature() <em>Short Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected short shortFeature = SHORT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getShortObjectFeature() <em>Short Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Short SHORT_OBJECT_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getShortObjectFeature() <em>Short Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShortObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Short shortObjectFeature = SHORT_OBJECT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getByteFeature() <em>Byte Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getByteFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final byte BYTE_FEATURE_EDEFAULT = 0x00;
+
+	/**
+	 * The cached value of the '{@link #getByteFeature() <em>Byte Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getByteFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected byte byteFeature = BYTE_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getByteObjectFeature() <em>Byte Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getByteObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Byte BYTE_OBJECT_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getByteObjectFeature() <em>Byte Object Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getByteObjectFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Byte byteObjectFeature = BYTE_OBJECT_FEATURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDateFeature() <em>Date Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date DATE_FEATURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDateFeature() <em>Date Feature</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateFeature()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date dateFeature = DATE_FEATURE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -457,6 +754,27 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 		stringDataTypeFeature = newStringDataTypeFeature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE, oldStringDataTypeFeature, stringDataTypeFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getStringFeatureWithDefault() {
+		return stringFeatureWithDefault;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStringFeatureWithDefault(String newStringFeatureWithDefault) {
+		String oldStringFeatureWithDefault = stringFeatureWithDefault;
+		stringFeatureWithDefault = newStringFeatureWithDefault;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT, oldStringFeatureWithDefault, stringFeatureWithDefault));
 	}
 
 	/**
@@ -638,6 +956,279 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BigDecimal getBigDecimalFeature() {
+		return bigDecimalFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBigDecimalFeature(BigDecimal newBigDecimalFeature) {
+		BigDecimal oldBigDecimalFeature = bigDecimalFeature;
+		bigDecimalFeature = newBigDecimalFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE, oldBigDecimalFeature, bigDecimalFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BigInteger getBigIntegerFeature() {
+		return bigIntegerFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBigIntegerFeature(BigInteger newBigIntegerFeature) {
+		BigInteger oldBigIntegerFeature = bigIntegerFeature;
+		bigIntegerFeature = newBigIntegerFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE, oldBigIntegerFeature, bigIntegerFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getDoubleFeature() {
+		return doubleFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoubleFeature(double newDoubleFeature) {
+		double oldDoubleFeature = doubleFeature;
+		doubleFeature = newDoubleFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_FEATURE, oldDoubleFeature, doubleFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double getDoubleObjectFeature() {
+		return doubleObjectFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDoubleObjectFeature(Double newDoubleObjectFeature) {
+		Double oldDoubleObjectFeature = doubleObjectFeature;
+		doubleObjectFeature = newDoubleObjectFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE, oldDoubleObjectFeature, doubleObjectFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getIntFeature() {
+		return intFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntFeature(int newIntFeature) {
+		int oldIntFeature = intFeature;
+		intFeature = newIntFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__INT_FEATURE, oldIntFeature, intFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer getIntObjectFeature() {
+		return intObjectFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntObjectFeature(Integer newIntObjectFeature) {
+		Integer oldIntObjectFeature = intObjectFeature;
+		intObjectFeature = newIntObjectFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE, oldIntObjectFeature, intObjectFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public float getFloatFeature() {
+		return floatFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFloatFeature(float newFloatFeature) {
+		float oldFloatFeature = floatFeature;
+		floatFeature = newFloatFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_FEATURE, oldFloatFeature, floatFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Float getFloatObjectFeature() {
+		return floatObjectFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFloatObjectFeature(Float newFloatObjectFeature) {
+		Float oldFloatObjectFeature = floatObjectFeature;
+		floatObjectFeature = newFloatObjectFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE, oldFloatObjectFeature, floatObjectFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public short getShortFeature() {
+		return shortFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShortFeature(short newShortFeature) {
+		short oldShortFeature = shortFeature;
+		shortFeature = newShortFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_FEATURE, oldShortFeature, shortFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Short getShortObjectFeature() {
+		return shortObjectFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShortObjectFeature(Short newShortObjectFeature) {
+		Short oldShortObjectFeature = shortObjectFeature;
+		shortObjectFeature = newShortObjectFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE, oldShortObjectFeature, shortObjectFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte getByteFeature() {
+		return byteFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setByteFeature(byte newByteFeature) {
+		byte oldByteFeature = byteFeature;
+		byteFeature = newByteFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_FEATURE, oldByteFeature, byteFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Byte getByteObjectFeature() {
+		return byteObjectFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setByteObjectFeature(Byte newByteObjectFeature) {
+		Byte oldByteObjectFeature = byteObjectFeature;
+		byteObjectFeature = newByteObjectFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE, oldByteObjectFeature, byteObjectFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Date getDateFeature() {
+		return dateFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDateFeature(Date newDateFeature) {
+		Date oldDateFeature = dateFeature;
+		dateFeature = newDateFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_CONTROLS__DATE_FEATURE, oldDateFeature, dateFeature));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -675,6 +1266,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return getStringFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
 				return getStringDataTypeFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT:
+				return getStringFeatureWithDefault();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
 				return getUnserializableStringDataTypeFeature();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
@@ -695,6 +1288,32 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return getFeatureMapEntries2();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
 				return getSingleContainmentReference();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE:
+				return getBigDecimalFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE:
+				return getBigIntegerFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_FEATURE:
+				return getDoubleFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE:
+				return getDoubleObjectFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_FEATURE:
+				return getIntFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE:
+				return getIntObjectFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_FEATURE:
+				return getFloatFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE:
+				return getFloatObjectFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_FEATURE:
+				return getShortFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE:
+				return getShortObjectFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_FEATURE:
+				return getByteFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE:
+				return getByteObjectFeature();
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DATE_FEATURE:
+				return getDateFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -729,6 +1348,9 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
 				setStringDataTypeFeature((String)newValue);
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT:
+				setStringFeatureWithDefault((String)newValue);
+				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
 				setUnserializableStringDataTypeFeature((String)newValue);
 				return;
@@ -755,6 +1377,45 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
 				setSingleContainmentReference((ClassWithName)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE:
+				setBigDecimalFeature((BigDecimal)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE:
+				setBigIntegerFeature((BigInteger)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_FEATURE:
+				setDoubleFeature((Double)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE:
+				setDoubleObjectFeature((Double)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_FEATURE:
+				setIntFeature((Integer)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE:
+				setIntObjectFeature((Integer)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_FEATURE:
+				setFloatFeature((Float)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE:
+				setFloatObjectFeature((Float)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_FEATURE:
+				setShortFeature((Short)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE:
+				setShortObjectFeature((Short)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_FEATURE:
+				setByteFeature((Byte)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE:
+				setByteObjectFeature((Byte)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DATE_FEATURE:
+				setDateFeature((Date)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -789,6 +1450,9 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
 				setStringDataTypeFeature(STRING_DATA_TYPE_FEATURE_EDEFAULT);
 				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT:
+				setStringFeatureWithDefault(STRING_FEATURE_WITH_DEFAULT_EDEFAULT);
+				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
 				setUnserializableStringDataTypeFeature(UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT);
 				return;
@@ -812,6 +1476,45 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
 				setSingleContainmentReference((ClassWithName)null);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE:
+				setBigDecimalFeature(BIG_DECIMAL_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE:
+				setBigIntegerFeature(BIG_INTEGER_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_FEATURE:
+				setDoubleFeature(DOUBLE_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE:
+				setDoubleObjectFeature(DOUBLE_OBJECT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_FEATURE:
+				setIntFeature(INT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE:
+				setIntObjectFeature(INT_OBJECT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_FEATURE:
+				setFloatFeature(FLOAT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE:
+				setFloatObjectFeature(FLOAT_OBJECT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_FEATURE:
+				setShortFeature(SHORT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE:
+				setShortObjectFeature(SHORT_OBJECT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_FEATURE:
+				setByteFeature(BYTE_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE:
+				setByteObjectFeature(BYTE_OBJECT_FEATURE_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DATE_FEATURE:
+				setDateFeature(DATE_FEATURE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -839,6 +1542,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return STRING_FEATURE_EDEFAULT == null ? stringFeature != null : !STRING_FEATURE_EDEFAULT.equals(stringFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_DATA_TYPE_FEATURE:
 				return STRING_DATA_TYPE_FEATURE_EDEFAULT == null ? stringDataTypeFeature != null : !STRING_DATA_TYPE_FEATURE_EDEFAULT.equals(stringDataTypeFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__STRING_FEATURE_WITH_DEFAULT:
+				return STRING_FEATURE_WITH_DEFAULT_EDEFAULT == null ? stringFeatureWithDefault != null : !STRING_FEATURE_WITH_DEFAULT_EDEFAULT.equals(stringFeatureWithDefault);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE:
 				return UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT == null ? unserializableStringDataTypeFeature != null : !UNSERIALIZABLE_STRING_DATA_TYPE_FEATURE_EDEFAULT.equals(unserializableStringDataTypeFeature);
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__UNCHANGEABLE_STRING_FEATURE:
@@ -857,6 +1562,32 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 				return !getFeatureMapEntries2().isEmpty();
 			case TestmodelsPackage.CLASS_FOR_CONTROLS__SINGLE_CONTAINMENT_REFERENCE:
 				return singleContainmentReference != null;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_DECIMAL_FEATURE:
+				return BIG_DECIMAL_FEATURE_EDEFAULT == null ? bigDecimalFeature != null : !BIG_DECIMAL_FEATURE_EDEFAULT.equals(bigDecimalFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BIG_INTEGER_FEATURE:
+				return BIG_INTEGER_FEATURE_EDEFAULT == null ? bigIntegerFeature != null : !BIG_INTEGER_FEATURE_EDEFAULT.equals(bigIntegerFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_FEATURE:
+				return doubleFeature != DOUBLE_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DOUBLE_OBJECT_FEATURE:
+				return DOUBLE_OBJECT_FEATURE_EDEFAULT == null ? doubleObjectFeature != null : !DOUBLE_OBJECT_FEATURE_EDEFAULT.equals(doubleObjectFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_FEATURE:
+				return intFeature != INT_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__INT_OBJECT_FEATURE:
+				return INT_OBJECT_FEATURE_EDEFAULT == null ? intObjectFeature != null : !INT_OBJECT_FEATURE_EDEFAULT.equals(intObjectFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_FEATURE:
+				return floatFeature != FLOAT_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__FLOAT_OBJECT_FEATURE:
+				return FLOAT_OBJECT_FEATURE_EDEFAULT == null ? floatObjectFeature != null : !FLOAT_OBJECT_FEATURE_EDEFAULT.equals(floatObjectFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_FEATURE:
+				return shortFeature != SHORT_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__SHORT_OBJECT_FEATURE:
+				return SHORT_OBJECT_FEATURE_EDEFAULT == null ? shortObjectFeature != null : !SHORT_OBJECT_FEATURE_EDEFAULT.equals(shortObjectFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_FEATURE:
+				return byteFeature != BYTE_FEATURE_EDEFAULT;
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__BYTE_OBJECT_FEATURE:
+				return BYTE_OBJECT_FEATURE_EDEFAULT == null ? byteObjectFeature != null : !BYTE_OBJECT_FEATURE_EDEFAULT.equals(byteObjectFeature);
+			case TestmodelsPackage.CLASS_FOR_CONTROLS__DATE_FEATURE:
+				return DATE_FEATURE_EDEFAULT == null ? dateFeature != null : !DATE_FEATURE_EDEFAULT.equals(dateFeature);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -885,6 +1616,8 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 		result.append(stringFeature);
 		result.append(", stringDataTypeFeature: ");
 		result.append(stringDataTypeFeature);
+		result.append(", stringFeatureWithDefault: ");
+		result.append(stringFeatureWithDefault);
 		result.append(", unserializableStringDataTypeFeature: ");
 		result.append(unserializableStringDataTypeFeature);
 		result.append(", unchangeableStringFeature: ");
@@ -893,6 +1626,32 @@ public class ClassForControlsImpl extends MinimalEObjectImpl.Container implement
 		result.append(derivedStringFeature);
 		result.append(", featureMapEntries: ");
 		result.append(featureMapEntries);
+		result.append(", bigDecimalFeature: ");
+		result.append(bigDecimalFeature);
+		result.append(", bigIntegerFeature: ");
+		result.append(bigIntegerFeature);
+		result.append(", doubleFeature: ");
+		result.append(doubleFeature);
+		result.append(", doubleObjectFeature: ");
+		result.append(doubleObjectFeature);
+		result.append(", intFeature: ");
+		result.append(intFeature);
+		result.append(", intObjectFeature: ");
+		result.append(intObjectFeature);
+		result.append(", floatFeature: ");
+		result.append(floatFeature);
+		result.append(", floatObjectFeature: ");
+		result.append(floatObjectFeature);
+		result.append(", shortFeature: ");
+		result.append(shortFeature);
+		result.append(", shortObjectFeature: ");
+		result.append(shortObjectFeature);
+		result.append(", byteFeature: ");
+		result.append(byteFeature);
+		result.append(", byteObjectFeature: ");
+		result.append(byteObjectFeature);
+		result.append(", dateFeature: ");
+		result.append(dateFeature);
 		result.append(')');
 		return result.toString();
 	}

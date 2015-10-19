@@ -141,14 +141,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	}
 
 	/**
-	 * This keeps track of the editing domain that is used to track all changes
-	 * to the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected AdapterFactoryEditingDomain editingDomain;
-
-	/**
 	 * This is the one adapter factory used for providing views of the model.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -414,8 +406,14 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Inject
 	protected OutlineSelectionHandler outlineSelectionHandler;
 
+	/**
+	 * This keeps track of the editing domain that is used to track all changes
+	 * to the model. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
 	@Inject
-	protected Provider<AdapterFactoryEditingDomain> editingDomainProvider;
+	protected AdapterFactoryEditingDomain editingDomain;
 
 	@Inject
 	protected ResourceLoader resourceLoader;
@@ -585,7 +583,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	}
 
 	protected void initializeEditingDomain() {
-		editingDomain = editingDomainProvider.get();
 		adapterFactory = (ComposedAdapterFactory) editingDomain.getAdapterFactory();
 		// Add a listener to set the most recent command's affected objects to
 		// be the selection of the viewer with focus.

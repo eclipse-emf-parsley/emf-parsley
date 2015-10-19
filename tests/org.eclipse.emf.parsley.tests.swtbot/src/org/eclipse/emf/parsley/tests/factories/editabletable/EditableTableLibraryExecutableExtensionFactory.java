@@ -9,10 +9,13 @@
  * Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.factories.editabletable;
-import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
-import org.eclipse.emf.parsley.tests.factories.EmfParsleyTestsExecutableExtensionFactory;
 
-import com.google.inject.Injector;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
+import org.eclipse.emf.parsley.tests.factories.CustomLibraryModule;
+import org.eclipse.emf.parsley.tests.factories.EmfParsleyTestsExecutableExtensionFactory;
+import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
+import org.eclipse.emf.parsley.viewers.TableViewerEditableColumnBuilder;
 
 /**
  * Uses an editable table
@@ -20,13 +23,18 @@ import com.google.inject.Injector;
  * @author Francesco Guidieri
  * 
  */
-public class EditableTableLibraryExecutableExtensionFactory extends
-		EmfParsleyTestsExecutableExtensionFactory {
+public class EditableTableLibraryExecutableExtensionFactory extends EmfParsleyTestsExecutableExtensionFactory {
 
 	@Override
-	public Injector getInjector() {
-		return EmfParsleySwtBotTestsActivator.getDefault().getInjector(
-				this.getClass());
+	protected EmfParsleyGuiceModule getModule() {
+		return new CustomLibraryModule(EmfParsleySwtBotTestsActivator.getDefault()) {
+
+			@Override
+			public Class<? extends TableViewerColumnBuilder> bindTableViewerColumnBuilder() {
+				return TableViewerEditableColumnBuilder.class;
+			}
+
+		};
 	}
 
 }

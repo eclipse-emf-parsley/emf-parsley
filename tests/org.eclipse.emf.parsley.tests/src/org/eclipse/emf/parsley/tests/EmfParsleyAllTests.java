@@ -25,6 +25,7 @@ import org.junit.runners.Suite;
 	ResourceLoaderTest.class,
 	ResourceSaveStrategyTest.class,
 	EditingDomainTest.class,
+	AdapterFactoryHelperTest.class,
 	ViewerContentProviderTest.class,
 	TableViewerContentProviderTest.class,
 	TableViewerContentProviderFactoryTest.class,

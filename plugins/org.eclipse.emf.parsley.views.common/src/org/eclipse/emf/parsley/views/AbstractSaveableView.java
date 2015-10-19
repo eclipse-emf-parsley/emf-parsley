@@ -30,7 +30,6 @@ import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.part.ViewPart;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public abstract class AbstractSaveableView extends ViewPart implements ISaveablePart, IEditingDomainProvider, AsyncCommandStackListenerClient {
 	private Resource resource;
@@ -38,9 +37,6 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 	private boolean dirty;
 
 	private static final Logger LOGGER = Logger.getLogger(AbstractSaveableView.class);
-
-	@Inject
-	private Provider<AdapterFactoryEditingDomain> editingDomainProvider;
 
 	@Inject
 	private ResourceLoader resourceLoader;
@@ -51,11 +47,11 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 	@Inject
 	private AsyncCommandStackListenerHelper commandStackListenerHelper;
 
+	@Inject
 	protected AdapterFactoryEditingDomain editingDomain;
 
 	@Override
 	public void createPartControl(Composite parent) {
-		editingDomain = editingDomainProvider.get();
 		resource = loadResource(createResourceURI());
 		commandStackListenerHelper.addCommandStackListener(editingDomain, getSite().getWorkbenchWindow().getShell(),
 				this, resource);

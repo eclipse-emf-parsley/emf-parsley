@@ -18,12 +18,12 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.resource.ResourceLoader
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.tests.util.GlobalAdapterFactoryEditingDomainModule
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class EditingDomainTest extends AbstractEmfParsleyTest {
 	
@@ -33,8 +33,8 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 	def void testDefaultEditingDomainProvider() {
 		val injector = createDefaultEditingDomainProviderInjector
 		
-		val e1 = injector.getProvider(AdapterFactoryEditingDomain).get
-		val e2 = injector.getProvider(AdapterFactoryEditingDomain).get
+		val e1 = getEditingDomainInstance(injector)
+		val e2 = getEditingDomainInstance(injector)
 		
 		e1.assertNotSame(e2)
 	}
@@ -43,8 +43,8 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 	def void testGlobalEditingDomainProvider() {
 		val injector = createGlobalEditingDomainProviderInjector
 		
-		val e1 = injector.getProvider(AdapterFactoryEditingDomain).get
-		val e2 = injector.getProvider(AdapterFactoryEditingDomain).get
+		val e1 = getEditingDomainInstance(injector)
+		val e2 = getEditingDomainInstance(injector)
 		
 		e1.assertSame(e2)
 	}
@@ -101,4 +101,9 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 	def private createTestInjector(Module module) {
 		createInjector(module);
 	}
+
+	def private getEditingDomainInstance(Injector injector) {
+		injector.getInstance(AdapterFactoryEditingDomain)
+	}
+
 }

@@ -167,7 +167,7 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	}
 
 	def createAdapterFactoryEditingDomain(Injector injector) {
-		injector.getProvider(AdapterFactoryEditingDomain).get
+		injector.getInstance(AdapterFactoryEditingDomain)
 	}
 
 	def assertBooks(Writer w, int expectedSize) {
