@@ -4,20 +4,20 @@ import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 import org.eclipse.emf.common.command.AbstractCommand
 import org.eclipse.emf.common.command.Command
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
-import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerClient
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerHelper
 import org.eclipse.emf.parsley.tests.AsyncCommandStackListenerTest.TestableCommand
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.eclipse.emf.parsley.tests.util.TestableCommandStackListenerClient
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.ecore.resource.Resource
 
 class AsyncCommandStackListenerTest extends AbstractEmfParsleyControlBasedTest {
 
@@ -25,27 +25,11 @@ class AsyncCommandStackListenerTest extends AbstractEmfParsleyControlBasedTest {
 
 	var EditingDomain editingDomain = null
 
-	var TestableClient client
+	var TestableCommandStackListenerClient client
 
 	var AsyncCommandStackListenerHelper helper
 
 	var Resource resource
-
-	static class TestableClient implements AsyncCommandStackListenerClient {
-
-		public val commandsAffectingResources = <Command>newArrayList()
-
-		public val commands = <Command>newArrayList()
-
-		override mostRecentCommandAffectsResource(Command mostRecentCommand) {
-			commandsAffectingResources += mostRecentCommand
-		}
-
-		override postCommandStackChanged(Command mostRecentCommand) {
-			commands += mostRecentCommand
-		}
-
-	}
 
 	static class TestableCommand extends AbstractCommand {
 		
@@ -71,7 +55,7 @@ class AsyncCommandStackListenerTest extends AbstractEmfParsleyControlBasedTest {
 	def void initialize() {
 		val injector = getOrCreateInjector
 		editingDomain = injector.getProvider(AdapterFactoryEditingDomain).get()
-		client = new TestableClient
+		client = new TestableCommandStackListenerClient
 		helper = injector.getInstance(AsyncCommandStackListenerHelper)
 		resource = new ResourceImpl
 	}

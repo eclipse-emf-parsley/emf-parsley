@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
@@ -33,8 +34,6 @@ import com.google.inject.Inject;
 
 public abstract class AbstractSaveableView extends ViewPart implements ISaveablePart, IEditingDomainProvider, AsyncCommandStackListenerClient {
 	private Resource resource;
-
-	private boolean dirty;
 
 	private static final Logger LOGGER = Logger.getLogger(AbstractSaveableView.class);
 
@@ -74,8 +73,15 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 		setDirtyAndFirePropertyChange(true);
 	}
 
+	/**
+	 * The dirty state must be changed according to the passed parameter.
+	 * 
+	 * @param dirtyState
+	 */
 	protected void setDirtyAndFirePropertyChange(boolean dirtyState) {
-		setDirty(dirtyState);
+		if (!dirtyState) {
+			getBasicCommandStack().saveIsDone();
+		}
 		firePropertyChange(PROP_DIRTY);
 	}
 
@@ -86,6 +92,13 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 	@Override
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
+	}
+
+	/**
+	 * @return The {@link BasicCommandStack} of the editing domain
+	 */
+	protected BasicCommandStack getBasicCommandStack() {
+		return (BasicCommandStack) getEditingDomain().getCommandStack();
 	}
 
 	@Override
@@ -105,11 +118,7 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 
 	@Override
 	public boolean isDirty() {
-		return dirty;
-	}
-
-	public void setDirty(boolean dirty) {
-		this.dirty = dirty;
+		return getBasicCommandStack().isSaveNeeded();
 	}
 
 	@Override

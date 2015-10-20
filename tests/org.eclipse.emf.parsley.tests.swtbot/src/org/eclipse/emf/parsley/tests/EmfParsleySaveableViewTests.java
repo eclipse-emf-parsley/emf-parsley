@@ -207,6 +207,23 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		assertEquals(initialSize - 1, allItems.length);
 	}
 
+	@Test
+	public void undoRedoDeleteActionUpdatesDirtyStateCorrectly() throws Exception {
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=479700
+		SWTBotTreeItem libraryNode = prepareSaveableTreeViewAndGetLibraryNode();
+		clickOnContextMenu(getWriterNode(libraryNode), ACTION_DELETE);
+		assertSaveableViewIsDirty(true, TEST_SAVEABLE_TREE_VIEW);
+		undo(ACTION_DELETE);
+		// make sure the writer is back
+		getWriterNode(libraryNode);
+		// undo must have reset the dirty state to false
+		assertSaveableViewIsDirty(false, TEST_SAVEABLE_TREE_VIEW);
+		redo(ACTION_DELETE);
+		// redo must have set the dirty state to true
+		assertSaveableViewIsDirty(true, TEST_SAVEABLE_TREE_VIEW);
+		saveViewAndAssertNotDirty(TEST_SAVEABLE_TREE_VIEW);
+	}
+
 	protected void checkDoubleClickDialog(SWTBotTreeItem libraryNode, String viewName) {
 		libraryNode.doubleClick();
 		bot.shell(LIBRARY_LABEL);

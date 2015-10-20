@@ -10,10 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
 import static org.junit.Assert.*;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.junit.After;
 import org.junit.Before;
@@ -26,6 +30,10 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests {
+
+	private static final String MULTI_REFERENCE_FEATURE_LABEL = "Multi Reference Feature";
+	private static final String CLASS_WITH_NAME_LABEL = "Class With Name";
+	private static final String SECOND_CLASS_WITH_NAME = CLASS_WITH_NAME_LABEL + " Second Class With Name";
 
 	private static final int ROW = 0;
 
@@ -62,6 +70,9 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 	private static final int BYTE_OBJECT_FEATURE = 19;
 
 	private static final int DATE_FEATURE = 20;
+
+	private static final int SINGLE_REFERENCE_FEATURE = 21;
+	private static final int MULTI_REFERENCE_FEATURE = 22;
 
 	private SWTBotTable table;
 
@@ -223,6 +234,16 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		assertSaveableViewIsDirty(false, TEST_MODEL_EDITABLE_TABLE_VIEW);
 	}
 
+	@Test
+	public void testSingleReferenceCell() {
+		clickComboCell(SINGLE_REFERENCE_FEATURE, "", SECOND_CLASS_WITH_NAME);
+	}
+
+	@Test
+	public void testMultiReferenceCell() {
+		clickMultiReferenceCell(MULTI_REFERENCE_FEATURE, CLASS_FOR_CONTROLS_LABEL, "", SECOND_CLASS_WITH_NAME);
+	}
+
 	/**
 	 * Uses the combo to select true for the boolean feature
 	 * 
@@ -235,7 +256,8 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 
 	private void clickComboCell(int column, String firstValue, String secondValue) {
 		table.click(ROW, column);
-		bot.ccomboBox(firstValue).setSelection(secondValue);
+		final SWTBotCCombo ccomboBox = bot.ccomboBox(firstValue);
+		ccomboBox.setSelection(secondValue);
 		leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
 		assertDirtyAndSave();
 		undo("Set");
@@ -282,6 +304,34 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		leaveEditingCellClickingOnAnotherCell(ENUM_FEATURE);
 		assertEquals(value, table.cell(ROW, column));
 		assertSaveableViewIsDirty(false, TEST_MODEL_EDITABLE_TABLE_VIEW);
+	}
+
+	private void clickMultiReferenceCell(int column, String containerName, String originalValue, String newValue) {
+		table.click(ROW, column);
+		bot.text(originalValue);
+
+		bot.button("...").click();
+		SWTBotShell shell = bot.shell(MULTI_REFERENCE_FEATURE_LABEL + " -- " + containerName);
+		shell.activate();
+
+		// add a reference in the dialog
+		bot.table(0).select(newValue); // left table
+		bot.button("Add").click();
+
+		bot.button("OK").click();
+		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
+
+		// we leave the cell by clicking on the enum cell
+		leaveEditingCellClickingOnAnotherCell(ENUM_FEATURE);
+
+		assertEquals(newValue, table.cell(ROW, column));
+		assertDirtyAndSave();
+		undo("Set");
+		assertEquals(originalValue, table.cell(ROW, column));
+		assertDirtyAndSave();
+		redo("Set");
+		assertEquals(newValue, table.cell(ROW, column));
+		assertDirtyAndSave();
 	}
 
 	private void assertDirtyAndSave() {

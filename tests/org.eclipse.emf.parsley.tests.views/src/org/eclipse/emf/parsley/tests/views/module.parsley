@@ -56,6 +56,8 @@ module org.eclipse.emf.parsley.tests.views {
 		initializeResource {
 			getContents += factory.createTestContainer => [
 				classesForControls += factory.createClassForControls
+				classesWithName += factory.createClassWithName => [name="First Class With Name"]
+				classesWithName += factory.createClassWithName => [name="Second Class With Name"]
 			]
 		}
 	}
@@ -76,7 +78,8 @@ module org.eclipse.emf.parsley.tests.views {
 				floatFeature ,floatObjectFeature,
 				shortFeature, shortObjectFeature,
 				byteFeature, byteObjectFeature,
-				dateFeature
+				dateFeature,
+				referenceToClassWithName, multiReferenceFeature
 		}
 	}
 }
