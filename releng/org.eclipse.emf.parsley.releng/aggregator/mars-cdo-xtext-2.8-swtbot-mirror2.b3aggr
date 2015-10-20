@@ -19,7 +19,8 @@
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="[2.8.4,2.9.0)"/>
         <features name="org.eclipse.emf.mwe2.language.sdk.feature.group" versionRange="2.8.1"/>
         <features name="org.eclipse.emf.mwe2.runtime.sdk.feature.group" versionRange="2.8.1"/>
-        <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.8.1"/>      </repositories>
+        <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.8.1"/>
+      </repositories>
     </contributions>
     <contributions description="SwtBot" label="SwtBot">
       <repositories location="http://download.eclipse.org/technology/swtbot/releases/latest">
@@ -42,7 +43,6 @@
   <configurations architecture="x86_64"/>
   <configurations operatingSystem="linux" windowSystem="gtk"/>
   <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
-  <configurations operatingSystem="macosx" windowSystem="cocoa"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
   <customCategories identifier="custom.rcp.components" label="Custom RCP Components"/>
 </aggregator:Aggregation>
