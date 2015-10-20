@@ -72,8 +72,8 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
         // new Path("/target/org.eclipse.emf.parsley.hwt-0.0.1-SNAPSHOT.jar"),
         // webInfLib.getFile("org.eclipse.emf.parsley.hwt.jar"));
 
-        Utils.copyFromPluginToWorkspace(org.eclipse.emf.parsley.web.servlets.Activator.getDefault().getBundle(), new Path("/target/org.eclipse.emf.parsley.web.servlets-0.0.1-SNAPSHOT.jar"),
-                        webInfLib.getFile("emf.parsley.web-core.jar"));
+//        Utils.copyFromPluginToWorkspace(org.eclipse.emf.parsley.web.servlets.Activator.getDefault().getBundle(), new Path("/target/org.eclipse.emf.parsley.web.servlets-0.0.1-SNAPSHOT.jar"),
+//                        webInfLib.getFile("emf.parsley.web-core.jar"));
 
 
         addXTextNature(iProject, monitor);
@@ -162,8 +162,10 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
                 add("org.eclipse.emf.ecore.xmi");
                 add("org.eclipse.emf.edit");
                 add("org.eclipse.emf.edit.ui");
+                add("org.eclipse.equinox.registry");
                 add("org.eclipse.emf.parsley.common");
                 add("org.eclipse.emf.parsley.runtime.common");
+                add("org.eclipse.emf.parsley.web.servlets");
 
 
                 if (wizardUserOptions.getPersistenceOption().equals(PERSISTENCE_OPTION.TENEO)) {
@@ -310,9 +312,12 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
                 	checkForImportedPlugins(pluginId, bundle);
                 	//EMF Parsley Project development case
                 	bundleUri = "module:/resource/"+pluginId+"/"+pluginId;
+                	//archiveName="org.eclipse.emf.parsley.runtime.common.jar"
+                	//"module:/resource/org.eclipse.emf.parsley.runtime.common/org.eclipse.emf.parsley.runtime.common"
                 }
-                bundleIdVersionJar = bundle.getSymbolicName() + "_" + bundle.getVersion() + ".jar";
-                archiveName = bundleIdVersionJar;
+//                bundleIdVersionJar = bundle.getSymbolicName() + "_" + bundle.getVersion() + ".jar";
+                bundleIdVersionJar = bundle.getLocation().substring("reference:/file:".length());
+                archiveName = bundle.getSymbolicName() + ".jar";
             } else {
                 // String => Bundle dependency
                 bundleIdVersionJar = (String) obj;
@@ -320,11 +325,13 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
             }
             ReferencedComponent refC = ComponentcoreFactory.eINSTANCE.createReferencedComponent();
             URI uri;
+            //"module:/classpath/lib/C:/Users/Vincenzo/.p2/pool/plugins/org.apache.batik.pdf_1.6.0.v201105071520.jar"
             if (bundleUri!=null) {
             	//EMF Parsley Project development case
             	uri = URI.createURI(bundleUri);
             } else {
-            	uri = URI.createURI("module:/classpath/var/ECLIPSE_HOME/plugins/" + bundleIdVersionJar);
+//            	uri = URI.createURI("module:/classpath/var/ECLIPSE_HOME/plugins/" + bundleIdVersionJar);
+            	uri = URI.createURI("module:/classpath/lib/" + bundleIdVersionJar);
             }
             refC.setHandle(uri);
             refC.setArchiveName(archiveName);
