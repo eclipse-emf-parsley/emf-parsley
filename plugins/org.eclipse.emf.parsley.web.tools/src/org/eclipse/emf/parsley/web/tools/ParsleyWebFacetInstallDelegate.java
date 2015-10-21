@@ -23,6 +23,7 @@ import java.util.Set;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -75,9 +76,10 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 //        Utils.copyFromPluginToWorkspace(org.eclipse.emf.parsley.web.servlets.Activator.getDefault().getBundle(), new Path("/target/org.eclipse.emf.parsley.web.servlets-0.0.1-SNAPSHOT.jar"),
 //                        webInfLib.getFile("emf.parsley.web-core.jar"));
 
+        Utils.copyFile(iProject, monitor, "/templates/pom.xml", iProject.getFile("pom.xml"), new Properties());
 
-        addXTextNature(iProject, monitor);
-
+        addProjectNature(iProject, monitor, XtextProjectHelper.NATURE_ID);
+        addProjectNature(iProject, monitor, "org.eclipse.m2e.core.maven2Nature"); //TODO should take it from a predefined Maven plugin constant
 
         Properties replaceStrings;
         String projectName = iProject.getName();
@@ -104,6 +106,8 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 
         setupWebInfXml(iProject);
 
+        ResourcesPlugin.getWorkspace().build(IncrementalProjectBuilder.CLEAN_BUILD, monitor);
+        
         monitor.done();
     }
 
@@ -124,11 +128,11 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
         se.save(monitor);
     }
 
-    private void addXTextNature(final IProject iProject, final IProgressMonitor monitor) throws CoreException {
+    private void addProjectNature(final IProject iProject, final IProgressMonitor monitor, String natureId) throws CoreException {
         IProjectDescription description = iProject.getDescription();
         String[] currentNatures = description.getNatureIds();
         String[] newNatures = Arrays.copyOf(currentNatures, currentNatures.length + 1);
-        newNatures[currentNatures.length] = XtextProjectHelper.NATURE_ID;
+        newNatures[currentNatures.length] = natureId;
         description.setNatureIds(newNatures);
         iProject.setDescription(description, monitor);
     }
