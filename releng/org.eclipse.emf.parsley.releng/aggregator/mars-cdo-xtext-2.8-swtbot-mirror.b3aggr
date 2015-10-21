@@ -34,7 +34,7 @@
       </repositories>
     </contributions>
     <contributions description="Itemis Xtext" label="Itemis Xtext">
-      <repositories location="http://download.itemis.de/updates">
+      <repositories location="http://download.itemis.com/updates/releases/2.1.1/">
         <features name="de.itemis.xtext.antlr.feature.feature.group"/>
       </repositories>
     </contributions>
