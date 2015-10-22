@@ -1,4 +1,0 @@
-setpref targetPlatformPath="${target.platform}"
-
-resolve "${projects.location}/releng/org.eclipse.emf.parsley.releng/projects-platform.cquery"
-resolve "${projects.location}/releng/org.eclipse.emf.parsley.releng/project.cquery"
