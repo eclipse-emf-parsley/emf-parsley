@@ -6,6 +6,52 @@
 	<artifactId>org.eclipse.emf.parsley.parent</artifactId>
 	<version>0.5.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	
+	<url>http://www.eclipse.org/emf-parsley/</url>
+	<ciManagement>
+		<system>hudson</system>
+		<url>https://hudson.eclipse.org/hudson</url>
+	</ciManagement>
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<organization>
+		<name>Eclipse Foundation</name>
+		<url>http://www.eclipse.org/</url>
+	</organization>
+	<issueManagement>
+		<system>Bugzilla</system>
+		<url>https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley</url>
+	</issueManagement>
+	<scm>
+		<connection>scm:git:http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git</connection>
+		<developerConnection>scm:git:ssh://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git</developerConnection>
+		<url>http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git</url>
+	</scm>
+	<developers>
+		<developer>
+			<name>Lorenzo Bettini</name>
+			<organization>Dipartimento di Informatica</organization>
+			<organizationUrl>http://www.lorenzobettini.it/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Vincenzo Caselli</name>
+			<organization>RCP Vision</organization>
+			<organizationUrl>http://www.rcp-vision.com/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Francesco Guidieri</name>
+			<organization>RCP Vision</organization>
+			<organizationUrl>http://www.rcp-vision.com/</organizationUrl>
+		</developer>
+	</developers>
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
 
 	<properties>
 		<tycho-version>0.22.0</tycho-version>
@@ -340,6 +386,50 @@
 
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 			</modules>
+			
+			<properties>
+				<findbugs.skip>true</findbugs.skip>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>sonatype-oss-release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+				    </plugin>
+				</plugins>
+			</build>
 		</profile>
 		
 		<profile>
@@ -758,5 +848,16 @@
 
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
 </project>
