@@ -384,6 +384,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
 
+				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 			</modules>
 			
