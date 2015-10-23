@@ -1,4 +1,9 @@
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EcoreFactory
+import org.eclipse.emf.parsley.edit.IEditingStrategy
+import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
 import org.eclipse.emf.parsley.examples.maven.MavenSaveableTreeFormView
+import org.eclipse.emf.ecore.EObject
 
 /* org.eclipse.emf.parsley.examples.maven Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.maven {
@@ -10,6 +15,10 @@ module org.eclipse.emf.parsley.examples.maven {
 		}
 	}
 	
+	bindings {
+		type IEditingStrategy -> UndoableEditingStrategy
+	}
+
 	configurator {
 		resourceURI {
 			MavenSaveableTreeFormView -> {
@@ -21,9 +30,88 @@ module org.eclipse.emf.parsley.examples.maven {
 	
 	resourceManager {
 		initializeResource {
-			// Optional: initialize an empty Resource
-			// 'it' is of type Resource
-			// e.g., it.getContents += myFactory.createMyClass
+			getContents += EcoreFactory.eINSTANCE.createEClass => [ name = "TestClass" ]
+		}
+	}
+
+	labelProvider {
+		text {
+			EClass -> { instanceClassName }
+		}
+		image {
+			EObject -> { "test.png" }
+		}
+	}
+
+	dialogControlFactory {
+		control {
+			EClass : name -> {
+				createText("")
+			} target { observeText }
+		}
+	}
+
+	dialogFeatureCaptionProvider {
+		label {
+			
+		}
+	}
+
+	featureCaptionProvider {
+		text {
+			
+		}
+	}
+
+	featuresProvider {
+		features {
+			
+		}
+	}
+
+	formControlFactory {
+		control {
+			
+		}
+	}
+
+	formFeatureCaptionProvider {
+		label {
+			
+		}
+	}
+
+	proposals {
+		
+	}
+
+	tableFeaturesProvider {
+		features {
+			
+		}
+	}
+
+	tableLabelProvider {
+		text {
+			
+		}
+	}
+
+	viewerContentProvider {
+		elements {
+			
+		}
+	}
+
+	tableViewerContentProvider {
+		elements {
+			
+		}
+	}
+
+	menuBuilder {
+		menus {
+			
 		}
 	}
 }
