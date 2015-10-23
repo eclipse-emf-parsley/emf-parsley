@@ -1,0 +1,29 @@
+import org.eclipse.emf.parsley.examples.maven.MavenSaveableTreeFormView
+
+/* org.eclipse.emf.parsley.examples.maven Emf Parsley Dsl Module file */
+module org.eclipse.emf.parsley.examples.maven {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.maven {
+			viewname "Maven Saveable Tree Form View"
+			viewclass MavenSaveableTreeFormView
+		}
+	}
+	
+	configurator {
+		resourceURI {
+			MavenSaveableTreeFormView -> {
+				// TODO create and return a org.eclipse.emf.common.util.URI
+				return null;
+			}
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
+	}
+}
