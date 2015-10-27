@@ -57,6 +57,32 @@ import com.google.inject.Inject;
  * }
  * </pre>
  * 
+ * Similarly, you can define methods with a prefix 'rowFont', 'rowForeground'
+ * and 'rowBackground' for an object to specify the font, foreground color and
+ * background color, respectively, for the entire row, or 'font', 'foreground'
+ * or 'background' followed by the EClass and EStructuralFeature names separated
+ * by an underscore character, for the font, foreground color and background
+ * color, respectively, for a specific table cell (the latter has the precedence
+ * over the former) for example:
+ * 
+ * <pre>
+ * {@code
+ * 
+ * public Font text_MyClass_myFeature(Object object)
+ *    
+ * public Color foreground_MyClass_myFeature(Object object)
+ *    
+ * public Color background_MyClass_myFeature(Object object)
+ *    
+ * public Font rowFont(Object object)
+ *    
+ * public Color rowForeground(Object object)
+ *    
+ * public Color rowBackground(Object object)
+ *    
+ * }
+ * </pre>
+ * 
  * @author Francesco Guidieri
  * @author Lorenzo Bettini
  * 
@@ -160,6 +186,11 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return null;
 		}
 
+		Font forFeature = invokePolymorphicDispatcher(element, geteStructuralFeature(), "font_");
+		if (forFeature != null) {
+			return forFeature;
+		}
+
 		return fontDispatcher.invoke(element);
 	}
 
@@ -179,6 +210,11 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return null;
 		}
 
+		Color forFeature = invokePolymorphicDispatcher(element, geteStructuralFeature(), "foreground_");
+		if (forFeature != null) {
+			return forFeature;
+		}
+
 		return foregroundDispatcher.invoke(element);
 	}
 
@@ -196,6 +232,11 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	public Color getBackground(Object element) {
 		if (element == null) {
 			return null;
+		}
+
+		Color forFeature = invokePolymorphicDispatcher(element, geteStructuralFeature(), "background_");
+		if (forFeature != null) {
+			return forFeature;
 		}
 
 		return backgroundDispatcher.invoke(element);

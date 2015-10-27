@@ -44,6 +44,13 @@ public class CustomLibraryTableColumnLabelProvider extends TableColumnLabelProvi
 		return null;
 	}
 
+	public Font font_Book_author(Book book) {
+		if (book.getAuthor() != null) {
+			return JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
+		}
+		return null;
+	}
+
 	public Color rowForeground(Book book) {
 		if ("".equals(book.getTitle())) {
 			return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
@@ -51,9 +58,23 @@ public class CustomLibraryTableColumnLabelProvider extends TableColumnLabelProvi
 		return null;
 	}
 
+	public Color foreground_Book_title(Book book) {
+		if (!"".equals(book.getTitle())) {
+			return Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
+		}
+		return null;
+	}
+
 	public Color rowBackground(Book book) {
 		if (book.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL) {
 			return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+		}
+		return null;
+	}
+
+	public Color background_Book_category(Book book) {
+		if (book.getCategory() != BookCategory.SCIENCE_FICTION_LITERAL) {
+			return Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
 		}
 		return null;
 	}

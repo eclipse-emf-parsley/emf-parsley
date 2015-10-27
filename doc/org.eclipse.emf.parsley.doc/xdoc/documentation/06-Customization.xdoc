@@ -310,9 +310,9 @@ public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
 		super(adapterFactory);
 	}
 
- 	public Object elements(Library library) {
-    	return library.getBooks();
-  	}
+	public Object elements(Library library) {
+		return library.getBooks();
+	}
 
 	public Object children(Library library) {
 		return library.getBooks();
@@ -381,8 +381,12 @@ section2:TableLabelProvider[Table Label Provider]
 
 The Jface Table Label Provider allows to specify the representation of a given cell in a table. e[EMF Parsley]
 provides an implementation that uses the information provided via the DSL, as you can see in the snippet
-below. We allow customization for text and image for a given object's feature,
-and also font, and foreground and background color for the entire row.
+below. We allow customization for text, image, font, foreground and background color for a given object's feature
+(which corresponds to a table cell), and also font, and foreground and background color for the entire row.
+
+Concerning fonts and colors, a customization for a single cell has the precedence over the customization of an entire row.
+
+Here's an example.
 
 code[EmfParsley][
 tableLabelProvider {
@@ -398,6 +402,18 @@ tableLabelProvider {
 				"noname.gif"
 			else
 				new ImageData("writer.jpeg")
+	}
+	
+	font {
+		Library : name -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+	}
+	
+	foreground {
+		Library : books -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+	}
+	
+	background {
+		Library : address -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
 	}
 	
 	rowFont {

@@ -210,6 +210,18 @@ module my.empty {
 					new ImageData("writer.jpeg")
 		}
 		
+		font {
+			Library : name -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+		}
+		
+		foreground {
+			Library : books -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+		}
+		
+		background {
+			Library : address -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
+		}
+		
 		rowFont {
 			Library -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
 		}

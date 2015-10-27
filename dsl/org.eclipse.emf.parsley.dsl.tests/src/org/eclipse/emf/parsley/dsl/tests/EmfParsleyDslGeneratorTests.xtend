@@ -465,6 +465,24 @@ public class TableLabelProviderGen extends TableColumnLabelProvider {
     return _xifexpression;
   }
   
+  public Font font_Library_name(final Library it) {
+    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
+    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    return _bold;
+  }
+  
+  public Color foreground_Library_books(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    return _systemColor;
+  }
+  
+  public Color background_Library_address(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    return _systemColor;
+  }
+  
   public Font rowFont(final Library it) {
     FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
     Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);

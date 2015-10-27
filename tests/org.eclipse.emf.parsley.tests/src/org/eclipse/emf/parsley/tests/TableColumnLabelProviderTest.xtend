@@ -283,6 +283,22 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 	}
 
 	@Test
+	def void testCustomFont() {
+		// customization for feature has precedence
+		val bold = new Font(shell.display, JFaceResources.DEFAULT_FONT, 14, SWT.BOLD)
+		val customLabelProvider = new TableColumnLabelProvider {
+			def font_ClassForControls_stringFeature(ClassForControls e) {
+				bold
+			}
+			
+			def rowFont(ClassForControls e) {
+				new Font(shell.display, JFaceResources.DEFAULT_FONT, 14, SWT.ITALIC)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		bold.assertSame(customLabelProvider.getFont(classForControlsInstance))
+	}
+
+	@Test
 	def void testGetForegroundNull() {
 		null.assertEquals(tableColumnLabelProvider.getForeground(null))
 	}
@@ -306,6 +322,22 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 	}
 
 	@Test
+	def void testCustomForeground() {
+		// customization for feature has precedence
+		val color = shell.display.getSystemColor(SWT.COLOR_GREEN)
+		val customLabelProvider = new TableColumnLabelProvider {
+			def foreground_ClassForControls_stringFeature(ClassForControls e) {
+				color
+			}
+			
+			def rowForeground(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		color.assertSame(customLabelProvider.getForeground(classForControlsInstance))
+	}
+
+	@Test
 	def void testGetBackgroundNull() {
 		null.assertEquals(tableColumnLabelProvider.getBackground(null))
 	}
@@ -326,6 +358,22 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
 		customLabelProvider.getBackground(classForControlsInstance).assertNotNull
+	}
+
+	@Test
+	def void testCustomBackground() {
+		// customization for feature has precedence
+		val color = shell.display.getSystemColor(SWT.COLOR_GREEN)
+		val customLabelProvider = new TableColumnLabelProvider {
+			def background_ClassForControls_stringFeature(ClassForControls e) {
+				color
+			}
+			
+			def rowBackground(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		color.assertSame(customLabelProvider.getBackground(classForControlsInstance))
 	}
 
 	def private initialize(TableColumnLabelProvider p, EStructuralFeature f) {

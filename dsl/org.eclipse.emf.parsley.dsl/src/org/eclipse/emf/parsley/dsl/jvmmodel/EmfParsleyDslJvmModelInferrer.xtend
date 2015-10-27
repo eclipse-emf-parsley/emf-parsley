@@ -361,37 +361,16 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val tableLabelProviderClass = tableLabelProvider.toClass(element.tableLabelProviderQN)
 			acceptor.accept(tableLabelProviderClass) [
 				setSuperClassTypeAndFields(tableLabelProvider, typeof(TableColumnLabelProvider))
-					
-				for (labelSpecification : tableLabelProvider.labelSpecifications) {
-					if (labelSpecification.feature?.simpleName != null) {
-						members += labelSpecification.toMethod("text_" + 
-							labelSpecification.parameterType.simpleName + "_" +
-							labelSpecification.feature.simpleName.propertyNameForGetterSetterMethod
-							, typeRef(String)
-						) [
-							parameters += labelSpecification.toParameter(
-								"it"
-								, labelSpecification.parameterType
-							)
-							body = labelSpecification.expression
-						]
-					}
-				}
 				
-				for (imageSpecification : tableLabelProvider.imageSpecifications) {
-					if (imageSpecification.feature?.simpleName != null) {
-						members += imageSpecification.toMethod("image_" + 
-							imageSpecification.parameterType.simpleName + "_" +
-							imageSpecification.feature.simpleName.propertyNameForGetterSetterMethod
-							, typeRef(Object)) [
-							parameters += imageSpecification.toParameter(
-									"it"
-								, imageSpecification.parameterType
-							)
-							body = imageSpecification.expression
-						]
-					}
-				}
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.labelSpecifications, "text_", typeRef(String), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.imageSpecifications, "image_", typeRef(Object), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.fontSpecifications, "font_", typeRef(Font), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.foregroundSpecifications, "foreground_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.backgroundSpecifications, "background_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
 				
 				for (fontSpecification : tableLabelProvider.rowFontSpecifications) {
 					members += fontSpecification.specificationToMethod("rowFont", typeRef(Font))
@@ -450,8 +429,17 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
+	def private (JvmOperation, FeatureAssociatedExpression) => void getParameterCreatorForFeatureAssociatedExpression() {
+		[
+			it, spec |
+			parameters += spec.toParameter(
+				"it", spec.parameterType
+			)
+		]
+	}
+
 	def private inferMethodsForTextCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
-		inferMethodsForCaptionSpecifications(
+		inferMethodsForFeatureAssociatedExpression(
 			it, specifications, "text_", typeRef(String)
 		) [
 			it, spec |
@@ -460,9 +448,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			)
 		]
 	}
-	
+
 	def private inferMethodsForLabelCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
-		inferMethodsForCaptionSpecifications(
+		inferMethodsForFeatureAssociatedExpression(
 			it, specifications, "label_", typeRef(Label)
 		) [
 			it, spec |
@@ -475,7 +463,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private inferMethodsForCaptionSpecifications(JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications, 
+	def private inferMethodsForFeatureAssociatedExpression(JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications, 
 		String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator
 	) {
 		for (spec : specifications) {
