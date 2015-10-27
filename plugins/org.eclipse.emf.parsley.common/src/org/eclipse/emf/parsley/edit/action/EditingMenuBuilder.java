@@ -85,7 +85,7 @@ public class EditingMenuBuilder {
 	 *
 	 * @param <T>
 	 */
-	private static class CustomChangeCommand<T extends Notifier> extends ChangeCommand {
+	private static final class CustomChangeCommand<T extends Notifier> extends ChangeCommand {
 		private final T element;
 		private final IAcceptor<T> changeImplementation;
 
