@@ -5,6 +5,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 
 @SuppressWarnings("all")
 public class LabelProviderGen extends ViewerLabelProvider {
@@ -19,5 +21,17 @@ public class LabelProviderGen extends ViewerLabelProvider {
   
   public Object image(final EObject it) {
     return "test.png";
+  }
+  
+  public Font font(final EObject it) {
+    return null;
+  }
+  
+  public Color foreground(final EObject it) {
+    return null;
+  }
+  
+  public Color background(final EObject it) {
+    return null;
   }
 }

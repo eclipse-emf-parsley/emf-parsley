@@ -41,6 +41,15 @@ module org.eclipse.emf.parsley.examples.maven {
 		image {
 			EObject -> { "test.png" }
 		}
+		font {
+			EObject -> { null }
+		}
+		foreground {
+			EObject -> { null }
+		}
+		background {
+			EObject -> { null }
+		}
 	}
 
 	dialogControlFactory {
