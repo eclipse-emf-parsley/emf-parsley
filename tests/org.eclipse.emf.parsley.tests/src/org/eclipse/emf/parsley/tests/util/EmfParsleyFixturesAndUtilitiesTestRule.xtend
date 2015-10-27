@@ -37,6 +37,7 @@ import org.junit.runners.model.Statement
 import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass
 
 /**
  * Objects, utility methods and other elements used in tests.
@@ -79,6 +80,11 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	 */
 	var protected TestEClass testEClassInstance
 
+	/**
+	 * An instance to use for testing Ecore related mechanisms
+	 */
+	var protected DerivedClass derivedClassInstance
+
 	val static TEST_RESOURCE_URI = "resources/TestResource.xmi"
 
 	val static TEST_LIBRARY_RESOURCE_URI = "resources/TestLibraryResource.xmi"
@@ -97,6 +103,7 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 		b = lib.books.head
 		testContainer = createTestContainer
 		classForControlsInstance = createClassForControls
+		derivedClassInstance = createDerivedClassInstance
 		testEClassInstance = testFactory.createTestEClass
 	}
 
@@ -114,6 +121,10 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 
 	def getClassForControlsInstance() {
 		classForControlsInstance
+	}
+
+	def getDerivedClassInstance() {
+		derivedClassInstance
 	}
 
 	def getLibrary() {
@@ -254,6 +265,10 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 
 	def createClassForControls() {
 		testFactory.createClassForControls
+	}
+
+	def createDerivedClassInstance() {
+		testFactory.createDerivedClass
 	}
 
 	def createClassForFeatureMapEntry1(String n) {

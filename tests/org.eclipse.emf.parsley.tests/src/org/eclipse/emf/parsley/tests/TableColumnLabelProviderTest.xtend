@@ -25,6 +25,7 @@ import org.junit.Test
 
 import static extension org.eclipse.emf.parsley.junit4.ui.util.ImageTester.*
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass
 
 class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 
@@ -119,6 +120,37 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 	}
 
 	@Test
+	def void testCustomTextNotEObject() {
+		val customProvider = new TableColumnLabelProvider {
+			def text_ClassForControls_stringFeature(String s) {
+				"Test"
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		"Test".assertEquals(customProvider.getText("aString"))
+	}
+
+	@Test
+	def void testCustomTextDerivedClassFeatureInDerivedClass() {
+		val customProvider = new TableColumnLabelProvider {
+			def text_DerivedClass_derivedClassFeature(DerivedClass e) {
+				"Test"
+			}
+		}.initialize(testPackage.derivedClass_DerivedClassFeature)
+		"Test".assertEquals(customProvider.getText(derivedClassInstance))
+	}
+
+	@Test
+	def void testCustomTextBaseClassFeatureInDerivedClass() {
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=480749
+		val customProvider = new TableColumnLabelProvider {
+			def text_DerivedClass_baseClassFeature(DerivedClass e) {
+				"Test"
+			}
+		}.initialize(testPackage.baseClass_BaseClassFeature)
+		"Test".assertEquals(customProvider.getText(derivedClassInstance))
+	}
+
+	@Test
 	def void testGetImageNull() {
 		tableColumnLabelProvider.getImage(null).assertNull
 	}
@@ -131,7 +163,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			assertNull
 		]
 	}
-	
+
 	@Test
 	def void testCustomImageAsString() {
 		val customLabelProvider = new TableColumnLabelProvider {
@@ -140,6 +172,46 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
 		customLabelProvider.getImage(classForControlsInstance) => [
+			assertNotNull
+			loadTestImage.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testCustomImageNotEObject() {
+		val customProvider = new TableColumnLabelProvider {
+			def image_ClassForControls_stringFeature(String s) {
+				TEST_IMAGE
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		customProvider.getImage("aString") => [
+			assertNotNull
+			loadTestImage.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testCustomImageDerivedClassFeatureInDerivedClass() {
+		val customProvider = new TableColumnLabelProvider {
+			def image_DerivedClass_derivedClassFeature(DerivedClass e) {
+				TEST_IMAGE
+			}
+		}.initialize(testPackage.derivedClass_DerivedClassFeature)
+		customProvider.getImage(derivedClassInstance) => [
+			assertNotNull
+			loadTestImage.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testCustomImageBaseClassFeatureInDerivedClass() {
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=480749
+		val customProvider = new TableColumnLabelProvider {
+			def image_DerivedClass_baseClassFeature(DerivedClass e) {
+				TEST_IMAGE
+			}
+		}.initialize(testPackage.baseClass_BaseClassFeature)
+		customProvider.getImage(derivedClassInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
