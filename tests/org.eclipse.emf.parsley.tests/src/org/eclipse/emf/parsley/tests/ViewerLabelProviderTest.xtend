@@ -28,7 +28,7 @@ import org.eclipse.swt.SWT
 class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
 	var ViewerLabelProvider labelProvider
-	
+
 	@Before
 	def void setupLabelProvider() {
 		labelProvider = getOrCreateInjector.getInstance(ViewerLabelProvider)
