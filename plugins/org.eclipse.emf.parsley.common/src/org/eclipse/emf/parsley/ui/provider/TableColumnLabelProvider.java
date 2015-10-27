@@ -21,6 +21,8 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Predicate;
@@ -60,12 +62,22 @@ import com.google.inject.Inject;
  * 
  */
 public class TableColumnLabelProvider extends ColumnLabelProvider {
+
 	private EStructuralFeature eStructuralFeature;
 
 	private ILabelProvider labelProvider;
 
 	@Inject
 	private IImageHelper imageHelper;
+
+	private PolymorphicDispatcher<Font> fontDispatcher = PolymorphicDispatcher.createForSingleTarget("rowFont", 1, 1,
+			this);
+
+	private PolymorphicDispatcher<Color> foregroundDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("rowForeground", 1, 1, this);
+
+	private PolymorphicDispatcher<Color> backgroundDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("rowBackground", 1, 1, this);
 
 	@Inject
 	public TableColumnLabelProvider() {
@@ -140,6 +152,63 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 
 		Image ret = polymorphicGetImage(element, geteStructuralFeature());
 		return ret;
+	}
+
+	@Override
+	public Font getFont(Object element) {
+		if (element == null) {
+			return null;
+		}
+
+		return fontDispatcher.invoke(element);
+	}
+
+	/**
+	 * This method will be linked at runtime, belonging to the real input type
+	 * at runtime.
+	 * 
+	 * @return the font for the entire row
+	 */
+	public Font rowFont(Object element) {
+		return null;
+	}
+
+	@Override
+	public Color getForeground(Object element) {
+		if (element == null) {
+			return null;
+		}
+
+		return foregroundDispatcher.invoke(element);
+	}
+
+	/**
+	 * This method will be linked at runtime, belonging to the real input type
+	 * at runtime.
+	 * 
+	 * @return the foreground color for the entire row
+	 */
+	public Color rowForeground(Object element) {
+		return null;
+	}
+
+	@Override
+	public Color getBackground(Object element) {
+		if (element == null) {
+			return null;
+		}
+
+		return backgroundDispatcher.invoke(element);
+	}
+
+	/**
+	 * This method will be linked at runtime, belonging to the real input type
+	 * at runtime.
+	 * 
+	 * @return the background color for the entire row
+	 */
+	public Color rowBackground(Object element) {
+		return null;
 	}
 
 	protected String polymorphicGetText(Object element, EStructuralFeature feature) {

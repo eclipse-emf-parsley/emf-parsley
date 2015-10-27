@@ -10,12 +10,24 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.labeling;
 
+import org.eclipse.emf.parsley.examples.library.Book;
+import org.eclipse.emf.parsley.examples.library.BookCategory;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.widgets.Display;
 
-
-public class CustomLibraryTableColumnLabelProvider extends
-		TableColumnLabelProvider {
+/**
+ * Custom table label provider for the Library, with custom text, image, font,
+ * foreground and background color.
+ * 
+ * @author Lorenzo Bettini
+ * 
+ */
+public class CustomLibraryTableColumnLabelProvider extends TableColumnLabelProvider {
 
 	public String text_Writer_name(Object element) {
 		if (element instanceof Writer) {
@@ -25,4 +37,24 @@ public class CustomLibraryTableColumnLabelProvider extends
 		return null;
 	}
 
+	public Font rowFont(Book book) {
+		if (book.getAuthor() == null) {
+			return JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT);
+		}
+		return null;
+	}
+
+	public Color rowForeground(Book book) {
+		if ("".equals(book.getTitle())) {
+			return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
+		}
+		return null;
+	}
+
+	public Color rowBackground(Book book) {
+		if (book.getCategory() == BookCategory.SCIENCE_FICTION_LITERAL) {
+			return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+		}
+		return null;
+	}
 }

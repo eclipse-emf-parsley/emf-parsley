@@ -377,7 +377,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 						]
 					}
 				}
-			
+				
 				for (imageSpecification : tableLabelProvider.imageSpecifications) {
 					if (imageSpecification.feature?.simpleName != null) {
 						members += imageSpecification.toMethod("image_" + 
@@ -391,6 +391,18 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 							body = imageSpecification.expression
 						]
 					}
+				}
+				
+				for (fontSpecification : tableLabelProvider.rowFontSpecifications) {
+					members += fontSpecification.specificationToMethod("rowFont", typeRef(Font))
+				}
+				
+				for (foregroundSpecification : tableLabelProvider.rowForegroundSpecifications) {
+					members += foregroundSpecification.specificationToMethod("rowForeground", typeRef(Color))
+				}
+				
+				for (backgroundSpecification : tableLabelProvider.rowBackgroundSpecifications) {
+					members += backgroundSpecification.specificationToMethod("rowBackground", typeRef(Color))
 				}
 			]
 			tableLabelProviderClass

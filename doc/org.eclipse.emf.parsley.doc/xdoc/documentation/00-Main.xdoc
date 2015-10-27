@@ -32,7 +32,9 @@ codelanguage-def[EmfParsley]
 	menuBuilder,menus,emfMenus,resourceManager,initializeResource,saveResource,
 	configurator,resourceURI,eClass,
 	bindings,type,provide,value,
-	font,foreground,background
+	font,foreground,background,
+	tableLabelProvider,
+	rowFont,rowForeground,rowBackground
 ]
 
 part[Getting Started]

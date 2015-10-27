@@ -198,7 +198,7 @@ section:Providers[Providers]
 
 section2:ViewerLabelProvider[Viewer Label Provider]
 
-The Jface Label Prorvider allows to specify the representation of a given Object. e[EMF Parsley]
+The Jface Label Provider allows to specify the representation of a given Object. e[EMF Parsley]
 provides an implementation that uses the information provided via the DSL, as you can see in the snippet
 below. We allow customization for text, image, font, and foreground and background color.
 
@@ -376,6 +376,43 @@ tableViewerContentProvider{
 
 IMPORTANT: customizations specified in a codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider]
 will NOT be reused by a codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider].
+
+section2:TableLabelProvider[Table Label Provider]
+
+The Jface Table Label Provider allows to specify the representation of a given cell in a table. e[EMF Parsley]
+provides an implementation that uses the information provided via the DSL, as you can see in the snippet
+below. We allow customization for text and image for a given object's feature,
+and also font, and foreground and background color for the entire row.
+
+code[EmfParsley][
+tableLabelProvider {
+	text {
+		Library:name -> 'Name' // constant
+		Library:books -> 'Books' // constant
+		Writer:lastName -> name.toFirstUpper // the implicit param is an EStructuralFeature
+	}
+	
+	image {
+		Book: author -> 
+			if (author.name.nullOrEmpty) 
+				"noname.gif"
+			else
+				new ImageData("writer.jpeg")
+	}
+	
+	rowFont {
+		Library -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+	}
+	
+	rowForeground {
+		Library -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+	}
+	
+	rowBackground {
+		Library -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
+	}
+}
+]
 
 section2:FeaturesProvider[Features Provider]
 

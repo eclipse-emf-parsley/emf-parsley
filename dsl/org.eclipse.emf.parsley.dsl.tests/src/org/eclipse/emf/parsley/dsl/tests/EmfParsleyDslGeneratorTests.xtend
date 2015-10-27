@@ -427,7 +427,13 @@ import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
+import org.eclipse.jface.resource.FontRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
@@ -457,6 +463,24 @@ public class TableLabelProviderGen extends TableColumnLabelProvider {
       _xifexpression = new ImageData("writer.jpeg");
     }
     return _xifexpression;
+  }
+  
+  public Font rowFont(final Library it) {
+    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
+    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    return _bold;
+  }
+  
+  public Color rowForeground(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    return _systemColor;
+  }
+  
+  public Color rowBackground(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    return _systemColor;
   }
 }
 ''']

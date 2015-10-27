@@ -119,17 +119,37 @@ TableLabelProvider:
 	{TableLabelProvider} 'tableLabelProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 	
-		((
-		'text' '{'
-			labelSpecifications+=FeatureAssociatedExpression*
-		'}'
-		)?
-		&
 		(
-		'image' '{'
-			imageSpecifications+=FeatureAssociatedExpression*
-		'}'
-		)?)
+			(
+			'text' '{'
+				labelSpecifications+=FeatureAssociatedExpression*
+			'}'
+			)?
+			&
+			(
+			'image' '{'
+				imageSpecifications+=FeatureAssociatedExpression*
+			'}'
+			)?
+			&
+			(
+			'rowFont' '{'
+				rowFontSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'rowForeground' '{'
+				rowForegroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'rowBackground' '{'
+				rowBackgroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+		)
 	'}'
 ;
 
