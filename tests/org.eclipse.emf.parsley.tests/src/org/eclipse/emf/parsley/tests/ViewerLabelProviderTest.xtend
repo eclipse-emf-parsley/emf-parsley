@@ -15,20 +15,23 @@ import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.resource.ImageDescriptor
+import org.eclipse.jface.resource.JFaceResources
 import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
 import org.junit.Test
 
 import static extension org.eclipse.emf.parsley.junit4.ui.util.ImageTester.*
 import static extension org.junit.Assert.*
+import org.eclipse.swt.graphics.Font
+import org.eclipse.swt.SWT
 
 class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
-	var ILabelProvider labelProvider
+	var ViewerLabelProvider labelProvider
 	
 	@Before
 	def void setupLabelProvider() {
-		labelProvider = getOrCreateInjector.getInstance(ILabelProvider)
+		labelProvider = getOrCreateInjector.getInstance(ViewerLabelProvider)
 	}
 
 	@Test
@@ -185,6 +188,72 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNotNull
 			getDefaultEMFImageForClassForControls.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testGetFontNull() {
+		null.assertEquals(labelProvider.getFont(null))
+	}
+
+	@Test
+	def void testDefaultGetFont() {
+		null.assertEquals(labelProvider.getFont(classForControlsInstance))
+	}
+
+	@Test
+	def void testCustomFont() {
+		val customLabelProvider = new ViewerLabelProvider(null) {
+			def font(ClassForControls e) {
+				new Font(shell.display, JFaceResources.DEFAULT_FONT, 14, SWT.BOLD)
+			}
+		}.injectMembers
+		customLabelProvider.getFont(classForControlsInstance) => [
+			assertNotNull
+		]
+	}
+
+	@Test
+	def void testGetForegroundNull() {
+		null.assertEquals(labelProvider.getForeground(null))
+	}
+
+	@Test
+	def void testDefaultGetForeground() {
+		null.assertEquals(labelProvider.getForeground(classForControlsInstance))
+	}
+
+	@Test
+	def void testCustomForeground() {
+		val customLabelProvider = new ViewerLabelProvider(null) {
+			def foreground(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.injectMembers
+		customLabelProvider.getForeground(classForControlsInstance) => [
+			assertNotNull
+		]
+	}
+
+	@Test
+	def void testGetBackgroundNull() {
+		null.assertEquals(labelProvider.getBackground(null))
+	}
+
+	@Test
+	def void testDefaultGetBackground() {
+		null.assertEquals(labelProvider.getBackground(classForControlsInstance))
+	}
+
+	@Test
+	def void testCustomBackground() {
+		val customLabelProvider = new ViewerLabelProvider(null) {
+			def background(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.injectMembers
+		customLabelProvider.getBackground(classForControlsInstance) => [
+			assertNotNull
 		]
 	}
 

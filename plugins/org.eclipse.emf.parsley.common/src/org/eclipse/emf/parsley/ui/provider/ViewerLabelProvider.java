@@ -15,22 +15,30 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
+import org.eclipse.jface.viewers.IColorProvider;
+import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 /**
- * Default implementation for {@link ILabelProvider} that uses polymorphic dispatch to invoke methods at runtime.
+ * Default implementation for {@link ILabelProvider} that uses polymorphic dispatch to invoke methods at runtime,
+ * it also implements {@link IFontProvider} and {@link IColorProvider}.
+ * 
  * You can define {@link #text(Object)} and {@link #image(Object)} methods specifying the input type. 
  * The framework will select the correct implementation depending on the runtime type of the argument.
+ * 
+ * The same holds for {@link #font(Object)}, {@link #foreground(Object)} and {@link #background(Object)}.
  * 
  * @author Lorenzo Bettini - Initial contribution and API 
  * @author Francesco Guidieri - Javadocs :-)
  */
-public class ViewerLabelProvider implements ILabelProvider {
+public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColorProvider {
 
 	@Inject
 	private IImageHelper imageHelper;
@@ -52,6 +60,15 @@ public class ViewerLabelProvider implements ILabelProvider {
 
 	private PolymorphicDispatcher<Object> imageDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("image", 1, 1, this);
+
+	private PolymorphicDispatcher<Font> fontDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("font", 1, 1, this);
+
+	private PolymorphicDispatcher<Color> foregroundDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("foreground", 1, 1, this);
+
+	private PolymorphicDispatcher<Color> backgroundDispatcher = PolymorphicDispatcher
+			.createForSingleTarget("background", 1, 1, this);
 
 	protected ILabelProvider delegateLabelProvider;
 	
@@ -176,4 +193,54 @@ public class ViewerLabelProvider implements ILabelProvider {
 		}
 		return builder.toString();
 	}
+
+	@Override
+	public Font getFont(Object element) {
+		if (element == null) {
+			return null;
+		}
+
+		return fontDispatcher.invoke(element);
+	}
+
+	/**
+	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * @return the font that represents the input
+	 */
+	public Font font(Object element) {
+		return null;
+	}
+
+	@Override
+	public Color getForeground(Object element) {
+		if (element == null) {
+			return null;
+		}
+		return foregroundDispatcher.invoke(element);
+	}
+
+	/**
+	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * @return the foreground color
+	 */
+	public Color foreground(Object element) {
+		return null;
+	}
+
+	@Override
+	public Color getBackground(Object element) {
+		if (element == null) {
+			return null;
+		}
+		return backgroundDispatcher.invoke(element);
+	}
+
+	/**
+	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * @return the background color
+	 */
+	public Color background(Object element) {
+		return null;
+	}
+
 }

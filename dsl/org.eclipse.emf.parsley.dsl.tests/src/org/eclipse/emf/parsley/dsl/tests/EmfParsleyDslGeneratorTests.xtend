@@ -220,7 +220,13 @@ import org.eclipse.emf.parsley.examples.library.Lendable;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.jface.resource.FontRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
@@ -287,6 +293,24 @@ public class LabelProviderGen extends ViewerLabelProvider {
       _xifexpression = new ImageData("writer.jpeg");
     }
     return _xifexpression;
+  }
+  
+  public Font font(final Library it) {
+    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
+    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    return _bold;
+  }
+  
+  public Color foreground(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    return _systemColor;
+  }
+  
+  public Color background(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    return _systemColor;
   }
 }
 ''']

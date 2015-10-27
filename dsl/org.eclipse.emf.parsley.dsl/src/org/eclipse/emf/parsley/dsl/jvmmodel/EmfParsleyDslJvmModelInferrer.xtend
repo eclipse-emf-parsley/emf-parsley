@@ -77,6 +77,8 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.swt.graphics.Font
+import org.eclipse.swt.graphics.Color
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -333,6 +335,18 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				
 				for (imageSpecification : labelProvider.imageSpecifications) {
 					members += imageSpecification.specificationToMethod("image", typeRef(Object))
+				}
+				
+				for (fontSpecification : labelProvider.fontSpecifications) {
+					members += fontSpecification.specificationToMethod("font", typeRef(Font))
+				}
+				
+				for (foregroundSpecification : labelProvider.foregroundSpecifications) {
+					members += foregroundSpecification.specificationToMethod("foreground", typeRef(Color))
+				}
+				
+				for (backgroundSpecification : labelProvider.backgroundSpecifications) {
+					members += backgroundSpecification.specificationToMethod("background", typeRef(Color))
 				}
 			]
 			labelProviderClass

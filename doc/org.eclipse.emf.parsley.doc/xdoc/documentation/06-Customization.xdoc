@@ -200,24 +200,37 @@ section2:ViewerLabelProvider[Viewer Label Provider]
 
 The Jface Label Prorvider allows to specify the representation of a given Object. e[EMF Parsley]
 provides an implementation that uses the information provided via the DSL, as you can see in the snippet
-below. 
+below. We allow customization for text, image, font, and foreground and background color.
 
 code[EmfParsley][
 labelProvider{
-	text{
+	text {
 		Book -> "Book:"+title
 		Borrower -> "Borrower: "+firstName
 	}
-	image{
+	image {
 		Book -> "book.png"
+	}
+	font {
+		Book -> // must return a org.eclipse.swt.graphics.Font
+	}
+	foreground {
+		Book -> // must return a org.eclipse.swt.graphics.Color
+	}
+	background {
+		Book -> // must return a org.eclipse.swt.graphics.Color
 	}
 }
 ]
 
 However if you want to customize the label provider in Java, you need to provide an implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
-and injecting it in the spefic module e[(TODO)].
+and injecting it in the spefic module by overriding e[bindILabelProvider].
+
 e[EMF Parsley] provides such a base implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
 that is meant to be subclassed by the programmer to provide specific implementations like in the example below.
+Our label provider also implements codeRef[org.eclipse.jface.viewers.IFontProvider] and
+codeRef[org.eclipse.jface.viewers.IColorProvider], so that you can customize also the font, the foreground
+and the background color.
 
 This class, like many others in our framework, relies on the e[polymorphic dispatcher] idiom to declaratively
 specify text and image representations for objects. It boils down to the fact that the only thing you need to do is 
@@ -240,6 +253,18 @@ public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 
 	public String image(Book book) {
 		return "book.png";
+	}
+
+	public Font font(Book book) {
+		return // must return a org.eclipse.swt.graphics.Font
+	}
+
+	public Color foreground(Book book) {
+		return // must return a org.eclipse.swt.graphics.Color
+	}
+
+	public Color background(Book book) {
+		return // must return a org.eclipse.swt.graphics.Color
 	}
 
 	public String text(Borrower b) {

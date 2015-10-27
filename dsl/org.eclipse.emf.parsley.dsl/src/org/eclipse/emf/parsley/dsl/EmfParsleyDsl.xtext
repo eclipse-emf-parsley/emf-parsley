@@ -70,17 +70,37 @@ LabelProvider:
 	{LabelProvider} 'labelProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 	
-		((
-		'text' '{'
-			labelSpecifications+=LabelSpecification*
-		'}'
-		)?
-		&
 		(
-		'image' '{'
-			imageSpecifications+=LabelSpecification*
-		'}'
-		)?)
+			(
+			'text' '{'
+				labelSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'image' '{'
+				imageSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'font' '{'
+				fontSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'foreground' '{'
+				foregroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'background' '{'
+				backgroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+		)
 	'}'
 ;
 

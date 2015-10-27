@@ -31,7 +31,8 @@ codelanguage-def[EmfParsley]
 	float,super,while,proposals,dialogControlFactory,
 	menuBuilder,menus,emfMenus,resourceManager,initializeResource,saveResource,
 	configurator,resourceURI,eClass,
-	bindings,type,provide,value
+	bindings,type,provide,value,
+	font,foreground,background
 ]
 
 part[Getting Started]
