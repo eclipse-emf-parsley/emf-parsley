@@ -21,18 +21,17 @@ import org.eclipse.swt.widgets.Composite;
  * @author Lorenzo Bettini
  * 
  */
-public class LibraryEmfView extends OnSelectionTreeView {
+public class TestOnSelectionLibraryTreeViewWithResourceURI extends OnSelectionTreeView {
 
 	public static final String resourceUri = "platform:/plugin/org.eclipse.emf.parsley.tests.swtbot/models/My.extlibrary";
 
-	public LibraryEmfView() {
+	public TestOnSelectionLibraryTreeViewWithResourceURI() {
 
 	}
 
 	@Override
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
-		showEmfViewer();
 		init(URI.createURI(resourceUri));
 	}
 

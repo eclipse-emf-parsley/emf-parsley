@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.tests;
 import static org.junit.Assert.assertTrue;
 
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Test;
@@ -148,32 +147,4 @@ public class EmfParsleyEditorTests extends EmfParsleySWTBotAbstractTests {
 		assertStatusLine("Selected Object: " + WRITER_LABEL);
 	}
 
-	@Test
-	public void selectionViewOnSelection() throws Exception {
-		SWTBotView selectionView = openTestView(LIBRARY_EMF_VIEW);
-		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
-				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
-		// we select the library in the editor...
-		getLibraryNode(rootOfEditorTree).select();
-		// and the selection view should show its children (so we must find the
-		// writer)
-		getRootOfTreeFromView(LIBRARY_EMF_VIEW).getTreeItem(WRITER_LABEL);
-		selectionView.close();
-	}
-
-	@Test
-	public void selectionViewOnSelectionOnXtextFile() throws Exception {
-		SWTBotView selectionView = openTestView(LIBRARY_EMF_VIEW);
-		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(
-				EMF_TREE_EDITOR_XTEXT, MY_PARSLEY,
-				MY_PARSLEY_PLATFORM_URI);
-		// we select the Xtext Parsley model in the editor...
-		getParsleyModelNode(rootOfEditorTree).select();
-		
-		// and the selection view should show its children (the Xtext Parsley module)
-		getRootOfTreeFromView(LIBRARY_EMF_VIEW).getTreeItem(PARSLEY_MODULE_LABEL);
-		selectionView.close();
-	}
 }

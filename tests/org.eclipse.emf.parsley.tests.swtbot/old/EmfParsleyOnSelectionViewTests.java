@@ -22,14 +22,63 @@ import org.junit.runner.RunWith;
  * 
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
+public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTests {
 
 	@Test
-	public void emfTestViewHasTree() throws Exception {
-		SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+	public void testOnSelectionLibraryTreeViewWithResourceURI() throws Exception {
+		SWTBotView view = openTestView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI);
 		getWriterNode(getLibraryNode(view.bot().tree()
 				.getTreeItem(HARDCODED_LIBRARY_PLATFORM_URI)));
 		// bot.sleep(2000);
+		view.close();
+	}
+
+	@Test
+	public void testOnSelectionLibraryTreeView() throws Exception {
+		SWTBotView selectionView = openTestView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI);
+		// select on the editor's tree
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
+				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
+		// we select the library in the editor...
+		getLibraryNode(rootOfEditorTree).select();
+		// and the selection view should show its children (so we must find the
+		// writer)
+		getRootOfTreeFromView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI).getTreeItem(WRITER_LABEL);
+		selectionView.close();
+	}
+
+	@Test
+	public void testOnSelectionLibraryTreeViewOnXtextFile() throws Exception {
+		SWTBotView selectionView = openTestView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI);
+		// select on the editor's tree
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(
+				EMF_TREE_EDITOR_XTEXT, MY_PARSLEY,
+				MY_PARSLEY_PLATFORM_URI);
+		// we select the Xtext Parsley model in the editor...
+		getParsleyModelNode(rootOfEditorTree).select();
+		
+		// and the selection view should show its children (the Xtext Parsley module)
+		getRootOfTreeFromView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI).getTreeItem(PARSLEY_MODULE_LABEL);
+		selectionView.close();
+	}
+
+	@Test
+	public void testOnSelectionLibraryTreeFormView() throws Exception {
+		final SWTBotView view = openTestView(LIBRARY_ON_SELECTION_TREE_FORM_VIEW);
+		
+		// select on the editor's tree
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
+				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
+		// we select the library in the editor...
+		getLibraryNode(rootOfEditorTree).select();
+		// and the selection view should show its children (so we must find the
+		// writer)
+		getRootOfTreeFromView(LIBRARY_ON_SELECTION_TREE_FORM_VIEW).getTreeItem(WRITER_LABEL).select();
+
+		// now test the form: the writer is already selected in the tree
+		SWTFormsBot formbot = formBotFromView(view);
+		formbot.label(FIRSTNAME_LABEL);
+
 		view.close();
 	}
 
@@ -37,15 +86,15 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 	// selection on files
 	// @Test
 	public void emfViewShowsSelectedFile() throws Exception {
-		SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		SWTBotView view = openTestView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI);
 		createProjectAndTestFiles();
 		getFileItemFromTestProject(MY_EXTLIBRARY).select();
 		// bot.sleep(2000);
-		getWriterNode(getLibraryNode(getRootOfTreeFromView(LIBRARY_EMF_VIEW)
+		getWriterNode(getLibraryNode(getRootOfTreeFromView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI)
 				.getTreeItem(MY_EXT_LIBRARY_PLATFORM_URI)));
 		getFileItemFromTestProject(MY_PARSLEY).select();
 		// bot.sleep(2000);
-		SWTBotTreeItem root = getRootOfTreeFromView(LIBRARY_EMF_VIEW)
+		SWTBotTreeItem root = getRootOfTreeFromView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI)
 				.getTreeItem(MY_PARSLEY_PLATFORM_URI);
 		accessXtextFileNodes(root);
 		
@@ -56,11 +105,11 @@ public class EmfParsleyViewTests extends EmfParsleySWTBotAbstractTests {
 	// selection on files
 	// @Test
 	public void testCustomBookImage() throws Exception {
-		SWTBotView view = openTestView(LIBRARY_EMF_VIEW);
+		SWTBotView view = openTestView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI);
 		createProjectAndTestFiles();
 		getFileItemFromTestProject(MY_EXTLIBRARY).select();
 		SWTBotTreeItem item = getLibraryBookNode(getRootOfTreeFromView(
-				LIBRARY_EMF_VIEW).getTreeItem(MY_EXT_LIBRARY_PLATFORM_URI));
+				LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI).getTreeItem(MY_EXT_LIBRARY_PLATFORM_URI));
 
 		// if org.eclipse.swt.internal.gtk.cairoGraphics is not false
 		// then the test for equality of image will fail, since the image

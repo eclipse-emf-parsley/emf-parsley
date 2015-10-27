@@ -10,34 +10,35 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.inject.Inject;
 
-public class OnSelectionTreeFormView extends AbstractOnSelectionView {
+public class OnSelectionTreeFormView extends AbstractOnSelectionViewerView {
 
 	@Inject
-	protected TreeFormFactory treeFormFactory;
+	private TreeFormFactory treeFormFactory;
 
-	protected TreeFormComposite treeFormDetailComposite;
+	private TreeFormComposite treeFormDetailComposite;
 
 	@Override
-	public void createPartControl(Composite parent) {
-		super.createPartControl(parent);
-
-		treeFormDetailComposite = treeFormFactory.createTreeFormComposite(parent,
-				SWT.BORDER);
+	public StructuredViewer getViewer() {
+		return treeFormDetailComposite.getViewer();
 	}
 
 	@Override
-	protected void updateOnSelection(IWorkbenchPart sourcepart,
-			ISelection selection) {
+	protected void createViewer(Composite parent) {
+		treeFormDetailComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
+	}
+
+	@Override
+	protected void updateOnSelection(IWorkbenchPart sourcepart, ISelection selection) {
 		treeFormDetailComposite.update(getFirstSelectedElement(selection));
 	}
 
