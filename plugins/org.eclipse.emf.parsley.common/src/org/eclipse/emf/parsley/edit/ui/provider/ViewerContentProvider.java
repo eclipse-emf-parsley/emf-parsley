@@ -24,6 +24,7 @@ import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 
 /**
@@ -188,7 +189,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 		 * This leads AbstractTreeViewer to a loop during the internalExpand method. 
 		 */
 		Object parent = super.getParent(object);
-		if(parent==object){
+		if (Objects.equal(parent, object)) {
 			return null;
 		}
 		return parent;

@@ -37,6 +37,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.part.MultiPageEditorActionBarContributor;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 
 /**
@@ -161,7 +162,7 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	public void setActivePart(IWorkbenchPart part) {
-		if (part != activePart) {
+		if (!Objects.equal(part, activePart)) {
 			if (activePart != null) {
 				deactivate();
 			}
@@ -169,7 +170,6 @@ public class WorkbenchActionBarContributor extends
 			if (part instanceof IEditingDomainProvider) {
 				activePart = part;
 				activate();
-
 			}
 		}
 		activePart = part;
