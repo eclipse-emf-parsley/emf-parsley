@@ -146,17 +146,22 @@ class EmfParsleyDslPluginXmlGeneratorTests extends EmfParsleyDslAbstractTests {
 		val access = new InMemoryFileSystemAccess();
 		val parsed = input.parseAndAssertNoError
 		pluginXmlGenerator.doGenerate(parsed.eResource(), access);
-		val entrySet = access.getTextFiles().entrySet()
-		assertEqualsStrings(1, entrySet.size)
-		val e = entrySet.head
-		val name = e.getKey().substring(
-				(EmfParsleyDslOutputConfigurationProvider::PROJECT_ROOT_OUTPUT +
-					EmfParsleyDslOutputConfigurationProvider::PLUGIN_XML_EMFPARSLEY_REL_GEN_PATH).
-					length());
-		assertEqualsStrings(
-			EmfParsleyDslOutputConfigurationProvider::PLUGIN_XML_EMFPARSLEY_GEN,
-				name)
-		assertEqualsStrings(expected, e.value)
+		val textFiles = access.getTextFiles()
+		val entrySet = textFiles.entrySet()
+		// both the plugin.xml_emfparsley_gen and the plugin.xml
+		assertEqualsStrings(2, entrySet.size)
+		assertEqualsStrings(expected,
+			textFiles.get(
+				EmfParsleyDslOutputConfigurationProvider.PROJECT_ROOT_OUTPUT +
+				EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_EMFPARSLEY_GEN_PATH
+			)
+		)
+		assertEqualsStrings(expected,
+			textFiles.get(
+				EmfParsleyDslOutputConfigurationProvider.PROJECT_ROOT_ONCE_OUTPUT +
+				EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_EMFPARSLEY_PATH
+			)
+		)
 	}
 
 	def private void assertPluginXmlContents(Module module, CharSequence expected) {

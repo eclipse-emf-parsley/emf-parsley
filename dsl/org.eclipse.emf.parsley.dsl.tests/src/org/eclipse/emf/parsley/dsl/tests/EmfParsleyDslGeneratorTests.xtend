@@ -2143,6 +2143,9 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
 					if (expected.expectedPluginXmlGen != null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
+				} else if (e.key.endsWith("plugin.xml")) {
+					if (expected.expectedPluginXmlGen != null)
+						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else
 					fail("unexpected generated code: " + e.value)
 			}
