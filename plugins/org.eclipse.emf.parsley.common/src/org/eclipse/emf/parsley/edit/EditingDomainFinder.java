@@ -11,20 +11,31 @@
 
 package org.eclipse.emf.parsley.edit;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
 /**
- * Retrieves the EditingDomain for an EObject. The default implementation simply
- * uses {@link AdapterFactoryEditingDomain#getEditingDomainFor(EObject)}.
+ * Retrieves the EditingDomain for an Object. The default implementation simply
+ * uses {@link AdapterFactoryEditingDomain#getEditingDomainFor(Object)} and also
+ * considers the case for {@link Resource}.
  * 
  * @author Lorenzo Bettini
  * 
  */
 public class EditingDomainFinder {
 
-	public EditingDomain getEditingDomainFor(EObject object) {
-		return AdapterFactoryEditingDomain.getEditingDomainFor(object);
+	public EditingDomain getEditingDomainFor(Object object) {
+		final EditingDomain editingDomainFor = AdapterFactoryEditingDomain.getEditingDomainFor(object);
+		if (editingDomainFor == null && object instanceof Resource) {
+			final Resource resource = (Resource) object;
+			ResourceSet resourceSet = resource.getResourceSet();
+			if (resourceSet instanceof IEditingDomainProvider) {
+				return ((IEditingDomainProvider) resourceSet).getEditingDomain();
+			}
+		}
+		return editingDomainFor;
 	}
 }
