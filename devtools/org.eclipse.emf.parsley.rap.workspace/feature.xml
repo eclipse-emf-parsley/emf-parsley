@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.rap.workspace"
       label="Emf Parsley RAP Workspace"
-      version="0.5.1.qualifier"
+      version="0.5.2.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emfparsley">

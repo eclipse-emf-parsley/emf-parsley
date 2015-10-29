@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.examples.cdo.product.feature"
       label="Emf Parsley Cdo Example Product Feature"
-      version="0.5.1.qualifier"
+      version="0.5.2.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description url="http://www.eclipse.org/emfparsley">
