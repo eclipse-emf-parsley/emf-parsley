@@ -63,27 +63,27 @@ public class WorkbenchActionBarContributor extends
 		MultiPageEditorActionBarContributor implements IMenuListener,
 		IPropertyListener, ISelectionChangedListener {
 
-	protected IWorkbenchPart activePart;
-
-	protected EditingDomainValidateAction validateAction;
-
-	protected ControlAction controlAction;
-
-	public static final int ADDITIONS_LAST_STYLE = 0x1;
-
-	protected int style;
-
 	@Inject
-	protected EditingActionManager editingActionManager;
+	private EditingActionManager editingActionManager;
 
-	protected ISelectionProvider explicitSelectionProvider = null;
+	private IWorkbenchPart activePart;
+
+	private EditingDomainValidateAction validateAction;
+
+	private ControlAction controlAction;
+
+	private int style;
+
+	private ISelectionProvider explicitSelectionProvider = null;
 
 	private boolean actionsInitialized = false;
+
+	public static final int ADDITIONS_LAST_STYLE = 0x1;
 
 	public WorkbenchActionBarContributor() {
 		this(ADDITIONS_LAST_STYLE);
 	}
-	
+
 	public WorkbenchActionBarContributor(int style) {
 		super();
 		this.style = style;
