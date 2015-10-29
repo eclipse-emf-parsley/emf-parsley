@@ -90,7 +90,7 @@ bindColumnLabelProviderFactory
 bindTableColumnLabelProvider
 bindTableViewerColumnBuilder
 bindWorkbenchActionBarContributor
-bindTreeActionBarContributor
+bindLightweightActionBarContributor
 bindEditingActionManager
 bindEditingMenuBuilder
 bindEditingDomainFinder

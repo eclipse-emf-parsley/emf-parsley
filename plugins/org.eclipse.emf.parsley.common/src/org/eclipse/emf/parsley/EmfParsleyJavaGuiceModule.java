@@ -33,7 +33,7 @@ import org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy;
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
-import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
+import org.eclipse.emf.parsley.edit.actionbar.LightweightActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.edit.domain.DefaultAdapterFactoryEditingDomainProvider;
 import org.eclipse.emf.parsley.edit.domain.DefaultEditingDomainProvider;
@@ -340,11 +340,11 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	/**
 	 * Use this bind to provide your implementation of a of <b>action bar contributor</b>  without a workbench.
 	 * This scenario can be used where you have a view instead of an editor, for example in a <b>e4 application</b>.  
-	 * @return an implementation of  {@link TreeActionBarContributor}
+	 * @return an implementation of  {@link LightweightActionBarContributor}
 	 * @see WorkbenchActionBarContributor
 	 */
-	public Class<? extends TreeActionBarContributor> bindTreeActionBarContributor() {
-		return TreeActionBarContributor.class;
+	public Class<? extends LightweightActionBarContributor> bindLightweightActionBarContributor() {
+		return LightweightActionBarContributor.class;
 	}
 
 	/**

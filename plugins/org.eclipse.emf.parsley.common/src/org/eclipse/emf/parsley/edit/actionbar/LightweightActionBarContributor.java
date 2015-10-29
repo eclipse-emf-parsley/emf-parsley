@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.actionbar;
 
-
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.action.EditingActionManager;
 import org.eclipse.jface.action.IMenuListener;
@@ -19,29 +18,30 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredViewer;
 
 import com.google.inject.Inject;
 
 /**
- * This class has been created to replace {link WorkbenchActionBarContributor} where a workbench is not available (views)
- * The main difference is that this class has to be initialized with editing domain.
+ * This class has been created to replace {link WorkbenchActionBarContributor}
+ * where a workbench is not available (for example in e4) or simply to use a
+ * lightweight version for views. The main difference is that this class has to
+ * be initialized with editing domain.
  * 
- *  <pre>
- *  
- *  viewer.addSelectionChangedListener(treeActionBarContributor);
- *  
- *  treeActionBarContributor.initialize(editingDomain);
- *  
- *  </pre>
+ * <pre>
+ * 
+ * viewer.addSelectionChangedListener(treeActionBarContributor);
+ * 
+ * treeActionBarContributor.initialize(editingDomain);
+ * 
+ * </pre>
+ * 
  * @author Francesco Guidieri - initial API and implementation
  * @author Lorenzo Bettini - updated for using EditingMenuBuilder
  */
-public class TreeActionBarContributor implements IMenuListener,
-		ISelectionChangedListener {
+public class LightweightActionBarContributor implements IMenuListener, ISelectionChangedListener {
 
 	@Inject
-	EditingActionManager editingActionManager;
+	private EditingActionManager editingActionManager;
 
 	public void initialize(EditingDomain editingDomain) {
 		editingActionManager.createActions();
@@ -55,17 +55,9 @@ public class TreeActionBarContributor implements IMenuListener,
 		editingActionManager.menuAboutToShow(menuManager);
 	}
 
-	protected SelectionChangedEvent lastSelectionChangedEvent;
-
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		editingActionManager.updateSelection(event.getSelection());
 	}
-
-	protected StructuredViewer viewer;
-
-    public void setViewerForSelection(StructuredViewer viewer) {
-        this.viewer = viewer;
-    }
 
 }
