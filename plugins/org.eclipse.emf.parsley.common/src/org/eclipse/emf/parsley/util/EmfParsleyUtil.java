@@ -23,11 +23,11 @@ import com.google.common.collect.Lists;
  * 
  */
 public class EmfParsleyUtil {
-	
+
 	protected EmfParsleyUtil() {
 
 	}
-	
+
 	/**
 	 * Given the passed object it ensures that it is a {@link Collection}; if it
 	 * is not, it returns a singleton {@link Collection}; if it is null it
@@ -36,11 +36,15 @@ public class EmfParsleyUtil {
 	 * @param contents
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public static Collection<Object> ensureCollection(Object contents) {
 		if (contents == null) {
 			return Collections.emptyList();
 		}
+		return ensureCollectionInternal(contents);
+	}
+
+	@SuppressWarnings("unchecked")
+	private static Collection<Object> ensureCollectionInternal(Object contents) {
 		if (contents instanceof Collection<?>) {
 			return (Collection<Object>) contents;
 		} else if (contents instanceof Iterable<?>) {
@@ -49,13 +53,13 @@ public class EmfParsleyUtil {
 			return Lists.newArrayList((Iterator<?>) contents);
 		} else if (contents.getClass().isArray()) {
 			return Arrays.asList((Object[]) contents);
-		} else {
-			return Collections.singleton(contents);
 		}
+		return Collections.singleton(contents);
 	}
 
 	/**
 	 * Given a List of Integer it returns an array of int
+	 * 
 	 * @param intList
 	 * @return
 	 */
