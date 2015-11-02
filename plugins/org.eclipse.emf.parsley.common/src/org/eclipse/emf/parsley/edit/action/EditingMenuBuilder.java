@@ -33,6 +33,7 @@ import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.action.PasteAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
+import org.eclipse.emf.parsley.edit.domain.EditingDomainFinderStrategy;
 import org.eclipse.emf.parsley.runtime.util.IAcceptor;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
@@ -133,7 +134,8 @@ public class EditingMenuBuilder {
 	@Inject
 	private ILabelProvider labelProvider;
 
-	private EditingDomain editingDomain;
+	@Inject
+	private EditingDomainFinderStrategy editingDomainFinderStrategy;
 
 	private CommandActionHandler deleteAction;
 
@@ -171,6 +173,10 @@ public class EditingMenuBuilder {
 		return currentMenuContributions;
 	}
 
+	public void setEditingDomainFinderStrategy(EditingDomainFinderStrategy strategy) {
+		editingDomainFinderStrategy = strategy;
+	}
+
 	/**
 	 * Creates the action instances; this method is meant to be called only
 	 * once.
@@ -184,12 +190,16 @@ public class EditingMenuBuilder {
 		redoAction = createRedoAction();
 	}
 
-	public EditingDomain getEditingDomain() {
-		return editingDomain;
+	protected EditingDomain getEditingDomain() {
+		return editingDomainFinderStrategy.getEditingDomain();
 	}
 
-	public void setEditingDomain(EditingDomain editingDomain) {
-		this.editingDomain = editingDomain;
+	protected void updateEditingDomain(Object object) {
+		editingDomainFinderStrategy.updateEditingDomain(object);
+		updateEditingDomainInActions(getEditingDomain());
+	}
+
+	protected void updateEditingDomainInActions(EditingDomain editingDomain) {
 		deleteAction.setEditingDomain(editingDomain);
 		cutAction.setEditingDomain(editingDomain);
 		copyAction.setEditingDomain(editingDomain);
@@ -211,8 +221,10 @@ public class EditingMenuBuilder {
 	}
 
 	public void updateUndoRedo() {
-		undoAction.update();
-		redoAction.update();
+		if (getEditingDomain() != null) {
+			undoAction.update();
+			redoAction.update();
+		}
 	}
 
 	public void menuAboutToShow(IMenuManager menuManager) {
@@ -229,6 +241,14 @@ public class EditingMenuBuilder {
 
 	protected void updateMenuContributions(ISelection selection) {
 		Object firstSelectedElement = selectionHelper.getFirstSelectedElement(selection);
+
+		updateEditingDomain(firstSelectedElement);
+		if (getEditingDomain() == null) {
+			currentMenuContributions = Collections.emptyList();
+			currentEmfMenuContributions = Collections.emptyList();
+			return;
+		}
+
 		currentMenuContributions = menuContributionsDispatcher.invoke(firstSelectedElement);
 
 		currentEmfMenuContributions = emfMenuContributionsDispatcher.invoke(firstSelectedElement);
@@ -397,11 +417,11 @@ public class EditingMenuBuilder {
 		return new LoadResourceAction();
 	}
 
-	public ControlAction createControlAction() {
+	protected ControlAction createControlAction() {
 		return new ControlAction();
 	}
 
-	public EditingDomainValidateAction createValidateAction() {
+	protected EditingDomainValidateAction createValidateAction() {
 		return new EditingDomainValidateAction();
 	}
 
@@ -497,12 +517,11 @@ public class EditingMenuBuilder {
 	 * @return
 	 */
 	public List<IMenuContributionSpecification> createChildActions(ISelection selection) {
-		Collection<?> descriptors = editingDomain
-				.getNewChildDescriptors(selectionHelper.getFirstSelectedElement(selection), null);
+		Collection<?> descriptors = getDescriptors(selection, false);
 		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
 
 		for (Object descriptor : descriptors) {
-			CreateChildAction act = new CreateChildAction(editingDomain, selection, descriptor);
+			CreateChildAction act = new CreateChildAction(getEditingDomain(), selection, descriptor);
 			Object imageObj = labelProvider.getImage(((CommandParameter) descriptor).getValue());
 			act.setImageDescriptor(ImageDescriptor.createFromImage((Image) imageObj));
 			actions.add(new MenuActionContributionSpecification(act));
@@ -518,12 +537,11 @@ public class EditingMenuBuilder {
 	 * @return
 	 */
 	public List<IMenuContributionSpecification> createSiblingActions(ISelection selection) {
-		Collection<?> descriptors = editingDomain.getNewChildDescriptors(null,
-				selectionHelper.getFirstSelectedElement(selection));
+		Collection<?> descriptors = getDescriptors(selection, true);
 		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
 
 		for (Object descriptor : descriptors) {
-			CreateSiblingAction act = new CreateSiblingAction(editingDomain, selection, descriptor);
+			CreateSiblingAction act = new CreateSiblingAction(getEditingDomain(), selection, descriptor);
 			Object imageObj = labelProvider.getImage(((CommandParameter) descriptor).getValue());
 			act.setImageDescriptor(ImageDescriptor.createFromImage((Image) imageObj));
 			actions.add(new MenuActionContributionSpecification(act));
@@ -532,4 +550,14 @@ public class EditingMenuBuilder {
 		return actions;
 	}
 
+	protected Collection<?> getDescriptors(ISelection selection, boolean siblings) {
+		final Object firstSelectedElement = selectionHelper.getFirstSelectedElement(selection);
+		if (getEditingDomain() == null) {
+			return Collections.emptyList();
+		}
+		if (siblings) {
+			return getEditingDomain().getNewChildDescriptors(null, firstSelectedElement);
+		}
+		return getEditingDomain().getNewChildDescriptors(firstSelectedElement, null);
+	}
 }

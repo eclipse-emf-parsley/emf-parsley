@@ -66,9 +66,7 @@ public class ViewerContextMenuHelper {
 	 * @param viewer
 	 * @param activePart
 	 * @param menuListener
-	 *            the listener should have a method like
 	 * @param workbenchActionBarContributor
-	 *            should be created by injection
 	 */
 	public void addViewerContextMenu(Viewer viewer, IWorkbenchPart activePart, IMenuListener menuListener,
 			WorkbenchActionBarContributor workbenchActionBarContributor) {
@@ -120,7 +118,6 @@ public class ViewerContextMenuHelper {
 	 * 
 	 * @param viewer
 	 * @param editingDomain
-	 *            should be created by injection
 	 */
 	public void addViewerContextMenu(Viewer viewer, EditingDomain editingDomain) {
 		final LightweightActionBarContributor lightweightActionBarContributor = lightweightActionBarContributorProvider

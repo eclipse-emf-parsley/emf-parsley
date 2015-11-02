@@ -8,7 +8,6 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-
 package org.eclipse.emf.parsley.edit.domain;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -25,7 +24,7 @@ public class DefaultAdapterFactoryEditingDomainProvider implements Provider<Adap
 
 	@Inject
 	protected Provider<AdapterFactory> adapterFactoryProvider;
-	
+
 	@Override
 	public AdapterFactoryEditingDomain get() {
 		return new InjectableAdapterFactoryEditingDomain(adapterFactoryProvider.get());

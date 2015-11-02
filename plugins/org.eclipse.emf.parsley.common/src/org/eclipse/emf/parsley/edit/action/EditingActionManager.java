@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.edit.action;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.ControlAction;
+import org.eclipse.emf.parsley.edit.domain.EditingDomainPresetStrategy;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IActionBars;
@@ -22,6 +23,7 @@ import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
  * Creates the actions and builds the corresponding menu (by delegating to an
@@ -31,9 +33,12 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - initial API and implementation
  */
 public class EditingActionManager {
-	
+
 	@Inject
 	private EditingMenuBuilder editingMenuBuilder;
+
+	@Inject
+	private Provider<EditingDomainPresetStrategy> editingDomainStrategyProvider;
 
 	/**
 	 * Creates the actions and sets the corresponding global action
@@ -64,7 +69,7 @@ public class EditingActionManager {
 	 */
 	public void createActions() {
 		editingMenuBuilder.createActions();
-		
+
 		ISharedImages sharedImages = getSharedImages();
 
 		editingMenuBuilder.getDeleteAction().setImageDescriptor(sharedImages
@@ -115,7 +120,11 @@ public class EditingActionManager {
 	}
 
 	public void setEditingDomain(EditingDomain editingDomain) {
-		editingMenuBuilder.setEditingDomain(editingDomain);
+		if (editingDomain != null) {
+			EditingDomainPresetStrategy strategy = editingDomainStrategyProvider.get();
+			strategy.setEditingDomain(editingDomain);
+			editingMenuBuilder.setEditingDomainFinderStrategy(strategy);
+		}
 	}
 
 	public void updateSelection(ISelection selection) {

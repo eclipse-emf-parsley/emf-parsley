@@ -28,6 +28,7 @@ import org.junit.runners.Suite;
 	ResourceSaveStrategyTest.class,
 	EditingDomainTest.class,
 	EditingDomainFinderTest.class,
+	EditingDomainStrategyTest.class,
 	AdapterFactoryHelperTest.class,
 	ViewerContentProviderTest.class,
 	TableViewerContentProviderTest.class,

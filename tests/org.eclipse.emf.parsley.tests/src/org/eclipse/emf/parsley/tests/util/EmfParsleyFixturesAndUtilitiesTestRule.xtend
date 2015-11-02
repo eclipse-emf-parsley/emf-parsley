@@ -94,7 +94,7 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 			base.evaluate();
 		]
 	}
-	
+
 	def void setup() {
 		resourceSet = createResourceSet
 		lib = createTestLibrary
@@ -317,6 +317,10 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 
 	def createTestLibrayResource() {
 		val resourceSet = createAndSetupResourceSet
+		createTestLibrayResource(resourceSet)
+	}
+
+	def createTestLibrayResource(ResourceSet resourceSet) {
 		val resource = resourceSet.createResource(URI.createURI(TEST_LIBRARY_RESOURCE_URI))
 		return resource
 	}
@@ -324,6 +328,12 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	def createTestLibrayResourceAndInitialize() {
 		return createTestLibrayResource => [
 			contents += createTestLibrary
+		]
+	}
+
+	def createTestLibrayResourceAndInitialize(ResourceSet resourceSet) {
+		return createTestLibrayResource(resourceSet) => [
+			contents += lib
 		]
 	}
 
