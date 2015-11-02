@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -27,81 +28,88 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	val ONSELECTION_TABLE_FORM_TEMPLATE = "On selection Table Form View"	
 	val ONSELECTION_FORM_TEMPLATE = "On selection Form View"
 
+	new() {
+		// just to avoid code coverage of protected constructor
+		new NewEmfParsleyProjectSupport() {
+			
+		};
+	}
+
 	@Test
 	def canCreateDslProjectWithWizard() {
 		createDslProjectWithWizard
 	}
-	
+
 	@Test
 	def canCreateDslProjectWithWizardAndTreeFormTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
-	
+
 	@Test
 	def canCreateDslProjectWithWizardAndTreeTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
-	
+
 	@Test
 	def canCreateDslProjectWithWizardAndTableFormTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
-	
+
 	@Test
 	def canCreateDslProjectWithWizardAndTableTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
-	
+
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTreeTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTreeFormTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TREE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
-	
+
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTableTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
-	
+
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionFormTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 
 	@Test
 	def canCreateDslProjectWithWizardAndOnselectionTableFormTemplate() {
-		createProjectWithTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_FORM_TEMPLATE);
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, ONSELECTION_TABLE_FORM_TEMPLATE);
 		//bot.sleep(300000);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
-	
+
 }
