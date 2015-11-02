@@ -575,69 +575,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		return editingDomain;
 	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static class ReverseAdapterFactoryContentProvider extends
-			AdapterFactoryContentProvider {
-		/**
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		public ReverseAdapterFactoryContentProvider(
-				AdapterFactory adapterFactory) {
-			super(adapterFactory);
-		}
-
-		/**
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		@Override
-		public Object[] getElements(Object object) {
-			Object parent = super.getParent(object);
-			return (parent == null ? Collections.emptySet() : Collections
-					.singleton(parent)).toArray();
-		}
-
-		/**
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		@Override
-		public Object[] getChildren(Object object) {
-			Object parent = super.getParent(object);
-			return (parent == null ? Collections.emptySet() : Collections
-					.singleton(parent)).toArray();
-		}
-
-		/**
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		@Override
-		public boolean hasChildren(Object object) {
-			Object parent = super.getParent(object);
-			return parent != null;
-		}
-
-		/**
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
-		 * @generated
-		 */
-		@Override
-		public Object getParent(Object object) {
-			return null;
-		}
-	}
-
 	protected ISelectionChangedListener createSelectionChangedListener() {
 		return new ISelectionChangedListener() {
 			// This just notifies those things that are affected by the section.
