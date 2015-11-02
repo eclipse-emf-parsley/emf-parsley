@@ -21,7 +21,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
-import org.eclipse.emf.parsley.generator.common.EmfParsleyViewFilesGenerator;
 
 /**
  * @author Lorenzo Bettini
@@ -31,8 +30,6 @@ public class NewEmfParsleyProjectSupport {
 	private static final String JAVA_EXTENSION = ".java";
 
 	static EmfParsleyProjectFilesGenerator filesGenerator = new EmfParsleyProjectFilesGenerator();
-
-	static EmfParsleyViewFilesGenerator viewGenerator = new EmfParsleyViewFilesGenerator();
 
 	protected NewEmfParsleyProjectSupport() {
 		// hide the implicit one
