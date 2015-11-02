@@ -67,6 +67,7 @@ import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
+import org.eclipse.emf.parsley.internal.editors.listeners.PartListenerAdapter;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerClient;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerHelper;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
@@ -215,45 +216,23 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * This listens for when the outline becomes active <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
-	protected IPartListener partListener = new IPartListener() {
+	protected IPartListener partListener = new PartListenerAdapter() {
 		@Override
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
 				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
-					getActionBarContributor().setActiveEditor(
-							EmfAbstractEditor.this);
+					getActionBarContributor().setActiveEditor(EmfAbstractEditor.this);
 				}
 			} else if (p instanceof PropertySheet) {
 				if (((PropertySheet) p).getCurrentPage() == propertySheetPage) {
-					getActionBarContributor().setActiveEditor(
-							EmfAbstractEditor.this);
+					getActionBarContributor().setActiveEditor(EmfAbstractEditor.this);
 					handleActivate();
 				}
 			} else if (p == EmfAbstractEditor.this) {
 				handleActivate();
 			}
-		}
-
-		@Override
-		public void partBroughtToTop(IWorkbenchPart p) {
-			// Ignore.
-		}
-
-		@Override
-		public void partClosed(IWorkbenchPart p) {
-			// Ignore.
-		}
-
-		@Override
-		public void partDeactivated(IWorkbenchPart p) {
-			// Ignore.
-		}
-
-		@Override
-		public void partOpened(IWorkbenchPart p) {
-			// Ignore.
 		}
 	};
 
@@ -312,23 +291,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				case Resource.RESOURCE__ERRORS:
 				case Resource.RESOURCE__WARNINGS:
 					Resource resource = (Resource) notification.getNotifier();
-					Diagnostic diagnostic = analyzeResourceProblems(resource,
-							null);
-					if (diagnostic.getSeverity() != Diagnostic.OK) {
-						resourceToDiagnosticMap.put(resource, diagnostic);
-					} else {
-						resourceToDiagnosticMap.remove(resource);
-					}
-
-					if (updateProblemIndication) {
-						getSite().getShell().getDisplay()
-								.asyncExec(new Runnable() {
-									@Override
-									public void run() {
-										updateProblemIndication();
-									}
-								});
-					}
+					handleResourceDiagnostic(resource);
 					break;
 				}
 			} else {
@@ -356,41 +319,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
 		@Override
 		public void resourceChanged(IResourceChangeEvent event) {
-			IResourceDelta delta = event.getDelta();
-			try {
-				final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
-				visitor.init(editingDomain.getResourceSet(), savedResources);
-				delta.accept(visitor);
-
-				if (!visitor.getRemovedResources().isEmpty()) {
-					getSite().getShell().getDisplay().asyncExec(new Runnable() {
-						@Override
-						public void run() {
-							removedResources.addAll(visitor
-									.getRemovedResources());
-							if (!isDirty()) {
-								getSite().getPage().closeEditor(
-										EmfAbstractEditor.this, false);
-							}
-						}
-					});
-				}
-
-				if (!visitor.getChangedResources().isEmpty()) {
-					getSite().getShell().getDisplay().asyncExec(new Runnable() {
-						@Override
-						public void run() {
-							changedResources.addAll(visitor
-									.getChangedResources());
-							if (getSite().getPage().getActiveEditor() == EmfAbstractEditor.this) {
-								handleActivate();
-							}
-						}
-					});
-				}
-			} catch (CoreException exception) {
-				EcoreEditorPlugin.INSTANCE.log(exception);
-			}
+			handleIResourceChangeEvent(event);
 		}
 	};
 
@@ -912,59 +841,26 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Save only resources that have actually changed.
-		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
-				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
-
-		// Do the work within an operation because this is a long running
-		// activity that modifies the workbench.
-		//
-		IRunnableWithProgress operation = new IRunnableWithProgress() {
-			// This is the method that gets invoked when the operation runs.
-			//
-			@Override
-			public void run(IProgressMonitor monitor) {
-				// Save the resources to the file system.
-				//
-				boolean first = true;
-				for (Resource resource : editingDomain.getResourceSet()
-						.getResources()) {
-					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
-							&& !editingDomain.isReadOnly(resource)) {
-						try {
-							long timeStamp = resource.getTimeStamp();
-							resource.save(saveOptions);
-							if (resource.getTimeStamp() != timeStamp) {
-								savedResources.add(resource);
-							}
-						} catch (Exception exception) {
-							resourceToDiagnosticMap
-									.put(resource,
-											analyzeResourceProblems(resource,
-													exception));
-						}
-						first = false;
-					}
-				}
-			}
-		};
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
 		updateProblemIndication = false;
 		saving = true;
 		try {
-			// This runs the options, and shows progress.
-			//
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false,
-					operation);
+			// Do the work within an operation because this is a long running
+			// activity that modifies the workbench.
+			new ProgressMonitorDialog(getSite().getShell()).run(true, false, new IRunnableWithProgress() {
+				@Override
+				public void run(IProgressMonitor monitor) {
+					performSave(saveOptions);
+				}
+			});
 
 			// Refresh the necessary state.
-			//
 			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
 			firePropertyChange(IEditorPart.PROP_DIRTY);
 		} catch (Exception exception) {
 			// Something went wrong that shouldn't.
-			//
 			EcoreEditorPlugin.INSTANCE.log(exception);
 		}
 		saving = false;
@@ -1305,6 +1201,87 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Override
 	public Viewer getViewer() {
 		return selectionViewer;
+	}
+
+	protected void handleResourceDiagnostic(Resource resource) {
+		Diagnostic diagnostic = analyzeResourceProblems(resource, null);
+		if (diagnostic.getSeverity() != Diagnostic.OK) {
+			resourceToDiagnosticMap.put(resource, diagnostic);
+		} else {
+			resourceToDiagnosticMap.remove(resource);
+		}
+
+		if (updateProblemIndication) {
+			getSite().getShell().getDisplay().asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					updateProblemIndication();
+				}
+			});
+		}
+	}
+
+	protected void handleIResourceChangeEvent(IResourceChangeEvent event) {
+		IResourceDelta delta = event.getDelta();
+		try {
+			final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+			visitor.init(editingDomain.getResourceSet(), savedResources);
+			delta.accept(visitor);
+
+			if (!visitor.getRemovedResources().isEmpty()) {
+				getSite().getShell().getDisplay().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						removedResources.addAll(visitor
+								.getRemovedResources());
+						if (!isDirty()) {
+							getSite().getPage().closeEditor(
+									EmfAbstractEditor.this, false);
+						}
+					}
+				});
+			}
+
+			if (!visitor.getChangedResources().isEmpty()) {
+				getSite().getShell().getDisplay().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						changedResources.addAll(visitor
+								.getChangedResources());
+						if (getSite().getPage().getActiveEditor() == EmfAbstractEditor.this) {
+							handleActivate();
+						}
+					}
+				});
+			}
+		} catch (CoreException exception) {
+			EcoreEditorPlugin.INSTANCE.log(exception);
+		}
+	}
+
+	protected void performSave(final Map<Object, Object> saveOptions) {
+		// Save the resources to the file system.
+		//
+		boolean first = true;
+		for (Resource resource : editingDomain.getResourceSet()
+				.getResources()) {
+			if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
+					&& !editingDomain.isReadOnly(resource)) {
+				try {
+					long timeStamp = resource.getTimeStamp();
+					resource.save(saveOptions);
+					if (resource.getTimeStamp() != timeStamp) {
+						savedResources.add(resource);
+					}
+				} catch (Exception exception) {
+					resourceToDiagnosticMap
+							.put(resource,
+									analyzeResourceProblems(resource,
+											exception));
+				}
+				first = false;
+			}
+		}
 	}
 
 }
