@@ -59,17 +59,13 @@ import com.google.inject.Inject;
  * The creation of the contributions should use the internal DSL methods, e.g.,
  * 
  * <pre>
- * protected List&lt;IMenuContributionSpecification&gt; menuContributions(
- * 		MyClass o) {
- * 	return Lists.newArrayList(actionUndo(), actionRedo(), separator(),
- * 			actionCut(), actionCopy(), actionPaste(), separator(),
- * 			actionDelete(), separator());
+ * protected List&lt;IMenuContributionSpecification&gt; menuContributions(MyClass o) {
+ * 	return Lists.newArrayList(actionUndo(), actionRedo(), separator(), actionCut(), actionCopy(), actionPaste(),
+ * 			separator(), actionDelete(), separator());
  * }
  * 
- * protected List&lt;IMenuContributionSpecification&gt; menuContributions(
- * 		MyOtherClass o) {
- * 	return Lists.newArrayList(
- *  		actionCut(), actionCopy(), actionPaste());
+ * protected List&lt;IMenuContributionSpecification&gt; menuContributions(MyOtherClass o) {
+ * 	return Lists.newArrayList(actionCut(), actionCopy(), actionPaste());
  * }
  * </pre>
  * 
@@ -85,7 +81,7 @@ public class EditingMenuBuilder {
 	 *
 	 * @param <T>
 	 */
-	private static class CustomChangeCommand<T extends Notifier> extends ChangeCommand {
+	private static final class CustomChangeCommand<T extends Notifier> extends ChangeCommand {
 		private final T element;
 		private final IAcceptor<T> changeImplementation;
 
@@ -132,7 +128,7 @@ public class EditingMenuBuilder {
 	}
 
 	@Inject
-	protected EmfSelectionHelper selectionHelper;
+	private EmfSelectionHelper selectionHelper;
 
 	@Inject
 	private ILabelProvider labelProvider;
@@ -150,7 +146,7 @@ public class EditingMenuBuilder {
 	private UndoAction undoAction;
 
 	private RedoAction redoAction;
-	
+
 	private PolymorphicDispatcher<List<IMenuContributionSpecification>> menuContributionsDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("menuContributions", 1, 1, this);
 
@@ -160,9 +156,11 @@ public class EditingMenuBuilder {
 	private List<IMenuContributionSpecification> currentMenuContributions = Collections.emptyList();
 
 	private List<IMenuContributionSpecification> currentEmfMenuContributions = Collections.emptyList();
-	
-	// this will be used only for checking the default "null" result for polymorphic invocation
-	// avoiding to return null
+
+	/**
+	 * this will be used only for checking the default "null" result for
+	 * polymorphic invocation avoiding to return null
+	 */
 	private static final List<IMenuContributionSpecification> POLYMORPHIC_NULL_RESULT = new ArrayList<IMenuContributionSpecification>();
 
 	protected List<IMenuContributionSpecification> getCurrentEmfMenuContributions() {
@@ -174,8 +172,8 @@ public class EditingMenuBuilder {
 	}
 
 	/**
-	 * Creates the action instances; this method is meant to be called
-	 * only once.
+	 * Creates the action instances; this method is meant to be called only
+	 * once.
 	 */
 	public void createActions() {
 		deleteAction = createDeleteAction();
@@ -203,9 +201,9 @@ public class EditingMenuBuilder {
 	public void updateSelection(ISelection selection) {
 		if (selection instanceof IStructuredSelection) {
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			
+
 			updateMenuContributions(structuredSelection);
-			
+
 			for (IMenuContributionSpecification menuContributionSpecification : getCurrentMenuContributions()) {
 				menuContributionSpecification.updateSelection(structuredSelection);
 			}
@@ -230,28 +228,24 @@ public class EditingMenuBuilder {
 	}
 
 	protected void updateMenuContributions(ISelection selection) {
-		Object firstSelectedElement = selectionHelper
-				.getFirstSelectedElement(selection);
-		currentMenuContributions = menuContributionsDispatcher
-				.invoke(firstSelectedElement);
+		Object firstSelectedElement = selectionHelper.getFirstSelectedElement(selection);
+		currentMenuContributions = menuContributionsDispatcher.invoke(firstSelectedElement);
 
-		currentEmfMenuContributions = emfMenuContributionsDispatcher
-				.invoke(firstSelectedElement);
+		currentEmfMenuContributions = emfMenuContributionsDispatcher.invoke(firstSelectedElement);
 
 		if (POLYMORPHIC_NULL_RESULT == currentEmfMenuContributions) {
 			// for creating new child and new sibling standard actions we need
 			// an ISelection
-			currentEmfMenuContributions = emfMenuContributionsDispatcher
-					.invoke(selection);
+			currentEmfMenuContributions = emfMenuContributionsDispatcher.invoke(selection);
 		}
 	}
 
 	/**
-	 * The default implementation for the contributions that will appear in the menu;
-	 * Customizations of this class should provide a different overloaded implementation of
-	 * this method depending on the parameter, and return a different list of
-	 * {@link IMenuContributionSpecification} accordingly; such methods will be selected
-	 * polymorphically.
+	 * The default implementation for the contributions that will appear in the
+	 * menu; Customizations of this class should provide a different overloaded
+	 * implementation of this method depending on the parameter, and return a
+	 * different list of {@link IMenuContributionSpecification} accordingly;
+	 * such methods will be selected polymorphically.
 	 * 
 	 * @param object
 	 * @return
@@ -271,11 +265,12 @@ public class EditingMenuBuilder {
 	}
 
 	/**
-	 * The default implementation an {@link ISelection} for the contributions for EMF related actions that will appear in the menu;
-	 * Customizations of this class should provide a different overloaded implementation of
-	 * this method depending on the parameter, and return a different list of
-	 * {@link IMenuContributionSpecification} accordingly; such methods will be selected
-	 * polymorphically.
+	 * The default implementation an {@link ISelection} for the contributions
+	 * for EMF related actions that will appear in the menu; Customizations of
+	 * this class should provide a different overloaded implementation of this
+	 * method depending on the parameter, and return a different list of
+	 * {@link IMenuContributionSpecification} accordingly; such methods will be
+	 * selected polymorphically.
 	 * 
 	 * @param selection
 	 * @return
@@ -321,7 +316,8 @@ public class EditingMenuBuilder {
 		return new MenuSeparatorContributionSpecification();
 	}
 
-	protected IMenuContributionSpecification submenu(String text, List<IMenuContributionSpecification> menuContributions) {
+	protected IMenuContributionSpecification submenu(String text,
+			List<IMenuContributionSpecification> menuContributions) {
 		return new MenuSubmenuSpecification(text, menuContributions);
 	}
 
@@ -410,24 +406,23 @@ public class EditingMenuBuilder {
 	}
 
 	/**
-	 * Creates a menu contribution for an action with the given text, that
-	 * will add the specified value to the specified list, when executed.
+	 * Creates a menu contribution for an action with the given text, that will
+	 * add the specified value to the specified list, when executed.
 	 * 
 	 * @param text
 	 * @param list
 	 * @param value
 	 * @return
 	 */
-	protected <T> IMenuContributionSpecification actionAdd(String text,
-			EList<? super T> list, T value) {
+	protected <T> IMenuContributionSpecification actionAdd(String text, EList<? super T> list, T value) {
 		return actionAdd(text, list, value, null);
 	}
 
 	/**
-	 * Creates a menu contribution for an action with the given text, that
-	 * will add the specified value to the specified list, when executed; the
-	 * passed addedObjectInizialier will be executed after the object has been
-	 * added to the specified list.
+	 * Creates a menu contribution for an action with the given text, that will
+	 * add the specified value to the specified list, when executed; the passed
+	 * addedObjectInizialier will be executed after the object has been added to
+	 * the specified list.
 	 * 
 	 * @param text
 	 * @param list
@@ -435,12 +430,12 @@ public class EditingMenuBuilder {
 	 * @param addedObjectInitialier
 	 * @return
 	 */
-	protected <T> IMenuContributionSpecification actionAdd(String text,
-			EList<? super T> list, T value, IAcceptor<T> addedObjectInitialier) {
+	protected <T> IMenuContributionSpecification actionAdd(String text, EList<? super T> list, T value,
+			IAcceptor<T> addedObjectInitialier) {
 		AddCommand addCommand = addCommand(list, value);
 		addCommand.setDescription(text);
-		return new MenuActionContributionSpecification(new EmfCommandAction<T>(text,
-				getEditingDomain(), addCommand, addedObjectInitialier));
+		return new MenuActionContributionSpecification(
+				new EmfCommandAction<T>(text, getEditingDomain(), addCommand, addedObjectInitialier));
 	}
 
 	/**
@@ -497,20 +492,19 @@ public class EditingMenuBuilder {
 
 	/**
 	 * Creates the standard EMF "new child" action contributions
+	 * 
 	 * @param selection
 	 * @return
 	 */
 	public List<IMenuContributionSpecification> createChildActions(ISelection selection) {
-		Collection<?> descriptors = editingDomain.getNewChildDescriptors(selectionHelper.getFirstSelectedElement(selection), null);
+		Collection<?> descriptors = editingDomain
+				.getNewChildDescriptors(selectionHelper.getFirstSelectedElement(selection), null);
 		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
 
 		for (Object descriptor : descriptors) {
-			CreateChildAction act = new CreateChildAction(editingDomain,
-					selection, descriptor);
-			Object imageObj = labelProvider
-					.getImage(((CommandParameter) descriptor).getValue());
-			act.setImageDescriptor(ImageDescriptor
-					.createFromImage((Image) imageObj));
+			CreateChildAction act = new CreateChildAction(editingDomain, selection, descriptor);
+			Object imageObj = labelProvider.getImage(((CommandParameter) descriptor).getValue());
+			act.setImageDescriptor(ImageDescriptor.createFromImage((Image) imageObj));
 			actions.add(new MenuActionContributionSpecification(act));
 		}
 
@@ -519,20 +513,19 @@ public class EditingMenuBuilder {
 
 	/**
 	 * Creates the standard EMF "new sibling" action contributions
+	 * 
 	 * @param selection
 	 * @return
 	 */
 	public List<IMenuContributionSpecification> createSiblingActions(ISelection selection) {
-		Collection<?> descriptors = editingDomain.getNewChildDescriptors(null, selectionHelper.getFirstSelectedElement(selection));
+		Collection<?> descriptors = editingDomain.getNewChildDescriptors(null,
+				selectionHelper.getFirstSelectedElement(selection));
 		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
 
 		for (Object descriptor : descriptors) {
-			CreateSiblingAction act = new CreateSiblingAction(editingDomain,
-					selection, descriptor);
-			Object imageObj = labelProvider
-					.getImage(((CommandParameter) descriptor).getValue());
-			act.setImageDescriptor(ImageDescriptor
-					.createFromImage((Image) imageObj));
+			CreateSiblingAction act = new CreateSiblingAction(editingDomain, selection, descriptor);
+			Object imageObj = labelProvider.getImage(((CommandParameter) descriptor).getValue());
+			act.setImageDescriptor(ImageDescriptor.createFromImage((Image) imageObj));
 			actions.add(new MenuActionContributionSpecification(act));
 		}
 

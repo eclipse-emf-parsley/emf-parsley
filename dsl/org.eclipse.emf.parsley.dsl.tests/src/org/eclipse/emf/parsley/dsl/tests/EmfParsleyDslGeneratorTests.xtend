@@ -220,7 +220,13 @@ import org.eclipse.emf.parsley.examples.library.Lendable;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.jface.resource.FontRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
@@ -287,6 +293,24 @@ public class LabelProviderGen extends ViewerLabelProvider {
       _xifexpression = new ImageData("writer.jpeg");
     }
     return _xifexpression;
+  }
+  
+  public Font font(final Library it) {
+    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
+    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    return _bold;
+  }
+  
+  public Color foreground(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    return _systemColor;
+  }
+  
+  public Color background(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    return _systemColor;
   }
 }
 ''']
@@ -403,7 +427,13 @@ import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
+import org.eclipse.jface.resource.FontRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
@@ -433,6 +463,42 @@ public class TableLabelProviderGen extends TableColumnLabelProvider {
       _xifexpression = new ImageData("writer.jpeg");
     }
     return _xifexpression;
+  }
+  
+  public Font font_Library_name(final Library it) {
+    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
+    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    return _bold;
+  }
+  
+  public Color foreground_Library_books(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    return _systemColor;
+  }
+  
+  public Color background_Library_address(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    return _systemColor;
+  }
+  
+  public Font rowFont(final Library it) {
+    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
+    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    return _bold;
+  }
+  
+  public Color rowForeground(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    return _systemColor;
+  }
+  
+  public Color rowBackground(final Library it) {
+    Display _current = Display.getCurrent();
+    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    return _systemColor;
   }
 }
 ''']
@@ -2075,6 +2141,9 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 					if (expected.expectedResourceManager!= null)
 						assertEqualsStrings(expected.expectedResourceManager, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
+					if (expected.expectedPluginXmlGen != null)
+						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
+				} else if (e.key.endsWith("plugin.xml")) {
 					if (expected.expectedPluginXmlGen != null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else

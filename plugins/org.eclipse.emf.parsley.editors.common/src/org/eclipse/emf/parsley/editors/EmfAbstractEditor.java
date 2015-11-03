@@ -723,7 +723,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	public void createContextMenuFor(StructuredViewer viewer) {
 		contextMenuHelper.addViewerContextMenu(viewer,
-				editingDomain,
 				this, this, (WorkbenchActionBarContributor) getActionBarContributor());
 		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
 

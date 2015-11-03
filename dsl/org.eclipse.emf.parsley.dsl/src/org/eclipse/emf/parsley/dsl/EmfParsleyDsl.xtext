@@ -70,17 +70,37 @@ LabelProvider:
 	{LabelProvider} 'labelProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 	
-		((
-		'text' '{'
-			labelSpecifications+=LabelSpecification*
-		'}'
-		)?
-		&
 		(
-		'image' '{'
-			imageSpecifications+=LabelSpecification*
-		'}'
-		)?)
+			(
+			'text' '{'
+				labelSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'image' '{'
+				imageSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'font' '{'
+				fontSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'foreground' '{'
+				foregroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			'background' '{'
+				backgroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+		)
 	'}'
 ;
 
@@ -98,18 +118,59 @@ FieldSpecification:
 TableLabelProvider:
 	{TableLabelProvider} 'tableLabelProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
-	
-		((
-		'text' '{'
-			labelSpecifications+=FeatureAssociatedExpression*
-		'}'
-		)?
-		&
+		// Note: the assignments text='text' are useless for the AST, but they help to avoid
+		// to get too many ambiguities in the grammar, and avoid a too big serializer
+		// (The code of method init(IGrammarAccess) is exceeding the 65535 bytes limit in EmfParsleyDslSyntacticSequencer.java)
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=458705#c5
 		(
-		'image' '{'
-			imageSpecifications+=FeatureAssociatedExpression*
-		'}'
-		)?)
+			(
+			text='text' '{'
+				labelSpecifications+=FeatureAssociatedExpression*
+			'}'
+			)?
+			&
+			(
+			image='image' '{'
+				imageSpecifications+=FeatureAssociatedExpression*
+			'}'
+			)?
+			&
+			(
+			font='font' '{'
+				fontSpecifications+=FeatureAssociatedExpression*
+			'}'
+			)?
+			&
+			(
+			foreground='foreground' '{'
+				foregroundSpecifications+=FeatureAssociatedExpression*
+			'}'
+			)?
+			&
+			(
+			background='background' '{'
+				backgroundSpecifications+=FeatureAssociatedExpression*
+			'}'
+			)?
+			&
+			(
+			rowFont='rowFont' '{'
+				rowFontSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			rowForeground='rowForeground' '{'
+				rowForegroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+			&
+			(
+			rowBackground='rowBackground' '{'
+				rowBackgroundSpecifications+=LabelSpecification*
+			'}'
+			)?
+		)
 	'}'
 ;
 

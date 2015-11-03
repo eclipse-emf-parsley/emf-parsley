@@ -77,6 +77,8 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.swt.graphics.Font
+import org.eclipse.swt.graphics.Color
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -334,6 +336,18 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				for (imageSpecification : labelProvider.imageSpecifications) {
 					members += imageSpecification.specificationToMethod("image", typeRef(Object))
 				}
+				
+				for (fontSpecification : labelProvider.fontSpecifications) {
+					members += fontSpecification.specificationToMethod("font", typeRef(Font))
+				}
+				
+				for (foregroundSpecification : labelProvider.foregroundSpecifications) {
+					members += foregroundSpecification.specificationToMethod("foreground", typeRef(Color))
+				}
+				
+				for (backgroundSpecification : labelProvider.backgroundSpecifications) {
+					members += backgroundSpecification.specificationToMethod("background", typeRef(Color))
+				}
 			]
 			labelProviderClass
 		}
@@ -347,36 +361,27 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val tableLabelProviderClass = tableLabelProvider.toClass(element.tableLabelProviderQN)
 			acceptor.accept(tableLabelProviderClass) [
 				setSuperClassTypeAndFields(tableLabelProvider, typeof(TableColumnLabelProvider))
-					
-				for (labelSpecification : tableLabelProvider.labelSpecifications) {
-					if (labelSpecification.feature?.simpleName != null) {
-						members += labelSpecification.toMethod("text_" + 
-							labelSpecification.parameterType.simpleName + "_" +
-							labelSpecification.feature.simpleName.propertyNameForGetterSetterMethod
-							, typeRef(String)
-						) [
-							parameters += labelSpecification.toParameter(
-								"it"
-								, labelSpecification.parameterType
-							)
-							body = labelSpecification.expression
-						]
-					}
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.labelSpecifications, "text_", typeRef(String), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.imageSpecifications, "image_", typeRef(Object), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.fontSpecifications, "font_", typeRef(Font), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.foregroundSpecifications, "foreground_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
+				
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.backgroundSpecifications, "background_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
+				
+				for (fontSpecification : tableLabelProvider.rowFontSpecifications) {
+					members += fontSpecification.specificationToMethod("rowFont", typeRef(Font))
 				}
-			
-				for (imageSpecification : tableLabelProvider.imageSpecifications) {
-					if (imageSpecification.feature?.simpleName != null) {
-						members += imageSpecification.toMethod("image_" + 
-							imageSpecification.parameterType.simpleName + "_" +
-							imageSpecification.feature.simpleName.propertyNameForGetterSetterMethod
-							, typeRef(Object)) [
-							parameters += imageSpecification.toParameter(
-									"it"
-								, imageSpecification.parameterType
-							)
-							body = imageSpecification.expression
-						]
-					}
+				
+				for (foregroundSpecification : tableLabelProvider.rowForegroundSpecifications) {
+					members += foregroundSpecification.specificationToMethod("rowForeground", typeRef(Color))
+				}
+				
+				for (backgroundSpecification : tableLabelProvider.rowBackgroundSpecifications) {
+					members += backgroundSpecification.specificationToMethod("rowBackground", typeRef(Color))
 				}
 			]
 			tableLabelProviderClass
@@ -424,8 +429,17 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
+	def private (JvmOperation, FeatureAssociatedExpression) => void getParameterCreatorForFeatureAssociatedExpression() {
+		[
+			it, spec |
+			parameters += spec.toParameter(
+				"it", spec.parameterType
+			)
+		]
+	}
+
 	def private inferMethodsForTextCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
-		inferMethodsForCaptionSpecifications(
+		inferMethodsForFeatureAssociatedExpression(
 			it, specifications, "text_", typeRef(String)
 		) [
 			it, spec |
@@ -434,9 +448,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			)
 		]
 	}
-	
+
 	def private inferMethodsForLabelCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
-		inferMethodsForCaptionSpecifications(
+		inferMethodsForFeatureAssociatedExpression(
 			it, specifications, "label_", typeRef(Label)
 		) [
 			it, spec |
@@ -449,7 +463,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private inferMethodsForCaptionSpecifications(JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications, 
+	def private inferMethodsForFeatureAssociatedExpression(JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications, 
 		String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator
 	) {
 		for (spec : specifications) {

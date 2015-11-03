@@ -76,7 +76,7 @@ module my.emfparsley.proj {
 	parts { 
 viewpart id {
 	viewname "View Name"
-	viewclass type
+	viewclass viewclassref
 	// viewcategory my.category
 }'''			
 		)

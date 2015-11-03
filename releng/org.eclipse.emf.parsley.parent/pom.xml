@@ -1,27 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.emf.parsley</groupId>
 	<artifactId>org.eclipse.emf.parsley.parent</artifactId>
-	<version>0.5.1-SNAPSHOT</version>
+	<version>0.5.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	
+	<url>http://www.eclipse.org/emf-parsley/</url>
+	<ciManagement>
+		<system>hudson</system>
+		<url>https://hudson.eclipse.org/hudson</url>
+	</ciManagement>
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<organization>
+		<name>Eclipse Foundation</name>
+		<url>http://www.eclipse.org/</url>
+	</organization>
+	<issueManagement>
+		<system>Bugzilla</system>
+		<url>https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley</url>
+	</issueManagement>
+	<scm>
+		<connection>scm:git:http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git</connection>
+		<developerConnection>scm:git:ssh://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git</developerConnection>
+		<url>http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git</url>
+	</scm>
+	<developers>
+		<developer>
+			<name>Lorenzo Bettini</name>
+			<organization>Dipartimento di Informatica</organization>
+			<organizationUrl>http://www.lorenzobettini.it/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Vincenzo Caselli</name>
+			<organization>RCP Vision</organization>
+			<organizationUrl>http://www.rcp-vision.com/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Francesco Guidieri</name>
+			<organization>RCP Vision</organization>
+			<organizationUrl>http://www.rcp-vision.com/</organizationUrl>
+		</developer>
+	</developers>
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
 
 	<properties>
-		<tycho-version>0.22.0</tycho-version>
-		<tycho-extras-version>0.22.0</tycho-extras-version>
+		<tycho-version>0.23.0</tycho-version>
+		<tycho-extras-version>0.23.0</tycho-extras-version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<junit-version>4.11</junit-version>
 		<jacoco-version>0.7.4.201502262128</jacoco-version>
 		<findbugs-version>2.5.5</findbugs-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 		<xtext-version>2.8.4</xtext-version>
+		<emf.version>(2.8,3.0)</emf.version>
+		<guava.version>[10.0.1,14.0.1]</guava.version>
+		<google-inject.version>3.0</google-inject.version>
+		<log4j.version>1.2.16</log4j.version>
 		<!-- <platform-version>[3.9,4.0)</platform-version> -->
+
 		<fornax-oaw-m2-plugin-version>3.5.1</fornax-oaw-m2-plugin-version>
 
 		<!-- tests and runtime args -->
+		<os-jvm-flags />
 		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
-		<uiTestsArgs>${memoryArgs} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
+		<uiTestsArgs>${memoryArgs} ${os-jvm-flags} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
 		<pdeTestsArgs>-DbuildingWithTycho=true</pdeTestsArgs>
 		<swtbotTestsArgs>${uiTestsArgs} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
 
@@ -50,7 +104,7 @@
 		<!-- see http://sonarqube.15.x6.nabble.com/sonar-issue-ignore-multicriteria-td5021722.html 
 			and http://stackoverflow.com/questions/21825469/configure-sonar-sonar-issue-ignore-multicriteria-through-maven 
 			for the multicriteria property -->
-		<sonar.issue.ignore.multicriteria>e1,e2,e3,e4,e5,e6,e7</sonar.issue.ignore.multicriteria>
+		<sonar.issue.ignore.multicriteria>e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11</sonar.issue.ignore.multicriteria>
 	
 		<!-- standard convention for method names: in the outline tree provider 
 			we must use methods that start with _ and they'd violate the rule squid:S00100 -->
@@ -82,12 +136,30 @@
 		<sonar.issue.ignore.multicriteria.e7.ruleKey>squid:S1217</sonar.issue.ignore.multicriteria.e7.ruleKey>
 		<sonar.issue.ignore.multicriteria.e7.resourceKey>**/junit4/**/*.java</sonar.issue.ignore.multicriteria.e7.resourceKey>
 
+		<!-- Avoid deprecated checkstyle rule -->
+		<sonar.issue.ignore.multicriteria.e8.ruleKey>checkstyle:com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck</sonar.issue.ignore.multicriteria.e8.ruleKey>
+		<sonar.issue.ignore.multicriteria.e8.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e8.resourceKey>
+
+		<!-- Avoid deprecated PMD rule -->
+		<sonar.issue.ignore.multicriteria.e9.ruleKey>pmd:AvoidDuplicateLiterals</sonar.issue.ignore.multicriteria.e9.ruleKey>
+		<sonar.issue.ignore.multicriteria.e9.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e9.resourceKey>
+
+		<!-- Avoid deprecated PMD rule -->
+		<sonar.issue.ignore.multicriteria.e10.ruleKey>pmd:UnnecessaryLocalBeforeReturn</sonar.issue.ignore.multicriteria.e10.ruleKey>
+		<sonar.issue.ignore.multicriteria.e10.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e10.resourceKey>
+
+		<!-- Avoid deprecated PMD rule -->
+		<sonar.issue.ignore.multicriteria.e11.ruleKey>pmd:ConstructorCallsOverridableMethod</sonar.issue.ignore.multicriteria.e11.ruleKey>
+		<sonar.issue.ignore.multicriteria.e11.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e11.resourceKey>
+
 		<findbugs.skip>false</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
 		
 		<dsl.tests.skip>false</dsl.tests.skip>
 		<simple.tests.skip>false</simple.tests.skip>
 		<swtbot.tests.skip>false</swtbot.tests.skip>
+		
+		<target-file-name>mars</target-file-name>
 	</properties>
 	
 	<profiles>
@@ -131,6 +203,7 @@
 		
 				<module>../../doc/org.eclipse.emf.parsley.doc</module>
 		
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
@@ -162,43 +235,6 @@
 		
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
 			</modules>
-			
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>${jacoco-version}</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-								<configuration>
-									<!-- Where to put jacoco coverage report -->
-									<destFile>${sonar.jacoco.reportPath}</destFile>
-									<includes>
-										<include>org.eclipse.emf.parsley.*</include>
-									</includes>
-									<excludes>
-										<exclude>**/src-gen/**/*.java</exclude>
-										<exclude>**.antlr**</exclude>
-										<exclude>**.parseTree**</exclude>
-										<exclude>**Abstract*RuntimeModule.java</exclude>
-										<exclude>**/*SetupGenerated*.java</exclude>
-										<exclude>**/Abstract*Validator.java</exclude>
-										<exclude>**/*GrammarAccess.java</exclude>
-										<exclude>**/Abstract*UiModule.java</exclude>
-										<exclude>**/Abstract*ProposalProvider.java</exclude>
-										<exclude>**/*Test.java</exclude>
-									</excludes>
-									<append>true</append>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 		
 		<profile>
@@ -354,6 +390,78 @@
 		</profile>
 
 		<profile>
+			<id>maven</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
+
+				<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
+			
+				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
+				<module>../../plugins/org.eclipse.emf.parsley</module>
+				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
+
+				<module>../../plugins/org.eclipse.emf.parsley.views</module>
+				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
+				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
+				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
+
+				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
+			</modules>
+			
+			<properties>
+				<findbugs.skip>true</findbugs.skip>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>sonatype-oss-release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+				    </plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
 			<id>sonar</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -402,7 +510,7 @@
 									<target>
 										<property name="project.basedir" value="${project.basedir}" />
 		
-										<ant antfile="${project.basedir}/../../releng/org.eclipse.emf.parsley.releng/process-xtend-gen.ant">
+										<ant antfile="${project.basedir}/../../releng/org.eclipse.emf.parsley.parent/process-xtend-gen.ant">
 											<target name="process-xtend-gen" />
 										</ant>
 									</target>
@@ -576,7 +684,7 @@
 						<!-- <threshold>Medium</threshold> -->
 						<maxRank>15</maxRank>
 						<jvmArgs>-Xmx1024m</jvmArgs>
-						<excludeFilterFile>${project.basedir}/../../releng/org.eclipse.emf.parsley.releng/excludeFilter.xml</excludeFilterFile>
+						<excludeFilterFile>${project.basedir}/../../releng/org.eclipse.emf.parsley.parent/findbugs/excludeFilter.xml</excludeFilterFile>
 					</configuration>
 					<executions>
 						<execution>
@@ -587,17 +695,44 @@
 					</executions>
 				</plugin>
 				
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco-version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<!-- Where to put jacoco coverage report -->
+								<destFile>${sonar.jacoco.reportPath}</destFile>
+								<includes>
+									<include>org.eclipse.emf.parsley.*</include>
+								</includes>
+								<excludes>
+									<exclude>**/src-gen/**/*.java</exclude>
+									<exclude>**.antlr**</exclude>
+									<exclude>**.parseTree**</exclude>
+									<exclude>**Abstract*RuntimeModule.java</exclude>
+									<exclude>**/*SetupGenerated*.java</exclude>
+									<exclude>**/Abstract*Validator.java</exclude>
+									<exclude>**/*GrammarAccess.java</exclude>
+									<exclude>**/Abstract*UiModule.java</exclude>
+									<exclude>**/Abstract*ProposalProvider.java</exclude>
+									<exclude>**/*Test.java</exclude>
+								</excludes>
+								<append>true</append>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				
 				<!--  see https://bugs.eclipse.org/bugs/show_bug.cgi?id=419172#c17 -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
 					<version>2.4</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>target-platform-configuration</artifactId>
-					<version>${tycho-version}</version>
 				</plugin>
 
 				<plugin>
@@ -635,6 +770,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
 				<configuration>
 					<target>
 						<artifact>
@@ -741,5 +877,16 @@
 
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
 </project>

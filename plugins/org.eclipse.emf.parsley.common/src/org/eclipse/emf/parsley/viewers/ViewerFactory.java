@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.viewers;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.jface.layout.TableColumnLayout;
@@ -46,7 +46,7 @@ public class ViewerFactory {
 	private ResourceLoader resourceLoader;
 
 	@Inject
-	private Provider<AdapterFactoryEditingDomain> editingDomainProvider;
+	private Provider<EditingDomain> editingDomainProvider;
 
 	@Inject
 	private TableViewerColumnBuilder columnBuilder;
@@ -72,7 +72,7 @@ public class ViewerFactory {
 	 * @param viewer
 	 * @param editingDomain
 	 */
-	public void initialize(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
+	public void initialize(StructuredViewer viewer, EditingDomain editingDomain) {
 		initialize(viewer, editingDomain.getResourceSet());
 	}
 
@@ -124,8 +124,8 @@ public class ViewerFactory {
 		columnBuilder.buildTableViewer(tableViewer, eClass);
 	}
 
-	private AdapterFactoryEditingDomain loadResource(URI resourceURI) {
-		AdapterFactoryEditingDomain editingDomain = editingDomainProvider.get();
+	private EditingDomain loadResource(URI resourceURI) {
+		EditingDomain editingDomain = editingDomainProvider.get();
 		resourceLoader.getResource(editingDomain, resourceURI);
 		return editingDomain;
 	}

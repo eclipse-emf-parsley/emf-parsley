@@ -17,7 +17,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
  * Retrieves the EditingDomain for an EObject. The default implementation simply
- * uses {@link AdapterFactoryEditingDomain} getEditingDomainFor.
+ * uses {@link AdapterFactoryEditingDomain#getEditingDomainFor(EObject)}.
  * 
  * @author Lorenzo Bettini
  * 

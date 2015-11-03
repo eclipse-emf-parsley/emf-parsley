@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.resource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 import com.google.inject.Inject;
 
@@ -45,8 +45,7 @@ public class ResourceLoader {
 	 * @param resourceURI
 	 * @return
 	 */
-	public LoadResourceResponse getResource(
-			AdapterFactoryEditingDomain editingDomain, URI resourceURI) {
+	public LoadResourceResponse getResource(EditingDomain editingDomain, URI resourceURI) {
 		Resource resource = null;
 		Exception exception = null;
 		try {

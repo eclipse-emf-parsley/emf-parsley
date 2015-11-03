@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.workspace"
       label="Emf Parsley Workspace"
-      version="0.5.1.qualifier"
+      version="0.5.2.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emfparsley">
@@ -141,6 +141,13 @@
 
    <plugin
          id="org.eclipse.emf.parsley.dev.doc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.parsley.dsl.standalone.lib"
          download-size="0"
          install-size="0"
          version="0.0.0"

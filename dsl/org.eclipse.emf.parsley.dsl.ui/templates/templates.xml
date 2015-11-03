@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.ViewSpecification" deleted="false" description="Template for ViewSpecification" enabled="true" name="ViewSpecification" id="viewpart">viewpart ${id} {
 	viewname "View Name"
-	viewclass ${type:CrossReference(JvmTypeReference.type)}
+	viewclass ${viewclassref:CrossReference(JvmTypeReference.type)}
 	// viewcategory my.category
 }</template></templates>

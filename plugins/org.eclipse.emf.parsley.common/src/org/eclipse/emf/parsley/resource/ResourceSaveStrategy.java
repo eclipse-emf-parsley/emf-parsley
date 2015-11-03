@@ -23,8 +23,9 @@ import com.google.inject.Inject;
  *
  */
 public class ResourceSaveStrategy {
-	
-	private @Inject ResourceManager resourceManager;
+
+	@Inject
+	private ResourceManager resourceManager;
 
 	/**
 	 * Simply delegates saving to the {@link ResourceManager}.

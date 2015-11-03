@@ -43,7 +43,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 	public static final String SAVEABLE_CATEGORY = "Saveable";
 
 	private TableViewer templateSelectionViewer;
-	private GridData gd;
+
 	private FormBrowser descriptionBrowser;
 	
 	protected EmfParsleyDslProjectTemplateSelectionPage() {
@@ -87,7 +87,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		new Label(container,SWT.NONE).setText("");
 		
 		SashForm sashForm = new SashForm(container, SWT.HORIZONTAL);
-		gd = new GridData(GridData.FILL_BOTH);
+		GridData gd = new GridData(GridData.FILL_BOTH);
 		// limit the width of the sash form to avoid the wizard
 		// opening very wide. This is just preferred size - 
 		// it can be made bigger by the wizard

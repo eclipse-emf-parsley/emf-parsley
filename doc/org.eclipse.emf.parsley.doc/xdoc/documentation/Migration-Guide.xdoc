@@ -1,5 +1,62 @@
 chapter:MigrationGuide[Migration Guide]
 
+section:FiveMinors[From 0.5.0 to 0.5.2]
+
+ul[
+item[label provider for trees and table label providers for tables can now specify declaratively custom
+fonts, foreground and background colors.
+
+For tables, you can customize the font, foreground and background color for the entire row or for a single
+cell.
+
+Here are some examples:
+
+code[EmfParsley][
+labelProvider{
+...
+	font {
+		Book -> // must return a org.eclipse.swt.graphics.Font
+	}
+	foreground {
+		Book -> // must return a org.eclipse.swt.graphics.Color
+	}
+	background {
+		Book -> // must return a org.eclipse.swt.graphics.Color
+	}
+}
+]
+
+code[EmfParsley][
+tableLabelProvider {
+...	
+	font {
+		Library : name -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+	}
+	
+	foreground {
+		Library : books -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+	}
+	
+	background {
+		Library : address -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
+	}
+	
+	rowFont {
+		Library -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+	}
+	
+	rowForeground {
+		Library -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+	}
+	
+	rowBackground {
+		Library -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
+	}
+}
+]
+]
+]
+
 section:FourFive[From 0.4 to 0.5]
 
 ul[

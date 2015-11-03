@@ -22,12 +22,19 @@ public class EmfParsleyDslOutputConfigurationProvider extends
 
 	public static final String PROJECT_ROOT_OUTPUT = "PROJECT_ROOT";
 
+	public static final String PROJECT_ROOT_ONCE_OUTPUT = "PROJECT_ONCE_ROOT";
+
 	public static final String PLUGIN_XML_EMFPARSLEY_REL_GEN_PATH = "../";
 
 	public static final String PLUGIN_XML_EMFPARSLEY_GEN = "plugin.xml_emfparsley_gen";
 
 	public static final String PLUGIN_XML_EMFPARSLEY_GEN_PATH = PLUGIN_XML_EMFPARSLEY_REL_GEN_PATH
 			+ PLUGIN_XML_EMFPARSLEY_GEN;
+
+	public static final String PLUGIN_XML_EMFPARSLEY = "plugin.xml";
+
+	public static final String PLUGIN_XML_EMFPARSLEY_PATH = PLUGIN_XML_EMFPARSLEY_REL_GEN_PATH
+			+ PLUGIN_XML_EMFPARSLEY;
 
 	@Override
 	public Set<OutputConfiguration> getOutputConfigurations() {
@@ -47,6 +54,20 @@ public class EmfParsleyDslOutputConfigurationProvider extends
 		projectRootOutput.setCanClearOutputDirectory(false);
 		projectRootOutput.setCleanUpDerivedResources(true);
 		projectRootOutput.setSetDerivedProperty(true);
+
+		outputconfigurations.add(projectRootOutput);
+
+		// This is for plugin.xml which is generated only once
+		projectRootOutput = new OutputConfiguration(
+				PROJECT_ROOT_ONCE_OUTPUT);
+		projectRootOutput.setDescription("Output Folder for generated "
+				+ PLUGIN_XML_EMFPARSLEY);
+		projectRootOutput.setOutputDirectory("src");
+		projectRootOutput.setOverrideExistingResources(false);
+		projectRootOutput.setCreateOutputDirectory(true);
+		projectRootOutput.setCanClearOutputDirectory(false);
+		projectRootOutput.setCleanUpDerivedResources(false);
+		projectRootOutput.setSetDerivedProperty(false);
 
 		outputconfigurations.add(projectRootOutput);
 

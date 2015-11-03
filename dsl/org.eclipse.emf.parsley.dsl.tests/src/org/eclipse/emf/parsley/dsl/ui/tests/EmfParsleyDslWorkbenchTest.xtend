@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
 import static org.eclipse.emf.parsley.dsl.tests.util.ui.TestableEmfParsleyDslNewProjectWizard.*
-
+import org.eclipse.core.resources.IProject
 
 /**
  * @author Lorenzo Bettini
@@ -91,7 +91,8 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 //	}
 
 	@Test def void testPluginXmlGeneration() {
-		val project = modifyParsleyModuleFile(
+		val project = createProjectWithNewProjectWizard
+		project.modifyParsleyModuleFile(
 '''
 module «TEST_PROJECT» {
 	
@@ -110,8 +111,9 @@ module «TEST_PROJECT» {
 		waitForBuild
 		
 		assertTrue(project.getFile("/" + PLUGIN_XML_EMFPARSLEY_GEN).exists())
+		assertTrue(project.getFile("/" + PLUGIN_XML_EMFPARSLEY).exists())
 		
-		modifyParsleyModuleFile(
+		project.modifyParsleyModuleFile(
 '''
 module «TEST_PROJECT» {
 	// removed parts
@@ -123,6 +125,8 @@ module «TEST_PROJECT» {
 		waitForBuild
 
 		assertFalse(project.getFile("/" + PLUGIN_XML_EMFPARSLEY_GEN).exists())
+		// plugin.xml should still be there
+		assertTrue(project.getFile("/" + PLUGIN_XML_EMFPARSLEY).exists())
 	}
 
 	def private createProjectWithNewProjectWizard() {
@@ -136,8 +140,7 @@ module «TEST_PROJECT» {
 		return project
 	}
 
-	def private modifyParsleyModuleFile(CharSequence newcontents) {
-		val project = createProjectWithNewProjectWizard
+	def private modifyParsleyModuleFile(IProject project, CharSequence newcontents) {
 		val srcFolder = project.getFolder("src")
 		val file = srcFolder.getFile(TEST_MODULE)
 		assertTrue(file.exists())

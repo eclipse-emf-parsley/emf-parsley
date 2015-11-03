@@ -22,17 +22,16 @@ import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigura
 import org.eclipse.emf.parsley.dsl.jvmmodel.EmfParsleyDslGeneratorUtils
 
 class EmfParsleyDslPluginXmlGenerator implements IGenerator {
-	
+
 	@Inject extension EmfParsleyDslGeneratorUtils;
 
 	override doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for(module: resource.allContents.toIterable.filter(typeof(Module))) {
+		for (module : resource.allContents.toIterable.filter(typeof(Module))) {
 			val contents = module.generatePluginXml
-			if (contents.length > 0)
-				fsa.generateFile(
-	            	PLUGIN_XML_EMFPARSLEY_GEN_PATH,
-					PROJECT_ROOT_OUTPUT,
-	            	contents)
+			if (contents.length > 0) {
+				fsa.generateFile(PLUGIN_XML_EMFPARSLEY_GEN_PATH, PROJECT_ROOT_OUTPUT, contents)
+				fsa.generateFile(PLUGIN_XML_EMFPARSLEY_PATH, PROJECT_ROOT_ONCE_OUTPUT, contents)
+			}
 		}
 	}
 
@@ -51,7 +50,6 @@ class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 	}
 
 	def dispatch generateExtensionPoint(PartSpecification partSpecification) {
-		
 	}
 
 	def dispatch generateExtensionPoint(ViewSpecification viewSpecification) {

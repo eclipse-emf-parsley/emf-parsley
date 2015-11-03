@@ -198,26 +198,39 @@ section:Providers[Providers]
 
 section2:ViewerLabelProvider[Viewer Label Provider]
 
-The Jface Label Prorvider allows to specify the representation of a given Object. e[EMF Parsley]
+The Jface Label Provider allows to specify the representation of a given Object. e[EMF Parsley]
 provides an implementation that uses the information provided via the DSL, as you can see in the snippet
-below. 
+below. We allow customization for text, image, font, and foreground and background color.
 
 code[EmfParsley][
 labelProvider{
-	text{
+	text {
 		Book -> "Book:"+title
 		Borrower -> "Borrower: "+firstName
 	}
-	image{
+	image {
 		Book -> "book.png"
+	}
+	font {
+		Book -> // must return a org.eclipse.swt.graphics.Font
+	}
+	foreground {
+		Book -> // must return a org.eclipse.swt.graphics.Color
+	}
+	background {
+		Book -> // must return a org.eclipse.swt.graphics.Color
 	}
 }
 ]
 
 However if you want to customize the label provider in Java, you need to provide an implementation of codeRef[org.eclipse.jface.viewers.ILabelProvider]
-and injecting it in the spefic module e[(TODO)].
+and injecting it in the spefic module by overriding e[bindILabelProvider].
+
 e[EMF Parsley] provides such a base implementation with the class codeRef[org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider]
 that is meant to be subclassed by the programmer to provide specific implementations like in the example below.
+Our label provider also implements codeRef[org.eclipse.jface.viewers.IFontProvider] and
+codeRef[org.eclipse.jface.viewers.IColorProvider], so that you can customize also the font, the foreground
+and the background color.
 
 This class, like many others in our framework, relies on the e[polymorphic dispatcher] idiom to declaratively
 specify text and image representations for objects. It boils down to the fact that the only thing you need to do is 
@@ -240,6 +253,18 @@ public class CustomLibraryLabelProvider extends ViewerLabelProvider {
 
 	public String image(Book book) {
 		return "book.png";
+	}
+
+	public Font font(Book book) {
+		return // must return a org.eclipse.swt.graphics.Font
+	}
+
+	public Color foreground(Book book) {
+		return // must return a org.eclipse.swt.graphics.Color
+	}
+
+	public Color background(Book book) {
+		return // must return a org.eclipse.swt.graphics.Color
 	}
 
 	public String text(Borrower b) {
@@ -285,9 +310,9 @@ public class CustomLibraryViewerContentProvider extends ViewerContentProvider {
 		super(adapterFactory);
 	}
 
- 	public Object elements(Library library) {
-    	return library.getBooks();
-  	}
+	public Object elements(Library library) {
+		return library.getBooks();
+	}
 
 	public Object children(Library library) {
 		return library.getBooks();
@@ -351,6 +376,59 @@ tableViewerContentProvider{
 
 IMPORTANT: customizations specified in a codeRef[org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider]
 will NOT be reused by a codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider].
+
+section2:TableLabelProvider[Table Label Provider]
+
+The Jface Table Label Provider allows to specify the representation of a given cell in a table. e[EMF Parsley]
+provides an implementation that uses the information provided via the DSL, as you can see in the snippet
+below. We allow customization for text, image, font, foreground and background color for a given object's feature
+(which corresponds to a table cell), and also font, and foreground and background color for the entire row.
+
+Concerning fonts and colors, a customization for a single cell has the precedence over the customization of an entire row.
+
+Here's an example.
+
+code[EmfParsley][
+tableLabelProvider {
+	text {
+		Library:name -> 'Name' // constant
+		Library:books -> 'Books' // constant
+		Writer:lastName -> name.toFirstUpper // the implicit param is an EStructuralFeature
+	}
+	
+	image {
+		Book: author -> 
+			if (author.name.nullOrEmpty) 
+				"noname.gif"
+			else
+				new ImageData("writer.jpeg")
+	}
+	
+	font {
+		Library : name -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+	}
+	
+	foreground {
+		Library : books -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+	}
+	
+	background {
+		Library : address -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
+	}
+	
+	rowFont {
+		Library -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+	}
+	
+	rowForeground {
+		Library -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+	}
+	
+	rowBackground {
+		Library -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
+	}
+}
+]
 
 section2:FeaturesProvider[Features Provider]
 
@@ -684,7 +762,7 @@ emfMenus{
 				book.title = "A new book"
 				book.author = w
 			\]
-		),
+		)
 	\]
 }
 ]

@@ -1,12 +1,12 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Injector
+import java.util.EventObject
 import org.eclipse.emf.common.command.CommandStackListener
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource.IOWrappedException
 import org.eclipse.emf.ecore.xmi.DanglingHREFException
 import org.eclipse.emf.edit.command.ChangeCommand
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.examples.library.Book
@@ -30,7 +30,6 @@ import org.junit.Test
 import static org.eclipse.emf.parsley.tests.EditingMenuBuilderTest.*
 
 import static extension org.junit.Assert.*
-import java.util.EventObject
 
 class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 
@@ -718,7 +717,7 @@ class EditingMenuBuilderTest extends AbstractEmfParsleyTest {
 
 	def protected getEditingDomain() {
 		if (editingDomain === null) {
-			editingDomain = getOrCreateInjector.getProvider(AdapterFactoryEditingDomain).get()
+			editingDomain = getOrCreateInjector.getProvider(EditingDomain).get()
 		}
 		return editingDomain
 	}

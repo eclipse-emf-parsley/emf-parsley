@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.emf.parsley.examples.maven
+Bundle-Vendor: Eclipse Modeling Project
+Bundle-Version: 0.5.2.qualifier
+Bundle-SymbolicName: org.eclipse.emf.parsley.examples.maven; singleton:=true
+Bundle-Activator: org.eclipse.emf.parsley.examples.maven.MavenActivator
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.emf.parsley.views,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.emf.parsley.junit4,
+ org.junit;bundle-version="4.11.0"
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

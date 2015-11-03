@@ -13,12 +13,16 @@ package org.eclipse.emf.parsley.tests
 import java.util.List
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.EmfParsleyActivator
+import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
-import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
+import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.resource.ImageDescriptor
+import org.eclipse.jface.resource.JFaceResources
+import org.eclipse.swt.SWT
+import org.eclipse.swt.graphics.Font
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -119,6 +123,37 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 	}
 
 	@Test
+	def void testCustomTextNotEObject() {
+		val customProvider = new TableColumnLabelProvider {
+			def text_ClassForControls_stringFeature(String s) {
+				"Test"
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		"Test".assertEquals(customProvider.getText("aString"))
+	}
+
+	@Test
+	def void testCustomTextDerivedClassFeatureInDerivedClass() {
+		val customProvider = new TableColumnLabelProvider {
+			def text_DerivedClass_derivedClassFeature(DerivedClass e) {
+				"Test"
+			}
+		}.initialize(testPackage.derivedClass_DerivedClassFeature)
+		"Test".assertEquals(customProvider.getText(derivedClassInstance))
+	}
+
+	@Test
+	def void testCustomTextBaseClassFeatureInDerivedClass() {
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=480749
+		val customProvider = new TableColumnLabelProvider {
+			def text_DerivedClass_baseClassFeature(DerivedClass e) {
+				"Test"
+			}
+		}.initialize(testPackage.baseClass_BaseClassFeature)
+		"Test".assertEquals(customProvider.getText(derivedClassInstance))
+	}
+
+	@Test
 	def void testGetImageNull() {
 		tableColumnLabelProvider.getImage(null).assertNull
 	}
@@ -131,7 +166,7 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			assertNull
 		]
 	}
-	
+
 	@Test
 	def void testCustomImageAsString() {
 		val customLabelProvider = new TableColumnLabelProvider {
@@ -140,6 +175,46 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 			}
 		}.initialize(testPackage.classForControls_StringFeature)
 		customLabelProvider.getImage(classForControlsInstance) => [
+			assertNotNull
+			loadTestImage.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testCustomImageNotEObject() {
+		val customProvider = new TableColumnLabelProvider {
+			def image_ClassForControls_stringFeature(String s) {
+				TEST_IMAGE
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		customProvider.getImage("aString") => [
+			assertNotNull
+			loadTestImage.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testCustomImageDerivedClassFeatureInDerivedClass() {
+		val customProvider = new TableColumnLabelProvider {
+			def image_DerivedClass_derivedClassFeature(DerivedClass e) {
+				TEST_IMAGE
+			}
+		}.initialize(testPackage.derivedClass_DerivedClassFeature)
+		customProvider.getImage(derivedClassInstance) => [
+			assertNotNull
+			loadTestImage.assertImageIs(it)
+		]
+	}
+
+	@Test
+	def void testCustomImageBaseClassFeatureInDerivedClass() {
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=480749
+		val customProvider = new TableColumnLabelProvider {
+			def image_DerivedClass_baseClassFeature(DerivedClass e) {
+				TEST_IMAGE
+			}
+		}.initialize(testPackage.baseClass_BaseClassFeature)
+		customProvider.getImage(derivedClassInstance) => [
 			assertNotNull
 			loadTestImage.assertImageIs(it)
 		]
@@ -182,6 +257,123 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 		customLabelProvider.getImage(classForControlsInstance) => [
 			assertNull
 		]
+	}
+
+	@Test
+	def void testGetFontNull() {
+		null.assertEquals(tableColumnLabelProvider.getFont(null))
+	}
+
+	@Test
+	def void testDefaultGetFont() {
+		null.assertEquals(
+			tableColumnLabelProvider.
+				forFeature(testPackage.classForControls_StringFeature).getFont(classForControlsInstance)
+		)
+	}
+
+	@Test
+	def void testCustomRowFont() {
+		val customLabelProvider = new TableColumnLabelProvider {
+			def rowFont(ClassForControls e) {
+				new Font(shell.display, JFaceResources.DEFAULT_FONT, 14, SWT.BOLD)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		customLabelProvider.getFont(classForControlsInstance).assertNotNull
+	}
+
+	@Test
+	def void testCustomFont() {
+		// customization for feature has precedence
+		val bold = new Font(shell.display, JFaceResources.DEFAULT_FONT, 14, SWT.BOLD)
+		val customLabelProvider = new TableColumnLabelProvider {
+			def font_ClassForControls_stringFeature(ClassForControls e) {
+				bold
+			}
+			
+			def rowFont(ClassForControls e) {
+				new Font(shell.display, JFaceResources.DEFAULT_FONT, 14, SWT.ITALIC)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		bold.assertSame(customLabelProvider.getFont(classForControlsInstance))
+	}
+
+	@Test
+	def void testGetForegroundNull() {
+		null.assertEquals(tableColumnLabelProvider.getForeground(null))
+	}
+
+	@Test
+	def void testDefaultGetForeground() {
+		null.assertEquals(
+			tableColumnLabelProvider.
+				forFeature(testPackage.classForControls_StringFeature).getForeground(classForControlsInstance)
+		)
+	}
+
+	@Test
+	def void testCustomRowForeground() {
+		val customLabelProvider = new TableColumnLabelProvider {
+			def rowForeground(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		customLabelProvider.getForeground(classForControlsInstance).assertNotNull
+	}
+
+	@Test
+	def void testCustomForeground() {
+		// customization for feature has precedence
+		val color = shell.display.getSystemColor(SWT.COLOR_GREEN)
+		val customLabelProvider = new TableColumnLabelProvider {
+			def foreground_ClassForControls_stringFeature(ClassForControls e) {
+				color
+			}
+			
+			def rowForeground(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		color.assertSame(customLabelProvider.getForeground(classForControlsInstance))
+	}
+
+	@Test
+	def void testGetBackgroundNull() {
+		null.assertEquals(tableColumnLabelProvider.getBackground(null))
+	}
+
+	@Test
+	def void testDefaultGetBackground() {
+		null.assertEquals(
+			tableColumnLabelProvider.
+				forFeature(testPackage.classForControls_StringFeature).getBackground(classForControlsInstance)
+		)
+	}
+
+	@Test
+	def void testCustomRowBackground() {
+		val customLabelProvider = new TableColumnLabelProvider {
+			def rowBackground(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		customLabelProvider.getBackground(classForControlsInstance).assertNotNull
+	}
+
+	@Test
+	def void testCustomBackground() {
+		// customization for feature has precedence
+		val color = shell.display.getSystemColor(SWT.COLOR_GREEN)
+		val customLabelProvider = new TableColumnLabelProvider {
+			def background_ClassForControls_stringFeature(ClassForControls e) {
+				color
+			}
+			
+			def rowBackground(ClassForControls e) {
+				shell.display.getSystemColor(SWT.COLOR_BLUE)
+			}
+		}.initialize(testPackage.classForControls_StringFeature)
+		color.assertSame(customLabelProvider.getBackground(classForControlsInstance))
 	}
 
 	def private initialize(TableColumnLabelProvider p, EStructuralFeature f) {

@@ -89,6 +89,9 @@ import org.eclipse.emf.parsley.examples.library.Lendable
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 import org.eclipse.swt.graphics.ImageData
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 
 module my.empty {
 	labelProvider {
@@ -113,6 +116,18 @@ module my.empty {
 					"noname.gif"
 				else
 					new ImageData("writer.jpeg")
+		}
+		
+		font {
+			Library -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+		}
+		
+		foreground {
+			Library -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+		}
+		
+		background {
+			Library -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
 		}
 	}
 }
@@ -175,6 +190,9 @@ import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 import org.eclipse.swt.graphics.ImageData
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 
 module my.empty {
 	tableLabelProvider {
@@ -190,6 +208,30 @@ module my.empty {
 					"noname.gif"
 				else
 					new ImageData("writer.jpeg")
+		}
+		
+		font {
+			Library : name -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+		}
+		
+		foreground {
+			Library : books -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+		}
+		
+		background {
+			Library : address -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
+		}
+		
+		rowFont {
+			Library -> JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT)
+		}
+		
+		rowForeground {
+			Library -> Display.getCurrent().getSystemColor(SWT.COLOR_BLUE)
+		}
+		
+		rowBackground {
+			Library -> Display.getCurrent().getSystemColor(SWT.COLOR_GREEN)
 		}
 	}
 }

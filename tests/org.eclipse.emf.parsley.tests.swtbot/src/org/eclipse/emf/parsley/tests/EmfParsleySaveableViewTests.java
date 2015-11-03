@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -35,7 +34,7 @@ import org.junit.runner.RunWith;
 public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 
 	boolean treeFormViewOpened = false;
-	
+
 	boolean tableFormViewOpened = false;
 
 	boolean tableViewOpened = false;
@@ -69,27 +68,24 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
-	public void canAccessEditingActionsOnSaveableResourceTreeFormView()
-			throws Exception {
+	public void canAccessEditingActionsOnSaveableResourceTreeFormView() throws Exception {
 		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
 		canAccessStandardEditingActions(libraryNode);
 	}
 
 	@Test
-	public void canPerformNewChildActionOnSaveableResourceTreeFormView()
-			throws Exception {
+	public void canPerformNewChildActionOnSaveableResourceTreeFormView() throws Exception {
 		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
-		createNewChild(libraryNode, BOOK_ON_TAPE);
+		createNewChildAndSelectCreated(libraryNode, BOOK_ON_TAPE);
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TREE_FORM_VIEW);
 	}
 
 	@Test
-	public void addingNewElementSelectsTheAddedElement()
-			throws Exception {
+	public void addingNewElementSelectsTheAddedElement() throws Exception {
 		SWTBotTreeItem libraryNode = prepareSaveableTreeViewAndGetLibraryNode();
 		// to effectively execute this test, the tree must not be expanded
 		Assert.assertFalse(libraryNode.isExpanded());
-		createNewChild(libraryNode, BOOK_ON_TAPE);
+		createNewChildAndSelectCreated(libraryNode, BOOK_ON_TAPE);
 		// now the tree must be expanded
 		Assert.assertTrue(libraryNode.isExpanded());
 		// and the new added node must be selected
@@ -98,17 +94,13 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
-	public void canPerformDeleteActionOnSaveableResourceTreeFormView()
-			throws Exception {
-		clickOnContextMenu(
-				getWriterNode(prepareSaveableTreeFormViewAndGetLibraryNode()),
-				ACTION_DELETE);
+	public void canPerformDeleteActionOnSaveableResourceTreeFormView() throws Exception {
+		clickOnContextMenu(getWriterNode(prepareSaveableTreeFormViewAndGetLibraryNode()), ACTION_DELETE);
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TREE_FORM_VIEW);
 	}
 
 	@Test
-	public void canPerformUndoDeleteActionOnSaveableResourceTreeFormView()
-			throws Exception {
+	public void canPerformUndoDeleteActionOnSaveableResourceTreeFormView() throws Exception {
 		SWTBotTreeItem libraryNode = prepareSaveableTreeFormViewAndGetLibraryNode();
 		clickOnContextMenu(getWriterNode(libraryNode), ACTION_DELETE);
 		assertSaveableViewIsDirty(true, TEST_SAVEABLE_TREE_FORM_VIEW);
@@ -129,13 +121,9 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
-	public void canPerformNewSiblingActionOnSaveableTableView()
-			throws Exception {
+	public void canPerformNewSiblingActionOnSaveableTableView() throws Exception {
 		SWTBotTable table = prepareSaveableTableView();
-		assertTableItemsSize(table, 2);
-		table.select(0); // otherwise context menu might not be created
-		clickOnContextMenu(table, NEW_SIBLING, "Book");
-		assertTableItemsSize(table, 3);
+		createNewSiblingAndAssertTableSize(table, 2, "Book");
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TABLE_VIEW);
 	}
 
@@ -150,16 +138,12 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
-	public void canPerformNewSiblingActionOnSaveableTableFormView()
-			throws Exception {
+	public void canPerformNewSiblingActionOnSaveableTableFormView() throws Exception {
 		SWTBotTable table = prepareSaveableTableFormView();
-		assertTableItemsSize(table, 2);
-		table.select(0); // otherwise context menu might not be created
-		clickOnContextMenu(table, NEW_SIBLING, "Book");
-		assertTableItemsSize(table, 3);
+		createNewSiblingAndAssertTableSize(table, 2, "Book");
 		assertDirtyThenSaveAndAssertNotDirty(TEST_SAVEABLE_TABLE_FORM_VIEW);
 	}
-	
+
 	@Test
 	public void canPerformUndoDeleteActionOnSaveableTreeView() throws Exception {
 		SWTBotTreeItem libraryNode = prepareSaveableTreeViewAndGetLibraryNode();
@@ -233,44 +217,26 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		assertDirtyThenSaveAndAssertNotDirty(viewName);
 	}
 
-	protected void createNewChild(SWTBotTreeItem libraryNode, String childType) {
-		clickOnContextMenu(libraryNode, NEW_CHILD, childType);
-		// check that the new item was created
-		libraryNode.expand().getNode(childType);
-	}
-
-	protected void assertTableItemsSize(final SWTBotTable table,
-			final int expectedSize) {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				assertEquals(expectedSize, table.widget.getItems().length);
-			}
-		});
-	}
-
 	protected SWTBotTreeItem prepareSaveableTreeFormViewAndGetLibraryNode()
-			throws CoreException, InvocationTargetException,
-			InterruptedException, IOException {
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFiles();
 		openTestView(TEST_SAVEABLE_TREE_FORM_VIEW);
 		treeFormViewOpened = true;
-		SWTBotTreeItem libraryNode = getRootOfTreeFromView(
-				TEST_SAVEABLE_TREE_FORM_VIEW).getTreeItem(LIBRARY_LABEL);
+		SWTBotTreeItem libraryNode = getRootOfTreeFromView(TEST_SAVEABLE_TREE_FORM_VIEW).getTreeItem(LIBRARY_LABEL);
 		return libraryNode;
 	}
 
-	protected SWTBotTable prepareSaveableTableView() throws CoreException,
-			InvocationTargetException, InterruptedException, IOException {
+	protected SWTBotTable prepareSaveableTableView()
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFiles();
 		openTestView(TEST_SAVEABLE_TABLE_VIEW);
 		SWTBotTable table = bot.table();
 		tableViewOpened = true;
 		return table;
 	}
-	
-	protected SWTBotTable prepareSaveableTableFormView() throws CoreException,
-			InvocationTargetException, InterruptedException, IOException {
+
+	protected SWTBotTable prepareSaveableTableFormView()
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFiles();
 		openTestView(TEST_SAVEABLE_TABLE_FORM_VIEW);
 		SWTBotTable table = bot.table();
@@ -279,24 +245,20 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	protected SWTBotTreeItem prepareSaveableTreeViewAndGetLibraryNode()
-			throws CoreException, InvocationTargetException,
-			InterruptedException, IOException {
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFiles();
 		openTestView(TEST_SAVEABLE_TREE_VIEW);
 		treeViewOpened = true;
-		SWTBotTreeItem libraryNode = getRootOfTreeFromView(
-				TEST_SAVEABLE_TREE_VIEW).getTreeItem(LIBRARY_LABEL);
+		SWTBotTreeItem libraryNode = getRootOfTreeFromView(TEST_SAVEABLE_TREE_VIEW).getTreeItem(LIBRARY_LABEL);
 		return libraryNode;
 	}
 
 	protected SWTBotTree prepareSaveableTreeViewForMultipleRootElements()
-			throws CoreException, InvocationTargetException,
-			InterruptedException, IOException {
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFiles();
 		openTestView(TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
 		treeMultipleRootsViewOpened = true;
-		SWTBotTree tree = getRootOfTreeFromView(
-				TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
+		SWTBotTree tree = getRootOfTreeFromView(TEST_SAVEABLE_VIEW_WITH_CUSTOM_ELEMENTS_CONTENT_PROVIDER);
 		return tree;
 	}
 }

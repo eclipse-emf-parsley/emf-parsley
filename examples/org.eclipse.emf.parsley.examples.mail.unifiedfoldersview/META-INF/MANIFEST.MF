@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.emf.parsley.examples.mail.unifiedfoldersview
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 0.5.1.qualifier
+Bundle-Version: 0.5.2.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.mail.unifiedfoldersview; singleton:=true
 Bundle-Activator: org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedfoldersviewActivator
 Bundle-ActivationPolicy: lazy

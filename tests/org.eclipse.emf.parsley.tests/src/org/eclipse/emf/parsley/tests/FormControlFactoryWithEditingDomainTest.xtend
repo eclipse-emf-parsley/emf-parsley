@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.junit.Before
 
@@ -25,7 +24,7 @@ class FormControlFactoryWithEditingDomainTest extends FormControlFactoryTest {
 	
 	override protected getEditingDomain() {
 		if (editingDomain === null) {
-			editingDomain = getOrCreateInjector.getProvider(AdapterFactoryEditingDomain).get()
+			editingDomain = getOrCreateInjector.getProvider(EditingDomain).get()
 		}
 		return editingDomain
 	}

@@ -63,7 +63,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	public AbstractMasterDetailComposite(Composite parent, int style) {
 		this(parent, style, SWT.VERTICAL, new int[0]);
 	}
-	
+
 	public AbstractMasterDetailComposite(Composite parent, int style, int sashStyle, int[] weights) {
 		super(parent, style);
 		setLayout( new FillLayout());
@@ -85,8 +85,6 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	public StructuredViewer getViewer() {
 		return viewer;
 	}
-
-	
 
 	protected abstract StructuredViewer createViewer(Composite parent);
 

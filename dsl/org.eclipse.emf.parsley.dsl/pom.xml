@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<relativePath>../../releng/org.eclipse.emf.parsley.parent/pom.xml</relativePath>
 		<groupId>org.eclipse.emf.parsley</groupId>
 		<artifactId>org.eclipse.emf.parsley.parent</artifactId>
-		<version>0.5.1-SNAPSHOT</version>
+		<version>0.5.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.dsl</artifactId>
 	<packaging>eclipse-plugin</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.generator.common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.dsl.standalone.lib</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<!-- The following is required so that the mwe2 workflow finds the

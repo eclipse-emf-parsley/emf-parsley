@@ -10,7 +10,5 @@
   <requirement
       name="org.eclipse.emf.parsley.parent"/>
   <requirement
-      name="org.eclipse.emf.parsley.releng"/>
-  <requirement
       name="org.eclipse.emf.parsley.oomph"/>
 </targlets:ComponentExtension>

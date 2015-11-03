@@ -46,7 +46,7 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsActivator;
 import org.eclipse.emf.parsley.junit4.ui.util.ImageTester;
 import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils;
-import org.eclipse.emf.parsley.tests.views.LibraryEmfView;
+import org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryTreeViewWithResourceURI;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.StatusLineManager;
@@ -180,11 +180,13 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static final String TEST_CONTAINER_PLATFORM_URI = "platform:/resource/"
 			+ TEST_CONTAINER_RELATIVE_PATH;
 	
-	protected static final String HARDCODED_LIBRARY_PLATFORM_URI = LibraryEmfView.resourceUri;
+	protected static final String HARDCODED_LIBRARY_PLATFORM_URI = TestOnSelectionLibraryTreeViewWithResourceURI.resourceUri;
 
-	protected static final String LIBRARY_EMF_VIEW = "LibraryEmfView";
+	protected static final String LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI = "TestOnSelectionLibraryTreeViewWithResourceURI";
 
-	protected static final String LIBRARY_EMF_VIEW_CUSTOM_LABEL = "LibraryEmfView Custom Label";
+	protected static final String LIBRARY_ON_SELECTION_TREE_FORM_VIEW = "TestOnSelectionLibraryTreeFormView";
+
+	protected static final String LIBRARY_EMF_VIEW_CUSTOM_LABEL = "TestOnSelectionLibraryTreeViewWithResourceURI Custom Label";
 
 	protected static final String EMF_DETAIL_VIEW = "Emf Form View";
 
@@ -1271,5 +1273,39 @@ public class EmfParsleySWTBotAbstractTests {
 				assertEquals(expected, table.widget.getItemCount());
 			}
 		});
+	}
+
+	protected void createNewChildAndSelectCreated(SWTBotTreeItem node, String childType) {
+		clickOnContextMenu(node, NEW_CHILD, childType);
+		// check that the new item was created
+		node.expand().getNode(childType);
+	}
+
+	protected void createNewSibling(SWTBotTreeItem node, String siblingType) {
+		clickOnContextMenu(node, NEW_SIBLING, siblingType);
+	}
+
+	protected void assertTableItemsSize(final SWTBotTable table, final int expectedSize) {
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				assertEquals(expectedSize, table.widget.getItems().length);
+			}
+		});
+	}
+
+	protected void createNewSiblingAndSelectCreatedInTree(String view, String nodeForContextMenu, String sibling) {
+		final SWTBotTree rootOfTree = getRootOfTreeFromView(view);
+		final SWTBotTreeItem writerNode = rootOfTree.getTreeItem(nodeForContextMenu);
+		createNewSibling(writerNode, sibling);
+		// check that the element is created
+		rootOfTree.getTreeItem(sibling);
+	}
+
+	protected void createNewSiblingAndAssertTableSize(SWTBotTable table, int initialTableItemsSize, String sibling) {
+		assertTableItemsSize(table, initialTableItemsSize);
+		table.select(0); // otherwise context menu might not be created
+		clickOnContextMenu(table, NEW_SIBLING, sibling);
+		assertTableItemsSize(table, initialTableItemsSize+1);
 	}
 }

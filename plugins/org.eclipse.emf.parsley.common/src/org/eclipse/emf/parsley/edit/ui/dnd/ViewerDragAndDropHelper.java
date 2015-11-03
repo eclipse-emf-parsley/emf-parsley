@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.ui.dnd;
 
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
@@ -27,13 +27,13 @@ import com.google.inject.Provider;
 public class ViewerDragAndDropHelper {
 
 	@Inject
-	private Provider<AdapterFactoryEditingDomain> editingDomainProvider;
+	private Provider<EditingDomain> editingDomainProvider;
 
 	public void addDragAndDrop(StructuredViewer viewer) {
 		addDragAndDrop(viewer, editingDomainProvider.get());
 	}
 
-	public void addDragAndDrop(StructuredViewer viewer, AdapterFactoryEditingDomain editingDomain) {
+	public void addDragAndDrop(StructuredViewer viewer, EditingDomain editingDomain) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));

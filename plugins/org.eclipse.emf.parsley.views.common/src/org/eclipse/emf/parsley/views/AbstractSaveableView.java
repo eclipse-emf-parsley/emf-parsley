@@ -19,7 +19,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerClient;
@@ -47,7 +46,7 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 	private AsyncCommandStackListenerHelper commandStackListenerHelper;
 
 	@Inject
-	protected AdapterFactoryEditingDomain editingDomain;
+	private EditingDomain editingDomain;
 
 	@Override
 	public void createPartControl(Composite parent) {

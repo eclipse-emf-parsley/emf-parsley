@@ -99,11 +99,11 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	}
 
 	protected void addContextMenuToViewer() {
-		contextMenuHelper.addViewerContextMenu(getViewer(), editingDomain, this);
+		contextMenuHelper.addViewerContextMenu(getViewer(), this);
 	}
 
 	protected void addDragAndDropToViewer() {
-		dragAndDropHelper.addDragAndDrop(getViewer(), editingDomain);
+		dragAndDropHelper.addDragAndDrop(getViewer(), getEditingDomain());
 	}
 
 	/**

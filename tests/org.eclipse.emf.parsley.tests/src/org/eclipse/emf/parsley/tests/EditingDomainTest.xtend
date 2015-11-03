@@ -14,7 +14,7 @@ import com.google.inject.Injector
 import com.google.inject.Module
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
+import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.resource.ResourceLoader
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
@@ -26,7 +26,7 @@ import org.junit.Test
 import static extension org.junit.Assert.*
 
 class EditingDomainTest extends AbstractEmfParsleyTest {
-	
+
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	@Test
@@ -75,7 +75,7 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 	}
 
 	def private loadResourceWithContents(Injector injector) {
-		val e1 = injector.createAdapterFactoryEditingDomain
+		val e1 = injector.createEditingDomain
 		val resourceSet = e1.resourceSet
 
 		resourceSet.setupResouceFactory
@@ -103,7 +103,7 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 	}
 
 	def private getEditingDomainInstance(Injector injector) {
-		injector.getInstance(AdapterFactoryEditingDomain)
+		injector.getInstance(EditingDomain)
 	}
 
 }

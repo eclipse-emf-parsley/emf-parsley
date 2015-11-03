@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.menus;
 
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
-import org.eclipse.emf.parsley.edit.actionbar.TreeActionBarContributor;
+import org.eclipse.emf.parsley.edit.actionbar.LightweightActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.viewers.ViewerSelectionProvider;
 import org.eclipse.jface.action.IMenuListener;
@@ -37,13 +37,13 @@ import com.google.inject.Provider;
 public class ViewerContextMenuHelper {
 
 	@Inject
-	private Provider<AdapterFactoryEditingDomain> editingDomainProvider;
+	private Provider<EditingDomain> editingDomainProvider;
 
 	@Inject
-	private TreeActionBarContributor treeActionBarContributor;
+	private Provider<LightweightActionBarContributor> lightweightActionBarContributorProvider;
 
 	@Inject
-	private WorkbenchActionBarContributor workbenchActionBarContributor;
+	private Provider<WorkbenchActionBarContributor> workbenchActionBarContributorProvider;
 
 	protected MenuManager createMenuManager() {
 		MenuManager menuManager = new MenuManager("#PopUp");
@@ -64,58 +64,54 @@ public class ViewerContextMenuHelper {
 	 * </pre>
 	 * 
 	 * @param viewer
-	 * @param editingDomain
-	 *            should be created by injection
 	 * @param activePart
 	 * @param menuListener
 	 *            the listener should have a method like
-	 * @param actionBarContributor
+	 * @param workbenchActionBarContributor
 	 *            should be created by injection
 	 */
-	public void addViewerContextMenu(Viewer viewer,
-			AdapterFactoryEditingDomain editingDomain,
-			IWorkbenchPart activePart,
-			IMenuListener menuListener,
-			WorkbenchActionBarContributor actionBarContributor) {
+	public void addViewerContextMenu(Viewer viewer, IWorkbenchPart activePart, IMenuListener menuListener,
+			WorkbenchActionBarContributor workbenchActionBarContributor) {
 
-		MenuManager menuManager = createContextMenu(viewer, editingDomain);
-		activePart.getSite().registerContextMenu(menuManager,
-				new UnwrappingSelectionProvider(viewer));
-
+		MenuManager menuManager = createContextMenu(viewer);
 		menuManager.addMenuListener(menuListener);
 
-		bridgeSelectionProviderAndActionBarContributor(viewer, actionBarContributor);
-
-		actionBarContributor.setActivePart(activePart);
+		setupWorkbenchActionBarContributorContextMenu(viewer, activePart, workbenchActionBarContributor, menuManager);
 	}
 
 	/**
 	 * Adds a context menu to the passed {@link StructuredViewer}.
 	 * 
 	 * @param viewer
-	 * @param editingDomain
-	 *            should be created by injection
 	 * @param activePart
 	 */
-	public void addViewerContextMenu(StructuredViewer viewer,
-			AdapterFactoryEditingDomain editingDomain, IWorkbenchPart activePart) {
+	public void addViewerContextMenu(StructuredViewer viewer, IWorkbenchPart activePart) {
+		final WorkbenchActionBarContributor workbenchActionBarContributor = workbenchActionBarContributorProvider.get();
+		MenuManager menuManager = createContextMenu(viewer, workbenchActionBarContributor);
 
-		MenuManager menuManager = createContextMenu(viewer, editingDomain, workbenchActionBarContributor);
+		setupWorkbenchActionBarContributorContextMenu(viewer, activePart, workbenchActionBarContributor, menuManager);
+	}
 
-		activePart.getSite().registerContextMenu(menuManager,
-				new UnwrappingSelectionProvider(viewer));
-
+	private void setupWorkbenchActionBarContributorContextMenu(Viewer viewer, IWorkbenchPart activePart,
+			WorkbenchActionBarContributor workbenchActionBarContributor, MenuManager menuManager) {
+		activePart.getSite().registerContextMenu(menuManager, new UnwrappingSelectionProvider(viewer));
 		bridgeSelectionProviderAndActionBarContributor(viewer, workbenchActionBarContributor);
-
 		workbenchActionBarContributor.setActivePart(activePart);
 	}
 
+	private void bridgeSelectionProviderAndActionBarContributor(Viewer viewer,
+			WorkbenchActionBarContributor actionBarContributor) {
+		ViewerSelectionProvider viewerSelectionProvider = new ViewerSelectionProvider(viewer);
+		actionBarContributor.setExplicitSelectionProvider(viewerSelectionProvider);
+		viewerSelectionProvider.addSelectionChangedListener(actionBarContributor);
+	}
+
 	/**
 	 * Adds a context menu to the passed {@link StructuredViewer}.
 	 * 
 	 * @param viewer
 	 */
-	public void addViewerContextMenu(StructuredViewer viewer){
+	public void addViewerContextMenu(StructuredViewer viewer) {
 		addViewerContextMenu(viewer, editingDomainProvider.get());
 	}
 
@@ -126,21 +122,23 @@ public class ViewerContextMenuHelper {
 	 * @param editingDomain
 	 *            should be created by injection
 	 */
-	public void addViewerContextMenu(Viewer viewer, AdapterFactoryEditingDomain editingDomain) {
-		createContextMenu(viewer, editingDomain, treeActionBarContributor);
-		viewer.addSelectionChangedListener(treeActionBarContributor);
-		treeActionBarContributor.initialize(editingDomain);
+	public void addViewerContextMenu(Viewer viewer, EditingDomain editingDomain) {
+		final LightweightActionBarContributor lightweightActionBarContributor = lightweightActionBarContributorProvider
+				.get();
+		createContextMenu(viewer, lightweightActionBarContributor);
+		viewer.addSelectionChangedListener(lightweightActionBarContributor);
+		lightweightActionBarContributor.initialize(editingDomain);
 	}
 
-	private MenuManager createContextMenu(Viewer viewer, AdapterFactoryEditingDomain editingDomain) {
+	private MenuManager createContextMenu(Viewer viewer) {
 		MenuManager menuManager = createMenuManager();
 		Menu menu = menuManager.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
 		return menuManager;
 	}
 
-	private MenuManager createContextMenu(Viewer viewer, AdapterFactoryEditingDomain editingDomain, final IMenuListener menuListener) {
-		MenuManager menuManager = createContextMenu(viewer, editingDomain);
+	private MenuManager createContextMenu(Viewer viewer, final IMenuListener menuListener) {
+		MenuManager menuManager = createContextMenu(viewer);
 		menuManager.addMenuListener(new IMenuListener() {
 			@Override
 			public void menuAboutToShow(IMenuManager manager) {
@@ -150,12 +148,4 @@ public class ViewerContextMenuHelper {
 		return menuManager;
 	}
 
-	private void bridgeSelectionProviderAndActionBarContributor(Viewer viewer,
-			WorkbenchActionBarContributor actionBarContributor) {
-		ViewerSelectionProvider viewerSelectionProvider = new ViewerSelectionProvider(viewer);
-		actionBarContributor.setExplicitSelectionProvider(viewerSelectionProvider);
-		viewerSelectionProvider.addSelectionChangedListener(actionBarContributor);
-	}
-
 }
-

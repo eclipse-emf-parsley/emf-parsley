@@ -182,10 +182,10 @@ public class NewEmfParsleyProjectSupport {
 		String simpleNameProject = null;
 		if (projectName.contains(".")) {
 			simpleNameProject = projectName.substring(projectName
-					.lastIndexOf(".") + 1);
+					.lastIndexOf('.') + 1);
 		} else {
 			simpleNameProject = projectName.substring(projectName
-					.lastIndexOf("/") + 1);
+					.lastIndexOf('/') + 1);
 		}
 		simpleNameProject = simpleNameProject.substring(0, 1).toUpperCase()
 				.concat(simpleNameProject.substring(1));
@@ -221,8 +221,8 @@ public class NewEmfParsleyProjectSupport {
 			IProjectDescription desc = newProject.getWorkspace()
 					.newProjectDescription(newProject.getName());
 			if (location != null
-					&& ResourcesPlugin.getWorkspace().getRoot()
-							.getLocationURI().equals(location)) {
+					&& location.equals(ResourcesPlugin.getWorkspace().getRoot()
+							.getLocationURI())) {
 				projectLocation = null;
 			}
 

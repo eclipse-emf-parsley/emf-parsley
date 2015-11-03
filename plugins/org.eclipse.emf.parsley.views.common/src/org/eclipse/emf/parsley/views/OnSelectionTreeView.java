@@ -22,13 +22,20 @@ import org.eclipse.swt.widgets.Composite;
  * @author Lorenzo Bettini
  * 
  */
-public class OnSelectionTreeView extends OnSelectionStructuredViewerAbstractView {
+public class OnSelectionTreeView extends AbstractOnSelectionViewerView {
+
+	private TreeViewer treeViewer;
 
 	public OnSelectionTreeView() {
 	}
 
 	@Override
-	protected StructuredViewer createViewer(Composite parent) {
-		return new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+	public StructuredViewer getViewer() {
+		return treeViewer;
+	}
+
+	@Override
+	protected void createViewer(Composite parent) {
+		treeViewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 	}
 }

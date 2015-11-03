@@ -1,0 +1,126 @@
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EcoreFactory
+import org.eclipse.emf.parsley.edit.IEditingStrategy
+import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
+import org.eclipse.emf.parsley.examples.maven.MavenSaveableTreeFormView
+import org.eclipse.emf.ecore.EObject
+
+/* org.eclipse.emf.parsley.examples.maven Emf Parsley Dsl Module file */
+module org.eclipse.emf.parsley.examples.maven {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.examples.maven {
+			viewname "Maven Saveable Tree Form View"
+			viewclass MavenSaveableTreeFormView
+		}
+	}
+	
+	bindings {
+		type IEditingStrategy -> UndoableEditingStrategy
+	}
+
+	configurator {
+		resourceURI {
+			MavenSaveableTreeFormView -> {
+				// TODO create and return a org.eclipse.emf.common.util.URI
+				return null;
+			}
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			getContents += EcoreFactory.eINSTANCE.createEClass => [ name = "TestClass" ]
+		}
+	}
+
+	labelProvider {
+		text {
+			EClass -> { instanceClassName }
+		}
+		image {
+			EObject -> { "test.png" }
+		}
+		font {
+			EObject -> { null }
+		}
+		foreground {
+			EObject -> { null }
+		}
+		background {
+			EObject -> { null }
+		}
+	}
+
+	dialogControlFactory {
+		control {
+			EClass : name -> {
+				createText("")
+			} target { observeText }
+		}
+	}
+
+	dialogFeatureCaptionProvider {
+		label {
+			
+		}
+	}
+
+	featureCaptionProvider {
+		text {
+			
+		}
+	}
+
+	featuresProvider {
+		features {
+			
+		}
+	}
+
+	formControlFactory {
+		control {
+			
+		}
+	}
+
+	formFeatureCaptionProvider {
+		label {
+			
+		}
+	}
+
+	proposals {
+		
+	}
+
+	tableFeaturesProvider {
+		features {
+			
+		}
+	}
+
+	tableLabelProvider {
+		text {
+			
+		}
+	}
+
+	viewerContentProvider {
+		elements {
+			
+		}
+	}
+
+	tableViewerContentProvider {
+		elements {
+			
+		}
+	}
+
+	menuBuilder {
+		menus {
+			
+		}
+	}
+}

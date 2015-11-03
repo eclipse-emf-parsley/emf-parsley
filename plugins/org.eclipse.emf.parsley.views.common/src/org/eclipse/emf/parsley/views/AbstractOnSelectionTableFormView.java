@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.emf.parsley.composite.TableFormFactory;
@@ -24,14 +23,14 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.inject.Inject;
 
 /**
- * A View that shows a table with the list of elements of an EObject (it also acts as a
- * selection provider), filtered by the specified type (EClass) and a form.
+ * A View that shows a table with the list of elements of an EObject (it also
+ * acts as a selection provider), filtered by the specified type (EClass) and a
+ * form.
  *
  * @author Francesco Guidieri - Initial contribution and API
  * @author Lorenzo Bettini - new API for table content provider
  */
-public abstract class AbstractOnSelectionTableFormView extends
-		AbstractOnSelectionView {
+public abstract class AbstractOnSelectionTableFormView extends AbstractOnSelectionViewerView {
 
 	@Inject
 	private TableFormFactory tableFormFactory;
@@ -39,20 +38,21 @@ public abstract class AbstractOnSelectionTableFormView extends
 	private TableFormComposite tableFormDetailComposite;
 
 	@Override
-	public void createPartControl(Composite parent) {
-		super.createPartControl(parent);
-
-		tableFormDetailComposite = tableFormFactory.
-			createTableFormMasterDetailComposite(parent,
-				SWT.BORDER, getEClass());
+	public StructuredViewer getViewer() {
+		return tableFormDetailComposite.getViewer();
 	}
 
 	@Override
-	protected void updateOnSelection(IWorkbenchPart sourcepart,
-			ISelection selection) {
+	protected void updateOnSelection(IWorkbenchPart sourcepart, ISelection selection) {
 		Object selected = getFirstSelectedElement(selection);
 		// the content provider is able to handle any input
 		tableFormDetailComposite.update(selected);
+	}
+
+	@Override
+	protected void createViewer(Composite parent) {
+		tableFormDetailComposite = tableFormFactory.
+			createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass());
 	}
 
 	@Override
@@ -66,9 +66,5 @@ public abstract class AbstractOnSelectionTableFormView extends
 	 * @return the {@link EClass} to build the table columns
 	 */
 	protected abstract EClass getEClass();
-
-	public StructuredViewer getViewer() {
-		return tableFormDetailComposite.getViewer();
-	}
 
 }

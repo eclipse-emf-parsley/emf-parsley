@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Emf Parsley DSL Standalone Lib
+Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.standalone.lib
+Bundle-Version: 0.5.2.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Eclipse Modeling Project

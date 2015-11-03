@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<relativePath>../../releng/org.eclipse.emf.parsley.parent/pom.xml</relativePath>
 		<groupId>org.eclipse.emf.parsley</groupId>
 		<artifactId>org.eclipse.emf.parsley.parent</artifactId>
-		<version>0.5.1-SNAPSHOT</version>
+		<version>0.5.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.repository</artifactId>
@@ -65,7 +66,7 @@
 						<artifactId>tycho-eclipserun-plugin</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
-							<appArgLine>-application org.eclipse.ant.core.antRunner -buildfile ${project.basedir}/../org.eclipse.emf.parsley.releng/packaging-p2composite.ant p2.composite.add -Dsoftware.download.area=${parsley.download.area} -Dupdates.dir=${parsley.updates.dir} -Dsite.label="Emf Parsley Site" -Dproject.build.directory=${project.build.directory} -DunqualifiedVersion=${unqualifiedVersion} -DbuildQualifier=${buildQualifier}</appArgLine>
+							<appArgLine>-application org.eclipse.ant.core.antRunner -buildfile ${project.basedir}/../org.eclipse.emf.parsley.parent/ant/packaging-p2composite.ant p2.composite.add -Dsoftware.download.area=${parsley.download.area} -Dupdates.dir=${parsley.updates.dir} -Dsite.label="Emf Parsley Site" -Dproject.build.directory=${project.build.directory} -DunqualifiedVersion=${unqualifiedVersion} -DbuildQualifier=${buildQualifier}</appArgLine>
 							<repositories>
 								<repository>
 									<id>luna</id>
