@@ -141,6 +141,9 @@ var parseQueryString = function() {
 						<div ng-switch-when="textarea">
 							<textarea data-ng-model="sDetail[key].value"></textarea> 
 						</div>
+						<div ng-switch-when="datetime">
+							<input type="date" data-ng-model="sDetail[key].value"/>
+						</div>
 						<div ng-switch-default>
 							<input type="text" data-ng-model="sDetail[key].value" >
 						</div>

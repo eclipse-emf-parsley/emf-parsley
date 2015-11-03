@@ -34,6 +34,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Text;
 
 import com.google.inject.Injector;
@@ -149,6 +150,8 @@ public class JsonDetailsServlet extends JsonParsleyServlet {
                             Button button = (Button) control;
                             // value = "" + button.getSelection();
                             out.write(" \"type\": \"button\",");
+                        } else if (control instanceof DateTime) {
+                            out.write(" \"type\": \"datetime\",");
                         }
                         out.write(" \"value\": \"" + (value == null ? "" : value) + "\"" + "} ");
 
