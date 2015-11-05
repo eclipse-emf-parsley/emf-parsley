@@ -35,7 +35,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -54,7 +53,6 @@ import org.eclipse.emf.ecore.presentation.EcoreEditorPlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.GenericXMLResourceFactoryImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
@@ -120,26 +118,6 @@ import com.google.inject.Provider;
 public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		IEditingDomainProvider, ISelectionProvider, IMenuListener,
 		IViewerProvider, IGotoMarker, AsyncCommandStackListenerClient {
-	public abstract static class XML extends EmfAbstractEditor {
-		public XML() {
-			try {
-				editingDomain.getResourceSet().getResourceFactoryRegistry()
-						.getExtensionToFactoryMap()
-						.put("*", new GenericXMLResourceFactoryImpl());
-
-				Class<?> theItemProviderClass = CommonPlugin
-						.loadClass("org.eclipse.xsd.edit",
-								"org.eclipse.xsd.provider.XSDItemProviderAdapterFactory");
-				AdapterFactory xsdItemProviderAdapterFactory = (AdapterFactory) theItemProviderClass
-						.newInstance();
-				adapterFactory
-						.insertAdapterFactory(xsdItemProviderAdapterFactory);
-			} catch (Exception exception) {
-				EcoreEditorPlugin.INSTANCE.log(exception);
-			}
-		}
-
-	}
 
 	/**
 	 * This is the one adapter factory used for providing views of the model.
