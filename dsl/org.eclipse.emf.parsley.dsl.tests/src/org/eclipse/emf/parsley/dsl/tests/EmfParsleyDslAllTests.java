@@ -32,7 +32,8 @@ import org.junit.runners.Suite;
 	EmfParsleyDslNewProjectFilesTests.class,
 	EmfParsleyProjectFilesGeneratorUtilTests.class,
 	EmfParsleyTemplateWizardConfigurationTests.class,
-	EmfParsleyTemplateWizardConfigurationFactoryTests.class
+	EmfParsleyTemplateWizardConfigurationFactoryTests.class,
+	EmfParsleyDslFormatterTests.class,
 })
 public class EmfParsleyDslAllTests {
 
