@@ -52,8 +52,6 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	private final StructuredViewer viewer;
 
-	private final Composite masterComposite;
-
 	private final Composite detailComposite;
 
 	private FormDetailComposite detailForm;
@@ -69,7 +67,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		setLayout( new FillLayout());
 		sashForm = new SashForm(this, sashStyle);
 
-		masterComposite = new Composite(sashForm, SWT.NONE);
+		Composite masterComposite = new Composite(sashForm, SWT.NONE);
 		masterComposite.setLayout( new FillLayout());
 		
 		detailComposite = new Composite(sashForm, SWT.NONE);
