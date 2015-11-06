@@ -66,6 +66,7 @@ import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.editors.listeners.ResourceDeltaVisitor;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.internal.editors.listeners.PartListenerAdapter;
+import org.eclipse.emf.parsley.internal.editors.util.ProblemIndicationEContentAdapter;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerClient;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerHelper;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
@@ -258,9 +259,9 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * Adapter used to update the problem indication when resources are demanded
 	 * loaded. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
-	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+	protected EContentAdapter problemIndicationAdapter = new ProblemIndicationEContentAdapter() {
 		@Override
 		public void notifyChanged(Notification notification) {
 			if (notification.getNotifier() instanceof Resource) {
@@ -275,16 +276,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			} else {
 				super.notifyChanged(notification);
 			}
-		}
-
-		@Override
-		protected void setTarget(Resource target) {
-			basicSetTarget(target);
-		}
-
-		@Override
-		protected void unsetTarget(Resource target) {
-			basicUnsetTarget(target);
 		}
 	};
 
