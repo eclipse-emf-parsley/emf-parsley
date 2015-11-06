@@ -97,31 +97,31 @@ FieldSpecification:
 
 Texts:
 	{Texts} 'text' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 Images:
 	{Images} 'image' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 Fonts:
 	{Fonts} 'font' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 Foregrounds:
 	{Foregrounds} 'foreground' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 Backgrounds:
 	{Backgrounds} 'background' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
@@ -148,7 +148,7 @@ TableLabelProvider:
 	'}'
 ;
 
-LabelSpecification:
+PolymorphicSpecification:
 	parameterType=JvmTypeReference (name=ValidID)?
 	'->'
 	expression = XExpression
@@ -229,19 +229,19 @@ WithFeatureAssociatedExpressions:
 
 RowFonts:
 	{RowFonts} 'rowFont' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 RowForegrounds:
 	{RowForegrounds} 'rowForeground' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 RowBackgrounds:
 	{RowBackgrounds} 'rowBackground' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
@@ -343,13 +343,13 @@ MenuBuilder:
 
 Menus:
 	{Menus} 'menus' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 EmfMenus:
 	{EmfMenus} 'emfMenus' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
@@ -367,13 +367,13 @@ Configurator:
 
 ConfiguratorResourceURI:
 	{ConfiguratorResourceURI} 'resourceURI' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 ConfiguratorEClass:
 	{ConfiguratorEClass} 'eClass' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
@@ -399,13 +399,13 @@ TableViewerContentProvider:
 
 ContentProviderChildren:
 	{ContentProviderChildren} 'children' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
 ContentProviderElements:
 	{ContentProviderElements} 'elements' '{'
-		specifications+=LabelSpecification*
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 

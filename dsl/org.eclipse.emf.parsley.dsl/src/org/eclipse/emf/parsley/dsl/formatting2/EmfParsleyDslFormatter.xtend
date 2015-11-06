@@ -19,11 +19,11 @@ import org.eclipse.emf.parsley.dsl.model.FeatureCaptionProvider
 import org.eclipse.emf.parsley.dsl.model.FeatureSpecification
 import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.LabelProvider
-import org.eclipse.emf.parsley.dsl.model.LabelSpecification
 import org.eclipse.emf.parsley.dsl.model.MenuBuilder
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartsSpecifications
+import org.eclipse.emf.parsley.dsl.model.PolymorphicSpecification
 import org.eclipse.emf.parsley.dsl.model.ProposalCreator
 import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 import org.eclipse.emf.parsley.dsl.model.ResourceManager
@@ -119,7 +119,7 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 		} else if (o instanceof FieldSpecification) {
 			_format(o, document);
 			return;
-		} else if (o instanceof LabelSpecification) {
+		} else if (o instanceof PolymorphicSpecification) {
 			_format(o, document);
 			return;
 		} else if (o instanceof Model) {
@@ -236,10 +236,10 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 		]
 	}
 
-	def void _format(LabelSpecification labelspecification, extension IFormattableDocument document) {
-		format(labelspecification.getParameterType(), document);
-		labelspecification.regionForKeyword("->").surround[oneSpace]
-		format(labelspecification.getExpression(), document);
+	def void _format(PolymorphicSpecification specification, extension IFormattableDocument document) {
+		format(specification.getParameterType(), document);
+		specification.regionForKeyword("->").surround[oneSpace]
+		format(specification.getExpression(), document);
 	}
 
 	def void _format(FeatureCaptionProvider featurecaptionprovider, extension IFormattableDocument document) {

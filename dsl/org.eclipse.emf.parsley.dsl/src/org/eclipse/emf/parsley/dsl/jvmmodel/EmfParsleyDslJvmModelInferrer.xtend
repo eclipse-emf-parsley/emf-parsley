@@ -38,8 +38,8 @@ import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
 import org.eclipse.emf.parsley.dsl.model.FeatureLabels
 import org.eclipse.emf.parsley.dsl.model.FeatureTexts
-import org.eclipse.emf.parsley.dsl.model.LabelSpecification
 import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.emf.parsley.dsl.model.PolymorphicSpecification
 import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 import org.eclipse.emf.parsley.dsl.model.SimpleMethodSpecification
 import org.eclipse.emf.parsley.dsl.model.TypeBinding
@@ -762,14 +762,14 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private specificationToMethod(LabelSpecification specification, String methodName, JvmTypeReference returnType) {
+	def private specificationToMethod(PolymorphicSpecification specification, String methodName, JvmTypeReference returnType) {
 		specification.toMethod(methodName, returnType) [
 			parameters += specification.specificationParameter
 			body = specification.expression
 		]
 	}
 
-	def private specificationParameter(LabelSpecification specification) {
+	def private specificationParameter(PolymorphicSpecification specification) {
 		specification.toParameter(
 			if (specification.name != null)
 				specification.name

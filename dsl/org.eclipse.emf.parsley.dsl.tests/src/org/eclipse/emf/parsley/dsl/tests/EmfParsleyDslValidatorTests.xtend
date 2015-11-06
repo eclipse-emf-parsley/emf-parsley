@@ -556,11 +556,11 @@ Duplicate binding for: TableColumnWeights
 		input.parse => [
 			4.assertEquals(validate.size)
 			assertDuplicateElement(
-				ModelPackage.eINSTANCE.labelSpecification,
+				ModelPackage.eINSTANCE.polymorphicSpecification,
 				input.indexOf("EClass ->"), 'EClass -> ""'.length
 			)
 			assertDuplicateElement(
-				ModelPackage.eINSTANCE.labelSpecification,
+				ModelPackage.eINSTANCE.polymorphicSpecification,
 				input.indexOf("EClass c"), 'EClass c -> ""'.length
 			)
 			assertDuplicateElement(
