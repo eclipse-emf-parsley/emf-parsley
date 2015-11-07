@@ -380,21 +380,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			editingDomain.getCommandStack().flush();
 
 			updateProblemIndication = false;
-			for (Resource resource : changedResources) {
-				if (resource.isLoaded()) {
-					resource.unload();
-					try {
-						resource.load(Collections.emptyMap());
-					} catch (IOException exception) {
-						if (!resourceToDiagnosticMap.containsKey(resource)) {
-							resourceToDiagnosticMap
-									.put(resource,
-											analyzeResourceProblems(resource,
-													exception));
-						}
-					}
-				}
-			}
+			reloadChangedResources();
 
 			if (AdapterFactoryEditingDomain.isStale(editorSelection)) {
 				setSelection(StructuredSelection.EMPTY);
@@ -402,6 +388,24 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 			updateProblemIndication = true;
 			updateProblemIndication();
+		}
+	}
+
+	protected void reloadChangedResources() {
+		for (Resource resource : changedResources) {
+			if (resource.isLoaded()) {
+				resource.unload();
+				try {
+					resource.load(Collections.emptyMap());
+				} catch (IOException exception) {
+					if (!resourceToDiagnosticMap.containsKey(resource)) {
+						resourceToDiagnosticMap
+								.put(resource,
+										analyzeResourceProblems(resource,
+												exception));
+					}
+				}
+			}
 		}
 	}
 
