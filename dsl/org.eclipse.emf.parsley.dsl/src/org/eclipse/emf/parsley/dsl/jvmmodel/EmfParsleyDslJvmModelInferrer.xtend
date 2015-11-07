@@ -94,17 +94,17 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
  */
 class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
-    /**
-     * convenience API to build and initialize JVM types and their members.
-     */
+	/**
+	 * convenience API to build and initialize JVM types and their members.
+	 */
 	@Inject extension JvmTypesBuilder
-	
+
 	@Inject extension IQualifiedNameProvider
-	
+
 	@Inject extension TypeReferences
-	
+
 	@Inject extension TypesFactory
-	
+
 	@Inject extension EmfParsleyDslGeneratorUtils
 
 	@Inject extension EmfParsleyDslTypeSystem
@@ -132,12 +132,12 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	 *            rely on linking using the index if isPreIndexingPhase is
 	 *            <code>true</code>.
 	 */
-   	def dispatch void infer(Module element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-   		if (element.name.empty)
-   			return
-   		
+	def dispatch void infer(Module element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+		if (element.name.empty)
+			return
+
 		val moduleClass = element.toClass(element.moduleQN)
-		
+
 		val labelProviderClass = element.inferLabelProvider(acceptor)
 		val tableLabelProviderClass = element.inferTableLabelProvider(acceptor)
 		val featureCaptionProviderClass = element.inferFeatureCaptionProvider(acceptor)
@@ -210,8 +210,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.resourceManager.genBindMethod(resourceManagerClass, typeof(ResourceManager))
 		]
 
-   	}
-				
+	}
+
 	def private setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
 		if (dslElement.extendsClause != null)
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
@@ -241,7 +241,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			
 			members += field
 			
-			
 			members += f.toGetter(name, type)
 			if (f.writeable) {
 				members += f.toSetter(name, type)
@@ -252,19 +251,19 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def private void translateAnnotations(JvmAnnotationTarget target, List<XAnnotation> annotations) {
 		target.addAnnotations(annotations.filterNull.filter[annotationType != null])
 	}
-   	
-   	def private moduleQN(Module element) {
-   		element.fullyQualifiedName + ".EmfParsleyGuiceModuleGen"
-   	}
+
+	def private moduleQN(Module element) {
+		element.fullyQualifiedName + ".EmfParsleyGuiceModuleGen"
+	}
 
 	def private labelProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.LabelProviderGen"
 	}
-	
+
 	def private tableLabelProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.TableLabelProviderGen"
 	}
-	
+
 	def private featureCaptionProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.FeatureCaptionProviderGen"
 	}
@@ -328,7 +327,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				
 				members += labelProvider.toConstructor() [
 					parameters += labelProvider.
-						toParameter("delegate", 
+						toParameter("delegate",
 							typeRef(AdapterFactoryLabelProvider)
 						)
 					body = [it.append("super(delegate);")]
@@ -453,13 +452,13 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private featureAssociatedExpressionToMethod(JvmGenericType it, FeatureAssociatedExpression spec, 
+	def private featureAssociatedExpressionToMethod(JvmGenericType it, FeatureAssociatedExpression spec,
 			String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator) {
 		if (spec.feature?.simpleName != null) {
 			members += spec.toMethod
 			(prefix + 
 					spec.parameterType.simpleName + "_" +
-					spec.feature.simpleName.propertyNameForGetterSetterMethod, 
+					spec.feature.simpleName.propertyNameForGetterSetterMethod,
 				returnType
 			) [
 				parameterCreator.apply(it, spec)
@@ -652,7 +651,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	private def toConstructorWithInjectedAdapterFactory(EObject e) {
 		e.toConstructor() [
 			parameters += e.
-				toParameter("adapterFactory", 
+				toParameter("adapterFactory",
 					typeRef(AdapterFactory)
 				)
 			body = [it.append("super(adapterFactory);")]
@@ -783,7 +782,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			ControlFactorySpecification spec, (JvmOperation)=>void init
 	) {
 		spec.toMethod
-			(spec.methodNameForFormFeatureSpecification("control_"), 
+			(spec.methodNameForFormFeatureSpecification("control_"),
 				typeRef(Control)
 			, init)
 	}
