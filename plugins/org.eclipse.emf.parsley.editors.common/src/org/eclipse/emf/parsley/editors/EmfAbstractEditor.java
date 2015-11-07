@@ -413,14 +413,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 */
 	protected void updateProblemIndication() {
 		if (updateProblemIndication) {
-			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
-					"org.eclipse.emf.ecore.editor", 0, null,
-					new Object[] { editingDomain.getResourceSet() });
-			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
-				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
-					diagnostic.add(childDiagnostic);
-				}
-			}
+			BasicDiagnostic diagnostic = createDiagnostic();
 
 			int lastEditorPage = getPageCount() - 1;
 			if (lastEditorPage >= 0
@@ -445,14 +438,30 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				}
 			}
 
-			if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
-				markerHelper.deleteMarkers(editingDomain.getResourceSet());
-				if (diagnostic.getSeverity() != Diagnostic.OK) {
-					try {
-						markerHelper.createMarkers(diagnostic);
-					} catch (CoreException exception) {
-						EcoreEditorPlugin.INSTANCE.log(exception);
-					}
+			updateMarkers(diagnostic);
+		}
+	}
+
+	protected BasicDiagnostic createDiagnostic() {
+		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
+				"org.eclipse.emf.ecore.editor", 0, null,
+				new Object[] { editingDomain.getResourceSet() });
+		for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
+			if (childDiagnostic.getSeverity() != Diagnostic.OK) {
+				diagnostic.add(childDiagnostic);
+			}
+		}
+		return diagnostic;
+	}
+
+	protected void updateMarkers(BasicDiagnostic diagnostic) {
+		if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
+			markerHelper.deleteMarkers(editingDomain.getResourceSet());
+			if (diagnostic.getSeverity() != Diagnostic.OK) {
+				try {
+					markerHelper.createMarkers(diagnostic);
+				} catch (CoreException exception) {
+					EcoreEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		}
