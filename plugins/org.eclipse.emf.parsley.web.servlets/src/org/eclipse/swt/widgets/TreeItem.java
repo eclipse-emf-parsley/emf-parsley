@@ -65,12 +65,6 @@ public class TreeItem extends Item {
             return OS.TVI_FIRST;
         Tree parent = parentItem.parent;
         long /* int */ hwnd = parent.handle, hParent = parentItem.handle;
-        // long /* int */ hFirstItem = OS.SendMessage(hwnd, OS.TVM_GETNEXTITEM, OS.TVGN_CHILD,
-        // hParent);
-        // long /* int */ hItem = parent.findItem(hFirstItem, index - 1);
-        // if (hItem == 0)
-        // SWT.error(SWT.ERROR_INVALID_RANGE);
-        // return hItem;
         return 0; /// +
     }
 
@@ -82,11 +76,7 @@ public class TreeItem extends Item {
         if (index == 0)
             return OS.TVI_FIRST;
         long /* int */ hwnd = parent.handle;
-        // long /*int*/ hFirstItem = OS.SendMessage (hwnd, OS.TVM_GETNEXTITEM, OS.TVGN_ROOT, 0);
-        // long /*int*/ hItem = parent.findItem (hFirstItem, index - 1);
-        // if (hItem == 0) SWT.error (SWT.ERROR_INVALID_RANGE);
-        // return hItem;
-        return 0; /// +
+        return 0; 
     }
 
 }

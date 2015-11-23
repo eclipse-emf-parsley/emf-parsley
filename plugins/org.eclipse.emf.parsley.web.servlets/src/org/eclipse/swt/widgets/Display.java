@@ -35,7 +35,6 @@ public class Display extends Device {
     }
 
     public static Display getCurrent() {
-        // return findDisplay (Thread.currentThread ());
         return getDefault(); /// +
     }
 

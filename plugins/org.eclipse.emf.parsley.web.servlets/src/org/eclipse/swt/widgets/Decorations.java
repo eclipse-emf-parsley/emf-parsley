@@ -26,8 +26,5 @@ public class Decorations extends Canvas {
 
     void createWidget() {
         super.createWidget();
-        // swFlags = OS.IsWinCE ? OS.SW_SHOWMAXIMIZED : OS.SW_SHOWNOACTIVATE;
-        // hAccel = -1;
-        /// +
     }
 }

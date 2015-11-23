@@ -63,7 +63,6 @@ public class Text extends Scrollable {
     public void setEditable(boolean editable) {}
 
     public void addModifyListener(ModifyListener listener) {
-        // checkWidget();
         if (listener == null)
             error(SWT.ERROR_NULL_ARGUMENT);
         TypedListener typedListener = new TypedListener(listener);
@@ -71,18 +70,9 @@ public class Text extends Scrollable {
     }
 
     public int getCaretPosition() {
-        return 0; /// +
+        return 0;
     }
 
     public void clearSelection() {
-        // checkWidget ();
-        // if (OS.IsWinCE) {
-        // int[] end = new int[1];
-        // OS.SendMessage(handle, OS.EM_GETSEL, (int[]) null, end);
-        // OS.SendMessage(handle, OS.EM_SETSEL, end[0], end[0]);
-        // } else {
-        // OS.SendMessage(handle, OS.EM_SETSEL, -1, 0);
-        // }
-        /// +
     }
 }

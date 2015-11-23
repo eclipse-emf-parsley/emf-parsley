@@ -163,7 +163,6 @@ public abstract class Widget {
 
 
     public void reskin(int flags) {
-        // checkWidget();
         reskinWidget();
         if ((flags & SWT.ALL) != 0)
             reskinChildren(flags);
@@ -172,12 +171,10 @@ public abstract class Widget {
     void reskinChildren(int flags) {}
 
     public Object getData() {
-        // checkWidget();
         return (state & KEYED_DATA) != 0 ? ((Object[]) data)[0] : data;
     }
 
     public Object getData(String key) {
-        // checkWidget();
         if (key == null)
             error(SWT.ERROR_NULL_ARGUMENT);
         if ((state & KEYED_DATA) != 0) {

@@ -59,31 +59,6 @@ public class TableTreeItem extends Item {
         super(parent, style);
         this.parent = parent;
         this.parentItem = parentItem;
-        // if (parentItem == null) {
-        //
-        // /* Root items are visible immediately */
-        // int tableIndex = parent.addItem(this, index);
-        // tableItem = new TableItem(parent.getTable(), style, tableIndex);
-        // tableItem.setData(TableTree.ITEMID, this);
-        // addCheck();
-        // /*
-        // * Feature in the Table. The table uses the first image that is inserted into the table
-        // * to size the table rows. If the user is allowed to insert the first image, this will
-        // * cause the +/- images to be scaled. The fix is to insert a dummy image to force the
-        // * size.
-        // */
-        // if (parent.sizeImage == null) {
-        // int itemHeight = parent.getItemHeight();
-        // parent.sizeImage = new Image(parent.getDisplay(), itemHeight, itemHeight);
-        // GC gc = new GC(parent.sizeImage);
-        // gc.setBackground(parent.getBackground());
-        // gc.fillRectangle(0, 0, itemHeight, itemHeight);
-        // gc.dispose();
-        // tableItem.setImage(0, parent.sizeImage);
-        // }
-        // } else {
-        // parentItem.addItem(this, index);
-        // }
     }
 
     public TableTree getParent() {

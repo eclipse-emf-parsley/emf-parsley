@@ -41,7 +41,6 @@ public class Tree extends Composite {
 
 
     void createItem(TreeItem item, long /* int */ hParent, long /* int */ hInsertAfter, long /* int */ hItem) {
-        /// +
     }
 
 }

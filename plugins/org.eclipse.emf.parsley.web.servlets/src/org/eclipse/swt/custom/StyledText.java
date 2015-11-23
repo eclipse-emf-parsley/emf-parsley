@@ -22,17 +22,6 @@ public class StyledText extends Canvas {
     }
 
     static int checkStyle(int style) {
-        // if ((style & SWT.SINGLE) != 0) {
-        // style &= ~(SWT.H_SCROLL | SWT.V_SCROLL | SWT.WRAP | SWT.MULTI);
-        // } else {
-        // style |= SWT.MULTI;
-        // if ((style & SWT.WRAP) != 0) {
-        // style &= ~SWT.H_SCROLL;
-        // }
-        // }
-        // style |= SWT.NO_REDRAW_RESIZE | SWT.DOUBLE_BUFFERED | SWT.NO_BACKGROUND;
-        // /* Clear SWT.CENTER to avoid the conflict with SWT.EMBEDDED */
-        // return style & ~SWT.CENTER;
         return style;
     }
 }

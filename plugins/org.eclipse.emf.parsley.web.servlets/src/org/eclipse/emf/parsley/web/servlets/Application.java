@@ -71,46 +71,6 @@ public class Application {
             application.display = new Display();
             application.shell = new Shell(application.display);
 
-            // final CyclicBarrier barrier = new CyclicBarrier(2);
-            // Thread thread = new Thread() {
-            // @Override
-            // public void run() {
-            // try {
-            // application.display = Display.getDefault();
-            // application.shell = new Shell(application.display);
-            // barrier.await();
-            // while (!application.shell.isDisposed()) {
-            // if (!application.display.readAndDispatch()) {
-            // application.display.sleep();
-            // }
-            // }
-            // } catch (Exception e) {
-            // e.printStackTrace();
-            // }
-            // }
-            // };
-            // thread.setDaemon(true);
-            // thread.start();
-            // try {
-            // barrier.await();
-            // } catch (Exception e) {
-            // e.printStackTrace();
-            // }
-            //
-            // Composite composite = new Composite();
-            //
-            // Text text = new Text(composite, 0);
-            //
-            // System.out.println("creato Text");
-
-            // ServletContext servletContext = request.getServletContext();
-            // ApplicationContextImpl applicationContext =
-            // ApplicationContextImpl.getFrom(servletContext);
-            // ServiceContext context = new ServiceContext(request, null, applicationContext);
-            // context.setServiceStore(new ServiceStore());
-            // ContextProvider.setContext(context);
-            // application.display = new Display();
-            // application.shell = new Shell(application.display);
 
         }
         return application;
@@ -141,10 +101,6 @@ public class Application {
         return id2objectMap.get(id);
     }
 
-    // public ParsleyWebGuiceModule getModule() {
-    // return module;
-    // }
-
     public Injector getInjector() {
         return injector;
     }
@@ -161,10 +117,6 @@ public class Application {
         return resourceSet;
     }
 
-    // public AdapterFactoryEditingDomain getAdapterFactoryEditingDomain() {
-    // return adapterFactoryEditingDomain;
-    // }
-
     public Shell getShell() {
         return shell;
     }
@@ -172,9 +124,5 @@ public class Application {
     public Display getDisplay() {
         return display;
     }
-
-    // public void syncExec(Runnable runnable) {
-    // runnable.run();
-    // }
 
 }

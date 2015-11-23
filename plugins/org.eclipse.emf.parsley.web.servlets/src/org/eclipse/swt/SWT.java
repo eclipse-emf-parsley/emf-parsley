@@ -86,6 +86,6 @@ public class SWT {
     public static final int COMMAND = 1 << 22;
 
     public static void error(int code) {
-        System.err.println(code); /// +
+        System.err.println("SWT error: "+code); /// +
     }
 }

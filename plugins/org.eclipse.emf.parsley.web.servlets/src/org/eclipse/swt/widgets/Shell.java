@@ -32,43 +32,29 @@ public class Shell extends Decorations {
 
     public Shell(Display display, int style) {
         this(display, null, style, 0, false);
-        System.out.println();
     }
 
     public Shell(Shell parent) {
-        // this(parent, OS.IsWinCE ? SWT.NONE : SWT.DIALOG_TRIM);
-        System.out.println();
     }
 
     public Shell(Shell parent, int style) {
-        // this(parent != null ? parent.display : null, parent, style, 0, false);
-        System.out.println();
     }
 
     public static Shell win32_new(Display display, long /* int */ handle) {
-        System.out.println();
         return new Shell(display, null, SWT.NO_TRIM, handle, true);
     }
 
     public static Shell internal_new(Display display, long /* int */ handle) {
-        System.out.println();
         return new Shell(display, null, SWT.NO_TRIM, handle, false);
     }
 
 
     Shell(Display display, Shell parent, int style, long /* int */ handle, boolean embedded) {
         super();
-        // checkSubclass(); ///+
         if (display == null)
             display = Display.getCurrent();
         if (display == null)
             display = Display.getDefault();
-        // if (!display.isValidThread()) {
-        // error(SWT.ERROR_THREAD_INVALID_ACCESS);
-        // }
-        // if (parent != null && parent.isDisposed()) {
-        // error(SWT.ERROR_INVALID_ARGUMENT);
-        // }
         this.center = parent != null && (style & SWT.SHEET) != 0;
         this.style = checkStyle(parent, style);
         this.parent = parent;
