@@ -32,7 +32,7 @@ class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 	@Test
 	def void testFeaturesForLabelSpecifications() {
 		inputs.tableLabelProvider.parseModel.
-			module.tableLabelProvider.labelSpecifications.head.
+			module.tableLabelProvider.featureTexts.specifications.head.
 				assertScope
 				(ModelPackage::eINSTANCE.featureAssociatedExpression_Feature,
 					"name, books, borrowers, writers, employees, stock, branches, parentBranch, people, address, class"
@@ -43,7 +43,7 @@ class EmfParsleyDslScopingTests extends EmfParsleyDslAbstractTests {
 	@Test
 	def void testFeaturesForPropertyDescriptionSpecifications() {
 		inputs.featureCaptionProvider.parseModel.
-			module.featureCaptionProvider.specifications.head.
+			module.featureCaptionProvider.featureTexts.specifications.head.
 				assertScope
 				(ModelPackage::eINSTANCE.featureAssociatedExpression_Feature,
 					"name, books, borrowers, writers, employees, stock, branches, parentBranch, people, address, class"

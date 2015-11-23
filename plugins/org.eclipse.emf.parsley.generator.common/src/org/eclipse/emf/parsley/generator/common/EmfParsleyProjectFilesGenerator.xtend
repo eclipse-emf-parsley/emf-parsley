@@ -26,31 +26,6 @@ class EmfParsleyProjectFilesGenerator {
 	def extFactoryName(String projectName)
 	'''«projectName.buildClassNameFromProject»ExecutableExtensionFactory'''
 
-	def generateManifest(String projectName)
-'''
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: «projectName»
-Bundle-SymbolicName: «projectName»;singleton:=true
-Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: «projectName».«projectName.activatorName»
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.emf.parsley,
- org.eclipse.emf.parsley.views
-Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-'''
-
-	def generateBuildProperties(boolean hasPluginXml)
-'''
-source.. = src/
-output.. = bin/
-bin.includes = META-INF/,\
-               .«IF hasPluginXml»,\
-               plugin.xml«ENDIF»
-'''
-
 	def generateActivator(String projectName)
 '''
 package «projectName»;

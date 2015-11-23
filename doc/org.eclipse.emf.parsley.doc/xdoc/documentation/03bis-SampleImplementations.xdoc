@@ -298,30 +298,6 @@ codeRef[org.eclipse.emf.parsley.views.OnSelectionFormView]
 %%		]]
 %%	]]
 %%]
-section3:OnSelectionListView[On Selection List View]
-
-codeRef[org.eclipse.emf.parsley.views.OnSelectionListView]
-
-%%ul[
-%%	item[ref:ViewerInitializer[ViewerInitializer]
-%%	ul[
-%%		item[ref:EditingDomainResourceLoader[EditingDomainResourceLoader]
-%%		ul[
-%%			item[ref:ResourceLoader[ResourceLoader]
-%%			ul[
-%%				item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
-%%			]]
-%%			item[ref:EmptyResourceInitializer[EmptyResourceInitializer]]
-%%			item[ref:FeaturesProvider[FeaturesProvider]]
-%%		]]
-%%		item[ref:JfaceProviderFactory[JfaceProviderFactory]
-%%		ul[
-%%			item[ref:ViewerLabelProvider[ViewerLabelProvider]]
-%%			item[ref:TableColumnLabelProvider[TableColumnLabelProvider]]
-%%		]]	
-%%		item[ref:ViewerContextMenuFactory[ViewerContextMenuFactory]]
-%%	]]
-%%]
 section3:OnSelectionTreeView[On Selection Tree View]
 
 codeRef[org.eclipse.emf.parsley.views.OnSelectionTreeView]

@@ -25,7 +25,6 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.dsl,
- org.eclipse.emf.parsley.dsl.formatting,
  org.eclipse.emf.parsley.dsl.generator,
  org.eclipse.emf.parsley.dsl.jvmmodel,
  org.eclipse.emf.parsley.dsl.model,

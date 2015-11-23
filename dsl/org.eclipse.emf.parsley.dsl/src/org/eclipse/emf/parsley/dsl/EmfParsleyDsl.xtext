@@ -71,35 +71,15 @@ LabelProvider:
 		fields += FieldSpecification*
 	
 		(
-			(
-			'text' '{'
-				labelSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(texts=Texts)?
 			&
-			(
-			'image' '{'
-				imageSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(images=Images)?
 			&
-			(
-			'font' '{'
-				fontSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(fonts=Fonts)?
 			&
-			(
-			'foreground' '{'
-				foregroundSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(foregrounds=Foregrounds)?
 			&
-			(
-			'background' '{'
-				backgroundSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(backgrounds=Backgrounds)?
 		)
 	'}'
 ;
@@ -115,66 +95,60 @@ FieldSpecification:
 	name=ValidID ('=' right=XExpression)? ';'?
 ;
 
+Texts:
+	{Texts} 'text' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+Images:
+	{Images} 'image' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+Fonts:
+	{Fonts} 'font' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+Foregrounds:
+	{Foregrounds} 'foreground' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+Backgrounds:
+	{Backgrounds} 'background' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
 TableLabelProvider:
 	{TableLabelProvider} 'tableLabelProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
-		// Note: the assignments text='text' are useless for the AST, but they help to avoid
-		// to get too many ambiguities in the grammar, and avoid a too big serializer
-		// (The code of method init(IGrammarAccess) is exceeding the 65535 bytes limit in EmfParsleyDslSyntacticSequencer.java)
-		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=458705#c5
 		(
-			(
-			text='text' '{'
-				labelSpecifications+=FeatureAssociatedExpression*
-			'}'
-			)?
+			(featureTexts=FeatureTexts)?
 			&
-			(
-			image='image' '{'
-				imageSpecifications+=FeatureAssociatedExpression*
-			'}'
-			)?
+			(featureImages=FeatureImages)?
 			&
-			(
-			font='font' '{'
-				fontSpecifications+=FeatureAssociatedExpression*
-			'}'
-			)?
+			(featureFonts=FeatureFonts)?
 			&
-			(
-			foreground='foreground' '{'
-				foregroundSpecifications+=FeatureAssociatedExpression*
-			'}'
-			)?
+			(featureForegrounds=FeatureForegrounds)?
 			&
-			(
-			background='background' '{'
-				backgroundSpecifications+=FeatureAssociatedExpression*
-			'}'
-			)?
+			(featureBackgrounds=FeatureBackgrounds)?
 			&
-			(
-			rowFont='rowFont' '{'
-				rowFontSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(rowFonts=RowFonts)?
 			&
-			(
-			rowForeground='rowForeground' '{'
-				rowForegroundSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(rowForegrounds=RowForegrounds)?
 			&
-			(
-			rowBackground='rowBackground' '{'
-				rowBackgroundSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(rowBackgrounds=RowBackgrounds)?
 		)
 	'}'
 ;
 
-LabelSpecification:
+PolymorphicSpecification:
 	parameterType=JvmTypeReference (name=ValidID)?
 	'->'
 	expression = XExpression
@@ -185,11 +159,7 @@ FeatureCaptionProvider:
 	{FeatureCaptionProvider} 'featureCaptionProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 
-		((
-		'text' '{'
-			specifications+=FeatureAssociatedExpression*
-		'}'
-		)?)
+		(featureTexts=FeatureTexts)?
 	'}'
 ;
 
@@ -197,17 +167,11 @@ FormFeatureCaptionProvider:
 	{FormFeatureCaptionProvider} 'formFeatureCaptionProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 
-		((
-		'text' '{'
-			specifications+=FeatureAssociatedExpression*
-		'}'
-		)?
-		&
 		(
-		'label' '{'
-			labelSpecifications+=FeatureAssociatedExpression*
-		'}'
-		)?)
+			(featureTexts=FeatureTexts)?
+			&
+			(featureLabels=FeatureLabels)?
+		)
 	'}'
 ;
 
@@ -215,18 +179,77 @@ DialogFeatureCaptionProvider:
 	{DialogFeatureCaptionProvider} 'dialogFeatureCaptionProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 		
-		((
-		'text' '{'
-			specifications+=FeatureAssociatedExpression*
-		'}'
-		)?
-		&
 		(
-		'label' '{'
-			labelSpecifications+=FeatureAssociatedExpression*
-		'}'
-		)?)
+			(featureTexts=FeatureTexts)?
+			&
+			(featureLabels=FeatureLabels)?
+		)
 	'}'
+;
+
+FeatureTexts:
+	{FeatureTexts} 'text' '{'
+		specifications+=FeatureAssociatedExpression*
+	'}'
+;
+
+FeatureImages:
+	{FeatureImages} 'image' '{'
+		specifications+=FeatureAssociatedExpression*
+	'}'
+;
+
+FeatureFonts:
+	{FeatureFonts} 'font' '{'
+		specifications+=FeatureAssociatedExpression*
+	'}'
+;
+
+FeatureForegrounds:
+	{FeatureForegrounds} 'foreground' '{'
+		specifications+=FeatureAssociatedExpression*
+	'}'
+;
+
+FeatureBackgrounds:
+	{FeatureBackgrounds} 'background' '{'
+		specifications+=FeatureAssociatedExpression*
+	'}'
+;
+
+FeatureLabels:
+	{FeatureLabels} 'label' '{'
+		specifications+=FeatureAssociatedExpression*
+	'}'
+;
+
+WithFeatureAssociatedExpressions:
+	FeatureTexts | FeatureImages | FeatureFonts | FeatureForegrounds | FeatureBackgrounds | FeatureLabels
+;
+
+RowFonts:
+	{RowFonts} 'rowFont' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+RowForegrounds:
+	{RowForegrounds} 'rowForeground' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+RowBackgrounds:
+	{RowBackgrounds} 'rowBackground' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+WithExpressions:
+	RowFonts | RowForegrounds | RowBackgrounds | Menus | EmfMenus |
+	ConfiguratorResourceURI | ConfiguratorEClass |
+	ContentProviderElements | ContentProviderChildren |
+	Texts | Images | Fonts | Foregrounds | Backgrounds
 ;
 
 /**
@@ -244,11 +267,7 @@ FeaturesProvider:
 	{FeaturesProvider} 'featuresProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 		
-		((
-		'features' '{'
-			featureSpecifications+=FeatureSpecification*
-		'}'
-		)?)
+		(features=FeatureSpecifications)?
 	'}'
 ;
 
@@ -257,11 +276,13 @@ TableFeaturesProvider:
 	{TableFeaturesProvider} 'tableFeaturesProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 		
-		((
-		'features' '{'
-			featureSpecifications+=FeatureSpecification*
-		'}'
-		)?)
+		(features=FeatureSpecifications)?
+	'}'
+;
+
+FeatureSpecifications:
+	{FeatureSpecifications} 'features' '{'
+		featureSpecifications+=FeatureSpecification*
 	'}'
 ;
 
@@ -275,11 +296,7 @@ FormControlFactory:
 	{FormControlFactory} 'formControlFactory' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 		
-		(
-		'control' '{'
-			controlSpecifications+=ControlFactorySpecification*
-		'}'
-		)?
+		(controls=ControlFactorySpecifications)?
 	'}'
 ;
 
@@ -287,11 +304,13 @@ DialogControlFactory:
 	{DialogControlFactory} 'dialogControlFactory' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 		
-		(
-		'control' '{'
-			controlSpecifications+=ControlFactorySpecification*
-		'}'
-		)?
+		(controls=ControlFactorySpecifications)?
+	'}'
+;
+
+ControlFactorySpecifications:
+	{ControlFactorySpecifications} 'control' '{'
+		specifications+=ControlFactorySpecification*
 	'}'
 ;
 
@@ -314,17 +333,23 @@ MenuBuilder:
 	{MenuBuilder} 'menuBuilder' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 	
-		((
-		'menus' '{'
-			menuSpecifications+=LabelSpecification*
-		'}'
-		)?
-		&
 		(
-		'emfMenus' '{'
-			emfMenuSpecifications+=LabelSpecification*
-		'}'
-		)?)
+			(menus=Menus)?
+			&
+			(emfMenus=EmfMenus)?
+		)
+	'}'
+;
+
+Menus:
+	{Menus} 'menus' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+EmfMenus:
+	{EmfMenus} 'emfMenus' '{'
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
@@ -333,18 +358,22 @@ Configurator:
 		fields += FieldSpecification*
 	
 		(
-			(
-			'resourceURI' '{'
-				resourceURISpecifications+=LabelSpecification*
-			'}'
-			)?
-		&
-			(
-			'eClass' '{'
-				eClassSpecifications+=LabelSpecification*
-			'}'
-			)?
+			(resourceURI=ConfiguratorResourceURI)?
+			&
+			(eClassSpec=ConfiguratorEClass)?
 		)
+	'}'
+;
+
+ConfiguratorResourceURI:
+	{ConfiguratorResourceURI} 'resourceURI' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+ConfiguratorEClass:
+	{ConfiguratorEClass} 'eClass' '{'
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 
@@ -352,17 +381,11 @@ ViewerContentProvider:
 	{ViewerContentProvider} 'viewerContentProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 		
-		((
-		'elements' '{'
-			elementsSpecifications+=LabelSpecification*
-		'}'
-		)?
-		&
 		(
-		'children' '{'
-			childrenSpecifications+=LabelSpecification*
-		'}'
-		)?)
+			(elements=ContentProviderElements)?
+			&
+			(children=ContentProviderChildren)?
+		)
 	'}'
 ;
 
@@ -370,11 +393,19 @@ TableViewerContentProvider:
 	{TableViewerContentProvider} 'tableViewerContentProvider' (extendsClause=ExtendsClause)? '{'
 		fields += FieldSpecification*
 		
-		(
-		'elements' '{'
-			elementsSpecifications+=LabelSpecification*
-		'}'
-		)?
+		(elements=ContentProviderElements)?
+	'}'
+;
+
+ContentProviderChildren:
+	{ContentProviderChildren} 'children' '{'
+		specifications+=PolymorphicSpecification*
+	'}'
+;
+
+ContentProviderElements:
+	{ContentProviderElements} 'elements' '{'
+		specifications+=PolymorphicSpecification*
 	'}'
 ;
 

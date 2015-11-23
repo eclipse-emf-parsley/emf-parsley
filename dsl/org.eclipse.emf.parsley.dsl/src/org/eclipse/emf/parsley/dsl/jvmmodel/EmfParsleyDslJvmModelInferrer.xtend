@@ -32,15 +32,21 @@ import org.eclipse.emf.parsley.dsl.model.AbstractControlFactory
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureCaptionProviderWithLabel
 import org.eclipse.emf.parsley.dsl.model.AbstractFeatureProvider
 import org.eclipse.emf.parsley.dsl.model.BindingsSpecification
+import org.eclipse.emf.parsley.dsl.model.ContentProviderChildren
+import org.eclipse.emf.parsley.dsl.model.ContentProviderElements
 import org.eclipse.emf.parsley.dsl.model.ControlFactorySpecification
 import org.eclipse.emf.parsley.dsl.model.FeatureAssociatedExpression
-import org.eclipse.emf.parsley.dsl.model.LabelSpecification
+import org.eclipse.emf.parsley.dsl.model.FeatureLabels
+import org.eclipse.emf.parsley.dsl.model.FeatureTexts
 import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.emf.parsley.dsl.model.PolymorphicSpecification
 import org.eclipse.emf.parsley.dsl.model.ProviderBinding
 import org.eclipse.emf.parsley.dsl.model.SimpleMethodSpecification
 import org.eclipse.emf.parsley.dsl.model.TypeBinding
 import org.eclipse.emf.parsley.dsl.model.ValueBinding
+import org.eclipse.emf.parsley.dsl.model.WithExpressions
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
+import org.eclipse.emf.parsley.dsl.model.WithFeatureAssociatedExpressions
 import org.eclipse.emf.parsley.dsl.model.WithFields
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
@@ -58,6 +64,8 @@ import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
+import org.eclipse.swt.graphics.Color
+import org.eclipse.swt.graphics.Font
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Control
 import org.eclipse.swt.widgets.Label
@@ -77,8 +85,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.swt.graphics.Font
-import org.eclipse.swt.graphics.Color
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -88,17 +94,17 @@ import org.eclipse.swt.graphics.Color
  */
 class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
-    /**
-     * convenience API to build and initialize JVM types and their members.
-     */
+	/**
+	 * convenience API to build and initialize JVM types and their members.
+	 */
 	@Inject extension JvmTypesBuilder
-	
+
 	@Inject extension IQualifiedNameProvider
-	
+
 	@Inject extension TypeReferences
-	
+
 	@Inject extension TypesFactory
-	
+
 	@Inject extension EmfParsleyDslGeneratorUtils
 
 	@Inject extension EmfParsleyDslTypeSystem
@@ -126,12 +132,12 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	 *            rely on linking using the index if isPreIndexingPhase is
 	 *            <code>true</code>.
 	 */
-   	def dispatch void infer(Module element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-   		if (element.name.empty)
-   			return
-   		
+	def dispatch void infer(Module element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+		if (element.name.empty)
+			return
+
 		val moduleClass = element.toClass(element.moduleQN)
-		
+
 		val labelProviderClass = element.inferLabelProvider(acceptor)
 		val tableLabelProviderClass = element.inferTableLabelProvider(acceptor)
 		val featureCaptionProviderClass = element.inferFeatureCaptionProvider(acceptor)
@@ -204,8 +210,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.resourceManager.genBindMethod(resourceManagerClass, typeof(ResourceManager))
 		]
 
-   	}
-				
+	}
+
 	def private setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
 		if (dslElement.extendsClause != null)
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
@@ -235,7 +241,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			
 			members += field
 			
-			
 			members += f.toGetter(name, type)
 			if (f.writeable) {
 				members += f.toSetter(name, type)
@@ -246,19 +251,19 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	def private void translateAnnotations(JvmAnnotationTarget target, List<XAnnotation> annotations) {
 		target.addAnnotations(annotations.filterNull.filter[annotationType != null])
 	}
-   	
-   	def private moduleQN(Module element) {
-   		element.fullyQualifiedName + ".EmfParsleyGuiceModuleGen"
-   	}
+
+	def private moduleQN(Module element) {
+		element.fullyQualifiedName + ".EmfParsleyGuiceModuleGen"
+	}
 
 	def private labelProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.LabelProviderGen"
 	}
-	
+
 	def private tableLabelProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.TableLabelProviderGen"
 	}
-	
+
 	def private featureCaptionProviderQN(Module element) {
 		element.fullyQualifiedName + ".ui.provider.FeatureCaptionProviderGen"
 	}
@@ -322,32 +327,18 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				
 				members += labelProvider.toConstructor() [
 					parameters += labelProvider.
-						toParameter("delegate", 
+						toParameter("delegate",
 							typeRef(AdapterFactoryLabelProvider)
 						)
 					body = [it.append("super(delegate);")]
 					annotations += annotationRef(Inject)
 				]
 				
-				for (labelSpecification : labelProvider.labelSpecifications) {
-					members += labelSpecification.specificationToMethod("text", typeRef(String))
-				}
-				
-				for (imageSpecification : labelProvider.imageSpecifications) {
-					members += imageSpecification.specificationToMethod("image", typeRef(Object))
-				}
-				
-				for (fontSpecification : labelProvider.fontSpecifications) {
-					members += fontSpecification.specificationToMethod("font", typeRef(Font))
-				}
-				
-				for (foregroundSpecification : labelProvider.foregroundSpecifications) {
-					members += foregroundSpecification.specificationToMethod("foreground", typeRef(Color))
-				}
-				
-				for (backgroundSpecification : labelProvider.backgroundSpecifications) {
-					members += backgroundSpecification.specificationToMethod("background", typeRef(Color))
-				}
+				specificationsToMethods(labelProvider.texts, "text", typeRef(String))
+				specificationsToMethods(labelProvider.images, "image", typeRef(Object))
+				specificationsToMethods(labelProvider.fonts, "font", typeRef(Font))
+				specificationsToMethods(labelProvider.foregrounds, "foreground", typeRef(Color))
+				specificationsToMethods(labelProvider.backgrounds, "background", typeRef(Color))
 			]
 			labelProviderClass
 		}
@@ -362,27 +353,15 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(tableLabelProviderClass) [
 				setSuperClassTypeAndFields(tableLabelProvider, typeof(TableColumnLabelProvider))
 				
-				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.labelSpecifications, "text_", typeRef(String), parameterCreatorForFeatureAssociatedExpression)
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureTexts, "text_", typeRef(String), parameterCreatorForFeatureAssociatedExpression)
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureImages, "image_", typeRef(Object), parameterCreatorForFeatureAssociatedExpression)
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureFonts, "font_", typeRef(Font), parameterCreatorForFeatureAssociatedExpression)
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureForegrounds, "foreground_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
+				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureBackgrounds, "background_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
 				
-				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.imageSpecifications, "image_", typeRef(Object), parameterCreatorForFeatureAssociatedExpression)
-				
-				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.fontSpecifications, "font_", typeRef(Font), parameterCreatorForFeatureAssociatedExpression)
-				
-				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.foregroundSpecifications, "foreground_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
-				
-				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.backgroundSpecifications, "background_", typeRef(Color), parameterCreatorForFeatureAssociatedExpression)
-				
-				for (fontSpecification : tableLabelProvider.rowFontSpecifications) {
-					members += fontSpecification.specificationToMethod("rowFont", typeRef(Font))
-				}
-				
-				for (foregroundSpecification : tableLabelProvider.rowForegroundSpecifications) {
-					members += foregroundSpecification.specificationToMethod("rowForeground", typeRef(Color))
-				}
-				
-				for (backgroundSpecification : tableLabelProvider.rowBackgroundSpecifications) {
-					members += backgroundSpecification.specificationToMethod("rowBackground", typeRef(Color))
-				}
+				specificationsToMethods(tableLabelProvider.rowFonts, "rowFont", typeRef(Font))
+				specificationsToMethods(tableLabelProvider.rowForegrounds, "rowForeground", typeRef(Color))
+				specificationsToMethods(tableLabelProvider.rowBackgrounds, "rowBackground", typeRef(Color))
 			]
 			tableLabelProviderClass
 		}
@@ -397,7 +376,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(propertyDescriptionProviderClass) [
 				setSuperClassTypeAndFields(featureCaptionProvider, typeof(FeatureCaptionProvider))
 				
-				inferMethodsForTextCaptionSpecifications(element, it, featureCaptionProvider.specifications)
+				inferMethodsForTextCaptionSpecifications(featureCaptionProvider.featureTexts)
 			]
 			propertyDescriptionProviderClass
 		}
@@ -421,9 +400,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(descriptionProviderClass) [
 				setSuperClassTypeAndFields(element, superClass)
 				
-				inferMethodsForTextCaptionSpecifications(element, it, element.specifications)
+				inferMethodsForTextCaptionSpecifications(element.featureTexts)
 				
-				inferMethodsForLabelCaptionSpecifications(element, it, element.labelSpecifications)			
+				inferMethodsForLabelCaptionSpecifications(element.featureLabels)
 			]
 			descriptionProviderClass
 		}
@@ -438,9 +417,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private inferMethodsForTextCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
+	def private inferMethodsForTextCaptionSpecifications(JvmGenericType it, FeatureTexts texts) {
 		inferMethodsForFeatureAssociatedExpression(
-			it, specifications, "text_", typeRef(String)
+			it, texts, "text_", typeRef(String)
 		) [
 			it, spec |
 			parameters += spec.toParameter(
@@ -449,9 +428,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private inferMethodsForLabelCaptionSpecifications(EObject element, JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications) {
+	def private inferMethodsForLabelCaptionSpecifications(JvmGenericType it, FeatureLabels labels) {
 		inferMethodsForFeatureAssociatedExpression(
-			it, specifications, "label_", typeRef(Label)
+			it, labels, "label_", typeRef(Label)
 		) [
 			it, spec |
 			parameters += spec.toParameter(
@@ -463,21 +442,23 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def private inferMethodsForFeatureAssociatedExpression(JvmGenericType it, Iterable<FeatureAssociatedExpression> specifications, 
+	def private inferMethodsForFeatureAssociatedExpression(JvmGenericType it, WithFeatureAssociatedExpressions withFeatureAssociatedExpressions, 
 		String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator
 	) {
-		for (spec : specifications) {
-			featureAssociatedExpressionToMethod(spec, prefix, returnType, parameterCreator)
-		}
+		nullSafeAccess(withFeatureAssociatedExpressions) [
+			for (spec : withFeatureAssociatedExpressions.specifications) {
+				featureAssociatedExpressionToMethod(spec, prefix, returnType, parameterCreator)
+			}
+		]
 	}
 
-	def private featureAssociatedExpressionToMethod(JvmGenericType it, FeatureAssociatedExpression spec, 
+	def private featureAssociatedExpressionToMethod(JvmGenericType it, FeatureAssociatedExpression spec,
 			String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator) {
 		if (spec.feature?.simpleName != null) {
 			members += spec.toMethod
 			(prefix + 
 					spec.parameterType.simpleName + "_" +
-					spec.feature.simpleName.propertyNameForGetterSetterMethod, 
+					spec.feature.simpleName.propertyNameForGetterSetterMethod,
 				returnType
 			) [
 				parameterCreator.apply(it, spec)
@@ -505,26 +486,29 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				setSuperClassTypeAndFields(element, superClass)
 				
 				documentation = element.documentation
-				members += element.
-						toMethod("buildStringMap", Void::TYPE.getTypeForName(element)) [
-					addOverrideAnnotation
-					parameters += element.toParameter("stringMap",
+				members += element.toMethod("buildStringMap", Void::TYPE.getTypeForName(element)) [
+					m |
+					m.addOverrideAnnotation
+					m.parameters += element.toParameter("stringMap",
 							typeRef(EClassToEStructuralFeatureAsStringsMap)
 					)
-					body = [
-						append("super.buildStringMap(stringMap);").newLine
-						for (featureSpecification : element.featureSpecifications) {
-							newLine.
-								append('''stringMap.mapTo("«featureSpecification.parameterType.identifier»",''').
-									increaseIndentation.newLine
-							val fs = featureSpecification.features.map [
-								feature |
-								'"' + feature.simpleName.propertyNameForGetterSetterMethod
-								+ '"'
-							]
-							append(fs.join(", "))
-							append(");").decreaseIndentation
-						}
+					m.body = [
+						a |
+						a.append("super.buildStringMap(stringMap);").newLine
+						nullSafeAccess(element.features) [
+							for (featureSpecification : element.features.featureSpecifications) {
+								a.newLine.
+									append('''stringMap.mapTo("«featureSpecification.parameterType.identifier»",''').
+										increaseIndentation.newLine
+								val fs = featureSpecification.features.map [
+									feature |
+									'"' + feature.simpleName.propertyNameForGetterSetterMethod
+									+ '"'
+								]
+								a.append(fs.join(", "))
+								a.append(");").decreaseIndentation
+							}
+						]
 					]
 				]
 			]
@@ -550,7 +534,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				
 				documentation = e.documentation
 				
-				inferMethodsForControlFactory(e, it, e.controlSpecifications)
+				nullSafeAccess(e.controls) [
+					inferMethodsForControlFactory(e, it, e.controls.specifications)
+				]
 			]
 			controlFactoryClass
 		}
@@ -623,13 +609,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				
 				members += toConstructorWithInjectedAdapterFactory(viewerContentProvider)
 				
-				for (specification : viewerContentProvider.elementsSpecifications) {
-					members += specification.specificationToMethod("elements", typeRef(Object))
-				}
+				inferContentProviderElements(viewerContentProvider.elements)
 				
-				for (specification : viewerContentProvider.childrenSpecifications) {
-					members += specification.specificationToMethod("children", typeRef(Object))
-				}
+				inferContentProviderChildren(viewerContentProvider.children)
 			]
 			viewerContentProviderClass
 		}
@@ -646,18 +628,30 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				
 				members += toConstructorWithInjectedAdapterFactory(viewerContentProvider)
 				
-				for (specification : viewerContentProvider.elementsSpecifications) {
-					members += specification.specificationToMethod("elements", typeRef(Object))
-				}
+				inferContentProviderElements(viewerContentProvider.elements)
 			]
 			viewerContentProviderClass
+		}
+	}
+
+	def private inferContentProviderElements(JvmGenericType it, ContentProviderElements elements) {
+		specificationsToMethods(elements, "elements", typeRef(Object))
+	}
+
+	def private inferContentProviderChildren(JvmGenericType it, ContentProviderChildren children) {
+		specificationsToMethods(children, "children", typeRef(Object))
+	}
+
+	def private <T> nullSafeAccess(JvmGenericType it, T parent, (JvmGenericType)=>void acceptor) {
+		if (parent != null) {
+			acceptor.apply(it)
 		}
 	}
 
 	private def toConstructorWithInjectedAdapterFactory(EObject e) {
 		e.toConstructor() [
 			parameters += e.
-				toParameter("adapterFactory", 
+				toParameter("adapterFactory",
 					typeRef(AdapterFactory)
 				)
 			body = [it.append("super(adapterFactory);")]
@@ -701,13 +695,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				
 				val returnType = typeRef(List, typeRef(IMenuContributionSpecification))
 				
-				for (specification : menuBuilder.menuSpecifications) {
-					members += specification.specificationToMethod("menuContributions", returnType)
-				}
-				
-				for (specification : menuBuilder.emfMenuSpecifications) {
-					members += specification.specificationToMethod("emfMenuContributions", returnType)
-				}
+				specificationsToMethods(menuBuilder.menus, "menuContributions", returnType)
+				specificationsToMethods(menuBuilder.emfMenus, "emfMenuContributions", returnType)
 			]
 			menuBuilderClass
 		}
@@ -722,13 +711,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(configuratorClass) [
 				setSuperClassTypeAndFields(configurator, Configurator)
 				
-				for (specification : configurator.resourceURISpecifications) {
-					members += specification.specificationToMethod("resourceURI", typeRef(URI))
-				}
-				
-				for (specification : configurator.EClassSpecifications) {
-					members += specification.specificationToMethod("eClass", typeRef(EClass))
-				}
+				specificationsToMethods(configurator.resourceURI, "resourceURI", typeRef(URI))
+				specificationsToMethods(configurator.EClassSpec, "eClass", typeRef(EClass))
 			]
 			configuratorClass
 		}
@@ -769,14 +753,22 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	def private specificationToMethod(LabelSpecification specification, String methodName, JvmTypeReference returnType) {
+	def private specificationsToMethods(JvmGenericType it, WithExpressions e, String methodName, JvmTypeReference returnType) {
+		nullSafeAccess(e) [
+			for (specification : e.specifications) {
+				members += specificationToMethod(specification, methodName, returnType)
+			}
+		]
+	}
+
+	def private specificationToMethod(PolymorphicSpecification specification, String methodName, JvmTypeReference returnType) {
 		specification.toMethod(methodName, returnType) [
 			parameters += specification.specificationParameter
 			body = specification.expression
 		]
 	}
 
-	def private specificationParameter(LabelSpecification specification) {
+	def private specificationParameter(PolymorphicSpecification specification) {
 		specification.toParameter(
 			if (specification.name != null)
 				specification.name
@@ -790,7 +782,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			ControlFactorySpecification spec, (JvmOperation)=>void init
 	) {
 		spec.toMethod
-			(spec.methodNameForFormFeatureSpecification("control_"), 
+			(spec.methodNameForFormFeatureSpecification("control_"),
 				typeRef(Control)
 			, init)
 	}

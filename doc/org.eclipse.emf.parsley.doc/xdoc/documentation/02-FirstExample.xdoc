@@ -86,9 +86,15 @@ module org.eclipse.emf.parsley.examples.firstexample {
 
 The e[viewpart] corresponds to the standard Eclipse view part extension point; the Parsley
 DSL will generate a e[plugin.xml_emfparsley_gen]
-into the root folder of your project. Just copy this file into e["plugin.xml"]. Parsley
-will never override your e[plugin.xml] file; each time you modify the module file, the
-e[plugin.xml_emfparsley_gen] will be generated: it is up to you to keep the generated file
+into the root folder of your project.
+The very first time, and only if it does not exist already, the DSL will also
+generate a e[plugin.xml] file.
+Further generations will NOT overwrite the e[plugin.xml]: they will overwrite
+e[plugin.xml_emfparsley_gen].
+If you make changes to the e[parts] section in the DSL file, you will have
+to manually merge the two files e[plugin.xml] and
+e[plugin.xml_emfparsley_gen].
+It is up to you to keep the generated file
 synchronized with your e["plugin.xml"].  The easiest way is to select to the files,
 and use the context menu "Compare With" => "Each Other".
 
