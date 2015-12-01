@@ -12,11 +12,9 @@ package org.eclipse.emf.parsley.web.tools;
 
 
 import org.eclipse.emf.parsley.web.tools.ParsleyWebFacetInstallConfig.PERSISTENCE_OPTION;
-import org.eclipse.jface.fieldassist.FieldDecorationRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
@@ -32,7 +30,7 @@ import org.eclipse.wst.common.project.facet.ui.AbstractFacetWizardPage;
 * 
 */
 public class ParsleyWebFacetInstallPage extends AbstractFacetWizardPage {
-    private Image imageCd = FieldDecorationRegistry.getDefault().getFieldDecoration(FieldDecorationRegistry.DEC_CONTENT_PROPOSAL).getImage();
+//    private Image imageCd = FieldDecorationRegistry.getDefault().getFieldDecoration(FieldDecorationRegistry.DEC_CONTENT_PROPOSAL).getImage();
 
     private ParsleyWebFacetInstallConfig config;
 

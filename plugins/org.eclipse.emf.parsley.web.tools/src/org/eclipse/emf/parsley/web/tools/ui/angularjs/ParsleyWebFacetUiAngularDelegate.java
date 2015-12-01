@@ -30,9 +30,10 @@ import org.eclipse.wst.common.project.facet.core.IProjectFacetVersion;
 * @author Vincenzo Caselli
 * 
 */
+@SuppressWarnings("restriction")
 public class ParsleyWebFacetUiAngularDelegate implements IDelegate {
 
-    @Override
+	@Override
     public void execute(final IProject iProject, final IProjectFacetVersion fv, final Object config, final IProgressMonitor monitor) throws CoreException {
         monitor.beginTask("Processing EMF Parsley UI AngularJS", 2);
 

@@ -37,7 +37,7 @@ public class List extends Scrollable {
     public void addSelectionListener(SelectionListener listener) {
         if (listener == null)
             error(SWT.ERROR_NULL_ARGUMENT);
-        TypedListener typedListener = new TypedListener(listener);
+//        TypedListener typedListener = new TypedListener(listener);
     }
 
 

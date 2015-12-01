@@ -19,7 +19,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TypedListener;
 
 @Deprecated
 public class TableTree extends Composite {
@@ -62,7 +61,7 @@ public class TableTree extends Composite {
         // checkWidget();
         if (listener == null)
             SWT.error(SWT.ERROR_NULL_ARGUMENT);
-        TypedListener typedListener = new TypedListener(listener);
+//        TypedListener typedListener = new TypedListener(listener);
         // addListener(SWT.Selection, typedListener);
         // addListener(SWT.DefaultSelection, typedListener);
     }
@@ -71,7 +70,7 @@ public class TableTree extends Composite {
         // checkWidget();
         if (listener == null)
             SWT.error(SWT.ERROR_NULL_ARGUMENT);
-        TypedListener typedListener = new TypedListener(listener);
+//        TypedListener typedListener = new TypedListener(listener);
         // addListener(SWT.Expand, typedListener);
         // addListener(SWT.Collapse, typedListener);
     }

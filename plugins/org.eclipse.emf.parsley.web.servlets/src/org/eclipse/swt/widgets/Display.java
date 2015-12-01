@@ -15,7 +15,6 @@ package org.eclipse.swt.widgets;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.DeviceData;
 
-@SuppressWarnings("rawtypes")
 public class Display extends Device {
     static Display Default;
     boolean disposed;
@@ -27,7 +26,7 @@ public class Display extends Device {
 
     public Display() {
         this(null);
-        this.Default = this;
+        Display.Default = this;
     }
 
     public Display(DeviceData data) {

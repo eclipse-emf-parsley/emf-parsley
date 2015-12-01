@@ -24,7 +24,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class JsonParsleyServlet extends HttpServlet {
 
-    public static final String OBJECT_ID_PARAMETER = "id";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static final String OBJECT_ID_PARAMETER = "id";
     public static final String SWITCH_PARAMETER = "s";
 
     protected PrintWriter prepareOutput(HttpServletResponse response) throws IOException {

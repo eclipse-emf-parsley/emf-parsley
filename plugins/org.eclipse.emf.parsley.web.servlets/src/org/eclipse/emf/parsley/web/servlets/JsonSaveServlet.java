@@ -18,12 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.emf.parsley.composite.DialogControlFactory;
-import org.eclipse.emf.parsley.config.Configurator;
-import org.eclipse.emf.parsley.util.FeatureHelper;
-
-import com.google.inject.Injector;
-
 /**
  * Servlet for handling the submission of a JSON object that will be re-mapped into an EMF object and saved into the EMF Resource when available
  * 
@@ -34,10 +28,10 @@ public class JsonSaveServlet extends JsonParsleyServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPut(final HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final Injector injector = Application.getInstance(request).getInjector();
-        Configurator configurator = Application.getInstance(request).getConfigurator();
-        final DialogControlFactory dialogControlFactory = injector.getInstance(DialogControlFactory.class);
-        final FeatureHelper featureHelper = injector.getInstance(FeatureHelper.class);
+//        final Injector injector = Application.getInstance(request).getInjector();
+//        Configurator configurator = Application.getInstance(request).getConfigurator();
+//        final DialogControlFactory dialogControlFactory = injector.getInstance(DialogControlFactory.class);
+//        final FeatureHelper featureHelper = injector.getInstance(FeatureHelper.class);
 
         PrintWriter out = prepareOutput(response);
         // Read from request
@@ -49,7 +43,7 @@ public class JsonSaveServlet extends JsonParsleyServlet {
         }
         String data = buffer.toString();
         System.out.println(data);
-        final String entity = request.getParameter(SWITCH_PARAMETER);
+//        final String entity = request.getParameter(SWITCH_PARAMETER);
 
         try {
 //            final JSONObject jsonEntity = (JSONObject) new JSONParser().parse(data);

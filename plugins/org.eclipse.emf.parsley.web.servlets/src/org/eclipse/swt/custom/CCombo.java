@@ -89,7 +89,7 @@ public class CCombo extends Composite {
         // checkWidget();
         if (listener == null)
             SWT.error(SWT.ERROR_NULL_ARGUMENT);
-        TypedListener typedListener = new TypedListener(listener);
+//        TypedListener typedListener = new TypedListener(listener);
         // addListener(SWT.Selection, typedListener);
         // addListener(SWT.DefaultSelection, typedListener);
         // +

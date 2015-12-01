@@ -63,8 +63,8 @@ public class TreeItem extends Item {
             SWT.error(SWT.ERROR_INVALID_RANGE);
         if (index == 0)
             return OS.TVI_FIRST;
-        Tree parent = parentItem.parent;
-        long /* int */ hwnd = parent.handle, hParent = parentItem.handle;
+//        Tree parent = parentItem.parent;
+//        long /* int */ hwnd = parent.handle, hParent = parentItem.handle;
         return 0; /// +
     }
 
@@ -75,7 +75,7 @@ public class TreeItem extends Item {
             SWT.error(SWT.ERROR_INVALID_RANGE);
         if (index == 0)
             return OS.TVI_FIRST;
-        long /* int */ hwnd = parent.handle;
+//        long /* int */ hwnd = parent.handle;
         return 0; 
     }
 

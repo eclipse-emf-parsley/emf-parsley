@@ -128,7 +128,8 @@ public final class Utils {
         }
     }
 
-    public static void registerServlet(final IProject pj, WebApp webAppRoot, final String servletName, final String servletClassName, final String urlPattern) {
+    @SuppressWarnings("unchecked")
+	public static void registerServlet(final IProject pj, WebApp webAppRoot, final String servletName, final String servletClassName, final String urlPattern) {
         final Servlet servlet = WebapplicationFactory.eINSTANCE.createServlet();
         final ServletType servletType = WebapplicationFactory.eINSTANCE.createServletType();
         servletType.setClassName(servletClassName);
@@ -142,7 +143,8 @@ public final class Utils {
         webAppRoot.getServletMappings().add(mapping);
     }
 
-    public static void registerFilter(IProject iProject, WebApp webAppRoot, String filterName, String filterClassName, String urlPattern) {
+    @SuppressWarnings("unchecked")
+	public static void registerFilter(IProject iProject, WebApp webAppRoot, String filterName, String filterClassName, String urlPattern) {
         Filter filter = WebapplicationFactory.eINSTANCE.createFilter();
         filter.setName(filterName);
         filter.setFilterClassName(filterClassName);

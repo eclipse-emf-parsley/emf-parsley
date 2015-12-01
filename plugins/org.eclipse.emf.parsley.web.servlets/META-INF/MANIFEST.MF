@@ -14,4 +14,4 @@ Require-Bundle:  com.google.inject,
  org.eclipse.core.runtime
 Bundle-Activator: org.eclipse.emf.parsley.web.servlets.Activator
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

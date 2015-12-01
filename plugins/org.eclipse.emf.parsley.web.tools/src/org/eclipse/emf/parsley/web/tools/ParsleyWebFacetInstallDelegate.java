@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -49,17 +48,16 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
-import com.google.common.base.Strings;
-
 /**
 * Wizard class for execution of actions for the core Parsley-JEE project creation
 * 
 * @author Vincenzo Caselli
 * 
 */
+@SuppressWarnings("restriction")
 public class ParsleyWebFacetInstallDelegate implements IDelegate {
 
-	private static Logger LOGGER = Logger.getLogger(ParsleyWebFacetInstallDelegate.class);
+//	private static Logger LOGGER = Logger.getLogger(ParsleyWebFacetInstallDelegate.class);
 
     @Override
     public void execute(final IProject iProject, final IProjectFacetVersion fv, final Object config, final IProgressMonitor monitor) throws CoreException {
@@ -69,7 +67,7 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 
         setWebModuleDependencies(iProject, monitor, wizardUserOptions);
 
-        final IFolder webInfLib = Utils.getFolder(iProject, "WEB-INF/lib");
+//        final IFolder webInfLib = Utils.getFolder(iProject, "WEB-INF/lib");
 
         // Utils.copyFromPluginToWorkspace(org.eclipse.emf.parsley.hwt.Activator.getDefault().getBundle(),
         // new Path("/target/org.eclipse.emf.parsley.hwt-0.0.1-SNAPSHOT.jar"),
@@ -114,7 +112,7 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
     }
 
 
-    private void setWebModuleDependencies(final IProject iProject, final IProgressMonitor monitor, ParsleyWebFacetInstallConfig wizardUserOptions) {
+	private void setWebModuleDependencies(final IProject iProject, final IProgressMonitor monitor, ParsleyWebFacetInstallConfig wizardUserOptions) {
         Set<String> pluginJarSet = getPluginJarSet(wizardUserOptions);
         Map<String, Object> pluginInstalledPathMap = getInstalledPluginPathMap(pluginJarSet, monitor);
 
@@ -141,7 +139,12 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 
     private Set<String> getPluginJarSet(final ParsleyWebFacetInstallConfig wizardUserOptions) {
         return new LinkedHashSet<String>() {
-            {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
                 add("com.google.guava");
                 add("com.google.inject");
                 add("javax.inject");
@@ -306,7 +309,8 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
     }
 
 
-    private void addDependentModules(IProject iProject, Map<String, Object> pluginInstalledPathMap, WorkbenchComponent firstComponent, ParsleyWebFacetInstallConfig wizardUserOptions,
+	@SuppressWarnings("unchecked")
+	private void addDependentModules(IProject iProject, Map<String, Object> pluginInstalledPathMap, WorkbenchComponent firstComponent, ParsleyWebFacetInstallConfig wizardUserOptions,
                     IProgressMonitor monitor) {
         for (String pluginId : pluginInstalledPathMap.keySet()) {
             Object obj = pluginInstalledPathMap.get(pluginId);
@@ -386,7 +390,8 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
     // firstComponent.getReferencedComponents().add(refC);
     // }
 
-    private void addMavenDependentModule(IProject iProject, String jarName, String jarPathInMavenRepo, WorkbenchComponent firstComponent, IProgressMonitor monitor) {
+    @SuppressWarnings("unchecked")
+	private void addMavenDependentModule(IProject iProject, String jarName, String jarPathInMavenRepo, WorkbenchComponent firstComponent, IProgressMonitor monitor) {
         ReferencedComponent refC = ComponentcoreFactory.eINSTANCE.createReferencedComponent();
         URI uri = URI.createURI("module:/classpath/var/M2_REPO/" + jarPathInMavenRepo + "/" + jarName);
         refC.setHandle(uri);

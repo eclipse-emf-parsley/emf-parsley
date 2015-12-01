@@ -147,7 +147,7 @@ public class JsonDetailsServlet extends JsonParsleyServlet {
                             out.write(" \"type\": \"combo\",");
                             out.write(" \"proposals\": [" + proposalsList + "],");
                         } else if (control instanceof Button) {
-                            Button button = (Button) control;
+                            //Button button = (Button) control;
                             // value = "" + button.getSelection();
                             out.write(" \"type\": \"button\",");
                         } else if (control instanceof DateTime) {
