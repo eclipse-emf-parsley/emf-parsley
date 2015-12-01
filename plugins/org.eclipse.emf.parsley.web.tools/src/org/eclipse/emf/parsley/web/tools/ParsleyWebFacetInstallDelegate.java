@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -58,6 +59,7 @@ import com.google.common.base.Strings;
 */
 public class ParsleyWebFacetInstallDelegate implements IDelegate {
 
+	private static Logger LOGGER = Logger.getLogger(ParsleyWebFacetInstallDelegate.class);
 
     @Override
     public void execute(final IProject iProject, final IProjectFacetVersion fv, final Object config, final IProgressMonitor monitor) throws CoreException {
@@ -199,8 +201,10 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
             Bundle[] bundles = ctx.getBundles();
             for (Bundle bundle : bundles) {
                 String pluginId = bundle.getSymbolicName();
+//                System.out.println("S: "+pluginId+" -> "+bundle.getLocation());
+//                LOGGER.debug("L: "+pluginId+" -> "+bundle.getLocation());
 //                if (bundle.getLocation().indexOf("/plugins/") > -1 && pluginId.indexOf("parsley") > -1) {
-                if (bundle.getLocation().indexOf("/plugins/") > -1 ) {
+                if (bundle.getLocation().indexOf("plugins/") > -1 ) {
                     if (pluginJarSet.contains(pluginId)) {
                         map.put(pluginId, bundle);
                         logAdded(pluginId, "plugins", bundle.getLocation());
@@ -287,7 +291,8 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
     }
 
     private void logAdded(String pluginId, String from, String location) {
-        System.out.println("Added  " + Strings.padEnd(pluginId, 50, ' ') + from + "\t\t" + location);
+//        System.out.println("Added  " + Strings.padEnd(pluginId, 50, ' ') + from + "\t\t" + location);
+//        LOGGER.debug("Added  " + Strings.padEnd(pluginId, 50, ' ') + from + "\t\t" + location);
     }
 
 
@@ -308,19 +313,19 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
             String archiveName;
             String bundleIdVersionJar;
             String bundleUri = null;
+            boolean oomphedEclipse = false;
             if (obj instanceof Bundle) {
                 Bundle bundle = (Bundle) obj;
-//                System.out.println(bundle.getLocation());
+                oomphedEclipse = bundle.getLocation().indexOf("/.p2/pool/") > -1;
                 if (("org.eclipse.emf.parsley.common".equals(pluginId) || "org.eclipse.emf.parsley.runtime.common".equals(pluginId)) 
                 		&& !bundle.getLocation().endsWith(".jar")) {
                 	checkForImportedPlugins(pluginId, bundle);
                 	//EMF Parsley Project development case
                 	bundleUri = "module:/resource/"+pluginId+"/"+pluginId;
-                	//archiveName="org.eclipse.emf.parsley.runtime.common.jar"
-                	//"module:/resource/org.eclipse.emf.parsley.runtime.common/org.eclipse.emf.parsley.runtime.common"
                 }
-//                bundleIdVersionJar = bundle.getSymbolicName() + "_" + bundle.getVersion() + ".jar";
-                bundleIdVersionJar = bundle.getLocation().substring("reference:/file:".length());
+                bundleIdVersionJar = oomphedEclipse ? 
+                		bundle.getLocation().substring("reference:/file:".length()) : 
+                		bundle.getSymbolicName() + "_" + bundle.getVersion() + ".jar";
                 archiveName = bundle.getSymbolicName() + ".jar";
             } else {
                 // String => Bundle dependency
@@ -329,13 +334,15 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
             }
             ReferencedComponent refC = ComponentcoreFactory.eINSTANCE.createReferencedComponent();
             URI uri;
-            //"module:/classpath/lib/C:/Users/Vincenzo/.p2/pool/plugins/org.apache.batik.pdf_1.6.0.v201105071520.jar"
             if (bundleUri!=null) {
             	//EMF Parsley Project development case
             	uri = URI.createURI(bundleUri);
             } else {
-//            	uri = URI.createURI("module:/classpath/var/ECLIPSE_HOME/plugins/" + bundleIdVersionJar);
-            	uri = URI.createURI("module:/classpath/lib/" + bundleIdVersionJar);
+            	if (oomphedEclipse) {
+            		uri = URI.createURI("module:/classpath/lib/" + bundleIdVersionJar);
+            	} else {
+            		uri = URI.createURI("module:/classpath/var/ECLIPSE_HOME/plugins/" + bundleIdVersionJar);
+            	}
             }
             refC.setHandle(uri);
             refC.setArchiveName(archiveName);

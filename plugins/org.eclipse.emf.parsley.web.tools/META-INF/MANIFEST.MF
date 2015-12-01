@@ -31,3 +31,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.server.http.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Import-Package: org.apache.log4j
