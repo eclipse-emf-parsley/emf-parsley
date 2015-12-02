@@ -11,20 +11,20 @@
  *******************************************************************************/
 package org.eclipse.swt.widgets;
 
-
 public class Decorations extends Canvas {
 
-    Decorations() {}
+	Decorations() {
+	}
 
-    public Decorations(Composite parent, int style) {
-        super(parent, checkStyle(style));
-    }
+	public Decorations(Composite parent, int style) {
+		super(parent, checkStyle(style));
+	}
 
-    static int checkStyle(int style) {
-        return style;
-    }
+	static int checkStyle(int style) {
+		return style;
+	}
 
-    void createWidget() {
-        super.createWidget();
-    }
+	void createWidget() {
+		super.createWidget();
+	}
 }

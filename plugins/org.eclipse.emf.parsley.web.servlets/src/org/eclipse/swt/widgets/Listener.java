@@ -11,13 +11,13 @@
  *******************************************************************************/
 package org.eclipse.swt.widgets;
 
-
 public interface Listener {
 
-    /**
-     * Sent when an event that the receiver has registered for occurs.
-     *
-     * @param event the event which occurred
-     */
-    void handleEvent(Event event);
+	/**
+	 * Sent when an event that the receiver has registered for occurs.
+	 *
+	 * @param event
+	 *            the event which occurred
+	 */
+	void handleEvent(Event event);
 }

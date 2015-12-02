@@ -36,93 +36,94 @@ import com.google.inject.Injector;
  * 
  */
 public class Application {
-    // private static final String HTTP_SESSION = "HTTP_SESSION";
-    private static Application application;
+	// private static final String HTTP_SESSION = "HTTP_SESSION";
+	private static Application application;
 
-    private Map<String, Object> id2objectMap;
-    private Map<Object, String> objec2idtMap;
+	private Map<String, Object> id2objectMap;
+	private Map<Object, String> objec2idtMap;
 
-    private Injector injector;
-    private ResourceSet resourceSet;
-    private Display display;
-    private Shell shell;
+	private Injector injector;
+	private ResourceSet resourceSet;
+	private Display display;
+	private Shell shell;
 
-    @Inject
-    private Configurator configurator;
-    @Inject
-    private ResourceLoader resourceLoader;
+	@Inject
+	private Configurator configurator;
+	@Inject
+	private ResourceLoader resourceLoader;
 
-    private Application() {}
+	private Application() {
+	}
 
-    public static synchronized Application getInstance(HttpServletRequest request) {
-        // Application application = (Application)
-        // session.getAttribute(HTTP_SESSION);
-        if (application == null) {
-            // Create and init application object
-            application = new Application();
-            application.id2objectMap = new HashMap<String, Object>();
-            application.objec2idtMap = new HashMap<Object, String>();
+	public static synchronized Application getInstance(HttpServletRequest request) {
+		// Application application = (Application)
+		// session.getAttribute(HTTP_SESSION);
+		if (application == null) {
+			// Create and init application object
+			application = new Application();
+			application.id2objectMap = new HashMap<String, Object>();
+			application.objec2idtMap = new HashMap<Object, String>();
 
-            application.injector = (Injector) request.getServletContext().getAttribute(Injector.class.getName());
-            // application.injector = Guice.createInjector(new ParsleyWebGuiceModule(null));
-            application.injector.injectMembers(application);
-            application.resourceSet = new ResourceSetImpl();
+			application.injector = (Injector) request.getServletContext().getAttribute(Injector.class.getName());
+			// application.injector = Guice.createInjector(new
+			// ParsleyWebGuiceModule(null));
+			application.injector.injectMembers(application);
+			application.resourceSet = new ResourceSetImpl();
 
-            application.display = new Display();
-            application.shell = new Shell(application.display);
+			application.display = new Display();
+			application.shell = new Shell(application.display);
 
+		}
+		return application;
+	}
 
-        }
-        return application;
-    }
+	public synchronized Resource getResource(String entity) throws IOException {
+		URI uri = configurator.createResourceURI(entity);
+		if (uri != null) {
+			Resource resource = resourceLoader.getResource(resourceSet, uri);
+			return resource;
+		} else {
+			return null;
+		}
+	}
 
-    public synchronized Resource getResource(String entity) throws IOException {
-        URI uri = configurator.createResourceURI(entity);
-        if (uri != null) {
-            Resource resource = resourceLoader.getResource(resourceSet, uri);
-            return resource;
-        } else {
-            return null;
-        }
-    }
+	public synchronized String put(Object object) {
+		String id = objec2idtMap.get(object);
+		if (id == null) {
+			UUID uid = UUID.randomUUID();
+			id = uid.toString();
+			id2objectMap.put(id, object);
+			objec2idtMap.put(object, id);
+		}
+		return id;
+	}
 
-    public synchronized String put(Object object) {
-        String id = objec2idtMap.get(object);
-        if (id == null) {
-            UUID uid = UUID.randomUUID();
-            id = uid.toString();
-            id2objectMap.put(id, object);
-            objec2idtMap.put(object, id);
-        }
-        return id;
-    }
+	public synchronized Object get(String id) {
+		return id2objectMap.get(id);
+	}
 
-    public synchronized Object get(String id) {
-        return id2objectMap.get(id);
-    }
+	public Injector getInjector() {
+		return injector;
+	}
 
-    public Injector getInjector() {
-        return injector;
-    }
+	public Configurator getConfigurator() {
+		return configurator;
+	}
 
-    public Configurator getConfigurator() {
-        return configurator;
-    }
+	public synchronized ResourceLoader getResourceLoader() {
+		return resourceLoader;
+	}
 
-    public synchronized ResourceLoader getResourceLoader() {
-        return resourceLoader;
-    }
+	public synchronized ResourceSet getResourceSet() {
+		return resourceSet;
+	}
 
-    public synchronized ResourceSet getResourceSet() {
-        return resourceSet;
-    }
+	public Shell getShell() {
+		return shell;
+	}
 
-    public Shell getShell() {
-        return shell;
-    }
-
-    public Display getDisplay() {
-        return display;
-    }
+	public Display getDisplay() {
+		return display;
+	}
 
 }

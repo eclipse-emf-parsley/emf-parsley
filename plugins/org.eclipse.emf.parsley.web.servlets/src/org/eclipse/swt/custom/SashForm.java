@@ -11,20 +11,18 @@
  *******************************************************************************/
 package org.eclipse.swt.custom;
 
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 public class SashForm extends Composite {
 
+	public SashForm(Composite parent, int style) {
+		super(parent, checkStyle(style));
+	}
 
-    public SashForm(Composite parent, int style) {
-        super(parent, checkStyle(style));
-    }
-
-    static int checkStyle(int style) {
-        int mask = SWT.BORDER | SWT.LEFT_TO_RIGHT | SWT.RIGHT_TO_LEFT;
-        return style & mask;
-    }
+	static int checkStyle(int style) {
+		int mask = SWT.BORDER | SWT.LEFT_TO_RIGHT | SWT.RIGHT_TO_LEFT;
+		return style & mask;
+	}
 
 }

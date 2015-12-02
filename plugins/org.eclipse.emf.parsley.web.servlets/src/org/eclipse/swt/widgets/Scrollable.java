@@ -13,13 +13,14 @@ package org.eclipse.swt.widgets;
 
 public abstract class Scrollable extends Control {
 
-    Scrollable() {}
+	Scrollable() {
+	}
 
-    public Scrollable(Composite parent, int style) {
-        super(parent, style);
-    }
+	public Scrollable(Composite parent, int style) {
+		super(parent, style);
+	}
 
-    void createWidget() {
-        super.createWidget();
-    }
+	void createWidget() {
+		super.createWidget();
+	}
 }

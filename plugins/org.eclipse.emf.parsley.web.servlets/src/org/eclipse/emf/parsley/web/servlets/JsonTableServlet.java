@@ -44,28 +44,28 @@ import org.xml.sax.SAXException;
 
 import com.google.inject.Injector;
 
-
-
 /**
- * Servlet for handling generation of JSON output to represent a list of EMF objects
+ * Servlet for handling generation of JSON output to represent a list of EMF
+ * objects
  * 
  * @author Vincenzo Caselli
  * 
  */
 public class JsonTableServlet extends JsonParsleyServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Injector injector = Application.getInstance(request).getInjector();
-        Configurator configurator = Application.getInstance(request).getConfigurator();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Injector injector = Application.getInstance(request).getInjector();
+		Configurator configurator = Application.getInstance(request).getConfigurator();
 
-        PrintWriter out = prepareOutput(response);
-        out.write("[");
+		PrintWriter out = prepareOutput(response);
+		out.write("[");
 
-        String s = request.getParameter(SWITCH_PARAMETER);
-        System.out.println(s);
+		String s = request.getParameter(SWITCH_PARAMETER);
+		System.out.println(s);
 
-        IViewPart viewpartClass;
+		IViewPart viewpartClass;
 		try {
 			String partQN = getPartQN(s);
 			viewpartClass = (IViewPart) Class.forName(partQN).newInstance();
@@ -74,61 +74,67 @@ public class JsonTableServlet extends JsonParsleyServlet {
 
 			URI uri = configurator.createResourceURI(viewpartClass);
 			AdapterFactoryEditingDomain ed = injector.getProvider(AdapterFactoryEditingDomain.class).get();
-//			ResourceSet resourceSet = ed.getResourceSet();
-//			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-//			// resourceSet.getPackageRegistry().put(ProductsPackage.eNS_URI, ProductsPackage.eINSTANCE);
-//			resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap().put("dummy",	new XMIResourceFactoryImpl());
+			// ResourceSet resourceSet = ed.getResourceSet();
+			// resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION,
+			// new XMIResourceFactoryImpl());
+			// // resourceSet.getPackageRegistry().put(ProductsPackage.eNS_URI,
+			// ProductsPackage.eINSTANCE);
+			// resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap().put("dummy",
+			// new XMIResourceFactoryImpl());
 			// Resource resource = loader.getResource(resourceSet, uri);
 			Resource resource = loader.getResource(ed, uri).getResource();
 
 			ResourceLoader resourceLoader = Application.getInstance(request).getResourceLoader();
 			System.out.println(resourceLoader);
 			Resource resource1 = resourceLoader.getResource(ed, uri).getResource();
-		    System.out.println(resource1);    
-			
-	        FeatureCaptionProvider featureCaptionProvider = injector.getInstance(FeatureCaptionProvider.class);
+			System.out.println(resource1);
 
-	        EClass clazz = configurator.getEClass(viewpartClass);
+			FeatureCaptionProvider featureCaptionProvider = injector.getInstance(FeatureCaptionProvider.class);
 
-	        ViewerLabelProvider labelProvider = (ViewerLabelProvider) injector.getInstance(ILabelProvider.class);
-	        TableViewerContentProvider tvcp = injector.getInstance(TableViewerContentProviderFactory.class).createTableViewerContentProvider(clazz);
+			EClass clazz = configurator.getEClass(viewpartClass);
 
-	        Object[] contents = tvcp.getElements(resource);
-	        
-	        boolean first = true;
-	        for (Object object : contents) {
-	            EObject eObject = (EObject) object;
-	            if (eObject.eClass().equals(clazz)) {
-	                String id = Application.getInstance(request).put(eObject);
-	                if (!first) {
-	                    out.write(",");
-	                }
-	                List<EStructuralFeature> features = injector.getInstance(TableFeaturesProvider.class).getFeatures(eObject.eClass());
-	                String outString = "{\"$" + OBJECT_ID_PARAMETER + "\" : \"" + id + "\", ";
-	                for (EStructuralFeature eStructuralFeature : features) {
-	                    String featureCaption = featureCaptionProvider.getText(clazz, eStructuralFeature);
-	                    outString += "\"" + featureCaption + "\": \"" + labelProvider.getText(eObject.eGet(eStructuralFeature)) + "\",";
-	                }
-	                outString = outString.substring(0, outString.length() - 1);
-	                outString += "}";
-	                out.write(outString);
-	                first = false;
-	            }
-	        }
-	        
+			ViewerLabelProvider labelProvider = (ViewerLabelProvider) injector.getInstance(ILabelProvider.class);
+			TableViewerContentProvider tvcp = injector.getInstance(TableViewerContentProviderFactory.class)
+					.createTableViewerContentProvider(clazz);
+
+			Object[] contents = tvcp.getElements(resource);
+
+			boolean first = true;
+			for (Object object : contents) {
+				EObject eObject = (EObject) object;
+				if (eObject.eClass().equals(clazz)) {
+					String id = Application.getInstance(request).put(eObject);
+					if (!first) {
+						out.write(",");
+					}
+					List<EStructuralFeature> features = injector.getInstance(TableFeaturesProvider.class)
+							.getFeatures(eObject.eClass());
+					String outString = "{\"$" + OBJECT_ID_PARAMETER + "\" : \"" + id + "\", ";
+					for (EStructuralFeature eStructuralFeature : features) {
+						String featureCaption = featureCaptionProvider.getText(clazz, eStructuralFeature);
+						outString += "\"" + featureCaption + "\": \""
+								+ labelProvider.getText(eObject.eGet(eStructuralFeature)) + "\",";
+					}
+					outString = outString.substring(0, outString.length() - 1);
+					outString += "}";
+					out.write(outString);
+					first = false;
+				}
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServletException("Unable to resolve viewPart instance for "+"aa.UsersView"); 
+			throw new ServletException("Unable to resolve viewPart instance for " + "aa.UsersView");
 		}
 
-        out.write("]");
-        closeOutput(out);
-    }
+		out.write("]");
+		closeOutput(out);
+	}
 
 	private String getPartQN(String viewId) throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
-		//NOTE: plugin.xml must be on the classpath, e.g. into /src folder
+		// NOTE: plugin.xml must be on the classpath, e.g. into /src folder
 		Document doc = db.parse(getClass().getResourceAsStream("/plugin.xml"));
 		NodeList viewNodes = doc.getElementsByTagName("view");
 		for (int i = 0; i < viewNodes.getLength(); i++) {

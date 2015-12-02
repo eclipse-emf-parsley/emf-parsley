@@ -12,10 +12,11 @@
 package org.eclipse.swt.graphics;
 
 public abstract class Device {
-    public Device() {
-        this(null);
-    }
+	public Device() {
+		this(null);
+	}
 
-    public Device(DeviceData data) {}
+	public Device(DeviceData data) {
+	}
 
 }

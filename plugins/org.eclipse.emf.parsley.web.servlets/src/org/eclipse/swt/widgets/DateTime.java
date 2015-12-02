@@ -13,12 +13,12 @@ package org.eclipse.swt.widgets;
 
 public class DateTime extends Composite {
 
-    public DateTime(Composite parent, int style) {
-        super(parent, checkStyle(style));
-    }
+	public DateTime(Composite parent, int style) {
+		super(parent, checkStyle(style));
+	}
 
-    static int checkStyle(int style) {
-        return style;
-    }
+	static int checkStyle(int style) {
+		return style;
+	}
 
 }

@@ -23,32 +23,36 @@ import org.eclipse.jst.j2ee.internal.web.operations.WebPropertiesUtil;
 import org.eclipse.wst.common.project.facet.core.IDelegate;
 import org.eclipse.wst.common.project.facet.core.IProjectFacetVersion;
 
-
 /**
-* Wizard class for execution of actions for the AngularJS UI component creation
-* 
-* @author Vincenzo Caselli
-* 
-*/
+ * Wizard class for execution of actions for the AngularJS UI component creation
+ * 
+ * @author Vincenzo Caselli
+ * 
+ */
 @SuppressWarnings("restriction")
 public class ParsleyWebFacetUiAngularDelegate implements IDelegate {
 
 	@Override
-    public void execute(final IProject iProject, final IProjectFacetVersion fv, final Object config, final IProgressMonitor monitor) throws CoreException {
-        monitor.beginTask("Processing EMF Parsley UI AngularJS", 2);
+	public void execute(final IProject iProject, final IProjectFacetVersion fv, final Object config,
+			final IProgressMonitor monitor) throws CoreException {
+		monitor.beginTask("Processing EMF Parsley UI AngularJS", 2);
 
-        // String webInfLib =
-        // WebPropertiesUtil.getWebLibFolder(iProject).getProjectRelativePath().toPortableString();
-        String webContentFolder = WebPropertiesUtil.getModuleServerRoot(iProject).getProjectRelativePath().toPortableString();
-        System.out.println("webContentFolder): " + webContentFolder);
-        String serverContentRoot = J2EEProjectUtilities.getServerContextRoot(iProject);
-        System.out.println("serverContentRoot: " + serverContentRoot);
+		// String webInfLib =
+		// WebPropertiesUtil.getWebLibFolder(iProject).getProjectRelativePath().toPortableString();
+		String webContentFolder = WebPropertiesUtil.getModuleServerRoot(iProject).getProjectRelativePath()
+				.toPortableString();
+		System.out.println("webContentFolder): " + webContentFolder);
+		String serverContentRoot = J2EEProjectUtilities.getServerContextRoot(iProject);
+		System.out.println("serverContentRoot: " + serverContentRoot);
 
-        Properties replaceStrings = new Properties();
-        Utils.copyFile(iProject, monitor, "/templates/ui/angularjs/table.html", iProject.getFolder(webContentFolder).getFile("table.html"), replaceStrings);
-        Utils.copyFile(iProject, monitor, "/templates/ui/angularjs/details.html", iProject.getFolder(webContentFolder).getFile("details.html"), replaceStrings);
-        Utils.copyFromPluginToWorkspace(Activator.getDefault().getBundle(), new Path("/templates/ui/angularjs/add.png"), iProject.getFolder(webContentFolder).getFile("add.png"));
+		Properties replaceStrings = new Properties();
+		Utils.copyFile(iProject, monitor, "/templates/ui/angularjs/table.html",
+				iProject.getFolder(webContentFolder).getFile("table.html"), replaceStrings);
+		Utils.copyFile(iProject, monitor, "/templates/ui/angularjs/details.html",
+				iProject.getFolder(webContentFolder).getFile("details.html"), replaceStrings);
+		Utils.copyFromPluginToWorkspace(Activator.getDefault().getBundle(), new Path("/templates/ui/angularjs/add.png"),
+				iProject.getFolder(webContentFolder).getFile("add.png"));
 
-    }
+	}
 
 }

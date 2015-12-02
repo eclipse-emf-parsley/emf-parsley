@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Layout;
 
 public final class FillLayout extends Layout {
 
-    @Override
-    protected void layout(Composite composite, boolean flushCache) {}
+	@Override
+	protected void layout(Composite composite, boolean flushCache) {
+	}
 }

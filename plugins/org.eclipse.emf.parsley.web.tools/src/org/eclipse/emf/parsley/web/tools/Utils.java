@@ -48,112 +48,117 @@ import org.eclipse.wst.server.core.ServerPort;
 import org.osgi.framework.Bundle;
 
 /**
-* Utility class for the wizard
-* 
-* @author Vincenzo Caselli
-* 
-*/
+ * Utility class for the wizard
+ * 
+ * @author Vincenzo Caselli
+ * 
+ */
 public final class Utils {
 
-    public static IFolder getFolder(final IProject pj, String folderPath) {
-        final IVirtualComponent vc = ComponentCore.createComponent(pj);
-        final IVirtualFolder vf = vc.getRootFolder().getFolder(folderPath);
-        return (IFolder) vf.getUnderlyingFolder();
-    }
+	public static IFolder getFolder(final IProject pj, String folderPath) {
+		final IVirtualComponent vc = ComponentCore.createComponent(pj);
+		final IVirtualFolder vf = vc.getRootFolder().getFolder(folderPath);
+		return (IFolder) vf.getUnderlyingFolder();
+	}
 
-    public static String getLocalAddress() {
-        try {
-            Enumeration<NetworkInterface> net = NetworkInterface.getNetworkInterfaces();
-            while (net.hasMoreElements()) {
-                for (InterfaceAddress ia : net.nextElement().getInterfaceAddresses()) {
-                    if (ia.getAddress().isSiteLocalAddress())
-                        return ia.getAddress().getHostAddress();
-                }
-            }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+	public static String getLocalAddress() {
+		try {
+			Enumeration<NetworkInterface> net = NetworkInterface.getNetworkInterfaces();
+			while (net.hasMoreElements()) {
+				for (InterfaceAddress ia : net.nextElement().getInterfaceAddresses()) {
+					if (ia.getAddress().isSiteLocalAddress())
+						return ia.getAddress().getHostAddress();
+				}
+			}
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-    public static int getDefaultServerHttpPort() {
-        IServer[] servers = ServerCore.getServers();
-        for (IServer iServer : servers) {
-            ServerPort[] ports = iServer.getServerPorts(null);
-            for (ServerPort serverPort : ports) {
-                if ("HTTP".equals(serverPort.getProtocol())) {
-                    return serverPort.getPort();
-                }
-            }
-        }
-        return 8080;
-    }
+	public static int getDefaultServerHttpPort() {
+		IServer[] servers = ServerCore.getServers();
+		for (IServer iServer : servers) {
+			ServerPort[] ports = iServer.getServerPorts(null);
+			for (ServerPort serverPort : ports) {
+				if ("HTTP".equals(serverPort.getProtocol())) {
+					return serverPort.getPort();
+				}
+			}
+		}
+		return 8080;
+	}
 
-    public static void copyFile(final IProject iProject, IProgressMonitor monitor, String originFilePath, IFile iFile, Properties replaceStrings) throws CoreException {
-        try {
-            final InputStream in = FileLocator.openStream(Activator.getDefault().getBundle(), new Path(originFilePath), false);
-            BufferedReader rdr = new BufferedReader(new InputStreamReader(in));
-            StringBuffer out = new StringBuffer();
-            String line = null;
-            while ((line = rdr.readLine()) != null) {
-                Set<String> originStringSet = replaceStrings.stringPropertyNames();
-                for (String originString : originStringSet) {
-                    String targetString = replaceStrings.getProperty(originString);
-                    line = line.replaceAll(originString, targetString);
-                }
-                out.append(line + System.getProperty("line.separator"));
-            }
-            InputStream in2 = new ByteArrayInputStream(out.toString().getBytes("UTF-8"));
-            iFile.create(in2, true, null);
-        } catch (IOException e) {
-            throw new CoreException(Activator.createErrorStatus(e.getMessage(), e));
-        }
-    }
+	public static void copyFile(final IProject iProject, IProgressMonitor monitor, String originFilePath, IFile iFile,
+			Properties replaceStrings) throws CoreException {
+		try {
+			final InputStream in = FileLocator.openStream(Activator.getDefault().getBundle(), new Path(originFilePath),
+					false);
+			BufferedReader rdr = new BufferedReader(new InputStreamReader(in));
+			StringBuffer out = new StringBuffer();
+			String line = null;
+			while ((line = rdr.readLine()) != null) {
+				Set<String> originStringSet = replaceStrings.stringPropertyNames();
+				for (String originString : originStringSet) {
+					String targetString = replaceStrings.getProperty(originString);
+					line = line.replaceAll(originString, targetString);
+				}
+				out.append(line + System.getProperty("line.separator"));
+			}
+			InputStream in2 = new ByteArrayInputStream(out.toString().getBytes("UTF-8"));
+			iFile.create(in2, true, null);
+		} catch (IOException e) {
+			throw new CoreException(Activator.createErrorStatus(e.getMessage(), e));
+		}
+	}
 
-    public static void copyFromPluginToWorkspace(final Bundle bundle, final IPath src, final IFile dest) throws CoreException {
-        try {
-            final InputStream in = FileLocator.openStream(bundle, src, false);
-            dest.create(in, true, null);
-        } catch (IOException e) {
-            throw new CoreException(Activator.createErrorStatus(e.getMessage(), e));
-        }
-    }
+	public static void copyFromPluginToWorkspace(final Bundle bundle, final IPath src, final IFile dest)
+			throws CoreException {
+		try {
+			final InputStream in = FileLocator.openStream(bundle, src, false);
+			dest.create(in, true, null);
+		} catch (IOException e) {
+			throw new CoreException(Activator.createErrorStatus(e.getMessage(), e));
+		}
+	}
 
-    public static void copyFileToWorkspace(final File file, final IFile dest) throws CoreException {
-        try {
-            final InputStream in = new FileInputStream(file);
-            dest.create(in, true, null);
-        } catch (IOException e) {
-            throw new CoreException(Activator.createErrorStatus(e.getMessage(), e));
-        }
-    }
+	public static void copyFileToWorkspace(final File file, final IFile dest) throws CoreException {
+		try {
+			final InputStream in = new FileInputStream(file);
+			dest.create(in, true, null);
+		} catch (IOException e) {
+			throw new CoreException(Activator.createErrorStatus(e.getMessage(), e));
+		}
+	}
 
-    @SuppressWarnings("unchecked")
-	public static void registerServlet(final IProject pj, WebApp webAppRoot, final String servletName, final String servletClassName, final String urlPattern) {
-        final Servlet servlet = WebapplicationFactory.eINSTANCE.createServlet();
-        final ServletType servletType = WebapplicationFactory.eINSTANCE.createServletType();
-        servletType.setClassName(servletClassName);
-        servlet.setWebType(servletType);
-        servlet.setServletName(servletName);
-        webAppRoot.getServlets().add(servlet);
+	@SuppressWarnings("unchecked")
+	public static void registerServlet(final IProject pj, WebApp webAppRoot, final String servletName,
+			final String servletClassName, final String urlPattern) {
+		final Servlet servlet = WebapplicationFactory.eINSTANCE.createServlet();
+		final ServletType servletType = WebapplicationFactory.eINSTANCE.createServletType();
+		servletType.setClassName(servletClassName);
+		servlet.setWebType(servletType);
+		servlet.setServletName(servletName);
+		webAppRoot.getServlets().add(servlet);
 
-        final ServletMapping mapping = WebapplicationFactory.eINSTANCE.createServletMapping();
-        mapping.setServlet(servlet);
-        mapping.setUrlPattern(urlPattern);
-        webAppRoot.getServletMappings().add(mapping);
-    }
+		final ServletMapping mapping = WebapplicationFactory.eINSTANCE.createServletMapping();
+		mapping.setServlet(servlet);
+		mapping.setUrlPattern(urlPattern);
+		webAppRoot.getServletMappings().add(mapping);
+	}
 
-    @SuppressWarnings("unchecked")
-	public static void registerFilter(IProject iProject, WebApp webAppRoot, String filterName, String filterClassName, String urlPattern) {
-        Filter filter = WebapplicationFactory.eINSTANCE.createFilter();
-        filter.setName(filterName);
-        filter.setFilterClassName(filterClassName);
-        webAppRoot.getFilters().add(filter);
+	@SuppressWarnings("unchecked")
+	public static void registerFilter(IProject iProject, WebApp webAppRoot, String filterName, String filterClassName,
+			String urlPattern) {
+		Filter filter = WebapplicationFactory.eINSTANCE.createFilter();
+		filter.setName(filterName);
+		filter.setFilterClassName(filterClassName);
+		webAppRoot.getFilters().add(filter);
 
-        FilterMapping filterMapping = WebapplicationFactory.eINSTANCE.createFilterMapping();
-        filterMapping.setFilter(filter);
-        filterMapping.setUrlPattern(urlPattern);
-        webAppRoot.getFilterMappings().add(filterMapping);
-    }
+		FilterMapping filterMapping = WebapplicationFactory.eINSTANCE.createFilterMapping();
+		filterMapping.setFilter(filter);
+		filterMapping.setUrlPattern(urlPattern);
+		webAppRoot.getFilterMappings().add(filterMapping);
+	}
 
 }

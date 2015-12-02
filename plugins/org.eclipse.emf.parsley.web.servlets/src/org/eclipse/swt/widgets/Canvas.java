@@ -12,12 +12,11 @@
 package org.eclipse.swt.widgets;
 
 public class Canvas extends Composite {
-    Canvas() {}
+	Canvas() {
+	}
 
-    public Canvas(Composite parent, int style) {
-        super(parent, style);
-    }
-
-
+	public Canvas(Composite parent, int style) {
+		super(parent, style);
+	}
 
 }

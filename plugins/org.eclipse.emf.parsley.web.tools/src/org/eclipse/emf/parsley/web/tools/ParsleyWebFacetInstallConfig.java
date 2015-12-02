@@ -20,25 +20,24 @@ import org.eclipse.wst.common.project.facet.core.IActionConfigFactory;
  */
 public class ParsleyWebFacetInstallConfig {
 
-    public enum PERSISTENCE_OPTION {
-        NONE, TENEO, CDO
-    };
+	public enum PERSISTENCE_OPTION {
+		NONE, TENEO, CDO
+	};
 
-    private PERSISTENCE_OPTION persistenceOption;
+	private PERSISTENCE_OPTION persistenceOption;
 
-    public static final class Factory implements IActionConfigFactory {
-        public Object create() {
-            return new ParsleyWebFacetInstallConfig();
-        }
-    }
+	public static final class Factory implements IActionConfigFactory {
+		public Object create() {
+			return new ParsleyWebFacetInstallConfig();
+		}
+	}
 
-    public PERSISTENCE_OPTION getPersistenceOption() {
-        return persistenceOption;
-    }
+	public PERSISTENCE_OPTION getPersistenceOption() {
+		return persistenceOption;
+	}
 
-    public void setPersistenceOption(PERSISTENCE_OPTION persistenceOption) {
-        this.persistenceOption = persistenceOption;
-    }
-
+	public void setPersistenceOption(PERSISTENCE_OPTION persistenceOption) {
+		this.persistenceOption = persistenceOption;
+	}
 
 }

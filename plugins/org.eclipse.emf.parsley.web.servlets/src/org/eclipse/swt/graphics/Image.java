@@ -13,20 +13,21 @@ package org.eclipse.swt.graphics;
 
 public final class Image extends Resource implements Drawable {
 
-    Image(Device device) {
-        super(device);
-    }
+	Image(Device device) {
+		super(device);
+	}
 
-    public Image(Device device, int width, int height) {
-        super(device);
-    }
-    /// +
+	public Image(Device device, int width, int height) {
+		super(device);
+	}
+	/// +
 
-    public long /* int */ internal_new_GC(GCData data) {
-        return 0; /// +
-    }
+	public long /* int */ internal_new_GC(GCData data) {
+		return 0; /// +
+	}
 
-    @Override
-    public void internal_dispose_GC(long handle, GCData data) {}
+	@Override
+	public void internal_dispose_GC(long handle, GCData data) {
+	}
 
 }

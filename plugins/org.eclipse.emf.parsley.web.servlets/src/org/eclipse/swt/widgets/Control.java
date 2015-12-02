@@ -17,72 +17,72 @@ import org.eclipse.swt.events.KeyListener;
 
 public abstract class Control extends Widget {
 
-    Composite parent;
-    public long /* int */ handle;
-    int drawCount, foreground, background, backgroundAlpha = 255;
-    Object layoutData;
+	Composite parent;
+	public long /* int */ handle;
+	int drawCount, foreground, background, backgroundAlpha = 255;
+	Object layoutData;
 
-    Control() {}
+	Control() {
+	}
 
-    public Control(Composite parent, int style) {
-        super(parent, style);
-        this.parent = parent;
-    }
+	public Control(Composite parent, int style) {
+		super(parent, style);
+		this.parent = parent;
+	}
 
-    long /* int */ widgetParent() {
-        return parent.handle;
-    }
+	long /* int */ widgetParent() {
+		return parent.handle;
+	}
 
-    void createHandle() {
-    }
+	void createHandle() {
+	}
 
-    void createWidget() {
-        state |= DRAG_DETECT;
-        foreground = background = -1;
-        checkOrientation(parent);
-        createHandle();
-    }
+	void createWidget() {
+		state |= DRAG_DETECT;
+		foreground = background = -1;
+		checkOrientation(parent);
+		createHandle();
+	}
 
-    public void setEnabled(boolean enabled) {
-    }
+	public void setEnabled(boolean enabled) {
+	}
 
-    public boolean getEnabled() {
-        return true; /// +
-    }
+	public boolean getEnabled() {
+		return true; /// +
+	}
 
-    public boolean isEnabled() {
-        return true; /// +
-    }
+	public boolean isEnabled() {
+		return true; /// +
+	}
 
-    public void setLayoutData(Object layoutData) {
-        this.layoutData = layoutData;
-    }
+	public void setLayoutData(Object layoutData) {
+		this.layoutData = layoutData;
+	}
 
-    public Object getLayoutData () {
-    	return layoutData;
-    }
+	public Object getLayoutData() {
+		return layoutData;
+	}
 
-    public void addKeyListener(KeyListener listener) {
-        if (listener == null)
-            error(SWT.ERROR_NULL_ARGUMENT);
-        TypedListener typedListener = new TypedListener(listener);
-        addListener(SWT.KeyUp, typedListener);
-        addListener(SWT.KeyDown, typedListener);
-    }
+	public void addKeyListener(KeyListener listener) {
+		if (listener == null)
+			error(SWT.ERROR_NULL_ARGUMENT);
+		TypedListener typedListener = new TypedListener(listener);
+		addListener(SWT.KeyUp, typedListener);
+		addListener(SWT.KeyDown, typedListener);
+	}
 
-    public Shell getShell() {
-        return parent.getShell();
-    }
+	public Shell getShell() {
+		return parent.getShell();
+	}
 
-    public void addDisposeListener(DisposeListener listener) {
-        if (listener == null)
-            error(SWT.ERROR_NULL_ARGUMENT);
-        TypedListener typedListener = new TypedListener(listener);
-        addListener(SWT.Dispose, typedListener);
-    }
+	public void addDisposeListener(DisposeListener listener) {
+		if (listener == null)
+			error(SWT.ERROR_NULL_ARGUMENT);
+		TypedListener typedListener = new TypedListener(listener);
+		addListener(SWT.Dispose, typedListener);
+	}
 
-
-    public void setRedraw(boolean redraw) {
-    }
+	public void setRedraw(boolean redraw) {
+	}
 
 }

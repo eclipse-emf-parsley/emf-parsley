@@ -11,14 +11,14 @@
  *******************************************************************************/
 package org.eclipse.swt.internal;
 
-
 import java.util.EventObject;
 
 /**
  * This class is the cross-platform version of the java.util.EventObject class.
  * <p>
- * It is part of our effort to provide support for both J2SE and J2ME platforms. Under this scheme,
- * classes need to extend SWTEventObject instead of java.util.EventObject.
+ * It is part of our effort to provide support for both J2SE and J2ME platforms.
+ * Under this scheme, classes need to extend SWTEventObject instead of
+ * java.util.EventObject.
  * </p>
  * <p>
  * Note: java.util.EventObject is not part of CDC and CLDC.
@@ -26,14 +26,15 @@ import java.util.EventObject;
  */
 public class SWTEventObject extends EventObject {
 
-    static final long serialVersionUID = 3258125873411470903L;
+	static final long serialVersionUID = 3258125873411470903L;
 
-    /**
-     * Constructs a new instance of this class.
-     *
-     * @param source the object which fired the event
-     */
-    public SWTEventObject(Object source) {
-        super(source);
-    }
+	/**
+	 * Constructs a new instance of this class.
+	 *
+	 * @param source
+	 *            the object which fired the event
+	 */
+	public SWTEventObject(Object source) {
+		super(source);
+	}
 }

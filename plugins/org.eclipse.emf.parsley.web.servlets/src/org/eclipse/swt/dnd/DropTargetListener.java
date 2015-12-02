@@ -17,16 +17,16 @@ import org.eclipse.swt.internal.SWTEventListener;
 
 public interface DropTargetListener extends SWTEventListener {
 
-    public void dragEnter(DropTargetEvent event);
+	public void dragEnter(DropTargetEvent event);
 
-    public void dragLeave(DropTargetEvent event);
+	public void dragLeave(DropTargetEvent event);
 
-    public void dragOperationChanged(DropTargetEvent event);
+	public void dragOperationChanged(DropTargetEvent event);
 
-    public void dragOver(DropTargetEvent event);
+	public void dragOver(DropTargetEvent event);
 
-    public void drop(DropTargetEvent event);
+	public void drop(DropTargetEvent event);
 
-    public void dropAccept(DropTargetEvent event);
+	public void dropAccept(DropTargetEvent event);
 
 }

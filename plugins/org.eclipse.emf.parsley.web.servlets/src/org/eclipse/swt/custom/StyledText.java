@@ -11,17 +11,16 @@
  *******************************************************************************/
 package org.eclipse.swt.custom;
 
-
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 
 public class StyledText extends Canvas {
 
-    public StyledText(Composite parent, int style) {
-        super(parent, checkStyle(style));
-    }
+	public StyledText(Composite parent, int style) {
+		super(parent, checkStyle(style));
+	}
 
-    static int checkStyle(int style) {
-        return style;
-    }
+	static int checkStyle(int style) {
+		return style;
+	}
 }

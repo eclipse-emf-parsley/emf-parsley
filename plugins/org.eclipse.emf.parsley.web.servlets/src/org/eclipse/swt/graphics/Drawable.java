@@ -13,8 +13,8 @@ package org.eclipse.swt.graphics;
 
 public interface Drawable {
 
-    public long /* int */ internal_new_GC(GCData data);
+	public long /* int */ internal_new_GC(GCData data);
 
-    public void internal_dispose_GC(long /* int */ handle, GCData data);
+	public void internal_dispose_GC(long /* int */ handle, GCData data);
 
 }

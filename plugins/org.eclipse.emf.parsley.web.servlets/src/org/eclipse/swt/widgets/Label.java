@@ -15,7 +15,7 @@ import org.eclipse.swt.SWT;
 
 public class Label extends Control {
 
-    public Label(Composite parent, int style) {
-        super(parent, SWT.NONE);
-    }
+	public Label(Composite parent, int style) {
+		super(parent, SWT.NONE);
+	}
 }

@@ -13,9 +13,9 @@ package org.eclipse.swt.widgets;
 
 public abstract class Layout {
 
-    protected boolean flushCache(Control control) {
-        return false;
-    }
+	protected boolean flushCache(Control control) {
+		return false;
+	}
 
-    protected abstract void layout(Composite composite, boolean flushCache);
+	protected abstract void layout(Composite composite, boolean flushCache);
 }

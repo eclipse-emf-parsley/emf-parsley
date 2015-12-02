@@ -16,11 +16,14 @@ import org.eclipse.swt.widgets.Layout;
 
 public final class GridLayout extends Layout {
 
-    public GridLayout() {}
+	public GridLayout() {
+	}
 
-    public GridLayout(int numColumns, boolean makeColumnsEqualWidth) {}
+	public GridLayout(int numColumns, boolean makeColumnsEqualWidth) {
+	}
 
-    @Override
-    protected void layout(Composite composite, boolean flushCache) {}
+	@Override
+	protected void layout(Composite composite, boolean flushCache) {
+	}
 
 }

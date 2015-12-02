@@ -14,19 +14,17 @@ package org.eclipse.swt.layout;
 import org.eclipse.swt.SWT;
 
 public final class GridData {
-    public static final int BEGINNING = SWT.BEGINNING;
-    public int verticalAlignment = CENTER;
-    public int horizontalAlignment = BEGINNING;
-    public static final int CENTER = 2;
+	public static final int BEGINNING = SWT.BEGINNING;
+	public int verticalAlignment = CENTER;
+	public int horizontalAlignment = BEGINNING;
+	public static final int CENTER = 2;
 
+	public GridData() {
+		super();
+	}
 
-    public GridData() {
-        super();
-    }
-
-    public GridData(int style) {
-        super();
-    }
-
+	public GridData(int style) {
+		super();
+	}
 
 }

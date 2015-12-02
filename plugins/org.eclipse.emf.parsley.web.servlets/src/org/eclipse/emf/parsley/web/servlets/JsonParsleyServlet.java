@@ -24,24 +24,24 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class JsonParsleyServlet extends HttpServlet {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	public static final String OBJECT_ID_PARAMETER = "id";
-    public static final String SWITCH_PARAMETER = "s";
+	public static final String SWITCH_PARAMETER = "s";
 
-    protected PrintWriter prepareOutput(HttpServletResponse response) throws IOException {
+	protected PrintWriter prepareOutput(HttpServletResponse response) throws IOException {
 
-        PrintWriter out = response.getWriter();
-        response.setContentType("text/html");
-        response.addHeader("Access-Control-Allow-Origin", "*");
-        return out;
-    }
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		return out;
+	}
 
-    protected void closeOutput(PrintWriter out) throws IOException {
-        out.flush();
-        out.close();
-    }
+	protected void closeOutput(PrintWriter out) throws IOException {
+		out.flush();
+		out.close();
+	}
 
 }

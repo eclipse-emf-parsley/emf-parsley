@@ -17,9 +17,9 @@ import org.eclipse.swt.internal.SWTEventListener;
 
 public interface DragSourceListener extends SWTEventListener {
 
-    public void dragStart(DragSourceEvent event);
+	public void dragStart(DragSourceEvent event);
 
-    public void dragSetData(DragSourceEvent event);
+	public void dragSetData(DragSourceEvent event);
 
-    public void dragFinished(DragSourceEvent event);
+	public void dragFinished(DragSourceEvent event);
 }

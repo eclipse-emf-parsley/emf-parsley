@@ -14,38 +14,40 @@ package org.eclipse.swt.widgets;
 import org.eclipse.swt.SWT;
 
 public class Table extends Composite {
-    TableItem[] items;
-    int[] keys;
-    TableColumn[] columns;
-    int columnCount, customCount, keyCount;
+	TableItem[] items;
+	int[] keys;
+	TableColumn[] columns;
+	int columnCount, customCount, keyCount;
 
-    public Table(Composite parent, int style) {
-        super(parent, checkStyle(style));
-    }
+	public Table(Composite parent, int style) {
+		super(parent, checkStyle(style));
+	}
 
-    static int checkStyle(int style) {
-        if ((style & SWT.NO_SCROLL) == 0) {
-            style |= SWT.H_SCROLL | SWT.V_SCROLL;
-        }
-        return checkBits(style, SWT.SINGLE, SWT.MULTI, 0, 0, 0, 0);
-    }
+	static int checkStyle(int style) {
+		if ((style & SWT.NO_SCROLL) == 0) {
+			style |= SWT.H_SCROLL | SWT.V_SCROLL;
+		}
+		return checkBits(style, SWT.SINGLE, SWT.MULTI, 0, 0, 0, 0);
+	}
 
-    public int getItemCount() {
-        return 1;
-    }
+	public int getItemCount() {
+		return 1;
+	}
 
-    void createItem(TableItem item, int index) {}
+	void createItem(TableItem item, int index) {
+	}
 
-    public int getColumnCount() {
-        return columnCount;
-    }
+	public int getColumnCount() {
+		return columnCount;
+	}
 
-    void createItem(TableColumn column, int index) {}
+	void createItem(TableColumn column, int index) {
+	}
 
-    public int indexOf(TableItem item) {
-        if (item == null)
-            error(SWT.ERROR_NULL_ARGUMENT);
-        return -1; 
-    }
+	public int indexOf(TableItem item) {
+		if (item == null)
+			error(SWT.ERROR_NULL_ARGUMENT);
+		return -1;
+	}
 
 }

@@ -12,11 +12,12 @@
 package org.eclipse.swt.widgets;
 
 public class Composite extends Scrollable {
-    Layout layout;
+	Layout layout;
 
-    Composite() {}
+	Composite() {
+	}
 
-    public Composite(Composite parent, int style) {
-        super(parent, style);
-    }
+	public Composite(Composite parent, int style) {
+		super(parent, style);
+	}
 }

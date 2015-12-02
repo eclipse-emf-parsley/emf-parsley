@@ -13,20 +13,18 @@ package org.eclipse.swt.graphics;
 
 public abstract class Resource {
 
-    Device device;
+	Device device;
 
-    public Resource() {}
+	public Resource() {
+	}
 
-    Resource(Device device) {
-        this.device = device;
-    }
+	Resource(Device device) {
+		this.device = device;
+	}
 
-
-    public Device getDevice() {
-        Device device = this.device;
-        return device;
-    }
-
-
+	public Device getDevice() {
+		Device device = this.device;
+		return device;
+	}
 
 }

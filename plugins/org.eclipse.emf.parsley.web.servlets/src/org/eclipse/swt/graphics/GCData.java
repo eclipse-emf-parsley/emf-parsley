@@ -12,6 +12,6 @@
 package org.eclipse.swt.graphics;
 
 public final class GCData {
-    public Device device;
-    public int style, state = -1;
+	public Device device;
+	public int style, state = -1;
 }

@@ -16,14 +16,13 @@ import org.eclipse.swt.widgets.Composite;
 
 public class ScrolledComposite extends Composite {
 
+	public ScrolledComposite(Composite parent, int style) {
+		super(parent, checkStyle(style));
+	}
 
-    public ScrolledComposite(Composite parent, int style) {
-        super(parent, checkStyle(style));
-    }
-
-    static int checkStyle(int style) {
-        int mask = SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.LEFT_TO_RIGHT | SWT.RIGHT_TO_LEFT;
-        return style & mask;
-    }
+	static int checkStyle(int style) {
+		int mask = SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.LEFT_TO_RIGHT | SWT.RIGHT_TO_LEFT;
+		return style & mask;
+	}
 
 }
