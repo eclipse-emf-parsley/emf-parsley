@@ -168,6 +168,18 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
+	public void doubleClickOpensDialogOnSaveableTableView() throws Exception {
+		SWTBotTable table = prepareSaveableTableView();
+		checkDoubleClickDialog(table, TEST_SAVEABLE_TABLE_VIEW);
+	}
+
+	@Test
+	public void doubleClickOpensDialogOnSaveableTableFormView() throws Exception {
+		SWTBotTable table = prepareSaveableTableFormView();
+		checkDoubleClickDialog(table, TEST_SAVEABLE_TABLE_FORM_VIEW);
+	}
+
+	@Test
 	public void treeViewWithMultipleRootsIsRefreshedWhenNewElementIsAdded() throws Exception {
 		SWTBotTree tree = prepareSaveableTreeViewForMultipleRootElements();
 		SWTBotTreeItem[] allItems = tree.getAllItems();
@@ -213,6 +225,14 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		bot.shell(LIBRARY_LABEL);
 		assertDialogControlsOfCustomLibraryNode(true);
 		modifyText(LIBRARY_NAME);
+		bot.button("OK").click();
+		assertDirtyThenSaveAndAssertNotDirty(viewName);
+	}
+
+	protected void checkDoubleClickDialog(SWTBotTable table, String viewName) {
+		table.doubleClick(0, 0);
+		bot.shell(BOOK_LABEL_CUSTOM);
+		modifyText(BOOK_TITLE);
 		bot.button("OK").click();
 		assertDirtyThenSaveAndAssertNotDirty(viewName);
 	}

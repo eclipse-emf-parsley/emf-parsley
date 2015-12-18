@@ -98,6 +98,7 @@ bindFeaturesProvider
 bindFeatureResolver
 bindTableFeaturesProvider
 bindEmfSelectionHelper
+bindEmfEventHelper
 bindResourceSaveStrategy
 bindResourceManager
 bindIContentProvider

@@ -16,8 +16,7 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 import org.eclipse.emf.parsley.util.EmfParsleyUtil
 import org.junit.Test
 
-import static org.junit.Assert.assertEquals
-import static org.junit.Assert.assertNotNull
+import static extension org.junit.Assert.*
 
 /**
  * @author Lorenzo Bettini
@@ -81,6 +80,17 @@ public class EmfParsleyUtilTest {
 		val list = newArrayList(1, 2, 3);
 		assertEquals("1, 2, 3",
 				EmfParsleyUtil.toIntArray(list).map[toString].join(", "));
+	}
+
+	@Test
+	def void testGetEObjectOrNullWithNotEObject() {
+		EmfParsleyUtil.getEObjectOrNull("test").assertNull
+	}
+
+	@Test
+	def void testGetEObjectOrNullWithEObject() {
+		val Object o = EXTLibraryFactory.eINSTANCE.createBook()
+		EmfParsleyUtil.getEObjectOrNull(o).assertSame(o)
 	}
 
 	def protected Object[] createArray() {

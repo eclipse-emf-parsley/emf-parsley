@@ -38,7 +38,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 			ISelectionChangedListener {
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
-			EObject selectedObject = emfSelectionHelper
+			EObject selectedObject = getEmfSelectionHelper()
 					.getFirstSelectedEObject(event.getSelection());
 
 			eObjectSelectionChanged(selectedObject);
@@ -99,7 +99,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	}
 
 	protected FormDetailComposite createFormDetailComposite() {
-		return formFactory.createFormDetailComposite(detailComposite,
+		return getFormFactory().createFormDetailComposite(detailComposite,
 				SWT.BORDER);
 	}
 

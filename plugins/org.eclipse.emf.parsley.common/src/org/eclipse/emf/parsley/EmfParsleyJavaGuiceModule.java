@@ -61,6 +61,7 @@ import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.emf.parsley.util.EmfEventHelper;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.emf.parsley.util.FeatureHelper;
 import org.eclipse.emf.parsley.validation.DiagnosticUtil;
@@ -408,6 +409,14 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends EmfSelectionHelper> bindEmfSelectionHelper() {
 		return EmfSelectionHelper.class;
+	}
+
+	/**
+	 * Use this binding to customize the helper EmfEventHelper
+	 * @return a specialization of {@link EmfEventHelper}
+	 */
+	public Class<? extends EmfEventHelper> bindEmfEventHelper() {
+		return EmfEventHelper.class;
 	}
 
 	/**

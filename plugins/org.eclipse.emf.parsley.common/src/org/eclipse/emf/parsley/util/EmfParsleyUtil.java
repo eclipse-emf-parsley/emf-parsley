@@ -16,9 +16,13 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+
 import com.google.common.collect.Lists;
 
 /**
+ * Some utility static methods.
+ * 
  * @author Lorenzo Bettini - Initial Contribution and API
  * 
  */
@@ -70,5 +74,18 @@ public class EmfParsleyUtil {
 			result[i++] = e;
 		}
 		return result;
+	}
+
+	/**
+	 * If the passed object is not an EObject simply returns null.
+	 * 
+	 * @param o
+	 * @return
+	 */
+	public static EObject getEObjectOrNull(Object o) {
+		if (o instanceof EObject) {
+			return (EObject) o;
+		}
+		return null;
 	}
 }

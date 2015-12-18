@@ -117,6 +117,10 @@
       name="xtext.site"
       value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.8.4/"/>
   <setupTask
+      xsi:type="setup:VariableTask"
+      name="orbit.site"
+      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
+  <setupTask
       xsi:type="setup:CompoundTask"
       name="Eclipse IDE Plugins">
     <setupTask
@@ -452,6 +456,8 @@
               url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
           <repository
               url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+          <repository
+              url="${orbit.site}"/>
         </repositoryList>
         <repositoryList
             name="Mars">
@@ -469,6 +475,8 @@
               url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
           <repository
               url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+          <repository
+              url="${orbit.site}"/>
         </repositoryList>
         <repositoryList
             name="Kepler">

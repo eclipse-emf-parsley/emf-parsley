@@ -22,6 +22,8 @@ import org.junit.runners.Suite;
 	ProtectedConstructorTest.class,
 	PolymorphicDispatcherTest.class,
 	EmfParsleyUtilTest.class,
+	EmfSelectionHelperTest.class,
+	EmfEventHelperTest.class,
 	ResourceLoaderTest.class,
 	ResourceSaveStrategyTest.class,
 	EditingDomainTest.class,

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,27 +13,30 @@ package org.eclipse.emf.parsley.util;
 import static org.eclipse.emf.parsley.util.EmfParsleyUtil.getEObjectOrNull;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.Tree;
 
 /**
- * Utility methods for retrieving EMF stuff from {@link ISelection}
+ * Utility methods for retrieving EMF stuff from events.
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  */
-public class EmfSelectionHelper {
+public class EmfEventHelper {
 
-	public Object getFirstSelectedElement(ISelection selection) {
-		if (selection instanceof IStructuredSelection) {
-			IStructuredSelection ss = (IStructuredSelection) selection;
-			return ss.getFirstElement();
+	public EObject getEObjectFromMouseEvent(MouseEvent event) {
+		Object source = event.getSource();
+		if (source instanceof Tree) {
+			Tree tree = (Tree) source;
+			if (tree.getSelectionCount() == 1) {
+				return getEObjectOrNull(tree.getSelection()[0].getData());
+			}
+		} else if (source instanceof Table) {
+			Table table = (Table) source;
+			if (table.getSelectionCount() == 1) {
+				return getEObjectOrNull(table.getSelection()[0].getData());
+			}
 		}
 		return null;
 	}
-
-	public EObject getFirstSelectedEObject(ISelection selection) {
-		Object selected = getFirstSelectedElement(selection);
-		return getEObjectOrNull(selected);
-	}
-
 }
