@@ -10,6 +10,12 @@
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.sdk.feature.group" version="3.7.2.r37x_v20111213-7Q7xALDPb32vCjY6UACVPdFTz-icPtJkUadz0lMmk4z-8"/>
 <unit id="org.eclipse.emf.query.sdk.feature.group" version="1.5.0.v20110502-1600-67O-95GFz03DQEiNLXRMK_NPj507"/>
+<unit id="org.eclipse.jst.server_adapters.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.server_adapters.ext.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.server_ui.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.wst.server_adapters.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.web_ui.feature.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/releases/indigo"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
