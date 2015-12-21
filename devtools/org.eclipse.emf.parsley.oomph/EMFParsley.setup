@@ -597,6 +597,13 @@
         id="GenerateEmfParsleyDsl2"
         launcher="Generate Language Infrastructure (org.eclipse.emf.parsley.dsl)"/>
     <setupTask
+        xsi:type="projects:ProjectsBuildTask"
+        id="Clean"
+        refresh="true"
+        clean="true">
+      <description>Clean</description>
+    </setupTask>
+    <setupTask
         xsi:type="launching:LaunchTask"
         id="GenerateExamplesZips"
         launcher="Build Zips">
