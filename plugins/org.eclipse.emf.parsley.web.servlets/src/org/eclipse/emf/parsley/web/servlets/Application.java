@@ -64,7 +64,7 @@ public class Application {
 			application.id2objectMap = new HashMap<String, Object>();
 			application.objec2idtMap = new HashMap<Object, String>();
 
-			application.injector = (Injector) request.getServletContext().getAttribute(Injector.class.getName());
+			application.injector = (Injector) request.getSession().getServletContext().getAttribute(Injector.class.getName());
 			// application.injector = Guice.createInjector(new
 			// ParsleyWebGuiceModule(null));
 			application.injector.injectMembers(application);
