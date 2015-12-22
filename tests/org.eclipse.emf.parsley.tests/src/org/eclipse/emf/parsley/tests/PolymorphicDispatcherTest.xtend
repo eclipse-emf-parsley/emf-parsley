@@ -13,14 +13,12 @@ package org.eclipse.emf.parsley.tests
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.junit.Rule
 import org.junit.Test
 
-import static org.eclipse.emf.parsley.tests.PolymorphicDispatcherTest.*
-
 import static extension org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions.*
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class PolymorphicDispatcherTest {
 

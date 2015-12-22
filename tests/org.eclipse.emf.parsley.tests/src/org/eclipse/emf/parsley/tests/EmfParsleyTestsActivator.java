@@ -21,6 +21,7 @@ public class EmfParsleyTestsActivator extends org.eclipse.emf.parsley.ui.EmfPars
 	 * (non-Javadoc)
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		super.start(bundleContext);
 		plugin = this;
@@ -30,6 +31,7 @@ public class EmfParsleyTestsActivator extends org.eclipse.emf.parsley.ui.EmfPars
 	 * (non-Javadoc)
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
 		plugin = null;
 		super.stop(bundleContext);

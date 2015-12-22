@@ -32,7 +32,6 @@ import org.eclipse.jface.viewers.TableViewerColumn
 import org.eclipse.jface.viewers.ViewerCell
 import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Composite
-import org.eclipse.swt.widgets.TableItem
 import org.eclipse.swt.widgets.Widget
 import org.junit.Before
 import org.junit.Rule
@@ -171,7 +170,7 @@ class TableViewerEditingSupportTest extends AbstractEmfParsleyShellBasedTest {
 		val editingSupport = createEditingSupport(feature)
 		val items = tableViewer.table.items
 		// the table viewer has only one row
-		val tableItem = items.head as TableItem
+		val tableItem = items.head
 		val row = tableViewer.getViewerRowFromItem(tableItem)
 		// and only one column, the one for the specified feature
 		val cell = row.getCell(0)

@@ -18,7 +18,7 @@ import org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWithPredefin
 import org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard;
 import org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectCreatorCustom;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.generator.IDerivedResourceMarkers;
+import org.eclipse.xtext.ui.generator.IDerivedResourceMarkers;
 import org.eclipse.xtext.ui.wizard.IProjectCreator;
 
 /**

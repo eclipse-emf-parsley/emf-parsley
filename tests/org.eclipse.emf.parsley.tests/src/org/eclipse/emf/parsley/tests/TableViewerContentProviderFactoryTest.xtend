@@ -24,8 +24,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-import static org.eclipse.emf.parsley.tests.TableViewerContentProviderFactoryTest.*
-
 import static extension org.junit.Assert.*
 
 class TableViewerContentProviderFactoryTest extends AbstractEmfParsleyShellBasedTest {

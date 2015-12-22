@@ -27,8 +27,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-import static org.eclipse.emf.parsley.tests.EditingMenuBuilderTest.*
-
 import static extension org.junit.Assert.*
 
 class EditingMenuBuilderTest extends AbstractEmfParsleyTest {

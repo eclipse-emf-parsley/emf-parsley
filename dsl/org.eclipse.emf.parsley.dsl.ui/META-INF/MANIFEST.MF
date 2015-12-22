@@ -6,7 +6,7 @@ Bundle-Version: 0.5.2.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
- org.eclipse.xtext.ui;bundle-version="[2.8.4,2.9.0)",
+ org.eclipse.xtext.ui;bundle-version="[2.9.1,2.10.0)",
  org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.ui.ide;bundle-version="3.5.0",
  org.eclipse.xtext.ui.shared,
@@ -36,5 +36,6 @@ Export-Package: org.eclipse.emf.parsley.dsl.ui.contentassist,
  org.eclipse.emf.parsley.dsl.ui.internal,
  org.eclipse.emf.parsley.dsl.ui.quickfix,
  org.eclipse.emf.parsley.dsl.ui.wizard,
- org.eclipse.emf.parsley.dsl.ui.wizard.template
+ org.eclipse.emf.parsley.dsl.ui.wizard.template,
+ org.eclipse.emf.parsley.dsl.ui.contentassist.antlr.internal
 Bundle-Activator: org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator

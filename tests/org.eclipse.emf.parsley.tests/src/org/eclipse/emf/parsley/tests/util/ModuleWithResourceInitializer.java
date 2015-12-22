@@ -18,6 +18,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
 public class ModuleWithResourceInitializer extends
 		EmfParsleyGuiceModuleForTesting {
 	protected static class TestResourceManager extends ResourceManager {
+		@Override
 		public void initialize(Resource resource) {
 			resource.getContents().add(
 					TestmodelsFactory.eINSTANCE.createClassWithName());

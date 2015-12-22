@@ -177,7 +177,7 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 
 	def void _format(ExtendsClause extendsclause, extension IFormattableDocument document) {
 		format(extendsclause.getSuperType(), document);
-		extendsclause.regionForKeyword("extends").surround[oneSpace]
+		extendsclause.regionFor.keyword("extends").surround[oneSpace]
 	}
 
 	def void _format(BindingsSpecification bindingsspecification, extension IFormattableDocument document) {
@@ -201,12 +201,12 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 	def void _format(ValueBinding valuebinding, extension IFormattableDocument document) {
 		oneSpaceAfterKeyword(valuebinding, "value", document)
 		format(valuebinding.getTypeDecl(), document);
-		valuebinding.regionForFeature(VALUE_BINDING__ID).surround[oneSpace]
+		valuebinding.regionFor.feature(VALUE_BINDING__ID).surround[oneSpace]
 		formatBinding(valuebinding, document)
 	}
 
 	def private void formatBinding(Binding binding, extension IFormattableDocument document) {
-		binding.regionForKeyword("->").surround[oneSpace]
+		binding.regionFor.keyword("->").surround[oneSpace]
 		format(binding.getTo(), document);
 	}
 
@@ -224,14 +224,14 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 		for (XAnnotation annotations : expr.getAnnotations()) {
 			format(annotations, document);
 		}
-		expr.regionForKeyword("val").append[oneSpace]
-		expr.regionForKeyword("var").append[oneSpace]
-		expr.regionForKeyword("extension").append[oneSpace]
+		expr.regionFor.keyword("val").append[oneSpace]
+		expr.regionFor.keyword("var").append[oneSpace]
+		expr.regionFor.keyword("extension").append[oneSpace]
 		expr.type.append[oneSpace]
-		expr.regionForKeyword("=").surround[oneSpace]
+		expr.regionFor.keyword("=").surround[oneSpace]
 		expr.type.format(document)
 		expr.right.format(document)
-		expr.regionForKeyword(";").prepend[noSpace]
+		expr.regionFor.keyword(";").prepend[noSpace]
 	}
 
 	def void _format(TableLabelProvider tablelabelprovider, extension IFormattableDocument document) {
@@ -249,7 +249,7 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 
 	def void _format(PolymorphicSpecification specification, extension IFormattableDocument document) {
 		format(specification.getParameterType(), document);
-		specification.regionForKeyword("->").surround[oneSpace]
+		specification.regionFor.keyword("->").surround[oneSpace]
 		format(specification.getExpression(), document);
 	}
 
@@ -272,8 +272,8 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 	def void _format(FeatureAssociatedExpression featureassociatedexpression,
 		extension IFormattableDocument document) {
 		format(featureassociatedexpression.getParameterType(), document);
-		featureassociatedexpression.regionForKeyword(":").surround[oneSpace]
-		featureassociatedexpression.regionForKeyword("->").surround[oneSpace]
+		featureassociatedexpression.regionFor.keyword(":").surround[oneSpace]
+		featureassociatedexpression.regionFor.keyword("->").surround[oneSpace]
 		format(featureassociatedexpression.getExpression(), document);
 	}
 
@@ -287,8 +287,8 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 
 	def void _format(FeatureSpecification featurespecification, extension IFormattableDocument document) {
 		format(featurespecification.getParameterType(), document);
-		featurespecification.regionForKeyword("->").surround[oneSpace]
-		for (comma : featurespecification.regionsForKeywords(",")) {
+		featurespecification.regionFor.keyword("->").surround[oneSpace]
+		for (comma : featurespecification.regionFor.keywords(",")) {
 			comma.prepend[noSpace].append[oneSpace]
 		}
 	}
@@ -304,10 +304,10 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 	def void _format(ControlFactorySpecification controlfactoryspecification,
 		extension IFormattableDocument document) {
 		format(controlfactoryspecification.getParameterType(), document);
-		controlfactoryspecification.regionForKeyword(":").surround[oneSpace]
-		controlfactoryspecification.regionForKeyword("->").surround[oneSpace]
+		controlfactoryspecification.regionFor.keyword(":").surround[oneSpace]
+		controlfactoryspecification.regionFor.keyword("->").surround[oneSpace]
 		format(controlfactoryspecification.getExpression(), document);
-		controlfactoryspecification.regionForKeyword("target").surround[oneSpace]
+		controlfactoryspecification.regionFor.keyword("target").surround[oneSpace]
 		format(controlfactoryspecification.getTarget(), document);
 	}
 
@@ -364,18 +364,18 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 
 	def void _format(ViewSpecification viewspecification, extension IFormattableDocument document) {
 		indentBlock(viewspecification, document) [
-			viewspecification.regionForKeyword("viewpart").append[oneSpace]
+			viewspecification.regionFor.keyword("viewpart").append[oneSpace]
 
-			viewspecification.regionForKeyword("viewname").append[oneSpace]
-			viewspecification.regionForFeature(VIEW_SPECIFICATION__VIEW_NAME).append[setNewLines(1, 1, 2)]
+			viewspecification.regionFor.keyword("viewname").append[oneSpace]
+			viewspecification.regionFor.feature(VIEW_SPECIFICATION__VIEW_NAME).append[setNewLines(1, 1, 2)]
 
-			viewspecification.regionForKeyword("viewclass").append[oneSpace]
+			viewspecification.regionFor.keyword("viewclass").append[oneSpace]
 			format(viewspecification.type, document);
 			viewspecification.type.append[setNewLines(1, 1, 2)]
 
 			if (viewspecification.category != null) {
-				viewspecification.regionForKeyword("viewcategory").append[oneSpace]
-				viewspecification.regionForFeature(VIEW_SPECIFICATION__CATEGORY).append[setNewLines(1, 1, 2)]
+				viewspecification.regionFor.keyword("viewcategory").append[oneSpace]
+				viewspecification.regionFor.feature(VIEW_SPECIFICATION__CATEGORY).append[setNewLines(1, 1, 2)]
 			}
 		]
 	}
@@ -440,7 +440,7 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 	}
 
 	def private <T extends EObject> oneSpaceAfterKeyword(T element, String k, extension IFormattableDocument document) {
-		element.regionForKeyword(k).append[oneSpace]
+		element.regionFor.keyword(k).append[oneSpace]
 	}
 
 	def private <T extends EObject> separateElementsWithNewlines(T element, extension IFormattableDocument document) {
@@ -449,9 +449,11 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 
 	def private <T extends EObject> indentBlock(T element, extension IFormattableDocument document,
 		(T)=>void elementsFormatter) {
-		element.regionForKeyword("{").append[newLine; increaseIndentation]
+		val open = element.regionFor.keyword("{")
+		val close = element.regionFor.keyword("}")
+		open.append[newLine]
+		interior(open, close)[indent]
 		elementsFormatter.apply(element)
-		element.regionForKeyword("}").prepend[decreaseIndentation]
 	}
 }
 
