@@ -203,7 +203,6 @@
 		
 				<module>../../doc/org.eclipse.emf.parsley.doc</module>
 		
-				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
@@ -412,8 +411,9 @@
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
-				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
 			
 			<properties>

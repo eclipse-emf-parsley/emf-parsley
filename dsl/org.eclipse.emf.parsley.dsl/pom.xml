@@ -24,11 +24,6 @@
 			<artifactId>org.eclipse.emf.parsley.generator.common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf.parsley</groupId>
-			<artifactId>org.eclipse.emf.parsley.dsl.standalone.lib</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>

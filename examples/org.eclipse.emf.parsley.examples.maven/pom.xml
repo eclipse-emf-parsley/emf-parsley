@@ -86,7 +86,7 @@
 				<dependencies>
 					<dependency>
 						<groupId>org.eclipse.emf.parsley</groupId>
-						<artifactId>org.eclipse.emf.parsley.dsl</artifactId>
+						<artifactId>org.eclipse.emf.parsley.dsl.standalone</artifactId>
 						<version>${project.version}</version>
 					</dependency>
 				</dependencies>
