@@ -10,13 +10,16 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.tests
 
+import com.google.common.base.Joiner
 import com.google.inject.Inject
-import org.eclipse.emf.parsley.dsl.tests.util.CustomCompilationTestHelper
 import org.eclipse.emf.parsley.dsl.tests.util.EmfParsleyDslInjectorProviderCustom
 import org.eclipse.emf.parsley.dsl.tests.util.GeneratorExpectedResults
+import org.eclipse.xtext.diagnostics.Severity
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.TemporaryFolder
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.xbase.compiler.CompilationTestHelper
+import org.eclipse.xtext.xbase.compiler.CompilationTestHelper.Result
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,11 +29,11 @@ import static org.junit.Assert.*
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProviderCustom))
 class EmfParsleyDslGeneratorTests extends EmfParsleyDslAbstractTests {
-	
+
 	@Rule
 	@Inject public TemporaryFolder temporaryFolder
  
-	@Inject extension CustomCompilationTestHelper
+	@Inject extension CompilationTestHelper
 
 	@Test
 	def testEmptyModule() {
@@ -2091,6 +2094,8 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 	def private assertCorrectJavaCodeGeneration(CharSequence input,
 			GeneratorExpectedResults expected) {
 		input.compile [
+			assertNoValidationErrors
+
 			for (e : allGeneratedResources.entrySet) {
 				if (e.key.endsWith("ModuleGen.java")) {
 					if (expected.expectedModule != null)
@@ -2149,8 +2154,17 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 				} else
 					fail("unexpected generated code: " + e.value)
 			}
-			
+
 			compiledClass // check Java compilation succeeds
 		]
+	}
+
+	private def assertNoValidationErrors(Result it) {
+		val allErrors = getErrorsAndWarnings.filter[severity == Severity.ERROR]
+		if (!allErrors.empty) {
+			throw new IllegalStateException("One or more resources contained errors : "+
+				Joiner.on(',').join(allErrors)
+			);
+		}
 	}
 }
