@@ -18,8 +18,8 @@ import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 abstract class AbstractImageBasedTest extends AbstractEmfParsleyShellBasedTest {
 
-	val protected TEST_IMAGE = "test_image.png"
-	
+	val public static TEST_IMAGE = "test_image.png"
+
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	def protected getDelegateLabelProvider() {

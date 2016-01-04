@@ -38,7 +38,7 @@ class EmfEventHelperTest extends AbstractEmfParsleyShellBasedTest {
 	var EmfEventHelper eventHelper
 
 	@Before
-	def void setupContentProvider() {
+	def void setupTests() {
 		eventHelper = getOrCreateInjector.getInstance(EmfEventHelper)
 	}
 

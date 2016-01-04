@@ -257,6 +257,11 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 		]
 	}
 
+	@Test
+	def void testIsValueProperty() {
+		labelProvider.isLabelProperty(library, libraryPackage.library_Name.name).assertTrue
+	}
+
 	private def setupContainerWith10Elems() {
 		testContainer.classesWithName => [
 			for (i : 0..<10) {

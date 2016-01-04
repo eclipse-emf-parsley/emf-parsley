@@ -42,7 +42,7 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 
 	@Inject
 	private IImageHelper imageHelper;
-	
+
 	@Inject
 	@Named(EmfParsleyConstants.ITERABLE_STRING_SEPARATOR)
 	private String separator;

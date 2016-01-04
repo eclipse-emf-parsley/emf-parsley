@@ -11,22 +11,18 @@
 
 package org.eclipse.emf.parsley.viewers;
 
-
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
+import org.eclipse.emf.parsley.ui.provider.DelegatingColumnLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
-import org.eclipse.jface.layout.TreeColumnLayout;
-import org.eclipse.jface.viewers.ColumnWeightData;
-import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Layout;
-import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 
 import com.google.inject.Inject;
@@ -54,10 +50,16 @@ public class TreeViewerColumnBuilder {
 	private ColumnLabelProviderFactory columnLabelProviderFactory;
 
 	@Inject
+	private DelegatingColumnLabelProvider delegatingColumnLabelProvider;
+
+	@Inject
 	private FeatureCaptionProvider featureCaptionProvider;
 
 	@Inject
 	private TableFeaturesProvider featuresProvider;
+
+	@Inject
+	private LayoutHelper layoutHelper;
 
 	/**
 	 * Setups the columns of the given treeViewer using the features of the
@@ -69,8 +71,7 @@ public class TreeViewerColumnBuilder {
 	 * @param contentProvider
 	 */
 	public void buildTreeViewer(TreeViewer treeViewer, EClass eClass) {
-		List<EStructuralFeature> typeFeatures = featuresProvider
-				.getFeatures(eClass);
+		List<EStructuralFeature> typeFeatures = featuresProvider.getFeatures(eClass);
 		buildTreeViewer(treeViewer, typeFeatures);
 	}
 
@@ -84,27 +85,12 @@ public class TreeViewerColumnBuilder {
 	 * @param contentProvider
 	 */
 	public void buildTreeViewer(TreeViewer treeViewer, List<EStructuralFeature> typeFeatures) {
-
-		final Tree tree = treeViewer.getTree();
-		tree.setHeaderVisible(true);
-		tree.setLinesVisible(true);
-
-		Layout layout = null;
-
-		final Layout treeParentLayout = treeViewer.getTree().getParent().getLayout();
-		if (treeParentLayout instanceof TreeColumnLayout) {
-			layout = treeParentLayout;
-		} else {
-			layout = new TableLayout();
-			tree.setLayout(layout);
-			tree.setHeaderVisible(true);
-			tree.setLinesVisible(true);
-		}
+		Layout layout = layoutHelper.adjustForTableLayout(treeViewer);
 
 		int i = 0;
-		
-		createEmpty(treeViewer, layout, defaultWeight);
-		
+
+		createMainTreeViewerColumn(treeViewer, layout, defaultWeight);
+
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
 			int weight = defaultWeight;
 			if (weights.size() > i) {
@@ -119,38 +105,24 @@ public class TreeViewerColumnBuilder {
 			EStructuralFeature eStructuralFeature, int weight) {
 		TreeViewerColumn viewerColumn = createTreeViewerColumn(treeViewer, eStructuralFeature);
 		TreeColumn objectColumn = viewerColumn.getColumn();
-		if (layout instanceof TreeColumnLayout) {
-			((TreeColumnLayout) layout).setColumnData(viewerColumn.getColumn(), new ColumnWeightData(weight, 30, true));
-		} else if (layout instanceof TableLayout) {
-			((TableLayout) layout).addColumnData(new ColumnWeightData(weight, 30, true));
-		}
+		layoutHelper.adjustLayoutColumnData(layout, objectColumn, weight);
 		objectColumn.setText(featureCaptionProvider.getText(eStructuralFeature.eClass(), eStructuralFeature));
 		objectColumn.setResizable(true);
 		return viewerColumn;
 	}
-	
-	
-	protected TreeViewerColumn createEmpty(TreeViewer treeViewer, Layout layout, int weight){
-		TreeViewerColumn viewerColumn = new TreeViewerColumn(
-				treeViewer, SWT.NONE);
-		viewerColumn.setLabelProvider(columnLabelProviderFactory.createColumnLabelProvider());
+
+	protected TreeViewerColumn createMainTreeViewerColumn(TreeViewer treeViewer, Layout layout, int weight) {
+		TreeViewerColumn viewerColumn = new TreeViewerColumn(treeViewer, SWT.NONE);
+		viewerColumn.setLabelProvider(delegatingColumnLabelProvider);
 		TreeColumn objectColumn = viewerColumn.getColumn();
-		if (layout instanceof TreeColumnLayout) {
-			((TreeColumnLayout) layout).setColumnData(viewerColumn.getColumn(), new ColumnWeightData(weight, 30, true));
-		} else if (layout instanceof TableLayout) {
-			((TableLayout) layout).addColumnData(new ColumnWeightData(weight, 30, true));
-		}
+		layoutHelper.adjustLayoutColumnData(layout, objectColumn, weight);
 		objectColumn.setResizable(true);
 		return viewerColumn;
-		
 	}
 
-	protected TreeViewerColumn createTreeViewerColumn(
-			TreeViewer treeViewer, EStructuralFeature eStructuralFeature) {
-		TreeViewerColumn treeViewerColumn = new TreeViewerColumn(
-				treeViewer, SWT.NONE);
-		treeViewerColumn.setLabelProvider(columnLabelProviderFactory
-					.createColumnLabelProvider(eStructuralFeature));
+	protected TreeViewerColumn createTreeViewerColumn(TreeViewer treeViewer, EStructuralFeature eStructuralFeature) {
+		TreeViewerColumn treeViewerColumn = new TreeViewerColumn(treeViewer, SWT.NONE);
+		treeViewerColumn.setLabelProvider(columnLabelProviderFactory.createColumnLabelProvider(eStructuralFeature));
 		return treeViewerColumn;
 	}
 }
