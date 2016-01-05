@@ -19,6 +19,7 @@ import org.eclipse.emf.parsley.views.SaveableTableFormView
 import org.eclipse.emf.parsley.views.SaveableTableView
 import org.eclipse.emf.parsley.views.SaveableTreeFormView
 import org.eclipse.emf.parsley.views.SaveableTreeView
+import org.eclipse.emf.parsley.views.SaveableTreeWithColumnsView
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
@@ -74,6 +75,23 @@ public class TemplateWizardConfigurationsFactory {
 		}
 	}
 
+	static class TemplateWizardConfigurationForSaveableTreeWithColumnsView extends TemplateWizardConfigurationForSaveableView {
+	
+		new(String label, CharSequence description, Class<?> superClass) {
+			super(label, description, superClass)
+		}
+
+		override getConfiguratorElements(String projectName) {
+			val partClassName = getPartClassName(projectName)
+			'''
+			«getProjectFilesGenerator.
+				genFeaturesEClass(partClassName)»
+			«getProjectFilesGenerator.
+				genResourceURI(partClassName)»
+			'''
+		}
+	}
+
 	static class TemplateWizardConfigurationForSaveableTreeView extends TemplateWizardConfigurationForSaveableView {
 	
 		new(String label, CharSequence description, Class<?> superClass) {
@@ -94,6 +112,7 @@ public class TemplateWizardConfigurationsFactory {
 		val theUserMustSpecify = "<p><b>The user must specify:</b></p>"
 		val resourceURI = "<li>the resource URI</li>"
 		val eclassToRepresent = "<li>the EClass of objects to be shown</li>"
+		val eclassForFeatures = "<li>the EClass with the features to be shown</li>"
 
 		newArrayList(
 			new TemplateWizardConfiguration(
@@ -172,6 +191,17 @@ public class TemplateWizardConfigurationsFactory {
 					'''
 				),
 				SaveableTreeView
+			),
+			new TemplateWizardConfigurationForSaveableTreeWithColumnsView(
+				"Saveable Tree With Columns View",
+				createDescription("tree with columns", saveableView, 
+					'''
+					«theUserMustSpecify»
+					«resourceURI»
+					«eclassForFeatures»
+					'''
+				),
+				SaveableTreeWithColumnsView
 			)
 		)
 	}

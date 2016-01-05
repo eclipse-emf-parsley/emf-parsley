@@ -24,9 +24,13 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerView {
 
 	@Inject
-	protected ViewerFactory viewerFactory;
+	private ViewerFactory viewerFactory;
 
-	protected TreeViewer treeViewer;
+	private TreeViewer treeViewer;
+
+	protected Object getContents() {
+		return getContents(getResource());
+	}
 
 	protected Object getContents(Resource resource) {
 		return resource;
@@ -43,8 +47,12 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 
 	protected TreeViewer createAndInitializeTreeViewer(Composite parent) {
 		TreeViewer treeViewer = new TreeViewer(parent);
-		viewerFactory.initialize(treeViewer, getContents(getResource()));
+		getViewerFactory().initialize(treeViewer, getContents());
 		return treeViewer;
+	}
+
+	protected ViewerFactory getViewerFactory() {
+		return viewerFactory;
 	}
 
 	@Override

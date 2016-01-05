@@ -20,7 +20,7 @@ class EmfParsleyTemplateWizardConfigurationFactoryTests {
 
 	@Test
 	def void testNumberOfConfigurations() {
-		assertEquals("Number of templates has changed, please update these tests!", 9, configurations.size)
+		assertEquals("Number of templates has changed, please update these tests!", 10, configurations.size)
 	}
 
 	@Test
@@ -281,7 +281,47 @@ module my.project.name {
 }
 '''.assertGenerated(8)
 	}
+
+	@Test
+	def void testSaveableTreeWithColumnsView() {
+'''
+import my.project.name.NameSaveableTreeWithColumnsView
+
+/* my.project.name Emf Parsley Dsl Module file */
+module my.project.name {
 	
+	parts {
+		viewpart my.project.name {
+			viewname "Name"
+			viewclass NameSaveableTreeWithColumnsView
+		}
+	}
+	
+	configurator {
+		eClass {
+			NameSaveableTreeWithColumnsView -> {
+				// TODO return the EClass with the features to be shown
+			}
+		}
+		resourceURI {
+			NameSaveableTreeWithColumnsView -> {
+				// TODO create and return a org.eclipse.emf.common.util.URI
+				return null;
+			}
+		}
+	}
+	
+	resourceManager {
+		initializeResource {
+			// Optional: initialize an empty Resource
+			// 'it' is of type Resource
+			// e.g., it.getContents += myFactory.createMyClass
+		}
+	}
+}
+'''.assertGenerated(9)
+	}
+
 	private def assertGenerated(CharSequence expectedModule, int index) {
 		expectedModule.toString.assertEquals(
 			configurations.get(index).getParsleyModuleContents("my.project.name")

@@ -20,6 +20,7 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 
 	val TREE_FORM_TEMPLATE = "Saveable Tree Form View"
 	val TREE_TEMPLATE = "Saveable Tree View"
+	val TREE_WITH_COLUMNS_TEMPLATE = "Saveable Tree With Columns View"
 	val TABLE_FORM_TEMPLATE = "Saveable Table Form View"
 	val TABLE_TEMPLATE = "Saveable Table View"
 	val ONSELECTION_TREE_TEMPLATE = "On selection Tree View"
@@ -69,6 +70,13 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
 				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_TEMPLATE);
 		//bot.sleep(300000);
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	def canCreateDslProjectWithWizardAndTreeWithColumnsTemplate() {
+		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
+				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_WITH_COLUMNS_TEMPLATE);
 		assertNoErrorsInProjectAfterAutoBuild();
 	}
 

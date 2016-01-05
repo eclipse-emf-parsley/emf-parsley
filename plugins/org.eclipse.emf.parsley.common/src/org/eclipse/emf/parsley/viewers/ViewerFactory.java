@@ -19,6 +19,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.jface.layout.TableColumnLayout;
+import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -109,6 +110,27 @@ public class ViewerFactory {
 	}
 
 	/**
+	 * Creates a {@link TreeViewer} with columns; the tree will display the
+	 * specified content and the columns will represent the features of the
+	 * contents that are instances of the specified {@link EClass}.
+	 * 
+	 * @param parent
+	 * @param type
+	 *            to get the features to represent in the columns
+	 * @param content
+	 * @return
+	 */
+	public TreeViewer createTreeViewerWithColumns(Composite parent, EClass type, Object content) {
+		Composite viewerContainer = new Composite(parent, SWT.NONE);
+		TreeColumnLayout layout = new TreeColumnLayout();
+		viewerContainer.setLayout(layout);
+		TreeViewer treeViewer = new TreeViewer(viewerContainer);
+		initialize(treeViewer, content);
+		buildColumns(treeViewer, type);
+		return treeViewer;
+	}
+
+	/**
 	 * Initializes the specified {@link TableViewer} building its columns
 	 * according to the specified type.
 	 * 
@@ -119,10 +141,24 @@ public class ViewerFactory {
 		buildColumns(tableViewer, eClass, tableViewerContentProviderFactory.createTableViewerContentProvider(eClass));
 	}
 
+	/**
+	 * Initializes the specified {@link TreeViewer} building its columns
+	 * according to the specified type.
+	 * 
+	 * @param treeViewer
+	 * @param eClass
+	 */
 	public void buildColumns(TreeViewer treeViewer, EClass eClass) {
 		treeColumnBuilder.buildTreeViewer(treeViewer, eClass);
 	}
 
+	/**
+	 * Initializes the specified {@link TreeViewer} building its columns
+	 * according to the specified {@link EStructuralFeature}s.
+	 * 
+	 * @param treeViewer
+	 * @param typeFeatures
+	 */
 	public void buildColumns(TreeViewer treeViewer, List<EStructuralFeature> typeFeatures) {
 		treeColumnBuilder.buildTreeViewer(treeViewer, typeFeatures);
 	}

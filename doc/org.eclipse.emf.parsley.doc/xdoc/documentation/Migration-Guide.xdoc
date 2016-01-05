@@ -4,6 +4,39 @@ section:FiveMinors[From 0.5.0 to 0.5.2]
 
 ul[
 
+item[e[Tree With Columns]: a new component has been added:
+
+The e[Tree With Columns Component] provides a tree representation just like ref:TreeComponent[Tree Component],
+but it also shows table columns representing the features of the specified codeRef[org.eclipse.emf.ecore.EClass].
+
+IMPORTANT: the codeRef[org.eclipse.emf.ecore.EClass] is used to retrieve the features to be shown, and
+NOT to filter elements to be shown (as opposite to the ref:TableComponent[Table Component]).  If a given
+row in the tree represents an object whose class does not have the feature for a given column, then the
+corresponding table cell for that object will be empty.
+
+For example, the following screenshot shows a tree with columns representing a library; the specified
+codeRef[org.eclipse.emf.ecore.EClass] is the e[Writer] so the columns show the features of the
+e[Writer]'s class.  Some of these features, e.g., e[address], e[firstName] and e[lastName], are defined
+in the superclasses of e[Writer].  The objects of class e[Employee] have these features as well, while
+they don't have features that are specific of e[Writer], e.g., e[name] and e[books], thus the corresponding
+cells for employees will be empty.
+
+img[images/03-components-treecolumns.png][][ ][]
+
+e[EMF Parsley] provides a factory that can be used to create such a component, like in the code below:
+
+code[Java][
+@Inject ViewerFactory viewerFactory;
+
+(...)
+
+treeViewer = createTreeViewerWithColumns(parent, getEClass(), getContents());
+]
+
+Since this component mixes the features of a tree and a table, the customizations are basically the
+same shown in the subsections of ref:TreeComponent[] and ref:TableComponent[].
+]
+
 item[e[EmfSelectionHelper] only deals with selection element; utility methods for events is now
 delegated to e[EmfEventHelper].]
 

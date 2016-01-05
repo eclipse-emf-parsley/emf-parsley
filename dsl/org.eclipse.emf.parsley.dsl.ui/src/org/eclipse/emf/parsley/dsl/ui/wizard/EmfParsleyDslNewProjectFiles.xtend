@@ -77,6 +77,16 @@ module «projectName» {
 		'''
 	}
 
+	def genFeaturesEClass(CharSequence className) {
+		'''
+		eClass {
+			«className» -> {
+				// TODO return the EClass with the features to be shown
+			}
+		}
+		'''
+	}
+
 	def genResourceManager(CharSequence contents) {
 		'''
 		resourceManager {

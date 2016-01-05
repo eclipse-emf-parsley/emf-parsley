@@ -40,7 +40,7 @@ public class TestSaveableTreeViewWithSpecificColumns extends SaveableTreeView {
 				add(EXTLibraryPackage.eINSTANCE.getAddressable_Address());
 			}
 		};
-		viewerFactory.buildColumns(treeViewer, features);
+		getViewerFactory().buildColumns(treeViewer, features);
 		return treeViewer;
 	}
 

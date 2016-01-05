@@ -40,6 +40,10 @@ public class TestConfigurator extends Configurator {
 				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);
 	}
 
+	public EClass eClass(TestSaveableTreeViewWithColumns requestor) {
+		return EXTLibraryPackage.Literals.WRITER;
+	}
+
 	public URI resourceURI(TestSaveableTreeViewWithSpecificColumns requestor) {
 		return URI.createPlatformResourceURI(
 				EmfParsleySWTBotAbstractTests.MY_EXTLIBRARY_RELATIVE_PATH, true);

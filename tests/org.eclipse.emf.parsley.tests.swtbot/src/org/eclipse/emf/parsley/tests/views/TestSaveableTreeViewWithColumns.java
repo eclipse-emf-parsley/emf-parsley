@@ -10,27 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.views;
 
-import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
-import org.eclipse.emf.parsley.views.SaveableTreeView;
-import org.eclipse.jface.layout.TreeColumnLayout;
-import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.emf.parsley.views.SaveableTreeWithColumnsView;
 
 /**
  * @author Francesco Guidieri
  *
  */
-public class TestSaveableTreeViewWithColumns extends SaveableTreeView {
-
-	@Override
-	protected TreeViewer createAndInitializeTreeViewer(Composite parent) {
-		Composite viewerContainer = new Composite(parent, SWT.NONE);
-		TreeColumnLayout layout = new TreeColumnLayout();
-		viewerContainer.setLayout(layout);
-		TreeViewer treeViewer = super.createAndInitializeTreeViewer(viewerContainer);
-		viewerFactory.buildColumns(treeViewer, EXTLibraryPackage.eINSTANCE.getWriter());
-		return treeViewer;
-	}
+public class TestSaveableTreeViewWithColumns extends SaveableTreeWithColumnsView {
 
 }
