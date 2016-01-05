@@ -19,6 +19,7 @@ import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
+import org.eclipse.emf.parsley.util.EcoreUtil2;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.graphics.Color;
@@ -31,13 +32,6 @@ import com.google.inject.Inject;
 /**
  * Provides a column provider for EStructuralFeatures that uses polymorphic
  * dispatch to call methods at runtime.
- * 
- * IMPORTANT: this class, for performance reasons, assumes that the EObject and
- * the EStructuralFeature are consistent: such feature exists in the EObject's
- * EClass. If that is not the case, the corresponding value will be nonsense,
- * and no check is performed for this condition. Uses of this class in the
- * framework respect such assumption since they iterate over the features
- * starting from the EObject's EClass.
  * 
  * If you define methods with a specific signature convention, the framework
  * will select the correct implementation depending on the runtime type of the
@@ -164,10 +158,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 */
 	protected Object getFeatureValue(Object element) {
 		EObject eObject = (EObject) element;
-		// note that we assume that the EStructuralFeature exists in the
-		// EObject's EClass, see the comment in the class' documentation.
-		Object featureValue = eObject.eGet(geteStructuralFeature());
-		return featureValue;
+		return EcoreUtil2.safeEGet(eObject, geteStructuralFeature());
 	}
 
 	@Override

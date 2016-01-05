@@ -132,6 +132,19 @@ class EcoreUtil2Test extends AbstractEmfParsleyTest {
 		EcoreUtil2.getAllContentsOfType(resource, testPackage.classWithName).
 			assertList("")
 	}
+
+	@Test def void testSafeEGetWithTheRightFeature() {
+		classForControlsInstance.stringFeature = "test"
+		"test".assertEquals(
+			EcoreUtil2.safeEGet(classForControlsInstance, testPackage.classForControls_StringFeature)
+		)
+	}
+
+	@Test def void testSafeEGetWithTheWrongFeature() {
+		// the specified feature does not belong to the eclass
+		EcoreUtil2.safeEGet(classForControlsInstance, testPackage.classWithName_Name).assertNull
+	}
+
 	def private assertList(List<?> list, CharSequence expected) {
 		val labelProvider = getOrCreateInjector.getInstance(ILabelProvider)
 		expected.toString.assertEquals(

@@ -16,10 +16,13 @@ import java.util.List;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
+ * Additional ecore utilities.
+ * 
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -73,5 +76,20 @@ public class EcoreUtil2 {
 			}
 		}
 		return result;
+	}
+
+	/**
+	 * Before retrieving the value of the specified {@link EStructuralFeature} it checks
+	 * whether the object's class defines that feature; if not, the returned value is null
+	 * 
+	 * @param object
+	 * @param feature
+	 * @return
+	 */
+	public static Object safeEGet(EObject object, EStructuralFeature feature) {
+		if (object.eClass().getFeatureID(feature) != -1) {
+			return object.eGet(feature);
+		}
+		return null;
 	}
 }

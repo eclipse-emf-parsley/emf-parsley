@@ -24,7 +24,7 @@ import static extension org.junit.Assert.*
 class FeatureHelperTest extends AbstractEmfParsleyTest {
 
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
-	
+
 	/**
 	 * An instance to use for testing the creation of a Control
 	 * using an AbstractControlFactory
@@ -32,7 +32,7 @@ class FeatureHelperTest extends AbstractEmfParsleyTest {
 	var protected ClassForControls classForControlsInstance
 
 	var private FeatureHelper featureHelper
-	
+
 	@Before
 	def void setupEObject() {
 		classForControlsInstance = testFactory.createClassForControls

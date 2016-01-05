@@ -83,13 +83,12 @@ class TableColumnLabelProviderTest extends AbstractImageBasedTest {
 	def void testGetTextWhenOjectClassDoesNotHaveFeature() {
 		// testContainer, TestContainer, does not have the feature multiReferencFeature
 		// and it simply takes the value of the feature with the same ID in the
-		// EObject's class, which does not exist, throwing an exception
+		// EObject's class, which does not exist,
 		// but the TableColumnLabelProvider gracefully defaults to an empty string
 		"".assertEquals(
 			tableColumnLabelProvider.
 				forFeature(testPackage.classForControls_MultiReferenceFeature).getText(testContainer)
 		)
-		assertExceptionInLog()
 	}
 	
 	@Test
