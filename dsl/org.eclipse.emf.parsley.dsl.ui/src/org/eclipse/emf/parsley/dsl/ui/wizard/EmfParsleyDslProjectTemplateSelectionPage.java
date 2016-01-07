@@ -37,29 +37,32 @@ import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
  * @author Francesco Guidieri
  * 
  */
-public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implements ISelectionChangedListener{
+public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implements ISelectionChangedListener {
 
 	public static final String ONSELECTION_CATEGORY = "On selection";
 	public static final String SAVEABLE_CATEGORY = "Saveable";
 
+	protected static final int DESCRIPTION_WIDTH = 200;
+	protected static final int CONTROL_GRID_WIDTH = 300;
+
 	private TableViewer templateSelectionViewer;
 
 	private FormBrowser descriptionBrowser;
-	
+
 	protected EmfParsleyDslProjectTemplateSelectionPage() {
 		super("emfParsleySelectPredefinedViewPage");
 		descriptionBrowser = new FormBrowser(SWT.BORDER | SWT.V_SCROLL);
 		descriptionBrowser.setText(""); //$NON-NLS-1$
 	}
-	
+
 	public void createDescriptionIn(Composite composite) {
 		descriptionBrowser.createControl(composite);
 		Control c = descriptionBrowser.getControl();
 		GridData gridData = new GridData(GridData.FILL_BOTH);
-		gridData.widthHint = 200;
+		gridData.widthHint = DESCRIPTION_WIDTH;
 		c.setLayoutData(gridData);
 	}
-	
+
 	public void setDescriptionText(String text) {
 		descriptionBrowser.setText(text == null ? "No Description available." : text);
 	}
@@ -77,47 +80,46 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 
 		initializeDialogUnits(parent);
 
-		PlatformUI.getWorkbench().getHelpSystem()
-				.setHelp(container, IIDEHelpContextIds.NEW_PROJECT_WIZARD_PAGE);
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(container, IIDEHelpContextIds.NEW_PROJECT_WIZARD_PAGE);
 
-		container.setLayout(new GridLayout(2,false));
+		container.setLayout(new GridLayout(2, false));
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
-		new Label(container,SWT.NONE).setText("Select one of these Emf Parsley templates");
-		new Label(container,SWT.NONE).setText("");
-		
+
+		new Label(container, SWT.NONE).setText("Select one of these Emf Parsley templates");
+		new Label(container, SWT.NONE).setText("");
+
 		SashForm sashForm = new SashForm(container, SWT.HORIZONTAL);
 		GridData gd = new GridData(GridData.FILL_BOTH);
 		// limit the width of the sash form to avoid the wizard
-		// opening very wide. This is just preferred size - 
+		// opening very wide. This is just preferred size -
 		// it can be made bigger by the wizard
 		// See bug #83356
-		gd.widthHint = 300;
+		gd.widthHint = CONTROL_GRID_WIDTH;
 		sashForm.setLayoutData(gd);
 
 		templateSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
 		templateSelectionViewer.setContentProvider(new ArrayContentProvider());
-		templateSelectionViewer.setLabelProvider(new LabelProvider(){
+		templateSelectionViewer.setLabelProvider(new LabelProvider() {
 			@Override
 			public String getText(Object element) {
-				return ((TemplateWizardConfiguration)element).getLabel();
+				return ((TemplateWizardConfiguration) element).getLabel();
 			}
 		});
-		
+
 		createDescriptionIn(sashForm);
-		templateSelectionViewer.setInput(
-				new TemplateWizardConfigurationsFactory().
-					createTemplateWizardConfigurations());
+		templateSelectionViewer
+				.setInput(new TemplateWizardConfigurationsFactory().createTemplateWizardConfigurations());
 		templateSelectionViewer.addSelectionChangedListener(this);
 		Dialog.applyDialogFont(container);
 		setPageComplete(false);
 		setControl(container);
 	}
-	
-	public TemplateWizardConfiguration getSelectedTemplate(){
-		return (TemplateWizardConfiguration) ((IStructuredSelection)templateSelectionViewer.getSelection()).getFirstElement();
+
+	public TemplateWizardConfiguration getSelectedTemplate() {
+		return (TemplateWizardConfiguration) ((IStructuredSelection) templateSelectionViewer.getSelection())
+				.getFirstElement();
 	}
-	
+
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		setErrorMessage(null);
@@ -129,11 +131,11 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 		}
 		if (currentWizardSelection == null) {
 			setDescriptionText(""); //$NON-NLS-1$
-		} else{
-			setDescriptionText(currentWizardSelection.getDescription().toString());			
+		} else {
+			setDescriptionText(currentWizardSelection.getDescription().toString());
 		}
-		setPageComplete(currentWizardSelection!=null);
+		setPageComplete(currentWizardSelection != null);
 		getContainer().updateButtons();
 	}
-	
+
 }

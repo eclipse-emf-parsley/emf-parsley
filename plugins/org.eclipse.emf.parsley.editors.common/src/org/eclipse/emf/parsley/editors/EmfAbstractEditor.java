@@ -120,6 +120,8 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		IEditingDomainProvider, ISelectionProvider, IMenuListener,
 		IViewerProvider, IGotoMarker, AsyncCommandStackListenerClient {
 
+	protected static final int CONTAINER_Y_SIZE_DELTA = 6;
+
 	/**
 	 * This is the one adapter factory used for providing views of the model.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -624,7 +626,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			if (getContainer() instanceof CTabFolder) {
 				((CTabFolder) getContainer()).setTabHeight(1);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y + 6);
+				getContainer().setSize(point.x, point.y + CONTAINER_Y_SIZE_DELTA);
 			}
 		}
 	}
@@ -641,7 +643,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			if (getContainer() instanceof CTabFolder) {
 				((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y - 6);
+				getContainer().setSize(point.x, point.y - CONTAINER_Y_SIZE_DELTA);
 			}
 		}
 	}
