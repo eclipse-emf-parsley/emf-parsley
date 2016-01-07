@@ -28,5 +28,5 @@ public abstract class AbstractSaveableTreeWithColumnsView extends AbstractSaveab
 	/**
 	 * @return the {@link EClass} used to get the features to represent in the columns
 	 */
-	abstract protected EClass getEClass();
+	protected abstract EClass getEClass();
 }

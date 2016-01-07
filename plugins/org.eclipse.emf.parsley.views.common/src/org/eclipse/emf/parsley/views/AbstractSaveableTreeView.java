@@ -46,9 +46,9 @@ public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerVie
 	}
 
 	protected TreeViewer createAndInitializeTreeViewer(Composite parent) {
-		TreeViewer treeViewer = new TreeViewer(parent);
-		getViewerFactory().initialize(treeViewer, getContents());
-		return treeViewer;
+		TreeViewer viewer = new TreeViewer(parent);
+		getViewerFactory().initialize(viewer, getContents());
+		return viewer;
 	}
 
 	protected ViewerFactory getViewerFactory() {
