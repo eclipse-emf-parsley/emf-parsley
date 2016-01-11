@@ -77,7 +77,8 @@
 		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<uiTestsArgs>${memoryArgs} ${os-jvm-flags} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
 		<pdeTestsArgs>-DbuildingWithTycho=true</pdeTestsArgs>
-		<swtbotTestsArgs>${uiTestsArgs} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
+		<skipDragAndDropTests>true</skipDragAndDropTests>
+		<swtbotTestsArgs>${uiTestsArgs} -DskipDragAndDropTests=${skipDragAndDropTests} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
 
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->

@@ -37,9 +37,6 @@ import com.google.inject.Provider;
 public class ViewerContextMenuHelper {
 
 	@Inject
-	private Provider<EditingDomain> editingDomainProvider;
-
-	@Inject
 	private Provider<LightweightActionBarContributor> lightweightActionBarContributorProvider;
 
 	@Inject
@@ -110,7 +107,7 @@ public class ViewerContextMenuHelper {
 	 * @param viewer
 	 */
 	public void addViewerContextMenu(StructuredViewer viewer) {
-		addViewerContextMenu(viewer, editingDomainProvider.get());
+		addViewerContextMenu(viewer, (EditingDomain) null);
 	}
 
 	/**

@@ -1,13 +1,14 @@
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.parsley.resource.ResourceSaveStrategy
 import org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
 import org.eclipse.emf.parsley.tests.views.ViewsSaveableEditableTableView
 import org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView
 import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder
 import org.eclipse.emf.parsley.viewers.TableViewerEditableColumnBuilder
-import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 
 /**
  * Defines Parsley parts acting on parsley.tests.models,
@@ -22,6 +23,10 @@ module org.eclipse.emf.parsley.tests.views {
 		viewpart org.eclipse.emf.parsley.tests.views {
 			viewname "Test Model Tree Form View"
 			viewclass ViewsSaveableTreeFormView
+		}
+		viewpart org.eclipse.emf.parsley.tests.treeviews {
+			viewname "Test Model Tree View"
+			viewclass ViewsSaveableTreeView
 		}
 		viewpart org.eclipse.emf.parsley.tests.editabletable {
 			viewname "Test Model Editable Table View"
@@ -38,6 +43,9 @@ module org.eclipse.emf.parsley.tests.views {
 		resourceURI {
 			ViewsSaveableTreeFormView -> {
 				return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");
+			}
+			ViewsSaveableTreeView -> {
+				return URI.createURI("platform:/resource/MyTestProject/TestContainerForDnD.xmi");
 			}
 			ViewsSaveableEditableTableView -> {
 				return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");

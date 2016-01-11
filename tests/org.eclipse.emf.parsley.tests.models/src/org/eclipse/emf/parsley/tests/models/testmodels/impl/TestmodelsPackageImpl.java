@@ -819,6 +819,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTestContainer_MultipleContained() {
+		return (EReference)testContainerEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEnumForControls() {
 		return enumForControlsEEnum;
 	}
@@ -894,6 +903,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEReference(testContainerEClass, TEST_CONTAINER__CONTAINED);
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_TABLE);
 		createEReference(testContainerEClass, TEST_CONTAINER__OBJECTS_FOR_VALIDATION);
+		createEReference(testContainerEClass, TEST_CONTAINER__MULTIPLE_CONTAINED);
 
 		testEClassEClass = createEClass(TEST_ECLASS);
 		createEAttribute(testEClassEClass, TEST_ECLASS__LOWERCASE_NAME_FEATURE);
@@ -1018,6 +1028,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEReference(getTestContainer_Contained(), this.getTestContainer(), null, "contained", null, 0, 1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_ClassesForTable(), this.getClassForTable(), null, "classesForTable", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_ObjectsForValidation(), this.getClassForValidation(), null, "objectsForValidation", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestContainer_MultipleContained(), this.getTestContainer(), null, "multipleContained", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testEClassEClass, TestEClass.class, "TestEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestEClass_LowercaseNameFeature(), ecorePackage.getEString(), "lowercaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

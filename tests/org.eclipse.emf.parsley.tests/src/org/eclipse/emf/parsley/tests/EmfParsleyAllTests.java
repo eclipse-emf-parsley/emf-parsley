@@ -68,7 +68,8 @@ import org.junit.runners.Suite;
 	ShellBasedTest.class,
 	ControlBasedTest.class,
 	ValidationRunnerTest.class,
-	AsyncCommandStackListenerTest.class
+	AsyncCommandStackListenerTest.class,
+	DynamicEditingDomainViewerDropAdapterTest.class
 })
 public class EmfParsleyAllTests {
 

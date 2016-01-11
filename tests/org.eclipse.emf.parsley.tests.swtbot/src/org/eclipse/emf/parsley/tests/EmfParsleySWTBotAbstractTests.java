@@ -83,7 +83,9 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil;
 import org.junit.After;
@@ -131,6 +133,12 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String TEST_CONTAINER_LABEL = "Test Container";
 
+	protected static final String TEST_CONTAINER_SOURCE_LABEL = "Test Container Source Container";
+
+	protected static final String TEST_CONTAINER_TARGET_LABEL = "Test Container Target Container";
+
+	protected static final String TEST_CONTAINER_ELEMENT_TO_MOVE_LABEL = "Class With Name To Move";
+
 	protected static final String CLASS_FOR_CONTROLS_LABEL = "Class For Controls";
 
 	protected static final String STRING_FEATURE_LABEL = "String Feature";
@@ -163,6 +171,8 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String TEST_CONTAINER = "TestContainer.xmi";
 
+	protected static final String TEST_CONTAINER_FOR_DND = "TestContainerForDnD.xmi";
+
 	public static final String MY_EXTLIBRARY_RELATIVE_PATH = MY_TEST_PROJECT
 			+ "/" + MY_EXTLIBRARY;
 
@@ -183,7 +193,13 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String TEST_CONTAINER_PLATFORM_URI = "platform:/resource/"
 			+ TEST_CONTAINER_RELATIVE_PATH;
-	
+
+	public static final String TEST_CONTAINER_FOR_DND_RELATIVE_PATH = MY_TEST_PROJECT
+			+ "/" + TEST_CONTAINER_FOR_DND;
+
+	protected static final String TEST_CONTAINER_FOR_DND_PLATFORM_URI = "platform:/resource/"
+			+ TEST_CONTAINER_FOR_DND_RELATIVE_PATH;
+
 	protected static final String HARDCODED_LIBRARY_PLATFORM_URI = TestOnSelectionLibraryTreeViewWithResourceURI.resourceUri;
 
 	protected static final String LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI = "TestOnSelectionLibraryTreeViewWithResourceURI";
@@ -215,7 +231,7 @@ public class EmfParsleySWTBotAbstractTests {
 	protected static final String TEST_SAVEABLE_TABLE_VIEW = "Library Test Saveable Table View";
 
 	protected static final String TEST_SAVEABLE_TREE_VIEW = "Library Test Saveable Tree View";
-	
+
 	protected static final String TEST_SAVEABLE_TREE_WITH_COLUMNS_VIEW = "Library Test Saveable Tree View With Colunms";
 
 	protected static final String TEST_SAVEABLE_TREE_WITH_SPECIFIC_COLUMNS_VIEW = "Library Test Saveable Tree View With Specific Colunms";
@@ -311,7 +327,11 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String EMF_PARSLEY_RAP_EXAMPLE = "Emf Parsley Rap Example";
 
+	protected static final String TEST_ON_SELECTION_TREE_VIEW = "Test On Selection Tree View";
+
 	protected static final String TEST_MODEL_TREE_FORM_VIEW = "Test Model Tree Form View";
+
+	protected static final String TEST_MODEL_TREE_VIEW = "Test Model Tree View";
 
 	protected static final String TEST_MODEL_EDITABLE_TABLE_VIEW = "Test Model Editable Table View";
 
@@ -677,6 +697,8 @@ public class EmfParsleySWTBotAbstractTests {
 				localFileContents(MY_PARSLEY)).exists());
 		assertTrue(createFile(TEST_CONTAINER_RELATIVE_PATH,
 				localFileContents(TEST_CONTAINER)).exists());
+		assertTrue(createFile(TEST_CONTAINER_FOR_DND_RELATIVE_PATH,
+				localFileContents(TEST_CONTAINER_FOR_DND)).exists());
 	}
 
 	protected String localFileContents(String string) throws IOException {
@@ -1206,7 +1228,7 @@ public class EmfParsleySWTBotAbstractTests {
 	protected void assertEditorDirtySaveEditorAndAssertNotDirty(String editorName) {
 		assertEditorDirty(editorName);
 		getEditor(editorName).save();
-		assertEditorNotDirty(EMF_TREE_EDITOR);
+		assertEditorNotDirty(editorName);
 	}
 
 	protected SWTFormsBot formBotFromView(SWTBotView detailView) {
@@ -1315,5 +1337,15 @@ public class EmfParsleySWTBotAbstractTests {
 		table.select(0); // otherwise context menu might not be created
 		clickOnContextMenu(table, NEW_SIBLING, sibling);
 		assertTableItemsSize(table, initialTableItemsSize+1);
+	}
+
+	protected void maximizeCurrentWindow() {
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+				ActionFactory.MAXIMIZE.create(window).run();
+			}
+		});
 	}
 }

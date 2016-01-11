@@ -180,13 +180,22 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_CONTAINER__OBJECTS_FOR_VALIDATION = 5;
 
 	/**
+	 * The feature id for the '<em><b>Multiple Contained</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__MULTIPLE_CONTAINED = 6;
+
+	/**
 	 * The number of structural features of the '<em>Test Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER_FEATURE_COUNT = 6;
+	int TEST_CONTAINER_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Test Container</em>' class.
@@ -1776,6 +1785,17 @@ public interface TestmodelsPackage extends EPackage {
 	EReference getTestContainer_ObjectsForValidation();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getMultipleContained <em>Multiple Contained</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Multiple Contained</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getMultipleContained()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EReference getTestContainer_MultipleContained();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2320,6 +2340,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TEST_CONTAINER__OBJECTS_FOR_VALIDATION = eINSTANCE.getTestContainer_ObjectsForValidation();
+		/**
+		 * The meta object literal for the '<em><b>Multiple Contained</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_CONTAINER__MULTIPLE_CONTAINED = eINSTANCE.getTestContainer_MultipleContained();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 		 * <!-- begin-user-doc -->

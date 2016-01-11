@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
@@ -36,14 +40,14 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 	public void testOnSelectionLibraryTreeView() throws Exception {
 		SWTBotView selectionView = openTestView(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI);
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
-				MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot();
 		// we select the library in the editor...
 		getLibraryNode(rootOfEditorTree).select();
 		// and the selection view should show its children (so we must find the
 		// writer)
 		createNewSiblingAndSelectCreatedInTree(LIBRARY_ON_SELECTION_TREE_VIEW_WITH_RESOURCE_URI, WRITER_LABEL,
 				BOOK_ON_TAPE);
+		assertOriginalEditorIsNotified();
 		selectionView.close();
 	}
 
@@ -67,8 +71,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 		final SWTBotView view = openTestView(LIBRARY_ON_SELECTION_TREE_FORM_VIEW);
 
 		// select on the editor's tree
-		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
-				MY_EXT_LIBRARY_PLATFORM_URI);
+		SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot();
 		// we select the library in the editor...
 		getLibraryNode(rootOfEditorTree).select();
 		// and the selection view should show its children (so we must find the
@@ -81,6 +84,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 
 		// test the context menu
 		createNewSiblingAndSelectCreatedInTree(LIBRARY_ON_SELECTION_TREE_FORM_VIEW, WRITER_LABEL, BOOK_ON_TAPE);
+		assertOriginalEditorIsNotified();
 
 		view.close();
 	}
@@ -91,8 +95,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 		// the table should already show the column headers
 		getTableHeader(AUTHOR_COLUMN_HEADER);
 
-		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
-				MY_EXT_LIBRARY_PLATFORM_URI);
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
 
 		// select the library
@@ -107,6 +110,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 
 		// test the context menu
 		createNewSiblingAndAssertTableSize(bot.table(), 2, "Book");
+		assertOriginalEditorIsNotified();
 
 		getWriterNode(libraryNode).select();
 		// the table won't show anything
@@ -121,8 +125,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 		// the table should already show the column headers
 		getTableHeader(AUTHOR_COLUMN_HEADER);
 
-		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
-				MY_EXT_LIBRARY_PLATFORM_URI);
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
 
 		// select the library
@@ -150,8 +153,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 		// the table should already show the column headers
 		getTableHeader(AUTHOR_COLUMN_HEADER);
 
-		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
-				MY_EXT_LIBRARY_PLATFORM_URI);
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
 
 		// select the library
@@ -170,6 +172,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 
 		// test the context menu
 		createNewSiblingAndAssertTableSize(bot.table(), 2, "Book");
+		assertOriginalEditorIsNotified();
 
 		getWriterNode(libraryNode).select();
 		assertTableItemsCount(bot.table(), 0);
@@ -183,8 +186,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 		// the table should already show the column headers
 		getTableHeader(AUTHOR_COLUMN_HEADER);
 
-		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
-				MY_EXT_LIBRARY_PLATFORM_URI);
+		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
 
 		// select the library
@@ -212,5 +214,17 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 		formbot.label(AUTHOR_LABEL);
 
 		view.close();
+	}
+
+	protected SWTBotTreeItem openEditorAndGetTreeRoot()
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
+		return openEditorAndGetTreeRoot(EMF_TREE_EDITOR, MY_EXTLIBRARY,
+				MY_EXT_LIBRARY_PLATFORM_URI);
+	}
+
+	protected void assertOriginalEditorIsNotified() {
+		// the original editor is dirty because it's notified through the
+		// editing domain of the on selection view's context menu
+		assertEditorDirtySaveEditorAndAssertNotDirty(EMF_TREE_EDITOR);
 	}
 }

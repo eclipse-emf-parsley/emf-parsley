@@ -11,6 +11,7 @@ s * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
 package org.eclipse.emf.parsley.views;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.viewers.IStructuredViewerProvider;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
@@ -26,13 +27,17 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini
  * 
  */
-public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionView implements IStructuredViewerProvider {
+public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionView
+		implements IStructuredViewerProvider {
 
 	@Inject
 	private ViewerFactory viewerFactory;
 
 	@Inject
 	private ViewerContextMenuHelper contextMenuHelper;
+
+	@Inject
+	private ViewerDragAndDropHelper dragAndDropHelper;
 
 	public AbstractOnSelectionViewerView() {
 	}
@@ -58,6 +63,7 @@ public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionV
 	protected void afterCreateViewer() {
 		setViewerAsSelectionProvider();
 		addContextMenuToViewer();
+		addDragAndDropToViewer();
 	}
 
 	protected void setViewerAsSelectionProvider() {
@@ -82,6 +88,10 @@ public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionV
 
 	protected void addContextMenuToViewer() {
 		contextMenuHelper.addViewerContextMenu(getViewer());
+	}
+
+	protected void addDragAndDropToViewer() {
+		dragAndDropHelper.addDragAndDrop(getViewer());
 	}
 
 }

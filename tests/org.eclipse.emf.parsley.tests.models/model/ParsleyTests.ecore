@@ -14,6 +14,8 @@
         eType="#//ClassForTable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="objectsForValidation" upperBound="-1"
         eType="#//ClassForValidation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="multipleContained" upperBound="-1"
+        eType="#//TestContainer" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestEClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowercaseNameFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

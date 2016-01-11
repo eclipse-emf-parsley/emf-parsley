@@ -331,6 +331,10 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 		]
 	}
 
+	def createTestLibrayResourceAndInitialize(EditingDomain editingDomain) {
+		return createTestLibrayResourceAndInitialize(editingDomain.resourceSet)
+	}
+
 	def createTestLibrayResourceAndInitialize(ResourceSet resourceSet) {
 		return createTestLibrayResource(resourceSet) => [
 			contents += lib

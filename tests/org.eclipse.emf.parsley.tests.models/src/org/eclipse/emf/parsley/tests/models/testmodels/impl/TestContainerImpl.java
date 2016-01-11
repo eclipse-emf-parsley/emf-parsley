@@ -39,6 +39,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getContained <em>Contained</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForTable <em>Classes For Table</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getObjectsForValidation <em>Objects For Validation</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getMultipleContained <em>Multiple Contained</em>}</li>
  * </ul>
  *
  * @generated
@@ -113,6 +114,16 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * @ordered
 	 */
 	protected EList<ClassForValidation> objectsForValidation;
+
+	/**
+	 * The cached value of the '{@link #getMultipleContained() <em>Multiple Contained</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMultipleContained()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TestContainer> multipleContained;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -250,6 +261,18 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TestContainer> getMultipleContained() {
+		if (multipleContained == null) {
+			multipleContained = new EObjectContainmentEList<TestContainer>(TestContainer.class, this, TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED);
+		}
+		return multipleContained;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -263,6 +286,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return ((InternalEList<?>)getClassesForTable()).basicRemove(otherEnd, msgs);
 			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
 				return ((InternalEList<?>)getObjectsForValidation()).basicRemove(otherEnd, msgs);
+			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
+				return ((InternalEList<?>)getMultipleContained()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -287,6 +312,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return getClassesForTable();
 			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
 				return getObjectsForValidation();
+			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
+				return getMultipleContained();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -322,6 +349,10 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				getObjectsForValidation().clear();
 				getObjectsForValidation().addAll((Collection<? extends ClassForValidation>)newValue);
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
+				getMultipleContained().clear();
+				getMultipleContained().addAll((Collection<? extends TestContainer>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -352,6 +383,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
 				getObjectsForValidation().clear();
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
+				getMultipleContained().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -376,6 +410,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return classesForTable != null && !classesForTable.isEmpty();
 			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_VALIDATION:
 				return objectsForValidation != null && !objectsForValidation.isEmpty();
+			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
+				return multipleContained != null && !multipleContained.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -89,11 +89,10 @@ abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyTest {
 		override createValidateAction() {
 			return super.createValidateAction
 		}
-		
+
 		override updateEditingDomain(Object object) {
 			super.updateEditingDomain(object)
 		}
-		
 	}
 
 	abstract def protected Resource createResourceForTest()
