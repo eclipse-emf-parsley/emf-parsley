@@ -154,11 +154,12 @@
 
 		<findbugs.skip>false</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
-		
+
 		<dsl.tests.skip>false</dsl.tests.skip>
 		<simple.tests.skip>false</simple.tests.skip>
 		<swtbot.tests.skip>false</swtbot.tests.skip>
-		
+		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
+
 		<target-file-name>mars</target-file-name>
 	</properties>
 	

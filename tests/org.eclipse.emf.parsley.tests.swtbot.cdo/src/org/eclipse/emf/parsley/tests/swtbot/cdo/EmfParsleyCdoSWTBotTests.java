@@ -7,15 +7,17 @@
  * 
  * Contributors:
  * Francesco Guidieri - Initial contribution and API
+ * Lorenzo Bettini - use SWTBotJunit4ClassRunner to generate screenshots
+ *                   in case of failures
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests.swtbot.cdo.util;
+package org.eclipse.emf.parsley.tests.swtbot.cdo;
 
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.runtime.Assert;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.session.CDOSession;
@@ -28,84 +30,137 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.results.ListResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.ISaveablePart;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
+import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-public class CDOAbstractTests {
+@RunWith(SWTBotJunit4ClassRunner.class)
+public class EmfParsleyCdoSWTBotTests {
 
-	protected static final String PORT = "2037";
-	protected static final String SERVER ="localhost";
-	protected static final String REPOSITORY ="demo";
-	protected static final String MY_RESOURCE ="my_res";
-	protected static final String USER ="user";
-	protected static final String PASSWORD ="password";
+	private static final String TEST_CDO_FORM_VIEW = "Test CDO form view";
+	private static int SLOWDOWN = 1000;
 
-	protected static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
+	private static final String PORT = "2037";
+	private static final String SERVER = "localhost";
+	private static final String REPOSITORY = "demo";
+	private static final String USER = "user";
+	private static final String PASSWORD = "password";
 
-	protected static SWTWorkbenchBot bot;
+	private static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
 
-	protected  static void startCDOServer(){
-		CDOServer.startMemoryRepository(REPOSITORY, PORT);
-		Assert.isTrue(doTestCdoConnection(SERVER, PORT, REPOSITORY));
+	private static SWTWorkbenchBot bot;
+
+	@BeforeClass
+	public static void prepare() throws Exception {
+		startCDOServer();
+		bot = new SWTWorkbenchBot();
+		SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
+		closeWelcomePage();
+		openTestView(TEST_CDO_FORM_VIEW);
 	}
-	
-	protected static boolean doTestCdoConnection(String server, String port, String repository){
+
+	@AfterClass
+	public static void closeView() {
+		getLibraryView(TEST_CDO_FORM_VIEW).close();
+	}
+
+	@Test
+	public void testView() {
+		Assert.assertNotNull(getLibraryView(TEST_CDO_FORM_VIEW));
+	}
+
+	@Test
+	public void testExploreLibraryTree() {
+		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
+		SWTBotTreeItem libraryNode = getLibraryNode(botView);
+		Assert.assertNotNull(libraryNode);
+	}
+
+	@Test
+	public void testSelectAuthor() {
+		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
+		SWTBotTreeItem libraryNode = getLibraryNode(botView);
+		SWTBotTreeItem authorNode = libraryNode.getNode("Author Ed Merks");
+		Assert.assertNotNull(authorNode);
+	}
+
+	@Test
+	public void testDetailFormForSelectedAuthor() {
+		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
+		SWTBotTreeItem libraryNode = getLibraryNode(botView);
+		libraryNode.select("Author Ed Merks");
+		Assert.assertEquals(botView.bot().textWithLabel("Name").getText(), "Ed Merks");
+	}
+
+	@Test
+	public void testDirtyForSelectedBook() {
+		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
+		SWTBotTreeItem libraryNode = getLibraryNode(botView);
+		libraryNode.select("Book Domain Specific Languages");
+		botView.bot().textWithLabel("Title").setText("My Tyltle");
+		someSleep();
+		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
+		forceSaveView(botView);
+		Assert.assertFalse(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
+	}
+
+	private void someSleep() {
+		bot.sleep(SLOWDOWN);
+	}
+
+	private SWTBotTreeItem getLibraryNode(SWTBotView botView) {
+		SWTBotTreeItem libraryNode = botView.bot().tree().expandNode("Library");
+		return libraryNode;
+	}
+
+	private static void startCDOServer() {
+		CDOServer.startMemoryRepository(REPOSITORY, PORT);
+		Assert.assertTrue(doTestCdoConnection(SERVER, PORT, REPOSITORY));
+	}
+
+	private static boolean doTestCdoConnection(String server, String port, String repository) {
 		String user = USER;
 		String password = PASSWORD;
-		try{
+		try {
 			checkCDOServer(server, user, password, port);
-		}catch (RuntimeException e){
+		} catch (RuntimeException e) {
 			return false;
 		}
 		return true;
 	}
-	
+
 	public static void checkCDOServer(String host, String user, String password, String port) {
-		final IConnector connector = (IConnector) IPluginContainer.INSTANCE.getElement("org.eclipse.net4j.connectors","tcp", host+":"+port  ); 
+		final IConnector connector = (IConnector) IPluginContainer.INSTANCE.getElement("org.eclipse.net4j.connectors",
+				"tcp", host + ":" + port);
 
 		CDONet4jSessionConfiguration config = CDONet4jUtil.createNet4jSessionConfiguration();
 		config.setConnector(connector);
 		config.setRepositoryName("demo");
 
-		PasswordCredentialsProvider credentialsProvider = new PasswordCredentialsProvider(user, password);			
+		PasswordCredentialsProvider credentialsProvider = new PasswordCredentialsProvider(user, password);
 		config.setCredentialsProvider(credentialsProvider);
-		
-		connector.setOpenChannelTimeout(1000);
+
+		connector.setOpenChannelTimeout(SWTBotPreferences.TIMEOUT);
 		CDOSession session = config.openNet4jSession();
 		session.close();
 	}
 
-	@BeforeClass
-	public static void initBot() throws Exception {
-		bot = new SWTWorkbenchBot();
-		SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
+	private boolean isLibraryViewDirty(String id) {
+		return getLibraryView(id).getViewReference().isDirty();
 	}
 
-	public CDOAbstractTests() {
-		super();
-	}
-	
-	protected void doSaveView(){
-		SWTBotToolbarButton toggleButtonSave = bot.toolbarButtonWithTooltip("Save (Ctrl+S)");
-		Assert.isNotNull(toggleButtonSave);
-		toggleButtonSave.click();
-	}
-
-	protected boolean isLibraryViewDirty(String id){
-		 return getLibraryView(id).getViewReference().isDirty();
-	}
-
-	protected void doCloseLibraryView(String id){
-		getLibraryView(id).close();
-	}
-	
-	protected static SWTBotView openTestView(String libraryView) {
+	private static SWTBotView openTestView(String libraryView) {
 		bot.menu("Window").menu("Show View").menu("Other...").click();
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
@@ -115,52 +170,22 @@ public class CDOAbstractTests {
 		return getLibraryView(libraryView);
 	}
 
-	protected void undo(String undoText) {
-		bot.menu("Edit").menu("Undo " + undoText).click();
-	}
-
-	protected static SWTBotView getLibraryView(String libraryView) {
+	private static SWTBotView getLibraryView(String libraryView) {
 		return bot.viewByTitle(libraryView);
 	}
 
-
-	protected int doGetItemCountInView(String viewId){
-		SWTBotTree tree = bot.viewById(viewId).bot().tree();
-		return tree.rowCount();
-	}
-
-	protected void doSelectFirstItem(String viewId){
-		SWTBotTree tree = bot.viewById(viewId).bot().tree();
-		tree.select(0);
-	}
-	
-	protected SWTBotTreeItem doGetNodeWithText(String viewId, String nodeText){
-		SWTBotTree tree = bot.viewById(viewId).bot().tree();
-		return tree.getTreeItem(nodeText);
-	}
-
-	protected void doSelectLastItem(String viewId){
-		SWTBotTree tree = bot.viewById(viewId).bot().tree();
-		tree.select(tree.rowCount()-1);
-	}
-	
-
-	protected static void closeWelcomePage() throws InterruptedException {
+	private static void closeWelcomePage() throws InterruptedException {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				if (PlatformUI.getWorkbench().getIntroManager().getIntro() != null) {
-					PlatformUI
-							.getWorkbench()
-							.getIntroManager()
-							.closeIntro(
-									PlatformUI.getWorkbench().getIntroManager()
-											.getIntro());
+					PlatformUI.getWorkbench().getIntroManager()
+							.closeIntro(PlatformUI.getWorkbench().getIntroManager().getIntro());
 				}
 			}
 		});
 	}
 
-	protected static SWTBotTreeItem expandNodeSync(final SWTBotTree tree, String...names) {
+	private static SWTBotTreeItem expandNodeSync(final SWTBotTree tree, String... names) {
 		SWTBotTreeItem current = null;
 		for (int i = 0; i < names.length; i++) {
 			if (current == null) {
@@ -175,9 +200,10 @@ public class CDOAbstractTests {
 
 	/**
 	 * This should prevent test failures in slow machines.
+	 * 
 	 * @param treeItem
 	 */
-	protected static void waitForTreeItems(final SWTBotTreeItem treeItem) {
+	private static void waitForTreeItems(final SWTBotTreeItem treeItem) {
 		int retries = 3;
 		int msecs = 2000;
 		int count = 0;
@@ -215,9 +241,21 @@ public class CDOAbstractTests {
 				System.out.println("Found " + foundItems.size() + " items. OK!");
 				return;
 			}
-			
+
 			count++;
 		}
 	}
 
+	private void forceSaveView(SWTBotView botView) {
+		final IViewPart view = botView.getViewReference().getView(false);
+		if (view instanceof ISaveablePart) {
+			Display.getDefault().syncExec(new Runnable() {
+				public void run() {
+					((ISaveablePart) view).doSave(new NullProgressMonitor());
+				}
+			});
+		} else {
+			throw new RuntimeException("View " + view.getTitle() + " is not saveable!");
+		}
+	}
 }

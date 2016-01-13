@@ -39,14 +39,15 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<skip>${swtbot.tests.skip}</skip>
+					<skip>${swtbot.cdo.tests.skip}</skip>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>false</useUIThread>
 					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 						for jacoco agent -->
 					<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
-					<testSuite>org.eclipse.emf.parsley.tests.swtbot.cdo</testSuite>
-					<testClass>org.eclipse.emf.parsley.tests.swtbot.cdo.CDOTestSuite</testClass>
+					<includes>
+						<include>**/*Test*.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 			
