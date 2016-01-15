@@ -20,6 +20,7 @@ import org.eclipse.emf.parsley.resource.ResourceLoader
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.tests.util.GlobalAdapterFactoryEditingDomainModule
+import org.eclipse.emf.parsley.tests.util.SingletonAdapterFactoryEditingDomainModule
 import org.junit.Rule
 import org.junit.Test
 
@@ -32,42 +33,78 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 	@Test
 	def void testDefaultEditingDomainProvider() {
 		val injector = createDefaultEditingDomainProviderInjector
-		
+
 		val e1 = getEditingDomainInstance(injector)
 		val e2 = getEditingDomainInstance(injector)
-		
+
 		e1.assertNotSame(e2)
 	}
 
 	@Test
 	def void testGlobalEditingDomainProvider() {
 		val injector = createGlobalEditingDomainProviderInjector
-		
+
 		val e1 = getEditingDomainInstance(injector)
 		val e2 = getEditingDomainInstance(injector)
-		
+
 		e1.assertSame(e2)
+	}
+
+	@Test
+	def void testSingletonEditingDomainProviderWithTheSameInjector() {
+		val injector = createSingletonEditingDomainProviderInjector
+
+		val e1 = getEditingDomainInstance(injector)
+		val e2 = getEditingDomainInstance(injector)
+
+		e1.assertSame(e2)
+	}
+
+	@Test
+	def void testSingletonEditingDomainProviderWithDifferentInjectors() {
+		val e1 = getEditingDomainInstance(createSingletonEditingDomainProviderInjector)
+		val e2 = getEditingDomainInstance(createSingletonEditingDomainProviderInjector)
+
+		// singleton according to Guice @Singleton
+		// since the injectors are different the instances will be
+		// different as well
+		e1.assertNotSame(e2)
 	}
 
 	@Test
 	def void testDifferentResourceWithDefaultEditingDomainProvider() {
 		val injector = createDefaultEditingDomainProviderInjector
-		
+
 		val res1 = injector.loadResourceWithContents
 		val res2 = injector.loadResourceWithContents
-		
+
 		res1.assertNotSame(res2)
 	}
 
 	@Test
 	def void testSameResourceWithGlobalEditingDomainProvider() {
 		val injector = createGlobalEditingDomainProviderInjector
-		
+
 		val res1 = injector.loadResourceWithContents
 		val res2 = injector.loadResourceWithContents
-		
+
 		res1.assertSame(res2)
-		
+
+		// we act on the same Resource since we used the same
+		// EditingDomain
+		res1.classWithName.name = "Changed"
+		"Changed".assertEquals(res2.classWithName.name)
+	}
+
+	@Test
+	def void testSameResourceWithSingletonEditingDomainProvider() {
+		val injector = createSingletonEditingDomainProviderInjector
+
+		val res1 = injector.loadResourceWithContents
+		val res2 = injector.loadResourceWithContents
+
+		res1.assertSame(res2)
+
 		// we act on the same Resource since we used the same
 		// EditingDomain
 		res1.classWithName.name = "Changed"
@@ -80,8 +117,8 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 
 		resourceSet.setupResouceFactory
 
-		val resource = injector.getInstance(ResourceLoader).
-			getResource(e1, URI.createURI("http:///My.testmodels")).resource
+		val resource = injector.getInstance(ResourceLoader).getResource(e1, URI.createURI("http:///My.testmodels")).
+			resource
 		resource.assertNotNull
 		resource
 	}
@@ -96,6 +133,10 @@ class EditingDomainTest extends AbstractEmfParsleyTest {
 
 	def private createGlobalEditingDomainProviderInjector() {
 		createTestInjector(new GlobalAdapterFactoryEditingDomainModule)
+	}
+
+	def private createSingletonEditingDomainProviderInjector() {
+		createTestInjector(new SingletonAdapterFactoryEditingDomainModule)
 	}
 
 	def private createTestInjector(Module module) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2016 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,16 +12,20 @@ package org.eclipse.emf.parsley.edit.domain;
 
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 
+import com.google.inject.Singleton;
+
 /**
  * This ensures that only one instance of {@link AdapterFactoryEditingDomain}
- * will be used in the same JVM.
+ * will be used by the same injector (according to the semantics of
+ * {@link Singleton}).
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-public class GlobalAdapterFactoryEditingDomainProvider extends DefaultAdapterFactoryEditingDomainProvider {
+@Singleton
+public class SingletonAdapterFactoryEditingDomainProvider extends DefaultAdapterFactoryEditingDomainProvider {
 
-	private static AdapterFactoryEditingDomain singleton;
+	private AdapterFactoryEditingDomain singleton;
 
 	@Override
 	public AdapterFactoryEditingDomain get() {
@@ -30,5 +34,4 @@ public class GlobalAdapterFactoryEditingDomainProvider extends DefaultAdapterFac
 		}
 		return singleton;
 	}
-
 }
