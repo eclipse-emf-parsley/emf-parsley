@@ -1,8 +1,14 @@
 chapter:MigrationGuide[Migration Guide]
 
-section:FiveMinors[From 0.5.0 to 0.5.2]
+section:FiveMinors[From 0.5.0 to 0.6.0]
 
 ul[
+
+item[The way we handle the codeRef[org.eclipse.emf.edit.domain.EditingDomain] is
+changed and improved to some extent.  In standard scenarios this should not
+require any modifications.  In advanced scenarios this will provide complete
+control on the editing domain.  We refer to the new section in the documentation,
+ref:EditingDomain[Editing Domain].]
 
 item[e[Tree With Columns]: a new component has been added:
 

@@ -885,6 +885,100 @@ dialogControlFactory {
 
 This customization is exactly as in the case of the form of the previous section.
 
+section:EditingDomain[Editing Domain]
+
+The concept of codeRef[org.eclipse.emf.edit.domain.EditingDomain] is crucial for editing
+EMF models; we refer to the e[EMF.Edit] link[http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.emf.doc%2Freferences%2Foverview%2FEMF.Edit.html][documentation] for further details.
+In particular, the editing domain keeps track of commands executed on an EMF model,
+thus enabling undo/redo mechanisms and "dirty state" management for saveable parts.
+
+EMF Parsley aims at hiding the management of the editing domain, so that
+everything should work smoothly and as expected, in an automatic way.  In particular,
+it is rare that you need to perform customizations on this mechanisms.
+However, there might be cases when you need to be aware of this concept, especially
+if you need to use one of our customizations.  Moreover, you need to be aware of some
+of the assumptions that EMF Parsley automatic mechanisms rely on (we inherit these assumptions
+from EMF.Edit itself).
+
+First of all, all the EMF codeRef[org.eclipse.emf.ecore.resource.Resource]s that you want to edit with EMF Parsley must be
+contained in a codeRef[org.eclipse.emf.ecore.resource.ResourceSet], which, in turn,
+must be contained in an codeRef[org.eclipse.emf.edit.domain.EditingDomain].
+This is achieved automatically when using our e[ResourceLoader], ref:ResourceLoader[Resource Loader].
+
+Two resources loaded with different resource loaders will be contained in two
+different editing domains.  Two resources loaded with the same resource loader will
+be in the same resource set and use the same editing domain.
+
+Our default implementation of editing domain uses the EMF codeRef[org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain],
+so that all the EMF.Edit default mechanisms will work correctly.  In particular,
+our customization uses Google Guice mechanisms (see ref:GuiceBindings[Dependency Injection With Google
+Guice]), thus if you need an editing domain in your own views all you have to do is
+to inject it, e.g.,
+
+code[Java][
+	@Inject
+	private EditingDomain editingDomain;
+]
+
+section2:EditingDomainProvider[Editing Domain Provider]
+
+If you need to provide a custom implementation of the editing domain
+(for example, because you want to use a transactional editing domain), you need
+to implement a custom Google Guice codeRef[com.google.inject.Provider] and
+in your Guice module override this method:
+
+code[Java][
+public Class<? extends Provider<EditingDomain>> provideEditingDomain() {
+	return DefaultEditingDomainProvider.class;
+}
+]
+
+Such custom provider will then have to create an editing domain and return it.
+
+We have some custom editing domain providers that might be useful in some
+situations:
+
+ul[
+item[e[GlobalAdapterFactoryEditingDomainProvider]: all the injected
+editing domains will be the same in the same JVM, thus all your
+components will share exactly the same editing domain instances, and
+all the resources will be contained in the same resource set of the same
+editing domain.]
+item[e[SingletonAdapterFactoryEditingDomainModule]: similar to the previous
+one, but according to the semantics of Google Guice codeRef[com.google.inject.Singleton],
+i.e., only those components injected with the same injector will share
+the same editing domain.  This basically means that all the components
+created with the same Parsley Guice module will share the same editing domain.]
+]
+
+section2:EditingDomainFinder[Editing Domain Finder]
+
+All the EMF Parsley saveable views and editors will have their own
+editing domain (modulo what we explained in ref:EditingDomainProvider[Editing Domain Provider]).
+
+The EMF Parsley views that react on selection do NOT have a preset
+editing domain, since they will represent (and possibly edit) EMF objects
+selected in some other views, i.e., such objects can be contained in resources
+of different resource sets (and different editing domains).
+Thus, the editing domain of the currently shown object is dynamically
+retrieved through an injected e[EditingDomainFinder].  This default
+implementation basically delegates to the standard EMF.Edit mechanisms
+for retrieving the editing domain.  In cases where the editing domain cannot
+be found (e.g., because the object is not contained in a resource, or its resource
+is not contained in a resource set, or its resource set is not contained in an
+editing domain), then editing will not be possible (i.e., context menus ref:ContextualMenu[] and drag
+and drop ref:DND[Drag and Drop] will not work).
+
+You can provide and bind a custom implementation of the e[EditingDomainFinder]
+which is particularly useful if you manage a transactional editing domain.
+
+This is required only in some specific and advanced scenarios.
+
+In standard situations you will not have to worry about that, and
+editing mechanisms will work out of the box, including dragging an
+element from one view into another view, provided they are in the
+same resource set and such drag and drop makes sense.
+
 section:Resources[Resources]
 
 ul[
@@ -904,7 +998,6 @@ section2:ResourceLoader[Resource Loader]
 
 The class codeRef[org.eclipse.emf.parsley.resource.ResourceLoader] can be used to handle resource loading.
 This class uses internally the ref:ResourceManager[Resource Manager].
-
 
 section2:ResourceManager[Resource Manager]
 
