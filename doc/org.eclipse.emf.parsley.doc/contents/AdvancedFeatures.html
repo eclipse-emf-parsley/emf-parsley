@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>Advanced Features</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="00-Main.html" title="">
+</head>
+<body>
+<a name="AdvancedFeatures"></a>
+<h1>Advanced Features</h1>
+<p>
+In this chapter we describe some advanced features.
+</p>
+<a name="Testing"></a>
+<h2>Testing Framework</h2>
+<p>
+We provide some utility classes for testing <em>EMF Parsley</em> components in the feature
+"Emf Parsley Junit4 Support".  By deriving from one of the abstract classes in our
+testing bundle, you will be able to write tests that are meant to be run as Junit test,
+that is to say, NOT as Plug-in Junit tests.  Thus, you will not need a running Eclipse product
+to execute such tests: they will be much faster.  Indeed, many parts of Parsley can
+be tested even without a running Eclipse.
+</p>
+<p>
+<ul>
+	<li>
+		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyTest.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest" >AbstractEmfParsleyTest</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyTest.java" title="View Source Code" >(src)</a>: this provides
+			a few utility methods, e.g., for creating an <a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Injector.html" title="View JavaDoc"><abbr title="com.google.inject.Injector" >Injector</abbr></a>.
+	</li>
+	<li>
+		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyShellBasedTest.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest" >AbstractEmfParsleyShellBasedTest</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyShellBasedTest.java" title="View Source Code" >(src)</a>: this allows
+			to run Junit tests that require a <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/swt/widgets/Display.html" title="View JavaDoc"><abbr title="org.eclipse.swt.widgets.Display" >Display</abbr></a> and a
+			<a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/swt/widgets/Shell.html" title="View JavaDoc"><abbr title="org.eclipse.swt.widgets.Shell" >Shell</abbr></a>.
+	</li>
+	<li>
+		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyControlBasedTest.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest" >AbstractEmfParsleyControlBasedTest</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyControlBasedTest.java" title="View Source Code" >(src)</a>: an extension
+			of the previous class for tests that also require databinding capabilities, e.g.,
+			tests for <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/swt/widgets/Control.html" title="View JavaDoc"><abbr title="org.eclipse.swt.widgets.Control" >Control</abbr></a> elements; this provides many assert
+			methods for several kinds of controls, such as <em>assertCheckbox</em>, <em>assertCombo</em>, etc.
+	</li>
+</ul>
+</p>
+<p>
+We use these classes for testing most of our classes; you might want to have a look
+at the project <em>org.eclipse.emf.parsley.tests</em> for some usage examples.
+</p>
+</body>
+</html>
