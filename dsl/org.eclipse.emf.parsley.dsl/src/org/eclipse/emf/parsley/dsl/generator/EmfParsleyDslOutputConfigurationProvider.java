@@ -26,7 +26,9 @@ public class EmfParsleyDslOutputConfigurationProvider extends
 
 	public static final String PLUGIN_XML_EMFPARSLEY_REL_GEN_PATH = "../";
 
-	public static final String PLUGIN_XML_EMFPARSLEY_GEN = "plugin.xml_emfparsley_gen";
+	public static final String PLUGIN_XML_EMFPARSLEY_GEN_EXTENSION = "xml_emfparsley_gen";
+
+	public static final String PLUGIN_XML_EMFPARSLEY_GEN = "plugin." + PLUGIN_XML_EMFPARSLEY_GEN_EXTENSION;
 
 	public static final String PLUGIN_XML_EMFPARSLEY_GEN_PATH = PLUGIN_XML_EMFPARSLEY_REL_GEN_PATH
 			+ PLUGIN_XML_EMFPARSLEY_GEN;
