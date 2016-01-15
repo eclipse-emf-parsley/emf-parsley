@@ -1,0 +1,257 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>RAP</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="00-Main.html" title="">
+</head>
+<body>
+<a name="RAP"></a>
+<h1>RAP</h1>
+<a name="introduction"></a>
+<h2>Introduction</h2>
+<p>
+As you may know <a href="http://eclipse.org/rap/">RAP (Remote Application Platform)</a> is a technology that allows you to run an Eclipse RCP application over the web.
+</p>
+<p>
+In order to obtain this goal you have to setup a specific RAP Target Platform, for instance the one that RAP itself provides once you install it.
+</p>
+<p>
+However when you want to use an Eclipse RCP framework over the RAP Platform, you generally have to deal with
+dependencies, since not all Eclipse frameworks are ready-to-use with RAP, especially those related with the SWT layer.
+</p>
+<p>
+EMF Parsley provides a proper RAP Target Platform that allows you to start leveraging Parsley potentials to the web the same way you have 
+learned to do with desktop (RCP) development.
+</p>
+<a name="setupParsleyRAP"></a>
+<h2>Setup</h2>
+<a name="installRapTools"></a>
+<h3>Installing the RAP Tools</h3>
+<p>
+To begin with, you need to install the RAP Tools into the IDE.
+This can be accomplished with the following steps:
+<ol>
+	<li>
+		Help -&gt; Install New Software ...
+	</li>
+	<li>
+		select the main Eclipse Update site
+	</li>
+	<li>
+		expand category "Web, XML, Java EE and OSGi Enterprise Development"
+	</li>
+	<li>
+		select "RAP Tools" and complete the installation, restarting the IDE at the end
+	</li>
+	<li>
+		after IDE restarts just close the Welcome page
+	</li>
+</ol>
+</p>
+<a name="rapSetTargetPlatform"></a>
+<h3>Setup the EMF Parsley RAP Target Platform</h3>
+<p>
+After having installed EMF Parsley as described <a href="https://www.eclipse.org/emf-parsley/download.html">here</a> and
+created a new workspace, you can setup the EMF Parsley RAP Target Platform in the following way: 
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Rap Target Platform Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+	<li>
+		open the Target Definition file <em>emf-parsely-rap.target</em>
+	</li>
+	<li>
+		wait until the "Resolving Target Definition" job is done (check the status bar)
+	</li>
+	<li>
+		when finished, click on hyperlink "Set as Target Platform"
+	</li>
+</ol>
+</p>
+<p>
+You will end up with a RAP-enabled workspace, enhanced by EMF and Parsley! 
+</p>
+<a name="rapExamples"></a>
+<h2>Examples</h2>
+<a name="rapFirstExample"></a>
+<h3>Running the Parsley RAP UI Example</h3>
+<p>
+Here is the fastest way to get a working web application with all the stuff put togheter:
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Rap Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+	<li>
+		expand plug-in <em>"org.eclipse.emf.parsley.examples.rap.ui"</em>
+	</li>
+	<li>
+		right-click "Emf_Parsley_RAP_UI_Example.launch" and click "Run as" "Emf_Parsley_RAP_UI_Example"
+	</li>
+</ol>
+</p>
+<p>
+What you will get is a web application that allows you to interact with the model instance as you would
+do in a desktop (RCP) environment.
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-ui-example-running.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+In this web application you can see two views: 
+<ul>
+	<li>
+		the one on the left is a read-only view; it just reflects the model content, but it does not react to changes (the classic Eclipse dirty indicator is not triggered
+		by changes) and you are not able to save. Its model is created in class <em>org.eclipse.emf.parsley.examples.rap.ui.GuiceModule.CustomResourceManager</em>
+		and is not persisted
+	</li>
+	<li>
+		the view on the right is instead a Saveable view and therefore it not only triggers the dirty state after
+		a change, but also allows you to save the modifications with the automatic dirty state reset. Its model
+		is persisted in file <em>System.getProperty("java.io.tmpdir")+"/My.model")</em> 
+	</li>
+</ul>
+</p>
+<p>
+Of course, since this is a web application, you can also open a browser on another pc or device on the same network and type the address,
+replacing 127.0.0.1 with the IP of the machine where the application was launched.
+</p>
+<a name="rapCdoExample"></a>
+<h3>Running the Parsley RAP CDO Example</h3>
+<p>
+The EMF default XMI persistence is certainly very handy to start with, but as soon as you want a more
+production-ready EMF persistence architecture, well, <a href="http://wiki.eclipse.org/CDO">CDO</a> is for sure the way to go.
+In fact with CDO you basically have an EMF model instance shared between clients, that also allows the
+clients to be synchronized with the model changes.
+</p>
+<p>
+In this example, in order to keep things simple, we will use CDO with an in-memory store (MEMStore) whose contents will be lost once the server is stopped.
+However CDO can be configured for usage with RDBMS, Object-oriented or NO-SQL databases (see <a href="http://eclipse.org/cdo/documentation/">here</a> for details)
+</p>
+<p>
+To start with we need a CDO Server running and we can obtain it with an example plugin that can be used
+both in an RCP and in a RAP workspace.
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Cdo Server Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+	<li>
+		expand plug-in <em>"org.eclipse.emf.parsley.examples.cdo.server"</em>
+	</li>
+	<li>
+		right-click "CDOServerExample.launch" and click "Run as" "CDOServerExample"
+	</li>
+	<li>
+		a message on the Console <em>"Repository[demo] started!"</em> informs that the CDO Server instance
+			is started!
+	</li>
+</ol>
+</p>
+<p>
+Now we can create the web application that will use the CDO server just started.
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Rap Cdo Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+</ol>
+</p>
+<p>
+The plug-in projects created are:
+</p>
+<p>
+<ul>
+	<li>
+		the Model (org.eclipse.emf.parsley.examples.cdo.model)
+	</li>
+	<li>
+		a Parsley plug-in with a TreeForm (org.eclipse.emf.parsley.examples.cdo.treeform)
+	</li>
+	<li>
+		the webapp (org.eclipse.emf.parsley.examples.cdo.rap)
+	</li>
+</ul>
+</p>
+<p>
+Then let&apos;s start the application
+</p>
+<p>
+<ol>
+	<li>
+		expand plug-in <em>"org.eclipse.emf.parsley.examples.cdo.rap"</em>
+	</li>
+	<li>
+		right-click "EMF-Parsley_Library_RAP.launch" and click "Run as" "EMF-Parsley_Library_RAP"
+	</li>
+</ol>
+</p>
+<p>
+If you happen to see this
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-refresh.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+just press the refresh button and should see the following
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-cdo-1.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Now feel free to open the same address from more browsers window (yes, on different machines or devices, possibly)
+and see the power of this technology stack at work!
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-cdo-2.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+</body>
+</html>
