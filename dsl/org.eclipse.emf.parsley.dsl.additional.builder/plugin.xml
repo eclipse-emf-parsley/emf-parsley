@@ -45,7 +45,7 @@
             locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
          <command
                commandId="org.eclipse.emf.parsley.dsl.additional.builder.addRemoveEmfParsleyDslPluginXmlNature"
-               label="Disable Sample builder"
+               label="Disable EMF Parsley builder"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -68,7 +68,7 @@
          </command>
          <command
                commandId="org.eclipse.emf.parsley.dsl.additional.builder.addRemoveEmfParsleyDslPluginXmlNature"
-               label="Enable Sample builder"
+               label="Enable EMF Parsley builder"
                style="push">
             <visibleWhen
                   checkEnabled="false">

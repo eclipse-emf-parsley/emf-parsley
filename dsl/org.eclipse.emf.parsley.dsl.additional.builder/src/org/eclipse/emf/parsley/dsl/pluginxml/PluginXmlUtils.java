@@ -47,6 +47,7 @@ public class PluginXmlUtils {
 				});
 	}
 
+	@SuppressWarnings("cast")
 	public static IDocumentAttributeNode getId(final DocumentElementNode node) {
 		return ((IDocumentAttributeNode) node.getNodeAttributesMap().get("id"));
 	}

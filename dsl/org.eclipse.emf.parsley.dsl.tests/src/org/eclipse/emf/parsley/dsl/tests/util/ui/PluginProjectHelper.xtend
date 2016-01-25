@@ -1,12 +1,16 @@
 package org.eclipse.emf.parsley.dsl.tests.util.ui
 
 import com.google.inject.Inject
+import java.io.File
 import java.io.FileFilter
 import java.io.FileNotFoundException
 import java.util.List
 import org.eclipse.core.resources.IMarker
+import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature
 import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.xtext.junit4.ui.util.JavaProjectSetupUtil
@@ -15,7 +19,6 @@ import org.eclipse.xtext.ui.util.PluginProjectFactory
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 import static org.junit.Assert.*
-import java.io.File
 
 /**
  * Utility class for creating a Plug-in project for testing.
@@ -26,6 +29,17 @@ import java.io.File
 class PluginProjectHelper {
 	
 	@Inject PluginProjectFactory projectFactory
+
+	def IProject createSimpleProject(String projectName) {
+		projectFactory.setProjectName(projectName);
+		projectFactory.addFolders(newArrayList("src"));
+		projectFactory.addBuilderIds(
+			EmfParsleyDslPluginXmlBuilder.BUILDER_ID);
+		projectFactory.addProjectNatures(
+			EmfParsleyDslPluginXmlNature.NATURE_ID
+		);
+		projectFactory.createProject(new NullProgressMonitor(), null);
+	}
 
 	def IJavaProject createJavaPluginProject(String projectName, List<String> requiredBundles) {
 		projectFactory.setProjectName(projectName);

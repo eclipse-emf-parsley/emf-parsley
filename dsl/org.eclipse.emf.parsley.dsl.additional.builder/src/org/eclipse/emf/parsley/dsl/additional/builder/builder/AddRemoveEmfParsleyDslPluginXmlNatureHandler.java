@@ -12,8 +12,8 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 public class AddRemoveEmfParsleyDslPluginXmlNatureHandler extends AbstractHandler {
 
-	private ISelection selection;
-
+	@SuppressWarnings("cast")
+	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// TODO Auto-generated method stub
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
