@@ -132,13 +132,10 @@
           name="org.eclipse.pde.api.tools.ee.feature.feature.group"
           optional="true"/>
       <requirement
-          name="org.eclipse.releng.tools.feature.group"/>
+          name="org.eclipse.releng.tools.feature.group"
+          optional="true"/>
       <requirement
           name="org.eclipse.wst.xml_ui.feature.feature.group"/>
-      <repository
-          url="http://download.eclipse.org/eclipse/updates/4.5"/>
-      <repository
-          url="http://download.eclipse.org/releases/mars"/>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -479,6 +476,23 @@
               url="${orbit.site}"/>
         </repositoryList>
         <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/releases/staging"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+          <repository
+              url="${orbit.site}"/>
+        </repositoryList>
+        <repositoryList
             name="Kepler">
           <repository
               url="http://download.eclipse.org/releases/kepler"/>
@@ -662,6 +676,25 @@
     <stream
         name="master"
         label="Master"/>
+    <stream
+        name="neon-simrel"
+        label="Neon-Simrel">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value=""
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/releases/staging"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/releases/staging"/>
+      <description>Branch for Simrel for Neon</description>
+    </stream>
     <description>EMF Parsley version for RCP</description>
   </project>
   <project name="rap"
@@ -873,7 +906,14 @@
     </setupTask>
     <stream
         name="master"
-        label="Master"/>
+        label="Master">
+      <description></description>
+    </stream>
+    <stream
+        name="neon-simrel"
+        label="Neon-Simrel">
+      <description>Branch for Simrel for Neon</description>
+    </stream>
     <description>EMF Parsley version for RAP</description>
   </project>
   <logicalProjectContainer
