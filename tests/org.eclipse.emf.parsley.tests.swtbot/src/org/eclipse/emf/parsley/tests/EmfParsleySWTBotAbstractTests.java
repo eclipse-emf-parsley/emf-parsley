@@ -101,6 +101,8 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleySWTBotAbstractTests {
 
+	public static final String PACKAGE_EXPLORER = "Package Explorer";
+
 	protected static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
 
 	protected static final String WRITER_LABEL = "Writer Lorenzo Bettini";
@@ -428,6 +430,9 @@ public class EmfParsleySWTBotAbstractTests {
 		bot.viewByPartName("Problems").show();
 
 		bot.viewByTitle(OUTLINE_VIEW).show();
+
+		// In Neon the Package Explorer is not part of the Plug-in Development perspective
+		bot.menu("Window").menu("Show View").menu(PACKAGE_EXPLORER).click();
 	}
 
 	@AfterClass
@@ -856,7 +861,7 @@ public class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected static SWTBotView getPackageExplorer() {
-		SWTBotView view = bot.viewByTitle("Package Explorer");
+		SWTBotView view = bot.viewByTitle(PACKAGE_EXPLORER);
 		return view;
 	}
 

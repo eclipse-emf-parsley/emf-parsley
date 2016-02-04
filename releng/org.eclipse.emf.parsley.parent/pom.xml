@@ -60,10 +60,10 @@
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<junit-version>4.11</junit-version>
 		<jacoco-version>0.7.4.201502262128</jacoco-version>
-		<findbugs-version>2.5.5</findbugs-version>
+		<findbugs-version>3.0.1</findbugs-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<xtext-version>2.9.1</xtext-version>
+		<xtext-version>2.10.0-SNAPSHOT</xtext-version>
 		<emf.version>(2.8,3.0)</emf.version>
 		<guava.version>[10.0.1,14.0.1]</guava.version>
 		<google-inject.version>3.0</google-inject.version>
@@ -250,6 +250,21 @@
 			
 			<properties>
 				<target-file-name>mars</target-file-name>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>rcp-build-neon</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+			</modules>
+			
+			<properties>
+				<target-file-name>neon-staging</target-file-name>
 			</properties>
 		</profile>
 
@@ -622,6 +637,28 @@
 	-->
 
 	<pluginRepositories>
+		<pluginRepository>
+			<id>sonatype_releases</id>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>sonatype_snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+
 		<pluginRepository>
 			<id>cbi-release</id>
 			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
