@@ -11,8 +11,6 @@
  *******************************************************************************/
 package org.eclipse.swt.dnd;
 
-import java.awt.dnd.DropTargetEvent;
-
 import org.eclipse.swt.internal.SWTEventListener;
 
 public interface DropTargetListener extends SWTEventListener {

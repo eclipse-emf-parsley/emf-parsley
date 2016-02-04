@@ -11,7 +11,7 @@
  *******************************************************************************/
 package org.eclipse.swt.widgets;
 
-import java.awt.Image;
+import org.eclipse.swt.graphics.Image;
 
 public abstract class Item extends Widget {
 	String text;

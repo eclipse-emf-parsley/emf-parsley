@@ -9,31 +9,21 @@
  * Vincenzo Caselli - Initial contribution and API
  * 
  *******************************************************************************/
-package org.eclipse.swt.graphics;
 
-public final class Image extends Resource implements Drawable {
+package org.eclipse.swt.dnd;
 
-	public long /*int*/ handle;
-	
-	Image(Device device) {
-		super(device);
-	}
+public class DropTargetAdapter implements DropTargetListener {
 
-	public Image(Device device, int width, int height) {
-		super(device);
-	}
-	/// +
+public void dragEnter(DropTargetEvent event){}
 
-	public long /* int */ internal_new_GC(GCData data) {
-		return 0; /// +
-	}
+public void dragLeave(DropTargetEvent event){}
 
-	@Override
-	public void internal_dispose_GC(long handle, GCData data) {
-	}
+public void dragOperationChanged(DropTargetEvent event){}
 
-	@Override
-	public boolean isDisposed() {
-		return handle == 0;
-	}
+public void dragOver(DropTargetEvent event){}
+
+public void drop(DropTargetEvent event){}
+
+public void dropAccept(DropTargetEvent event){}
+
 }
