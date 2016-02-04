@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.emf.parsley.examples.mail.accountsview
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 0.5.2.qualifier
+Bundle-Version: 0.6.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.mail.accountsview;singleton:=true
 Bundle-Activator: org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewActivator
 Bundle-ActivationPolicy: lazy

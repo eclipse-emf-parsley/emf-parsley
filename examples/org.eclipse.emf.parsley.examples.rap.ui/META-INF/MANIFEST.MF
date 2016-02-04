@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Emf Parsley RAP Example Ui
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.rap.ui;singleton:=true
-Bundle-Version: 0.5.2.qualifier
+Bundle-Version: 0.6.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.examples.rap.ui.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.emf.parsley.examples.rap.model,
