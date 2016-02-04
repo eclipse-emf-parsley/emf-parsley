@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Emf Parsley Generator Common Utilities
 Bundle-SymbolicName: org.eclipse.emf.parsley.generator.common;singleton:=true
-Bundle-Version: 0.6.0.qualifier
+Bundle-Version: 0.7.0.qualifier
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.5.0",
  org.eclipse.xtext.xbase.lib,
  org.objectweb.asm;bundle-version="5.0.1"
