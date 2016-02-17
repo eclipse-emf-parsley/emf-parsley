@@ -12,7 +12,8 @@
             class="org.eclipse.emf.parsley.examples.mail.mailsview.MailsviewExecutableExtensionFactory:org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView"
             icon="icons/sample.gif"
             id="org.eclipse.emf.parsley.examples.mail.mailsview.views.MailsView"
-            name="Mails View">
+            name="Mails View"
+            restorable="true">
       </view>
    </extension>
    <extension

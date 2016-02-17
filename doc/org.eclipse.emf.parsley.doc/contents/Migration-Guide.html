@@ -10,6 +10,24 @@
 <body>
 <a name="MigrationGuide"></a>
 <h1>Migration Guide</h1>
+<a name="SixMinors"></a>
+<h2>From 0.6.0 to 0.6.1</h2>
+<p>
+<ul>
+	<li>
+		<em>The plugin.xml and the new EMF Parsley builder</em>: the way we handle the
+		<em>plugin.xml</em> has improved, and we also automatically merge subsequent changes in the
+		DSL file <em>parts</em> section.  Please have a look at <a href="01-Overview.html#PluginXml" title="Go to &quot;How the DSL handles the plugin.xml&quot;">How the DSL handles the plugin.xml</a> for
+		the details.
+		IMPORTANT: This merging takes place ONLY if your project has the <em>EMF Parsley builder nature</em>.
+		Since version 0.6.1 this nature is automatically applied to the projects created with our wizard.
+		In existing projects, you have to enable the nature yourself by right-clicking on the project,
+		then "Configure" and then "Enable EMF Parsley builder.
+		Once you added this new nature, please remove the <em>plugin.xml_emfparsley_gen</em> from the root
+		of your project, and perform a clean of the project.
+	</li>
+</ul>
+</p>
 <a name="FiveMinors"></a>
 <h2>From 0.5.0 to 0.6.0</h2>
 <p>

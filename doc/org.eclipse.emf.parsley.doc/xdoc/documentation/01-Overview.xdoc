@@ -45,8 +45,8 @@ img[images/01-dsl-content-assistant.png][][ ][]
 The DSL allows to customize the most relevant behaviors, currently the following are permitted:
 
 ul[
-	item[e[parts] lets you define your View Parts: a file e[plugin.xml_emfparsley_gen] will be generated
-	that is meant to be synchronized with your own e[plugin.xml]]
+	item[e[parts] lets you define your View Parts: this will correspond to the standard Eclipse extension
+	points for the parts (see ref:PluginXml[How the DSL handles the plugin.xml])]
 
 	item[e[bindings] section lets you define which implementation will be used with Injection]
 
@@ -68,6 +68,31 @@ ul[
 	item[e[Control Factory] provides a custom implementation of the Controls for each feature shown in a form or a dialog. 
 	Different implementations can be defined forfor e[dialogs] and e[forms]]
 ]
+
+section3:PluginXml[How the DSL handles the plugin.xml]
+
+If you specify any e[part] in the DSL file, then
+the Parsley DSL will generate a e[plugin.xml_emfparsley_gen] in the e[emfparsley-gen] folder,
+in a directory named after the containing module.  Then, the e[EMF Parsley builder] will take
+care of merging the generated content with the e[plugin.xml] in the root folder of the current project.
+If the e[plugin.xml] does not exist it will create it.  Subsequent changes to the DSL file
+will regenerate e[plugin.xml_emfparsley_gen] and the builder will merge it with e[plugin.xml].
+The merging will overwrite in the e[plugin.xml] only the elements that are specified in the DSL.
+Any other elements in the e[plugin.xml] will not be touched, so you can also add other extension points
+manually in the e[plugin.xml].
+
+This merging takes place ONLY if your project has the e[EMF Parsley builder nature].
+Since version 0.6.1 this nature is automatically applied to the projects created with our wizard.
+In existing projects, you have to enable the nature yourself by right-clicking on the project,
+then "Configure" and then "Enable EMF Parsley builder.
+
+Note that this merging will not consider possible removed e[part] sections in the DSL file.
+The merging relies on the e[id], so if you change the e[id], e.g., the e[viewid], in the DSL file, then you will end up
+with two extension points in the e[plugin.xml].  Thus, in general, if you removed a e[part] section from
+the DSL file, or if you rename an e[id] in a e[part] section, please make sure you manually modify
+the e[plugin.xml] accordingly.  The easiest way is to select to the files,
+and use the context menu "Compare With" => "Each Other".  This way, you will soon detect the
+changes that have to be manually applied.
 
 %%section2:Customitations_TheHardWay[The Hard way]
 %%

@@ -87,8 +87,8 @@ The DSL allows to customize the most relevant behaviors, currently the following
 <p>
 <ul>
 	<li>
-		<em>parts</em> lets you define your View Parts: a file <em>plugin.xml_emfparsley_gen</em> will be generated
-			that is meant to be synchronized with your own <em>plugin.xml</em>
+		<em>parts</em> lets you define your View Parts: this will correspond to the standard Eclipse extension
+			points for the parts (see <a href="01-Overview.html#PluginXml" title="Go to &quot;How the DSL handles the plugin.xml&quot;">How the DSL handles the plugin.xml</a>)
 	</li>
 	<li>
 		<em>bindings</em> section lets you define which implementation will be used with Injection
@@ -118,6 +118,34 @@ The DSL allows to customize the most relevant behaviors, currently the following
 			Different implementations can be defined forfor <em>dialogs</em> and <em>forms</em>
 	</li>
 </ul>
+</p>
+<a name="PluginXml"></a>
+<h4>How the DSL handles the plugin.xml</h4>
+<p>
+If you specify any <em>part</em> in the DSL file, then
+the Parsley DSL will generate a <em>plugin.xml_emfparsley_gen</em> in the <em>emfparsley-gen</em> folder,
+in a directory named after the containing module.  Then, the <em>EMF Parsley builder</em> will take
+care of merging the generated content with the <em>plugin.xml</em> in the root folder of the current project.
+If the <em>plugin.xml</em> does not exist it will create it.  Subsequent changes to the DSL file
+will regenerate <em>plugin.xml_emfparsley_gen</em> and the builder will merge it with <em>plugin.xml</em>.
+The merging will overwrite in the <em>plugin.xml</em> only the elements that are specified in the DSL.
+Any other elements in the <em>plugin.xml</em> will not be touched, so you can also add other extension points
+manually in the <em>plugin.xml</em>.
+</p>
+<p>
+This merging takes place ONLY if your project has the <em>EMF Parsley builder nature</em>.
+Since version 0.6.1 this nature is automatically applied to the projects created with our wizard.
+In existing projects, you have to enable the nature yourself by right-clicking on the project,
+then "Configure" and then "Enable EMF Parsley builder.
+</p>
+<p>
+Note that this merging will not consider possible removed <em>part</em> sections in the DSL file.
+The merging relies on the <em>id</em>, so if you change the <em>id</em>, e.g., the <em>viewid</em>, in the DSL file, then you will end up
+with two extension points in the <em>plugin.xml</em>.  Thus, in general, if you removed a <em>part</em> section from
+the DSL file, or if you rename an <em>id</em> in a <em>part</em> section, please make sure you manually modify
+the <em>plugin.xml</em> accordingly.  The easiest way is to select to the files,
+and use the context menu "Compare With" =&gt; "Each Other".  This way, you will soon detect the
+changes that have to be manually applied.
 </p>
 <p>
 

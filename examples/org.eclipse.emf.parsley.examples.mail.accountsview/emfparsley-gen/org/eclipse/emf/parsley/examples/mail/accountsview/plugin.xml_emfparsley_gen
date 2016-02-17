@@ -3,14 +3,9 @@
 <plugin>
    <extension
          point="org.eclipse.ui.views">
-      <category
-            id="org.eclipse.emf.parsley.examples.mail.accountsview"
-            name="Mail Example">
-      </category>
       <view
             category="org.eclipse.emf.parsley.examples.mail.accountsview"
             class="org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewExecutableExtensionFactory:org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView"
-            icon="icons/sample.gif"
             id="org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView"
             name="Mail Accounts View"
             restorable="true">

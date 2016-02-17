@@ -36,7 +36,7 @@
    </plugins>
 
    <features>
-      <feature id="org.eclipse.emf.parsley.examples.mail.product.feature" version="1.0.0.qualifier"/>
+      <feature id="org.eclipse.emf.parsley.examples.mail.product.feature" />
    </features>
 
 

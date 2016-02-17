@@ -11,19 +11,4 @@
             restorable="true">
       </view>
    </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="org.eclipse.emf.parsley.examples.cdo.company.app.perspective">
-         <view
-               id="org.eclipse.emf.parsley.examples.cdo.company.ui.products"
-               minimized="false"
-               ratio="0.4"
-               relationship="top"
-               relative="org.eclipse.ui.editorss"
-               showTitle="false"
-               standalone="true">
-         </view>
-      </perspectiveExtension>
-   </extension>
 </plugin>
