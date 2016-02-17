@@ -24,7 +24,7 @@ class EmfParsleyDslPluginXmlLoaderTests {
 
 	val s1 = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">
@@ -61,7 +61,7 @@ class EmfParsleyDslPluginXmlLoaderTests {
 
 	val singleView = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">
@@ -78,7 +78,7 @@ class EmfParsleyDslPluginXmlLoaderTests {
 
 	val singleView2 = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">
@@ -94,7 +94,7 @@ class EmfParsleyDslPluginXmlLoaderTests {
 
 	val singleEditor = '''
 	<?xml version="1.0" encoding="UTF-8"?>
-	<?eclipse version="3.0"?>
+	<?eclipse version="3.4"?>
 	<plugin>
 	   <extension
 	         point="org.eclipse.ui.editors">
@@ -114,12 +114,12 @@ class EmfParsleyDslPluginXmlLoaderTests {
 
 	val emptyPlugin = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 '''
 
 	val emptyView = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">
@@ -236,7 +236,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		val loader = load(
 			'''
 			<?xml version="1.0" encoding="UTF-8"?>
-			<?eclipse version="3.0"?>
+			<?eclipse version="3.4"?>
 			<plugin>
 			   <extension
 			         point="org.eclipse.ui.views">
@@ -271,7 +271,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		loader.insertExtension(EDITOR_POINT)
 		'''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.editors">
@@ -287,7 +287,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		loader.insertExtension(EDITOR_POINT)
 		'''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.editors">
@@ -352,7 +352,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		// indentation
 		'''
 		<?xml version="1.0" encoding="UTF-8"?>
-		<?eclipse version="3.0"?>
+		<?eclipse version="3.4"?>
 		<plugin>
 		   <extension
 		         point="org.eclipse.ui.views">
@@ -387,7 +387,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		// the editor already has the contentTypeBinding child
 		val target = load('''
 	<?xml version="1.0" encoding="UTF-8"?>
-	<?eclipse version="3.0"?>
+	<?eclipse version="3.4"?>
 	<plugin>
 	   <extension
 	         point="org.eclipse.ui.editors">
@@ -412,7 +412,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		// the editor does not have the contentTypeBinding child
 		val target = load('''
 	<?xml version="1.0" encoding="UTF-8"?>
-	<?eclipse version="3.0"?>
+	<?eclipse version="3.4"?>
 	<plugin>
 	   <extension
 	         point="org.eclipse.ui.editors">
@@ -464,7 +464,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 		'''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">

@@ -31,6 +31,7 @@ import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
 import static org.eclipse.emf.parsley.dsl.tests.util.ui.TestableEmfParsleyDslNewProjectWizard.*
 import org.eclipse.core.resources.IProject
+import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
 
 /**
  * @author Lorenzo Bettini
@@ -38,13 +39,17 @@ import org.eclipse.core.resources.IProject
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
 class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
-	
+
 	@Inject Provider<TestableEmfParsleyDslNewProjectWizard> wizardProvider
 
 	@Inject PluginProjectHelper projectHelper
-	
+
 	val TEST_MODULE = TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + "/module.parsley"
-	
+
+	val TEST_PLUGIN_XML_GEN = 
+		EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN + "/" + TEST_PROJECT + "/" +
+		EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_GEN_FILE
+
 	/**
 	 * Create the wizard dialog, open it and press Finish.
 	 */
@@ -96,7 +101,7 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 '''
 module «TEST_PROJECT» {
 	
-	// parts should trigger generation of «PLUGIN_XML_EMFPARSLEY_GEN»
+	// parts should trigger generation of «PLUGIN_XML_GEN_FILE»
 	
 	parts {
 		viewpart id {
@@ -110,23 +115,23 @@ module «TEST_PROJECT» {
 		)
 		waitForBuild
 		
-		assertTrue(project.getFile("/" + PLUGIN_XML_EMFPARSLEY_GEN).exists())
-		assertTrue(project.getFile("/" + PLUGIN_XML_EMFPARSLEY).exists())
+		assertTrue(project.getFile(TEST_PLUGIN_XML_GEN).exists())
+		assertTrue(project.getFile("/plugin.xml").exists())
 		
 		project.modifyParsleyModuleFile(
 '''
 module «TEST_PROJECT» {
 	// removed parts
 	
-	// «PLUGIN_XML_EMFPARSLEY_GEN» should be removed
+	// «PLUGIN_XML_GEN_FILE» should be removed
 }
 '''		
 		)
 		waitForBuild
 
-		assertFalse(project.getFile("/" + PLUGIN_XML_EMFPARSLEY_GEN).exists())
+		assertFalse(project.getFile(TEST_PLUGIN_XML_GEN).exists())
 		// plugin.xml should still be there
-		assertTrue(project.getFile("/" + PLUGIN_XML_EMFPARSLEY).exists())
+		assertTrue(project.getFile("/plugin.xml").exists())
 	}
 
 	def private createProjectWithNewProjectWizard() {

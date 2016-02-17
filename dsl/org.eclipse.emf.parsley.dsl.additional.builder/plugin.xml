@@ -104,5 +104,27 @@
             value="true">
       </persistent>
    </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/parsley_nature.png"
+            id="org.eclipse.emf.parsley.builder.nature.overlay"
+            label="Emf Parsley Dsl Plugin Xml Nature"
+            lightweight="true"
+            location="BOTTOM_LEFT"
+            state="true">
+         <enablement>
+         	<and>
+		     	<objectClass
+		              name="org.eclipse.core.resources.IProject"/>
+		        <objectState
+		              name="nature"
+		              value="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature">
+		        </objectState>
+            </and>
+         </enablement>
+      </decorator>
+   </extension>
 
 </plugin>

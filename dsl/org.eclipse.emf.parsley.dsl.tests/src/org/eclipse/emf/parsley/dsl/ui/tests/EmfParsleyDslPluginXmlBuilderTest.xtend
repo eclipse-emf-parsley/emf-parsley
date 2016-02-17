@@ -48,7 +48,7 @@ class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 
 	val s1 = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">
@@ -85,7 +85,7 @@ class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 
 	val singleView = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">
@@ -102,7 +102,7 @@ class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 
 	val singleView2 = '''
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 <plugin>
    <extension
          point="org.eclipse.ui.views">

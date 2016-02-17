@@ -175,7 +175,7 @@ class PluginXmlLoader extends PluginModel {
 		// it would be nice to use the Document contents, but these are not synchronized
 		// with the plugin model changes
 		'''
-		«plugin.toString.replaceFirst("(<plugin)\\r?\\n(>)", "<plugin>")»
+		«plugin.toString.replaceFirst("eclipse version=\"3.0", "eclipse version=\"3.4").replaceFirst("(<plugin)\\r?\\n(>)", "<plugin>")»
 		'''
 	}
 

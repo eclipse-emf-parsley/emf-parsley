@@ -26,7 +26,8 @@ Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
  org.eclipse.emf.parsley.generator.common,
  org.eclipse.emf.parsley.wizards,
  org.objectweb.asm;bundle-version="5.0.1",
- org.eclipse.jdt.debug.ui
+ org.eclipse.jdt.debug.ui,
+ org.eclipse.emf.parsley.dsl.additional.builder
 Import-Package: org.apache.log4j,
  org.eclipse.pde.internal.ui.parts,
  org.eclipse.xtext.xbase.lib
