@@ -33,6 +33,7 @@ import org.junit.runners.Suite;
 	EmfParsleyTemplateWizardConfigurationTests.class,
 	EmfParsleyTemplateWizardConfigurationFactoryTests.class,
 	EmfParsleyDslFormatterTests.class,
+	EmfParsleyDslPluginXmlLoaderTests.class
 })
 public class EmfParsleyDslAllTests {
 
