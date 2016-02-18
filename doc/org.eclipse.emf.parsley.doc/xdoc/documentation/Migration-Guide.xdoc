@@ -1,5 +1,25 @@
 chapter:MigrationGuide[Migration Guide]
 
+section:SixMinors[From 0.6.0 to 0.6.1]
+
+ul[
+
+item[e[The plugin.xml and the new EMF Parsley builder]: the way we handle the
+e[plugin.xml] has improved, and we also automatically merge subsequent changes in the
+DSL file e[parts] section.  Please have a look at ref:PluginXml[How the DSL handles the plugin.xml] for
+the details.
+
+IMPORTANT: This merging takes place ONLY if your project has the e[EMF Parsley builder nature].
+Since version 0.6.1 this nature is automatically applied to the projects created with our wizard.
+In existing projects, you have to enable the nature yourself by right-clicking on the project,
+then "Configure" and then "Enable EMF Parsley builder.
+
+Once you added this new nature, please remove the e[plugin.xml_emfparsley_gen] from the root
+of your project, and perform a clean of the project.
+]
+
+]
+
 section:FiveMinors[From 0.5.0 to 0.6.0]
 
 ul[

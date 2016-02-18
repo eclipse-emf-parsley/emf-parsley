@@ -21,7 +21,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	EmfParsleyDslWorkbenchTest.class,
 	EmfParsleyDslContentAssistTest.class,
-	EmfParsleyDslOutlineTest.class
+	EmfParsleyDslOutlineTest.class,
+	EmfParsleyDslPluginXmlBuilderTest.class
 })
 public class EmfParsleyDslAllUiTests {
 

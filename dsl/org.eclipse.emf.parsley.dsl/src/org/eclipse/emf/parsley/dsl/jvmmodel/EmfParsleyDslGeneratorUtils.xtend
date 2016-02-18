@@ -21,12 +21,12 @@ import static extension org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Lorenzo Bettini
- *
+ * 
  */
 class EmfParsleyDslGeneratorUtils {
-	
+
 	@Inject extension IQualifiedNameProvider
-	
+
 	@Inject EmfParsleyProjectFilesGenerator projectFilesGenerator
 
 	def String getPropertyNameForGetterSetterMethod(String opName) {
@@ -42,13 +42,12 @@ class EmfParsleyDslGeneratorUtils {
 	}
 
 	def executableExtensionFactoryQN(Module element) {
-   		element.fullyQualifiedName.toString + "." +
-   		projectFilesGenerator.extFactoryName(element.fullyQualifiedName.toString)
-   	}
+		element.fullyQualifiedName.toString + "." +
+			projectFilesGenerator.extFactoryName(element.fullyQualifiedName.toString)
+	}
 
-   	def executableExtensionFactoryQN(PartSpecification element) {
-   		element.getContainerOfType(typeof(Module)).executableExtensionFactoryQN
-   	}
+	def executableExtensionFactoryQN(PartSpecification element) {
+		element.getContainerOfType(typeof(Module)).executableExtensionFactoryQN
+	}
 
-	
 }

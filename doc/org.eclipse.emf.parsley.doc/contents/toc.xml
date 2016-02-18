@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<toc topic="contents/00-Main.html" label="Emf Parsley Guide" >
+	<topic href="contents/00-Main_4.html#Emf%20Parsley%20Guide_4" label="Getting Started" >
+		<topic href="contents/01-Overview.html#Overview" label="Overview" >
+			<topic href="contents/01-Overview.html#ParsleyComponents" label="Parsley Components" >
+			</topic>
+			<topic href="contents/01-Overview.html#Customize" label="Customize" >
+				<topic href="contents/01-Overview.html#Customizations_DSL" label="Customize with the DSL" >
+					<topic href="contents/01-Overview.html#PluginXml" label="How the DSL handles the plugin.xml" >
+					</topic>
+				</topic>
+			</topic>
+		</topic>
+		<topic href="contents/02-FirstExample.html#FirstExample" label="First Example" >
+		</topic>
+	</topic>
+	<topic href="contents/00-Main_5.html#Emf%20Parsley%20Guide_5" label="Reference Documentation" >
+		<topic href="contents/05-Components.html#Components" label="Components" >
+			<topic href="contents/05-Components.html#FormComponent" label="Form Component" >
+				<topic href="contents/05-Components.html#FormComponent_features" label="Feature List Customization" >
+				</topic>
+				<topic href="contents/05-Components.html#FormComponent_captions" label="Caption Customization" >
+				</topic>
+				<topic href="contents/05-Components.html#FormComponent_controls" label="Control Customization" >
+				</topic>
+				<topic href="contents/05-Components.html#FormComponent_proposals" label="Proposal Provider" >
+				</topic>
+			</topic>
+			<topic href="contents/05-Components.html#TreeComponent" label="Tree Component" >
+				<topic href="contents/05-Components.html#Tree_ContentProvider" label="Content Provider" >
+				</topic>
+				<topic href="contents/05-Components.html#Tree_LabelProvider" label="LabelProvider" >
+				</topic>
+				<topic href="contents/05-Components.html#Tree_MenuBuilder" label="Adding Menu" >
+				</topic>
+			</topic>
+			<topic href="contents/05-Components.html#TreeFormComponent" label="Tree Form Component" >
+			</topic>
+			<topic href="contents/05-Components.html#TableComponent" label="Table Component" >
+				<topic href="contents/05-Components.html#Table_features" label="Feature List Customization" >
+				</topic>
+				<topic href="contents/05-Components.html#Table_captions" label="Caption Customization" >
+				</topic>
+				<topic href="contents/05-Components.html#Table_columns_width" label="Column width Customization" >
+				</topic>
+				<topic href="contents/05-Components.html#Table_MenuBuilder" label="Adding Menu" >
+				</topic>
+			</topic>
+			<topic href="contents/05-Components.html#TreeWithColumnsComponent" label="Tree With Columns Component" >
+			</topic>
+		</topic>
+		<topic href="contents/06-Customization.html#Customizations" label="Customizations" >
+			<topic href="contents/06-Customization.html#GuiceBindings" label="Dependency Injection With Google Guice" >
+				<topic href="contents/06-Customization.html#ModuleAPI" label="Module API" >
+				</topic>
+				<topic href="contents/06-Customization.html#BindingsInTheDSL" label="Specify Guice Bindings in the DSL" >
+				</topic>
+			</topic>
+			<topic href="contents/06-Customization.html#Providers" label="Providers" >
+				<topic href="contents/06-Customization.html#ViewerLabelProvider" label="Viewer Label Provider" >
+				</topic>
+				<topic href="contents/06-Customization.html#ViewerContentProvider" label="Viewer Content Provider" >
+				</topic>
+				<topic href="contents/06-Customization.html#TableViewerContentProvider" label="Table Viewer Content Provider" >
+				</topic>
+				<topic href="contents/06-Customization.html#TableLabelProvider" label="Table Label Provider" >
+				</topic>
+				<topic href="contents/06-Customization.html#FeaturesProvider" label="Features Provider" >
+					<topic href="contents/06-Customization.html#TableFeaturesProvider" label="Table Features Provider" >
+					</topic>
+				</topic>
+				<topic href="contents/06-Customization.html#FeatureCaptionProvider" label="Feature Caption Provider" >
+					<topic href="contents/06-Customization.html#FormFeatureCaptionProvider" label="Form and Dialog Feature Caption Provider" >
+					</topic>
+				</topic>
+				<topic href="contents/06-Customization.html#ProposalProvider" label="Proposal Provider" >
+				</topic>
+			</topic>
+			<topic href="contents/06-Customization.html#ContextualMenu" label="Contextual Menu" >
+				<topic href="contents/06-Customization.html#MenuBuilder" label="Menu Builder" >
+				</topic>
+			</topic>
+			<topic href="contents/06-Customization.html#DND" label="Drag and Drop" >
+			</topic>
+			<topic href="contents/06-Customization.html#Factories" label="Factories" >
+				<topic href="contents/06-Customization.html#WidgetFactory" label="Widget Factory" >
+				</topic>
+				<topic href="contents/06-Customization.html#FormControlFactory" label="Form Control Factory" >
+				</topic>
+				<topic href="contents/06-Customization.html#DialogControFactory" label="Dialog Control Factory" >
+				</topic>
+			</topic>
+			<topic href="contents/06-Customization.html#EditingDomain" label="Editing Domain" >
+				<topic href="contents/06-Customization.html#EditingDomainProvider" label="Editing Domain Provider" >
+				</topic>
+				<topic href="contents/06-Customization.html#EditingDomainFinder" label="Editing Domain Finder" >
+				</topic>
+			</topic>
+			<topic href="contents/06-Customization.html#Resources" label="Resources" >
+				<topic href="contents/06-Customization.html#ResourceLoader" label="Resource Loader" >
+				</topic>
+				<topic href="contents/06-Customization.html#ResourceManager" label="Resource Manager" >
+				</topic>
+				<topic href="contents/06-Customization.html#ResourceSaveStrategy" label="Resource Save Strategy" >
+				</topic>
+			</topic>
+			<topic href="contents/06-Customization.html#Configurator" label="Configurator" >
+			</topic>
+			<topic href="contents/06-Customization.html#Validation" label="Validation" >
+			</topic>
+		</topic>
+		<topic href="contents/AdvancedFeatures.html#AdvancedFeatures" label="Advanced Features" >
+			<topic href="contents/AdvancedFeatures.html#Testing" label="Testing Framework" >
+			</topic>
+		</topic>
+		<topic href="contents/08-RAP.html#RAP" label="RAP" >
+			<topic href="contents/08-RAP.html#introduction" label="Introduction" >
+			</topic>
+			<topic href="contents/08-RAP.html#setupParsleyRAP" label="Setup" >
+				<topic href="contents/08-RAP.html#installRapTools" label="Installing the RAP Tools" >
+				</topic>
+				<topic href="contents/08-RAP.html#rapSetTargetPlatform" label="Setup the EMF Parsley RAP Target Platform" >
+				</topic>
+			</topic>
+			<topic href="contents/08-RAP.html#rapExamples" label="Examples" >
+				<topic href="contents/08-RAP.html#rapFirstExample" label="Running the Parsley RAP UI Example" >
+				</topic>
+				<topic href="contents/08-RAP.html#rapCdoExample" label="Running the Parsley RAP CDO Example" >
+				</topic>
+			</topic>
+		</topic>
+		<topic href="contents/07-Eclipse4.html#Eclipse4" label="Eclipse 4.x" >
+			<topic href="contents/07-Eclipse4.html#GetFirstExample" label="First Example Setup" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#PrepareForEclipse4Application" label="Preparing for a pure e4 Application" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#CreateEclipse4Application" label="Create an e4 Application" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#Eclipse4ApplicationAndEMFParsley" label="Using a TreeComposite into an e4 Part" >
+			</topic>
+			<topic href="contents/07-Eclipse4.html#Eclipse4Save" label="Adding the dirty state and Save command" >
+			</topic>
+		</topic>
+	</topic>
+	<topic href="contents/00-Main_6.html#Emf%20Parsley%20Guide_6" label="Appendix" >
+		<topic href="contents/Migration-Guide.html#MigrationGuide" label="Migration Guide" >
+			<topic href="contents/Migration-Guide.html#SixMinors" label="From 0.6.0 to 0.6.1" >
+			</topic>
+			<topic href="contents/Migration-Guide.html#FiveMinors" label="From 0.5.0 to 0.6.0" >
+			</topic>
+			<topic href="contents/Migration-Guide.html#FourFive" label="From 0.4 to 0.5" >
+			</topic>
+			<topic href="contents/Migration-Guide.html#ThreeFour" label="From 0.3 to 0.4" >
+			</topic>
+		</topic>
+	</topic>
+</toc>

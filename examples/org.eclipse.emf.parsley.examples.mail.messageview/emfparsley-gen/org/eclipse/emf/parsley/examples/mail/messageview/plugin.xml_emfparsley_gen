@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.eclipse.emf.parsley.examples.mail.messageview"
+            class="org.eclipse.emf.parsley.examples.mail.messageview.MessageviewExecutableExtensionFactory:org.eclipse.emf.parsley.examples.mail.messageview.views.MessageView"
+            id="org.eclipse.emf.parsley.examples.mail.messageview.views.MessageView"
+            name="Mail Message View"
+            restorable="true">
+      </view>
+   </extension>
+</plugin>

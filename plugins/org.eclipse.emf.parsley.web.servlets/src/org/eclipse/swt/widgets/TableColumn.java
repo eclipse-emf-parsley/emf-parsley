@@ -26,6 +26,13 @@ public class TableColumn extends Item {
 		parent.createItem(this, parent.getColumnCount());
 	}
 
+	public TableColumn (Table parent, int style, int index) {
+		super (parent, checkStyle (style));
+		resizable = true;
+		this.parent = parent;
+		parent.createItem (this, index);
+	}
+
 	static int checkStyle(int style) {
 		return checkBits(style, SWT.LEFT, SWT.CENTER, SWT.RIGHT, 0, 0, 0);
 	}

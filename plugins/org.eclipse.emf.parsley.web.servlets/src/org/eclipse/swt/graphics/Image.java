@@ -13,6 +13,8 @@ package org.eclipse.swt.graphics;
 
 public final class Image extends Resource implements Drawable {
 
+	public long /*int*/ handle;
+	
 	Image(Device device) {
 		super(device);
 	}
@@ -30,4 +32,8 @@ public final class Image extends Resource implements Drawable {
 	public void internal_dispose_GC(long handle, GCData data) {
 	}
 
+	@Override
+	public boolean isDisposed() {
+		return handle == 0;
+	}
 }

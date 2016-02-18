@@ -16,6 +16,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder;
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
@@ -75,6 +77,20 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 				+ "."
 				+ projectFilesGenerator.activatorName(
 						getProjectInfo().getProjectName()).toString();
+	}
+
+	@Override
+	protected String[] getProjectNatures() {
+		List<String> natures = Lists.newArrayList(super.getProjectNatures());
+		natures.add(EmfParsleyDslPluginXmlNature.NATURE_ID);
+		return natures.toArray(new String[natures.size()]);
+	}
+
+	@Override
+	protected String[] getBuilders() {
+		List<String> builders = Lists.newArrayList(super.getBuilders());
+		builders.add(EmfParsleyDslPluginXmlBuilder.BUILDER_ID);
+		return builders.toArray(new String[builders.size()]);
 	}
 
 	@Override

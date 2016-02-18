@@ -26,5 +26,7 @@ public abstract class Resource {
 		Device device = this.device;
 		return device;
 	}
+	
+	public abstract boolean isDisposed();
 
 }

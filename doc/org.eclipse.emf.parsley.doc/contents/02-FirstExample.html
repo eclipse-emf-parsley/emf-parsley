@@ -1,0 +1,756 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>First Example</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="00-Main.html" title="">
+</head>
+<body>
+<a name="FirstExample"></a>
+<h1>First Example</h1>
+<p>
+The purpose of this first example is to make use of the classical EMF Library Model example and
+create a view for editing such models using an EMF Parsley enabled plug-in.  We will use
+one of the saveable views shipped with Parsley: a Tree Form View.
+</p>
+<p>
+So let&apos;s start by creating the model plug-in with
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Eclipse Modeling Framework", select "Extended Library Model Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+</ol>
+</p>
+<p>
+You will end up with three plug-ins: 
+</p>
+<p>
+<ul>
+	<li>
+		org.eclipse.emf.examples.library (the model plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library.edit (the edit plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library.editor (the editor plug-in)
+	</li>
+</ul>
+</p>
+<p>
+The editor plug-in project can be removed.
+</p>
+<p>
+Please consider that here we are starting from this well known EMF model taken out-of-the-box from Eclipse,
+but you can start from your EMF model (in that case you may probably omit the ".edit" and ".editor" plugins, depending on your model).
+</p>
+<p>
+Now you can create your first example with the appropriate wizard.
+</p>
+<p>
+<ol>
+	<li>
+		select "File" -&gt; "New" -&gt; "Project..."
+	</li>
+	<li>
+		from the "Emf Parsley" category select "Emf Parsley Dsl based Project"
+			
+			<div class="image" >
+		<img src="images/01-new-project-dsl-wizard.png" class=" " 
+		/>
+		<div class="caption">
+		</div>
+		</div>
+		 
+			
+	</li>
+	<li>
+		click "Next"
+	</li>
+	<li>
+		give a name to the project (e.g. "org.eclipse.emf.parsley.examples.firstexample")
+			and make sure the checkbox about using one of the templates is checked
+			
+			<div class="image" >
+		<img src="images/01-new-project-dsl-wizard2.png" class=" " 
+		/>
+		<div class="caption">
+		</div>
+		</div>
+		 
+			
+	</li>
+	<li>
+		click "Next"
+	</li>
+	<li>
+		Select "Saveable Tree Form View"
+			
+			<div class="image" >
+		<img src="images/01-new-project-dsl-wizard3.png" class=" " 
+		/>
+		<div class="caption">
+		</div>
+		</div>
+		 
+			
+	</li>
+	<li>
+		click "Finish"
+	</li>
+</ol>
+
+ 
+The generated project has some classes and a <em>module.parlsey</em> file, which opens automatically:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample.FirstexampleSaveableTreeFormView<br/>
+<br/>
+<span class="comment">/*&nbsp;org.eclipse.emf.parsley.examples.firstexample&nbsp;Emf&nbsp;Parsley&nbsp;Dsl&nbsp;Module&nbsp;file&nbsp;*/</span><br/>
+<span class="keyword">module</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">parts</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewpart</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewname</span>&nbsp;<span class="string">"Firstexample"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewclass</span>&nbsp;FirstexampleSaveableTreeFormView<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">configurator</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">resourceURI</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstexampleSaveableTreeFormView&nbsp;-&gt;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;create&nbsp;and&nbsp;return&nbsp;a&nbsp;org.eclipse.emf.common.util.URI<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">null</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">resourceManager</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">initializeResource</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Optional:&nbsp;initialize&nbsp;an&nbsp;empty&nbsp;Resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&apos;it&apos;&nbsp;is&nbsp;of&nbsp;type&nbsp;Resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;e.g.,&nbsp;it.getContents&nbsp;+=&nbsp;myFactory.createMyClass<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+The <em>viewpart</em> corresponds to the standard Eclipse view part extension point; the Parsley
+DSL will handle the generation and update of the <em>plugin.xml</em> file.
+Please have a look at <a href="01-Overview.html#PluginXml" title="Go to &quot;How the DSL handles the plugin.xml&quot;">How the DSL handles the plugin.xml</a> for further
+details.
+</p>
+<p>
+The wizard will also generate a view part class into the project
+(in this example, <em>FirstexampleSaveableTreeFormView</em>); you can add other controls
+into that view, or customize other behaviors.  Note that the Parsley DSL will never
+touch the files into the <em>src</em> source folder.  On the contrary, files generated into
+<em>emfparsley-gen</em> source folder must never be manually modified, since its contents will
+be regenerated each time you modify the <em>module.parsley</em> file.
+</p>
+<p>
+For example, let&apos;s change the view name into "My Library Tree Form":
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">module</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">parts</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewpart</span>&nbsp;org.eclipse.emf.parsley.examples.firstexample&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">viewname</span>&nbsp;<span class="string">"My&nbsp;Library&nbsp;Tree&nbsp;Form"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Let&apos;s save the file, wait for Eclipse to rebuild, and update the
+<em>plugin.xml</em> with the new <em>plugin.xml_emfparsley_gen</em>.
+</p>
+<p>
+(Other <em>viewpart</em> sections can be created; content assist is available for that).
+</p>
+<p>
+In the generated <em>module.parsley</em>, there is a <em>configurator</em> section, with
+a <em>TODO</em> comment (The <em>Configurator</em> is detailed in the section <a href="06-Customization.html#Configurator" title="Go to &quot;Configurator&quot;">Configurator</a>):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">configurator</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">resourceURI</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstexampleSaveableTreeFormView&nbsp;-&gt;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;TODO&nbsp;create&nbsp;and&nbsp;return&nbsp;a&nbsp;org.eclipse.emf.common.util.URI<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;<span class="keyword">null</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Let&apos;s focus on the above <em>resourceURI</em>: our goal is allowing to manage 
+a library model instance which persists on a EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>.
+So we must specify the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/common/util/URI.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.URI" >URI</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/URI.java" title="View Source Code" >(src)</a> of the resource
+that will be edited by our tree form view.
+In this example we choose to use the EMF default persistence (XMI), but you can provide any URI 
+(e.g. using Teneo, CDO or any other EMF Resource Persistence implementation)
+In particular here we choose to persist the Resource in a XMI file named <em>"MyLibrary.library"</em>
+into the user home folder (you might want to change it with any other path).
+To achieve this, we just need to create such a URI (recall that content assist is available
+when typing Xbase expressions):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">configurator</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">resourceURI</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FirstexampleSaveableTreeFormView&nbsp;-&gt;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;URI.createFileURI(&nbsp;System.getProperty(<span class="string">"user.home"</span>)&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>&nbsp;);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+If you simply copy and paste the above return statement, you&apos;ll get an error about
+unresolvable Java type URI; "Organize Imports" context menu (or its shortcut "Ctrl+Shift+O")
+can be used to automatically add the missing import (make sure you select
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/common/util/URI.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.URI" >URI</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/URI.java" title="View Source Code" >(src)</a>).
+</p>
+<p>
+Note that the specified URI, will be used for loading the resource only for our specific
+view (the resource will be automatically created if it does not exist).
+</p>
+<p>
+In the <em>module.parsley</em> there is another section that has been generated by the wizard:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">resourceManager</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">initializeResource</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Optional:&nbsp;initialize&nbsp;an&nbsp;empty&nbsp;Resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;&apos;it&apos;&nbsp;is&nbsp;of&nbsp;type&nbsp;Resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;e.g.,&nbsp;it.getContents&nbsp;+=&nbsp;myFactory.createMyClass<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+We can use this section to initialize our resource when it is empty
+(i.e., the first time the resource is created); (The <em>resourceManager</em>
+is detailed in section <a href="06-Customization.html#ResourceManager" title="Go to &quot;Resource Manager&quot;">Resource Manager</a>).
+</p>
+<p>
+In this example, we want to initialize an empty resource with a
+<em>Library</em> object; so
+we first need a <em>Dependency</em> from the model plug-in: so open <em>MANIFEST.MF</em> file, go to <em>Dependencies</em>
+tab, press <em>"Add..."</em> button in <em>"Required Plug-ins"</em> section and insert <em>"org.eclipse.emf.examples.library"</em>
+among dependencies.
+</p>
+<p>
+Now we can implement the <em>initializeResource</em> method
+(as described in the comment, the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>
+to initialized is available through the parameter <em>it</em>); the Library object
+is created using the standard EMF API: we need the factory of the library model:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">resourceManager</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">initializeResource</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">it</span>.getContents&nbsp;+=&nbsp;EXTLibraryFactory.eINSTANCE.createLibrary<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Again, use the content assist while typing, e.g., for automatically importing the
+type <em>EXTLibraryFactory</em>, or use the "Organize Imports" functionality.
+</p>
+<p>
+Now, we are ready to execute this example:
+let&apos;s get back to the <em>MANIFEST.MF</em> and run the example
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-launch.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+As an Eclipse RCP developer you know, of course, that this will start another Eclipse instance (unless
+you add an Application plug-in to the launch or define an Application in the current plug-in). 
+</p>
+<p>
+In this second Eclipse instance you can show the View in this way:
+<ol>
+	<li>
+		<em>Window -&gt; Show View -&gt; Other...</em>
+	</li>
+	<li>
+		from Category "Other", select "My Library Tree Form"
+	</li>
+	<li>
+		press <em>OK</em>
+	</li>
+</ol>
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-run.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+With this simple view you can start editing the model instance. For example you can set the <em>"name"</em>
+field; as soon as you start typing characters into this field you will notice that:
+<ol>
+	<li>
+		the View turns to a <em>"dirty"</em> state (an asterisk symbol appears on the view tab)
+	</li>
+	<li>
+		the <em>"Save"</em> toolbar button is enabled
+	</li>
+	<li>
+		the typed characters are reflected into the label correspondent to the Library icon
+	</li>
+</ol>
+</p>
+<p>
+if you now perform a <em>"Save"</em> action the persistence mechanism will trigger and you will see that file 
+<span class="inlinecode">&lt;user.home&gt;/MyLibrary.library</span>
+is being created on the file system. From now on, this file will keep the state of the model object whenever
+you change and save it. 
+</p>
+<p>
+To create a Writer into the Library just right-click on the Library object and select <em>New Child -&gt; Writer</em>
+</p>
+<p>
+<div class="image" >
+<img src="images/createWriter.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Please note that you might see a slightly different content in the above context-menu in case you deleted
+the .edit plugin when creating the model (e.g. <em>"Writers Writer"</em> instead of <em>"Writer"</em>, <em>"Stock Book"</em> instead of <em>"Book"</em> and
+similar (this is because with EMF it is possible to customize labels also via .edit plugin).
+</p>
+<p>
+Now set for instance the writer <em>"name"</em> field and save.
+Now just play around creating Books, associating them to Writers and so on.
+As you can see you can entirely manage the EMF model instance: creating, modifying and deleting elements.
+</p>
+<p>
+Whenever the current selection on the upper side of the view changes, then the lower side shows the detail
+of this selection.
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-default.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+However, up to this point, you have no control over the field to be shown and its order; for example
+you may want just the <em>"name"</em> attribute for the Library and <em>"name", "address" and "books"</em> attributes
+for Writers and maybe <em>"title", "authors" and "category"</em> for Books.
+</p>
+<p>
+Well, it&apos;s indeed very easy to obtain this: just edit the <em>module.parsley</em> file, 
+adding the following import (without ending line with ";")
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.examples.extlibrary.*<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and then defining the features to show (the <em>featuresProvider</em> is detailed
+in section <a href="06-Customization.html#FeaturesProvider" title="Go to &quot;Features Provider&quot;">Features Provider</a>):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">module</span>&nbsp;...&nbsp;{<br/>
+<br/>
+...<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">featuresProvider</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">features</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;name<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;-&gt;&nbsp;name,&nbsp;address,&nbsp;books<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;-&gt;&nbsp;author,&nbsp;title,&nbsp;category<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Remeber that code completion is available, just exploit it since it helps a lot.
+</p>
+<p>
+If you restart now the application you will see that, when selecting an object, only the features
+specified in the above section will be shown for each specified classes.
+Furthermore, they are shown in the specified order.
+</p>
+<p>
+NOTE: Did you run the application in Debug mode? Well, then you can change fields and order, save and see the
+changes without even restarting the application.
+</p>
+<p>
+Do you want to change text used for attribute captions in the form for a specific
+class? Just add the following
+(<em>featureCaptionProvider</em> is detailed in section <a href="06-Customization.html#FeatureCaptionProvider" title="Go to &quot;Feature Caption Provider&quot;">Feature Caption Provider</a>):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">featureCaptionProvider</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;:&nbsp;author&nbsp;-&gt;&nbsp;<span class="string">"Written&nbsp;by:"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;name&nbsp;-&gt;&nbsp;<span class="string">"Name:"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Or do you want to change the label shown on the tree nodes on the upper side and as detail title?
+Maybe want to format the book label like this?
+(<em>labelProvider</em> is detailed in section <a href="06-Customization.html#ViewerLabelProvider" title="Go to &quot;Viewer Label Provider&quot;">Viewer Label Provider</a>):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">labelProvider</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">text</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;b&nbsp;-&gt;&nbsp;{&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;+&nbsp;b.title&nbsp;+&nbsp;<span class="string">&apos;"&apos;</span>&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;w&nbsp;-&gt;&nbsp;{&nbsp;w.name&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+The result of all the above customizations is shown in the following screenshot
+(compare it with the previous screenshot):
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-customized.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Now, let&apos;s customize the context menus; by default,
+Parsley will generate context menus using EMF.Edit:
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-default-menus.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+We will now customize the context menu for books and writers, using
+the <em>menuBuilder</em> in the DSL (context menu customization is detailed
+in section <a href="06-Customization.html#ContextualMenu" title="Go to &quot;Contextual Menu&quot;">Contextual Menu</a>).
+</p>
+<p>
+What we want to achieve is to have a context menu for a <em>Writer</em>
+to add a new book in the library, and set its author to the
+selected writer (similarly, we want a context menu for a <em>Book</em>
+to add a new writer in the library, and set the selected book as
+one of the new writer&apos;s books):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">menuBuilder</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;factory&nbsp;=&nbsp;EXTLibraryFactory.eINSTANCE<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">emfMenus</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;w&nbsp;-&gt;&nbsp;#[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionChange(<span class="string">"New&nbsp;book"</span>,&nbsp;w.eContainer&nbsp;<span class="keyword">as</span>&nbsp;Library,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library&nbsp;|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;book&nbsp;=&nbsp;factory.createBook<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library.books&nbsp;+=&nbsp;book<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;book.title&nbsp;=&nbsp;<span class="string">"A&nbsp;new&nbsp;book"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;book.author&nbsp;=&nbsp;w<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;b&nbsp;-&gt;&nbsp;#[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionChange(<span class="string">"New&nbsp;writer"</span>,&nbsp;b.eContainer&nbsp;<span class="keyword">as</span>&nbsp;Library,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library&nbsp;|<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;writer&nbsp;=&nbsp;factory.createWriter<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library.writers&nbsp;+=&nbsp;writer<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.name&nbsp;=&nbsp;<span class="string">"A&nbsp;new&nbsp;writer"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.books&nbsp;+=&nbsp;b<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+In this code we use Xbase features like list literals (<em>#[...]</em>) and
+lambda expressions.
+We use <em>actionChange</em> that allows to specify a menu performing some actions
+on the model&apos;s elements, keeping track of such changes so that they can be
+undone -- redo will work as well.  The implementation of the menu is specified
+in the lambda expression passed as the last argument of actionChange; this lambda
+will receive as argument the model&apos;s element specified as the second argument.
+Only those modifications performed in the lambda concerning such specified model&apos;s element
+will be recorded for undo/redo.
+</p>
+<p>
+If you now restart the application, you see that the new
+context menu appears on writer elements:
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-custom-menus1.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+And selecting such a menu on a writer will add a new book, with
+a title, and whose author is the selected writer:
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-custom-menus2.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+You may want to try the new context menu on a book as well.
+</p>
+<p>
+We also add another context menu for books, using <em>actionAdd</em>:
+specifying the label for the menu,
+the containment list in the model, the object to add in such list
+and a lambda expression that will be executed ONLY after the menu
+has been selected.  In this example, this menu available for
+a book object will add a new book to the library with the same
+name of the selected book:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">menuBuilder</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;factory&nbsp;=&nbsp;EXTLibraryFactory.eINSTANCE<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">emfMenus</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;...&nbsp;as&nbsp;above<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book&nbsp;b&nbsp;-&gt;&nbsp;#[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionChange(<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;...&nbsp;as&nbsp;above<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actionAdd(<span class="string">"New&nbsp;book&nbsp;(same&nbsp;title)"</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b.eContainer&nbsp;<span class="keyword">as</span>&nbsp;Library).books,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;factory.createBook,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[title&nbsp;=&nbsp;b.title]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Now, let&apos;s customize the contents shown in the tree view: by default,
+as you can see from the previous screenshots, the tree will show all
+the contents of the library.  If we want to show only the writers and
+the books we can specify this section in the DSL
+(the customization of the content provider is detailed in
+section <a href="06-Customization.html#ViewerContentProvider" title="Go to &quot;Viewer Content Provider&quot;">Viewer Content Provider</a>):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">viewerContentProvider</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">children</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library&nbsp;-&gt;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writers&nbsp;+&nbsp;books<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and the result can be seen in the following screenshot:
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-custom-contents1.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+By default, double-clicking on a tree viewer of a saveable view will
+show a dialog to edit that object (if you customized the
+<em>featuresProvider</em>, the dialog will use your customized version);
+by default, if you edit a field in such dialog, the modifications will
+be applied immediately to the resource: this can be seen in the
+labels of the tree which are automatically updated and in the dirty state of
+the view:
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-default-dialog.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Such a strategy for editing is delegated to an injected
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/IEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.IEditingStrategy" >IEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/IEditingStrategy.java" title="View Source Code" >(src)</a>, which is
+implemented by default by <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/OnTheFlyEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy" >OnTheFlyEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/OnTheFlyEditingStrategy.java" title="View Source Code" >(src)</a>.
+</p>
+<p>
+One may want to avoid this automatic update of the resource, and
+have the changes applied only when the "OK" dialog button is pressed
+(if "Cancel" is pressed, no changes should be applied at all).
+To achieve this behavior, it is enough to bind the alternative implementation
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/UndoableEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.UndoableEditingStrategy" >UndoableEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/UndoableEditingStrategy.java" title="View Source Code" >(src)</a>, in the Guice module.
+This can be achieved in the DSL using the <em>binding</em> section
+(Guice bindings are detailed in section <a href="06-Customization.html#GuiceBindings" title="Go to &quot;Dependency Injection With Google Guice&quot;">Guice Bindings</a>):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">bindings</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;IEditingStrategy&nbsp;-&gt;&nbsp;UndoableEditingStrategy<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+We strongly suggest you use the content assist to discover default
+bindings, since they also show Javadoc for each default binding:
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-custom-binding1.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Besides types, you can also bind (i.e., inject) specific values
+that are used in the framework; for example, you can change the
+orientation of the tree form sash as follows
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+...<br/>
+<span class="keyword">bindings</span>&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;IEditingStrategy&nbsp;-&gt;&nbsp;UndoableEditingStrategy<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">value</span>&nbsp;<span class="keyword">int</span>&nbsp;TreeFormSashStyle&nbsp;-&gt;&nbsp;SWT.HORIZONTAL<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and see the result:
+</p>
+<p>
+<div class="image" >
+<img src="images/first-example-custom-orientation.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+This ends the first tutorial.
+</p>
+</body>
+</html>
