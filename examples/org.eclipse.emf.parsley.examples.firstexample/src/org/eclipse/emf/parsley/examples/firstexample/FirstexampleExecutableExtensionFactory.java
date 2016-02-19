@@ -10,28 +10,15 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.examples.firstexample;
 
-import org.osgi.framework.Bundle;
-
-import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
+import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory;
 
 import com.google.inject.Injector;
 
-public class FirstexampleExecutableExtensionFactory extends
-		EmfParsleyExtensionFactory {
+public class FirstexampleExecutableExtensionFactory extends AbstractGuiceAwareExecutableExtensionFactory {
 
 	@Override
-	protected Bundle getBundle() {
-		return FirstexampleActivator.getDefault().getBundle();
+	protected Injector getInjector() throws Exception {
+		return FirstexampleInjectorProvider.getInjector();
 	}
 
-	@Override
-	protected EmfParsleyGuiceModule getModule() {
-		return FirstexampleActivator.getDefault().createModule();
-	}
-
-	@Override
-	protected Injector getInjector() {
-		return FirstexampleActivator.getDefault().getInjector();
-	}
 }

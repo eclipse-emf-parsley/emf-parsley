@@ -10,28 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.examples.mail.accountsview;
 
-import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.osgi.framework.Bundle;
-
+import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory;
 
 import com.google.inject.Injector;
 
-public class AccountsviewExecutableExtensionFactory extends
-		EmfParsleyExtensionFactory {
+public class AccountsviewExecutableExtensionFactory extends AbstractGuiceAwareExecutableExtensionFactory {
 
 	@Override
-	protected Bundle getBundle() {
-		return AccountsviewActivator.getDefault().getBundle();
-	}
-
-	@Override
-	protected EmfParsleyGuiceModule getModule() {
-		return AccountsviewActivator.getDefault().createModule();
-	}
-
-	@Override
-	protected Injector getInjector() {
-		return AccountsviewActivator.getDefault().getInjector();
+	protected Injector getInjector() throws Exception {
+		return AccountsviewInjectorProvider.getInjector();
 	}
 }
