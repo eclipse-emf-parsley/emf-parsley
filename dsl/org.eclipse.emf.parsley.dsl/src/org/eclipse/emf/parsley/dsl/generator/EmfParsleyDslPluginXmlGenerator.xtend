@@ -39,14 +39,13 @@ class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 	}
 
 	def generatePluginXml(Module module) {
-		val partSpecs = module?.partsSpecifications?.parts
-		if (partSpecs == null || partSpecs.empty) {
+		if (!module.shouldGenerateExtensions) {
 			return ''''''
 		} else {
 '''
 <extension
       point="org.eclipse.ui.views">
-   «partSpecs.map[generateExtensionPoint].join("")»
+   «module.partsSpecifications.parts.map[generateExtensionPoint].join("")»
 </extension>
 '''.generatePluginXml
 		}

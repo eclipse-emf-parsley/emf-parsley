@@ -197,60 +197,56 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	@Test
 	def void testModuleExtendsItself() {
 		'''
-		module my.first extends my.first.EmfParsleyGuiceModuleGen {
+		module my.first extends my.first.FirstEmfParsleyGuiceModuleGen {
 		}
-		'''.parse.assertHierarchyCycle("EmfParsleyGuiceModuleGen")
+		'''.parse.assertHierarchyCycle("FirstEmfParsleyGuiceModuleGen")
 	}
 
 	@Test
 	def void testModuleCycleInHierarchy() {
 		val m1 = '''
-		module my.first extends my.second.EmfParsleyGuiceModuleGen {
+		module my.first extends my.second.SecondEmfParsleyGuiceModuleGen {
 		}
 		'''.parse
 		
 		val m2 = '''
-		module my.second extends my.third.EmfParsleyGuiceModuleGen {
+		module my.second extends my.third.ThirdEmfParsleyGuiceModuleGen {
 		}
 		'''.parse(m1.eResource.resourceSet)
 		
 		val m3 = '''
-		module my.third extends my.first.EmfParsleyGuiceModuleGen {
+		module my.third extends my.first.FirstEmfParsleyGuiceModuleGen {
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		val className = "EmfParsleyGuiceModuleGen"
-		
-		m1.assertHierarchyCycle(className)
-		m2.assertHierarchyCycle(className)
-		m3.assertHierarchyCycle(className)
+		m1.assertHierarchyCycle("SecondEmfParsleyGuiceModuleGen")
+		m2.assertHierarchyCycle("ThirdEmfParsleyGuiceModuleGen")
+		m3.assertHierarchyCycle("FirstEmfParsleyGuiceModuleGen")
 	}
 
 	@Test
 	def void testLabelProviderCycleInHierarchy() {
 		val m1 = '''
 		module my.first {
-			labelProvider extends my.second.ui.provider.LabelProviderGen {}
+			labelProvider extends my.second.ui.provider.SecondLabelProviderGen {}
 		}
 		'''.parse
 		
 		val m2 = '''
 		module my.second {
-			labelProvider extends my.third.ui.provider.LabelProviderGen {}
+			labelProvider extends my.third.ui.provider.ThirdLabelProviderGen {}
 		}
 		'''.parse(m1.eResource.resourceSet)
 		
 		val m3 = '''
 		module my.third {
-			labelProvider extends my.first.ui.provider.LabelProviderGen {}
+			labelProvider extends my.first.ui.provider.FirstLabelProviderGen {}
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		val className = "LabelProviderGen"
-		
-		m1.assertHierarchyCycle(className)
-		m2.assertHierarchyCycle(className)
-		m3.assertHierarchyCycle(className)
+		m1.assertHierarchyCycle("SecondLabelProviderGen")
+		m2.assertHierarchyCycle("ThirdLabelProviderGen")
+		m3.assertHierarchyCycle("FirstLabelProviderGen")
 	}
 
 	@Test

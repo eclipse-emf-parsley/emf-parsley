@@ -44,28 +44,6 @@ public class NewEmfParsleyProjectSupport {
 				createSubProgressMonitor(progressMonitor));
 	}
 
-	public static void createExecutableExtensionFactory(IProject project,
-			String projectName, String projectPackagePath,
-			IProgressMonitor progressMonitor) throws CoreException {
-		createProjectFile(project, projectPackagePath
-				+ "/"
-				+ filesGenerator.extFactoryName(projectName)
-				+ JAVA_EXTENSION, filesGenerator
-				.generateExecutableExtensionFactory(projectName).toString(),
-				createSubProgressMonitor(progressMonitor));
-	}
-
-	public static void createModule(IProject project, String projectName,
-			String projectPackagePath, String superClass,
-			IProgressMonitor progressMonitor) throws CoreException {
-		createProjectFile(project, projectPackagePath
-				+ "/"
-				+ filesGenerator.moduleName(projectName)
-				+ JAVA_EXTENSION, filesGenerator
-				.generateModule(projectName, superClass).toString(),
-				createSubProgressMonitor(progressMonitor));
-	}
-
 	/**
 	 * @param progressMonitor
 	 * @return

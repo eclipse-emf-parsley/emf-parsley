@@ -50,4 +50,9 @@ class EmfParsleyDslGeneratorUtils {
 		element.getContainerOfType(typeof(Module)).executableExtensionFactoryQN
 	}
 
+	def shouldGenerateExtensions(Module module) {
+		val partSpecs = module?.partsSpecifications?.parts
+		return partSpecs != null && !partSpecs.empty
+	}
+
 }

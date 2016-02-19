@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.jvmmodel
 
+import com.google.inject.Guice
 import com.google.inject.Inject
+import com.google.inject.Injector
 import com.google.inject.Provider
 import java.io.IOException
 import java.util.List
@@ -54,6 +56,8 @@ import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
 import org.eclipse.emf.parsley.resource.ResourceManager
+import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory
+import org.eclipse.emf.parsley.runtime.ui.PluginUtil
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider
@@ -85,6 +89,8 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+
+import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -210,6 +216,39 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				members += element.resourceManager.genBindMethod(resourceManagerClass, typeof(ResourceManager))
 		]
 
+		val injectorProviderClass = element.toClass(element.injectorProviderQN)
+		acceptor.accept(injectorProviderClass) [
+			members += element.toField("injector", typeRef(Injector)) => [
+				static = true
+				visibility = JvmVisibility.PRIVATE
+			]
+			members += element.toMethod("getInjector", typeRef(Injector)) [
+				static = true
+				synchronized = true
+				exceptions += typeRef(Exception)
+				body = '''
+				if (injector == null) {
+				  injector = «Guice».createInjector(
+				    new «moduleClass»(«PluginUtil».getPlugin(
+				      «PluginUtil».getBundle(«injectorProviderClass».class))));
+				}
+				return injector;
+				'''
+			]
+		]
+
+		if (element.shouldGenerateExtensions) {
+			acceptor.accept(element.toClass(element.executableExtensionFactoryQN)) [
+				superTypes += typeRef(AbstractGuiceAwareExecutableExtensionFactory)
+				members += element.toMethod("getInjector", typeRef(Injector)) [
+					addOverrideAnnotation
+					exceptions += typeRef(Exception)
+					body = '''
+					return «injectorProviderClass».getInjector();
+					'''
+				]
+			]
+		}
 	}
 
 	def private setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
@@ -253,67 +292,78 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private moduleQN(Module element) {
-		element.fullyQualifiedName + ".EmfParsleyGuiceModuleGen"
+		element.fromModuleToJavaFullyQualifiedName(".EmfParsleyGuiceModuleGen")
+	}
+
+	def private injectorProviderQN(Module element) {
+		element.fromModuleToJavaFullyQualifiedName(".InjectorProvider")
 	}
 
 	def private labelProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.LabelProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.LabelProviderGen")
 	}
 
 	def private tableLabelProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.TableLabelProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.TableLabelProviderGen")
 	}
 
 	def private featureCaptionProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.FeatureCaptionProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FeatureCaptionProviderGen")
 	}
 
 	def private formFeatureCaptionProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.FormFeatureCaptionProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FormFeatureCaptionProviderGen")
 	}
 
 	def private dialogFeatureCaptionProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.DialogFeatureCaptionProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.DialogFeatureCaptionProviderGen")
 	}
 
 	def private featuresProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.FeaturesProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FeaturesProviderGen")
 	}
 
 	def private tableFeaturesProviderQN(Module element) {
-		element.fullyQualifiedName + ".ui.provider.TableFeaturesProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.TableFeaturesProviderGen")
 	}
 
 	def private formControlFactoryQN(Module element) {
-		element.fullyQualifiedName + ".binding.FormControlFactoryGen"
+		element.fromModuleToJavaFullyQualifiedName(".binding.FormControlFactoryGen")
 	}
 
 	def private dialogControlFactoryQN(Module element) {
-		element.fullyQualifiedName + ".binding.DialogControlFactoryGen"
+		element.fromModuleToJavaFullyQualifiedName(".binding.DialogControlFactoryGen")
 	}
 
 	def private viewerContentProviderQN(Module element) {
-		element.fullyQualifiedName + ".edit.ui.provider.ViewerContentProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".edit.ui.provider.ViewerContentProviderGen")
 	}
 
 	def private tableViewerContentProviderQN(Module element) {
-		element.fullyQualifiedName + ".edit.ui.provider.TableViewerContentProviderGen"
+		element.fromModuleToJavaFullyQualifiedName(".edit.ui.provider.TableViewerContentProviderGen")
 	}
 
 	def private proposalCreatorQN(Module element) {
-		element.fullyQualifiedName + ".binding.ProposalCreatorGen"
+		element.fromModuleToJavaFullyQualifiedName(".binding.ProposalCreatorGen")
 	}
 
 	def private menuBuilderQN(Module element) {
-		element.fullyQualifiedName + ".edit.action.MenuBuilderGen"
+		element.fromModuleToJavaFullyQualifiedName(".edit.action.MenuBuilderGen")
 	}
 
 	def private configuratorQN(Module element) {
-		element.fullyQualifiedName + ".config.ConfiguratorGen"
+		element.fromModuleToJavaFullyQualifiedName(".config.ConfiguratorGen")
 	}
 
 	def private resourceManagerQN(Module element) {
-		element.fullyQualifiedName + ".resource.ResourceManagerGen"
+		element.fromModuleToJavaFullyQualifiedName(".resource.ResourceManagerGen")
+	}
+
+	def private String fromModuleToJavaFullyQualifiedName(Module element, String templateString) {
+		val fqn = element.fullyQualifiedName.toString
+		val prefix = fqn.buildClassNameFromProject
+		val lastDot = templateString.lastIndexOf(".")
+		'''«fqn»«templateString.substring(0, lastDot+1)»«prefix»«templateString.substring(lastDot+1)»'''
 	}
 
 	def private inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {

@@ -20,9 +20,6 @@ class EmfParsleyProjectFilesGenerator {
 	def activatorName(String projectName)
 	'''«projectName.buildClassNameFromProject»Activator'''
 
-	def moduleName(String projectName)
-	'''«projectName.buildClassNameFromProject»GuiceModule'''
-
 	def extFactoryName(String projectName)
 	'''«projectName.buildClassNameFromProject»ExecutableExtensionFactory'''
 
@@ -31,14 +28,12 @@ class EmfParsleyProjectFilesGenerator {
 package «projectName»;
 
 import org.osgi.framework.BundleContext;
-
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class «projectName.activatorName» extends EmfParsleyAbstractActivator {
+public class «projectName.activatorName» extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "«projectName»"; //$NON-NLS-1$
@@ -76,64 +71,7 @@ public class «projectName.activatorName» extends EmfParsleyAbstractActivator {
 		return plugin;
 	}
 
-	/**
-	 * Creates the EmfParsleyGuiceModule for this this plugin
-	 *
-	 * @return the EmfParsleyGuiceModule for this this plugin
-	 */
-	public EmfParsleyGuiceModule createModule() {
-		return new «projectName.moduleName»(getDefault());
-	}
-}
-'''
-	
-	def generateExecutableExtensionFactory(String projectName)
-'''
-package «projectName»;
-
-import org.osgi.framework.Bundle;
-
-import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-
-import com.google.inject.Injector;
-
-public class «projectName.extFactoryName» extends
-		EmfParsleyExtensionFactory {
-
-	@Override
-	protected Bundle getBundle() {
-		return «projectName.activatorName».getDefault().getBundle();
-	}
-
-	@Override
-	protected EmfParsleyGuiceModule getModule() {
-		return «projectName.activatorName».getDefault().createModule();
-	}
-
-	@Override
-	protected Injector getInjector() {
-		return «projectName.activatorName».getDefault().getInjector();
-	}
 }
 '''
 
-	def generateModule(String projectName, String superClass)
-'''
-package «projectName»;
-
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-
-«IF superClass == "EmfParsleyGuiceModule"»
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-«ENDIF»
-
-public class «projectName.moduleName» extends «superClass» {
-
-	public «projectName.moduleName»(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
-
-}
-'''
 }

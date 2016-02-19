@@ -150,8 +150,8 @@ FormFeatureCaptionProviderImpl''',
 	def void testGetAllWithExtendsClauseInferredJavaTypes() {
 		assertEqualsStrings(
 		'''
-LabelProviderGen
-FormFeatureCaptionProviderGen''',
+ModLabelProviderGen
+ModFormFeatureCaptionProviderGen''',
 		'''
 		module my.test.mod {
 			labelProvider {}
