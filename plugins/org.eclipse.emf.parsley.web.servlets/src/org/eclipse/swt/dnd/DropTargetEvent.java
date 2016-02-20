@@ -16,6 +16,11 @@ import org.eclipse.swt.events.TypedEvent;
 import org.eclipse.swt.widgets.Widget;
 
 public class DropTargetEvent extends TypedEvent {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 214947490963897996L;
+
 	public int x;
 	public int y;
 	public int detail;
