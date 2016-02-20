@@ -7,7 +7,7 @@ import org.eclipse.emf.parsley.examples.cdo.company.SalesOrder
 
 /* org.eclipse.emf.parsley.examples.cdo.company.ui.orders Emf Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.cdo.company.ui.orders extends CompanyGuiceModule {
-	 
+	
 	parts {
 		viewpart org.eclipse.emf.parsley.examples.cdo.company.ui.orders {
 			viewname "Orders2"

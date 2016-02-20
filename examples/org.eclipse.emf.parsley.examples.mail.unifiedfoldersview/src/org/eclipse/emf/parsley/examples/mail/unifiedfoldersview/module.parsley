@@ -1,11 +1,12 @@
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.examples.mail.Folder
-import org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewGuiceModule
+import org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewEmfParsleyGuiceModuleGen
 import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFolderContainer
 import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedFoldersView
+import org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider.AccountsviewLabelProviderGen
 
 /* org.eclipse.emf.parsley.examples.mail.unifiedfoldersview Emf Parsley Dsl Module file */
-module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends AccountsviewGuiceModule {
+module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends AccountsviewEmfParsleyGuiceModuleGen {
 	
 	parts {
 		viewpart org.eclipse.emf.parsley.examples.mail.unifiedfoldersview {
@@ -14,8 +15,7 @@ module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends Accounts
 		}
 	}
 	
-	labelProvider 
-			extends org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider.LabelProviderGen {
+	labelProvider extends AccountsviewLabelProviderGen {
 		text {
 			UnifiedFolderContainer -> containerName
 			// instead of 

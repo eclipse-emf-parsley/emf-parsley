@@ -47,10 +47,8 @@ public class TreeformCDOResourceManager extends ResourceManager {
 			CDOTransaction cdoTransaction = (CDOTransaction)cdoResource.cdoView();
 			cdoTransaction.commit();
 		} catch (ConcurrentAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CommitException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -105,8 +105,6 @@ Open the Part java class and make the following changes:
 </span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;URI&nbsp;uri&nbsp;=&nbsp;URI.createFileURI(System.getProperty(<span class="string">"user.home"</span>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>);<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Guice&nbsp;injector<br/>
-</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;Injector&nbsp;injector&nbsp;=&nbsp;FirstexampleActivator.getDefault().getInjector();<br/>
 </p>
 </div>
 </div>
@@ -119,7 +117,9 @@ Modify the <em>@PostConstruct</em> method with this code:
 <div class="incode">
 <p class="code">
 @PostConstruct<br/>
-<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;postConstruct(Composite&nbsp;parent)&nbsp;{<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;postConstruct(Composite&nbsp;parent)&nbsp;<span class="keyword">throws</span>&nbsp;Exception&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Guice&nbsp;injector<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;Injector&nbsp;injector&nbsp;=&nbsp;FirstexampleInjectorProvider.getInjector();<br/>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;AdapterFactoryEditingDomain&nbsp;editingDomain&nbsp;=&nbsp;injector.getInstance(AdapterFactoryEditingDomain.<span class="keyword">class</span>);<br/>
 <br/>

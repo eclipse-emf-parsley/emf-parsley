@@ -68,8 +68,6 @@ public class MyEclipse4Part {
 	private URI uri = URI.createFileURI(System.getProperty("user.home")
 		+ "/MyLibrary.library");
 
-	// Guice injector
-	private Injector injector = FirstexampleActivator.getDefault().getInjector();
 ]
 
 
@@ -77,7 +75,9 @@ Modify the e[@PostConstruct] method with this code:
 
 code[Java][
 @PostConstruct
-public void postConstruct(Composite parent) {
+public void postConstruct(Composite parent) throws Exception {
+	// Guice injector
+	private Injector injector = FirstexampleInjectorProvider.getInjector();
 
 	AdapterFactoryEditingDomain editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class);
 
