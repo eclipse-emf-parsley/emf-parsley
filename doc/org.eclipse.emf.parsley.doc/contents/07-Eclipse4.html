@@ -121,7 +121,8 @@ Modify the <em>@PostConstruct</em> method with this code:
 @PostConstruct<br/>
 <span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;postConstruct(Composite&nbsp;parent)&nbsp;{<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;AdapterFactoryEditingDomain&nbsp;editingDomain&nbsp;=&nbsp;injector.getInstance(AdapterFactoryEditingDomain.<span class="keyword">class</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;The&nbsp;EditingDomain&nbsp;is&nbsp;needed&nbsp;for&nbsp;context&nbsp;menu&nbsp;and&nbsp;drag&nbsp;and&nbsp;drop<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;EditingDomain&nbsp;editingDomain&nbsp;=&nbsp;injector.getInstance(EditingDomain.<span class="keyword">class</span>);<br/>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;ResourceLoader&nbsp;resourceLoader&nbsp;=&nbsp;injector.getInstance(ResourceLoader.<span class="keyword">class</span>);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//load&nbsp;the&nbsp;resource<br/>

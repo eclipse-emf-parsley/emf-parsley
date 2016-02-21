@@ -79,7 +79,8 @@ code[Java][
 @PostConstruct
 public void postConstruct(Composite parent) {
 
-	AdapterFactoryEditingDomain editingDomain = injector.getInstance(AdapterFactoryEditingDomain.class);
+	// The EditingDomain is needed for context menu and drag and drop
+	EditingDomain editingDomain = injector.getInstance(EditingDomain.class);
 
 	ResourceLoader resourceLoader = injector.getInstance(ResourceLoader.class);
 	//load the resource
