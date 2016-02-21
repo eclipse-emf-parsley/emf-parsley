@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
@@ -43,16 +44,18 @@ public class ParsleyE4ModelPart {
 		ViewerContextMenuHelper contextMenuHelper = injector.getInstance(ViewerContextMenuHelper.class);
 		// Guice injected viewer drag and drop helper
 		ViewerDragAndDropHelper dragAndDropHelper = injector.getInstance(ViewerDragAndDropHelper.class);
+		// The EditingDomain is needed for context menu and drag and drop
+		EditingDomain editingDomain = injector.getInstance(EditingDomain.class);
 
 		// Initialize Parsley Tree Form:
 		// 1) create the tree-form composite
 		treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
 
 		// 2) initialize the context menu to the tree-form composite
-		contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer());
+		contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer(), editingDomain);
 
 		// 3) set drag and drop to the tree-form composite
-		dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer());
+		dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer(), editingDomain);
 
 		// 4) fill the data
 		treeFormComposite.update(application);

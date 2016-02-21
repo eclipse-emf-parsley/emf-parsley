@@ -29,5 +29,5 @@ public class ShowParsleyPartHandler {
 		part.setVisible(true);
 		partService.showPart(part, EPartService.PartState.VISIBLE);
 	}
-		
+
 }
