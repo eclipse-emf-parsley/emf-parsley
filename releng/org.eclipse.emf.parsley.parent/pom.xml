@@ -411,7 +411,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
-			
+
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
@@ -426,7 +426,7 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
-			
+
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
 			</properties>
@@ -478,6 +478,18 @@
 
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.3</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						</configuration>
+					</plugin>
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
