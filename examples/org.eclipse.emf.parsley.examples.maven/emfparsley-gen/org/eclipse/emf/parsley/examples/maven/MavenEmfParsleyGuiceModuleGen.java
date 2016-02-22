@@ -9,21 +9,21 @@ import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy;
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
-import org.eclipse.emf.parsley.examples.maven.binding.DialogControlFactoryGen;
-import org.eclipse.emf.parsley.examples.maven.binding.FormControlFactoryGen;
-import org.eclipse.emf.parsley.examples.maven.binding.ProposalCreatorGen;
-import org.eclipse.emf.parsley.examples.maven.config.ConfiguratorGen;
-import org.eclipse.emf.parsley.examples.maven.edit.action.MenuBuilderGen;
-import org.eclipse.emf.parsley.examples.maven.edit.ui.provider.TableViewerContentProviderGen;
-import org.eclipse.emf.parsley.examples.maven.edit.ui.provider.ViewerContentProviderGen;
-import org.eclipse.emf.parsley.examples.maven.resource.ResourceManagerGen;
-import org.eclipse.emf.parsley.examples.maven.ui.provider.DialogFeatureCaptionProviderGen;
-import org.eclipse.emf.parsley.examples.maven.ui.provider.FeatureCaptionProviderGen;
-import org.eclipse.emf.parsley.examples.maven.ui.provider.FeaturesProviderGen;
-import org.eclipse.emf.parsley.examples.maven.ui.provider.FormFeatureCaptionProviderGen;
-import org.eclipse.emf.parsley.examples.maven.ui.provider.LabelProviderGen;
-import org.eclipse.emf.parsley.examples.maven.ui.provider.TableFeaturesProviderGen;
-import org.eclipse.emf.parsley.examples.maven.ui.provider.TableLabelProviderGen;
+import org.eclipse.emf.parsley.examples.maven.binding.MavenDialogControlFactoryGen;
+import org.eclipse.emf.parsley.examples.maven.binding.MavenFormControlFactoryGen;
+import org.eclipse.emf.parsley.examples.maven.binding.MavenProposalCreatorGen;
+import org.eclipse.emf.parsley.examples.maven.config.MavenConfiguratorGen;
+import org.eclipse.emf.parsley.examples.maven.edit.action.MavenMenuBuilderGen;
+import org.eclipse.emf.parsley.examples.maven.edit.ui.provider.MavenTableViewerContentProviderGen;
+import org.eclipse.emf.parsley.examples.maven.edit.ui.provider.MavenViewerContentProviderGen;
+import org.eclipse.emf.parsley.examples.maven.resource.MavenResourceManagerGen;
+import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenDialogFeatureCaptionProviderGen;
+import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenFeatureCaptionProviderGen;
+import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenFeaturesProviderGen;
+import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenFormFeatureCaptionProviderGen;
+import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenLabelProviderGen;
+import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenTableFeaturesProviderGen;
+import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenTableLabelProviderGen;
 import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
@@ -39,8 +39,8 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  * org.eclipse.emf.parsley.examples.maven Emf Parsley Dsl Module file
  */
 @SuppressWarnings("all")
-public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class MavenEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
+  public MavenEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
@@ -51,76 +51,76 @@ public class EmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
   
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
-    return LabelProviderGen.class;
+    return MavenLabelProviderGen.class;
   }
   
   @Override
   public Class<? extends TableColumnLabelProvider> bindTableColumnLabelProvider() {
-    return TableLabelProviderGen.class;
+    return MavenTableLabelProviderGen.class;
   }
   
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
-    return FeatureCaptionProviderGen.class;
+    return MavenFeatureCaptionProviderGen.class;
   }
   
   @Override
   public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
-    return FormFeatureCaptionProviderGen.class;
+    return MavenFormFeatureCaptionProviderGen.class;
   }
   
   @Override
   public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
-    return DialogFeatureCaptionProviderGen.class;
+    return MavenDialogFeatureCaptionProviderGen.class;
   }
   
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
-    return FeaturesProviderGen.class;
+    return MavenFeaturesProviderGen.class;
   }
   
   @Override
   public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
-    return TableFeaturesProviderGen.class;
+    return MavenTableFeaturesProviderGen.class;
   }
   
   @Override
   public Class<? extends FormControlFactory> bindFormControlFactory() {
-    return FormControlFactoryGen.class;
+    return MavenFormControlFactoryGen.class;
   }
   
   @Override
   public Class<? extends DialogControlFactory> bindDialogControlFactory() {
-    return DialogControlFactoryGen.class;
+    return MavenDialogControlFactoryGen.class;
   }
   
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
-    return ViewerContentProviderGen.class;
+    return MavenViewerContentProviderGen.class;
   }
   
   @Override
   public Class<? extends TableViewerContentProvider> bindTableViewerContentProvider() {
-    return TableViewerContentProviderGen.class;
+    return MavenTableViewerContentProviderGen.class;
   }
   
   @Override
   public Class<? extends ProposalCreator> bindProposalCreator() {
-    return ProposalCreatorGen.class;
+    return MavenProposalCreatorGen.class;
   }
   
   @Override
   public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
-    return MenuBuilderGen.class;
+    return MavenMenuBuilderGen.class;
   }
   
   @Override
   public Class<? extends Configurator> bindConfigurator() {
-    return ConfiguratorGen.class;
+    return MavenConfiguratorGen.class;
   }
   
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
-    return ResourceManagerGen.class;
+    return MavenResourceManagerGen.class;
   }
 }

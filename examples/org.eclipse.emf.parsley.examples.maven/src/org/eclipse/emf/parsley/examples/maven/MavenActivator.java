@@ -1,14 +1,12 @@
 package org.eclipse.emf.parsley.examples.maven;
 
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class MavenActivator extends EmfParsleyAbstractActivator {
+public class MavenActivator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.emf.parsley.examples.maven"; //$NON-NLS-1$
@@ -46,12 +44,4 @@ public class MavenActivator extends EmfParsleyAbstractActivator {
 		return plugin;
 	}
 
-	/**
-	 * Creates the EmfParsleyGuiceModule for this this plugin
-	 *
-	 * @return the EmfParsleyGuiceModule for this this plugin
-	 */
-	public EmfParsleyGuiceModule createModule() {
-		return new MavenGuiceModule(getDefault());
-	}
 }

@@ -9,9 +9,9 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 
 @SuppressWarnings("all")
-public class LabelProviderGen extends ViewerLabelProvider {
+public class MavenLabelProviderGen extends ViewerLabelProvider {
   @Inject
-  public LabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+  public MavenLabelProviderGen(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
   

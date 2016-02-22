@@ -5,9 +5,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 
 @SuppressWarnings("all")
-public class TableViewerContentProviderGen extends TableViewerContentProvider {
+public class MavenTableViewerContentProviderGen extends TableViewerContentProvider {
   @Inject
-  public TableViewerContentProviderGen(final AdapterFactory adapterFactory) {
+  public MavenTableViewerContentProviderGen(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 }

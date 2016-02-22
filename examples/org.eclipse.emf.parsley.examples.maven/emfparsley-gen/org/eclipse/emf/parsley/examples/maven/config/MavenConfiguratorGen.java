@@ -5,7 +5,7 @@ import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.examples.maven.MavenSaveableTreeFormView;
 
 @SuppressWarnings("all")
-public class ConfiguratorGen extends Configurator {
+public class MavenConfiguratorGen extends Configurator {
   public URI resourceURI(final MavenSaveableTreeFormView it) {
     return null;
   }

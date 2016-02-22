@@ -7,7 +7,7 @@ import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.swt.widgets.Control;
 
 @SuppressWarnings("all")
-public class DialogControlFactoryGen extends DialogControlFactory {
+public class MavenDialogControlFactoryGen extends DialogControlFactory {
   public Control control_EClass_name(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
     Control control = createControl_EClass_name();
     dataBindingContext.bindValue(

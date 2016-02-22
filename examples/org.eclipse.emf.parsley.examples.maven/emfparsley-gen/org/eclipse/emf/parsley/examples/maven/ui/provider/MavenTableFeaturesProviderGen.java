@@ -4,7 +4,7 @@ import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMa
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 
 @SuppressWarnings("all")
-public class TableFeaturesProviderGen extends TableFeaturesProvider {
+public class MavenTableFeaturesProviderGen extends TableFeaturesProvider {
   @Override
   public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
     super.buildStringMap(stringMap);

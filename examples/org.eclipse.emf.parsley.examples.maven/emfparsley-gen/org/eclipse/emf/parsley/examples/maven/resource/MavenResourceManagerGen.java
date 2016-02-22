@@ -10,7 +10,7 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class ResourceManagerGen extends ResourceManager {
+public class MavenResourceManagerGen extends ResourceManager {
   @Override
   public void initialize(final Resource it) {
     EList<EObject> _contents = it.getContents();

@@ -5,9 +5,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 
 @SuppressWarnings("all")
-public class ViewerContentProviderGen extends ViewerContentProvider {
+public class MavenViewerContentProviderGen extends ViewerContentProvider {
   @Inject
-  public ViewerContentProviderGen(final AdapterFactory adapterFactory) {
+  public MavenViewerContentProviderGen(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 }
