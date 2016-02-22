@@ -230,7 +230,7 @@
 		
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
-				
+
 				<!-- These examples are used in CDO swtbot tests -->
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.server</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.model</module>
@@ -251,6 +251,10 @@
 
 			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			</modules>
 			
 			<properties>
