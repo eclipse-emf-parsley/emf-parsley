@@ -666,7 +666,10 @@ Duplicate binding for: TableColumnWeights
 				}
 				'''
 		input.parse => [
-			2.assertEquals(validate.size)
+			// the errors are 4 because in standalone tests we also get the
+			// errors for checking duplicates across files
+			// in fact the URIs look different in the standalone test
+			4.assertEquals(validate.size)
 			assertDuplicateElement(
 				ModelPackage.eINSTANCE.viewSpecification,
 				input.indexOf("myId1"),
@@ -676,6 +679,57 @@ Duplicate binding for: TableColumnWeights
 				ModelPackage.eINSTANCE.viewSpecification,
 				input.lastIndexOf("myId1"),
 				'myId1'.length
+			)
+		]
+	}
+
+	@Test
+	def void testDuplicateViewPartsInDifferentFiles() {
+		val first = '''
+				import org.eclipse.emf.parsley.views.SaveableTreeFormView
+
+				module my.empty1 {
+					parts {
+						viewpart myId1 {
+							viewname "Test Model Tree Form View"
+							viewclass SaveableTreeFormView
+						}
+					}
+				}
+				'''
+		val firstModel = first.parse
+		val second = '''
+				import org.eclipse.emf.parsley.views.SaveableTreeFormView
+
+				module my.empty2 {
+					parts {
+						viewpart myId1 {
+							viewname "Test Model Tree Form View"
+							viewclass SaveableTreeFormView
+						}
+					}
+				}
+				'''
+		val secondModel = second.parse(firstModel.eResource.resourceSet)
+
+		firstModel => [
+			1.assertEquals(validate.size)
+			assertError(
+				ModelPackage.eINSTANCE.viewSpecification,
+				DUPLICATE_ELEMENT,
+				first.indexOf("myId1"),
+				'myId1'.length,
+				"The part id myId1 is already defined"
+			)
+		]
+		secondModel => [
+			1.assertEquals(validate.size)
+			assertError(
+				ModelPackage.eINSTANCE.viewSpecification,
+				DUPLICATE_ELEMENT,
+				second.indexOf("myId1"),
+				'myId1'.length,
+				"The part id myId1 is already defined"
 			)
 		]
 	}

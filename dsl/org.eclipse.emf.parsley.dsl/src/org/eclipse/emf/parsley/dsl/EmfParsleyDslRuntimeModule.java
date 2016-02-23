@@ -17,9 +17,11 @@ import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslGenerator;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImplicitlyImportedFeatures;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslImportedNamespaceScopeProvider;
+import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslResourceDescriptionStrategy;
 import org.eclipse.emf.parsley.dsl.scoping.EmfParsleyDslXbaseBatchScopeProvider;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures;
 import org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider;
 
@@ -27,7 +29,8 @@ import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
 /**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
+ * Use this class to register components to be used at runtime / without the
+ * Equinox extension registry.
  */
 public class EmfParsleyDslRuntimeModule extends org.eclipse.emf.parsley.dsl.AbstractEmfParsleyDslRuntimeModule {
 
@@ -48,7 +51,12 @@ public class EmfParsleyDslRuntimeModule extends org.eclipse.emf.parsley.dsl.Abst
 	public Class<? extends ImplicitlyImportedFeatures> bindImplicitlyImportedFeatures() {
 		return EmfParsleyDslImplicitlyImportedFeatures.class;
 	}
-	
+
+	@Override
+	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return EmfParsleyDslResourceDescriptionStrategy.class;
+	}
+
 	@Override
 	public void configureIScopeProviderDelegate(Binder binder) {
 		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class)
