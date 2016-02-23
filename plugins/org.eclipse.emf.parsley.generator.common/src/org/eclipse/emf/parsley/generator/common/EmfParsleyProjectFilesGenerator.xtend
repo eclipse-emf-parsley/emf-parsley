@@ -17,6 +17,10 @@ import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProje
  */
 class EmfParsleyProjectFilesGenerator {
 
+	def moduleFileName(String projectName) {
+		projectName.buildClassNameFromProject
+	}
+
 	def activatorName(String projectName)
 	'''«projectName.buildClassNameFromProject»Activator'''
 

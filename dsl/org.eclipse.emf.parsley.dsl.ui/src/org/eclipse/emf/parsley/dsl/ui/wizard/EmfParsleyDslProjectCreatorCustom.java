@@ -122,11 +122,9 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		} else {
 			dslFileContents = filesGenerator.genEmptyDslModule(projectName).toString();
 		}
-		
-		NewEmfParsleyProjectSupport.createProjectFile(project,
-				projectPackagePath + "/module.parsley", dslFileContents,
-				NewEmfParsleyProjectSupport
-						.createSubProgressMonitor(monitor));
+
+		NewEmfParsleyProjectSupport.createDslModule(project, projectName,
+				projectPackagePath, dslFileContents, monitor);
 
 		project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}

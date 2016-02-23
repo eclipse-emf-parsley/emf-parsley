@@ -141,7 +141,7 @@ module my.test.proj {
 	def private void assertProposal(CharSequence input, String textToInsert, CharSequence proposal, CharSequence expectedAfterProposal) {
 		createDslProjectWithWizard
 		
-		val editor = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.editorByTitle("module.parsley")
+		val editor = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.editorByTitle("Proj.parsley")
 		
 		editor.toTextEditor.setText("")
 		
@@ -195,7 +195,7 @@ module my.test.proj {
 	def private void assertOrganizeImports(CharSequence input, CharSequence expectedAfterOrganize) {
 		createDslProjectWithWizard
 		
-		val editor = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.editorByTitle("module.parsley")
+		val editor = org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.bot.editorByTitle("Proj.parsley")
 		
 		editor.setEditorContentsSaveAndWaitForAutoBuild(
 			"", false			
