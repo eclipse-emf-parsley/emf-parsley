@@ -38,7 +38,6 @@
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.accountsview" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.mailsview" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.messageview" />
-		<zip_example name="org.eclipse.emf.parsley.examples.mail.unifiedfoldersview" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.feature" />
 		<zip_example name="org.eclipse.emf.parsley.examples.firstexample" />
 		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4" />
