@@ -292,7 +292,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private moduleQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".EmfParsleyGuiceModuleGen")
+		element.fromModuleToJavaFullyQualifiedName(".EmfParsleyGuiceModule")
 	}
 
 	def private injectorProviderQN(Module element) {
@@ -300,63 +300,63 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private labelProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".ui.provider.LabelProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.LabelProvider")
 	}
 
 	def private tableLabelProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".ui.provider.TableLabelProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.TableLabelProvider")
 	}
 
 	def private featureCaptionProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FeatureCaptionProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FeatureCaptionProvider")
 	}
 
 	def private formFeatureCaptionProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FormFeatureCaptionProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FormFeatureCaptionProvider")
 	}
 
 	def private dialogFeatureCaptionProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".ui.provider.DialogFeatureCaptionProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.DialogFeatureCaptionProvider")
 	}
 
 	def private featuresProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FeaturesProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.FeaturesProvider")
 	}
 
 	def private tableFeaturesProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".ui.provider.TableFeaturesProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".ui.provider.TableFeaturesProvider")
 	}
 
 	def private formControlFactoryQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".binding.FormControlFactoryGen")
+		element.fromModuleToJavaFullyQualifiedName(".binding.FormControlFactory")
 	}
 
 	def private dialogControlFactoryQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".binding.DialogControlFactoryGen")
+		element.fromModuleToJavaFullyQualifiedName(".binding.DialogControlFactory")
 	}
 
 	def private viewerContentProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".edit.ui.provider.ViewerContentProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".edit.ui.provider.ViewerContentProvider")
 	}
 
 	def private tableViewerContentProviderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".edit.ui.provider.TableViewerContentProviderGen")
+		element.fromModuleToJavaFullyQualifiedName(".edit.ui.provider.TableViewerContentProvider")
 	}
 
 	def private proposalCreatorQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".binding.ProposalCreatorGen")
+		element.fromModuleToJavaFullyQualifiedName(".binding.ProposalCreator")
 	}
 
 	def private menuBuilderQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".edit.action.MenuBuilderGen")
+		element.fromModuleToJavaFullyQualifiedName(".edit.action.MenuBuilder")
 	}
 
 	def private configuratorQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".config.ConfiguratorGen")
+		element.fromModuleToJavaFullyQualifiedName(".config.Configurator")
 	}
 
 	def private resourceManagerQN(Module element) {
-		element.fromModuleToJavaFullyQualifiedName(".resource.ResourceManagerGen")
+		element.fromModuleToJavaFullyQualifiedName(".resource.ResourceManager")
 	}
 
 	def private String fromModuleToJavaFullyQualifiedName(Module element, String templateString) {

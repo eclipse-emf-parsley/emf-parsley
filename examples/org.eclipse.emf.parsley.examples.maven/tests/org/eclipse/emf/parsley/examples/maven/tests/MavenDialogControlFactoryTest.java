@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
-import org.eclipse.emf.parsley.examples.maven.binding.MavenDialogControlFactoryGen;
+import org.eclipse.emf.parsley.examples.maven.binding.MavenDialogControlFactory;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
 import org.eclipse.swt.widgets.Control;
 import org.junit.Before;
@@ -26,7 +26,7 @@ public class MavenDialogControlFactoryTest extends AbstractEmfParsleyControlBase
 		createInjector(new EmfParsleyJavaGuiceModule() {
 			@Override
 			public Class<? extends DialogControlFactory> bindDialogControlFactory() {
-				return MavenDialogControlFactoryGen.class;
+				return MavenDialogControlFactory.class;
 			}
 		}).injectMembers(this);
 	}

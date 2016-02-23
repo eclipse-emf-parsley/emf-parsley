@@ -2,7 +2,7 @@ package org.eclipse.emf.parsley.examples.cdo.treeform;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import org.eclipse.emf.parsley.examples.cdo.treeform.TreeformEmfParsleyGuiceModuleGen;
+import org.eclipse.emf.parsley.examples.cdo.treeform.TreeformEmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.runtime.ui.PluginUtil;
 
 @SuppressWarnings("all")
@@ -12,7 +12,7 @@ public class TreeformInjectorProvider {
   public static synchronized Injector getInjector() throws Exception {
     if (injector == null) {
       injector = Guice.createInjector(
-        new TreeformEmfParsleyGuiceModuleGen(PluginUtil.getPlugin(
+        new TreeformEmfParsleyGuiceModule(PluginUtil.getPlugin(
           PluginUtil.getBundle(TreeformInjectorProvider.class))));
     }
     return injector;

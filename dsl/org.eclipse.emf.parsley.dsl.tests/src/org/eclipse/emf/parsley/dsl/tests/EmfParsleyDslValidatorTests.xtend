@@ -197,56 +197,56 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	@Test
 	def void testModuleExtendsItself() {
 		'''
-		module my.first extends my.first.FirstEmfParsleyGuiceModuleGen {
+		module my.first extends my.first.FirstEmfParsleyGuiceModule {
 		}
-		'''.parse.assertHierarchyCycle("FirstEmfParsleyGuiceModuleGen")
+		'''.parse.assertHierarchyCycle("FirstEmfParsleyGuiceModule")
 	}
 
 	@Test
 	def void testModuleCycleInHierarchy() {
 		val m1 = '''
-		module my.first extends my.second.SecondEmfParsleyGuiceModuleGen {
+		module my.first extends my.second.SecondEmfParsleyGuiceModule {
 		}
 		'''.parse
 		
 		val m2 = '''
-		module my.second extends my.third.ThirdEmfParsleyGuiceModuleGen {
+		module my.second extends my.third.ThirdEmfParsleyGuiceModule {
 		}
 		'''.parse(m1.eResource.resourceSet)
 		
 		val m3 = '''
-		module my.third extends my.first.FirstEmfParsleyGuiceModuleGen {
+		module my.third extends my.first.FirstEmfParsleyGuiceModule {
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		m1.assertHierarchyCycle("SecondEmfParsleyGuiceModuleGen")
-		m2.assertHierarchyCycle("ThirdEmfParsleyGuiceModuleGen")
-		m3.assertHierarchyCycle("FirstEmfParsleyGuiceModuleGen")
+		m1.assertHierarchyCycle("SecondEmfParsleyGuiceModule")
+		m2.assertHierarchyCycle("ThirdEmfParsleyGuiceModule")
+		m3.assertHierarchyCycle("FirstEmfParsleyGuiceModule")
 	}
 
 	@Test
 	def void testLabelProviderCycleInHierarchy() {
 		val m1 = '''
 		module my.first {
-			labelProvider extends my.second.ui.provider.SecondLabelProviderGen {}
+			labelProvider extends my.second.ui.provider.SecondLabelProvider {}
 		}
 		'''.parse
 		
 		val m2 = '''
 		module my.second {
-			labelProvider extends my.third.ui.provider.ThirdLabelProviderGen {}
+			labelProvider extends my.third.ui.provider.ThirdLabelProvider {}
 		}
 		'''.parse(m1.eResource.resourceSet)
 		
 		val m3 = '''
 		module my.third {
-			labelProvider extends my.first.ui.provider.FirstLabelProviderGen {}
+			labelProvider extends my.first.ui.provider.FirstLabelProvider {}
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		m1.assertHierarchyCycle("SecondLabelProviderGen")
-		m2.assertHierarchyCycle("ThirdLabelProviderGen")
-		m3.assertHierarchyCycle("FirstLabelProviderGen")
+		m1.assertHierarchyCycle("SecondLabelProvider")
+		m2.assertHierarchyCycle("ThirdLabelProvider")
+		m3.assertHierarchyCycle("FirstLabelProvider")
 	}
 
 	@Test

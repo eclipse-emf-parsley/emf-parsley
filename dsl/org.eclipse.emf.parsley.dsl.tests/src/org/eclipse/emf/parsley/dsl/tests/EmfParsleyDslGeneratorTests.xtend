@@ -47,8 +47,8 @@ import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
 }
@@ -66,7 +66,7 @@ package my.empty;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import my.empty.EmptyEmfParsleyGuiceModuleGen;
+import my.empty.EmptyEmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.runtime.ui.PluginUtil;
 
 @SuppressWarnings("all")
@@ -76,7 +76,7 @@ public class EmptyInjectorProvider {
   public static synchronized Injector getInjector() throws Exception {
     if (injector == null) {
       injector = Guice.createInjector(
-        new EmptyEmfParsleyGuiceModuleGen(PluginUtil.getPlugin(
+        new EmptyEmfParsleyGuiceModule(PluginUtil.getPlugin(
           PluginUtil.getBundle(EmptyInjectorProvider.class))));
     }
     return injector;
@@ -98,8 +98,8 @@ import org.eclipse.emf.parsley.dsl.tests.additional.MyTestGuiceModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends MyTestGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends MyTestGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
 }
@@ -120,8 +120,8 @@ import org.eclipse.emf.parsley.dsl.tests.additional.MyTestJavaGuiceModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends MyTestJavaGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends MyTestJavaGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     // not used
   }
 }
@@ -137,20 +137,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyLabelProviderGen;
+import my.empty.ui.provider.EmptyLabelProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
-    return EmptyLabelProviderGen.class;
+    return EmptyLabelProvider.class;
   }
 }
 '''
@@ -163,9 +163,9 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 
 @SuppressWarnings("all")
-public class EmptyLabelProviderGen extends ViewerLabelProvider {
+public class EmptyLabelProvider extends ViewerLabelProvider {
   @Inject
-  public EmptyLabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+  public EmptyLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
 }
@@ -181,20 +181,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyFeatureCaptionProviderGen;
+import my.empty.ui.provider.EmptyFeatureCaptionProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
-    return EmptyFeatureCaptionProviderGen.class;
+    return EmptyFeatureCaptionProvider.class;
   }
 }
 '''
@@ -205,7 +205,7 @@ package my.empty.ui.provider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 
 @SuppressWarnings("all")
-public class EmptyFeatureCaptionProviderGen extends FeatureCaptionProvider {
+public class EmptyFeatureCaptionProvider extends FeatureCaptionProvider {
 }
 ''']
 		)
@@ -224,9 +224,9 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 
 @SuppressWarnings("all")
-public class EmptyLabelProviderGen extends ViewerLabelProvider {
+public class EmptyLabelProvider extends ViewerLabelProvider {
   @Inject
-  public EmptyLabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+  public EmptyLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
 }
@@ -265,9 +265,9 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class EmptyLabelProviderGen extends ViewerLabelProvider {
+public class EmptyLabelProvider extends ViewerLabelProvider {
   @Inject
-  public EmptyLabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+  public EmptyLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
   
@@ -363,9 +363,9 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestLabelProvider;
 
 @SuppressWarnings("all")
-public class EmptyLabelProviderGen extends TestLabelProvider {
+public class EmptyLabelProvider extends TestLabelProvider {
   @Inject
-  public EmptyLabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+  public EmptyLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
 }
@@ -395,7 +395,7 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class EmptyLabelProviderGen extends ViewerLabelProvider {
+public class EmptyLabelProvider extends ViewerLabelProvider {
   @Inject
   private ILabelProvider parentLabelProvider;
   
@@ -432,7 +432,7 @@ public class EmptyLabelProviderGen extends ViewerLabelProvider {
   }
   
   @Inject
-  public EmptyLabelProviderGen(final AdapterFactoryLabelProvider delegate) {
+  public EmptyLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
   
@@ -470,7 +470,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class EmptyTableLabelProviderGen extends TableColumnLabelProvider {
+public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   public String text_Library_name(final Library it) {
     return "Name";
   }
@@ -549,7 +549,7 @@ package my.empty.ui.provider;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableColumnLabelProvider;
 
 @SuppressWarnings("all")
-public class EmptyTableLabelProviderGen extends TestTableColumnLabelProvider {
+public class EmptyTableLabelProvider extends TestTableColumnLabelProvider {
 }
 ''']
 		)
@@ -568,7 +568,7 @@ import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 
 @SuppressWarnings("all")
-public class EmptyTableLabelProviderGen extends TableColumnLabelProvider {
+public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   @Inject
   private ILabelProvider parentLabelProvider;
   
@@ -592,20 +592,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyFeatureCaptionProviderGen;
+import my.empty.ui.provider.EmptyFeatureCaptionProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
-    return EmptyFeatureCaptionProviderGen.class;
+    return EmptyFeatureCaptionProvider.class;
   }
 }
 '''
@@ -618,7 +618,7 @@ import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class EmptyFeatureCaptionProviderGen extends FeatureCaptionProvider {
+public class EmptyFeatureCaptionProvider extends FeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -645,20 +645,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyFeatureCaptionProviderGen;
+import my.empty.ui.provider.EmptyFeatureCaptionProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
-    return EmptyFeatureCaptionProviderGen.class;
+    return EmptyFeatureCaptionProvider.class;
   }
 }
 '''
@@ -671,7 +671,7 @@ import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeatureCaptionProvider;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class EmptyFeatureCaptionProviderGen extends TestFeatureCaptionProvider {
+public class EmptyFeatureCaptionProvider extends TestFeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -694,20 +694,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyFormFeatureCaptionProviderGen;
+import my.empty.ui.provider.EmptyFormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
-    return EmptyFormFeatureCaptionProviderGen.class;
+    return EmptyFormFeatureCaptionProvider.class;
   }
 }
 '''
@@ -728,7 +728,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class EmptyFormFeatureCaptionProviderGen extends FormFeatureCaptionProvider {
+public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -781,7 +781,7 @@ package my.empty.ui.provider;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormFeatureCaptionProvider;
 
 @SuppressWarnings("all")
-public class EmptyFormFeatureCaptionProviderGen extends TestFormFeatureCaptionProvider {
+public class EmptyFormFeatureCaptionProvider extends TestFormFeatureCaptionProvider {
 }
 ''']
 		)
@@ -795,20 +795,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyDialogFeatureCaptionProviderGen;
+import my.empty.ui.provider.EmptyDialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
-    return EmptyDialogFeatureCaptionProviderGen.class;
+    return EmptyDialogFeatureCaptionProvider.class;
   }
 }
 '''
@@ -829,7 +829,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class EmptyDialogFeatureCaptionProviderGen extends DialogFeatureCaptionProvider {
+public class EmptyDialogFeatureCaptionProvider extends DialogFeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -882,7 +882,7 @@ package my.empty.ui.provider;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogFeatureCaptionProvider;
 
 @SuppressWarnings("all")
-public class EmptyDialogFeatureCaptionProviderGen extends TestDialogFeatureCaptionProvider {
+public class EmptyDialogFeatureCaptionProvider extends TestDialogFeatureCaptionProvider {
 }
 ''']
 		)
@@ -896,20 +896,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyFeaturesProviderGen;
+import my.empty.ui.provider.EmptyFeaturesProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
-    return EmptyFeaturesProviderGen.class;
+    return EmptyFeaturesProvider.class;
   }
 }
 '''
@@ -921,7 +921,7 @@ import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMa
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 
 @SuppressWarnings("all")
-public class EmptyFeaturesProviderGen extends FeaturesProvider {
+public class EmptyFeaturesProvider extends FeaturesProvider {
   @Override
   public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
     super.buildStringMap(stringMap);
@@ -948,7 +948,7 @@ import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
 
 @SuppressWarnings("all")
-public class EmptyFeaturesProviderGen extends TestFeaturesProvider {
+public class EmptyFeaturesProvider extends TestFeaturesProvider {
   @Override
   public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
     super.buildStringMap(stringMap);
@@ -967,20 +967,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.ui.provider.EmptyTableFeaturesProviderGen;
+import my.empty.ui.provider.EmptyTableFeaturesProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
-    return EmptyTableFeaturesProviderGen.class;
+    return EmptyTableFeaturesProvider.class;
   }
 }
 '''
@@ -992,7 +992,7 @@ import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMa
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 
 @SuppressWarnings("all")
-public class EmptyTableFeaturesProviderGen extends TableFeaturesProvider {
+public class EmptyTableFeaturesProvider extends TableFeaturesProvider {
   @Override
   public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
     super.buildStringMap(stringMap);
@@ -1019,7 +1019,7 @@ import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
 
 @SuppressWarnings("all")
-public class EmptyTableFeaturesProviderGen extends TestTableFeaturesProvider {
+public class EmptyTableFeaturesProvider extends TestTableFeaturesProvider {
   @Override
   public void buildStringMap(final EClassToEStructuralFeatureAsStringsMap stringMap) {
     super.buildStringMap(stringMap);
@@ -1038,20 +1038,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.binding.EmptyFormControlFactoryGen;
+import my.empty.binding.EmptyFormControlFactory;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends FormControlFactory> bindFormControlFactory() {
-    return EmptyFormControlFactoryGen.class;
+    return EmptyFormControlFactory.class;
   }
 }
 '''
@@ -1080,7 +1080,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class EmptyFormControlFactoryGen extends FormControlFactory {
+public class EmptyFormControlFactory extends FormControlFactory {
   public Control control_Library_name(final Library it) {
     return null;
   }
@@ -1156,7 +1156,7 @@ package my.empty.binding;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormControlFactory;
 
 @SuppressWarnings("all")
-public class EmptyFormControlFactoryGen extends TestFormControlFactory {
+public class EmptyFormControlFactory extends TestFormControlFactory {
 }
 ''']
 		)
@@ -1170,20 +1170,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.binding.EmptyDialogControlFactoryGen;
+import my.empty.binding.EmptyDialogControlFactory;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends DialogControlFactory> bindDialogControlFactory() {
-    return EmptyDialogControlFactoryGen.class;
+    return EmptyDialogControlFactory.class;
   }
 }
 '''
@@ -1211,7 +1211,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class EmptyDialogControlFactoryGen extends DialogControlFactory {
+public class EmptyDialogControlFactory extends DialogControlFactory {
   public Control control_Library_name(final Library it) {
     return null;
   }
@@ -1286,7 +1286,7 @@ package my.empty.binding;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogControlFactory;
 
 @SuppressWarnings("all")
-public class EmptyDialogControlFactoryGen extends TestDialogControlFactory {
+public class EmptyDialogControlFactory extends TestDialogControlFactory {
 }
 ''']
 		)
@@ -1300,20 +1300,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.edit.ui.provider.EmptyViewerContentProviderGen;
+import my.empty.edit.ui.provider.EmptyViewerContentProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
-    return EmptyViewerContentProviderGen.class;
+    return EmptyViewerContentProvider.class;
   }
 }
 '''
@@ -1336,9 +1336,9 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 
 @SuppressWarnings("all")
-public class EmptyViewerContentProviderGen extends ViewerContentProvider {
+public class EmptyViewerContentProvider extends ViewerContentProvider {
   @Inject
-  public EmptyViewerContentProviderGen(final AdapterFactory adapterFactory) {
+  public EmptyViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
   
@@ -1377,20 +1377,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.edit.ui.provider.EmptyTableViewerContentProviderGen;
+import my.empty.edit.ui.provider.EmptyTableViewerContentProvider;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends TableViewerContentProvider> bindTableViewerContentProvider() {
-    return EmptyTableViewerContentProviderGen.class;
+    return EmptyTableViewerContentProvider.class;
   }
 }
 '''
@@ -1413,9 +1413,9 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 
 @SuppressWarnings("all")
-public class EmptyTableViewerContentProviderGen extends TableViewerContentProvider {
+public class EmptyTableViewerContentProvider extends TableViewerContentProvider {
   @Inject
-  public EmptyTableViewerContentProviderGen(final AdapterFactory adapterFactory) {
+  public EmptyTableViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
   
@@ -1459,9 +1459,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestViewerContentProvider;
 
 @SuppressWarnings("all")
-public class EmptyViewerContentProviderGen extends TestViewerContentProvider {
+public class EmptyViewerContentProvider extends TestViewerContentProvider {
   @Inject
-  public EmptyViewerContentProviderGen(final AdapterFactory adapterFactory) {
+  public EmptyViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 }
@@ -1477,20 +1477,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.binding.EmptyProposalCreatorGen;
+import my.empty.binding.EmptyProposalCreator;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.composite.ProposalCreator;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends ProposalCreator> bindProposalCreator() {
-    return EmptyProposalCreatorGen.class;
+    return EmptyProposalCreator.class;
   }
 }
 '''
@@ -1511,7 +1511,7 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class EmptyProposalCreatorGen extends ProposalCreator {
+public class EmptyProposalCreator extends ProposalCreator {
   public List<?> proposals_Library_name(final Library it, final EStructuralFeature feature) {
     return CollectionLiterals.<String>newArrayList("foo", "bar");
   }
@@ -1571,7 +1571,7 @@ package my.empty.binding;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestProposalCreator;
 
 @SuppressWarnings("all")
-public class EmptyProposalCreatorGen extends TestProposalCreator {
+public class EmptyProposalCreator extends TestProposalCreator {
 }
 ''']
 		)
@@ -1638,20 +1638,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.edit.action.EmptyMenuBuilderGen;
+import my.empty.edit.action.EmptyMenuBuilder;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
-    return EmptyMenuBuilderGen.class;
+    return EmptyMenuBuilder.class;
   }
 }
 '''
@@ -1674,7 +1674,7 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class EmptyMenuBuilderGen extends EditingMenuBuilder {
+public class EmptyMenuBuilder extends EditingMenuBuilder {
   private final EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
   
   public EXTLibraryFactory getLibraryFactory() {
@@ -1741,20 +1741,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.config.EmptyConfiguratorGen;
+import my.empty.config.EmptyConfigurator;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends Configurator> bindConfigurator() {
-    return EmptyConfiguratorGen.class;
+    return EmptyConfigurator.class;
   }
 }
 '''
@@ -1770,7 +1770,7 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 
 @SuppressWarnings("all")
-public class EmptyConfiguratorGen extends Configurator {
+public class EmptyConfigurator extends Configurator {
   private final EXTLibraryPackage libraryPackage = EXTLibraryPackage.eINSTANCE;
   
   public EXTLibraryPackage getLibraryPackage() {
@@ -1809,20 +1809,20 @@ expectedModule =
 '''
 package my.empty;
 
-import my.empty.resource.EmptyResourceManagerGen;
+import my.empty.resource.EmptyResourceManager;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
-    return EmptyResourceManagerGen.class;
+    return EmptyResourceManager.class;
   }
 }
 '''
@@ -1839,7 +1839,7 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.resource.ResourceManager;
 
 @SuppressWarnings("all")
-public class EmptyResourceManagerGen extends ResourceManager {
+public class EmptyResourceManager extends ResourceManager {
   private final EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
   
   public EXTLibraryFactory getLibraryFactory() {
@@ -1898,8 +1898,8 @@ import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class TestEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public TestEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class TestEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public TestEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
 }
@@ -1976,8 +1976,8 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
@@ -2030,8 +2030,8 @@ import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
@@ -2079,8 +2079,8 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
@@ -2120,8 +2120,8 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
-public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
-  public EmptyEmfParsleyGuiceModuleGen(final AbstractUIPlugin plugin) {
+public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
   
@@ -2145,7 +2145,7 @@ public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 			assertNoValidationErrors
 
 			for (e : allGeneratedResources.entrySet) {
-				if (e.key.endsWith("ModuleGen.java")) {
+				if (e.key.endsWith("Module.java")) {
 					if (expected.expectedModule != null)
 						assertEqualsStrings(expected.expectedModule, e.value)
 				} else if (e.key.endsWith("InjectorProvider.java")) {
@@ -2154,49 +2154,49 @@ public class EmptyEmfParsleyGuiceModuleGen extends EmfParsleyGuiceModule {
 				} else if (e.key.endsWith("ExecutableExtensionFactory.java")) {
 					if (expected.expectedExecutableExtensionFactory != null)
 						assertEqualsStrings(expected.expectedExecutableExtensionFactory, e.value)
-				} else if (e.key.endsWith("FormFeatureCaptionProviderGen.java")) {
+				} else if (e.key.endsWith("FormFeatureCaptionProvider.java")) {
 					if (expected.expectedFormFeatureCaptionProvider != null)
 						assertEqualsStrings(expected.expectedFormFeatureCaptionProvider, e.value)
-				} else if (e.key.endsWith("DialogFeatureCaptionProviderGen.java")) {
+				} else if (e.key.endsWith("DialogFeatureCaptionProvider.java")) {
 					if (expected.expectedDialogFeatureCaptionProvider != null)
 						assertEqualsStrings(expected.expectedDialogFeatureCaptionProvider, e.value)
-				} else if (e.key.endsWith("FeatureCaptionProviderGen.java")) {
+				} else if (e.key.endsWith("FeatureCaptionProvider.java")) {
 					if (expected.expectedFeatureCaptionProvider != null)
 						assertEqualsStrings(expected.expectedFeatureCaptionProvider, e.value)
-				} else if (e.key.endsWith("TableFeaturesProviderGen.java")) {
+				} else if (e.key.endsWith("TableFeaturesProvider.java")) {
 					if (expected.expectedTableFeaturesProvider != null)
 						assertEqualsStrings(expected.expectedTableFeaturesProvider, e.value)
-				} else if (e.key.endsWith("FeaturesProviderGen.java")) {
+				} else if (e.key.endsWith("FeaturesProvider.java")) {
 					if (expected.expectedFeaturesProvider != null)
 						assertEqualsStrings(expected.expectedFeaturesProvider, e.value)
-				} else if (e.key.endsWith("TableLabelProviderGen.java")) {
+				} else if (e.key.endsWith("TableLabelProvider.java")) {
 					if (expected.expectedTableLabelProvider != null)
 						assertEqualsStrings(expected.expectedTableLabelProvider, e.value)
-				} else if (e.key.endsWith("LabelProviderGen.java")) {
+				} else if (e.key.endsWith("LabelProvider.java")) {
 					if (expected.expectedLabelProvider != null)
 						assertEqualsStrings(expected.expectedLabelProvider, e.value)
-				} else if (e.key.endsWith("FormControlFactoryGen.java")) {
+				} else if (e.key.endsWith("FormControlFactory.java")) {
 					if (expected.expectedFormControlFactory != null)
 						assertEqualsStrings(expected.expectedFormControlFactory, e.value)
-				} else if (e.key.endsWith("DialogControlFactoryGen.java")) {
+				} else if (e.key.endsWith("DialogControlFactory.java")) {
 					if (expected.expectedDialogControlFactory != null)
 						assertEqualsStrings(expected.expectedDialogControlFactory, e.value)
-				} else if (e.key.endsWith("TableViewerContentProviderGen.java")) {
+				} else if (e.key.endsWith("TableViewerContentProvider.java")) {
 					if (expected.expectedTableViewerContentProvider != null)
 						assertEqualsStrings(expected.expectedTableViewerContentProvider, e.value)
-				} else if (e.key.endsWith("ViewerContentProviderGen.java")) {
+				} else if (e.key.endsWith("ViewerContentProvider.java")) {
 					if (expected.expectedViewerContentProvider != null)
 						assertEqualsStrings(expected.expectedViewerContentProvider, e.value)
-				} else if (e.key.endsWith("ProposalCreatorGen.java")) {
+				} else if (e.key.endsWith("ProposalCreator.java")) {
 					if (expected.expectedProposalCreator != null)
 						assertEqualsStrings(expected.expectedProposalCreator, e.value)
-				} else if (e.key.endsWith("MenuBuilderGen.java")) {
+				} else if (e.key.endsWith("MenuBuilder.java")) {
 					if (expected.expectedMenuBuilder != null)
 						assertEqualsStrings(expected.expectedMenuBuilder, e.value)
-				} else if (e.key.endsWith("ConfiguratorGen.java")) {
+				} else if (e.key.endsWith("Configurator.java")) {
 					if (expected.expectedConfigurator != null)
 						assertEqualsStrings(expected.expectedConfigurator, e.value)
-				} else if (e.key.endsWith("ResourceManagerGen.java")) {
+				} else if (e.key.endsWith("ResourceManager.java")) {
 					if (expected.expectedResourceManager!= null)
 						assertEqualsStrings(expected.expectedResourceManager, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {

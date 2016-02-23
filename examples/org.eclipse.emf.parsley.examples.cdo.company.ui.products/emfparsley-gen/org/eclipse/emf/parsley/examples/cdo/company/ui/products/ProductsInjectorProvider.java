@@ -2,7 +2,7 @@ package org.eclipse.emf.parsley.examples.cdo.company.ui.products;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ProductsEmfParsleyGuiceModuleGen;
+import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ProductsEmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.runtime.ui.PluginUtil;
 
 @SuppressWarnings("all")
@@ -12,7 +12,7 @@ public class ProductsInjectorProvider {
   public static synchronized Injector getInjector() throws Exception {
     if (injector == null) {
       injector = Guice.createInjector(
-        new ProductsEmfParsleyGuiceModuleGen(PluginUtil.getPlugin(
+        new ProductsEmfParsleyGuiceModule(PluginUtil.getPlugin(
           PluginUtil.getBundle(ProductsInjectorProvider.class))));
     }
     return injector;
