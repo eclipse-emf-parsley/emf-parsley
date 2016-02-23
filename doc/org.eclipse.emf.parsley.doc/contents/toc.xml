@@ -6,7 +6,11 @@
 			</topic>
 			<topic href="contents/01-Overview.html#Customize" label="Customize" >
 				<topic href="contents/01-Overview.html#Customizations_DSL" label="Customize with the DSL" >
+					<topic href="contents/01-Overview.html#DslProjectStructure" label="The structure of an EMF Parsley project" >
+					</topic>
 					<topic href="contents/01-Overview.html#PluginXml" label="How the DSL handles the plugin.xml" >
+					</topic>
+					<topic href="contents/01-Overview.html#InjectorProvider" label="Obtaining the Injector" >
 					</topic>
 				</topic>
 			</topic>
