@@ -228,6 +228,15 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.editors</module>
 		
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.model</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.accountsview</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.mailsview</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.messageview</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.unifiedfoldersview</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.rcp</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.product.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.examples</module>
+
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
 
@@ -885,10 +894,12 @@
 
 								<plugin id="org.eclipse.emf.rap" />
 								<plugin id="org.eclipse.swtbot.go" />
+								<plugin id="org.eclipse.ui.forms" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
 								<feature id="org.eclipse.pde" />
+								<feature id="org.eclipse.rcp" />
 								<feature id="org.eclipse.emf.common" />
 								<feature id="org.eclipse.emf.databinding.edit" />
 								<feature id="org.eclipse.emf.query" />
