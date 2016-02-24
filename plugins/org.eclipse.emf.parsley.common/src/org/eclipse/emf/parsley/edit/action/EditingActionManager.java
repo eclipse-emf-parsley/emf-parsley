@@ -14,11 +14,13 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.parsley.edit.domain.EditingDomainPresetStrategy;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.internal.WorkbenchImages;
 import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 
@@ -32,6 +34,7 @@ import com.google.inject.Provider;
  * 
  * @author Lorenzo Bettini - initial API and implementation
  */
+@SuppressWarnings("restriction")
 public class EditingActionManager {
 
 	@Inject
@@ -92,7 +95,19 @@ public class EditingActionManager {
 	}
 
 	protected ISharedImages getSharedImages() {
-		return PlatformUI.getWorkbench().getSharedImages();
+		// we can't use PlatformUI.getWorkbench().getSharedImages();
+		// in an e4 application,
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=404727
+		return new ISharedImages() {
+			@Override
+			public Image getImage(String symbolicName) {
+				return getImageDescriptor(symbolicName).createImage();
+			}
+			@Override
+			public ImageDescriptor getImageDescriptor(String symbolicName) {
+				return WorkbenchImages.getImageDescriptor(symbolicName);
+			}
+		};
 	}
 
 	/**

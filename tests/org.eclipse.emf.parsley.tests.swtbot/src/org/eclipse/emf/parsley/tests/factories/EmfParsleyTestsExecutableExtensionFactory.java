@@ -15,8 +15,6 @@ import org.eclipse.emf.parsley.EmfParsleyExtensionFactory;
 import org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator;
 import org.osgi.framework.Bundle;
 
-import com.google.inject.Injector;
-
 /**
  * Uses a custom label provider
  * 
@@ -34,11 +32,6 @@ public class EmfParsleyTestsExecutableExtensionFactory extends
 	@Override
 	protected Bundle getBundle() {
 		return EmfParsleySwtBotTestsActivator.getDefault().getBundle();
-	}
-
-	@Override
-	public Injector getInjector() {
-		return super.getInjector();
 	}
 
 }

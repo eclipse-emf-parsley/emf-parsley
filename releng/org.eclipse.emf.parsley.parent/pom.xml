@@ -7,7 +7,10 @@
 	<version>0.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
+	<name>EMF Parsley</name>
+	<description>EMF Parsley provides a set of reusable and customizable UI components based on EMF (trees, tables, forms, views, editors).</description>
 	<url>http://www.eclipse.org/emf-parsley/</url>
+
 	<ciManagement>
 		<system>hudson</system>
 		<url>https://hudson.eclipse.org/hudson</url>
@@ -225,18 +228,26 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.library.editor</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.views</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.editors</module>
-		
+
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot</module>
-				
+
 				<!-- These examples are used in CDO swtbot tests -->
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.server</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.model</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.cdo.treeform</module>
-		
+
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo</module>
-		
+
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.model</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.accountsview</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.mailsview</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.messageview</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.rcp</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.mail.product.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.examples</module>
+
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
 			</modules>
 		</profile>
@@ -249,6 +260,10 @@
 
 			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			</modules>
 			
 			<properties>
@@ -420,7 +435,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
-			
+
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
@@ -435,7 +450,7 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
-			
+
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
 			</properties>
@@ -487,6 +502,18 @@
 
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.3</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						</configuration>
+					</plugin>
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
@@ -904,10 +931,12 @@
 
 								<plugin id="org.eclipse.emf.rap" />
 								<plugin id="org.eclipse.swtbot.go" />
+								<plugin id="org.eclipse.ui.forms" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
 								<feature id="org.eclipse.pde" />
+								<feature id="org.eclipse.rcp" />
 								<feature id="org.eclipse.emf.common" />
 								<feature id="org.eclipse.emf.databinding.edit" />
 								<feature id="org.eclipse.emf.query" />

@@ -6,7 +6,11 @@
 			</topic>
 			<topic href="contents/01-Overview.html#Customize" label="Customize" >
 				<topic href="contents/01-Overview.html#Customizations_DSL" label="Customize with the DSL" >
+					<topic href="contents/01-Overview.html#DslProjectStructure" label="The structure of an EMF Parsley project" >
+					</topic>
 					<topic href="contents/01-Overview.html#PluginXml" label="How the DSL handles the plugin.xml" >
+					</topic>
+					<topic href="contents/01-Overview.html#InjectorProvider" label="Obtaining the Injector" >
 					</topic>
 				</topic>
 			</topic>
@@ -144,7 +148,7 @@
 	</topic>
 	<topic href="contents/00-Main_6.html#Emf%20Parsley%20Guide_6" label="Appendix" >
 		<topic href="contents/Migration-Guide.html#MigrationGuide" label="Migration Guide" >
-			<topic href="contents/Migration-Guide.html#SixMinors" label="From 0.6.0 to 0.6.1" >
+			<topic href="contents/Migration-Guide.html#SixSeven" label="From 0.6.0 to 0.7.0" >
 			</topic>
 			<topic href="contents/Migration-Guide.html#FiveMinors" label="From 0.5.0 to 0.6.0" >
 			</topic>

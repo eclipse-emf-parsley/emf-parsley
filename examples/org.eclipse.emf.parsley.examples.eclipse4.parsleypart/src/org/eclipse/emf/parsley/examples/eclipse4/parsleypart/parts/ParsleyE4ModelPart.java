@@ -16,10 +16,11 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.MApplication;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
-import org.eclipse.emf.parsley.examples.eclipse4.parsleypart.ParsleypartActivator;
+import org.eclipse.emf.parsley.examples.eclipse4.parsleypart.ParsleypartInjectorProvider;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -28,32 +29,33 @@ import com.google.inject.Injector;
 
 public class ParsleyE4ModelPart {
 
-	// Guice injector
-	private Injector injector = ParsleypartActivator.getDefault().getInjector();
-
 	private TreeFormComposite treeFormComposite;
 
 	@Inject
 	MApplication application;
 
 	@PostConstruct
-	public void postConstruct(Composite parent) {
+	public void postConstruct(Composite parent) throws Exception {
+		// Guice injector
+		Injector injector = ParsleypartInjectorProvider.getInjector();
 		// Guice injected EMF Parsley factory for the tree detail form
 		TreeFormFactory treeFormFactory = injector.getInstance(TreeFormFactory.class);
 		// Guice injected viewer context menu helper
 		ViewerContextMenuHelper contextMenuHelper = injector.getInstance(ViewerContextMenuHelper.class);
 		// Guice injected viewer drag and drop helper
 		ViewerDragAndDropHelper dragAndDropHelper = injector.getInstance(ViewerDragAndDropHelper.class);
+		// The EditingDomain is needed for context menu and drag and drop
+		EditingDomain editingDomain = injector.getInstance(EditingDomain.class);
 
 		// Initialize Parsley Tree Form:
 		// 1) create the tree-form composite
 		treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
 
 		// 2) initialize the context menu to the tree-form composite
-		contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer());
+		contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer(), editingDomain);
 
 		// 3) set drag and drop to the tree-form composite
-		dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer());
+		dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer(), editingDomain);
 
 		// 4) fill the data
 		treeFormComposite.update(application);

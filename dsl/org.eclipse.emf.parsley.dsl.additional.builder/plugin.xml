@@ -112,7 +112,7 @@
             id="org.eclipse.emf.parsley.builder.nature.overlay"
             label="Emf Parsley Dsl Plugin Xml Nature"
             lightweight="true"
-            location="BOTTOM_LEFT"
+            location="TOP_RIGHT"
             state="true">
          <enablement>
          	<and>

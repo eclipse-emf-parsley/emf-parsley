@@ -28,11 +28,22 @@ import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
 public class NewEmfParsleyProjectSupport {
 
 	private static final String JAVA_EXTENSION = ".java";
+	private static final String PARSLEY_EXTENSION = ".parsley";
 
 	static EmfParsleyProjectFilesGenerator filesGenerator = new EmfParsleyProjectFilesGenerator();
 
 	protected NewEmfParsleyProjectSupport() {
 		// hide the implicit one
+	}
+
+	public static void createDslModule(IProject project, String projectName,
+			String projectPackagePath, String contents, IProgressMonitor progressMonitor)
+			throws CoreException {
+		createProjectFile(project,
+				projectPackagePath + "/"
+					+ filesGenerator.moduleFileName(projectName) + PARSLEY_EXTENSION,
+				contents,
+				createSubProgressMonitor(progressMonitor));
 	}
 
 	public static void createActivator(IProject project, String projectName,
@@ -41,28 +52,6 @@ public class NewEmfParsleyProjectSupport {
 		createProjectFile(project, projectPackagePath + "/"
 				+ filesGenerator.activatorName(projectName) + JAVA_EXTENSION,
 				filesGenerator.generateActivator(projectName).toString(),
-				createSubProgressMonitor(progressMonitor));
-	}
-
-	public static void createExecutableExtensionFactory(IProject project,
-			String projectName, String projectPackagePath,
-			IProgressMonitor progressMonitor) throws CoreException {
-		createProjectFile(project, projectPackagePath
-				+ "/"
-				+ filesGenerator.extFactoryName(projectName)
-				+ JAVA_EXTENSION, filesGenerator
-				.generateExecutableExtensionFactory(projectName).toString(),
-				createSubProgressMonitor(progressMonitor));
-	}
-
-	public static void createModule(IProject project, String projectName,
-			String projectPackagePath, String superClass,
-			IProgressMonitor progressMonitor) throws CoreException {
-		createProjectFile(project, projectPackagePath
-				+ "/"
-				+ filesGenerator.moduleName(projectName)
-				+ JAVA_EXTENSION, filesGenerator
-				.generateModule(projectName, superClass).toString(),
 				createSubProgressMonitor(progressMonitor));
 	}
 

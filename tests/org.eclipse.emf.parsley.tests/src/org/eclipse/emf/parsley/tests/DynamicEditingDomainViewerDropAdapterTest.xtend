@@ -11,14 +11,14 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.common.command.BasicCommandStack
-import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.common.command.Command
 import org.eclipse.emf.edit.command.CommandParameter
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
 import org.eclipse.emf.edit.domain.EditingDomain
-import org.eclipse.emf.edit.domain.IEditingDomainProvider
 import org.eclipse.emf.parsley.internal.edit.ui.dnd.DynamicEditingDomainViewerDropAdapter
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.eclipse.emf.parsley.tests.util.Wrapper
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.jface.viewers.TreeViewer
 import org.eclipse.swt.dnd.DropTargetEvent
@@ -26,8 +26,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-import static org.mockito.Matchers.*
 import static org.mockito.Mockito.*
+
+import static extension org.junit.Assert.*
 
 /**
  * @author Lorenzo Bettini
@@ -56,12 +57,24 @@ class DynamicEditingDomainViewerDropAdapterTest extends AbstractEmfParsleyShellB
 
 	@Test
 	def void testWithEditingDomain() {
-		createResourceForTest
+		val commandWrapper = Wrapper.forType(Command)
+		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, new BasicCommandStack) {
+
+			override createCommand(Class<? extends Command> commandClass, CommandParameter commandParameter) {
+				commandWrapper.set(super.createCommand(commandClass, commandParameter))
+				commandWrapper.get
+			}
+
+		}
+		editingDomain.resourceSet.setupResouceFactory
+		createTestLibrayResourceAndInitialize(editingDomain)
 		val event = mockEvent(library)
 		dropAdapter.drop(event)
 		// creation of a command may call createCommand recursively,
 		// we just want to check that it is called at least once
-		verify(editingDomain, atLeastOnce).createCommand(any(Class), any(CommandParameter))
+		commandWrapper.get.assertNotNull
+		// mockito does not work for Indigo and Kepler in this case		
+		// verify(editingDomain, atLeastOnce).createCommand(any(Class), any(CommandParameter))
 	}
 
 	def private mockEvent(Object o) {
@@ -70,22 +83,24 @@ class DynamicEditingDomainViewerDropAdapterTest extends AbstractEmfParsleyShellB
 		]
 	}
 
-	def private createResourceForTest() {
-		val e = new AdapterFactoryEditingDomain(adapterFactory, new BasicCommandStack)
-		editingDomain = spy(e) => [
-			resourceSet.setupResouceFactory
-		]
-		// since the adapter factory editing domain's resource set is an
-		// internal class instance we need to play with mocks a little bit
-		// so that the spied editing domain is effectively retrieved by the
-		// EditingDomainFinder
-		val resourceSet = spy(editingDomain.resourceSet as IEditingDomainProvider)
-		when(resourceSet.editingDomain).thenReturn(editingDomain)
-		when(editingDomain.resourceSet).thenReturn(resourceSet as ResourceSet)
-		val resource = createTestLibrayResourceAndInitialize(
-			editingDomain
-		)
-		return resource
-	}
+	// This does not work in Indigo and Kepler, since mockito throws an exception
+	// org.mockito.cglib.core.CodeGenerationException
+//	def private createResourceForTest() {
+//		val e = new AdapterFactoryEditingDomain(adapterFactory, new BasicCommandStack)
+//		editingDomain = spy(e) => [
+//			resourceSet.setupResouceFactory
+//		]
+//		// since the adapter factory editing domain's resource set is an
+//		// internal class instance we need to play with mocks a little bit
+//		// so that the spied editing domain is effectively retrieved by the
+//		// EditingDomainFinder
+//		val resourceSet = spy(editingDomain.resourceSet as IEditingDomainProvider)
+//		when(resourceSet.editingDomain).thenReturn(editingDomain)
+//		when(editingDomain.resourceSet).thenReturn(resourceSet as ResourceSet)
+//		val resource = createTestLibrayResourceAndInitialize(
+//			editingDomain
+//		)
+//		return resource
+//	}
 
 }

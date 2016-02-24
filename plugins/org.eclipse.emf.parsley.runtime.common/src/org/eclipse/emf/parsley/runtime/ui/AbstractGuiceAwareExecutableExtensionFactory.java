@@ -63,8 +63,11 @@ public abstract class AbstractGuiceAwareExecutableExtensionFactory implements IE
 			throw new CoreException(new Status(IStatus.ERROR, getBundle().getSymbolicName(), e.getMessage() + " ExtensionFactory: "+ getClass().getName(), e));
 		}
 	}
-	
-	protected abstract Bundle getBundle();
-	protected abstract Injector getInjector();
+
+	protected Bundle getBundle() {
+		return PluginUtil.getBundle(getClass());
+	}
+
+	protected abstract Injector getInjector() throws Exception;
 }
 

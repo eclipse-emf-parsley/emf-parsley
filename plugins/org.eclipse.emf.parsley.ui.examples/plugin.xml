@@ -258,11 +258,6 @@
                name="org.eclipse.emf.parsley.examples.mail.messageview">
          </projectDescriptor>
          <projectDescriptor
-               contentURI="contents/org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.zip"
-               description="Unified Folders View"
-               name="org.eclipse.emf.parsley.examples.mail.unifiedfoldersview">
-         </projectDescriptor>
-         <projectDescriptor
                contentURI="contents/org.eclipse.emf.parsley.examples.mail.product.feature.zip"
                description="Mail Product Feature"
                name="org.eclipse.emf.parsley.examples.mail.product.feature">

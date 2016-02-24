@@ -14,6 +14,7 @@ import com.google.common.collect.ListMultimap
 import com.google.inject.Inject
 import java.util.List
 import java.util.Set
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.dsl.model.EmfFeatureAccess
@@ -31,7 +32,10 @@ import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.resource.IContainer
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.validation.Check
+import org.eclipse.xtext.validation.CheckType
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
 
@@ -62,8 +66,43 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	@Inject extension EmfParsleyDslExpectedSuperTypes
 	@Inject extension EmfParsleyDslGuiceModuleHelper
 	@Inject extension IJvmModelAssociations
-	
+
+	@Inject ResourceDescriptionsProvider rdp
+	@Inject IContainer.Manager cm
+
 	val modelPackage = ModelPackage.eINSTANCE
+
+	// perform this check only on file save
+	@Check(CheckType.NORMAL)
+	def void checkDuplicateViewSpecificationAcrossFiles(ViewSpecification viewSpecification) {
+		val descriptions = getVisibleEObjectDescriptions(viewSpecification, 
+			ModelPackage.Literals.VIEW_SPECIFICATION)
+		for (desc : descriptions) {
+			if (desc.qualifiedName.toString == viewSpecification.id && 
+					desc.EObjectOrProxy != viewSpecification && 
+					desc.EObjectURI.trimFragment != viewSpecification.eResource.URI) {
+				error(
+					"The part id " + viewSpecification.id + " is already defined",
+					modelPackage.viewSpecification_Id,
+					DUPLICATE_ELEMENT
+				)
+				return
+			}
+		}
+	}
+
+	def private getVisibleEObjectDescriptions(EObject o, EClass type) {
+		o.getVisibleContainers.map[
+			container |
+			container.getExportedObjectsByType(type)
+		].flatten
+	}
+
+	def private getVisibleContainers(EObject o) {
+		val index = rdp.getResourceDescriptions(o.eResource)
+		val rd = index.getResourceDescription(o.eResource.URI)
+		cm.getVisibleContainers(rd, index)
+	}
 
 	@Check
 	def void checkViewSpecification(ViewSpecification viewSpecification) {

@@ -70,7 +70,7 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		// otherwise the plugin will depend on xtext stuff
 		// which are not used by the generated code
 	}
-	
+
 	@Override
 	protected String getActivatorClassName() {
 		return getProjectInfo().getProjectName()
@@ -108,11 +108,7 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 
 		NewEmfParsleyProjectSupport.createActivator(project, projectName,
 				projectPackagePath, monitor);
-		NewEmfParsleyProjectSupport.createExecutableExtensionFactory(
-				project, projectName, projectPackagePath, monitor);
-		NewEmfParsleyProjectSupport.createModule(project, projectName,
-				projectPackagePath, "EmfParsleyGuiceModuleGen", monitor);
-		
+
 		String dslFileContents = "";
 		TemplateWizardConfiguration selectedTemplate = getProjectInfo().getSelectedTemplate();
 		if (selectedTemplate != null) {
@@ -126,11 +122,9 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		} else {
 			dslFileContents = filesGenerator.genEmptyDslModule(projectName).toString();
 		}
-		
-		NewEmfParsleyProjectSupport.createProjectFile(project,
-				projectPackagePath + "/module.parsley", dslFileContents,
-				NewEmfParsleyProjectSupport
-						.createSubProgressMonitor(monitor));
+
+		NewEmfParsleyProjectSupport.createDslModule(project, projectName,
+				projectPackagePath, dslFileContents, monitor);
 
 		project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 	}
