@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.examples.mail.product.feature"
       label="Emf Parsley Mail Product Feature"
-      version="0.6.0.qualifier"
+      version="0.6.1.qualifier"
       provider-name="Rcp-Vision">
 
    <description url="http://www.eclipse.org/emfparsley">
