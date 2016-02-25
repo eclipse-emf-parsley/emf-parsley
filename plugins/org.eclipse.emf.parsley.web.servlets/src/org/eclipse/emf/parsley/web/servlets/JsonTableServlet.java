@@ -124,7 +124,7 @@ public class JsonTableServlet extends JsonParsleyServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServletException("Unable to resolve viewPart instance for " + "aa.UsersView");
+			throw new ServletException("Cannot find viewPart with id=\"" + s+ "\" in plugin.xml file.");
 		}
 
 		out.write("]");
