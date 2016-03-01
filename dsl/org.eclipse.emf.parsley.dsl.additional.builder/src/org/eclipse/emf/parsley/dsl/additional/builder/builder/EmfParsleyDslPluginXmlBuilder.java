@@ -86,7 +86,11 @@ public class EmfParsleyDslPluginXmlBuilder extends IncrementalProjectBuilder {
 
 	protected String loadFromResource(InputStreamReader reader, String information) throws CoreException {
 		try {
-			return CharStreams.toString(reader);
+			String string = CharStreams.toString(reader);
+			// in Windows it is crucial to close this stream, otherwise Eclipse
+			// will not always be able to delete this resource.
+			reader.close();
+			return string;
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "while reading " + information, e));
 		}
