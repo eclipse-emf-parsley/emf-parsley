@@ -115,7 +115,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.9.1"/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.9.2"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
