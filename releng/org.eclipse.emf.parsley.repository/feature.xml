@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.repository"
       label="Emf Parsley Repository"
-      version="0.7.0.qualifier"
+      version="0.8.0.qualifier"
       provider-name="RCP Vision">
 
    <description url="http://www.eclipse.org/emfparsley">
