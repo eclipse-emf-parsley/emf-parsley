@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<title>Getting Sources</title>
+
+<link href="book.css" rel="stylesheet" type="text/css">
+<link href="code.css" rel="stylesheet" type="text/css">
+<link rel="home" href="GettingSources.html" title="">
+</head>
+<body>
+<a name="GettingSources"></a>
+<h1>Getting Sources</h1>
+<p>
+If you want to get the sources of EMF Parsley,
+for instance, to contribute new features and patches, you can get them
+via Git and setup the workspace manually. However, we strongly reccomend to
+use the automatic procedure detailed below.
+</p>
+<p>
+If you want to develop also the <a href="http://eclipse.org/rap/">RAP</a>
+version of Emf Parsley, you will need a different workspace (and a different target platform).
+</p>
+<p>
+We use <a href="https://wiki.eclipse.org/Eclipse_Oomph_Installer">Oomph</a> for provisioning
+a full Eclipse IDE and workspace setup for Parsley.
+</p>
+<p>
+<ul>
+	<li>
+		Download and start Oomph: <a href="https://wiki.eclipse.org/Eclipse_Oomph_Installer">https://wiki.eclipse.org/Eclipse_Oomph_Installer</a>
+	</li>
+	<li>
+		On the initial page, click on the Switch to advanced mode button in the top right
+	</li>
+	<li>
+		On the Product page, select Eclipse IDE for Eclipse Committers.
+	</li>
+	<li>
+		On the Projects page, expand the "EMF Parsley" node.
+	</li>
+	<li>
+		either double-click on "RCP" or "RAP" for setting up the workspace for either the RCP version of
+		Parsley or the RAP version (it is likely that you choose the former).
+	</li>
+	<li>
+		Choose your preferred installation settings on the Variables page:
+		If you plan to contribute patches using Gerrit, check "Show all variables"
+		and make sure you select ("SSH (read-write Gerrit)") in the Git or Gerrit repository
+	</li>
+	<li>
+		Then specify your Bugzilla/Hudson password and Git/Gerrit user ID
+		(you can also specify the password and check that your credential are correct using the "Authenticate..." button).
+	</li>
+</ul>
+</p>
+<p>
+Press next and finish.
+This will first create an Eclipse installation with all the needed plug-ins for developing EMF Parsley
+and then will start the new installed Eclipse (press Finish to close the first installation dialog).
+The new installed Eclipse will automatically setup the workspace and you will have to wait for this procedure
+to end (you can click on the animated arrow icon on the status bar to show the progress).
+</p>
+</body>
+</html>
