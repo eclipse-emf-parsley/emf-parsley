@@ -110,7 +110,7 @@ Modify the e[@PostConstruct] method with this code:
 
 code[Java][
 @PostConstruct
-public void postConstruct(Composite parent) throws Exception {
+public void postConstruct(Composite parent) {
 	// Guice injector
 	private Injector injector = FirstexampleInjectorProvider.getInjector();
 

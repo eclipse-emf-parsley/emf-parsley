@@ -225,7 +225,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			members += element.toMethod("getInjector", typeRef(Injector)) [
 				static = true
 				synchronized = true
-				exceptions += typeRef(Exception)
 				body = '''
 				if (injector == null) {
 				  injector = «Guice».createInjector(

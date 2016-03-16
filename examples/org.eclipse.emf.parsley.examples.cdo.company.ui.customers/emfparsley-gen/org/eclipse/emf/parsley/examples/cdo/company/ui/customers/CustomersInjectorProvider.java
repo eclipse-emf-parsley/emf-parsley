@@ -9,7 +9,7 @@ import org.eclipse.emf.parsley.runtime.ui.PluginUtil;
 public class CustomersInjectorProvider {
   private static Injector injector;
   
-  public static synchronized Injector getInjector() throws Exception {
+  public static synchronized Injector getInjector() {
     if (injector == null) {
       injector = Guice.createInjector(
         new CustomersEmfParsleyGuiceModule(PluginUtil.getPlugin(
