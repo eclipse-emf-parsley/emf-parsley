@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.rap.workspace"
-      label="Emf Parsley RAP Workspace"
+      label="EMF Parsley RAP Workspace"
       version="0.7.0.qualifier"
       provider-name="%providerName">
 

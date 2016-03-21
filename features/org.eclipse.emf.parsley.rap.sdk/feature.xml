@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.rap.sdk"
-      label="Emf Parsley RAP SDK"
+      label="EMF Parsley RAP SDK"
       version="0.7.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.common">

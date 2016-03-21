@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.examples.rap.feature"
-      label="Emf Parsley RAP Example Feature"
+      label="EMF Parsley RAP Example Feature"
       version="0.7.0.qualifier">
 
    <description url="http://www.eclipse.org/emf-parsley">
-      Emf Parsley RAP Example Feature
+      EMF Parsley RAP Example Feature
    </description>
 
    <copyright>

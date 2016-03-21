@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.dsl.feature"
-      label="Emf Parsley DSL"
+      label="EMF Parsley DSL"
       version="0.7.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.dsl">
