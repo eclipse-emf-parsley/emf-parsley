@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2016 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,11 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature;
 import org.eclipse.emf.parsley.web.tools.ParsleyWebFacetInstallConfig.PERSISTENCE_OPTION;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.JavaCore;
@@ -83,16 +85,9 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 		Utils.copyFile(iProject, monitor, "/templates/pom.xml", iProject.getFile("pom.xml"), new Properties());
 
 		addProjectNature(iProject, monitor, XtextProjectHelper.NATURE_ID);
-		addProjectNature(iProject, monitor, "org.eclipse.m2e.core.maven2Nature"); // TODO
-																					// should
-																					// take
-																					// it
-																					// from
-																					// a
-																					// predefined
-																					// Maven
-																					// plugin
-																					// constant
+		addProjectNature(iProject, monitor, EmfParsleyDslPluginXmlNature.NATURE_ID ); 
+		// TODO should take it from a predefined Maven plugin constant
+		addProjectNature(iProject, monitor, "org.eclipse.m2e.core.maven2Nature"); 
 
 		Properties replaceStrings;
 		String projectName = iProject.getName();
@@ -105,12 +100,16 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 		Utils.copyFile(iProject, monitor, "/templates/module.parsley",
 				iProject.getFolder("src").getFile("module.parsley"), replaceStrings);
 
-		replaceStrings = new Properties();
-		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.templates", projectName);
-		Utils.copyFile(iProject, monitor, "/templates/ParsleyWebGuiceModule.java",
-				folder.getFile("ParsleyWebGuiceModule.java"), replaceStrings);
+//		replaceStrings = new Properties();
+//		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.templates", projectName);
+//		Utils.copyFile(iProject, monitor, "/templates/ParsleyWebGuiceModule.java",
+//				folder.getFile("ParsleyWebGuiceModule.java"), replaceStrings);
 
 		replaceStrings = new Properties();
+		IPath fullPath = folder.getFullPath();
+		String lastSegment = fullPath.segment(fullPath.segmentCount()-1);
+		lastSegment = lastSegment.substring(0, 1).toUpperCase() + lastSegment.substring(1,lastSegment.length());
+		replaceStrings.setProperty("ParsleyWebGuiceModule", lastSegment+"EmfParsleyGuiceModule");
 		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.templates", projectName);
 		Utils.copyFile(iProject, monitor, "/templates/ParsleyGuiceServletContextListener.java",
 				folder.getFile("ParsleyGuiceServletContextListener.java"), replaceStrings);
@@ -173,6 +172,7 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 				add("org.apache.commons.logging");
 				add("org.apache.log4j");
 				add("org.eclipse.jface");
+				add("org.eclipse.osgi");
 				add("org.eclipse.core.commands");
 				add("org.eclipse.core.databinding");
 				add("org.eclipse.core.databinding.observable");
@@ -225,12 +225,7 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 			Bundle[] bundles = ctx.getBundles();
 			for (Bundle bundle : bundles) {
 				String pluginId = bundle.getSymbolicName();
-				// System.out.println("S: "+pluginId+" ->
-				// "+bundle.getLocation());
-				// LOGGER.debug("L: "+pluginId+" -> "+bundle.getLocation());
-				// if (bundle.getLocation().indexOf("/plugins/") > -1 &&
-				// pluginId.indexOf("parsley") > -1) {
-				if (bundle.getLocation().indexOf("plugins/") > -1) {
+				if (bundle.getLocation().indexOf("plugins/") > -1 || "System Bundle".equals(bundle.getLocation())) {
 					if (pluginJarSet.contains(pluginId)) {
 						map.put(pluginId, bundle);
 						logAdded(pluginId, "plugins", bundle.getLocation());

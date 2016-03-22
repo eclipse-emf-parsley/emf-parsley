@@ -28,7 +28,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.server.core,
  org.eclipse.wst.common.core,
  org.eclipse.jem.util,
- org.eclipse.wst.server.http.core
+ org.eclipse.wst.server.http.core,
+ org.eclipse.emf.parsley.dsl.additional.builder
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.log4j
