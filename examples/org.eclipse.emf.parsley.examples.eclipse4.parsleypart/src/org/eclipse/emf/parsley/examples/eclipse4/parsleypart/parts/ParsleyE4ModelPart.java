@@ -35,7 +35,7 @@ public class ParsleyE4ModelPart {
 	MApplication application;
 
 	@PostConstruct
-	public void postConstruct(Composite parent) throws Exception {
+	public void postConstruct(Composite parent) {
 		// Guice injector
 		Injector injector = ParsleypartInjectorProvider.getInjector();
 		// Guice injected EMF Parsley factory for the tree detail form
