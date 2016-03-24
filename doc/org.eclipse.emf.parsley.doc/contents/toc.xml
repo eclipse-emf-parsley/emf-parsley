@@ -114,6 +114,8 @@
 			</topic>
 		</topic>
 		<topic href="contents/AdvancedFeatures.html#AdvancedFeatures" label="Advanced Features" >
+			<topic href="contents/AdvancedFeatures.html#BuildingWithMaven" label="Building with Maven" >
+			</topic>
 			<topic href="contents/AdvancedFeatures.html#Testing" label="Testing Framework" >
 			</topic>
 			<topic href="contents/AdvancedFeatures.html#Eclipse4" label="Eclipse 4.x" >

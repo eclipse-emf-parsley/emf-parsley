@@ -13,6 +13,55 @@
 <p>
 In this chapter we describe some advanced features.
 </p>
+<a name="BuildingWithMaven"></a>
+<h2>Building with Maven</h2>
+<p>
+We provide Maven artifacts in Maven Central that allows you to compile the Parsley DSL sources
+with Maven/Tycho, using the <em>xtext-maven-plugin</em>.
+</p>
+<p>
+This is a typical configuration (a complete example can be found here:
+<a href="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/tree/examples/org.eclipse.emf.parsley.examples.maven">http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/tree/examples/org.eclipse.emf.parsley.examples.maven</a>):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+&lt;plugin&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.eclipse.xtext&lt;/groupId&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;xtext-maven-plugin&lt;/artifactId&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;${xtext-version}&lt;/version&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;executions&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;execution&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goals&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;goal&gt;generate&lt;/goal&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/goals&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/execution&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/executions&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;configuration&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;languages&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;language&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;setup&gt;org.eclipse.emf.parsley.dsl.EmfParsleyDslStandaloneSetup&lt;/setup&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;outputConfigurations&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;outputConfiguration&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;outputDirectory&gt;${basedir}/emfparsley-gen&lt;/outputDirectory&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/outputConfiguration&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/outputConfigurations&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/language&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/languages&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/configuration&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependencies&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.eclipse.emf.parsley&lt;/groupId&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;org.eclipse.emf.parsley.dsl.standalone&lt;/artifactId&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;${parsley-version}&lt;/version&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependencies&gt;<br/>
+&lt;/plugin&gt;<br/>
+</p>
+</div>
+</div>
+</p>
 <a name="Testing"></a>
 <h2>Testing Framework</h2>
 <p>
