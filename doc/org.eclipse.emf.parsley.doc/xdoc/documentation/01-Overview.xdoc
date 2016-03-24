@@ -20,10 +20,12 @@ ul[
 	item[e[Forms] ]
 	item[e[Tables] ]
 	item[e[Editors] ]
-	item[e[Search boxes] coming soon]
+	item[e[Search boxes] (coming soon)]
 ]
 
-section:Customize[Customize]
+img[images/01-components.png][][ ][]
+
+section2:Customize[Customize]
 
 The main feature of e[EMF Parsley] is that you can customize all basic UI behaviours of the components with e[Dependency Injection]
 mechanisms (based on link[https://github.com/google/guice][Google Guice]).
@@ -31,7 +33,7 @@ You can get more info in the ref:Customizations[Customizations Section], but you
 about the internal implementation to inject your own customization because
 e[EMF Parsley] provides a DSL to easy customize your UI, as explained in the next section.
 
-section2:Customizations_DSL[Customize with the DSL]
+section3:Customizations_DSL[Customize with the DSL]
 
 You can use the DSL by creating a new project with the wizard "Create a new project" -> "EMF Parsley DSL Based project"
 

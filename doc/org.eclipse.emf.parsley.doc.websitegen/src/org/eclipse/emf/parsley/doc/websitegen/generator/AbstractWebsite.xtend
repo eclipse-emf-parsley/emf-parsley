@@ -143,7 +143,8 @@ abstract class AbstractWebsite implements Resource {
 			'download.html' -> 'Download',
 			'documentation.html' -> 'Documentation',
 			'sources.html' -> 'Sources',
-			'support.html' -> 'Support'
+			'support.html' -> 'Support',
+			'userReviews.html' -> 'UserReviews'
 		)
 	}
 	

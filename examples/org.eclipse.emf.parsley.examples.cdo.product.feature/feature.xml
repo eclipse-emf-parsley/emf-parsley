@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.examples.cdo.product.feature"
-      label="Emf Parsley Cdo Example Product Feature"
+      label="EMF Parsley Cdo Example Product Feature"
       version="0.8.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description url="http://www.eclipse.org/emfparsley">
-      Emf Parsley Cdo Example Product Feature
+      EMF Parsley Cdo Example Product Feature
    </description>
 
    <copyright>

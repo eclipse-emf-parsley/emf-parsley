@@ -46,5 +46,523 @@ be tested even without a running Eclipse.
 We use these classes for testing most of our classes; you might want to have a look
 at the project <em>org.eclipse.emf.parsley.tests</em> for some usage examples.
 </p>
+<a name="Eclipse4"></a>
+<h2>Eclipse 4.x</h2>
+<p>
+Instead of using the Extension Point mechanism, EMF Parsley leverages from DSL and Google Guice Injection.
+</p>
+<p>
+Because of this, it is very easy to use it with Eclipse 4.x (e4).
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>First Example Setup</em>
+</p>
+<p>
+If you followed the steps described in section <a href="02-FirstExample.html#FirstExample" title="Go to &quot;First Example&quot;">First Example</a> you will have already
+what we need to begin. Otherwise the following wizard will bring you to that point.
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley First Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+</ol>
+</p>
+<p>
+You will end up with three plug-ins:
+</p>
+<p>
+<ul>
+	<li>
+		org.eclipse.emf.parsley.examples.firstexample (the EMF Parsley example plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library (the model plug-in)
+	</li>
+	<li>
+		org.eclipse.emf.examples.library.edit (the model.edit plug-in)
+	</li>
+</ul>
+</p>
+<p>
+As a reminder, in section <a href="02-FirstExample.html#FirstExample" title="Go to &quot;First Example&quot;">First Example</a> we reached the point where we launched a second Eclipse
+instance (but, of course, just defining a product you could have a standalone 3.x application) with a
+view (called "My Library Tree Form") that allowed to manage the model.
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Preparing for a pure e4 Application</em>
+</p>
+<p>
+What we will do now is starting from the previous step and create an e4 Application (on top of
+the previous plug-ins) that gets to the same result, but now with a pure e4 Part.
+</p>
+<p>
+In order to do this we need to export the <em>"org.eclipse.emf.parsley.examples.firstexample"</em> package from the first plug-in.
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Create an e4 Application</em>
+</p>
+<p>
+Now let&apos;s create a new, empty, e4 application, e.g. <em>"org.eclipse.emf.parsley.examples.firstexample.application"</em>
+(you can find details on how to create e4 applications in <a href="http://www.rcp-vision.com/?p=4694&lang=en">our
+tutorials</a>).
+</p>
+<p>
+Create a Part and ensure that the application starts.
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Using a TreeComposite into an e4 Part</em>
+</p>
+<p>
+In the just created plug-in we need dependencies from the previous plug-ins: so open the <em>org.eclipse.emf.parsley.examples.firstexample.application/MANIFEST.MF</em> file, go to <em>Dependencies</em>
+tab and add the three previous plug-ins. Add also <em>"org.eclipse.emf.parsley"</em> plug-in.
+Don&apos;t forget to add the previous, and the required plug-ins, also to the Product.
+</p>
+<p>
+Open the Part java class and make the following changes:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="comment">//&nbsp;Use&nbsp;these&nbsp;imports&nbsp;during&nbsp;Organizing&nbsp;Imports&nbsp;operation<br/>
+</span><span class="keyword">import</span>&nbsp;org.eclipse.emf.common.util.URI;<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.emf.ecore.resource.Resource;<br/>
+<span class="keyword">import</span>&nbsp;org.eclipse.swt.widgets.Composite;<br/>
+<br/>
+<span class="comment">//&nbsp;The&nbsp;part&nbsp;implements&nbsp;IMenuListener&nbsp;for&nbsp;context&nbsp;menu&nbsp;handling<br/>
+</span><span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;MyEclipse4Part&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//the&nbsp;EMF&nbsp;Parley&nbsp;composite&nbsp;for&nbsp;showing&nbsp;a&nbsp;tree&nbsp;and&nbsp;a&nbsp;detail&nbsp;form<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;TreeFormComposite&nbsp;treeFormComposite;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//the&nbsp;EMF&nbsp;Resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;Resource&nbsp;resource;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//URI&nbsp;for&nbsp;EMF&nbsp;Resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;URI&nbsp;uri&nbsp;=&nbsp;URI.createFileURI(System.getProperty(<span class="string">"user.home"</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<span class="string">"/MyLibrary.library"</span>);<br/>
+<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Modify the <em>@PostConstruct</em> method with this code:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@PostConstruct<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;postConstruct(Composite&nbsp;parent)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Guice&nbsp;injector<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;Injector&nbsp;injector&nbsp;=&nbsp;FirstexampleInjectorProvider.getInjector();<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;The&nbsp;EditingDomain&nbsp;is&nbsp;needed&nbsp;for&nbsp;context&nbsp;menu&nbsp;and&nbsp;drag&nbsp;and&nbsp;drop<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;EditingDomain&nbsp;editingDomain&nbsp;=&nbsp;injector.getInstance(EditingDomain.<span class="keyword">class</span>);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;ResourceLoader&nbsp;resourceLoader&nbsp;=&nbsp;injector.getInstance(ResourceLoader.<span class="keyword">class</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//load&nbsp;the&nbsp;resource<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;resource&nbsp;=&nbsp;resourceLoader.getResource(editingDomain,&nbsp;uri).getResource();<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;TreeFormFactory&nbsp;treeFormFactory&nbsp;=&nbsp;injector.getInstance(TreeFormFactory.<span class="keyword">class</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//create&nbsp;the&nbsp;tree-form&nbsp;composite<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite&nbsp;=&nbsp;treeFormFactory.createTreeFormComposite(parent,&nbsp;SWT.BORDER);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Guice&nbsp;injected&nbsp;viewer&nbsp;context&nbsp;menu&nbsp;helper<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;ViewerContextMenuHelper&nbsp;contextMenuHelper&nbsp;=&nbsp;injector.getInstance(ViewerContextMenuHelper.<span class="keyword">class</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Guice&nbsp;injected&nbsp;viewer&nbsp;drag&nbsp;and&nbsp;drop&nbsp;helper<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;ViewerDragAndDropHelper&nbsp;dragAndDropHelper&nbsp;=&nbsp;injector.getInstance(ViewerDragAndDropHelper.<span class="keyword">class</span>);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;set&nbsp;context&nbsp;menu&nbsp;and&nbsp;drag&nbsp;and&nbsp;drop<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;contextMenuHelper.addViewerContextMenu(treeFormComposite.getViewer(),&nbsp;editingDomain);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;dragAndDropHelper.addDragAndDrop(treeFormComposite.getViewer(),&nbsp;editingDomain);<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//update&nbsp;the&nbsp;composite<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite.update(resource);<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+The Google Guice Injector (not to be confused with the Eclipse e4 Injector) is retrieved
+using the injector provider class generated by the DSL compiler
+(see also <a href="01-Overview.html#InjectorProvider" title="Go to &quot;Obtaining the Injector&quot;">Obtaining the Injector</a>).
+</p>
+<p>
+If you now run the application you will be able to manage the model:
+</p>
+<p>
+<div class="image" >
+<img src="images/07-eclipse4-part.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+but you will notice that it is not possible to persist the changes to the model.
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Adding the dirty state and Save command</em>
+</p>
+<p>
+In order to allow persisting the model changes we have to add the dirty state handling to the part and
+the Save command to the application.
+Let&apos;s start with adding the following attribute to the part
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@Inject<br/>
+MDirtyable&nbsp;dirty;<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+add to <em>@PostConstruct</em> method the following code in order to update the dirty state
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+editingDomain.getCommandStack().addCommandStackListener(<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">new</span>&nbsp;CommandStackListener()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;commandStackChanged(EventObject&nbsp;event)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(dirty&nbsp;!=&nbsp;null)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dirty.setDirty(<span class="keyword">true</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and add the <em>@Persist</em> method, which will be called when the part is saved
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@Persist<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">void</span>&nbsp;save(MDirtyable&nbsp;dirty)&nbsp;<span class="keyword">throws</span>&nbsp;IOException&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;resource.save(null);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(dirty&nbsp;!=&nbsp;null)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dirty.setDirty(<span class="keyword">false</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and, in the end, add the <em>Save</em> handler along with the correspondent <em>Command</em> and <em>Menu</em>
+(you can find how to create handlers, commands and menus in an e4 applications in <a href="http://www.rcp-vision.com/?p=4972&lang=en">our
+tutorials</a>)
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">import</span>&nbsp;javax.inject.Named;<br/>
+<br/>
+<span class="keyword">public</span>&nbsp;<span class="keyword">class</span>&nbsp;SaveHandler&nbsp;{<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Execute<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">void</span>&nbsp;execute(EPartService&nbsp;partService,&nbsp;@Named(IServiceConstants.ACTIVE_PART)&nbsp;MPart&nbsp;part)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;partService.savePart(part,&nbsp;<span class="keyword">false</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<a name="RAP"></a>
+<h2>RAP</h2>
+<p>
+As you may know <a href="http://eclipse.org/rap/">RAP (Remote Application Platform)</a> is a technology that allows you to run an Eclipse RCP application over the web.
+</p>
+<p>
+In order to obtain this goal you have to setup a specific RAP Target Platform, for instance the one that RAP itself provides once you install it.
+</p>
+<p>
+However when you want to use an Eclipse RCP framework over the RAP Platform, you generally have to deal with
+dependencies, since not all Eclipse frameworks are ready-to-use with RAP, especially those related with the SWT layer.
+</p>
+<p>
+EMF Parsley provides a proper RAP Target Platform that allows you to start leveraging Parsley potentials to the web the same way you have 
+learned to do with desktop (RCP) development.
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Installing the RAP Tools</em>
+</p>
+<p>
+To begin with, you need to install the RAP Tools into the IDE.
+This can be accomplished with the following steps:
+<ol>
+	<li>
+		Help -&gt; Install New Software ...
+	</li>
+	<li>
+		select the main Eclipse Update site
+	</li>
+	<li>
+		expand category "Web, XML, Java EE and OSGi Enterprise Development"
+	</li>
+	<li>
+		select "RAP Tools" and complete the installation, restarting the IDE at the end
+	</li>
+	<li>
+		after IDE restarts just close the Welcome page
+	</li>
+</ol>
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Setup the EMF Parsley RAP Target Platform</em>
+</p>
+<p>
+After having installed EMF Parsley as described <a href="https://www.eclipse.org/emf-parsley/download.html">here</a> and
+created a new workspace, you can setup the EMF Parsley RAP Target Platform in the following way: 
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Rap Target Platform Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+	<li>
+		open the Target Definition file <em>emf-parsely-rap.target</em>
+	</li>
+	<li>
+		wait until the "Resolving Target Definition" job is done (check the status bar)
+	</li>
+	<li>
+		when finished, click on hyperlink "Set as Target Platform"
+	</li>
+</ol>
+</p>
+<p>
+You will end up with a RAP-enabled workspace, enhanced by EMF and Parsley! 
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Running the Parsley RAP UI Example</em>
+</p>
+<p>
+Here is the fastest way to get a working web application with all the stuff put togheter:
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Rap Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+	<li>
+		expand plug-in <em>"org.eclipse.emf.parsley.examples.rap.ui"</em>
+	</li>
+	<li>
+		right-click "Emf_Parsley_RAP_UI_Example.launch" and click "Run as" "Emf_Parsley_RAP_UI_Example"
+	</li>
+</ol>
+</p>
+<p>
+What you will get is a web application that allows you to interact with the model instance as you would
+do in a desktop (RCP) environment.
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-ui-example-running.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+In this web application you can see two views: 
+<ul>
+	<li>
+		the one on the left is a read-only view; it just reflects the model content, but it does not react to changes (the classic Eclipse dirty indicator is not triggered
+		by changes) and you are not able to save. Its model is created in class <em>org.eclipse.emf.parsley.examples.rap.ui.GuiceModule.CustomResourceManager</em>
+		and is not persisted
+	</li>
+	<li>
+		the view on the right is instead a Saveable view and therefore it not only triggers the dirty state after
+		a change, but also allows you to save the modifications with the automatic dirty state reset. Its model
+		is persisted in file <em>System.getProperty("java.io.tmpdir")+"/My.model")</em> 
+	</li>
+</ul>
+</p>
+<p>
+Of course, since this is a web application, you can also open a browser on another pc or device on the same network and type the address,
+replacing 127.0.0.1 with the IP of the machine where the application was launched.
+</p>
+<p>
+<ol>
+</ol>
+</p>
+<p>
+<em>Running the Parsley RAP CDO Example</em>
+</p>
+<p>
+The EMF default XMI persistence is certainly very handy to start with, but as soon as you want a more
+production-ready EMF persistence architecture, well, <a href="http://wiki.eclipse.org/CDO">CDO</a> is for sure the way to go.
+In fact with CDO you basically have an EMF model instance shared between clients, that also allows the
+clients to be synchronized with the model changes.
+</p>
+<p>
+In this example, in order to keep things simple, we will use CDO with an in-memory store (MEMStore) whose contents will be lost once the server is stopped.
+However CDO can be configured for usage with RDBMS, Object-oriented or NO-SQL databases (see <a href="http://eclipse.org/cdo/documentation/">here</a> for details)
+</p>
+<p>
+To start with we need a CDO Server running and we can obtain it with an example plugin that can be used
+both in an RCP and in a RAP workspace.
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Cdo Server Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+	<li>
+		expand plug-in <em>"org.eclipse.emf.parsley.examples.cdo.server"</em>
+	</li>
+	<li>
+		right-click "CDOServerExample.launch" and click "Run as" "CDOServerExample"
+	</li>
+	<li>
+		a message on the Console <em>"Repository[demo] started!"</em> informs that the CDO Server instance
+			is started!
+	</li>
+</ol>
+</p>
+<p>
+Now we can create the web application that will use the CDO server just started.
+</p>
+<p>
+<ol>
+	<li>
+		File -&gt; New... -&gt; Example...
+	</li>
+	<li>
+		from Category "Emf Parsley Examples", select "Emf Parsley Rap Cdo Example"
+	</li>
+	<li>
+		press Next and Finish
+	</li>
+</ol>
+</p>
+<p>
+The plug-in projects created are:
+</p>
+<p>
+<ul>
+	<li>
+		the Model (org.eclipse.emf.parsley.examples.cdo.model)
+	</li>
+	<li>
+		a Parsley plug-in with a TreeForm (org.eclipse.emf.parsley.examples.cdo.treeform)
+	</li>
+	<li>
+		the webapp (org.eclipse.emf.parsley.examples.cdo.rap)
+	</li>
+</ul>
+</p>
+<p>
+Then let&apos;s start the application
+</p>
+<p>
+<ol>
+	<li>
+		expand plug-in <em>"org.eclipse.emf.parsley.examples.cdo.rap"</em>
+	</li>
+	<li>
+		right-click "EMF-Parsley_Library_RAP.launch" and click "Run as" "EMF-Parsley_Library_RAP"
+	</li>
+</ol>
+</p>
+<p>
+If you happen to see this
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-refresh.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+just press the refresh button and should see the following
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-cdo-1.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Now feel free to open the same address from more browsers window (yes, on different machines or devices, possibly)
+and see the power of this technology stack at work!
+</p>
+<p>
+<div class="image" >
+<img src="images/08-rap-cdo-2.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
 </body>
 </html>

@@ -16,7 +16,8 @@ class Generator {
 			new Download,
 			new Documentation,
 			new GettingSources,  
-			new Support 
+			new Support,
+			new UserReviews
 		)
 		println("Done.")
 	}

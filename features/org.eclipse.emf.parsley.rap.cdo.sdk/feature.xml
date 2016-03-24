@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.rap.cdo.sdk"
-      label="Emf Parsley CDO RAP SDK"
+      label="EMF Parsley CDO RAP SDK"
       version="0.8.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.cdo.common">
