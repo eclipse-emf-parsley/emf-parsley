@@ -404,7 +404,7 @@ public class EmfParsleySWTBotAbstractTests {
 				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_MENU_LIBRARY);
 		
 		// Change the perspective via the Open Perspective dialog
-		bot.menu("Window").menu("Open Perspective").menu("Other...").click();
+		bot.menu("Open Perspective").menu("Other...").click();
 		SWTBotShell openPerspectiveShell = bot.shell("Open Perspective");
 		openPerspectiveShell.activate();
 
