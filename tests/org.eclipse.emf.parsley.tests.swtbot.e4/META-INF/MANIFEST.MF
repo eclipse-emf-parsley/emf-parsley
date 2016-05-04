@@ -10,4 +10,5 @@ Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.3.0",
  org.eclipse.emf.parsley,
  org.eclipse.emf.parsley.views,
  org.eclipse.emf.parsley.examples.eclipse4,
- org.eclipse.emf.parsley.examples.eclipse4.parsleypart
+ org.eclipse.emf.parsley.examples.eclipse4.parsleypart,
+ org.junit;bundle-version="4.12.0"
