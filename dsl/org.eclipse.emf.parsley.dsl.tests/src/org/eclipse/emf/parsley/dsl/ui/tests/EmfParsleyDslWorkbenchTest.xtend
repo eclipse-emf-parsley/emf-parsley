@@ -91,11 +91,6 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 		projectHelper.assertNoErrors
 	}
 
-//	@Test def void testEmfParsleyDslNewProjectWizard2() {
-//		createProjectWithNewProjectWizard
-//		projectHelper.assertNoErrors
-//	}
-
 	@Test def void testPluginXmlGeneration() {
 		val project = createProjectWithNewProjectWizard
 		project.modifyParsleyModuleFile(

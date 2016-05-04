@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.wizard;
 
+import org.eclipse.xtext.ui.wizard.IExtendedProjectInfo;
 import org.eclipse.xtext.ui.wizard.IProjectCreator;
-import org.eclipse.xtext.ui.wizard.IProjectInfo;
 
 import com.google.inject.Inject;
 
@@ -19,17 +19,16 @@ import com.google.inject.Inject;
  * @author Francesco Guidieri
  * 
  */
-public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyDslNewProjectWizard{
+public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyDslNewProjectWizard {
 
 	private EmfParsleyDslProjectTemplateSelectionPage selectPredefinedViewPage;
 	private EmfParsleyDslNewProjectCreationPage mainPage;
 
 	@Inject
-	public EmfParsleyDslNewProjectWithPredefinedViewWizard(
-			IProjectCreator projectCreator) {
+	public EmfParsleyDslNewProjectWithPredefinedViewWizard(IProjectCreator projectCreator) {
 		super(projectCreator);
 	}
-	
+
 	@Override
 	public void addPages() {
 		mainPage = new EmfParsleyDslNewProjectCreationPage("basicNewProjectPage");
@@ -41,17 +40,19 @@ public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyD
 		selectPredefinedViewPage.setDescription("Create a new EmfParsleyDsl project.");
 		addPage(selectPredefinedViewPage);
 	}
-	
-	
+
 	@Override
-	protected IProjectInfo getProjectInfo() {
-		org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectInfo projectInfo = new org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectInfo();
+	protected IExtendedProjectInfo getProjectInfo() {
+		EmfParsleyDslProjectInfo projectInfo = new EmfParsleyDslProjectInfo();
 		projectInfo.setProjectName(mainPage.getProjectName());
+		if (!mainPage.useDefaults()) {
+			projectInfo.setLocationPath(mainPage.getLocationPath());
+		}
 		projectInfo.setSelectedTemplate(selectPredefinedViewPage.getSelectedTemplate());
 		projectInfo.setRapOption(mainPage.isRapOption());
 		return projectInfo;
 	}
-	
+
 	@Override
 	public boolean canFinish() {
 		if (mainPage.isPageComplete()) {
@@ -59,6 +60,6 @@ public class EmfParsleyDslNewProjectWithPredefinedViewWizard extends EmfParsleyD
 		} else {
 			return selectPredefinedViewPage.isPageComplete();
 		}
-    }
+	}
 
 }

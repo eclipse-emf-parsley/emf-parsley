@@ -4,8 +4,8 @@
 package org.eclipse.emf.parsley.dsl.tests.util.ui;
 
 import org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard;
+import org.eclipse.xtext.ui.wizard.IExtendedProjectInfo;
 import org.eclipse.xtext.ui.wizard.IProjectCreator;
-import org.eclipse.xtext.ui.wizard.IProjectInfo;
 
 import com.google.inject.Inject;
 
@@ -25,8 +25,8 @@ public class TestableEmfParsleyDslNewProjectWizard extends
 	}
 
 	@Override
-	public IProjectInfo getProjectInfo() {
-		IProjectInfo projectInfo = super.getProjectInfo();
+	public IExtendedProjectInfo getProjectInfo() {
+		IExtendedProjectInfo projectInfo = super.getProjectInfo();
 		projectInfo.setProjectName(TEST_PROJECT);
 		return projectInfo;
 	}
