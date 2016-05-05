@@ -246,7 +246,6 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.mail.messageview</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.mail.rcp</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.mail.product.feature</module>
-				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.examples</module>
 
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
 			</modules>
@@ -264,6 +263,7 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.examples</module>
 			</modules>
 			
 			<properties>
