@@ -25,6 +25,7 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
 import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
@@ -36,7 +37,6 @@ import org.junit.runners.model.Statement
 import static org.eclipse.emf.parsley.examples.library.EXTLibraryFactory.*
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass
 
 /**
  * Objects, utility methods and other elements used in tests.
@@ -47,25 +47,25 @@ import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass
 class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	
 	protected Library lib = null
-	
+
 	protected Writer wr = null
-	
+
 	protected Book b = null
-	
+
 	var protected ResourceSet resourceSet;
-	
+
 	val protected testPackage = TestmodelsPackage.eINSTANCE
-	
+
 	val protected testFactory = TestmodelsFactory.eINSTANCE
-	
+
 	val protected libraryFactory = EXTLibraryFactory.eINSTANCE
 
 	val protected libraryPackage = EXTLibraryPackage.eINSTANCE
 
 	val protected baseClass = testPackage.baseClass
-	
+
 	val protected derivedClass = testPackage.derivedClass
-	
+
 	var protected TestContainer testContainer
 
 	/**
@@ -87,7 +87,7 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	val static TEST_RESOURCE_URI = "resources/TestResource.xmi"
 
 	val static TEST_LIBRARY_RESOURCE_URI = "resources/TestLibraryResource.xmi"
-	
+
 	override apply(Statement base, Description description) {
 		return [
 			setup();
@@ -305,13 +305,20 @@ class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 
 	def createTestResource() {
 		val resourceSet = createAndSetupResourceSet
-		val resource = resourceSet.createResource(URI.createURI(TEST_RESOURCE_URI))
+		val resource = resourceSet.createResource(createTestResourceURI())
 		return resource
+	}
+	
+	def createTestResourceURI() {
+		URI.createURI(TEST_RESOURCE_URI)
 	}
 
 	def loadTestResource() {
-		val resourceSet = createAndSetupResourceSet
-		val resource = resourceSet.getResource(URI.createURI(TEST_RESOURCE_URI), true)
+		loadTestResource(createAndSetupResourceSet)
+	}
+
+	def loadTestResource(ResourceSet resourceSet) {
+		val resource = resourceSet.getResource(createTestResourceURI(), true)
 		return resource
 	}
 

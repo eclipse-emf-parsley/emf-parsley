@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests
+package org.eclipse.emf.parsley.tests.scenarios
 
 import org.eclipse.emf.common.command.CommandStackListener
 import org.eclipse.emf.ecore.resource.Resource
@@ -19,7 +19,7 @@ import org.junit.Test
 /**
  * In this scenario the EditingDomain is set from outside
  */
-class EditingMenuBuilderTestWithEditingDomainRetrievedScenario extends AbstractEditingMenuBuilderTest {
+class EditingMenuBuilderTestWithEditingDomainRetrievedScenario extends org.eclipse.emf.parsley.tests.AbstractEditingMenuBuilderTest {
 
 	var Resource resource
 

@@ -21,7 +21,7 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class TreeViewerColumnBuilderTest extends AbstractTreeViewerTest {
+class TreeViewerColumnBuilderTest extends AbstractViewerTest {
 
 	static class CustomFeatureCaptionProvider extends FeatureCaptionProvider {
 		def String text_ClassForControls_booleanFeature(EStructuralFeature feature) {
@@ -31,7 +31,7 @@ class TreeViewerColumnBuilderTest extends AbstractTreeViewerTest {
 
 	@Test
 	def void testTableColumnHeader() {
-		buildAndFill(
+		buildAndFillTreeViewer(
 			testContainer.classesForControls,
 			testPackage.classForControls
 		)
@@ -46,7 +46,7 @@ class TreeViewerColumnBuilderTest extends AbstractTreeViewerTest {
 	@Test
 	def void testTableColumnHeaderWithCustomFeatureCaptionProvider() {
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=491063
-		buildAndFill(
+		buildAndFillTreeViewer(
 			withCustomFeatureCaptionProvider,
 			testContainer.classesForControls,
 			testPackage.classForControls
@@ -61,7 +61,7 @@ class TreeViewerColumnBuilderTest extends AbstractTreeViewerTest {
 
 	@Test
 	def void testTableColumnHeaderWithListOfFeatures() {
-		buildAndFillWithFeatures(
+		buildAndFillTreeViewerWithFeatures(
 			#[testPackage.classForControls_BooleanFeature, testPackage.classForControls_BooleanObjectFeature],
 			testPackage.classForControls
 		)
@@ -76,7 +76,7 @@ class TreeViewerColumnBuilderTest extends AbstractTreeViewerTest {
 	@Test
 	def void testTableColumnHeaderWithListOfFeaturesWithCustomFeatureCaptionProvider() {
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=491063
-		buildAndFillWithFeatures(
+		buildAndFillTreeViewerWithFeatures(
 			withCustomFeatureCaptionProvider,
 			#[testPackage.classForControls_BooleanFeature, testPackage.classForControls_BooleanObjectFeature],
 			testPackage.classForControls
@@ -91,7 +91,7 @@ class TreeViewerColumnBuilderTest extends AbstractTreeViewerTest {
 
 	@Test
 	def void testCustomColumnWeights() {
-		buildAndFill(
+		buildAndFillTreeViewer(
 			createInjector(new EmfParsleyGuiceModuleForTesting() {
 				override valueTableColumnWeights() {
 					#[5, 2]
@@ -108,6 +108,30 @@ class TreeViewerColumnBuilderTest extends AbstractTreeViewerTest {
 				// 3 is the default one
 				get(3).assertColumnWeight(3)
 			]
+		]
+	}
+
+	@Test
+	def void testTableRowSize() {
+		buildAndFillTreeViewer(
+			testContainer, testPackage.classWithName
+		)
+		syncExecVoid[
+			// the tree contains all the elements, independently from
+			// the eclass for representing the table columns
+			(numOfElements * 3).assertEquals(treeViewer.tree.itemCount)
+		]
+	}
+
+	@Test
+	def void testTableRowTextForString() {
+		buildAndFillTreeViewer(
+			testContainer, testPackage.classWithName
+		)
+		syncExecVoid[
+			"Class With Name name 0".assertEquals(
+				treeViewer.tree.items.head.getText(0)
+			)
 		]
 	}
 
