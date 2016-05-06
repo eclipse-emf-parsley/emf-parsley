@@ -64,27 +64,35 @@ public class TreeViewerColumnBuilder {
 	/**
 	 * Setups the columns of the given treeViewer using the features of the
 	 * given eClass; the features are retrieved using an injected
-	 * {@link TreeFeaturesProvider}.
+	 * {@link TableFeaturesProvider}.
 	 * 
 	 * @param treeViewer
 	 * @param eClass
-	 * @param contentProvider
 	 */
 	public void buildTreeViewer(TreeViewer treeViewer, EClass eClass) {
-		List<EStructuralFeature> typeFeatures = featuresProvider.getFeatures(eClass);
-		buildTreeViewer(treeViewer, typeFeatures);
+		buildTreeViewer(treeViewer, eClass, featuresProvider.getFeatures(eClass));
 	}
 
 	/**
-	 * Setups the columns of the given treeViewer using the features of the
-	 * given eClass; the features are retrieved using an injected
-	 * {@link TreeFeaturesProvider}.
+	 * Setups the columns of the given treeViewer using the specified features.
+	 * 
+	 * @param treeViewer
+	 * @param typeFeatures
+	 */
+	public void buildTreeViewer(TreeViewer treeViewer, List<EStructuralFeature> typeFeatures) {
+		buildTreeViewer(treeViewer, null, typeFeatures);
+	}
+
+	/**
+	 * Setups the columns of the given treeViewer using the specified features,
+	 * the eClass, if not null, is used for the feature caption provider, otherwise
+	 * the containing eClass of each feature is used for the feature caption provider.
 	 * 
 	 * @param treeViewer
 	 * @param eClass
-	 * @param contentProvider
+	 * @param typeFeatures
 	 */
-	public void buildTreeViewer(TreeViewer treeViewer, List<EStructuralFeature> typeFeatures) {
+	protected void buildTreeViewer(TreeViewer treeViewer, EClass eClass, List<EStructuralFeature> typeFeatures) {
 		Layout layout = layoutHelper.adjustForTableLayout(treeViewer);
 
 		int i = 0;
@@ -97,16 +105,19 @@ public class TreeViewerColumnBuilder {
 				weight = weights.get(i++);
 			}
 
-			buildTreeViewerColumn(treeViewer, layout, eStructuralFeature, weight);
+			buildTreeViewerColumn(treeViewer, layout,
+				(eClass != null ? eClass : eStructuralFeature.getEContainingClass()),
+				eStructuralFeature,
+				weight);
 		}
 	}
 
-	protected TreeViewerColumn buildTreeViewerColumn(TreeViewer treeViewer, Layout layout,
+	protected TreeViewerColumn buildTreeViewerColumn(TreeViewer treeViewer, Layout layout, EClass eClass,
 			EStructuralFeature eStructuralFeature, int weight) {
 		TreeViewerColumn viewerColumn = createTreeViewerColumn(treeViewer, eStructuralFeature);
 		TreeColumn objectColumn = viewerColumn.getColumn();
 		layoutHelper.adjustLayoutColumnData(layout, objectColumn, weight);
-		objectColumn.setText(featureCaptionProvider.getText(eStructuralFeature.eClass(), eStructuralFeature));
+		objectColumn.setText(featureCaptionProvider.getText(eClass, eStructuralFeature));
 		objectColumn.setResizable(true);
 		return viewerColumn;
 	}

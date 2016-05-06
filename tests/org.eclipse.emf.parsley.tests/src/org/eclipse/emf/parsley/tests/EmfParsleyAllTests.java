@@ -57,6 +57,8 @@ import org.junit.runners.Suite;
 	TableViewerColumnBuilderTest.class,
 	TableViewerEditingSupportTest.class,
 	TableViewerCellEditorFactoryTest.class,
+	TreeViewerColumnBuilderTest.class,
+	TreeViewerBuilderTest.class,
 	TreeFormFactoryTest.class,
 	FeatureNamePathTest.class,
 	FeatureResolverTest.class,
