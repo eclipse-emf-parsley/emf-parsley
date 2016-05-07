@@ -94,7 +94,7 @@ class TreeViewerColumnBuilderTest extends AbstractViewerTest {
 		buildAndFillTreeViewer(
 			createInjector(new EmfParsleyGuiceModuleForTesting() {
 				override valueTableColumnWeights() {
-					#[5, 2]
+					#[5, 2, 4]
 				}
 			}),
 			testContainer.classesForControls,
@@ -102,9 +102,10 @@ class TreeViewerColumnBuilderTest extends AbstractViewerTest {
 		)
 		syncExecVoid[
 			treeViewer.tree.getLayout.tableLayoutColumnData => [
-				// the first column is the tree so we skip it
-				get(1).assertColumnWeight(5)
-				get(2).assertColumnWeight(2)
+				// the first column is the tree
+				get(0).assertColumnWeight(5)
+				get(1).assertColumnWeight(2)
+				get(2).assertColumnWeight(4)
 				// 3 is the default one
 				get(3).assertColumnWeight(3)
 			]

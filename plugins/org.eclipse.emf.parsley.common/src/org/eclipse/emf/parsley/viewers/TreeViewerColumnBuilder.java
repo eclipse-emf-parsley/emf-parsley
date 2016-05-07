@@ -96,20 +96,22 @@ public class TreeViewerColumnBuilder {
 		Layout layout = layoutHelper.adjustForTableLayout(treeViewer);
 
 		int i = 0;
-
-		createMainTreeViewerColumn(treeViewer, layout, defaultWeight);
+		createMainTreeViewerColumn(treeViewer, layout, customWeightOrDefaultWeight(i++));
 
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
-			int weight = defaultWeight;
-			if (weights.size() > i) {
-				weight = weights.get(i++);
-			}
-
 			buildTreeViewerColumn(treeViewer, layout,
 				(eClass != null ? eClass : eStructuralFeature.getEContainingClass()),
 				eStructuralFeature,
-				weight);
+				customWeightOrDefaultWeight(i++));
 		}
+	}
+
+	private int customWeightOrDefaultWeight(int i) {
+		int weight = defaultWeight;
+		if (weights.size() > i) {
+			weight = weights.get(i);
+		}
+		return weight;
 	}
 
 	protected TreeViewerColumn buildTreeViewerColumn(TreeViewer treeViewer, Layout layout, EClass eClass,
