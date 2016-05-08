@@ -105,6 +105,22 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	@Test
+	public void checkSetReferenceToNull() throws Exception {
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=490463
+		SWTBotView detailView = openTestView(EMF_DETAIL_VIEW);
+		SWTFormsBot formbot = formBotFromView(detailView);
+		// select on the editor's tree
+		final SWTBotTreeItem rootOfEditorTree = openEditorAndGetTreeRoot(EMF_TREE_EDITOR,
+				MY_EXTLIBRARY, MY_EXT_LIBRARY_PLATFORM_URI);
+		getLibraryNode(rootOfEditorTree).select();
+		// select the book
+		getLibraryBookNode(rootOfEditorTree).select();
+		formbot.comboBox(WRITER_LABEL).setSelection("");
+		assertEditorDirty(EMF_TREE_EDITOR);
+		getEditor(EMF_TREE_EDITOR).close();
+	}
+
+	@Test
 	public void detailReadOnlyViewShowsDetailsOnSelection() throws Exception {
 		boolean editable = false;
 		SWTBotView detailView = openTestView(EMF_DETAIL_READONLY_VIEW);
