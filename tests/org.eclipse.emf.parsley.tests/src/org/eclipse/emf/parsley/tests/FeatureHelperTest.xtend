@@ -103,6 +103,14 @@ class FeatureHelperTest extends AbstractEmfParsleyTest {
 		assertNotPredefinedProposals(testPackage.classForControls_StringFeature)
 	}
 
+	@Test def void testIsEnum() {
+		assertEnum(testPackage.classForControls_EnumFeature)
+	}
+
+	@Test def void testIsNotEnum() {
+		assertNotEnum(testPackage.classForControls_StringFeature)
+	}
+
 	def private assertBooleanFeature(EStructuralFeature feature) {
 		featureHelper.isBooleanFeature(feature).assertTrue
 	}
@@ -125,6 +133,14 @@ class FeatureHelperTest extends AbstractEmfParsleyTest {
 
 	def private assertNotPredefinedProposals(EStructuralFeature feature) {
 		featureHelper.hasPredefinedProposals(feature).assertFalse
+	}
+
+	def private assertEnum(EStructuralFeature feature) {
+		featureHelper.isEnum(feature).assertTrue
+	}
+
+	def private assertNotEnum(EStructuralFeature feature) {
+		featureHelper.isEnum(feature).assertFalse
 	}
 
 }

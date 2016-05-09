@@ -16,13 +16,13 @@ import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
+import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.jface.viewers.ILabelProvider
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 class ProposalCreatorTest extends AbstractEmfParsleyTest {
 	
@@ -91,7 +91,7 @@ class ProposalCreatorTest extends AbstractEmfParsleyTest {
 	@Test def void testDefaultProposalsWithResource() {
 		val res = createResource
 		res.contents += classForControlsInstance
-		
+
 		createClassWithName(res, "Ref1")
 		createClassWithName(res, "Ref2")
 		createClassWithName(res, "Ref3")
@@ -147,7 +147,6 @@ class ProposalCreatorTest extends AbstractEmfParsleyTest {
 
 	def private assertProposals(List<Object> proposals, CharSequence expected) {
 		val labelProvider = getOrCreateInjector.getInstance(ILabelProvider)
-		
 		expected.toString.assertEquals
 			(proposals.map[
 				labelProvider.getText(it)

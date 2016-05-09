@@ -24,12 +24,14 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
+import org.eclipse.emf.parsley.ui.provider.ComboViewerLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.emf.parsley.util.FeatureHelper;
@@ -85,6 +87,9 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	private Provider<ILabelProvider> labelProviderProvider;
 
 	@Inject
+	private Provider<ComboViewerLabelProvider> comboViewerLabelProviderProvider;
+
+	@Inject
 	private FeatureHelper featureHelper;
 
 	@Inject
@@ -138,8 +143,16 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return labelProviderProvider;
 	}
 
+	public Provider<ComboViewerLabelProvider> getComboViewerLabelProviderProvider() {
+		return comboViewerLabelProviderProvider;
+	}
+
 	protected ILabelProvider createLabelProvider() {
 		return getLabelProviderProvider().get();
+	}
+
+	protected ILabelProvider createComboViewerLabelProvider() {
+		return getComboViewerLabelProviderProvider().get();
 	}
 
 	public ProposalCreator getProposalCreator() {
@@ -316,11 +329,16 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	protected ControlObservablePair createControlAndObservableValueForNonBooleanFeature(
 			EStructuralFeature feature) {
-		List<?> proposals = null;
+		List<Object> proposals = null;
 		if (!isReadonly()) {
 			proposals = createProposals(feature);
 		}
 		if (featureHelper.hasPredefinedProposals(feature) && !isReadonly()) {
+			if (!featureHelper.isEnum(feature)) {
+				// empty item for setting reference to null
+				// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=490463
+				proposals.add(0, SetCommand.UNSET_VALUE);
+			}
 			return createControlAndObservableWithPredefinedProposals(proposals);
 		} else {
 			if (isReadonly() && feature instanceof EReference) {
@@ -337,14 +355,14 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(
 			List<?> proposals) {
-		ComboViewer combo = createComboViewer(SWT.READ_ONLY);
-		combo.setContentProvider(new ArrayContentProvider());
-		combo.setLabelProvider(createLabelProvider());
-		combo.setInput(proposals);
+		ComboViewer comboViewer = createComboViewer(SWT.READ_ONLY);
+		comboViewer.setContentProvider(new ArrayContentProvider());
+		comboViewer.setLabelProvider(createComboViewerLabelProvider());
+		comboViewer.setInput(proposals);
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
-		retValAndTargetPair.setControl(combo.getCombo());
+		retValAndTargetPair.setControl(comboViewer.getCombo());
 		retValAndTargetPair.setObservableValue(ViewersObservables
-				.observeSingleSelection(combo));
+				.observeSingleSelection(comboViewer));
 		return retValAndTargetPair;
 	}
 

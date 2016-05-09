@@ -227,11 +227,11 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		
 		classForControlsInstance.referenceToClassWithName = referred2
 		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
-		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 1)
+		control.assertCombo(", Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 2)
 		
 		classForControlsInstance.referenceToClassWithName = referred3
 		control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
-		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 2)
+		control.assertCombo(", Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 3)
 	}
 
 	@Test def void testReferenceFeatureWithResourceSet() {
@@ -244,11 +244,11 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		
 		classForControlsInstance.referenceToClassWithName = referred2
 		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
-		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 1)
+		control.assertCombo(", Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 2)
 		
 		classForControlsInstance.referenceToClassWithName = referred3
 		control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
-		control.assertCombo("Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 2)
+		control.assertCombo(", Class With Name Ref1, Class With Name Ref2, Class With Name Ref3", 3)
 	}
 
 	@Test def void testReferenceFeatureInDifferentResources() {
@@ -265,17 +265,44 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 		//  since they are in different resources.
 		classForControlsInstance.referenceToClassWithName = referred2
 		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
-		control.assertCombo("Class With Name Ref1, Class With Name Ref3, Class With Name Ref2", 2)
+		control.assertCombo(", Class With Name Ref1, Class With Name Ref3, Class With Name Ref2", 3)
 		
 		classForControlsInstance.referenceToClassWithName = referred3
 		control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
-		control.assertCombo("Class With Name Ref1, Class With Name Ref3, Class With Name Ref2", 1)
+		control.assertCombo(", Class With Name Ref1, Class With Name Ref3, Class With Name Ref2", 2)
 	}
 
 	@Test def void testReferenceFeatureReadOnly() {
 		factory.readonly = true
 		val control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
 		control.assertText("")
+	}
+
+	@Test def void testReferenceFeatureNull() {
+		val res = createResource
+		res.contents += classForControlsInstance
+
+		createClassWithName(res, "Ref1")
+
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=490463
+		classForControlsInstance.referenceToClassWithName = null
+		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
+		control.assertCombo(", Class With Name Ref1", -1)
+	}
+
+	@Test def void testReferenceFeatureNotNullAndThenNull() {
+		val res = createResource
+		res.contents += classForControlsInstance
+
+		val referred = createClassWithName(res, "Ref1")
+
+		classForControlsInstance.referenceToClassWithName = referred
+		var control = factory.createControl(testPackage.classForControls_ReferenceToClassWithName)
+		control.assertCombo(", Class With Name Ref1", 1)
+
+		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=490463
+		classForControlsInstance.referenceToClassWithName = null
+		control.assertCombo(", Class With Name Ref1", -1)
 	}
 
 	def protected createAndInitializeFactory() {

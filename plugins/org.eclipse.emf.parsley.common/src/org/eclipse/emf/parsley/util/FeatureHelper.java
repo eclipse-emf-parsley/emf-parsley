@@ -60,7 +60,11 @@ public class FeatureHelper {
 	}
 
 	public boolean hasPredefinedProposals(EStructuralFeature feature) {
-		return feature instanceof EReference || feature.getEType() instanceof EEnumImpl;
+		return feature instanceof EReference || isEnum(feature);
+	}
+
+	public boolean isEnum(EStructuralFeature feature) {
+		return feature.getEType() instanceof EEnumImpl;
 	}
 
 }

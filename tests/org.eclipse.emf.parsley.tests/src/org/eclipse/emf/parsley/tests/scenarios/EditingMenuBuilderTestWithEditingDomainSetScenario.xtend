@@ -8,12 +8,12 @@
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
-package org.eclipse.emf.parsley.tests
+package org.eclipse.emf.parsley.tests.scenarios
 
 /**
  * In this scenario the EditingDomain is set from outside
  */
-class EditingMenuBuilderTestWithEditingDomainSetScenario extends AbstractEditingMenuBuilderTest {
+class EditingMenuBuilderTestWithEditingDomainSetScenario extends org.eclipse.emf.parsley.tests.AbstractEditingMenuBuilderTest {
 
 	override protected createResourceForTest() {
 		createTestLibrayResourceAndInitialize
