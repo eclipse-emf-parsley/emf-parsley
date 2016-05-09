@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.emf.parsley.tests.views
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.1.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.tests.views; singleton:=true
 Bundle-Activator: org.eclipse.emf.parsley.tests.views.ViewsActivator
 Bundle-ActivationPolicy: lazy
