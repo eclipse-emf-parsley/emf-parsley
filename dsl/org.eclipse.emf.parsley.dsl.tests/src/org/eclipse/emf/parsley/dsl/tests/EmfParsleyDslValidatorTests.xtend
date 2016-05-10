@@ -19,7 +19,6 @@ import org.eclipse.emf.parsley.composite.DialogControlFactory
 import org.eclipse.emf.parsley.composite.FormControlFactory
 import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.config.Configurator
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder

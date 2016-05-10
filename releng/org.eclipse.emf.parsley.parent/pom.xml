@@ -211,9 +211,11 @@
 				<module>../../doc/org.eclipse.emf.parsley.doc</module>
 		
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.ide</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.additional.builder</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui.tests</module>
 		
 				<module>../../features/org.eclipse.emf.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.junit4.feature</module>
@@ -709,6 +711,18 @@
 	-->
 
 	<pluginRepositories>
+		<pluginRepository>
+			<id>codehaus-snapshots</id>
+			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+			<url>http://nexus.codehaus.org/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
 		<pluginRepository>
 			<id>sonatype_releases</id>
 			<url>https://oss.sonatype.org/content/repositories/releases/</url>

@@ -1,6 +1,6 @@
 package org.eclipse.emf.parsley.dsl.tests.util;
 
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider;
+import org.eclipse.emf.parsley.dsl.tests.EmfParsleyDslInjectorProvider;
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslRuntimeModule;
 import org.eclipse.emf.parsley.dsl.EmfParsleyDslStandaloneSetup;
 

@@ -14,9 +14,8 @@ import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslUiInjectorProvider
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
-import org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator
+import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator
 import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
 import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
 import org.eclipse.jdt.core.IJavaProject
@@ -46,8 +45,8 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	def static void setUp() {
 		PDETargetPlatformUtils.setTargetPlatform();
 		
-		val injector = EmfParsleyDslActivator.getInstance().getInjector
-			(EmfParsleyDslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL);
+		val injector = DslActivator.getInstance().getInjector
+			(DslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL);
 		
 		val projectHelper = injector.getInstance(PluginProjectHelper)
 		

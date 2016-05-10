@@ -23,7 +23,6 @@ import org.junit.BeforeClass
 import org.junit.runner.RunWith
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))

@@ -12,7 +12,8 @@ package org.eclipse.emf.parsley.dsl.ui.tests
 
 import com.google.inject.Inject
 import com.google.inject.Provider
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslUiInjectorProvider
+import org.eclipse.core.resources.IProject
+import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
 import org.eclipse.emf.parsley.dsl.tests.util.ui.TestableEmfParsleyDslNewProjectWizard
 import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
@@ -27,11 +28,9 @@ import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
 import static org.eclipse.emf.parsley.dsl.tests.util.ui.TestableEmfParsleyDslNewProjectWizard.*
-import org.eclipse.core.resources.IProject
-import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 
 /**
  * @author Lorenzo Bettini

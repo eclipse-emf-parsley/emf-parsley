@@ -27,16 +27,16 @@ Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
  org.eclipse.emf.parsley.wizards,
  org.objectweb.asm;bundle-version="5.0.1",
  org.eclipse.jdt.debug.ui,
- org.eclipse.emf.parsley.dsl.additional.builder
+ org.eclipse.emf.parsley.dsl.additional.builder,
+ org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.emf.parsley.dsl.ide
 Import-Package: org.apache.log4j,
  org.eclipse.pde.internal.ui.parts,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.dsl.ui.contentassist,
- org.eclipse.emf.parsley.dsl.ui.contentassist.antlr,
  org.eclipse.emf.parsley.dsl.ui.internal,
  org.eclipse.emf.parsley.dsl.ui.quickfix,
  org.eclipse.emf.parsley.dsl.ui.wizard,
- org.eclipse.emf.parsley.dsl.ui.wizard.template,
- org.eclipse.emf.parsley.dsl.ui.contentassist.antlr.internal
-Bundle-Activator: org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator
+ org.eclipse.emf.parsley.dsl.ui.wizard.template
+Bundle-Activator: org.eclipse.emf.parsley.dsl.ui.internal.DslActivator

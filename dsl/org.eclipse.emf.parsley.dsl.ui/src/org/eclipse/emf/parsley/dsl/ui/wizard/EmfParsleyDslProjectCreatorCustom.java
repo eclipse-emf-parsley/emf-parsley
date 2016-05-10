@@ -18,13 +18,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder;
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature;
-import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
 import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator;
 import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 /**
@@ -35,12 +33,6 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 	static EmfParsleyDslNewProjectFiles filesGenerator = new EmfParsleyDslNewProjectFiles();
 
 	static EmfParsleyProjectFilesGenerator projectFilesGenerator = new EmfParsleyProjectFilesGenerator();
-
-	@Override
-	protected List<String> getAllFolders() {
-		return ImmutableList.of(SRC_ROOT,
-				EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN);
-	}
 
 	/**
 	 * @return the names of the bundles that a new project requires. May not be

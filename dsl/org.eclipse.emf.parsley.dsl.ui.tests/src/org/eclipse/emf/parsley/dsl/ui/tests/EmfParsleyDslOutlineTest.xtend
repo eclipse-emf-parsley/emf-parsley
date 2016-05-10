@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.tests
 
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslUiInjectorProvider
-import org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator
+import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.ui.tests.editor.outline.AbstractOutlineWorkbenchTest
@@ -26,7 +25,7 @@ import org.junit.runner.RunWith
 class EmfParsleyDslOutlineTest extends AbstractOutlineWorkbenchTest {
 	
 	override protected getEditorId() {
-		EmfParsleyDslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL
+		DslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL
 	}
 
 	@Test

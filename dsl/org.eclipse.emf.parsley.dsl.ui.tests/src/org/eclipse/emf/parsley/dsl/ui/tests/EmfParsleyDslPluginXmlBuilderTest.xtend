@@ -11,8 +11,12 @@
 package org.eclipse.emf.parsley.dsl.ui.tests
 
 import com.google.inject.Inject
+import java.io.IOException
+import java.io.InputStreamReader
+import java.nio.CharBuffer
 import org.eclipse.core.resources.IProject
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslUiInjectorProvider
+import org.eclipse.core.runtime.CoreException
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
 import org.eclipse.xtext.junit4.InjectWith
@@ -23,13 +27,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
-import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder
-import java.io.InputStreamReader
-import org.eclipse.core.runtime.CoreException
-
 import static org.mockito.Mockito.*
-import java.io.IOException
-import java.nio.CharBuffer
 
 /**
  * @author Lorenzo Bettini

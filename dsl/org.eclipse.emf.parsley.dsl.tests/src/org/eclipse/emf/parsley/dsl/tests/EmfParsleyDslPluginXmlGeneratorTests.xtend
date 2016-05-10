@@ -11,16 +11,15 @@
 package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslPluginXmlGenerator
 import org.eclipse.emf.parsley.dsl.model.Module
+import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.eclipse.xtext.generator.IFileSystemAccess
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslInjectorProvider))
