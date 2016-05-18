@@ -478,7 +478,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/releases/staging"/>
+              url="http://download.eclipse.org/staging/neon/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -688,11 +688,11 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="mwe2.site"
-          value="http://download.eclipse.org/releases/staging"/>
+          value="http://download.eclipse.org/staging/neon/"/>
       <setupTask
           xsi:type="setup:VariableTask"
           name="xtext.site"
-          value="http://download.eclipse.org/releases/staging"/>
+          value="http://download.eclipse.org/staging/neon/"/>
       <description>Branch for Simrel for Neon</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
