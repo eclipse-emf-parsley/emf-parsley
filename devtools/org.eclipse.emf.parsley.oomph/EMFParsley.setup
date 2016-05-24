@@ -769,6 +769,17 @@
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
         </repositoryList>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/staging/neon/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+        </repositoryList>
       </targlet>
     </setupTask>
     <setupTask
@@ -924,6 +935,20 @@
     <stream
         name="neon-simrel"
         label="Neon-Simrel">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value=""
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/staging/neon/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/staging/neon/"/>
       <description>Branch for Simrel for Neon</description>
     </stream>
     <description>EMF Parsley version for RAP</description>

@@ -29,8 +29,4 @@
          id="org.eclipse.emf.parsley.rap.cdo.sdk"
          version="0.0.0"/>
 
-   <includes
-         id="org.eclipse.emf.parsley.rap.repository"
-         version="0.0.0"/>
-
 </feature>
