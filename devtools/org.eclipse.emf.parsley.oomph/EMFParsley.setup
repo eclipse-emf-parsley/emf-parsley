@@ -300,31 +300,6 @@
         name="Eclipse IDE Plugins">
       <setupTask
           xsi:type="setup.p2:P2Task"
-          id="p2.org.eclipse.xtext"
-          label="Xtext Releases"
-          licenseConfirmationDisabled="true">
-        <requirement
-            name="org.eclipse.xtext.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.mwe2.language.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.mwe2.runtime.sdk.feature.group"/>
-        <requirement
-            name="de.itemis.xtext.antlr.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.xpand.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.ecore.xcore.sdk.feature.group"/>
-        <repository
-            url="${xtext.site}"/>
-        <repository
-            url="${mwe2.site}"/>
-        <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
-        <description>Xtext &amp; Xtend</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
           id="p2.swtbot"
           label="SWTBot"
           licenseConfirmationDisabled="true">
@@ -675,7 +650,26 @@
     </setupTask>
     <stream
         name="master"
-        label="Master"/>
+        label="Master">
+      <setupTask
+          xsi:type="setup.p2:P2Task"
+          id="p2.org.eclipse.xtext.2"
+          label="Xtext Releases"
+          licenseConfirmationDisabled="true">
+        <requirement
+            name="org.eclipse.xtext.sdk.feature.group"
+            versionRange="[2.9.0,2.10.0)"/>
+        <requirement
+            name="de.itemis.xtext.antlr.feature.feature.group"/>
+        <repository
+            url="${xtext.site}"/>
+        <repository
+            url="${mwe2.site}"/>
+        <repository
+            url="http://download.itemis.com/updates/releases/2.1.1/"/>
+        <description>Xtext &amp; Xtend</description>
+      </setupTask>
+    </stream>
     <stream
         name="neon-simrel"
         label="Neon-Simrel">
@@ -693,6 +687,24 @@
           xsi:type="setup:VariableTask"
           name="xtext.site"
           value="http://download.eclipse.org/staging/neon/"/>
+      <setupTask
+          xsi:type="setup.p2:P2Task"
+          id="p2.org.eclipse.xtext.3"
+          label="Xtext Releases"
+          licenseConfirmationDisabled="true">
+        <requirement
+            name="org.eclipse.xtext.sdk.feature.group"
+            versionRange="[2.10.0,2.11.0)"/>
+        <requirement
+            name="de.itemis.xtext.antlr.feature.feature.group"/>
+        <repository
+            url="${xtext.site}"/>
+        <repository
+            url="${mwe2.site}"/>
+        <repository
+            url="http://download.itemis.com/updates/releases/2.1.1/"/>
+        <description>Xtext &amp; Xtend</description>
+      </setupTask>
       <description>Branch for Simrel for Neon</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
