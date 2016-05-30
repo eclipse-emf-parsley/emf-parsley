@@ -11,6 +11,8 @@
 package org.eclipse.emf.parsley.composite;
 
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -34,9 +36,11 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private final Composite main;
 
-	FormToolkit toolkit;
+	private FormToolkit toolkit;
 
 	private final ScrolledForm scrolledForm;
+
+	private HeaderAdapter headerAdapter;
 
 	public FormDetailComposite(Composite parent, int style) {
 		super(parent, style);
@@ -58,6 +62,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	@Override
 	public void dispose() {
+		headerAdapter.dispose();
 		super.dispose();
 		toolkit.dispose();
 	}
@@ -97,13 +102,41 @@ public class FormDetailComposite extends AbstractDetailComposite {
 			EObject model) {
 		scrolledForm.setText(getLabelProvider().getText(model));
 		scrolledForm.setImage(getLabelProvider().getImage(model));
+		model.eAdapters().add(headerAdapter = new HeaderAdapter(model));
 
 		formControlFactory.init(domain, model, main, toolkit);
+	}
+
+	protected ScrolledForm getScrolledForm() {
+		return scrolledForm;
 	}
 
 	@Override
 	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
 		formControlFactory.createEditingField(feature);
+	}
+
+	private class HeaderAdapter extends AdapterImpl {
+
+		private EObject model;
+		private boolean disposing = false;
+
+		public HeaderAdapter(EObject model) {
+			this.model = model;
+		}
+
+		public void dispose() {
+			disposing = true;
+			model.eAdapters().remove(headerAdapter);
+		}
+
+		@Override
+		public void notifyChanged(Notification msg) {
+			if (!disposing) {
+				scrolledForm.setText(getLabelProvider().getText(model));
+				scrolledForm.setImage(getLabelProvider().getImage(model));
+			}
+		}
 	}
 
 }
