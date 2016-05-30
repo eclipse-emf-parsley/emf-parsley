@@ -83,7 +83,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClass()
 	 * @generated
 	 */
-	int BASE_CLASS = 3;
+	int BASE_CLASS = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.DerivedClassImpl <em>Derived Class</em>}' class.
@@ -93,7 +93,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getDerivedClass()
 	 * @generated
 	 */
-	int DERIVED_CLASS = 4;
+	int DERIVED_CLASS = 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForControlsImpl <em>Class For Controls</em>}' class.
@@ -103,7 +103,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForControls()
 	 * @generated
 	 */
-	int CLASS_FOR_CONTROLS = 7;
+	int CLASS_FOR_CONTROLS = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassWithNameImpl <em>Class With Name</em>}' class.
@@ -113,7 +113,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassWithName()
 	 * @generated
 	 */
-	int CLASS_WITH_NAME = 8;
+	int CLASS_WITH_NAME = 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
@@ -261,6 +261,43 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_ECLASS_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassForFeatureNameImpl <em>Test EClass For Feature Name</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassForFeatureNameImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getTestEClassForFeatureName()
+	 * @generated
+	 */
+	int TEST_ECLASS_FOR_FEATURE_NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>EField</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_ECLASS_FOR_FEATURE_NAME__EFIELD = 0;
+
+	/**
+	 * The number of structural features of the '<em>Test EClass For Feature Name</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_ECLASS_FOR_FEATURE_NAME_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Test EClass For Feature Name</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_ECLASS_FOR_FEATURE_NAME_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ABaseClassImpl <em>ABase Class</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,7 +305,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getABaseClass()
 	 * @generated
 	 */
-	int ABASE_CLASS = 2;
+	int ABASE_CLASS = 3;
 
 	/**
 	 * The number of structural features of the '<em>ABase Class</em>' class.
@@ -386,7 +423,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getDerivedDerivedClass()
 	 * @generated
 	 */
-	int DERIVED_DERIVED_CLASS = 5;
+	int DERIVED_DERIVED_CLASS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Base Class Feature</b></em>' attribute.
@@ -450,7 +487,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getMultipleInheritanceClass()
 	 * @generated
 	 */
-	int MULTIPLE_INHERITANCE_CLASS = 6;
+	int MULTIPLE_INHERITANCE_CLASS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Lowercase Name Feature</b></em>' attribute.
@@ -865,7 +902,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBaseClassForFeatureMapEntry()
 	 * @generated
 	 */
-	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY = 9;
+	int BASE_CLASS_FOR_FEATURE_MAP_ENTRY = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -902,7 +939,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry1()
 	 * @generated
 	 */
-	int CLASS_FOR_FEATURE_MAP_ENTRY1 = 10;
+	int CLASS_FOR_FEATURE_MAP_ENTRY1 = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -939,7 +976,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForFeatureMapEntry2()
 	 * @generated
 	 */
-	int CLASS_FOR_FEATURE_MAP_ENTRY2 = 11;
+	int CLASS_FOR_FEATURE_MAP_ENTRY2 = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -976,7 +1013,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForTable()
 	 * @generated
 	 */
-	int CLASS_FOR_TABLE = 12;
+	int CLASS_FOR_TABLE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Class With Name1</b></em>' reference.
@@ -1022,7 +1059,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForValidation()
 	 * @generated
 	 */
-	int CLASS_FOR_VALIDATION = 13;
+	int CLASS_FOR_VALIDATION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Not Empty</b></em>' attribute.
@@ -1059,7 +1096,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
 	 * @generated
 	 */
-	int ENUM_FOR_CONTROLS = 14;
+	int ENUM_FOR_CONTROLS = 15;
 
 
 	/**
@@ -1070,7 +1107,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
 	 * @generated
 	 */
-	int BOOLEAN_DATA_TYPE = 15;
+	int BOOLEAN_DATA_TYPE = 16;
 
 
 	/**
@@ -1080,7 +1117,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
 	 * @generated
 	 */
-	int BOOLEAN_PRIMITIVE_DATA_TYPE = 16;
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 17;
 
 
 	/**
@@ -1091,7 +1128,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getStringDataType()
 	 * @generated
 	 */
-	int STRING_DATA_TYPE = 17;
+	int STRING_DATA_TYPE = 18;
 
 
 	/**
@@ -1102,7 +1139,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getUnserializableStringDataType()
 	 * @generated
 	 */
-	int UNSERIALIZABLE_STRING_DATA_TYPE = 18;
+	int UNSERIALIZABLE_STRING_DATA_TYPE = 19;
 
 
 	/**
@@ -1158,6 +1195,27 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTestEClass_DerivedFeature();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClassForFeatureName <em>Test EClass For Feature Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test EClass For Feature Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestEClassForFeatureName
+	 * @generated
+	 */
+	EClass getTestEClassForFeatureName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClassForFeatureName#getEField <em>EField</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>EField</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestEClassForFeatureName#getEField()
+	 * @see #getTestEClassForFeatureName()
+	 * @generated
+	 */
+	EAttribute getTestEClassForFeatureName_EField();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass <em>ABase Class</em>}'.
@@ -1908,6 +1966,22 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TEST_ECLASS__DERIVED_FEATURE = eINSTANCE.getTestEClass_DerivedFeature();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassForFeatureNameImpl <em>Test EClass For Feature Name</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestEClassForFeatureNameImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getTestEClassForFeatureName()
+		 * @generated
+		 */
+		EClass TEST_ECLASS_FOR_FEATURE_NAME = eINSTANCE.getTestEClassForFeatureName();
+		/**
+		 * The meta object literal for the '<em><b>EField</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEST_ECLASS_FOR_FEATURE_NAME__EFIELD = eINSTANCE.getTestEClassForFeatureName_EField();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ABaseClassImpl <em>ABase Class</em>}' class.
 		 * <!-- begin-user-doc -->

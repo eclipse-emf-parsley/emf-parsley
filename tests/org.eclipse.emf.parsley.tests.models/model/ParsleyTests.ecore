@@ -25,6 +25,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="derivedFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="" derived="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestEClassForFeatureName">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eField" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ABaseClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="BaseClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseClassFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

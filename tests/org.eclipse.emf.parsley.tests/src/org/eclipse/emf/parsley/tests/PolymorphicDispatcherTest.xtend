@@ -23,13 +23,15 @@ import static extension org.junit.Assert.*
 class PolymorphicDispatcherTest {
 
 	var Object target;
-	
+
 	val static IN_BASE_CLASS = "BaseClass.baseClassFeature"
 
 	val static IN_DERIVED_CLASS = "DerivedClass.baseClassFeature"
-	
+
+	val static SPECIAL_CASE = "SpecialCase"
+
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
-	
+
 	static class Customize_BaseClass_baseClassFeature {
 		def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {
 			return IN_BASE_CLASS
@@ -41,7 +43,21 @@ class PolymorphicDispatcherTest {
 			return IN_DERIVED_CLASS
 		}
 	}
-	
+
+	static class Customize_TestEClassForFeatureName_FeatureNameSpecialCase {
+		// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=494886
+		def String text_TestEClassForFeatureName_EField(EStructuralFeature feature) {
+			return SPECIAL_CASE
+		}
+	}
+
+	static class Customize_TestEClassForFeatureName_FeatureNameSpecialCase2 {
+		// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=494886
+		def String text_TestEClassForFeatureName_eField(EStructuralFeature feature) {
+			return SPECIAL_CASE
+		}
+	}
+
 	new() {
 		// the following is useless... but it's just to have coverage
 		// for the protected constructor 
@@ -106,10 +122,28 @@ class PolymorphicDispatcherTest {
 		)
 	}
 
+	@Test
+	def void testPolymorphicInvokeWithSpecialFeatureName() {
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=494886
+		target = new Customize_TestEClassForFeatureName_FeatureNameSpecialCase
+		SPECIAL_CASE.assertPolymorphicInvoke(
+			testPackage.testEClassForFeatureName, testPackage.testEClassForFeatureName_EField
+		)
+	}
+
+	@Test
+	def void testPolymorphicInvokeWithSpecialFeatureName2() {
+		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=494886
+		target = new Customize_TestEClassForFeatureName_FeatureNameSpecialCase2
+		SPECIAL_CASE.assertPolymorphicInvoke(
+			testPackage.testEClassForFeatureName, testPackage.testEClassForFeatureName_EField
+		)
+	}
+
 	def private assertPolymorphicInvoke(Object expected, EClass eClass, EStructuralFeature feature) {
 		expected.assertEquals(polymorphicInvoke(eClass, feature))
 	}
-	
+
 	def private polymorphicInvoke(EClass eClass, EStructuralFeature feature) {
 		target.
 			polymorphicInvokeBasedOnFeature(eClass, feature, "text_", feature)

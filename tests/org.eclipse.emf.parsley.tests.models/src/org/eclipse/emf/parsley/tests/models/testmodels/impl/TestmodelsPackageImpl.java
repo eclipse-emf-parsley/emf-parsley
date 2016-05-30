@@ -34,6 +34,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.MultipleInheritanceClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestEClass;
+import org.eclipse.emf.parsley.tests.models.testmodels.TestEClassForFeatureName;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
 import org.eclipse.emf.parsley.tests.models.testmodels.util.TestmodelsValidator;
@@ -51,6 +52,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass testEClassEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testEClassForFeatureNameEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -290,6 +298,24 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 */
 	public EAttribute getTestEClass_DerivedFeature() {
 		return (EAttribute)testEClassEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestEClassForFeatureName() {
+		return testEClassForFeatureNameEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTestEClassForFeatureName_EField() {
+		return (EAttribute)testEClassForFeatureNameEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -911,6 +937,9 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(testEClassEClass, TEST_ECLASS__NOT_CHANGEABLE_FEATURE);
 		createEAttribute(testEClassEClass, TEST_ECLASS__DERIVED_FEATURE);
 
+		testEClassForFeatureNameEClass = createEClass(TEST_ECLASS_FOR_FEATURE_NAME);
+		createEAttribute(testEClassForFeatureNameEClass, TEST_ECLASS_FOR_FEATURE_NAME__EFIELD);
+
 		aBaseClassEClass = createEClass(ABASE_CLASS);
 
 		baseClassEClass = createEClass(BASE_CLASS);
@@ -1035,6 +1064,9 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getTestEClass_UpperCaseNameFeature(), ecorePackage.getEString(), "UpperCaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestEClass_NotChangeableFeature(), ecorePackage.getEString(), "notChangeableFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTestEClass_DerivedFeature(), ecorePackage.getEString(), "derivedFeature", "", 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(testEClassForFeatureNameEClass, TestEClassForFeatureName.class, "TestEClassForFeatureName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTestEClassForFeatureName_EField(), ecorePackage.getEString(), "eField", null, 0, 1, TestEClassForFeatureName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(aBaseClassEClass, ABaseClass.class, "ABaseClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
