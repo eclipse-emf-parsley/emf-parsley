@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.edit.EditingDomainFinder;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -30,9 +29,10 @@ import com.google.inject.Inject;
 
 public class FormDetailComposite extends AbstractDetailComposite {
 
-	protected FormControlFactory formControlFactory;
+	private FormControlFactory formControlFactory;
 
-	protected ILabelProvider labelProvider;
+	@Inject
+	private ILabelProvider labelProvider;
 
 	private final Composite main;
 
@@ -40,7 +40,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private final ScrolledForm scrolledForm;
 
-	private HeaderAdapter headerAdapter;
+	private FormTitleAdapter headerAdapter;
 
 	public FormDetailComposite(Composite parent, int style) {
 		super(parent, style);
@@ -67,44 +67,22 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		toolkit.dispose();
 	}
 
-	public FormControlFactory getFormControlFactory() {
-		return formControlFactory;
-	}
-
 	@Inject
-	public void setFormControlFactory(
-			FormControlFactory formControlFactory) {
+	public void setFormControlFactory(FormControlFactory formControlFactory) {
 		this.formControlFactory = formControlFactory;
-	}
-
-	@Override
-	public EditingDomainFinder getEditingDomainFinder() {
-		return editingDomainFinder;
-	}
-
-	@Override
-	@Inject
-	public void setEditingDomainFinder(EditingDomainFinder editingDomainFinder) {
-		this.editingDomainFinder = editingDomainFinder;
-	}
-
-	public ILabelProvider getLabelProvider() {
-		return labelProvider;
-	}
-
-	@Inject
-	public void setLabelProvider(ILabelProvider labelProvider) {
-		this.labelProvider = labelProvider;
 	}
 
 	@Override
 	protected void initControlFactory(EditingDomain domain,
 			EObject model) {
-		scrolledForm.setText(getLabelProvider().getText(model));
-		scrolledForm.setImage(getLabelProvider().getImage(model));
-		model.eAdapters().add(headerAdapter = new HeaderAdapter(model));
-
+		updateTitle(model);
+		model.eAdapters().add(headerAdapter = new FormTitleAdapter(model));
 		formControlFactory.init(domain, model, main, toolkit);
+	}
+
+	protected void updateTitle(EObject model) {
+		scrolledForm.setText(labelProvider.getText(model));
+		scrolledForm.setImage(labelProvider.getImage(model));
 	}
 
 	protected ScrolledForm getScrolledForm() {
@@ -116,12 +94,12 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		formControlFactory.createEditingField(feature);
 	}
 
-	private class HeaderAdapter extends AdapterImpl {
+	private class FormTitleAdapter extends AdapterImpl {
 
 		private EObject model;
 		private boolean disposing = false;
 
-		public HeaderAdapter(EObject model) {
+		public FormTitleAdapter(EObject model) {
 			this.model = model;
 		}
 
@@ -133,8 +111,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		@Override
 		public void notifyChanged(Notification msg) {
 			if (!disposing) {
-				scrolledForm.setText(getLabelProvider().getText(model));
-				scrolledForm.setImage(getLabelProvider().getImage(model));
+				updateTitle(model);
 			}
 		}
 	}

@@ -28,8 +28,11 @@ import com.google.inject.Inject;
  */
 public abstract class AbstractDetailComposite extends Composite {
 
-	protected FeaturesProvider featuresProvider;
-	protected EditingDomainFinder editingDomainFinder;
+	@Inject
+	private FeaturesProvider featuresProvider;
+
+	@Inject
+	private EditingDomainFinder editingDomainFinder;
 
 	public AbstractDetailComposite(Composite parent, int style) {
 		super(parent, style);
@@ -53,8 +56,7 @@ public abstract class AbstractDetailComposite extends Composite {
 	 *            it can be null
 	 */
 	public void init(EObject original, EditingDomain editingDomain) {
-		List<EStructuralFeature> features = featuresProvider
-				.getEObjectFeatures(original);
+		List<EStructuralFeature> features = featuresProvider.getEObjectFeatures(original);
 
 		initControlFactory(editingDomain, original);
 
@@ -64,29 +66,9 @@ public abstract class AbstractDetailComposite extends Composite {
 
 		this.layout();
 	}
-	
-	protected abstract void initControlFactory(EditingDomain domain,
-			EObject model);
 
-	protected abstract void createControlForFeature(final EClass eClass,
-			final EStructuralFeature feature);
+	protected abstract void initControlFactory(EditingDomain domain, EObject model);
 
-	public FeaturesProvider getFeaturesProvider() {
-		return featuresProvider;
-	}
-
-	@Inject
-	public void setFeaturesProvider(FeaturesProvider eClassFeatureProvider) {
-		this.featuresProvider = eClassFeatureProvider;
-	}
-
-	public EditingDomainFinder getEditingDomainFinder() {
-		return editingDomainFinder;
-	}
-
-	@Inject
-	public void setEditingDomainFinder(EditingDomainFinder editingDomainFinder) {
-		this.editingDomainFinder = editingDomainFinder;
-	}
+	protected abstract void createControlForFeature(final EClass eClass, final EStructuralFeature feature);
 
 }

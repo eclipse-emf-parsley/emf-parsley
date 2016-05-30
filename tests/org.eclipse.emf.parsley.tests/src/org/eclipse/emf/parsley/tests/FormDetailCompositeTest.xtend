@@ -63,4 +63,13 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 		"Class With Name Changed".assertEquals(formDetailComposite.scrolledForm.text)
 		formDetailComposite.dispose
 	}
+
+	@Test def void testTitleIsUpdatedOnObjectChangeWithoutEditingDomain() {
+		val o = testFactory.createClassWithName => [ name = "Test" ]
+		formDetailComposite.init(o)
+		"Class With Name Test".assertEquals(formDetailComposite.scrolledForm.text)
+		o.name = "Changed"
+		"Class With Name Changed".assertEquals(formDetailComposite.scrolledForm.text)
+		formDetailComposite.dispose
+	}
 }
