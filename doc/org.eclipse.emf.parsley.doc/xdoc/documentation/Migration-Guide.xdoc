@@ -1,5 +1,14 @@
 chapter:MigrationGuide[Migration Guide]
 
+section:VersionOne[From 0.7.0 to 1.0.0]
+
+ul[
+item[e[API changes] If in your custom e[ControlFactory] you were using the field
+e[edbc] you should now use the getter e[getDatabindingContext()]. Similarly for the field
+e[domain]: use e[getEditingDomain()].
+]
+]
+
 section:SixSeven[From 0.6.0 to 0.7.0]
 
 ul[

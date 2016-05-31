@@ -95,23 +95,23 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	@Inject
 	private ProposalCreator proposalCreator;
 
-	protected EObject owner;
-	protected Resource resource;
-	protected EditingDomain domain;
-	protected EMFDataBindingContext edbc;
+	private EObject owner;
+	private Resource resource;
+	private EditingDomain domain;
+	private EMFDataBindingContext edbc;
 
 	/**
 	 * This will be created by the abstract method {@link #createWidgetFactory()}
 	 */
-	protected IWidgetFactory widgetFactory;
+	private IWidgetFactory widgetFactory;
 
 	/**
 	 * This will be created by the abstract method
 	 * {@link #createFeatureLabelCaptionProvider()}
 	 */
-	protected FeatureLabelCaptionProvider featureLabelCaptionProvider;
+	private FeatureLabelCaptionProvider featureLabelCaptionProvider;
 
-	protected boolean readonly = false;
+	private boolean readonly = false;
 
 	public static final String EOBJECT_KEY = EcorePackage.Literals.EOBJECT
 			.getName();
@@ -120,6 +120,25 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	public AbstractControlFactory() {
 
+	}
+
+	protected EObject getOwner() {
+		return owner;
+	}
+
+	protected EditingDomain getEditingDomain() {
+		return domain;
+	}
+
+	protected EMFDataBindingContext getDataBindingContext() {
+		return edbc;
+	}
+
+	protected Resource getResource() {
+		if (resource == null) {
+			resource = owner.eResource();
+		}
+		return resource;
 	}
 
 	/**
@@ -139,36 +158,20 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 */
 	protected abstract FeatureLabelCaptionProvider createFeatureLabelCaptionProvider();
 
-	public Provider<ILabelProvider> getLabelProviderProvider() {
-		return labelProviderProvider;
-	}
-
-	public Provider<ComboViewerLabelProvider> getComboViewerLabelProviderProvider() {
-		return comboViewerLabelProviderProvider;
-	}
-
-	protected ILabelProvider createLabelProvider() {
-		return getLabelProviderProvider().get();
-	}
-
-	protected ILabelProvider createComboViewerLabelProvider() {
-		return getComboViewerLabelProviderProvider().get();
-	}
-
-	public ProposalCreator getProposalCreator() {
-		return proposalCreator;
-	}
-
-	public void setProposalCreator(ProposalCreator proposalCreator) {
-		this.proposalCreator = proposalCreator;
-	}
-
 	public boolean isReadonly() {
 		return readonly;
 	}
 
 	public void setReadonly(boolean readonly) {
 		this.readonly = readonly;
+	}
+
+	private ILabelProvider createLabelProvider() {
+		return labelProviderProvider.get();
+	}
+
+	private ILabelProvider createComboViewerLabelProvider() {
+		return comboViewerLabelProviderProvider.get();
 	}
 
 	/**
@@ -194,13 +197,6 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		this.edbc = new EMFDataBindingContext();
 		this.domain = domain;
 		this.owner = owner;
-	}
-
-	protected Resource getResource() {
-		if (resource == null) {
-			resource = owner.eResource();
-		}
-		return resource;
 	}
 
 	/**
@@ -279,7 +275,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(getParent(),
 				this, labelProviderProvider.get(), owner,
-				feature, getProposalCreator(), isReadonly());
+				feature, proposalCreator, isReadonly());
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		return new ControlObservablePair(mfc, target);
 	}
@@ -348,9 +344,9 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		}
 	}
 
-	public List<Object> createProposals(EStructuralFeature feature) {
-		getProposalCreator().setResource(getResource());
-		return getProposalCreator().proposals(owner, feature);
+	protected List<Object> createProposals(EStructuralFeature feature) {
+		proposalCreator.setResource(getResource());
+		return proposalCreator.proposals(owner, feature);
 	}
 
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(

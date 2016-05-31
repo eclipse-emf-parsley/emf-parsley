@@ -53,6 +53,30 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	/**
+	 * Test the protected getters from the superclass
+	 * 
+	 * <pre>
+	 * Control control_ClassName_FeatureName(ClassName e)
+	 * </pre>
+	 */
+	@Test
+	def void testCustomControlPolymorphicGetters() {
+		val obj = createBaseClassObject
+		val factory = new DialogControlFactory {
+			def control_BaseClass_baseClassFeature(BaseClass e) {
+				obj.assertSame(owner)
+				dataBindingContext.assertNotNull
+				// in this scenario the editing domain is null
+				editingDomain.assertNull
+				createText("Foo")
+			}
+		} => [initialize(obj)]
+		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
+		control.assertTextEditable(true)
+		control.assertText("Foo")
+	}
+
+	/**
 	 * Test the polymorphic method pattern
 	 * 
 	 * <pre>
@@ -225,22 +249,28 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertText("Foo")
 	}
 
+	static class CustomProposalCreator extends ProposalCreator {
+		def proposals_BaseClass_baseClassFeature(BaseClass e) {
+			return #["First Proposal", "Second Proposal"]
+		}
+	}
+
 	@Test def void testWrongContentAssistKeyStroke() {
 		val factory = new DialogControlFactory => [initialize(createBaseClassObject)]
 		// this will replace the string for content assist shortcut with
 		// an unparsable KeyStroke
+
 		val injector = createInjector(new EmfParsleyGuiceModuleForTesting() {
 			override valueContentAssistShortcut() {
 				"Foo+Space";
 			}
+			
+			override bindProposalCreator() {
+				org.eclipse.emf.parsley.tests.CustomDialogControlFactoryTest.CustomProposalCreator
+			}
+			
 		})
 		injector.injectMembers(factory)
-		// this will trigger the creation of a ContentProposalAdapter
-		factory.proposalCreator = new ProposalCreator() {
-			def proposals_BaseClass_baseClassFeature(BaseClass e) {
-				return #["First Proposal", "Second Proposal"]
-			}
-		}
 		// during the parsing of the KeyStroke an exception will be logged
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		// but the Text will be created anyway (without ContentProposalAdapter)
