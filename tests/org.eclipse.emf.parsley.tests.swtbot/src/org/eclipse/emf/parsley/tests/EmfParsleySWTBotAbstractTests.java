@@ -1035,6 +1035,13 @@ public class EmfParsleySWTBotAbstractTests {
 		assertNoErrorsInProject();
 	}
 
+	protected void assertNoIssuesInProjectAfterAutoBuild() throws CoreException {
+		waitForBuild();
+		// the second wait is for our custom builder for plugin.xml
+		waitForBuild();
+		assertNoIssuesInProject();
+	}
+
 	protected void assertNoErrorsInProject() throws CoreException {
 		IMarker[] markers = root().findMarkers(IMarker.PROBLEM, true,
 				IResource.DEPTH_INFINITE);
@@ -1050,7 +1057,25 @@ public class EmfParsleySWTBotAbstractTests {
 				"expected no error markers: " + printMarkers(errorMarkers), 0,
 				errorMarkers.size());
 	}
-	
+
+	/**
+	 * Checks that there are no errors nor warnings.
+	 * 
+	 * @throws CoreException
+	 */
+	protected void assertNoIssuesInProject() throws CoreException {
+		IMarker[] markers = root().findMarkers(IMarker.PROBLEM, true,
+				IResource.DEPTH_INFINITE);
+		List<IMarker> errorMarkers = new LinkedList<IMarker>();
+		for (int i = 0; i < markers.length; i++) {
+			IMarker iMarker = markers[i];
+			errorMarkers.add(iMarker);
+		}
+		assertEquals(
+				"expected no issue markers: " + printMarkers(errorMarkers), 0,
+				errorMarkers.size());
+	}
+
 	protected void setEditorContentsSaveAndWaitForAutoBuild(
 			SWTBotEditor editor, CharSequence contents) throws CoreException {
 		setEditorContentsSaveAndWaitForAutoBuild(editor, contents, true);

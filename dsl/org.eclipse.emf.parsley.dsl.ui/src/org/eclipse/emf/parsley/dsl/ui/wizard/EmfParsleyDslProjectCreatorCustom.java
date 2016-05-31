@@ -22,6 +22,7 @@ import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguratio
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
 import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator;
 import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
+import org.eclipse.xtext.ui.util.PluginProjectFactory;
 
 import com.google.common.collect.Lists;
 
@@ -61,6 +62,15 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		// don't add the components.dsl project dep
 		// otherwise the plugin will depend on xtext stuff
 		// which are not used by the generated code
+	}
+
+	@Override
+	protected PluginProjectFactory createProjectFactory() {
+		PluginProjectFactory projectFactory = super.createProjectFactory();
+		if (getProjectInfo().getSelectedTemplate() != null) {
+			projectFactory.setWithPluginXml(true);
+		}
+		return projectFactory;
 	}
 
 	@Override

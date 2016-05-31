@@ -3,14 +3,11 @@
  */
 package org.eclipse.emf.parsley.dsl.ui.wizard
 
-
-import com.google.inject.Inject
 import org.eclipse.xtext.generator.IFileSystemAccess2
-import org.eclipse.xtext.resource.FileExtensionProvider
 
 class EmfParsleyDslNewProjectWizardInitialContents {
-	@Inject
-	FileExtensionProvider fileExtensionProvider
+//	@Inject
+//	FileExtensionProvider fileExtensionProvider
 
 	def generateInitialContents(IFileSystemAccess2 fsa) {
 //		fsa.generateFile(
