@@ -950,6 +950,7 @@
 								<plugin id="org.eclipse.emf.rap" />
 								<plugin id="org.eclipse.swtbot.go" />
 								<plugin id="org.eclipse.ui.forms" />
+								<plugin id="org.eclipse.pde.ui" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
