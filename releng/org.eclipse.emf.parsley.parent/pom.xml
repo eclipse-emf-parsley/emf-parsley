@@ -88,8 +88,10 @@
 		
 		<parsley.download.area>/home/data/httpd/download.eclipse.org/emf-parsley</parsley.download.area>
 		<parsley.updates.dir>updates</parsley.updates.dir>
+		<parsley.zips.dir>zips</parsley.zips.dir>
 		<parsley.rap.updates.dir>rt</parsley.rap.updates.dir>
 		<p2.repository.dest>${project.basedir}/../../target/repository</p2.repository.dest>
+		<zipped.repository.dest>${project.basedir}/../../target/${parsley.zips.dir}</zipped.repository.dest>
 		
 		<!-- Enable this on Hudson CI @Eclipse.org -->
 		<cbi.jarsigner.skip>true</cbi.jarsigner.skip>

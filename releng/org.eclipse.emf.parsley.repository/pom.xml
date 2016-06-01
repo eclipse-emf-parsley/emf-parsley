@@ -55,6 +55,27 @@
 							<goal>run</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>copy-to-zips-target</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<echo message="" />
+								<echo message="Source path: ${project.build.directory}" />
+								<echo message="Built version: ${unqualifiedVersion}.${buildQualifier}" />
+								<echo message="" />
+
+								<copy includeemptydirs="false" todir="${zipped.repository.dest}">
+									<fileset dir="${project.build.directory}">
+										<include name="*.zip" />
+									</fileset>
+								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
@@ -115,6 +136,35 @@
 								<phase>package</phase>
 								<goals>
 									<goal>eclipse-run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<!-- copy the zipped p2 repository into download zips area  -->
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>${maven-antrun-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>copy-to-zips-download</id>
+								<phase>package</phase>
+								<configuration>
+									<target>
+										<echo message="" />
+										<echo message="Source path: ${project.build.directory}" />
+										<echo message="Built version: ${unqualifiedVersion}.${buildQualifier}" />
+										<echo message="" />
+		
+										<copy includeemptydirs="false" todir="${parsley.download.area}/${parsley.zips.dir}">
+											<fileset dir="${project.build.directory}">
+												<include name="*.zip" />
+											</fileset>
+										</copy>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
 								</goals>
 							</execution>
 						</executions>
