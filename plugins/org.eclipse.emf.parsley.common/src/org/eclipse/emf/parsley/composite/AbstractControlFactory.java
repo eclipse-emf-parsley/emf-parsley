@@ -212,20 +212,36 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	/**
 	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
-	 * of the {@link EObject} handled by this factory.
+	 * of the {@link EObject} handled by this factory, using polymorphic dispatch.
 	 * 
 	 * @param feature the {@link EStructuralFeature} for the creation of control
 	 * @return a {@link Control}
 	 */
 	public Control create(EStructuralFeature feature) {
+		return create(feature, true);
+	}
+
+	/**
+	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
+	 * of the {@link EObject} handled by this factory, using polymorphic dispatch, if
+	 * specified in the argument withPolymorphicDispatch.
+	 * 
+	 * @param feature
+	 * @param withPolymorphicDispatch
+	 * @return
+	 */
+	public Control create(EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		Control control = null;
 
-		control = polymorphicCreateControl(feature);
+		if (withPolymorphicDispatch) {
+			control = polymorphicCreateControl(feature);
+		}
+
 		if (control == null) {
 			if (feature.isMany()) {
-				control = createAndBindList(feature);
+				control = createAndBindList(feature, withPolymorphicDispatch);
 			} else {
-				control = createAndBindValue(feature);
+				control = createAndBindValue(feature, withPolymorphicDispatch);
 			}
 			setupControl(feature, control);
 		}
@@ -235,6 +251,18 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return control;
 	}
 
+	/**
+	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
+	 * of the {@link EObject} handled by this factory, using the default
+	 * implementation, that is, without using polymorphic dispatch.
+	 * 
+	 * @param feature the {@link EStructuralFeature} for the creation of control
+	 * @return a {@link Control}
+	 */
+	public Control createDefaultControl(EStructuralFeature feature) {
+		return create(feature, false);
+	}
+
 	protected KeyListener registerUndoRedo(Control control) {
 		if (control instanceof Text) {
 			return new TextUndoRedo((Text) control);
@@ -242,10 +270,10 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return null;
 	}
 
-	protected Control createAndBindList(final EStructuralFeature feature) {
-		IObservableValue source = createFeatureObserveable(feature);
+	protected Control createAndBindList(final EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		IObservableValue source = createFeatureObserveable(feature, withPolymorphicDispatch);
 
-		ControlObservablePair retValAndTargetPair = createControlForList(feature);
+		ControlObservablePair retValAndTargetPair = createControlForList(feature, withPolymorphicDispatch);
 		Control retVal = retValAndTargetPair.getControl();
 		IObservableValue target = retValAndTargetPair.getObservableValue();
 
@@ -254,23 +282,27 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return retVal;
 	}
 
-	protected IObservableValue createFeatureObserveable(final EStructuralFeature feature) {
-		IObservableValue source = polymorphicCreateObserveable(domain, feature);
-		if (source == null) {
-			if (domain != null) {
-				source = EMFEditProperties.value(domain, feature).observe(owner);
-			} else {
-				source = EMFProperties.value(feature).observe(owner);
+	protected IObservableValue createFeatureObserveable(final EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		if (withPolymorphicDispatch) {
+			IObservableValue source = polymorphicCreateObserveable(domain, feature);
+			if (source != null) {
+				return source;
 			}
 		}
-		return source;
+		if (domain != null) {
+			return EMFEditProperties.value(domain, feature).observe(owner);
+		} else {
+			return EMFProperties.value(feature).observe(owner);
+		}
 	}
 
 	protected ControlObservablePair createControlForList(
-			final EStructuralFeature feature) {
-		ControlObservablePair result = polymorphicGetObservableControl(feature);
-		if (result != null) {
-			return result;
+			final EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		if (withPolymorphicDispatch) {
+			ControlObservablePair result = polymorphicGetObservableControl(feature);
+			if (result != null) {
+				return result;
+			}
 		}
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(getParent(),
@@ -280,15 +312,17 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return new ControlObservablePair(mfc, target);
 	}
 
-	Control createAndBindValue(EStructuralFeature feature) {
-		IObservableValue featureObservable = createFeatureObserveable(feature);
+	protected Control createAndBindValue(EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		IObservableValue featureObservable = createFeatureObserveable(feature, withPolymorphicDispatch);
 
-		Control control = polymorphicCreateControl(feature, featureObservable);
-		if (control != null) {
-			return control;
+		if (withPolymorphicDispatch) {
+			Control control = polymorphicCreateControl(feature, featureObservable);
+			if (control != null) {
+				return control;
+			}
 		}
 
-		ControlObservablePair retValAndTargetPair = createControlAndObservableValue(feature);
+		ControlObservablePair retValAndTargetPair = createControlAndObservableValue(feature, withPolymorphicDispatch);
 		Control retVal = retValAndTargetPair.getControl();
 		IObservableValue controlObservable = retValAndTargetPair
 				.getObservableValue();
@@ -301,10 +335,12 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	}
 
 	protected ControlObservablePair createControlAndObservableValue(
-			EStructuralFeature feature) {
-		ControlObservablePair result = polymorphicGetObservableControl(feature);
-		if (result != null) {
-			return result;
+			EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		if (withPolymorphicDispatch) {
+			ControlObservablePair result = polymorphicGetObservableControl(feature);
+			if (result != null) {
+				return result;
+			}
 		}
 
 		if (featureHelper.isBooleanFeature(feature)) {
