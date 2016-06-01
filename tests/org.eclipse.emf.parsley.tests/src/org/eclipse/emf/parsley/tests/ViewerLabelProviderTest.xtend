@@ -25,6 +25,10 @@ import static extension org.junit.Assert.*
 import org.eclipse.swt.graphics.Font
 import org.eclipse.swt.SWT
 
+import static org.mockito.Mockito.*
+import org.eclipse.jface.viewers.ILabelProviderListener
+import org.junit.After
+
 class ViewerLabelProviderTest extends AbstractImageBasedTest {
 
 	var ViewerLabelProvider labelProvider
@@ -32,6 +36,11 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 	@Before
 	def void setupLabelProvider() {
 		labelProvider = getOrCreateInjector.getInstance(ViewerLabelProvider)
+	}
+
+	@After
+	def void disposeLabelProvider() {
+		labelProvider.dispose
 	}
 
 	@Test
@@ -260,6 +269,13 @@ class ViewerLabelProviderTest extends AbstractImageBasedTest {
 	@Test
 	def void testIsValueProperty() {
 		labelProvider.isLabelProperty(library, libraryPackage.library_Name.name).assertTrue
+	}
+
+	@Test
+	def void testListeners() {
+		val listener = mock(ILabelProviderListener)
+		labelProvider.addListener(listener)
+		labelProvider.removeListener(listener)
 	}
 
 	private def setupContainerWith10Elems() {
