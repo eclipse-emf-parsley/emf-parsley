@@ -106,7 +106,8 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="Mars"
+      value="Neon"
+      defaultValue="Neon"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -115,11 +116,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.9.2"/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
-      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
+      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/"/>
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Eclipse IDE Plugins">
@@ -453,7 +454,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/staging/neon/"/>
+              url="http://download.eclipse.org/releases/neon/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -652,13 +653,19 @@
         name="master"
         label="Master">
       <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+      <setupTask
           xsi:type="setup.p2:P2Task"
           id="p2.org.eclipse.xtext.2"
           label="Xtext Releases"
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.9.0,2.10.0)"/>
+            versionRange="[2.10.0,2.11.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -676,17 +683,9 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value=""
+          value="Neon"
           defaultValue="Neon"
           storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/neon/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/neon/"/>
       <setupTask
           xsi:type="setup.p2:P2Task"
           id="p2.org.eclipse.xtext.3"
@@ -772,7 +771,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/staging/neon/"/>
+              url="http://download.eclipse.org/releases/neon/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -930,6 +929,12 @@
     <stream
         name="master"
         label="Master">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
       <description></description>
     </stream>
     <stream
@@ -938,17 +943,9 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value=""
+          value="Neon"
           defaultValue="Neon"
           storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/neon/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/neon/"/>
       <description>Branch for Simrel for Neon</description>
     </stream>
     <description>EMF Parsley version for RAP</description>
