@@ -166,7 +166,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>mars</target-file-name>
+		<target-file-name>neon-simrel</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -255,9 +255,9 @@
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
 			</modules>
 		</profile>
-		
+
 		<profile>
-			<id>rcp-build-mars</id>
+			<id>rcp-build-neon</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -271,12 +271,12 @@
 			</modules>
 			
 			<properties>
-				<target-file-name>mars</target-file-name>
+				<target-file-name>neon-simrel</target-file-name>
 			</properties>
 		</profile>
 
 		<profile>
-			<id>rcp-build-neon</id>
+			<id>rcp-build-mars</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -290,7 +290,7 @@
 			</modules>
 			
 			<properties>
-				<target-file-name>neon-staging</target-file-name>
+				<target-file-name>mars</target-file-name>
 			</properties>
 		</profile>
 
@@ -384,7 +384,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>neon-staging-rap</target-file-name>
+				<target-file-name>neon-simrel-rap</target-file-name>
 			</properties>
 
 		</profile>
