@@ -13,6 +13,14 @@
 	<artifactId>org.eclipse.emf.parsley.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
 
+	<properties>
+		<p2.mirrorsPrefix>/emf-parsley/updates/</p2.mirrorsPrefix>
+		<p2.versionMajorMinor>1.0</p2.versionMajorMinor>
+		<p2.statsURL>http://download.eclipse.org/stats</p2.statsURL>
+		<p2.mirrorsURL>http://www.eclipse.org/downloads/download.php?format=xml&amp;file=${p2.mirrorsPrefix}/${p2.versionMajorMinor}/${qualifiedVersion}/</p2.mirrorsURL>
+		<p2.statsTrackedArtifacts>org.eclipse.emf.parsley.sdk,org.eclipse.emf.parsley.feature,org.eclipse.emf.parsley.dsl.feature,org.eclipse.emf.parsley.cdo.feature,org.eclipse.emf.examples.feature,org.eclipse.emf.web.feature,org.eclipse.emf.junit4.feature</p2.statsTrackedArtifacts>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -22,6 +30,40 @@
 				<configuration>
 					<finalName>${project.artifactId}-${qualifiedVersion}</finalName>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-eclipserun-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>add-repo-properties</id>
+						<goals>
+							<goal>eclipse-run</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<appArgLine>-application org.eclipse.wtp.releng.tools.addRepoProperties</appArgLine>
+							<argLine><![CDATA[-DartifactRepoDirectory=${project.build.directory}/repository -Dp2MirrorsURL=${p2.mirrorsURL} -Dp2StatsURI=${p2.statsURL} -DstatsTrackedArtifacts=${p2.statsTrackedArtifacts} -DstatsArtifactsSuffix=-${project.version}]]></argLine>
+							<dependencies>
+								<dependency>
+									<artifactId>org.eclipse.wtp.releng.tools.feature</artifactId>
+									<type>eclipse-feature</type>
+								</dependency>
+							</dependencies>
+							<repositories>
+								<repository>
+									<url>http://download.eclipse.org/webtools/releng/repository</url>
+									<layout>p2</layout>
+								</repository>
+								<repository>
+									<url>http://download.eclipse.org/releases/mars</url>
+									<layout>p2</layout>
+								</repository>
+							</repositories>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<!-- copy the p2 repository into the project root folder 
