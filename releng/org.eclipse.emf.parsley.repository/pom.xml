@@ -45,6 +45,7 @@
 						<configuration>
 							<appArgLine>-application org.eclipse.wtp.releng.tools.addRepoProperties</appArgLine>
 							<argLine><![CDATA[-DartifactRepoDirectory=${project.build.directory}/repository -Dp2MirrorsURL=${p2.mirrorsURL} -Dp2StatsURI=${p2.statsURL} -DstatsTrackedArtifacts=${p2.statsTrackedArtifacts} -DstatsArtifactsSuffix=-${project.version}]]></argLine>
+							<work>${project.build.directory}/eclipserun-work-first</work>
 							<dependencies>
 								<dependency>
 									<artifactId>org.eclipse.wtp.releng.tools.feature</artifactId>
