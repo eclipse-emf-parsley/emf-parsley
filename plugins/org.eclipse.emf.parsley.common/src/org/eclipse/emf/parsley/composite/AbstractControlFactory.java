@@ -24,20 +24,24 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
+import org.eclipse.emf.parsley.internal.databinding.EmfValidationTargetToModelUpdateValueStrategy;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.emf.parsley.ui.provider.ComboViewerLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.emf.parsley.util.FeatureHelper;
+import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
+import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.ControlDecoration;
@@ -94,6 +98,12 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	@Inject
 	private ProposalCreator proposalCreator;
+
+	@Inject
+	private Diagnostician diagnostician;
+
+	@Inject
+	private DiagnosticUtil diagnosticUtil;
 
 	private EObject owner;
 	private Resource resource;
@@ -332,12 +342,16 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 				.getObservableValue();
 
 		if (controlObservable != null) {
-			edbc.bindValue(controlObservable, featureObservable, null, null);
+			EmfValidationTargetToModelUpdateValueStrategy targetToModelUpdateValueStrategy = 
+			new EmfValidationTargetToModelUpdateValueStrategy(owner,feature,diagnostician, diagnosticUtil);
+
+			Binding bindValue = edbc.bindValue(controlObservable, featureObservable, targetToModelUpdateValueStrategy, null);
+			ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 		}
 
 		return retVal;
 	}
-
+	
 	protected ControlObservablePair createControlAndObservableValue(
 			EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		if (withPolymorphicDispatch) {
@@ -471,7 +485,9 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 			// set default layout data if not already set by a custom
 			// polymorphic implementation or from the DSL
 			if (c.getLayoutData()==null) {
-				c.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+				GridData deafultLayout = new GridData(GridData.FILL_HORIZONTAL);
+				deafultLayout.horizontalIndent=10;
+				c.setLayoutData(deafultLayout);
 			}
 		}
 	}
