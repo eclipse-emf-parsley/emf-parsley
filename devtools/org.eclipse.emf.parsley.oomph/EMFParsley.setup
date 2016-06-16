@@ -787,7 +787,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/releases/neon/"/>
+              url="http://download.eclipse.org/staging/neon/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
