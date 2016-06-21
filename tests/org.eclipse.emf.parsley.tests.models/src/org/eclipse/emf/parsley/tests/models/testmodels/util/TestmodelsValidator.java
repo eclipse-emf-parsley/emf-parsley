@@ -117,6 +117,8 @@ public class TestmodelsValidator extends EObjectValidator {
 				return validateClassForTable((ClassForTable)value, diagnostics, context);
 			case TestmodelsPackage.CLASS_FOR_VALIDATION:
 				return validateClassForValidation((ClassForValidation)value, diagnostics, context);
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION:
+				return validateClassForDefaultValidation((ClassForDefaultValidation)value, diagnostics, context);
 			case TestmodelsPackage.ENUM_FOR_CONTROLS:
 				return validateEnumForControls((EnumForControls)value, diagnostics, context);
 			case TestmodelsPackage.BOOLEAN_DATA_TYPE:
@@ -288,20 +290,13 @@ public class TestmodelsValidator extends EObjectValidator {
 		if (notEmpty == null || notEmpty.length() == 0) {
 			if (diagnostics != null) {
 				diagnostics.add
-					(new BasicDiagnostic
-							(Diagnostic.ERROR,
-							 DIAGNOSTIC_SOURCE,
-							 0,
-							 "the field 'notEmpty' cannot be empty",
-							 null));
-//				(createDiagnostic
-//						(Diagnostic.ERROR,
-//						 DIAGNOSTIC_SOURCE,
-//						 0,
-//						 "_UI_GenericConstraint_diagnostic",
-//						 new Object[] { "NotEmpty", getObjectLabel(classForValidation, context) },
-//						 new Object[] { classForValidation },
-//						 context));
+					(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						DIAGNOSTIC_SOURCE,
+						0,
+						"the field 'notEmpty' cannot be empty",
+						new Object[] { classForValidation, TestmodelsPackage.Literals.CLASS_FOR_VALIDATION__NOT_EMPTY }
+						));
 			}
 			return false;
 		} else {
@@ -309,25 +304,36 @@ public class TestmodelsValidator extends EObjectValidator {
 				if (diagnostics != null) {
 					diagnostics.add
 						(new BasicDiagnostic
-								(Diagnostic.WARNING,
-								 DIAGNOSTIC_SOURCE,
-								 0,
-								 "the field 'notEmpty' should be more than one character",
-								 null));
+							(Diagnostic.WARNING,
+							DIAGNOSTIC_SOURCE,
+							0,
+							"the field 'notEmpty' should be more than one character",
+							new Object[] { classForValidation, TestmodelsPackage.Literals.CLASS_FOR_VALIDATION__NOT_EMPTY }
+							));
 				}
 			} else if (notEmpty.length() == 2) {
 				if (diagnostics != null) {
 					diagnostics.add
 						(new BasicDiagnostic
-								(Diagnostic.INFO,
-								 DIAGNOSTIC_SOURCE,
-								 0,
-								 "the field 'notEmpty' is two characters long",
-								 null));
+							(Diagnostic.INFO,
+							DIAGNOSTIC_SOURCE,
+							0,
+							"the field 'notEmpty' is two characters long",
+							new Object[] { classForValidation, TestmodelsPackage.Literals.CLASS_FOR_VALIDATION__NOT_EMPTY }
+							));
 				}
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClassForDefaultValidation(ClassForDefaultValidation classForDefaultValidation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(classForDefaultValidation, diagnostics, context);
 	}
 
 	/**

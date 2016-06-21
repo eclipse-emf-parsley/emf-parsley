@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
@@ -40,6 +41,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getClassesForTable <em>Classes For Table</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getObjectsForValidation <em>Objects For Validation</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getMultipleContained <em>Multiple Contained</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl#getObjectsForDefaultValidation <em>Objects For Default Validation</em>}</li>
  * </ul>
  *
  * @generated
@@ -124,6 +126,16 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * @ordered
 	 */
 	protected EList<TestContainer> multipleContained;
+
+	/**
+	 * The cached value of the '{@link #getObjectsForDefaultValidation() <em>Objects For Default Validation</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectsForDefaultValidation()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ClassForDefaultValidation> objectsForDefaultValidation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -273,6 +285,18 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ClassForDefaultValidation> getObjectsForDefaultValidation() {
+		if (objectsForDefaultValidation == null) {
+			objectsForDefaultValidation = new EObjectContainmentEList<ClassForDefaultValidation>(ClassForDefaultValidation.class, this, TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION);
+		}
+		return objectsForDefaultValidation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -288,6 +312,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return ((InternalEList<?>)getObjectsForValidation()).basicRemove(otherEnd, msgs);
 			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
 				return ((InternalEList<?>)getMultipleContained()).basicRemove(otherEnd, msgs);
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION:
+				return ((InternalEList<?>)getObjectsForDefaultValidation()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -314,6 +340,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return getObjectsForValidation();
 			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
 				return getMultipleContained();
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION:
+				return getObjectsForDefaultValidation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -353,6 +381,10 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				getMultipleContained().clear();
 				getMultipleContained().addAll((Collection<? extends TestContainer>)newValue);
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION:
+				getObjectsForDefaultValidation().clear();
+				getObjectsForDefaultValidation().addAll((Collection<? extends ClassForDefaultValidation>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -386,6 +418,9 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
 				getMultipleContained().clear();
 				return;
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION:
+				getObjectsForDefaultValidation().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -412,6 +447,8 @@ public class TestContainerImpl extends MinimalEObjectImpl.Container implements T
 				return objectsForValidation != null && !objectsForValidation.isEmpty();
 			case TestmodelsPackage.TEST_CONTAINER__MULTIPLE_CONTAINED:
 				return multipleContained != null && !multipleContained.isEmpty();
+			case TestmodelsPackage.TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION:
+				return objectsForDefaultValidation != null && !objectsForDefaultValidation.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

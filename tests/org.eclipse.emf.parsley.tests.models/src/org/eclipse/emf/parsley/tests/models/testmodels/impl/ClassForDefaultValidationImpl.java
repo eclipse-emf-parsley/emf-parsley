@@ -9,24 +9,25 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Class For Validation</b></em>'.
+ * An implementation of the model object '<em><b>Class For Default Validation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForValidationImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForValidationImpl#getNotEmpty <em>Not Empty</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getNotEmpty <em>Not Empty</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getCanBeEmpty <em>Can Be Empty</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ClassForValidationImpl extends MinimalEObjectImpl.Container implements ClassForValidation {
+public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container implements ClassForDefaultValidation {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -68,11 +69,31 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	protected String notEmpty = NOT_EMPTY_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getCanBeEmpty() <em>Can Be Empty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCanBeEmpty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CAN_BE_EMPTY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCanBeEmpty() <em>Can Be Empty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCanBeEmpty()
+	 * @generated
+	 * @ordered
+	 */
+	protected String canBeEmpty = CAN_BE_EMPTY_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClassForValidationImpl() {
+	protected ClassForDefaultValidationImpl() {
 		super();
 	}
 
@@ -83,7 +104,7 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TestmodelsPackage.Literals.CLASS_FOR_VALIDATION;
+		return TestmodelsPackage.Literals.CLASS_FOR_DEFAULT_VALIDATION;
 	}
 
 	/**
@@ -104,7 +125,7 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_VALIDATION__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NAME, oldName, name));
 	}
 
 	/**
@@ -125,7 +146,28 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 		String oldNotEmpty = notEmpty;
 		notEmpty = newNotEmpty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY, oldNotEmpty, notEmpty));
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY, oldNotEmpty, notEmpty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCanBeEmpty() {
+		return canBeEmpty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCanBeEmpty(String newCanBeEmpty) {
+		String oldCanBeEmpty = canBeEmpty;
+		canBeEmpty = newCanBeEmpty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY, oldCanBeEmpty, canBeEmpty));
 	}
 
 	/**
@@ -136,10 +178,12 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NAME:
 				return getName();
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY:
 				return getNotEmpty();
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
+				return getCanBeEmpty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -152,11 +196,14 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NAME:
 				setName((String)newValue);
 				return;
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY:
 				setNotEmpty((String)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
+				setCanBeEmpty((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -170,11 +217,14 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY:
 				setNotEmpty(NOT_EMPTY_EDEFAULT);
+				return;
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
+				setCanBeEmpty(CAN_BE_EMPTY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -188,10 +238,12 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY:
 				return NOT_EMPTY_EDEFAULT == null ? notEmpty != null : !NOT_EMPTY_EDEFAULT.equals(notEmpty);
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
+				return CAN_BE_EMPTY_EDEFAULT == null ? canBeEmpty != null : !CAN_BE_EMPTY_EDEFAULT.equals(canBeEmpty);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -210,8 +262,10 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 		result.append(name);
 		result.append(", notEmpty: ");
 		result.append(notEmpty);
+		result.append(", canBeEmpty: ");
+		result.append(canBeEmpty);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ClassForValidationImpl
+} //ClassForDefaultValidationImpl

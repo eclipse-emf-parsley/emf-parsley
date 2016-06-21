@@ -189,13 +189,22 @@ public interface TestmodelsPackage extends EPackage {
 	int TEST_CONTAINER__MULTIPLE_CONTAINED = 6;
 
 	/**
+	 * The feature id for the '<em><b>Objects For Default Validation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION = 7;
+
+	/**
 	 * The number of structural features of the '<em>Test Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_CONTAINER_FEATURE_COUNT = 7;
+	int TEST_CONTAINER_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Test Container</em>' class.
@@ -1062,13 +1071,22 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_VALIDATION = 14;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_VALIDATION__NAME = 0;
+
+	/**
 	 * The feature id for the '<em><b>Not Empty</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_VALIDATION__NOT_EMPTY = 0;
+	int CLASS_FOR_VALIDATION__NOT_EMPTY = 1;
 
 	/**
 	 * The number of structural features of the '<em>Class For Validation</em>' class.
@@ -1077,7 +1095,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_VALIDATION_FEATURE_COUNT = 1;
+	int CLASS_FOR_VALIDATION_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Class For Validation</em>' class.
@@ -1089,6 +1107,61 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_VALIDATION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl <em>Class For Default Validation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForDefaultValidation()
+	 * @generated
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION = 15;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Not Empty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Can Be Empty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY = 2;
+
+	/**
+	 * The number of structural features of the '<em>Class For Default Validation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Class For Default Validation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1096,7 +1169,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
 	 * @generated
 	 */
-	int ENUM_FOR_CONTROLS = 15;
+	int ENUM_FOR_CONTROLS = 16;
 
 
 	/**
@@ -1107,7 +1180,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
 	 * @generated
 	 */
-	int BOOLEAN_DATA_TYPE = 16;
+	int BOOLEAN_DATA_TYPE = 17;
 
 
 	/**
@@ -1117,7 +1190,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
 	 * @generated
 	 */
-	int BOOLEAN_PRIMITIVE_DATA_TYPE = 17;
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 18;
 
 
 	/**
@@ -1128,7 +1201,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getStringDataType()
 	 * @generated
 	 */
-	int STRING_DATA_TYPE = 18;
+	int STRING_DATA_TYPE = 19;
 
 
 	/**
@@ -1139,7 +1212,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getUnserializableStringDataType()
 	 * @generated
 	 */
-	int UNSERIALIZABLE_STRING_DATA_TYPE = 19;
+	int UNSERIALIZABLE_STRING_DATA_TYPE = 20;
 
 
 	/**
@@ -1756,6 +1829,17 @@ public interface TestmodelsPackage extends EPackage {
 	EClass getClassForValidation();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation#getName()
+	 * @see #getClassForValidation()
+	 * @generated
+	 */
+	EAttribute getClassForValidation_Name();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation#getNotEmpty <em>Not Empty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1765,6 +1849,49 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getClassForValidation_NotEmpty();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation <em>Class For Default Validation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class For Default Validation</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation
+	 * @generated
+	 */
+	EClass getClassForDefaultValidation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getName()
+	 * @see #getClassForDefaultValidation()
+	 * @generated
+	 */
+	EAttribute getClassForDefaultValidation_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotEmpty <em>Not Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Not Empty</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotEmpty()
+	 * @see #getClassForDefaultValidation()
+	 * @generated
+	 */
+	EAttribute getClassForDefaultValidation_NotEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getCanBeEmpty <em>Can Be Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Can Be Empty</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getCanBeEmpty()
+	 * @see #getClassForDefaultValidation()
+	 * @generated
+	 */
+	EAttribute getClassForDefaultValidation_CanBeEmpty();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer <em>Test Container</em>}'.
@@ -1852,6 +1979,17 @@ public interface TestmodelsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTestContainer_MultipleContained();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getObjectsForDefaultValidation <em>Objects For Default Validation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Objects For Default Validation</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestContainer#getObjectsForDefaultValidation()
+	 * @see #getTestContainer()
+	 * @generated
+	 */
+	EReference getTestContainer_ObjectsForDefaultValidation();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}'.
@@ -2357,12 +2495,49 @@ public interface TestmodelsPackage extends EPackage {
 		 */
 		EClass CLASS_FOR_VALIDATION = eINSTANCE.getClassForValidation();
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_VALIDATION__NAME = eINSTANCE.getClassForValidation_Name();
+		/**
 		 * The meta object literal for the '<em><b>Not Empty</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute CLASS_FOR_VALIDATION__NOT_EMPTY = eINSTANCE.getClassForValidation_NotEmpty();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl <em>Class For Default Validation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForDefaultValidation()
+		 * @generated
+		 */
+		EClass CLASS_FOR_DEFAULT_VALIDATION = eINSTANCE.getClassForDefaultValidation();
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_DEFAULT_VALIDATION__NAME = eINSTANCE.getClassForDefaultValidation_Name();
+		/**
+		 * The meta object literal for the '<em><b>Not Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY = eINSTANCE.getClassForDefaultValidation_NotEmpty();
+		/**
+		 * The meta object literal for the '<em><b>Can Be Empty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY = eINSTANCE.getClassForDefaultValidation_CanBeEmpty();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2421,6 +2596,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TEST_CONTAINER__MULTIPLE_CONTAINED = eINSTANCE.getTestContainer_MultipleContained();
+		/**
+		 * The meta object literal for the '<em><b>Objects For Default Validation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION = eINSTANCE.getTestContainer_ObjectsForDefaultValidation();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 		 * <!-- begin-user-doc -->

@@ -79,6 +79,7 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 			case TestmodelsPackage.CLASS_FOR_FEATURE_MAP_ENTRY2: return createClassForFeatureMapEntry2();
 			case TestmodelsPackage.CLASS_FOR_TABLE: return createClassForTable();
 			case TestmodelsPackage.CLASS_FOR_VALIDATION: return createClassForValidation();
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION: return createClassForDefaultValidation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -264,6 +265,16 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public ClassForValidation createClassForValidation() {
 		ClassForValidationImpl classForValidation = new ClassForValidationImpl();
 		return classForValidation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassForDefaultValidation createClassForDefaultValidation() {
+		ClassForDefaultValidationImpl classForDefaultValidation = new ClassForDefaultValidationImpl();
+		return classForDefaultValidation;
 	}
 
 	/**

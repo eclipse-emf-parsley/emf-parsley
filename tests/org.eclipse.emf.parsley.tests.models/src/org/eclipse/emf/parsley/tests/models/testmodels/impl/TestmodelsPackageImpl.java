@@ -23,6 +23,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry2;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForTable;
@@ -142,6 +143,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass classForValidationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classForDefaultValidationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -773,8 +781,53 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClassForValidation_NotEmpty() {
+	public EAttribute getClassForValidation_Name() {
 		return (EAttribute)classForValidationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForValidation_NotEmpty() {
+		return (EAttribute)classForValidationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClassForDefaultValidation() {
+		return classForDefaultValidationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForDefaultValidation_Name() {
+		return (EAttribute)classForDefaultValidationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForDefaultValidation_NotEmpty() {
+		return (EAttribute)classForDefaultValidationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForDefaultValidation_CanBeEmpty() {
+		return (EAttribute)classForDefaultValidationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -847,6 +900,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 */
 	public EReference getTestContainer_MultipleContained() {
 		return (EReference)testContainerEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestContainer_ObjectsForDefaultValidation() {
+		return (EReference)testContainerEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -930,6 +992,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEReference(testContainerEClass, TEST_CONTAINER__CLASSES_FOR_TABLE);
 		createEReference(testContainerEClass, TEST_CONTAINER__OBJECTS_FOR_VALIDATION);
 		createEReference(testContainerEClass, TEST_CONTAINER__MULTIPLE_CONTAINED);
+		createEReference(testContainerEClass, TEST_CONTAINER__OBJECTS_FOR_DEFAULT_VALIDATION);
 
 		testEClassEClass = createEClass(TEST_ECLASS);
 		createEAttribute(testEClassEClass, TEST_ECLASS__LOWERCASE_NAME_FEATURE);
@@ -1001,7 +1064,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEReference(classForTableEClass, CLASS_FOR_TABLE__CLASS_WITH_NAME2);
 
 		classForValidationEClass = createEClass(CLASS_FOR_VALIDATION);
+		createEAttribute(classForValidationEClass, CLASS_FOR_VALIDATION__NAME);
 		createEAttribute(classForValidationEClass, CLASS_FOR_VALIDATION__NOT_EMPTY);
+
+		classForDefaultValidationEClass = createEClass(CLASS_FOR_DEFAULT_VALIDATION);
+		createEAttribute(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__NAME);
+		createEAttribute(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY);
+		createEAttribute(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY);
 
 		// Create enums
 		enumForControlsEEnum = createEEnum(ENUM_FOR_CONTROLS);
@@ -1058,6 +1127,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEReference(getTestContainer_ClassesForTable(), this.getClassForTable(), null, "classesForTable", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_ObjectsForValidation(), this.getClassForValidation(), null, "objectsForValidation", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTestContainer_MultipleContained(), this.getTestContainer(), null, "multipleContained", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestContainer_ObjectsForDefaultValidation(), this.getClassForDefaultValidation(), null, "objectsForDefaultValidation", null, 0, -1, TestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testEClassEClass, TestEClass.class, "TestEClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTestEClass_LowercaseNameFeature(), ecorePackage.getEString(), "lowercaseNameFeature", null, 0, 1, TestEClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1129,7 +1199,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEReference(getClassForTable_ClassWithName2(), this.getClassWithName(), null, "classWithName2", null, 0, 1, ClassForTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classForValidationEClass, ClassForValidation.class, "ClassForValidation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassForValidation_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassForValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForValidation_NotEmpty(), ecorePackage.getEString(), "notEmpty", null, 0, 1, ClassForValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(classForDefaultValidationEClass, ClassForDefaultValidation.class, "ClassForDefaultValidation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassForDefaultValidation_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForDefaultValidation_NotEmpty(), ecorePackage.getEString(), "notEmpty", null, 1, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForDefaultValidation_CanBeEmpty(), ecorePackage.getEString(), "canBeEmpty", null, 0, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enumForControlsEEnum, EnumForControls.class, "EnumForControls");
