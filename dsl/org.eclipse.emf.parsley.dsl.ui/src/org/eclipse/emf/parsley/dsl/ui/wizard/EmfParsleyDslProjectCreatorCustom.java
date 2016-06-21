@@ -16,6 +16,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder;
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
@@ -103,13 +104,17 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		String srcFolder = "src";
 		String projectPackagePath = srcFolder + "/"
 				+ projectName.replaceAll("\\.", "/");
+		
+		SubMonitor subMonitor = SubMonitor.convert(monitor, 
+				"Creating project " + projectName, 
+				5);
 
 		String[] paths = { projectPackagePath };
 		NewEmfParsleyProjectSupport.addToProjectStructure(project, paths,
-				monitor);
+				subMonitor.newChild(1));
 
 		NewEmfParsleyProjectSupport.createActivator(project, projectName,
-				projectPackagePath, monitor);
+				projectPackagePath, subMonitor.newChild(1));
 
 		String dslFileContents = "";
 		TemplateWizardConfiguration selectedTemplate = getProjectInfo().getSelectedTemplate();
@@ -118,16 +123,16 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 			String partContents = selectedTemplate.getContentsForPart(projectName);
 			NewEmfParsleyProjectSupport.createProjectFile(project,
 					projectPackagePath + "/" + partClassName.concat(".java"),
-					partContents, NewEmfParsleyProjectSupport
-							.createSubProgressMonitor(monitor));
+					partContents, subMonitor.newChild(1));
 			dslFileContents = selectedTemplate.getParsleyModuleContents(projectName);
 		} else {
 			dslFileContents = filesGenerator.genEmptyDslModule(projectName).toString();
 		}
 
 		NewEmfParsleyProjectSupport.createDslModule(project, projectName,
-				projectPackagePath, dslFileContents, monitor);
+				projectPackagePath, dslFileContents, subMonitor.newChild(1));
 
-		project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		project.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.newChild(1));
+		subMonitor.done();
 	}
 }

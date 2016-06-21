@@ -19,7 +19,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
 
 /**
@@ -43,7 +43,7 @@ public class NewEmfParsleyProjectSupport {
 				projectPackagePath + "/"
 					+ filesGenerator.moduleFileName(projectName) + PARSLEY_EXTENSION,
 				contents,
-				createSubProgressMonitor(progressMonitor));
+				progressMonitor);
 	}
 
 	public static void createActivator(IProject project, String projectName,
@@ -52,16 +52,7 @@ public class NewEmfParsleyProjectSupport {
 		createProjectFile(project, projectPackagePath + "/"
 				+ filesGenerator.activatorName(projectName) + JAVA_EXTENSION,
 				filesGenerator.generateActivator(projectName).toString(),
-				createSubProgressMonitor(progressMonitor));
-	}
-
-	/**
-	 * @param progressMonitor
-	 * @return
-	 */
-	public static IProgressMonitor createSubProgressMonitor(
-			IProgressMonitor progressMonitor) {
-		return new SubProgressMonitor(progressMonitor, 1);
+				progressMonitor);
 	}
 
 	/**
@@ -75,7 +66,7 @@ public class NewEmfParsleyProjectSupport {
 	 */
 	public static void addToProjectStructure(IProject newProject,
 			String[] paths, IProgressMonitor monitor) throws CoreException {
-		IProgressMonitor progressMonitor = createSubProgressMonitor(monitor);
+		IProgressMonitor progressMonitor = SubMonitor.convert(monitor, 1);
 		progressMonitor.subTask("Creating project folders");
 		for (String path : paths) {
 			IFolder etcFolders = newProject.getFolder(path);
@@ -102,8 +93,9 @@ public class NewEmfParsleyProjectSupport {
 	 * @throws CoreException
 	 */
 	public static void createProjectFile(IProject project, String fileName,
-			String contents, IProgressMonitor progressMonitor)
+			String contents, IProgressMonitor monitor)
 			throws CoreException {
+		IProgressMonitor progressMonitor = SubMonitor.convert(monitor, 1);
 		progressMonitor.subTask("Creating file " + fileName);
 		IFile iFile = project.getFile(fileName);
 		iFile.create(
