@@ -270,6 +270,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return null;
 	}
 
+	@SuppressWarnings("rawtypes")
 	protected Control createAndBindList(final EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		IObservableValue source = createFeatureObserveable(feature, withPolymorphicDispatch);
 
@@ -282,6 +283,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return retVal;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected IObservableValue createFeatureObserveable(final EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		if (withPolymorphicDispatch) {
 			IObservableValue source = polymorphicCreateObserveable(domain, feature);
@@ -296,6 +298,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	protected ControlObservablePair createControlForList(
 			final EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		if (withPolymorphicDispatch) {
@@ -312,6 +315,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return new ControlObservablePair(mfc, target);
 	}
 
+	@SuppressWarnings("rawtypes")
 	protected Control createAndBindValue(EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		IObservableValue featureObservable = createFeatureObserveable(feature, withPolymorphicDispatch);
 
@@ -491,6 +495,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * @param featureObservable
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	private Control polymorphicCreateControl(EStructuralFeature feature,
 			IObservableValue featureObservable) {
 		return PolymorphicDispatcherExtensions
@@ -511,6 +516,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 						owner.eClass(), feature, CONTROL_PREFIX, owner);
 	}
 
+	@SuppressWarnings("rawtypes")
 	private IObservableValue polymorphicCreateObserveable(EditingDomain domain,
 			EStructuralFeature feature) {
 		return PolymorphicDispatcherExtensions

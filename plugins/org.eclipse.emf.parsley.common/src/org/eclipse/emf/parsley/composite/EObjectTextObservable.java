@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Text;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
+@SuppressWarnings("rawtypes")
 public class EObjectTextObservable extends AbstractObservableValue {
 	
 	private ILabelProvider labelProvider;

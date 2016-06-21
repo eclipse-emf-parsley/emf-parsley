@@ -10,24 +10,23 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.core.databinding.observable.value.IObservableValue
-import org.eclipse.emf.databinding.EMFDataBindingContext
 import org.eclipse.emf.databinding.EMFProperties
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.composite.ControlObservablePair
-import org.eclipse.emf.parsley.util.DatabindingUtil
 import org.eclipse.emf.parsley.composite.DialogControlFactory
 import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
+import org.eclipse.emf.parsley.tests.util.CustomDialogControlFactoryForTests
+import org.eclipse.emf.parsley.util.DatabindingUtil
 import org.eclipse.swt.SWT
+import org.eclipse.swt.layout.FillLayout
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.swt.layout.FillLayout
 
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 
@@ -89,17 +88,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlWithDatabindingContextPolymorphic() {
 		val o1 = createBaseClassObject
-		val factory = new DialogControlFactory {
-			def control_BaseClass_baseClassFeature(EMFDataBindingContext edbc, IObservableValue modelObservableValue) {
-				val text = createText("")
-				// by default the editable is true, thus setting it to false
-				// gives us evidence that this method was called
-				text.editable = false
-				val targetObservableValue = DatabindingUtil.observeText(text, SWT.Modify)
-				edbc.bindValue(targetObservableValue, modelObservableValue, null, null);
-				return text
-			}
-		} => [initialize(o1)]
+		val factory = new CustomDialogControlFactoryForTests => [initialize(o1)]
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
@@ -266,7 +255,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 			}
 			
 			override bindProposalCreator() {
-				org.eclipse.emf.parsley.tests.CustomDialogControlFactoryTest.CustomProposalCreator
+				CustomDialogControlFactoryTest.CustomProposalCreator
 			}
 			
 		})
