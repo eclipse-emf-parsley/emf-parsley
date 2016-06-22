@@ -1144,13 +1144,22 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY = 2;
 
 	/**
+	 * The feature id for the '<em><b>Not Null Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Class For Default Validation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_DEFAULT_VALIDATION_FEATURE_COUNT = 3;
+	int CLASS_FOR_DEFAULT_VALIDATION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Class For Default Validation</em>' class.
@@ -1894,6 +1903,17 @@ public interface TestmodelsPackage extends EPackage {
 	EAttribute getClassForDefaultValidation_CanBeEmpty();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotNullReference <em>Not Null Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Not Null Reference</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotNullReference()
+	 * @see #getClassForDefaultValidation()
+	 * @generated
+	 */
+	EReference getClassForDefaultValidation_NotNullReference();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer <em>Test Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2538,6 +2558,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY = eINSTANCE.getClassForDefaultValidation_CanBeEmpty();
+		/**
+		 * The meta object literal for the '<em><b>Not Null Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE = eINSTANCE.getClassForDefaultValidation_NotNullReference();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
 		 * <!-- begin-user-doc -->

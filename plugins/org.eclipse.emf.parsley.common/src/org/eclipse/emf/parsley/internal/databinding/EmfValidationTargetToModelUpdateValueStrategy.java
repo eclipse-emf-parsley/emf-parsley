@@ -10,80 +10,54 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.internal.databinding;
 
-import static com.google.common.collect.Iterables.filter;
-
-import java.util.List;
-
 import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.parsley.validation.DiagnosticUtil;
-
-import com.google.common.base.Predicate;
 
 /**
+ * A custom {@link UpdateValueStrategy} to decorate controls with possible EMF validation errors.
+ * 
  * @author Francesco Guidieri - initial API and implementation
  *
  */
 public class EmfValidationTargetToModelUpdateValueStrategy extends UpdateValueStrategy {
 
-	private EStructuralFeature feature;
-	private Diagnostician diagnostician;
-	private DiagnosticUtil diagnosticUtil;
 	private EObject owner;
+	private EStructuralFeature feature;
+	private DatabindingValidationUtil databindingValidationUtil;
 	private boolean firstValidateBeforeSet = true;
 
 	public EmfValidationTargetToModelUpdateValueStrategy(EObject owner, EStructuralFeature feature,
-			Diagnostician diagnostician, DiagnosticUtil diagnosticUtil) {
+			DatabindingValidationUtil databindingValidationUtil) {
 		this.owner = owner;
 		this.feature = feature;
-		this.diagnostician = diagnostician;
-		this.diagnosticUtil = diagnosticUtil;
+		this.databindingValidationUtil = databindingValidationUtil;
 	}
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected IStatus doSet(IObservableValue observableValue, Object value) {
-		IStatus afterSetStatus = super.doSet(observableValue, (!"".equals(value) ? value : null));
-		if (afterSetStatus.isOK()) {
-			return validationStatus(feature);
-		}
-		return afterSetStatus;
-	};
+		// the modification must go into the model
+		super.doSet(observableValue, (!"".equals(value) ? value : null));
+		// since we delegate validation to the EMF validator
+		return validationStatus();
+	}
 
 	@Override
 	public IStatus validateBeforeSet(Object value) {
 		if (firstValidateBeforeSet) {
-			IStatus validationStatus = validationStatus(feature);
 			firstValidateBeforeSet = false;
-			if (!validationStatus.isOK()) {
-				return validationStatus;
-			}
-			return super.validateBeforeSet(value);
+			return validationStatus();
 		}
-		return Status.OK_STATUS;
+		return super.validateBeforeSet(value);
 	}
 
-	private IStatus validationStatus(final EStructuralFeature feature) {
-		Diagnostic diagnostic = diagnostician.validate(owner);
-		List<Diagnostic> diagnostics = diagnosticUtil.flatten(diagnostic);
-		Iterable<Diagnostic> filtered = filter(diagnostics, new Predicate<Diagnostic>() {
-			@Override
-			public boolean apply(Diagnostic d) {
-				return filter(filter(d.getData(), EStructuralFeature.class), new Predicate<EStructuralFeature>() {
-					@Override
-					public boolean apply(EStructuralFeature input) {
-						return input.equals(feature);
-					}
-				}).iterator().hasNext();
-			}
-		});
+	private IStatus validationStatus() {
+		Iterable<Diagnostic> filtered = databindingValidationUtil.getDiagnostic(owner, feature);
 		for (Diagnostic d : filtered) {
 			int severity = d.getSeverity();
 			if (severity == Diagnostic.ERROR) {

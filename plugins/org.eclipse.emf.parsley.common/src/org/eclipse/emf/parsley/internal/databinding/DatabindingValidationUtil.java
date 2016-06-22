@@ -18,8 +18,9 @@ import java.util.List;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.parsley.validation.DiagnosticUtil;
-import org.eclipse.emf.parsley.validation.ValidationRunner;
+import org.eclipse.jface.viewers.ILabelProvider;
 
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
@@ -32,11 +33,22 @@ import com.google.inject.Inject;
  */
 public class DatabindingValidationUtil {
 
-	@Inject
-	private ValidationRunner validationRunner;
+	private final class CustomDiagnostician extends Diagnostician {
+		// TODO this custom Diagnostician should probably become the default Diagnostician
+		// implementation and should be bound in the default Guice module
+		@Override
+		public String getObjectLabel(EObject eObject) {
+			return labelProvider.getText(eObject);
+		}
+	}
 
 	@Inject
 	private DiagnosticUtil diagnosticUtil;
+
+	@Inject
+	private ILabelProvider labelProvider;
+
+	private CustomDiagnostician diagnostician = new CustomDiagnostician();
 
 	/**
 	 * Retrieves the {@link Diagnostic} for the specified object and related to
@@ -47,7 +59,7 @@ public class DatabindingValidationUtil {
 	 * @return
 	 */
 	public Iterable<Diagnostic> getDiagnostic(final EObject eObject, final EStructuralFeature feature) {
-		List<Diagnostic> diagnostics = diagnosticUtil.flatten(validationRunner.validate(eObject));
+		List<Diagnostic> diagnostics = diagnosticUtil.flatten(diagnostician.validate(eObject));
 		Iterable<Diagnostic> filtered = filter(diagnostics, new Predicate<Diagnostic>() {
 			@Override
 			public boolean apply(Diagnostic d) {

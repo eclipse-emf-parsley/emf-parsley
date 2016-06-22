@@ -835,6 +835,15 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getClassForDefaultValidation_NotNullReference() {
+		return (EReference)classForDefaultValidationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTestContainer() {
 		return testContainerEClass;
 	}
@@ -1071,6 +1080,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__NAME);
 		createEAttribute(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__NOT_EMPTY);
 		createEAttribute(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY);
+		createEReference(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE);
 
 		// Create enums
 		enumForControlsEEnum = createEEnum(ENUM_FOR_CONTROLS);
@@ -1206,6 +1216,7 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getClassForDefaultValidation_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForDefaultValidation_NotEmpty(), ecorePackage.getEString(), "notEmpty", null, 1, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForDefaultValidation_CanBeEmpty(), ecorePackage.getEString(), "canBeEmpty", null, 0, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClassForDefaultValidation_NotNullReference(), this.getClassWithName(), null, "notNullReference", null, 1, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enumForControlsEEnum, EnumForControls.class, "EnumForControls");

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotEmpty <em>Not Empty</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getCanBeEmpty <em>Can Be Empty</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotNullReference <em>Not Null Reference</em>}</li>
  * </ul>
  *
  * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForDefaultValidation()
@@ -100,5 +101,31 @@ public interface ClassForDefaultValidation extends EObject {
 	 * @generated
 	 */
 	void setCanBeEmpty(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Not Null Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Not Null Reference</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Not Null Reference</em>' reference.
+	 * @see #setNotNullReference(ClassWithName)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForDefaultValidation_NotNullReference()
+	 * @model required="true"
+	 * @generated
+	 */
+	ClassWithName getNotNullReference();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotNullReference <em>Not Null Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Not Null Reference</em>' reference.
+	 * @see #getNotNullReference()
+	 * @generated
+	 */
+	void setNotNullReference(ClassWithName value);
 
 } // ClassForDefaultValidation

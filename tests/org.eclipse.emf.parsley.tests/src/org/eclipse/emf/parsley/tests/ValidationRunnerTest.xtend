@@ -37,6 +37,7 @@ class ValidationRunnerTest extends AbstractEmfParsleyTest {
 		// standard Ecore validation
 		val objectForValidation = testFactory.createClassForDefaultValidation => [
 			notEmpty = "foo"
+			notNullReference = testFactory.createClassWithName
 		]
 		createValidationRunner.validate(objectForValidation, createLogIssueReporter)
 		logAppender.assertEmpty

@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.Model#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.Model#getElements <em>Elements</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.Model#getItems <em>Items</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.examples.rap.model.ModelPackage#getModel()
  * @model

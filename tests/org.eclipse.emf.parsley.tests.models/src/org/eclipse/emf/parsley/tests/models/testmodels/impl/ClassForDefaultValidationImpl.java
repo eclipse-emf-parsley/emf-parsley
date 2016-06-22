@@ -6,10 +6,12 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
 
 /**
@@ -23,6 +25,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getNotEmpty <em>Not Empty</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getCanBeEmpty <em>Can Be Empty</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getNotNullReference <em>Not Null Reference</em>}</li>
  * </ul>
  *
  * @generated
@@ -87,6 +90,16 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 	 * @ordered
 	 */
 	protected String canBeEmpty = CAN_BE_EMPTY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getNotNullReference() <em>Not Null Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNotNullReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected ClassWithName notNullReference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,6 +188,44 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ClassWithName getNotNullReference() {
+		if (notNullReference != null && notNullReference.eIsProxy()) {
+			InternalEObject oldNotNullReference = (InternalEObject)notNullReference;
+			notNullReference = (ClassWithName)eResolveProxy(oldNotNullReference);
+			if (notNullReference != oldNotNullReference) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE, oldNotNullReference, notNullReference));
+			}
+		}
+		return notNullReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassWithName basicGetNotNullReference() {
+		return notNullReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNotNullReference(ClassWithName newNotNullReference) {
+		ClassWithName oldNotNullReference = notNullReference;
+		notNullReference = newNotNullReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE, oldNotNullReference, notNullReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -184,6 +235,9 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 				return getNotEmpty();
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
 				return getCanBeEmpty();
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
+				if (resolve) return getNotNullReference();
+				return basicGetNotNullReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -204,6 +258,9 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 				return;
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
 				setCanBeEmpty((String)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
+				setNotNullReference((ClassWithName)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -226,6 +283,9 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
 				setCanBeEmpty(CAN_BE_EMPTY_EDEFAULT);
 				return;
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
+				setNotNullReference((ClassWithName)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -244,6 +304,8 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 				return NOT_EMPTY_EDEFAULT == null ? notEmpty != null : !NOT_EMPTY_EDEFAULT.equals(notEmpty);
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY:
 				return CAN_BE_EMPTY_EDEFAULT == null ? canBeEmpty != null : !CAN_BE_EMPTY_EDEFAULT.equals(canBeEmpty);
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
+				return notNullReference != null;
 		}
 		return super.eIsSet(featureID);
 	}

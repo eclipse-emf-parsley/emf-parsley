@@ -24,20 +24,19 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
+import org.eclipse.emf.parsley.internal.databinding.DatabindingValidationUtil;
 import org.eclipse.emf.parsley.internal.databinding.EmfValidationTargetToModelUpdateValueStrategy;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.emf.parsley.ui.provider.ComboViewerLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.emf.parsley.util.FeatureHelper;
-import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
@@ -100,10 +99,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	private ProposalCreator proposalCreator;
 
 	@Inject
-	private Diagnostician diagnostician;
-
-	@Inject
-	private DiagnosticUtil diagnosticUtil;
+	private DatabindingValidationUtil databindingValidationUtil;
 
 	private EObject owner;
 	private Resource resource;
@@ -288,7 +284,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		Control retVal = retValAndTargetPair.getControl();
 		IObservableValue target = retValAndTargetPair.getObservableValue();
 
-		Binding binding = edbc.bindValue(target, source);
+		Binding binding = bindValue(feature, target, source);
 		binding.updateModelToTarget();
 		return retVal;
 	}
@@ -342,16 +338,26 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 				.getObservableValue();
 
 		if (controlObservable != null) {
-			EmfValidationTargetToModelUpdateValueStrategy targetToModelUpdateValueStrategy = 
-			new EmfValidationTargetToModelUpdateValueStrategy(owner,feature,diagnostician, diagnosticUtil);
-
-			Binding bindValue = edbc.bindValue(controlObservable, featureObservable, targetToModelUpdateValueStrategy, null);
-			ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+			bindValue(feature, controlObservable, featureObservable);
 		}
 
 		return retVal;
 	}
-	
+
+	@SuppressWarnings("rawtypes")
+	private Binding bindValue(EStructuralFeature feature, IObservableValue target,
+			IObservableValue source) {
+		EmfValidationTargetToModelUpdateValueStrategy targetToModelUpdateValueStrategy =
+			new EmfValidationTargetToModelUpdateValueStrategy(
+				owner, feature, databindingValidationUtil);
+
+		Binding bindValue = edbc.bindValue(
+			target, source, targetToModelUpdateValueStrategy,
+				null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+		return bindValue;
+	}
+
 	protected ControlObservablePair createControlAndObservableValue(
 			EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		if (withPolymorphicDispatch) {
