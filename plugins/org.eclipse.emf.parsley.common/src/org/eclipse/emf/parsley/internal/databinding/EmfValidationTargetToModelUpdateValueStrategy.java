@@ -23,12 +23,17 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * 
  * @author Francesco Guidieri - initial API and implementation
  *
+ * @noextend This class is not intended to be subclassed by clients.
+ * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public class EmfValidationTargetToModelUpdateValueStrategy extends UpdateValueStrategy {
 
 	private EObject owner;
+
 	private EStructuralFeature feature;
+
 	private DatabindingValidationUtil databindingValidationUtil;
+
 	private boolean firstValidateBeforeSet = true;
 
 	public EmfValidationTargetToModelUpdateValueStrategy(EObject owner, EStructuralFeature feature,
@@ -57,7 +62,8 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends UpdateValueSt
 	}
 
 	private IStatus validationStatus() {
-		Iterable<Diagnostic> filtered = databindingValidationUtil.getDiagnostic(owner, feature);
+		Iterable<Diagnostic> filtered = 
+				databindingValidationUtil.getDiagnostic(owner, feature);
 		for (Diagnostic d : filtered) {
 			int severity = d.getSeverity();
 			if (severity == Diagnostic.ERROR) {

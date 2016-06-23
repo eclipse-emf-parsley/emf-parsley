@@ -44,7 +44,7 @@ class DatabindingValidationUtilTest extends AbstractEmfParsleyTest {
 	def void testDiagnosticForObjectAndFeature() {
 		val objectForValidation = testFactory.createClassForDefaultValidation
 		fixture.getDiagnostic(objectForValidation, testPackage.classForDefaultValidation_NotEmpty).
-			assertDiagnostic('''ERROR: The required feature 'notEmpty' of 'Class For Default Validation' must be set''')
+			assertDiagnostic('''ERROR: The required feature 'Not Empty' of 'Class For Default Validation' must be set''')
 	}
 
 	@Test
@@ -66,7 +66,7 @@ class DatabindingValidationUtilTest extends AbstractEmfParsleyTest {
 			testPackage.classForDefaultValidation_NotEmpty).assertDiagnostic("")
 		fixture.getDiagnostic(container.objectsForDefaultValidation.head,
 			testPackage.classForDefaultValidation_NotEmpty).
-			assertDiagnostic('''ERROR: The required feature 'notEmpty' of 'Class For Default Validation' must be set''')
+			assertDiagnostic('''ERROR: The required feature 'Not Empty' of 'Class For Default Validation' must be set''')
 	}
 
 	@Test

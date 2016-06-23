@@ -13,12 +13,16 @@ package org.eclipse.emf.parsley.internal.databinding;
 import static com.google.common.collect.Iterables.contains;
 import static com.google.common.collect.Iterables.filter;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EValidator.SubstitutionLabelProvider;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.jface.viewers.ILabelProvider;
 
@@ -30,17 +34,13 @@ import com.google.inject.Inject;
  * 
  * @author Lorenzo Bettini - initial API and implementation
  *
+ * @noextend This class is not intended to be subclassed by clients.
+ * @noinstantiate This class is not intended to be instantiated by clients.
  */
 public class DatabindingValidationUtil {
 
-	private final class CustomDiagnostician extends Diagnostician {
-		// TODO this custom Diagnostician should probably become the default Diagnostician
-		// implementation and should be bound in the default Guice module
-		@Override
-		public String getObjectLabel(EObject eObject) {
-			return labelProvider.getText(eObject);
-		}
-	}
+	@Inject
+	private Diagnostician diagnostician;
 
 	@Inject
 	private DiagnosticUtil diagnosticUtil;
@@ -48,7 +48,8 @@ public class DatabindingValidationUtil {
 	@Inject
 	private ILabelProvider labelProvider;
 
-	private CustomDiagnostician diagnostician = new CustomDiagnostician();
+	@Inject
+	private FeatureLabelCaptionProvider featureLabelCaptionProvider;
 
 	/**
 	 * Retrieves the {@link Diagnostic} for the specified object and related to
@@ -56,10 +57,14 @@ public class DatabindingValidationUtil {
 	 * 
 	 * @param eObject
 	 * @param feature
+	 * @param context
 	 * @return
 	 */
 	public Iterable<Diagnostic> getDiagnostic(final EObject eObject, final EStructuralFeature feature) {
-		List<Diagnostic> diagnostics = diagnosticUtil.flatten(diagnostician.validate(eObject));
+		Map<Object, Object> context = new HashMap<Object, Object>();
+		context.put(SubstitutionLabelProvider.class,
+			new DatabindingSubstitutionLabelProvider(eObject, labelProvider, featureLabelCaptionProvider));
+		List<Diagnostic> diagnostics = diagnosticUtil.flatten(diagnostician.validate(eObject, context));
 		Iterable<Diagnostic> filtered = filter(diagnostics, new Predicate<Diagnostic>() {
 			@Override
 			public boolean apply(Diagnostic d) {
