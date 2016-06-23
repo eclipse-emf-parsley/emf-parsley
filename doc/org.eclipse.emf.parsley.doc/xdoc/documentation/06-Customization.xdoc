@@ -1236,3 +1236,14 @@ public class ValidateBeforeSaveStrategy extends ResourceSaveStrategy {
 Thus, if you use a codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy],
 with the default Guice bindings, upon saving, if validation finds errors, it will
 cancel the saving and it will show a dialog with errors.
+
+Validation is also automatically triggered when editing object's properties in a form
+or in a dialog. The editing field will be decorated with an error
+and a tooltip with the error message. Here's an example based on the Library model.
+
+img[images/form-validation.png][][ ][]
+
+Please keep in mind that for forms and dialogs the error decorations are based on
+specific features of the object being edited and validated.  If you have a custom
+EMF validator you need to make sure to specify the codeRef[org.eclipse.emf.ecore.EStructuralFeature]
+when creating a diagnostic error.

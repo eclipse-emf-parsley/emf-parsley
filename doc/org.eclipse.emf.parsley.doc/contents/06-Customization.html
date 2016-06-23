@@ -1580,5 +1580,24 @@ Thus, if you use a <a class="jdoc" href="http://download.eclipse.org/modeling/em
 with the default Guice bindings, upon saving, if validation finds errors, it will
 cancel the saving and it will show a dialog with errors.
 </p>
+<p>
+Validation is also automatically triggered when editing object&apos;s properties in a form
+or in a dialog. The editing field will be decorated with an error
+and a tooltip with the error message. Here&apos;s an example based on the Library model.
+</p>
+<p>
+<div class="image" >
+<img src="images/form-validation.png" class=" " 
+/>
+<div class="caption">
+</div>
+</div>
+</p>
+<p>
+Please keep in mind that for forms and dialogs the error decorations are based on
+specific features of the object being edited and validated.  If you have a custom
+EMF validator you need to make sure to specify the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>
+when creating a diagnostic error.
+</p>
 </body>
 </html>
