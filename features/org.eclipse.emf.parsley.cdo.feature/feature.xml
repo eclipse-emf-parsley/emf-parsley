@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.cdo.feature"
-      label="Emf Parsley CDO"
-      version="0.6.1.qualifier"
+      label="EMF Parsley CDO"
+      version="1.0.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.cdo.common">
 

@@ -1211,7 +1211,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
       $.support.transition && this.$tip.hasClass('fade') ?
         $tip
           .one($.support.transition.end, complete)
-          .emulateTransitionEnd(150) :
+          .emulateTransitionEnd(50) :
         complete()
     }
   }

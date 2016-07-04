@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
-import org.eclipse.emf.parsley.viewers.ViewerFactory
 import org.eclipse.jface.viewers.ColumnLayoutData
 import org.eclipse.jface.viewers.ColumnWeightData
 import org.eclipse.swt.widgets.Layout
@@ -19,11 +18,11 @@ import org.junit.Test
 
 import static extension org.junit.Assert.*
 
-class TableViewerColumnBuilderTest extends AbstractTableViewerTest {
+class TableViewerColumnBuilderTest extends AbstractViewerTest {
 
 	@Test
 	def void testTableColumnHeader() {
-		buildAndFill(
+		buildAndFillTableViewer(
 			testContainer.classesForControls, testPackage.classForControls
 		)
 		syncExecVoid[
@@ -35,14 +34,14 @@ class TableViewerColumnBuilderTest extends AbstractTableViewerTest {
 
 	@Test
 	def void testCustomColumnWeights() {
-		viewerFactory = createInjector(
+		buildAndFillTableViewer(
+			createInjector(
 				new EmfParsleyGuiceModuleForTesting() {
 					override valueTableColumnWeights() {
 						#[5,2]
 					}
 				}
-			).getInstance(ViewerFactory)
-		buildAndFill(
+			),
 			testContainer.classesForControls, testPackage.classForControls
 		)
 		syncExecVoid[
@@ -52,6 +51,43 @@ class TableViewerColumnBuilderTest extends AbstractTableViewerTest {
 				// 3 is the default one
 				get(2).assertColumnWeight(3)
 			]
+		]
+	}
+
+	@Test
+	def void testTableRowSize() {
+		buildAndFillTableViewer(
+			testContainer, testPackage.classWithName
+		)
+		syncExecVoid[
+			numOfElements.assertEquals(tableViewer.table.items.length)
+		]
+	}
+
+	@Test
+	def void testTableRowTextForString() {
+		buildAndFillTableViewer(
+			testContainer, testPackage.classWithName
+		)
+		syncExecVoid[
+			"name 0".assertEquals(
+				tableViewer.table.items.head.getText(0)
+			)
+		]
+	}
+
+	@Test
+	def void testTableRowTextForEObject() {
+		buildAndFillTableViewer(
+			testContainer, testPackage.classForTable
+		)
+		syncExecVoid[
+			"Class With Name name 0".assertEquals(
+				tableViewer.table.items.head.getText(0)
+			)
+			"Class With Name name 0".assertEquals(
+				tableViewer.table.items.head.getText(1)
+			)
 		]
 	}
 

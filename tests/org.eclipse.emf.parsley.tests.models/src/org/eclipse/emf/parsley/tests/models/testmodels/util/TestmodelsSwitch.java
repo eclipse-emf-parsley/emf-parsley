@@ -85,6 +85,12 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestmodelsPackage.TEST_ECLASS_FOR_FEATURE_NAME: {
+				TestEClassForFeatureName testEClassForFeatureName = (TestEClassForFeatureName)theEObject;
+				T result = caseTestEClassForFeatureName(testEClassForFeatureName);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TestmodelsPackage.ABASE_CLASS: {
 				ABaseClass aBaseClass = (ABaseClass)theEObject;
 				T result = caseABaseClass(aBaseClass);
@@ -183,6 +189,21 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTestEClass(TestEClass object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Test EClass For Feature Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Test EClass For Feature Name</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTestEClassForFeatureName(TestEClassForFeatureName object) {
 		return null;
 	}
 

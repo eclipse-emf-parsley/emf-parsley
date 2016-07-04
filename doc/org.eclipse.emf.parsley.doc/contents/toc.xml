@@ -3,9 +3,15 @@
 	<topic href="contents/00-Main_4.html#Emf%20Parsley%20Guide_4" label="Getting Started" >
 		<topic href="contents/01-Overview.html#Overview" label="Overview" >
 			<topic href="contents/01-Overview.html#ParsleyComponents" label="Parsley Components" >
-			</topic>
-			<topic href="contents/01-Overview.html#Customize" label="Customize" >
-				<topic href="contents/01-Overview.html#Customizations_DSL" label="Customize with the DSL" >
+				<topic href="contents/01-Overview.html#Customize" label="Customize" >
+					<topic href="contents/01-Overview.html#Customizations_DSL" label="Customize with the DSL" >
+					</topic>
+					<topic href="contents/01-Overview.html#DslProjectStructure" label="The structure of an EMF Parsley project" >
+					</topic>
+					<topic href="contents/01-Overview.html#PluginXml" label="How the DSL handles the plugin.xml" >
+					</topic>
+					<topic href="contents/01-Overview.html#InjectorProvider" label="Obtaining the Injector" >
+					</topic>
 				</topic>
 			</topic>
 		</topic>
@@ -108,40 +114,22 @@
 			</topic>
 		</topic>
 		<topic href="contents/AdvancedFeatures.html#AdvancedFeatures" label="Advanced Features" >
+			<topic href="contents/AdvancedFeatures.html#BuildingWithMaven" label="Building with Maven" >
+			</topic>
 			<topic href="contents/AdvancedFeatures.html#Testing" label="Testing Framework" >
 			</topic>
-		</topic>
-		<topic href="contents/08-RAP.html#RAP" label="RAP" >
-			<topic href="contents/08-RAP.html#introduction" label="Introduction" >
+			<topic href="contents/AdvancedFeatures.html#Eclipse4" label="Eclipse 4.x" >
 			</topic>
-			<topic href="contents/08-RAP.html#setupParsleyRAP" label="Setup" >
-				<topic href="contents/08-RAP.html#installRapTools" label="Installing the RAP Tools" >
-				</topic>
-				<topic href="contents/08-RAP.html#rapSetTargetPlatform" label="Setup the EMF Parsley RAP Target Platform" >
-				</topic>
-			</topic>
-			<topic href="contents/08-RAP.html#rapExamples" label="Examples" >
-				<topic href="contents/08-RAP.html#rapFirstExample" label="Running the Parsley RAP UI Example" >
-				</topic>
-				<topic href="contents/08-RAP.html#rapCdoExample" label="Running the Parsley RAP CDO Example" >
-				</topic>
-			</topic>
-		</topic>
-		<topic href="contents/07-Eclipse4.html#Eclipse4" label="Eclipse 4.x" >
-			<topic href="contents/07-Eclipse4.html#GetFirstExample" label="First Example Setup" >
-			</topic>
-			<topic href="contents/07-Eclipse4.html#PrepareForEclipse4Application" label="Preparing for a pure e4 Application" >
-			</topic>
-			<topic href="contents/07-Eclipse4.html#CreateEclipse4Application" label="Create an e4 Application" >
-			</topic>
-			<topic href="contents/07-Eclipse4.html#Eclipse4ApplicationAndEMFParsley" label="Using a TreeComposite into an e4 Part" >
-			</topic>
-			<topic href="contents/07-Eclipse4.html#Eclipse4Save" label="Adding the dirty state and Save command" >
+			<topic href="contents/AdvancedFeatures.html#RAP" label="RAP" >
 			</topic>
 		</topic>
 	</topic>
 	<topic href="contents/00-Main_6.html#Emf%20Parsley%20Guide_6" label="Appendix" >
 		<topic href="contents/Migration-Guide.html#MigrationGuide" label="Migration Guide" >
+			<topic href="contents/Migration-Guide.html#VersionOne" label="From 0.7.0 to 1.0.0" >
+			</topic>
+			<topic href="contents/Migration-Guide.html#SixSeven" label="From 0.6.0 to 0.7.0" >
+			</topic>
 			<topic href="contents/Migration-Guide.html#FiveMinors" label="From 0.5.0 to 0.6.0" >
 			</topic>
 			<topic href="contents/Migration-Guide.html#FourFive" label="From 0.4 to 0.5" >

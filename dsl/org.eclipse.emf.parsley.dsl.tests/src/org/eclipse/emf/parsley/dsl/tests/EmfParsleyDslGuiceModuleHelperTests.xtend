@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.xtext.junit4.InjectWith
@@ -150,8 +149,8 @@ FormFeatureCaptionProviderImpl''',
 	def void testGetAllWithExtendsClauseInferredJavaTypes() {
 		assertEqualsStrings(
 		'''
-LabelProviderGen
-FormFeatureCaptionProviderGen''',
+ModLabelProvider
+ModFormFeatureCaptionProvider''',
 		'''
 		module my.test.mod {
 			labelProvider {}

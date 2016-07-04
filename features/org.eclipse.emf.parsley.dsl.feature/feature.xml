@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.dsl.feature"
-      label="Emf Parsley DSL"
-      version="0.6.1.qualifier"
+      label="EMF Parsley DSL"
+      version="1.0.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.dsl">
 
@@ -23,8 +23,8 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtext.xbase" version="2.9.1" match="compatible"/>
-      <import feature="org.eclipse.xtext.ui" version="2.9.1" match="compatible"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.10.0" match="compatible"/>
+      <import feature="org.eclipse.xtext.ui" version="2.10.0" match="compatible"/>
    </requires>
 
    <plugin
@@ -36,6 +36,20 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
 
    <plugin
          id="org.eclipse.emf.parsley.dsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.parsley.dsl.additional.builder"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.parsley.dsl.ide"
          download-size="0"
          install-size="0"
          version="0.0.0"

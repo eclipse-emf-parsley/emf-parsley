@@ -7,6 +7,7 @@
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:launching="http://www.eclipse.org/oomph/setup/launching/1.0"
     xmlns:mylyn="http://www.eclipse.org/oomph/setup/mylyn/1.0"
+    xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
     xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
@@ -14,7 +15,7 @@
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/launching/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Launching.ecore http://www.eclipse.org/oomph/setup/mylyn/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Mylyn.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/launching/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Launching.ecore http://www.eclipse.org/oomph/setup/mylyn/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Mylyn.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
     name="emf.parsley"
     label="EMF Parsley">
   <setupTask
@@ -104,9 +105,22 @@
         value="prompt"/>
   </setupTask>
   <setupTask
+      xsi:type="setup:CompoundTask"
+      name="org.eclipse.egit.core">
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.egit.core/core_autoIgnoreDerivedResources"
+        value="false"/>
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.egit.core/core_preferredMergeStrategy"
+        value="jgit-default-mergeStrategy"/>
+  </setupTask>
+  <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="Mars"
+      value="Neon"
+      defaultValue="Neon"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -115,11 +129,25 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.9.1"/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
-      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
+      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/"/>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="api.baseline.version"
+      value="1.0.0"/>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="api.baseline.zip"
+      value="org.eclipse.emf.parsley.repository-1.0.0.v20160608-1623.zip"/>
+  <setupTask
+      xsi:type="pde:APIBaselineTask"
+      name="parsley-latest"
+      version="${api.baseline.version}"
+      location="${installation.location}/api/${api.baseline.version}/"
+      remoteURI="http://download.eclipse.org/emf-parsley/zips/${api.baseline.zip}"/>
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Eclipse IDE Plugins">
@@ -224,20 +252,11 @@
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
-        label="Findbugs">
-      <requirement
-          name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"
-          optional="true"/>
-      <repository
-          url="http://findbugs.cs.umd.edu/eclipse/"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
         label="B3 Aggregator">
       <requirement
           name="org.eclipse.b3.aggregator.editor.feature.feature.group"/>
       <repository
-          url="http://download.eclipse.org/modeling/emft/b3/updates-4.3"/>
+          url="http://download.eclipse.org/modeling/emft/b3/updates-4.4"/>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -298,31 +317,6 @@
     <setupTask
         xsi:type="setup:CompoundTask"
         name="Eclipse IDE Plugins">
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          id="p2.org.eclipse.xtext"
-          label="Xtext Releases"
-          licenseConfirmationDisabled="true">
-        <requirement
-            name="org.eclipse.xtext.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.mwe2.language.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.mwe2.runtime.sdk.feature.group"/>
-        <requirement
-            name="de.itemis.xtext.antlr.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.xpand.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.ecore.xcore.sdk.feature.group"/>
-        <repository
-            url="${xtext.site}"/>
-        <repository
-            url="${mwe2.site}"/>
-        <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
-        <description>Xtext &amp; Xtend</description>
-      </setupTask>
       <setupTask
           xsi:type="setup.p2:P2Task"
           id="p2.swtbot"
@@ -478,7 +472,7 @@
         <repositoryList
             name="Neon">
           <repository
-              url="http://download.eclipse.org/releases/staging"/>
+              url="http://download.eclipse.org/releases/neon/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -675,24 +669,59 @@
     </setupTask>
     <stream
         name="master"
-        label="Master"/>
+        label="Master">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup.p2:P2Task"
+          id="p2.org.eclipse.xtext.2"
+          label="Xtext Releases"
+          licenseConfirmationDisabled="true">
+        <requirement
+            name="org.eclipse.xtext.sdk.feature.group"
+            versionRange="[2.10.0,2.11.0)"/>
+        <requirement
+            name="de.itemis.xtext.antlr.feature.feature.group"/>
+        <repository
+            url="${xtext.site}"/>
+        <repository
+            url="${mwe2.site}"/>
+        <repository
+            url="http://download.itemis.com/updates/releases/2.1.1/"/>
+        <description>Xtext &amp; Xtend</description>
+      </setupTask>
+    </stream>
     <stream
         name="neon-simrel"
         label="Neon-Simrel">
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value=""
+          value="Neon"
           defaultValue="Neon"
           storageURI="scope://Workspace"/>
       <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/releases/staging"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/releases/staging"/>
+          xsi:type="setup.p2:P2Task"
+          id="p2.org.eclipse.xtext.3"
+          label="Xtext Releases"
+          licenseConfirmationDisabled="true">
+        <requirement
+            name="org.eclipse.xtext.sdk.feature.group"
+            versionRange="[2.10.0,2.11.0)"/>
+        <requirement
+            name="de.itemis.xtext.antlr.feature.feature.group"/>
+        <repository
+            url="${xtext.site}"/>
+        <repository
+            url="${mwe2.site}"/>
+        <repository
+            url="http://download.itemis.com/updates/releases/2.1.1/"/>
+        <description>Xtext &amp; Xtend</description>
+      </setupTask>
       <description>Branch for Simrel for Neon</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
@@ -703,7 +732,8 @@
         xsi:type="setup.targlets:TargletTask">
       <targlet
           name="${scope.project.label}"
-          activeRepositoryList="${eclipse.target.platform}">
+          activeRepositoryList="${eclipse.target.platform}"
+          includeAllRequirements="false">
         <requirement
             name="org.eclipse.emf.parsley.rap.workspace.feature.group"/>
         <requirement
@@ -756,6 +786,17 @@
               url="http://download.eclipse.org/releases/juno"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
+        </repositoryList>
+        <repositoryList
+            name="Neon">
+          <repository
+              url="http://download.eclipse.org/staging/neon/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -907,11 +948,23 @@
     <stream
         name="master"
         label="Master">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
       <description></description>
     </stream>
     <stream
         name="neon-simrel"
         label="Neon-Simrel">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Neon"
+          defaultValue="Neon"
+          storageURI="scope://Workspace"/>
       <description>Branch for Simrel for Neon</description>
     </stream>
     <description>EMF Parsley version for RAP</description>

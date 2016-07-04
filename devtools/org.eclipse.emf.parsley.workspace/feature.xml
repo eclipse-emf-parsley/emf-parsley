@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.workspace"
-      label="Emf Parsley Workspace"
-      version="0.6.1.qualifier"
+      label="EMF Parsley Workspace"
+      version="1.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emfparsley">
@@ -26,10 +26,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.parsley.repository"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.parsley.examples.mail.product.feature"
          version="0.0.0"/>
 
@@ -39,6 +35,26 @@
 
    <includes
          id="org.eclipse.emf.parsley.examples.eclipse4.product.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.cdo.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.dsl.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.examples.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.parsley.sdk"
          version="0.0.0"/>
 
    <plugin
@@ -169,6 +185,13 @@
 
    <plugin
          id="org.eclipse.emf.parsley.tests.swtbot.examples"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.parsley.dsl.ui.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"

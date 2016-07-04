@@ -21,6 +21,6 @@ public class EmfParsleyDslUiAbstractTests extends EmfParsleySWTBotAbstractTests 
 	def createDslProjectWithWizard() {
 		createProjectWithoutTemplateInWorkspace(org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
 				org.eclipse.emf.parsley.tests.EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME);
-		assertNoErrorsInProjectAfterAutoBuild();
+		assertNoIssuesInProjectAfterAutoBuild();
 	}
 }

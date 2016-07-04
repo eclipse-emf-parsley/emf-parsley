@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.emf.parsley.dsl.ui
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 0.6.1.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
- org.eclipse.xtext.ui;bundle-version="[2.9.1,2.10.0)",
+ org.eclipse.xtext.ui;bundle-version="[2.10.0,2.11.0)",
  org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.ui.ide;bundle-version="3.5.0",
  org.eclipse.xtext.ui.shared,
@@ -26,16 +26,17 @@ Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
  org.eclipse.emf.parsley.generator.common,
  org.eclipse.emf.parsley.wizards,
  org.objectweb.asm;bundle-version="5.0.1",
- org.eclipse.jdt.debug.ui
+ org.eclipse.jdt.debug.ui,
+ org.eclipse.emf.parsley.dsl.additional.builder,
+ org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.emf.parsley.dsl.ide
 Import-Package: org.apache.log4j,
  org.eclipse.pde.internal.ui.parts,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.dsl.ui.contentassist,
- org.eclipse.emf.parsley.dsl.ui.contentassist.antlr,
  org.eclipse.emf.parsley.dsl.ui.internal,
  org.eclipse.emf.parsley.dsl.ui.quickfix,
  org.eclipse.emf.parsley.dsl.ui.wizard,
- org.eclipse.emf.parsley.dsl.ui.wizard.template,
- org.eclipse.emf.parsley.dsl.ui.contentassist.antlr.internal
-Bundle-Activator: org.eclipse.emf.parsley.dsl.ui.internal.EmfParsleyDslActivator
+ org.eclipse.emf.parsley.dsl.ui.wizard.template
+Bundle-Activator: org.eclipse.emf.parsley.dsl.ui.internal.DslActivator

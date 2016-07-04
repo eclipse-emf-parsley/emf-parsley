@@ -16,7 +16,7 @@ Although one can specify any Guice codeRef[com.google.inject.Module], e[EMF Pars
 some default base class modules that should be used for specifying custom
 Guice bindings.  The default base class is
 codeRef[org.eclipse.emf.parsley.EmfParsleyGuiceModule] that is suitable to be used
-in an OSGI environment, like Eclipse itself or RAP (see also ref:RAP[EMF Parsley RAP support]).
+in an OSGI environment, like Eclipse itself or RAP (see also ref:AdvancedFeatures[Eclipse 4.x & RAP]).
 Our project wizards will automatically use such module as the base class.
 For CDO we have a specialized base module.
 

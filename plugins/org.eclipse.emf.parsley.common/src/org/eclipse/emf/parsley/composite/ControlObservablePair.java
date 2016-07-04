@@ -22,11 +22,13 @@ public class ControlObservablePair {
 
 	protected Control control;
 	
+	@SuppressWarnings("rawtypes")
 	protected IObservableValue observableValue;
 	
 	public ControlObservablePair() {
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public ControlObservablePair(Control control, IObservableValue observableValue) {
 		this.control = control;
 		this.observableValue = observableValue;
@@ -40,10 +42,12 @@ public class ControlObservablePair {
 		this.control = control;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public IObservableValue getObservableValue() {
 		return observableValue;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setObservableValue(IObservableValue observableValue) {
 		this.observableValue = observableValue;
 	}

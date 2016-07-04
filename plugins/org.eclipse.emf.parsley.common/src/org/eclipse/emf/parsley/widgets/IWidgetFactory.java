@@ -60,5 +60,4 @@ public interface IWidgetFactory {
 
 	Composite getParent();
 
-
 }

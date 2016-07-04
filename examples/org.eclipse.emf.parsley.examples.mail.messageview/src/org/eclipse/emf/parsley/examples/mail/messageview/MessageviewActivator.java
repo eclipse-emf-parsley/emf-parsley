@@ -10,15 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.examples.mail.messageview;
 
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class MessageviewActivator extends EmfParsleyAbstractActivator {
+public class MessageviewActivator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.emf.parsley.examples.mail.messageview"; //$NON-NLS-1$
@@ -56,12 +55,4 @@ public class MessageviewActivator extends EmfParsleyAbstractActivator {
 		return plugin;
 	}
 
-	/**
-	 * Creates the EmfParsleyGuiceModule for this this plugin
-	 *
-	 * @return the EmfParsleyGuiceModule for this this plugin
-	 */
-	public EmfParsleyGuiceModule createModule() {
-		return new MessageviewGuiceModule(getDefault());
-	}
 }

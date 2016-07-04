@@ -15,7 +15,7 @@ import org.junit.Test
 import static org.junit.Assert.*
 
 class ResourceLoaderTest extends AbstractEmfParsleyTest {
-	
+
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	var TestableResourceLoader resourceLoader;
@@ -28,11 +28,9 @@ class ResourceLoaderTest extends AbstractEmfParsleyTest {
 	 * Protected methods are public so that we can test them
 	 */
 	static class TestableResourceLoader extends ResourceLoader {
-		
 		override initializeEmptyResource(Resource resource) {
 			super.initializeEmptyResource(resource)
 		}
-		
 	}
 
 	@Before
@@ -74,7 +72,7 @@ class ResourceLoaderTest extends AbstractEmfParsleyTest {
 		val response = getResourceFromLoader(injector)
 		assertTrue("resource should be empty", response.resource.contents.empty)
 	}
-	
+
 	@Test
 	def void testEmptyResourceIsInitializedUsingResourceManager() {
 		val injector = createInjector(new ModuleWithResourceInitializer)
@@ -98,7 +96,7 @@ class ResourceLoaderTest extends AbstractEmfParsleyTest {
 		val editingDomain = injector.createEditingDomain
 		getResourceFromLoader(injector, editingDomain)
 	}
-	
+
 	private def getResourceFromLoader(Injector injector, EditingDomain e1) {
 		val resourceSet = e1.resourceSet
 		resourceSet.setupResouceFactory

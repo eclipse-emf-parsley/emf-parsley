@@ -91,6 +91,8 @@ public class TestmodelsValidator extends EObjectValidator {
 				return validateTestContainer((TestContainer)value, diagnostics, context);
 			case TestmodelsPackage.TEST_ECLASS:
 				return validateTestEClass((TestEClass)value, diagnostics, context);
+			case TestmodelsPackage.TEST_ECLASS_FOR_FEATURE_NAME:
+				return validateTestEClassForFeatureName((TestEClassForFeatureName)value, diagnostics, context);
 			case TestmodelsPackage.ABASE_CLASS:
 				return validateABaseClass((ABaseClass)value, diagnostics, context);
 			case TestmodelsPackage.BASE_CLASS:
@@ -146,6 +148,15 @@ public class TestmodelsValidator extends EObjectValidator {
 	 */
 	public boolean validateTestEClass(TestEClass testEClass, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(testEClass, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTestEClassForFeatureName(TestEClassForFeatureName testEClassForFeatureName, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(testEClassForFeatureName, diagnostics, context);
 	}
 
 	/**

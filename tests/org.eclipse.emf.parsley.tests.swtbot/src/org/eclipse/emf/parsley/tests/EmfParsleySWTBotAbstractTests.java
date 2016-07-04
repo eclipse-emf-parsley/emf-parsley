@@ -101,6 +101,8 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleySWTBotAbstractTests {
 
+	public static final String PACKAGE_EXPLORER = "Package Explorer";
+
 	protected static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
 
 	protected static final String WRITER_LABEL = "Writer Lorenzo Bettini";
@@ -404,7 +406,7 @@ public class EmfParsleySWTBotAbstractTests {
 				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_MENU_LIBRARY);
 		
 		// Change the perspective via the Open Perspective dialog
-		bot.menu("Window").menu("Open Perspective").menu("Other...").click();
+		bot.menu("Open Perspective").menu("Other...").click();
 		SWTBotShell openPerspectiveShell = bot.shell("Open Perspective");
 		openPerspectiveShell.activate();
 
@@ -428,6 +430,12 @@ public class EmfParsleySWTBotAbstractTests {
 		bot.viewByPartName("Problems").show();
 
 		bot.viewByTitle(OUTLINE_VIEW).show();
+
+		// In Neon the Package Explorer is not part of the Plug-in Development perspective
+		// but in Kepler it is not available from the Window | Show View menu
+		if (!isKepler()) {
+			bot.menu("Window").menu("Show View").menu(PACKAGE_EXPLORER).click();
+		}
 	}
 
 	@AfterClass
@@ -460,37 +468,31 @@ public class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected static boolean isLuna() {
-		String version = Platform.getBundle(PlatformUI.PLUGIN_ID).getHeaders()
-				.get("Bundle-Version");
-
-		Pattern versionPattern = Pattern.compile("\\d+\\.(\\d+)\\..*");
-		Matcher m = versionPattern.matcher(version);
-		if (m.matches()) {
-			// org.eclipse.ui has minor number 106 for Luna
-			int minorVersion = Integer.parseInt(m.group(1));
-			if (minorVersion >= 106) {
-				return true;
-			}
-		}
-
-		return false;
+		// org.eclipse.ui has minor number 106 for Luna
+		return getOrgEclipseUiMinorVersion() >= 106;
 	}
 
 	protected static boolean isIndigo() {
+		// org.eclipse.ui has minor number 7 for Indigo, and surely less than 100
+		return getOrgEclipseUiMinorVersion() < 100;
+	}
+
+	protected static boolean isKepler() {
+		int orgEclipseUiMinorVersion = getOrgEclipseUiMinorVersion();
+		return orgEclipseUiMinorVersion > 100 && orgEclipseUiMinorVersion < 106;
+	}
+
+	protected static int getOrgEclipseUiMinorVersion() {
 		String version = Platform.getBundle(PlatformUI.PLUGIN_ID).getHeaders()
 				.get("Bundle-Version");
 
 		Pattern versionPattern = Pattern.compile("\\d+\\.(\\d+)\\..*");
 		Matcher m = versionPattern.matcher(version);
 		if (m.matches()) {
-			// org.eclipse.ui has minor number 7 for Indigo, and surely less than 100
-			int minorVersion = Integer.parseInt(m.group(1));
-			if (minorVersion < 100) {
-				return true;
-			}
+			return Integer.parseInt(m.group(1));
+		} else {
+			throw new RuntimeException("Can't parse version " + version);
 		}
-
-		return false;
 	}
 
 	protected void assertPropertyViewIsOpenedAndCloseIt() {
@@ -856,7 +858,7 @@ public class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected static SWTBotView getPackageExplorer() {
-		SWTBotView view = bot.viewByTitle("Package Explorer");
+		SWTBotView view = bot.viewByTitle(PACKAGE_EXPLORER);
 		return view;
 	}
 
@@ -1030,6 +1032,13 @@ public class EmfParsleySWTBotAbstractTests {
 		assertNoErrorsInProject();
 	}
 
+	protected void assertNoIssuesInProjectAfterAutoBuild() throws CoreException {
+		waitForBuild();
+		// the second wait is for our custom builder for plugin.xml
+		waitForBuild();
+		assertNoIssuesInProject();
+	}
+
 	protected void assertNoErrorsInProject() throws CoreException {
 		IMarker[] markers = root().findMarkers(IMarker.PROBLEM, true,
 				IResource.DEPTH_INFINITE);
@@ -1045,7 +1054,25 @@ public class EmfParsleySWTBotAbstractTests {
 				"expected no error markers: " + printMarkers(errorMarkers), 0,
 				errorMarkers.size());
 	}
-	
+
+	/**
+	 * Checks that there are no errors nor warnings.
+	 * 
+	 * @throws CoreException
+	 */
+	protected void assertNoIssuesInProject() throws CoreException {
+		IMarker[] markers = root().findMarkers(IMarker.PROBLEM, true,
+				IResource.DEPTH_INFINITE);
+		List<IMarker> errorMarkers = new LinkedList<IMarker>();
+		for (int i = 0; i < markers.length; i++) {
+			IMarker iMarker = markers[i];
+			errorMarkers.add(iMarker);
+		}
+		assertEquals(
+				"expected no issue markers: " + printMarkers(errorMarkers), 0,
+				errorMarkers.size());
+	}
+
 	protected void setEditorContentsSaveAndWaitForAutoBuild(
 			SWTBotEditor editor, CharSequence contents) throws CoreException {
 		setEditorContentsSaveAndWaitForAutoBuild(editor, contents, true);

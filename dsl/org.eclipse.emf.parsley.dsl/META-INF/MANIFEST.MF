@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Emf Parsley DSL
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 0.6.1.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext;bundle-version="[2.9.1,2.10.0)";visibility:=reexport,
+Require-Bundle: org.eclipse.xtext;bundle-version="[2.10.0,2.11.0)";visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.9.1,2.10.0)";visibility:=re
  org.eclipse.xtext.xbase.lib,
  org.eclipse.emf.parsley;visibility:=reexport,
  org.eclipse.emf.parsley.generator.common,
- org.objectweb.asm;bundle-version="5.0.1";visibility:=reexport
+ org.objectweb.asm;bundle-version="5.0.1";visibility:=reexport,
+ org.eclipse.xtend.lib
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
@@ -37,5 +38,6 @@ Export-Package: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.dsl.services,
  org.eclipse.emf.parsley.dsl.typing,
  org.eclipse.emf.parsley.dsl.util,
- org.eclipse.emf.parsley.dsl.validation
+ org.eclipse.emf.parsley.dsl.validation,
+ org.eclipse.emf.parsley.dsl.formatting2
 

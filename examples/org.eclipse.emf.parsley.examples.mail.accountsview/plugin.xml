@@ -12,8 +12,15 @@
             class="org.eclipse.emf.parsley.examples.mail.accountsview.AccountsviewExecutableExtensionFactory:org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView"
             icon="icons/sample.gif"
             id="org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView"
-            name="Mail Accounts View">
+            name="Mail Accounts View"
+            restorable="true">
+      </view>
+      <view
+            category="org.eclipse.emf.parsley.examples.mail.accountsview"
+            class="org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedfoldersviewExecutableExtensionFactory:org.eclipse.emf.parsley.examples.mail.accountsview.unifiedfolders.UnifiedFoldersView"
+            id="org.eclipse.emf.parsley.examples.mail.unifiedfoldersview"
+            name="Unified Folders"
+            restorable="true">
       </view>
    </extension>
-
 </plugin>

@@ -21,6 +21,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
  * @author Dennis Huebner - Initial contribution and API
  * @author Lorenzo Bettini - Refactoring and adaptations
  */
+@SuppressWarnings("rawtypes")
 public class MultipleFeatureControlObservable extends AbstractObservableValue implements ISelectionChangedListener {
 
 	private final MultipleFeatureControl mfc;
@@ -45,6 +46,7 @@ public class MultipleFeatureControlObservable extends AbstractObservableValue im
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void selectionChanged(final SelectionChangedEvent event) {
 		fireValueChange(new ValueDiff() {

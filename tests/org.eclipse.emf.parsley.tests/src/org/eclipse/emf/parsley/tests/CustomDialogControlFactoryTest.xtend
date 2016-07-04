@@ -10,24 +10,23 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.core.databinding.observable.value.IObservableValue
-import org.eclipse.emf.databinding.EMFDataBindingContext
 import org.eclipse.emf.databinding.EMFProperties
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.composite.ControlObservablePair
-import org.eclipse.emf.parsley.util.DatabindingUtil
 import org.eclipse.emf.parsley.composite.DialogControlFactory
 import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
+import org.eclipse.emf.parsley.tests.util.CustomDialogControlFactoryForTests
+import org.eclipse.emf.parsley.util.DatabindingUtil
 import org.eclipse.swt.SWT
+import org.eclipse.swt.layout.FillLayout
 import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.swt.layout.FillLayout
 
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 
@@ -53,6 +52,30 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	/**
+	 * Test the protected getters from the superclass
+	 * 
+	 * <pre>
+	 * Control control_ClassName_FeatureName(ClassName e)
+	 * </pre>
+	 */
+	@Test
+	def void testCustomControlPolymorphicGetters() {
+		val obj = createBaseClassObject
+		val factory = new DialogControlFactory {
+			def control_BaseClass_baseClassFeature(BaseClass e) {
+				obj.assertSame(owner)
+				dataBindingContext.assertNotNull
+				// in this scenario the editing domain is null
+				editingDomain.assertNull
+				createText("Foo")
+			}
+		} => [initialize(obj)]
+		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
+		control.assertTextEditable(true)
+		control.assertText("Foo")
+	}
+
+	/**
 	 * Test the polymorphic method pattern
 	 * 
 	 * <pre>
@@ -65,17 +88,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlWithDatabindingContextPolymorphic() {
 		val o1 = createBaseClassObject
-		val factory = new DialogControlFactory {
-			def control_BaseClass_baseClassFeature(EMFDataBindingContext edbc, IObservableValue modelObservableValue) {
-				val text = createText("")
-				// by default the editable is true, thus setting it to false
-				// gives us evidence that this method was called
-				text.editable = false
-				val targetObservableValue = DatabindingUtil.observeText(text, SWT.Modify)
-				edbc.bindValue(targetObservableValue, modelObservableValue, null, null);
-				return text
-			}
-		} => [initialize(o1)]
+		val factory = new CustomDialogControlFactoryForTests => [initialize(o1)]
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
@@ -225,22 +238,28 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		control.assertText("Foo")
 	}
 
+	static class CustomProposalCreator extends ProposalCreator {
+		def proposals_BaseClass_baseClassFeature(BaseClass e) {
+			return #["First Proposal", "Second Proposal"]
+		}
+	}
+
 	@Test def void testWrongContentAssistKeyStroke() {
 		val factory = new DialogControlFactory => [initialize(createBaseClassObject)]
 		// this will replace the string for content assist shortcut with
 		// an unparsable KeyStroke
+
 		val injector = createInjector(new EmfParsleyGuiceModuleForTesting() {
 			override valueContentAssistShortcut() {
 				"Foo+Space";
 			}
+			
+			override bindProposalCreator() {
+				CustomDialogControlFactoryTest.CustomProposalCreator
+			}
+			
 		})
 		injector.injectMembers(factory)
-		// this will trigger the creation of a ContentProposalAdapter
-		factory.proposalCreator = new ProposalCreator() {
-			def proposals_BaseClass_baseClassFeature(BaseClass e) {
-				return #["First Proposal", "Second Proposal"]
-			}
-		}
 		// during the parsing of the KeyStroke an exception will be logged
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		// but the Text will be created anyway (without ContentProposalAdapter)

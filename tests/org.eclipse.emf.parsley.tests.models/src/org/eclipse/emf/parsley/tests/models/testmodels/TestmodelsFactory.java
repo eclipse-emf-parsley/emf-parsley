@@ -38,6 +38,15 @@ public interface TestmodelsFactory extends EFactory {
 	TestEClass createTestEClass();
 
 	/**
+	 * Returns a new object of class '<em>Test EClass For Feature Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Test EClass For Feature Name</em>'.
+	 * @generated
+	 */
+	TestEClassForFeatureName createTestEClassForFeatureName();
+
+	/**
 	 * Returns a new object of class '<em>ABase Class</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -27,7 +27,6 @@ import org.eclipse.emf.parsley.composite.AbstractControlFactory;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.composite.MultipleFeatureControl;
-import org.eclipse.emf.parsley.composite.ProposalCreator;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm;
 import org.eclipse.jface.databinding.swt.SWTObservables;
@@ -113,7 +112,7 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 	protected void initializeCommon(
 			final AbstractControlFactory controlFactory, final EObject obj) {
 		injectMembers(controlFactory);
-		controlFactory.setProposalCreator(new ProposalCreator());
+		getOrCreateInjector().injectMembers(controlFactory);
 	}
 
 	protected Control createControl(final AbstractControlFactory factory,

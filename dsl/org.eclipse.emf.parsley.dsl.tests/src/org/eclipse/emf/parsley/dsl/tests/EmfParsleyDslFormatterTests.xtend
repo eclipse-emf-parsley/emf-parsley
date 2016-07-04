@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.formatter.FormatterTester

@@ -20,7 +20,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
-import org.eclipse.emf.parsley.examples.eclipse4.parsleypart.ParsleypartActivator;
+import org.eclipse.emf.parsley.examples.eclipse4.parsleypart.ParsleypartInjectorProvider;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -29,9 +29,6 @@ import com.google.inject.Injector;
 
 public class ParsleyE4ModelPart {
 
-	// Guice injector
-	private Injector injector = ParsleypartActivator.getDefault().getInjector();
-
 	private TreeFormComposite treeFormComposite;
 
 	@Inject
@@ -39,6 +36,8 @@ public class ParsleyE4ModelPart {
 
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+		// Guice injector
+		Injector injector = ParsleypartInjectorProvider.getInjector();
 		// Guice injected EMF Parsley factory for the tree detail form
 		TreeFormFactory treeFormFactory = injector.getInstance(TreeFormFactory.class);
 		// Guice injected viewer context menu helper

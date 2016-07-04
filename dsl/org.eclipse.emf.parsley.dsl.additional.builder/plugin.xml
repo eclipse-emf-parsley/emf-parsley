@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="emfParsleyDslPluginXmlBuilder"
+         name="Emf Parsley Dsl Plugin Xml Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="emfParsleyDslPluginXmlNature"
+         name="Emf Parsley Dsl Plugin Xml Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature">
+         </run>
+      </runtime>
+      <builder
+            id="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Emf Parsley Dsl Plugin Xml Nature commands"
+            id="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature.category">
+      </category>
+      <command
+            name="Add/RemoveEmf Parsley Dsl Plugin Xml Nature"
+            defaultHandler="org.eclipse.emf.parsley.dsl.additional.builder.builder.AddRemoveEmfParsleyDslPluginXmlNatureHandler"
+            categoryId="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature.category"
+            id="org.eclipse.emf.parsley.dsl.additional.builder.addRemoveEmfParsleyDslPluginXmlNature">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+         <command
+               commandId="org.eclipse.emf.parsley.dsl.additional.builder.addRemoveEmfParsleyDslPluginXmlNature"
+               label="Disable EMF Parsley builder"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IProject">
+                        <test
+                              value="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature"
+                              property="org.eclipse.core.resources.projectNature">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipse.emf.parsley.dsl.additional.builder.addRemoveEmfParsleyDslPluginXmlNature"
+               label="Enable EMF Parsley builder"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IProject">
+                        <not>
+                           <test
+                                 value="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature"
+                                 property="org.eclipse.core.resources.projectNature">
+                           </test>
+                        </not>
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/parsley_nature.png"
+            id="org.eclipse.emf.parsley.builder.nature.overlay"
+            label="Emf Parsley Dsl Plugin Xml Nature"
+            lightweight="true"
+            location="TOP_RIGHT"
+            state="true">
+         <enablement>
+         	<and>
+		     	<objectClass
+		              name="org.eclipse.core.resources.IProject"/>
+		        <objectState
+		              name="nature"
+		              value="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature">
+		        </objectState>
+            </and>
+         </enablement>
+      </decorator>
+   </extension>
+
+</plugin>

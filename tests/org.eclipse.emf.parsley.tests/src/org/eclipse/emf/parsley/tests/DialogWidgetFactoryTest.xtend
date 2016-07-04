@@ -71,9 +71,15 @@ class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
 		control.assertText(TEST_TEXT)
 	}
 
-	@Test def void testTextWithParentAndStyle() {
+	@Test def void testTextWithParentTextAndStyle() {
 		val control = factory.createText(shell, TEST_TEXT, SWT.NO_SCROLL)
 		control.assertText(TEST_TEXT)
+		control.assertStyle(SWT.NO_SCROLL)
+	}
+
+	@Test def void testTextWithParentAndStyle() {
+		val control = factory.createText(shell, SWT.NO_SCROLL)
+		control.assertText("")
 		control.assertStyle(SWT.NO_SCROLL)
 	}
 

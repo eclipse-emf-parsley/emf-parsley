@@ -2,16 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley SWTBOT Examples Tests
 Bundle-SymbolicName: org.eclipse.emf.parsley.tests.swtbot.examples;singleton:=true
-Bundle-Version: 0.6.1.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.3.0",
  org.eclipse.core.resources;bundle-version="3.5.0",
  org.eclipse.emf.parsley,
  org.eclipse.emf.parsley.views,
- org.eclipse.emf.parsley.examples.mail.accountsview,
- org.eclipse.emf.parsley.examples.mail.mailsview,
- org.eclipse.emf.parsley.examples.mail.messageview,
- org.eclipse.emf.parsley.examples.mail.model,
- org.eclipse.emf.parsley.examples.mail.rcp,
+ org.eclipse.emf.parsley.examples.mail.accountsview;bundle-version="0.7.0",
+ org.eclipse.emf.parsley.examples.mail.mailsview;bundle-version="0.7.0",
+ org.eclipse.emf.parsley.examples.mail.messageview;bundle-version="0.7.0",
+ org.eclipse.emf.parsley.examples.mail.model;bundle-version="0.7.0",
+ org.eclipse.emf.parsley.examples.mail.rcp;bundle-version="0.7.0",
  org.eclipse.swtbot.forms.finder;bundle-version="2.3.0"

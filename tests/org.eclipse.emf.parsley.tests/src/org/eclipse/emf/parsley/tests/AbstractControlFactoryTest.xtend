@@ -15,9 +15,9 @@ import org.junit.Rule
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 
 abstract class AbstractControlFactoryTest extends AbstractEmfParsleyControlBasedTest {
-	
+
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
-	
+
 	override protected getEditingDomain() {
 		return fixtures.editingDomain
 	}

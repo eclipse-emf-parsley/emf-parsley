@@ -16,13 +16,15 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
+import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder;
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature;
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration;
 import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
 import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator;
 import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
+import org.eclipse.xtext.ui.util.PluginProjectFactory;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 /**
@@ -33,12 +35,6 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 	static EmfParsleyDslNewProjectFiles filesGenerator = new EmfParsleyDslNewProjectFiles();
 
 	static EmfParsleyProjectFilesGenerator projectFilesGenerator = new EmfParsleyProjectFilesGenerator();
-
-	@Override
-	protected List<String> getAllFolders() {
-		return ImmutableList.of(SRC_ROOT,
-				EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN);
-	}
 
 	/**
 	 * @return the names of the bundles that a new project requires. May not be
@@ -68,13 +64,36 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		// otherwise the plugin will depend on xtext stuff
 		// which are not used by the generated code
 	}
-	
+
+	@Override
+	protected PluginProjectFactory createProjectFactory() {
+		PluginProjectFactory projectFactory = super.createProjectFactory();
+		if (getProjectInfo().getSelectedTemplate() != null) {
+			projectFactory.setWithPluginXml(true);
+		}
+		return projectFactory;
+	}
+
 	@Override
 	protected String getActivatorClassName() {
 		return getProjectInfo().getProjectName()
 				+ "."
 				+ projectFilesGenerator.activatorName(
 						getProjectInfo().getProjectName()).toString();
+	}
+
+	@Override
+	protected String[] getProjectNatures() {
+		List<String> natures = Lists.newArrayList(super.getProjectNatures());
+		natures.add(EmfParsleyDslPluginXmlNature.NATURE_ID);
+		return natures.toArray(new String[natures.size()]);
+	}
+
+	@Override
+	protected String[] getBuilders() {
+		List<String> builders = Lists.newArrayList(super.getBuilders());
+		builders.add(EmfParsleyDslPluginXmlBuilder.BUILDER_ID);
+		return builders.toArray(new String[builders.size()]);
 	}
 
 	@Override
@@ -85,18 +104,18 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		String srcFolder = "src";
 		String projectPackagePath = srcFolder + "/"
 				+ projectName.replaceAll("\\.", "/");
+		
+		SubMonitor subMonitor = SubMonitor.convert(monitor, 
+				"Creating project " + projectName, 
+				5);
 
 		String[] paths = { projectPackagePath };
 		NewEmfParsleyProjectSupport.addToProjectStructure(project, paths,
-				monitor);
+				subMonitor.newChild(1));
 
 		NewEmfParsleyProjectSupport.createActivator(project, projectName,
-				projectPackagePath, monitor);
-		NewEmfParsleyProjectSupport.createExecutableExtensionFactory(
-				project, projectName, projectPackagePath, monitor);
-		NewEmfParsleyProjectSupport.createModule(project, projectName,
-				projectPackagePath, "EmfParsleyGuiceModuleGen", monitor);
-		
+				projectPackagePath, subMonitor.newChild(1));
+
 		String dslFileContents = "";
 		TemplateWizardConfiguration selectedTemplate = getProjectInfo().getSelectedTemplate();
 		if (selectedTemplate != null) {
@@ -104,18 +123,16 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 			String partContents = selectedTemplate.getContentsForPart(projectName);
 			NewEmfParsleyProjectSupport.createProjectFile(project,
 					projectPackagePath + "/" + partClassName.concat(".java"),
-					partContents, NewEmfParsleyProjectSupport
-							.createSubProgressMonitor(monitor));
+					partContents, subMonitor.newChild(1));
 			dslFileContents = selectedTemplate.getParsleyModuleContents(projectName);
 		} else {
 			dslFileContents = filesGenerator.genEmptyDslModule(projectName).toString();
 		}
-		
-		NewEmfParsleyProjectSupport.createProjectFile(project,
-				projectPackagePath + "/module.parsley", dslFileContents,
-				NewEmfParsleyProjectSupport
-						.createSubProgressMonitor(monitor));
 
-		project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		NewEmfParsleyProjectSupport.createDslModule(project, projectName,
+				projectPackagePath, dslFileContents, subMonitor.newChild(1));
+
+		project.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.newChild(1));
+		subMonitor.done();
 	}
 }

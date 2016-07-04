@@ -30,8 +30,8 @@ public class FormDetailReadOnlyComposite extends FormDetailComposite {
 	@Override
 	@Inject
 	public void setFormControlFactory(FormControlFactory formControlFactory) {
+		formControlFactory.setReadonly(true);
 		super.setFormControlFactory(formControlFactory);
-		this.formControlFactory.setReadonly(true);
 	}
 
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.examples.mail.product.feature"
-      label="Emf Parsley Mail Product Feature"
-      version="0.6.1.qualifier"
+      label="EMF Parsley Mail Product Feature"
+      version="1.0.0.qualifier"
       provider-name="Rcp-Vision">
 
    <description url="http://www.eclipse.org/emfparsley">
-      Emf Parsley Mail Product Feature
+      EMF Parsley Mail Product Feature
    </description>
 
    <copyright>
@@ -72,13 +72,6 @@
 
    <plugin
          id="org.eclipse.emf.parsley.examples.mail.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.examples.mail.unifiedfoldersview"
          download-size="0"
          install-size="0"
          version="0.0.0"

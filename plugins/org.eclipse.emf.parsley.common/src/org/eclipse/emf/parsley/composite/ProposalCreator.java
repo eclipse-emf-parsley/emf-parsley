@@ -44,7 +44,7 @@ public class ProposalCreator {
 	private static final String PROPOSALS_PREFIX = "proposals_";
 
 	private Resource resource;
-	
+
 	public Resource getResource() {
 		return resource;
 	}
@@ -52,7 +52,7 @@ public class ProposalCreator {
 	public void setResource(Resource resource) {
 		this.resource = resource;
 	}
-	
+
 	protected void retrieveResource(EObject eObject) {
 		resource = eObject.eResource();
 	}
@@ -64,12 +64,11 @@ public class ProposalCreator {
 	 * @return possible values
 	 */
 	public List<Object> proposals(EObject eObject, EStructuralFeature feature) {
-		
-		List<Object> proposals  = polymorphicCreateProposals(eObject, feature);
+		List<Object> proposals = polymorphicCreateProposals(eObject, feature);
 		if (proposals != null) {
 			return proposals;
 		}
-		
+
 		if (getResource() == null) {
 			retrieveResource(eObject);
 		}
@@ -85,10 +84,8 @@ public class ProposalCreator {
 		} else if (feature.getEType() instanceof EEnumImpl) {
 			EEnum eEnum = (EEnum) feature.getEType();
 			List<Object> enumerators = new ArrayList<Object>();
-			for (Iterator<?> iter = eEnum.getELiterals().iterator(); iter
-					.hasNext();) {
-				Enumerator instance = ((EEnumLiteral) iter.next())
-						.getInstance();
+			for (Iterator<?> iter = eEnum.getELiterals().iterator(); iter.hasNext();) {
+				Enumerator instance = ((EEnumLiteral) iter.next()).getInstance();
 				enumerators.add(instance);
 			}
 			retVal = enumerators;
@@ -98,11 +95,11 @@ public class ProposalCreator {
 
 	protected List<Object> findAllInstances(EClassifier type) {
 		List<Object> objects = new ArrayList<Object>();
-		
+
 		if (getResource() == null) {
 			return objects;
 		}
-		
+
 		TreeIterator<Object> allContents = getAllContents();
 		while (allContents.hasNext()) {
 			Object o = allContents.next();
@@ -115,14 +112,14 @@ public class ProposalCreator {
 
 	protected TreeIterator<Object> getAllContents() {
 		ResourceSet resourceSet = resource.getResourceSet();
-		
+
 		if (resourceSet == null) {
 			return EcoreUtil.getAllContents(resource, true);
 		} else {
 			return EcoreUtil.getAllContents(resourceSet.getResources(), true);
 		}
 	}
-	
+
 	private List<Object> polymorphicCreateProposals(EObject element, EStructuralFeature feature) {
 		EClass eClass = element.eClass();
 

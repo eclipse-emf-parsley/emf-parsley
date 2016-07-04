@@ -15,6 +15,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher.MethodNameFilter;
 
 import com.google.common.base.Predicate;
 
@@ -122,8 +123,30 @@ public class PolymorphicDispatcherExtensions {
 	 */
 	private static Predicate<Method> featureBasedMethodPredicate(
 			EClass eClass, EStructuralFeature feature, String prefix, int numOfParams) {
-		return PolymorphicDispatcher.Predicates.forName(prefix + eClass.getName()
-				+ "_" + feature.getName(), numOfParams);
+		String featureName = feature.getName();
+		String methodNamePrefix = prefix + eClass.getName() + "_";
+		String predicateMethodName = methodNamePrefix + featureName;
+		if (featureName.length() > 1 && Character.isUpperCase(featureName.charAt(1))
+				&& Character.isLowerCase(featureName.charAt(0))) {
+			// see bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=494886
+			// we must treat cases like eType as special cases, since the DSL will
+			// generate _EType so we must search for methods polymorphically both with
+			// _eType (which is what one would manually write) and
+			// _EType (which is what the DSL generates)
+			char chars[] = featureName.toCharArray();
+			chars[0] = Character.toUpperCase(chars[0]);
+			final String alternativePredicateMethodName = methodNamePrefix + new String(chars);
+			return new MethodNameFilter(predicateMethodName, numOfParams, numOfParams) {
+				@Override
+				public boolean apply(Method param) {
+					String paramName = param.getName();
+					return (paramName.equals(methodName) || paramName.equals(alternativePredicateMethodName))
+							&& param.getParameterTypes().length >= minParams
+							&& param.getParameterTypes().length <= maxParams;
+				}
+			};
+		}
+		return PolymorphicDispatcher.Predicates.forName(predicateMethodName, numOfParams);
 	}
 
 	/**

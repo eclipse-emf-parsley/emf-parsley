@@ -83,6 +83,10 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 				return createTestEClassAdapter();
 			}
 			@Override
+			public Adapter caseTestEClassForFeatureName(TestEClassForFeatureName object) {
+				return createTestEClassForFeatureNameAdapter();
+			}
+			@Override
 			public Adapter caseABaseClass(ABaseClass object) {
 				return createABaseClassAdapter();
 			}
@@ -161,6 +165,20 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTestEClassAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestEClassForFeatureName <em>Test EClass For Feature Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestEClassForFeatureName
+	 * @generated
+	 */
+	public Adapter createTestEClassForFeatureNameAdapter() {
 		return null;
 	}
 

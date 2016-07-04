@@ -33,7 +33,7 @@
 
   <project-facet-version
         facet="parsleyweb.core"
-        version="0.5">
+        version="0.7">
      <constraint>
       <requires facet="jst.web"/>
     </constraint>
@@ -51,7 +51,7 @@
 
   <project-facet-version
         facet="parsleyweb.ui.angularjs"
-        version="0.5">
+        version="0.7">
      <constraint>
       <requires facet="jst.web"/>
     </constraint>

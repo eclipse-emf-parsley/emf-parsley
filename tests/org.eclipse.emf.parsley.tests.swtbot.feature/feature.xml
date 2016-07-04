@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.tests.swtbot.feature"
-      label="Emf Parsley SWTBOT Tests Feature"
-      version="0.6.1.qualifier">
+      label="EMF Parsley SWTBOT Tests Feature"
+      version="1.0.0.qualifier">
 
    <description url="http://www.example.com/description">
-      Emf Parsley SWTBOT Tests Feature
+      EMF Parsley SWTBOT Tests Feature
    </description>
 
    <copyright>
@@ -18,10 +18,6 @@
 
    <includes
          id="org.eclipse.emf.parsley.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.pde"
          version="0.0.0"/>
 
    <includes
@@ -87,6 +83,13 @@
 
    <plugin
          id="org.eclipse.swtbot.go"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

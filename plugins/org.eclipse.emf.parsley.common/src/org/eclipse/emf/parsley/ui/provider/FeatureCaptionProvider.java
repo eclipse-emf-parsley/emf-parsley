@@ -25,7 +25,6 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
  * <pre>
  * {@code
  *    public String text_MyClass_myFeature(EStructuralFeature feature)
- *      
  * }
  * </pre>
  * 

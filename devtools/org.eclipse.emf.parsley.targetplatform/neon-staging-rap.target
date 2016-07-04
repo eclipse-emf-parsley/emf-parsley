@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="neon-staging-rap" sequenceNumber="1">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.sdk.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.examples.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
+<unit id="com.google.guava" version="0.0.0"/>
+<unit id="javax.inject" version="0.0.0"/>
+<unit id="org.apache.log4j" version="0.0.0"/>
+<unit id="com.google.inject" version="0.0.0"/>
+<unit id="org.eclipse.emf.cdo.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.rap.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.rap.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.databinding.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.net4j.db.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.net4j.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.net4j.util.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.cdo.server.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.cdo.server.db.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.databinding.edit.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.query.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/staging/neon/"/>
+</location>
+</locations>
+</target>

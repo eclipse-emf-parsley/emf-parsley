@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.tests.swtbot.cdo.feature"
-      label="Emf Parsley CDO SWTBOT Tests Feature"
-      version="0.6.1.qualifier">
+      label="EMF Parsley CDO SWTBOT Tests Feature"
+      version="1.0.0.qualifier">
 
    <description url="http://www.example.com/description">
-      Emf Parsley CDO SWTBOT Tests Feature
+      EMF Parsley CDO SWTBOT Tests Feature
    </description>
 
    <copyright>

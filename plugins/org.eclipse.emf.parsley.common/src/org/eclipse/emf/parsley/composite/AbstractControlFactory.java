@@ -24,12 +24,14 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
+import org.eclipse.emf.parsley.ui.provider.ComboViewerLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.emf.parsley.util.FeatureHelper;
@@ -85,28 +87,31 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	private Provider<ILabelProvider> labelProviderProvider;
 
 	@Inject
+	private Provider<ComboViewerLabelProvider> comboViewerLabelProviderProvider;
+
+	@Inject
 	private FeatureHelper featureHelper;
 
 	@Inject
 	private ProposalCreator proposalCreator;
 
-	protected EObject owner;
-	protected Resource resource;
-	protected EditingDomain domain;
-	protected EMFDataBindingContext edbc;
+	private EObject owner;
+	private Resource resource;
+	private EditingDomain domain;
+	private EMFDataBindingContext edbc;
 
 	/**
 	 * This will be created by the abstract method {@link #createWidgetFactory()}
 	 */
-	protected IWidgetFactory widgetFactory;
+	private IWidgetFactory widgetFactory;
 
 	/**
 	 * This will be created by the abstract method
 	 * {@link #createFeatureLabelCaptionProvider()}
 	 */
-	protected FeatureLabelCaptionProvider featureLabelCaptionProvider;
+	private FeatureLabelCaptionProvider featureLabelCaptionProvider;
 
-	protected boolean readonly = false;
+	private boolean readonly = false;
 
 	public static final String EOBJECT_KEY = EcorePackage.Literals.EOBJECT
 			.getName();
@@ -115,6 +120,25 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	public AbstractControlFactory() {
 
+	}
+
+	protected EObject getOwner() {
+		return owner;
+	}
+
+	protected EditingDomain getEditingDomain() {
+		return domain;
+	}
+
+	protected EMFDataBindingContext getDataBindingContext() {
+		return edbc;
+	}
+
+	protected Resource getResource() {
+		if (resource == null) {
+			resource = owner.eResource();
+		}
+		return resource;
 	}
 
 	/**
@@ -134,28 +158,20 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 */
 	protected abstract FeatureLabelCaptionProvider createFeatureLabelCaptionProvider();
 
-	public Provider<ILabelProvider> getLabelProviderProvider() {
-		return labelProviderProvider;
-	}
-
-	protected ILabelProvider createLabelProvider() {
-		return getLabelProviderProvider().get();
-	}
-
-	public ProposalCreator getProposalCreator() {
-		return proposalCreator;
-	}
-
-	public void setProposalCreator(ProposalCreator proposalCreator) {
-		this.proposalCreator = proposalCreator;
-	}
-
 	public boolean isReadonly() {
 		return readonly;
 	}
 
 	public void setReadonly(boolean readonly) {
 		this.readonly = readonly;
+	}
+
+	private ILabelProvider createLabelProvider() {
+		return labelProviderProvider.get();
+	}
+
+	private ILabelProvider createComboViewerLabelProvider() {
+		return comboViewerLabelProviderProvider.get();
 	}
 
 	/**
@@ -183,13 +199,6 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		this.owner = owner;
 	}
 
-	protected Resource getResource() {
-		if (resource == null) {
-			resource = owner.eResource();
-		}
-		return resource;
-	}
-
 	/**
 	 * Creates a caption label and a {@link Control} for the passed {@link EStructuralFeature}
 	 * of the {@link EObject} handled by this factory.
@@ -203,20 +212,36 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	/**
 	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
-	 * of the {@link EObject} handled by this factory.
+	 * of the {@link EObject} handled by this factory, using polymorphic dispatch.
 	 * 
 	 * @param feature the {@link EStructuralFeature} for the creation of control
 	 * @return a {@link Control}
 	 */
 	public Control create(EStructuralFeature feature) {
+		return create(feature, true);
+	}
+
+	/**
+	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
+	 * of the {@link EObject} handled by this factory, using polymorphic dispatch, if
+	 * specified in the argument withPolymorphicDispatch.
+	 * 
+	 * @param feature
+	 * @param withPolymorphicDispatch
+	 * @return
+	 */
+	public Control create(EStructuralFeature feature, boolean withPolymorphicDispatch) {
 		Control control = null;
 
-		control = polymorphicCreateControl(feature);
+		if (withPolymorphicDispatch) {
+			control = polymorphicCreateControl(feature);
+		}
+
 		if (control == null) {
 			if (feature.isMany()) {
-				control = createAndBindList(feature);
+				control = createAndBindList(feature, withPolymorphicDispatch);
 			} else {
-				control = createAndBindValue(feature);
+				control = createAndBindValue(feature, withPolymorphicDispatch);
 			}
 			setupControl(feature, control);
 		}
@@ -226,6 +251,18 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return control;
 	}
 
+	/**
+	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
+	 * of the {@link EObject} handled by this factory, using the default
+	 * implementation, that is, without using polymorphic dispatch.
+	 * 
+	 * @param feature the {@link EStructuralFeature} for the creation of control
+	 * @return a {@link Control}
+	 */
+	public Control createDefaultControl(EStructuralFeature feature) {
+		return create(feature, false);
+	}
+
 	protected KeyListener registerUndoRedo(Control control) {
 		if (control instanceof Text) {
 			return new TextUndoRedo((Text) control);
@@ -233,10 +270,11 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return null;
 	}
 
-	protected Control createAndBindList(final EStructuralFeature feature) {
-		IObservableValue source = createFeatureObserveable(feature);
+	@SuppressWarnings("rawtypes")
+	protected Control createAndBindList(final EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		IObservableValue source = createFeatureObserveable(feature, withPolymorphicDispatch);
 
-		ControlObservablePair retValAndTargetPair = createControlForList(feature);
+		ControlObservablePair retValAndTargetPair = createControlForList(feature, withPolymorphicDispatch);
 		Control retVal = retValAndTargetPair.getControl();
 		IObservableValue target = retValAndTargetPair.getObservableValue();
 
@@ -245,41 +283,50 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return retVal;
 	}
 
-	protected IObservableValue createFeatureObserveable(final EStructuralFeature feature) {
-		IObservableValue source = polymorphicCreateObserveable(domain, feature);
-		if (source == null) {
-			if (domain != null) {
-				source = EMFEditProperties.value(domain, feature).observe(owner);
-			} else {
-				source = EMFProperties.value(feature).observe(owner);
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	protected IObservableValue createFeatureObserveable(final EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		if (withPolymorphicDispatch) {
+			IObservableValue source = polymorphicCreateObserveable(domain, feature);
+			if (source != null) {
+				return source;
 			}
 		}
-		return source;
+		if (domain != null) {
+			return EMFEditProperties.value(domain, feature).observe(owner);
+		} else {
+			return EMFProperties.value(feature).observe(owner);
+		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	protected ControlObservablePair createControlForList(
-			final EStructuralFeature feature) {
-		ControlObservablePair result = polymorphicGetObservableControl(feature);
-		if (result != null) {
-			return result;
+			final EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		if (withPolymorphicDispatch) {
+			ControlObservablePair result = polymorphicGetObservableControl(feature);
+			if (result != null) {
+				return result;
+			}
 		}
 
 		MultipleFeatureControl mfc = new MultipleFeatureControl(getParent(),
 				this, labelProviderProvider.get(), owner,
-				feature, getProposalCreator(), isReadonly());
+				feature, proposalCreator, isReadonly());
 		IObservableValue target = new MultipleFeatureControlObservable(mfc);
 		return new ControlObservablePair(mfc, target);
 	}
 
-	Control createAndBindValue(EStructuralFeature feature) {
-		IObservableValue featureObservable = createFeatureObserveable(feature);
+	@SuppressWarnings("rawtypes")
+	protected Control createAndBindValue(EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		IObservableValue featureObservable = createFeatureObserveable(feature, withPolymorphicDispatch);
 
-		Control control = polymorphicCreateControl(feature, featureObservable);
-		if (control != null) {
-			return control;
+		if (withPolymorphicDispatch) {
+			Control control = polymorphicCreateControl(feature, featureObservable);
+			if (control != null) {
+				return control;
+			}
 		}
 
-		ControlObservablePair retValAndTargetPair = createControlAndObservableValue(feature);
+		ControlObservablePair retValAndTargetPair = createControlAndObservableValue(feature, withPolymorphicDispatch);
 		Control retVal = retValAndTargetPair.getControl();
 		IObservableValue controlObservable = retValAndTargetPair
 				.getObservableValue();
@@ -292,10 +339,12 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	}
 
 	protected ControlObservablePair createControlAndObservableValue(
-			EStructuralFeature feature) {
-		ControlObservablePair result = polymorphicGetObservableControl(feature);
-		if (result != null) {
-			return result;
+			EStructuralFeature feature, boolean withPolymorphicDispatch) {
+		if (withPolymorphicDispatch) {
+			ControlObservablePair result = polymorphicGetObservableControl(feature);
+			if (result != null) {
+				return result;
+			}
 		}
 
 		if (featureHelper.isBooleanFeature(feature)) {
@@ -316,11 +365,16 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	protected ControlObservablePair createControlAndObservableValueForNonBooleanFeature(
 			EStructuralFeature feature) {
-		List<?> proposals = null;
+		List<Object> proposals = null;
 		if (!isReadonly()) {
 			proposals = createProposals(feature);
 		}
 		if (featureHelper.hasPredefinedProposals(feature) && !isReadonly()) {
+			if (!featureHelper.isEnum(feature)) {
+				// empty item for setting reference to null
+				// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=490463
+				proposals.add(0, SetCommand.UNSET_VALUE);
+			}
 			return createControlAndObservableWithPredefinedProposals(proposals);
 		} else {
 			if (isReadonly() && feature instanceof EReference) {
@@ -330,21 +384,21 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		}
 	}
 
-	public List<Object> createProposals(EStructuralFeature feature) {
-		getProposalCreator().setResource(getResource());
-		return getProposalCreator().proposals(owner, feature);
+	protected List<Object> createProposals(EStructuralFeature feature) {
+		proposalCreator.setResource(getResource());
+		return proposalCreator.proposals(owner, feature);
 	}
 
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(
 			List<?> proposals) {
-		ComboViewer combo = createComboViewer(SWT.READ_ONLY);
-		combo.setContentProvider(new ArrayContentProvider());
-		combo.setLabelProvider(createLabelProvider());
-		combo.setInput(proposals);
+		ComboViewer comboViewer = createComboViewer(SWT.READ_ONLY);
+		comboViewer.setContentProvider(new ArrayContentProvider());
+		comboViewer.setLabelProvider(createComboViewerLabelProvider());
+		comboViewer.setInput(proposals);
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
-		retValAndTargetPair.setControl(combo.getCombo());
+		retValAndTargetPair.setControl(comboViewer.getCombo());
 		retValAndTargetPair.setObservableValue(ViewersObservables
-				.observeSingleSelection(combo));
+				.observeSingleSelection(comboViewer));
 		return retValAndTargetPair;
 	}
 
@@ -441,6 +495,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * @param featureObservable
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	private Control polymorphicCreateControl(EStructuralFeature feature,
 			IObservableValue featureObservable) {
 		return PolymorphicDispatcherExtensions
@@ -461,6 +516,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 						owner.eClass(), feature, CONTROL_PREFIX, owner);
 	}
 
+	@SuppressWarnings("rawtypes")
 	private IObservableValue polymorphicCreateObserveable(EditingDomain domain,
 			EStructuralFeature feature) {
 		return PolymorphicDispatcherExtensions

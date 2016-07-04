@@ -152,18 +152,9 @@ The generated project has some classes and a <em>module.parlsey</em> file, which
 </p>
 <p>
 The <em>viewpart</em> corresponds to the standard Eclipse view part extension point; the Parsley
-DSL will generate a <em>plugin.xml_emfparsley_gen</em>
-into the root folder of your project.
-The very first time, and only if it does not exist already, the DSL will also
-generate a <em>plugin.xml</em> file.
-Further generations will NOT overwrite the <em>plugin.xml</em>: they will overwrite
-<em>plugin.xml_emfparsley_gen</em>.
-If you make changes to the <em>parts</em> section in the DSL file, you will have
-to manually merge the two files <em>plugin.xml</em> and
-<em>plugin.xml_emfparsley_gen</em>.
-It is up to you to keep the generated file
-synchronized with your <em>"plugin.xml"</em>.  The easiest way is to select to the files,
-and use the context menu "Compare With" =&gt; "Each Other".
+DSL will handle the generation and update of the <em>plugin.xml</em> file.
+Please have a look at <a href="01-Overview.html#PluginXml" title="Go to &quot;How the DSL handles the plugin.xml&quot;">How the DSL handles the plugin.xml</a> for further
+details.
 </p>
 <p>
 The wizard will also generate a view part class into the project

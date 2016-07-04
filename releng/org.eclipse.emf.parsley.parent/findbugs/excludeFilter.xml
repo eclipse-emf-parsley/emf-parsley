@@ -34,6 +34,19 @@
 		<Method name="getEnumLiteral" />
 		<Bug pattern="EC_UNRELATED_TYPES_USING_POINTER_EQUALITY" />
 	</Match>
+	<!-- "==" compare is desired -->
+	<Match>
+		<Class
+			name="org.eclipse.emf.parsley.dsl.model.impl.ControlFactorySpecificationImpl" />
+		<Method name="getFeature" />
+		<Bug pattern="EC_UNRELATED_TYPES_USING_POINTER_EQUALITY" />
+	</Match>
+	<Match>
+		<Class
+			name="org.eclipse.emf.parsley.dsl.model.impl.FeatureAssociatedExpressionImpl" />
+		<Method name="getFeature" />
+		<Bug pattern="EC_UNRELATED_TYPES_USING_POINTER_EQUALITY" />
+	</Match>
 	
 	<!-- someArray.hashCode() is desired -->
 	<Match>

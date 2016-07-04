@@ -66,6 +66,7 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 		switch (eClass.getClassifierID()) {
 			case TestmodelsPackage.TEST_CONTAINER: return createTestContainer();
 			case TestmodelsPackage.TEST_ECLASS: return createTestEClass();
+			case TestmodelsPackage.TEST_ECLASS_FOR_FEATURE_NAME: return createTestEClassForFeatureName();
 			case TestmodelsPackage.ABASE_CLASS: return createABaseClass();
 			case TestmodelsPackage.BASE_CLASS: return createBaseClass();
 			case TestmodelsPackage.DERIVED_CLASS: return createDerivedClass();
@@ -133,6 +134,16 @@ public class TestmodelsFactoryImpl extends EFactoryImpl implements TestmodelsFac
 	public TestEClass createTestEClass() {
 		TestEClassImpl testEClass = new TestEClassImpl();
 		return testEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestEClassForFeatureName createTestEClassForFeatureName() {
+		TestEClassForFeatureNameImpl testEClassForFeatureName = new TestEClassForFeatureNameImpl();
+		return testEClassForFeatureName;
 	}
 
 	/**

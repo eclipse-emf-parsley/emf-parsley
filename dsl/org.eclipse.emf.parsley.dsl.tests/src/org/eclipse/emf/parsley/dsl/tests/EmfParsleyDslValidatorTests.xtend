@@ -19,7 +19,6 @@ import org.eclipse.emf.parsley.composite.DialogControlFactory
 import org.eclipse.emf.parsley.composite.FormControlFactory
 import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.config.Configurator
-import org.eclipse.emf.parsley.dsl.EmfParsleyDslInjectorProvider
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
@@ -197,60 +196,56 @@ class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
 	@Test
 	def void testModuleExtendsItself() {
 		'''
-		module my.first extends my.first.EmfParsleyGuiceModuleGen {
+		module my.first extends my.first.FirstEmfParsleyGuiceModule {
 		}
-		'''.parse.assertHierarchyCycle("EmfParsleyGuiceModuleGen")
+		'''.parse.assertHierarchyCycle("FirstEmfParsleyGuiceModule")
 	}
 
 	@Test
 	def void testModuleCycleInHierarchy() {
 		val m1 = '''
-		module my.first extends my.second.EmfParsleyGuiceModuleGen {
+		module my.first extends my.second.SecondEmfParsleyGuiceModule {
 		}
 		'''.parse
 		
 		val m2 = '''
-		module my.second extends my.third.EmfParsleyGuiceModuleGen {
+		module my.second extends my.third.ThirdEmfParsleyGuiceModule {
 		}
 		'''.parse(m1.eResource.resourceSet)
 		
 		val m3 = '''
-		module my.third extends my.first.EmfParsleyGuiceModuleGen {
+		module my.third extends my.first.FirstEmfParsleyGuiceModule {
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		val className = "EmfParsleyGuiceModuleGen"
-		
-		m1.assertHierarchyCycle(className)
-		m2.assertHierarchyCycle(className)
-		m3.assertHierarchyCycle(className)
+		m1.assertHierarchyCycle("SecondEmfParsleyGuiceModule")
+		m2.assertHierarchyCycle("ThirdEmfParsleyGuiceModule")
+		m3.assertHierarchyCycle("FirstEmfParsleyGuiceModule")
 	}
 
 	@Test
 	def void testLabelProviderCycleInHierarchy() {
 		val m1 = '''
 		module my.first {
-			labelProvider extends my.second.ui.provider.LabelProviderGen {}
+			labelProvider extends my.second.ui.provider.SecondLabelProvider {}
 		}
 		'''.parse
 		
 		val m2 = '''
 		module my.second {
-			labelProvider extends my.third.ui.provider.LabelProviderGen {}
+			labelProvider extends my.third.ui.provider.ThirdLabelProvider {}
 		}
 		'''.parse(m1.eResource.resourceSet)
 		
 		val m3 = '''
 		module my.third {
-			labelProvider extends my.first.ui.provider.LabelProviderGen {}
+			labelProvider extends my.first.ui.provider.FirstLabelProvider {}
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		val className = "LabelProviderGen"
-		
-		m1.assertHierarchyCycle(className)
-		m2.assertHierarchyCycle(className)
-		m3.assertHierarchyCycle(className)
+		m1.assertHierarchyCycle("SecondLabelProvider")
+		m2.assertHierarchyCycle("ThirdLabelProvider")
+		m3.assertHierarchyCycle("FirstLabelProvider")
 	}
 
 	@Test
@@ -670,7 +665,10 @@ Duplicate binding for: TableColumnWeights
 				}
 				'''
 		input.parse => [
-			2.assertEquals(validate.size)
+			// the errors are 4 because in standalone tests we also get the
+			// errors for checking duplicates across files
+			// in fact the URIs look different in the standalone test
+			4.assertEquals(validate.size)
 			assertDuplicateElement(
 				ModelPackage.eINSTANCE.viewSpecification,
 				input.indexOf("myId1"),
@@ -680,6 +678,57 @@ Duplicate binding for: TableColumnWeights
 				ModelPackage.eINSTANCE.viewSpecification,
 				input.lastIndexOf("myId1"),
 				'myId1'.length
+			)
+		]
+	}
+
+	@Test
+	def void testDuplicateViewPartsInDifferentFiles() {
+		val first = '''
+				import org.eclipse.emf.parsley.views.SaveableTreeFormView
+
+				module my.empty1 {
+					parts {
+						viewpart myId1 {
+							viewname "Test Model Tree Form View"
+							viewclass SaveableTreeFormView
+						}
+					}
+				}
+				'''
+		val firstModel = first.parse
+		val second = '''
+				import org.eclipse.emf.parsley.views.SaveableTreeFormView
+
+				module my.empty2 {
+					parts {
+						viewpart myId1 {
+							viewname "Test Model Tree Form View"
+							viewclass SaveableTreeFormView
+						}
+					}
+				}
+				'''
+		val secondModel = second.parse(firstModel.eResource.resourceSet)
+
+		firstModel => [
+			1.assertEquals(validate.size)
+			assertError(
+				ModelPackage.eINSTANCE.viewSpecification,
+				DUPLICATE_ELEMENT,
+				first.indexOf("myId1"),
+				'myId1'.length,
+				"The part id myId1 is already defined"
+			)
+		]
+		secondModel => [
+			1.assertEquals(validate.size)
+			assertError(
+				ModelPackage.eINSTANCE.viewSpecification,
+				DUPLICATE_ELEMENT,
+				second.indexOf("myId1"),
+				'myId1'.length,
+				"The part id myId1 is already defined"
 			)
 		]
 	}

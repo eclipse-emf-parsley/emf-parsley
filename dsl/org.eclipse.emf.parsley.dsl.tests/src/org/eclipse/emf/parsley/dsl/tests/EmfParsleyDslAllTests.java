@@ -20,7 +20,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	EmfParsleyDslGeneratorUtilsTests.class,
-	EmfParsleyDslParserTests.class,
+	EmfParsleyDslParsingTest.class,
 	EmfParsleyDslGuiceModuleHelperTests.class,
 	EmfParsleyDslSmokeTests.class,
 	EmfParsleyDslScopingTests.class,
@@ -33,6 +33,7 @@ import org.junit.runners.Suite;
 	EmfParsleyTemplateWizardConfigurationTests.class,
 	EmfParsleyTemplateWizardConfigurationFactoryTests.class,
 	EmfParsleyDslFormatterTests.class,
+	EmfParsleyDslPluginXmlLoaderTests.class
 })
 public class EmfParsleyDslAllTests {
 

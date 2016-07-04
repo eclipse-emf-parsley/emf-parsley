@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.rap.workspace"
-      label="Emf Parsley RAP Workspace"
-      version="0.6.1.qualifier"
+      label="EMF Parsley RAP Workspace"
+      version="1.0.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emfparsley">
@@ -27,10 +27,6 @@
 
    <includes
          id="org.eclipse.emf.parsley.rap.cdo.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.rap.repository"
          version="0.0.0"/>
 
 </feature>
