@@ -32,41 +32,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-eclipserun-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>add-repo-properties</id>
-						<goals>
-							<goal>eclipse-run</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<appArgLine>-application org.eclipse.wtp.releng.tools.addRepoProperties</appArgLine>
-							<argLine><![CDATA[-DartifactRepoDirectory=${project.build.directory}/repository -Dp2MirrorsURL=${p2.mirrorsURL} -Dp2StatsURI=${p2.statsURL} -DstatsTrackedArtifacts=${p2.statsTrackedArtifacts} -DstatsArtifactsSuffix=-${project.version}]]></argLine>
-							<work>${project.build.directory}/eclipserun-work-first</work>
-							<dependencies>
-								<dependency>
-									<artifactId>org.eclipse.wtp.releng.tools.feature</artifactId>
-									<type>eclipse-feature</type>
-								</dependency>
-							</dependencies>
-							<repositories>
-								<repository>
-									<url>http://download.eclipse.org/webtools/releng/repository</url>
-									<layout>p2</layout>
-								</repository>
-								<repository>
-									<url>http://download.eclipse.org/releases/mars</url>
-									<layout>p2</layout>
-								</repository>
-							</repositories>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<!-- copy the p2 repository into the project root folder 
 					to allow for easier archiving in CI server -->
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -133,6 +98,41 @@
 
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-eclipserun-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>add-repo-properties</id>
+								<goals>
+									<goal>eclipse-run</goal>
+								</goals>
+								<phase>package</phase>
+								<configuration>
+									<appArgLine>-application org.eclipse.wtp.releng.tools.addRepoProperties</appArgLine>
+									<argLine><![CDATA[-DartifactRepoDirectory=${project.build.directory}/repository -Dp2MirrorsURL=${p2.mirrorsURL} -Dp2StatsURI=${p2.statsURL} -DstatsTrackedArtifacts=${p2.statsTrackedArtifacts} -DstatsArtifactsSuffix=-${project.version}]]></argLine>
+									<work>${project.build.directory}/eclipserun-work-first</work>
+									<dependencies>
+										<dependency>
+											<artifactId>org.eclipse.wtp.releng.tools.feature</artifactId>
+											<type>eclipse-feature</type>
+										</dependency>
+									</dependencies>
+									<repositories>
+										<repository>
+											<url>http://download.eclipse.org/webtools/releng/repository</url>
+											<layout>p2</layout>
+										</repository>
+										<repository>
+											<url>http://download.eclipse.org/releases/mars</url>
+											<layout>p2</layout>
+										</repository>
+									</repositories>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 					<plugin>
 						<groupId>org.eclipse.tycho.extras</groupId>
 						<artifactId>tycho-eclipserun-plugin</artifactId>
