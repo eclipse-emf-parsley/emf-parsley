@@ -60,7 +60,9 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 		formDetailComposite.init(o, editingDomain)
 		"Class With Name Test".assertEquals(formDetailComposite.scrolledForm.text)
 		o.name = "Changed"
-		"Class With Name Changed".assertEquals(formDetailComposite.scrolledForm.text)
+		syncExecVoid[
+			"Class With Name Changed".assertEquals(formDetailComposite.scrolledForm.text)
+		]
 		formDetailComposite.dispose
 	}
 
@@ -69,7 +71,9 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 		formDetailComposite.init(o)
 		"Class With Name Test".assertEquals(formDetailComposite.scrolledForm.text)
 		o.name = "Changed"
-		"Class With Name Changed".assertEquals(formDetailComposite.scrolledForm.text)
+		syncExecVoid[
+			"Class With Name Changed".assertEquals(formDetailComposite.scrolledForm.text)
+		]
 		formDetailComposite.dispose
 	}
 }

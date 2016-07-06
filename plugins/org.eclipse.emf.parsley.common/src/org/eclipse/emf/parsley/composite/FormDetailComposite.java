@@ -111,7 +111,12 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		@Override
 		public void notifyChanged(Notification msg) {
 			if (!disposing) {
-				updateTitle(model);
+				getDisplay().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						updateTitle(model);
+					}
+				});
 			}
 		}
 	}
