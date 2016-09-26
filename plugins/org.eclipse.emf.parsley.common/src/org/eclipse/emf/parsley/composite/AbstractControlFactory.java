@@ -30,8 +30,7 @@ import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
-import org.eclipse.emf.parsley.internal.databinding.DatabindingValidationUtil;
-import org.eclipse.emf.parsley.internal.databinding.EmfValidationTargetToModelUpdateValueStrategy;
+import org.eclipse.emf.parsley.internal.databinding.DataBindingHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.emf.parsley.ui.provider.ComboViewerLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
@@ -40,7 +39,6 @@ import org.eclipse.emf.parsley.util.FeatureHelper;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
-import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.viewers.ViewersObservables;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.ControlDecoration;
@@ -74,6 +72,7 @@ import com.google.inject.name.Named;
  * 
  * @author Dennis Huebner initial code
  * @author Lorenzo Bettini refactoring for Emf Parsley
+ * @author Francesco Guidieri added validation support
  * 
  */
 public abstract class AbstractControlFactory implements IWidgetFactory {
@@ -99,7 +98,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	private ProposalCreator proposalCreator;
 
 	@Inject
-	private DatabindingValidationUtil databindingValidationUtil;
+	private DataBindingHelper dataBindingHelper;
 
 	private EObject owner;
 	private Resource resource;
@@ -344,18 +343,13 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return retVal;
 	}
 
+	/**
+	 * @since 1.1
+	 */
 	@SuppressWarnings("rawtypes")
-	private Binding bindValue(EStructuralFeature feature, IObservableValue target,
+	protected Binding bindValue(EStructuralFeature feature, IObservableValue target,
 			IObservableValue source) {
-		EmfValidationTargetToModelUpdateValueStrategy targetToModelUpdateValueStrategy =
-			new EmfValidationTargetToModelUpdateValueStrategy(
-				owner, feature, databindingValidationUtil);
-
-		Binding bindValue = edbc.bindValue(
-			target, source, targetToModelUpdateValueStrategy,
-				null);
-		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-		return bindValue;
+		return dataBindingHelper.bindValue(feature, target, source, owner, edbc);
 	}
 
 	protected ControlObservablePair createControlAndObservableValue(
@@ -511,7 +505,8 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	/**
 	 * Polymorphically invokes a create_EClass_feature(DataBindingContext,
-	 * IObservableValue)
+	 * IObservableValue), trying to get the new version with validation support.
+	 * If not found, the old version of the method is searched, for backward compatibility. 
 	 * 
 	 * @param feature
 	 * @param featureObservable
@@ -520,6 +515,13 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	@SuppressWarnings("rawtypes")
 	private Control polymorphicCreateControl(EStructuralFeature feature,
 			IObservableValue featureObservable) {
+		Control polymorphicInvokeNewVersion = PolymorphicDispatcherExtensions
+				.<Control> polymorphicInvokeBasedOnFeature(this,
+						owner.eClass(), feature, CONTROL_PREFIX,
+						featureObservable, feature);
+		if(polymorphicInvokeNewVersion!=null){
+			return polymorphicInvokeNewVersion;
+		}
 		return PolymorphicDispatcherExtensions
 				.<Control> polymorphicInvokeBasedOnFeature(this,
 						owner.eClass(), feature, CONTROL_PREFIX, edbc,

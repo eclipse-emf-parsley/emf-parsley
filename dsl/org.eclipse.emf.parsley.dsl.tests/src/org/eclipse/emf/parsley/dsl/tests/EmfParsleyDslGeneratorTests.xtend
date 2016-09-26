@@ -1060,9 +1060,9 @@ expectedFormControlFactory =
 package my.empty.binding;
 
 import java.util.List;
-import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Borrower;
@@ -1098,9 +1098,10 @@ public class EmptyFormControlFactory extends FormControlFactory {
     return _createLabel;
   }
   
-  public Control control_Writer_name(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
+  public Control control_Writer_name(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_name();
-    dataBindingContext.bindValue(
+    bindValue(
+    	feature,
     	createTarget_Writer_name(control),
     	observableValue);
     return control;
@@ -1115,9 +1116,10 @@ public class EmptyFormControlFactory extends FormControlFactory {
     return DatabindingUtil.observeText(it);
   }
   
-  public Control control_Writer_firstName(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
+  public Control control_Writer_firstName(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_firstName();
-    dataBindingContext.bindValue(
+    bindValue(
+    	feature,
     	createTarget_Writer_firstName(control),
     	observableValue);
     return control;
@@ -1192,9 +1194,9 @@ expectedDialogControlFactory =
 package my.empty.binding;
 
 import java.util.List;
-import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Borrower;
@@ -1229,9 +1231,10 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
     return _createLabel;
   }
   
-  public Control control_Writer_name(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
+  public Control control_Writer_name(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_name();
-    dataBindingContext.bindValue(
+    bindValue(
+    	feature,
     	createTarget_Writer_name(control),
     	observableValue);
     return control;
@@ -1246,9 +1249,10 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
     return DatabindingUtil.observeText(it);
   }
   
-  public Control control_Writer_firstName(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
+  public Control control_Writer_firstName(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_firstName();
-    dataBindingContext.bindValue(
+    bindValue(
+    	feature,
     	createTarget_Writer_firstName(control),
     	observableValue);
     return control;

@@ -27,6 +27,7 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.core.databinding.observable.value.IObservableValue
 
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 
@@ -148,7 +149,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	/**
-	 * As above, but for a without specifying SWT.Modify
+	 * As above, but for a single feature without specifying SWT.Modify
 	 */
 	@Test
 	def void testCustomControlWithControlObservablePair2() {
@@ -160,6 +161,30 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 				// gives us evidence that this method was called
 				text.editable = false
 				return new ControlObservablePair(text, DatabindingUtil.observeText(text))
+			}
+		} => [initialize(o1)]
+		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
+		control.assertTextEditable(false)
+		control.assertText("")
+		o1.baseClassFeature = "Foo"
+		control.assertText("Foo")
+	}
+
+	/**
+	 * As above, but using the two args signature
+	 */
+	@Test
+	def void testCustomControlWithFeatureAndObservableValue() {
+		val o1 = createBaseClassObject
+		val factory = new DialogControlFactory {
+			@SuppressWarnings("rawtypes")
+			def control_BaseClass_baseClassFeature(IObservableValue observableValue, EStructuralFeature f) {
+				val text = createText("")
+				// by default the editable is true, thus setting it to false
+				// gives us evidence that this method was called
+				text.editable = false
+				bindValue(f, DatabindingUtil.observeText(text), observableValue)
+				return text
 			}
 		} => [initialize(o1)]
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)

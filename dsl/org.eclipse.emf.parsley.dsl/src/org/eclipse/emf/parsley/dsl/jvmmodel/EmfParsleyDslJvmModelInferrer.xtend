@@ -16,7 +16,6 @@ import com.google.inject.Injector
 import com.google.inject.Provider
 import java.io.IOException
 import java.util.List
-import org.eclipse.core.databinding.DataBindingContext
 import org.eclipse.core.databinding.observable.value.IObservableValue
 import org.eclipse.emf.common.notify.AdapterFactory
 import org.eclipse.emf.common.util.URI
@@ -608,17 +607,18 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 					members += spec.
 					control_EClass_EStructuralFeature() [
 						parameters += spec.toParameter(
-							"dataBindingContext", typeRef(DataBindingContext)
+							"observableValue", typeRef(IObservableValue)
 						)
 						parameters += spec.toParameter(
-							"observableValue", typeRef(IObservableValue)
+							"feature", typeRef(EStructuralFeature)
 						)
 						body = [
 							append(typeRef(Control).type)
 							append(''' control = «createControlMethodName»();''').newLine
 							append(
 							'''
-							dataBindingContext.bindValue(
+							bindValue(
+								feature,
 								«createTargetMethodName»(control),
 								observableValue);'''
 							).newLine
