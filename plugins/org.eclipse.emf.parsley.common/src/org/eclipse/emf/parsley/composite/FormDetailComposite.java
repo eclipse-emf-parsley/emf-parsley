@@ -62,7 +62,9 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	@Override
 	public void dispose() {
-		headerAdapter.dispose();
+		if(headerAdapter!=null){
+			headerAdapter.dispose();
+		}
 		super.dispose();
 		toolkit.dispose();
 	}
@@ -76,7 +78,8 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	protected void initControlFactory(EditingDomain domain,
 			EObject model) {
 		updateTitle(model);
-		model.eAdapters().add(headerAdapter = new FormTitleAdapter(model));
+		headerAdapter = new FormTitleAdapter(model);
+		model.eAdapters().add(headerAdapter);
 		formControlFactory.init(domain, model, main, toolkit);
 	}
 
