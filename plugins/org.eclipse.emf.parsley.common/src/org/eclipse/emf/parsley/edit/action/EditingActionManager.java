@@ -95,7 +95,7 @@ public class EditingActionManager {
 	}
 
 	protected ISharedImages getSharedImages() {
-		// we can't use PlatformUI.getWorkbench().getSharedImages();
+		// we can't use shared images from platform ui
 		// in an e4 application,
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=404727
 		return new ISharedImages() {

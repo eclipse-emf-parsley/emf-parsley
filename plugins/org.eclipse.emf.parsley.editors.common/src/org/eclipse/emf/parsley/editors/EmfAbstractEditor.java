@@ -274,6 +274,8 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 					Resource resource = (Resource) notification.getNotifier();
 					handleResourceDiagnostic(resource);
 					break;
+				default:
+					// nothing to do
 				}
 			} else {
 				super.notifyChanged(notification);
