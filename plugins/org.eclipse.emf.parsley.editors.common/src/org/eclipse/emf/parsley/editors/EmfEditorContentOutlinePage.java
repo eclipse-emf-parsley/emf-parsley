@@ -39,7 +39,6 @@ public class EmfEditorContentOutlinePage extends ContentOutlinePage {
 		super.createControl(parent);
 
 		TreeViewer contentOutlineViewer = getTreeViewer();
-		editor.setContentOutlineViewer(contentOutlineViewer);
 
 		// Set up the tree viewer.
 		viewerFactory.initialize(contentOutlineViewer,
