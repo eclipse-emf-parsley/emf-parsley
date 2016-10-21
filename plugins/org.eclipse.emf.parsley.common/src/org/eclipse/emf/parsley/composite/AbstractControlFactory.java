@@ -77,6 +77,8 @@ import com.google.inject.name.Named;
  */
 public abstract class AbstractControlFactory implements IWidgetFactory {
 
+	private static final int GRID_DATA_HORIZONTAL_INDENT = 10;
+
 	private static final String OBSERVE_PREFIX = "observe_";
 
 	private static final String CONTROL_PREFIX = "control_";
@@ -486,7 +488,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 			// polymorphic implementation or from the DSL
 			if (c.getLayoutData()==null) {
 				GridData deafultLayout = new GridData(GridData.FILL_HORIZONTAL);
-				deafultLayout.horizontalIndent=10;
+				deafultLayout.horizontalIndent=GRID_DATA_HORIZONTAL_INDENT;
 				c.setLayoutData(deafultLayout);
 			}
 		}

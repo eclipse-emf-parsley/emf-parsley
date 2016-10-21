@@ -32,6 +32,8 @@ import com.google.common.collect.Lists;
  * 
  */
 public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreator {
+	private static final int CREATING_PROJECT_WORK_STEPS = 5;
+
 	static EmfParsleyDslNewProjectFiles filesGenerator = new EmfParsleyDslNewProjectFiles();
 
 	static EmfParsleyProjectFilesGenerator projectFilesGenerator = new EmfParsleyProjectFilesGenerator();
@@ -107,7 +109,7 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		
 		SubMonitor subMonitor = SubMonitor.convert(monitor, 
 				"Creating project " + projectName, 
-				5);
+				CREATING_PROJECT_WORK_STEPS);
 
 		String[] paths = { projectPackagePath };
 		NewEmfParsleyProjectSupport.addToProjectStructure(project, paths,
