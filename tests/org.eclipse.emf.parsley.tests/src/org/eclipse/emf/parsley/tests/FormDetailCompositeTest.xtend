@@ -22,7 +22,6 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.ecore.EObject
 
 /**
  * @author Lorenzo Bettini
@@ -78,26 +77,11 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 		formDetailComposite.dispose
 	}
 
-	@Test def void testFormDetailWithCustomInit() {
+	@Test def void testDisposeWhenInitIsNotCalled() {
 		val injector = getOrCreateInjector
-		val formDetailCompositeWithCustomInit=new TestableFormDetailWithCustomInitComposite(shell, SWT.NONE)
+		val formDetailCompositeWithCustomInit = new FormDetailComposite(shell, SWT.NONE)
 		injector.injectMembers(formDetailCompositeWithCustomInit)
-		val o = testFactory.createClassWithName => [ name = "Test" ]
-		formDetailCompositeWithCustomInit.init(o)
 		formDetailCompositeWithCustomInit.dispose
 	}
-	
-	static class TestableFormDetailWithCustomInitComposite extends TestableFormDetailComposite {
-		/**
-		 * public for tests
-		 */
-		new(Composite parent, int style) {
-			super(parent, style)
-		}
 
-		override init( EObject model, EditingDomain domain){
-			//It makes cool stuff and doesn't call super.initControlFactory		
-		}
-
-	}
 }

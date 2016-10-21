@@ -20,6 +20,7 @@ import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
 import org.eclipse.emf.parsley.tests.util.CustomDialogControlFactoryForTests
+import org.eclipse.emf.parsley.tests.util.CustomDialogControlFactoryForTestsWithCallToBindValude
 import org.eclipse.emf.parsley.util.DatabindingUtil
 import org.eclipse.swt.SWT
 import org.eclipse.swt.layout.FillLayout
@@ -27,7 +28,6 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.core.databinding.observable.value.IObservableValue
 
 class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 
@@ -176,17 +176,8 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlWithFeatureAndObservableValue() {
 		val o1 = createBaseClassObject
-		val factory = new DialogControlFactory {
-			@SuppressWarnings("rawtypes")
-			def control_BaseClass_baseClassFeature(IObservableValue observableValue, EStructuralFeature f) {
-				val text = createText("")
-				// by default the editable is true, thus setting it to false
-				// gives us evidence that this method was called
-				text.editable = false
-				bindValue(f, DatabindingUtil.observeText(text), observableValue)
-				return text
-			}
-		} => [initialize(o1)]
+		val factory = new CustomDialogControlFactoryForTestsWithCallToBindValude
+			=> [initialize(o1)]
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
