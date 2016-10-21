@@ -1079,10 +1079,10 @@ and bind such custom implementations in the Guice module.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;{&nbsp;observeText&nbsp;}<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Writer&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toolkit.createLabel(parent,&nbsp;<span class="string">""</span>)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;observeText(SWT::Modify)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">target</span>&nbsp;observeText(SWT.Modify)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Borrower&nbsp;:&nbsp;firstName&nbsp;-&gt;&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createText(firstName,&nbsp;SWT::MULTI,&nbsp;SWT::BORDER,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWT::WRAP,&nbsp;SWT::V_SCROLL)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createText(firstName,&nbsp;SWT.MULTI,&nbsp;SWT.BORDER,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWT.WRAP,&nbsp;SWT.V_SCROLL)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 }<br/>
@@ -1095,21 +1095,52 @@ For each pair EClass, EStructuralFeature you can either simply return a Control 
 for the databinding (see some examples above).
  
 If you want to customize the controls in Java, you can extend the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/composite/FormControlFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.FormControlFactory" >FormControlFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/FormControlFactory.java" title="View Source Code" >(src)</a>.
-Using the same polimorphic mechanism of the labels, the programmer can write a method with the keyword <em>&apos;control&apos;</em>
-followed by the EClass and EStructuralFeature undescore-character-separated. The method
-must accept as parameters the <em>DataBinding Context</em> and the <em>Feature Observable</em> that can be used for databinding. 
+Using the same polimorphic mechanism of the labels, the programmer can write a method
+with name starting with <em>&apos;control&apos;</em>
+followed by the names of the EClass and of the EStructuralFeature undescore-character-separated.
+</p>
+<p>
+The method must accept as parameters the <em>Source Observable</em> and the <em>feature</em>;
+the superclass&apos; method <em>bindValue</em> can be used for databinding.
+The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/util/DatabindingUtil.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.util.DatabindingUtil" >DatabindingUtil</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/util/DatabindingUtil.java" title="View Source Code" >(src)</a> utility class can be used
+for creating the target observable.
+Here&apos;s an example
 </p>
 <p>
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-<span class="keyword">public</span>&nbsp;Control&nbsp;control_Writer_name(DataBindingContext&nbsp;dbc,IObservableValue&nbsp;featureObservable)&nbsp;{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Creating&nbsp;the&nbsp;control<br/>
+<span class="keyword">public</span>&nbsp;Control&nbsp;control_Writer_name(IObservableValue&nbsp;source,&nbsp;EStructuralFeature&nbsp;f)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Creating&nbsp;the&nbsp;control<br/>
 </span>&nbsp;&nbsp;&nbsp;&nbsp;Text&nbsp;text&nbsp;=&nbsp;getToolkit().createText(getParent(),&nbsp;<span class="string">""</span>);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;text.setData(FormToolkit.KEY_DRAW_BORDER,&nbsp;FormToolkit.TREE_BORDER);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//Binding&nbsp;the&nbsp;control&nbsp;to&nbsp;the&nbsp;feature&nbsp;observable<br/>
-</span>&nbsp;&nbsp;&nbsp;&nbsp;dbc.bindValue(SWTObservables.observeText(text,&nbsp;SWT.Modify),&nbsp;&nbsp;&nbsp;&nbsp;featureObservable);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Perform&nbsp;databinding;&nbsp;params:&nbsp;feature,&nbsp;target,&nbsp;source<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;bindValue(f,&nbsp;DatabindingUtil.observeText(text),&nbsp;source);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;text;<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Another form of the method&apos;s parameters is also taken into consideration
+during the polymorphic dispatch. This is the old form and it will be likely
+deprecated in the future:
+the method must accept as parameters the <em>DataBinding Context</em> and the <em>Feature Observable</em>
+that can be used for databinding. Here&apos;s an example:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">public</span>&nbsp;Control&nbsp;control_Writer_name(DataBindingContext&nbsp;dbc,&nbsp;IObservableValue&nbsp;featureObservable)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Creating&nbsp;the&nbsp;control<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;Text&nbsp;text&nbsp;=&nbsp;getToolkit().createText(getParent(),&nbsp;<span class="string">""</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;text.setData(FormToolkit.KEY_DRAW_BORDER,&nbsp;FormToolkit.TREE_BORDER);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Binding&nbsp;the&nbsp;control&nbsp;to&nbsp;the&nbsp;feature&nbsp;observable<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;dbc.bindValue(SWTObservables.observeText(text,&nbsp;SWT.Modify),&nbsp;featureObservable);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;text;<br/>
 }<br/>
 </p>
