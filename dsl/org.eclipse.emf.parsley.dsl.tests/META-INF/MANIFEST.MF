@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.emf.parsley.dsl,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eclipse.emf.parsley.generator.common,
  org.eclipse.emf.parsley.dsl.additional.builder,
- org.eclipse.pde.core;bundle-version="3.7.1"
+ org.eclipse.pde.core;bundle-version="3.7.1",
+ org.eclipse.emf.parsley.junit4
 Import-Package: org.apache.log4j,
  org.apache.log4j.spi,
  org.hamcrest.core,
