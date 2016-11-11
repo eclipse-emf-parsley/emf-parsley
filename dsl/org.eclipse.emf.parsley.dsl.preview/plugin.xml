@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Emf Parsley DSL"
+            id="org.eclipse.emf.parsley">
+      </category>
+      <view
+            name="Emf Parsley DSL Preview"
+            icon="icons/sample.gif"
+            category="org.eclipse.emf.parsley"
+            class="org.eclipse.emf.parsley.dsl.preview.views.EmfParsleyDslPreview"
+            id="org.eclipse.emf.parsley.dsl.preview.views.EmfParsleyDslPreview">
+      </view>
+   </extension>
+
+</plugin>
