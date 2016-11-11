@@ -48,6 +48,29 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 
 	}
 
+	/**
+	 * For testing the case when isDisposed returns true while the form title
+	 * adapter gets a notifyChanged
+	 */
+	static class FormDetailCompositeWithCustomIsDisposed extends FormDetailComposite {
+		var constructorCalled = false
+
+		new(Composite parent, int style) {
+			super(parent, style)
+			// during the constructor, isDisposed is called and during
+			// the constructor isDisposed must NOT return true
+			constructorCalled = true
+		}
+
+		override isDisposed() {
+			if (!constructorCalled)
+				return super.isDisposed()
+			else
+				return true
+		}
+
+	}
+
 	@Before def void setupTestCase() {
 		val injector = getOrCreateInjector
 		injector.injectMembers(this)
@@ -79,9 +102,18 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 
 	@Test def void testDisposeWhenInitIsNotCalled() {
 		val injector = getOrCreateInjector
-		val formDetailCompositeWithCustomInit = new FormDetailComposite(shell, SWT.NONE)
-		injector.injectMembers(formDetailCompositeWithCustomInit)
-		formDetailCompositeWithCustomInit.dispose
+		val formDetailComposite = new FormDetailComposite(shell, SWT.NONE)
+		injector.injectMembers(formDetailComposite)
+		formDetailComposite.dispose
+	}
+
+	@Test def void testDisposeWhenWidgetIsDisposed() {
+		val injector = getOrCreateInjector
+		val formDetailComposite = new FormDetailCompositeWithCustomIsDisposed(shell, SWT.NONE)
+		injector.injectMembers(formDetailComposite)
+		val o = testFactory.createClassWithName => [ name = "Test" ]
+		formDetailComposite.init(o)
+		formDetailComposite.dispose
 	}
 
 }
