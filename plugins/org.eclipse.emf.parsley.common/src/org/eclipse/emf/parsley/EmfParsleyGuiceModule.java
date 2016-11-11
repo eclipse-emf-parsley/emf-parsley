@@ -29,6 +29,13 @@ public class EmfParsleyGuiceModule extends EmfParsleyJavaGuiceModule {
 
 	private final AbstractUIPlugin plugin;
 
+	/**
+	 * If the passed {@link AbstractUIPlugin} is not null, it also
+	 * performs additional Guice configuration, otherwise, this
+	 * basically behaves like {@link EmfParsleyJavaGuiceModule}
+	 * 
+	 * @param plugin
+	 */
 	public EmfParsleyGuiceModule(AbstractUIPlugin plugin) {
 		this.plugin = plugin;
 	}
@@ -36,9 +43,11 @@ public class EmfParsleyGuiceModule extends EmfParsleyJavaGuiceModule {
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
-		binder.bind(AbstractUIPlugin.class).toInstance(plugin);
-		binder.bind(IDialogSettings.class).toInstance(
-				plugin.getDialogSettings());
+		if (plugin != null) {
+			binder.bind(AbstractUIPlugin.class).toInstance(plugin);
+			binder.bind(IDialogSettings.class).toInstance(
+					plugin.getDialogSettings());
+		}
 	}
 
 	/**
@@ -49,6 +58,9 @@ public class EmfParsleyGuiceModule extends EmfParsleyJavaGuiceModule {
 	 */
 	@Override
 	public Class<? extends IImageHelper> bindIImageHelper() {
+		if (plugin == null) {
+			return super.bindIImageHelper();
+		}
 		return PluginImageHelper.class;
 	}
 
