@@ -12,6 +12,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.parsley.composite.FormFactory;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.internal.core.JavaProject;
@@ -28,7 +30,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
-import com.google.inject.Injector;
+import com.google.inject.Key;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -169,12 +171,34 @@ public class EmfParsleyDslPreview extends ViewPart {
 			Object injector = createInjectorMethod.invoke(null);
 			System.out.println("injector: " + injector);
 			System.out.println("injector class: " + injector.getClass());
-			System.out.println("injector class: " + Injector.class.isAssignableFrom(injector.getClass()));
-			Method getInstance = injector.getClass().getDeclaredMethod("getInstance", Class.class);
+//			System.out.println("injector class: " + Injector.class.isAssignableFrom(injector.getClass()));
+			Method[] injectorMethods = injector.getClass().getDeclaredMethods();
+			Method getInstanceMethod = getMethod(injector.getClass(), "getInstance", "com.google.inject.Key");
+//			for (int i = 0; i < injectorMethods.length; i++) {
+//				Method injectorMethod = injectorMethods[i];
+//				if (injectorMethod.getName().equals("getInstance")) {
+//					System.out.println(injectorMethod);
+//					if (injectorMethod.getParameterTypes()[0].getName().equals("com.google.inject.Key")) {
+//						getInstanceMethod = injectorMethod;
+//						getInstanceMethod.setAccessible(true);
+//						break;
+//					}
+//				}
+//			}
+			System.out.println("getInstanceMethod: " + getInstanceMethod);
+			Method getInstance = injector.getClass().getDeclaredMethod("getInstance", new Class[] { Class.class });
 			System.out.println("getInstance method: " + getInstance);
 			getInstance.setAccessible(true);
 			Class<?> labelProviderClass = loadClass(ILabelProvider.class.getCanonicalName());
-			Object result = getInstance.invoke(injector, labelProviderClass);
+			Method keyGetMethod = getMethod(loadClass(Key.class.getCanonicalName()), "get", "java.lang.Class");
+//			Key<?> key = Key.get(labelProviderClass);
+//			Object key = keyGetMethod.invoke(null, new Object[] { labelProviderClass });
+//			getInstanceMethod.invoke(injector, key );
+			Method injectMembers = injector.getClass().getMethod("injectMembers", Object.class);
+			injectMembers.setAccessible(true);
+			Object toInject = loadClass(ViewerFactory.class.getCanonicalName()).newInstance();
+			injectMembers.invoke(injector, toInject);
+			Object result = getInstance.invoke(injector, new Object[] { labelProviderClass });
 			System.out.println("result: " + result);
 		} catch (CoreException e1) {
 			// TODO Auto-generated catch block
@@ -183,6 +207,23 @@ public class EmfParsleyDslPreview extends ViewPart {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+
+	private Method getMethod(Class<?> clazz, String name, String parameterName) {
+		Method[] injectorMethods = clazz.getDeclaredMethods();
+		Method getInstanceMethod = null;
+		for (int i = 0; i < injectorMethods.length; i++) {
+			Method injectorMethod = injectorMethods[i];
+			if (injectorMethod.getName().equals(name)) {
+				System.out.println(injectorMethod);
+				if (injectorMethod.getParameterTypes()[0].getName().equals(parameterName)) {
+					getInstanceMethod = injectorMethod;
+					getInstanceMethod.setAccessible(true);
+					break;
+				}
+			}
+		}
+		return getInstanceMethod;
 	}
 
 }
