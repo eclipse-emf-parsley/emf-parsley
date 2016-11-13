@@ -39,13 +39,17 @@ public class PluginUtil {
 	/**
 	 * Retrieves the {@link AbstractUIPlugin} activator from the specified {@link Bundle},
 	 * via reflection, assuming that the activator has a static method getDefault returning
-	 * the singleton instance.
+	 * the singleton instance.  If the specified {@link Bundle} is null, then it simply
+	 * returns null.
 	 * 
 	 * @param bundle
 	 * @return
 	 * @throws PluginConfigurationException if bundle is not found or if it doesn't contain the getDefault method
 	 */
 	public static AbstractUIPlugin getPlugin(Bundle bundle){
+		if (bundle == null) {
+			return null;
+		}
 		final Dictionary<String, String> headers = bundle.getHeaders();
 		String activator = headers.get(Constants.BUNDLE_ACTIVATOR);
 			Class<?> activatorClass;
