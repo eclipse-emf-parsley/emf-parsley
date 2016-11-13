@@ -12,6 +12,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jdt.core.IJavaProject;
@@ -30,6 +31,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
+import com.google.inject.Injector;
 import com.google.inject.Key;
 
 /**
@@ -98,7 +100,7 @@ public class EmfParsleyDslPreview extends ViewPart {
 
 	}
 
-	private Class<?> loadClass(String fullyQualifiedName) throws CoreException {
+	private Class<?> tmploadClass(String fullyQualifiedName) throws CoreException {
 		List<URLClassLoader> loaders = getClassLoaders();
 		for (URLClassLoader loader : loaders) {
 			try {
@@ -108,6 +110,25 @@ public class EmfParsleyDslPreview extends ViewPart {
 			}
 		}
 		return null;
+	}
+
+	private URLClassLoader getURLClassLoader(ClassLoader parentClassLoader) throws CoreException {
+		List<IJavaProject> javaProjects = new ArrayList<IJavaProject>();
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		for (IProject project : projects) {
+			if (project.isOpen() && JavaProject.hasJavaNature(project)) {
+				IJavaProject javaProject = JavaCore.create(project);
+				javaProjects.add(javaProject);
+				System.out.println("project: " + project.getName());
+			}
+		}
+		List<URL> urlList = new ArrayList<URL>();
+		for (IJavaProject javaProject : javaProjects) {
+			urlList.addAll(getProjectClassPathEntries(javaProject));
+		}
+		URL[] urls = (URL[]) urlList.toArray(new URL[urlList.size()]);
+		URLClassLoader classLoader = new URLClassLoader(urls, parentClassLoader);
+		return classLoader;
 	}
 
 	private List<URLClassLoader> getClassLoaders() throws CoreException {
@@ -128,6 +149,15 @@ public class EmfParsleyDslPreview extends ViewPart {
 	}
 
 	private URLClassLoader getProjectClassLoader(IJavaProject javaProject) throws CoreException {
+		List<URL> urlList = getProjectClassPathEntries(javaProject);
+//		ClassLoader parentClassLoader = javaProject.getClass().getClassLoader();
+		URL[] urls = (URL[]) urlList.toArray(new URL[urlList.size()]);
+//		URLClassLoader classLoader = new URLClassLoader(urls, parentClassLoader);
+		URLClassLoader classLoader = new URLClassLoader(urls);
+		return classLoader;
+	}
+
+	private List<URL> getProjectClassPathEntries(IJavaProject javaProject) throws CoreException {
 		String[] classPathEntries = JavaRuntime.computeDefaultRuntimeClassPath(javaProject);
 		List<URL> urlList = new ArrayList<URL>();
 		for (int i = 0; i < classPathEntries.length; i++) {
@@ -141,22 +171,31 @@ public class EmfParsleyDslPreview extends ViewPart {
 				e.printStackTrace();
 			}
 		}
-		ClassLoader parentClassLoader = javaProject.getClass().getClassLoader();
-		URL[] urls = (URL[]) urlList.toArray(new URL[urlList.size()]);
-		URLClassLoader classLoader = new URLClassLoader(urls, parentClassLoader);
-		return classLoader;
+		return urlList;
 	}
 
 	private void loadInjector() {
-		String injectorProviderClassName = text.getText();
+		String injectorProviderClassName = text.getText(); //"myparsleyproject.MyparsleyprojectCustomModule";// text.getText();
 //						String activatorClassName = text_1.getText();
 		try {
-			Class<?> injectorProviderClass = loadClass(injectorProviderClassName);
+			URLClassLoader loader = getURLClassLoader(getClass().getClassLoader());
+			Class<?> injectorProviderClass = loader.loadClass(injectorProviderClassName);
 			System.out.println("class loaded: " + injectorProviderClass);
 //							Class<?> activatorClass = loadClass(activatorClassName);
 //							System.out.println("class loaded: " + activatorClass);
 //							Object activator = activatorClass.newInstance();
 //							System.out.println("activator: " + activator);
+//			Object o = injectorProviderClass.newInstance();
+//			System.out.println("o: " + o);
+//			EmfParsleyGuiceModule mod = (EmfParsleyGuiceModule) o;
+//			System.out.println("mod: " + mod);
+//			Class<EmfParsleyGuiceModule> localModClass = EmfParsleyGuiceModule.class;
+//			System.out.println("localModClass loader: " + localModClass.getClassLoader());
+//			ClassLoader classClassLoader = getClass().getClassLoader();
+//			System.out.println("current class loader: " + classClassLoader);
+//			System.out.println("current thread loader: " + Thread.currentThread().getContextClassLoader());
+//			Class<?> modClass = loader.loadClass(localModClass.getCanonicalName());
+//			System.out.println("mod class: " + modClass);
 			Method[] methods = injectorProviderClass.getMethods();
 			Method createInjectorMethod = null;
 			for (int i = 0; i < methods.length; i++) {
@@ -171,9 +210,15 @@ public class EmfParsleyDslPreview extends ViewPart {
 			Object injector = createInjectorMethod.invoke(null);
 			System.out.println("injector: " + injector);
 			System.out.println("injector class: " + injector.getClass());
-//			System.out.println("injector class: " + Injector.class.isAssignableFrom(injector.getClass()));
-			Method[] injectorMethods = injector.getClass().getDeclaredMethods();
-			Method getInstanceMethod = getMethod(injector.getClass(), "getInstance", "com.google.inject.Key");
+			if (injector instanceof Injector) {
+				Injector new_name = (Injector) injector;
+				System.out.println("is injector");
+			} else {
+				System.out.println("not injector");
+			}
+			System.out.println("injector class: " + Injector.class.isAssignableFrom(injector.getClass()));
+//			Method[] injectorMethods = injector.getClass().getDeclaredMethods();
+//			Method getInstanceMethod = getMethod(injector.getClass(), "getInstance", "com.google.inject.Key");
 //			for (int i = 0; i < injectorMethods.length; i++) {
 //				Method injectorMethod = injectorMethods[i];
 //				if (injectorMethod.getName().equals("getInstance")) {
@@ -185,21 +230,24 @@ public class EmfParsleyDslPreview extends ViewPart {
 //					}
 //				}
 //			}
-			System.out.println("getInstanceMethod: " + getInstanceMethod);
-			Method getInstance = injector.getClass().getDeclaredMethod("getInstance", new Class[] { Class.class });
-			System.out.println("getInstance method: " + getInstance);
-			getInstance.setAccessible(true);
-			Class<?> labelProviderClass = loadClass(ILabelProvider.class.getCanonicalName());
-			Method keyGetMethod = getMethod(loadClass(Key.class.getCanonicalName()), "get", "java.lang.Class");
-//			Key<?> key = Key.get(labelProviderClass);
-//			Object key = keyGetMethod.invoke(null, new Object[] { labelProviderClass });
-//			getInstanceMethod.invoke(injector, key );
-			Method injectMembers = injector.getClass().getMethod("injectMembers", Object.class);
-			injectMembers.setAccessible(true);
-			Object toInject = loadClass(ViewerFactory.class.getCanonicalName()).newInstance();
-			injectMembers.invoke(injector, toInject);
-			Object result = getInstance.invoke(injector, new Object[] { labelProviderClass });
-			System.out.println("result: " + result);
+//			System.out.println("getInstanceMethod: " + getInstanceMethod);
+//			Method getInstance = injector.getClass().getDeclaredMethod("getInstance", new Class[] { Class.class });
+//			System.out.println("getInstance method: " + getInstance);
+//			getInstance.setAccessible(true);
+//			Class<?> labelProviderClass = loadClass(ILabelProvider.class.getCanonicalName());
+//			Method keyGetMethod = getMethod(loadClass(Key.class.getCanonicalName()), "get", "java.lang.Class");
+////			Key<?> key = Key.get(labelProviderClass);
+////			Object key = keyGetMethod.invoke(null, new Object[] { labelProviderClass });
+////			getInstanceMethod.invoke(injector, key );
+//			Method injectMembers = injector.getClass().getMethod("injectMembers", Object.class);
+//			injectMembers.setAccessible(true);
+//			Object toInject = loadClass(ViewerFactory.class.getCanonicalName()).newInstance();
+//			injectMembers.invoke(injector, toInject);
+//			Object result = getInstance.invoke(injector, new Object[] { labelProviderClass });
+//			System.out.println("result: " + result);
+			Injector myInjector = (Injector) injector;
+			ILabelProvider labelProvider = myInjector.getInstance(ILabelProvider.class);
+			System.out.println("label provider: " + labelProvider);
 		} catch (CoreException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
