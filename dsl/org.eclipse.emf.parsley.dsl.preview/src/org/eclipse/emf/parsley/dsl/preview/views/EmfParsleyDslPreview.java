@@ -12,14 +12,20 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.composite.FormFactory;
+import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.internal.core.JavaProject;
 import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -33,6 +39,8 @@ import org.eclipse.ui.part.ViewPart;
 
 import com.google.inject.Injector;
 import com.google.inject.Key;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.layout.FillLayout;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -59,6 +67,7 @@ public class EmfParsleyDslPreview extends ViewPart {
 	public static final String ID = "org.eclipse.emf.parsley.dsl.preview.views.EmfParsleyDslPreview";
 	private Text text;
 	private Text text_1;
+	private Composite composite;
 
 	@Override
 	public void createPartControl(final Composite parent) {
@@ -74,25 +83,32 @@ public class EmfParsleyDslPreview extends ViewPart {
 		
 		Label lblNewLabel_1 = new Label(parent, SWT.NONE);
 		lblNewLabel_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel_1.setText("activator");
+		lblNewLabel_1.setText("resource");
 		
 		text_1 = new Text(parent, SWT.BORDER);
 		text_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
 				Button btnNewButton = new Button(parent, SWT.NONE);
+				btnNewButton.setText("Preview");
+				
+				composite = new Composite(parent, SWT.NONE);
+				composite.setLayout(new FillLayout(SWT.HORIZONTAL));
+				composite.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, true, 3, 1));
+				new Label(parent, SWT.NONE);
+				new Label(parent, SWT.NONE);
+				new Label(parent, SWT.NONE);
+
 				btnNewButton.addSelectionListener(new SelectionAdapter() {
 					@Override
 					public void widgetSelected(SelectionEvent e) {
 						parent.getDisplay().asyncExec(new Runnable() {
 							@Override
 							public void run() {
-								loadInjector();
+								loadInjector(composite);
 							}
 						});
 					}
 				});
-				btnNewButton.setText("Preview");
-
 	}
 
 	@Override
@@ -174,80 +190,23 @@ public class EmfParsleyDslPreview extends ViewPart {
 		return urlList;
 	}
 
-	private void loadInjector() {
+	private void loadInjector(Composite viewerParent) {
 		String injectorProviderClassName = text.getText(); //"myparsleyproject.MyparsleyprojectCustomModule";// text.getText();
 //						String activatorClassName = text_1.getText();
 		try {
 			URLClassLoader loader = getURLClassLoader(getClass().getClassLoader());
 			Class<?> injectorProviderClass = loader.loadClass(injectorProviderClassName);
-			System.out.println("class loaded: " + injectorProviderClass);
-//							Class<?> activatorClass = loadClass(activatorClassName);
-//							System.out.println("class loaded: " + activatorClass);
-//							Object activator = activatorClass.newInstance();
-//							System.out.println("activator: " + activator);
-//			Object o = injectorProviderClass.newInstance();
-//			System.out.println("o: " + o);
-//			EmfParsleyGuiceModule mod = (EmfParsleyGuiceModule) o;
-//			System.out.println("mod: " + mod);
-//			Class<EmfParsleyGuiceModule> localModClass = EmfParsleyGuiceModule.class;
-//			System.out.println("localModClass loader: " + localModClass.getClassLoader());
-//			ClassLoader classClassLoader = getClass().getClassLoader();
-//			System.out.println("current class loader: " + classClassLoader);
-//			System.out.println("current thread loader: " + Thread.currentThread().getContextClassLoader());
-//			Class<?> modClass = loader.loadClass(localModClass.getCanonicalName());
-//			System.out.println("mod class: " + modClass);
-			Method[] methods = injectorProviderClass.getMethods();
-			Method createInjectorMethod = null;
-			for (int i = 0; i < methods.length; i++) {
-				Method method = methods[i];
-				if (method.getName().equals("createInjector")) {
-					createInjectorMethod = method;
-				}
-			}
-			// Does not work: probably because of AbastractUIPlugin loaded by different class loaders
-			// Method method = injectorProviderClass.getMethod("createInjector", new Class<?>[] {AbstractUIPlugin.class});
-			System.out.println("method: " + createInjectorMethod);
+			Method createInjectorMethod = injectorProviderClass.getMethod("getInjector");
 			Object injector = createInjectorMethod.invoke(null);
-			System.out.println("injector: " + injector);
-			System.out.println("injector class: " + injector.getClass());
-			if (injector instanceof Injector) {
-				Injector new_name = (Injector) injector;
-				System.out.println("is injector");
-			} else {
-				System.out.println("not injector");
-			}
-			System.out.println("injector class: " + Injector.class.isAssignableFrom(injector.getClass()));
-//			Method[] injectorMethods = injector.getClass().getDeclaredMethods();
-//			Method getInstanceMethod = getMethod(injector.getClass(), "getInstance", "com.google.inject.Key");
-//			for (int i = 0; i < injectorMethods.length; i++) {
-//				Method injectorMethod = injectorMethods[i];
-//				if (injectorMethod.getName().equals("getInstance")) {
-//					System.out.println(injectorMethod);
-//					if (injectorMethod.getParameterTypes()[0].getName().equals("com.google.inject.Key")) {
-//						getInstanceMethod = injectorMethod;
-//						getInstanceMethod.setAccessible(true);
-//						break;
-//					}
-//				}
-//			}
-//			System.out.println("getInstanceMethod: " + getInstanceMethod);
-//			Method getInstance = injector.getClass().getDeclaredMethod("getInstance", new Class[] { Class.class });
-//			System.out.println("getInstance method: " + getInstance);
-//			getInstance.setAccessible(true);
-//			Class<?> labelProviderClass = loadClass(ILabelProvider.class.getCanonicalName());
-//			Method keyGetMethod = getMethod(loadClass(Key.class.getCanonicalName()), "get", "java.lang.Class");
-////			Key<?> key = Key.get(labelProviderClass);
-////			Object key = keyGetMethod.invoke(null, new Object[] { labelProviderClass });
-////			getInstanceMethod.invoke(injector, key );
-//			Method injectMembers = injector.getClass().getMethod("injectMembers", Object.class);
-//			injectMembers.setAccessible(true);
-//			Object toInject = loadClass(ViewerFactory.class.getCanonicalName()).newInstance();
-//			injectMembers.invoke(injector, toInject);
-//			Object result = getInstance.invoke(injector, new Object[] { labelProviderClass });
-//			System.out.println("result: " + result);
 			Injector myInjector = (Injector) injector;
 			ILabelProvider labelProvider = myInjector.getInstance(ILabelProvider.class);
 			System.out.println("label provider: " + labelProvider);
+			ViewerFactory viewerFactory = myInjector.getInstance(ViewerFactory.class);
+			TreeViewer treeViewer = new TreeViewer(viewerParent);
+			ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
+			EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
+			Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
+			viewerFactory.initialize(treeViewer, resource);
 		} catch (CoreException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -273,5 +232,4 @@ public class EmfParsleyDslPreview extends ViewPart {
 		}
 		return getInstanceMethod;
 	}
-
 }
