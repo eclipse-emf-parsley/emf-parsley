@@ -276,7 +276,7 @@ public class EmfParsleyDslPreview extends ViewPart {
 		EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
 		ResourceManager resourceManager = myInjector.getInstance(ResourceManager.class);
 		ViewerContextMenuHelper contextMenuHelper = myInjector.getInstance(ViewerContextMenuHelper.class);
-		ViewerDragAndDropHelper dragAndDropHelper = myInjector.getInstance(ViewerDragAndDropHelper.class);
+//		ViewerDragAndDropHelper dragAndDropHelper = myInjector.getInstance(ViewerDragAndDropHelper.class);
 		IViewerMouseListener viewerMouseListener = myInjector.getInstance(IViewerMouseListener.class);
 		ResourceSet resourceSet = editingDomain.getResourceSet();
 		Resource resource = new ResourceImpl();
@@ -306,7 +306,7 @@ public class EmfParsleyDslPreview extends ViewPart {
 		treeForm.update(resource);
 		StructuredViewer viewer = treeForm.getViewer();
 		contextMenuHelper.addViewerContextMenu(viewer, editingDomain);
-		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
+//		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
 		viewer.getControl().addMouseListener(viewerMouseListener);
 		
 //		TreeViewer treeViewer = new TreeViewer(parsleyComponentParent, SWT.BORDER);
