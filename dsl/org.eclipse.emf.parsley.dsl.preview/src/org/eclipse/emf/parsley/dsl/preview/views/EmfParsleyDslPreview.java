@@ -43,6 +43,8 @@ import com.google.inject.Injector;
 import com.google.inject.Key;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.jface.layout.TreeColumnLayout;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -70,6 +72,7 @@ public class EmfParsleyDslPreview extends ViewPart {
 	private Text text;
 	private Text text_1;
 	private Composite composite;
+	private Composite parsleyComponentParent;
 
 	@Override
 	public void createPartControl(final Composite parent) {
@@ -94,8 +97,17 @@ public class EmfParsleyDslPreview extends ViewPart {
 				btnNewButton.setText("Preview");
 				
 				composite = new Composite(parent, SWT.NONE);
-				composite.setLayout(new FillLayout(SWT.HORIZONTAL));
-				composite.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, true, 3, 1));
+				composite.setLayout(new GridLayout(1, false));
+				GridData gridData = new GridData();
+				gridData.horizontalSpan = 3;
+				gridData.horizontalAlignment = SWT.FILL;
+				gridData.grabExcessHorizontalSpace = true;
+				gridData.verticalAlignment = SWT.FILL;
+				gridData.grabExcessVerticalSpace = true;
+				composite.setLayoutData(gridData);
+				
+				addParsleyComponent();
+				
 				new Label(parent, SWT.NONE);
 				new Label(parent, SWT.NONE);
 				new Label(parent, SWT.NONE);
@@ -111,6 +123,32 @@ public class EmfParsleyDslPreview extends ViewPart {
 						});
 					}
 				});
+	}
+
+	private void addParsleyComponent() {
+		GridData gridData;
+		parsleyComponentParent = new Composite(composite, SWT.NONE);
+		parsleyComponentParent.setLayout(new GridLayout(1, false));
+		
+		gridData = new GridData();
+		gridData.horizontalSpan = 3;
+		gridData.horizontalAlignment = SWT.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.verticalAlignment = SWT.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		parsleyComponentParent.setLayoutData(gridData);
+		
+		TreeViewer treeViewer = new TreeViewer(parsleyComponentParent, SWT.BORDER);
+		Tree tree = treeViewer.getTree();
+		gridData = new GridData();
+		gridData.horizontalSpan = 3;
+		gridData.horizontalAlignment = SWT.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.verticalAlignment = SWT.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		tree.setLayoutData(gridData);
+		tree.setHeaderVisible(true);
+		tree.setLinesVisible(true);
 	}
 
 	@Override
@@ -228,8 +266,37 @@ public class EmfParsleyDslPreview extends ViewPart {
 		ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
 		EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
 		Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
-		TreeFormComposite treeForm = treeFormFactory.createTreeFormComposite(viewerParent, SWT.BORDER);
+
+		GridData gridData;
+		parsleyComponentParent.dispose();
+		parsleyComponentParent = new Composite(composite, SWT.NONE);
+		parsleyComponentParent.setLayout(new GridLayout(1, false));
+		
+		gridData = new GridData();
+		gridData.horizontalSpan = 3;
+		gridData.horizontalAlignment = SWT.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.verticalAlignment = SWT.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		parsleyComponentParent.setLayoutData(gridData);
+		
+		TreeFormComposite treeForm = treeFormFactory.createTreeFormComposite(parsleyComponentParent, SWT.BORDER);
 		treeForm.update(resource);
+//		TreeViewer treeViewer = new TreeViewer(parsleyComponentParent, SWT.BORDER);
+//		Tree tree = treeViewer.getTree();
+		gridData = new GridData();
+		gridData.horizontalSpan = 3;
+		gridData.horizontalAlignment = SWT.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.verticalAlignment = SWT.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		treeForm.setLayoutData(gridData);
+//		tree.setLayoutData(gridData);
+//		tree.setHeaderVisible(true);
+//		tree.setLinesVisible(true);
+		
+		composite.layout();
+		parsleyComponentParent.layout();
 	}
 
 	private Method getMethod(Class<?> clazz, String name, String parameterName) {
