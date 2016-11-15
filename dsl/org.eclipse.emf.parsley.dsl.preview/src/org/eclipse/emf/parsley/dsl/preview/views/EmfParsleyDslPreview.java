@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.composite.FormFactory;
+import org.eclipse.emf.parsley.composite.TreeFormComposite;
+import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jdt.core.IJavaProject;
@@ -201,12 +203,8 @@ public class EmfParsleyDslPreview extends ViewPart {
 			Injector myInjector = (Injector) injector;
 			ILabelProvider labelProvider = myInjector.getInstance(ILabelProvider.class);
 			System.out.println("label provider: " + labelProvider);
-			ViewerFactory viewerFactory = myInjector.getInstance(ViewerFactory.class);
-			TreeViewer treeViewer = new TreeViewer(viewerParent);
-			ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
-			EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
-			Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
-			viewerFactory.initialize(treeViewer, resource);
+//			initializeTreeViewer(myInjector, viewerParent);
+			initializeTreeForm(myInjector, viewerParent);
 		} catch (CoreException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -214,6 +212,24 @@ public class EmfParsleyDslPreview extends ViewPart {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+
+	private void initializeTreeViewer(Injector myInjector, Composite viewerParent) {
+		ViewerFactory viewerFactory = myInjector.getInstance(ViewerFactory.class);
+		TreeViewer treeViewer = new TreeViewer(viewerParent);
+		ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
+		EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
+		Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
+		viewerFactory.initialize(treeViewer, resource);
+	}
+
+	private void initializeTreeForm(Injector myInjector, Composite viewerParent) {
+		TreeFormFactory treeFormFactory = myInjector.getInstance(TreeFormFactory.class);
+		ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
+		EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
+		Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
+		TreeFormComposite treeForm = treeFormFactory.createTreeFormComposite(viewerParent, SWT.BORDER);
+		treeForm.update(resource);
 	}
 
 	private Method getMethod(Class<?> clazz, String name, String parameterName) {
