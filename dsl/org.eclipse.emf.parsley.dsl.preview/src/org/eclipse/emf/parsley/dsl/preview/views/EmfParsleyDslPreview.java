@@ -79,7 +79,6 @@ public class EmfParsleyDslPreview extends ViewPart {
 	 */
 	public static final String ID = "org.eclipse.emf.parsley.dsl.preview.views.EmfParsleyDslPreview";
 	private Text text;
-	private Text text_1;
 	private Composite composite;
 	private Composite parsleyComponentParent;
 
@@ -93,17 +92,21 @@ public class EmfParsleyDslPreview extends ViewPart {
 
 		text = new Text(parent, SWT.BORDER);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(parent, SWT.NONE);
-		
-		Label lblNewLabel_1 = new Label(parent, SWT.NONE);
-		lblNewLabel_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblNewLabel_1.setText("resource");
-		
-		text_1 = new Text(parent, SWT.BORDER);
-		text_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
 				Button btnNewButton = new Button(parent, SWT.NONE);
 				btnNewButton.setText("Preview");
+				
+								btnNewButton.addSelectionListener(new SelectionAdapter() {
+									@Override
+									public void widgetSelected(SelectionEvent e) {
+										parent.getDisplay().asyncExec(new Runnable() {
+											@Override
+											public void run() {
+												loadInjector(composite);
+											}
+										});
+									}
+								});
 				
 				composite = new Composite(parent, SWT.NONE);
 				composite.setLayout(new GridLayout(1, false));
@@ -116,22 +119,6 @@ public class EmfParsleyDslPreview extends ViewPart {
 				composite.setLayoutData(gridData);
 				
 				addParsleyComponent();
-				
-				new Label(parent, SWT.NONE);
-				new Label(parent, SWT.NONE);
-				new Label(parent, SWT.NONE);
-
-				btnNewButton.addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						parent.getDisplay().asyncExec(new Runnable() {
-							@Override
-							public void run() {
-								loadInjector(composite);
-							}
-						});
-					}
-				});
 	}
 
 	private void addParsleyComponent() {
@@ -261,14 +248,14 @@ public class EmfParsleyDslPreview extends ViewPart {
 		}
 	}
 
-	private void initializeTreeViewer(Injector myInjector, Composite viewerParent) {
-		ViewerFactory viewerFactory = myInjector.getInstance(ViewerFactory.class);
-		TreeViewer treeViewer = new TreeViewer(viewerParent);
-		ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
-		EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
-		Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
-		viewerFactory.initialize(treeViewer, resource);
-	}
+//	private void initializeTreeViewer(Injector myInjector, Composite viewerParent) {
+//		ViewerFactory viewerFactory = myInjector.getInstance(ViewerFactory.class);
+//		TreeViewer treeViewer = new TreeViewer(viewerParent);
+//		ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
+//		EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
+//		Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
+//		viewerFactory.initialize(treeViewer, resource);
+//	}
 
 	private void initializeTreeForm(Injector myInjector, Composite viewerParent) {
 		TreeFormFactory treeFormFactory = myInjector.getInstance(TreeFormFactory.class);
