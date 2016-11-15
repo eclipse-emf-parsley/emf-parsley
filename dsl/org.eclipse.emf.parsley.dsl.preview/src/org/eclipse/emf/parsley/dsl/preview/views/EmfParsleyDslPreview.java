@@ -14,19 +14,26 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
+import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
+import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
+import org.eclipse.emf.parsley.resource.ResourceManager;
+import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.internal.core.JavaProject;
 import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -41,6 +48,8 @@ import org.eclipse.ui.part.ViewPart;
 
 import com.google.inject.Injector;
 import com.google.inject.Key;
+import com.google.inject.Provider;
+
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Tree;
@@ -263,9 +272,22 @@ public class EmfParsleyDslPreview extends ViewPart {
 
 	private void initializeTreeForm(Injector myInjector, Composite viewerParent) {
 		TreeFormFactory treeFormFactory = myInjector.getInstance(TreeFormFactory.class);
-		ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
+//		ResourceLoader resourceLoader = myInjector.getInstance(ResourceLoader.class);
 		EditingDomain editingDomain = myInjector.getInstance(EditingDomain.class);
-		Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
+		ResourceManager resourceManager = myInjector.getInstance(ResourceManager.class);
+		ViewerContextMenuHelper contextMenuHelper = myInjector.getInstance(ViewerContextMenuHelper.class);
+		ViewerDragAndDropHelper dragAndDropHelper = myInjector.getInstance(ViewerDragAndDropHelper.class);
+		IViewerMouseListener viewerMouseListener = myInjector.getInstance(IViewerMouseListener.class);
+		ResourceSet resourceSet = editingDomain.getResourceSet();
+		Resource resource = new ResourceImpl();
+		// an URI is required for making context menus and other
+		// adapter factory related stuff works correctly
+		resource.setURI(URI.createFileURI(System.getProperty("java.io.tmpdir") + "My.res"));
+		resourceSet.getResources().add(resource);
+//		Resource resource = resourceLoader.getResource(editingDomain, URI.createURI(text_1.getText())).getResource();
+		if (resource.getContents().isEmpty()) {
+			resourceManager.initialize(resource);
+		}
 
 		GridData gridData;
 		parsleyComponentParent.dispose();
@@ -282,6 +304,11 @@ public class EmfParsleyDslPreview extends ViewPart {
 		
 		TreeFormComposite treeForm = treeFormFactory.createTreeFormComposite(parsleyComponentParent, SWT.BORDER);
 		treeForm.update(resource);
+		StructuredViewer viewer = treeForm.getViewer();
+		contextMenuHelper.addViewerContextMenu(viewer, editingDomain);
+		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
+		viewer.getControl().addMouseListener(viewerMouseListener);
+		
 //		TreeViewer treeViewer = new TreeViewer(parsleyComponentParent, SWT.BORDER);
 //		Tree tree = treeViewer.getTree();
 		gridData = new GridData();
