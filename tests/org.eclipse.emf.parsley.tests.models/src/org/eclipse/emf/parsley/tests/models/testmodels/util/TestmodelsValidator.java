@@ -119,6 +119,8 @@ public class TestmodelsValidator extends EObjectValidator {
 				return validateClassForValidation((ClassForValidation)value, diagnostics, context);
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION:
 				return validateClassForDefaultValidation((ClassForDefaultValidation)value, diagnostics, context);
+			case TestmodelsPackage.CLASS_FOR_COMPARE:
+				return validateClassForCompare((ClassForCompare)value, diagnostics, context);
 			case TestmodelsPackage.ENUM_FOR_CONTROLS:
 				return validateEnumForControls((EnumForControls)value, diagnostics, context);
 			case TestmodelsPackage.BOOLEAN_DATA_TYPE:
@@ -334,6 +336,15 @@ public class TestmodelsValidator extends EObjectValidator {
 	 */
 	public boolean validateClassForDefaultValidation(ClassForDefaultValidation classForDefaultValidation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(classForDefaultValidation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClassForCompare(ClassForCompare classForCompare, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(classForCompare, diagnostics, context);
 	}
 
 	/**

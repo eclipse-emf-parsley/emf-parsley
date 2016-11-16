@@ -88,4 +88,21 @@ public class EmfParsleyUtil {
 		}
 		return null;
 	}
+
+	/**
+	 * @since 1.1
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static int compareValues(Object value1, Object value2) {
+		if (value1 instanceof Comparable && value2 instanceof Comparable) {
+			return ((Comparable) value1).compareTo(value2);
+		} else if (value1 != null && value2 != null) {
+			return value1.toString().compareTo(value2.toString());
+		} else if (value1 != null) {
+			return 1;
+		} else if (value2 != null) {
+			return -1;
+		}
+		return 0;
+	}
 }

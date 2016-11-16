@@ -93,6 +93,56 @@ public class EmfParsleyUtilTest {
 		EmfParsleyUtil.getEObjectOrNull(o).assertSame(o)
 	}
 
+	@Test
+	def void testCompareNullWithNull() {
+		assertEquals(0,EmfParsleyUtil.compareValues(null,null))
+	}
+
+	@Test
+	def void testCompareComparableWithNull() {
+		assertEquals(1,EmfParsleyUtil.compareValues("aaa",null))
+	}
+
+	@Test
+	def void testCompareNullWithObject() {
+		assertEquals(-1,EmfParsleyUtil.compareValues(null,"aaa"))
+	}
+
+	@Test
+	def void testCompareComparableWithComparable() {
+		assertEquals(-1,EmfParsleyUtil.compareValues("aaa","bbb"))
+	}
+
+	@Test
+	def void testCompareNonComparableWithComparable() {
+		assertNotEquals(0,EmfParsleyUtil.compareValues(new Object,""))
+	}
+
+	@Test
+	def void testCompareNonComparableWithNonComparable() {
+		assertNotEquals(0,EmfParsleyUtil.compareValues(new Object,new Object))
+	}
+
+	@Test
+	def void testCompareNonComparableWithNull() {
+		assertNotEquals(0,EmfParsleyUtil.compareValues(new Object,null))
+	}
+
+	@Test
+	def void testCompareNullWithNonComparable() {
+		assertNotEquals(0,EmfParsleyUtil.compareValues(null,new Object))
+	}
+	
+	@Test
+	def void testCompareComparableWithNonComparable() {
+		assertNotEquals(0,EmfParsleyUtil.compareValues("",new Object))
+	}
+
+	@Test
+	def void testCompareWithEObject() {
+		assertEquals(0,EmfParsleyUtil.compareValues(null,null))
+	}
+
 	def protected Object[] createArray() {
 		val Object[] arr = #{ EXTLibraryFactory.eINSTANCE.createBook(), EXTLibraryFactory.eINSTANCE.createBook() };
 		return arr;
