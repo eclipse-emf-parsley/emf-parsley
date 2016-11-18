@@ -16,18 +16,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
-import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
-import org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper;
 import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
-import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
-import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.internal.core.JavaProject;
@@ -44,16 +38,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.part.ViewPart;
 
 import com.google.inject.Injector;
-import com.google.inject.Key;
-import com.google.inject.Provider;
-
-import org.eclipse.swt.custom.ScrolledComposite;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.jface.layout.TreeColumnLayout;
 
 /**
  * This sample class demonstrates how to plug-in a new workbench view. The view
@@ -70,6 +58,7 @@ import org.eclipse.jface.layout.TreeColumnLayout;
  * <p>
  */
 
+@SuppressWarnings("restriction")
 public class EmfParsleyDslPreview extends ViewPart {
 	public EmfParsleyDslPreview() {
 	}
@@ -152,18 +141,6 @@ public class EmfParsleyDslPreview extends ViewPart {
 
 	}
 
-	private Class<?> tmploadClass(String fullyQualifiedName) throws CoreException {
-		List<URLClassLoader> loaders = getClassLoaders();
-		for (URLClassLoader loader : loaders) {
-			try {
-				Class<?> clazz = loader.loadClass(fullyQualifiedName);
-				return clazz;
-			} catch (ClassNotFoundException e) {
-			}
-		}
-		return null;
-	}
-
 	private URLClassLoader getURLClassLoader(ClassLoader parentClassLoader) throws CoreException {
 		List<IJavaProject> javaProjects = new ArrayList<IJavaProject>();
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
@@ -180,32 +157,6 @@ public class EmfParsleyDslPreview extends ViewPart {
 		}
 		URL[] urls = (URL[]) urlList.toArray(new URL[urlList.size()]);
 		URLClassLoader classLoader = new URLClassLoader(urls, parentClassLoader);
-		return classLoader;
-	}
-
-	private List<URLClassLoader> getClassLoaders() throws CoreException {
-		List<IJavaProject> javaProjects = new ArrayList<IJavaProject>();
-		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-		for (IProject project : projects) {
-			if (project.isOpen() && JavaProject.hasJavaNature(project)) {
-				IJavaProject javaProject = JavaCore.create(project);
-				javaProjects.add(javaProject);
-				System.out.println("project: " + project.getName());
-			}
-		}
-		ArrayList<URLClassLoader> loaders = new ArrayList<URLClassLoader>();
-		for (IJavaProject javaProject : javaProjects) {
-			loaders.add(getProjectClassLoader(javaProject));
-		}
-		return loaders;
-	}
-
-	private URLClassLoader getProjectClassLoader(IJavaProject javaProject) throws CoreException {
-		List<URL> urlList = getProjectClassPathEntries(javaProject);
-//		ClassLoader parentClassLoader = javaProject.getClass().getClassLoader();
-		URL[] urls = (URL[]) urlList.toArray(new URL[urlList.size()]);
-//		URLClassLoader classLoader = new URLClassLoader(urls, parentClassLoader);
-		URLClassLoader classLoader = new URLClassLoader(urls);
 		return classLoader;
 	}
 
@@ -313,20 +264,4 @@ public class EmfParsleyDslPreview extends ViewPart {
 		parsleyComponentParent.layout();
 	}
 
-	private Method getMethod(Class<?> clazz, String name, String parameterName) {
-		Method[] injectorMethods = clazz.getDeclaredMethods();
-		Method getInstanceMethod = null;
-		for (int i = 0; i < injectorMethods.length; i++) {
-			Method injectorMethod = injectorMethods[i];
-			if (injectorMethod.getName().equals(name)) {
-				System.out.println(injectorMethod);
-				if (injectorMethod.getParameterTypes()[0].getName().equals(parameterName)) {
-					getInstanceMethod = injectorMethod;
-					getInstanceMethod.setAccessible(true);
-					break;
-				}
-			}
-		}
-		return getInstanceMethod;
-	}
 }
