@@ -15,7 +15,7 @@ import org.junit.Test
 import static extension org.junit.Assert.*
 import org.eclipse.emf.parsley.dsl.jvmmodel.EmfParsleyDslGeneratorUtils
 
-class EmfParsleyDslGeneratorUtilsTests {
+class EmfParsleyDslGeneratorUtilsTest {
 
 	extension EmfParsleyDslGeneratorUtils utils = new EmfParsleyDslGeneratorUtils
 

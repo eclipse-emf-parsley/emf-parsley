@@ -24,48 +24,47 @@ import org.junit.runner.RunWith
 
 import static extension org.junit.Assert.*
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslAbstractTests {
-	
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+abstract class EmfParsleyDslAbstractTest {
+
 	@Inject
 	protected TestInputs inputs
-	
+
 	@Inject
 	protected TestInputsWithErrors inputsWithErrors
-	
+
 	@Inject extension ParseHelper<Model>
- 
-    @Inject extension ValidationTestHelper
-    
-    @BeforeClass
+
+	@Inject extension ValidationTestHelper
+
+	@BeforeClass
 	def static void setCRLF() {
 		System::setProperty("line.separator", "\n")
 	}
-    
-    def parseAndAssertNoError(CharSequence s) {
+
+	def parseAndAssertNoError(CharSequence s) {
 		var ts = s.parse
 		ts.assertNoErrors
 		ts
 	}
-	
-	def parseAndAssertError(CharSequence s, EClass objectType, String code,
-			String messagePart) {
-		s.parse.assertError(objectType, code, messagePart)			
+
+	def parseAndAssertError(CharSequence s, EClass objectType, String code, String messagePart) {
+		s.parse.assertError(objectType, code, messagePart)
 	}
-	
+
 	def parseModel(CharSequence s) {
 		s.parse
 	}
-	
+
 	def parseAndAssertErrors(CharSequence s) {
 		(s.parse.validate.size > 0).assertTrue
 	}
-	
+
 	def module(CharSequence s) {
 		s.parseAndAssertNoError.module
 	}
-	
+
 	def assertEqualsStrings(Object expected, Object actual) {
 		assertEquals("" + expected, "" + actual)
 	}

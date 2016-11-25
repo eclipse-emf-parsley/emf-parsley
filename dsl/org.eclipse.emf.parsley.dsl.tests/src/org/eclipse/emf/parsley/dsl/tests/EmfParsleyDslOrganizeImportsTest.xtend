@@ -26,10 +26,10 @@ import static org.junit.Assert.*
 /**
  * @author Lorenzo Bettini - inspired by the Xtext Domainmodel example
  */
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslOrganizeImportsTests {
-	
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+class EmfParsleyDslOrganizeImportsTest {
+
 	@Inject extension ParseHelper<Model> 
 	@Inject ImportOrganizer importOrganizer
 

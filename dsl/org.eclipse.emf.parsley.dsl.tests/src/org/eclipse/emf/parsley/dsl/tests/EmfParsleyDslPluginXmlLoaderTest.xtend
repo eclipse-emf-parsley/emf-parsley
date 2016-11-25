@@ -10,7 +10,7 @@ import static extension org.junit.Assert.*
 import org.eclipse.xtend2.lib.StringConcatenation
 import org.eclipse.emf.parsley.dsl.pluginxml.PluginXmlUtils
 
-class EmfParsleyDslPluginXmlLoaderTests {
+class EmfParsleyDslPluginXmlLoaderTest {
 
 	new() {
 		// to avoid missed code coverage for the protected constructor

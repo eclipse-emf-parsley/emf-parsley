@@ -8,7 +8,7 @@ import static extension org.junit.Assert.*
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
-class EmfParsleyProjectFilesGeneratorUtilTests {
+class EmfParsleyProjectFilesGeneratorUtilTest {
 
 	new() {
 		// to avoid missed code coverage for the protected constructor

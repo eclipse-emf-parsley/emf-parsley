@@ -26,13 +26,13 @@ import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProviderCustom))
-class EmfParsleyDslGeneratorTests extends EmfParsleyDslAbstractTests {
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProviderCustom)
+class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 
 	@Rule
 	@Inject public TemporaryFolder temporaryFolder
- 
+
 	@Inject extension CompilationTestHelper
 
 	@Test

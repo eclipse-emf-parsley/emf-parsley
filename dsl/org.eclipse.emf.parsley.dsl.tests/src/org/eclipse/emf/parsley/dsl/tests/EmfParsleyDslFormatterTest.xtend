@@ -17,9 +17,9 @@ import org.eclipse.xtext.junit4.formatter.FormatterTester
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslFormatterTests extends EmfParsleyDslAbstractTests {
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+class EmfParsleyDslFormatterTest extends EmfParsleyDslAbstractTest {
 
 	@Inject extension FormatterTester
 

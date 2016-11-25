@@ -21,9 +21,9 @@ import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslPluginXmlGeneratorTests extends EmfParsleyDslAbstractTests {
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTest {
 
 	@Inject EmfParsleyDslPluginXmlGenerator pluginXmlGenerator
 

@@ -40,14 +40,6 @@
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 								for jacoco agent -->
 							<argLine>${tycho.testArgLine} ${memoryArgs}</argLine>
-							<includes>
-								<include>**/org/eclipse/emf/parsley/dsl/tests/*Tests.java</include>
-								<include>**/org/eclipse/emf/parsley/dsl/tests/*Test.java</include>
-							</includes>
-							<excludes>
-								<exclude>**/org/eclipse/emf/parsley/dsl/tests/*AllTests.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/dsl/tests/*AbstractTests.java</exclude>
-							</excludes>
 						</configuration>
 						<goals>
 							<goal>test</goal>

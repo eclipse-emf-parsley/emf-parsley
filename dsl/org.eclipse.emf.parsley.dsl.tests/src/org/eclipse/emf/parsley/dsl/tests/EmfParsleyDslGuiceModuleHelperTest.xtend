@@ -21,13 +21,13 @@ import org.junit.runner.RunWith
 
 import static extension org.junit.Assert.*
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslGuiceModuleHelperTests extends EmfParsleyDslAbstractTests {
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+class EmfParsleyDslGuiceModuleHelperTest extends EmfParsleyDslAbstractTest {
 
 	@Inject extension ParseHelper<Model>
- 	@Inject extension EmfParsleyDslGuiceModuleHelper
- 	
+	@Inject extension EmfParsleyDslGuiceModuleHelper
+
 	@Test
 	def void testModuleWithNoNameInferredType() {
 		'''

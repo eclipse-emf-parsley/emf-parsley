@@ -28,31 +28,31 @@ import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslSmokeTests {
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+class EmfParsleyDslSmokeTest {
 
 	@Inject extension ParseHelper<Model>
- 	@Inject extension ValidationTestHelper
- 	
- 	private final static Logger LOG = Logger.getLogger(JvmModelAssociator);
+	@Inject extension ValidationTestHelper
+
+	private final static Logger LOG = Logger.getLogger(JvmModelAssociator);
 
 	/**
 	 * JvmModelAssociator does not throw exceptions but logs possible
 	 * errors; we use this class to record possible error events
 	 */
 	static class LogListener extends ConsoleAppender {
-		
+
 		val public events = newArrayList()
-		
+
 		override doAppend(LoggingEvent event) {
 			if (event.getLevel == Level.ERROR) {
 				events += event
 			}
 		}
-		
+
 	}
-	
+
 	var LogListener logListener
 
 	@Before
@@ -70,80 +70,80 @@ class EmfParsleyDslSmokeTests {
 	@Test
 	def void testModuleWithNoName() {
 		'''
-		module
+			module
 		'''.assertNoException
 	}
 
 	@Test
 	def void testExtendsWithoutType() {
 		'''
-		module my.empty extends
+			module my.empty extends
 		'''.assertNoException
 	}
 
 	@Test
 	def void testTypeBindingWithNoType() {
 		'''
-		module my.empty {
-			bindings {
-				type
+			module my.empty {
+				bindings {
+					type
+				}
 			}
-		}
 		'''.assertNoException
 	}
 
 	@Test
 	def void testProviderBindingWithNoType() {
 		'''
-		module my.empty {
-			bindings {
-				provide
+			module my.empty {
+				bindings {
+					provide
+				}
 			}
-		}
 		'''.assertNoException
 	}
 
 	@Test
 	def void testValueBindingWithNoType() {
 		'''
-		module my.empty {
-			bindings {
-				value
+			module my.empty {
+				bindings {
+					value
+				}
 			}
-		}
 		'''.assertNoException
 	}
 
 	@Test
 	def void testValueBindingWithUnknownType() {
 		'''
-		module my.empty {
-			bindings {
-				value Foo TableColumnWeights
+			module my.empty {
+				bindings {
+					value Foo TableColumnWeights
+				}
 			}
-		}
 		'''.assertNoException
 	}
 
 	@Test
 	def void testResourceManagerInitializeWithNoBody() {
 		'''
-		module my.empty {
-			resourceManager {
-				initializeResource
+			module my.empty {
+				resourceManager {
+					initializeResource
+				}
 			}
-		}
 		'''.assertNoException
 	}
 
 	@Test
 	def void testResourceManagerSaveWithNoBody() {
 		'''
-		module my.empty {
-			resourceManager {
-				saveSave
+			module my.empty {
+				resourceManager {
+					saveSave
+				}
 			}
-		}
 		'''.assertNoException
 	}
 

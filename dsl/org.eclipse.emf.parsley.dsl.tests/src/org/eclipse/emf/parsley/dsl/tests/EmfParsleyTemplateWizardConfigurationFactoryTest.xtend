@@ -10,10 +10,10 @@ import static extension org.junit.Assert.*
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
-class EmfParsleyTemplateWizardConfigurationFactoryTests {
+class EmfParsleyTemplateWizardConfigurationFactoryTest {
 
 	var List<TemplateWizardConfiguration> configurations;
-	
+
 	new() {
 		configurations = new TemplateWizardConfigurationsFactory().createTemplateWizardConfigurations
 	}

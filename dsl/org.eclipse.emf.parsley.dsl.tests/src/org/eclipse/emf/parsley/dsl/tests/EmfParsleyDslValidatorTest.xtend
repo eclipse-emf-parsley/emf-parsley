@@ -49,12 +49,12 @@ import static org.eclipse.emf.parsley.dsl.validation.EmfParsleyDslValidator.*
 
 import static extension org.junit.Assert.*
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProvider))
-class EmfParsleyDslValidatorTests extends EmfParsleyDslAbstractTests {
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+class EmfParsleyDslValidatorTest extends EmfParsleyDslAbstractTest {
 
 	@Inject extension ParseHelper<Model>
- 	@Inject extension ValidationTestHelper
+	@Inject extension ValidationTestHelper
 
 	@Test
 	def void testViewSpecificationIsNotIViewPart() {

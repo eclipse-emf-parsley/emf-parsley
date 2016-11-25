@@ -9,7 +9,7 @@ import org.eclipse.emf.parsley.views.SaveableTreeView
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
-class EmfParsleyTemplateWizardConfigurationTests {
+class EmfParsleyTemplateWizardConfigurationTest {
 
 	@Test
 	def void testPartClassName() {

@@ -19,21 +19,21 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	EmfParsleyDslGeneratorUtilsTests.class,
+	EmfParsleyDslGeneratorUtilsTest.class,
 	EmfParsleyDslParsingTest.class,
-	EmfParsleyDslGuiceModuleHelperTests.class,
-	EmfParsleyDslSmokeTests.class,
-	EmfParsleyDslScopingTests.class,
-	EmfParsleyDslValidatorTests.class,
-	EmfParsleyDslPluginXmlGeneratorTests.class,
-	EmfParsleyDslGeneratorTests.class,
-	EmfParsleyDslOrganizeImportsTests.class,
-	EmfParsleyDslNewProjectFilesTests.class,
-	EmfParsleyProjectFilesGeneratorUtilTests.class,
-	EmfParsleyTemplateWizardConfigurationTests.class,
-	EmfParsleyTemplateWizardConfigurationFactoryTests.class,
-	EmfParsleyDslFormatterTests.class,
-	EmfParsleyDslPluginXmlLoaderTests.class
+	EmfParsleyDslGuiceModuleHelperTest.class,
+	EmfParsleyDslSmokeTest.class,
+	EmfParsleyDslScopingTest.class,
+	EmfParsleyDslValidatorTest.class,
+	EmfParsleyDslPluginXmlGeneratorTest.class,
+	EmfParsleyDslGeneratorTest.class,
+	EmfParsleyDslOrganizeImportsTest.class,
+	EmfParsleyDslNewProjectFilesTest.class,
+	EmfParsleyProjectFilesGeneratorUtilTest.class,
+	EmfParsleyTemplateWizardConfigurationTest.class,
+	EmfParsleyTemplateWizardConfigurationFactoryTest.class,
+	EmfParsleyDslFormatterTest.class,
+	EmfParsleyDslPluginXmlLoaderTest.class
 })
 public class EmfParsleyDslAllTests {
 

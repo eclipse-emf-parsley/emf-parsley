@@ -8,7 +8,7 @@ import static extension org.junit.Assert.*
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
-class EmfParsleyDslNewProjectFilesTests {
+class EmfParsleyDslNewProjectFilesTest {
 	
 	val generator = new EmfParsleyDslNewProjectFiles
 	

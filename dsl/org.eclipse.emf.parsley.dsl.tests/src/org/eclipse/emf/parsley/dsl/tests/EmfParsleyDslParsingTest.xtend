@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
 @InjectWith(EmfParsleyDslInjectorProvider)
-class EmfParsleyDslParsingTest extends EmfParsleyDslAbstractTests {
+class EmfParsleyDslParsingTest extends EmfParsleyDslAbstractTest {
 
 	@Inject extension ValidationTestHelper
 
