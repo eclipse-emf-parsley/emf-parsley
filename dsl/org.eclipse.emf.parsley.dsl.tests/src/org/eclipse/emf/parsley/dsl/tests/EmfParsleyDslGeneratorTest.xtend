@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.common.base.Joiner
 import com.google.inject.Inject
-import org.eclipse.emf.parsley.dsl.tests.util.EmfParsleyDslInjectorProviderCustom
 import org.eclipse.emf.parsley.dsl.tests.util.GeneratorExpectedResults
 import org.eclipse.xtext.diagnostics.Severity
 import org.eclipse.xtext.junit4.InjectWith
@@ -27,7 +26,7 @@ import org.junit.runner.RunWith
 import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
-@InjectWith(EmfParsleyDslInjectorProviderCustom)
+@InjectWith(EmfParsleyDslInjectorProvider)
 class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 
 	@Rule
