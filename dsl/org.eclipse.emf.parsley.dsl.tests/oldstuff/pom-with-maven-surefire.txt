@@ -13,6 +13,15 @@
 	<artifactId>org.eclipse.emf.parsley.dsl.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<dependencies>
+		<dependency>
+			<!-- needed for running plain Junit tests with Maven surefire plugin -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -26,11 +35,44 @@
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<executions>
+					<execution>
+						<!-- The execution id default-test must be left to tycho-surefire-plugin 
+							since it will execute it anyway -->
+						<id>MavenSurefirePluginTest</id>
+						<phase>test</phase>
+						<configuration>
+							<skip>${dsl.tests.skip}</skip>
+							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
+								for jacoco agent -->
+							<argLine>${tycho.testArgLine} ${memoryArgs}</argLine>
+							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+							<includes>
+								<include>**/org/eclipse/emf/parsley/dsl/tests/*Tests.java</include>
+							</includes>
+							<excludes>
+								<exclude>**/org/eclipse/emf/parsley/dsl/tests/*AllTests.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/dsl/tests/*AbstractTests.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/dsl/tests/*DslGeneratorTests.java</exclude>
+							</excludes>
+						</configuration>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<executions>
 					<execution>
+						<!-- compiler tests need an OSGI environment, but no UI -->
 						<id>default-test</id>
 						<phase>integration-test</phase>
 						<configuration>
@@ -41,13 +83,8 @@
 								for jacoco agent -->
 							<argLine>${tycho.testArgLine} ${memoryArgs}</argLine>
 							<includes>
-								<include>**/org/eclipse/emf/parsley/dsl/tests/*Tests.java</include>
-								<include>**/org/eclipse/emf/parsley/dsl/tests/*Test.java</include>
+								<include>**/org/eclipse/emf/parsley/dsl/tests/*DslGeneratorTests.java</include>
 							</includes>
-							<excludes>
-								<exclude>**/org/eclipse/emf/parsley/dsl/tests/*AllTests.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/dsl/tests/*AbstractTests.java</exclude>
-							</excludes>
 						</configuration>
 						<goals>
 							<goal>test</goal>
