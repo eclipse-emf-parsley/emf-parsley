@@ -13,6 +13,8 @@ package org.eclipse.emf.parsley.tests
 import java.util.List
 import org.eclipse.jface.viewers.ColumnLayoutData
 import org.eclipse.jface.viewers.ColumnWeightData
+import org.eclipse.swt.SWT
+import org.eclipse.swt.widgets.Event
 import org.eclipse.swt.widgets.Layout
 import org.junit.Test
 
@@ -88,6 +90,35 @@ class TableViewerColumnBuilderTest extends AbstractViewerTest {
 			"Class With Name name 0".assertEquals(
 				tableViewer.table.items.head.getText(1)
 			)
+		]
+	}
+
+	@Test
+	def void testSortableColumnBuilder() {
+		val SORT_NONE = 0
+		val SORT_UP = 128
+		val SORT_DOWN = 1024
+
+		buildAndFillTableViewer(
+			testContainer.classesForControls, testPackage.classForControls
+		)
+		syncExecVoid[
+			val tableColumns=tableViewer.table.getColumns();
+			// for each column order change is tested for each direction
+			for (column : tableColumns) {
+				assertEquals(SORT_NONE,tableViewer.table.sortDirection)
+				column.notifyListeners(SWT.Selection, new Event());
+				assertEquals(column,tableViewer.table.sortColumn)
+				assertEquals(SORT_UP,tableViewer.table.sortDirection)
+
+				column.notifyListeners(SWT.Selection, new Event());
+				assertEquals(column,tableViewer.table.sortColumn)
+				assertEquals(SORT_DOWN,tableViewer.table.sortDirection)
+
+				column.notifyListeners(SWT.Selection, new Event());
+				assertEquals(column,tableViewer.table.sortColumn)
+				assertEquals(SORT_NONE,tableViewer.table.sortDirection)
+			}
 		]
 	}
 

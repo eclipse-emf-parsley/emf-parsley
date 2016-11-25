@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.parsley.tests.models.testmodels.ABaseClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClassForFeatureMapEntry;
+import org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForFeatureMapEntry1;
@@ -150,6 +151,13 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * @generated
 	 */
 	private EClass classForDefaultValidationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classForCompareEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -844,6 +852,51 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getClassForCompare() {
+		return classForCompareEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForCompare_StringAttribute() {
+		return (EAttribute)classForCompareEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForCompare_IntAttribute() {
+		return (EAttribute)classForCompareEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForCompare_BigDecimalAttribute() {
+		return (EAttribute)classForCompareEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassForCompare_DateAttribute() {
+		return (EAttribute)classForCompareEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTestContainer() {
 		return testContainerEClass;
 	}
@@ -1082,6 +1135,12 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		createEAttribute(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__CAN_BE_EMPTY);
 		createEReference(classForDefaultValidationEClass, CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE);
 
+		classForCompareEClass = createEClass(CLASS_FOR_COMPARE);
+		createEAttribute(classForCompareEClass, CLASS_FOR_COMPARE__STRING_ATTRIBUTE);
+		createEAttribute(classForCompareEClass, CLASS_FOR_COMPARE__INT_ATTRIBUTE);
+		createEAttribute(classForCompareEClass, CLASS_FOR_COMPARE__BIG_DECIMAL_ATTRIBUTE);
+		createEAttribute(classForCompareEClass, CLASS_FOR_COMPARE__DATE_ATTRIBUTE);
+
 		// Create enums
 		enumForControlsEEnum = createEEnum(ENUM_FOR_CONTROLS);
 
@@ -1217,6 +1276,12 @@ public class TestmodelsPackageImpl extends EPackageImpl implements TestmodelsPac
 		initEAttribute(getClassForDefaultValidation_NotEmpty(), ecorePackage.getEString(), "notEmpty", null, 1, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClassForDefaultValidation_CanBeEmpty(), ecorePackage.getEString(), "canBeEmpty", null, 0, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassForDefaultValidation_NotNullReference(), this.getClassWithName(), null, "notNullReference", null, 1, 1, ClassForDefaultValidation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(classForCompareEClass, ClassForCompare.class, "ClassForCompare", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassForCompare_StringAttribute(), ecorePackage.getEString(), "stringAttribute", null, 0, 1, ClassForCompare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForCompare_IntAttribute(), ecorePackage.getEInt(), "intAttribute", null, 0, 1, ClassForCompare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForCompare_BigDecimalAttribute(), ecorePackage.getEBigDecimal(), "bigDecimalAttribute", null, 0, 1, ClassForCompare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassForCompare_DateAttribute(), ecorePackage.getEDate(), "dateAttribute", null, 0, 1, ClassForCompare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(enumForControlsEEnum, EnumForControls.class, "EnumForControls");
