@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2016 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import com.google.inject.Guice
 import com.google.inject.Inject
 import com.google.inject.Module
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import org.eclipse.emf.parsley.dsl.tests.util.EmfParsleyDslInjectorProviderCustom
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.viewers.ViewerFactory
@@ -35,9 +34,9 @@ import org.junit.runner.RunWith
 
 import static extension org.junit.Assert.*
 
-@RunWith(typeof(XtextRunner))
-@InjectWith(typeof(EmfParsleyDslInjectorProviderCustom))
-class EmfParsleyDslExecutionTests extends AbstractEmfParsleyShellBasedTest {
+@RunWith(XtextRunner)
+@InjectWith(EmfParsleyDslInjectorProvider)
+class EmfParsleyDslExecutionTest extends AbstractEmfParsleyShellBasedTest {
 
 	@Rule
 	@Inject public TemporaryFolder temporaryFolder
@@ -46,7 +45,7 @@ class EmfParsleyDslExecutionTests extends AbstractEmfParsleyShellBasedTest {
 
 	val libraryFactory = EXTLibraryFactory.eINSTANCE
 
-	@Test def void testLabelProvider() {
+	@Test def void testGeneratedLabelProvider() {
 		val labelProvider = '''
 			import org.eclipse.emf.parsley.examples.library.Book
 			import org.eclipse.emf.parsley.examples.library.BookOnTape
@@ -96,7 +95,7 @@ class EmfParsleyDslExecutionTests extends AbstractEmfParsleyShellBasedTest {
 		"Title: Foo".assertEquals(labelProvider.getText(libraryFactory.createBook => [title = "Foo"]))
 	}
 
-	@Test def void testContentProvider() {
+	@Test def void testGeneratedContentProvider() {
 		val viewerFactory = '''
 			import org.eclipse.emf.ecore.resource.Resource
 			import org.eclipse.emf.parsley.examples.library.Book
