@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Emf Parsley Example CDO Server
+Bundle-Name: EMF Parsley Example CDO Server
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.cdo.server
 Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project

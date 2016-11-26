@@ -76,7 +76,7 @@ public class MynameSaveableTreeView extends org.eclipse.emf.parsley.views.Saveab
 '''
 import my.project.myname.MynameSaveableTreeView
 
-/* my.project.myname Emf Parsley Dsl Module file */
+/* my.project.myname EMF Parsley Dsl Module file */
 module my.project.myname {
 	
 	parts {
@@ -107,7 +107,7 @@ module my.project.myname {
 '''
 import my.project.myname.MynameSaveableTreeView
 
-/* my.project.myname Emf Parsley Dsl Module file */
+/* my.project.myname EMF Parsley Dsl Module file */
 module my.project.myname {
 	
 	parts {
@@ -136,7 +136,7 @@ module my.project.myname {
 '''
 import my.project.myname.MynameSaveableTreeView
 
-/* my.project.myname Emf Parsley Dsl Module file */
+/* my.project.myname EMF Parsley Dsl Module file */
 module my.project.myname {
 	
 	parts {

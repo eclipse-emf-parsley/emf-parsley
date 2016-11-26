@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 
 /**
- * This configures several aspects of many components in Emf Parsley, such as,
+ * This configures several aspects of many components in EMF Parsley, such as,
  * for instance, the Resource of a view, the EClass for the objects to
  * be presented in a view, etc; the configuration will take place polymorphically
  * according to the requestor, passed as a parameter of the methods.

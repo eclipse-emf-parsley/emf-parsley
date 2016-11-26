@@ -7,7 +7,7 @@ import org.eclipse.emf.parsley.examples.cdo.company.Product
 import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ProductsTreeFormView
 import org.eclipse.swt.SWT
 
-/* org.eclipse.emf.parsley.examples.cdo.company.ui.products Emf Parsley Dsl Module file */
+/* org.eclipse.emf.parsley.examples.cdo.company.ui.products EMF Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.cdo.company.ui.products extends CompanyGuiceModule{
 	
 	parts {

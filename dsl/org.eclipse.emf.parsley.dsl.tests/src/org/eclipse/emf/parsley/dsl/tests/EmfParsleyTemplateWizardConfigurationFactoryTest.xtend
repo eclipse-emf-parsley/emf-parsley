@@ -28,7 +28,7 @@ class EmfParsleyTemplateWizardConfigurationFactoryTest {
 '''
 import my.project.name.NameOnSelectionTreeView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -47,7 +47,7 @@ module my.project.name {
 '''
 import my.project.name.NameOnSelectionFormView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -66,7 +66,7 @@ module my.project.name {
 '''
 import my.project.name.NameOnSelectionTableFormView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -92,7 +92,7 @@ module my.project.name {
 '''
 import my.project.name.NameOnSelectionTableView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -118,7 +118,7 @@ module my.project.name {
 '''
 import my.project.name.NameOnSelectionTreeFormView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -137,7 +137,7 @@ module my.project.name {
 '''
 import my.project.name.NameSaveableTableFormView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -177,7 +177,7 @@ module my.project.name {
 '''
 import my.project.name.NameSaveableTableView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -217,7 +217,7 @@ module my.project.name {
 '''
 import my.project.name.NameSaveableTreeFormView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -252,7 +252,7 @@ module my.project.name {
 '''
 import my.project.name.NameSaveableTreeView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {
@@ -287,7 +287,7 @@ module my.project.name {
 '''
 import my.project.name.NameSaveableTreeWithColumnsView
 
-/* my.project.name Emf Parsley Dsl Module file */
+/* my.project.name EMF Parsley Dsl Module file */
 module my.project.name {
 	
 	parts {

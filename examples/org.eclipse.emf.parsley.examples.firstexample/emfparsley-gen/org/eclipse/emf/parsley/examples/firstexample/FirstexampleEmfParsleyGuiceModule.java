@@ -21,7 +21,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * org.eclipse.emf.parsley.examples.firstexample Emf Parsley Dsl Module file
+ * org.eclipse.emf.parsley.examples.firstexample EMF Parsley Dsl Module file
  */
 @SuppressWarnings("all")
 public class FirstexampleEmfParsleyGuiceModule extends EmfParsleyGuiceModule {

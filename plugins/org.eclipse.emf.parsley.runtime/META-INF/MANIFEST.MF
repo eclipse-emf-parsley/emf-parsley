@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Emf Parsley Runtime Functionalities
+Bundle-Name: EMF Parsley Runtime Functionalities
 Bundle-SymbolicName: org.eclipse.emf.parsley.runtime
 Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project

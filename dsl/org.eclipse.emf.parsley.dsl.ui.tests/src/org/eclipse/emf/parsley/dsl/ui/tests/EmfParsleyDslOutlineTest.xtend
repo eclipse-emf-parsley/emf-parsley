@@ -35,7 +35,7 @@ import my.proj.ProjTreeFormView
 import org.eclipse.emf.parsley.edit.IEditingStrategy
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
 
-/* my.proj Emf Parsley Dsl Module file */
+/* my.proj EMF Parsley Dsl Module file */
 module my.proj {
 	
 	parts {

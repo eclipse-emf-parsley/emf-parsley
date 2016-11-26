@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<toc topic="contents/00-Main.html" label="Emf Parsley Guide" >
-	<topic href="contents/00-Main_4.html#Emf%20Parsley%20Guide_4" label="Getting Started" >
+<toc topic="contents/00-Main.html" label="EMF Parsley Guide" >
+	<topic href="contents/00-Main_4.html#EMF%20Parsley%20Guide_4" label="Getting Started" >
 		<topic href="contents/01-Overview.html#Overview" label="Overview" >
 			<topic href="contents/01-Overview.html#ParsleyComponents" label="Parsley Components" >
 				<topic href="contents/01-Overview.html#Customize" label="Customize" >
@@ -18,7 +18,7 @@
 		<topic href="contents/02-FirstExample.html#FirstExample" label="First Example" >
 		</topic>
 	</topic>
-	<topic href="contents/00-Main_5.html#Emf%20Parsley%20Guide_5" label="Reference Documentation" >
+	<topic href="contents/00-Main_5.html#EMF%20Parsley%20Guide_5" label="Reference Documentation" >
 		<topic href="contents/05-Components.html#Components" label="Components" >
 			<topic href="contents/05-Components.html#FormComponent" label="Form Component" >
 				<topic href="contents/05-Components.html#FormComponent_features" label="Feature List Customization" >
@@ -124,7 +124,7 @@
 			</topic>
 		</topic>
 	</topic>
-	<topic href="contents/00-Main_6.html#Emf%20Parsley%20Guide_6" label="Appendix" >
+	<topic href="contents/00-Main_6.html#EMF%20Parsley%20Guide_6" label="Appendix" >
 		<topic href="contents/Migration-Guide.html#MigrationGuide" label="Migration Guide" >
 			<topic href="contents/Migration-Guide.html#VersionOne" label="From 0.7.0 to 1.0.0" >
 			</topic>

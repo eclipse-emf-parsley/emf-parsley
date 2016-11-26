@@ -6,7 +6,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * org.eclipse.emf.parsley.examples.cdo.company.ui.orders Emf Parsley Dsl Module file
+ * org.eclipse.emf.parsley.examples.cdo.company.ui.orders EMF Parsley Dsl Module file
  */
 @SuppressWarnings("all")
 public class OrdersEmfParsleyGuiceModule extends CompanyGuiceModule {

@@ -16,7 +16,7 @@ class EmfParsleyDslNewProjectFilesTest {
 	def void testDslModuleWithoutAdditionalContents() {
 		generator.genEmptyDslModule("testproject").assertGeneratedContentEqualsTo(
 '''
-/* testproject Emf Parsley Dsl Module file */
+/* testproject EMF Parsley Dsl Module file */
 module testproject {
 	
 }
@@ -28,7 +28,7 @@ module testproject {
 	def void testDslModuleWithFQN() {
 		generator.genEmptyDslModule("mypackage.testproject").assertGeneratedContentEqualsTo(
 '''
-/* mypackage.testproject Emf Parsley Dsl Module file */
+/* mypackage.testproject EMF Parsley Dsl Module file */
 module mypackage.testproject {
 	
 }
@@ -42,7 +42,7 @@ module mypackage.testproject {
 '''
 import my.views.MyView
 
-/* mypackage.testproject Emf Parsley Dsl Module file */
+/* mypackage.testproject EMF Parsley Dsl Module file */
 module mypackage.testproject {
 	
 	parts {

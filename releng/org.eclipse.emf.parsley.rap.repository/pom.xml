@@ -152,7 +152,7 @@
 										<arg>p2.composite.add</arg>
 										<arg>-Dsoftware.download.area=${parsley.download.area}</arg>
 										<arg>-Dupdates.dir=${parsley.rap.updates.dir}</arg>
-										<arg>-Dsite.label="Emf Parsley Target Components"</arg>
+										<arg>-Dsite.label="EMF Parsley Target Components"</arg>
 										<arg>-Dproject.build.directory=${project.build.directory}</arg>
 										<arg>-DunqualifiedVersion=${unqualifiedVersion}</arg>
 										<arg>-DbuildQualifier=${buildQualifier}</arg>

@@ -10,7 +10,7 @@ Workflow {
 		// or define search scope explicitly
 		modelPath = modelPath
 		targetDir = targetDir
-		document = "Emf Parsley Guide"
+		document = "EMF Parsley Guide"
 		pdfLatex = "/usr/bin/pdflatex"
 	}
 

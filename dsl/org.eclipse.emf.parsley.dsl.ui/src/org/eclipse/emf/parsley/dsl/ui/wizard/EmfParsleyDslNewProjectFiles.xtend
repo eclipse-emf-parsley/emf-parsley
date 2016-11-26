@@ -22,7 +22,7 @@ class EmfParsleyDslNewProjectFiles extends EmfParsleyProjectFilesGenerator {
 	
 	def genDslModule(String projectName, CharSequence additional)
 '''
-/* «projectName» Emf Parsley Dsl Module file */
+/* «projectName» EMF Parsley Dsl Module file */
 module «projectName» {
 	
 	«additional»

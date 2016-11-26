@@ -9,7 +9,7 @@
  *
  * Contributors:
  *   IBM - Initial API and implementation
- *   Lorenzo Bettini - refactored and adapted for Emf Parsley
+ *   Lorenzo Bettini - refactored and adapted for EMF Parsley
  *
  * </copyright>
  *

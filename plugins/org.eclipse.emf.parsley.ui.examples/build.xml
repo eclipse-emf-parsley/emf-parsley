@@ -2,7 +2,7 @@
 <!-- ====================================================================== 
      May 25, 2010 10:34:57 AM                                                        
 
-	 This ant script creates a zip file for each of Emf Parsley's example projects.
+	 This ant script creates a zip file for each of EMF Parsley's example projects.
 	 
 	 This is based on the Xtext's corresponding one.
 	  

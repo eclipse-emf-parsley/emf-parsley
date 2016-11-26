@@ -16,7 +16,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 /**
- * org.eclipse.emf.parsley.examples.cdo.company.ui.products Emf Parsley Dsl Module file
+ * org.eclipse.emf.parsley.examples.cdo.company.ui.products EMF Parsley Dsl Module file
  */
 @SuppressWarnings("all")
 public class ProductsEmfParsleyGuiceModule extends CompanyGuiceModule {

@@ -103,7 +103,7 @@ public class EmfParsleySWTBotAbstractTests {
 
 	public static final String PACKAGE_EXPLORER = "Package Explorer";
 
-	protected static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
+	protected static final String EMF_PARSLEY_CATEGORY = "EMF Parsley";
 
 	protected static final String WRITER_LABEL = "Writer Lorenzo Bettini";
 
@@ -305,29 +305,29 @@ public class EmfParsleySWTBotAbstractTests {
 
 	protected static final String EMF_PARSLEY_PROJECT = "EmfParsleyProject";
 
-	protected static final String NEW_EMF_PARSLEY_PROJECT = "Emf Parsley Project";
+	protected static final String NEW_EMF_PARSLEY_PROJECT = "EMF Parsley Project";
 
-	protected static final String NEW_EMF_PARSLEY_DSL_PROJECT = "Emf Parsley Dsl Based Project";
+	protected static final String NEW_EMF_PARSLEY_DSL_PROJECT = "EMF Parsley Dsl Based Project";
 
-	protected static final String EMF_PARSLEY_MAIL_RCP_EXAMPLE = "Emf Parsley Mail RCP Example";
+	protected static final String EMF_PARSLEY_MAIL_RCP_EXAMPLE = "EMF Parsley Mail RCP Example";
 
-	protected static final String EMF_PARSLEY_FIRST_EXAMPLE = "Emf Parsley First Example";
+	protected static final String EMF_PARSLEY_FIRST_EXAMPLE = "EMF Parsley First Example";
 
-	protected static final String EMF_PARSLEY_VIEWS_EXAMPLES = "Emf Parsley Views Examples";
+	protected static final String EMF_PARSLEY_VIEWS_EXAMPLES = "EMF Parsley Views Examples";
 
-	protected static final String EMF_PARSLEY_EDITORS_EXAMPLES = "Emf Parsley Editors Examples";
+	protected static final String EMF_PARSLEY_EDITORS_EXAMPLES = "EMF Parsley Editors Examples";
 
-	protected static final String EMF_PARSLEY_E4_EXAMPLE = "Emf Parsley Eclipse 4 Part Example";
+	protected static final String EMF_PARSLEY_E4_EXAMPLE = "EMF Parsley Eclipse 4 Part Example";
 
-	protected static final String EMF_PARSLEY_CDO_SERVER_EXAMPLE = "Emf Parsley Cdo Server Example";
+	protected static final String EMF_PARSLEY_CDO_SERVER_EXAMPLE = "EMF Parsley CDO Server Example";
 
-	protected static final String EMF_PARSLEY_CDO_EXAMPLE = "Emf Parsley Cdo Example";
+	protected static final String EMF_PARSLEY_CDO_EXAMPLE = "EMF Parsley CDO Example";
 
-	protected static final String EMF_PARSLEY_RAP_TP_EXAMPLE = "Emf Parsley Rap Target Platform Example";
+	protected static final String EMF_PARSLEY_RAP_TP_EXAMPLE = "EMF Parsley RAP Target Platform Example";
 
-	protected static final String EMF_PARSLEY_RAP_CDO_EXAMPLE = "Emf Parsley Rap Cdo Example";
+	protected static final String EMF_PARSLEY_RAP_CDO_EXAMPLE = "EMF Parsley RAP CDO Example";
 
-	protected static final String EMF_PARSLEY_RAP_EXAMPLE = "Emf Parsley Rap Example";
+	protected static final String EMF_PARSLEY_RAP_EXAMPLE = "EMF Parsley RAP Example";
 
 	protected static final String TEST_ON_SELECTION_TREE_VIEW = "Test On Selection Tree View";
 

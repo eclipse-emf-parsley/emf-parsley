@@ -4,7 +4,7 @@ import org.eclipse.emf.parsley.examples.cdo.view.TreeFormCDOView
 import org.eclipse.emf.parsley.resource.ResourceManager
 import org.eclipse.emf.parsley.examples.cdo.treeform.customizations.TreeformCDOResourceManager
 
-/* org.eclipse.emf.parsley.examples.cdo.treeform Emf Parsley Dsl Module file */
+/* org.eclipse.emf.parsley.examples.cdo.treeform EMF Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.cdo.treeform  extends CDOEmfParsleyModule {
 
 	parts{

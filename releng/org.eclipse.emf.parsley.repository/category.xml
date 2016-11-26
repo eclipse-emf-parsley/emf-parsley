@@ -44,14 +44,14 @@
       <category name="emfparsley.category.source"/>
    </feature>
 
-   <category-def name="emfparsley.category" label="Emf Parsley">
+   <category-def name="emfparsley.category" label="EMF Parsley">
       <description>
-         Emf Parsley
+         EMF Parsley
       </description>
    </category-def>
-   <category-def name="emfparsley.category.source" label="Emf Parsley Sources">
+   <category-def name="emfparsley.category.source" label="EMF Parsley Sources">
       <description>
-         Emf Parsley (Sources)
+         EMF Parsley (Sources)
       </description>
    </category-def>
 </site>

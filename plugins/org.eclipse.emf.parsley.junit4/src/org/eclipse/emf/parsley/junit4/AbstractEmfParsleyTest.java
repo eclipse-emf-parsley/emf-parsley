@@ -19,7 +19,7 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 
 /**
- * Base class for Junit tests and Emf Parsley.
+ * Base class for Junit tests and EMF Parsley.
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  *

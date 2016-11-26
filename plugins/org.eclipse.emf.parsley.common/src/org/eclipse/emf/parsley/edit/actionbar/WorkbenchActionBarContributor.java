@@ -116,7 +116,7 @@ public class WorkbenchActionBarContributor extends
 	 */
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
-		IMenuManager submenuManager = new MenuManager("Emf Parsley",
+		IMenuManager submenuManager = new MenuManager("EMF Parsley",
 				"org.eclipse.emf.parsley.MenuID");
 
 		menuManager.insertAfter("additions", submenuManager);

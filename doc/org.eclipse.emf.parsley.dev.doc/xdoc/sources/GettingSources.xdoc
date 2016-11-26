@@ -1,4 +1,4 @@
-document[Emf Parsley Sources]
+document[EMF Parsley Sources]
 
 chapter:GettingSources[Getting Sources]
 
@@ -8,7 +8,7 @@ via Git and setup the workspace manually. However, we strongly reccomend to
 use the automatic procedure detailed below.
 
 If you want to develop also the link[http://eclipse.org/rap/][RAP]
-version of Emf Parsley, you will need a different workspace (and a different target platform).
+version of EMF Parsley, you will need a different workspace (and a different target platform).
 
 We use link[https://wiki.eclipse.org/Eclipse_Oomph_Installer][Oomph] for provisioning
 a full Eclipse IDE and workspace setup for Parsley.

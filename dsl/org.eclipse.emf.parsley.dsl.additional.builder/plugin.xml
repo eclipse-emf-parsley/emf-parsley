@@ -4,7 +4,7 @@
 
    <extension
          id="emfParsleyDslPluginXmlBuilder"
-         name="Emf Parsley Dsl Plugin Xml Builder"
+         name="EMF Parsley Dsl Plugin Xml Builder"
          point="org.eclipse.core.resources.builders">
       <builder
             hasNature="true">
@@ -15,7 +15,7 @@
    </extension>
    <extension
          id="emfParsleyDslPluginXmlNature"
-         name="Emf Parsley Dsl Plugin Xml Nature"
+         name="EMF Parsley Dsl Plugin Xml Nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
@@ -29,11 +29,11 @@
    <extension
          point="org.eclipse.ui.commands">
       <category
-            name="Emf Parsley Dsl Plugin Xml Nature commands"
+            name="EMF Parsley Dsl Plugin Xml Nature commands"
             id="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature.category">
       </category>
       <command
-            name="Add/RemoveEmf Parsley Dsl Plugin Xml Nature"
+            name="Add/Remove EMF Parsley Dsl Plugin Xml Nature"
             defaultHandler="org.eclipse.emf.parsley.dsl.additional.builder.builder.AddRemoveEmfParsleyDslPluginXmlNatureHandler"
             categoryId="org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlNature.category"
             id="org.eclipse.emf.parsley.dsl.additional.builder.addRemoveEmfParsleyDslPluginXmlNature">
@@ -99,7 +99,7 @@
             adaptable="true"
             icon="icons/parsley_nature.png"
             id="org.eclipse.emf.parsley.builder.nature.overlay"
-            label="Emf Parsley Dsl Plugin Xml Nature"
+            label="EMF Parsley Dsl Plugin Xml Nature"
             lightweight="true"
             location="TOP_RIGHT"
             state="true">

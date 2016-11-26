@@ -34,11 +34,11 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 
 	private static final Logger LOGGER = Logger.getLogger(NewEmfParsleyProjectWizard.class);
 
-	protected static final String WIZARD_PAGE = "Emf Parsley Project Wizard";
+	protected static final String WIZARD_PAGE = "EMF Parsley Project Wizard";
 	
-	protected static final String WIZARD_CHOICE_PAGE = "Emf Parsley Project Wizard Template";
+	protected static final String WIZARD_CHOICE_PAGE = "EMF Parsley Project Wizard Template";
 
-	protected static final String WIZARD_NAME = "New Emf Parsley Project";
+	protected static final String WIZARD_NAME = "New EMF Parsley Project";
 
 	/**
 	 * 
@@ -64,7 +64,7 @@ public class NewEmfParsleyProjectWizard extends Wizard implements INewWizard {
 
 		pageOne = new WizardNewProjectCreationPage(WIZARD_PAGE);
 		pageOne.setTitle("Emf Component Project");
-		pageOne.setDescription("Create a plugin project for Emf Parsley.");
+		pageOne.setDescription("Create a plugin project for EMF Parsley.");
 		
 		pageTwo = new EmfParsleyChoiceTemplate(WIZARD_CHOICE_PAGE);
         pageTwo.setTitle("View type choice");
