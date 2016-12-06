@@ -37,7 +37,7 @@ import com.google.inject.name.Named;
  * {@link TableFeaturesProvider}).
  * 
  * @author Lorenzo Bettini - initial API and implementation
- * 
+ * @author Francesco Guidieri - Sorting
  */
 public class TableViewerColumnBuilder {
 
@@ -77,6 +77,7 @@ public class TableViewerColumnBuilder {
 		Layout layout = layoutHelper.adjustForTableLayout(tableViewer);
 		List<EStructuralFeature> typeFeatures = featuresProvider.getFeatures(eClass);
 		int i = 0;
+		int columnIndex = 0;
 		tableViewer.setComparator(viewerComparator);
 		viewerComparator.init(typeFeatures);
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
@@ -84,11 +85,11 @@ public class TableViewerColumnBuilder {
 			if (weights.size() > i) {
 				weight = weights.get(i++);
 			}
-
-			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature, weight, i);
+			buildTableViewerColumn(tableViewer, layout, eClass,
+					eStructuralFeature, weight, columnIndex++);
 		}
 	}
-	
+
 	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer, Layout layout, EClass eClass,
 			EStructuralFeature eStructuralFeature, int weight) {
 		TableViewerColumn viewerColumn = createTableViewerColumn(tableViewer, eStructuralFeature);
@@ -110,7 +111,7 @@ public class TableViewerColumnBuilder {
 		objectColumn.addSelectionListener(getSelectionAdapter(tableViewer, objectColumn, colNumber));
 		return viewerColumn;
 	}
-	
+
 	protected TableViewerColumn createTableViewerColumn(
 			TableViewer tableViewer, EStructuralFeature eStructuralFeature) {
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(
