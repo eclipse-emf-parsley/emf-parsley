@@ -114,6 +114,11 @@ public class EmfParsleyUtilTest {
 	}
 
 	@Test
+	def void testCompareComparableWithComparableUpperCase() {
+		assertEquals(-32,EmfParsleyUtil.compareValues("AAA","aaa"))
+	}
+
+	@Test
 	def void testCompareNonComparableWithComparable() {
 		assertNotEquals(0,EmfParsleyUtil.compareValues(new Object,""))
 	}
