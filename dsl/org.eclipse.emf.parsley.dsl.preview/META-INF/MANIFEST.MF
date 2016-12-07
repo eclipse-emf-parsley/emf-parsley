@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Emf Parsley DSL Preview
+Bundle-Name: EMF Parsley DSL Preview
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.preview;singleton:=true
 Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
