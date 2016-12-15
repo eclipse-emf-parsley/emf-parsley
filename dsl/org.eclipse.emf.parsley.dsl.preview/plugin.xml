@@ -4,10 +4,6 @@
 
    <extension
          point="org.eclipse.ui.views">
-      <category
-            name="Emf Parsley DSL"
-            id="org.eclipse.emf.parsley">
-      </category>
       <view
             name="Emf Parsley DSL Preview"
             icon="icons/sample.gif"
