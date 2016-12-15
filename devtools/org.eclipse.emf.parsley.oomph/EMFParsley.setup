@@ -72,7 +72,6 @@
       name="org.eclipse.debug.ui">
     <setupTask
         xsi:type="setup:PreferenceTask"
-        id=""
         key="/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.cancel_launch_with_compile_errors"
         value="always"/>
   </setupTask>
@@ -656,7 +655,7 @@
             value="emf-parsley/org.eclipse.emf-parsley"/>
         <attribute
             key="gerrit query string"
-            value="project:emf-parsley/org.eclipse.emf-parsley status:open branch:master"/>
+            value="project:emf-parsley/org.eclipse.emf-parsley status:open"/>
       </query>
     </setupTask>
     <setupTask
