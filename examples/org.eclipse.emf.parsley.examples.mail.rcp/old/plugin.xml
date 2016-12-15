@@ -14,7 +14,7 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="Emf Parsley Mail RCP Perspective"
+            name="EMF Parsley Mail RCP Perspective"
             class="org.eclipse.emf.parsley.examples.mail.rcp.Perspective"
             id="org.eclipse.emf.parsley.examples.mail.rcp.perspective">
       </perspective>
@@ -78,10 +78,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.emf.parsley.examples.mail.rcp.application"
-            name="Emf Parsley Mail RCP Product">
+            name="EMF Parsley Mail RCP Product">
          <property
                name="aboutText"
-               value="RCP Mail created with Emf Parsley">
+               value="RCP Mail created with EMF Parsley">
          </property>
          <property
                name="windowImages"
@@ -93,7 +93,7 @@
          </property>
          <property
                name="appName"
-               value="Emf Parsley Mail RCP Product">
+               value="EMF Parsley Mail RCP Product">
          </property>
       </product>
    </extension>

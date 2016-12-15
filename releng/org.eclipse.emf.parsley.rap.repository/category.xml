@@ -12,14 +12,14 @@
    <feature id="org.eclipse.emf.parsley.rap.cdo.sdk.source" version="0.0.0">
       <category name="emfparsley.rap.category.source"/>
    </feature>
-   <category-def name="emfparsley.rap.category" label="Emf Parsley RAP">
+   <category-def name="emfparsley.rap.category" label="EMF Parsley RAP">
       <description>
-         Emf Parsley RAP
+         EMF Parsley RAP
       </description>
    </category-def>
-   <category-def name="emfparsley.rap.category.source" label="Emf Parsley RAP Sources">
+   <category-def name="emfparsley.rap.category.source" label="EMF Parsley RAP Sources">
       <description>
-         Emf Parsley RAP (Sources)
+         EMF Parsley RAP (Sources)
       </description>
    </category-def>
 </site>

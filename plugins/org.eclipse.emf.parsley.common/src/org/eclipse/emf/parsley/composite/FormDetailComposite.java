@@ -113,7 +113,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 		@Override
 		public void notifyChanged(Notification msg) {
-			if (!disposing) {
+			if (!isDisposed() && !disposing) {
 				getDisplay().syncExec(new Runnable() {
 					@Override
 					public void run() {

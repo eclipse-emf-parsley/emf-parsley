@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.runtime.ui;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Dictionary;
 
@@ -37,42 +36,40 @@ public class PluginUtil {
 	}
 
 	/**
-	 * Retrieves the {@link AbstractUIPlugin} activator from the specified {@link Bundle},
-	 * via reflection, assuming that the activator has a static method getDefault returning
-	 * the singleton instance.  If the specified {@link Bundle} is null, then it simply
-	 * returns null.
+	 * Retrieves the {@link AbstractUIPlugin} activator from the specified
+	 * {@link Bundle}, via reflection, assuming that the activator has a static
+	 * method getDefault returning the singleton instance. If the specified
+	 * {@link Bundle} is null, then it simply returns null.
 	 * 
 	 * @param bundle
 	 * @return
-	 * @throws PluginConfigurationException if bundle is not found or if it doesn't contain the getDefault method
+	 * @throws PluginConfigurationException
+	 *             if bundle is not found or if it doesn't contain the
+	 *             getDefault method
 	 */
-	public static AbstractUIPlugin getPlugin(Bundle bundle){
+	public static AbstractUIPlugin getPlugin(Bundle bundle) {
 		if (bundle == null) {
 			return null;
 		}
 		final Dictionary<String, String> headers = bundle.getHeaders();
 		String activator = headers.get(Constants.BUNDLE_ACTIVATOR);
-			Class<?> activatorClass;
-			Object activatorInstance;
+		Class<?> activatorClass;
+		Object activatorInstance;
+		try {
+			activatorClass = bundle.loadClass(activator);
 			try {
-				activatorClass = bundle.loadClass(activator);
-				try {
-					Method method = activatorClass.getMethod("getDefault");
-					activatorInstance = method.invoke(null);
-				} catch (NoSuchMethodException e) {
-					throw new PluginConfigurationException("Cannot find getDefault method in activator of bundle "+bundle.getBundleId(),e);
-				} catch (SecurityException e) {
-					throw new PluginConfigurationException("Error accessing getDefault method in activator of bundle "+bundle.getBundleId(),e);
-				} catch (IllegalAccessException e) {
-					throw new PluginConfigurationException("Error accessing getDefault method in activator of bundle "+bundle.getBundleId(),e);
-				} catch (IllegalArgumentException e) {
-					throw new PluginConfigurationException("Error accessing getDefault method in activator of bundle "+bundle.getBundleId(),e);
-				} catch (InvocationTargetException e) {
-					throw new PluginConfigurationException("Error accessing getDefault method in activator of bundle "+bundle.getBundleId(),e);
-				}
-				return (AbstractUIPlugin) activatorInstance;
-			} catch (ClassNotFoundException e) {
-				throw new PluginConfigurationException("Cannot find activator for bundle "+bundle.getBundleId(),e);
+				Method method = activatorClass.getMethod("getDefault");
+				activatorInstance = method.invoke(null);
+			} catch (NoSuchMethodException e) {
+				throw new PluginConfigurationException(
+						"Cannot find getDefault method in activator of bundle " + bundle.getBundleId(), e);
+			} catch (Exception e) {
+				throw new PluginConfigurationException(
+						"Error accessing getDefault method in activator of bundle " + bundle.getBundleId(), e);
 			}
+			return (AbstractUIPlugin) activatorInstance;
+		} catch (ClassNotFoundException e) {
+			throw new PluginConfigurationException("Cannot find activator for bundle " + bundle.getBundleId(), e);
+		}
 	}
 }

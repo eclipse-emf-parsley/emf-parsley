@@ -24,7 +24,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Utility methods acting on Emf {@link Command}s.
+ * Utility methods acting on EMF {@link Command}s.
  * 
  * @author Lorenzo Bettini
  * 

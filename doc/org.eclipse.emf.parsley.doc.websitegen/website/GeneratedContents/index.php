@@ -61,7 +61,7 @@
 	}
 	</script>');
 	
-	$pageTitle 		= "Emf Parsley Guide";
+	$pageTitle 		= "EMF Parsley Guide";
 	
 	$html .=  file_get_contents('_index.html');
 

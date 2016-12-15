@@ -24,7 +24,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.emf.parsley.examples.cdo.rcp.application"
-            name="Emf Parsley Cdo Example">
+            name="EMF Parsley CDO Example">
       </product>
    </extension>
 

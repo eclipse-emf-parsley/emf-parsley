@@ -5,7 +5,7 @@ import org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider.Accountsvi
 import org.eclipse.emf.parsley.examples.mail.accountsview.unifiedfolders.UnifiedFolderContainer
 import org.eclipse.emf.parsley.examples.mail.accountsview.unifiedfolders.UnifiedFoldersView
 
-/* org.eclipse.emf.parsley.examples.mail.unifiedfoldersview Emf Parsley Dsl Module file */
+/* org.eclipse.emf.parsley.examples.mail.unifiedfoldersview EMF Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.mail.unifiedfoldersview extends AccountsviewEmfParsleyGuiceModule {
 	
 	parts {

@@ -139,6 +139,10 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 				return createClassForDefaultValidationAdapter();
 			}
 			@Override
+			public Adapter caseClassForCompare(ClassForCompare object) {
+				return createClassForCompareAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -365,6 +369,20 @@ public class TestmodelsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClassForDefaultValidationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare <em>Class For Compare</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare
+	 * @generated
+	 */
+	public Adapter createClassForCompareAdapter() {
 		return null;
 	}
 

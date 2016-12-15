@@ -7,7 +7,7 @@ import org.eclipse.emf.parsley.examples.firstexample.FirstexampleSaveableTreeFor
 import org.eclipse.emf.parsley.edit.IEditingStrategy
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
 
-/* org.eclipse.emf.parsley.examples.firstexample Emf Parsley Dsl Module file */
+/* org.eclipse.emf.parsley.examples.firstexample EMF Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.firstexample {
 	
 	parts {

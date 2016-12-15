@@ -164,6 +164,15 @@ public interface TestmodelsFactory extends EFactory {
 	ClassForDefaultValidation createClassForDefaultValidation();
 
 	/**
+	 * Returns a new object of class '<em>Class For Compare</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class For Compare</em>'.
+	 * @generated
+	 */
+	ClassForCompare createClassForCompare();
+
+	/**
 	 * Returns a new object of class '<em>Test Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

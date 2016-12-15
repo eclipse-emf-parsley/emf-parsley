@@ -8,7 +8,7 @@ import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * org.eclipse.emf.parsley.examples.cdo.treeform Emf Parsley Dsl Module file
+ * org.eclipse.emf.parsley.examples.cdo.treeform EMF Parsley Dsl Module file
  */
 @SuppressWarnings("all")
 public class TreeformEmfParsleyGuiceModule extends CDOEmfParsleyModule {

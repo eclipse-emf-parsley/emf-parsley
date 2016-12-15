@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.dsl.ui.tests
 import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.ui.tests.editor.outline.AbstractOutlineWorkbenchTest
+import org.eclipse.xtext.junit4.ui.AbstractOutlineTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -22,7 +22,7 @@ import org.junit.runner.RunWith
  */
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
-class EmfParsleyDslOutlineTest extends AbstractOutlineWorkbenchTest {
+class EmfParsleyDslOutlineTest extends AbstractOutlineTest {
 	
 	override protected getEditorId() {
 		DslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL
@@ -35,7 +35,7 @@ import my.proj.ProjTreeFormView
 import org.eclipse.emf.parsley.edit.IEditingStrategy
 import org.eclipse.emf.parsley.edit.UndoableEditingStrategy
 
-/* my.proj Emf Parsley Dsl Module file */
+/* my.proj EMF Parsley Dsl Module file */
 module my.proj {
 	
 	parts {

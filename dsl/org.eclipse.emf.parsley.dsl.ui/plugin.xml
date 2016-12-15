@@ -595,7 +595,7 @@
 			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"
 			icon="icons/sample.gif"
 			id="org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"
-			name="Emf Parsley Dsl Based Project"
+			name="EMF Parsley Dsl Based Project"
 			project="true">
 		</wizard>
 	</extension>

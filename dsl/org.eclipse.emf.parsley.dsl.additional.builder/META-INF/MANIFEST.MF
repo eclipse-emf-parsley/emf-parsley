@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Emf Parsley DSL Additional Builder
+Bundle-Name: EMF Parsley DSL Additional Builder
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.additional.builder;singleton:=true
 Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.dsl.additional.builder.Activator

@@ -1,0 +1,155 @@
+/*******************************************************************************
+ * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * Lorenzo Bettini - Initial contribution and API
+ *******************************************************************************/
+package org.eclipse.emf.parsley.tests.swtbot;
+
+import org.eclipse.core.resources.IWorkspaceRunnable;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+/**
+ * @author Lorenzo Bettini
+ * 
+ */
+@RunWith(SWTBotJunit4ClassRunner.class)
+public class EmfParsleyExamplesWizardsTests extends
+		EmfParsleySWTBotAbstractTests {
+
+	boolean firstRun = true;
+
+	@Before
+	public void ensureEclipseBuildMechanism() throws CoreException {
+		if (firstRun) {
+			firstRun = false;
+			System.out.println("first run");
+			// this seems to make sure Eclipse building and Xtext building
+			// work in sync
+			// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=476717
+			// we import the simplest plugin project we have:
+			createExampleProjectsInWorkspace(EMF_PARSLEY_RAP_TP_EXAMPLE,
+					"org.eclipse.emf.parsley.examples.rap.targetplatform");
+			assertNoErrorsInProjectAfterAutoBuild();
+			// any imported Java project, even empty would do the trick
+		}
+	}
+
+	@Test
+	public void canCreateMailExampleProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_MAIL_RCP_EXAMPLE,
+				"org.eclipse.emf.parsley.examples.mail.model");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	public void canCreateFirstExampleProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_FIRST_EXAMPLE,
+				"org.eclipse.emf.parsley.examples.firstexample",
+				"org.eclipse.emf.examples.library",
+				"org.eclipse.emf.examples.library.edit");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	public void canCreateViewsExamplesProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_VIEWS_EXAMPLES,
+				"org.eclipse.emf.parsley.examples.views");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	public void canCreateExamplesExamplesProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_EDITORS_EXAMPLES,
+				"org.eclipse.emf.parsley.examples.editors");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	public void canCreateE4ExamplesProjectWithWizard() throws Exception {
+		if (isIndigo())
+			return; // this test would fail since e4 is not in the target platform in Indigo
+		
+		createExampleProjectsInWorkspace(EMF_PARSLEY_E4_EXAMPLE,
+				"org.eclipse.emf.parsley.examples.eclipse4",
+				"org.eclipse.emf.parsley.examples.eclipse4.parsleypart");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	public void canCreateCdoServerProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_CDO_SERVER_EXAMPLE,
+				"org.eclipse.emf.parsley.examples.cdo.server");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	public void canCreateCdoExampleProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_CDO_EXAMPLE,
+				"org.eclipse.emf.parsley.examples.cdo.model",
+				"org.eclipse.emf.parsley.examples.cdo.treeform",
+				"org.eclipse.emf.parsley.examples.cdo.rcp",
+				"org.eclipse.emf.parsley.examples.cdo.product.feature");
+		assertNoErrorsInProjectAfterAutoBuild();
+	}
+
+	@Test
+	public void canCreateRapCdoExampleProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_RAP_CDO_EXAMPLE,
+				"org.eclipse.emf.parsley.examples.cdo.model",
+				"org.eclipse.emf.parsley.examples.cdo.treeform",
+				"org.eclipse.emf.parsley.examples.cdo.rap");
+		//assertNoErrorsInProjectAfterAutoBuild();
+		// errors are expected since the RAP target platform is not set
+	}
+
+	@Test
+	public void canCreateRapExampleProjectWithWizard() throws Exception {
+		createExampleProjectsInWorkspace(EMF_PARSLEY_RAP_EXAMPLE,
+				"org.eclipse.emf.parsley.examples.rap.model",
+				"org.eclipse.emf.parsley.examples.rap.ui");
+		//assertNoErrorsInProjectAfterAutoBuild();
+		// errors are expected since the RAP target platform is not set
+	}
+
+	@Override
+	protected void assertNoErrorsInProjectAfterAutoBuild() throws CoreException {
+		System.out.println("wait for autobuild...");
+		IResourcesSetupUtil.reallyWaitForAutoBuild();
+		assertNoErrorsInProject();
+		
+		// ensure that all queued workspace operations and locks are released
+		try {
+			ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
+				@Override
+				public void run(IProgressMonitor monitor) throws CoreException {
+					// nothing to do!
+				}
+			}, new NullProgressMonitor());
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+
+		// we also make sure that we can do a clean build
+		// and still get no compile error
+		System.out.println("clean build...");
+		IResourcesSetupUtil.cleanBuild();
+		System.out.println("wait for autobuild...");
+		IResourcesSetupUtil.reallyWaitForAutoBuild();
+		assertNoErrorsInProject();
+		System.out.println("done");
+	}
+
+}

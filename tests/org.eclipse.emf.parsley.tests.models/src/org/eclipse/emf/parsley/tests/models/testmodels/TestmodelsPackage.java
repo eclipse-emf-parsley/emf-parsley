@@ -1171,6 +1171,70 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_DEFAULT_VALIDATION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForCompareImpl <em>Class For Compare</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForCompareImpl
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForCompare()
+	 * @generated
+	 */
+	int CLASS_FOR_COMPARE = 16;
+
+	/**
+	 * The feature id for the '<em><b>String Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_COMPARE__STRING_ATTRIBUTE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Int Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_COMPARE__INT_ATTRIBUTE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Big Decimal Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_COMPARE__BIG_DECIMAL_ATTRIBUTE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Date Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_COMPARE__DATE_ATTRIBUTE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Class For Compare</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_COMPARE_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Class For Compare</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_COMPARE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls <em>Enum For Controls</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1178,7 +1242,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getEnumForControls()
 	 * @generated
 	 */
-	int ENUM_FOR_CONTROLS = 16;
+	int ENUM_FOR_CONTROLS = 17;
 
 
 	/**
@@ -1189,7 +1253,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanDataType()
 	 * @generated
 	 */
-	int BOOLEAN_DATA_TYPE = 17;
+	int BOOLEAN_DATA_TYPE = 18;
 
 
 	/**
@@ -1199,7 +1263,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getBooleanPrimitiveDataType()
 	 * @generated
 	 */
-	int BOOLEAN_PRIMITIVE_DATA_TYPE = 18;
+	int BOOLEAN_PRIMITIVE_DATA_TYPE = 19;
 
 
 	/**
@@ -1210,7 +1274,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getStringDataType()
 	 * @generated
 	 */
-	int STRING_DATA_TYPE = 19;
+	int STRING_DATA_TYPE = 20;
 
 
 	/**
@@ -1221,7 +1285,7 @@ public interface TestmodelsPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getUnserializableStringDataType()
 	 * @generated
 	 */
-	int UNSERIALIZABLE_STRING_DATA_TYPE = 20;
+	int UNSERIALIZABLE_STRING_DATA_TYPE = 21;
 
 
 	/**
@@ -1914,6 +1978,60 @@ public interface TestmodelsPackage extends EPackage {
 	EReference getClassForDefaultValidation_NotNullReference();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare <em>Class For Compare</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class For Compare</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare
+	 * @generated
+	 */
+	EClass getClassForCompare();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getStringAttribute <em>String Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Attribute</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getStringAttribute()
+	 * @see #getClassForCompare()
+	 * @generated
+	 */
+	EAttribute getClassForCompare_StringAttribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getIntAttribute <em>Int Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Int Attribute</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getIntAttribute()
+	 * @see #getClassForCompare()
+	 * @generated
+	 */
+	EAttribute getClassForCompare_IntAttribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getBigDecimalAttribute <em>Big Decimal Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Big Decimal Attribute</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getBigDecimalAttribute()
+	 * @see #getClassForCompare()
+	 * @generated
+	 */
+	EAttribute getClassForCompare_BigDecimalAttribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getDateAttribute <em>Date Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date Attribute</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare#getDateAttribute()
+	 * @see #getClassForCompare()
+	 * @generated
+	 */
+	EAttribute getClassForCompare_DateAttribute();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.TestContainer <em>Test Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2565,6 +2683,43 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE = eINSTANCE.getClassForDefaultValidation_NotNullReference();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForCompareImpl <em>Class For Compare</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForCompareImpl
+		 * @see org.eclipse.emf.parsley.tests.models.testmodels.impl.TestmodelsPackageImpl#getClassForCompare()
+		 * @generated
+		 */
+		EClass CLASS_FOR_COMPARE = eINSTANCE.getClassForCompare();
+		/**
+		 * The meta object literal for the '<em><b>String Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_COMPARE__STRING_ATTRIBUTE = eINSTANCE.getClassForCompare_StringAttribute();
+		/**
+		 * The meta object literal for the '<em><b>Int Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_COMPARE__INT_ATTRIBUTE = eINSTANCE.getClassForCompare_IntAttribute();
+		/**
+		 * The meta object literal for the '<em><b>Big Decimal Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_COMPARE__BIG_DECIMAL_ATTRIBUTE = eINSTANCE.getClassForCompare_BigDecimalAttribute();
+		/**
+		 * The meta object literal for the '<em><b>Date Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_COMPARE__DATE_ATTRIBUTE = eINSTANCE.getClassForCompare_DateAttribute();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.TestContainerImpl <em>Test Container</em>}' class.
 		 * <!-- begin-user-doc -->

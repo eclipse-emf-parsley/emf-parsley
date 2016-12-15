@@ -57,7 +57,7 @@ public class EmfParsleyCdoSWTBotTests {
 	private static final String USER = "user";
 	private static final String PASSWORD = "password";
 
-	private static final String EMF_PARSLEY_CATEGORY = "Emf Parsley";
+	private static final String EMF_PARSLEY_CATEGORY = "EMF Parsley";
 
 	private static SWTWorkbenchBot bot;
 

@@ -8,7 +8,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * org.eclipse.emf.parsley.examples.mail.unifiedfoldersview Emf Parsley Dsl Module file
+ * org.eclipse.emf.parsley.examples.mail.unifiedfoldersview EMF Parsley Dsl Module file
  */
 @SuppressWarnings("all")
 public class UnifiedfoldersviewEmfParsleyGuiceModule extends AccountsviewEmfParsleyGuiceModule {

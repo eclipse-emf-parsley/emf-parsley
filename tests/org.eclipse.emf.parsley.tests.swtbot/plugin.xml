@@ -4,8 +4,8 @@
    	<extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.emf.parsley.tests.factories.OpenFormDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-            contributorClass="org.eclipse.emf.parsley.tests.factories.OpenFormDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+            class="org.eclipse.emf.parsley.tests.swtbot.factories.OpenFormDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+            contributorClass="org.eclipse.emf.parsley.tests.swtbot.factories.OpenFormDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
             default="false"
             id="org.eclipse.emf.parsley.openFormDialogOnDoubleClick"
             name="EMF Tree Editor Opening Form Dialog">
@@ -18,8 +18,8 @@
    	<extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-            contributorClass="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+            class="org.eclipse.emf.parsley.tests.swtbot.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+            contributorClass="org.eclipse.emf.parsley.tests.swtbot.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
             default="false"
             id="org.eclipse.emf.parsley.openDialogOnDoubleClick"
             name="EMF Tree Editor Opening Dialog">
@@ -32,8 +32,8 @@
    	<extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.emf.parsley.tests.factories.UndoableEditingStrategyExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-            contributorClass="org.eclipse.emf.parsley.tests.factories.UndoableEditingStrategyExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+            class="org.eclipse.emf.parsley.tests.swtbot.factories.UndoableEditingStrategyExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+            contributorClass="org.eclipse.emf.parsley.tests.swtbot.factories.UndoableEditingStrategyExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
             default="false"
             id="org.eclipse.emf.parsley.openDialogUndoable"
             name="EMF Tree Editor Dialog Undoable">
@@ -46,8 +46,8 @@
    	<extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.emf.parsley.tests.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-            contributorClass="org.eclipse.emf.parsley.tests.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+            class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+            contributorClass="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
             default="false"
             id="org.eclipse.emf.parsley.customLabel"
             name="EMF Tree Editor Custom Label">
@@ -60,29 +60,29 @@
           point="org.eclipse.ui.views">
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.EmfParsleyTestsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryTreeViewWithResourceURI"
-             id="org.eclipse.emf.parsley.tests.views.libraryview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.EmfParsleyTestsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryTreeViewWithResourceURI"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.libraryview"
              name="TestOnSelectionLibraryTreeViewWithResourceURI"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryTreeViewWithResourceURI"
-             id="org.eclipse.emf.parsley.tests.views.libraryviewcustom"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryTreeViewWithResourceURI"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.libraryviewcustom"
              name="TestOnSelectionLibraryTreeViewWithResourceURI Custom Label"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.EmfParsleyTestsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryTreeFormView"
-             id="org.eclipse.emf.parsley.tests.views.treeformlibraryview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.EmfParsleyTestsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryTreeFormView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.treeformlibraryview"
              name="TestOnSelectionLibraryTreeFormView"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.EmfParsleyTestsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionTreeView"
-             id="org.eclipse.emf.parsley.tests.views.testonselectiontreeview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.EmfParsleyTestsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionTreeView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testonselectiontreeview"
              name="Test On Selection Tree View"
              restorable="true">
        </view>
@@ -90,8 +90,8 @@
     <extension
           point="org.eclipse.ui.editors">
        <editor
-             class="org.eclipse.emf.parsley.tests.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.tests.editors.TestEditor"
-             contributorClass="org.eclipse.emf.parsley.tests.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.editors.TestEditor"
+             contributorClass="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLabelExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
              default="false"
              id="org.eclipse.emf.parsley.customLabel"
              name="EMF Tree Editor Derived">
@@ -114,8 +114,8 @@
     <extension
           point="org.eclipse.ui.editors">
        <editor
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.editors.TestEditor"
-             contributorClass="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.editors.TestEditor"
+             contributorClass="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
              default="false"
              extensions="extlibrary"
              id="org.eclipse.emf.parsley.customLibrary"
@@ -125,8 +125,8 @@
     <extension
           point="org.eclipse.ui.editors">
        <editor
-             class="org.eclipse.emf.parsley.tests.factories.CustomMenuBuilderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.editors.TestEditor"
-             contributorClass="org.eclipse.emf.parsley.tests.factories.CustomMenuBuilderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomMenuBuilderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.editors.TestEditor"
+             contributorClass="org.eclipse.emf.parsley.tests.swtbot.factories.CustomMenuBuilderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
              default="false"
              extensions="extlibrary"
              id="org.eclipse.emf.parsley.customMenuLibrary"
@@ -137,8 +137,8 @@
           point="org.eclipse.ui.views">
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionFormView"
-             id="org.eclipse.emf.parsley.tests.views.librarydetailviewcustom"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionFormView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.librarydetailviewcustom"
              name="Library Emf Detail View"
              restorable="true">
        </view>
@@ -147,106 +147,106 @@
           point="org.eclipse.ui.views">
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableResourceTreeFormView"
-             id="org.eclipse.emf.parsley.tests.views.testsaveableresourcetreeformview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableResourceTreeFormView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveableresourcetreeformview"
              name="Library Test Saveable Resource Tree Form View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableResourceTableFormView"
-             id="org.eclipse.emf.parsley.tests.views.testsaveableresourcetableformview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableResourceTableFormView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveableresourcetableformview"
              name="Library Test Saveable Resource Table Form View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableResourceTableView"
-             id="org.eclipse.emf.parsley.tests.views.testsaveabletableview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableResourceTableView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveabletableview"
              name="Library Test Saveable Table View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableTreeView"
-             id="org.eclipse.emf.parsley.tests.views.testsaveabletreeview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableTreeView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveabletreeview"
              name="Library Test Saveable Tree View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryBooksTableView"
-             id="org.eclipse.emf.parsley.tests.views.librarybookstableview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryBooksTableView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.librarybookstableview"
              name="Library Books Table View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryBooksTableFormView"
-             id="org.eclipse.emf.parsley.tests.views.librarybookstableformview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryBooksTableFormView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.librarybookstableformview"
              name="Library Books Table Form View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryTableViewerContentProviderExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryBooksTableView"
-             id="org.eclipse.emf.parsley.tests.views.librarybookstableviewcustomcontentprovider"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryTableViewerContentProviderExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryBooksTableView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.librarybookstableviewcustomcontentprovider"
              name="Library Books Table View With Custom Content Provider"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryTableViewerContentProviderExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestOnSelectionLibraryBooksTableFormView"
-             id="org.eclipse.emf.parsley.tests.views.librarybookstableformviewcustomcontentprovider"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryTableViewerContentProviderExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryBooksTableFormView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.librarybookstableformviewcustomcontentprovider"
              name="Library Books Table Form View With Custom Content Provider"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomContentProviderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableTreeView2"
-             id="org.eclipse.emf.parsley.tests.views.testsaveabletreeviewcontentprovider"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomContentProviderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableTreeView2"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveabletreeviewcontentprovider"
              name="Library Tree View With Custom Content Provider"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomElementsContentProviderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableTreeView2"
-             id="org.eclipse.emf.parsley.tests.views.testsaveabletreeviewelementscontentprovider"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomElementsContentProviderLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableTreeView2"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveabletreeviewelementscontentprovider"
              name="Library Tree View With Custom Elements Content Provider"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.resourcelistening.ResourceListeningLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableTreeView"
-             id="org.eclipse.emf.parsley.tests.views.testresourcelisteningtreeformview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.resourcelistening.ResourceListeningLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableTreeView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testresourcelisteningtreeformview"
              name="Library Test Resource Listening Tree Form View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.editabletable.EditableTableLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableResourceTableView"
-             id="org.eclipse.emf.parsley.tests.views.testeditabletableview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.editabletable.EditableTableLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableResourceTableView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testeditabletableview"
              name="Library Test Editable Table View"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomProposalCreatorExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionFormView"
-             id="org.eclipse.emf.parsley.tests.views.customproposalsformview"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomProposalCreatorExecutableExtensionFactory:org.eclipse.emf.parsley.views.OnSelectionFormView"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.customproposalsformview"
              name="Custom Proposals Form View"
              restorable="true">
        </view>
         <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableTreeViewWithColumns"
-             id="org.eclipse.emf.parsley.tests.views.testsaveabletreeviewwithColumns"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableTreeViewWithColumns"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveabletreeviewwithColumns"
              name="Library Test Saveable Tree View With Colunms"
              restorable="true">
        </view>
        <view
              category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.TestSaveableTreeViewWithSpecificColumns"
-             id="org.eclipse.emf.parsley.tests.views.testsaveabletreeviewwithSpecificColumns"
+             class="org.eclipse.emf.parsley.tests.swtbot.factories.CustomLibraryExecutableExtensionFactory:org.eclipse.emf.parsley.tests.swtbot.views.TestSaveableTreeViewWithSpecificColumns"
+             id="org.eclipse.emf.parsley.tests.swtbot.views.testsaveabletreeviewwithSpecificColumns"
              name="Library Test Saveable Tree View With Specific Colunms"
              restorable="true">
        </view>

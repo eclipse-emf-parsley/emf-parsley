@@ -71,7 +71,7 @@ import com.google.inject.name.Named;
  * Creates Control for an {@link EStructuralFeature}
  * 
  * @author Dennis Huebner initial code
- * @author Lorenzo Bettini refactoring for Emf Parsley
+ * @author Lorenzo Bettini refactoring for EMF Parsley
  * @author Francesco Guidieri added validation support
  * 
  */

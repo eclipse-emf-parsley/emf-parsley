@@ -17,11 +17,14 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
+import org.eclipse.emf.parsley.internal.viewers.GenericFeatureViewerComparator;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.TableColumn;
 
@@ -34,7 +37,7 @@ import com.google.inject.name.Named;
  * {@link TableFeaturesProvider}).
  * 
  * @author Lorenzo Bettini - initial API and implementation
- * 
+ * @author Francesco Guidieri - Sorting
  */
 public class TableViewerColumnBuilder {
 
@@ -58,6 +61,9 @@ public class TableViewerColumnBuilder {
 	@Inject
 	private LayoutHelper layoutHelper;
 
+	@Inject
+	private GenericFeatureViewerComparator viewerComparator;
+
 	/**
 	 * Setups the columns of the given tableViewer using the features of the
 	 * given eClass; the features are retrieved using an injected
@@ -71,13 +77,16 @@ public class TableViewerColumnBuilder {
 		Layout layout = layoutHelper.adjustForTableLayout(tableViewer);
 		List<EStructuralFeature> typeFeatures = featuresProvider.getFeatures(eClass);
 		int i = 0;
+		int columnIndex = 0;
+		tableViewer.setComparator(viewerComparator);
+		viewerComparator.init(typeFeatures);
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
 			int weight = defaultWeight;
 			if (weights.size() > i) {
 				weight = weights.get(i++);
 			}
-
-			buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature, weight);
+			buildTableViewerColumn(tableViewer, layout, eClass,
+					eStructuralFeature, weight, columnIndex++);
 		}
 	}
 
@@ -92,6 +101,17 @@ public class TableViewerColumnBuilder {
 		return viewerColumn;
 	}
 
+	/**
+	 * @since 1.1
+	 */
+	protected TableViewerColumn buildTableViewerColumn(TableViewer tableViewer, Layout layout, EClass eClass,
+			EStructuralFeature eStructuralFeature, int weight, int colNumber) {
+		TableViewerColumn viewerColumn = buildTableViewerColumn(tableViewer, layout, eClass, eStructuralFeature, weight);
+		TableColumn objectColumn = viewerColumn.getColumn();
+		objectColumn.addSelectionListener(getSelectionAdapter(tableViewer, objectColumn, colNumber));
+		return viewerColumn;
+	}
+
 	protected TableViewerColumn createTableViewerColumn(
 			TableViewer tableViewer, EStructuralFeature eStructuralFeature) {
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(
@@ -99,5 +119,21 @@ public class TableViewerColumnBuilder {
 		tableViewerColumn.setLabelProvider(columnLabelProviderFactory
 					.createColumnLabelProvider(eStructuralFeature));
 		return tableViewerColumn;
+	}
+
+	private SelectionAdapter getSelectionAdapter(final TableViewer viewer, final TableColumn column,
+			final int index) {
+		SelectionAdapter selectionAdapter = new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				GenericFeatureViewerComparator comparator = (GenericFeatureViewerComparator) viewer.getComparator();
+				comparator.setPropertyIndex(index);
+				int dir = comparator.getDirection();
+				viewer.getTable().setSortDirection(dir);
+				viewer.getTable().setSortColumn(column);
+				viewer.refresh();
+			}
+		};
+		return selectionAdapter;
 	}
 }
