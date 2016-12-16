@@ -33,11 +33,13 @@ import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.results.ListResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.PlatformUI;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -110,9 +112,9 @@ public class EmfParsleyCdoSWTBotTests {
 		libraryNode.select("Book Domain Specific Languages");
 		botView.bot().textWithLabel("Title").setText("My Tyltle");
 		someSleep();
-		Assert.assertTrue(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
+		assertLibraryViewDirty(TEST_CDO_FORM_VIEW, true);
 		forceSaveView(botView);
-		Assert.assertFalse(isLibraryViewDirty(TEST_CDO_FORM_VIEW));
+		assertLibraryViewDirty(TEST_CDO_FORM_VIEW, false);
 	}
 
 	private void someSleep() {
@@ -156,8 +158,21 @@ public class EmfParsleyCdoSWTBotTests {
 		session.close();
 	}
 
-	private boolean isLibraryViewDirty(String id) {
-		return getLibraryView(id).getViewReference().isDirty();
+	private void assertLibraryViewDirty(final String id, final boolean expectedDirty) {
+		final IViewReference viewReference = getLibraryView(id).getViewReference();
+		bot.waitUntil(new DefaultCondition() {
+			@Override
+			public boolean test() throws Exception {
+				boolean dirty = viewReference.isDirty();
+				return dirty == expectedDirty;
+			}
+
+			@Override
+			public String getFailureMessage() {
+				return "expected dirty: " + expectedDirty +
+						", but was " + viewReference.isDirty();
+			}
+		});
 	}
 
 	private static SWTBotView openTestView(String libraryView) {
