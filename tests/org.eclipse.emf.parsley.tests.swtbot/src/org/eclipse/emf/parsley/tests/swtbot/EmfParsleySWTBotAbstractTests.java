@@ -73,6 +73,7 @@ import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.results.ListResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -1188,14 +1189,28 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected SWTBotEditor assertEditorNotDirty(String editorName) {
-		SWTBotEditor editor = getEditor(editorName);
-		assertTrue("editor should NOT be in dirty state", !editor.isDirty());
-		return editor;
+		return assertEditorDirtyState(editorName, false);
 	}
 
 	protected SWTBotEditor assertEditorDirty(String editorName) {
-		SWTBotEditor editor = getEditor(editorName);
-		assertTrue("editor should be in dirty state", editor.isDirty());
+		return assertEditorDirtyState(editorName, true);
+	}
+
+	private SWTBotEditor assertEditorDirtyState(String editorName, final boolean expectedDirtyState) {
+		final SWTBotEditor editor = getEditor(editorName);
+		bot.waitUntil(new DefaultCondition() {
+			@Override
+			public boolean test() throws Exception {
+				boolean dirty = editor.isDirty();
+				return dirty == expectedDirtyState;
+			}
+
+			@Override
+			public String getFailureMessage() {
+				return "expected dirty: " + expectedDirtyState +
+						", but was " + editor.isDirty();
+			}
+		});
 		return editor;
 	}
 
@@ -1212,9 +1227,21 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		saveViewAndAssertNotDirty(viewName);
 	}
 
-	protected void assertSaveableViewIsDirty(boolean isDirty, String viewName) {
-		ISaveablePart viewAsSaveablePart = getViewAsSaveablePart(viewName);
-		assertEquals(isDirty, viewAsSaveablePart.isDirty());
+	protected void assertSaveableViewIsDirty(final boolean expectedDirty, String viewName) {
+		final ISaveablePart viewAsSaveablePart = getViewAsSaveablePart(viewName);
+		bot.waitUntil(new DefaultCondition() {
+			@Override
+			public boolean test() throws Exception {
+				boolean dirty = viewAsSaveablePart.isDirty();
+				return dirty == expectedDirty;
+			}
+
+			@Override
+			public String getFailureMessage() {
+				return "expected dirty: " + expectedDirty +
+						", but was " + viewAsSaveablePart.isDirty();
+			}
+		});
 	}
 
 	protected ISaveablePart getViewAsSaveablePart(String viewName) {
