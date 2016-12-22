@@ -24,6 +24,9 @@ import com.google.inject.Inject;
  * A specialization of {@link EditingDomainViewerDropAdapter} that retrieves the
  * editing domain dynamically from the object that is being dragged and dropped.
  * 
+ * @noextend This class is not intended to be subclassed by clients.
+ * @noinstantiate This class is not intended to be instantiated by clients.
+ * 
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
