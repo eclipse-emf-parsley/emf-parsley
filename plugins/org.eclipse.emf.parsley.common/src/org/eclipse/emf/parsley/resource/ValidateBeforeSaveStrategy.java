@@ -29,18 +29,18 @@ public class ValidateBeforeSaveStrategy extends ResourceSaveStrategy {
 
 	@Inject
 	private ValidationRunner validationRunner;
-	
+
 	@Inject
 	private IssueReporter issueReporter;
 
-    @Override
+	@Override
 	public boolean save(Resource resource) throws IOException {
 		if (!precondition(resource)) {
 			return false;
 		}
 		return super.save(resource);
 	}
-    
+
 	protected boolean precondition(Resource resource) {
 		return validationRunner.validate(resource, issueReporter).size() == 0;
 	}

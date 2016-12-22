@@ -5,7 +5,7 @@ import org.eclipse.emf.parsley.examples.cdo.company.Customer
 import org.eclipse.emf.parsley.examples.cdo.company.SalesOrder
 import org.eclipse.emf.parsley.examples.cdo.company.ui.customers.CustomersTreeView
 
-/* org.eclipse.emf.parsley.examples.cdo.company.ui.customers Emf Parsley Dsl Module file */
+/* org.eclipse.emf.parsley.examples.cdo.company.ui.customers EMF Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.cdo.company.ui.customers extends CompanyGuiceModule{
 	
 	parts {

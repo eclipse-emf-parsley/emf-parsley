@@ -20,12 +20,33 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForValidationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForValidationImpl#getNotEmpty <em>Not Empty</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ClassForValidationImpl extends MinimalEObjectImpl.Container implements ClassForValidation {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getNotEmpty() <em>Not Empty</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -70,6 +91,27 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_VALIDATION__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getNotEmpty() {
 		return notEmpty;
 	}
@@ -94,6 +136,8 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+				return getName();
 			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
 				return getNotEmpty();
 		}
@@ -108,6 +152,9 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+				setName((String)newValue);
+				return;
 			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
 				setNotEmpty((String)newValue);
 				return;
@@ -123,6 +170,9 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
 				setNotEmpty(NOT_EMPTY_EDEFAULT);
 				return;
@@ -138,6 +188,8 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case TestmodelsPackage.CLASS_FOR_VALIDATION__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case TestmodelsPackage.CLASS_FOR_VALIDATION__NOT_EMPTY:
 				return NOT_EMPTY_EDEFAULT == null ? notEmpty != null : !NOT_EMPTY_EDEFAULT.equals(notEmpty);
 		}
@@ -154,7 +206,9 @@ public class ClassForValidationImpl extends MinimalEObjectImpl.Container impleme
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (notEmpty: ");
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", notEmpty: ");
 		result.append(notEmpty);
 		result.append(')');
 		return result.toString();

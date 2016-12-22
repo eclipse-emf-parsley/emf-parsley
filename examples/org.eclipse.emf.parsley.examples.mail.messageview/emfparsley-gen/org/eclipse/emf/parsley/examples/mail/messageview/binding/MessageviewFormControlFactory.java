@@ -1,7 +1,7 @@
 package org.eclipse.emf.parsley.examples.mail.messageview.binding;
 
-import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
@@ -12,9 +12,10 @@ import org.eclipse.swt.widgets.Text;
 
 @SuppressWarnings("all")
 public class MessageviewFormControlFactory extends FormControlFactory {
-  public Control control_Mail_message(final DataBindingContext dataBindingContext, final IObservableValue observableValue) {
+  public Control control_Mail_message(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Mail_message();
-    dataBindingContext.bindValue(
+    bindValue(
+    	feature,
     	createTarget_Mail_message(control),
     	observableValue);
     return control;

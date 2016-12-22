@@ -9,7 +9,7 @@
  *
  * Contributors:
  *   IBM - Initial API and implementation
- *   Lorenzo Bettini - refactored and adapted for Emf Parsley
+ *   Lorenzo Bettini - refactored and adapted for EMF Parsley
  *
  * </copyright>
  *
@@ -87,7 +87,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -135,14 +134,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	protected boolean saving = false;
 
 	/**
-	 * This is the content outline page's viewer. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected TreeViewer contentOutlineViewer;
-
-	/**
 	 * This is the property sheet page. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
@@ -158,14 +149,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	protected StructuredViewer selectionViewer;
-
-	/**
-	 * This listens to which ever viewer is active. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected ISelectionChangedListener selectionChangedListener;
 
 	/**
 	 * This keeps track of all the
@@ -273,6 +256,8 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				case Resource.RESOURCE__WARNINGS:
 					Resource resource = (Resource) notification.getNotifier();
 					handleResourceDiagnostic(resource);
+					break;
+				default:
 					break;
 				}
 			} else {
@@ -1113,10 +1098,6 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 */
 	protected boolean showOutlineView() {
 		return false;
-	}
-
-	public void setContentOutlineViewer(TreeViewer treeViewer) {
-		contentOutlineViewer = treeViewer;
 	}
 
 	@Override

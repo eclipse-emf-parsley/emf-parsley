@@ -16,6 +16,8 @@
         eType="#//ClassForValidation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="multipleContained" upperBound="-1"
         eType="#//TestContainer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objectsForDefaultValidation"
+        upperBound="-1" eType="#//ClassForDefaultValidation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestEClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowercaseNameFeature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -126,6 +128,21 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="NotEmpty"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="notEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassForDefaultValidation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notEmpty" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canBeEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notNullReference" lowerBound="1"
+        eType="#//ClassWithName"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassForCompare">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bigDecimalAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigDecimal"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
 </ecore:EPackage>

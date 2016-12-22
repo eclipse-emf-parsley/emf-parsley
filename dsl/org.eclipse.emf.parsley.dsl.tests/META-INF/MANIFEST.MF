@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.emf.parsley.dsl.tests
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.parsley.dsl,
@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.emf.parsley.dsl,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eclipse.emf.parsley.generator.common,
  org.eclipse.emf.parsley.dsl.additional.builder,
- org.eclipse.pde.core;bundle-version="3.7.1"
+ org.eclipse.pde.core;bundle-version="3.7.1",
+ org.eclipse.emf.parsley.junit4
 Import-Package: org.apache.log4j,
  org.apache.log4j.spi,
  org.hamcrest.core,

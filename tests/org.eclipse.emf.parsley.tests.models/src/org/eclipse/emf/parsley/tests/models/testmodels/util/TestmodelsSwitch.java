@@ -173,6 +173,18 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION: {
+				ClassForDefaultValidation classForDefaultValidation = (ClassForDefaultValidation)theEObject;
+				T result = caseClassForDefaultValidation(classForDefaultValidation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TestmodelsPackage.CLASS_FOR_COMPARE: {
+				ClassForCompare classForCompare = (ClassForCompare)theEObject;
+				T result = caseClassForCompare(classForCompare);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -384,6 +396,36 @@ public class TestmodelsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClassForValidation(ClassForValidation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Class For Default Validation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Class For Default Validation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassForDefaultValidation(ClassForDefaultValidation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Class For Compare</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Class For Compare</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassForCompare(ClassForCompare object) {
 		return null;
 	}
 

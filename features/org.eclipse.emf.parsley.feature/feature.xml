@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.feature"
       label="EMF Parsley"
-      version="1.0.2.qualifier"
+      version="1.1.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.common">
 

@@ -20,6 +20,7 @@ import org.eclipse.emf.parsley.composite.ProposalCreator
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass
 import org.eclipse.emf.parsley.tests.util.CustomDialogControlFactoryForTests
+import org.eclipse.emf.parsley.tests.util.CustomDialogControlFactoryForTestsWithCallToBindValude
 import org.eclipse.emf.parsley.util.DatabindingUtil
 import org.eclipse.swt.SWT
 import org.eclipse.swt.layout.FillLayout
@@ -148,7 +149,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	/**
-	 * As above, but for a without specifying SWT.Modify
+	 * As above, but for a single feature without specifying SWT.Modify
 	 */
 	@Test
 	def void testCustomControlWithControlObservablePair2() {
@@ -162,6 +163,21 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 				return new ControlObservablePair(text, DatabindingUtil.observeText(text))
 			}
 		} => [initialize(o1)]
+		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
+		control.assertTextEditable(false)
+		control.assertText("")
+		o1.baseClassFeature = "Foo"
+		control.assertText("Foo")
+	}
+
+	/**
+	 * As above, but using the two args signature
+	 */
+	@Test
+	def void testCustomControlWithFeatureAndObservableValue() {
+		val o1 = createBaseClassObject
+		val factory = new CustomDialogControlFactoryForTestsWithCallToBindValude
+			=> [initialize(o1)]
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")

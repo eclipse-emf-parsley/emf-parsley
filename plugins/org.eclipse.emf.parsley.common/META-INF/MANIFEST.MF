@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Emf Parsley Common
+Bundle-Name: EMF Parsley Common
 Bundle-SymbolicName: org.eclipse.emf.parsley.common;singleton:=true
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.EmfParsleyActivator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibility:=reexport,
@@ -26,7 +26,9 @@ Export-Package: org.eclipse.emf.parsley,
  org.eclipse.emf.parsley.edit.ui.dnd,
  org.eclipse.emf.parsley.edit.ui.provider,
  org.eclipse.emf.parsley.handlers,
+ org.eclipse.emf.parsley.internal.databinding;x-internal:=true,
  org.eclipse.emf.parsley.internal.edit.ui.dnd,
+ org.eclipse.emf.parsley.internal.viewers;x-internal:=true,
  org.eclipse.emf.parsley.listeners,
  org.eclipse.emf.parsley.menus,
  org.eclipse.emf.parsley.resource,
@@ -53,6 +55,7 @@ Import-Package: org.apache.log4j;version="1.2.13",
  org.eclipse.jface.action,
  org.eclipse.jface.bindings,
  org.eclipse.jface.bindings.keys,
+ org.eclipse.jface.databinding.fieldassist,
  org.eclipse.jface.databinding.swt,
  org.eclipse.jface.databinding.viewers,
  org.eclipse.jface.dialogs,

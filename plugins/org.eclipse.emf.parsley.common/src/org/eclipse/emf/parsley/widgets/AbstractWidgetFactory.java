@@ -94,7 +94,7 @@ public abstract class AbstractWidgetFactory implements IWidgetFactory {
 
 	@Override
 	public DateTime createDateTime(Composite parent) {
-		return createDateTime(parent, SWT.DROP_DOWN);
+		return createDateTime(parent, SWT.DATE | SWT.DROP_DOWN);
 	}
 
 	@Override

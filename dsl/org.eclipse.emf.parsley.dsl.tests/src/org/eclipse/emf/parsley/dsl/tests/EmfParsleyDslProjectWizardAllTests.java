@@ -19,10 +19,10 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	EmfParsleyDslNewProjectFilesTests.class,
-	EmfParsleyProjectFilesGeneratorUtilTests.class,
-	EmfParsleyTemplateWizardConfigurationTests.class,
-	EmfParsleyTemplateWizardConfigurationFactoryTests.class
+	EmfParsleyDslNewProjectFilesTest.class,
+	EmfParsleyProjectFilesGeneratorUtilTest.class,
+	EmfParsleyTemplateWizardConfigurationTest.class,
+	EmfParsleyTemplateWizardConfigurationFactoryTest.class
 })
 public class EmfParsleyDslProjectWizardAllTests {
 

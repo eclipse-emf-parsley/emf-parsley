@@ -29,12 +29,12 @@ import org.eclipse.emf.parsley.examples.rap.model.ModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.impl.ElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.impl.ElementImpl#getAge <em>Age</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.impl.ElementImpl#getItems <em>Items</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

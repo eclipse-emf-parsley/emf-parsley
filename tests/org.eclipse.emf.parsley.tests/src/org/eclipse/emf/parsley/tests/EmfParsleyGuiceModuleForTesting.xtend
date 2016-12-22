@@ -10,11 +10,15 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
+import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 
 /**
  * A custom module just for testing.
  */
-class EmfParsleyGuiceModuleForTesting extends EmfParsleyJavaGuiceModule {
+class EmfParsleyGuiceModuleForTesting extends EmfParsleyGuiceModule {
+
+	new() {
+		super(null)
+	}
 
 }

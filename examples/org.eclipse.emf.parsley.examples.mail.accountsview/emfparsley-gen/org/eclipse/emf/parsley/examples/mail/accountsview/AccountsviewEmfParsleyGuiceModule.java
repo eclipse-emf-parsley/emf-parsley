@@ -17,7 +17,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * org.eclipse.emf.parsley.examples.mail.accountsview Emf Parsley Dsl Module file
+ * org.eclipse.emf.parsley.examples.mail.accountsview EMF Parsley Dsl Module file
  */
 @SuppressWarnings("all")
 public class AccountsviewEmfParsleyGuiceModule extends EmfParsleyGuiceModule {

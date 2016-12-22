@@ -22,7 +22,6 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.ecore.EObject
 
 /**
  * @author Lorenzo Bettini
@@ -45,6 +44,29 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 
 		override getScrolledForm() {
 			super.getScrolledForm()
+		}
+
+	}
+
+	/**
+	 * For testing the case when isDisposed returns true while the form title
+	 * adapter gets a notifyChanged
+	 */
+	static class FormDetailCompositeWithCustomIsDisposed extends FormDetailComposite {
+		var constructorCalled = false
+
+		new(Composite parent, int style) {
+			super(parent, style)
+			// during the constructor, isDisposed is called and during
+			// the constructor isDisposed must NOT return true
+			constructorCalled = true
+		}
+
+		override isDisposed() {
+			if (!constructorCalled)
+				return super.isDisposed()
+			else
+				return true
 		}
 
 	}
@@ -78,26 +100,20 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 		formDetailComposite.dispose
 	}
 
-	@Test def void testFormDetailWithCustomInit() {
+	@Test def void testDisposeWhenInitIsNotCalled() {
 		val injector = getOrCreateInjector
-		val formDetailCompositeWithCustomInit=new TestableFormDetailWithCustomInitComposite(shell, SWT.NONE)
-		injector.injectMembers(formDetailCompositeWithCustomInit)
+		val formDetailComposite = new FormDetailComposite(shell, SWT.NONE)
+		injector.injectMembers(formDetailComposite)
+		formDetailComposite.dispose
+	}
+
+	@Test def void testDisposeWhenWidgetIsDisposed() {
+		val injector = getOrCreateInjector
+		val formDetailComposite = new FormDetailCompositeWithCustomIsDisposed(shell, SWT.NONE)
+		injector.injectMembers(formDetailComposite)
 		val o = testFactory.createClassWithName => [ name = "Test" ]
-		formDetailCompositeWithCustomInit.init(o)
-		formDetailCompositeWithCustomInit.dispose
+		formDetailComposite.init(o)
+		formDetailComposite.dispose
 	}
-	
-	static class TestableFormDetailWithCustomInitComposite extends TestableFormDetailComposite {
-		/**
-		 * public for tests
-		 */
-		new(Composite parent, int style) {
-			super(parent, style)
-		}
 
-		override init( EObject model, EditingDomain domain){
-			//It makes cool stuff and doesn't call super.initControlFactory		
-		}
-
-	}
 }

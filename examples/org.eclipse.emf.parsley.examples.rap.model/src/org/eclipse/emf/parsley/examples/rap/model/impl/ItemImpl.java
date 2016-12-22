@@ -25,10 +25,10 @@ import org.eclipse.emf.parsley.examples.rap.model.ModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.impl.ItemImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

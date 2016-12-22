@@ -7,7 +7,7 @@
 		<relativePath>../../releng/org.eclipse.emf.parsley.parent/pom.xml</relativePath>
 		<groupId>org.eclipse.emf.parsley</groupId>
 		<artifactId>org.eclipse.emf.parsley.parent</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
+		<version>1.1.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.tests.swtbot</artifactId>
@@ -56,14 +56,42 @@
 							<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
-								<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/tests/*WizardsTest*.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/tests/*DslEditorTest*.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/tests/*TestsSuite*.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/tests/*Activator*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*DropTest*.java</exclude>
 							</excludes>
 							<includes>
-								<include>**/org/eclipse/emf/parsley/tests/*Test*.java</include>
+								<include>**/org/eclipse/emf/parsley/tests/swtbot/*Test*.java</include>
+							</includes>
+							<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
+								http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
+							<environmentVariables>
+								<SWT_GTK3>0</SWT_GTK3>
+							</environmentVariables>
+						</configuration>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+					<execution>
+						<!-- In Hudson DragAndDrop tests seem to be "disturbed" by other tests,
+							so we run them in an isolated run. -->
+						<id>draganddrop-test</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<skip>${swtbot.tests.skip}</skip>
+							<useUIHarness>true</useUIHarness>
+							<useUIThread>false</useUIThread>
+							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
+								for jacoco agent -->
+							<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
+							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+							<excludes>
+								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</exclude>
+							</excludes>
+							<includes>
+								<include>**/org/eclipse/emf/parsley/tests/swtbot/*DropTest*.java</include>
 							</includes>
 							<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
 								http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
@@ -88,13 +116,11 @@
 							<argLine>${tycho.testArgLine} ${pdeTestsArgs} ${swtbotTestsArgs}</argLine>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
-								<exclude>**/org/eclipse/emf/parsley/tests/*AbstractTest*.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/tests/*TestsSuite*.java</exclude>
-								<exclude>**/org/eclipse/emf/parsley/tests/*Activator*.java</exclude>
+								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*AbstractTest*.java</exclude>
 							</excludes>
 							<includes>
-								<include>**/org/eclipse/emf/parsley/tests/*DslEditorTest*.java</include>
-								<include>**/org/eclipse/emf/parsley/tests/*WizardsTest*.java</include>
+								<include>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</include>
+								<include>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</include>
 							</includes>
 							<environmentVariables>
 								<SWT_GTK3>0</SWT_GTK3>

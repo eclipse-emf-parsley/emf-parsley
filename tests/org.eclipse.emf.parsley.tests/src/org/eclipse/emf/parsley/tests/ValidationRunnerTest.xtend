@@ -8,10 +8,8 @@ import org.eclipse.emf.parsley.validation.LogIssueReporter
 import org.eclipse.emf.parsley.validation.ValidationRunner
 import org.junit.Rule
 import org.junit.Test
-import org.eclipse.emf.parsley.validation.DiagnosticUtil
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.common.util.Diagnostic
 
 class ValidationRunnerTest extends AbstractEmfParsleyTest {
 	
@@ -24,6 +22,25 @@ class ValidationRunnerTest extends AbstractEmfParsleyTest {
 		val objectForValidation = testFactory.createClassForValidation
 		createValidationRunner.validate(objectForValidation, createLogIssueReporter)
 		logAppender.assertContainsMessage("ERROR: the field 'notEmpty' cannot be empty")
+	}
+
+	@Test
+	def void testValidateObjectDefault() {
+		// standard Ecore validation
+		val objectForValidation = testFactory.createClassForDefaultValidation
+		createValidationRunner.validate(objectForValidation, createLogIssueReporter)
+		logAppender.assertContainsMessage("The required feature 'notEmpty'")
+	}
+
+	@Test
+	def void testValidateObjectDefaultOk() {
+		// standard Ecore validation
+		val objectForValidation = testFactory.createClassForDefaultValidation => [
+			notEmpty = "foo"
+			notNullReference = testFactory.createClassWithName
+		]
+		createValidationRunner.validate(objectForValidation, createLogIssueReporter)
+		logAppender.assertEmpty
 	}
 
 	@Test
@@ -93,31 +110,11 @@ class ValidationRunnerTest extends AbstractEmfParsleyTest {
 			createValidationRunner.validate(objectForValidation, createLogIssueReporter).size)
 	}
 
-	@Test
-	def void testFilterErrors() {
-		val container = testFactory.createTestContainer => [
-			objectsForValidation += testFactory.createClassForValidation // this will issue an error
-			objectsForValidation += testFactory.createClassForValidation => [
-				notEmpty = "a" // this will issue a warning
-			]
-		]
-		val diagnostic = createValidationRunner.validate(container)
-		val diagnosticUtil = createDiagnosticUtil
-		assertEquals(2, diagnosticUtil.flatten(diagnostic).size)
-		val errors = diagnosticUtil.errors(diagnostic)
-		assertEquals(1, errors.size)
-		assertTrue(errors.head.severity == Diagnostic.ERROR)
-	}
-
 	def private createValidationRunner() {
 		getOrCreateInjector.getInstance(ValidationRunner)
 	}
 
 	def private createLogIssueReporter() {
 		getOrCreateInjector.getInstance(LogIssueReporter)
-	}
-
-	def private createDiagnosticUtil() {
-		getOrCreateInjector.getInstance(DiagnosticUtil)
 	}
 }

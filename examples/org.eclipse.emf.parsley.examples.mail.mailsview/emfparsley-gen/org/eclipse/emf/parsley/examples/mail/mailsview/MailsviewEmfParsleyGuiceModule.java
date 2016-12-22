@@ -8,7 +8,7 @@ import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * org.eclipse.emf.parsley.examples.mail.mailsview Emf Parsley Dsl Module file
+ * org.eclipse.emf.parsley.examples.mail.mailsview EMF Parsley Dsl Module file
  */
 @SuppressWarnings("all")
 public class MailsviewEmfParsleyGuiceModule extends EmfParsleyGuiceModule {

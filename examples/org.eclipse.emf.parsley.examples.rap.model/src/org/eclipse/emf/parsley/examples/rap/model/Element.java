@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.Element#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.Element#getAge <em>Age</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.rap.model.Element#getItems <em>Items</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.examples.rap.model.ModelPackage#getElement()
  * @model
@@ -43,7 +43,7 @@ public interface Element extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.parsley.examples.rap.model.ModelPackage#getElement_Name()
-	 * @model default=""
+	 * @model default="" required="true"
 	 * @generated
 	 */
 	String getName();

@@ -30,6 +30,7 @@ import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
+import org.eclipse.emf.parsley.internal.databinding.DataBindingHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.emf.parsley.ui.provider.ComboViewerLabelProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
@@ -70,10 +71,13 @@ import com.google.inject.name.Named;
  * Creates Control for an {@link EStructuralFeature}
  * 
  * @author Dennis Huebner initial code
- * @author Lorenzo Bettini refactoring for Emf Parsley
+ * @author Lorenzo Bettini refactoring for EMF Parsley
+ * @author Francesco Guidieri added validation support
  * 
  */
 public abstract class AbstractControlFactory implements IWidgetFactory {
+
+	private static final int GRID_DATA_HORIZONTAL_INDENT = 10;
 
 	private static final String OBSERVE_PREFIX = "observe_";
 
@@ -94,6 +98,9 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	@Inject
 	private ProposalCreator proposalCreator;
+
+	@Inject
+	private DataBindingHelper dataBindingHelper;
 
 	private EObject owner;
 	private Resource resource;
@@ -278,7 +285,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		Control retVal = retValAndTargetPair.getControl();
 		IObservableValue target = retValAndTargetPair.getObservableValue();
 
-		Binding binding = edbc.bindValue(target, source);
+		Binding binding = bindValue(feature, target, source);
 		binding.updateModelToTarget();
 		return retVal;
 	}
@@ -332,10 +339,19 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 				.getObservableValue();
 
 		if (controlObservable != null) {
-			edbc.bindValue(controlObservable, featureObservable, null, null);
+			bindValue(feature, controlObservable, featureObservable);
 		}
 
 		return retVal;
+	}
+
+	/**
+	 * @since 1.1
+	 */
+	@SuppressWarnings("rawtypes")
+	protected Binding bindValue(EStructuralFeature feature, IObservableValue target,
+			IObservableValue source) {
+		return dataBindingHelper.bindValue(feature, target, source, owner, edbc);
 	}
 
 	protected ControlObservablePair createControlAndObservableValue(
@@ -471,7 +487,9 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 			// set default layout data if not already set by a custom
 			// polymorphic implementation or from the DSL
 			if (c.getLayoutData()==null) {
-				c.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+				GridData deafultLayout = new GridData(GridData.FILL_HORIZONTAL);
+				deafultLayout.horizontalIndent=GRID_DATA_HORIZONTAL_INDENT;
+				c.setLayoutData(deafultLayout);
 			}
 		}
 	}
@@ -489,7 +507,8 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	/**
 	 * Polymorphically invokes a create_EClass_feature(DataBindingContext,
-	 * IObservableValue)
+	 * IObservableValue), trying to get the new version with validation support.
+	 * If not found, the old version of the method is searched, for backward compatibility. 
 	 * 
 	 * @param feature
 	 * @param featureObservable
@@ -498,6 +517,13 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	@SuppressWarnings("rawtypes")
 	private Control polymorphicCreateControl(EStructuralFeature feature,
 			IObservableValue featureObservable) {
+		Control polymorphicInvokeNewVersion = PolymorphicDispatcherExtensions
+				.<Control> polymorphicInvokeBasedOnFeature(this,
+						owner.eClass(), feature, CONTROL_PREFIX,
+						featureObservable, feature);
+		if(polymorphicInvokeNewVersion!=null){
+			return polymorphicInvokeNewVersion;
+		}
 		return PolymorphicDispatcherExtensions
 				.<Control> polymorphicInvokeBasedOnFeature(this,
 						owner.eClass(), feature, CONTROL_PREFIX, edbc,

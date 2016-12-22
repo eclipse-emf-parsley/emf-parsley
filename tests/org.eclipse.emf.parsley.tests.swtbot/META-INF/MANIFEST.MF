@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley SWTBOT Tests
 Bundle-SymbolicName: org.eclipse.emf.parsley.tests.swtbot;singleton:=true
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
@@ -27,7 +27,7 @@ Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.3.0",
  org.eclipse.xtext.junit4,
  org.eclipse.emf.parsley.examples.editors,
  org.eclipse.emf.parsley.tests.views
-Bundle-Activator: org.eclipse.emf.parsley.tests.EmfParsleySwtBotTestsActivator
-Export-Package: org.eclipse.emf.parsley.tests,
- org.eclipse.emf.parsley.tests.editors,
- org.eclipse.emf.parsley.tests.views
+Bundle-Activator: org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBotTestsActivator
+Export-Package: org.eclipse.emf.parsley.tests.swtbot,
+ org.eclipse.emf.parsley.tests.swtbot.editors,
+ org.eclipse.emf.parsley.tests.swtbot.views

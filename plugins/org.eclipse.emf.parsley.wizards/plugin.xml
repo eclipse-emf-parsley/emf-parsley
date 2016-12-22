@@ -5,7 +5,7 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="org.eclipse.emf.parsley.wizards"
-            name="Emf Parsley">
+            name="EMF Parsley">
       </category>
    </extension>
 </plugin>

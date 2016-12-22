@@ -72,7 +72,6 @@
       name="org.eclipse.debug.ui">
     <setupTask
         xsi:type="setup:PreferenceTask"
-        id=""
         key="/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.cancel_launch_with_compile_errors"
         value="always"/>
   </setupTask>
@@ -137,11 +136,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
-      value="1.0.0"/>
+      value="1.1.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.zip"
-      value="org.eclipse.emf.parsley.repository-1.0.0.v20160608-1623.zip"/>
+      value="org.eclipse.emf.parsley.repository-1.1.0.v20161222-0943.zip"/>
   <setupTask
       xsi:type="pde:APIBaselineTask"
       name="parsley-latest"
@@ -656,7 +655,7 @@
             value="emf-parsley/org.eclipse.emf-parsley"/>
         <attribute
             key="gerrit query string"
-            value="project:emf-parsley/org.eclipse.emf-parsley status:open branch:master"/>
+            value="project:emf-parsley/org.eclipse.emf-parsley status:open"/>
       </query>
     </setupTask>
     <setupTask

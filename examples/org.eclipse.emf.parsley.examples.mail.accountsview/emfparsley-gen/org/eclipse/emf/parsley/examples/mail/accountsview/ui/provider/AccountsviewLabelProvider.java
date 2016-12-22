@@ -39,11 +39,9 @@ public class AccountsviewLabelProvider extends ViewerLabelProvider {
       String _switchResult = null;
       String _name_1 = it.getName();
       boolean _matched = false;
-      if (!_matched) {
-        if (Objects.equal(_name_1, "Inbox")) {
-          _matched=true;
-          _switchResult = "inbox.gif";
-        }
+      if (Objects.equal(_name_1, "Inbox")) {
+        _matched=true;
+        _switchResult = "inbox.gif";
       }
       if (!_matched) {
         if (Objects.equal(_name_1, "Sent")) {

@@ -47,7 +47,7 @@ code[
 section:Testing[Testing Framework]
 
 We provide some utility classes for testing e[EMF Parsley] components in the feature
-"Emf Parsley Junit4 Support".  By deriving from one of the abstract classes in our
+"EMF Parsley Junit4 Support".  By deriving from one of the abstract classes in our
 testing bundle, you will be able to write tests that are meant to be run as Junit test,
 that is to say, NOT as Plug-in Junit tests.  Thus, you will not need a running Eclipse product
 to execute such tests: they will be much faster.  Indeed, many parts of Parsley can
@@ -83,7 +83,7 @@ what we need to begin. Otherwise the following wizard will bring you to that poi
 
 ol[
 	item[File -> New... -> Example...]
-	item[from Category "Emf Parsley Examples", select "Emf Parsley First Example"]
+	item[from Category "EMF Parsley Examples", select "EMF Parsley First Example"]
 	item[press Next and Finish]
 ]
 
@@ -279,7 +279,7 @@ After having installed EMF Parsley as described link[https://www.eclipse.org/emf
 created a new workspace, you can setup the EMF Parsley RAP Target Platform in the following way: 
 ol[
 	item[File -> New... -> Example...]
-	item[from Category "Emf Parsley Examples", select "Emf Parsley Rap Target Platform Example"]
+	item[from Category "EMF Parsley Examples", select "EMF Parsley RAP Target Platform Example"]
 	item[press Next and Finish]
 	item[open the Target Definition file e[emf-parsely-rap.target]]
 	item[wait until the "Resolving Target Definition" job is done (check the status bar)]
@@ -296,7 +296,7 @@ e[Running the Parsley RAP UI Example]
 Here is the fastest way to get a working web application with all the stuff put togheter:
 ol[
 	item[File -> New... -> Example...]
-	item[from Category "Emf Parsley Examples", select "Emf Parsley Rap Example"]
+	item[from Category "EMF Parsley Examples", select "EMF Parsley RAP Example"]
 	item[press Next and Finish]
 	item[expand plug-in e["org.eclipse.emf.parsley.examples.rap.ui"]]
 	item[right-click "Emf_Parsley_RAP_UI_Example.launch" and click "Run as" "Emf_Parsley_RAP_UI_Example"]
@@ -339,7 +339,7 @@ both in an RCP and in a RAP workspace.
 
 ol[
 	item[File -> New... -> Example...]
-	item[from Category "Emf Parsley Examples", select "Emf Parsley Cdo Server Example"]
+	item[from Category "EMF Parsley Examples", select "EMF Parsley CDO Server Example"]
 	item[press Next and Finish]
 	item[expand plug-in e["org.eclipse.emf.parsley.examples.cdo.server"]]
 	item[right-click "CDOServerExample.launch" and click "Run as" "CDOServerExample"]
@@ -351,7 +351,7 @@ Now we can create the web application that will use the CDO server just started.
 
 ol[
 	item[File -> New... -> Example...]
-	item[from Category "Emf Parsley Examples", select "Emf Parsley Rap Cdo Example"]
+	item[from Category "EMF Parsley Examples", select "EMF Parsley RAP CDO Example"]
 	item[press Next and Finish]
 ]
 

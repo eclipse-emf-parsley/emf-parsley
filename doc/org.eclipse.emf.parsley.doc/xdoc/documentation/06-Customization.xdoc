@@ -842,10 +842,10 @@ formControlFactory {
 			target { observeText }
 		Writer : firstName -> 
 			toolkit.createLabel(parent, "")
-			target observeText(SWT::Modify)
+			target observeText(SWT.Modify)
 		Borrower : firstName -> {
-			createText(firstName, SWT::MULTI, SWT::BORDER,
-								SWT::WRAP, SWT::V_SCROLL)
+			createText(firstName, SWT.MULTI, SWT.BORDER,
+								SWT.WRAP, SWT.V_SCROLL)
 		}
 	}
 }
@@ -855,18 +855,42 @@ For each pair EClass, EStructuralFeature you can either simply return a Control 
 for the databinding (see some examples above).
  
 If you want to customize the controls in Java, you can extend the class codeRef[org.eclipse.emf.parsley.composite.FormControlFactory].
-Using the same polimorphic mechanism of the labels, the programmer can write a method with the keyword e['control']
-followed by the EClass and EStructuralFeature undescore-character-separated. The method
-must accept as parameters the e[DataBinding Context] and the e[Feature Observable] that can be used for databinding. 
+Using the same polimorphic mechanism of the labels, the programmer can write a method
+with name starting with e['control']
+followed by the names of the EClass and of the EStructuralFeature undescore-character-separated.
+
+The method must accept as parameters the e[Source Observable] and the e[feature];
+the superclass' method e[bindValue] can be used for databinding.
+The codeRef[org.eclipse.emf.parsley.util.DatabindingUtil] utility class can be used
+for creating the target observable.
+Here's an example
 
 code[Java][
-public Control control_Writer_name(DataBindingContext dbc,IObservableValue featureObservable) {
-	//Creating the control
+public Control control_Writer_name(IObservableValue source, EStructuralFeature f) {
+	// Creating the control
 	Text text = getToolkit().createText(getParent(), "");
 	text.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
 	text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));
-	//Binding the control to the feature observable
-	dbc.bindValue(SWTObservables.observeText(text, SWT.Modify),	featureObservable);
+	// Perform databinding; params: feature, target, source
+	bindValue(f, DatabindingUtil.observeText(text), source);
+	return text;
+}
+]
+
+Another form of the method's parameters is also taken into consideration
+during the polymorphic dispatch. This is the old form and it will be likely
+deprecated in the future:
+the method must accept as parameters the e[DataBinding Context] and the e[Feature Observable]
+that can be used for databinding. Here's an example:
+
+code[Java][
+public Control control_Writer_name(DataBindingContext dbc, IObservableValue featureObservable) {
+	// Creating the control
+	Text text = getToolkit().createText(getParent(), "");
+	text.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
+	text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));
+	// Binding the control to the feature observable
+	dbc.bindValue(SWTObservables.observeText(text, SWT.Modify), featureObservable);
 	return text;
 }
 ]
@@ -1236,3 +1260,14 @@ public class ValidateBeforeSaveStrategy extends ResourceSaveStrategy {
 Thus, if you use a codeRef[org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy],
 with the default Guice bindings, upon saving, if validation finds errors, it will
 cancel the saving and it will show a dialog with errors.
+
+Validation is also automatically triggered when editing object's properties in a form
+or in a dialog. The editing field will be decorated with an error
+and a tooltip with the error message. Here's an example based on the Library model.
+
+img[images/form-validation.png][][ ][]
+
+Please keep in mind that for forms and dialogs the error decorations are based on
+specific features of the object being edited and validated.  If you have a custom
+EMF validator you need to make sure to specify the codeRef[org.eclipse.emf.ecore.EStructuralFeature]
+when creating a diagnostic error.
