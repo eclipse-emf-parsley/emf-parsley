@@ -211,8 +211,8 @@ a <em>TODO</em> comment (The <em>Configurator</em> is detailed in the section <a
 </p>
 <p>
 Let&apos;s focus on the above <em>resourceURI</em>: our goal is allowing to manage 
-a library model instance which persists on a EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>.
-So we must specify the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/common/util/URI.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.URI" >URI</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/URI.java" title="View Source Code" >(src)</a> of the resource
+a library model instance which persists on a EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>.
+So we must specify the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/common/util/URI.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.URI" >URI</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/URI.java" title="View Source Code" >(src)</a> of the resource
 that will be edited by our tree form view.
 In this example we choose to use the EMF default persistence (XMI), but you can provide any URI 
 (e.g. using Teneo, CDO or any other EMF Resource Persistence implementation)
@@ -240,7 +240,7 @@ when typing Xbase expressions):
 If you simply copy and paste the above return statement, you&apos;ll get an error about
 unresolvable Java type URI; "Organize Imports" context menu (or its shortcut "Ctrl+Shift+O")
 can be used to automatically add the missing import (make sure you select
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/common/util/URI.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.URI" >URI</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/URI.java" title="View Source Code" >(src)</a>).
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/common/util/URI.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.URI" >URI</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/URI.java" title="View Source Code" >(src)</a>).
 </p>
 <p>
 Note that the specified URI, will be used for loading the resource only for our specific
@@ -278,7 +278,7 @@ among dependencies.
 </p>
 <p>
 Now we can implement the <em>initializeResource</em> method
-(as described in the comment, the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>
+(as described in the comment, the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>
 to initialized is available through the parameter <em>it</em>); the Library object
 is created using the standard EMF API: we need the factory of the library model:
 </p>
@@ -684,15 +684,15 @@ the view:
 </p>
 <p>
 Such a strategy for editing is delegated to an injected
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/IEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.IEditingStrategy" >IEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/IEditingStrategy.java" title="View Source Code" >(src)</a>, which is
-implemented by default by <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/OnTheFlyEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy" >OnTheFlyEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/OnTheFlyEditingStrategy.java" title="View Source Code" >(src)</a>.
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/IEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.IEditingStrategy" >IEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/IEditingStrategy.java" title="View Source Code" >(src)</a>, which is
+implemented by default by <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/OnTheFlyEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy" >OnTheFlyEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/OnTheFlyEditingStrategy.java" title="View Source Code" >(src)</a>.
 </p>
 <p>
 One may want to avoid this automatic update of the resource, and
 have the changes applied only when the "OK" dialog button is pressed
 (if "Cancel" is pressed, no changes should be applied at all).
 To achieve this behavior, it is enough to bind the alternative implementation
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/UndoableEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.UndoableEditingStrategy" >UndoableEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/UndoableEditingStrategy.java" title="View Source Code" >(src)</a>, in the Guice module.
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/UndoableEditingStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.UndoableEditingStrategy" >UndoableEditingStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/UndoableEditingStrategy.java" title="View Source Code" >(src)</a>, in the Guice module.
 This can be achieved in the DSL using the <em>binding</em> section
 (Guice bindings are detailed in section <a href="06-Customization.html#GuiceBindings" title="Go to &quot;Dependency Injection With Google Guice&quot;">Guice Bindings</a>):
 </p>

@@ -25,18 +25,18 @@ correctly works; when this is the case, the base class will already have such a 
 need to override it, but you will also need to add the <em>@Inject</em> annotation explicitly.
 </p>
 <p>
-Although one can specify any Guice <a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Module.html" title="View JavaDoc"><abbr title="com.google.inject.Module" >Module</abbr></a>, <em>EMF Parsley</em> ships with
+Although one can specify any Guice <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Module.html" title="View JavaDoc"><abbr title="com.google.inject.Module" >Module</abbr></a>, <em>EMF Parsley</em> ships with
 some default base class modules that should be used for specifying custom
 Guice bindings.  The default base class is
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/EmfParsleyGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyGuiceModule" >EmfParsleyGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyGuiceModule.java" title="View Source Code" >(src)</a> that is suitable to be used
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/EmfParsleyGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyGuiceModule" >EmfParsleyGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyGuiceModule.java" title="View Source Code" >(src)</a> that is suitable to be used
 in an OSGI environment, like Eclipse itself or RAP (see also <a href="AdvancedFeatures.html#AdvancedFeatures" title="Go to &quot;Advanced Features&quot;">Eclipse 4.x &amp; RAP</a>).
 Our project wizards will automatically use such module as the base class.
 For CDO we have a specialized base module.
 </p>
 <p>
 We also have a module to be used in a non OSGI environment, e.g., a pure Java environment:
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule" >EmfParsleyJavaGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.java" title="View Source Code" >(src)</a> (this is the base class of
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/EmfParsleyGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyGuiceModule" >EmfParsleyGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyGuiceModule.java" title="View Source Code" >(src)</a>).  This is useful also for
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule" >EmfParsleyJavaGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.java" title="View Source Code" >(src)</a> (this is the base class of
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/EmfParsleyGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyGuiceModule" >EmfParsleyGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyGuiceModule.java" title="View Source Code" >(src)</a>).  This is useful also for
 testing purposes, for writing plain Junit tests (i.e., not Plug-in Junit tests).
 This is also used in our testing framework (see <a href="AdvancedFeatures.html#Testing" title="Go to &quot;Testing Framework&quot;">EMF Parsley Testing Framework</a>).
 </p>
@@ -56,7 +56,7 @@ how to resolve it, i.e. obtaining that component.
 <p>
 For example, when some code wants to use a label provider,
 it just declares a field (or method or constructor) and adds the
-<a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Inject.html" title="View JavaDoc"><abbr title="com.google.inject.Inject" >@Inject</abbr></a> annotation:
+<a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Inject.html" title="View JavaDoc"><abbr title="com.google.inject.Inject" >@Inject</abbr></a> annotation:
 </p>
 <p>
 <div class="literallayout">
@@ -84,7 +84,7 @@ dependency net is controlled and configured by the means of Google Guice.
 </p>
 <p>
 Guice of course needs to know how to instantiate real objects for declared dependencies.
-This is done in so called Modules. A <a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Module.html" title="View JavaDoc"><abbr title="com.google.inject.Module" >Module</abbr></a>
+This is done in so called Modules. A <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Module.html" title="View JavaDoc"><abbr title="com.google.inject.Module" >Module</abbr></a>
 defines a set of mappings from types to either existing instances,
 instance providers or concrete classes.
 Modules are implemented in Java. Here&apos;s an example:
@@ -107,7 +107,7 @@ Modules are implemented in Java. Here&apos;s an example:
 </p>
 <p>
 With plain Guice modules one implements a method called configure and gets a
-<a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Binder.html" title="View JavaDoc"><abbr title="com.google.inject.Binder" >Binder</abbr></a> passed in.
+<a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Binder.html" title="View JavaDoc"><abbr title="com.google.inject.Binder" >Binder</abbr></a> passed in.
 That binder provides a fluent API to define the mentioned mappings.
 This was just a very brief and simplified description.
 We highly recommend to have a look at the <a href="https://github.com/google/guice">Google Guice</a>
@@ -123,11 +123,11 @@ enhnaced Guice module API of Xtext, you can use Parsley API right away).
 <p>
 The enhancement we added to Guice&apos;s Module API is that we provide an abstract base class,
 which reflectively looks for certain methods in order to find declared bindings.
-The standard base class is <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/EmfParsleyGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyGuiceModule" >EmfParsleyGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyGuiceModule.java" title="View Source Code" >(src)</a>,
+The standard base class is <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/EmfParsleyGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyGuiceModule" >EmfParsleyGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyGuiceModule.java" title="View Source Code" >(src)</a>,
 which can be used in a standard Eclipse OSGI environment.  If you are using
 CDO, it is better to use as base class <em>CDOEmfParsleyModule</em>, which has defaults
 that better fit a CDO environment.  If you do not need OSGI, you can use
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule" >EmfParsleyJavaGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.java" title="View Source Code" >(src)</a> (e.g., to run tests
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule" >EmfParsleyJavaGuiceModule</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/EmfParsleyJavaGuiceModule.java" title="View Source Code" >(src)</a> (e.g., to run tests
 with plain Junit, see also <a href="AdvancedFeatures.html#Testing" title="Go to &quot;Testing Framework&quot;">Testing Framework</a>).
 </p>
 <p>
@@ -153,7 +153,7 @@ MyLabelProviderProvider whenever a dependency to ILabelProvider is declared.
 <p>
 There are two additional kinds of binding-methods supported.
 The first one allows to configure a provider.
-A <a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Provider.html" title="View JavaDoc"><abbr title="com.google.inject.Provider" >Provider</abbr></a> is an interface with just one method:
+A <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Provider.html" title="View JavaDoc"><abbr title="com.google.inject.Provider" >Provider</abbr></a> is an interface with just one method:
 </p>
 <p>
 <div class="literallayout">
@@ -306,7 +306,7 @@ However if you want to customize the label provider in Java, you need to provide
 and injecting it in the spefic module by overriding <em>bindILabelProvider</em>.
 </p>
 <p>
-<em>EMF Parsley</em> provides such a base implementation with the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/ViewerLabelProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider" >ViewerLabelProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/ViewerLabelProvider.java" title="View Source Code" >(src)</a>
+<em>EMF Parsley</em> provides such a base implementation with the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/ViewerLabelProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider" >ViewerLabelProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/ViewerLabelProvider.java" title="View Source Code" >(src)</a>
 that is meant to be subclassed by the programmer to provide specific implementations like in the example below.
 Our label provider also implements <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/jface/viewers/IFontProvider.html" title="View JavaDoc"><abbr title="org.eclipse.jface.viewers.IFontProvider" >IFontProvider</abbr></a> and
 <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/jface/viewers/IColorProvider.html" title="View JavaDoc"><abbr title="org.eclipse.jface.viewers.IColorProvider" >IColorProvider</abbr></a>, so that you can customize also the font, the foreground
@@ -392,7 +392,7 @@ we use a different content provider).
 <p>
 The developer can also provide a specific implementation of <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/jface/viewers/IContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.jface.viewers.IContentProvider" >IContentProvider</abbr></a>
 by injecting it in the spefic module <em>(TODO)</em>. EMF Parsley provides a base implementation with the class
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider" >ViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.java" title="View Source Code" >(src)</a> that can be easily used to
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider" >ViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.java" title="View Source Code" >(src)</a> that can be easily used to
 specify the children of all object on the tree, like in the example below (again, this uses the polymorphic dispatch idiom).
 </p>
 <p>
@@ -437,25 +437,25 @@ for tables we only need to specify how the root <em>elements</em> are computed
 (no children are needed for tables).
 </p>
 <p>
-This content provider, <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a>,
-must be configured with the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> of the objects that
+This content provider, <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a>,
+must be configured with the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> of the objects that
 will be shown in the table, so the <em>setEClass</em> must be called before this content provider is
 used.  This setup is already automatically performed in views that are shipped with Parsley; in
 case you need to setup a table viewer yourself with this content provider, we strongly suggest
-you inject a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProviderFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory" >TableViewerContentProviderFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProviderFactory.java" title="View Source Code" >(src)</a>
+you inject a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProviderFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory" >TableViewerContentProviderFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProviderFactory.java" title="View Source Code" >(src)</a>
 and use its method <em>createTableViewerContentProvider(EClass type)</em>.
 </p>
 <p>
-With the information about the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> this content provider
-is able to automatically retrieve all the contents of that type from a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>
-or any <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a>, by retrieving inspecting all the containment
+With the information about the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> this content provider
+is able to automatically retrieve all the contents of that type from a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>
+or any <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a>, by retrieving inspecting all the containment
 references of that type, recursively in the model.
 </p>
 <p>
 In case you want to optimize the retrieval of contents, or in case you want to
-show elements of the specified type which are not contained in an <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a>
+show elements of the specified type which are not contained in an <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a>
 (because they are references with containment set to false), you can inject your own
-custom <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a>
+custom <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a>
 and define <em>elements</em> methods (again, this uses the polymorphic dispatch idiom).
 </p>
 <p>
@@ -484,8 +484,8 @@ In the DSL this can be done using the specific section.
 </div>
 </p>
 <p>
-IMPORTANT: customizations specified in a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider" >ViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.java" title="View Source Code" >(src)</a>
-will NOT be reused by a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a>.
+IMPORTANT: customizations specified in a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider" >ViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/ViewerContentProvider.java" title="View Source Code" >(src)</a>
+will NOT be reused by a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a>.
 </p>
 <a name="TableLabelProvider"></a>
 <h3>Table Label Provider</h3>
@@ -575,18 +575,18 @@ details of the <em>Feature Provider</em> implementation.
 </p>
 <p>
 When the framework builds components according to the
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>s of a given
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> it relies on an injected
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider" >FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>s of a given
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> it relies on an injected
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider" >FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
 The default behavior is to simply return all the features of the a given EClass,
 in the order they are defined in the EClass, as implemented by the method <em>defaultFeatures</em> in 
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider" >FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider" >FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
 </p>
 <p>
 You can set the mappings, i.e., specify the structural
 features you want to be used given an EClass, by implementing
 the method <em>buildMap</em>, which receives the
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.EClassToEStructuralFeatureMap.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider.EClassToEStructuralFeatureMap" >FeaturesProvider.EClassToEStructuralFeatureMap</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.EClassToEStructuralFeatureMap.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider.EClassToEStructuralFeatureMap" >FeaturesProvider.EClassToEStructuralFeatureMap</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>
 that can be filled with the method <em>mapTo</em>; 
 for instance, using the EMF extended library
 example, this customization will return only the <em>name</em> and <em>address</em> features
@@ -619,26 +619,26 @@ not <em>address</em>) for <em>Writer</em> (which inherits from <em>Person</em>).
 </p>
 <p>
 Another possibility is to build a map which relies on Strings
-both for the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> and for
-the list of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>;
-note that the name of the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> should
+both for the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> and for
+the list of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>;
+note that the name of the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> should
 be obtained by using <em>getInstanceClassName()</em>; you can also
 combine the two approaches.
 </p>
 <a name="TableFeaturesProvider"></a>
 <h4>Table Features Provider</h4>
 <p>
-As an extension, you can use the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider" >TableFeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.java" title="View Source Code" >(src)</a>:
+As an extension, you can use the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider" >TableFeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.java" title="View Source Code" >(src)</a>:
 the customizations will be applied only to <a href="05-Components.html#TableComponent" title="Go to &quot;Table Component&quot;">Tables</a>, not to <a href="05-Components.html#FormComponent" title="Go to &quot;Form Component&quot;">Forms</a>.
 </p>
 <p>
-If there are no specific customization in the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider" >TableFeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.java" title="View Source Code" >(src)</a>,
-we fall back to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider" >FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
+If there are no specific customization in the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider" >TableFeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableFeaturesProvider.java" title="View Source Code" >(src)</a>,
+we fall back to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeaturesProvider" >FeaturesProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeaturesProvider.java" title="View Source Code" >(src)</a>.
 </p>
 <a name="FeatureCaptionProvider"></a>
 <h3>Feature Caption Provider</h3>
 <p>
-The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider" >FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a> provides captions for
+The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider" >FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a> provides captions for
 the features in <a href="05-Components.html#TableComponent" title="Go to &quot;Table Component&quot;">Tables</a> and <a href="05-Components.html#FormComponent" title="Go to &quot;Form Component&quot;">Forms</a>.
 Here you can see an example of the DSL.
 </p>
@@ -658,7 +658,7 @@ Here you can see an example of the DSL.
 </p>
 <p>
 If you want to customize it in Java, you need to derive from
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider" >FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a>.
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider" >FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a>.
 It can be customized, with injection <a href="06-Customization.html#GuiceBindings" title="Go to &quot;Dependency Injection With Google Guice&quot;" >section GuiceBindings</a>: this
 way you can customize the caption label for controls in a form, dialog, and the headers in a table&apos;s column.
 The framework uses a polimorphic mechanism to find customizations: it searches for
@@ -693,8 +693,8 @@ default strategy, as shown in <a href="06-Customization.html#FormFeatureCaptionP
 <a name="FormFeatureCaptionProvider"></a>
 <h4>Form and Dialog Feature Caption Provider</h4>
 <p>
-The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider" >FormFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.java" title="View Source Code" >(src)</a>
-(<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider" >DialogFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.java" title="View Source Code" >(src)</a>, respectively)
+The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider" >FormFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.java" title="View Source Code" >(src)</a>
+(<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider" >DialogFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.java" title="View Source Code" >(src)</a>, respectively)
 can be used if you want to define the description only for forms (for dialogs, respectively).
 For example using the <a href="05-Components.html#TreeFormComponent" title="Go to &quot;Tree Form Component&quot;">Tree Form</a> your definition will not be used in the tree.
 </p>
@@ -746,18 +746,18 @@ In the DSL you have the corresponding two sections available:
 </div>
 </p>
 <p>
-If there is no customization in the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider" >FormFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.java" title="View Source Code" >(src)</a>
-(<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider" >DialogFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.java" title="View Source Code" >(src)</a>, respectively),
+If there is no customization in the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider" >FormFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FormFeatureCaptionProvider.java" title="View Source Code" >(src)</a>
+(<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider" >DialogFeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/DialogFeatureCaptionProvider.java" title="View Source Code" >(src)</a>, respectively),
 the following steps are executed to create the text for the label:
 </p>
 <p>
 <ul>
 	<li>
-		we take possible customizations from <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider" >FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a>
+		we take possible customizations from <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider" >FeatureCaptionProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/FeatureCaptionProvider.java" title="View Source Code" >(src)</a>
 		if available, otherwise:
 	</li>
 	<li>
-		we take the text from <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/edit/provider/IItemPropertyDescriptor.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.provider.IItemPropertyDescriptor" >IItemPropertyDescriptor</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/provider/IItemPropertyDescriptor.java" title="View Source Code" >(src)</a> if
+		we take the text from <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/edit/provider/IItemPropertyDescriptor.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.provider.IItemPropertyDescriptor" >IItemPropertyDescriptor</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/provider/IItemPropertyDescriptor.java" title="View Source Code" >(src)</a> if
 		the EObject provides it, otherwise:
 	</li>
 	<li>
@@ -793,7 +793,7 @@ compute the default proposals for that feature and then we filter the proposals.
 </div>
 
  
-This customization can be done also in Java, by extending the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/composite/ProposalCreator.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.ProposalCreator" >ProposalCreator</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/ProposalCreator.java" title="View Source Code" >(src)</a>
+This customization can be done also in Java, by extending the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/ProposalCreator.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.ProposalCreator" >ProposalCreator</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/ProposalCreator.java" title="View Source Code" >(src)</a>
 and implementing the method <span class="inlinecode"><span class="keyword">public</span>&nbsp;List&lt;?&gt;&nbsp;proposals_Book_author(Book&nbsp;book)&nbsp;{...}</span>.  This
 method follows the same convention on the signature name as explained in <a href="06-Customization.html#FeatureCaptionProvider" title="Go to &quot;Feature Caption Provider&quot;">Feature
 Provider</a>.
@@ -802,7 +802,7 @@ Provider</a>.
 <h2>Contextual Menu</h2>
 <p>
 A context menu can be added to any <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/jface/viewers/StructuredViewer.html" title="View JavaDoc"><abbr title="org.eclipse.jface.viewers.StructuredViewer" >StructuredViewer</abbr></a> by using an
-injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.menus.ViewerContextMenuHelper" >ViewerContextMenuHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.java" title="View Source Code" >(src)</a>. This provides some
+injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.menus.ViewerContextMenuHelper" >ViewerContextMenuHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.java" title="View Source Code" >(src)</a>. This provides some
 methods for adding the context menu
 </p>
 <p>
@@ -837,7 +837,7 @@ sections in the context menu).
 </p>
 <p>
 You can customize context menus on a per class basis 
-by extending the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.action.EditingMenuBuilder" >EditingMenuBuilder</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.java" title="View Source Code" >(src)</a>
+by extending the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.action.EditingMenuBuilder" >EditingMenuBuilder</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.java" title="View Source Code" >(src)</a>
 (and injecting it in the Guice module).  However, we suggest to use the
 DSL for this task, as detailed in the following.
 </p>
@@ -880,7 +880,7 @@ also methods for EMF menu part.
 </p>
 <p>
 In the <em>emfMenus</em> section, you can use some methods of
-the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.action.EditingMenuBuilder" >EditingMenuBuilder</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.java" title="View Source Code" >(src)</a> class,
+the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.action.EditingMenuBuilder" >EditingMenuBuilder</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/action/EditingMenuBuilder.java" title="View Source Code" >(src)</a> class,
 as detailed in the following.
 </p>
 <p>
@@ -950,7 +950,7 @@ only add elements to a container, you can use the method
 that will be affected by the changes specified as a lambda expression
 (the third argument).  The lambda expression will also get the specified
 model&apos;s element as argument.  The model&apos;s element can also be the whole
-resource itself (formally, it can be any EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/common/notify/Notifier.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.notify.Notifier" >Notifier</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/notify/Notifier.java" title="View Source Code" >(src)</a>).
+resource itself (formally, it can be any EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/common/notify/Notifier.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.notify.Notifier" >Notifier</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/notify/Notifier.java" title="View Source Code" >(src)</a>).
 </p>
 <p>
 It is crucial to specify the correct model&apos;s element to make undo/redo work
@@ -1025,7 +1025,7 @@ the changes that concern the writer will be undone.
 <h2>Drag and Drop</h2>
 <p>
 Drag and drop can be added to any <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/jface/viewers/StructuredViewer.html" title="View JavaDoc"><abbr title="org.eclipse.jface.viewers.StructuredViewer" >StructuredViewer</abbr></a> by using an
-injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/dnd/ViewerDragAndDropHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper" >ViewerDragAndDropHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/dnd/ViewerDragAndDropHelper.java" title="View Source Code" >(src)</a>,
+injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/dnd/ViewerDragAndDropHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.dnd.ViewerDragAndDropHelper" >ViewerDragAndDropHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/dnd/ViewerDragAndDropHelper.java" title="View Source Code" >(src)</a>,
 using its methods <em>addDragAndDrop</em>.
 </p>
 <p>
@@ -1037,16 +1037,16 @@ Currently, drag and drop is completely delegated to EMF.Edit.
 <h3>Widget Factory</h3>
 <p>
 The actual creation of text field, buttons, labels, etc. is delegated to an
-implementation of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/widgets/IWidgetFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.widgets.IWidgetFactory" >IWidgetFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/widgets/IWidgetFactory.java" title="View Source Code" >(src)</a>, which has several methods
+implementation of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/widgets/IWidgetFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.widgets.IWidgetFactory" >IWidgetFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/widgets/IWidgetFactory.java" title="View Source Code" >(src)</a>, which has several methods
 like <em>createText</em>, <em>createLabel</em>, etc.  We provide two implementations of such interface
 </p>
 <p>
 <ul>
 	<li>
-		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/widgets/DialogWidgetFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.widgets.DialogWidgetFactory" >DialogWidgetFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/widgets/DialogWidgetFactory.java" title="View Source Code" >(src)</a>
+		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/widgets/DialogWidgetFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.widgets.DialogWidgetFactory" >DialogWidgetFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/widgets/DialogWidgetFactory.java" title="View Source Code" >(src)</a>
 	</li>
 	<li>
-		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/widgets/FormWidgetFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.widgets.FormWidgetFactory" >FormWidgetFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/widgets/FormWidgetFactory.java" title="View Source Code" >(src)</a> which is a specialization of the above,
+		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/widgets/FormWidgetFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.widgets.FormWidgetFactory" >FormWidgetFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/widgets/FormWidgetFactory.java" title="View Source Code" >(src)</a> which is a specialization of the above,
 		specific for forms.
 	</li>
 </ul>
@@ -1094,7 +1094,7 @@ and bind such custom implementations in the Guice module.
 For each pair EClass, EStructuralFeature you can either simply return a Control or specify also the target
 for the databinding (see some examples above).
  
-If you want to customize the controls in Java, you can extend the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/composite/FormControlFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.FormControlFactory" >FormControlFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/FormControlFactory.java" title="View Source Code" >(src)</a>.
+If you want to customize the controls in Java, you can extend the class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/FormControlFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.FormControlFactory" >FormControlFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/FormControlFactory.java" title="View Source Code" >(src)</a>.
 Using the same polimorphic mechanism of the labels, the programmer can write a method
 with name starting with <em>&apos;control&apos;</em>
 followed by the names of the EClass and of the EStructuralFeature undescore-character-separated.
@@ -1102,7 +1102,7 @@ followed by the names of the EClass and of the EStructuralFeature undescore-char
 <p>
 The method must accept as parameters the <em>Source Observable</em> and the <em>feature</em>;
 the superclass&apos; method <em>bindValue</em> can be used for databinding.
-The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/util/DatabindingUtil.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.util.DatabindingUtil" >DatabindingUtil</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/util/DatabindingUtil.java" title="View Source Code" >(src)</a> utility class can be used
+The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/util/DatabindingUtil.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.util.DatabindingUtil" >DatabindingUtil</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/util/DatabindingUtil.java" title="View Source Code" >(src)</a> utility class can be used
 for creating the target observable.
 Here&apos;s an example
 </p>
@@ -1171,7 +1171,7 @@ This customization is exactly as in the case of the form of the previous section
 <a name="EditingDomain"></a>
 <h2>Editing Domain</h2>
 <p>
-The concept of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/edit/domain/EditingDomain.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.domain.EditingDomain" >EditingDomain</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/domain/EditingDomain.java" title="View Source Code" >(src)</a> is crucial for editing
+The concept of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/edit/domain/EditingDomain.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.domain.EditingDomain" >EditingDomain</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/domain/EditingDomain.java" title="View Source Code" >(src)</a> is crucial for editing
 EMF models; we refer to the <em>EMF.Edit</em> <a href="http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.emf.doc%2Freferences%2Foverview%2FEMF.Edit.html">documentation</a> for further details.
 In particular, the editing domain keeps track of commands executed on an EMF model,
 thus enabling undo/redo mechanisms and "dirty state" management for saveable parts.
@@ -1186,9 +1186,9 @@ of the assumptions that EMF Parsley automatic mechanisms rely on (we inherit the
 from EMF.Edit itself).
 </p>
 <p>
-First of all, all the EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>s that you want to edit with EMF Parsley must be
-contained in a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/ResourceSet.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.ResourceSet" >ResourceSet</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/ResourceSet.java" title="View Source Code" >(src)</a>, which, in turn,
-must be contained in an <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/edit/domain/EditingDomain.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.domain.EditingDomain" >EditingDomain</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/domain/EditingDomain.java" title="View Source Code" >(src)</a>.
+First of all, all the EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>s that you want to edit with EMF Parsley must be
+contained in a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/ResourceSet.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.ResourceSet" >ResourceSet</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/ResourceSet.java" title="View Source Code" >(src)</a>, which, in turn,
+must be contained in an <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/edit/domain/EditingDomain.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.domain.EditingDomain" >EditingDomain</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/domain/EditingDomain.java" title="View Source Code" >(src)</a>.
 This is achieved automatically when using our <em>ResourceLoader</em>, <a href="06-Customization.html#ResourceLoader" title="Go to &quot;Resource Loader&quot;">Resource Loader</a>.
 </p>
 <p>
@@ -1197,7 +1197,7 @@ different editing domains.  Two resources loaded with the same resource loader w
 be in the same resource set and use the same editing domain.
 </p>
 <p>
-Our default implementation of editing domain uses the EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/edit/domain/AdapterFactoryEditingDomain.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain" >AdapterFactoryEditingDomain</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/domain/AdapterFactoryEditingDomain.java" title="View Source Code" >(src)</a>,
+Our default implementation of editing domain uses the EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/edit/domain/AdapterFactoryEditingDomain.html" title="View JavaDoc"><abbr title="org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain" >AdapterFactoryEditingDomain</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/edit/domain/AdapterFactoryEditingDomain.java" title="View Source Code" >(src)</a>,
 so that all the EMF.Edit default mechanisms will work correctly.  In particular,
 our customization uses Google Guice mechanisms (see <a href="06-Customization.html#GuiceBindings" title="Go to &quot;Dependency Injection With Google Guice&quot;">Dependency Injection With Google
 Guice</a>), thus if you need an editing domain in your own views all you have to do is
@@ -1218,7 +1218,7 @@ to inject it, e.g.,
 <p>
 If you need to provide a custom implementation of the editing domain
 (for example, because you want to use a transactional editing domain), you need
-to implement a custom Google Guice <a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Provider.html" title="View JavaDoc"><abbr title="com.google.inject.Provider" >Provider</abbr></a> and
+to implement a custom Google Guice <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Provider.html" title="View JavaDoc"><abbr title="com.google.inject.Provider" >Provider</abbr></a> and
 in your Guice module override this method:
 </p>
 <p>
@@ -1250,7 +1250,7 @@ situations:
 	</li>
 	<li>
 		<em>SingletonAdapterFactoryEditingDomainModule</em>: similar to the previous
-		one, but according to the semantics of Google Guice <a class="jdoc" href="http://google-guice.googlecode.com/svn/trunk/javadoc/com/google/inject/Singleton.html" title="View JavaDoc"><abbr title="com.google.inject.Singleton" >@Singleton</abbr></a>,
+		one, but according to the semantics of Google Guice <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Singleton.html" title="View JavaDoc"><abbr title="com.google.inject.Singleton" >@Singleton</abbr></a>,
 		i.e., only those components injected with the same injector will share
 		the same editing domain.  This basically means that all the components
 		created with the same Parsley Guice module will share the same editing domain.
@@ -1317,14 +1317,14 @@ Concerning saving objects, there are some specific parts that can be customized:
 <a name="ResourceLoader"></a>
 <h3>Resource Loader</h3>
 <p>
-The class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/resource/ResourceLoader.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceLoader" >ResourceLoader</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceLoader.java" title="View Source Code" >(src)</a> can be used to handle resource loading.
+The class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/resource/ResourceLoader.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceLoader" >ResourceLoader</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceLoader.java" title="View Source Code" >(src)</a> can be used to handle resource loading.
 This class uses internally the <a href="06-Customization.html#ResourceManager" title="Go to &quot;Resource Manager&quot;">Resource Manager</a>.
 </p>
 <a name="ResourceManager"></a>
 <h3>Resource Manager</h3>
 <p>
-Tasks concerning an EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a> are
-delegated to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/resource/ResourceManager.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceManager" >ResourceManager</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceManager.java" title="View Source Code" >(src)</a>.
+Tasks concerning an EMF <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a> are
+delegated to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/resource/ResourceManager.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceManager" >ResourceManager</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceManager.java" title="View Source Code" >(src)</a>.
 </p>
 <p>
 One of such tasks is initializing the resource, e.g., when, after loading, it is
@@ -1372,14 +1372,14 @@ block expression, the resource is available with the name <em>it</em>; for examp
 <a name="ResourceSaveStrategy"></a>
 <h3>Resource Save Strategy</h3>
 <p>
-Resource saving is delegated to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/resource/ResourceSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceSaveStrategy" >ResourceSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceSaveStrategy.java" title="View Source Code" >(src)</a>
-which, by defaults only saves the passed <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>,
-by delegating to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/resource/ResourceManager.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceManager" >ResourceManager</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceManager.java" title="View Source Code" >(src)</a>
+Resource saving is delegated to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/resource/ResourceSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceSaveStrategy" >ResourceSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceSaveStrategy.java" title="View Source Code" >(src)</a>
+which, by defaults only saves the passed <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>,
+by delegating to <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/resource/ResourceManager.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ResourceManager" >ResourceManager</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ResourceManager.java" title="View Source Code" >(src)</a>
 (see <a href="06-Customization.html#ResourceManager" title="Go to &quot;Resource Manager&quot;" >section ResourceManager</a>).
 You can inject your own save strategy and customize the saving strategy, for
 instance, you may want to validate the resource before saving
 (a usable example of this strategy is
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy" >ValidateBeforeSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.java" title="View Source Code" >(src)</a>,
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy" >ValidateBeforeSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.java" title="View Source Code" >(src)</a>,
 see also section <a href="06-Customization.html#Validation" title="Go to &quot;Validation&quot;">Validation</a>).
 </p>
 <a name="Configurator"></a>
@@ -1387,7 +1387,7 @@ see also section <a href="06-Customization.html#Validation" title="Go to &quot;V
 <p>
 In Parsley, instead of using abstract classes, we often provide concrete
 classes that implement superclass&apos; abstract methods (or interface methods)
-by delegating to an injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/config/Configurator.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.config.Configurator" >Configurator</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/config/Configurator.java" title="View Source Code" >(src)</a>.
+by delegating to an injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/config/Configurator.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.config.Configurator" >Configurator</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/config/Configurator.java" title="View Source Code" >(src)</a>.
 Such configurator calls methods in its hierarchy using polymorphic dispatch;
 in particular, the first argument passed to these methods is the object
 requesting that specific service to the configurator; typically it will be
@@ -1515,15 +1515,15 @@ EMF Parsley supports standard EMF validation automatically, e.g., via the contex
 validation action will check them.
 </p>
 <p>
-EMF validation can also be triggered manually using an injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/validation/ValidationRunner.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.ValidationRunner" >ValidationRunner</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/ValidationRunner.java" title="View Source Code" >(src)</a>,
-which provides methods for validating a single <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a> or an entire
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>.  These <em>validate</em> methods return an EMF
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/common/util/Diagnostic.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.Diagnostic" >Diagnostic</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/Diagnostic.java" title="View Source Code" >(src)</a> that can be used to find out possible errors, warnings
+EMF validation can also be triggered manually using an injected <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/validation/ValidationRunner.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.ValidationRunner" >ValidationRunner</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/ValidationRunner.java" title="View Source Code" >(src)</a>,
+which provides methods for validating a single <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a> or an entire
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/resource/Resource.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.resource.Resource" >Resource</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/resource/Resource.java" title="View Source Code" >(src)</a>.  These <em>validate</em> methods return an EMF
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/common/util/Diagnostic.html" title="View JavaDoc"><abbr title="org.eclipse.emf.common.util.Diagnostic" >Diagnostic</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.common/src/org/eclipse/emf/common/util/Diagnostic.java" title="View Source Code" >(src)</a> that can be used to find out possible errors, warnings
 and infos collected during the validation.
 </p>
 <p>
 There are overloaded versions of <em>validate</em> methods that also take an
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/validation/IssueReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.IssueReporter" >IssueReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/IssueReporter.java" title="View Source Code" >(src)</a>:
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/validation/IssueReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.IssueReporter" >IssueReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/IssueReporter.java" title="View Source Code" >(src)</a>:
 </p>
 <p>
 <div class="literallayout">
@@ -1563,19 +1563,19 @@ report only errors (e.g., diagnostic whose severity is <em>Diagnostic.ERROR</em>
 ignoring warnings and other diagnostic information.
 </p>
 <p>
-We provide a utility class that can be injected, <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/validation/DiagnosticUtil.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.DiagnosticUtil" >DiagnosticUtil</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/DiagnosticUtil.java" title="View Source Code" >(src)</a>,
+We provide a utility class that can be injected, <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/validation/DiagnosticUtil.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.DiagnosticUtil" >DiagnosticUtil</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/DiagnosticUtil.java" title="View Source Code" >(src)</a>,
 with utility methods, like flattening diagnostic into a list (EMF diagnostic are typically nested in
 a tree form), to quickly select only the errors, and to have a string representation.
 </p>
 <p>
-The default implementation of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/validation/IssueReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.IssueReporter" >IssueReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/IssueReporter.java" title="View Source Code" >(src)</a>
-is <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/validation/DialogErrorReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.DialogErrorReporter" >DialogErrorReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/DialogErrorReporter.java" title="View Source Code" >(src)</a>, which uses an EMF
+The default implementation of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/validation/IssueReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.IssueReporter" >IssueReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/IssueReporter.java" title="View Source Code" >(src)</a>
+is <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/validation/DialogErrorReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.DialogErrorReporter" >DialogErrorReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/DialogErrorReporter.java" title="View Source Code" >(src)</a>, which uses an EMF
 dialog to report ONLY errors.  Another implementation that can be used for testing purposes
-is <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/validation/LogIssueReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.LogIssueReporter" >LogIssueReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/LogIssueReporter.java" title="View Source Code" >(src)</a>, which logs diagnostic using
+is <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/validation/LogIssueReporter.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.validation.LogIssueReporter" >LogIssueReporter</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/validation/LogIssueReporter.java" title="View Source Code" >(src)</a>, which logs diagnostic using
 the corresponding log4j methods (i.e., <em>error</em>, <em>warn</em>, <em>info</em>).
 </p>
 <p>
-An example of use of the above classes can be found in <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy" >ValidateBeforeSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.java" title="View Source Code" >(src)</a>
+An example of use of the above classes can be found in <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy" >ValidateBeforeSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.java" title="View Source Code" >(src)</a>
 (see section <a href="06-Customization.html#ResourceSaveStrategy" title="Go to &quot;Resource Save Strategy&quot;">Resource Save Strategy</a>):
 </p>
 <p>
@@ -1607,7 +1607,7 @@ An example of use of the above classes can be found in <a class="jdoc" href="htt
 </div>
 </p>
 <p>
-Thus, if you use a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy" >ValidateBeforeSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.java" title="View Source Code" >(src)</a>,
+Thus, if you use a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy" >ValidateBeforeSaveStrategy</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/resource/ValidateBeforeSaveStrategy.java" title="View Source Code" >(src)</a>,
 with the default Guice bindings, upon saving, if validation finds errors, it will
 cancel the saving and it will show a dialog with errors.
 </p>
@@ -1627,7 +1627,7 @@ and a tooltip with the error message. Here&apos;s an example based on the Librar
 <p>
 Please keep in mind that for forms and dialogs the error decorations are based on
 specific features of the object being edited and validated.  If you have a custom
-EMF validator you need to make sure to specify the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>
+EMF validator you need to make sure to specify the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a>
 when creating a diagnostic error.
 </p>
 </body>
