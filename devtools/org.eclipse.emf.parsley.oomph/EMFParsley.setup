@@ -729,7 +729,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.10.0,2.11.0)"/>
+            versionRange="[2.11.0,2.12.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -743,11 +743,11 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="mwe2.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
+          value="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.0"/>
       <setupTask
           xsi:type="setup:VariableTask"
           name="xtext.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
+          value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
       <description>Branch for Simrel for Oxygen</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
