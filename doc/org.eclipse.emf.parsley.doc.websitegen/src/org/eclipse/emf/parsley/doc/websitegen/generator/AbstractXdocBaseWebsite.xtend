@@ -17,7 +17,7 @@ abstract class AbstractXdocBaseWebsite extends AbstractWebsite {
 	
 	def prettify() { 
 		var result = '''<script type="text/javascript" src="google-code-prettify/lang-common.js"></script>'''
-		if(document != null){
+		if(document !== null){
 			val languages = document.langDefs
 			if(languages.size > 0)
 				// Do not override standard language definitions java & xml in prettify

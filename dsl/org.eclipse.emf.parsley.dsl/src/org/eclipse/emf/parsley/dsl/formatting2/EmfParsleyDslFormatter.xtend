@@ -373,7 +373,7 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 			format(viewspecification.type, document);
 			viewspecification.type.append[setNewLines(1, 1, 2)]
 
-			if (viewspecification.category != null) {
+			if (viewspecification.category !== null) {
 				viewspecification.regionFor.keyword("viewcategory").append[oneSpace]
 				viewspecification.regionFor.feature(VIEW_SPECIFICATION__CATEGORY).append[setNewLines(1, 1, 2)]
 			}
@@ -419,7 +419,7 @@ class EmfParsleyDslFormatter extends XbaseWithAnnotationsFormatter {
 	 */
 	def private <T extends EObject> indentBlockAndFormatAndSeparateElementsWithNewlines(EObject parent,
 		extension IFormattableDocument document, Provider<List<? extends T>> elementsProvider) {
-		if (parent != null) {
+		if (parent !== null) {
 			val list = elementsProvider.get
 			indentBlock(parent, document) [
 				formatAndSeparateElementsWithNewlines(list, document)

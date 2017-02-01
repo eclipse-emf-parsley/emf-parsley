@@ -43,7 +43,7 @@ class EmfParsleyDslGuiceModuleHelper {
 			simpleName.startsWith("bind")
 			&&
 			// for the moment we handle only bind methods that return Class<? extends Something>
-			(returnType as JvmParameterizedTypeReference).arguments.head != null
+			(returnType as JvmParameterizedTypeReference).arguments.head !== null
 		]
 	}
 
@@ -81,7 +81,7 @@ class EmfParsleyDslGuiceModuleHelper {
 	}
 
 	def private superTypeJvmOperations(JvmGenericType type) {
-		if (type == null) {
+		if (type === null) {
 			return emptyList
 		}
 		return (type.superTypes.head.type as JvmGenericType).allFeatures.filter(JvmOperation)

@@ -40,7 +40,7 @@ class EmfParsleyDslOrganizeImportsTest {
 		val sortedChanges= changes.sortBy[offset]
 		var ReplaceRegion lastChange = null
 		for(it: sortedChanges) {
-			if(lastChange != null && lastChange.endOffset > offset)
+			if(lastChange !== null && lastChange.endOffset > offset)
 				fail("Overlapping text edits: " + lastChange + ' and ' +it)
 			lastChange = it
 		}

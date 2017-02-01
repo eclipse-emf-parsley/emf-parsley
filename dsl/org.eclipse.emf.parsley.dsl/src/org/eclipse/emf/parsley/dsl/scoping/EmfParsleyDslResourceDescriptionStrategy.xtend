@@ -30,7 +30,7 @@ class EmfParsleyDslResourceDescriptionStrategy extends XbaseResourceDescriptionS
 	override createEObjectDescriptions(EObject elem, IAcceptor<IEObjectDescription> acceptor) {
 		if (elem instanceof ViewSpecification) {
 			val id = elem.id
-			if (id != null) {
+			if (id !== null) {
 				acceptor.accept(EObjectDescription.create(id, elem))
 				return true
 			}

@@ -57,7 +57,7 @@ class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 	def dispatch generateExtensionPoint(ViewSpecification viewSpecification) {
 '''
 <view
-      category="«if (viewSpecification.category == null || viewSpecification.category.empty)
+      category="«if (viewSpecification.category === null || viewSpecification.category.empty)
   	"org.eclipse.emf.parsley" else
     viewSpecification.category»"
       class="«executableExtensionFactoryQN(viewSpecification)»:«viewSpecification.type.identifier»"

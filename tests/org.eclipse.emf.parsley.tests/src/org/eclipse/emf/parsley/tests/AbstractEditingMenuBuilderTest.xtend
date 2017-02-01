@@ -826,7 +826,7 @@ abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyTest {
 	}
 
 	def private setEditingDomain(EditingMenuBuilder editingMenuBuilder, EditingDomain editingDomain) {
-		if (editingDomain != null) {
+		if (editingDomain !== null) {
 			editingMenuBuilder.editingDomainFinderStrategy = new EditingDomainPresetStrategy => [
 				setEditingDomain(editingDomain)
 			]
@@ -890,7 +890,7 @@ abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyTest {
 		menuManager.items.filter(ActionContributionItem).findFirst[action.text == actionText] => [
 			assertTrue(
 				"Could not find " + actionText + " in " + menuManager.menu,
-				it != null
+				it !== null
 			)
 			action.run
 		]

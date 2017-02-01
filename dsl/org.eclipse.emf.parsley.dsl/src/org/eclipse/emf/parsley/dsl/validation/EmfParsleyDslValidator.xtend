@@ -120,7 +120,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	@Check
 	def void checkExtendsClause(WithExtendsClause withExtendsClause) {
-		if (withExtendsClause.getExtendsClause() != null && !withExtendsClause.hasCycleInHierarchy()) {
+		if (withExtendsClause.getExtendsClause() !== null && !withExtendsClause.hasCycleInHierarchy()) {
 			// it makes no sense to check for type conformance if there's a cycle in the
 			// hierarchy: there will always be a type mismatch in that case
 			checkType(withExtendsClause.extendsClause, 
@@ -131,13 +131,13 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	@Check
 	def void checkFieldInitialization(FieldSpecification f) {
-		if (!f.writeable && f.right == null) {
+		if (!f.writeable && f.right === null) {
 			error("The blank final field " + f.name + " may not have been initialized",
 				ModelPackage.Literals.FIELD_SPECIFICATION__NAME,
 				FINAL_FIELD_NOT_INITIALIZED
 			)
 		}
-		if (f.type == null && f.right == null) {
+		if (f.type === null && f.right === null) {
 			error("The field "+f.name+" needs an explicit type since there is no initialization expression to infer the type from.", 
 				f, ModelPackage.Literals.FIELD_SPECIFICATION__NAME,
 				TOO_LITTLE_TYPE_INFORMATION
@@ -151,12 +151,12 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		// we create a single class for the Module and it is a Guice module
 		// so we can take the first element of the filter
 		val guiceModuleClass = module.moduleInferredType
-		if (guiceModuleClass == null) {
+		if (guiceModuleClass === null) {
 			return
 		}
 		
 		val partsSpecifications = module.partsSpecifications
-		if (partsSpecifications != null) {
+		if (partsSpecifications !== null) {
 			checkDuplicateViewSpecifications(partsSpecifications.parts)
 		}
 		
@@ -263,7 +263,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		// are compliant (they can be subtypes)
 		for (superBinding : superClassValueBindings) {
 			val matching = methods.findFirst[simpleName == superBinding.simpleName]
-			if (matching != null && !(typeSystem.isConformant(module, superBinding.returnType, matching.returnType))) {
+			if (matching !== null && !(typeSystem.isConformant(module, superBinding.returnType, matching.returnType))) {
 				error("Incorrect value binding: " + matching.returnType.simpleName +
 					" is not compliant with inherited binding's type " + superBinding.returnType.simpleName,
 					matching.sourceElements.head,
@@ -275,7 +275,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	
 	def protected checkType(EObject context, JvmTypeReference actualType, Class<?> expectedType,
 			EStructuralFeature feature) {
-		if (actualType != null) {
+		if (actualType !== null) {
 			if (!typeSystem.isConformant(context, expectedType, actualType)) {
 				error("Type mismatch: cannot convert from " + actualType.simpleName +
 					" to " + expectedType.simpleName,

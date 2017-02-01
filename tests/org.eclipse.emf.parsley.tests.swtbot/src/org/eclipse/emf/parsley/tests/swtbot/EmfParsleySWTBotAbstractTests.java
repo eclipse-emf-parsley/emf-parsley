@@ -85,9 +85,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil;
 import org.junit.After;
@@ -1394,13 +1392,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		assertTableItemsSize(table, initialTableItemsSize+1);
 	}
 
-	protected void maximizeCurrentWindow() {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-				ActionFactory.MAXIMIZE.create(window).run();
-			}
-		});
-	}
+//	protected void maximizeCurrentWindow() {
+//		Display.getDefault().syncExec(new Runnable() {
+//			@Override
+//			public void run() {
+//				IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+//				ActionFactory.MAXIMIZE.create(window).run();
+//			}
+//		});
+//	}
 }

@@ -25,7 +25,7 @@ class TargetPaths {
 
 	def isTargetRootElement(AbstractSection element) {
 		val targetFileRoots = element.targetPathAdapter?.targetFileRoots
-		if(targetFileRoots != null)
+		if(targetFileRoots !== null)
 			targetFileRoots.contains(element)
 		else
 			element instanceof Document

@@ -15,7 +15,7 @@ class CodeRefs {
 	
 	def getSourceCodeURI(JvmIdentifiableElement element) {
 		val uri = gitLink(element)
-		if((uri == null || uri.contains('broken-link')) && element.identifier != null &&
+		if((uri === null || uri.contains('broken-link')) && element.identifier !== null &&
 				!NO_SOURCE_PACKAGE_PREFIXES.exists[element.identifier.startsWith(it)]) {
 			LOG.error('Missing sources link for ' + element.identifier)
 			return null

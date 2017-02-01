@@ -2107,64 +2107,64 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
 
 			for (e : allGeneratedResources.entrySet) {
 				if (e.key.endsWith("Module.java")) {
-					if (expected.expectedModule != null)
+					if (expected.expectedModule !== null)
 						assertEqualsStrings(expected.expectedModule, e.value)
 				} else if (e.key.endsWith("InjectorProvider.java")) {
-					if (expected.expectedInjectorProvider != null)
+					if (expected.expectedInjectorProvider !== null)
 						assertEqualsStrings(expected.expectedInjectorProvider, e.value)
 				} else if (e.key.endsWith("ExecutableExtensionFactory.java")) {
-					if (expected.expectedExecutableExtensionFactory != null)
+					if (expected.expectedExecutableExtensionFactory !== null)
 						assertEqualsStrings(expected.expectedExecutableExtensionFactory, e.value)
 				} else if (e.key.endsWith("FormFeatureCaptionProvider.java")) {
-					if (expected.expectedFormFeatureCaptionProvider != null)
+					if (expected.expectedFormFeatureCaptionProvider !== null)
 						assertEqualsStrings(expected.expectedFormFeatureCaptionProvider, e.value)
 				} else if (e.key.endsWith("DialogFeatureCaptionProvider.java")) {
-					if (expected.expectedDialogFeatureCaptionProvider != null)
+					if (expected.expectedDialogFeatureCaptionProvider !== null)
 						assertEqualsStrings(expected.expectedDialogFeatureCaptionProvider, e.value)
 				} else if (e.key.endsWith("FeatureCaptionProvider.java")) {
-					if (expected.expectedFeatureCaptionProvider != null)
+					if (expected.expectedFeatureCaptionProvider !== null)
 						assertEqualsStrings(expected.expectedFeatureCaptionProvider, e.value)
 				} else if (e.key.endsWith("TableFeaturesProvider.java")) {
-					if (expected.expectedTableFeaturesProvider != null)
+					if (expected.expectedTableFeaturesProvider !== null)
 						assertEqualsStrings(expected.expectedTableFeaturesProvider, e.value)
 				} else if (e.key.endsWith("FeaturesProvider.java")) {
-					if (expected.expectedFeaturesProvider != null)
+					if (expected.expectedFeaturesProvider !== null)
 						assertEqualsStrings(expected.expectedFeaturesProvider, e.value)
 				} else if (e.key.endsWith("TableLabelProvider.java")) {
-					if (expected.expectedTableLabelProvider != null)
+					if (expected.expectedTableLabelProvider !== null)
 						assertEqualsStrings(expected.expectedTableLabelProvider, e.value)
 				} else if (e.key.endsWith("LabelProvider.java")) {
-					if (expected.expectedLabelProvider != null)
+					if (expected.expectedLabelProvider !== null)
 						assertEqualsStrings(expected.expectedLabelProvider, e.value)
 				} else if (e.key.endsWith("FormControlFactory.java")) {
-					if (expected.expectedFormControlFactory != null)
+					if (expected.expectedFormControlFactory !== null)
 						assertEqualsStrings(expected.expectedFormControlFactory, e.value)
 				} else if (e.key.endsWith("DialogControlFactory.java")) {
-					if (expected.expectedDialogControlFactory != null)
+					if (expected.expectedDialogControlFactory !== null)
 						assertEqualsStrings(expected.expectedDialogControlFactory, e.value)
 				} else if (e.key.endsWith("TableViewerContentProvider.java")) {
-					if (expected.expectedTableViewerContentProvider != null)
+					if (expected.expectedTableViewerContentProvider !== null)
 						assertEqualsStrings(expected.expectedTableViewerContentProvider, e.value)
 				} else if (e.key.endsWith("ViewerContentProvider.java")) {
-					if (expected.expectedViewerContentProvider != null)
+					if (expected.expectedViewerContentProvider !== null)
 						assertEqualsStrings(expected.expectedViewerContentProvider, e.value)
 				} else if (e.key.endsWith("ProposalCreator.java")) {
-					if (expected.expectedProposalCreator != null)
+					if (expected.expectedProposalCreator !== null)
 						assertEqualsStrings(expected.expectedProposalCreator, e.value)
 				} else if (e.key.endsWith("MenuBuilder.java")) {
-					if (expected.expectedMenuBuilder != null)
+					if (expected.expectedMenuBuilder !== null)
 						assertEqualsStrings(expected.expectedMenuBuilder, e.value)
 				} else if (e.key.endsWith("Configurator.java")) {
-					if (expected.expectedConfigurator != null)
+					if (expected.expectedConfigurator !== null)
 						assertEqualsStrings(expected.expectedConfigurator, e.value)
 				} else if (e.key.endsWith("ResourceManager.java")) {
-					if (expected.expectedResourceManager!= null)
+					if (expected.expectedResourceManager!== null)
 						assertEqualsStrings(expected.expectedResourceManager, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
-					if (expected.expectedPluginXmlGen != null)
+					if (expected.expectedPluginXmlGen !== null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else if (e.key.endsWith("plugin.xml")) {
-					if (expected.expectedPluginXmlGen != null)
+					if (expected.expectedPluginXmlGen !== null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else
 					fail("unexpected generated code: " + e.value)

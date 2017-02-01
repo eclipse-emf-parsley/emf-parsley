@@ -72,7 +72,7 @@ class HtmlExtensions {
 			Section2Ref : id.section2
 			default : id
 		}
-		if(name != null) { 
+		if(name !== null) { 
 			name 
 		} else if(artificialHrefIds.containsKey(it)) {
 			artificialHrefIds.get(it)
@@ -174,7 +174,7 @@ class HtmlExtensions {
 	def protected dispatch CharSequence toHtml(CodeRef it, ParagraphState state) {
 //		val sourceCodeURI = element?.sourceCodeURI
 		'''
-		«IF altText != null
+		«IF altText !== null
 			»«altText.toHtml(state)»«
 		ELSE
 			»<abbr title="«element?.identifier»">«
@@ -200,7 +200,7 @@ class HtmlExtensions {
 	}
 	
 	def protected dispatch CharSequence toHtml(CodeBlock it, ParagraphState state) {
-		if(it.language==null){
+		if(it.language===null){
 			val code=contents.toHtml(state).toString'''«code»'''.insert(state)
 		}else if(it.language.name=="Java"){
 			val code=contents.toHtml(state).toString'''<pre class="prettyprint" skin="desert">«code»</pre>'''.insert(state)

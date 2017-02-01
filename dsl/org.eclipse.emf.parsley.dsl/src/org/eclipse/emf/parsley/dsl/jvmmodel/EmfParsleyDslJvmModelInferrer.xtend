@@ -169,7 +169,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				// so we must not call super in the generated constructor
 				// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=474140 
 				val extendsClause = element.extendsClause
-				if (extendsClause != null && 
+				if (extendsClause !== null && 
 					!(element.isConformant(EmfParsleyGuiceModule, extendsClause.superType))) {
 					body = '''// not used'''
 				} else {
@@ -178,40 +178,40 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			]
 
 			val bindingsSpecification = element.bindingsSpecification
-			if (element.bindingsSpecification != null) {
+			if (element.bindingsSpecification !== null) {
 				handleBindingsSpecification(it, bindingsSpecification)
 			}
 			
-			if (labelProviderClass != null)
+			if (labelProviderClass !== null)
 				members += element.labelProvider.genBindMethod(labelProviderClass, typeof(ILabelProvider))
-			if (tableLabelProviderClass != null)
+			if (tableLabelProviderClass !== null)
 				members += element.tableLabelProvider.genBindMethod(tableLabelProviderClass, typeof(TableColumnLabelProvider)
 				)
-			if (featureCaptionProviderClass != null)
+			if (featureCaptionProviderClass !== null)
 				members += element.featureCaptionProvider.genBindMethod(featureCaptionProviderClass, typeof(FeatureCaptionProvider))
-			if (formFeatureCaptionProviderClass != null)
+			if (formFeatureCaptionProviderClass !== null)
 				members += element.formFeatureCaptionProvider.genBindMethod(formFeatureCaptionProviderClass, typeof(FormFeatureCaptionProvider))
-			if (dialogFeatureCaptionProviderClass != null)
+			if (dialogFeatureCaptionProviderClass !== null)
 				members += element.dialogFeatureCaptionProvider.genBindMethod(dialogFeatureCaptionProviderClass, typeof(DialogFeatureCaptionProvider))
-			if (featureProviderClass != null)
+			if (featureProviderClass !== null)
 				members += element.featuresProvider.genBindMethod(featureProviderClass, typeof(FeaturesProvider))
-			if (tableFeatureProviderClass != null)
+			if (tableFeatureProviderClass !== null)
 				members += element.tableFeaturesProvider.genBindMethod(tableFeatureProviderClass, typeof(TableFeaturesProvider))
-			if (formControlFactoryClass != null)
+			if (formControlFactoryClass !== null)
 				members += element.formControlFactory.genBindMethod(formControlFactoryClass, typeof(FormControlFactory))
-			if (dialogControlFactoryClass != null)
+			if (dialogControlFactoryClass !== null)
 				members += element.dialogControlFactory.genBindMethod(dialogControlFactoryClass, typeof(DialogControlFactory))
-			if (viewerContentProviderClass != null)
+			if (viewerContentProviderClass !== null)
 				members += element.viewerContentProvider.genBindMethod(viewerContentProviderClass, typeof(IContentProvider))
-			if (tableViewerContentProviderClass != null)
+			if (tableViewerContentProviderClass !== null)
 				members += element.tableViewerContentProvider.genBindMethod(tableViewerContentProviderClass, typeof(TableViewerContentProvider))
-			if (proposalCreatorClass != null)
+			if (proposalCreatorClass !== null)
 				members += element.proposalCreator.genBindMethod(proposalCreatorClass, typeof(ProposalCreator))
-			if (menuBuilderClass != null)
+			if (menuBuilderClass !== null)
 				members += element.menuBuilder.genBindMethod(menuBuilderClass, typeof(EditingMenuBuilder))
-			if (configuratorClass != null)
+			if (configuratorClass !== null)
 				members += element.configurator.genBindMethod(configuratorClass, typeof(Configurator))
-			if (resourceManagerClass != null)
+			if (resourceManagerClass !== null)
 				members += element.resourceManager.genBindMethod(resourceManagerClass, typeof(ResourceManager))
 		]
 
@@ -250,7 +250,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private setSuperClassType(JvmGenericType e, WithExtendsClause dslElement, Class<?> defaultSuperClass) {
-		if (dslElement.extendsClause != null)
+		if (dslElement.extendsClause !== null)
 			e.superTypes += dslElement.extendsClause.superType.cloneWithProxies
 		else
 			e.superTypes += typeRef(defaultSuperClass)
@@ -286,7 +286,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private void translateAnnotations(JvmAnnotationTarget target, List<XAnnotation> annotations) {
-		target.addAnnotations(annotations.filterNull.filter[annotationType != null])
+		target.addAnnotations(annotations.filterNull.filter[annotationType !== null])
 	}
 
 	def private moduleQN(Module element) {
@@ -365,7 +365,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.labelProvider == null)
+		if (element.labelProvider === null)
 			null
 		else {
 			val labelProvider = element.labelProvider
@@ -393,7 +393,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 	
 	def private inferTableLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.tableLabelProvider == null)
+		if (element.tableLabelProvider === null)
 			null
 		else {
 			val tableLabelProvider = element.tableLabelProvider
@@ -416,7 +416,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 	
 	def private inferFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.featureCaptionProvider == null)
+		if (element.featureCaptionProvider === null)
 			null
 		else {
 			val featureCaptionProvider = element.featureCaptionProvider
@@ -441,7 +441,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferDialogFeatureCaptionProviderWithLabel(AbstractFeatureCaptionProviderWithLabel element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element == null)
+		if (element === null)
 			null
 		else {
 			val descriptionProviderClass = element.toClass(name)
@@ -502,7 +502,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def private featureAssociatedExpressionToMethod(JvmGenericType it, FeatureAssociatedExpression spec,
 			String prefix, JvmTypeReference returnType, (JvmOperation, FeatureAssociatedExpression) => void parameterCreator) {
-		if (spec.feature?.simpleName != null) {
+		if (spec.feature?.simpleName !== null) {
 			members += spec.toMethod
 			(prefix + 
 					spec.parameterType.simpleName + "_" +
@@ -526,7 +526,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferFeatureProviderCommon(AbstractFeatureProvider element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element == null)
+		if (element === null)
 			null
 		else {
 			val featureProviderClass = element.toClass(name)
@@ -573,7 +573,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferControlFactory(AbstractControlFactory e, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
-		if (e == null)
+		if (e === null)
 			null
 		else {
 			val controlFactoryClass = e.toClass(name)
@@ -592,8 +592,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	
 	def private inferMethodsForControlFactory(AbstractControlFactory e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
 		for (spec: specifications) {
-			if (spec.feature?.simpleName != null) {
-				if (spec.target == null)
+			if (spec.feature?.simpleName !== null) {
+				if (spec.target === null)
 					members += spec.
 					control_EClass_EStructuralFeature() [
 						parameters += spec.toParameter(
@@ -648,7 +648,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferViewerContentProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.viewerContentProvider == null)
+		if (element.viewerContentProvider === null)
 			null
 		else {
 			val viewerContentProvider = element.viewerContentProvider
@@ -667,7 +667,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferTableViewerContentProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.tableViewerContentProvider == null)
+		if (element.tableViewerContentProvider === null)
 			null
 		else {
 			val viewerContentProvider = element.tableViewerContentProvider
@@ -692,7 +692,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private <T> nullSafeAccess(JvmGenericType it, T parent, (JvmGenericType)=>void acceptor) {
-		if (parent != null) {
+		if (parent !== null) {
 			acceptor.apply(it)
 		}
 	}
@@ -709,7 +709,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferProposalCreator(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.proposalCreator == null)
+		if (element.proposalCreator === null)
 			null
 		else {
 			val proposalCreator = element.proposalCreator
@@ -734,7 +734,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferMenuBuilder(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.menuBuilder == null)
+		if (element.menuBuilder === null)
 			null
 		else {
 			val menuBuilder = element.menuBuilder
@@ -752,7 +752,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferConfigurator(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.configurator == null)
+		if (element.configurator === null)
 			null
 		else {
 			val configurator = element.configurator
@@ -768,7 +768,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferResourceManager(Module element, IJvmDeclaredTypeAcceptor acceptor) {
-		if (element.resourceManager == null)
+		if (element.resourceManager === null)
 			null
 		else {
 			val resourceManager = element.resourceManager
@@ -791,7 +791,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		SimpleMethodSpecification m, String methodName,
 		JvmTypeReference returnType, (JvmOperation)=>void additionalSetup
 	) {
-		if (m != null) {
+		if (m !== null) {
 			val method = m.toMethod(methodName, returnType) [
 							addOverrideAnnotation
 							parameters += m.toParameter("it", typeRef(Resource))
@@ -819,7 +819,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 
 	def private specificationParameter(PolymorphicSpecification specification) {
 		specification.toParameter(
-			if (specification.name != null)
+			if (specification.name !== null)
 				specification.name
 			else
 				"it"
@@ -863,14 +863,14 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				method = genValueMethod(binding)
 			}
 			
-			if (method != null) {
+			if (method !== null) {
 				members += method
 			}
 		}
 	}
 
 	def private genBindMethod(JvmGenericType it, TypeBinding typeBinding) {
-		if (typeBinding.typeToBind == null) {
+		if (typeBinding.typeToBind === null) {
 			return null
 		}
 		
@@ -883,7 +883,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private genProvideMethod(JvmGenericType it, ProviderBinding binding) {
-		if (binding.type == null) {
+		if (binding.type === null) {
 			return null
 		}
 		
@@ -896,7 +896,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private genValueMethod(JvmGenericType it, ValueBinding binding) {
-		if (binding.typeDecl == null || binding.id == null) {
+		if (binding.typeDecl === null || binding.id === null) {
 			return null
 		}
 		

@@ -10,7 +10,7 @@ class PostProcessor {
 	protected Pattern _codePattern
 
 	def protected getCodePattern() {
-		if(_codePattern == null)
+		if(_codePattern === null)
 		 	_codePattern = Pattern::compile(
 		 		Pattern::quote(markCodeBegin) + "\\n(\\s*).*?" + Pattern::quote(markCodeEnd), 
 		 		Pattern::MULTILINE + Pattern::DOTALL
