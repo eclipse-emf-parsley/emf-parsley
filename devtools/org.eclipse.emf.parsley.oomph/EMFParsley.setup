@@ -367,7 +367,7 @@
         <requirement
             name="org.eclipse.xtext.xdoc.feature.feature.group"/>
         <repository
-            url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+            url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
         <repository
             url="${xtext.site}"/>
         <repository
@@ -447,7 +447,7 @@
           <repository
               url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
@@ -466,7 +466,7 @@
           <repository
               url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
@@ -483,7 +483,7 @@
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
@@ -514,7 +514,7 @@
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
@@ -837,7 +837,7 @@
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
