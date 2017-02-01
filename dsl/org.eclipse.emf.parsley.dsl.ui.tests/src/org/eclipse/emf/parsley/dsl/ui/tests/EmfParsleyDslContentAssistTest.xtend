@@ -19,9 +19,9 @@ import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator
 import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
 import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
 import org.eclipse.jdt.core.IJavaProject
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.ContentAssistProcessorTestBuilder
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.xbase.junit.ui.AbstractContentAssistTest
 import org.junit.AfterClass
 import org.junit.BeforeClass

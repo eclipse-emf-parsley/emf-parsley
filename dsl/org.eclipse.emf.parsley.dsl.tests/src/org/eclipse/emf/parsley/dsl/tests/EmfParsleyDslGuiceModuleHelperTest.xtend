@@ -13,9 +13,9 @@ package org.eclipse.emf.parsley.dsl.tests
 import com.google.inject.Inject
 import org.eclipse.emf.parsley.dsl.model.Model
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 

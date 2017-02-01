@@ -6,9 +6,9 @@ package org.eclipse.emf.parsley.dsl.tests
 import com.google.inject.Inject
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.xtext.diagnostics.Diagnostic
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 

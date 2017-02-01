@@ -12,10 +12,10 @@ package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
 import org.eclipse.emf.parsley.dsl.model.Model
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.util.ReplaceRegion
 import org.eclipse.xtext.xbase.imports.ImportOrganizer
 import org.junit.Test

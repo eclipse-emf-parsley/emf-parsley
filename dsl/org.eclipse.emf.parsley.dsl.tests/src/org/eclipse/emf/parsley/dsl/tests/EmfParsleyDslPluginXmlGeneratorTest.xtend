@@ -16,8 +16,8 @@ import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslPluginXmlGenerator
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.InMemoryFileSystemAccess
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
 

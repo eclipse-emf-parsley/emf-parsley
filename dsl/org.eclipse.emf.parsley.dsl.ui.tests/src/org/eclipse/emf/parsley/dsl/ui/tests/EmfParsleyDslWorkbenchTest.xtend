@@ -21,9 +21,9 @@ import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.jface.wizard.Wizard
 import org.eclipse.jface.wizard.WizardDialog
 import org.eclipse.ui.PlatformUI
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -59,7 +59,7 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 				val thread = new Thread("Press Finish") {
 					override run() {
 						// wait for the shell to become active
-						while (getShell() == null) {
+						while (getShell() === null) {
 							Thread.sleep(1000)
 						}
 						getShell().getDisplay().asyncExec[
