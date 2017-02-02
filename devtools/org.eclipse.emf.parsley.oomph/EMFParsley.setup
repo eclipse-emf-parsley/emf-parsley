@@ -386,7 +386,40 @@
         </predicate>
       </sourceLocator>
       <sourceLocator
-          rootFolder="${git.clone.location}/tests/org.eclipse.emf.parsley.tests.pde.utils.luna"/>
+          rootFolder="${git.clone.location}/dsl"
+          locateNestedProjects="true"/>
+      <sourceLocator
+          rootFolder="${git.clone.location}/features">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.*rap.*"/>
+        </predicate>
+      </sourceLocator>
+      <sourceLocator
+          rootFolder="${git.clone.location}/plugins">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.*rap.*"/>
+        </predicate>
+      </sourceLocator>
+      <sourceLocator
+          rootFolder="${git.clone.location}/examples">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.*rap.*"/>
+        </predicate>
+      </sourceLocator>
+      <sourceLocator
+          rootFolder="${git.clone.location}/tests">
+        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.kepler</excludedPath>
+        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.indigo</excludedPath>
+      </sourceLocator>
     </setupTask>
     <setupTask
         xsi:type="setup.targlets:TargletTask">
