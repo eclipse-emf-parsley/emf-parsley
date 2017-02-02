@@ -17,76 +17,21 @@
       %license
    </license>
 
-   <includes
-         id="org.eclipse.emf.parsley.tests.swtbot.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.tests.swtbot.cdo.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.examples.mail.product.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.examples.cdo.product.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.examples.eclipse4.product.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.cdo.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.dsl.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.examples.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.parsley.sdk"
-         version="0.0.0"/>
+   <requires>
+      <import feature="org.eclipse.xtext.sdk" version="2.11.0.v20170201-0242" match="equivalent"/>
+      <import feature="org.eclipse.swtbot.eclipse" version="2.5.0.201609021837"/>
+      <import feature="org.eclipse.swtbot.ide" version="2.5.0.201609021837"/>
+   </requires>
 
    <plugin
-         id="org.eclipse.emf.parsley.ui.examples"
+         id="org.eclipse.emf.parsley"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.tests.swtbot"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.tests.swtbot.cdo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.tests.models"
+         id="org.eclipse.emf.parsley.cdo"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -100,98 +45,42 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.examples.firstexample"
+         id="org.eclipse.emf.parsley.editors"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.dsl.tests"
+         id="org.eclipse.emf.parsley.junit4"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.examples.library.ui"
+         id="org.eclipse.emf.parsley.runtime"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.examples.cdo.company.app"
+         id="org.eclipse.emf.parsley.views"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.examples.cdo.company.model"
+         id="org.eclipse.emf.parsley.wizards"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.examples.cdo.company.ui.customers"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.examples.cdo.company.ui.orders"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.examples.cdo.company.ui.products"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.dev.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.dsl.standalone.lib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.dsl.standalone"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.tests.swtbot.e4"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.tests.swtbot.examples"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.parsley.dsl.ui.tests"
+         id="org.eclipse.emf.parsley.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"
