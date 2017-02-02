@@ -18,9 +18,9 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtext.sdk" version="2.11.0.v20170201-0242" match="equivalent"/>
-      <import feature="org.eclipse.swtbot.eclipse" version="2.5.0.201609021837"/>
-      <import feature="org.eclipse.swtbot.ide" version="2.5.0.201609021837"/>
+      <import feature="org.eclipse.xtext.sdk" version="2.10.0" match="equivalent"/>
+      <import feature="org.eclipse.swtbot.eclipse" version="2.5.0"/>
+      <import feature="org.eclipse.swtbot.ide" version="2.5.0"/>
       <import plugin="org.mockito"/>
       <import plugin="org.hamcrest"/>
    </requires>
