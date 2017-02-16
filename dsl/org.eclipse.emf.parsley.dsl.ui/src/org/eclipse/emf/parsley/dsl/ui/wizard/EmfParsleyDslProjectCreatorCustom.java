@@ -78,10 +78,11 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 
 	@Override
 	protected String getActivatorClassName() {
-		return getProjectInfo().getProjectName()
+		String projectName = getFixedProjectName();
+		return projectName
 				+ "."
 				+ projectFilesGenerator.activatorName(
-						getProjectInfo().getProjectName()).toString();
+						projectName).toString();
 	}
 
 	@Override
@@ -101,7 +102,7 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 	@Override
 	protected void enhanceProject(final IProject project,
 			final IProgressMonitor monitor) throws CoreException {
-		String projectName = getProjectInfo().getProjectName();
+		String projectName = getFixedProjectName();
 
 		String srcFolder = "src";
 		String projectPackagePath = srcFolder + "/"
@@ -136,5 +137,10 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 
 		project.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.newChild(1));
 		subMonitor.done();
+	}
+
+	protected String getFixedProjectName() {
+		return NewEmfParsleyProjectSupport.getValidJavaName(
+				getProjectInfo().getProjectName());
 	}
 }

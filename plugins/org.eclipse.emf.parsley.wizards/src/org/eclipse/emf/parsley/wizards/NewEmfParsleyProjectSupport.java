@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2013-2017 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,11 +7,13 @@
  * 
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
+ * Vincenzo Caselli - https://bugs.eclipse.org/bugs/show_bug.cgi?id=512356
  *******************************************************************************/
 package org.eclipse.emf.parsley.wizards;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
+import java.util.Locale;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -102,6 +104,15 @@ public class NewEmfParsleyProjectSupport {
 				new ByteArrayInputStream(contents.getBytes(Charset
 						.forName(iFile.getCharset()))), true, null);
 		progressMonitor.done();
+	}
+
+	/**
+	 * Replaces any character different from a-zA-Z0-9._ with _, then convert in lowercase
+	 * @param name
+	 * @return
+	 */
+	public static String getValidJavaName(String name) {
+		return name.replaceAll("[^a-zA-Z0-9\\._]", "_").toLowerCase(Locale.ENGLISH);
 	}
 
 }
