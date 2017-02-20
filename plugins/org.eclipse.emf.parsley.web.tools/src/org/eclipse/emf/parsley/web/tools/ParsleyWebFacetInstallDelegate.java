@@ -31,6 +31,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlNature;
 import org.eclipse.emf.parsley.web.tools.ParsleyWebFacetInstallConfig.PERSISTENCE_OPTION;
+import org.eclipse.emf.parsley.wizards.NewEmfParsleyProjectSupport;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -90,13 +91,13 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 		addProjectNature(iProject, monitor, "org.eclipse.m2e.core.maven2Nature"); 
 
 		Properties replaceStrings;
-		String projectName = iProject.getName();
+		String mainPackage = NewEmfParsleyProjectSupport.getValidJavaName(iProject.getName());
 		IPackageFragment pack = JavaCore.create(iProject).getPackageFragmentRoot(iProject.getFolder("src"))
-				.createPackageFragment(projectName, true, monitor);
+				.createPackageFragment(mainPackage, true, monitor);
 		IFolder folder = iProject.getFolder(pack.getPath().removeFirstSegments(1));
 
 		replaceStrings = new Properties();
-		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.servlets", projectName);
+		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.servlets", mainPackage);
 		Utils.copyFile(iProject, monitor, "/templates/module.parsley",
 				iProject.getFolder("src").getFile("module.parsley"), replaceStrings);
 
@@ -110,13 +111,13 @@ public class ParsleyWebFacetInstallDelegate implements IDelegate {
 		String lastSegment = fullPath.segment(fullPath.segmentCount()-1);
 		lastSegment = lastSegment.substring(0, 1).toUpperCase() + lastSegment.substring(1,lastSegment.length());
 		replaceStrings.setProperty("ParsleyWebGuiceModule", lastSegment+"EmfParsleyGuiceModule");
-		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.templates", projectName);
+		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.templates", mainPackage);
 		Utils.copyFile(iProject, monitor, "/templates/ParsleyGuiceServletContextListener.java",
 				folder.getFile("ParsleyGuiceServletContextListener.java"), replaceStrings);
 
 		replaceStrings = new Properties();
 
-		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.templates", projectName);
+		replaceStrings.setProperty("org.eclipse.emf.parsley.web.tools.templates", mainPackage);
 
 		Utils.copyFile(iProject, monitor, "/templates/ParsleyContextListener.java",
 				folder.getFile("ParsleyContextListener.java"), replaceStrings);
