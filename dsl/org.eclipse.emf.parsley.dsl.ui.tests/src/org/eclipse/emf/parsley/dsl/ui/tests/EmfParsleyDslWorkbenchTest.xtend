@@ -44,7 +44,7 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 	@Inject PluginProjectHelper projectHelper
 
 	val TEST_MODULE = TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + "/" +
-		TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + ".parsley"
+		TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT.toFirstUpper + ".parsley"
 
 	val TEST_PLUGIN_XML_GEN = 
 		EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN + "/" + TEST_PROJECT + "/" +

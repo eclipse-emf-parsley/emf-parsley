@@ -826,7 +826,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void assertProjectIsCreated(String projectName) {
-		assertTrue("Project doesn't exist", isProjectCreated(projectName));
+		assertTrue("Project doesn't exist: " + projectName, isProjectCreated(projectName));
 	}
 
 	protected void waitForBuild() throws CoreException {

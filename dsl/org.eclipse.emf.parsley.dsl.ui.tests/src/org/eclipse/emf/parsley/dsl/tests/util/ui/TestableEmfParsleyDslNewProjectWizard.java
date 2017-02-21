@@ -17,7 +17,7 @@ import com.google.inject.Inject;
 public class TestableEmfParsleyDslNewProjectWizard extends
 		EmfParsleyDslNewProjectWizard {
 
-	public static final String TEST_PROJECT = "TestProject";
+	public static final String TEST_PROJECT = "testproject";
 
 	@Inject
 	public TestableEmfParsleyDslNewProjectWizard(IProjectCreator projectCreator) {

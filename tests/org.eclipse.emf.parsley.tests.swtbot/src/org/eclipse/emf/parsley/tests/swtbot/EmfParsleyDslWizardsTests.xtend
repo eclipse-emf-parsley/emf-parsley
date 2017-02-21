@@ -42,6 +42,12 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	}
 
 	@Test
+	def canCreateDslProjectWithWizardFromBadProjectName1() {
+		createDslProjectWithWizardFromBadProjectName1;
+		assertNoIssuesInProjectAfterAutoBuild();
+	}
+
+	@Test
 	def canCreateDslProjectWithWizardAndTreeFormTemplate() {
 		createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
 				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_FORM_TEMPLATE);
