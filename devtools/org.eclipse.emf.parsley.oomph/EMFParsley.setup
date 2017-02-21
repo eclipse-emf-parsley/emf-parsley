@@ -251,11 +251,11 @@
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
-        label="B3 Aggregator">
+        label="CBI Aggregator">
       <requirement
-          name="org.eclipse.b3.aggregator.editor.feature.feature.group"/>
+          name="org.eclipse.cbi.p2repo.aggregator.editor.feature.feature.group"/>
       <repository
-          url="http://download.eclipse.org/modeling/emft/b3/updates-4.4"/>
+          url="http://download.eclipse.org/cbi/updates/aggregator/ide/4.6/"/>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -367,7 +367,7 @@
         <requirement
             name="org.eclipse.xtext.xdoc.feature.feature.group"/>
         <repository
-            url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+            url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
         <repository
             url="${xtext.site}"/>
         <repository
@@ -386,7 +386,40 @@
         </predicate>
       </sourceLocator>
       <sourceLocator
-          rootFolder="${git.clone.location}/tests/org.eclipse.emf.parsley.tests.pde.utils.luna"/>
+          rootFolder="${git.clone.location}/dsl"
+          locateNestedProjects="true"/>
+      <sourceLocator
+          rootFolder="${git.clone.location}/features">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.*rap.*"/>
+        </predicate>
+      </sourceLocator>
+      <sourceLocator
+          rootFolder="${git.clone.location}/plugins">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.*rap.*"/>
+        </predicate>
+      </sourceLocator>
+      <sourceLocator
+          rootFolder="${git.clone.location}/examples">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.*rap.*"/>
+        </predicate>
+      </sourceLocator>
+      <sourceLocator
+          rootFolder="${git.clone.location}/tests">
+        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.kepler</excludedPath>
+        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.indigo</excludedPath>
+      </sourceLocator>
     </setupTask>
     <setupTask
         xsi:type="setup.targlets:TargletTask">
@@ -447,7 +480,7 @@
           <repository
               url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
@@ -466,7 +499,7 @@
           <repository
               url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
@@ -483,7 +516,7 @@
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://sourceforge.net/projects/xtext-xdoc/files/updates-2.7"/>
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
         </repositoryList>
@@ -500,6 +533,23 @@
               url="http://download.eclipse.org/releases/juno"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/staging/oxygen/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+          <repository
+              url="${orbit.site}"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -697,13 +747,13 @@
       </setupTask>
     </stream>
     <stream
-        name="neon-simrel"
-        label="Neon-Simrel">
+        name="oxygen-simrel"
+        label="Oxygen-Simrel">
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="Neon"
-          defaultValue="Neon"
+          value="Oxygen"
+          defaultValue="Oxygen"
           storageURI="scope://Workspace"/>
       <setupTask
           xsi:type="setup.p2:P2Task"
@@ -712,7 +762,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.10.0,2.11.0)"/>
+            versionRange="[2.11.0,2.12.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -723,7 +773,15 @@
             url="http://download.itemis.com/updates/releases/2.1.1/"/>
         <description>Xtext &amp; Xtend</description>
       </setupTask>
-      <description>Branch for Simrel for Neon</description>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.0"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
+      <description>Branch for Simrel for Oxygen</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
   </project>
@@ -798,6 +856,23 @@
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
+        </repositoryList>
+        <repositoryList
+            name="Oxygen">
+          <repository
+              url="http://download.eclipse.org/staging/oxygen/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+          <repository
+              url="${orbit.site}"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -958,15 +1033,23 @@
       <description></description>
     </stream>
     <stream
-        name="neon-simrel"
-        label="Neon-Simrel">
+        name="oxygen-simrel"
+        label="Oxygen-Simrel">
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="Neon"
-          defaultValue="Neon"
+          value="Oxygen"
+          defaultValue="Oxygen"
           storageURI="scope://Workspace"/>
-      <description>Branch for Simrel for Neon</description>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/staging/oxygen/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/staging/oxygen/"/>
+      <description>Branch for Simrel for Oxygen</description>
     </stream>
     <description>EMF Parsley version for RAP</description>
   </project>

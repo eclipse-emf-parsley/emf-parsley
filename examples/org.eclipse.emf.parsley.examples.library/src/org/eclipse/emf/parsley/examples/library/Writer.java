@@ -27,11 +27,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.library.Writer#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.library.Writer#getBooks <em>Books</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getWriter()
  * @model
@@ -40,39 +40,39 @@ import org.eclipse.emf.common.util.EList;
 public interface Writer extends Person
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getWriter_Name()
-   * @model transient="true" volatile="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getWriter_Name()
+	 * @model transient="true" volatile="true"
+	 * @generated
+	 */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.examples.library.Writer#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.examples.library.Writer#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Books</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.emf.parsley.examples.library.Book}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.emf.parsley.examples.library.Book#getAuthor <em>Author</em>}'.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Books</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.examples.library.Book}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.parsley.examples.library.Book#getAuthor <em>Author</em>}'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Books</em>' reference list.
-   * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getWriter_Books()
-   * @see org.eclipse.emf.parsley.examples.library.Book#getAuthor
-   * @model opposite="author"
-   * @generated
-   */
+	 * @return the value of the '<em>Books</em>' reference list.
+	 * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getWriter_Books()
+	 * @see org.eclipse.emf.parsley.examples.library.Book#getAuthor
+	 * @model opposite="author"
+	 * @generated
+	 */
   EList<Book> getBooks();
 
 } // Writer

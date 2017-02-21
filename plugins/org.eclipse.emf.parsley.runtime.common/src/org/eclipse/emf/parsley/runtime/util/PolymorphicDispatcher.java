@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2013 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2008, 2013, 2017 itemis AG (http://www.itemis.eu) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,17 +8,18 @@
  * Contributors:
  * itemis AG - Initial contribution and API
  * Francesco Guidieri - additional error handlers
+ * Lorenzo Bettini - https://bugs.eclipse.org/bugs/show_bug.cgi?id=512441
  *******************************************************************************/
 package org.eclipse.emf.parsley.runtime.util;
 
-import static org.eclipse.emf.parsley.runtime.util.ReflectionUtil.*;
+import static org.eclipse.emf.parsley.runtime.util.ReflectionUtil.getObjectType;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,6 +31,7 @@ import com.google.common.base.Predicate;
 /**
  * @author Sven Efftinge - Initial contribution and API
  * @author Francesco Guidieri - additional error handlers
+ * @author Lorenzo Bettini - https://bugs.eclipse.org/bugs/show_bug.cgi?id=512441
  */
 public class PolymorphicDispatcher<RT> {
 
@@ -38,7 +40,7 @@ public class PolymorphicDispatcher<RT> {
 	private final List<? extends Object> targets;
 	private final Predicate<Method> methodFilter;
 
-	private List<MethodDesc> declaredMethodsOrderedBySpecificParameterType;
+	private Collection<MethodDesc> methods;
 
 	public static class DefaultErrorHandler<RT> implements ErrorHandler<RT> {
 		@Override
@@ -168,7 +170,7 @@ public class PolymorphicDispatcher<RT> {
 		this.targets = targets;
 		this.methodFilter = methodFilter;
 		this.handler = handler;
-		declaredMethodsOrderedBySpecificParameterType = getDeclaredMethodsOrderedBySpecificParameterType();
+		methods = getCandidateMethods();
 	}
 
 	protected class MethodDesc {
@@ -215,19 +217,19 @@ public class PolymorphicDispatcher<RT> {
 	}
 
 	protected int compare(MethodDesc o1, MethodDesc o2) {
-		final List<Class<?>> paramTypes1 = Arrays.asList(o1.getParameterTypes());
-		final List<Class<?>> paramTypes2 = Arrays.asList(o2.getParameterTypes());
+		final Class<?>[] paramTypes1 = o1.getParameterTypes();
+		final Class<?>[] paramTypes2 = o2.getParameterTypes();
 
 		// sort by number of parameters
-		if (paramTypes1.size() > paramTypes2.size())
+		if (paramTypes1.length > paramTypes2.length)
 			return 1;
-		if (paramTypes2.size() > paramTypes1.size())
+		if (paramTypes2.length > paramTypes1.length)
 			return -1;
 
 		// sort by parameter types from left to right
-		for (int i = 0; i < paramTypes1.size(); i++) {
-			final Class<?> class1 = paramTypes1.get(i);
-			final Class<?> class2 = paramTypes2.get(i);
+		for (int i = 0; i < paramTypes1.length; i++) {
+			final Class<?> class1 = paramTypes1[i];
+			final Class<?> class2 = paramTypes2[i];
 
 			if (class1.equals(class2))
 				continue;
@@ -255,21 +257,27 @@ public class PolymorphicDispatcher<RT> {
 			new Function<List<Class<?>>, List<MethodDesc>>() {
 				@Override
 				public List<MethodDesc> apply(List<Class<?>> paramTypes) {
+					// 'result' contains all best-matched MethodDesc for which 
+					// pairwise compare(m1, m2) == 0, meaning they're equal or unrelated. 
 					List<MethodDesc> result = new ArrayList<MethodDesc>();
-					Iterator<MethodDesc> iterator = declaredMethodsOrderedBySpecificParameterType.iterator();
-					while (iterator.hasNext()) {
+					Iterator<MethodDesc> iterator = methods.iterator();
+					NEXT: while (iterator.hasNext()) {
 						MethodDesc methodDesc = iterator.next();
 						if (methodDesc.isInvokeable(paramTypes)) {
 							if (result.isEmpty()) {
 								result.add(methodDesc);
 							} else {
-								int compare = compare(result.get(0), methodDesc);
-								if (compare < 0) {
-									result.clear();
-									result.add(methodDesc);
-								} else if (compare == 0) {
-									result.add(methodDesc);
+								Iterator<MethodDesc> it = result.iterator();
+								while(it.hasNext()) {
+									MethodDesc next = it.next();
+									int compare = compare(next, methodDesc);
+									if (compare < 0) {
+										it.remove();
+									} else if (compare > 0) {
+										continue NEXT;
+									}
 								}
+								result.add(methodDesc);
 							}
 						}
 					}
@@ -340,8 +348,8 @@ public class PolymorphicDispatcher<RT> {
 		return Void.class;
 	}
 
-	private List<MethodDesc> getDeclaredMethodsOrderedBySpecificParameterType() {
-		ArrayList<MethodDesc> cachedDescriptors = new ArrayList<MethodDesc>();
+	private Collection<MethodDesc> getCandidateMethods() {
+		Collection<MethodDesc> cachedDescriptors = new ArrayList<MethodDesc>();
 		for (Object target : targets) {
 			Class<?> current = target.getClass();
 			while (current != Object.class) {
@@ -354,15 +362,9 @@ public class PolymorphicDispatcher<RT> {
 				current = current.getSuperclass();
 			}
 		}
-		Collections.sort(cachedDescriptors, new Comparator<MethodDesc>() {
-			@Override
-			public int compare(MethodDesc o1, MethodDesc o2) {
-				return PolymorphicDispatcher.this.compare(o1, o2);
-			}
-		});
 		return cachedDescriptors;
 	}
-	
+
 	protected MethodDesc createMethodDesc(Object target, Method method) {
 		return new MethodDesc(target, method);
 	}

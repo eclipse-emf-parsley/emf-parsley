@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.library.Lendable#getCopies <em>Copies</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.library.Lendable#getBorrowers <em>Borrowers</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getLendable()
  * @model interface="true" abstract="true"
@@ -42,39 +42,39 @@ import org.eclipse.emf.ecore.EObject;
 public interface Lendable extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Copies</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Copies</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Copies</em>' attribute.
-   * @see #setCopies(int)
-   * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getLendable_Copies()
-   * @model required="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Copies</em>' attribute.
+	 * @see #setCopies(int)
+	 * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getLendable_Copies()
+	 * @model required="true"
+	 * @generated
+	 */
   int getCopies();
 
   /**
-   * Sets the value of the '{@link org.eclipse.emf.parsley.examples.library.Lendable#getCopies <em>Copies</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.examples.library.Lendable#getCopies <em>Copies</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Copies</em>' attribute.
-   * @see #getCopies()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Copies</em>' attribute.
+	 * @see #getCopies()
+	 * @generated
+	 */
   void setCopies(int value);
 
   /**
-   * Returns the value of the '<em><b>Borrowers</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.emf.parsley.examples.library.Borrower}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.emf.parsley.examples.library.Borrower#getBorrowed <em>Borrowed</em>}'.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Borrowers</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.examples.library.Borrower}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.parsley.examples.library.Borrower#getBorrowed <em>Borrowed</em>}'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Borrowers</em>' reference list.
-   * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getLendable_Borrowers()
-   * @see org.eclipse.emf.parsley.examples.library.Borrower#getBorrowed
-   * @model opposite="borrowed" ordered="false"
-   * @generated
-   */
+	 * @return the value of the '<em>Borrowers</em>' reference list.
+	 * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getLendable_Borrowers()
+	 * @see org.eclipse.emf.parsley.examples.library.Borrower#getBorrowed
+	 * @model opposite="borrowed" ordered="false"
+	 * @generated
+	 */
   EList<Borrower> getBorrowers();
 
 } // Lendable
