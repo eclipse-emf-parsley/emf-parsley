@@ -955,6 +955,11 @@
 								<plugin id="org.eclipse.swtbot.go" />
 								<plugin id="org.eclipse.ui.forms" />
 								<plugin id="org.eclipse.pde.ui" />
+								
+								<plugin id="org.eclipse.ui.views" />
+								<plugin id="org.apache.commons.logging" />
+								<plugin id="org.eclipse.core.resources" />
+								<plugin id="org.eclipse.core.filesystem" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
@@ -969,6 +974,9 @@
 								<feature id="org.eclipse.swtbot.forms" />
 								<feature id="org.eclipse.swtbot" />
 								<feature id="org.eclipse.emf.cdo.server" />
+								
+								<feature id="org.eclipse.e4.rcp" />
+								<feature id="org.eclipse.emf.ecore" />
 							</excludes>
 						</configuration>
 					</execution>
