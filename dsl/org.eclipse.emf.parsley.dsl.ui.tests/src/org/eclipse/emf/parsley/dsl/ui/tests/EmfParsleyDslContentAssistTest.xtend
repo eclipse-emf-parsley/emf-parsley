@@ -248,7 +248,7 @@ import org.eclipse.emf.ecore.EObject
 module my.test.proj {
 	
 	bindings {
-		value EObject<|>'''
+		value EObject'''
 		)
 	}
 
