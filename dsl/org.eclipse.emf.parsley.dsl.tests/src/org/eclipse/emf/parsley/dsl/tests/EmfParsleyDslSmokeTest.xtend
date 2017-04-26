@@ -45,7 +45,7 @@ class EmfParsleyDslSmokeTest {
 
 		val public events = newArrayList()
 
-		override doAppend(LoggingEvent event) {
+		override synchronized doAppend(LoggingEvent event) {
 			if (event.getLevel == Level.ERROR) {
 				events += event
 			}
