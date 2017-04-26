@@ -11,9 +11,7 @@
 package org.eclipse.emf.parsley.tests.swtbot;
 
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.cleanWorkspace;
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createFile;
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.root;
+import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -87,7 +85,7 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil;
+import org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -448,7 +446,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		// bot.sleep(2000);
 		bot.saveAllEditors();
 		cleanWorkspace();
-		IResourcesSetupUtil.waitForBuild();
+		waitForBuild();
 	}
 
 	protected static void closeWelcomePage() throws InterruptedException {
@@ -890,6 +888,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		final TreeItem widget = item.widget;
 		// part of test that requires UI-thread
 		Display.getDefault().syncExec(new Runnable() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void run() {
 				try {

@@ -24,9 +24,9 @@ Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.3.0",
  org.eclipse.emf.parsley.tests.pde.utils,
  org.eclipse.emf.parsley.examples.views,
  org.eclipse.emf.parsley.tests,
- org.eclipse.xtext.junit4,
  org.eclipse.emf.parsley.examples.editors,
- org.eclipse.emf.parsley.tests.views
+ org.eclipse.emf.parsley.tests.views,
+ org.eclipse.xtext.ui.testing
 Bundle-Activator: org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBotTestsActivator
 Export-Package: org.eclipse.emf.parsley.tests.swtbot,
  org.eclipse.emf.parsley.tests.swtbot.editors,
