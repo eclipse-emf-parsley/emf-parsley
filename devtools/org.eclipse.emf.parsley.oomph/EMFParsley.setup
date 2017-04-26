@@ -690,25 +690,6 @@
           url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED"/>
     </setupTask>
     <setupTask
-        xsi:type="mylyn:MylynQueriesTask"
-        connectorKind="org.eclipse.mylyn.gerrit"
-        repositoryURL="https://git.eclipse.org/r"
-        userID="${bugzilla.id}"
-        password="${eclipse.user.password}">
-      <query
-          summary="EMF Parsley Reviews">
-        <attribute
-            key="gerrit query type"
-            value="custom"/>
-        <attribute
-            key="gerrit query project"
-            value="emf-parsley/org.eclipse.emf-parsley"/>
-        <attribute
-            key="gerrit query string"
-            value="project:emf-parsley/org.eclipse.emf-parsley status:open"/>
-      </query>
-    </setupTask>
-    <setupTask
         xsi:type="mylyn:MylynBuildsTask"
         serverURL="https://hudson.eclipse.org/emf-parsley/">
       <buildPlan
@@ -991,25 +972,6 @@
       <query
           summary="EMF Parsley Bugs"
           url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_severity=blocker&amp;bug_severity=critical&amp;bug_severity=major&amp;bug_severity=normal&amp;bug_severity=minor&amp;bug_severity=trivial"/>
-    </setupTask>
-    <setupTask
-        xsi:type="mylyn:MylynQueriesTask"
-        connectorKind="org.eclipse.mylyn.gerrit"
-        repositoryURL="https://git.eclipse.org/r"
-        userID="${bugzilla.id}"
-        password="${eclipse.user.password}">
-      <query
-          summary="EMF Parsley Reviews">
-        <attribute
-            key="gerrit query type"
-            value="custom"/>
-        <attribute
-            key="gerrit query project"
-            value="emf-parsley/org.eclipse.emf-parsley"/>
-        <attribute
-            key="gerrit query string"
-            value="project:emf-parsley/org.eclipse.emf-parsley status:open branch:master"/>
-      </query>
     </setupTask>
     <setupTask
         xsi:type="mylyn:MylynBuildsTask"
