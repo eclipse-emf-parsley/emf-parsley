@@ -973,8 +973,6 @@
 						</goals>
 						<configuration>
 							<excludes>
-								<!-- These are bundles and feature that do not have a corresponding 
-									source version; NOT the ones that we do not want source versions -->
 								<plugin id="org.eclipse.emf.parsley.runtime" />
 								<plugin id="org.eclipse.emf.parsley" />
 								<plugin id="org.eclipse.emf.parsley.cdo" />
@@ -994,6 +992,10 @@
 								<plugin id="org.apache.commons.logging" />
 								<plugin id="org.eclipse.core.resources" />
 								<plugin id="org.eclipse.core.filesystem" />
+								
+								<plugin id="com.google.guava" />
+								<plugin id="org.apache.log4j" />
+								<plugin id="com.google.inject" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
