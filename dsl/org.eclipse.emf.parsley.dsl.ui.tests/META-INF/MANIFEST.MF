@@ -20,7 +20,9 @@ Require-Bundle: org.eclipse.emf.parsley.dsl.ui,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.ui.testing,
- org.eclipse.xtext.xbase.ui.testing
+ org.eclipse.xtext.xbase.ui.testing,
+ org.eclipse.xtext.junit4,
+ org.eclipse.xtext.xbase.junit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.dsl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
