@@ -16,8 +16,11 @@ import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.session.CDOSession;
@@ -61,6 +64,8 @@ public class EmfParsleyCdoSWTBotTests {
 
 	private static final String EMF_PARSLEY_CATEGORY = "EMF Parsley";
 
+	public static String OPEN_DIALOG_SUBMIT = "OK";
+
 	private static SWTWorkbenchBot bot;
 
 	@BeforeClass
@@ -69,12 +74,34 @@ public class EmfParsleyCdoSWTBotTests {
 		bot = new SWTWorkbenchBot();
 		SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
 		closeWelcomePage();
+		if (isOxygen()) {
+			// they changed "OK" to "Open" in Oxygen
+			OPEN_DIALOG_SUBMIT = "Open";
+		}
 		openTestView(TEST_CDO_FORM_VIEW);
 	}
 
 	@AfterClass
 	public static void closeView() {
 		getLibraryView(TEST_CDO_FORM_VIEW).close();
+	}
+
+	protected static boolean isOxygen() {
+		// org.eclipse.ui has minor number 109 for Oxygen
+		return getOrgEclipseUiMinorVersion() >= 109;
+	}
+
+	protected static int getOrgEclipseUiMinorVersion() {
+		String version = Platform.getBundle(PlatformUI.PLUGIN_ID).getHeaders()
+				.get("Bundle-Version");
+
+		Pattern versionPattern = Pattern.compile("\\d+\\.(\\d+)\\..*");
+		Matcher m = versionPattern.matcher(version);
+		if (m.matches()) {
+			return Integer.parseInt(m.group(1));
+		} else {
+			throw new RuntimeException("Can't parse version " + version);
+		}
 	}
 
 	@Test
@@ -180,7 +207,7 @@ public class EmfParsleyCdoSWTBotTests {
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(libraryView);
-		bot.button("OK").click();
+		bot.button(OPEN_DIALOG_SUBMIT).click();
 		bot.waitUntil(shellCloses(shell), 50000);
 		return getLibraryView(libraryView);
 	}

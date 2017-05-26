@@ -99,6 +99,8 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public abstract class EmfParsleySWTBotAbstractTests {
 
+	public static String OPEN_DIALOG_SUBMIT = "OK";
+
 	public static final String PACKAGE_EXPLORER = "Package Explorer";
 
 	protected static final String EMF_PARSLEY_CATEGORY = "EMF Parsley";
@@ -408,9 +410,14 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		SWTBotShell openPerspectiveShell = bot.shell("Open Perspective");
 		openPerspectiveShell.activate();
 
+		if (isOxygen()) {
+			// they changed "OK" to "Open" in Oxygen
+			OPEN_DIALOG_SUBMIT = "Open";
+		}
+
 		// select the dialog
 		bot.table().select("Plug-in Development");
-		bot.button("OK").click();
+		bot.button(OPEN_DIALOG_SUBMIT).click();
 		
 		// in SwtBot 2.2.0 we must use part name since the title
 		// of the problems view also contains the items count
@@ -463,6 +470,11 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				}
 			}
 		});
+	}
+
+	protected static boolean isOxygen() {
+		// org.eclipse.ui has minor number 109 for Oxygen
+		return getOrgEclipseUiMinorVersion() >= 109;
 	}
 
 	protected static boolean isLuna() {
@@ -971,7 +983,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(viewName);
-		bot.button("OK").click();
+		bot.button(OPEN_DIALOG_SUBMIT).click();
 		waitForShellToClose(shell);
 		return getView(viewName);
 	}
