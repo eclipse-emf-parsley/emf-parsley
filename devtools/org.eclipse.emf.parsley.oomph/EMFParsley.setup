@@ -778,11 +778,15 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="mwe2.site"
-          value="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.0"/>
+          value="http://download.eclipse.org/staging/oxygen/"/>
       <setupTask
           xsi:type="setup:VariableTask"
           name="xtext.site"
-          value="http://download.eclipse.org/modeling/tmf/xtext/updates/nightly/"/>
+          value="http://download.eclipse.org/staging/oxygen/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="orbit.site"
+          value="http://download.eclipse.org/tools/orbit/R-builds/R20170516192513/repository"/>
       <description>Branch for Simrel for Oxygen</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
