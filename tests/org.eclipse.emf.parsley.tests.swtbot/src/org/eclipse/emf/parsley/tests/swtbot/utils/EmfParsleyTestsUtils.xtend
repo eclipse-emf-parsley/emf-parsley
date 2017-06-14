@@ -40,6 +40,6 @@ class EmfParsleyTestsUtils {
 
 	def dispatch stringRep(Borrower b) {
 		"Borrower: " + b.firstName + 
-			(if (b.lastName != null) " " + b.lastName else "")
+			(if (b.lastName !== null) " " + b.lastName else "")
 	}
 }

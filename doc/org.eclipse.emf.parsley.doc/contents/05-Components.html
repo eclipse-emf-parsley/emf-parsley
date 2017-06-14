@@ -17,14 +17,14 @@ to <a href="06-Customization.html#Customizations" title="Go to &quot;Customizati
 </p>
 <p>
 Components and viewers have to be created using the factories we provide
-(e.g., for viewers we provide <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/viewers/ViewerFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.viewers.ViewerFactory" >ViewerFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/viewers/ViewerFactory.java" title="View Source Code" >(src)</a>);
+(e.g., for viewers we provide <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/viewers/ViewerFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.viewers.ViewerFactory" >ViewerFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/viewers/ViewerFactory.java" title="View Source Code" >(src)</a>);
 such factories provide specific <em>create</em> methods that require all the needed parameters.
 These factories must be injected.
 </p>
 <a name="FormComponent"></a>
 <h2>Form Component</h2>
 <p>
-The <em>Form Component</em> can be used to rapresent an <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a> in a form,
+The <em>Form Component</em> can be used to rapresent an <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EObject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EObject" >EObject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EObject.java" title="View Source Code" >(src)</a> in a form,
 like in the image above.
 </p>
 <p>
@@ -54,8 +54,8 @@ formComposite.init(eObject);<br/>
 </div>
 </p>
 <p>
-Most of the job is done by the second line of code, which gets the list of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a> defined
-for the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a>
+Most of the job is done by the second line of code, which gets the list of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EStructuralFeature.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EStructuralFeature" >EStructuralFeature</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EStructuralFeature.java" title="View Source Code" >(src)</a> defined
+for the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a>
 (that is the type of the object to represent) and builds a row for each of them. Each row is composed
 by a <em>caption</em> which defaults to the name of the feature and a <em>control</em> to access the data. 
 </p>
@@ -138,7 +138,7 @@ and is responsible to provide the text and image representation for each EObject
 <h3>Adding Menu</h3>
 <p>
 The contextual menu can be added to the viewer via an injected
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.menus.ViewerContextMenuHelper" >ViewerContextMenuHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.java" title="View Source Code" >(src)</a>, as explained in the <a href="06-Customization.html#ContextualMenu" title="Go to &quot;Contextual Menu&quot;">Menu section</a>.
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.menus.ViewerContextMenuHelper" >ViewerContextMenuHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.java" title="View Source Code" >(src)</a>, as explained in the <a href="06-Customization.html#ContextualMenu" title="Go to &quot;Contextual Menu&quot;">Menu section</a>.
 The <a href="06-Customization.html#MenuBuilder" title="Go to &quot;Menu Builder&quot;">Menu Builder</a> allows to fully customize the menus.
 </p>
 <a name="TreeFormComponent"></a>
@@ -182,7 +182,7 @@ are avaible for it.
 <p>
 The <em>Table Component</em> can rapresent data in a grid, once you have specified the type of objects to represent. 
 It uses metamodel information to build columns as needed, and a
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a> to retrieve
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a> to retrieve
 the contents of the specified type (see also <a href="06-Customization.html#TableViewerContentProvider" title="Go to &quot;Table Viewer Content Provider&quot;" >section TableViewerContentProvider</a>).
 </p>
 <p>
@@ -207,10 +207,10 @@ tableViewer&nbsp;=&nbsp;viewerFactory.createTableViewer(composite,&nbsp;SWT.BORD
 </div>
 </p>
 <p>
-The class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/viewers/TableViewerColumnBuilder.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder" >TableViewerColumnBuilder</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/viewers/TableViewerColumnBuilder.java" title="View Source Code" >(src)</a> has the responsibility to
+The class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/viewers/TableViewerColumnBuilder.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder" >TableViewerColumnBuilder</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/viewers/TableViewerColumnBuilder.java" title="View Source Code" >(src)</a> has the responsibility to
 build the columns of the Table, by using the <a href="06-Customization.html#FeaturesProvider" title="Go to &quot;Features Provider&quot;">Features Provider</a> to get the list
 of features and the <a href="06-Customization.html#FeatureCaptionProvider" title="Go to &quot;Feature Caption Provider&quot;">Feature Caption Provider</a> for the column headers.
-The class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/ui/provider/TableColumnLabelProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider" >TableColumnLabelProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableColumnLabelProvider.java" title="View Source Code" >(src)</a> can be used to specify
+The class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/TableColumnLabelProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider" >TableColumnLabelProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableColumnLabelProvider.java" title="View Source Code" >(src)</a> can be used to specify
 an implementation of ILabelProvider for each cell in the table. 
 </p>
 <a name="Table_features"></a>
@@ -245,24 +245,24 @@ for instance in the DSL, like in the example below.
 <h3>Adding Menu</h3>
 <p>
 The contextual menu can be added to the viewer via an injected
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.menus.ViewerContextMenuHelper" >ViewerContextMenuHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.java" title="View Source Code" >(src)</a>, as explained in the <a href="06-Customization.html#ContextualMenu" title="Go to &quot;Contextual Menu&quot;">Menu section</a>.
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.menus.ViewerContextMenuHelper" >ViewerContextMenuHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.java" title="View Source Code" >(src)</a>, as explained in the <a href="06-Customization.html#ContextualMenu" title="Go to &quot;Contextual Menu&quot;">Menu section</a>.
 The <a href="06-Customization.html#MenuBuilder" title="Go to &quot;Menu Builder&quot;">Menu Builder</a> allows to fully customize the menus.
 </p>
 <a name="TreeWithColumnsComponent"></a>
 <h2>Tree With Columns Component</h2>
 <p>
 The <em>Tree With Columns Component</em> provides a tree representation just like <a href="05-Components.html#TreeComponent" title="Go to &quot;Tree Component&quot;">Tree Component</a>,
-but it also shows table columns representing the features of the specified <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a>.
+but it also shows table columns representing the features of the specified <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a>.
 </p>
 <p>
-IMPORTANT: the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> is used to retrieve the features to be shown, and
+IMPORTANT: the <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> is used to retrieve the features to be shown, and
 NOT to filter elements to be shown (as opposite to the <a href="05-Components.html#TableComponent" title="Go to &quot;Table Component&quot;">Table Component</a>).  If a given
 row in the tree represents an object whose class does not have the feature for a given column, then the
 corresponding table cell for that object will be empty.
 </p>
 <p>
 For example, the following screenshot shows a tree with columns representing a library; the specified
-<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.9.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> is the <em>Writer</em> so the columns show the features of the
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/ecore/EClass.html" title="View JavaDoc"><abbr title="org.eclipse.emf.ecore.EClass" >EClass</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/EClass.java" title="View Source Code" >(src)</a> is the <em>Writer</em> so the columns show the features of the
 <em>Writer</em>&apos;s class.  Some of these features, e.g., <em>address</em>, <em>firstName</em> and <em>lastName</em>, are defined
 in the superclasses of <em>Writer</em>.  The objects of class <em>Employee</em> have these features as well, while
 they don&apos;t have features that are specific of <em>Writer</em>, e.g., <em>name</em> and <em>books</em>, thus the corresponding

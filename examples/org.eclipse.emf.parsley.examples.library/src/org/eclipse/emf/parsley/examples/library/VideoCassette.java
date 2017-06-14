@@ -27,10 +27,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.library.VideoCassette#getCast <em>Cast</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getVideoCassette()
  * @model
@@ -39,15 +39,15 @@ import org.eclipse.emf.common.util.EList;
 public interface VideoCassette extends AudioVisualItem
 {
   /**
-   * Returns the value of the '<em><b>Cast</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.emf.parsley.examples.library.Person}.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Cast</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.parsley.examples.library.Person}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cast</em>' reference list.
-   * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getVideoCassette_Cast()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Cast</em>' reference list.
+	 * @see org.eclipse.emf.parsley.examples.library.EXTLibraryPackage#getVideoCassette_Cast()
+	 * @model
+	 * @generated
+	 */
   EList<Person> getCast();
 
 } // VideoCassette

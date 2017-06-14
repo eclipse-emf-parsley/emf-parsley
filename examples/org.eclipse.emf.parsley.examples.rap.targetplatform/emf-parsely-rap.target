@@ -9,7 +9,7 @@
 <unit id="org.eclipse.rap.examples.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
-<unit id="com.google.guava" version="0.0.0"/>
+<unit id="com.google.guava" version="15.0.0.v201403281430"/>
 <unit id="javax.inject" version="0.0.0"/>
 <unit id="org.apache.log4j" version="0.0.0"/>
 <unit id="com.google.inject" version="0.0.0"/>

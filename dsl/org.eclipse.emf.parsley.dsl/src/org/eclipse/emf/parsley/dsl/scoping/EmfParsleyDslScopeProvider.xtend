@@ -28,7 +28,7 @@ class EmfParsleyDslScopeProvider extends AbstractEmfParsleyDslScopeProvider {
 	override getScope(EObject context, EReference reference) {
 		val scope = context.createCustomScope(reference)
 
-		if (scope != null)
+		if (scope !== null)
 			return scope;
 		super.getScope(context, reference);
 	}

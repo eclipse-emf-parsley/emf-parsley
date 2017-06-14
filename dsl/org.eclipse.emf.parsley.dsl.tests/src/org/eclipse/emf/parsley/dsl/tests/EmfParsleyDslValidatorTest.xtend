@@ -36,10 +36,10 @@ import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
 import org.eclipse.emf.parsley.views.AbstractSaveableTreeView
 import org.eclipse.ui.IViewPart
 import org.eclipse.xtext.diagnostics.Severity
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.util.ParseHelper
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.eclipse.xtext.xbase.XbasePackage
 import org.eclipse.xtext.xbase.validation.IssueCodes
 import org.junit.Test

@@ -14,11 +14,11 @@ import com.google.common.base.Joiner
 import com.google.inject.Inject
 import org.eclipse.emf.parsley.dsl.tests.util.GeneratorExpectedResults
 import org.eclipse.xtext.diagnostics.Severity
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.TemporaryFolder
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.xbase.compiler.CompilationTestHelper
-import org.eclipse.xtext.xbase.compiler.CompilationTestHelper.Result
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.xbase.testing.CompilationTestHelper
+import org.eclipse.xtext.xbase.testing.CompilationTestHelper.Result
+import org.eclipse.xtext.xbase.testing.TemporaryFolder
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -243,7 +243,6 @@ package my.empty.ui.provider;
 
 import com.google.inject.Inject;
 import java.util.List;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.BookOnTape;
@@ -252,7 +251,6 @@ import org.eclipse.emf.parsley.examples.library.Lendable;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
-import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -293,13 +291,13 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
   public String text(final Borrower it) {
     String _xblockexpression = null;
     {
-      EList<Lendable> _borrowed = it.getBorrowed();
       final Function1<Lendable, Integer> _function = new Function1<Lendable, Integer>() {
+        @Override
         public Integer apply(final Lendable b) {
           return Integer.valueOf(b.getCopies());
         }
       };
-      List<Integer> _map = ListExtensions.<Lendable, Integer>map(_borrowed, _function);
+      List<Integer> _map = ListExtensions.<Lendable, Integer>map(it.getBorrowed(), _function);
       final String buffer = ("borrowed: " + _map);
       _xblockexpression = buffer.toUpperCase();
     }
@@ -317,8 +315,7 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
   
   public Object image(final Writer writer) {
     Object _xifexpression = null;
-    String _name = writer.getName();
-    boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+    boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(writer.getName());
     if (_isNullOrEmpty) {
       _xifexpression = "noname.gif";
     } else {
@@ -328,20 +325,17 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
   }
   
   public Font font(final Library it) {
-    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
-    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    Font _bold = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
     return _bold;
   }
   
   public Color foreground(final Library it) {
-    Display _current = Display.getCurrent();
-    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     return _systemColor;
   }
   
   public Color background(final Library it) {
-    Display _current = Display.getCurrent();
-    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
     return _systemColor;
   }
 }
@@ -420,6 +414,7 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
   }
   
   private final List<String> listOfString = ObjectExtensions.<ArrayList<String>>operator_doubleArrow(new ArrayList<String>(), new Procedure1<ArrayList<String>>() {
+    @Override
     public void apply(final ArrayList<String> it) {
       it.add("first");
       it.add("second");
@@ -459,7 +454,6 @@ import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
-import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -479,16 +473,13 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   }
   
   public String text_Writer_lastName(final Writer it) {
-    String _name = it.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
   
   public Object image_Book_author(final Book it) {
     Object _xifexpression = null;
-    Writer _author = it.getAuthor();
-    String _name = _author.getName();
-    boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(_name);
+    boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(it.getAuthor().getName());
     if (_isNullOrEmpty) {
       _xifexpression = "noname.gif";
     } else {
@@ -498,38 +489,32 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   }
   
   public Font font_Library_name(final Library it) {
-    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
-    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    Font _bold = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
     return _bold;
   }
   
   public Color foreground_Library_books(final Library it) {
-    Display _current = Display.getCurrent();
-    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     return _systemColor;
   }
   
   public Color background_Library_address(final Library it) {
-    Display _current = Display.getCurrent();
-    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
     return _systemColor;
   }
   
   public Font rowFont(final Library it) {
-    FontRegistry _fontRegistry = JFaceResources.getFontRegistry();
-    Font _bold = _fontRegistry.getBold(JFaceResources.DEFAULT_FONT);
+    Font _bold = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
     return _bold;
   }
   
   public Color rowForeground(final Library it) {
-    Display _current = Display.getCurrent();
-    Color _systemColor = _current.getSystemColor(SWT.COLOR_BLUE);
+    Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     return _systemColor;
   }
   
   public Color rowBackground(final Library it) {
-    Display _current = Display.getCurrent();
-    Color _systemColor = _current.getSystemColor(SWT.COLOR_GREEN);
+    Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
     return _systemColor;
   }
 }
@@ -627,8 +612,7 @@ public class EmptyFeatureCaptionProvider extends FeatureCaptionProvider {
   }
   
   public String text_Writer_lastName(final EStructuralFeature it) {
-    String _name = it.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
 }
@@ -676,8 +660,7 @@ public class EmptyFeatureCaptionProvider extends TestFeatureCaptionProvider {
   }
   
   public String text_Writer_lastName(final EStructuralFeature it) {
-    String _name = it.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
 }
@@ -714,8 +697,6 @@ expectedFormFeatureCaptionProvider =
 '''
 package my.empty.ui.provider;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
@@ -737,8 +718,7 @@ public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider 
   }
   
   public String text_Writer_lastName(final EStructuralFeature it) {
-    String _name = it.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
   
@@ -748,18 +728,16 @@ public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider 
   }
   
   public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
-    EClass _library = EXTLibraryPackage.eINSTANCE.getLibrary();
-    EReference _library_Books = EXTLibraryPackage.eINSTANCE.getLibrary_Books();
-    Label _createLabel = this.createLabel(parent, _library, _library_Books);
+    Label _createLabel = this.createLabel(parent, EXTLibraryPackage.eINSTANCE.getLibrary(), EXTLibraryPackage.eINSTANCE.getLibrary_Books());
     return _createLabel;
   }
   
   public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
     Label _label = new Label(parent, SWT.NONE);
     final Procedure1<Label> _function = new Procedure1<Label>() {
+      @Override
       public void apply(final Label l) {
-        String _name = it.getName();
-        l.setText(_name);
+        l.setText(it.getName());
       }
     };
     return ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
@@ -815,8 +793,6 @@ expectedDialogFeatureCaptionProvider =
 '''
 package my.empty.ui.provider;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
@@ -838,8 +814,7 @@ public class EmptyDialogFeatureCaptionProvider extends DialogFeatureCaptionProvi
   }
   
   public String text_Writer_lastName(final EStructuralFeature it) {
-    String _name = it.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
   
@@ -849,18 +824,16 @@ public class EmptyDialogFeatureCaptionProvider extends DialogFeatureCaptionProvi
   }
   
   public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
-    EClass _library = EXTLibraryPackage.eINSTANCE.getLibrary();
-    EReference _library_Books = EXTLibraryPackage.eINSTANCE.getLibrary_Books();
-    Label _createLabel = this.createLabel(parent, _library, _library_Books);
+    Label _createLabel = this.createLabel(parent, EXTLibraryPackage.eINSTANCE.getLibrary(), EXTLibraryPackage.eINSTANCE.getLibrary_Books());
     return _createLabel;
   }
   
   public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
     Label _label = new Label(parent, SWT.NONE);
     final Procedure1<Label> _function = new Procedure1<Label>() {
+      @Override
       public void apply(final Label l) {
-        String _name = it.getName();
-        l.setText(_name);
+        l.setText(it.getName());
       }
     };
     return ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
@@ -1058,9 +1031,7 @@ expectedFormControlFactory =
 '''
 package my.empty.binding;
 
-import java.util.List;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
@@ -1070,10 +1041,8 @@ import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -1085,15 +1054,14 @@ public class EmptyFormControlFactory extends FormControlFactory {
   }
   
   public Control control_Writer_books(final Writer it) {
-    EList<Book> _books = it.getBooks();
     final Function1<Book, String> _function = new Function1<Book, String>() {
+      @Override
       public String apply(final Book it) {
         return it.getTitle();
       }
     };
-    List<String> _map = ListExtensions.<Book, String>map(_books, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    Label _createLabel = this.createLabel(_join);
+    Label _createLabel = this.createLabel(
+      IterableExtensions.join(ListExtensions.<Book, String>map(it.getBooks(), _function), ", "));
     return _createLabel;
   }
   
@@ -1107,8 +1075,7 @@ public class EmptyFormControlFactory extends FormControlFactory {
   }
   
   protected Control createControl_Writer_name() {
-    Composite _parent = this.getParent();
-    return this.createLabel(_parent, "");
+    return this.createLabel(this.getParent(), "");
   }
   
   protected IObservableValue createTarget_Writer_name(final Control it) {
@@ -1125,9 +1092,7 @@ public class EmptyFormControlFactory extends FormControlFactory {
   }
   
   protected Control createControl_Writer_firstName() {
-    FormToolkit _toolkit = this.getToolkit();
-    Composite _parent = this.getParent();
-    Label _createLabel = _toolkit.createLabel(_parent, "");
+    Label _createLabel = this.getToolkit().createLabel(this.getParent(), "");
     return _createLabel;
   }
   
@@ -1137,8 +1102,7 @@ public class EmptyFormControlFactory extends FormControlFactory {
   }
   
   public Control control_Borrower_firstName(final Borrower it) {
-    String _firstName = it.getFirstName();
-    return this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
+    return this.createText(it.getFirstName(), SWT.MULTI, SWT.BORDER, 
       SWT.WRAP, SWT.V_SCROLL);
   }
 }
@@ -1192,9 +1156,7 @@ expectedDialogControlFactory =
 '''
 package my.empty.binding;
 
-import java.util.List;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
@@ -1204,7 +1166,6 @@ import org.eclipse.emf.parsley.examples.library.Writer;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -1218,15 +1179,14 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
   }
   
   public Control control_Writer_books(final Writer it) {
-    EList<Book> _books = it.getBooks();
     final Function1<Book, String> _function = new Function1<Book, String>() {
+      @Override
       public String apply(final Book it) {
         return it.getTitle();
       }
     };
-    List<String> _map = ListExtensions.<Book, String>map(_books, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    Label _createLabel = this.createLabel(_join);
+    Label _createLabel = this.createLabel(
+      IterableExtensions.join(ListExtensions.<Book, String>map(it.getBooks(), _function), ", "));
     return _createLabel;
   }
   
@@ -1240,8 +1200,7 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
   }
   
   protected Control createControl_Writer_name() {
-    Composite _parent = this.getParent();
-    return this.createLabel(_parent, "");
+    return this.createLabel(this.getParent(), "");
   }
   
   protected IObservableValue createTarget_Writer_name(final Control it) {
@@ -1258,8 +1217,7 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
   }
   
   protected Control createControl_Writer_firstName() {
-    Composite _parent = this.getParent();
-    Label _createLabel = this.createLabel(_parent, "");
+    Label _createLabel = this.createLabel(this.getParent(), "");
     return _createLabel;
   }
   
@@ -1269,8 +1227,7 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
   }
   
   public Control control_Borrower_firstName(final Borrower it) {
-    String _firstName = it.getFirstName();
-    return this.createText(_firstName, SWT.MULTI, SWT.BORDER, 
+    return this.createText(it.getFirstName(), SWT.MULTI, SWT.BORDER, 
       SWT.WRAP, SWT.V_SCROLL);
   }
 }
@@ -1330,7 +1287,6 @@ import com.google.inject.Inject;
 import java.util.Iterator;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
@@ -1346,8 +1302,7 @@ public class EmptyViewerContentProvider extends ViewerContentProvider {
   }
   
   public Object elements(final Resource it) {
-    TreeIterator<EObject> _allContents = it.getAllContents();
-    Iterator<Library> _filter = Iterators.<Library>filter(_allContents, Library.class);
+    Iterator<Library> _filter = Iterators.<Library>filter(it.getAllContents(), Library.class);
     return _filter;
   }
   
@@ -1407,7 +1362,6 @@ import com.google.inject.Inject;
 import java.util.Iterator;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
@@ -1423,8 +1377,7 @@ public class EmptyTableViewerContentProvider extends TableViewerContentProvider 
   }
   
   public Object elements(final Resource it) {
-    TreeIterator<EObject> _allContents = it.getAllContents();
-    Iterator<Library> _filter = Iterators.<Library>filter(_allContents, Library.class);
+    Iterator<Library> _filter = Iterators.<Library>filter(it.getAllContents(), Library.class);
     return _filter;
   }
   
@@ -1526,6 +1479,7 @@ public class EmptyProposalCreator extends ProposalCreator {
   public List<?> proposals_Book_author(final Book it, final EStructuralFeature feature) {
     Writer _createWriter = EXTLibraryFactory.eINSTANCE.createWriter();
     final Procedure1<Writer> _function = new Procedure1<Writer>() {
+      @Override
       public void apply(final Writer it) {
         it.setName("Foo");
       }
@@ -1533,6 +1487,7 @@ public class EmptyProposalCreator extends ProposalCreator {
     Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
     Writer _createWriter_1 = EXTLibraryFactory.eINSTANCE.createWriter();
     final Procedure1<Writer> _function_1 = new Procedure1<Writer>() {
+      @Override
       public void apply(final Writer it) {
         it.setName("Bar");
       }
@@ -1544,9 +1499,11 @@ public class EmptyProposalCreator extends ProposalCreator {
   public List<?> proposals_Borrower_borrowed(final Borrower it, final EStructuralFeature feature) {
     List<Object> _defaultProposals = this.defaultProposals(feature);
     final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
+      @Override
       public void apply(final List<Object> it) {
         Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
         final Procedure1<Book> _function = new Procedure1<Book>() {
+          @Override
           public void apply(final Book it) {
             it.setTitle("Fake Book");
           }
@@ -1708,13 +1665,14 @@ public class EmptyMenuBuilder extends EditingMenuBuilder {
     EList<Writer> _writers = lib.getWriters();
     Writer _createWriter = this.libraryFactory.createWriter();
     final Procedure1<Writer> _function = new Procedure1<Writer>() {
+      @Override
       public void apply(final Writer it) {
         it.setName("This is a new writer");
       }
     };
     Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
-    IMenuContributionSpecification _actionAdd = this.<Writer>actionAdd("New Writer", _writers, _doubleArrow);
-    ArrayList<IMenuContributionSpecification> _newArrayList = CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionAdd);
+    ArrayList<IMenuContributionSpecification> _newArrayList = CollectionLiterals.<IMenuContributionSpecification>newArrayList(
+      this.<Writer>actionAdd("New Writer", _writers, _doubleArrow));
     return _newArrayList;
   }
   
@@ -1722,6 +1680,7 @@ public class EmptyMenuBuilder extends EditingMenuBuilder {
     EList<Book> _books = it.getBooks();
     Book _createBook = this.libraryFactory.createBook();
     final Procedure1<Book> _function = new Procedure1<Book>() {
+      @Override
       public void apply(final Book it) {
         it.setTitle("New book");
       }
@@ -2048,8 +2007,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   }
   
   public Class<? extends Provider<FeaturesProvider>> provideFeaturesProvider() {
-    TestFeaturesProviderProvider _testFeaturesProviderProvider = new TestFeaturesProviderProvider();
-    Class<? extends TestFeaturesProviderProvider> _class = _testFeaturesProviderProvider.getClass();
+    Class<? extends TestFeaturesProviderProvider> _class = new TestFeaturesProviderProvider().getClass();
     return _class;
   }
 }
@@ -2149,64 +2107,64 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
 
 			for (e : allGeneratedResources.entrySet) {
 				if (e.key.endsWith("Module.java")) {
-					if (expected.expectedModule != null)
+					if (expected.expectedModule !== null)
 						assertEqualsStrings(expected.expectedModule, e.value)
 				} else if (e.key.endsWith("InjectorProvider.java")) {
-					if (expected.expectedInjectorProvider != null)
+					if (expected.expectedInjectorProvider !== null)
 						assertEqualsStrings(expected.expectedInjectorProvider, e.value)
 				} else if (e.key.endsWith("ExecutableExtensionFactory.java")) {
-					if (expected.expectedExecutableExtensionFactory != null)
+					if (expected.expectedExecutableExtensionFactory !== null)
 						assertEqualsStrings(expected.expectedExecutableExtensionFactory, e.value)
 				} else if (e.key.endsWith("FormFeatureCaptionProvider.java")) {
-					if (expected.expectedFormFeatureCaptionProvider != null)
+					if (expected.expectedFormFeatureCaptionProvider !== null)
 						assertEqualsStrings(expected.expectedFormFeatureCaptionProvider, e.value)
 				} else if (e.key.endsWith("DialogFeatureCaptionProvider.java")) {
-					if (expected.expectedDialogFeatureCaptionProvider != null)
+					if (expected.expectedDialogFeatureCaptionProvider !== null)
 						assertEqualsStrings(expected.expectedDialogFeatureCaptionProvider, e.value)
 				} else if (e.key.endsWith("FeatureCaptionProvider.java")) {
-					if (expected.expectedFeatureCaptionProvider != null)
+					if (expected.expectedFeatureCaptionProvider !== null)
 						assertEqualsStrings(expected.expectedFeatureCaptionProvider, e.value)
 				} else if (e.key.endsWith("TableFeaturesProvider.java")) {
-					if (expected.expectedTableFeaturesProvider != null)
+					if (expected.expectedTableFeaturesProvider !== null)
 						assertEqualsStrings(expected.expectedTableFeaturesProvider, e.value)
 				} else if (e.key.endsWith("FeaturesProvider.java")) {
-					if (expected.expectedFeaturesProvider != null)
+					if (expected.expectedFeaturesProvider !== null)
 						assertEqualsStrings(expected.expectedFeaturesProvider, e.value)
 				} else if (e.key.endsWith("TableLabelProvider.java")) {
-					if (expected.expectedTableLabelProvider != null)
+					if (expected.expectedTableLabelProvider !== null)
 						assertEqualsStrings(expected.expectedTableLabelProvider, e.value)
 				} else if (e.key.endsWith("LabelProvider.java")) {
-					if (expected.expectedLabelProvider != null)
+					if (expected.expectedLabelProvider !== null)
 						assertEqualsStrings(expected.expectedLabelProvider, e.value)
 				} else if (e.key.endsWith("FormControlFactory.java")) {
-					if (expected.expectedFormControlFactory != null)
+					if (expected.expectedFormControlFactory !== null)
 						assertEqualsStrings(expected.expectedFormControlFactory, e.value)
 				} else if (e.key.endsWith("DialogControlFactory.java")) {
-					if (expected.expectedDialogControlFactory != null)
+					if (expected.expectedDialogControlFactory !== null)
 						assertEqualsStrings(expected.expectedDialogControlFactory, e.value)
 				} else if (e.key.endsWith("TableViewerContentProvider.java")) {
-					if (expected.expectedTableViewerContentProvider != null)
+					if (expected.expectedTableViewerContentProvider !== null)
 						assertEqualsStrings(expected.expectedTableViewerContentProvider, e.value)
 				} else if (e.key.endsWith("ViewerContentProvider.java")) {
-					if (expected.expectedViewerContentProvider != null)
+					if (expected.expectedViewerContentProvider !== null)
 						assertEqualsStrings(expected.expectedViewerContentProvider, e.value)
 				} else if (e.key.endsWith("ProposalCreator.java")) {
-					if (expected.expectedProposalCreator != null)
+					if (expected.expectedProposalCreator !== null)
 						assertEqualsStrings(expected.expectedProposalCreator, e.value)
 				} else if (e.key.endsWith("MenuBuilder.java")) {
-					if (expected.expectedMenuBuilder != null)
+					if (expected.expectedMenuBuilder !== null)
 						assertEqualsStrings(expected.expectedMenuBuilder, e.value)
 				} else if (e.key.endsWith("Configurator.java")) {
-					if (expected.expectedConfigurator != null)
+					if (expected.expectedConfigurator !== null)
 						assertEqualsStrings(expected.expectedConfigurator, e.value)
 				} else if (e.key.endsWith("ResourceManager.java")) {
-					if (expected.expectedResourceManager!= null)
+					if (expected.expectedResourceManager!== null)
 						assertEqualsStrings(expected.expectedResourceManager, e.value)
 				} else if (e.key.endsWith(".xml_emfparsley_gen")) {
-					if (expected.expectedPluginXmlGen != null)
+					if (expected.expectedPluginXmlGen !== null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else if (e.key.endsWith("plugin.xml")) {
-					if (expected.expectedPluginXmlGen != null)
+					if (expected.expectedPluginXmlGen !== null)
 						assertEqualsStrings(expected.expectedPluginXmlGen, e.value)
 				} else
 					fail("unexpected generated code: " + e.value)

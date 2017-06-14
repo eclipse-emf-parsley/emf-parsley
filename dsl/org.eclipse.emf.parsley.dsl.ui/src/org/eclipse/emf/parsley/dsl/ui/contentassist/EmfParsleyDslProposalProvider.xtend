@@ -96,7 +96,7 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			Class<?> superType) {
 
-		if (superType == null) {
+		if (superType === null) {
 			return
 		}
 

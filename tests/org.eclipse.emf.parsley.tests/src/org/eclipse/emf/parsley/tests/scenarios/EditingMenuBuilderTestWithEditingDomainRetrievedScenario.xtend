@@ -47,7 +47,7 @@ class EditingMenuBuilderTestWithEditingDomainRetrievedScenario extends org.eclip
 	}
 
 	override protected createResourceForTest() {
-		if (resource == null) {
+		if (resource === null) {
 			resourceEditingDomain = getOrCreateInjector.createEditingDomain
 			resource = createTestLibrayResourceAndInitialize(
 				resourceEditingDomain.resourceSet.setupResouceFactory

@@ -21,16 +21,16 @@ import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.jface.wizard.Wizard
 import org.eclipse.jface.wizard.WizardDialog
 import org.eclipse.ui.PlatformUI
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
+import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider.*
 import static org.eclipse.emf.parsley.dsl.tests.util.ui.TestableEmfParsleyDslNewProjectWizard.*
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*
 
 /**
  * @author Lorenzo Bettini
@@ -44,7 +44,7 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 	@Inject PluginProjectHelper projectHelper
 
 	val TEST_MODULE = TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + "/" +
-		TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + ".parsley"
+		TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT.toFirstUpper + ".parsley"
 
 	val TEST_PLUGIN_XML_GEN = 
 		EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN + "/" + TEST_PROJECT + "/" +
@@ -59,7 +59,7 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 				val thread = new Thread("Press Finish") {
 					override run() {
 						// wait for the shell to become active
-						while (getShell() == null) {
+						while (getShell() === null) {
 							Thread.sleep(1000)
 						}
 						getShell().getDisplay().asyncExec[

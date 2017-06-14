@@ -66,7 +66,9 @@
 		<findbugs-version>3.0.1</findbugs-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<xtext-version>2.10.0</xtext-version>
+		<xtext-version>2.12.0</xtext-version>
+		<xtextVersion>${xtext-version}</xtextVersion>
+		<mwe2Version>2.9.0.201605261059</mwe2Version>
 		<emf.version>(2.8,3.0)</emf.version>
 		<guava.version>[10.0.1,14.0.1]</guava.version>
 		<google-inject.version>3.0</google-inject.version>
@@ -81,7 +83,7 @@
 		<uiTestsArgs>${memoryArgs} ${os-jvm-flags} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
 		<pdeTestsArgs>-DbuildingWithTycho=true</pdeTestsArgs>
 		<skipDragAndDropTests>true</skipDragAndDropTests>
-		<swtbotTestsArgs>${uiTestsArgs} -DskipDragAndDropTests=${skipDragAndDropTests} -Dorg.eclipse.swtbot.search.timeout=150000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
+		<swtbotTestsArgs>${uiTestsArgs} -DskipDragAndDropTests=${skipDragAndDropTests} -Dorg.eclipse.swtbot.search.timeout=20000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
 
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->
@@ -257,6 +259,25 @@
 		</profile>
 
 		<profile>
+			<id>rcp-build-oxygen</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
+			</modules>
+			
+			<properties>
+				<target-file-name>oxygen-staging</target-file-name>
+			</properties>
+		</profile>
+
+		<profile>
 			<id>rcp-build-neon</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -385,6 +406,19 @@
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
 				<target-file-name>neon-simrel-rap</target-file-name>
+			</properties>
+
+		</profile>
+
+		<profile>
+			<id>rap-build-oxygen</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<findbugs.skip>true</findbugs.skip>
+				<target-file-name>oxygen-staging-rap</target-file-name>
 			</properties>
 
 		</profile>
@@ -940,8 +974,6 @@
 						</goals>
 						<configuration>
 							<excludes>
-								<!-- These are bundles and feature that do not have a corresponding 
-									source version; NOT the ones that we do not want source versions -->
 								<plugin id="org.eclipse.emf.parsley.runtime" />
 								<plugin id="org.eclipse.emf.parsley" />
 								<plugin id="org.eclipse.emf.parsley.cdo" />
@@ -956,6 +988,15 @@
 								<plugin id="org.eclipse.swtbot.go" />
 								<plugin id="org.eclipse.ui.forms" />
 								<plugin id="org.eclipse.pde.ui" />
+								
+								<plugin id="org.eclipse.ui.views" />
+								<plugin id="org.apache.commons.logging" />
+								<plugin id="org.eclipse.core.resources" />
+								<plugin id="org.eclipse.core.filesystem" />
+								
+								<plugin id="com.google.guava" />
+								<plugin id="org.apache.log4j" />
+								<plugin id="com.google.inject" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
@@ -970,6 +1011,9 @@
 								<feature id="org.eclipse.swtbot.forms" />
 								<feature id="org.eclipse.swtbot" />
 								<feature id="org.eclipse.emf.cdo.server" />
+								
+								<feature id="org.eclipse.e4.rcp" />
+								<feature id="org.eclipse.emf.ecore" />
 							</excludes>
 						</configuration>
 					</execution>

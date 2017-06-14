@@ -29,7 +29,7 @@ Now you can create your first example with the appropriate wizard.
 
 ol[
 	item[select "File" -> "New" -> "Project..."]
-	item[from the "Emf Parsley" category select "Emf Parsley Dsl based Project"
+	item[from the "EMF Parsley" category select "EMF Parsley Dsl based Project"
 	
 	img[images/01-new-project-dsl-wizard.png][][ ][] 
 	
@@ -55,7 +55,7 @@ The generated project has some classes and a e[module.parlsey] file, which opens
 code[EmfParsley][
 import org.eclipse.emf.parsley.examples.firstexample.FirstexampleSaveableTreeFormView
 
-/* org.eclipse.emf.parsley.examples.firstexample Emf Parsley Dsl Module file */
+/* org.eclipse.emf.parsley.examples.firstexample EMF Parsley Dsl Module file */
 module org.eclipse.emf.parsley.examples.firstexample {
 	
 	parts {

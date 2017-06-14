@@ -11,9 +11,7 @@
 package org.eclipse.emf.parsley.tests.swtbot;
 
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.cleanWorkspace;
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createFile;
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.root;
+import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -85,11 +83,9 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil;
+import org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -102,6 +98,8 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public abstract class EmfParsleySWTBotAbstractTests {
+
+	public static String OPEN_DIALOG_SUBMIT = "OK";
 
 	public static final String PACKAGE_EXPLORER = "Package Explorer";
 
@@ -412,9 +410,14 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		SWTBotShell openPerspectiveShell = bot.shell("Open Perspective");
 		openPerspectiveShell.activate();
 
+		if (isOxygen()) {
+			// they changed "OK" to "Open" in Oxygen
+			OPEN_DIALOG_SUBMIT = "Open";
+		}
+
 		// select the dialog
 		bot.table().select("Plug-in Development");
-		bot.button("OK").click();
+		bot.button(OPEN_DIALOG_SUBMIT).click();
 		
 		// in SwtBot 2.2.0 we must use part name since the title
 		// of the problems view also contains the items count
@@ -450,7 +453,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		// bot.sleep(2000);
 		bot.saveAllEditors();
 		cleanWorkspace();
-		IResourcesSetupUtil.waitForBuild();
+		waitForBuild();
 	}
 
 	protected static void closeWelcomePage() throws InterruptedException {
@@ -467,6 +470,11 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				}
 			}
 		});
+	}
+
+	protected static boolean isOxygen() {
+		// org.eclipse.ui has minor number 109 for Oxygen
+		return getOrgEclipseUiMinorVersion() >= 109;
 	}
 
 	protected static boolean isLuna() {
@@ -828,7 +836,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void assertProjectIsCreated(String projectName) {
-		assertTrue("Project doesn't exist", isProjectCreated(projectName));
+		assertTrue("Project doesn't exist: " + projectName, isProjectCreated(projectName));
 	}
 
 	protected void waitForBuild() throws CoreException {
@@ -892,6 +900,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		final TreeItem widget = item.widget;
 		// part of test that requires UI-thread
 		Display.getDefault().syncExec(new Runnable() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void run() {
 				try {
@@ -974,7 +983,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(viewName);
-		bot.button("OK").click();
+		bot.button(OPEN_DIALOG_SUBMIT).click();
 		waitForShellToClose(shell);
 		return getView(viewName);
 	}
@@ -1394,13 +1403,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		assertTableItemsSize(table, initialTableItemsSize+1);
 	}
 
-	protected void maximizeCurrentWindow() {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-				ActionFactory.MAXIMIZE.create(window).run();
-			}
-		});
-	}
+//	protected void maximizeCurrentWindow() {
+//		Display.getDefault().syncExec(new Runnable() {
+//			@Override
+//			public void run() {
+//				IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+//				ActionFactory.MAXIMIZE.create(window).run();
+//			}
+//		});
+//	}
 }

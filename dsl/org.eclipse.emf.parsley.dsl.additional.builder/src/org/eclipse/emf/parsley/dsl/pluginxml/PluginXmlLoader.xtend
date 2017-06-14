@@ -34,7 +34,7 @@ class PluginXmlLoader extends PluginModel {
 	 * The nodes corresponding to &lt;extension&gt; elements in the plugin.xml file
 	 */
 	def getExtensionNodes() {
-		if (pluginExtensionNodes == null)
+		if (pluginExtensionNodes === null)
 			initializeExtensionNodes()
 		return pluginExtensionNodes
 	}
@@ -48,7 +48,7 @@ class PluginXmlLoader extends PluginModel {
 	 * &lt;view&gt;, &lt;editor&gt;
 	 */
 	def getExtensionElements() {
-		if (pluginExtensionElementNodes == null)
+		if (pluginExtensionElementNodes === null)
 			initializeExtensionElements()
 		return pluginExtensionElementNodes
 	}
@@ -82,7 +82,7 @@ class PluginXmlLoader extends PluginModel {
 			filter[XMLTagName == xmlTag].
 			findFirst[
 				val v = getId
-				if (v != null) {
+				if (v !== null) {
 					getAttributeAsString(v) == id
 				} else {
 					false
@@ -116,7 +116,7 @@ class PluginXmlLoader extends PluginModel {
 	def copy(PluginElementNode source) throws CoreException {
 		val xmlTagName = source.XMLTagName
 		var target = getElementByTagAndId(xmlTagName, source.getId.attributeAsString)
-		if (target == null) {
+		if (target === null) {
 			target = insertExtensionElement(source.getElementExtension, xmlTagName)
 		}
 		copy(source, target)
@@ -137,7 +137,7 @@ class PluginXmlLoader extends PluginModel {
 		val children = target.childNodes
 		for (c : source.childNodes) {
 			var myChild = children.findFirst[XMLTagName == c.XMLTagName]
-			if (myChild == null) {
+			if (myChild === null) {
 				val newChild = pluginFactory.createElement(target) as PluginElementNode
 				newChild.XMLTagName = c.XMLTagName
 				target.addChildNode(newChild)
@@ -162,7 +162,7 @@ class PluginXmlLoader extends PluginModel {
 	 */
 	def insertExtensionElement(String point, String xmlTag) throws CoreException {
 		var ext = getExtensionByPoint(point)
-		if (ext == null)
+		if (ext === null)
 			ext = insertExtension(point)
 		val element = pluginFactory.createElement(ext) as PluginElementNode
 		ext.addChildNode(element)

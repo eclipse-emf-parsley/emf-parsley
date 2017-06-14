@@ -19,14 +19,15 @@ import org.eclipse.core.runtime.CoreException
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*
+import static org.mockito.Matchers.*
 import static org.mockito.Mockito.*
 
 /**
