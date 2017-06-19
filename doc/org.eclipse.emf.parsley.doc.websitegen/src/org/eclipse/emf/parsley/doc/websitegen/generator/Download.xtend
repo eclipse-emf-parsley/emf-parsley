@@ -43,32 +43,42 @@ class Download extends AbstractWebsite {
 				<p>
 					To install via the update site URL listed below, copy and paste it into the "Help &gt; Install new software" dialog.
 				</p>
+				<br>
 				<p>
-					N.B. All API are to be considered provisional!
+				Each EMF Parsley DSL version (included in the EMF Parsley SDK) requires a specific version of Xtext. Unless you install EMF Parsley from
+				the Eclipse releases update site that includes that specific version of EMF Parsley (and the corresponding
+				required version of Xtext) you should add the Xtext releases composite update site as well,
+				so that the required Xtext version will be automatically installed:<br>
+				<a href="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases">http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases</a>
 				</p>
 				<br><br>
 				<div>
 					<h2 class="featurette-heading text-parsley1">Update Sites</h2>
 					<ul>
-						<li>Version 1.0.x is part of Neon: <a href="http://download.eclipse.org/releases/neon/">http://download.eclipse.org/releases/neon/</a></li>
+						<li>Version 1.2.x is part of Oxygen: <a href="http://download.eclipse.org/releases/oxygen/">http://download.eclipse.org/releases/oxygen/</a></li>
+						<li>Version 1.0.x and 1.1.x are part of Neon: <a href="http://download.eclipse.org/releases/neon/">http://download.eclipse.org/releases/neon/</a></li>
 						<li>All Releases: <a href="http://download.eclipse.org/emf-parsley/updates">http://download.eclipse.org/emf-parsley/updates</a></li>
+						<li>1.2.x: <a href="http://download.eclipse.org/emf-parsley/updates/1.2">http://download.eclipse.org/emf-parsley/updates/1.2</a>
+							(EMF Parsley DSL requires Xtext 2.12.0).</li>
 						<li>1.1.x: <a href="http://download.eclipse.org/emf-parsley/updates/1.1">http://download.eclipse.org/emf-parsley/updates/1.1</a>
-							(EMF Parsley DSL requires Xtext 2.10.0. Unless you use Neon, Xtext 2.10.0 has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							(EMF Parsley DSL requires Xtext 2.10.0).</li>
 						<li>1.0.x: <a href="http://download.eclipse.org/emf-parsley/updates/1.0">http://download.eclipse.org/emf-parsley/updates/1.0</a>
-							(EMF Parsley DSL requires Xtext 2.10.0. Unless you use Neon, Xtext 2.10.0 has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							(EMF Parsley DSL requires Xtext 2.10.0).</li>
 						<li>0.7.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.7">http://download.eclipse.org/emf-parsley/updates/0.7</a>
-							(EMF Parsley DSL requires Xtext 2.9.2, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							(EMF Parsley DSL requires Xtext 2.9.2).</li>
 						<li>0.6.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.6">http://download.eclipse.org/emf-parsley/updates/0.6</a>
-							(EMF Parsley DSL requires Xtext 2.9.1, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							(EMF Parsley DSL requires Xtext 2.9.1).</li>
 						<li>0.5.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.5">http://download.eclipse.org/emf-parsley/updates/0.5</a>
-							(EMF Parsley DSL requires Xtext 2.8.4, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							(EMF Parsley DSL requires Xtext 2.8.4).</li>
 						<li>0.4.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.4">http://download.eclipse.org/emf-parsley/updates/0.4</a>
-							(EMF Parsley DSL requires Xtext 2.8.3, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							(EMF Parsley DSL requires Xtext 2.8.3).</li>
 						<li>0.3.x: <a href="http://download.eclipse.org/emf-parsley/updates/0.3">http://download.eclipse.org/emf-parsley/updates/0.3</a>
-							(EMF Parsley DSL requires Xtext 2.7.3, which has to be taken from http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/ so make sure you add this update site before installing the DSL feature - included in the SDK).</li>
+							(EMF Parsley DSL requires Xtext 2.7.3).</li>
 					<li>Milestones: <a href="http://download.eclipse.org/emf-parsley/milestones/">http://download.eclipse.org/emf-parsley/milestones/</a></li>
 					<li>Latest Stable Nightly Build: <a href="https://hudson.eclipse.org/emf-parsley/job/emf-parsley-nightly/lastSuccessfulBuild/artifact/target/repository/">https://hudson.eclipse.org/emf-parsley/job/emf-parsley-nightly/lastSuccessfulBuild/artifact/target/repository/</a></li>
+					<!--
 					<li>Latest Stable Snapshot Build: <a href="https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/">https://hudson.eclipse.org/emf-parsley/job/emf-parsley-tycho-gerrit/lastSuccessfulBuild/artifact/target/repository/</a></li>
+					-->
 					</ul>
 					<p>
 						All downloads are provided under the terms and conditions of the Eclipse Foundation Software User Agreement unless otherwise specified.
