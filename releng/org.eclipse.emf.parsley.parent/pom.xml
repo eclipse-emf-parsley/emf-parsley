@@ -167,7 +167,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>neon-simrel</target-file-name>
+		<target-file-name>oxygen-staging</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -261,7 +261,7 @@
 		<profile>
 			<id>rcp-build-oxygen</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 
 			<modules>
@@ -280,7 +280,7 @@
 		<profile>
 			<id>rcp-build-neon</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<modules>
