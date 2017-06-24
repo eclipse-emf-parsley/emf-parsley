@@ -16,4 +16,5 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.examples.mail.accountsview,
  org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider,
+ org.eclipse.emf.parsley.examples.mail.accountsview.unifiedfolders,
  org.eclipse.emf.parsley.examples.mail.accountsview.views
