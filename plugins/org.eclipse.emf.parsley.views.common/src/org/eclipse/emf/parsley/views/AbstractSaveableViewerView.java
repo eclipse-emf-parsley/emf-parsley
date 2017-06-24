@@ -61,16 +61,27 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	 * This is called after mostRecentCommandAffectsResource, so that you can
 	 * perform additional custom actions.
 	 * 
-	 * The default implementation is to select in the viewer the possible new
-	 * added child; this will also make context menu work seamlessly (if the
-	 * selection stays in the parent element, then it will not obviously change
-	 * and the context menu actions will not be recreated and they will be
-	 * stale).
+	 * The default implementation is empty.
 	 * 
 	 * @param mostRecentCommand
 	 */
 	@Override
 	public void postCommandStackChanged(Command mostRecentCommand) {
+		// empty default implementation
+	}
+
+	/**
+	 * This implementation extends the superclass' implementation and selects in the
+	 * viewer the possible new added child; this will also make context menu work
+	 * seamlessly (if the selection stays in the parent element, then it will not
+	 * obviously change and the context menu actions will not be recreated and they
+	 * will be stale).
+	 * 
+	 * @param mostRecentCommand
+	 */
+	@Override
+	public void mostRecentCommandAffectsResource(Command mostRecentCommand) {
+		super.mostRecentCommandAffectsResource(mostRecentCommand);
 		if (mostRecentCommand != null
 				&& (mostRecentCommand instanceof CreateChildCommand
 						||
