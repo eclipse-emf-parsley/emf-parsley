@@ -72,7 +72,7 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	}
 	
 	@Test def void testImportCompletion_1() {
-		newBuilder.append('import LinkedHashSet').assertText('java.util.LinkedHashSet')
+		newBuilder.append('import LinkedHashSet').assertProposal('java.util.LinkedHashSet')
 	}
 	
 	@Test def void testTypeCompletionInsertsImport() {
