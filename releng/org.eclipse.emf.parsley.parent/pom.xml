@@ -270,10 +270,13 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			</modules>
-			
+
+			<!--
+			Take the default one
 			<properties>
 				<target-file-name>oxygen-staging</target-file-name>
 			</properties>
+			-->
 		</profile>
 
 		<profile>
