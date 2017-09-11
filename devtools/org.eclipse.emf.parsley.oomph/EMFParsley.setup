@@ -118,7 +118,6 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value=""
       defaultValue="Oxygen"
       storageURI="scope://Workspace"/>
   <setupTask
@@ -1028,8 +1027,7 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="Neon"
-          defaultValue="Neon"
+          defaultValue="Oxygen"
           storageURI="scope://Workspace"/>
       <description></description>
     </stream>
