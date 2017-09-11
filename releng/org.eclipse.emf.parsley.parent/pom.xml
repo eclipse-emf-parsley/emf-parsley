@@ -407,7 +407,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>neon-simrel-rap</target-file-name>
+				<target-file-name>oxygen-rap</target-file-name>
 			</properties>
 
 		</profile>
