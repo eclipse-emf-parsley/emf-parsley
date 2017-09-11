@@ -133,7 +133,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
-      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/"/>
+      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
@@ -787,7 +787,7 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/R-builds/R20170516192513/repository"/>
+          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
       <description>Branch for Simrel for Oxygen</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
