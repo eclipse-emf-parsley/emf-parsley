@@ -258,9 +258,31 @@
 		</profile>
 
 		<profile>
-			<id>rcp-build-oxygen</id>
+			<id>rcp-build-photon</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<modules>
+				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
+			</modules>
+
+			<!--
+			Take the default one
+			<properties>
+				<target-file-name>oxygen-staging</target-file-name>
+			</properties>
+			-->
+		</profile>
+
+		<profile>
+			<id>rcp-build-oxygen</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 
 			<modules>
