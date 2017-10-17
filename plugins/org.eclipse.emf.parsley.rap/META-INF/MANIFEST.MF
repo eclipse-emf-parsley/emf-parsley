@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley
 Bundle-SymbolicName: org.eclipse.emf.parsley.rap
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.2.1.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.EmfParsleyActivator
 Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibility:=reexport,
  org.eclipse.core.databinding.property;bundle-version="1.4.0",

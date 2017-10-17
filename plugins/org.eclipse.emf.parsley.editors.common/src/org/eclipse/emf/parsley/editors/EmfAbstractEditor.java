@@ -492,13 +492,13 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Override
 	public void mostRecentCommandAffectsResource(Command mostRecentCommand) {
 		firePropertyChange(IEditorPart.PROP_DIRTY);
+		if (mostRecentCommand != null) {
+			setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+		}
 	}
 
 	@Override
 	public void postCommandStackChanged(Command mostRecentCommand) {
-		if (mostRecentCommand != null) {
-			setSelectionToViewer(mostRecentCommand.getAffectedObjects());
-		}
 		for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext();) {
 			PropertySheetPage propertySheetPage = i.next();
 			if (propertySheetPage.getControl().isDisposed()) {

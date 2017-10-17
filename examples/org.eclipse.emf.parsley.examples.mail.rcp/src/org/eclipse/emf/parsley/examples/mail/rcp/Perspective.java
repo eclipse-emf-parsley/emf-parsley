@@ -11,7 +11,7 @@
 package org.eclipse.emf.parsley.examples.mail.rcp;
 
 
-import org.eclipse.emf.parsley.examples.mail.accountsview.UnifiedFoldersView;
+import org.eclipse.emf.parsley.examples.mail.accountsview.unifiedfolders.UnifiedFoldersView;
 import org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;

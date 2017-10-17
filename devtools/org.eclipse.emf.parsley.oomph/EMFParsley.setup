@@ -118,21 +118,21 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value="Neon"
-      defaultValue="Neon"
+      defaultValue="Oxygen"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="mwe2.site"
-      value="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.3"/>
+      value="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.1"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0"
+      defaultValue=""/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
-      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/"/>
+      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
@@ -255,7 +255,7 @@
       <requirement
           name="org.eclipse.cbi.p2repo.aggregator.editor.feature.feature.group"/>
       <repository
-          url="http://download.eclipse.org/cbi/updates/aggregator/ide/4.6/"/>
+          url="http://download.eclipse.org/cbi/updates/aggregator/ide/4.7/"/>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -337,7 +337,7 @@
           xsi:type="setup.p2:P2Task"
           label="Eclemma Jacoco">
         <requirement
-            name="com.mountainminds.eclemma.feature.feature.group"/>
+            name="org.eclipse.eclemma.feature.feature.group"/>
         <repository
             url="http://update.eclemma.org"/>
       </setupTask>
@@ -539,7 +539,24 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/staging/oxygen/"/>
+              url="http://download.eclipse.org/releases/oxygen/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+          <repository
+              url="${orbit.site}"/>
+        </repositoryList>
+        <repositoryList
+            name="Photon">
+          <repository
+              url="http://download.eclipse.org/staging/photon/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -724,19 +741,13 @@
         name="master"
         label="Master">
       <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Neon"
-          defaultValue="Neon"
-          storageURI="scope://Workspace"/>
-      <setupTask
           xsi:type="setup.p2:P2Task"
           id="p2.org.eclipse.xtext.2"
           label="Xtext Releases"
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.10.0,2.11.0)"/>
+            versionRange="[2.12.0,2.13.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -786,8 +797,49 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/R-builds/R20170516192513/repository"/>
+          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
       <description>Branch for Simrel for Oxygen</description>
+    </stream>
+    <stream
+        name="photon-simrel"
+        label="Photon-Simrel">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Photon"
+          defaultValue="Photon"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup.p2:P2Task"
+          id="p2.org.eclipse.xtext.4"
+          label="Xtext Releases"
+          licenseConfirmationDisabled="true">
+        <requirement
+            name="org.eclipse.xtext.sdk.feature.group"
+            versionRange="[2.13.0,2.14.0)"/>
+        <requirement
+            name="de.itemis.xtext.antlr.feature.feature.group"/>
+        <repository
+            url="${xtext.site}"/>
+        <repository
+            url="${mwe2.site}"/>
+        <repository
+            url="http://download.itemis.com/updates/releases/2.1.1/"/>
+        <description>Xtext &amp; Xtend</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/staging/photon/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/staging/photon/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="orbit.site"
+          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
+      <description>Branch for Simrel for Photon</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
   </project>
@@ -1033,8 +1085,7 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="Neon"
-          defaultValue="Neon"
+          defaultValue="Oxygen"
           storageURI="scope://Workspace"/>
       <description></description>
     </stream>
@@ -1056,6 +1107,25 @@
           name="xtext.site"
           value="http://download.eclipse.org/staging/oxygen/"/>
       <description>Branch for Simrel for Oxygen</description>
+    </stream>
+    <stream
+        name="photon-simrel"
+        label="Photon-Simrel">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="Photon"
+          defaultValue="Photon"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/staging/photon/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/staging/photon/"/>
+      <description>Branch for Simrel for Photon</description>
     </stream>
     <description>EMF Parsley version for RAP</description>
   </project>

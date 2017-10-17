@@ -28,6 +28,7 @@ public class AccountsView extends SaveableTreeView {
 
 	@Override
 	public void mostRecentCommandAffectsResource(Command mostRecentCommand) {
+		super.mostRecentCommandAffectsResource(mostRecentCommand);
 		try {
 			saveResourceAndUpdateDirtyState();
 		} catch (IOException e) {
