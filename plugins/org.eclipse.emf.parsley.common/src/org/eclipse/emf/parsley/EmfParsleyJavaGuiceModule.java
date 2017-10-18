@@ -154,6 +154,15 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 
 	/**
+	 * The int constant defining the number of columns in the Grid layout.
+	 * 
+	 * @since 1.3
+	 */
+	public int valueDetailGridColumns() {
+		return 2;
+	}
+
+	/**
 	 * Use this binding to provide your own implementation of getImages methods.
 	 * Default implementation is {@link ClassLoaderImageHelper}.
 	 * @return a specialization of {@link IImageHelper}

@@ -1,5 +1,14 @@
 chapter:MigrationGuide[Migration Guide]
 
+section:VersionOneDotThree[From 1.0.0 to 1.3.0]
+
+ul[
+item[e[XXXDetailComposite] constructors now also take the number of columns of the
+grid layout (which is passed by the corresponding factories through injection).
+Versions with two parameters of constructors have been deprecated.
+]
+]
+
 section:VersionOne[From 0.7.0 to 1.0.0]
 
 ul[

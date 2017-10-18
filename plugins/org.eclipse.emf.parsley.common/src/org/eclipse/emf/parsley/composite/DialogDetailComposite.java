@@ -25,10 +25,21 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 	@Inject
 	private DialogControlFactory dialogControlFactory;
 
+	/**
+	 * @deprecated Use {@link #DialogDetailComposite(Composite, int, int)}
+	 */
+	@Deprecated
 	public DialogDetailComposite(Composite parent, int style) {
+		this(parent, style, 2);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public DialogDetailComposite(Composite parent, int style, int gridColumns) {
 		super(parent, style);
 
-		setLayout(new GridLayout(2, false));
+		setLayout(new GridLayout(gridColumns, false));
 	}
 
 	@Override

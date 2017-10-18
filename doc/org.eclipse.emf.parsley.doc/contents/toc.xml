@@ -126,6 +126,8 @@
 	</topic>
 	<topic href="contents/00-Main_6.html#EMF%20Parsley%20Guide_6" label="Appendix" >
 		<topic href="contents/Migration-Guide.html#MigrationGuide" label="Migration Guide" >
+			<topic href="contents/Migration-Guide.html#VersionOneDotThree" label="From 1.0.0 to 1.3.0" >
+			</topic>
 			<topic href="contents/Migration-Guide.html#VersionOne" label="From 0.7.0 to 1.0.0" >
 			</topic>
 			<topic href="contents/Migration-Guide.html#SixSeven" label="From 0.6.0 to 0.7.0" >

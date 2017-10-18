@@ -32,6 +32,11 @@ public class EmfParsleyConstants {
 
 	public static final String TREE_FORM_SASH_WEIGHTS = "TreeFormSashWeights";
 
+	/**
+	 * @since 1.3
+	 */
+	public static final String DETAIL_GRID_COLUMNS = "DetailGridColumns";
+
 	protected EmfParsleyConstants() {
 
 	}

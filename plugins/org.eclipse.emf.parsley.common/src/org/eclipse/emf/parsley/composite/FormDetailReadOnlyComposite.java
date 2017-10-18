@@ -23,8 +23,19 @@ import com.google.inject.Inject;
  */
 public class FormDetailReadOnlyComposite extends FormDetailComposite {
 
+	/**
+	 * @deprecated Use {@link #FormDetailReadOnlyComposite(Composite, int, int)}
+	 */
+	@Deprecated
 	public FormDetailReadOnlyComposite(Composite parent, int style) {
-		super(parent, style);
+		this(parent, style, 2);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public FormDetailReadOnlyComposite(Composite parent, int style, int gridColumns) {
+		super(parent, style, gridColumns);
 	}
 
 	@Override

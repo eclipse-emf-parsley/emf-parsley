@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
 import org.eclipse.emf.parsley.composite.DialogDetailComposite;
 import org.eclipse.swt.widgets.Composite;
@@ -19,6 +20,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
 import com.google.inject.MembersInjector;
+import com.google.inject.name.Named;
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
@@ -34,6 +36,10 @@ public class DialogFactory {
 
 	@Inject
 	protected MembersInjector<DialogDetailComposite> detailComponentDialogMembersInjection;
+
+	@Inject
+	@Named(EmfParsleyConstants.DETAIL_GRID_COLUMNS)
+	private int detailGridColumns;
 
 	@Inject
 	public DialogFactory() {
@@ -59,7 +65,7 @@ public class DialogFactory {
 	public AbstractDetailComposite createDialogDetailComposite(
 			Composite parent, int style) {
 		DialogDetailComposite detailComposite = new DialogDetailComposite(
-				parent, style);
+				parent, style, detailGridColumns);
 		detailComponentDialogMembersInjection.injectMembers(detailComposite);
 		return detailComposite;
 	}

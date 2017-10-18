@@ -56,7 +56,8 @@ valueIterableStringMaxLength
 valueDefaultTableColumnWeight
 valueTableColumnWeights
 valueTreeFormSashStyle
-valueTreeFormSashWeights''',
+valueTreeFormSashWeights
+valueDetailGridColumns''',
 		'''
 		module my.test.mod {}
 		'''.parse.module.allGuiceValueBindingsMethodsInSuperclass.map[simpleName].join("\n"))

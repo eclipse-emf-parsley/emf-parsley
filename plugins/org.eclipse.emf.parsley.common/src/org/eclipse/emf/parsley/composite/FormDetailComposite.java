@@ -42,7 +42,18 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private FormTitleAdapter headerAdapter;
 
+	/**
+	 * @deprecated Use {@link #FormDetailComposite(Composite, int, int)}
+	 */
+	@Deprecated
 	public FormDetailComposite(Composite parent, int style) {
+		this(parent, style, 2);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public FormDetailComposite(Composite parent, int style, int gridColumns) {
 		super(parent, style);
 
 		toolkit = new FormToolkit(parent.getDisplay());
@@ -53,7 +64,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		scrolledForm = toolkit.createScrolledForm(this);
 		// make sure that the form takes all the space
 		scrolledForm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		scrolledForm.getBody().setLayout(new GridLayout(2, false));
+		scrolledForm.getBody().setLayout(new GridLayout(gridColumns, false));
 
 		main = scrolledForm.getBody();
 
