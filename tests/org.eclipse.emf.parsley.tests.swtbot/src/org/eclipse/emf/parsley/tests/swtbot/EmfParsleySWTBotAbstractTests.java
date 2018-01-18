@@ -1085,6 +1085,12 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		List<IMarker> errorMarkers = new LinkedList<IMarker>();
 		for (int i = 0; i < markers.length; i++) {
 			IMarker iMarker = markers[i];
+			// for the moment we ignore warnings for MANIFEST of the shape
+			// 'Automatic-Module-Name' header is required for Java 9 compatibility
+			if (iMarker.getAttribute(IMarker.SEVERITY).equals(IMarker.SEVERITY_WARNING) &&
+				iMarker.getAttribute(IMarker.MESSAGE).toString().contains("'Automatic-Module-Name'")) {
+				continue;
+			}
 			errorMarkers.add(iMarker);
 		}
 		assertEquals(
