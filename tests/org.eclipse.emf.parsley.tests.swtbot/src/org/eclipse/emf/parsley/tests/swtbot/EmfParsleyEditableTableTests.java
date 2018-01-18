@@ -11,12 +11,15 @@
 package org.eclipse.emf.parsley.tests.swtbot;
 
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.eclipse.emf.parsley.tests.models.testmodels.EnumForControls;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.junit.After;
@@ -204,7 +207,7 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		table.click(ROW, column);
 		bot.text(originalValue).setText(newValue);
 		// we leave the cell by clicking on the enum cell
-		leaveEditingCellClickingOnAnotherCell(ENUM_FEATURE);
+		leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
 		String cellContents = table.cell(ROW, column);
 		// just assert string containment for the reason above
 		assertTrue(
@@ -228,7 +231,7 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		table.click(ROW, DATE_FEATURE);
 		bot.text("").setText("2000");
 		// we leave the cell by clicking on the enum cell
-		leaveEditingCellClickingOnAnotherCell(ENUM_FEATURE);
+		leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
 		// the date was not valid so the original value has not changed
 		assertEquals("", table.cell(ROW, DATE_FEATURE));
 		assertSaveableViewIsDirty(false, TEST_MODEL_EDITABLE_TABLE_VIEW);
@@ -253,11 +256,43 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 	 * @param originalValue
 	 */
 	private void clickBooleanCell(int column, String originalValue) {
-		clickComboCell(column, originalValue, "true");
+		if (getOrgEclipseEmfEditUiMinorVersion() < 14) {
+			clickComboCell(column, originalValue, "true");
+		} else {
+			// In EMF 2.14 for booleans we have checkboxes instead of
+			// combo box
+			table.click(ROW, column);
+			SWTBotCheckBox checkBox = bot.checkBox();
+			// we always start from an unchecked checkbox
+			assertFalse("should not be checked", checkBox.isChecked());
+			checkBox.click(); // checked
+			leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
+			assertDirtyAndSave();
+			undo("Set");
+			assertEquals(originalValue, table.cell(ROW, column));
+			assertDirtyAndSave();
+			redo("Set");
+			// for Boolean objects (not primitive boolean) or
+			// Boolean datatype we have 3 state checkbox:
+			// null, false, true
+			// for Boolean and Boolean datatype we pass an empty originalValue
+			// and redoing leads to "false" (instead of "true"),
+			// since we redo one state (different from clicking?)
+			assertEquals(originalValue.isEmpty() ? "false" : "true", table.cell(ROW, column));
+			assertDirtyAndSave();
+		}
 	}
 
 	private void clickComboCell(int column, String firstValue, String secondValue) {
 		table.click(ROW, column);
+		if (getOrgEclipseEmfEditUiMinorVersion() >= 14) {
+			// in EMF 2.14 the combo box automatically shows the dropdown list
+			// as soon as the cell is selected, see
+			// org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor.ExtendedComboBoxCellEditor(Composite, List<?>, ILabelProvider, boolean, int, ValueHandler, boolean)
+			// so we need to close the list window, otherwise the original combo
+			// cannot be found by SWTBot
+			bot.activeShell().close();
+		}
 		final SWTBotCCombo ccomboBox = bot.ccomboBox(firstValue);
 		ccomboBox.setSelection(secondValue);
 		leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
@@ -288,7 +323,7 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		table.click(ROW, column);
 		bot.text(originalValue).setText(newValue);
 		// we leave the cell by clicking on the enum cell
-		leaveEditingCellClickingOnAnotherCell(ENUM_FEATURE);
+		leaveEditingCellClickingOnAnotherCell(INT_FEATURE);
 		assertEquals(effectiveNewValue, table.cell(ROW, column));
 		assertDirtyAndSave();
 		undo("Set");
@@ -303,7 +338,7 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		table.click(ROW, column);
 		bot.text(value).setText(value);
 		// we leave the cell by clicking on the enum cell
-		leaveEditingCellClickingOnAnotherCell(ENUM_FEATURE);
+		leaveEditingCellClickingOnAnotherCell(INT_FEATURE);
 		assertEquals(value, table.cell(ROW, column));
 		assertSaveableViewIsDirty(false, TEST_MODEL_EDITABLE_TABLE_VIEW);
 	}
@@ -324,7 +359,7 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
 
 		// we leave the cell by clicking on the enum cell
-		leaveEditingCellClickingOnAnotherCell(ENUM_FEATURE);
+		leaveEditingCellClickingOnAnotherCell(STRING_FEATURE);
 
 		assertEquals(newValue, table.cell(ROW, column));
 		assertDirtyAndSave();

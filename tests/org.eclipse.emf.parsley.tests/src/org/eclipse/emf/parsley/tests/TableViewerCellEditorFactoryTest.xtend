@@ -49,8 +49,11 @@ class TableViewerCellEditorFactoryTest extends AbstractEmfParsleyShellBasedTest 
 	}
 
 	@Test def void testBooleanFeature() {
-		createCellEditor(classForControlsInstance, testPackage.classForControls_BooleanFeature).class.assertClass(
-			ExtendedComboBoxCellEditor)
+		createCellEditor(classForControlsInstance, testPackage.classForControls_BooleanFeature).
+			class.assertClassNames(
+				ExtendedComboBoxCellEditor.simpleName,
+				"CheckBoxCellEditor") // this was introduced in EMF 2.14, and it's used by default in EMF 2.14
+				// we can't refer to the actual type since it's not present in previous versions
 	}
 
 	@Test def void testEnumFeature() {
@@ -69,5 +72,18 @@ class TableViewerCellEditorFactoryTest extends AbstractEmfParsleyShellBasedTest 
 
 	def private assertClass(Class<?> actual, Class<?> expected) {
 		expected.simpleName.assertEquals(actual.simpleName)
+	}
+
+	def private assertClassNames(Class<?> actual, String...expected) {
+		for (e : expected) {
+			if (e == actual.simpleName) {
+				return
+			}
+		}
+		fail(
+			actual.simpleName +
+			" does not match any of " +
+			expected.map[toString].join(", ")
+		)
 	}
 }
