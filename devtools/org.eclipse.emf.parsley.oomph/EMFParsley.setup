@@ -90,6 +90,10 @@
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.core.resources/refresh.lightweight.enabled"
         value="false"/>
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.core.resources/missingNatureMarkerSeverity"
+        value="-1"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
