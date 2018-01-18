@@ -493,7 +493,15 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected static int getOrgEclipseUiMinorVersion() {
-		String version = Platform.getBundle(PlatformUI.PLUGIN_ID).getHeaders()
+		return getPluginVersion(PlatformUI.PLUGIN_ID);
+	}
+
+	protected static int getOrgEclipseEmfEditUiMinorVersion() {
+		return getPluginVersion("org.eclipse.emf.edit.ui");
+	}
+
+	private static int getPluginVersion(String pluginId) {
+		String version = Platform.getBundle(pluginId).getHeaders()
 				.get("Bundle-Version");
 
 		Pattern versionPattern = Pattern.compile("\\d+\\.(\\d+)\\..*");
