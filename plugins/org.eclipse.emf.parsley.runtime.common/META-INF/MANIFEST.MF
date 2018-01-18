@@ -21,3 +21,4 @@ Export-Package: org.eclipse.emf.parsley.runtime.exception,
  org.eclipse.emf.parsley.runtime.service,
  org.eclipse.emf.parsley.runtime.ui,
  org.eclipse.emf.parsley.runtime.util
+Automatic-Module-Name: org.eclipse.emf.parsley.runtime.common

@@ -55,3 +55,4 @@ Import-Package: org.eclipse.emf.common.ui,
  org.eclipse.ui.views,
  org.eclipse.ui.views.contentoutline,
  org.eclipse.ui.views.properties;ui.views=split
+Automatic-Module-Name: org.eclipse.emf.parsley.editors.common

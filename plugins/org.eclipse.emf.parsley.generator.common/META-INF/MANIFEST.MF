@@ -10,4 +10,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.generator.common
 Bundle-Vendor: Eclipse Modeling Project
+Automatic-Module-Name: org.eclipse.emf.parsley.generator.common
 

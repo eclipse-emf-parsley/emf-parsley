@@ -15,3 +15,4 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.examples.mail.mailsview,
  org.eclipse.emf.parsley.examples.mail.mailsview.views
+Automatic-Module-Name: org.eclipse.emf.parsley.examples.mail.mailsview

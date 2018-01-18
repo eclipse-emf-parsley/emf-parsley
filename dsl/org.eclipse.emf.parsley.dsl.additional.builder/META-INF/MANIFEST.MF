@@ -20,4 +20,5 @@ Export-Package: org.eclipse.emf.parsley.dsl.additional.builder,
  org.eclipse.emf.parsley.dsl.additional.builder.builder,
  org.eclipse.emf.parsley.dsl.pluginxml
 Bundle-Vendor: Eclipse Modeling Project
+Automatic-Module-Name: org.eclipse.emf.parsley.dsl.additional.builder
 

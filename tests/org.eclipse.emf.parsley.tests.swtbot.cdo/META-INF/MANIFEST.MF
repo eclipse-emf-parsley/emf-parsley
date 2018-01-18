@@ -26,3 +26,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.swtbot.junit4_x;bundle-version="2.2.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Automatic-Module-Name: org.eclipse.emf.parsley.tests.swtbot.cdo

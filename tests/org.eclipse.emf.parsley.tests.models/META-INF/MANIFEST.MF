@@ -13,3 +13,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.tests.models.testmodels,
  org.eclipse.emf.parsley.tests.models.testmodels.impl,
  org.eclipse.emf.parsley.tests.models.testmodels.util
+Automatic-Module-Name: org.eclipse.emf.parsley.tests.models

@@ -84,3 +84,4 @@ Import-Package: org.apache.log4j;version="1.2.13",
  org.eclipse.ui.views,
  org.eclipse.ui.views.contentoutline,
  org.eclipse.ui.views.properties;ui.views=split
+Automatic-Module-Name: org.eclipse.emf.parsley.common

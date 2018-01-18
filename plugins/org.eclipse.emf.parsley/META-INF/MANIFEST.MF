@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibili
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.log4j;version="1.2.13"
+Automatic-Module-Name: org.eclipse.emf.parsley

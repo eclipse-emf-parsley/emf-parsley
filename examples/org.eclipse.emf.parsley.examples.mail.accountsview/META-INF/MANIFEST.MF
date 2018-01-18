@@ -18,3 +18,4 @@ Export-Package: org.eclipse.emf.parsley.examples.mail.accountsview,
  org.eclipse.emf.parsley.examples.mail.accountsview.ui.provider,
  org.eclipse.emf.parsley.examples.mail.accountsview.unifiedfolders,
  org.eclipse.emf.parsley.examples.mail.accountsview.views
+Automatic-Module-Name: org.eclipse.emf.parsley.examples.mail.accountsview

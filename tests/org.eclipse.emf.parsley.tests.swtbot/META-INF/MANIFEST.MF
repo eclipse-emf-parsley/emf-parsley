@@ -31,3 +31,4 @@ Bundle-Activator: org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBo
 Export-Package: org.eclipse.emf.parsley.tests.swtbot,
  org.eclipse.emf.parsley.tests.swtbot.editors,
  org.eclipse.emf.parsley.tests.swtbot.views
+Automatic-Module-Name: org.eclipse.emf.parsley.tests.swtbot

@@ -15,3 +15,4 @@ Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.3.0",
  org.eclipse.emf.parsley.examples.mail.model;bundle-version="0.7.0",
  org.eclipse.emf.parsley.examples.mail.rcp;bundle-version="0.7.0",
  org.eclipse.swtbot.forms.finder;bundle-version="2.3.0"
+Automatic-Module-Name: org.eclipse.emf.parsley.tests.swtbot.examples

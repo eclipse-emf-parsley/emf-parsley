@@ -40,4 +40,5 @@ Export-Package: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.dsl.util,
  org.eclipse.emf.parsley.dsl.validation,
  org.eclipse.emf.parsley.dsl.formatting2
+Automatic-Module-Name: org.eclipse.emf.parsley.dsl
 

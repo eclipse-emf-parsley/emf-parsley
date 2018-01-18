@@ -19,3 +19,4 @@ Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.emf.parsley.examples.eclipse4.parsleypart

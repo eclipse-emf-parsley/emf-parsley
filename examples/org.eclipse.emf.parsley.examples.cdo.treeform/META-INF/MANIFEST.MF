@@ -57,3 +57,4 @@ Import-Package: org.apache.commons.logging,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.examples.cdo.treeform,
  org.eclipse.emf.parsley.examples.cdo.view
+Automatic-Module-Name: org.eclipse.emf.parsley.examples.cdo.treeform
