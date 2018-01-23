@@ -47,6 +47,18 @@
 		<Method name="getFeature" />
 		<Bug pattern="EC_UNRELATED_TYPES_USING_POINTER_EQUALITY" />
 	</Match>
+	<Match>
+		<Class
+			name="org.eclipse.emf.parsley.internal.edit.ui.dnd.DynamicEditingDomainViewerDropAdapter" />
+		<Method name="drop" />
+		<Bug pattern="NP_NONNULL_PARAM_VIOLATION" />
+	</Match>
+	<Match>
+		<Class
+			name="org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider" />
+		<Method name="getParent" />
+		<Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE" />
+	</Match>
 	
 	<!-- someArray.hashCode() is desired -->
 	<Match>
