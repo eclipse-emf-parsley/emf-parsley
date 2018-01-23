@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Injector
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.domain.SingletonAdapterFactoryEditingDomainProvider
 import org.eclipse.swt.SWT
@@ -21,6 +22,8 @@ import static extension org.junit.Assert.*
 class ViewerFactoryTest extends AbstractViewerTest {
 
 	var Injector injector
+
+	val static LOCAL_EMPTY_RESOURCE_URI = "resources/EmptyResource.xmi"
 
 	override setupViewerStuff() {
 		super.setupViewerStuff()
@@ -45,7 +48,10 @@ class ViewerFactoryTest extends AbstractViewerTest {
 
 	@Test def void testInitializeWithEditingDomain() {
 		val editingDomain = injector.getInstance(EditingDomain)
-		editingDomain.resourceSet.setupResouceFactory.loadTestResource
+		// use a resource that is physically present in the file system
+		// i.e., something stored in the git repository
+		editingDomain.resourceSet.setupResouceFactory.
+			getResource(URI.createURI(LOCAL_EMPTY_RESOURCE_URI), true)
 		viewerFactory.initialize(treeViewer, editingDomain)
 		syncExecVoid[
 			1.assertEquals(treeViewer.treeItems.size)

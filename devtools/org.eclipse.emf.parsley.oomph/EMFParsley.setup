@@ -120,6 +120,19 @@
         value="jgit-default-mergeStrategy"/>
   </setupTask>
   <setupTask
+      xsi:type="setup:CompoundTask"
+      name="org.eclipse.wst.xml.core">
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.wst.xml.core/indentationChar"
+        value="tab"/>
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        id="sync37"
+        key="/instance/org.eclipse.wst.xml.core/indentationSize"
+        value="1"/>
+  </setupTask>
+  <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
       defaultValue="Oxygen"
