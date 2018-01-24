@@ -20,6 +20,8 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.parsley.annotation.CompositeParent;
+import org.eclipse.emf.parsley.annotation.CompositeStyle;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.composite.FormFactory;
@@ -77,9 +79,11 @@ import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Binder;
 import com.google.inject.Provider;
+import com.google.inject.util.Providers;
 
 /**
  * Default Google Guice bindings; this can be used in a pure Java environment, without
@@ -94,6 +98,10 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		// default bindings for our annotations
+		// these will be overridden by our custom factories
+		binder.bind(Integer.class).annotatedWith(CompositeStyle.class).toInstance(0);
+		binder.bind(Composite.class).annotatedWith(CompositeParent.class).toProvider(Providers.<Composite>of(null));
 	}
 
 	/**
