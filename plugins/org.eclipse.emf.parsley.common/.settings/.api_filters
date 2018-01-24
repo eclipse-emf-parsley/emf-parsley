@@ -4,7 +4,7 @@
         <filter id="926941240">
             <message_arguments>
                 <message_argument value="1.3.0"/>
-                <message_argument value="1.1.0"/>
+                <message_argument value="1.2.0"/>
             </message_arguments>
         </filter>
     </resource>
