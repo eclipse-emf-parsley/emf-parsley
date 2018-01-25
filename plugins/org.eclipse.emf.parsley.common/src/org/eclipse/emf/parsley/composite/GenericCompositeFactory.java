@@ -10,33 +10,28 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-import org.eclipse.emf.parsley.annotation.CompositeParent;
-import org.eclipse.emf.parsley.annotation.CompositeStyle;
-import org.eclipse.emf.parsley.runtime.util.InjectorUtil;
+import org.eclipse.emf.parsley.internal.composite.CompositeParametersProvider;
 import org.eclipse.swt.widgets.Composite;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.google.inject.Module;
+import com.google.inject.Singleton;
 
 /**
  * A generic factory for {@link Composite} that injects arguments for the
- * constructor's parent and style parameters, which must be annotated with
- * {@link CompositeParent} and {@link CompositeStyle}, respectively.
+ * constructor's parent and style parameters, which are wrapped in a
+ * {@link CompositeParameters} object.
  * 
  * For example, you can create by injections instances of classes with the given
- * constructor (note the {@link Inject} annotation and the
- * {@link CompositeParent} and {@link CompositeStyle} parameter annotations):
+ * constructor (note the {@link Inject} annotation:
  * 
  * <pre>
  * class MyComposite extends Composite {
  * 	&#64;Inject private IContentProvider contentProvider;
  * 
  * 	&#64;Inject
- * 	public MyComposite(&#64;CompositeParent Composite parent, &#64;CompositeStyle int style, ILabelProvider labelProvider) {
- * 		super(parent, style);
+ * 	public MyComposite(CompositeParameters params, ILabelProvider labelProvider) {
+ * 		super(params.getParent(), params.getStyle());
  * 		...
  * 	}
  * }
@@ -59,27 +54,37 @@ import com.google.inject.Module;
  * injection (implicitly). Moreover, other fields will be automatically injected
  * as well.
  * 
+ * You may want to make your Composite extend our facility class
+ * {@link InjectableComposite}, that automatically unwraps the parent and the
+ * style. For example, the MyComposite above could have been written as follows:
+ * 
+ * <pre>
+ * class MyComposite extends InjectableComposite {
+ * 	&#64;Inject private IContentProvider contentProvider;
+ * 
+ * 	&#64;Inject
+ * 	public MyComposite(CompositeParameters params, ILabelProvider labelProvider) {
+ * 		super(params);
+ * 		...
+ * 	}
+ * }
+ * </pre>
+ * 
  * @author Lorenzo Bettini
  * @since 2.0
  */
+@Singleton
 public class GenericCompositeFactory {
 
 	@Inject
-	private Injector parentInjector;
+	private CompositeParametersProvider provider;
 
-	public <T extends Composite> T create(Class<T> type, final Composite parent, final int style) {
-		Module override = InjectorUtil.overrideModuleFromInjector(parentInjector, new AbstractModule() {
-			@Override
-			protected void configure() {
-				bind(Composite.class)
-					.annotatedWith(CompositeParent.class)
-					.toInstance(parent);
-				bind(Integer.class)
-					.annotatedWith(CompositeStyle.class)
-					.toInstance(style);
-			}
-		});
-		return Guice.createInjector(override).getInstance(type);
+	@Inject
+	private Injector injector;
+
+	synchronized public <T extends Composite> T create(Class<T> type, final Composite parent, final int style) {
+		provider.insertForLaterProvide(new CompositeParameters(parent, style));
+		return injector.getInstance(type);
 	}
 
 }

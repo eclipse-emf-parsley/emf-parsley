@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <component id="org.eclipse.emf.parsley.common" version="2">
-    <resource path="META-INF/MANIFEST.MF">
-        <filter id="925892614">
-            <message_arguments>
-                <message_argument value="2.0.0"/>
-                <message_argument value="1.2.0"/>
-            </message_arguments>
-        </filter>
-    </resource>
     <resource path="src/org/eclipse/emf/parsley/edit/action/EditingActionManager.java" type="org.eclipse.emf.parsley.edit.action.EditingActionManager">
         <filter comment="we need this, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=404727" id="574664731">
             <message_arguments>

@@ -14,7 +14,6 @@ Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibili
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.parsley,
- org.eclipse.emf.parsley.annotation,
  org.eclipse.emf.parsley.composite,
  org.eclipse.emf.parsley.config,
  org.eclipse.emf.parsley.dialogs,
@@ -27,6 +26,7 @@ Export-Package: org.eclipse.emf.parsley,
  org.eclipse.emf.parsley.edit.ui.dnd,
  org.eclipse.emf.parsley.edit.ui.provider,
  org.eclipse.emf.parsley.handlers,
+ org.eclipse.emf.parsley.internal.composite;x-internal:=true,
  org.eclipse.emf.parsley.internal.databinding;x-internal:=true,
  org.eclipse.emf.parsley.internal.edit.ui.dnd,
  org.eclipse.emf.parsley.internal.viewers;x-internal:=true,
