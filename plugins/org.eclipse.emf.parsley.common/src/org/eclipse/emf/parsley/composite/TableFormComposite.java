@@ -12,6 +12,7 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -34,17 +35,16 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 
 	private TableViewer tableViewer;
 
-	public TableFormComposite(Composite parent, int style) {
-		super(parent, style);
-	}
+	private EClass eClass;
 
-	public ViewerFactory getViewerFactory() {
-		return viewerFactory;
-	}
-
+	/**
+	 * @since 2.0
+	 */
 	@Inject
-	public void setViewerFactory(ViewerFactory tableViewerBuilder) {
-		this.viewerFactory = tableViewerBuilder;
+	public TableFormComposite(EClassCompositeParameters params, ViewerFactory viewerFactory) {
+		super(params);
+		this.eClass = params.getEClass();
+		this.viewerFactory = viewerFactory;
 	}
 
 	@Override
@@ -53,16 +53,13 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 		TableColumnLayout layout = new TableColumnLayout();
 		viewerContainer.setLayout(layout);
 		tableViewer = new TableViewer(viewerContainer, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
+		viewerFactory.buildColumns(tableViewer, eClass);
 		return tableViewer;
 	}
 
 	@Override
 	public void update(Object contents) {
 		tableViewer.setInput(contents);
-	}
-
-	public void buildTable(EClass eType) {
-		viewerFactory.buildColumns(tableViewer, eType);
 	}
 
 }

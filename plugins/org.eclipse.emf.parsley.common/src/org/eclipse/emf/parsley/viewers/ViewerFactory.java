@@ -32,6 +32,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.Singleton;
 
 /**
  * Factory for viewers for EMF resources.
@@ -39,6 +40,7 @@ import com.google.inject.Provider;
  * @author Lorenzo Bettini
  * 
  */
+@Singleton
 public class ViewerFactory {
 
 	@Inject

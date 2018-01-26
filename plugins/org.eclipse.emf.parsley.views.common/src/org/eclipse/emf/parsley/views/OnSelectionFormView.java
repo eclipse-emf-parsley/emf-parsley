@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.FormDetailComposite;
-import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -31,12 +30,12 @@ import com.google.inject.Inject;
 public class OnSelectionFormView extends AbstractOnSelectionView {
 
 	@Inject
-	protected FormFactory formFactory;
+	private CompositeFactory compositeFactory;
 
 	protected Composite parent;
 
 	protected FormDetailComposite formComposite;
-	
+
 	public OnSelectionFormView() {
 	}
 
@@ -47,23 +46,20 @@ public class OnSelectionFormView extends AbstractOnSelectionView {
 	}
 
 	@Override
-	protected void updateOnSelection(IWorkbenchPart sourcepart,
-			ISelection selection) {
-
+	protected void updateOnSelection(IWorkbenchPart sourcepart, ISelection selection) {
 		EObject eObject = getFirstSelectedEObject(selection);
 		if (eObject != null) {
 			resetFormComposite();
-			
+
 			formComposite = createFormDetailComposite();
 			formComposite.init(eObject);
-			
+
 			parent.layout(true, true);
 		}
 	}
 
 	protected FormDetailComposite createFormDetailComposite() {
-		return formFactory.createFormDetailComposite(
-				parent, SWT.NONE);
+		return compositeFactory.createFormDetailComposite(parent, SWT.NONE);
 	}
 
 	protected void resetFormComposite() {

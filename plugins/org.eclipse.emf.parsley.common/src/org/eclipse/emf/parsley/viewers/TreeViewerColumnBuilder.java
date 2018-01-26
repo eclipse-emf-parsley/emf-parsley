@@ -44,7 +44,7 @@ public class TreeViewerColumnBuilder {
 
 	@Inject
 	@Named(EmfParsleyConstants.TABLE_COLUMN_WEIGHTS)
-	private List<Integer> weights;
+	private int[] weights;
 
 	@Inject
 	private ColumnLabelProviderFactory columnLabelProviderFactory;
@@ -108,8 +108,8 @@ public class TreeViewerColumnBuilder {
 
 	private int customWeightOrDefaultWeight(int i) {
 		int weight = defaultWeight;
-		if (weights.size() > i) {
-			weight = weights.get(i);
+		if (weights.length > i) {
+			weight = weights[i];
 		}
 		return weight;
 	}

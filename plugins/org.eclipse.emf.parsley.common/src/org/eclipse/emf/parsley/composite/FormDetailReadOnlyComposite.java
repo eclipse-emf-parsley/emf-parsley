@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.emf.parsley.inject.CompositeParameters;
 
 import com.google.inject.Inject;
 
@@ -23,13 +23,17 @@ import com.google.inject.Inject;
  */
 public class FormDetailReadOnlyComposite extends FormDetailComposite {
 
-	public FormDetailReadOnlyComposite(Composite parent, int style) {
-		super(parent, style);
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public FormDetailReadOnlyComposite(CompositeParameters params) {
+		super(params);
 	}
 
 	@Override
 	@Inject
-	public void setFormControlFactory(FormControlFactory formControlFactory) {
+	protected void setFormControlFactory(FormControlFactory formControlFactory) {
 		formControlFactory.setReadonly(true);
 		super.setFormControlFactory(formControlFactory);
 	}

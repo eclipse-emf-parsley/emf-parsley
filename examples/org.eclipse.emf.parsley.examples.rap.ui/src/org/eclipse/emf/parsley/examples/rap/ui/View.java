@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.examples.rap.ui;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
-import org.eclipse.emf.parsley.composite.TreeFormFactory;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.resource.ResourceManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -26,7 +26,7 @@ public class View extends ViewPart {
 
 	@Inject private ResourceManager resourceManager;
 	
-	@Inject private TreeFormFactory treeFormFactory;
+	@Inject private CompositeFactory compositeFactory;
 	
 	protected TreeFormComposite treeFormComposite;
 
@@ -35,7 +35,7 @@ public class View extends ViewPart {
 	 * it.
 	 */
 	public void createPartControl(Composite parent) {
-		treeFormComposite = treeFormFactory.createTreeFormComposite(parent,
+		treeFormComposite = compositeFactory.createTreeFormComposite(parent,
 				SWT.BORDER);
 		
 		Resource resource = new ResourceImpl();

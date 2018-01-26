@@ -11,7 +11,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-
+import org.eclipse.emf.parsley.EmfParsleyConstants;
+import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -19,6 +20,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 /**
  * A generic composite with a Tree and a Form with details of the selected
@@ -28,11 +30,18 @@ import com.google.inject.Inject;
  * 
  */
 public class TreeFormComposite extends AbstractMasterDetailComposite {
-	
+
+	@Inject
 	private ViewerFactory viewerFactory;
-	
-	public TreeFormComposite(Composite parent, int style, int sashStyle, int[] weights) {
-		super(parent, style, sashStyle, weights);
+
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public TreeFormComposite(CompositeParameters params,
+			@Named(EmfParsleyConstants.TREE_FORM_SASH_STYLE) int sashStyle,
+			@Named(EmfParsleyConstants.TREE_FORM_SASH_WEIGHTS) int[] weights) {
+		super(params, sashStyle, weights);
 	}
 
 	@Override
@@ -43,16 +52,8 @@ public class TreeFormComposite extends AbstractMasterDetailComposite {
 	@Override
 	public void update(Object element) {
 		if (element != null) {
-			viewerFactory.initialize(getViewer(), element);	
+			viewerFactory.initialize(getViewer(), element);
 		}
 	}
-	
-	public ViewerFactory getViewerFactory() {
-		return viewerFactory;
-	}
 
-	@Inject
-	public void setViewerFactory(ViewerFactory viewerInitializer) {
-		this.viewerFactory = viewerInitializer;
-	}
 }

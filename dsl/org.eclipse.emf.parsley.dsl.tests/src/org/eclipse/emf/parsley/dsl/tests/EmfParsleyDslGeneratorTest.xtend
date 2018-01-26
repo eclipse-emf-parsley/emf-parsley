@@ -2022,7 +2022,8 @@ import java.util.List
 
 module my.empty {
 	bindings {
-		value List<Integer> TableColumnWeights -> #[5, 2]
+		value int[] TableColumnWeights -> #[5, 2]
+		value int[] TreeFormSashWeights -> #[5, 2]
 		value String foo -> "foo"
 	}
 }
@@ -2033,11 +2034,8 @@ expectedModule
 = '''
 package my.empty;
 
-import java.util.Collections;
-import java.util.List;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
 public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
@@ -2046,8 +2044,13 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   }
   
   @Override
-  public List<Integer> valueTableColumnWeights() {
-    return Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2)));
+  public int[] valueTableColumnWeights() {
+    return new int[] { 5, 2 };
+  }
+  
+  @Override
+  public int[] valueTreeFormSashWeights() {
+    return new int[] { 5, 2 };
   }
   
   public String valuefoo() {
@@ -2065,7 +2068,7 @@ import java.util.ArrayList
 
 module my.empty {
 	bindings {
-		value ArrayList<Integer> TableColumnWeights -> newArrayList(5, 2)
+		value int[] TableColumnWeights -> newArrayList(5, 2)
 	}
 }
 '''
@@ -2079,6 +2082,7 @@ import java.util.ArrayList;
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 
 @SuppressWarnings("all")
 public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
@@ -2087,9 +2091,9 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   }
   
   @Override
-  public ArrayList<Integer> valueTableColumnWeights() {
+  public int[] valueTableColumnWeights() {
     ArrayList<Integer> _newArrayList = CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2));
-    return _newArrayList;
+    return ((int[])Conversions.unwrapArray(_newArrayList, int.class));
   }
 }
 ''']

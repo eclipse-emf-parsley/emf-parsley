@@ -14,7 +14,7 @@ package org.eclipse.emf.parsley.dialogs;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
-import org.eclipse.emf.parsley.composite.FormFactory;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
@@ -27,7 +27,7 @@ import com.google.inject.Inject;
 public class DetailFormBasedDialog extends AbstractDetailDialog {
 
 	@Inject
-	private FormFactory formFactory;
+	private CompositeFactory compositeFactory;
 
 	public DetailFormBasedDialog(Shell parentShell, String title,
 			EObject original, EditingDomain domain) {
@@ -36,7 +36,7 @@ public class DetailFormBasedDialog extends AbstractDetailDialog {
 
 	@Override
 	protected AbstractDetailComposite createDetailComposite(Composite composite) {
-		return formFactory.createFormDetailComposite(composite, SWT.NONE);
+		return compositeFactory.createFormDetailComposite(composite, SWT.NONE);
 	}
 
 }

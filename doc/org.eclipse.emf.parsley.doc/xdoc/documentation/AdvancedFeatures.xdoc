@@ -163,9 +163,9 @@ public void postConstruct(Composite parent) {
 	//load the resource
 	resource = resourceLoader.getResource(editingDomain, uri).getResource();
 
-	TreeFormFactory treeFormFactory = injector.getInstance(TreeFormFactory.class);
+	CompositeFactory compositeFactory = injector.getInstance(CompositeFactory.class);
 	//create the tree-form composite
-	treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
+	treeFormComposite = compositeFactory.createTreeFormComposite(parent, SWT.BORDER);
 
 	// Guice injected viewer context menu helper
 	ViewerContextMenuHelper contextMenuHelper = injector.getInstance(ViewerContextMenuHelper.class);

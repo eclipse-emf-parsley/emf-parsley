@@ -12,8 +12,8 @@ package org.eclipse.emf.parsley.views;
 
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
-import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewerView{
 
 	@Inject
-	private TreeFormFactory treeFormFactory;
+	private CompositeFactory compositeFactory;
 
 	private TreeFormComposite treeFormComposite;
 
@@ -35,7 +35,7 @@ public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewe
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		treeFormComposite = treeFormFactory
+		treeFormComposite = compositeFactory
 				.createTreeFormComposite(parent, SWT.BORDER);
 
 		treeFormComposite.update(getContents(getResource()));

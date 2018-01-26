@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.FormDetailComposite;
 import org.eclipse.swt.SWT;
+
+import com.google.inject.Inject;
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
@@ -19,9 +22,11 @@ import org.eclipse.swt.SWT;
  */
 public class OnSelectionReadOnlyFormView extends OnSelectionFormView {
 
+	@Inject
+	private CompositeFactory compositeFactory;
+
 	@Override
 	protected FormDetailComposite createFormDetailComposite() {
-		return formFactory.createFormDetailReadOnlyComposite(
-				parent, SWT.NONE);
+		return compositeFactory.createFormDetailReadOnlyComposite(parent, SWT.NONE);
 	}
 }

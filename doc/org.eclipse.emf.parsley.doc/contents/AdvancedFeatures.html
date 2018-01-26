@@ -235,9 +235,9 @@ Modify the <em>@PostConstruct</em> method with this code:
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//load&nbsp;the&nbsp;resource<br/>
 </span>&nbsp;&nbsp;&nbsp;&nbsp;resource&nbsp;=&nbsp;resourceLoader.getResource(editingDomain,&nbsp;uri).getResource();<br/>
 <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;TreeFormFactory&nbsp;treeFormFactory&nbsp;=&nbsp;injector.getInstance(TreeFormFactory.<span class="keyword">class</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;CompositeFactory&nbsp;compositeFactory&nbsp;=&nbsp;injector.getInstance(CompositeFactory.<span class="keyword">class</span>);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//create&nbsp;the&nbsp;tree-form&nbsp;composite<br/>
-</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite&nbsp;=&nbsp;treeFormFactory.createTreeFormComposite(parent,&nbsp;SWT.BORDER);<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;treeFormComposite&nbsp;=&nbsp;compositeFactory.createTreeFormComposite(parent,&nbsp;SWT.BORDER);<br/>
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Guice&nbsp;injected&nbsp;viewer&nbsp;context&nbsp;menu&nbsp;helper<br/>
 </span>&nbsp;&nbsp;&nbsp;&nbsp;ViewerContextMenuHelper&nbsp;contextMenuHelper&nbsp;=&nbsp;injector.getInstance(ViewerContextMenuHelper.<span class="keyword">class</span>);<br/>

@@ -21,6 +21,95 @@ Components and viewers have to be created using the factories we provide
 such factories provide specific <em>create</em> methods that require all the needed parameters.
 These factories must be injected.
 </p>
+<a name="Composites"></a>
+<h2>Composites</h2>
+<p>
+All the composites provided by EMF Parsley are created via injection by injecting a
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/CompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.CompositeFactory" >CompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/CompositeFactory.java" title="View Source Code" >(src)</a> that allows you to create via
+dependency injection instances <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/swt/widgets/Composite.html" title="View JavaDoc"><abbr title="org.eclipse.swt.widgets.Composite" >Composite</abbr></a> (injecting also the
+parent and the style, wrapped inside a <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/CompositeParameters.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.CompositeParameters" >CompositeParameters</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/CompositeParameters.java" title="View Source Code" >(src)</a>,
+which are typical of Composite&apos;s constructors).
+</p>
+<p>
+We also provide a generic factory, <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/GenericCompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.GenericCompositeFactory" >GenericCompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/GenericCompositeFactory.java" title="View Source Code" >(src)</a>
+for your own custom <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/swt/widgets/Composite.html" title="View JavaDoc"><abbr title="org.eclipse.swt.widgets.Composite" >Composite</abbr></a>
+that you want to create via dependency injection. For this to work, your Composite must have a
+constructor annotated with <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Inject.html" title="View JavaDoc"><abbr title="com.google.inject.Inject" >@Inject</abbr></a> and have a parameter
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/CompositeParameters.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.CompositeParameters" >CompositeParameters</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/CompositeParameters.java" title="View Source Code" >(src)</a>, which wraps
+parent and style parameters. Since the constructor is annotated with <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Inject.html" title="View JavaDoc"><abbr title="com.google.inject.Inject" >@Inject</abbr></a> also other parameters
+will be injected (if Guice can find a binding, of course). You class can also have injected fields and
+injected setters as well. For example, if you have
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">class</span>&nbsp;MyComposite&nbsp;<span class="keyword">extends</span>&nbsp;Composite&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Inject&nbsp;<span class="keyword">private</span>&nbsp;IContentProvider&nbsp;contentProvider;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Inject<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;MyComposite(CompositeParameters&nbsp;params,&nbsp;ILabelProvider&nbsp;labelProvider)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>(params.getParent(),&nbsp;params.getStyle());<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+You can inject an instance of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/GenericCompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.GenericCompositeFactory" >GenericCompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/GenericCompositeFactory.java" title="View Source Code" >(src)</a>
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@Inject&nbsp;GenericCompositeFactory&nbsp;factory;<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+and then create instances of your composite via injection:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+MyComposite&nbsp;composite&nbsp;=&nbsp;compositeFactory.create(MyComposite.<span class="keyword">class</span>,&nbsp;parent,&nbsp;style);<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Note that the other parameters of the constructor will be provided by injection (implicitly). Moreover, other fields will be automatically injected
+as well.
+</p>
+<p>
+You may want to make your Composite extend our facility class <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/InjectableComposite.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.InjectableComposite" >InjectableComposite</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/InjectableComposite.java" title="View Source Code" >(src)</a>,
+which automatically unwraps the parent and the style. For example, the MyComposite above could have been written as follows:
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+<span class="keyword">class</span>&nbsp;MyComposite&nbsp;<span class="keyword">extends</span>&nbsp;InjectableComposite&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Inject&nbsp;<span class="keyword">private</span>&nbsp;IContentProvider&nbsp;contentProvider;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Inject<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>&nbsp;MyComposite(CompositeParameters&nbsp;params,&nbsp;ILabelProvider&nbsp;labelProvider)&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span>(params);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+The <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/CompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.CompositeFactory" >CompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/CompositeFactory.java" title="View Source Code" >(src)</a>, shown in the next subsections, is just a facility class that simply delegates to
+<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/GenericCompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.GenericCompositeFactory" >GenericCompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/GenericCompositeFactory.java" title="View Source Code" >(src)</a>.
+</p>
 <a name="FormComponent"></a>
 <h2>Form Component</h2>
 <p>
@@ -36,18 +125,19 @@ like in the image above.
 </div>
 </p>
 <p>
-<em>EMF Parsley</em> provides a factory that can be used to create such a component, like in the code below.
+<em>EMF Parsley</em> provides <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/CompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.CompositeFactory" >CompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/CompositeFactory.java" title="View Source Code" >(src)</a>
+that can be used to create such a component, like in the code below.
 Here you can see that a form can be configured in 2 lines, the constructor phase and the build&amp;fill phase. 
 </p>
 <p>
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-@Inject&nbsp;FormFactory&nbsp;formFactory;<br/>
+@Inject&nbsp;CompositeFactory&nbsp;factory;<br/>
 <br/>
 (...)<br/>
 <br/>
-formComposite&nbsp;=&nbsp;formFactory.createFormDetailComposite(parent,&nbsp;SWT.NONE);<br/>
+formComposite&nbsp;=&nbsp;factory.createFormDetailComposite(parent,&nbsp;SWT.NONE);<br/>
 formComposite.init(eObject);<br/>
 </p>
 </div>
@@ -157,18 +247,18 @@ the tree. The component also combines a <a href="05-Components.html#FormComponen
 </div>
 </p>
 <p>
-<em>EMF Parsley</em> provides a factory to create such a component.
+<em>EMF Parsley</em> provides <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/CompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.CompositeFactory" >CompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/CompositeFactory.java" title="View Source Code" >(src)</a> to create such a component.
 </p>
 <p>
 <div class="literallayout">
 <div class="incode">
 <p class="code">
-@Inject&nbsp;TreeFormFactory&nbsp;treeFormFactory;<br/>
+@Inject&nbsp;CompositeFactory&nbsp;factory;<br/>
 <br/>
 (...)<br/>
 <br/>
-treeFormComposite&nbsp;=&nbsp;treeFormFactory.createTreeFormComposite(parent,&nbsp;SWT.BORDER);<br/>
-treeFormComposite.update(application);<br/>
+treeFormComposite&nbsp;=&nbsp;factory.createTreeFormComposite(parent,&nbsp;SWT.BORDER);<br/>
+treeFormComposite.update(contents);<br/>
 </p>
 </div>
 </div>
@@ -180,7 +270,7 @@ are avaible for it.
 <a name="TableComponent"></a>
 <h2>Table Component</h2>
 <p>
-The <em>Table Component</em> can rapresent data in a grid, once you have specified the type of objects to represent. 
+The <em>Table Component</em> can rapresent data in a grid, once you have specified the type of objects to represent.
 It uses metamodel information to build columns as needed, and a
 <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a> to retrieve
 the contents of the specified type (see also <a href="06-Customization.html#TableViewerContentProvider" title="Go to &quot;Table Viewer Content Provider&quot;" >section TableViewerContentProvider</a>).
@@ -247,6 +337,32 @@ for instance in the DSL, like in the example below.
 The contextual menu can be added to the viewer via an injected
 <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.menus.ViewerContextMenuHelper" >ViewerContextMenuHelper</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/menus/ViewerContextMenuHelper.java" title="View Source Code" >(src)</a>, as explained in the <a href="06-Customization.html#ContextualMenu" title="Go to &quot;Contextual Menu&quot;">Menu section</a>.
 The <a href="06-Customization.html#MenuBuilder" title="Go to &quot;Menu Builder&quot;">Menu Builder</a> allows to fully customize the menus.
+</p>
+<a name="TableFormComponent"></a>
+<h2>Table Form Component</h2>
+<p>
+The <em>Table Form Component</em> contains a <a href="05-Components.html#TableComponent" title="Go to &quot;Table Component&quot;" >section TableComponent</a> and a <a href="05-Components.html#FormComponent" title="Go to &quot;Form Component&quot;" >section FormComponent</a> detail that display the current selected object.
+</p>
+<p>
+<em>EMF Parsley</em> provides <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/CompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.CompositeFactory" >CompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/CompositeFactory.java" title="View Source Code" >(src)</a> to create such a component.
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@Inject&nbsp;CompositeFactory&nbsp;factory;<br/>
+<br/>
+(...)<br/>
+<br/>
+tableFormComposite&nbsp;=&nbsp;factory.createTableFormComposite(parent,&nbsp;SWT.BORDER,&nbsp;eClass);<br/>
+tableFormComposite.update(contents);<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Since <em>Table Form Component</em> is a combination of <em>Table Component</em> and <em>Form Component</em>, all their customizations
+are avaible for it.
 </p>
 <a name="TreeWithColumnsComponent"></a>
 <h2>Tree With Columns Component</h2>

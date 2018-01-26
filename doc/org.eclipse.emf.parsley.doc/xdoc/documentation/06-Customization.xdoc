@@ -176,7 +176,8 @@ Guice bindings can be specified directly in the DSL, in the
 e[bindings] section.
 
 In this section you can specify bindings of all the three above kinds with
-e[type], e[provide] and e[value] respectively, e.g.,
+e[type], e[provide] and e[value] respectively, e.g., (note the Xbase syntax
+for specifying arrays or lists #\[...\]; conversion is done automatically):
 
 code[EmfParsley][
 bindings {
@@ -185,6 +186,7 @@ bindings {
 	provide ProposalCreator -> MyProposalCreatorProvider
 	...
 	value int TreeFormSashStyle -> SWT.HORIZONTAL
+	value int\[\] TreeFormSashWeights -> #\[1, 3\]
 }
 ]
 

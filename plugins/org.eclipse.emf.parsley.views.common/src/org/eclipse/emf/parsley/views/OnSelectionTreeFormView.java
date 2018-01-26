@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
-import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 public class OnSelectionTreeFormView extends AbstractOnSelectionViewerView {
 
 	@Inject
-	private TreeFormFactory treeFormFactory;
+	private CompositeFactory compositeFactory;
 
 	private TreeFormComposite treeFormDetailComposite;
 
@@ -34,7 +34,7 @@ public class OnSelectionTreeFormView extends AbstractOnSelectionViewerView {
 
 	@Override
 	protected void createViewer(Composite parent) {
-		treeFormDetailComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
+		treeFormDetailComposite = compositeFactory.createTreeFormComposite(parent, SWT.BORDER);
 	}
 
 	@Override

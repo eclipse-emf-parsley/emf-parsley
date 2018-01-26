@@ -1,7 +1,5 @@
 package org.eclipse.emf.parsley.examples.cdo.company.ui.products;
 
-import java.util.Collections;
-import java.util.List;
 import org.eclipse.emf.parsley.examples.cdo.company.CompanyGuiceModule;
 import org.eclipse.emf.parsley.examples.cdo.company.ui.products.edit.ui.provider.ProductsViewerContentProvider;
 import org.eclipse.emf.parsley.examples.cdo.company.ui.products.ui.provider.ProductsFeatureCaptionProvider;
@@ -13,7 +11,6 @@ import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 /**
  * org.eclipse.emf.parsley.examples.cdo.company.ui.products EMF Parsley Dsl Module file
@@ -30,8 +27,8 @@ public class ProductsEmfParsleyGuiceModule extends CompanyGuiceModule {
   }
   
   @Override
-  public List<Integer> valueTreeFormSashWeights() {
-    return Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(1), Integer.valueOf(3)));
+  public int[] valueTreeFormSashWeights() {
+    return new int[] { 1, 3 };
   }
   
   @Override

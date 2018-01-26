@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.tests
 import com.google.inject.Inject
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.composite.FormDetailComposite
+import org.eclipse.emf.parsley.inject.CompositeParameters
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.swt.SWT
@@ -39,7 +40,7 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 		 * public for tests
 		 */
 		new(Composite parent, int style) {
-			super(parent, style)
+			super(new CompositeParameters(parent, style))
 		}
 
 		override getScrolledForm() {
@@ -56,7 +57,7 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 		var constructorCalled = false
 
 		new(Composite parent, int style) {
-			super(parent, style)
+			super(new CompositeParameters(parent, style))
 			// during the constructor, isDisposed is called and during
 			// the constructor isDisposed must NOT return true
 			constructorCalled = true
@@ -102,7 +103,7 @@ class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 
 	@Test def void testDisposeWhenInitIsNotCalled() {
 		val injector = getOrCreateInjector
-		val formDetailComposite = new FormDetailComposite(shell, SWT.NONE)
+		val formDetailComposite = new FormDetailComposite(new CompositeParameters(shell, SWT.NONE))
 		injector.injectMembers(formDetailComposite)
 		formDetailComposite.dispose
 	}

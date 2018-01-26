@@ -237,7 +237,8 @@ Guice bindings can be specified directly in the DSL, in the
 </p>
 <p>
 In this section you can specify bindings of all the three above kinds with
-<em>type</em>, <em>provide</em> and <em>value</em> respectively, e.g.,
+<em>type</em>, <em>provide</em> and <em>value</em> respectively, e.g., (note the Xbase syntax
+for specifying arrays or lists #[...]; conversion is done automatically):
 </p>
 <p>
 <div class="literallayout">
@@ -249,6 +250,7 @@ In this section you can specify bindings of all the three above kinds with
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">provide</span>&nbsp;ProposalCreator&nbsp;-&gt;&nbsp;MyProposalCreatorProvider<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;...<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">value</span>&nbsp;<span class="keyword">int</span>&nbsp;TreeFormSashStyle&nbsp;-&gt;&nbsp;SWT.HORIZONTAL<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">value</span>&nbsp;<span class="keyword">int</span>[]&nbsp;TreeFormSashWeights&nbsp;-&gt;&nbsp;#[1,&nbsp;3]<br/>
 }<br/>
 </p>
 </div>

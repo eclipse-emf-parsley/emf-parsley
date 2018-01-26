@@ -78,9 +78,6 @@ bindFeatureCaptionProvider
 bindFormFeatureCaptionProvider
 bindDialogFeatureCaptionProvider
 bindOutlineSelectionHandler
-bindViewerFactory
-bindTreeFormFactory
-bindFormFactory
 bindViewerContextMenuHelper
 bindViewerDragAndDropHelper
 bindFormControlFactory

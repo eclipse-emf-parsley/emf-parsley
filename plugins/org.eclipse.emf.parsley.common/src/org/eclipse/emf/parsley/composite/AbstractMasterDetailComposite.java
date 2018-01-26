@@ -14,6 +14,8 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.parsley.inject.CompositeParameters;
+import org.eclipse.emf.parsley.inject.InjectableComposite;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -32,13 +34,13 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini, Francesco Guidieri
  * 
  */
-public abstract class AbstractMasterDetailComposite extends Composite implements IViewerProvider {
+public abstract class AbstractMasterDetailComposite extends InjectableComposite implements IViewerProvider {
 
-	protected class SelectionChangedListener implements
+	private class SelectionChangedListener implements
 			ISelectionChangedListener {
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
-			EObject selectedObject = getEmfSelectionHelper()
+			EObject selectedObject = emfSelectionHelper
 					.getFirstSelectedEObject(event.getSelection());
 
 			eObjectSelectionChanged(selectedObject);
@@ -46,11 +48,13 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	}
 
-	private FormFactory formFactory;
+	@Inject
+	private CompositeFactory compositeFactory;
 
+	@Inject
 	private EmfSelectionHelper emfSelectionHelper;
 
-	private final StructuredViewer viewer;
+	private StructuredViewer viewer;
 
 	private final Composite detailComposite;
 
@@ -58,25 +62,40 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	private SashForm sashForm;
 
-	public AbstractMasterDetailComposite(Composite parent, int style) {
-		this(parent, style, SWT.VERTICAL, new int[0]);
+	private Composite masterComposite;
+
+	/**
+	 * @since 2.0
+	 */
+	public AbstractMasterDetailComposite(CompositeParameters params) {
+		this(params, SWT.VERTICAL, new int[0]);
 	}
 
-	public AbstractMasterDetailComposite(Composite parent, int style, int sashStyle, int[] weights) {
-		super(parent, style);
+	/**
+	 * @since 2.0
+	 */
+	public AbstractMasterDetailComposite(CompositeParameters params, int sashStyle, int[] weights) {
+		super(params);
 		setLayout( new FillLayout());
 		sashForm = new SashForm(this, sashStyle);
 
-		Composite masterComposite = new Composite(sashForm, SWT.NONE);
+		masterComposite = new Composite(sashForm, SWT.NONE);
 		masterComposite.setLayout( new FillLayout());
 		
 		detailComposite = new Composite(sashForm, SWT.NONE);
 		detailComposite.setLayout( new FillLayout());
-		viewer = createViewer(masterComposite);
-		viewer.addSelectionChangedListener(new SelectionChangedListener());
 		if(weights.length>0){
 			sashForm.setWeights(weights);
 		}
+	}
+
+	/**
+	 * This will be called after the construction has finished.
+	 */
+	@Inject
+	private void setupViewer() {
+		viewer = createViewer(masterComposite);
+		viewer.addSelectionChangedListener(new SelectionChangedListener());
 	}
 
 	@Override
@@ -84,6 +103,15 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 		return viewer;
 	}
 
+	/**
+	 * This method is ensured to be called after the construction has finished, but
+	 * before subclasses fields are injected; thus, if in the subclass you need
+	 * something, make sure you specify it as a paramenter an {@link Inject}
+	 * constructor, NOT as an injected field.
+	 * 
+	 * @param parent
+	 * @return
+	 */
 	protected abstract StructuredViewer createViewer(Composite parent);
 
 	protected void eObjectSelectionChanged(EObject selectedObject) {
@@ -99,30 +127,8 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 	}
 
 	protected FormDetailComposite createFormDetailComposite() {
-		return getFormFactory().createFormDetailComposite(detailComposite,
+		return compositeFactory.createFormDetailComposite(detailComposite,
 				SWT.BORDER);
-	}
-
-	public FormFactory getFormFactory() {
-		return formFactory;
-	}
-
-	@Inject
-	public void setFormFactory(FormFactory formFactory) {
-		this.formFactory = formFactory;
-	}
-
-	public EmfSelectionHelper getEmfSelectionHelper() {
-		return emfSelectionHelper;
-	}
-
-	@Inject
-	public void setEmfSelectionHelper(EmfSelectionHelper emfSelectionHelper) {
-		this.emfSelectionHelper = emfSelectionHelper;
-	}
-
-	public SashForm getSashForm() {
-		return sashForm;
 	}
 
 	public abstract void update(Object contents);

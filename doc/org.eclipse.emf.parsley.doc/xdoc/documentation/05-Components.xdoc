@@ -9,6 +9,68 @@ Components and viewers have to be created using the factories we provide
 such factories provide specific e[create] methods that require all the needed parameters.
 These factories must be injected.
 
+section:Composites[Composites]
+
+All the composites provided by EMF Parsley are created via injection by injecting a
+codeRef[org.eclipse.emf.parsley.composite.CompositeFactory] that allows you to create via
+dependency injection instances codeRef[org.eclipse.swt.widgets.Composite] (injecting also the
+parent and the style, wrapped inside a codeRef[org.eclipse.emf.parsley.inject.CompositeParameters],
+which are typical of Composite's constructors).
+
+We also provide a generic factory, codeRef[org.eclipse.emf.parsley.inject.GenericCompositeFactory]
+for your own custom codeRef[org.eclipse.swt.widgets.Composite]
+that you want to create via dependency injection. For this to work, your Composite must have a
+constructor annotated with codeRef[com.google.inject.Inject] and have a parameter
+codeRef[org.eclipse.emf.parsley.inject.CompositeParameters], which wraps
+parent and style parameters. Since the constructor is annotated with codeRef[com.google.inject.Inject] also other parameters
+will be injected (if Guice can find a binding, of course). You class can also have injected fields and
+injected setters as well. For example, if you have
+
+code[Java][
+class MyComposite extends Composite {
+	@Inject private IContentProvider contentProvider;
+
+	@Inject
+	public MyComposite(CompositeParameters params, ILabelProvider labelProvider) {
+		super(params.getParent(), params.getStyle());
+		...
+	}
+}
+]
+
+You can inject an instance of codeRef[org.eclipse.emf.parsley.inject.GenericCompositeFactory]
+
+code[Java][
+@Inject GenericCompositeFactory factory;
+]
+
+and then create instances of your composite via injection:
+
+code[Java][
+MyComposite composite = compositeFactory.create(MyComposite.class, parent, style);
+]
+
+Note that the other parameters of the constructor will be provided by injection (implicitly). Moreover, other fields will be automatically injected
+as well.
+
+You may want to make your Composite extend our facility class codeRef[org.eclipse.emf.parsley.inject.InjectableComposite],
+which automatically unwraps the parent and the style. For example, the MyComposite above could have been written as follows:
+
+code[Java][
+class MyComposite extends InjectableComposite {
+	@Inject private IContentProvider contentProvider;
+
+	@Inject
+	public MyComposite(CompositeParameters params, ILabelProvider labelProvider) {
+		super(params);
+		...
+	}
+}
+]
+
+The codeRef[org.eclipse.emf.parsley.composite.CompositeFactory], shown in the next subsections, is just a facility class that simply delegates to
+codeRef[org.eclipse.emf.parsley.inject.GenericCompositeFactory].
+
 section:FormComponent[Form Component]
 
 The e[Form Component] can be used to rapresent an codeRef[org.eclipse.emf.ecore.EObject] in a form,
@@ -16,15 +78,16 @@ like in the image above.
 
 img[images/03-components-form.png][][ ][]
 
-e[EMF Parsley] provides a factory that can be used to create such a component, like in the code below.
+e[EMF Parsley] provides codeRef[org.eclipse.emf.parsley.composite.CompositeFactory]
+that can be used to create such a component, like in the code below.
 Here you can see that a form can be configured in 2 lines, the constructor phase and the build&fill phase. 
 
 code[Java][
-@Inject FormFactory formFactory;
+@Inject CompositeFactory factory;
 
 (...)
 
-formComposite = formFactory.createFormDetailComposite(parent, SWT.NONE);
+formComposite = factory.createFormDetailComposite(parent, SWT.NONE);
 formComposite.init(eObject);
 ]
 
@@ -105,15 +168,15 @@ the tree. The component also combines a ref:FormComponent detail that display th
 
 img[images/03-components-treeform.png][][ ][]
 
-e[EMF Parsley] provides a factory to create such a component.
+e[EMF Parsley] provides codeRef[org.eclipse.emf.parsley.composite.CompositeFactory] to create such a component.
 
 code[Java][
-@Inject TreeFormFactory treeFormFactory;
+@Inject CompositeFactory factory;
 
 (...)
 
-treeFormComposite = treeFormFactory.createTreeFormComposite(parent, SWT.BORDER);
-treeFormComposite.update(application);
+treeFormComposite = factory.createTreeFormComposite(parent, SWT.BORDER);
+treeFormComposite.update(contents);
 ]
 
 Since e[Tree Form Component] is a combination of  e[Tree Component] and  e[Form Component], all their customizations
@@ -121,7 +184,7 @@ are avaible for it.
 
 section:TableComponent[Table Component]
 
-The e[Table Component] can rapresent data in a grid, once you have specified the type of objects to represent. 
+The e[Table Component] can rapresent data in a grid, once you have specified the type of objects to represent.
 It uses metamodel information to build columns as needed, and a
 codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider] to retrieve
 the contents of the specified type (see also ref:TableViewerContentProvider[]).
@@ -168,6 +231,24 @@ section2:Table_MenuBuilder[Adding Menu]
 The contextual menu can be added to the viewer via an injected
 codeRef[org.eclipse.emf.parsley.menus.ViewerContextMenuHelper], as explained in the ref:ContextualMenu[Menu section].
 The ref:MenuBuilder[Menu Builder] allows to fully customize the menus.
+
+section:TableFormComponent[Table Form Component]
+
+The e[Table Form Component] contains a ref:TableComponent and a ref:FormComponent detail that display the current selected object.
+
+e[EMF Parsley] provides codeRef[org.eclipse.emf.parsley.composite.CompositeFactory] to create such a component.
+
+code[Java][
+@Inject CompositeFactory factory;
+
+(...)
+
+tableFormComposite = factory.createTableFormComposite(parent, SWT.BORDER, eClass);
+tableFormComposite.update(contents);
+]
+
+Since e[Table Form Component] is a combination of e[Table Component] and e[Form Component], all their customizations
+are avaible for it.
 
 section:TreeWithColumnsComponent[Tree With Columns Component]
 

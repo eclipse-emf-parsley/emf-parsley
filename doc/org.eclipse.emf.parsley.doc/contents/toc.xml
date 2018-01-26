@@ -20,6 +20,8 @@
 	</topic>
 	<topic href="contents/00-Main_5.html#EMF%20Parsley%20Guide_5" label="Reference Documentation" >
 		<topic href="contents/05-Components.html#Components" label="Components" >
+			<topic href="contents/05-Components.html#Composites" label="Composites" >
+			</topic>
 			<topic href="contents/05-Components.html#FormComponent" label="Form Component" >
 				<topic href="contents/05-Components.html#FormComponent_features" label="Feature List Customization" >
 				</topic>
@@ -49,6 +51,8 @@
 				</topic>
 				<topic href="contents/05-Components.html#Table_MenuBuilder" label="Adding Menu" >
 				</topic>
+			</topic>
+			<topic href="contents/05-Components.html#TableFormComponent" label="Table Form Component" >
 			</topic>
 			<topic href="contents/05-Components.html#TreeWithColumnsComponent" label="Tree With Columns Component" >
 			</topic>
@@ -126,6 +130,8 @@
 	</topic>
 	<topic href="contents/00-Main_6.html#EMF%20Parsley%20Guide_6" label="Appendix" >
 		<topic href="contents/Migration-Guide.html#MigrationGuide" label="Migration Guide" >
+			<topic href="contents/Migration-Guide.html#VersionTwo" label="From 1.x to 2.0.0" >
+			</topic>
 			<topic href="contents/Migration-Guide.html#VersionOne" label="From 0.7.0 to 1.0.0" >
 			</topic>
 			<topic href="contents/Migration-Guide.html#SixSeven" label="From 0.6.0 to 0.7.0" >

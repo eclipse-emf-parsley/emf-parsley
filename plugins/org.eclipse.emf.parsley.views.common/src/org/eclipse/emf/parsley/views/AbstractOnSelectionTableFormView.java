@@ -12,8 +12,8 @@
 package org.eclipse.emf.parsley.views;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
-import org.eclipse.emf.parsley.composite.TableFormFactory;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
@@ -33,31 +33,31 @@ import com.google.inject.Inject;
 public abstract class AbstractOnSelectionTableFormView extends AbstractOnSelectionViewerView {
 
 	@Inject
-	private TableFormFactory tableFormFactory;
+	private CompositeFactory compositeFactory;
 
-	private TableFormComposite tableFormDetailComposite;
+	private TableFormComposite tableFormComposite;
 
 	@Override
 	public StructuredViewer getViewer() {
-		return tableFormDetailComposite.getViewer();
+		return tableFormComposite.getViewer();
 	}
 
 	@Override
 	protected void updateOnSelection(IWorkbenchPart sourcepart, ISelection selection) {
 		Object selected = getFirstSelectedElement(selection);
 		// the content provider is able to handle any input
-		tableFormDetailComposite.update(selected);
+		tableFormComposite.update(selected);
 	}
 
 	@Override
 	protected void createViewer(Composite parent) {
-		tableFormDetailComposite = tableFormFactory.
-			createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass());
+		tableFormComposite = compositeFactory.
+			createTableFormComposite(parent, SWT.BORDER, getEClass());
 	}
 
 	@Override
 	public void setFocus() {
-		tableFormDetailComposite.getViewer().getControl().setFocus();
+		tableFormComposite.getViewer().getControl().setFocus();
 	}
 
 	/**

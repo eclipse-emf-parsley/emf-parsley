@@ -10,6 +10,65 @@
 <body>
 <a name="MigrationGuide"></a>
 <h1>Migration Guide</h1>
+<a name="VersionTwo"></a>
+<h2>From 1.x to 2.0.0</h2>
+<p>
+There have been lots of API changes, please see the following migration steps
+</p>
+<p>
+<ul>
+	<li>
+		<em>factories</em>: The following factories have been removed:
+		<em>org.eclipse.emf.parsley.composite.FormFactory</em>,
+		<em>org.eclipse.emf.parsley.composite.TreeFormFactory</em>,
+		<em>org.eclipse.emf.parsley.composite.TableFormFactory</em>.
+		There&apos;s only a single Composite factory now, <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/CompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.CompositeFactory" >CompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/CompositeFactory.java" title="View Source Code" >(src)</a> with all the corresponding
+		create methods.  See also <a href="05-Components.html#Composites" title="Go to &quot;Composites&quot;">Composites</a> for more details.
+	</li>
+	<li>
+		<em>bindings</em>: the method bindings <em>valueTreeFormSashWeights</em> and <em>valueTableColumnWeights</em>
+		must now return an int[], instead of a List&lt;Integer&gt;;
+		in the DSL it&apos;s enough to change the type; for example, if you previously had
+		<div class="literallayout">
+		<div class="incode">
+		<p class="code">
+		<span class="keyword">bindings</span>&nbsp;{<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">value</span>&nbsp;List&lt;Integer&gt;&nbsp;TreeFormSashWeights&nbsp;-&gt;&nbsp;#[1,&nbsp;3]<br/>
+		}<br/>
+		</p>
+		</div>
+		</div>
+		this should be changed into (note that the conversion of the Xbase list literal #[] is performed
+		automatically by the compiler):
+		<div class="literallayout">
+		<div class="incode">
+		<p class="code">
+		<span class="keyword">bindings</span>&nbsp;{<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">value</span>&nbsp;<span class="keyword">int</span>[]&nbsp;TreeFormSashWeights&nbsp;-&gt;&nbsp;#[1,&nbsp;3]<br/>
+		}<br/>
+		</p>
+		</div>
+		</div>
+		
+	</li>
+	<li>
+		<em>method binding removal</em>: The following bind methods in the default Guice module have been removed
+		(since they simply refer to the default implementation and concern implementations that are not
+		useful to override directly; not to mention that not having such a binding allows you to inject an instance
+		with a provider, which is useful for testing):
+		<em>org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule.bindViewerFactory()</em>,
+		<em>org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule.bindTreeFormFactory()</em>
+		.
+	</li>
+	<li>
+		<em>method removal</em>: The method getSashForm in <em>org.eclipse.emf.parsley.composite.AbstractMasterDetailComposite</em>
+		has been removed. The getter/setter for ViewerFactory have been removed from <em>org.eclipse.emf.parsley.composite.TreeFormComposite</em>
+		(just inject your own ViewerFactory if you need one in your subclasses).
+		The method <em>org.eclipse.emf.parsley.composite.TableFormComposite.buildTable(EClass)</em> has been removed:
+		it was used only by factories, and now the EClass is injected in the constructor.
+	</li>
+</ul>
+</p>
 <a name="VersionOne"></a>
 <h2>From 0.7.0 to 1.0.0</h2>
 <p>

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -42,10 +43,14 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private FormTitleAdapter headerAdapter;
 
-	public FormDetailComposite(Composite parent, int style) {
-		super(parent, style);
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public FormDetailComposite(CompositeParameters params) {
+		super(params.getParent(), params.getStyle());
 
-		toolkit = new FormToolkit(parent.getDisplay());
+		toolkit = new FormToolkit(params.getParent().getDisplay());
 
 		toolkit.adapt(this);
 		setLayout(new GridLayout(1, false));
@@ -70,7 +75,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	}
 
 	@Inject
-	public void setFormControlFactory(FormControlFactory formControlFactory) {
+	protected void setFormControlFactory(FormControlFactory formControlFactory) {
 		this.formControlFactory = formControlFactory;
 	}
 

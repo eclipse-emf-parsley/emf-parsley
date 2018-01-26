@@ -13,9 +13,6 @@ package org.eclipse.emf.parsley;
 
 import static org.eclipse.emf.parsley.internal.inject.InjectableParameterProvider.bindInjectableParameterProvider;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -24,9 +21,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
-import org.eclipse.emf.parsley.composite.FormFactory;
 import org.eclipse.emf.parsley.composite.ProposalCreator;
-import org.eclipse.emf.parsley.composite.TreeFormFactory;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.ecore.FeatureResolver;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
@@ -46,6 +41,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.inject.CompositeParameters;
+import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
@@ -75,7 +71,6 @@ import org.eclipse.emf.parsley.validation.ValidationRunner;
 import org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
-import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
@@ -101,6 +96,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 		// GenericFactory
 		// that we use to inject parameters into constructors
 		bindInjectableParameterProvider(binder, CompositeParameters.class);
+		bindInjectableParameterProvider(binder, EClassCompositeParameters.class);
 	}
 
 	/**
@@ -140,10 +136,11 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 
 	/**
-	 * The list of Integer weights for a table's columns
+	 * The array of int weights for a table's columns
+	 * @since 2.0
 	 */
-	public List<Integer> valueTableColumnWeights() {
-		return Collections.<Integer>emptyList();
+	public int[] valueTableColumnWeights() {
+		return  new int[]{};
 	}
 
 	/**
@@ -154,10 +151,11 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 
 	/**
-	 * The list of Integer weights for the Sash of a TreeFormComposite
+	 * The array of int weights for the Sash of a TreeFormComposite
+	 * @since 2.0
 	 */
-	public List<Integer> valueTreeFormSashWeights() {
-		return Collections.<Integer>emptyList();
+	public int[] valueTreeFormSashWeights() {
+		return new int[]{};
 	}
 
 	/**
@@ -245,32 +243,6 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends OutlineSelectionHandler> bindOutlineSelectionHandler() {
 		return OutlineSelectionHandler.class;
-	}
-
-	/**
-	 * Use this bind to change the way JFace viewers (tree and tables) are built
-	 * @return a specialization of {@link ViewerFactory}
-	 */
-	public Class<? extends ViewerFactory> bindViewerFactory() {
-		return ViewerFactory.class;
-	}
-
-	/**
-	 * Use this bind to provide a factory that builds Tree Form components
-	 * @return a specialization of {@link TreeFormFactory}
-	 * @see FormFactory
-	 */
-	public Class<? extends TreeFormFactory> bindTreeFormFactory() {
-		return TreeFormFactory.class;
-	}
-
-	/**
-	 * Use this bind to provide a factory that builds Form components
-	 * @return a specialization of {@link FormFactory}
-	 * @see TreeFormFactory
-	 */
-	public Class<? extends FormFactory> bindFormFactory() {
-		return FormFactory.class;
 	}
 
 	/**

@@ -12,8 +12,8 @@ package org.eclipse.emf.parsley.views;
 
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
-import org.eclipse.emf.parsley.composite.TableFormFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -28,7 +28,7 @@ import com.google.inject.Inject;
 public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView {
 
 	@Inject
-	private TableFormFactory tableFormFactory;
+	private CompositeFactory compositeFactory;
 
 	private TableFormComposite tableFormComposite;
 
@@ -36,8 +36,8 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 
-		tableFormComposite = tableFormFactory
-			.createTableFormMasterDetailComposite(parent, SWT.BORDER, getEClass());
+		tableFormComposite = compositeFactory
+			.createTableFormComposite(parent, SWT.BORDER, getEClass());
 		tableFormComposite.update(getResource());
 
 		afterCreateViewer();

@@ -214,21 +214,19 @@ module my.test.proj {
 		// only EObject sutypes
 	}
 
-	@Test def void testApplyProposalForValueBindingAlsoInsertsImport() {
+	@Test def void testApplyProposalForValueBindingWithArrayOfInt() {
 		appendAndApplyProposalAndExpectContent(
 '''
 module my.test.proj {
 	
 	bindings {
 		value valueT''',
-'''List<Integer> TableColumnWeights''',
+'''int[] TableColumnWeights''',
 '''
-import java.util.List
-
 module my.test.proj {
 	
 	bindings {
-		value List<Integer> TableColumnWeights'''
+		value int[] TableColumnWeights'''
 		)
 	}
 
