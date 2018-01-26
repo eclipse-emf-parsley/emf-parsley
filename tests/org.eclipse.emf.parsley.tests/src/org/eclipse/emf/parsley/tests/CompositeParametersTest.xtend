@@ -10,15 +10,19 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import com.google.inject.Key
 import com.google.inject.ProvisionException
-import org.eclipse.emf.parsley.composite.CompositeParameters
-import org.eclipse.emf.parsley.internal.composite.CompositeParametersProvider
+import com.google.inject.TypeLiteral
+import org.eclipse.emf.parsley.inject.CompositeParameters
+import org.eclipse.emf.parsley.internal.inject.InjectableParameterProvider
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
 class CompositeParametersTest extends AbstractEmfParsleyShellBasedTest {
+
+	val providerTypeKey = Key.get(new TypeLiteral<InjectableParameterProvider<CompositeParameters>>() {});
 
 	// Since the provides has not been prepared
 	@Test(expected=ProvisionException)
@@ -29,7 +33,7 @@ class CompositeParametersTest extends AbstractEmfParsleyShellBasedTest {
 	@Test
 	def void canInjectCompositeParametersWithProvider() {
 		val injector = getOrCreateInjector
-		val provider = injector.getInstance(CompositeParametersProvider)
+		val provider = injector.getInstance(providerTypeKey)
 		provider.insertForLaterProvide(new CompositeParameters(shell, 1))
 		val params = injector.getInstance(CompositeParameters)
 		shell.assertSame(params.parent)
@@ -39,7 +43,7 @@ class CompositeParametersTest extends AbstractEmfParsleyShellBasedTest {
 	@Test
 	def void canInjectSeveralCompositeParameters() {
 		val injector = getOrCreateInjector
-		val provider = injector.getInstance(CompositeParametersProvider)
+		val provider = injector.getInstance(providerTypeKey)
 		provider.insertForLaterProvide(new CompositeParameters(shell, 1))
 		provider.insertForLaterProvide(new CompositeParameters(shell, 2))
 		// the provider uses a stack, thus the first params created

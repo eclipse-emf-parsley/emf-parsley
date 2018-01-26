@@ -11,18 +11,22 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Binder
+import com.google.inject.Key
 import com.google.inject.ProvisionException
+import com.google.inject.TypeLiteral
 import javax.inject.Inject
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.composite.CompositeParameters
-import org.eclipse.emf.parsley.composite.InjectableComposite
-import org.eclipse.emf.parsley.internal.composite.CompositeParametersProvider
+import org.eclipse.emf.parsley.inject.CompositeParameters
+import org.eclipse.emf.parsley.inject.InjectableComposite
+import org.eclipse.emf.parsley.internal.inject.InjectableParameterProvider
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.junit.Test
 
 import static extension org.junit.Assert.*
 
 class InjectableCompositeTest extends AbstractEmfParsleyShellBasedTest {
+
+	val providerTypeKey = Key.get(new TypeLiteral<InjectableParameterProvider<CompositeParameters>>() {});
 
 	private static class CustomInjectableComposite extends InjectableComposite {
 		@Inject
@@ -39,7 +43,7 @@ class InjectableCompositeTest extends AbstractEmfParsleyShellBasedTest {
 	@Test
 	def void canInjectWithProvider() {
 		val injector = getOrCreateInjector
-		val provider = injector.getInstance(CompositeParametersProvider)
+		val provider = injector.getInstance(providerTypeKey)
 		provider.insertForLaterProvide(new CompositeParameters(shell, 1))
 		val o = injector.getInstance(InjectableComposite)
 		shell.assertSame(o.parent)
@@ -54,7 +58,7 @@ class InjectableCompositeTest extends AbstractEmfParsleyShellBasedTest {
 				binder.bind(InjectableComposite).to(CustomInjectableComposite)
 			}
 		})
-		val provider = injector.getInstance(CompositeParametersProvider)
+		val provider = injector.getInstance(providerTypeKey)
 		provider.insertForLaterProvide(new CompositeParameters(shell, 1))
 		val o = injector.getInstance(InjectableComposite)
 		CustomInjectableComposite.assertSame(o.class)

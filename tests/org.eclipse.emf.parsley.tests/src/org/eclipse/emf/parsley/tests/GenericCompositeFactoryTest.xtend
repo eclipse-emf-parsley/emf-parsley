@@ -10,18 +10,16 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.ConfigurationException
 import com.google.inject.Inject
 import com.google.inject.Singleton
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.composite.CompositeParameters
-import org.eclipse.emf.parsley.composite.GenericCompositeFactory
-import org.eclipse.emf.parsley.composite.InjectableComposite
+import org.eclipse.emf.parsley.inject.CompositeParameters
+import org.eclipse.emf.parsley.inject.GenericCompositeFactory
+import org.eclipse.emf.parsley.inject.InjectableComposite
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.swt.SWT
-import org.eclipse.swt.widgets.Composite
 import org.junit.Before
 import org.junit.Test
 
@@ -30,13 +28,6 @@ import static extension org.junit.Assert.*
 class GenericCompositeFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
 	var GenericCompositeFactory factory
-
-	static class CompositeWithoutAnnotationsForTests extends Composite {
-		@Inject
-		new(Composite parent, int style) {
-			super(parent, style)
-		}
-	}
 
 	static class InjectableCompositeForTests extends InjectableComposite {
 		@Inject
@@ -95,11 +86,6 @@ class GenericCompositeFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	@Before
 	def void setupFactory() {
 		factory = getOrCreateInjector.getInstance(GenericCompositeFactory)
-	}
-
-	@Test(expected=ConfigurationException)
-	def void testCannotInjectWithoutAnnotations() {
-		factory.create(CompositeWithoutAnnotationsForTests, shell, SWT.NONE)
 	}
 
 	@Test

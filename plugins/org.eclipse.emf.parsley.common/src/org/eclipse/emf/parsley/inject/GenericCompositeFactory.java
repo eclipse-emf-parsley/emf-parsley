@@ -8,13 +8,12 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.composite;
+package org.eclipse.emf.parsley.inject;
 
-import org.eclipse.emf.parsley.internal.composite.CompositeParametersProvider;
+import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 import com.google.inject.Singleton;
 
 /**
@@ -77,14 +76,10 @@ import com.google.inject.Singleton;
 public class GenericCompositeFactory {
 
 	@Inject
-	private CompositeParametersProvider provider;
+	private GenericFactory<Composite, CompositeParameters> internalFactory;
 
-	@Inject
-	private Injector injector;
-
-	synchronized public <T extends Composite> T create(Class<T> type, final Composite parent, final int style) {
-		provider.insertForLaterProvide(new CompositeParameters(parent, style));
-		return injector.getInstance(type);
+	public <T extends Composite> T create(Class<T> type, final Composite parent, final int style) {
+		return internalFactory.createInstance(type, new CompositeParameters(parent, style));
 	}
 
 }

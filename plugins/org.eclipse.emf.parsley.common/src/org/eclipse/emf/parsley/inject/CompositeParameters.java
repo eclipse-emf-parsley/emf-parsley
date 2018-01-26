@@ -8,13 +8,11 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.composite;
+package org.eclipse.emf.parsley.inject;
 
-import org.eclipse.emf.parsley.internal.composite.CompositeParametersProvider;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
-import com.google.inject.ProvidedBy;
 
 /**
  * A wrapper class for parameters for a Composite, that is, parent and style, that can be used
@@ -25,8 +23,7 @@ import com.google.inject.ProvidedBy;
  * @since 2.0
  *
  */
-@ProvidedBy(CompositeParametersProvider.class)
-public class CompositeParameters {
+public class CompositeParameters implements InjectableParameter {
 	private Composite parent;
 
 	private int style;

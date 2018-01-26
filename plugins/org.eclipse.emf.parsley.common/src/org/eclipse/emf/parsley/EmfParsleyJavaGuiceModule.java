@@ -11,6 +11,8 @@
 
 package org.eclipse.emf.parsley;
 
+import static org.eclipse.emf.parsley.internal.inject.InjectableParameterProvider.bindInjectableParameterProvider;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -43,6 +45,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelPro
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
+import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
@@ -94,6 +97,10 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
+		// the following bindings are required to respect the contract of
+		// GenericFactory
+		// that we use to inject parameters into constructors
+		bindInjectableParameterProvider(binder, CompositeParameters.class);
 	}
 
 	/**

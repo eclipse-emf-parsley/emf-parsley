@@ -8,25 +8,16 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.composite;
-
-import org.eclipse.swt.widgets.Composite;
-
-import com.google.inject.Inject;
+package org.eclipse.emf.parsley.inject;
 
 /**
- * A facility base class for {@link Composite} instances that are meant to be
- * created via injection.
+ * Interface for parameters that we can inject into constructors with our own
+ * specific factories.
  * 
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini - initial API and implementation
  * @since 2.0
  *
  */
-public class InjectableComposite extends Composite {
-
-	@Inject
-	public InjectableComposite(CompositeParameters params) {
-		super(params.getParent(), params.getStyle());
-	}
+public interface InjectableParameter {
 
 }
