@@ -16,7 +16,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory;
+import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
+import org.eclipse.emf.parsley.inject.EClassParameter;
+import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.layout.TreeColumnLayout;
@@ -62,7 +64,7 @@ public class ViewerFactory {
 	private TreeViewerColumnBuilder treeColumnBuilder;
 
 	@Inject
-	private TableViewerContentProviderFactory tableViewerContentProviderFactory;
+	private GenericFactory<IContentProvider, EClassParameter> eClassBasedContentProviderFactory;
 
 	/**
 	 * Initializes the viewer, and uses as input the resource specified by an
@@ -140,7 +142,19 @@ public class ViewerFactory {
 	 * @param eClass
 	 */
 	public void buildColumns(TableViewer tableViewer, EClass eClass) {
-		buildColumns(tableViewer, eClass, tableViewerContentProviderFactory.createTableViewerContentProvider(eClass));
+		buildColumns(tableViewer, eClass, createTableViewerContentProvider(eClass));
+	}
+
+	/**
+	 * Creates a {@link TableViewerContentProvider} with the specified {@link EClass}.
+	 * 
+	 * @param eClass
+	 * @return
+	 * 
+	 * @since 2.0
+	 */
+	public TableViewerContentProvider createTableViewerContentProvider(EClass eClass) {
+		return eClassBasedContentProviderFactory.createInstance(TableViewerContentProvider.class, new EClassParameter(eClass));
 	}
 
 	/**

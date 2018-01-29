@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.parsley.inject.EClassParameter;
 import org.eclipse.emf.parsley.util.EcoreUtil2;
 
 import com.google.inject.Inject;
@@ -24,36 +25,21 @@ import com.google.inject.Inject;
  * Declarative ContentProvider specific for table viewer, implementing
  * getElements retrieving all the contents of a specific {@link EClass}.
  * 
- * The {@link EClass} must be set before this content provider is used. We
- * provide a specific factory for conveniently create instances of this content
- * provider.
- * 
  * @author Lorenzo Bettini - Initial contribution and API
- * 
  */
 public class TableViewerContentProvider extends ViewerContentProvider {
 
 	private EClass eClass;
 
 	/**
-	 * Meant for testing: If you use this constructor, you then must make sure
-	 * to inject other members, using, for instance, injectMembers.
+	 * @param adapterFactory
+	 * @param eClassParameter
+	 * @since 2.0
 	 */
-	public TableViewerContentProvider(EClass eClass) {
-		this.eClass = eClass;
-	}
-
 	@Inject
-	public TableViewerContentProvider(AdapterFactory adapterFactory) {
+	public TableViewerContentProvider(AdapterFactory adapterFactory, EClassParameter eClassParameter) {
 		super(adapterFactory);
-	}
-
-	public EClass getEClass() {
-		return eClass;
-	}
-
-	public void setEClass(EClass type) {
-		this.eClass = type;
+		this.eClass = eClassParameter.getEClass();
 	}
 
 	@Override
@@ -74,11 +60,11 @@ public class TableViewerContentProvider extends ViewerContentProvider {
 		// get an ambiguous methods exception from the polymorphic dispatcher
 		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=479417
 		if (o instanceof Resource) {
-			Object result = EcoreUtil2.getAllContentsOfType((Resource) o, getEClass());
+			Object result = EcoreUtil2.getAllContentsOfType((Resource) o, eClass);
 			return (List<Object>) result;
 		}
 		if (o instanceof EObject) {
-			Object result = EcoreUtil2.getAllContentsOfType((EObject) o, getEClass());
+			Object result = EcoreUtil2.getAllContentsOfType((EObject) o, eClass);
 			return (List<Object>) result;
 		}
 		return super.elements(o);

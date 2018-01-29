@@ -1368,12 +1368,13 @@ import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.inject.EClassParameter;
 
 @SuppressWarnings("all")
 public class EmptyTableViewerContentProvider extends TableViewerContentProvider {
   @Inject
-  public EmptyTableViewerContentProvider(final AdapterFactory adapterFactory) {
-    super(adapterFactory);
+  public EmptyTableViewerContentProvider(final AdapterFactory adapterFactory, final EClassParameter eClassParameter) {
+    super(adapterFactory, eClassParameter);
   }
   
   public Object elements(final Resource it) {

@@ -14,6 +14,7 @@ package org.eclipse.emf.parsley.tests.swtbot.providers;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.inject.EClassParameter;
 
 import com.google.inject.Inject;
 
@@ -28,8 +29,8 @@ import com.google.inject.Inject;
 public class CustomLibraryTableViewerContentProvider extends TableViewerContentProvider {
 
 	@Inject
-	public CustomLibraryTableViewerContentProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
+	public CustomLibraryTableViewerContentProvider(AdapterFactory adapterFactory, EClassParameter eClassParameter) {
+		super(adapterFactory, eClassParameter);
 	}
 
 	public Object elements(Writer writer) {

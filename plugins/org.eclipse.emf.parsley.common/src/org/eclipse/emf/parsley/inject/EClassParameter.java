@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.ecore;
+package org.eclipse.emf.parsley.inject;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -22,7 +22,7 @@ import com.google.inject.Inject;
  * @since 2.0
  *
  */
-public class EClassParameter {
+public class EClassParameter implements InjectableParameter {
 
 	private EClass eClass;
 

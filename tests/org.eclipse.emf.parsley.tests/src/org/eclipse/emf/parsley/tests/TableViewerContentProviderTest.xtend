@@ -11,17 +11,18 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Inject
-import com.google.inject.Provider
 import java.util.ArrayList
 import org.eclipse.core.runtime.AssertionFailedException
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider
+import org.eclipse.emf.parsley.inject.EClassParameter
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.tests.util.NonStructuredViewer
+import org.eclipse.emf.parsley.tests.util.ResourceAndEObject
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.jface.viewers.TableViewer
 import org.junit.Before
@@ -29,7 +30,6 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.util.ResourceAndEObject
 
 class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 
@@ -38,8 +38,6 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	val static CLASS_FOR_CONTROLS_LABEL = "Class For Controls"
 
 	val static CLASS_WITH_NAME_TEST = "Class With Name Test"
-
-	@Inject var Provider<TableViewerContentProvider> contentProviderProvider
 
 	/**
 	 * We need this only to render the contents returned by the content provider
@@ -72,14 +70,6 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 		assertArray(
 			contentProvider(testPackage.classWithName).getElements(fillTestContainer)
 		)
-	}
-
-	@Test
-	def void testDefaultGetElementsSettingTypeAfterConstruction() {
-		val cp = contentProvider
-		cp.EClass = testPackage.classWithName
-		"Class With Name Test".
-		assertArray(cp.getElements(fillTestContainer))
 	}
 
 	@Test
@@ -121,12 +111,12 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	def void testCustomGetElements() {
 		CLASS_FOR_CONTROLS_LABEL.
 		assertArray(
-			new TableViewerContentProvider(testPackage.classForControls) {
+			new TableViewerContentProvider(adapterFactory, new EClassParameter(testPackage.classForControls)) {
 				def elements(TestContainer e) {
 					// don't return classesWithName
 					e.classesForControls
 				}
-			}.injectMembers.
+			}.
 			getElements(fillTestContainer)
 		)
 	}
@@ -137,12 +127,12 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 		// has the precedence
 		CLASS_FOR_CONTROLS_LABEL.
 		assertArray(
-			new TableViewerContentProvider(EcorePackage.eINSTANCE.EObject) {
+			new TableViewerContentProvider(adapterFactory, new EClassParameter(EcorePackage.eINSTANCE.EObject)) {
 				def elements(TestContainer e) {
 					// don't return classesWithName
 					e.classesForControls
 				}
-			}.injectMembers.
+			}.
 			getElements(fillTestContainer)
 		)
 	}
@@ -154,12 +144,12 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 		// and we filter with EObject so we get all the contents
 		"Test Container, Class With Name Test, Class For Controls".
 		assertArray(
-			new TableViewerContentProvider(EcorePackage.eINSTANCE.EObject) {
+			new TableViewerContentProvider(adapterFactory, new EClassParameter(EcorePackage.eINSTANCE.EObject)) {
 				def elements(TestContainer e) {
 					// don't return classesWithName
 					e.classesForControls
 				}
-			}.injectMembers.
+			}.
 			getElements(fillTestContainer.eResource)
 		)
 	}
@@ -191,13 +181,13 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	def void smokeTestCustomGetElementsContainsNull() {
 		testContainer = createTestContainerInResource
 		setupTableViewer(testContainer.eResource,
-			new TableViewerContentProvider(testPackage.classForControls) {
+			new TableViewerContentProvider(adapterFactory, new EClassParameter(testPackage.classForControls)) {
 				def elements(Resource resource) {
 					new ArrayList() => [
 						add(null)
 					]
 				}
-			}.injectMembers)
+			})
 	}
 
 	/**
@@ -316,14 +306,14 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	}
 
 	private def getContentProviderWithCustomGetElements(EClass type) {
-		new TableViewerContentProvider(type) {
+		new TableViewerContentProvider(adapterFactory, new EClassParameter(type)) {
 			def elements(Resource resource) {
 				// don't return classesWithName
 				resource.allContents.
 					filter(TestContainer).toIterable.
 					map[classesForControls].flatten
 			}
-		}.injectMembers
+		}
 	}
 
 	def private fillTestContainer() {
@@ -381,8 +371,9 @@ class TableViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	}
 
 	def private contentProvider(EClass type) {
-		contentProviderProvider.get => [
-			EClass = type
-		]
+		new TableViewerContentProvider(
+			adapterFactory,
+			new EClassParameter(type)
+		)
 	}
 }

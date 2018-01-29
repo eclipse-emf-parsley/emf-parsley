@@ -16,7 +16,6 @@ public class MavenResourceManager extends ResourceManager {
     EList<EObject> _contents = it.getContents();
     EClass _createEClass = EcoreFactory.eINSTANCE.createEClass();
     final Procedure1<EClass> _function = new Procedure1<EClass>() {
-      @Override
       public void apply(final EClass it) {
         it.setName("TestClass");
       }

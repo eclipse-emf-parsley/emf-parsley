@@ -4,13 +4,19 @@ section:VersionTwo[From 1.x to 2.0.0]
 
 There have been lots of API changes, please see the following migration steps
 
+IMPORTANT: In any case a full clean build of your projects is required so that the DSL
+compiler can regenerate correct Java code according to the new API.
+
 ul[
 item[e[factories]: The following factories have been removed:
 e[org.eclipse.emf.parsley.composite.FormFactory],
 e[org.eclipse.emf.parsley.composite.TreeFormFactory],
 e[org.eclipse.emf.parsley.composite.TableFormFactory].
 There's only a single Composite factory now, codeRef[org.eclipse.emf.parsley.composite.CompositeFactory] with all the corresponding
-create methods.  See also ref:Composites[Composites] for more details.]
+create methods.  See also ref:Composites[Composites] for more details.
+The factory e[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory] has also been
+removed: an instance of codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider]
+can be created with e[org.eclipse.emf.parsley.viewers.ViewerFactory.createTableViewerContentProvider(EClass)].]
 item[e[bindings]: the method bindings e[valueTreeFormSashWeights] and e[valueTableColumnWeights]
 must now return an int\[\], instead of a List<Integer>;
 in the DSL it's enough to change the type; for example, if you previously had

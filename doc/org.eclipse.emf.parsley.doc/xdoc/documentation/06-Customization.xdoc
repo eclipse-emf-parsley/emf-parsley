@@ -340,11 +340,11 @@ for tables we only need to specify how the root e[elements] are computed
 (no children are needed for tables).
 
 This content provider, codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider],
-must be configured with the codeRef[org.eclipse.emf.ecore.EClass] of the objects that
+must be initialized with the codeRef[org.eclipse.emf.ecore.EClass] of the objects that
 will be shown in the table, so the e[setEClass] must be called before this content provider is
 used.  This setup is already automatically performed in views that are shipped with Parsley; in
-case you need to setup a table viewer yourself with this content provider, we strongly suggest
-you inject a codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory]
+case you need to setup a table viewer yourself with this content provider, you need to
+create it by injecting a codeRef[org.eclipse.emf.parsley.viewers.ViewerFactory]
 and use its method e[createTableViewerContentProvider(EClass type)].
 
 With the information about the codeRef[org.eclipse.emf.ecore.EClass] this content provider

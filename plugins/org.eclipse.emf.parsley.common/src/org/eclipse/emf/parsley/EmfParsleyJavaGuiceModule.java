@@ -42,6 +42,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
+import org.eclipse.emf.parsley.inject.EClassParameter;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
@@ -97,6 +98,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 		// that we use to inject parameters into constructors
 		bindInjectableParameterProvider(binder, CompositeParameters.class);
 		bindInjectableParameterProvider(binder, EClassCompositeParameters.class);
+		bindInjectableParameterProvider(binder, EClassParameter.class);
 	}
 
 	/**

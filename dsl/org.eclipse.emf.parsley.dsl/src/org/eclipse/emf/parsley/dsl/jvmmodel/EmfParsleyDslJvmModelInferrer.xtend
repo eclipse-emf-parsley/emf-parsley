@@ -90,6 +90,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
+import org.eclipse.emf.parsley.inject.EClassParameter
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -674,9 +675,10 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val viewerContentProviderClass = viewerContentProvider.toClass(element.tableViewerContentProviderQN)
 			acceptor.accept(viewerContentProviderClass) [
 				setSuperClassTypeAndFields(viewerContentProvider, typeof(TableViewerContentProvider))
-				
-				members += toConstructorWithInjectedAdapterFactory(viewerContentProvider)
-				
+				members += toConstructorWithInjectedAdapterFactory(
+					viewerContentProvider,
+					"eClassParameter" -> EClassParameter
+				)
 				inferContentProviderElements(viewerContentProvider.elements)
 			]
 			viewerContentProviderClass
@@ -697,13 +699,22 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		}
 	}
 
-	private def toConstructorWithInjectedAdapterFactory(EObject e) {
+	private def toConstructorWithInjectedAdapterFactory(EObject e, Pair<String,Class<?>>... additionalParameters) {
 		e.toConstructor() [
 			parameters += e.
 				toParameter("adapterFactory",
 					typeRef(AdapterFactory)
 				)
-			body = [it.append("super(adapterFactory);")]
+			var parametersStringBuilder = new StringBuilder("adapterFactory")
+			for (add : additionalParameters) {
+				parameters += e.toParameter(
+					add.key,
+					typeRef(add.value)
+				)
+				parametersStringBuilder.append(", " + add.key)
+			}
+			val superArgs = parametersStringBuilder.toString
+			body = [it.append("super(" + superArgs + ");")]
 			annotations += annotationRef(Inject)
 		]
 	}

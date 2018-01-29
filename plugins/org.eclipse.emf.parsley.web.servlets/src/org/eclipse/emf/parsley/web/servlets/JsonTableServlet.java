@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
-import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
+import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.IViewPart;
 import org.w3c.dom.Document;
@@ -94,7 +94,7 @@ public class JsonTableServlet extends JsonParsleyServlet {
 			EClass clazz = configurator.getEClass(viewpartClass);
 
 			ViewerLabelProvider labelProvider = (ViewerLabelProvider) injector.getInstance(ILabelProvider.class);
-			TableViewerContentProvider tvcp = injector.getInstance(TableViewerContentProviderFactory.class)
+			TableViewerContentProvider tvcp = injector.getInstance(ViewerFactory.class)
 					.createTableViewerContentProvider(clazz);
 
 			Object[] contents = tvcp.getElements(resource);
