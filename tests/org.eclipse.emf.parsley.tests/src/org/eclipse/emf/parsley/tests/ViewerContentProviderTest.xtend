@@ -388,14 +388,14 @@ class ViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest {
 	}
 
 	private def getContentProviderWithCustomGetElements() {
-		new ViewerContentProvider() {
+		new ViewerContentProvider(adapterFactory) {
 			def elements(Resource resource) {
 				// don't return classesWithName
 				resource.allContents.
 					filter(TestContainer).toIterable.
 					map[classesForControls].flatten
 			}
-		}.injectMembers
+		}
 	}
 
 	def private fillTestContainer() {
