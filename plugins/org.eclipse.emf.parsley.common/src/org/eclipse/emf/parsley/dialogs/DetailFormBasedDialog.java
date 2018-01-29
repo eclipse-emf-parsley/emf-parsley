@@ -11,13 +11,11 @@
 
 package org.eclipse.emf.parsley.dialogs;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
+import org.eclipse.emf.parsley.inject.DetailDialogParameters;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
 
@@ -29,9 +27,12 @@ public class DetailFormBasedDialog extends AbstractDetailDialog {
 	@Inject
 	private CompositeFactory compositeFactory;
 
-	public DetailFormBasedDialog(Shell parentShell, String title,
-			EObject original, EditingDomain domain) {
-		super(parentShell, title, original, domain);
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public DetailFormBasedDialog(DetailDialogParameters params) {
+		super(params);
 	}
 
 	@Override

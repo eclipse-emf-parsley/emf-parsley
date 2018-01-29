@@ -49,6 +49,11 @@ has been removed. The getter/setter for ViewerFactory have been removed from e[o
 (just inject your own ViewerFactory if you need one in your subclasses).
 The method e[org.eclipse.emf.parsley.composite.TableFormComposite.buildTable(EClass)] has been removed:
 it was used only by factories, and now the EClass is injected in the constructor.
+The method e[org.eclipse.emf.parsley.dialogs.DialogFactory.createDialogDetailComposite(Composite, int)]
+has been moved into codeRef[org.eclipse.emf.parsley.composite.CompositeFactory].
+The method e[org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter.createDialog(EObject, EditingDomain, Shell, String)]
+has changed into this signature (parameters' order has been changed for better readability)
+e[org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter.createDialog(Shell, String, EObject, EditingDomain)].
 ]
 ]
 

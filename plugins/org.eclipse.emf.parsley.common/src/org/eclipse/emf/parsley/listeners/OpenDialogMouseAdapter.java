@@ -54,10 +54,10 @@ public class OpenDialogMouseAdapter extends MouseAdapter implements
 			EObject o = helper.getEObjectFromMouseEvent(event);
 			if (o != null) {
 				editingStrategy.prepare(o);
-				Dialog dialog = createDialog(o,
-						editingStrategy.getEditingDomain(o), Display
-								.getCurrent().getActiveShell(),
-						labelProvider.getText(o));
+				Dialog dialog = createDialog(Display
+						.getCurrent().getActiveShell(),
+						labelProvider.getText(o), o,
+						editingStrategy.getEditingDomain(o));
 				int rc = dialog.open();
 				if (rc == Window.OK) {
 					editingStrategy.update(o);
@@ -68,9 +68,12 @@ public class OpenDialogMouseAdapter extends MouseAdapter implements
 		}
 	}
 
-	protected Dialog createDialog(EObject o, EditingDomain editingDomain,
-			Shell activeShell, String title) {
-		return dialogFactory.createDetailDialog(activeShell, title, o,
+	/**
+	 * @since 2.0
+	 */
+	protected Dialog createDialog(Shell parentShell, String title,
+			EObject object, EditingDomain editingDomain) {
+		return dialogFactory.createDetailDialog(parentShell, title, object,
 				editingDomain);
 	}
 }

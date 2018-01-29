@@ -44,6 +44,11 @@ public class CompositeFactory {
 		return genericCompositeFactory.create(FormDetailReadOnlyComposite.class, parent, style);
 	}
 
+	public DialogDetailComposite createDialogDetailComposite(
+			Composite parent, int style) {
+		return genericCompositeFactory.create(DialogDetailComposite.class, parent, style);
+	}
+
 	public TreeFormComposite createTreeFormComposite(Composite parent, int style) {
 		return genericCompositeFactory.create(TreeFormComposite.class, parent, style);
 	}
@@ -52,4 +57,5 @@ public class CompositeFactory {
 		return genericCompositeFactoryWithEClass.createInstance(TableFormComposite.class,
 				new EClassCompositeParameters(parent, style, type));
 	}
+
 }

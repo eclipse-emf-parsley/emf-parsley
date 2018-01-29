@@ -13,9 +13,9 @@
 package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
+import org.eclipse.emf.parsley.inject.DetailDialogParameters;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.layout.GridDataFactory;
@@ -26,6 +26,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
+import com.google.common.base.Strings;
+import com.google.inject.Inject;
+
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - Initial contribution and API
@@ -33,34 +36,28 @@ import org.eclipse.swt.widgets.Shell;
 public abstract class AbstractDetailDialog extends Dialog {
 
 	private String title;
-	private EObject original;
+	private EObject object;
 	private EditingDomain domain;
 
 	/**
-	 * Initializes this dialog for editing the {@link EObject} toBeEdited;
-	 * the {@link EObject} original is needed to retrieve additional information
-	 * such as the {@link EditingDomain} and the containing {@link Resource}.
+	 * Initializes this dialog for editing an {@link EObject}.
 	 * 
-	 * @param parentShell
-	 * @param title
-	 * @param original
-	 * @param toBeEdited
+	 * @param params
+	 * @since 2.0
 	 */
-	public AbstractDetailDialog(Shell parentShell, String title,
-			EObject original, EditingDomain domain) {
-		super(parentShell);
+	@Inject
+	public AbstractDetailDialog(DetailDialogParameters params) {
+		super(params.getParentShell());
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.TITLE | SWT.MAX);
-		this.title = title;
-		this.original = original;
-		this.domain = domain;
+		this.title = params.getTitle();
+		this.object = params.getObject();
+		this.domain = params.getEditingDomain();
 	}
 
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		if (title != null) {
-			newShell.setText(title);
-		}
+		newShell.setText(Strings.nullToEmpty(title));
 	}
 
 	@Override
@@ -69,7 +66,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 		Composite composite = new Composite(dialogArea, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
 		final AbstractDetailComposite detailEmfComponent = createDetailComposite(composite);
-		detailEmfComponent.init(original, domain);
+		detailEmfComponent.init(object, domain);
 		detailEmfComponent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 				true, 1, 1));
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(composite);

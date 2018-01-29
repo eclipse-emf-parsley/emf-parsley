@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EClass;
@@ -48,7 +47,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	 */
 	@Inject
 	public FormDetailComposite(CompositeParameters params) {
-		super(params.getParent(), params.getStyle());
+		super(params);
 
 		toolkit = new FormToolkit(params.getParent().getDisplay());
 

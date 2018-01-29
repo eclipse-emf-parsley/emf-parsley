@@ -17,8 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
+import org.eclipse.emf.parsley.inject.CompositeParameters;
+import org.eclipse.emf.parsley.inject.InjectableComposite;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
-import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
@@ -26,7 +27,7 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - Contributions
  */
-public abstract class AbstractDetailComposite extends Composite {
+public abstract class AbstractDetailComposite extends InjectableComposite {
 
 	@Inject
 	private FeaturesProvider featuresProvider;
@@ -34,8 +35,12 @@ public abstract class AbstractDetailComposite extends Composite {
 	@Inject
 	private EditingDomainFinder editingDomainFinder;
 
-	public AbstractDetailComposite(Composite parent, int style) {
-		super(parent, style);
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public AbstractDetailComposite(CompositeParameters params) {
+		super(params);
 	}
 
 	/**

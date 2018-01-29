@@ -11,12 +11,11 @@
 
 package org.eclipse.emf.parsley.dialogs;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
+import org.eclipse.emf.parsley.inject.DetailDialogParameters;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
 
@@ -26,16 +25,19 @@ import com.google.inject.Inject;
 public class DetailDialog extends AbstractDetailDialog {
 
 	@Inject
-	private DialogFactory dialogFactory;
+	private CompositeFactory compositeFactory;
 
-	public DetailDialog(Shell parentShell, String title, EObject original,
-			EditingDomain domain) {
-		super(parentShell, title, original, domain);
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public DetailDialog(DetailDialogParameters params) {
+		super(params);
 	}
 
 	@Override
 	protected AbstractDetailComposite createDetailComposite(Composite composite) {
-		return dialogFactory.createDialogDetailComposite(composite, SWT.NONE);
+		return compositeFactory.createDialogDetailComposite(composite, SWT.NONE);
 	}
 
 }

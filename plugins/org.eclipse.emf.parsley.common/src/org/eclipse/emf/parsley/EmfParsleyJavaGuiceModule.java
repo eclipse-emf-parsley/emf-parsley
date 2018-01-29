@@ -41,6 +41,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
 import org.eclipse.emf.parsley.inject.CompositeParameters;
+import org.eclipse.emf.parsley.inject.DetailDialogParameters;
 import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
 import org.eclipse.emf.parsley.inject.EClassParameter;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
@@ -99,6 +100,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 		bindInjectableParameterProvider(binder, CompositeParameters.class);
 		bindInjectableParameterProvider(binder, EClassCompositeParameters.class);
 		bindInjectableParameterProvider(binder, EClassParameter.class);
+		bindInjectableParameterProvider(binder, DetailDialogParameters.class);
 	}
 
 	/**

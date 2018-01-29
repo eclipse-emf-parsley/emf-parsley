@@ -34,13 +34,18 @@ class CompositeFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	}
 
 	@Test
-	def void canCreateForDetailComposite() {
+	def void canCreateFormDetailComposite() {
 		factory.createFormDetailComposite(shell, SWT.NONE)
 	}
 
 	@Test
-	def void canCreateForDetailReadOnlyComposite() {
+	def void canCreateFormDetailReadOnlyComposite() {
 		factory.createFormDetailReadOnlyComposite(shell, SWT.NONE)
+	}
+
+	@Test
+	def void canCreateDialogDetailComposite() {
+		factory.createDialogDetailComposite(shell, SWT.NONE)
 	}
 
 	@Test

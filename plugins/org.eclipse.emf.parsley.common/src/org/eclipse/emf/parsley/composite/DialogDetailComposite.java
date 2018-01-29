@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
@@ -25,8 +25,12 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 	@Inject
 	private DialogControlFactory dialogControlFactory;
 
-	public DialogDetailComposite(Composite parent, int style) {
-		super(parent, style);
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public DialogDetailComposite(CompositeParameters params) {
+		super(params);
 
 		setLayout(new GridLayout(2, false));
 	}

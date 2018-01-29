@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.tests
 import com.google.inject.Inject
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.composite.DialogDetailComposite
+import org.eclipse.emf.parsley.inject.CompositeParameters
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.swt.SWT
@@ -34,7 +35,7 @@ class DialogDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
 	@Before def void setupTestCase() {
 		val injector = getOrCreateInjector
 		injector.injectMembers(this)
-		dialogDetailComposite = new DialogDetailComposite(shell, SWT.NONE)
+		dialogDetailComposite = new DialogDetailComposite(new CompositeParameters(shell, SWT.NONE))
 		injector.injectMembers(dialogDetailComposite)
 	}
 

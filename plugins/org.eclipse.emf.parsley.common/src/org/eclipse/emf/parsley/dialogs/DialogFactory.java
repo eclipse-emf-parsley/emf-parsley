@@ -12,56 +12,33 @@ package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
-import org.eclipse.emf.parsley.composite.DialogDetailComposite;
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.emf.parsley.inject.DetailDialogParameters;
+import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
-import com.google.inject.MembersInjector;
+import com.google.inject.Singleton;
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  * 
  */
+@Singleton
 public class DialogFactory {
 
 	@Inject
-	protected MembersInjector<DetailFormBasedDialog> detailFormBasedDialogMembersInjection;
+	private GenericFactory<AbstractDetailDialog, DetailDialogParameters> detailDialogFactory;
 
-	@Inject
-	protected MembersInjector<DetailDialog> detailDialogMembersInjection;
-
-	@Inject
-	protected MembersInjector<DialogDetailComposite> detailComponentDialogMembersInjection;
-
-	@Inject
-	public DialogFactory() {
-
+	public DetailFormBasedDialog createDetailFormBasedDialog(Shell parentShell, String title, EObject object,
+			EditingDomain editingDomain) {
+		return detailDialogFactory.createInstance(DetailFormBasedDialog.class,
+				new DetailDialogParameters(parentShell, title, object, editingDomain));
 	}
 
-	public DetailFormBasedDialog createDetailFormBasedDialog(Shell parentShell,
-			String title, EObject original, EditingDomain domain) {
-		DetailFormBasedDialog dialog = new DetailFormBasedDialog(parentShell,
-				title, original, domain);
-		detailFormBasedDialogMembersInjection.injectMembers(dialog);
-		return dialog;
-	}
-
-	public DetailDialog createDetailDialog(Shell parentShell, String title,
-			EObject original, EditingDomain domain) {
-		DetailDialog dialog = new DetailDialog(parentShell, title, original,
-				domain);
-		detailDialogMembersInjection.injectMembers(dialog);
-		return dialog;
-	}
-
-	public AbstractDetailComposite createDialogDetailComposite(
-			Composite parent, int style) {
-		DialogDetailComposite detailComposite = new DialogDetailComposite(
-				parent, style);
-		detailComponentDialogMembersInjection.injectMembers(detailComposite);
-		return detailComposite;
+	public DetailDialog createDetailDialog(Shell parentShell, String title, EObject object,
+			EditingDomain editingDomain) {
+		return detailDialogFactory.createInstance(DetailDialog.class,
+				new DetailDialogParameters(parentShell, title, object, editingDomain));
 	}
 
 }

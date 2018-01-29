@@ -34,9 +34,9 @@ public class OpenFormBasedDialogMouseAdapter extends OpenDialogMouseAdapter
 	private DialogFactory dialogFactory;
 
 	@Override
-	protected Dialog createDialog(EObject o, EditingDomain editingDomain,
-			Shell activeShell, String title) {
-		return dialogFactory.createDetailFormBasedDialog(activeShell, title, o,
+	protected Dialog createDialog(Shell parentShell, String title,
+			EObject object, EditingDomain editingDomain) {
+		return dialogFactory.createDetailFormBasedDialog(parentShell, title, object,
 				editingDomain);
 	}
 }
