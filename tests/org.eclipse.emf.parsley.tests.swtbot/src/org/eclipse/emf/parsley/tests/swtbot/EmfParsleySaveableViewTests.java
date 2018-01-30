@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -207,7 +208,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	public void hasColumnsOnSaveableTreeWithColumnsView()
 			throws Exception {
 		SWTBotTree tree = prepareSaveableTreeWithColumnsView();
-		tree.expandNode("Library My Library");
+		expandTreeWithColumnsNode(tree);
 		assertEquals(tree.columns().size(), 6);
 	}
 
@@ -215,8 +216,17 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	public void hasColumnsOnSaveableTreeWithSpecificColumnsView()
 			throws Exception {
 		SWTBotTree tree = prepareSaveableTreeWithSpecificColumnsView();
-		tree.expandNode("Library My Library");
+		expandTreeWithColumnsNode(tree);
 		assertEquals(tree.columns().size(), 3);
+	}
+
+	private void expandTreeWithColumnsNode(SWTBotTree tree) {
+		try {
+			tree.expandNode("Library My Library");
+		} catch (WidgetNotFoundException e) {
+			// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=530506
+			tree.expandNode("");
+		}
 	}
 
 	@Test
