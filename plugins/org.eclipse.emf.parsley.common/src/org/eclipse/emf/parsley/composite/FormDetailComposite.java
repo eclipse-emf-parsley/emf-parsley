@@ -12,9 +12,7 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -26,10 +24,12 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 public class FormDetailComposite extends AbstractDetailComposite {
 
-	private FormControlFactory formControlFactory;
+	@Inject
+	private Provider<FormControlFactory> controlFactoryProvider;
 
 	@Inject
 	private ILabelProvider labelProvider;
@@ -73,20 +73,6 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		toolkit.dispose();
 	}
 
-	@Inject
-	protected void setFormControlFactory(FormControlFactory formControlFactory) {
-		this.formControlFactory = formControlFactory;
-	}
-
-	@Override
-	protected void initControlFactory(EditingDomain domain,
-			EObject model) {
-		updateTitle(model);
-		headerAdapter = new FormTitleAdapter(model);
-		model.eAdapters().add(headerAdapter);
-		formControlFactory.init(domain, model, main, toolkit);
-	}
-
 	protected void updateTitle(EObject model) {
 		scrolledForm.setText(labelProvider.getText(model));
 		scrolledForm.setImage(labelProvider.getImage(model));
@@ -96,9 +82,17 @@ public class FormDetailComposite extends AbstractDetailComposite {
 		return scrolledForm;
 	}
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
-		formControlFactory.createEditingField(feature);
+	protected FormControlFactory createControlFactory(EObject model, EditingDomain domain) {
+		updateTitle(model);
+		headerAdapter = new FormTitleAdapter(model);
+		model.eAdapters().add(headerAdapter);
+		FormControlFactory formControlFactory = controlFactoryProvider.get();
+		formControlFactory.init(domain, model, main, toolkit);
+		return formControlFactory;
 	}
 
 	private class FormTitleAdapter extends AdapterImpl {

@@ -57,6 +57,10 @@ has been moved into codeRef[org.eclipse.emf.parsley.composite.CompositeFactory].
 The method e[org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter.createDialog(EObject, EditingDomain, Shell, String)]
 has changed into this signature (parameters' order has been changed for better readability)
 e[org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter.createDialog(Shell, String, EObject, EditingDomain)].
+The new abstract method is added e[org.eclipse.emf.parsley.composite.AbstractDetailComposite.createControlFactory(EObject, EditingDomain)],
+while the previous abstract methods have been removed: subclasses only have to create an instance of
+an codeRef[org.eclipse.emf.parsley.composite.AbstractControlFactory], and codeRef[org.eclipse.emf.parsley.composite.AbstractDetailComposite]
+will use it accordingly to create the editing fields.
 ]
 ]
 

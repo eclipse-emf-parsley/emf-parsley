@@ -81,6 +81,10 @@ compiler can regenerate correct Java code according to the new API.
 		The method <em>org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter.createDialog(EObject, EditingDomain, Shell, String)</em>
 		has changed into this signature (parameters&apos; order has been changed for better readability)
 		<em>org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter.createDialog(Shell, String, EObject, EditingDomain)</em>.
+		The new abstract method is added <em>org.eclipse.emf.parsley.composite.AbstractDetailComposite.createControlFactory(EObject, EditingDomain)</em>,
+		while the previous abstract methods have been removed: subclasses only have to create an instance of
+		an <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/AbstractControlFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.AbstractControlFactory" >AbstractControlFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/AbstractControlFactory.java" title="View Source Code" >(src)</a>, and <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/AbstractDetailComposite.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.AbstractDetailComposite" >AbstractDetailComposite</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/AbstractDetailComposite.java" title="View Source Code" >(src)</a>
+		will use it accordingly to create the editing fields.
 	</li>
 </ul>
 </p>

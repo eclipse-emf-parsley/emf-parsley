@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.CompositeParameters;
 
 import com.google.inject.Inject;
@@ -32,10 +34,9 @@ public class FormDetailReadOnlyComposite extends FormDetailComposite {
 	}
 
 	@Override
-	@Inject
-	protected void setFormControlFactory(FormControlFactory formControlFactory) {
+	protected FormControlFactory createControlFactory(EObject model, EditingDomain domain) {
+		FormControlFactory formControlFactory = super.createControlFactory(model, domain);
 		formControlFactory.setReadonly(true);
-		super.setFormControlFactory(formControlFactory);
+		return formControlFactory;
 	}
-
 }

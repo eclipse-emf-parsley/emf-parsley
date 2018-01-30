@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.composite;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -63,17 +62,18 @@ public abstract class AbstractDetailComposite extends InjectableComposite {
 	public void init(EObject original, EditingDomain editingDomain) {
 		List<EStructuralFeature> features = featuresProvider.getEObjectFeatures(original);
 
-		initControlFactory(editingDomain, original);
+		AbstractControlFactory controlFactory = createControlFactory(original, editingDomain);
 
 		for (final EStructuralFeature feature : features) {
-			createControlForFeature(original.eClass(), feature);
+			controlFactory.createEditingField(feature);
 		}
 
 		this.layout();
 	}
 
-	protected abstract void initControlFactory(EditingDomain domain, EObject model);
-
-	protected abstract void createControlForFeature(final EClass eClass, final EStructuralFeature feature);
+	/**
+	 * @since 2.0
+	 */
+	protected abstract AbstractControlFactory createControlFactory(EObject model, EditingDomain domain);
 
 }

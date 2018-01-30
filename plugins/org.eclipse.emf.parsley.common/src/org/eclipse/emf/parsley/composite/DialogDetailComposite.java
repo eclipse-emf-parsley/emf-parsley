@@ -11,19 +11,18 @@
 package org.eclipse.emf.parsley.composite;
 
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.swt.layout.GridLayout;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 public class DialogDetailComposite extends AbstractDetailComposite {
 
 	@Inject
-	private DialogControlFactory dialogControlFactory;
+	private Provider<DialogControlFactory> controlFactoryProvider;
 
 	/**
 	 * @since 2.0
@@ -36,13 +35,10 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 	}
 
 	@Override
-	protected void initControlFactory(EditingDomain domain, EObject model) {
-		dialogControlFactory.init(domain, model, this);
-	}
-
-	@Override
-	protected void createControlForFeature(EClass eClass, EStructuralFeature feature) {
-		dialogControlFactory.createEditingField(feature);
+	protected AbstractControlFactory createControlFactory(EObject model, EditingDomain domain) {
+		DialogControlFactory controlFactory = controlFactoryProvider.get();
+		controlFactory.init(domain, model, this);
+		return controlFactory;
 	}
 
 }
