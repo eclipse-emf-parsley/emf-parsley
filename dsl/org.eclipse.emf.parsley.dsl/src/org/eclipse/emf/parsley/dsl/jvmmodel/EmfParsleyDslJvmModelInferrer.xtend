@@ -91,6 +91,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
 import org.eclipse.emf.parsley.inject.EClassParameter
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -145,7 +146,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		val moduleClass = element.toClass(element.moduleQN)
 
 		val labelProviderClass = element.inferLabelProvider(acceptor)
-		val tableLabelProviderClass = element.inferTableLabelProvider(acceptor)
+		val tableLabelProviderClass = element.inferTableColumnLabelProvider(acceptor)
 		val featureCaptionProviderClass = element.inferFeatureCaptionProvider(acceptor)
 		val formFeatureCaptionProviderClass = element.inferFormFeatureCaptionProvider(acceptor)
 		val dialogFeatureCaptionProviderClass = element.inferDialogFeatureCaptionProvider(acceptor)
@@ -392,8 +393,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			labelProviderClass
 		}
 	}
-	
-	def private inferTableLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
+
+	def private inferTableColumnLabelProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.tableLabelProvider === null)
 			null
 		else {
@@ -401,6 +402,15 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val tableLabelProviderClass = tableLabelProvider.toClass(element.tableLabelProviderQN)
 			acceptor.accept(tableLabelProviderClass) [
 				setSuperClassTypeAndFields(tableLabelProvider, typeof(TableColumnLabelProvider))
+				
+				members += tableLabelProvider.toConstructor() [
+					parameters += tableLabelProvider.
+						toParameter("params",
+							typeRef(EStructuralFeatureParameter)
+						)
+					body = [it.append("super(params);")]
+					annotations += annotationRef(Inject)
+				]
 				
 				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureTexts, "text_", typeRef(String), parameterCreatorForFeatureAssociatedExpression)
 				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureImages, "image_", typeRef(Object), parameterCreatorForFeatureAssociatedExpression)
@@ -415,7 +425,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			tableLabelProviderClass
 		}
 	}
-	
+
 	def private inferFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		if (element.featureCaptionProvider === null)
 			null

@@ -50,7 +50,7 @@ public class TableViewerColumnBuilder {
 	private int[] weights;
 
 	@Inject
-	private ColumnLabelProviderFactory columnLabelProviderFactory;
+	private ViewerFactory viewerFactory;
 
 	@Inject
 	private FeatureCaptionProvider featureCaptionProvider;
@@ -112,12 +112,10 @@ public class TableViewerColumnBuilder {
 		return viewerColumn;
 	}
 
-	protected TableViewerColumn createTableViewerColumn(
-			TableViewer tableViewer, EStructuralFeature eStructuralFeature) {
-		TableViewerColumn tableViewerColumn = new TableViewerColumn(
-				tableViewer, SWT.NONE);
-		tableViewerColumn.setLabelProvider(columnLabelProviderFactory
-					.createColumnLabelProvider(eStructuralFeature));
+	protected TableViewerColumn createTableViewerColumn(TableViewer tableViewer,
+			EStructuralFeature eStructuralFeature) {
+		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		tableViewerColumn.setLabelProvider(viewerFactory.createTableColumnLabelProvider(eStructuralFeature));
 		return tableViewerColumn;
 	}
 

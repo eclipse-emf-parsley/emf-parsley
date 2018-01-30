@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
@@ -85,6 +86,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 
 	private EStructuralFeature eStructuralFeature;
 
+	@Inject
 	private ILabelProvider labelProvider;
 
 	@Inject
@@ -99,26 +101,12 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	private PolymorphicDispatcher<Color> backgroundDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("rowBackground", 1, 1, this);
 
+	/**
+	 * @since 2.0
+	 */
 	@Inject
-	public TableColumnLabelProvider() {
-
-	}
-
-	public EStructuralFeature geteStructuralFeature() {
-		return eStructuralFeature;
-	}
-
-	public void seteStructuralFeature(EStructuralFeature eStructuralFeature) {
-		this.eStructuralFeature = eStructuralFeature;
-	}
-
-	public ILabelProvider getLabelProvider() {
-		return labelProvider;
-	}
-
-	@Inject
-	public void setLabelProvider(ILabelProvider labelProvider) {
-		this.labelProvider = labelProvider;
+	public TableColumnLabelProvider(EStructuralFeatureParameter param) {
+		this.eStructuralFeature = param.getEStructuralFeature();
 	}
 
 	@Override
@@ -127,7 +115,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return "";
 		}
 
-		String ret = polymorphicGetText(element, geteStructuralFeature());
+		String ret = polymorphicGetText(element, eStructuralFeature);
 		if (ret != null) {
 			return ret;
 		}
@@ -144,7 +132,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 
 	protected String defaultGetTextForFeatureValue(Object element) {
 		Object featureValue = getFeatureValue(element);
-		return featureValue != null ? getLabelProvider().getText(featureValue) : "";
+		return featureValue != null ? labelProvider.getText(featureValue) : "";
 	}
 
 	protected String logErrorAndReturnEmptyString(Throwable e) {
@@ -158,7 +146,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 */
 	protected Object getFeatureValue(Object element) {
 		EObject eObject = (EObject) element;
-		return EcoreUtil2.safeEGet(eObject, geteStructuralFeature());
+		return EcoreUtil2.safeEGet(eObject, eStructuralFeature);
 	}
 
 	@Override
@@ -167,7 +155,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return null;
 		}
 
-		Image ret = polymorphicGetImage(element, geteStructuralFeature());
+		Image ret = polymorphicGetImage(element, eStructuralFeature);
 		return ret;
 	}
 
@@ -177,7 +165,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return null;
 		}
 
-		Font forFeature = invokePolymorphicDispatcher(element, geteStructuralFeature(), "font_");
+		Font forFeature = invokePolymorphicDispatcher(element, eStructuralFeature, "font_");
 		if (forFeature != null) {
 			return forFeature;
 		}
@@ -201,7 +189,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return null;
 		}
 
-		Color forFeature = invokePolymorphicDispatcher(element, geteStructuralFeature(), "foreground_");
+		Color forFeature = invokePolymorphicDispatcher(element, eStructuralFeature, "foreground_");
 		if (forFeature != null) {
 			return forFeature;
 		}
@@ -225,7 +213,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return null;
 		}
 
-		Color forFeature = invokePolymorphicDispatcher(element, geteStructuralFeature(), "background_");
+		Color forFeature = invokePolymorphicDispatcher(element, eStructuralFeature, "background_");
 		if (forFeature != null) {
 			return forFeature;
 		}
@@ -243,11 +231,11 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 		return null;
 	}
 
-	protected String polymorphicGetText(Object element, EStructuralFeature feature) {
+	private String polymorphicGetText(Object element, EStructuralFeature feature) {
 		return invokePolymorphicDispatcher(element, feature, "text_");
 	}
 
-	protected Image polymorphicGetImage(Object element, EStructuralFeature feature) {
+	private Image polymorphicGetImage(Object element, EStructuralFeature feature) {
 		Object invoke = invokePolymorphicDispatcher(element, feature, "image_");
 		if (invoke != null) {
 			return imageHelper.convertToImage(invoke);
@@ -255,7 +243,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 		return null;
 	}
 
-	protected <T> T invokePolymorphicDispatcher(Object element, EStructuralFeature feature, String prefix) {
+	private <T> T invokePolymorphicDispatcher(Object element, EStructuralFeature feature, String prefix) {
 		if (element instanceof EObject) {
 			EObject eObject = (EObject) element;
 			return PolymorphicDispatcherExtensions.<T> polymorphicInvokeBasedOnFeature(this, eObject.eClass(), feature,

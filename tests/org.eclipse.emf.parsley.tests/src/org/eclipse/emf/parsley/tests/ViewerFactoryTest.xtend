@@ -99,4 +99,8 @@ class ViewerFactoryTest extends AbstractViewerTest {
 			"booleanObjectFeature".assertEquals(treeViewer.tree.columns.get(2).text)
 		]
 	}
+
+	@Test def void testCreateTableColumnLabelProvider() {
+		viewerFactory.createTableColumnLabelProvider(testPackage.classForControls_BooleanObjectFeature)
+	}
 }

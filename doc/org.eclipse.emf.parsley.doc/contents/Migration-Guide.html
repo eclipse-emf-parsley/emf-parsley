@@ -28,9 +28,12 @@ compiler can regenerate correct Java code according to the new API.
 		<em>org.eclipse.emf.parsley.composite.TableFormFactory</em>.
 		There&apos;s only a single Composite factory now, <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/composite/CompositeFactory.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.composite.CompositeFactory" >CompositeFactory</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/composite/CompositeFactory.java" title="View Source Code" >(src)</a> with all the corresponding
 		create methods.  See also <a href="05-Components.html#Composites" title="Go to &quot;Composites&quot;">Composites</a> for more details.
-		The factory <em>org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory</em> has also been
+		The factory <em>org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory</em> has been
 		removed: an instance of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider" >TableViewerContentProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/edit/ui/provider/TableViewerContentProvider.java" title="View Source Code" >(src)</a>
 		can be created with <em>org.eclipse.emf.parsley.viewers.ViewerFactory.createTableViewerContentProvider(EClass)</em>.
+		The factory <em>org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory</em> has been removed:
+		an instance of <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/ui/provider/TableColumnLabelProvider.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider" >TableColumnLabelProvider</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/ui/provider/TableColumnLabelProvider.java" title="View Source Code" >(src)</a>
+		can be created with <em>org.eclipse.emf.parsley.viewers.ViewerFactory.createTableColumnLabelProvider(EStructuralFeature)</em>.
 	</li>
 	<li>
 		<em>bindings</em>: the method bindings <em>valueTreeFormSashWeights</em> and <em>valueTableColumnWeights</em>

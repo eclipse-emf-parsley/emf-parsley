@@ -14,9 +14,12 @@ e[org.eclipse.emf.parsley.composite.TreeFormFactory],
 e[org.eclipse.emf.parsley.composite.TableFormFactory].
 There's only a single Composite factory now, codeRef[org.eclipse.emf.parsley.composite.CompositeFactory] with all the corresponding
 create methods.  See also ref:Composites[Composites] for more details.
-The factory e[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory] has also been
+The factory e[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory] has been
 removed: an instance of codeRef[org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider]
-can be created with e[org.eclipse.emf.parsley.viewers.ViewerFactory.createTableViewerContentProvider(EClass)].]
+can be created with e[org.eclipse.emf.parsley.viewers.ViewerFactory.createTableViewerContentProvider(EClass)].
+The factory e[org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory] has been removed:
+an instance of codeRef[org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider]
+can be created with e[org.eclipse.emf.parsley.viewers.ViewerFactory.createTableColumnLabelProvider(EStructuralFeature)].]
 item[e[bindings]: the method bindings e[valueTreeFormSashWeights] and e[valueTableColumnWeights]
 must now return an int\[\], instead of a List<Integer>;
 in the DSL it's enough to change the type; for example, if you previously had

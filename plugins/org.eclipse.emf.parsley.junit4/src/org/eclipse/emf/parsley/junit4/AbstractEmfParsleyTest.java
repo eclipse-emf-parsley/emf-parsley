@@ -41,6 +41,11 @@ public abstract class AbstractEmfParsleyTest {
 		return o;
 	}
 
+	public <T extends Object> T injectMembers(final T o, Module module) {
+		createInjector(module).injectMembers(o);
+		return o;
+	}
+
 	public Injector getOrCreateInjector() {
 		if ((this.injector == null)) {
 			this.injector = createInjector();

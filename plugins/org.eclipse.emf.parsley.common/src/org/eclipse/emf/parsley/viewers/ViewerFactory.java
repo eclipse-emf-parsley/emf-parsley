@@ -18,10 +18,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.inject.EClassParameter;
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
+import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.layout.TreeColumnLayout;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -65,6 +68,9 @@ public class ViewerFactory {
 
 	@Inject
 	private GenericFactory<IContentProvider, EClassParameter> eClassBasedContentProviderFactory;
+
+	@Inject
+	private GenericFactory<ColumnLabelProvider, EStructuralFeatureParameter> eFeatureBasedColumnLabelProviderFactory;
 
 	/**
 	 * Initializes the viewer, and uses as input the resource specified by an
@@ -155,6 +161,15 @@ public class ViewerFactory {
 	 */
 	public TableViewerContentProvider createTableViewerContentProvider(EClass eClass) {
 		return eClassBasedContentProviderFactory.createInstance(TableViewerContentProvider.class, new EClassParameter(eClass));
+	}
+
+	/**
+	 * Creates a {@link TableColumnLabelProvider} with the specified {@link EStructuralFeature}.
+	 * 
+	 * @since 2.0
+	 */
+	public TableColumnLabelProvider createTableColumnLabelProvider(EStructuralFeature eStructuralFeature) {
+		return eFeatureBasedColumnLabelProviderFactory.createInstance(TableColumnLabelProvider.class, new EStructuralFeatureParameter(eStructuralFeature));
 	}
 
 	/**

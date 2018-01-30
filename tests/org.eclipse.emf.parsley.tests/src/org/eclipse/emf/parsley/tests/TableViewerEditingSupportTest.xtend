@@ -22,8 +22,8 @@ import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.tests.util.TestableCommandStackListenerClient
-import org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory
 import org.eclipse.emf.parsley.viewers.TableViewerEditingSupport
+import org.eclipse.emf.parsley.viewers.ViewerFactory
 import org.eclipse.jface.viewers.ArrayContentProvider
 import org.eclipse.jface.viewers.CellEditor
 import org.eclipse.jface.viewers.ColumnViewer
@@ -52,7 +52,7 @@ class TableViewerEditingSupportTest extends AbstractEmfParsleyShellBasedTest {
 
 	@Inject var MembersInjector<TableViewerEditingSupport> membersInjector
 
-	@Inject var ColumnLabelProviderFactory columnLabelProviderFactory
+	@Inject var ViewerFactory viewerFactory
 
 	@Inject var AdapterFactoryEditingDomain editingDomain
 
@@ -196,7 +196,7 @@ class TableViewerEditingSupportTest extends AbstractEmfParsleyShellBasedTest {
 			contents += referredInstance2
 		]
 		val tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-		tableViewerColumn.setLabelProvider(columnLabelProviderFactory.createColumnLabelProvider(feature));
+		tableViewerColumn.setLabelProvider(viewerFactory.createTableColumnLabelProvider(feature));
 		new TestableTableViewerEditingSupport(tableViewer, feature) => [
 			membersInjector.injectMembers(it)
 			tableViewerColumn.editingSupport = it

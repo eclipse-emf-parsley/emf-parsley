@@ -44,6 +44,7 @@ import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.emf.parsley.inject.DetailDialogParameters;
 import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
 import org.eclipse.emf.parsley.inject.EClassParameter;
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
@@ -70,7 +71,6 @@ import org.eclipse.emf.parsley.validation.DialogErrorReporter;
 import org.eclipse.emf.parsley.validation.IssueReporter;
 import org.eclipse.emf.parsley.validation.LogIssueReporter;
 import org.eclipse.emf.parsley.validation.ValidationRunner;
-import org.eclipse.emf.parsley.viewers.ColumnLabelProviderFactory;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder;
 import org.eclipse.jface.viewers.IContentProvider;
@@ -101,6 +101,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 		bindInjectableParameterProvider(binder, EClassCompositeParameters.class);
 		bindInjectableParameterProvider(binder, EClassParameter.class);
 		bindInjectableParameterProvider(binder, DetailDialogParameters.class);
+		bindInjectableParameterProvider(binder, EStructuralFeatureParameter.class);
 	}
 
 	/**
@@ -281,16 +282,6 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 */
 	public Class<? extends DialogControlFactory> bindDialogControlFactory() {
 		return DialogControlFactory.class;
-	}
-
-	/**
-	 * Use this bind to customize the label provider factory, specifically for columns.
-	 * The default implementation will use the same implementation specified by bind method {@link #bindILabelProvider()}  
-	 * @return a specialization of {@link ColumnLabelProviderFactory}
-	 * @see ViewerLabelProvider
-	 */
-	public Class<? extends ColumnLabelProviderFactory> bindColumnLabelProviderFactory() {
-		return ColumnLabelProviderFactory.class;
 	}
 
 	/**

@@ -47,7 +47,7 @@ public class TreeViewerColumnBuilder {
 	private int[] weights;
 
 	@Inject
-	private ColumnLabelProviderFactory columnLabelProviderFactory;
+	private ViewerFactory viewerFactory;
 
 	@Inject
 	private DelegatingColumnLabelProvider delegatingColumnLabelProvider;
@@ -135,7 +135,7 @@ public class TreeViewerColumnBuilder {
 
 	protected TreeViewerColumn createTreeViewerColumn(TreeViewer treeViewer, EStructuralFeature eStructuralFeature) {
 		TreeViewerColumn treeViewerColumn = new TreeViewerColumn(treeViewer, SWT.NONE);
-		treeViewerColumn.setLabelProvider(columnLabelProviderFactory.createColumnLabelProvider(eStructuralFeature));
+		treeViewerColumn.setLabelProvider(viewerFactory.createTableColumnLabelProvider(eStructuralFeature));
 		return treeViewerColumn;
 	}
 }

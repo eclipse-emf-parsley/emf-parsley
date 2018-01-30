@@ -450,9 +450,11 @@ expectedTableLabelProvider =
 '''
 package my.empty.ui.provider;
 
+import com.google.inject.Inject;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
@@ -464,6 +466,11 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class EmptyTableLabelProvider extends TableColumnLabelProvider {
+  @Inject
+  public EmptyTableLabelProvider(final EStructuralFeatureParameter params) {
+    super(params);
+  }
+  
   public String text_Library_name(final Library it) {
     return "Name";
   }
@@ -523,17 +530,23 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
 	}
 
 	@Test
-	def testTableLabelProviderWithExtends() {
+	def testTableColumnLabelProviderWithExtends() {
 		inputs.tableLabelProviderWithExtends.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [
 expectedTableLabelProvider = 
 '''
 package my.empty.ui.provider;
 
+import com.google.inject.Inject;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableColumnLabelProvider;
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
 
 @SuppressWarnings("all")
 public class EmptyTableLabelProvider extends TestTableColumnLabelProvider {
+  @Inject
+  public EmptyTableLabelProvider(final EStructuralFeatureParameter params) {
+    super(params);
+  }
 }
 ''']
 		)
@@ -548,6 +561,7 @@ expectedTableLabelProvider =
 package my.empty.ui.provider;
 
 import com.google.inject.Inject;
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 
@@ -562,6 +576,11 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   
   public void setParentLabelProvider(final ILabelProvider parentLabelProvider) {
     this.parentLabelProvider = parentLabelProvider;
+  }
+  
+  @Inject
+  public EmptyTableLabelProvider(final EStructuralFeatureParameter params) {
+    super(params);
   }
 }
 ''']

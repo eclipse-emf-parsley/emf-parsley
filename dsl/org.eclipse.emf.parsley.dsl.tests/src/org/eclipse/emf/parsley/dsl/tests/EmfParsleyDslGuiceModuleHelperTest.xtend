@@ -82,7 +82,6 @@ bindViewerContextMenuHelper
 bindViewerDragAndDropHelper
 bindFormControlFactory
 bindDialogControlFactory
-bindColumnLabelProviderFactory
 bindTableColumnLabelProvider
 bindTableViewerColumnBuilder
 bindWorkbenchActionBarContributor

@@ -13,12 +13,15 @@ package org.eclipse.emf.parsley.tests.swtbot.labeling;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.BookCategory;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
+
+import com.google.inject.Inject;
 
 /**
  * Custom table label provider for the Library, with custom text, image, font,
@@ -28,6 +31,11 @@ import org.eclipse.swt.widgets.Display;
  * 
  */
 public class CustomLibraryTableColumnLabelProvider extends TableColumnLabelProvider {
+
+	@Inject
+	public CustomLibraryTableColumnLabelProvider(EStructuralFeatureParameter param) {
+		super(param);
+	}
 
 	public String text_Writer_name(Object element) {
 		if (element instanceof Writer) {
