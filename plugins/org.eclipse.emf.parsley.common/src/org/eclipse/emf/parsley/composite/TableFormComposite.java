@@ -12,7 +12,7 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EClassCompositeParameters;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.StructuredViewer;

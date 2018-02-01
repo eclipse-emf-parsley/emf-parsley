@@ -14,15 +14,15 @@ import com.google.inject.AbstractModule
 import com.google.inject.Binder
 import com.google.inject.Inject
 import com.google.inject.Key
-import com.google.inject.Singleton
 import com.google.inject.TypeLiteral
 import com.google.inject.util.Modules
+import java.util.ArrayList
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.inject.InjectableParameter
+import org.eclipse.emf.parsley.inject.parameters.FactoryParameter
+import org.eclipse.emf.parsley.inject.parameters.InjectableParameter
 import org.eclipse.emf.parsley.internal.inject.GenericFactory
-import org.eclipse.emf.parsley.internal.inject.InjectableParameterProvider
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.junit.Before
 import org.junit.Test
@@ -31,8 +31,13 @@ import static extension org.junit.Assert.*
 
 class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
-	static class MyInjectableParameter implements InjectableParameter {
+	@FactoryParameter
+	private static class MyInjectableParameter implements InjectableParameter {
 		public var int i
+
+		new() {
+			
+		}
 
 		new(int i) {
 			this.i = i
@@ -40,15 +45,11 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
 	}
 
-	@Singleton
-	static class MyInjectableParameterProvider extends InjectableParameterProvider<MyInjectableParameter> {
-	}
-
-	static interface InjectableObjectInterface {
+	private static interface InjectableObjectInterface {
 
 	}
 
-	static class InjectableObject implements InjectableObjectInterface {
+	private static class InjectableObject implements InjectableObjectInterface {
 		public var MyInjectableParameter param
 
 		@Inject
@@ -58,7 +59,7 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
 	}
 
-	static class AnotherInjectableObject implements InjectableObjectInterface {
+	private static class AnotherInjectableObject implements InjectableObjectInterface {
 		public var MyInjectableParameter param
 
 		@Inject
@@ -68,7 +69,7 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
 	}
 
-	static class InjectableObjectCustom extends InjectableObject {
+	private static class InjectableObjectCustom extends InjectableObject {
 		public var AnotherInjectableObject nested
 
 		@Inject
@@ -80,30 +81,23 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
 	}
 
-	static class InjectableObjectFactory {
+	private static class InjectableObjectFactory {
 		@Inject
-		GenericFactory<InjectableObjectInterface, MyInjectableParameter> internalFactory
+		GenericFactory<InjectableObjectInterface> internalFactory
 
 		def <T extends InjectableObjectInterface> T create(Class<T> type, int param) {
 			return internalFactory.createInstance(type, new MyInjectableParameter(param))
 		}
 	}
 
-	static class InjectableObjectModule extends EmfParsleyJavaGuiceModule {
+	private static class InjectableObjectModule extends EmfParsleyJavaGuiceModule {
 		override configure(Binder binder) {
 			super.configure(binder)
-			// first bind the parameter to our own derived provider
-			binder
-				.bind(MyInjectableParameter)
-				.toProvider(MyInjectableParameterProvider)
-			// then bind the generic provider used by the factory to our own derived provider
-			binder
-				.bind(new TypeLiteral<InjectableParameterProvider<MyInjectableParameter>>() {})
-				.to(MyInjectableParameterProvider)
 		}
 	}
 
-	static class GenericInjectableObject<T extends InjectableParameter> {
+	@FactoryParameter
+	private static class GenericInjectableObject<T extends InjectableParameter> {
 		public T value
 
 		@Inject
@@ -113,30 +107,40 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
 	}
 
-	static class StringP implements InjectableParameter {
+	@FactoryParameter
+	private static class StringP implements InjectableParameter {
 		public String value
+
+		new () {
+			
+		}
 
 		new (String value) {
 			this.value = value
 		}
 	}
 
-	static class EClassP implements InjectableParameter {
+	@FactoryParameter
+	private static class EClassP implements InjectableParameter {
 		public EClass value
+
+		new () {
+			
+		}
 
 		new (EClass value) {
 			this.value = value
 		}
 	}
 
-	static class GenericInjectableObjectWithString extends GenericInjectableObject<StringP> {
+	private static class GenericInjectableObjectWithString extends GenericInjectableObject<StringP> {
 		@Inject
 		new (StringP value) {
 			super(value)
 		}
 	}
 
-	static class GenericInjectableObjectWithEClass extends GenericInjectableObject<EClassP> {
+	private static class GenericInjectableObjectWithEClass extends GenericInjectableObject<EClassP> {
 		@Inject
 		new (EClassP value) {
 			super(value)
@@ -148,23 +152,6 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	@Before
 	def void setupFactory() {
 		factory = createInjector(new InjectableObjectModule).getInstance(InjectableObjectFactory)
-	}
-
-	@Test
-	def void testInjectedProviderIsTheOneSpecifiedInProvidedBy() {
-		val injector = createInjector(new InjectableObjectModule)
-		// retrieve the provider via the injector
-		val provider1 = injector.getProvider(Key.get(new TypeLiteral<MyInjectableParameter>() {
-		}))
-		val provider2 = injector.getProvider(MyInjectableParameter)
-		// and also instantiate it directly
-		val paramProvider = injector.getInstance(MyInjectableParameterProvider)
-		// add the params to the stack on our direct instance
-		paramProvider.insertForLaterProvide(new MyInjectableParameter(10))
-		paramProvider.insertForLaterProvide(new MyInjectableParameter(20))
-		// and create params through the retrieved providers
-		20.assertEquals(provider1.get().i)
-		10.assertEquals(provider2.get().i)
 	}
 
 	@Test
@@ -209,45 +196,15 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	}
 
 	@Test
-	def void testCanCreateInjectableObjectWithoutCustomProvider() {
-		factory = createInjector(new EmfParsleyJavaGuiceModule() {
-			override configure(Binder binder) {
-				super.configure(binder)
-//				val providerTypeLiteral = new TypeLiteral<InjectableParameterProvider<MyInjectableParameter>>() {}
-//				// first bind the parameter type to the generic provider used by the factory to a generic instance of the provider
-//				binder
-//					.bind(MyInjectableParameter)
-//					.toProvider(providerTypeLiteral)
-//				// then make sure the same provider is used for injecting all those instances
-//				binder
-//					.bind(providerTypeLiteral)
-//					.in(Scopes.SINGLETON)
-				InjectableParameterProvider
-					.bindInjectableParameterProvider(binder, MyInjectableParameter)
-			}
-		})
-		.getInstance(InjectableObjectFactory)
-		val c = factory.create(InjectableObject, 10)
-		10.assertSame(c.param.i)
-	}
-
-	@Test
 	def void testCanCreateGenericInjectableObjects() {
-		val injector = createInjector(new AbstractModule() {
-			override protected configure() {
-				InjectableParameterProvider
-					.bindInjectableParameterProvider(binder, StringP)
-				InjectableParameterProvider
-					.bindInjectableParameterProvider(binder, EClassP)
-			}
-		})
+		val injector = getOrCreateInjector
 		val genericInjectableObjectStringFactory =
 			injector.getInstance(
-				Key.get(new TypeLiteral<GenericFactory<GenericInjectableObject<StringP>, StringP>>() {})
+				Key.get(new TypeLiteral<GenericFactory<GenericInjectableObject<StringP>>>() {})
 			)
 		val genericInjectableObjectEClassFactory =
 			injector.getInstance(
-				Key.get(new TypeLiteral<GenericFactory<GenericInjectableObject<EClassP>, EClassP>>() {})
+				Key.get(new TypeLiteral<GenericFactory<GenericInjectableObject<EClassP>>>() {})
 			)
 		val eclass = EcorePackage.eINSTANCE.EObject
 		val o1 = genericInjectableObjectStringFactory
@@ -256,5 +213,46 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 			.createInstance(GenericInjectableObjectWithEClass, new EClassP(eclass))
 		"test".assertEquals(o1.value.value)
 		eclass.assertEquals(o2.value.value)
+	}
+
+	@Test(expected=NullPointerException)
+	def void testInjectNull() {
+		val injector = getOrCreateInjector
+		val genericInjectableObjectStringFactory =
+			injector.getInstance(
+				Key.get(new TypeLiteral<GenericFactory<GenericInjectableObject<StringP>>>() {})
+			)
+		genericInjectableObjectStringFactory
+			.createInstance(GenericInjectableObjectWithString, null)
+	}
+
+	@Test
+	def void testMultiThreading() throws Exception {
+		val injector = getOrCreateInjector
+		val factory =
+			injector.getInstance(
+				Key.get(new TypeLiteral<GenericFactory<GenericInjectableObject<StringP>>>() {})
+			)
+		val threads = new ArrayList;
+		val exceptions = new ArrayList;
+		for (var i = 0; i <100; i++) {
+			val thread = new Thread() {
+				override void run() {
+					try {
+						factory.createInstance(GenericInjectableObjectWithString, new StringP("test"))
+					} catch (Exception e) {
+						exceptions.add(e);
+					}
+				}
+			};
+			threads.add(thread);
+			thread.start();
+		}
+		for (Thread thread : threads) {
+			thread.join();
+		}
+		if (!exceptions.isEmpty()) {
+			throw exceptions.get(0);
+		}
 	}
 }

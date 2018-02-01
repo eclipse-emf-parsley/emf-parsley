@@ -14,7 +14,7 @@ package org.eclipse.emf.parsley.tests.swtbot.providers;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.inject.EClassParameter;
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 
 import com.google.inject.Inject;
 

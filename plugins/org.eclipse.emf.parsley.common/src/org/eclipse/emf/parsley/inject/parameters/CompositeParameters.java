@@ -8,8 +8,9 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.inject;
+package org.eclipse.emf.parsley.inject.parameters;
 
+import org.eclipse.emf.parsley.inject.GenericCompositeFactory;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
@@ -23,10 +24,15 @@ import com.google.inject.Inject;
  * @since 2.0
  *
  */
+@FactoryParameter
 public class CompositeParameters implements InjectableParameter {
 	private Composite parent;
 
 	private int style;
+
+	public CompositeParameters() {
+		// required by Guice
+	}
 
 	public CompositeParameters(Composite parent, int style) {
 		this.parent = parent;

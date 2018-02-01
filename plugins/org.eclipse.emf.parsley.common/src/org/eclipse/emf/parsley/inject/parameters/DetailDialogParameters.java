@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.inject;
+package org.eclipse.emf.parsley.inject.parameters;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -26,12 +26,17 @@ import com.google.inject.Inject;
  * @since 2.0
  *
  */
+@FactoryParameter
 public class DetailDialogParameters implements InjectableParameter {
 
 	private Shell parentShell;
 	private String title;
 	private EObject object;
 	private EditingDomain editingDomain;
+
+	public DetailDialogParameters() {
+		// required by Guice
+	}
 
 	public DetailDialogParameters(Shell parentShell, String title, EObject object, EditingDomain editingDomain) {
 		this.parentShell = parentShell;

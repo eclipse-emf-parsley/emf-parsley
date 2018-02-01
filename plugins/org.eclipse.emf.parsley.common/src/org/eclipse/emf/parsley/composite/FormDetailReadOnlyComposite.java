@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.inject.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 
 import com.google.inject.Inject;
 

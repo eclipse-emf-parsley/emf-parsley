@@ -12,7 +12,7 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.parsley.EmfParsleyConstants;
-import org.eclipse.emf.parsley.inject.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;

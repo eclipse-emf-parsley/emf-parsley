@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.inject;
 
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;

@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.parsley.EmfParsleyActivator
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.models.testmodels.DerivedClass

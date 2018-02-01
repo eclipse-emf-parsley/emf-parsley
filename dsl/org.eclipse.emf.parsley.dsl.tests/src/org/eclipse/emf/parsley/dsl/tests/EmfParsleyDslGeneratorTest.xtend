@@ -454,7 +454,7 @@ import com.google.inject.Inject;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
@@ -539,7 +539,7 @@ package my.empty.ui.provider;
 
 import com.google.inject.Inject;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableColumnLabelProvider;
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 
 @SuppressWarnings("all")
 public class EmptyTableLabelProvider extends TestTableColumnLabelProvider {
@@ -561,7 +561,7 @@ expectedTableLabelProvider =
 package my.empty.ui.provider;
 
 import com.google.inject.Inject;
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 
@@ -1387,7 +1387,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.inject.EClassParameter;
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 
 @SuppressWarnings("all")
 public class EmptyTableViewerContentProvider extends TableViewerContentProvider {

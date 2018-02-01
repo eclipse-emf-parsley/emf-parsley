@@ -8,29 +8,27 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.inject;
+package org.eclipse.emf.parsley.inject.parameters;
 
-import org.eclipse.emf.ecore.EClass;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-import com.google.inject.Inject;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import com.google.inject.ScopeAnnotation;
 
 /**
- * A wrapper class for parameters for an {@link EClass} that can be used in a
- * constructor annotated with {@link Inject}.
+ * Apply this to implementation classes representing parameters to
+ * be injected into constructors through our factories.
  * 
- * @author Lorenzo Bettini
+ * @author Lorenzo Bettini - initial API and implementation
  * @since 2.0
  *
  */
-public class EClassParameter implements InjectableParameter {
+@Target({ TYPE })
+@Retention(RUNTIME)
+@ScopeAnnotation
+public @interface FactoryParameter {
 
-	private EClass eClass;
-
-	public EClassParameter(EClass eClass) {
-		this.eClass = eClass;
-	}
-
-	public EClass getEClass() {
-		return eClass;
-	}
 }

@@ -8,11 +8,12 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.inject;
+package org.eclipse.emf.parsley.inject.parameters;
 
 /**
  * Interface for parameters that we can inject into constructors with our own
- * specific factories.
+ * specific factories; class implementing this interface should also be
+ * annotated with {@link FactoryParameter} and must have a no-arg constructor.
  * 
  * @author Lorenzo Bettini - initial API and implementation
  * @since 2.0

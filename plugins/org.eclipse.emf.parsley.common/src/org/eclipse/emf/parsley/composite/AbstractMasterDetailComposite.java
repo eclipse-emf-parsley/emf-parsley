@@ -14,8 +14,8 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.emf.parsley.inject.InjectableComposite;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;

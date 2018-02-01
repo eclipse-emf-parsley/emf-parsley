@@ -11,8 +11,8 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
 import org.eclipse.emf.parsley.inject.GenericCompositeFactory;
+import org.eclipse.emf.parsley.inject.parameters.EClassCompositeParameters;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.swt.widgets.Composite;
 
@@ -34,7 +34,7 @@ public class CompositeFactory {
 	private GenericCompositeFactory genericCompositeFactory;
 
 	@Inject
-	private GenericFactory<Composite, EClassCompositeParameters> genericCompositeFactoryWithEClass;
+	private GenericFactory<Composite> genericCompositeFactoryWithEClass;
 
 	public FormDetailComposite createFormDetailComposite(Composite parent, int style) {
 		return genericCompositeFactory.create(FormDetailComposite.class, parent, style);

@@ -10,38 +10,27 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.internal.inject;
 
-import org.eclipse.emf.parsley.inject.InjectableParameter;
+import java.util.ArrayDeque;
+import java.util.HashMap;
+
+import org.eclipse.emf.parsley.inject.parameters.FactoryParameter;
+import org.eclipse.emf.parsley.inject.parameters.InjectableParameter;
 
 import com.google.inject.Binder;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.google.inject.Key;
+import com.google.inject.Provider;
+import com.google.inject.Scope;
 import com.google.inject.Singleton;
 
 /**
- * A generic factory for for injecting {@link InjectableParameter} parameters in the constructors.
+ * A generic factory for for injecting {@link InjectableParameter} parameters,
+ * annotated with {@link FactoryParameter}, in the constructors annotated with
+ * {@link Inject}.
  * 
  * <p>
  * FOR INTERNAL USE ONLY!
- * 
- * <p>
- * Given a class representing a parameter wrapper, implementing {@link InjectableParameter}, say MyParam, the Guice module
- * must bind P to InjectableParameterProvider&lt;MyParam&gt; and make
- * sure it's a {@link Singleton}.
- * 
- * <p>
- * This must be done with the following steps in the Guice module (pseudo code)
- * 
- * <pre>
- * providerTypeLiteral = 
- * 	new TypeLiteral&lt;InjectableParameterProvider&lt;MyParam&gt;&gt;() {};
- * // first bind the parameter type to the generic provider used by the factory to a generic instance of the provider
- * binder.bind(MyParam).toProvider(providerTypeLiteral);
- * // then make sure the same provider is used for injecting all those instances
- * binder.bind(providerTypeLiteral).in(Scopes.SINGLETON);
- * </pre>
- * 
- * This is done in the EMF Parsley base modules for the parameter types that
- * are used by the EMF Parsley components, using {@link InjectableParameterProvider#bindInjectableParameterProvider(Binder, Class)}.
  * 
  * @param <T>
  *            The type of objects to be created by injection
@@ -52,17 +41,113 @@ import com.google.inject.Singleton;
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
 @Singleton
-public class GenericFactory<T, P extends InjectableParameter> {
+public class GenericFactory<T> {
 
 	@Inject
-	private InjectableParameterProvider<P> provider;
+	private FactoryScope scope;
 
 	@Inject
 	private Injector injector;
 
-	synchronized public <V extends T> V createInstance(Class<V> type, final P param) {
-		provider.insertForLaterProvide(param);
-		return injector.getInstance(type);
+	public <V extends T> V createInstance(Class<V> type, InjectableParameter... params) {
+		try {
+			scope.enter();
+			for (InjectableParameter param : params) {
+				scope.addParameter(param);
+			}
+			return injector.getInstance(type);
+		} finally {
+			scope.leave();
+		}
 	}
 
+	/**
+	 * Performs Guice bindings so that this factory can be used to inject parameters
+	 * annotated with {@link FactoryScope}.
+	 * 
+	 * @param binder
+	 */
+	public static void prepareFactory(Binder binder) {
+		// the following configuration is required for injecting
+		// parameters into constructors using a GenericFactory
+		FactoryScope scope = new FactoryScope();
+		// tell Guice about the scope
+		binder.bindScope(FactoryParameter.class, scope);
+		// make our scope instance injectable
+		binder.bind(FactoryScope.class).toInstance(scope);
+	}
+
+	/**
+	 * A {@link Scope} implementation for injecting parameters into constructors
+	 * using our factories.
+	 * 
+	 * <p>
+	 * FOR INTERNAL USE ONLY!
+	 * 
+	 * <p>
+	 * Use this scope as follows: inject an instance and add parameters that will be
+	 * injected into constructors in a try/finally block of the shape:
+	 * 
+	 * <pre>
+	 * <code>
+	 *   // enter the scope
+	 *   scope.enter();
+	 *   try {
+	 *     // add parameters...
+	 *     scope.addParameter(...);
+	 *     // create an instance through an injector
+	 *   } finally {
+	 *     // leave the scope
+	 *     scope.exit();
+	 *   }
+	 * </code>
+	 * </pre>
+	 * 
+	 * @author Lorenzo Bettini - initial API and implementation
+	 *
+	 */
+	private static class FactoryScope implements Scope {
+
+		private static class Parameters extends HashMap<Key<?>, Object> {
+
+		}
+
+		private static class ParametersStack extends ArrayDeque<Parameters> {
+
+		}
+
+		// Make this a ThreadLocal for multithreading.
+		private final ThreadLocal<ParametersStack> parametersStack = new ThreadLocal<ParametersStack>() {
+			@Override
+			protected ParametersStack initialValue() {
+				return new ParametersStack();
+			}
+		};
+
+		@Override
+		public <T> Provider<T> scope(final Key<T> key, final Provider<T> unscoped) {
+			return new Provider<T>() {
+				@Override
+				public T get() {
+					Object param = parametersStack.get().peek().get(key);
+					@SuppressWarnings("unchecked")
+					T toReturn = (T) param;
+					return toReturn;
+				}
+			};
+		}
+
+		public void enter() {
+			parametersStack.get().push(new Parameters());
+		}
+
+		public void leave() {
+			parametersStack.get().pop();
+		}
+
+		public void addParameter(InjectableParameter o) {
+			parametersStack.get().peek().put(Key.get(o.getClass()), o);
+		}
+
+	}
 }

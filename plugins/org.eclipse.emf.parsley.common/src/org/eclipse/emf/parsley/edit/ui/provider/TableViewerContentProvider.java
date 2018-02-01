@@ -16,7 +16,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.parsley.inject.EClassParameter;
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.util.EcoreUtil2;
 
 import com.google.inject.Inject;

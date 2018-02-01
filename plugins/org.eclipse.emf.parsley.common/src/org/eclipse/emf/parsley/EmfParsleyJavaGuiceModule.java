@@ -11,8 +11,6 @@
 
 package org.eclipse.emf.parsley;
 
-import static org.eclipse.emf.parsley.internal.inject.InjectableParameterProvider.bindInjectableParameterProvider;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -40,11 +38,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelPro
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
-import org.eclipse.emf.parsley.inject.CompositeParameters;
-import org.eclipse.emf.parsley.inject.DetailDialogParameters;
-import org.eclipse.emf.parsley.inject.EClassCompositeParameters;
-import org.eclipse.emf.parsley.inject.EClassParameter;
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
+import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
 import org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter;
@@ -94,14 +88,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
-		// the following bindings are required to respect the contract of
-		// GenericFactory
-		// that we use to inject parameters into constructors
-		bindInjectableParameterProvider(binder, CompositeParameters.class);
-		bindInjectableParameterProvider(binder, EClassCompositeParameters.class);
-		bindInjectableParameterProvider(binder, EClassParameter.class);
-		bindInjectableParameterProvider(binder, DetailDialogParameters.class);
-		bindInjectableParameterProvider(binder, EStructuralFeatureParameter.class);
+		GenericFactory.prepareFactory(binder);
 	}
 
 	/**

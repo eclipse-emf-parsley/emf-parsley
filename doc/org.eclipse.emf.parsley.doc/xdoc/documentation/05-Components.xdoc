@@ -14,14 +14,14 @@ section:Composites[Composites]
 All the composites provided by EMF Parsley are created via injection by injecting a
 codeRef[org.eclipse.emf.parsley.composite.CompositeFactory] that allows you to create via
 dependency injection instances codeRef[org.eclipse.swt.widgets.Composite] (injecting also the
-parent and the style, wrapped inside a codeRef[org.eclipse.emf.parsley.inject.CompositeParameters],
+parent and the style, wrapped inside a codeRef[org.eclipse.emf.parsley.inject.parameters.CompositeParameters],
 which are typical of Composite's constructors).
 
 We also provide a generic factory, codeRef[org.eclipse.emf.parsley.inject.GenericCompositeFactory]
 for your own custom codeRef[org.eclipse.swt.widgets.Composite]
 that you want to create via dependency injection. For this to work, your Composite must have a
 constructor annotated with codeRef[com.google.inject.Inject] and have a parameter
-codeRef[org.eclipse.emf.parsley.inject.CompositeParameters], which wraps
+codeRef[org.eclipse.emf.parsley.inject.parameters.CompositeParameters], which wraps
 parent and style parameters. Since the constructor is annotated with codeRef[com.google.inject.Inject] also other parameters
 will be injected (if Guice can find a binding, of course). You class can also have injected fields and
 injected setters as well. For example, if you have

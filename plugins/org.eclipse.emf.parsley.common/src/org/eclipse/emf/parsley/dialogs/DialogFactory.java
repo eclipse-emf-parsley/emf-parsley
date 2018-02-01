@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.inject.DetailDialogParameters;
+import org.eclipse.emf.parsley.inject.parameters.DetailDialogParameters;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.swt.widgets.Shell;
 
@@ -27,7 +27,7 @@ import com.google.inject.Singleton;
 public class DialogFactory {
 
 	@Inject
-	private GenericFactory<AbstractDetailDialog, DetailDialogParameters> detailDialogFactory;
+	private GenericFactory<AbstractDetailDialog> detailDialogFactory;
 
 	public DetailFormBasedDialog createDetailFormBasedDialog(Shell parentShell, String title, EObject object,
 			EditingDomain editingDomain) {

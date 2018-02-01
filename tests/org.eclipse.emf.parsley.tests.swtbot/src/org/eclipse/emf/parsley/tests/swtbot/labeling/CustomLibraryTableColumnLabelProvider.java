@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests.swtbot.labeling;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.BookCategory;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;

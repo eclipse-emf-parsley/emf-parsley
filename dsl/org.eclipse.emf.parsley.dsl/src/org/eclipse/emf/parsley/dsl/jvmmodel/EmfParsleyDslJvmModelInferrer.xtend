@@ -54,6 +54,8 @@ import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter
 import org.eclipse.emf.parsley.resource.ResourceManager
 import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory
 import org.eclipse.emf.parsley.runtime.ui.PluginUtil
@@ -90,8 +92,6 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
-import org.eclipse.emf.parsley.inject.EClassParameter
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter
 
 /**
  * <p>Infers a JVM model from the source model.</p> 

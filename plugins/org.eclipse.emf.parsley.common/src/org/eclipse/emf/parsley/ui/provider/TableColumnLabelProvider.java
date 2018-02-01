@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
-import org.eclipse.emf.parsley.inject.EStructuralFeatureParameter;
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;

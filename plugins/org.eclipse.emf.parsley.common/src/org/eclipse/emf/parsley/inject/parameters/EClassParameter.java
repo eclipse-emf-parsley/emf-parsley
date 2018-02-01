@@ -8,29 +8,34 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.inject;
+package org.eclipse.emf.parsley.inject.parameters;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EClass;
 
 import com.google.inject.Inject;
 
 /**
- * A wrapper class for parameters for an {@link EStructuralFeature} that can be used in a
+ * A wrapper class for parameters for an {@link EClass} that can be used in a
  * constructor annotated with {@link Inject}.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  *
  */
-public class EStructuralFeatureParameter implements InjectableParameter {
+@FactoryParameter
+public class EClassParameter implements InjectableParameter {
 
-	private EStructuralFeature eStructuralFeature;
+	private EClass eClass;
 
-	public EStructuralFeatureParameter(EStructuralFeature eStructuralFeature) {
-		this.eStructuralFeature = eStructuralFeature;
+	public EClassParameter() {
+		// required by Guice
 	}
 
-	public EStructuralFeature getEStructuralFeature() {
-		return eStructuralFeature;
+	public EClassParameter(EClass eClass) {
+		this.eClass = eClass;
+	}
+
+	public EClass getEClass() {
+		return eClass;
 	}
 }

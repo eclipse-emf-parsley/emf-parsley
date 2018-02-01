@@ -8,7 +8,7 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.inject;
+package org.eclipse.emf.parsley.inject.parameters;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.swt.widgets.Composite;
@@ -24,9 +24,14 @@ import com.google.inject.Inject;
  * @since 2.0
  *
  */
+@FactoryParameter
 public class EClassCompositeParameters extends CompositeParameters {
 
 	private EClass eClass;
+
+	public EClassCompositeParameters() {
+		// required by Guice
+	}
 
 	public EClassCompositeParameters(Composite parent, int style, EClass eClass) {
 		super(parent, style);

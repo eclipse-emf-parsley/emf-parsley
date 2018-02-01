@@ -13,9 +13,9 @@ package org.eclipse.emf.parsley.tests
 import com.google.inject.Inject
 import com.google.inject.Singleton
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.inject.CompositeParameters
 import org.eclipse.emf.parsley.inject.GenericCompositeFactory
 import org.eclipse.emf.parsley.inject.InjectableComposite
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.jface.viewers.IContentProvider
 import org.eclipse.jface.viewers.ILabelProvider

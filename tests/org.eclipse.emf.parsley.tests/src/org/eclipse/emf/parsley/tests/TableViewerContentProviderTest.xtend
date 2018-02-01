@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider
-import org.eclipse.emf.parsley.inject.EClassParameter
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule

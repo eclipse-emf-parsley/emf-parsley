@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.inject;
 
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.swt.widgets.Composite;
 
@@ -76,7 +77,7 @@ import com.google.inject.Singleton;
 public class GenericCompositeFactory {
 
 	@Inject
-	private GenericFactory<Composite, CompositeParameters> internalFactory;
+	private GenericFactory<Composite> internalFactory;
 
 	public <T extends Composite> T create(Class<T> type, final Composite parent, final int style) {
 		return internalFactory.createInstance(type, new CompositeParameters(parent, style));

@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.EditingDomainFinder;
-import org.eclipse.emf.parsley.inject.CompositeParameters;
 import org.eclipse.emf.parsley.inject.InjectableComposite;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 
 import com.google.inject.Inject;
