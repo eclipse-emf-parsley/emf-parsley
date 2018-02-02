@@ -47,7 +47,7 @@ public class CustomLibraryFormControlFactory extends FormControlFactory {
 	public Control control_Writer_name(DataBindingContext dbc,
 			IObservableValue featureObservable) {
 		Text text = createText("");
-		text.setBackground(getToolkit().getColors().getColor(IFormColors.TITLE));
+		text.setBackground(getFormToolkit().getColors().getColor(IFormColors.TITLE));
 		dbc.bindValue(DatabindingUtil.observeText(text, SWT.Modify),
 				featureObservable);
 		return text;

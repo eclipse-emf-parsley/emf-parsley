@@ -32,10 +32,6 @@ public class FormWidgetFactory extends DialogWidgetFactory {
 		this.toolkit = toolkit;
 	}
 
-	public FormToolkit getToolkit() {
-		return toolkit;
-	}
-
 	@Override
 	public Label createLabel(Composite parent, String text) {
 		return toolkit.createLabel(parent, text);

@@ -441,7 +441,7 @@ module my.empty {
 			Writer : name -> { createLabel(parent, "") }
 				target { observeText }
 			Writer : firstName -> 
-				toolkit.createLabel(parent, "")
+				formToolkit.createLabel(parent, "")
 				target observeText(SWT::Modify)
 			Borrower : firstName -> {
 				createText(firstName, SWT::MULTI, SWT::BORDER,

@@ -12,9 +12,6 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.widgets.FormWidgetFactory
 import org.eclipse.ui.forms.widgets.FormToolkit
-import org.junit.Test
-
-import static extension org.junit.Assert.*
 
 class FormWidgetFactoryTest extends DialogWidgetFactoryTest {
 
@@ -23,7 +20,4 @@ class FormWidgetFactoryTest extends DialogWidgetFactoryTest {
 		(factory as FormWidgetFactory).init(shell, new FormToolkit(shell.display))
 	}
 
-	@Test def void testToolkit() {
-		(factory as FormWidgetFactory).toolkit.assertNotNull
-	}
 }

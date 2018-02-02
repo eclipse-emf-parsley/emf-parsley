@@ -1111,7 +1111,7 @@ public class EmptyFormControlFactory extends FormControlFactory {
   }
   
   protected Control createControl_Writer_firstName() {
-    Label _createLabel = this.getToolkit().createLabel(this.getParent(), "");
+    Label _createLabel = this.getFormToolkit().createLabel(this.getParent(), "");
     return _createLabel;
   }
   

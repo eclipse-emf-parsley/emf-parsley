@@ -61,6 +61,12 @@ The new abstract method is added e[org.eclipse.emf.parsley.composite.AbstractDet
 while the previous abstract methods have been removed: subclasses only have to create an instance of
 an codeRef[org.eclipse.emf.parsley.composite.AbstractControlFactory], and codeRef[org.eclipse.emf.parsley.composite.AbstractDetailComposite]
 will use it accordingly to create the editing fields.
+e[org.eclipse.emf.parsley.composite.FormControlFactory.getToolkit()] has been renamed to
+e[org.eclipse.emf.parsley.composite.FormControlFactory.getFormToolkit()] and it is now protected.
+In the DSL, in a e[formControlFactory] section, you should rename possible references to e[toolkit] and
+e[getToolkit] into e[formToolkit] and e[getFormToolkit], respectively.
+The method e[org.eclipse.emf.parsley.widgets.FormWidgetFactory.getToolkit()] has been removed since clients
+should not need to access that method.
 ]
 ]
 

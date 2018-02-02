@@ -26,7 +26,7 @@ import com.google.inject.Inject;
  */
 public class FormControlFactory extends DialogControlFactory {
 
-	private FormToolkit toolkit = null;
+	private FormToolkit formToolkit = null;
 
 	@Inject
 	private FormWidgetFactory formWidgetFactory;
@@ -45,14 +45,17 @@ public class FormControlFactory extends DialogControlFactory {
 	}
 
 	public void init(EditingDomain domain, EObject owner, Composite parent, FormToolkit toolkit) {
-		this.toolkit = toolkit;
+		this.formToolkit = toolkit;
 		init(domain, owner, parent);
 		formWidgetFactory.init(parent, toolkit);
 		formFeatureCaptionProvider.setFormToolkit(toolkit);
 	}
 
-	public FormToolkit getToolkit() {
-		return toolkit;
+	/**
+	 * @since 2.0
+	 */
+	protected FormToolkit getFormToolkit() {
+		return formToolkit;
 	}
 
 }

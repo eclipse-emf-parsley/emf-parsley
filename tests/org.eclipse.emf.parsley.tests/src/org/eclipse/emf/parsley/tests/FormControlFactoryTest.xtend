@@ -16,14 +16,23 @@ import org.junit.Test
 import static extension org.junit.Assert.*
 
 class FormControlFactoryTest extends DialogControlFactoryTest {
-	
+
+	private static class CustomFormControlFactory extends FormControlFactory {
+
+		// make it available for tests
+		override public getFormToolkit() {
+			super.getFormToolkit()
+		}
+
+	}
+
 	def override protected createAndInitializeFactory() {
-		new FormControlFactory() => [
+		new CustomFormControlFactory() => [
 			initialize(classForControlsInstance)
 		]
 	}
 
 	@Test def void testToolkit() {
-		(factory as FormControlFactory).toolkit.assertNotNull
+		(factory as CustomFormControlFactory).formToolkit.assertNotNull
 	}
 }
