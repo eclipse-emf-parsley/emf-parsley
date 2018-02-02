@@ -16,18 +16,17 @@ import org.eclipse.swt.widgets.Composite;
 import com.google.inject.Inject;
 
 /**
- * A wrapper class for parameters for a Composite, that is, parent and style, that can be used
- * in a constructor annotated with {@link Inject}; the corresponding Composite should be
- * created only through an injected {@link GenericCompositeFactory}.
+ * A wrapper class for parameters for a Composite, that is, parent and style,
+ * that can be used in a constructor annotated with {@link Inject}; the
+ * corresponding Composite should be created only through an injected
+ * {@link GenericCompositeFactory} or one of our other factories.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  *
  */
 @FactoryParameter
-public class CompositeParameters implements InjectableParameter {
-	private Composite parent;
-
+public class CompositeParameters extends CompositeParameter {
 	private int style;
 
 	public CompositeParameters() {
@@ -35,15 +34,15 @@ public class CompositeParameters implements InjectableParameter {
 	}
 
 	public CompositeParameters(Composite parent, int style) {
-		this.parent = parent;
+		super(parent);
 		this.style = style;
 	}
 
-	public Composite getParent() {
-		return parent;
+	public final Composite getParent() {
+		return getComposite();
 	}
 
-	public int getStyle() {
+	public final int getStyle() {
 		return style;
 	}
 }

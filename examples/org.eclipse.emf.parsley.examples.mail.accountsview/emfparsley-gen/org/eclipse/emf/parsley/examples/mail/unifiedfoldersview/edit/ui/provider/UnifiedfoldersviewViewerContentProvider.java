@@ -3,10 +3,7 @@ package org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.edit.ui.provide
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.examples.mail.Folder;
@@ -30,9 +27,6 @@ public class UnifiedfoldersviewViewerContentProvider extends ViewerContentProvid
   }
   
   public Object children(final UnifiedFolderContainer c) {
-    Resource _resource = c.getResource();
-    TreeIterator<EObject> _allContents = _resource.getAllContents();
-    Iterator<Folder> _filter = Iterators.<Folder>filter(_allContents, Folder.class);
     final Function1<Folder, Boolean> _function = new Function1<Folder, Boolean>() {
       @Override
       public Boolean apply(final Folder it) {
@@ -41,7 +35,7 @@ public class UnifiedfoldersviewViewerContentProvider extends ViewerContentProvid
         return Boolean.valueOf(Objects.equal(_name, _containerName));
       }
     };
-    return IteratorExtensions.<Folder>filter(_filter, _function);
+    return IteratorExtensions.<Folder>filter(Iterators.<Folder>filter(c.getResource().getAllContents(), Folder.class), _function);
   }
   
   public Object children(final Folder it) {

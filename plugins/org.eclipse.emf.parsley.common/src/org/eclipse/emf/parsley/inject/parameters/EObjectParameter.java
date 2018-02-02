@@ -36,11 +36,11 @@ public class EObjectParameter implements InjectableParameter {
 		this.editingDomain = editingDomain;
 	}
 
-	public EObject getObject() {
+	public final EObject getObject() {
 		return object;
 	}
 
-	public EditingDomain getEditingDomain() {
+	public final EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
 

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.widgets;
 
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -18,6 +19,8 @@ import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import com.google.inject.Inject;
+
 /**
  * An implementation that creates widgets suitable for dialogs.
  * 
@@ -25,6 +28,14 @@ import org.eclipse.swt.widgets.Text;
  *
  */
 public class DialogWidgetFactory extends AbstractWidgetFactory {
+
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public DialogWidgetFactory(CompositeParameter compositeParameter) {
+		super(compositeParameter);
+	}
 
 	@Override
 	public Label createLabel(Composite parent, String text) {

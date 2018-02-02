@@ -12,10 +12,13 @@ package org.eclipse.emf.parsley.tests.swtbot.labeling;
 
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.forms.IFormColors;
+
+import com.google.inject.Inject;
 
 /**
  * Note that we will bind also a {@link CustomLibraryFeatureCaptionProvider} so we
@@ -26,6 +29,11 @@ import org.eclipse.ui.forms.IFormColors;
  */
 public class CustomLibraryFormFeatureCaptionProvider extends
 		FormFeatureCaptionProvider {
+
+	@Inject
+	public CustomLibraryFormFeatureCaptionProvider(FormToolkitParameter param) {
+		super(param);
+	}
 
 	/**
 	 * This will have the precedence over the one in

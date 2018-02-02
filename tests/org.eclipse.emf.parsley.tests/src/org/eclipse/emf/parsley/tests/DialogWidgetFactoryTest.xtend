@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
@@ -25,15 +26,15 @@ import static extension org.junit.Assert.*
 class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
 
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
-	
+
 	/**
 	 * An instance to use for testing the creation of a Control
 	 * using an AbstractControlFactory
 	 */
 	var protected ClassForControls classForControlsInstance
-	
+
 	var protected IWidgetFactory factory
-	
+
 	val static TEST_TEXT = "Test"
 
 	@Before
@@ -41,10 +42,9 @@ class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
 		classForControlsInstance = testFactory.createClassForControls
 		setupWidgetFactory()
 	}
-	
-	protected def setupWidgetFactory() {
-		factory = getOrCreateInjector.getInstance(DialogWidgetFactory)
-		factory.init(shell)
+
+	protected def void setupWidgetFactory() {
+		factory = new DialogWidgetFactory(compositeParameter).injectMembers
 	}
 
 	@Test def void testParent() {
@@ -119,4 +119,7 @@ class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
 		control.assertStyle(SWT.DROP_DOWN)
 	}
 
+	def protected getCompositeParameter() {
+		return new CompositeParameter(shell)
+	}
 }

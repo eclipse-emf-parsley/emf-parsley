@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Widget
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.eclipse.emf.parsley.composite.CompositeFactory
 
 class TextUndoRedoTest extends AbstractControlFactoryTest {
 
@@ -33,7 +34,8 @@ class TextUndoRedoTest extends AbstractControlFactoryTest {
 	@Before
 	def void setupEObject() {
 		classForControlsInstance = testFactory.createClassForControls
-		factory = createAndInitializeFactory
+		factory = getOrCreateInjector.getInstance(CompositeFactory).
+			createDialogControlFactory(shell, classForControlsInstance, editingDomain)
 	}
 
 	@After
@@ -146,10 +148,6 @@ class TextUndoRedoTest extends AbstractControlFactoryTest {
 		control.assertTextEditable(true)
 		control.assertText("")
 		return control
-	}
-
-	def private createAndInitializeFactory() {
-		new DialogControlFactory() => [initialize(classForControlsInstance)]
 	}
 
 	def private notifyKeyEventListeners(Widget w, int stateMask, char c) {

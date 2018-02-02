@@ -11,11 +11,23 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.GenericCompositeFactory;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
+import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
+import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
+import org.eclipse.emf.parsley.widgets.DialogWidgetFactory;
+import org.eclipse.emf.parsley.widgets.FormWidgetFactory;
+import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -35,7 +47,16 @@ public class CompositeFactory {
 	private GenericCompositeFactory genericCompositeFactory;
 
 	@Inject
-	private GenericFactory<Composite> genericCompositeFactoryWithEClass;
+	private GenericFactory<Composite> genericCompositeFactoryWithAdditionalParams;
+
+	@Inject
+	private GenericFactory<IWidgetFactory> factoryForIWidgetFactory;
+
+	@Inject
+	private GenericFactory<AbstractControlFactory> factoryForAbstractControlFactory;
+
+	@Inject
+	private GenericFactory<FeatureLabelCaptionProvider> featureLabelCaptionProviderFactory;
 
 	public FormDetailComposite createFormDetailComposite(Composite parent, int style) {
 		return genericCompositeFactory.create(FormDetailComposite.class, parent, style);
@@ -54,8 +75,38 @@ public class CompositeFactory {
 	}
 
 	public TableFormComposite createTableFormComposite(Composite parent, int style, EClass type) {
-		return genericCompositeFactoryWithEClass.createInstance(TableFormComposite.class,
+		return genericCompositeFactoryWithAdditionalParams.createInstance(TableFormComposite.class,
 				new CompositeParameters(parent, style), new EClassParameter(type));
 	}
 
+	public DialogWidgetFactory createDialogWidgetFactory(Composite parent) {
+		return factoryForIWidgetFactory.createInstance(DialogWidgetFactory.class, new CompositeParameter(parent));
+	}
+
+	public FormWidgetFactory createFormWidgetFactory(Composite parent, FormToolkit formToolkit) {
+		return factoryForIWidgetFactory.createInstance(FormWidgetFactory.class, new CompositeParameter(parent),
+				new FormToolkitParameter(formToolkit));
+	}
+
+	public DialogFeatureCaptionProvider createFeatureLabelCaptionProvider() {
+		return featureLabelCaptionProviderFactory.createInstance(DialogFeatureCaptionProvider.class);
+	}
+
+	public FormFeatureCaptionProvider createFormFeatureCaptionProvider(FormToolkit formToolkit) {
+		return featureLabelCaptionProviderFactory.createInstance(FormFeatureCaptionProvider.class,
+				new FormToolkitParameter(formToolkit));
+	}
+
+	public DialogControlFactory createDialogControlFactory(Composite parent, EObject object,
+			EditingDomain editingDomain) {
+		return factoryForAbstractControlFactory.createInstance(DialogControlFactory.class,
+				new CompositeParameter(parent), new EObjectParameter(object, editingDomain));
+	}
+
+	public FormControlFactory createFormControlFactory(Composite parent, EObject object, EditingDomain editingDomain,
+			FormToolkit toolkit) {
+		return factoryForAbstractControlFactory.createInstance(FormControlFactory.class,
+				new CompositeParameter(parent), new EObjectParameter(object, editingDomain),
+				new FormToolkitParameter(toolkit));
+	}
 }

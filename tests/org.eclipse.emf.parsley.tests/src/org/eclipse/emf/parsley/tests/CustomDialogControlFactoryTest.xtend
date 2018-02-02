@@ -42,11 +42,11 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	 */
 	@Test
 	def void testCustomControlPolymorphic() {
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(createBaseClassObject)) {
 			def control_BaseClass_baseClassFeature(BaseClass e) {
 				createText("Foo")
 			}
-		} => [initialize(createBaseClassObject)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(true)
 		control.assertText("Foo")
@@ -62,7 +62,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlPolymorphicGetters() {
 		val obj = createBaseClassObject
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(obj)) {
 			def control_BaseClass_baseClassFeature(BaseClass e) {
 				obj.assertSame(owner)
 				dataBindingContext.assertNotNull
@@ -70,7 +70,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 				editingDomain.assertNull
 				createText("Foo")
 			}
-		} => [initialize(obj)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(true)
 		control.assertText("Foo")
@@ -89,7 +89,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlWithDatabindingContextPolymorphic() {
 		val o1 = createBaseClassObject
-		val factory = new CustomDialogControlFactoryForTests => [initialize(o1)]
+		val factory = new CustomDialogControlFactoryForTests(compositeParameter, getEObjectParameter(o1)).injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
@@ -110,7 +110,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlWithControlObservablePair() {
 		val o1 = createBaseClassObject
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(o1)) {
 			def control_BaseClass_baseClassFeature(EStructuralFeature f) {
 				val text = createText("")
 				// by default the editable is true, thus setting it to false
@@ -118,7 +118,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 				text.editable = false
 				return new ControlObservablePair(text, DatabindingUtil.observeText(text, SWT.Modify))
 			}
-		} => [initialize(o1)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
@@ -133,12 +133,12 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	def void testCustomControlWithControlObservablePairForMulti() {
 		val o1 = createBaseClassObject
 		o1.baseMultiReferenceFeature += createClassWithName("Foo")
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(o1)) {
 			def control_BaseClass_baseMultiReferenceFeature(EStructuralFeature f) {
 				val text = createText("")
 				return new ControlObservablePair(text, DatabindingUtil.observeText(text, SWT.Modify))
 			}
-		} => [initialize(o1)]
+		}.injectMembers
 		// we create a Text for a multi feature so the text will stay empty anyway
 		// but we test that our custom method is actually polymorphicall invoked
 		val control = factory.createControl(testPackage.baseClass_BaseMultiReferenceFeature)
@@ -154,7 +154,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlWithControlObservablePair2() {
 		val o1 = createBaseClassObject
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(o1)) {
 			def control_BaseClass_baseClassFeature(EStructuralFeature f) {
 				val text = createText("")
 				// by default the editable is true, thus setting it to false
@@ -162,7 +162,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 				text.editable = false
 				return new ControlObservablePair(text, DatabindingUtil.observeText(text))
 			}
-		} => [initialize(o1)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
@@ -176,8 +176,8 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlWithFeatureAndObservableValue() {
 		val o1 = createBaseClassObject
-		val factory = new CustomDialogControlFactoryForTestsWithCallToBindValude
-			=> [initialize(o1)]
+		val factory = new CustomDialogControlFactoryForTestsWithCallToBindValude(compositeParameter, getEObjectParameter(o1))
+			.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(false)
 		control.assertText("")
@@ -190,13 +190,13 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		// check that the layout data explicitly set is not overwritten
 		// by the default control setup
 		val o1 = createBaseClassObject
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(o1)) {
 			def control_BaseClass_baseClassFeature(EStructuralFeature f) {
 				val text = createText("")
 				text.layoutData = new FillLayout()
 				return new ControlObservablePair(text, DatabindingUtil.observeText(text))
 			}
-		} => [initialize(o1)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertText("")
 		syncExecVoid[
@@ -212,11 +212,11 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	@Test
 	def void testCustomControlNull() {
 		val o1 = createBaseClassObject
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(o1)) {
 			def control_BaseClass_baseClassFeature(EStructuralFeature f) {
 				return new ControlObservablePair(null, null)
 			}
-		} => [initialize(o1)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertNull
 	}
@@ -237,12 +237,12 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 		val o1 = createBaseClassObject
 		val o2 = createBaseClassObject
 		
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(o1)) {
 			def observe_BaseClass_baseClassFeature(EditingDomain d, BaseClass e) {
 				// observe the change for the feature on the second object
 				EMFProperties.value(testPackage.baseClass_BaseClassFeature).observe(o2)
 			}
-		} => [initialize(o1)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(true)
 		// the Text changes when the second object changes,
@@ -261,7 +261,7 @@ class CustomDialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	@Test def void testWrongContentAssistKeyStroke() {
-		val factory = new DialogControlFactory => [initialize(createBaseClassObject)]
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(createBaseClassObject)).injectMembers
 		// this will replace the string for content assist shortcut with
 		// an unparsable KeyStroke
 

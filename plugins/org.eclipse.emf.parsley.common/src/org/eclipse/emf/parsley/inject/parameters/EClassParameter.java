@@ -23,19 +23,17 @@ import com.google.inject.Inject;
  *
  */
 @FactoryParameter
-public class EClassParameter implements InjectableParameter {
-
-	private EClass eClass;
+public class EClassParameter extends GenericInjectableParameter<EClass> {
 
 	public EClassParameter() {
 		// required by Guice
 	}
 
 	public EClassParameter(EClass eClass) {
-		this.eClass = eClass;
+		super(eClass);
 	}
 
-	public EClass getEClass() {
-		return eClass;
+	public final EClass getEClass() {
+		return getWrapped();
 	}
 }

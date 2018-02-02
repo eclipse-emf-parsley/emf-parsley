@@ -17,12 +17,11 @@ import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.swt.layout.GridLayout;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public class DialogDetailComposite extends AbstractDetailComposite {
 
 	@Inject
-	private Provider<DialogControlFactory> controlFactoryProvider;
+	private CompositeFactory compositeFactory;
 
 	/**
 	 * @since 2.0
@@ -34,11 +33,12 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 		setLayout(new GridLayout(2, false));
 	}
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	protected AbstractControlFactory createControlFactory(EObject model, EditingDomain domain) {
-		DialogControlFactory controlFactory = controlFactoryProvider.get();
-		controlFactory.init(domain, model, this);
-		return controlFactory;
+	protected DialogControlFactory createControlFactory(EObject object, EditingDomain editingDomain) {
+		return compositeFactory.createDialogControlFactory(this, object, editingDomain);
 	}
 
 }

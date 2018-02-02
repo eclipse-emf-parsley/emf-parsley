@@ -24,8 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.AbstractControlFactory;
-import org.eclipse.emf.parsley.composite.DialogControlFactory;
-import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.composite.MultipleFeatureControl;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm;
@@ -56,7 +54,7 @@ import org.junit.Before;
 @SuppressWarnings("deprecation")
 public abstract class AbstractEmfParsleyControlBasedTest extends
 		AbstractEmfParsleyShellBasedTest {
-	
+
 	private static final Logger LOGGER = Logger.getLogger(AbstractEmfParsleyControlBasedTest.class);
 
 	private TestDefaultRealm realm;
@@ -82,37 +80,15 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 		return null;
 	}
 
-	protected void initialize(final DialogControlFactory controlFactory,
-			final EObject obj) {
-		initializeCommon(controlFactory, obj);
-		controlFactory.init(getEditingDomain(), obj, getShell());
-		// shell must be visibile since we need to check visibility of some
-		// controls
-		getShell().open();
-	}
-
-	protected Boolean initialize(final FormControlFactory controlFactory,
-			final EObject obj) {
-		initializeCommon(controlFactory, obj);
-		// shell must be visibile since we need to check visibility of some
-		// controls
-		getShell().open();
+	protected FormToolkit getFormToolkit() {
 		// FormToolkit must be created in the UI thread
 		// and the initialization requires databinding, and thus the Realm
-		return syncExecInRealm(new RunnableWithResult<Boolean>() {
+		return syncExecInRealm(new RunnableWithResult<FormToolkit>() {
 			@Override
-			public Boolean run() {
-				controlFactory.init(getEditingDomain(), obj, getShell(),
-						new FormToolkit(getDisplay()));
-				return true;
+			public FormToolkit run() {
+				return new FormToolkit(getDisplay());
 			}
 		});
-	}
-
-	protected void initializeCommon(
-			final AbstractControlFactory controlFactory, final EObject obj) {
-		injectMembers(controlFactory);
-		getOrCreateInjector().injectMembers(controlFactory);
 	}
 
 	protected Control createControl(final AbstractControlFactory factory,

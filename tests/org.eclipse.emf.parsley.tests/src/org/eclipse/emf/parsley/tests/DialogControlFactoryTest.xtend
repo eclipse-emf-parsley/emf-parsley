@@ -23,6 +23,7 @@ import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import com.google.inject.Injector
 
 class DialogControlFactoryTest extends AbstractControlFactoryTest {
 
@@ -134,8 +135,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 				CustomProposalCreator1
 			}
 		})
-		factory = injector.getInstance(DialogControlFactory)
-		factory.init(editingDomain, classForControlsInstance, shell)
+		factory = injector.createWithInjector
 		val control = factory.createControl(testPackage.classForControls_StringFeature)
 		control.assertTextEditable(true)
 		control.assertText("")
@@ -156,8 +156,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 				CustomProposalCreator2
 			}
 		})
-		factory = injector.getInstance(DialogControlFactory)
-		factory.init(editingDomain, classForControlsInstance, shell)
+		factory = injector.createWithInjector
 		val control = factory.createControl(testPackage.classForControls_StringFeature)
 		control.assertTextEditable(true)
 	}
@@ -175,8 +174,7 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 				CustomProposalCreator3
 			}
 		})
-		factory = injector.getInstance(DialogControlFactory)
-		factory.init(editingDomain, classForControlsInstance, shell)
+		factory = injector.createWithInjector
 		val control = factory.createControl(testPackage.classForControls_StringFeature)
 		control.assertTextEditable(true)
 	}
@@ -336,7 +334,16 @@ class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	def protected createAndInitializeFactory() {
-		new DialogControlFactory() => [initialize(classForControlsInstance)]
+		new DialogControlFactory(compositeParameter, getEObjectParameter(classForControlsInstance)).injectMembers => [
+			// shell must be visibile since we need to check visibility of some controls
+			getShell().open();
+		]
+	}
+
+	def protected createWithInjector(Injector injector) {
+		new DialogControlFactory(compositeParameter, getEObjectParameter(classForControlsInstance)) => [
+			injector.injectMembers(it)
+		]
 	}
 
 }

@@ -26,8 +26,6 @@ import org.eclipse.swt.widgets.Text;
  */
 public interface IWidgetFactory {
 
-	void init(Composite parent);
-
 	Label createLabel(String text);
 
 	Label createLabel(Composite parent, String text);

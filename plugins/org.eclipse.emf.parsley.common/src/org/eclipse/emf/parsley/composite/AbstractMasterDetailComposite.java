@@ -106,7 +106,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	/**
 	 * This method is ensured to be called after the construction has finished, but
 	 * before subclasses fields are injected; thus, if in the subclass you need
-	 * something, make sure you specify it as a paramenter an {@link Inject}
+	 * something, make sure you specify it as a parameter in an {@link Inject}
 	 * constructor, NOT as an injected field.
 	 * 
 	 * @param parent

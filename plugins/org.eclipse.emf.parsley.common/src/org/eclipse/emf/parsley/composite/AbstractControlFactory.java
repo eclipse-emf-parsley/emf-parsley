@@ -30,6 +30,7 @@ import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.edit.IEditingStrategy;
 import org.eclipse.emf.parsley.edit.TextUndoRedo;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.emf.parsley.internal.databinding.DataBindingHelper;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 import org.eclipse.emf.parsley.ui.provider.ComboViewerLabelProvider;
@@ -125,9 +126,56 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	public static final String ESTRUCTURALFEATURE_KEY = EcorePackage.Literals.ESTRUCTURAL_FEATURE
 			.getName();
 
-	public AbstractControlFactory() {
-
+	/**
+	 * The passed {@link EditingDomain} in {@link EObjectParameter} can be null; in
+	 * that case Data Binding will be implemented through {@link EMFProperties},
+	 * instead of {@link EMFEditProperties}. If the {@link EditingDomain} is null
+	 * views and editors will not be notified about changes to the passed
+	 * {@link EObject}. This is useful when you want to create {@link Control}s that
+	 * act on a copy of the original object (see also {@link IEditingStrategy}).
+	 * 
+	 * @since 2.0
+	 */
+	@Inject
+	public AbstractControlFactory(EObjectParameter eObjectParameter) {
+		this.owner = eObjectParameter.getObject();
+		this.domain = eObjectParameter.getEditingDomain();
+		this.edbc = new EMFDataBindingContext();
 	}
+
+	/**
+	 * This will be called after construction.
+	 * 
+	 * @param compositeFactory
+	 */
+	@Inject
+	private void createAdditionals(CompositeFactory compositeFactory) {
+		widgetFactory = createWidgetFactory(compositeFactory);
+		featureLabelCaptionProvider = createFeatureLabelCaptionProvider(compositeFactory);
+	}
+
+	/**
+	 * Concrete implementation should create a {@link IWidgetFactory} according
+	 * to the specific widgets (e.g., for dialogs or forms).
+	 * 
+	 * @param factory 
+	 * 
+	 * @return the concrete implementation
+	 * @since 2.0
+	 */
+	protected abstract IWidgetFactory createWidgetFactory(CompositeFactory factory);
+
+	/**
+	 * Concrete implementation should create a
+	 * {@link FeatureLabelCaptionProvider} according to the specific widgets
+	 * (e.g., for dialogs or forms).
+	 * 
+	 * @param compositeFactory 
+	 * 
+	 * @return the concrete implementation
+	 * @since 2.0
+	 */
+	protected abstract FeatureLabelCaptionProvider createFeatureLabelCaptionProvider(CompositeFactory compositeFactory);
 
 	protected EObject getOwner() {
 		return owner;
@@ -148,23 +196,6 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return resource;
 	}
 
-	/**
-	 * Concrete implementation should create a {@link IWidgetFactory} according
-	 * to the specific widgets (e.g., for dialogs or forms).
-	 * 
-	 * @return the concrete implementation
-	 */
-	protected abstract IWidgetFactory createWidgetFactory();
-
-	/**
-	 * Concrete implementation should create a
-	 * {@link FeatureLabelCaptionProvider} according to the specific widgets
-	 * (e.g., for dialogs or forms).
-	 * 
-	 * @return the concrete implementation
-	 */
-	protected abstract FeatureLabelCaptionProvider createFeatureLabelCaptionProvider();
-
 	public boolean isReadonly() {
 		return readonly;
 	}
@@ -179,31 +210,6 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	private ILabelProvider createComboViewerLabelProvider() {
 		return comboViewerLabelProviderProvider.get();
-	}
-
-	/**
-	 * Initializes this factory for creating {@link Control}s with
-	 * Data Binding.
-	 * 
-	 * The passed {@link EditingDomain} can be null; in that case
-	 * Data Binding will be implemented through {@link EMFProperties}, instead
-	 * of {@link EMFEditProperties}.  If the {@link EditingDomain} is null
-	 * views and editors will not be notified about changes to the passed
-	 * {@link EObject}.  This is useful when you want to create {@link Control}s
-	 * that act on a copy of the original object (see also {@link IEditingStrategy}).
-	 * 
-	 * @param domain
-	 * @param owner
-	 * @param parent
-	 * @see IEditingStrategy
-	 */
-	public void init(EditingDomain domain, EObject owner, Composite parent) {
-		widgetFactory = createWidgetFactory();
-		init(parent);
-		featureLabelCaptionProvider = createFeatureLabelCaptionProvider();
-		this.edbc = new EMFDataBindingContext();
-		this.domain = domain;
-		this.owner = owner;
 	}
 
 	/**
@@ -623,11 +629,6 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	@Override
 	public DateTime createDateTime(Composite parent, int style) {
 		return widgetFactory.createDateTime(parent, style);
-	}
-
-	@Override
-	public Composite getParent() {
-		return widgetFactory.getParent();
 	}
 
 }

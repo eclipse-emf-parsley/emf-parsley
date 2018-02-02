@@ -22,12 +22,17 @@ import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IFormColors;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+
+import com.google.inject.Inject;
 
 /**
  * @author Lorenzo Bettini
@@ -42,6 +47,12 @@ public class CustomLibraryFormControlFactory extends FormControlFactory {
 //		return new ControlObservablePair(t, SWTObservables.observeText(t,
 //				SWT.Modify));
 //	}
+
+	@Inject
+	public CustomLibraryFormControlFactory(CompositeParameter compositeParameter, EObjectParameter eObjectParameter,
+			FormToolkitParameter formToolkitParameter) {
+		super(compositeParameter, eObjectParameter, formToolkitParameter);
+	}
 
 	@SuppressWarnings("rawtypes")
 	public Control control_Writer_name(DataBindingContext dbc,

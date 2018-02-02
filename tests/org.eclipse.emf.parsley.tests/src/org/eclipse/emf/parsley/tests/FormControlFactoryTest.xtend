@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import com.google.inject.Inject
 import org.eclipse.emf.parsley.composite.FormControlFactory
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter
 import org.junit.Test
 
 import static extension org.junit.Assert.*
@@ -18,6 +22,12 @@ import static extension org.junit.Assert.*
 class FormControlFactoryTest extends DialogControlFactoryTest {
 
 	private static class CustomFormControlFactory extends FormControlFactory {
+
+		@Inject
+		new(CompositeParameter compositeParameter, EObjectParameter eObjectParameter,
+			FormToolkitParameter formToolkitParameter) {
+			super(compositeParameter, eObjectParameter, formToolkitParameter)
+		}
 
 		// make it available for tests
 		override public getFormToolkit() {
@@ -27,8 +37,10 @@ class FormControlFactoryTest extends DialogControlFactoryTest {
 	}
 
 	def override protected createAndInitializeFactory() {
-		new CustomFormControlFactory() => [
-			initialize(classForControlsInstance)
+		new CustomFormControlFactory(compositeParameter, getEObjectParameter(classForControlsInstance),
+			new FormToolkitParameter(formToolkit)).injectMembers => [
+			// shell must be visibile since we need to check visibility of some controls
+			getShell().open();
 		]
 	}
 

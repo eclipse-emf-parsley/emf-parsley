@@ -24,24 +24,25 @@ import org.junit.Test
 class DefaultControlFactoryTest extends DialogControlFactoryTest {
 
 	def override protected createAndInitializeFactory() {
-		new DialogControlFactory() {
+		new DialogControlFactory(compositeParameter, getEObjectParameter(classForControlsInstance)) {
 			override create(EStructuralFeature feature) {
 				super.createDefaultControl(feature)
 			}
-		} => [
-			initialize(classForControlsInstance)
+		}.injectMembers => [
+			// shell must be visibile since we need to check visibility of some controls
+			getShell().open();
 		]
 	}
 
 	@Test
 	def void testCustomControlPolymorphicUsingDefaultCreate() {
-		val factory = new DialogControlFactory {
+		val factory = new DialogControlFactory(compositeParameter, getEObjectParameter(testFactory.createBaseClass)) {
 			def control_BaseClass_baseClassFeature(BaseClass e) {
 				createDefaultControl(testPackage.baseClass_BaseClassFeature) => [
 					(it as Text).text = "Foo"
 				]
 			}
-		} => [initialize(testFactory.createBaseClass)]
+		}.injectMembers
 		val control = factory.createControl(testPackage.baseClass_BaseClassFeature)
 		control.assertTextEditable(true)
 		control.assertText("Foo")

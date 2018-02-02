@@ -1,25 +1,19 @@
-/**
- * <copyright> 
- *
- * Copyright (c) 2008, 2013 itemis AG and others.
- * All rights reserved.   This program and the accompanying materials
+/*******************************************************************************
+ * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Contributors: 
- *   itemis AG - Initial API and implementation
- *   Lorenzo Bettini - refactoring for EmfParsley
- *
- * </copyright>
- *
- */
+ * Contributors:
+ * Lorenzo Bettini - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
-import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.widgets.DialogWidgetFactory;
-import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
@@ -27,30 +21,40 @@ import com.google.inject.Inject;
 /**
  * An implementation specific for dialogs.
  * 
- * @author Dennis Huebner initial code
- * @author Lorenzo Bettini refactoring for EmfParsley
+ * @author Lorenzo Bettini - initial API and implementation
  * 
  */
 public class DialogControlFactory extends AbstractControlFactory {
 
-	@Inject
-	private DialogWidgetFactory dialogWidgetFactory;
+	private Composite parent;
 
+	/**
+	 * @since 2.0
+	 */
 	@Inject
-	private DialogFeatureCaptionProvider dialogFeatureCaptionProvider;
-
-	@Override
-	protected IWidgetFactory createWidgetFactory() {
-		return dialogWidgetFactory;
+	public DialogControlFactory(CompositeParameter compositeParameter, EObjectParameter eObjectParameter) {
+		super(eObjectParameter);
+		this.parent = compositeParameter.getComposite();
 	}
 
 	@Override
-	public void init(Composite parent) {
-		dialogWidgetFactory.init(parent);
+	public Composite getParent() {
+		return parent;
 	}
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	protected FeatureLabelCaptionProvider createFeatureLabelCaptionProvider() {
-		return dialogFeatureCaptionProvider;
+	protected DialogWidgetFactory createWidgetFactory(CompositeFactory factory) {
+		return factory.createDialogWidgetFactory(parent);
+	}
+
+	/**
+	 * @since 2.0
+	 */
+	@Override
+	protected DialogFeatureCaptionProvider createFeatureLabelCaptionProvider(CompositeFactory compositeFactory) {
+		return compositeFactory.createFeatureLabelCaptionProvider();
 	}
 }

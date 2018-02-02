@@ -10,45 +10,31 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.emf.parsley.widgets.FormWidgetFactory;
-import org.eclipse.emf.parsley.widgets.IWidgetFactory;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.google.inject.Inject;
 
 /**
  * A customization for forms.
+ * 
+ * @author Lorenzo Bettini - initial API and implementation
  */
 public class FormControlFactory extends DialogControlFactory {
 
 	private FormToolkit formToolkit = null;
 
+	/**
+	 * @since 2.0
+	 */
 	@Inject
-	private FormWidgetFactory formWidgetFactory;
-
-	@Inject
-	private FormFeatureCaptionProvider formFeatureCaptionProvider;
-
-	@Override
-	protected IWidgetFactory createWidgetFactory() {
-		return formWidgetFactory;
-	}
-
-	@Override
-	protected FeatureLabelCaptionProvider createFeatureLabelCaptionProvider() {
-		return formFeatureCaptionProvider;
-	}
-
-	public void init(EditingDomain domain, EObject owner, Composite parent, FormToolkit toolkit) {
-		this.formToolkit = toolkit;
-		init(domain, owner, parent);
-		formWidgetFactory.init(parent, toolkit);
-		formFeatureCaptionProvider.setFormToolkit(toolkit);
+	public FormControlFactory(CompositeParameter compositeParameter, EObjectParameter eObjectParameter, FormToolkitParameter formToolkitParameter) {
+		super(compositeParameter, eObjectParameter);
+		this.formToolkit = formToolkitParameter.getFormToolkit();
 	}
 
 	/**
@@ -58,4 +44,19 @@ public class FormControlFactory extends DialogControlFactory {
 		return formToolkit;
 	}
 
+	/**
+	 * @since 2.0
+	 */
+	@Override
+	protected FormWidgetFactory createWidgetFactory(CompositeFactory factory) {
+		return factory.createFormWidgetFactory(getParent(), formToolkit);
+	}
+
+	/**
+	 * @since 2.0
+	 */
+	@Override
+	protected FormFeatureCaptionProvider createFeatureLabelCaptionProvider(CompositeFactory compositeFactory) {
+		return compositeFactory.createFormFeatureCaptionProvider(formToolkit);
+	}
 }

@@ -11,11 +11,13 @@
 package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.parsley.composite.DialogControlFactory
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter
 
 class DialogControlFactoryAsWidgetFactoryTest extends DialogWidgetFactoryTest {
 
 	override void setupWidgetFactory() {
-		factory = new DialogControlFactory() => [initialize(classForControlsInstance)]
+		factory = new DialogControlFactory(compositeParameter,
+			new EObjectParameter(classForControlsInstance, editingDomain)).injectMembers
 	}
 
 }

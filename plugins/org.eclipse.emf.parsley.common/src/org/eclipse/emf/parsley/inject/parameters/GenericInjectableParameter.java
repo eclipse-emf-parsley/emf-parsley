@@ -10,30 +10,30 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.inject.parameters;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import com.google.inject.Inject;
 
 /**
- * A wrapper class for parameters for an {@link EStructuralFeature} that can be
- * used in a constructor annotated with {@link Inject}.
+ * A generic wrapper for an parameter that can be used in a constructor
+ * annotated with {@link Inject} that should be created only through one of our
+ * factories.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  *
  */
 @FactoryParameter
-public class EStructuralFeatureParameter extends GenericInjectableParameter<EStructuralFeature> {
+public class GenericInjectableParameter<T> implements InjectableParameter {
+	private T wrapped;
 
-	public EStructuralFeatureParameter() {
+	public GenericInjectableParameter() {
 		// required by Guice
 	}
 
-	public EStructuralFeatureParameter(EStructuralFeature eStructuralFeature) {
-		super(eStructuralFeature);
+	public GenericInjectableParameter(T wrapped) {
+		this.wrapped = wrapped;
 	}
 
-	public final EStructuralFeature getEStructuralFeature() {
-		return getWrapped();
+	public final T getWrapped() {
+		return wrapped;
 	}
 }

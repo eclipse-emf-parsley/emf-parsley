@@ -467,8 +467,8 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 @SuppressWarnings("all")
 public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   @Inject
-  public EmptyTableLabelProvider(final EStructuralFeatureParameter params) {
-    super(params);
+  public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
+    super(eStructuralFeatureParameter);
   }
   
   public String text_Library_name(final Library it) {
@@ -544,8 +544,8 @@ import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 @SuppressWarnings("all")
 public class EmptyTableLabelProvider extends TestTableColumnLabelProvider {
   @Inject
-  public EmptyTableLabelProvider(final EStructuralFeatureParameter params) {
-    super(params);
+  public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
+    super(eStructuralFeatureParameter);
   }
 }
 ''']
@@ -579,8 +579,8 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   }
   
   @Inject
-  public EmptyTableLabelProvider(final EStructuralFeatureParameter params) {
-    super(params);
+  public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
+    super(eStructuralFeatureParameter);
   }
 }
 ''']
@@ -716,8 +716,10 @@ expectedFormFeatureCaptionProvider =
 '''
 package my.empty.ui.provider;
 
+import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -728,6 +730,11 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider {
+  @Inject
+  public EmptyFormFeatureCaptionProvider(final FormToolkitParameter formToolkitParameter) {
+    super(formToolkitParameter);
+  }
+  
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -774,10 +781,16 @@ expectedFormFeatureCaptionProvider =
 '''
 package my.empty.ui.provider;
 
+import com.google.inject.Inject;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormFeatureCaptionProvider;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 
 @SuppressWarnings("all")
 public class EmptyFormFeatureCaptionProvider extends TestFormFeatureCaptionProvider {
+  @Inject
+  public EmptyFormFeatureCaptionProvider(final FormToolkitParameter formToolkitParameter) {
+    super(formToolkitParameter);
+  }
 }
 ''']
 		)
@@ -1050,6 +1063,7 @@ expectedFormControlFactory =
 '''
 package my.empty.binding;
 
+import com.google.inject.Inject;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
@@ -1057,6 +1071,9 @@ import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
@@ -1068,6 +1085,11 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class EmptyFormControlFactory extends FormControlFactory {
+  @Inject
+  public EmptyFormControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter, final FormToolkitParameter formToolkitParameter) {
+    super(compositeParameter, eObjectParameter, formToolkitParameter);
+  }
+  
   public Control control_Library_name(final Library it) {
     return null;
   }
@@ -1137,10 +1159,18 @@ expectedFormControlFactory =
 '''
 package my.empty.binding;
 
+import com.google.inject.Inject;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormControlFactory;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 
 @SuppressWarnings("all")
 public class EmptyFormControlFactory extends TestFormControlFactory {
+  @Inject
+  public EmptyFormControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter, final FormToolkitParameter formToolkitParameter) {
+    super(compositeParameter, eObjectParameter, formToolkitParameter);
+  }
 }
 ''']
 		)
@@ -1175,6 +1205,7 @@ expectedDialogControlFactory =
 '''
 package my.empty.binding;
 
+import com.google.inject.Inject;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
@@ -1182,6 +1213,8 @@ import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Borrower;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
@@ -1193,6 +1226,11 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class EmptyDialogControlFactory extends DialogControlFactory {
+  @Inject
+  public EmptyDialogControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter) {
+    super(compositeParameter, eObjectParameter);
+  }
+  
   public Control control_Library_name(final Library it) {
     return null;
   }
@@ -1262,10 +1300,17 @@ expectedDialogControlFactory =
 '''
 package my.empty.binding;
 
+import com.google.inject.Inject;
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogControlFactory;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 
 @SuppressWarnings("all")
 public class EmptyDialogControlFactory extends TestDialogControlFactory {
+  @Inject
+  public EmptyDialogControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter) {
+    super(compositeParameter, eObjectParameter);
+  }
 }
 ''']
 		)

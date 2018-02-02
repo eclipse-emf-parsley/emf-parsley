@@ -105,8 +105,8 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 * @since 2.0
 	 */
 	@Inject
-	public TableColumnLabelProvider(EStructuralFeatureParameter param) {
-		this.eStructuralFeature = param.getEStructuralFeature();
+	public TableColumnLabelProvider(EStructuralFeatureParameter eStructuralFeatureParameter) {
+		this.eStructuralFeature = eStructuralFeatureParameter.getEStructuralFeature();
 	}
 
 	@Override

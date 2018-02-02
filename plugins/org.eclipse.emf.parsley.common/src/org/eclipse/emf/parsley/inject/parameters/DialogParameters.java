@@ -38,11 +38,11 @@ public class DialogParameters implements InjectableParameter {
 		this.title = title;
 	}
 
-	public Shell getParentShell() {
+	public final Shell getParentShell() {
 		return parentShell;
 	}
 
-	public String getTitle() {
+	public final String getTitle() {
 		return title;
 	}
 

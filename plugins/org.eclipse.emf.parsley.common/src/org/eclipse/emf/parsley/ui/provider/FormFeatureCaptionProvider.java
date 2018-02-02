@@ -10,10 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+
+import com.google.inject.Inject;
 
 /**
  * Provides labels for EStructuralFeatures using {@link FormToolkit}.
@@ -25,6 +28,14 @@ public class FormFeatureCaptionProvider extends DialogFeatureCaptionProvider {
 
 	private FormToolkit formToolkit;
 
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public FormFeatureCaptionProvider(FormToolkitParameter formToolkitParameter) {
+		this.formToolkit = formToolkitParameter.getFormToolkit();
+	}
+
 	@Override
 	protected Label createLabel(Composite parent, String text) {
 		Label lab = getFormToolkit().createLabel(parent, text);
@@ -32,12 +43,8 @@ public class FormFeatureCaptionProvider extends DialogFeatureCaptionProvider {
 		return lab;
 	}
 
-	public FormToolkit getFormToolkit() {
+	protected FormToolkit getFormToolkit() {
 		return formToolkit;
-	}
-
-	public void setFormToolkit(FormToolkit formToolkit) {
-		this.formToolkit = formToolkit;
 	}
 
 }

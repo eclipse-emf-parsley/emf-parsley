@@ -10,21 +10,20 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.parsley.composite.CompositeFactory
 import org.eclipse.emf.parsley.composite.TreeFormComposite
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.swt.SWT
 import org.eclipse.swt.custom.SashForm
 import org.junit.Before
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.emf.ecore.EcorePackage
 
 /**
  * Make sure we can instantiate all our composites via dependency injection.
  */
-class CompositeFactoryTest extends AbstractEmfParsleyShellBasedTest {
+class CompositeFactoryTest extends AbstractControlFactoryTest {
 
 	var CompositeFactory factory
 
@@ -91,10 +90,41 @@ class CompositeFactoryTest extends AbstractEmfParsleyShellBasedTest {
 		factory.createTableFormComposite(shell, SWT.NONE, EcorePackage.eINSTANCE.EObject)
 	}
 
+	@Test
+	def void canCreateDialogWidgetFactory() {
+		factory.createDialogWidgetFactory(shell)
+	}
+
+	@Test
+	def void canCreateFormWidgetFactory() {
+		factory.createFormWidgetFactory(shell, formToolkit)
+	}
+
+	@Test
+	def void canCreateFeatureLabelCaptionProvider() {
+		factory.createFeatureLabelCaptionProvider
+	}
+
+	@Test
+	def void canCreateFormFeatureCaptionProvider() {
+		factory.createFormFeatureCaptionProvider(formToolkit)
+	}
+
+	@Test
+	def void canCreateDialogControlFactory() {
+		factory.createDialogControlFactory(shell, EcorePackage.eINSTANCE.EObject, editingDomain)
+	}
+
+	@Test
+	def void canCreateFormControlFactory() {
+		factory.createFormControlFactory(shell, EcorePackage.eINSTANCE.EObject, editingDomain, formToolkit)
+	}
+
 	def private getSashForm(TreeFormComposite treeFormComposite) {
 		// access the private field for testing purposes
 		val sashForm = treeFormComposite.class.superclass.getDeclaredField("sashForm")
 		sashForm.accessible = true
 		sashForm.get(treeFormComposite) as SashForm
 	}
+
 }

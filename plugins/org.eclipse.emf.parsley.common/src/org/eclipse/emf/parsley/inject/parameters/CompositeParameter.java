@@ -10,30 +10,31 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.inject.parameters;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
 /**
- * A wrapper class for parameters for an {@link EStructuralFeature} that can be
- * used in a constructor annotated with {@link Inject}.
+ * A wrapper class for a Composite that can be used in a constructor annotated
+ * with {@link Inject}; the corresponding Composite should be created only
+ * through one of our factories.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  *
  */
 @FactoryParameter
-public class EStructuralFeatureParameter extends GenericInjectableParameter<EStructuralFeature> {
+public class CompositeParameter extends GenericInjectableParameter<Composite> {
 
-	public EStructuralFeatureParameter() {
+	public CompositeParameter() {
 		// required by Guice
 	}
 
-	public EStructuralFeatureParameter(EStructuralFeature eStructuralFeature) {
-		super(eStructuralFeature);
+	public CompositeParameter(Composite composite) {
+		super(composite);
 	}
 
-	public final EStructuralFeature getEStructuralFeature() {
+	public final Composite getComposite() {
 		return getWrapped();
 	}
 }

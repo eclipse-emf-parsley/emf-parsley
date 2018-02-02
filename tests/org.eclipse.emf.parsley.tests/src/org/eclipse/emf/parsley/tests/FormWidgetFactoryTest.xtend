@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter
 import org.eclipse.emf.parsley.widgets.FormWidgetFactory
-import org.eclipse.ui.forms.widgets.FormToolkit
 
 class FormWidgetFactoryTest extends DialogWidgetFactoryTest {
 
 	override void setupWidgetFactory() {
-		factory = getOrCreateInjector.getInstance(FormWidgetFactory)
-		(factory as FormWidgetFactory).init(shell, new FormToolkit(shell.display))
+		factory = new FormWidgetFactory(compositeParameter, new FormToolkitParameter(formToolkit)).injectMembers
 	}
 
 }

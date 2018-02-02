@@ -10,12 +10,16 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.widgets;
 
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
+
+import com.google.inject.Inject;
 
 /**
  * An implementation that creates widgets suitable for forms.
@@ -25,26 +29,30 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
  */
 public class FormWidgetFactory extends DialogWidgetFactory {
 
-	private FormToolkit toolkit = null;
+	private FormToolkit formToolkit = null;
 
-	public void init(Composite parent, FormToolkit toolkit) {
-		super.init(parent);
-		this.toolkit = toolkit;
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public FormWidgetFactory(CompositeParameter compositeParameter, FormToolkitParameter formToolkitParameter) {
+		super(compositeParameter);
+		this.formToolkit = formToolkitParameter.getFormToolkit();
 	}
 
 	@Override
 	public Label createLabel(Composite parent, String text) {
-		return toolkit.createLabel(parent, text);
+		return formToolkit.createLabel(parent, text);
 	}
 
 	@Override
 	public Button createButton(Composite parent, String text, int style) {
-		return toolkit.createButton(parent, text, style);
+		return formToolkit.createButton(parent, text, style);
 	}
 
 	@Override
 	public Text createText(Composite parent, String text, int style) {
-		Text t = toolkit.createText(parent, text, style);
+		Text t = formToolkit.createText(parent, text, style);
 		t.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TREE_BORDER);
 		return t;
 	}
@@ -52,7 +60,7 @@ public class FormWidgetFactory extends DialogWidgetFactory {
 	@Override
 	public ComboViewer createComboViewer(Composite parent, int style) {
 		ComboViewer combo = new ComboViewer(parent, style);
-		toolkit.adapt(combo.getCombo());
+		formToolkit.adapt(combo.getCombo());
 		return combo;
 	}
 }

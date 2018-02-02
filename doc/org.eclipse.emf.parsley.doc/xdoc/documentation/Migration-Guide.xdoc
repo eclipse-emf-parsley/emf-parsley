@@ -67,6 +67,10 @@ In the DSL, in a e[formControlFactory] section, you should rename possible refer
 e[getToolkit] into e[formToolkit] and e[getFormToolkit], respectively.
 The method e[org.eclipse.emf.parsley.widgets.FormWidgetFactory.getToolkit()] has been removed since clients
 should not need to access that method.
+The e[init] method in several classes (like widget factories, control factories, etc.) has been removed,
+since all the needed arguments must be passed to the constructor; you should use codeRef[org.eclipse.emf.parsley.composite.CompositeFactory]
+to create such instances, using the corresponding create method, e.g.,
+e[org.eclipse.emf.parsley.composite.CompositeFactory.createFormControlFactory(Composite, EObject, EditingDomain, FormToolkit)].
 ]
 ]
 

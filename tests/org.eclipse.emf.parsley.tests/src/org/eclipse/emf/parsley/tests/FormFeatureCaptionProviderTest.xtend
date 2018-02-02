@@ -26,6 +26,7 @@ import org.junit.Rule
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter
 
 class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	
@@ -40,13 +41,13 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	}
 	
 	@Test def void testDefaultText() {
-		val provider = new FormFeatureCaptionProvider() => [initialize]
+		val provider = new FormFeatureCaptionProvider(formToolkitParam) => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature
 		feature.name.assertEquals(provider.getText(derivedClass, feature))
 	}
 
 	@Test def void testDefaultLabel() {
-		val provider = new FormFeatureCaptionProvider() => [initialize]
+		val provider = new FormFeatureCaptionProvider(formToolkitParam) => [initialize]
 		val feature = testPackage.derivedClass_DerivedClassFeature
 		"Derived Class Feature".assertEquals(syncExec[|
 			provider.getLabel(shell, derivedClass.createInstance, feature).text
@@ -58,7 +59,7 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 		val expectedLabelText = "Label.DerivedClass.derivedClassFeature"
 		val testFeature = testPackage.derivedClass_DerivedClassFeature
 		
-		val provider = new FormFeatureCaptionProvider() {
+		val provider = new FormFeatureCaptionProvider(formToolkitParam) {
 			def String text_DerivedClass_derivedClassFeature(EStructuralFeature feature) {
 				return expectedText
 			}
@@ -78,7 +79,7 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 		val expectedLabelText = "Label.DerivedClass.derivedClassFeature"
 		val testFeature = testPackage.derivedClass_DerivedClassFeature
 		
-		val provider = new FormFeatureCaptionProvider() {
+		val provider = new FormFeatureCaptionProvider(formToolkitParam) {
 			def Label label_DerivedClass_derivedClassFeature(Composite parent, EStructuralFeature feature) {
 				return createLabel(parent, expectedLabelText)
 			}
@@ -95,7 +96,7 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 		val expectedText = "DerivedClass.derivedClassFeature"
 		val testFeature = testPackage.derivedClass_DerivedClassFeature
 		
-		val provider = new FormFeatureCaptionProvider() {
+		val provider = new FormFeatureCaptionProvider(formToolkitParam) {
 			def String text_DerivedClass_derivedClassFeature(EStructuralFeature feature) {
 				return expectedText
 			}
@@ -110,7 +111,7 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	@Test def void testBaseClassFeatureInBaseClass() {
 		val expectedText = "BaseClass.baseClassFeature"
 		
-		val provider = new FormFeatureCaptionProvider() {
+		val provider = new FormFeatureCaptionProvider(formToolkitParam) {
 			def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {
 				return expectedText
 			}
@@ -124,7 +125,7 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	@Test def void testBaseClassFeatureInDerivedClass() {
 		val expectedText = "BaseClass.baseClassFeature"
 		
-		val provider = new FormFeatureCaptionProvider() {
+		val provider = new FormFeatureCaptionProvider(formToolkitParam) {
 			def String text_BaseClass_baseClassFeature(EStructuralFeature feature) {
 				return expectedText
 			}
@@ -136,10 +137,11 @@ class FormFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
 	}
 
 	def private initialize(FormFeatureCaptionProvider provider) {
-		syncExecVoid[|
-			provider.formToolkit = new FormToolkit(display)
-		]
 		provider.injectMembers
+	}
+
+	def private getFormToolkitParam() {
+		syncExec[new FormToolkitParameter(new FormToolkit(display))]
 	}
 
 	def private createInstance(EClass eClass) {

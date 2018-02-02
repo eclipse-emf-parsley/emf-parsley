@@ -11,6 +11,7 @@
 
 package org.eclipse.emf.parsley.widgets;
 
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -18,6 +19,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
+import com.google.inject.Inject;
 
 /**
  * An implementation of {@link IWidgetFactory} with some defaults for some
@@ -30,9 +33,12 @@ public abstract class AbstractWidgetFactory implements IWidgetFactory {
 
 	protected Composite parent = null;
 
-	@Override
-	public void init(Composite parent) {
-		this.parent = parent;
+	/**
+	 * @since 2.0
+	 */
+	@Inject
+	public AbstractWidgetFactory(CompositeParameter compositeParameter) {
+		this.parent = compositeParameter.getComposite();
 	}
 
 	@Override

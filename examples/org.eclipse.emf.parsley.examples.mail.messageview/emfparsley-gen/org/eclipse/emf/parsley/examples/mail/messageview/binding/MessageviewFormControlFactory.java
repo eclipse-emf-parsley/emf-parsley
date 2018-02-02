@@ -1,8 +1,12 @@
 package org.eclipse.emf.parsley.examples.mail.messageview.binding;
 
+import com.google.inject.Inject;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 import org.eclipse.emf.parsley.util.DatabindingUtil;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.swt.SWT;
@@ -12,6 +16,11 @@ import org.eclipse.swt.widgets.Text;
 
 @SuppressWarnings("all")
 public class MessageviewFormControlFactory extends FormControlFactory {
+  @Inject
+  public MessageviewFormControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter, final FormToolkitParameter formToolkitParameter) {
+    super(compositeParameter, eObjectParameter, formToolkitParameter);
+  }
+  
   public Control control_Mail_message(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Mail_message();
     bindValue(

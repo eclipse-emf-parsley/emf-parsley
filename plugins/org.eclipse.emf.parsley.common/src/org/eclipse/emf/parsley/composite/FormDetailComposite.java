@@ -24,12 +24,11 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public class FormDetailComposite extends AbstractDetailComposite {
 
 	@Inject
-	private Provider<FormControlFactory> controlFactoryProvider;
+	private CompositeFactory compositeFactory;
 
 	@Inject
 	private ILabelProvider labelProvider;
@@ -86,13 +85,11 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	 * @since 2.0
 	 */
 	@Override
-	protected FormControlFactory createControlFactory(EObject model, EditingDomain domain) {
-		updateTitle(model);
-		headerAdapter = new FormTitleAdapter(model);
-		model.eAdapters().add(headerAdapter);
-		FormControlFactory formControlFactory = controlFactoryProvider.get();
-		formControlFactory.init(domain, model, main, toolkit);
-		return formControlFactory;
+	protected FormControlFactory createControlFactory(EObject object, EditingDomain editingDomain) {
+		updateTitle(object);
+		headerAdapter = new FormTitleAdapter(object);
+		object.eAdapters().add(headerAdapter);
+		return compositeFactory.createFormControlFactory(main, object, editingDomain, toolkit);
 	}
 
 	private class FormTitleAdapter extends AdapterImpl {

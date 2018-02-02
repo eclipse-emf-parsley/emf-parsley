@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest
-import org.junit.Rule
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
+import org.junit.Rule
 
 abstract class AbstractControlFactoryTest extends AbstractEmfParsleyControlBasedTest {
 
@@ -26,4 +29,11 @@ abstract class AbstractControlFactoryTest extends AbstractEmfParsleyControlBased
 		return fixtures.createResourceSet
 	}
 
+	def protected getCompositeParameter() {
+		return new CompositeParameter(shell)
+	}
+
+	def protected getEObjectParameter(EObject object) {
+		return new EObjectParameter(object, editingDomain)
+	}
 }

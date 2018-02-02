@@ -55,14 +55,14 @@ public abstract class AbstractDetailComposite extends InjectableComposite {
 	 * Initializes this component for editing the passed {@link EObject} using
 	 * the passed {@link EditingDomain}.
 	 * 
-	 * @param original
+	 * @param object
 	 * @param editingDomain
 	 *            it can be null
 	 */
-	public void init(EObject original, EditingDomain editingDomain) {
-		List<EStructuralFeature> features = featuresProvider.getEObjectFeatures(original);
+	public void init(EObject object, EditingDomain editingDomain) {
+		List<EStructuralFeature> features = featuresProvider.getEObjectFeatures(object);
 
-		AbstractControlFactory controlFactory = createControlFactory(original, editingDomain);
+		AbstractControlFactory controlFactory = createControlFactory(object, editingDomain);
 
 		for (final EStructuralFeature feature : features) {
 			controlFactory.createEditingField(feature);
@@ -74,6 +74,6 @@ public abstract class AbstractDetailComposite extends InjectableComposite {
 	/**
 	 * @since 2.0
 	 */
-	protected abstract AbstractControlFactory createControlFactory(EObject model, EditingDomain domain);
+	protected abstract AbstractControlFactory createControlFactory(EObject object, EditingDomain editingDomain);
 
 }

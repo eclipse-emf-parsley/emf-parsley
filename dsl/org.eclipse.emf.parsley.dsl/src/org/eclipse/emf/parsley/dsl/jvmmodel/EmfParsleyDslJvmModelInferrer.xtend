@@ -54,8 +54,11 @@ import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder
 import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameter
 import org.eclipse.emf.parsley.inject.parameters.EClassParameter
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter
 import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter
+import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter
 import org.eclipse.emf.parsley.resource.ResourceManager
 import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory
 import org.eclipse.emf.parsley.runtime.ui.PluginUtil
@@ -375,14 +378,7 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(labelProviderClass) [
 				setSuperClassTypeAndFields(labelProvider, typeof(ViewerLabelProvider))
 				
-				members += labelProvider.toConstructor() [
-					parameters += labelProvider.
-						toParameter("delegate",
-							typeRef(AdapterFactoryLabelProvider)
-						)
-					body = [it.append("super(delegate);")]
-					annotations += annotationRef(Inject)
-				]
+				members += labelProvider.toConstructorWithInjectedParameters("delegate" -> AdapterFactoryLabelProvider)
 				
 				specificationsToMethods(labelProvider.texts, "text", typeRef(String))
 				specificationsToMethods(labelProvider.images, "image", typeRef(Object))
@@ -402,16 +398,11 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val tableLabelProviderClass = tableLabelProvider.toClass(element.tableLabelProviderQN)
 			acceptor.accept(tableLabelProviderClass) [
 				setSuperClassTypeAndFields(tableLabelProvider, typeof(TableColumnLabelProvider))
-				
-				members += tableLabelProvider.toConstructor() [
-					parameters += tableLabelProvider.
-						toParameter("params",
-							typeRef(EStructuralFeatureParameter)
-						)
-					body = [it.append("super(params);")]
-					annotations += annotationRef(Inject)
-				]
-				
+
+				members += tableLabelProvider.toConstructorWithInjectedParameters(
+					"eStructuralFeatureParameter" -> EStructuralFeatureParameter
+				)
+
 				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureTexts, "text_", typeRef(String), parameterCreatorForFeatureAssociatedExpression)
 				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureImages, "image_", typeRef(Object), parameterCreatorForFeatureAssociatedExpression)
 				inferMethodsForFeatureAssociatedExpression(tableLabelProvider.featureFonts, "font_", typeRef(Font), parameterCreatorForFeatureAssociatedExpression)
@@ -443,7 +434,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	
 	def private inferFormFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
 		element.formFeatureCaptionProvider.inferDialogFeatureCaptionProviderWithLabel(
-			element.formFeatureCaptionProviderQN, typeof(FormFeatureCaptionProvider), acceptor)
+			element.formFeatureCaptionProviderQN, typeof(FormFeatureCaptionProvider), acceptor,
+			#["formToolkitParameter" -> FormToolkitParameter])
 	}
 
 	def private inferDialogFeatureCaptionProvider(Module element, IJvmDeclaredTypeAcceptor acceptor) {
@@ -451,16 +443,21 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			element.dialogFeatureCaptionProviderQN, typeof(DialogFeatureCaptionProvider), acceptor)
 	}
 
-	def private inferDialogFeatureCaptionProviderWithLabel(AbstractFeatureCaptionProviderWithLabel element, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferDialogFeatureCaptionProviderWithLabel(AbstractFeatureCaptionProviderWithLabel element, String name,
+		Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor, Pair<String,Class<?>>... constructorParams) {
 		if (element === null)
 			null
 		else {
 			val descriptionProviderClass = element.toClass(name)
 			acceptor.accept(descriptionProviderClass) [
 				setSuperClassTypeAndFields(element, superClass)
-				
+
+				if (!constructorParams.empty) {
+					members += element.toConstructorWithInjectedParameters(constructorParams)
+				}
+
 				inferMethodsForTextCaptionSpecifications(element.featureTexts)
-				
+
 				inferMethodsForLabelCaptionSpecifications(element.featureLabels)
 			]
 			descriptionProviderClass
@@ -576,23 +573,37 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def private inferFormControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
-		e.formControlFactory.inferControlFactory(e.formControlFactoryQN, typeof(FormControlFactory), acceptor)
+		e.formControlFactory.inferControlFactory(e.formControlFactoryQN, typeof(FormControlFactory), acceptor,
+			#[
+				"compositeParameter" -> CompositeParameter,
+				"eObjectParameter" -> EObjectParameter,
+				"formToolkitParameter" -> FormToolkitParameter
+			]
+		)
 	}
 
 	def private inferDialogControlFactory(Module e, IJvmDeclaredTypeAcceptor acceptor) {
-		e.dialogControlFactory.inferControlFactory(e.dialogControlFactoryQN, typeof(DialogControlFactory), acceptor)
+		e.dialogControlFactory.inferControlFactory(e.dialogControlFactoryQN, typeof(DialogControlFactory), acceptor,
+			#[
+				"compositeParameter" -> CompositeParameter,
+				"eObjectParameter" -> EObjectParameter
+			]
+		)
 	}
 
-	def private inferControlFactory(AbstractControlFactory e, String name, Class<?> superClass, IJvmDeclaredTypeAcceptor acceptor) {
+	def private inferControlFactory(AbstractControlFactory e, String name, Class<?> superClass,
+		IJvmDeclaredTypeAcceptor acceptor, Pair<String,Class<?>>... constructorParams) {
 		if (e === null)
 			null
 		else {
 			val controlFactoryClass = e.toClass(name)
 			acceptor.accept(controlFactoryClass) [
 				setSuperClassTypeAndFields(e, superClass)
-				
+
 				documentation = e.documentation
-				
+
+				members += e.toConstructorWithInjectedParameters(constructorParams)
+
 				nullSafeAccess(e.controls) [
 					inferMethodsForControlFactory(e, it, e.controls.specifications)
 				]
@@ -600,7 +611,21 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			controlFactoryClass
 		}
 	}
-	
+
+	private def toConstructorWithInjectedParameters(EObject e, Pair<String,Class<?>>... constructorParams) {
+		e.toConstructor() [
+			for (add : constructorParams) {
+				parameters += e.toParameter(
+					add.key,
+					typeRef(add.value)
+				)
+			}
+			val superArgs = constructorParams.map[key].join(", ")
+			body = [it.append("super(" + superArgs + ");")]
+			annotations += annotationRef(Inject)
+		]
+	}
+
 	def private inferMethodsForControlFactory(AbstractControlFactory e, JvmGenericType it, Iterable<ControlFactorySpecification> specifications) {
 		for (spec: specifications) {
 			if (spec.feature?.simpleName !== null) {
@@ -667,7 +692,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			acceptor.accept(viewerContentProviderClass) [
 				setSuperClassTypeAndFields(viewerContentProvider, typeof(ViewerContentProvider))
 				
-				members += toConstructorWithInjectedAdapterFactory(viewerContentProvider)
+				members += viewerContentProvider.
+					toConstructorWithInjectedParameters("adapterFactory" -> AdapterFactory)
 				
 				inferContentProviderElements(viewerContentProvider.elements)
 				
@@ -685,9 +711,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 			val viewerContentProviderClass = viewerContentProvider.toClass(element.tableViewerContentProviderQN)
 			acceptor.accept(viewerContentProviderClass) [
 				setSuperClassTypeAndFields(viewerContentProvider, typeof(TableViewerContentProvider))
-				members += toConstructorWithInjectedAdapterFactory(
-					viewerContentProvider,
-					"eClassParameter" -> EClassParameter
+				members += viewerContentProvider.toConstructorWithInjectedParameters(
+					"adapterFactory" -> AdapterFactory, "eClassParameter" -> EClassParameter
 				)
 				inferContentProviderElements(viewerContentProvider.elements)
 			]
@@ -707,26 +732,6 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 		if (parent !== null) {
 			acceptor.apply(it)
 		}
-	}
-
-	private def toConstructorWithInjectedAdapterFactory(EObject e, Pair<String,Class<?>>... additionalParameters) {
-		e.toConstructor() [
-			parameters += e.
-				toParameter("adapterFactory",
-					typeRef(AdapterFactory)
-				)
-			var parametersStringBuilder = new StringBuilder("adapterFactory")
-			for (add : additionalParameters) {
-				parameters += e.toParameter(
-					add.key,
-					typeRef(add.value)
-				)
-				parametersStringBuilder.append(", " + add.key)
-			}
-			val superArgs = parametersStringBuilder.toString
-			body = [it.append("super(" + superArgs + ");")]
-			annotations += annotationRef(Inject)
-		]
 	}
 
 	def private inferProposalCreator(Module element, IJvmDeclaredTypeAcceptor acceptor) {

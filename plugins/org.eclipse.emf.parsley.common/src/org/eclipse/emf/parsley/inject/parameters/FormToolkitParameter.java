@@ -10,30 +10,30 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.inject.parameters;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
 import com.google.inject.Inject;
 
 /**
- * A wrapper class for parameters for an {@link EStructuralFeature} that can be
- * used in a constructor annotated with {@link Inject}.
+ * A wrapper class for parameters for a {@link FormToolkit} that can be used in a
+ * constructor annotated with {@link Inject}.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  *
  */
 @FactoryParameter
-public class EStructuralFeatureParameter extends GenericInjectableParameter<EStructuralFeature> {
+public class FormToolkitParameter extends GenericInjectableParameter<FormToolkit> {
 
-	public EStructuralFeatureParameter() {
+	public FormToolkitParameter() {
 		// required by Guice
 	}
 
-	public EStructuralFeatureParameter(EStructuralFeature eStructuralFeature) {
-		super(eStructuralFeature);
+	public FormToolkitParameter(FormToolkit formToolkit) {
+		super(formToolkit);
 	}
 
-	public final EStructuralFeature getEStructuralFeature() {
+	public final FormToolkit getFormToolkit() {
 		return getWrapped();
 	}
 }

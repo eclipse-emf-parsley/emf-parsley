@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.config.Configurator;
 import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
@@ -65,11 +66,18 @@ public class JsonDetailsServlet extends JsonParsleyServlet {
 
 			ViewerLabelProvider labelProvider = (ViewerLabelProvider) injector.getInstance(ILabelProvider.class);
 
-			final DialogControlFactory dialogControlFactory = injector.getInstance(DialogControlFactory.class);
+			// make sure there's a databinding realm
+			new DefaultRealm();
+			final EObject eObject1 = eObject;
+			final CompositeFactory compositeFactory = injector.getInstance(CompositeFactory.class);
+			final DialogControlFactory dialogControlFactory = compositeFactory
+					.createDialogControlFactory(Application.getInstance(request).getShell(), eObject1, null);
+			// note that FormFeatureCaptionProvider requires a FormToolkit for creating labels...
 			FormFeatureCaptionProvider formFeatureCaptionProvider = (FormFeatureCaptionProvider) injector
 					.getInstance(FormFeatureCaptionProvider.class);
 			PolymorphicDispatcher<Object> imageDispatcher = PolymorphicDispatcher.createForSingleTarget("image", 1, 1,
 					labelProvider);
+
 
 			EClass clazz;
 			List<EStructuralFeature> features;
@@ -96,16 +104,6 @@ public class JsonDetailsServlet extends JsonParsleyServlet {
 				resource.getContents().add(eObject);
 				id = Application.getInstance(request).put(eObject);
 			}
-
-			final EObject eObject1 = eObject;
-			// Application.getInstance(request).getDisplay().syncExec(new
-			// Runnable() {
-			// @Override
-			// public void run() {
-			// }
-			// });
-			new DefaultRealm();
-			dialogControlFactory.init(null, eObject1, Application.getInstance(request).getShell());
 
 			out.write(", \"" + OBJECT_ID_PARAMETER + "\" : \"" + id + "\" ");
 			for (final EStructuralFeature eStructuralFeature : features) {
