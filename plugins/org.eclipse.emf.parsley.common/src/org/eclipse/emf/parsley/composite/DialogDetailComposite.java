@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.swt.layout.GridLayout;
 
 import com.google.inject.Inject;
@@ -27,8 +27,8 @@ public class DialogDetailComposite extends AbstractDetailComposite {
 	 * @since 2.0
 	 */
 	@Inject
-	public DialogDetailComposite(CompositeParameters params) {
-		super(params);
+	public DialogDetailComposite(CompositeParameters compositeParameters, EObjectParameter eObjectParameter) {
+		super(compositeParameters, eObjectParameter);
 
 		setLayout(new GridLayout(2, false));
 	}

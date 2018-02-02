@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.FormDetailComposite;
 import org.eclipse.swt.SWT;
@@ -26,7 +27,7 @@ public class OnSelectionReadOnlyFormView extends OnSelectionFormView {
 	private CompositeFactory compositeFactory;
 
 	@Override
-	protected FormDetailComposite createFormDetailComposite() {
-		return compositeFactory.createFormDetailReadOnlyComposite(parent, SWT.NONE);
+	protected FormDetailComposite createFormDetailComposite(EObject eObject) {
+		return compositeFactory.createFormDetailReadOnlyComposite(parent, SWT.NONE, eObject);
 	}
 }

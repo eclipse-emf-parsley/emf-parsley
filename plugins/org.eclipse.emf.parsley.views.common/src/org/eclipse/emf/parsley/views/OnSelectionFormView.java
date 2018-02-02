@@ -50,16 +50,16 @@ public class OnSelectionFormView extends AbstractOnSelectionView {
 		EObject eObject = getFirstSelectedEObject(selection);
 		if (eObject != null) {
 			resetFormComposite();
-
-			formComposite = createFormDetailComposite();
-			formComposite.init(eObject);
-
+			formComposite = createFormDetailComposite(eObject);
 			parent.layout(true, true);
 		}
 	}
 
-	protected FormDetailComposite createFormDetailComposite() {
-		return compositeFactory.createFormDetailComposite(parent, SWT.NONE);
+	/**
+	 * @since 2.0
+	 */
+	protected FormDetailComposite createFormDetailComposite(EObject eObject) {
+		return compositeFactory.createFormDetailComposite(parent, SWT.NONE, eObject);
 	}
 
 	protected void resetFormComposite() {

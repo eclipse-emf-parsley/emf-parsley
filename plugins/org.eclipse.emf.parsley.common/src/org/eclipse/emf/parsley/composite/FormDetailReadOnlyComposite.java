@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.composite;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 
 import com.google.inject.Inject;
 
@@ -29,13 +30,13 @@ public class FormDetailReadOnlyComposite extends FormDetailComposite {
 	 * @since 2.0
 	 */
 	@Inject
-	public FormDetailReadOnlyComposite(CompositeParameters params) {
-		super(params);
+	public FormDetailReadOnlyComposite(CompositeParameters compositeParameters, EObjectParameter eObjectParameter) {
+		super(compositeParameters, eObjectParameter);
 	}
 
 	@Override
-	protected FormControlFactory createControlFactory(EObject model, EditingDomain domain) {
-		FormControlFactory formControlFactory = super.createControlFactory(model, domain);
+	protected FormControlFactory createControlFactory(EObject object, EditingDomain editingDomain) {
+		FormControlFactory formControlFactory = super.createControlFactory(object, editingDomain);
 		formControlFactory.setReadonly(true);
 		return formControlFactory;
 	}

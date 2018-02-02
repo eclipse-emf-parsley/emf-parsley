@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EcorePackage
+import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.composite.CompositeFactory
 import org.eclipse.emf.parsley.composite.TreeFormComposite
 import org.eclipse.swt.SWT
@@ -27,24 +29,42 @@ class CompositeFactoryTest extends AbstractControlFactoryTest {
 
 	var CompositeFactory factory
 
+	var EClass eClass
+
 	@Before
 	def void setupFactory() {
 		factory = getOrCreateInjector.getInstance(CompositeFactory)
+		eClass = EcorePackage.eINSTANCE.EObject
 	}
 
 	@Test
 	def void canCreateFormDetailComposite() {
-		factory.createFormDetailComposite(shell, SWT.NONE)
+		factory.createFormDetailComposite(shell, SWT.NONE, eClass)
+	}
+
+	@Test
+	def void canCreateFormDetailCompositeWithEditingDomain() {
+		factory.createFormDetailComposite(shell, SWT.NONE, eClass, editingDomain)
+	}
+
+	@Test
+	def void canCreateFormDetailCompositeWithNullEditingDomain() {
+		factory.createFormDetailComposite(shell, SWT.NONE, eClass, null)
 	}
 
 	@Test
 	def void canCreateFormDetailReadOnlyComposite() {
-		factory.createFormDetailReadOnlyComposite(shell, SWT.NONE)
+		factory.createFormDetailReadOnlyComposite(shell, SWT.NONE, eClass)
 	}
 
 	@Test
 	def void canCreateDialogDetailComposite() {
-		factory.createDialogDetailComposite(shell, SWT.NONE)
+		factory.createDialogDetailComposite(shell, SWT.NONE, eClass, editingDomain)
+	}
+
+	@Test
+	def void canCreateDialogDetailCompositeWithNullEditingDomain() {
+		factory.createDialogDetailComposite(shell, SWT.NONE, eClass, null)
 	}
 
 	@Test
@@ -87,7 +107,7 @@ class CompositeFactoryTest extends AbstractControlFactoryTest {
 
 	@Test
 	def void canCreateTableFormComposite() {
-		factory.createTableFormComposite(shell, SWT.NONE, EcorePackage.eINSTANCE.EObject)
+		factory.createTableFormComposite(shell, SWT.NONE, eClass)
 	}
 
 	@Test
@@ -127,4 +147,7 @@ class CompositeFactoryTest extends AbstractControlFactoryTest {
 		sashForm.get(treeFormComposite) as SashForm
 	}
 
+	override protected getEditingDomain() {
+		getOrCreateInjector.getInstance(EditingDomain)
+	}
 }

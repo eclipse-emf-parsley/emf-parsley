@@ -66,8 +66,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 		Composite dialogArea = (Composite) super.createDialogArea(parent);
 		Composite composite = new Composite(dialogArea, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
-		final AbstractDetailComposite detailEmfComponent = createDetailComposite(composite);
-		detailEmfComponent.init(object, domain);
+		final AbstractDetailComposite detailEmfComponent = createDetailComposite(composite, object, domain);
 		detailEmfComponent.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true,
 				true, 1, 1));
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(composite);
@@ -75,8 +74,11 @@ public abstract class AbstractDetailDialog extends Dialog {
 		return dialogArea;
 	}
 
-	protected abstract AbstractDetailComposite createDetailComposite(
-			Composite composite);
+	/**
+	 * @since 2.0
+	 */
+	protected abstract AbstractDetailComposite createDetailComposite(Composite composite, EObject object,
+			EditingDomain domain);
 
 	protected Composite createCustomArea(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);

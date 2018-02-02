@@ -15,9 +15,11 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.edit.EditingDomainFinder;
+import org.eclipse.emf.parsley.inject.AfterInject;
+import org.eclipse.emf.parsley.inject.EmfParsleyLifecycle;
 import org.eclipse.emf.parsley.inject.InjectableComposite;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 
 import com.google.inject.Inject;
@@ -26,40 +28,32 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - Contributions
  */
+@EmfParsleyLifecycle
 public abstract class AbstractDetailComposite extends InjectableComposite {
 
 	@Inject
 	private FeaturesProvider featuresProvider;
 
-	@Inject
-	private EditingDomainFinder editingDomainFinder;
+	private EObject object;
+
+	private EditingDomain editingDomain;
 
 	/**
 	 * @since 2.0
 	 */
 	@Inject
-	public AbstractDetailComposite(CompositeParameters params) {
-		super(params);
+	public AbstractDetailComposite(CompositeParameters compositeParameters, EObjectParameter eObjectParameter) {
+		super(compositeParameters);
+		this.object = eObjectParameter.getObject();
+		this.editingDomain = eObjectParameter.getEditingDomain();
 	}
 
 	/**
-	 * Initializes this component for editing the {@link EObject} object.
-	 * 
-	 * @param object
+	 * Creates the editing fields; this is called after all the fields and methods
+	 * have been injected, even in subclasses.
 	 */
-	public void init(EObject object) {
-		init(object, editingDomainFinder.getEditingDomainFor(object));
-	}
-
-	/**
-	 * Initializes this component for editing the passed {@link EObject} using
-	 * the passed {@link EditingDomain}.
-	 * 
-	 * @param object
-	 * @param editingDomain
-	 *            it can be null
-	 */
-	public void init(EObject object, EditingDomain editingDomain) {
+	@AfterInject
+	private void createEditingFields() {
 		List<EStructuralFeature> features = featuresProvider.getEObjectFeatures(object);
 
 		AbstractControlFactory controlFactory = createControlFactory(object, editingDomain);
@@ -72,6 +66,10 @@ public abstract class AbstractDetailComposite extends InjectableComposite {
 	}
 
 	/**
+	 * This is called after all the fields and methods have been injected, even in
+	 * subclasses.
+	 * 
+	 * @param compositeFactory
 	 * @since 2.0
 	 */
 	protected abstract AbstractControlFactory createControlFactory(EObject object, EditingDomain editingDomain);

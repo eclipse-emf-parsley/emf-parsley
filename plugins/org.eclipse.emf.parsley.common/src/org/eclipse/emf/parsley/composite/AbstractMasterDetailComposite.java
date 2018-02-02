@@ -121,15 +121,17 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 		}
 
 		if (selectedObject != null) {
-			detailForm = createFormDetailComposite();
-			detailForm.init(selectedObject);
+			detailForm = createFormDetailComposite(selectedObject);
 			detailComposite.layout(true);
 		}
 	}
 
-	protected FormDetailComposite createFormDetailComposite() {
+	/**
+	 * @since 2.0
+	 */
+	protected FormDetailComposite createFormDetailComposite(EObject selectedObject) {
 		return compositeFactory.createFormDetailComposite(detailComposite,
-				SWT.BORDER);
+				SWT.BORDER, selectedObject);
 	}
 
 	public void update(Object contents) {

@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+import org.eclipse.emf.parsley.internal.listeners.DisposingAwareAdapter;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -28,10 +28,10 @@ import com.google.inject.Inject;
 public class FormDetailComposite extends AbstractDetailComposite {
 
 	@Inject
-	private CompositeFactory compositeFactory;
+	private ILabelProvider labelProvider;
 
 	@Inject
-	private ILabelProvider labelProvider;
+	private CompositeFactory compositeFactory;
 
 	private final Composite main;
 
@@ -39,16 +39,16 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private final ScrolledForm scrolledForm;
 
-	private FormTitleAdapter headerAdapter;
+	private DisposingAwareAdapter headerAdapter;
 
 	/**
 	 * @since 2.0
 	 */
 	@Inject
-	public FormDetailComposite(CompositeParameters params) {
-		super(params);
+	public FormDetailComposite(CompositeParameters compositeParameters, EObjectParameter eObjectParameter) {
+		super(compositeParameters, eObjectParameter);
 
-		toolkit = new FormToolkit(params.getParent().getDisplay());
+		toolkit = new FormToolkit(compositeParameters.getParent().getDisplay());
 
 		toolkit.adapt(this);
 		setLayout(new GridLayout(1, false));
@@ -65,9 +65,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	@Override
 	public void dispose() {
-		if(headerAdapter!=null){
-			headerAdapter.dispose();
-		}
+		headerAdapter.dispose();
 		super.dispose();
 		toolkit.dispose();
 	}
@@ -85,38 +83,15 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	 * @since 2.0
 	 */
 	@Override
-	protected FormControlFactory createControlFactory(EObject object, EditingDomain editingDomain) {
+	protected FormControlFactory createControlFactory(final EObject object, EditingDomain editingDomain) {
 		updateTitle(object);
-		headerAdapter = new FormTitleAdapter(object);
-		object.eAdapters().add(headerAdapter);
-		return compositeFactory.createFormControlFactory(main, object, editingDomain, toolkit);
-	}
-
-	private class FormTitleAdapter extends AdapterImpl {
-
-		private EObject model;
-		private boolean disposing = false;
-
-		public FormTitleAdapter(EObject model) {
-			this.model = model;
-		}
-
-		public void dispose() {
-			disposing = true;
-			model.eAdapters().remove(headerAdapter);
-		}
-
-		@Override
-		public void notifyChanged(Notification msg) {
-			if (!isDisposed() && !disposing) {
-				getDisplay().syncExec(new Runnable() {
-					@Override
-					public void run() {
-						updateTitle(model);
-					}
-				});
+		headerAdapter = new DisposingAwareAdapter(object, this, new Runnable() {
+			@Override
+			public void run() {
+				updateTitle(object);
 			}
-		}
+		});
+		return compositeFactory.createFormControlFactory(main, object, editingDomain, toolkit);
 	}
 
 }
