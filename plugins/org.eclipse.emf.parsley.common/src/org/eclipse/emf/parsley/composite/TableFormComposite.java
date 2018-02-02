@@ -12,7 +12,8 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.parsley.inject.parameters.EClassCompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -41,9 +42,9 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	 * @since 2.0
 	 */
 	@Inject
-	public TableFormComposite(EClassCompositeParameters params, ViewerFactory viewerFactory) {
+	public TableFormComposite(CompositeParameters params, EClassParameter eClassParam, ViewerFactory viewerFactory) {
 		super(params);
-		this.eClass = params.getEClass();
+		this.eClass = eClassParam.getEClass();
 		this.viewerFactory = viewerFactory;
 	}
 

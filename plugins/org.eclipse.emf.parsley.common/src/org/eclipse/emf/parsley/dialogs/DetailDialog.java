@@ -13,7 +13,8 @@ package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
-import org.eclipse.emf.parsley.inject.parameters.DetailDialogParameters;
+import org.eclipse.emf.parsley.inject.parameters.DialogParameters;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -31,8 +32,8 @@ public class DetailDialog extends AbstractDetailDialog {
 	 * @since 2.0
 	 */
 	@Inject
-	public DetailDialog(DetailDialogParameters params) {
-		super(params);
+	public DetailDialog(DialogParameters params, EObjectParameter eObjectParameter) {
+		super(params, eObjectParameter);
 	}
 
 	@Override

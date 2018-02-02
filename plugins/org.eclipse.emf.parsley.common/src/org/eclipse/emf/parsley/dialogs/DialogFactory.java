@@ -12,7 +12,8 @@ package org.eclipse.emf.parsley.dialogs;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.inject.parameters.DetailDialogParameters;
+import org.eclipse.emf.parsley.inject.parameters.DialogParameters;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.swt.widgets.Shell;
 
@@ -32,13 +33,13 @@ public class DialogFactory {
 	public DetailFormBasedDialog createDetailFormBasedDialog(Shell parentShell, String title, EObject object,
 			EditingDomain editingDomain) {
 		return detailDialogFactory.createInstance(DetailFormBasedDialog.class,
-				new DetailDialogParameters(parentShell, title, object, editingDomain));
+				new DialogParameters(parentShell, title), new EObjectParameter(object, editingDomain));
 	}
 
 	public DetailDialog createDetailDialog(Shell parentShell, String title, EObject object,
 			EditingDomain editingDomain) {
 		return detailDialogFactory.createInstance(DetailDialog.class,
-				new DetailDialogParameters(parentShell, title, object, editingDomain));
+				new DialogParameters(parentShell, title), new EObjectParameter(object, editingDomain));
 	}
 
 }

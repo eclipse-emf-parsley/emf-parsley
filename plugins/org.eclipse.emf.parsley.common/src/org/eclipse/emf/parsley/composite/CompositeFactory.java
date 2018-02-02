@@ -12,7 +12,8 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.inject.GenericCompositeFactory;
-import org.eclipse.emf.parsley.inject.parameters.EClassCompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.swt.widgets.Composite;
 
@@ -44,8 +45,7 @@ public class CompositeFactory {
 		return genericCompositeFactory.create(FormDetailReadOnlyComposite.class, parent, style);
 	}
 
-	public DialogDetailComposite createDialogDetailComposite(
-			Composite parent, int style) {
+	public DialogDetailComposite createDialogDetailComposite(Composite parent, int style) {
 		return genericCompositeFactory.create(DialogDetailComposite.class, parent, style);
 	}
 
@@ -55,7 +55,7 @@ public class CompositeFactory {
 
 	public TableFormComposite createTableFormComposite(Composite parent, int style, EClass type) {
 		return genericCompositeFactoryWithEClass.createInstance(TableFormComposite.class,
-				new EClassCompositeParameters(parent, style, type));
+				new CompositeParameters(parent, style), new EClassParameter(type));
 	}
 
 }

@@ -15,7 +15,8 @@ package org.eclipse.emf.parsley.dialogs;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.AbstractDetailComposite;
-import org.eclipse.emf.parsley.inject.parameters.DetailDialogParameters;
+import org.eclipse.emf.parsley.inject.parameters.DialogParameters;
+import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.layout.GridDataFactory;
@@ -46,12 +47,12 @@ public abstract class AbstractDetailDialog extends Dialog {
 	 * @since 2.0
 	 */
 	@Inject
-	public AbstractDetailDialog(DetailDialogParameters params) {
+	public AbstractDetailDialog(DialogParameters params, EObjectParameter eObjectParameter) {
 		super(params.getParentShell());
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.TITLE | SWT.MAX);
 		this.title = params.getTitle();
-		this.object = params.getObject();
-		this.domain = params.getEditingDomain();
+		this.object = eObjectParameter.getObject();
+		this.domain = eObjectParameter.getEditingDomain();
 	}
 
 	@Override

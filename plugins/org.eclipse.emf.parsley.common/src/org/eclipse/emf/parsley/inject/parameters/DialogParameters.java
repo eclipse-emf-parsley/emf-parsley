@@ -10,35 +10,40 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.inject.parameters;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Inject;
 
 /**
- * A wrapper class for parameters for a Composite, style, and EClass that can be
- * used in a constructor annotated with {@link Inject}; a specialization of
- * {@link CompositeParameters}.
+ * A wrapper class for parameters for a Dialog; the Dialog's constructor must be
+ * annotated with {@link Inject}; the corresponding dialog must be created with
+ * one of our factories.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  *
  */
 @FactoryParameter
-public class EClassCompositeParameters extends CompositeParameters {
+public class DialogParameters implements InjectableParameter {
 
-	private EClass eClass;
+	private Shell parentShell;
+	private String title;
 
-	public EClassCompositeParameters() {
+	public DialogParameters() {
 		// required by Guice
 	}
 
-	public EClassCompositeParameters(Composite parent, int style, EClass eClass) {
-		super(parent, style);
-		this.eClass = eClass;
+	public DialogParameters(Shell parentShell, String title) {
+		this.parentShell = parentShell;
+		this.title = title;
 	}
 
-	public EClass getEClass() {
-		return eClass;
+	public Shell getParentShell() {
+		return parentShell;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
 }

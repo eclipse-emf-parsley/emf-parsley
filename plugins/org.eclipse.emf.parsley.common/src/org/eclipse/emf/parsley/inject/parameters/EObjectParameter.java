@@ -12,45 +12,28 @@ package org.eclipse.emf.parsley.inject.parameters;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.swt.widgets.Shell;
-
-import com.google.inject.Inject;
 
 /**
- * A wrapper class for parameters for a Dialog that is meant to edit an
- * {@link EObject}; the Dialog's constructor must be annotated with
- * {@link Inject}; the corresponding dialog must be created with one of our
- * factories.
+ * A wrapper class for parameters for editing an {@link EObject} with an
+ * {@link EditingDomain}.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  *
  */
 @FactoryParameter
-public class DetailDialogParameters implements InjectableParameter {
+public class EObjectParameter implements InjectableParameter {
 
-	private Shell parentShell;
-	private String title;
 	private EObject object;
 	private EditingDomain editingDomain;
 
-	public DetailDialogParameters() {
+	public EObjectParameter() {
 		// required by Guice
 	}
 
-	public DetailDialogParameters(Shell parentShell, String title, EObject object, EditingDomain editingDomain) {
-		this.parentShell = parentShell;
-		this.title = title;
+	public EObjectParameter(EObject object, EditingDomain editingDomain) {
 		this.object = object;
 		this.editingDomain = editingDomain;
-	}
-
-	public Shell getParentShell() {
-		return parentShell;
-	}
-
-	public String getTitle() {
-		return title;
 	}
 
 	public EObject getObject() {
