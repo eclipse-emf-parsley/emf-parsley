@@ -147,6 +147,27 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 		}
 	}
 
+	/**
+	 * The injected parameters are themselves injectable objects
+	 * with injectable parameters.
+	 * 
+	 * Though we don't specify arguments in the factory for this
+	 * constructor (GenericInjectableObjectWithString, GenericInjectableObjectWithEClass),
+	 * Guice will be able to inject the arguments
+	 * after injecting EStringP and EClassP into
+	 * GenericInjectableObjectWithString, GenericInjectableObjectWithEClass.
+	 */
+	private static class ClassWithNestedInjectableObjects {
+		public GenericInjectableObjectWithString withString
+		public GenericInjectableObjectWithEClass withEClass
+
+		@Inject
+		new (GenericInjectableObjectWithString withString, GenericInjectableObjectWithEClass withEClass) {
+			this.withString = withString
+			this.withEClass = withEClass
+		}
+	}
+
 	var InjectableObjectFactory factory
 
 	@Before
@@ -213,6 +234,25 @@ class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 			.createInstance(GenericInjectableObjectWithEClass, new EClassP(eclass))
 		"test".assertEquals(o1.value.value)
 		eclass.assertEquals(o2.value.value)
+	}
+
+	@Test
+	def void testCanInjectWithNestedInjectableObjects() {
+		val injector = getOrCreateInjector
+		val factory = injector.getInstance(
+			Key.get(new TypeLiteral<GenericFactory<ClassWithNestedInjectableObjects>>() {})
+		)
+		val eclass = EcorePackage.eINSTANCE.EObject
+		// StringP and EClassP are not directly arguments
+		// for GenericFactory<ClassWithNestedInjectableObjects
+		// they are arguments for the constructors of the arguments
+		val o = factory.createInstance(
+			ClassWithNestedInjectableObjects,
+			new StringP("test"),
+			new EClassP(eclass)
+		)
+		"test".assertEquals(o.withString.value.value)
+		eclass.assertEquals(o.withEClass.value.value)
 	}
 
 	@Test(expected=NullPointerException)
