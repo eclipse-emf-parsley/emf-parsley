@@ -195,6 +195,53 @@ bindings, since they also show Javadoc for each default binding:
 
 img[images/first-example-custom-binding1.png][][ ][]
 
+section2:Lifecycle[Dependency Injection Lifecycle]
+
+Since version 2.0 EMF Parsley provides a mechanism for calling methods during objects lifecycle.
+To enable such a feature, your class must be annotated with codeRef[org.eclipse.emf.parsley.inject.EmfParsleyLifecycle].
+
+We provide the method annotation codeRef[org.eclipse.emf.parsley.inject.AfterInject]: a method annotated
+with this annotation can be private and must have no parameter. This method will be automatically called
+after the instance has been completely created and all its fields and methods have been injected.  Even
+if such an annotated method is declared in a superclass, this will be called only after all subclasses
+fields and methods have been injected as well.  Thus, this is different from standard Guice injected
+methods: standard Guice injected methods are invoked after all the fields of the current class have been
+injected, but fields in subclasses have not been injected yet.
+
+For example, given these classes
+
+code[Java][
+@EmfParsleyLifecycle
+abstract class MyClass {
+	private FooBar fooBar;
+
+	/**
+	 * This will be called only after all fields and methods are injected (even in
+	 * subclasses).
+	 */
+	@AfterInject
+	private void init() {
+		fooBar = createFooBar();
+	}
+
+	protected abstract FooBar createFooBar();
+}
+
+class MySubclass extends MyClass {
+	@Inject
+	private Provider<FooBar> fooBarProvider;
+
+	@Override
+	protected FooBar createFooBar() {
+		return fooBarProvider.get();
+	}
+
+}
+]
+
+When creating an instance of MySubclass with Guice, the private AfterInject method init() in the superclass
+will be called only after fooBarProvider has been injected as well.
+
 section:Providers[Providers]
 
 

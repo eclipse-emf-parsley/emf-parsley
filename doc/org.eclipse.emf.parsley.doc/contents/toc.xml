@@ -63,6 +63,8 @@
 				</topic>
 				<topic href="contents/06-Customization.html#BindingsInTheDSL" label="Specify Guice Bindings in the DSL" >
 				</topic>
+				<topic href="contents/06-Customization.html#Lifecycle" label="Dependency Injection Lifecycle" >
+				</topic>
 			</topic>
 			<topic href="contents/06-Customization.html#Providers" label="Providers" >
 				<topic href="contents/06-Customization.html#ViewerLabelProvider" label="Viewer Label Provider" >

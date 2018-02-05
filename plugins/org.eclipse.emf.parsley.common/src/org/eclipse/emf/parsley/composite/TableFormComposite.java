@@ -32,6 +32,7 @@ import com.google.inject.Inject;
  */
 public class TableFormComposite extends AbstractMasterDetailComposite {
 
+	@Inject
 	private ViewerFactory viewerFactory;
 
 	private TableViewer tableViewer;
@@ -42,10 +43,9 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	 * @since 2.0
 	 */
 	@Inject
-	public TableFormComposite(CompositeParameters params, EClassParameter eClassParam, ViewerFactory viewerFactory) {
+	public TableFormComposite(CompositeParameters params, EClassParameter eClassParam) {
 		super(params);
 		this.eClass = eClassParam.getEClass();
-		this.viewerFactory = viewerFactory;
 	}
 
 	@Override

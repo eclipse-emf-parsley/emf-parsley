@@ -38,6 +38,7 @@ import org.eclipse.emf.parsley.edit.ui.provider.InjectableAdapterFactoryLabelPro
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
 import org.eclipse.emf.parsley.handlers.OutlineSelectionHandler;
+import org.eclipse.emf.parsley.internal.inject.AfterInjectTypeListener;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListener;
 import org.eclipse.emf.parsley.listeners.IEditorMouseListener;
@@ -89,6 +90,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	public void configure(Binder binder) {
 		super.configure(binder);
 		GenericFactory.prepareFactory(binder);
+		AfterInjectTypeListener.bindAfterInjectTypeListener(binder);
 	}
 
 	/**

@@ -268,6 +268,62 @@ bindings, since they also show Javadoc for each default binding:
 </div>
 </div>
 </p>
+<a name="Lifecycle"></a>
+<h3>Dependency Injection Lifecycle</h3>
+<p>
+Since version 2.0 EMF Parsley provides a mechanism for calling methods during objects lifecycle.
+To enable such a feature, your class must be annotated with <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/EmfParsleyLifecycle.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.EmfParsleyLifecycle" >@EmfParsleyLifecycle</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/EmfParsleyLifecycle.java" title="View Source Code" >(src)</a>.
+</p>
+<p>
+We provide the method annotation <a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/inject/AfterInject.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.inject.AfterInject" >@AfterInject</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/inject/AfterInject.java" title="View Source Code" >(src)</a>: a method annotated
+with this annotation can be private and must have no parameter. This method will be automatically called
+after the instance has been completely created and all its fields and methods have been injected.  Even
+if such an annotated method is declared in a superclass, this will be called only after all subclasses
+fields and methods have been injected as well.  Thus, this is different from standard Guice injected
+methods: standard Guice injected methods are invoked after all the fields of the current class have been
+injected, but fields in subclasses have not been injected yet.
+</p>
+<p>
+For example, given these classes
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@EmfParsleyLifecycle<br/>
+<span class="keyword">abstract</span>&nbsp;<span class="keyword">class</span>&nbsp;MyClass&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;FooBar&nbsp;fooBar;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">/**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;will&nbsp;be&nbsp;called&nbsp;only&nbsp;after&nbsp;all&nbsp;fields&nbsp;and&nbsp;methods&nbsp;are&nbsp;injected&nbsp;(even&nbsp;in<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;subclasses).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@AfterInject<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;<span class="keyword">void</span>&nbsp;init()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fooBar&nbsp;=&nbsp;createFooBar();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;<span class="keyword">abstract</span>&nbsp;FooBar&nbsp;createFooBar();<br/>
+}<br/>
+<br/>
+<span class="keyword">class</span>&nbsp;MySubclass&nbsp;<span class="keyword">extends</span>&nbsp;MyClass&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Inject<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>&nbsp;Provider&lt;FooBar&gt;&nbsp;fooBarProvider;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@Override<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected</span>&nbsp;FooBar&nbsp;createFooBar()&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span>&nbsp;fooBarProvider.get();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+}<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+When creating an instance of MySubclass with Guice, the private AfterInject method init() in the superclass
+will be called only after fooBarProvider has been injected as well.
+</p>
 <a name="Providers"></a>
 <h2>Providers</h2>
 <a name="ViewerLabelProvider"></a>

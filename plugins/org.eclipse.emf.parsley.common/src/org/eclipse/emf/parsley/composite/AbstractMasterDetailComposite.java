@@ -14,6 +14,8 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.parsley.inject.AfterInject;
+import org.eclipse.emf.parsley.inject.EmfParsleyLifecycle;
 import org.eclipse.emf.parsley.inject.InjectableComposite;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
@@ -34,6 +36,7 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini, Francesco Guidieri
  * 
  */
+@EmfParsleyLifecycle
 public abstract class AbstractMasterDetailComposite extends InjectableComposite implements IViewerProvider {
 
 	private class SelectionChangedListener implements
@@ -92,7 +95,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	/**
 	 * This will be called after the construction has finished.
 	 */
-	@Inject
+	@AfterInject
 	private void setupViewer() {
 		viewer = createViewer(masterComposite);
 		viewer.addSelectionChangedListener(new SelectionChangedListener());
@@ -104,10 +107,8 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	}
 
 	/**
-	 * This method is ensured to be called after the construction has finished, but
-	 * before subclasses fields are injected; thus, if in the subclass you need
-	 * something, make sure you specify it as a parameter in an {@link Inject}
-	 * constructor, NOT as an injected field.
+	 * This method is ensured to be called after the construction of the instance
+	 * has finished, thus subclasses fields have been injected as well.
 	 * 
 	 * @param parent
 	 * @return
