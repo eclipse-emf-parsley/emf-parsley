@@ -14,29 +14,33 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameters;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 
+import com.google.inject.Inject;
+
 /**
- * @since 1.1
+ * An implementation of {@link ViewerComparator} for table columns that does not
+ * use the label provider, but instead compares the actual values of
+ * {@link EObject}'s features.
+ * 
  * @author Francesco Guidieri
  */
-public class GenericFeatureViewerComparator extends ViewerComparator {
+public class EObjectTableViewerComparator extends ViewerComparator {
 
 	private int propertyIndex;
 	private int direction;
 
 	private List<EStructuralFeature> features;
 
-	public GenericFeatureViewerComparator() {
+	@Inject
+	public EObjectTableViewerComparator(EStructuralFeatureParameters eStructuralFeatureParameters) {
 		this.propertyIndex = 0;
 		this.direction = SWT.NONE;
-	}
-
-	public void init(List<EStructuralFeature> features) {
-		this.features = features;
+		this.features = eStructuralFeatureParameters.getEStructuralFeatures();
 	}
 
 	public int getDirection() {

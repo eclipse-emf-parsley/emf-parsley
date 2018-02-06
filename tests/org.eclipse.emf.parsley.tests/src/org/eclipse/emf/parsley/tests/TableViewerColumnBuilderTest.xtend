@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.tests
 
 import java.util.List
-import org.eclipse.emf.parsley.internal.viewers.GenericFeatureViewerComparator
 import org.eclipse.jface.viewers.ColumnLayoutData
 import org.eclipse.jface.viewers.ColumnWeightData
 import org.eclipse.swt.SWT
@@ -20,6 +19,7 @@ import org.eclipse.swt.widgets.Layout
 import org.junit.Test
 
 import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.internal.viewers.EObjectTableViewerComparator
 
 class TableViewerColumnBuilderTest extends AbstractViewerTest {
 
@@ -105,7 +105,7 @@ class TableViewerColumnBuilderTest extends AbstractViewerTest {
 		)
 		syncExecVoid[
 			val tableColumns=tableViewer.table.getColumns();
-			val genericFeatureViewerComparator = tableViewer.comparator as GenericFeatureViewerComparator
+			val genericFeatureViewerComparator = tableViewer.comparator as EObjectTableViewerComparator
 			var columnIndex = 0
 			// for each column order change is tested for each direction
 			for (column : tableColumns) {
@@ -114,7 +114,7 @@ class TableViewerColumnBuilderTest extends AbstractViewerTest {
 				// make sure that the property index of the comparator is updated
 				// according to the right column
 				assertEquals(columnIndex,
-					genericFeatureViewerComparator.propertyIndex)
+					genericFeatureViewerComparator.getPropertyIndex)
 				columnIndex++
 				assertEquals(column,tableViewer.table.sortColumn)
 				assertEquals(SORT_UP,tableViewer.table.sortDirection)

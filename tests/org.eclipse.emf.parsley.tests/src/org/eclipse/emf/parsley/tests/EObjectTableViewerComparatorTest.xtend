@@ -5,22 +5,26 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare
 import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.eclipse.swt.SWT
 import org.junit.Before
 import org.junit.Test
 
 import static org.junit.Assert.*
-import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
-import org.eclipse.emf.parsley.internal.viewers.GenericFeatureViewerComparator
-import org.eclipse.swt.SWT
+import org.eclipse.emf.parsley.internal.viewers.EObjectTableViewerComparator
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameters
 
-class GenericFeatureViewerComparatorTest extends AbstractViewerTest {
+class EObjectTableViewerComparatorTest extends AbstractViewerTest {
 
-	var GenericFeatureViewerComparator genericViewerComparator
+	var EObjectTableViewerComparator viewerComparator
 
 	@Before
 	def void setupLabelProvider() {
-		genericViewerComparator = getOrCreateInjector.getInstance(GenericFeatureViewerComparator)
-		genericViewerComparator.init(TestmodelsPackage.eINSTANCE.classForCompare.EStructuralFeatures)
+		viewerComparator = new EObjectTableViewerComparator(
+			new EStructuralFeatureParameters(
+				TestmodelsPackage.eINSTANCE.classForCompare.EStructuralFeatures
+			)
+		)
 	}
 
 	@Test
@@ -64,18 +68,18 @@ class GenericFeatureViewerComparatorTest extends AbstractViewerTest {
 
 	@Test
 	def void testDirection() {
-		assertEquals(SWT.NONE,genericViewerComparator.direction)
+		assertEquals(SWT.NONE,viewerComparator.getDirection)
 		simulateSortColumn(0)
-		assertEquals(0, genericViewerComparator.propertyIndex)
-		assertEquals(SWT.UP,genericViewerComparator.direction)
+		assertEquals(0, viewerComparator.getPropertyIndex)
+		assertEquals(SWT.UP,viewerComparator.getDirection)
 		simulateSortColumn(0)
-		assertEquals(SWT.DOWN,genericViewerComparator.direction)
+		assertEquals(SWT.DOWN,viewerComparator.getDirection)
 		simulateSortColumn(0)
-		assertEquals(SWT.NONE,genericViewerComparator.direction)
+		assertEquals(SWT.NONE,viewerComparator.getDirection)
 	}
 
 	private def void simulateSortColumn(int index) {
-		genericViewerComparator.propertyIndex = index
+		viewerComparator.propertyIndex = index
 	}
 
 	private def day(String value) {
@@ -83,15 +87,15 @@ class GenericFeatureViewerComparatorTest extends AbstractViewerTest {
 	}
 
 	private def assertCompareGreater(ClassForCompare first, ClassForCompare second) {
-		assertTrue(genericViewerComparator.compare(null,first,second)>0)
+		assertTrue(viewerComparator.compare(null,first,second)>0)
 	}
 
 	private def assertCompareLower(ClassForCompare first, ClassForCompare second) {
-		assertTrue(genericViewerComparator.compare(null,first,second)<0)
+		assertTrue(viewerComparator.compare(null,first,second)<0)
 	}
 
 	private def assertCompareEquals(ClassForCompare first, ClassForCompare second) {
-		assertTrue(genericViewerComparator.compare(null,first,second)==0)
+		assertTrue(viewerComparator.compare(null,first,second)==0)
 	}
 
 	private def createWithInt(int value){

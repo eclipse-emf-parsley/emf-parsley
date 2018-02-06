@@ -111,4 +111,8 @@ class ViewerFactoryTest extends AbstractViewerTest {
 	@Test def void testCreateTableColumnLabelProvider() {
 		viewerFactory.createTableColumnLabelProvider(testPackage.classForControls_BooleanObjectFeature)
 	}
+
+	@Test def void testCreateTableViewerComparator() {
+		viewerFactory.createTableViewerComparator(#[testPackage.classForControls_BooleanObjectFeature])
+	}
 }

@@ -17,7 +17,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
-import org.eclipse.emf.parsley.internal.viewers.GenericFeatureViewerComparator;
+import org.eclipse.emf.parsley.internal.viewers.EObjectTableViewerComparator;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.TableFeaturesProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -61,9 +61,6 @@ public class TableViewerColumnBuilder {
 	@Inject
 	private LayoutHelper layoutHelper;
 
-	@Inject
-	private GenericFeatureViewerComparator viewerComparator;
-
 	/**
 	 * Setups the columns of the given tableViewer using the features of the
 	 * given eClass; the features are retrieved using an injected
@@ -78,8 +75,7 @@ public class TableViewerColumnBuilder {
 		List<EStructuralFeature> typeFeatures = featuresProvider.getFeatures(eClass);
 		int i = 0;
 		int columnIndex = 0;
-		tableViewer.setComparator(viewerComparator);
-		viewerComparator.init(typeFeatures);
+		tableViewer.setComparator(viewerFactory.createTableViewerComparator(typeFeatures));
 		for (EStructuralFeature eStructuralFeature : typeFeatures) {
 			int weight = defaultWeight;
 			if (weights.length > i) {
@@ -124,7 +120,7 @@ public class TableViewerColumnBuilder {
 		SelectionAdapter selectionAdapter = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				GenericFeatureViewerComparator comparator = (GenericFeatureViewerComparator) viewer.getComparator();
+				EObjectTableViewerComparator comparator = (EObjectTableViewerComparator) viewer.getComparator();
 				comparator.setPropertyIndex(index);
 				int dir = comparator.getDirection();
 				viewer.getTable().setSortDirection(dir);

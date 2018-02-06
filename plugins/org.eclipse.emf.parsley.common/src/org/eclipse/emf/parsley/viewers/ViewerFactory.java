@@ -19,12 +19,13 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
+import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameters;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
+import org.eclipse.emf.parsley.internal.viewers.EObjectTableViewerComparator;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.layout.TreeColumnLayout;
-import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -32,6 +33,7 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -67,10 +69,7 @@ public class ViewerFactory {
 	private TreeViewerColumnBuilder treeColumnBuilder;
 
 	@Inject
-	private GenericFactory<IContentProvider> eClassBasedContentProviderFactory;
-
-	@Inject
-	private GenericFactory<ColumnLabelProvider> eFeatureBasedColumnLabelProviderFactory;
+	private GenericFactory<Object> genericFactory;
 
 	/**
 	 * Initializes the viewer, and uses as input the resource specified by an
@@ -174,7 +173,7 @@ public class ViewerFactory {
 	 * @since 2.0
 	 */
 	public TableViewerContentProvider createTableViewerContentProvider(EClass eClass) {
-		return eClassBasedContentProviderFactory.createInstance(TableViewerContentProvider.class, new EClassParameter(eClass));
+		return genericFactory.createInstance(TableViewerContentProvider.class, new EClassParameter(eClass));
 	}
 
 	/**
@@ -183,7 +182,7 @@ public class ViewerFactory {
 	 * @since 2.0
 	 */
 	public TableColumnLabelProvider createTableColumnLabelProvider(EStructuralFeature eStructuralFeature) {
-		return eFeatureBasedColumnLabelProviderFactory.createInstance(TableColumnLabelProvider.class, new EStructuralFeatureParameter(eStructuralFeature));
+		return genericFactory.createInstance(TableColumnLabelProvider.class, new EStructuralFeatureParameter(eStructuralFeature));
 	}
 
 	/**
@@ -236,6 +235,13 @@ public class ViewerFactory {
 		TableColumnLayout layout = new TableColumnLayout();
 		viewerContainer.setLayout(layout);
 		return new TableViewer(viewerContainer, style);
+	}
+
+	/**
+	 * @since 2.0
+	 */
+	public ViewerComparator createTableViewerComparator(List<EStructuralFeature> features) {
+		return genericFactory.createInstance(EObjectTableViewerComparator.class, new EStructuralFeatureParameters(features));
 	}
 
 }
