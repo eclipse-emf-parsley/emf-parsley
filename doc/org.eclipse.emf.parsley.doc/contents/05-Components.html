@@ -199,8 +199,25 @@ Resource URI, and a simple EObject. This component uses the EMF Meta-Model infor
 <br/>
 (...)<br/>
 <br/>
+treeViewer&nbsp;=&nbsp;viewerFactory.createTreeViewer(parent,&nbsp;style);<br/>
+</p>
+</div>
+</div>
+</p>
+<p>
+Alternatively, if you have already created a TreeViewer, you can still use the factory to initialize
+it with the contents (and automatically with our label and content providers):
+</p>
+<p>
+<div class="literallayout">
+<div class="incode">
+<p class="code">
+@Inject&nbsp;ViewerFactory&nbsp;viewerFactory;<br/>
+<br/>
+(...)<br/>
+<br/>
 treeViewer&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;TreeViewer(parent);<br/>
-viewerFactory.initialize(treeViewer,&nbsp;element);<br/>
+viewerFactory.initialize(treeViewer,&nbsp;contents);<br/>
 </p>
 </div>
 </div>

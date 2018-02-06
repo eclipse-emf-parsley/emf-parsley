@@ -120,6 +120,20 @@ public class ViewerFactory {
 	}
 
 	/**
+	 * Creates a {@link TreeViewer} together with the content and label provider.
+	 * 
+	 * @param parent
+	 * @param style
+	 * @return
+	 * @since 2.0
+	 */
+	public TreeViewer createTreeViewer(Composite parent, int style) {
+		TreeViewer treeViewer = new TreeViewer(parent, style);
+		initialize(treeViewer, contentProviderProvider.get(), labelProviderProvider.get());
+		return treeViewer;
+	}
+
+	/**
 	 * Creates a {@link TreeViewer} with columns; the tree will display the
 	 * specified content and the columns will represent the features of the
 	 * contents that are instances of the specified {@link EClass}.
@@ -196,9 +210,14 @@ public class ViewerFactory {
 
 	private void initialize(StructuredViewer viewer, Object input, IContentProvider contentProvider,
 			IBaseLabelProvider labelProvider) {
+		initialize(viewer, contentProvider, labelProvider);
+		viewer.setInput(input);
+	}
+
+	private void initialize(StructuredViewer viewer, IContentProvider contentProvider,
+			IBaseLabelProvider labelProvider) {
 		viewer.setContentProvider(contentProvider);
 		viewer.setLabelProvider(labelProvider);
-		viewer.setInput(input);
 	}
 
 	private void buildColumns(TableViewer tableViewer, EClass eClass, IStructuredContentProvider contentProvider) {

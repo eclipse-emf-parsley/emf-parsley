@@ -73,6 +73,14 @@ class ViewerFactoryTest extends AbstractViewerTest {
 		]
 	}
 
+	@Test def void testCreateTreeViewer() {
+		treeViewer = viewerFactory.createTreeViewer(shell, SWT.MULTI.bitwiseOr(SWT.H_SCROLL).bitwiseOr(SWT.V_SCROLL).bitwiseOr(SWT.FULL_SELECTION))
+		treeViewer.input = testContainer
+		syncExecVoid[
+			(numOfElements * 3).assertEquals(treeViewer.treeItems.size)
+		]
+	}
+
 	@Test def void testCreateTreeViewerWithColumns() {
 		treeViewer = viewerFactory.createTreeViewerWithColumns(shell, testPackage.classForControls, testContainer)
 		syncExecVoid[

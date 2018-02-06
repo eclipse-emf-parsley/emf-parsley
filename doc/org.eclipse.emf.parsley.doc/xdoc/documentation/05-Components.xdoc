@@ -132,8 +132,19 @@ code[Java][
 
 (...)
 
+treeViewer = viewerFactory.createTreeViewer(parent, style);
+]
+
+Alternatively, if you have already created a TreeViewer, you can still use the factory to initialize
+it with the contents (and automatically with our label and content providers):
+
+code[Java][
+@Inject ViewerFactory viewerFactory;
+
+(...)
+
 treeViewer = new TreeViewer(parent);
-viewerFactory.initialize(treeViewer, element);
+viewerFactory.initialize(treeViewer, contents);
 ]
 
 

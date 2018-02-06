@@ -15,9 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -25,7 +23,7 @@ import com.google.inject.Inject;
 
 /**
  * A generic composite with a Table and a Form with details of the selected
- * object in the tree.
+ * object in the table.
  * 
  * @author Francesco Guidieri
  * @author Lorenzo Bettini
@@ -34,8 +32,6 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 
 	@Inject
 	private ViewerFactory viewerFactory;
-
-	private TableViewer tableViewer;
 
 	private EClass eClass;
 
@@ -50,17 +46,8 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 
 	@Override
 	protected StructuredViewer createViewer(Composite parent) {
-		Composite viewerContainer = new Composite(parent, SWT.BORDER);
-		TableColumnLayout layout = new TableColumnLayout();
-		viewerContainer.setLayout(layout);
-		tableViewer = new TableViewer(viewerContainer, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
-		viewerFactory.buildColumns(tableViewer, eClass);
-		return tableViewer;
-	}
-
-	@Override
-	public void update(Object contents) {
-		tableViewer.setInput(contents);
+		return viewerFactory.createTableViewer(parent,
+				SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION, eClass);
 	}
 
 }

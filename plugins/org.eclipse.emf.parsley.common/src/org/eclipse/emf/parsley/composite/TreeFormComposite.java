@@ -15,7 +15,6 @@ import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.StructuredViewer;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -26,8 +25,8 @@ import com.google.inject.name.Named;
  * A generic composite with a Tree and a Form with details of the selected
  * object in the tree.
  * 
- * @author Lorenzo Bettini, Francesco Guidieri
- * 
+ * @author Francesco Guidieri
+ * @author Lorenzo Bettini
  */
 public class TreeFormComposite extends AbstractMasterDetailComposite {
 
@@ -46,14 +45,7 @@ public class TreeFormComposite extends AbstractMasterDetailComposite {
 
 	@Override
 	protected StructuredViewer createViewer(Composite parent) {
-		return new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-	}
-
-	@Override
-	public void update(Object element) {
-		if (element != null) {
-			viewerFactory.initialize(getViewer(), element);
-		}
+		return viewerFactory.createTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 	}
 
 }

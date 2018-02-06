@@ -132,5 +132,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 				SWT.BORDER);
 	}
 
-	public abstract void update(Object contents);
+	public void update(Object contents) {
+		viewer.setInput(contents);
+	}
 }
