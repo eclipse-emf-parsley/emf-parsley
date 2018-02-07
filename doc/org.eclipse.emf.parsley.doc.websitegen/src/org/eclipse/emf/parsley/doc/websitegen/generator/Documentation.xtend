@@ -58,7 +58,7 @@ class Documentation extends AbstractXdocBaseWebsite {
 			val target = new File(targetDir, it.path)
 			println(target.canonicalPath)
 			
-			source.newInputStreamSupplier.copy(target)
+			source.copy(target)
 		]
 	}
 	
