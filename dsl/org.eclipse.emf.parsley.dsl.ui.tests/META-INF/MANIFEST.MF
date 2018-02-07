@@ -14,15 +14,13 @@ Require-Bundle: org.eclipse.emf.parsley.dsl.ui,
  org.eclipse.emf.parsley.dsl.additional.builder,
  org.eclipse.emf.parsley.tests.pde.utils,
  org.eclipse.emf.parsley.views,
- org.mockito;bundle-version="1.9.5",
- org.objenesis;bundle-version="1.0.0",
- org.hamcrest;bundle-version="[1.0.0,2.0.0)",
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.ui.testing,
  org.eclipse.xtext.xbase.ui.testing,
  org.eclipse.xtext.junit4,
- org.eclipse.xtext.xbase.junit
+ org.eclipse.xtext.xbase.junit,
+ org.eclipse.emf.parsley.tests.libraries
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.parsley.dsl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
