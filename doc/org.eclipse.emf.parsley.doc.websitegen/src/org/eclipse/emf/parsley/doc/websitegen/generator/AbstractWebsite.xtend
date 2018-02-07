@@ -2,11 +2,8 @@ package org.eclipse.emf.parsley.doc.websitegen.generator
 
 import com.google.common.base.Charsets
 import java.io.File
-import java.lang.Iterable
-import org.eclipse.xtext.xbase.lib.Pair
 import org.eclipse.xtext.xdoc.XdocStandaloneSetup
 
-import static extension com.google.common.io.CharStreams.*
 import static extension com.google.common.io.Files.*
 
 abstract class AbstractWebsite implements Resource {
@@ -25,7 +22,7 @@ abstract class AbstractWebsite implements Resource {
 		if (file.exists) {
 			print("overwriting ")
 		}
-		website.write(file.newWriterSupplier(Charsets::UTF_8))
+		website.write(file, Charsets::UTF_8)
 		println("generated '"+file+"'")
 	}
 	

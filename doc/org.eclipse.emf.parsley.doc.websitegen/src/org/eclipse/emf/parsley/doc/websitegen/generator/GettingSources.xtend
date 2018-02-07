@@ -57,7 +57,7 @@ class GettingSources extends  AbstractXdocBaseWebsite {
 			val target = new File(targetDir, it.path)
 			println(target.canonicalPath)
 			
-			sources.newInputStreamSupplier.copy(target)
+			sources.copy(target)
 		]
 	}
 	
