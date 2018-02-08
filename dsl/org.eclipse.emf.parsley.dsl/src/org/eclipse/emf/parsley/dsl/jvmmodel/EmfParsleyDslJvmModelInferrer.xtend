@@ -95,6 +95,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
+import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -118,6 +119,8 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension EmfParsleyDslGeneratorUtils
 
 	@Inject extension EmfParsleyDslTypeSystem
+
+	@Inject extension EmfParsleyDslGuiceModuleHelper
 
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
@@ -175,7 +178,9 @@ class EmfParsleyDslJvmModelInferrer extends AbstractModelInferrer {
 				// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=474140 
 				val extendsClause = element.extendsClause
 				if (extendsClause !== null && 
-					!(element.isConformant(EmfParsleyGuiceModule, extendsClause.superType))) {
+					!(element.isConformant(EmfParsleyGuiceModule, extendsClause.superType)) &&
+					// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=519645
+					!(element.containsConstructorAcceptingPluginParameter(extendsClause.superType))) {
 					body = '''// not used'''
 				} else {
 					body = '''super(plugin);'''

@@ -1153,13 +1153,22 @@ public interface TestmodelsPackage extends EPackage {
 	int CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Integer Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_FOR_DEFAULT_VALIDATION__INTEGER_ATTRIBUTE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Class For Default Validation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FOR_DEFAULT_VALIDATION_FEATURE_COUNT = 4;
+	int CLASS_FOR_DEFAULT_VALIDATION_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Class For Default Validation</em>' class.
@@ -1978,6 +1987,17 @@ public interface TestmodelsPackage extends EPackage {
 	EReference getClassForDefaultValidation_NotNullReference();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getIntegerAttribute <em>Integer Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Integer Attribute</em>'.
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getIntegerAttribute()
+	 * @see #getClassForDefaultValidation()
+	 * @generated
+	 */
+	EAttribute getClassForDefaultValidation_IntegerAttribute();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForCompare <em>Class For Compare</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2683,6 +2703,13 @@ public interface TestmodelsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE = eINSTANCE.getClassForDefaultValidation_NotNullReference();
+		/**
+		 * The meta object literal for the '<em><b>Integer Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_FOR_DEFAULT_VALIDATION__INTEGER_ATTRIBUTE = eINSTANCE.getClassForDefaultValidation_IntegerAttribute();
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForCompareImpl <em>Class For Compare</em>}' class.
 		 * <!-- begin-user-doc -->

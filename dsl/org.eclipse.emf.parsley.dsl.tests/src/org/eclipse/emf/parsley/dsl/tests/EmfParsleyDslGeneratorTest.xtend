@@ -129,6 +129,32 @@ public class EmptyEmfParsleyGuiceModule extends MyTestJavaGuiceModule {
 	}
 
 	@Test
+	def testModuleWithExtendsIntermediateJavaGuiceModule() {
+		// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=519645
+		'''
+module my.empty extends org.eclipse.emf.parsley.dsl.tests.inputs.TestIntermediateEmfParsleyJavaGuiceModule {
+	
+}
+'''.assertCorrectJavaCodeGeneration(
+			new GeneratorExpectedResults() => [
+expectedModule =
+'''
+package my.empty;
+
+import org.eclipse.emf.parsley.dsl.tests.inputs.TestIntermediateEmfParsleyJavaGuiceModule;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+@SuppressWarnings("all")
+public class EmptyEmfParsleyGuiceModule extends TestIntermediateEmfParsleyJavaGuiceModule {
+  public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
+}
+''']
+		)
+	}
+
+	@Test
 	def testEmptyLabelProvider() {
 		inputs.emptyLabelProvider.assertCorrectJavaCodeGeneration(
 			new GeneratorExpectedResults() => [

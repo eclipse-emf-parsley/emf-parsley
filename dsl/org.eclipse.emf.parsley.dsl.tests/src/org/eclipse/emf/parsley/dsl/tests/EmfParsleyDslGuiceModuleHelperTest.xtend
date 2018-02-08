@@ -206,4 +206,52 @@ text_EClass_name(org.eclipse.emf.ecore.EStructuralFeature)''',
 			map[javaResolvedFeatures.declaredOperations].flatten.
 			map[getJavaMethodResolvedErasedSignature].join("\n"))
 	}
+
+	@Test
+	def void testContainsConstructorAcceptingSinglePluginParameter() {
+		val module = '''
+		module my.empty extends org.eclipse.emf.parsley.dsl.tests.inputs.TestIntermediateEmfParsleyJavaGuiceModule {
+			
+		}
+		'''.parse.module
+		module
+			.containsConstructorAcceptingPluginParameter(module.extendsClause.superType)
+			.assertTrue
+	}
+
+	@Test
+	def void testDoesNotContainConstructorAcceptingSinglePluginParameter() {
+		val module = '''
+		module my.empty extends org.eclipse.emf.parsley.dsl.tests.inputs.TestIntermediateEmfParsleyGuiceModuleWithTwoParameterConstructor {
+			
+		}
+		'''.parse.module
+		module
+			.containsConstructorAcceptingPluginParameter(module.extendsClause.superType)
+			.assertFalse
+	}
+
+	@Test
+	def void testDoesNotContainConstructorAcceptingSinglePluginParameter2() {
+		val module = '''
+		module my.empty extends org.eclipse.emf.parsley.dsl.tests.inputs.TestIntermediateEmfParsleyGuiceModuleWithOneParameterConstructor {
+			
+		}
+		'''.parse.module
+		module
+			.containsConstructorAcceptingPluginParameter(module.extendsClause.superType)
+			.assertFalse
+	}
+
+	@Test
+	def void testDoesNotContainConstructorAcceptingSinglePluginParameter3() {
+		val module = '''
+		module my.empty extends NoExistant {
+			
+		}
+		'''.parse.module
+		module
+			.containsConstructorAcceptingPluginParameter(module.extendsClause.superType)
+			.assertFalse
+	}
 }

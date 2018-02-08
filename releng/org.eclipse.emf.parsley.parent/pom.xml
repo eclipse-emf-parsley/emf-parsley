@@ -94,9 +94,12 @@
 		<parsley.rap.updates.dir>rt</parsley.rap.updates.dir>
 		<p2.repository.dest>${project.basedir}/../../target/repository</p2.repository.dest>
 		<zipped.repository.dest>${project.basedir}/../../target/${parsley.zips.dir}</zipped.repository.dest>
-		
+
 		<!-- Enable this on Hudson CI @Eclipse.org -->
 		<cbi.jarsigner.skip>true</cbi.jarsigner.skip>
+
+		<!-- Source references -->
+		<tycho.scmUrl>scm:git:git://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git</tycho.scmUrl>
 
 		<!-- Sonar -->
 		<sonar.language>java</sonar.language>
@@ -1019,7 +1022,17 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<format>'v'yyyyMMdd'-'HHmm</format>
+					<sourceReferences>
+						<generate>true</generate>
+					</sourceReferences>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-sourceref-jgit</artifactId>
+						<version>${tycho-extras-version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 		</plugins>

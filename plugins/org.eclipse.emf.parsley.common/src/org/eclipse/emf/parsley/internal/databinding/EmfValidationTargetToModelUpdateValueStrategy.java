@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2016, 2018 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.databinding.EMFUpdateValueStrategy;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -26,7 +27,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * @noextend This class is not intended to be subclassed by clients.
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
-public class EmfValidationTargetToModelUpdateValueStrategy extends UpdateValueStrategy {
+public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValueStrategy {
 
 	private EObject owner;
 
@@ -59,6 +60,26 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends UpdateValueSt
 			return validationStatus();
 		}
 		return super.validateBeforeSet(value);
+	}
+
+	@Override
+	public Object convert(Object value) {
+		if (converter != null) {
+			try {
+				return converter.convert(value);
+			} catch (RuntimeException e) {
+				return e;
+			}
+		}
+		return value;
+	}
+
+	@Override
+	public IStatus validateAfterConvert(Object value) {
+		if (value instanceof RuntimeException) {
+			return ValidationStatus.error(value.toString());
+		}
+		return super.validateAfterConvert(value);
 	}
 
 	private IStatus validationStatus() {
