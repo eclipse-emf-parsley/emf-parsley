@@ -13,4 +13,6 @@
       name="org.eclipse.emf.parsley.oomph"/>
   <requirement
       name="org.eclipse.emf.parsley.repository.plain.project"/>
+  <requirement
+      name="org.eclipse.emf.parsley.tests.coverage.plain.project"/>
 </targlets:ComponentExtension>
