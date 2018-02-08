@@ -491,6 +491,7 @@
 
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.additional.builder</module>
 			</modules>
 		</profile>
 		
