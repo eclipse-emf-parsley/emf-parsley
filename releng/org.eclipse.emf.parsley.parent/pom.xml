@@ -257,132 +257,15 @@
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.examples</module>
 
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
-			</modules>
-		</profile>
 
-		<profile>
-			<id>rcp-build-oxygen</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-
-			<modules>
 				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			</modules>
-
-			<!--
-			Take the default one
-			<properties>
-				<target-file-name>oxygen-staging</target-file-name>
-			</properties>
-			-->
 		</profile>
 
-		<profile>
-			<id>rcp-build-neon</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
-				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
-			</modules>
-			
-			<properties>
-				<target-file-name>neon-simrel</target-file-name>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>rcp-build-mars</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
-				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
-			</modules>
-			
-			<properties>
-				<target-file-name>mars</target-file-name>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>rcp-build-luna</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
-			</modules>
-			
-			<properties>
-				<target-file-name>luna</target-file-name>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>local</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
-			</modules>
-			
-			<properties>
-				<target-file-name>local</target-file-name>
-			</properties>
-			
-		</profile>
-		
-		<profile>
-			<id>rcp-build-kepler</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			
-			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.kepler</module>
-			</modules>
-			
-			<properties>
-				<target-file-name>kepler</target-file-name>
-			</properties>
-
-		</profile>
-
-		<profile>
-			<id>rcp-build-indigo</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.indigo</module>
-			</modules>
-			
-			<properties>
-				<target-file-name>indigo</target-file-name>
-			</properties>
-
-		</profile>
-		
 		<profile>
 			<id>rap-build</id>
 			<activation>
@@ -415,19 +298,6 @@
 
 		</profile>
 
-		<profile>
-			<id>rap-build-oxygen</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-
-			<properties>
-				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>oxygen-staging-rap</target-file-name>
-			</properties>
-
-		</profile>
-		
 		<profile>
 			<id>rap-examples</id>
 			<activation>
