@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotEmpty <em>Not Empty</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getCanBeEmpty <em>Can Be Empty</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getNotNullReference <em>Not Null Reference</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getIntegerAttribute <em>Integer Attribute</em>}</li>
  * </ul>
  *
  * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForDefaultValidation()
@@ -127,5 +128,31 @@ public interface ClassForDefaultValidation extends EObject {
 	 * @generated
 	 */
 	void setNotNullReference(ClassWithName value);
+
+	/**
+	 * Returns the value of the '<em><b>Integer Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Integer Attribute</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Integer Attribute</em>' attribute.
+	 * @see #setIntegerAttribute(int)
+	 * @see org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage#getClassForDefaultValidation_IntegerAttribute()
+	 * @model
+	 * @generated
+	 */
+	int getIntegerAttribute();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation#getIntegerAttribute <em>Integer Attribute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Integer Attribute</em>' attribute.
+	 * @see #getIntegerAttribute()
+	 * @generated
+	 */
+	void setIntegerAttribute(int value);
 
 } // ClassForDefaultValidation

@@ -26,6 +26,7 @@ import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage;
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getNotEmpty <em>Not Empty</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getCanBeEmpty <em>Can Be Empty</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getNotNullReference <em>Not Null Reference</em>}</li>
+ *   <li>{@link org.eclipse.emf.parsley.tests.models.testmodels.impl.ClassForDefaultValidationImpl#getIntegerAttribute <em>Integer Attribute</em>}</li>
  * </ul>
  *
  * @generated
@@ -100,6 +101,26 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 	 * @ordered
 	 */
 	protected ClassWithName notNullReference;
+
+	/**
+	 * The default value of the '{@link #getIntegerAttribute() <em>Integer Attribute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntegerAttribute()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int INTEGER_ATTRIBUTE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getIntegerAttribute() <em>Integer Attribute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntegerAttribute()
+	 * @generated
+	 * @ordered
+	 */
+	protected int integerAttribute = INTEGER_ATTRIBUTE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -226,6 +247,27 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getIntegerAttribute() {
+		return integerAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIntegerAttribute(int newIntegerAttribute) {
+		int oldIntegerAttribute = integerAttribute;
+		integerAttribute = newIntegerAttribute;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__INTEGER_ATTRIBUTE, oldIntegerAttribute, integerAttribute));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -238,6 +280,8 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
 				if (resolve) return getNotNullReference();
 				return basicGetNotNullReference();
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__INTEGER_ATTRIBUTE:
+				return getIntegerAttribute();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -261,6 +305,9 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 				return;
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
 				setNotNullReference((ClassWithName)newValue);
+				return;
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__INTEGER_ATTRIBUTE:
+				setIntegerAttribute((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -286,6 +333,9 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
 				setNotNullReference((ClassWithName)null);
 				return;
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__INTEGER_ATTRIBUTE:
+				setIntegerAttribute(INTEGER_ATTRIBUTE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -306,6 +356,8 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 				return CAN_BE_EMPTY_EDEFAULT == null ? canBeEmpty != null : !CAN_BE_EMPTY_EDEFAULT.equals(canBeEmpty);
 			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__NOT_NULL_REFERENCE:
 				return notNullReference != null;
+			case TestmodelsPackage.CLASS_FOR_DEFAULT_VALIDATION__INTEGER_ATTRIBUTE:
+				return integerAttribute != INTEGER_ATTRIBUTE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -326,6 +378,8 @@ public class ClassForDefaultValidationImpl extends MinimalEObjectImpl.Container 
 		result.append(notEmpty);
 		result.append(", canBeEmpty: ");
 		result.append(canBeEmpty);
+		result.append(", integerAttribute: ");
+		result.append(integerAttribute);
 		result.append(')');
 		return result.toString();
 	}
