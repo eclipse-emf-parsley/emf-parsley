@@ -14,17 +14,22 @@ import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
+import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.xbase.typesystem.^override.OverrideHelper
 import org.eclipse.xtext.xbase.typesystem.^override.IResolvedOperation
+import org.eclipse.xtext.xbase.typesystem.^override.OverrideHelper
+import org.eclipse.ui.plugin.AbstractUIPlugin
 
 class EmfParsleyDslGuiceModuleHelper {
 	@Inject extension IJvmModelAssociations
 
 	@Inject extension OverrideHelper
+
+	@Inject extension EmfParsleyDslTypeSystem
 
 	def getModuleInferredType(Module module) {
 		module.inferredJavaTypes.head
@@ -74,6 +79,18 @@ class EmfParsleyDslGuiceModuleHelper {
 
 	def getJavaMethodResolvedErasedSignature(IResolvedOperation op) {
 		op.resolvedErasureSignature
+	}
+
+	def containsConstructorAcceptingPluginParameter(EObject context, JvmTypeReference typeRef) {
+		val type = typeRef.type
+		if (type instanceof JvmGenericType) {
+			return type.declaredConstructors.exists[
+				parameters.size == 1
+				&&
+				context.isConformant(AbstractUIPlugin, parameters.head.parameterType)
+			]
+		}
+		return false
 	}
 
 	def private superTypeJvmOperations(Module module) {
