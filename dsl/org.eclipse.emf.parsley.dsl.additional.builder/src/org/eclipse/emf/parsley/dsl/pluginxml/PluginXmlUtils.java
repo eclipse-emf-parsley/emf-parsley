@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.dsl.pluginxml;
 
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.eclipse.pde.internal.core.text.DocumentElementNode;
 import org.eclipse.pde.internal.core.text.IDocumentAttributeNode;
@@ -53,7 +52,7 @@ public class PluginXmlUtils {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static TreeMap getNodeAttributesMap(final DocumentElementNode node) {
+	public static Map getNodeAttributesMap(final DocumentElementNode node) {
 		return node.getNodeAttributesMap();
 	}
 }

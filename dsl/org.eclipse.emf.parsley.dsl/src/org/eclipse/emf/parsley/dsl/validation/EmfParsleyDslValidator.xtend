@@ -307,11 +307,9 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 			return true;
 		}
 		processedSuperTypes.add(type);
-		for (JvmTypeReference superTypeRef : type.getSuperTypes()) {
-			if (superTypeRef.getType() instanceof JvmGenericType) {
-				if (hasCycleInHierarchy(superTypeRef.getType() as JvmGenericType, processedSuperTypes))
-					return true;
-			}
+		for (genericType : type.superTypes.map[getType].filter(JvmGenericType)) {
+			if (hasCycleInHierarchy(genericType, processedSuperTypes))
+				return true;
 		}
 		processedSuperTypes.remove(type);
 		return false;

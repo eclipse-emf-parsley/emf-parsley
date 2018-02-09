@@ -94,7 +94,7 @@ public class EmfParsleyUtil {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static int compareValues(Object value1, Object value2) {
-		if (value1 instanceof Comparable && value2 instanceof Comparable) {
+		if (comparables(value1, value2)) {
 			return ((Comparable) value1).compareTo(value2);
 		} else if (value1 != null && value2 != null) {
 			return value1.toString().compareTo(value2.toString());
@@ -104,5 +104,9 @@ public class EmfParsleyUtil {
 			return -1;
 		}
 		return 0;
+	}
+
+	private static boolean comparables(Object value1, Object value2) {
+		return value1 instanceof Comparable && value2 instanceof Comparable;
 	}
 }
