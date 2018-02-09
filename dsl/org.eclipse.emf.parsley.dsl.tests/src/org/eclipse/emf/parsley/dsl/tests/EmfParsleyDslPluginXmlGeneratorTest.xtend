@@ -20,6 +20,9 @@ import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.eclipse.emf.parsley.dsl.model.ModelFactory
+
+import static extension org.junit.Assert.*
 
 @RunWith(XtextRunner)
 @InjectWith(EmfParsleyDslInjectorProvider)
@@ -59,6 +62,11 @@ class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTest {
 	@Test
 	def void testNoViewSpecification() {
 		inputs.emptyModule.module.assertPluginXmlContents("")
+	}
+
+	@Test
+	def void testNoViewSpecification2() {
+		inputs.emptyModule.assertNoPluginXmlGeneration
 	}
 
 	@Test
@@ -142,6 +150,12 @@ class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTest {
 			)
 	}
 
+	@Test
+	def void testGenerateExtensionPointWithPartSpecificationNotViewSpecification() {
+		pluginXmlGenerator.generateExtensionPoint(ModelFactory.eINSTANCE.createPartSpecification)
+			.assertNull
+	}
+
 	def private void assertPluginXmlGeneration(CharSequence input, CharSequence expected) {
 		val access = new InMemoryFileSystemAccess();
 		val parsed = input.parseAndAssertNoError
@@ -156,6 +170,15 @@ class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTest {
 				"my/test/" + EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_GEN_FILE
 			)
 		)
+	}
+
+	def private void assertNoPluginXmlGeneration(CharSequence input) {
+		val access = new InMemoryFileSystemAccess();
+		val parsed = input.parseAndAssertNoError
+		pluginXmlGenerator.doGenerate(parsed.eResource(), access);
+		val textFiles = access.getTextFiles()
+		val entrySet = textFiles.entrySet()
+		assertEqualsStrings(0, entrySet.size)
 	}
 
 	def private void assertPluginXmlContents(Module module, CharSequence expected) {
