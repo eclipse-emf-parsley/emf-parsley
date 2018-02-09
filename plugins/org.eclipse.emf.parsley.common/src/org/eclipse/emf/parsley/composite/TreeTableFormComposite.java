@@ -1,12 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2018 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * Francesco Guidieri - initial API and implementation
  * Lorenzo Bettini - aligned to other composites
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
@@ -25,52 +24,53 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 /**
- * A generic composite with a Table and a Form with details of the selected
- * object in the table.
+ * A generic composite with a Tree, a Table showing the contents of the selected
+ * element in the tree and a Form with details of the selected object in the
+ * table.
  * 
- * @author Francesco Guidieri
  * @author Lorenzo Bettini
+ * @since 2.0
  */
-public class TableFormComposite extends AbstractMasterDetailComposite implements IStructuredViewerProvider {
+public class TreeTableFormComposite extends AbstractMasterDetailComposite implements IStructuredViewerProvider {
 
 	@Inject
 	private CompositeFactory compositeFactory;
 
 	private EClass eClass;
 
-	private TableComposite tableComposite;
+	private TreeComposite treeComposite;
 
-	/**
-	 * @since 2.0
-	 */
+	private int sashStyle;
+
 	@Inject
-	public TableFormComposite(CompositeParameters params, EClassParameter eClassParam,
+	public TreeTableFormComposite(CompositeParameters params, EClassParameter eClassParam,
 			@Named(EmfParsleyConstants.TREE_FORM_SASH_STYLE) int sashStyle,
 			@Named(EmfParsleyConstants.TREE_FORM_SASH_WEIGHTS) int[] weights) {
 		super(params, sashStyle, weights);
+		this.sashStyle = sashStyle;
 		this.eClass = eClassParam.getEClass();
 	}
 
-	/**
-	 * @since 2.0
-	 */
 	@Override
-	protected FormDetailComposite createDetailComposite(Composite parent, EObject selectedObject) {
-		return compositeFactory.createFormDetailComposite(parent, SWT.BORDER, selectedObject);
+	protected AbstractMasterDetailComposite createDetailComposite(Composite parent, EObject selectedObject) {
+		AbstractMasterDetailComposite tableFormComposite = compositeFactory.createTableFormComposite(parent, SWT.BORDER, eClass);
+		// flip the orientation in the nested master-detail composite
+		tableFormComposite.setSashFormOrientation(
+			((sashStyle & SWT.VERTICAL) != 0) ? SWT.HORIZONTAL : SWT.VERTICAL
+		);
+		tableFormComposite.update(selectedObject);
+		return tableFormComposite;
 	}
 
-	/**
-	 * @since 2.0
-	 */
 	@Override
-	protected TableComposite createMasterComposite(Composite parent) {
-		tableComposite = compositeFactory.createTableComposite(parent,
-				SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION, eClass);
-		return tableComposite;
+	protected TreeComposite createMasterComposite(Composite parent) {
+		treeComposite = compositeFactory.createTreeComposite(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		return treeComposite;
 	}
 
 	@Override
 	public StructuredViewer getViewer() {
-		return tableComposite.getViewer();
+		return treeComposite.getViewer();
 	}
+
 }

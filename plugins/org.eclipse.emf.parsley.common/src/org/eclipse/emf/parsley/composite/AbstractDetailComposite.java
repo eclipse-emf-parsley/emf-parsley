@@ -25,11 +25,14 @@ import org.eclipse.emf.parsley.ui.provider.FeaturesProvider;
 import com.google.inject.Inject;
 
 /**
+ * A generic abstract composite for showing the details of an {@link EObject}
+ * and editing them.
+ * 
  * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - Contributions
  */
 @EmfParsleyLifecycle
-public abstract class AbstractDetailComposite extends InjectableComposite {
+public abstract class AbstractDetailComposite extends InjectableComposite implements IDetailComposite {
 
 	@Inject
 	private FeaturesProvider featuresProvider;

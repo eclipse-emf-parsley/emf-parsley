@@ -104,8 +104,22 @@ public class CompositeFactory {
 		return genericFactory.createInstance(TreeFormComposite.class, new CompositeParameters(parent, style));
 	}
 
+	public TreeComposite createTreeComposite(Composite parent, int style) {
+		return genericFactory.createInstance(TreeComposite.class, new CompositeParameters(parent, style));
+	}
+
 	public TableFormComposite createTableFormComposite(Composite parent, int style, EClass type) {
 		return genericFactory.createInstance(TableFormComposite.class,
+				new CompositeParameters(parent, style), new EClassParameter(type));
+	}
+
+	public TableComposite createTableComposite(Composite parent, int style, EClass eClass) {
+		return genericFactory.createInstance(TableComposite.class,
+				new CompositeParameters(parent, style), new EClassParameter(eClass));
+	}
+
+	public TreeTableFormComposite createTreeTableFormComposite(Composite parent, int style, EClass type) {
+		return genericFactory.createInstance(TreeTableFormComposite.class,
 				new CompositeParameters(parent, style), new EClassParameter(type));
 	}
 

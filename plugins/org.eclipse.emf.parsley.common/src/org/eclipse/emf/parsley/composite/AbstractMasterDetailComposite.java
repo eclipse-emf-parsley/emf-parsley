@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.inject.AfterInject;
 import org.eclipse.emf.parsley.inject.EmfParsleyLifecycle;
@@ -20,7 +19,6 @@ import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.FillLayout;
@@ -29,14 +27,19 @@ import org.eclipse.swt.widgets.Composite;
 import com.google.inject.Inject;
 
 /**
- * A generic abstract composite with a viewer and a Form with details of the
- * selected object in the viewer. The viewer is intended to be defined by user.
+ * A generic abstract composite with a master composite with some contents and a
+ * detail composite with details of the selected object in the master composite;
+ * both the master and the detail composites are created by subclasses.
  * 
- * @author Lorenzo Bettini, Francesco Guidieri
+ * Note that the master-detail composite can be in turn nested inside another
+ * master-detail composite, and used as a detail composite.
+ * 
+ * @author Lorenzo Bettini
+ * @author Francesco Guidieri
  * 
  */
 @EmfParsleyLifecycle
-public abstract class AbstractMasterDetailComposite extends InjectableComposite implements IViewerProvider {
+public abstract class AbstractMasterDetailComposite extends InjectableComposite implements IDetailComposite {
 
 	private class SelectionChangedListener implements ISelectionChangedListener {
 		@Override
@@ -55,16 +58,9 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 
 	private Composite detailParentComposite;
 
-	private StructuredViewer viewer;
+	private AbstractMasterComposite masterComposite;
 
-	private AbstractDetailComposite detailComposite;
-
-	/**
-	 * @since 2.0
-	 */
-	public AbstractMasterDetailComposite(CompositeParameters params) {
-		this(params, SWT.VERTICAL, new int[0]);
-	}
+	private IDetailComposite detailComposite;
 
 	/**
 	 * @since 2.0
@@ -89,24 +85,14 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	 * This will be called after the construction has finished.
 	 */
 	@AfterInject
-	private void setupViewer() {
-		viewer = createViewer(masterParentComposite);
-		viewer.addSelectionChangedListener(new SelectionChangedListener());
+	private void setupMasterComposite() {
+		masterComposite = createMasterComposite(masterParentComposite);
+		masterComposite.addSelectionChangedListener(new SelectionChangedListener());
 	}
 
-	@Override
-	public StructuredViewer getViewer() {
-		return viewer;
+	protected SashForm getSashForm() {
+		return sashForm;
 	}
-
-	/**
-	 * This method is ensured to be called after the construction of the instance
-	 * has finished, thus subclasses fields have been injected as well.
-	 * 
-	 * @param parent
-	 * @return
-	 */
-	protected abstract StructuredViewer createViewer(Composite parent);
 
 	protected void eObjectSelectionChanged(EObject selectedObject) {
 		if (detailComposite != null) {
@@ -120,13 +106,38 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	}
 
 	/**
+	 * Updates the contents of the master composite.
+	 * @param contents
+	 */
+	public void update(Object contents) {
+		masterComposite.update(contents);
+	}
+
+	/**
+	 * This method is ensured to be called after the construction of the instance
+	 * has finished, thus subclasses fields have been injected as well.
+	 * 
+	 * @param parent
+	 * @return
+	 * @since 2.0
+	 */
+	protected abstract AbstractMasterComposite createMasterComposite(Composite parent);
+
+	/**
+	 * This method is called each time the object selected in the master composite changes.
+	 * 
 	 * @param parent
 	 * @param selectedObject
 	 * @since 2.0
 	 */
-	protected abstract AbstractDetailComposite createDetailComposite(Composite parent, EObject selectedObject);
+	protected abstract IDetailComposite createDetailComposite(Composite parent, EObject selectedObject);
 
-	public void update(Object contents) {
-		viewer.setInput(contents);
+	/**
+	 * @see SashForm#setOrientation(int)
+	 * @since 2.0
+	 */
+	public void setSashFormOrientation(int orientation) {
+		getSashForm().setOrientation(orientation);
 	}
+
 }

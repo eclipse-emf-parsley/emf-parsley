@@ -73,6 +73,11 @@ class CompositeFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	@Test
+	def void canCreateTreeComposite() {
+		factory.createTreeComposite(shell, SWT.NONE)
+	}
+
+	@Test
 	def void testDefaultSashProperties() {
 		syncExecVoid[
 			val treeFormComposite = getOrCreateInjector.getInstance(CompositeFactory).
@@ -111,6 +116,16 @@ class CompositeFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	@Test
+	def void canCreateTableComposite() {
+		factory.createTableComposite(shell, SWT.NONE, eClass)
+	}
+
+	@Test
+	def void canCreateTreeTableFormComposite() {
+		factory.createTreeTableFormComposite(shell, SWT.NONE, eClass)
+	}
+
+	@Test
 	def void canCreateDialogWidgetFactory() {
 		factory.createDialogWidgetFactory(shell)
 	}
@@ -141,10 +156,10 @@ class CompositeFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	def private getSashForm(TreeFormComposite treeFormComposite) {
-		// access the private field for testing purposes
-		val sashForm = treeFormComposite.class.superclass.getDeclaredField("sashForm")
+		// access the protected method for testing purposes
+		val sashForm = treeFormComposite.class.superclass.getDeclaredMethod("getSashForm")
 		sashForm.accessible = true
-		sashForm.get(treeFormComposite) as SashForm
+		sashForm.invoke(treeFormComposite) as SashForm
 	}
 
 	override protected getEditingDomain() {

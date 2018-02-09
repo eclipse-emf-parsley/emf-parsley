@@ -14,7 +14,7 @@ package org.eclipse.emf.parsley.composite;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
-import org.eclipse.emf.parsley.viewers.ViewerFactory;
+import org.eclipse.emf.parsley.viewers.IStructuredViewerProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -29,13 +29,12 @@ import com.google.inject.name.Named;
  * @author Francesco Guidieri
  * @author Lorenzo Bettini
  */
-public class TreeFormComposite extends AbstractMasterDetailComposite {
-
-	@Inject
-	private ViewerFactory viewerFactory;
+public class TreeFormComposite extends AbstractMasterDetailComposite implements IStructuredViewerProvider {
 
 	@Inject
 	private CompositeFactory compositeFactory;
+
+	private TreeComposite treeComposite;
 
 	/**
 	 * @since 2.0
@@ -47,11 +46,6 @@ public class TreeFormComposite extends AbstractMasterDetailComposite {
 		super(params, sashStyle, weights);
 	}
 
-	@Override
-	protected StructuredViewer createViewer(Composite parent) {
-		return viewerFactory.createTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-	}
-
 	/**
 	 * @since 2.0
 	 */
@@ -60,4 +54,17 @@ public class TreeFormComposite extends AbstractMasterDetailComposite {
 		return compositeFactory.createFormDetailComposite(parent, SWT.BORDER, selectedObject);
 	}
 
+	/**
+	 * @since 2.0
+	 */
+	@Override
+	protected TreeComposite createMasterComposite(Composite parent) {
+		treeComposite = compositeFactory.createTreeComposite(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		return treeComposite;
+	}
+
+	@Override
+	public StructuredViewer getViewer() {
+		return treeComposite.getViewer();
+	}
 }
