@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.inject.AfterInject;
@@ -39,33 +38,26 @@ import com.google.inject.Inject;
 @EmfParsleyLifecycle
 public abstract class AbstractMasterDetailComposite extends InjectableComposite implements IViewerProvider {
 
-	private class SelectionChangedListener implements
-			ISelectionChangedListener {
+	private class SelectionChangedListener implements ISelectionChangedListener {
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
-			EObject selectedObject = emfSelectionHelper
-					.getFirstSelectedEObject(event.getSelection());
-
+			EObject selectedObject = emfSelectionHelper.getFirstSelectedEObject(event.getSelection());
 			eObjectSelectionChanged(selectedObject);
 		}
-
 	}
-
-	@Inject
-	private CompositeFactory compositeFactory;
 
 	@Inject
 	private EmfSelectionHelper emfSelectionHelper;
 
-	private StructuredViewer viewer;
-
-	private final Composite detailComposite;
-
-	private FormDetailComposite detailForm;
-
 	private SashForm sashForm;
 
-	private Composite masterComposite;
+	private Composite masterParentComposite;
+
+	private Composite detailParentComposite;
+
+	private StructuredViewer viewer;
+
+	private AbstractDetailComposite detailComposite;
 
 	/**
 	 * @since 2.0
@@ -79,15 +71,16 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	 */
 	public AbstractMasterDetailComposite(CompositeParameters params, int sashStyle, int[] weights) {
 		super(params);
-		setLayout( new FillLayout());
+		setLayout(new FillLayout());
 		sashForm = new SashForm(this, sashStyle);
 
-		masterComposite = new Composite(sashForm, SWT.NONE);
-		masterComposite.setLayout( new FillLayout());
-		
-		detailComposite = new Composite(sashForm, SWT.NONE);
-		detailComposite.setLayout( new FillLayout());
-		if(weights.length>0){
+		masterParentComposite = new Composite(sashForm, SWT.NONE);
+		masterParentComposite.setLayout(new FillLayout());
+
+		detailParentComposite = new Composite(sashForm, SWT.NONE);
+		detailParentComposite.setLayout(new FillLayout());
+
+		if (weights.length > 0) {
 			sashForm.setWeights(weights);
 		}
 	}
@@ -97,7 +90,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	 */
 	@AfterInject
 	private void setupViewer() {
-		viewer = createViewer(masterComposite);
+		viewer = createViewer(masterParentComposite);
 		viewer.addSelectionChangedListener(new SelectionChangedListener());
 	}
 
@@ -116,23 +109,22 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	protected abstract StructuredViewer createViewer(Composite parent);
 
 	protected void eObjectSelectionChanged(EObject selectedObject) {
-		if (detailForm != null) {
-			detailForm.dispose();
+		if (detailComposite != null) {
+			detailComposite.dispose();
 		}
 
 		if (selectedObject != null) {
-			detailForm = createFormDetailComposite(selectedObject);
-			detailComposite.layout(true);
+			detailComposite = createDetailComposite(detailParentComposite, selectedObject);
+			detailParentComposite.layout(true);
 		}
 	}
 
 	/**
+	 * @param parent
+	 * @param selectedObject
 	 * @since 2.0
 	 */
-	protected FormDetailComposite createFormDetailComposite(EObject selectedObject) {
-		return compositeFactory.createFormDetailComposite(detailComposite,
-				SWT.BORDER, selectedObject);
-	}
+	protected abstract AbstractDetailComposite createDetailComposite(Composite parent, EObject selectedObject);
 
 	public void update(Object contents) {
 		viewer.setInput(contents);

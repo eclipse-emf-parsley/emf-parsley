@@ -12,6 +12,7 @@
 package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
@@ -33,6 +34,9 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	@Inject
 	private ViewerFactory viewerFactory;
 
+	@Inject
+	private CompositeFactory compositeFactory;
+
 	private EClass eClass;
 
 	/**
@@ -48,6 +52,14 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	protected StructuredViewer createViewer(Composite parent) {
 		return viewerFactory.createTableViewer(parent,
 				SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION, eClass);
+	}
+
+	/**
+	 * @since 2.0
+	 */
+	@Override
+	protected FormDetailComposite createDetailComposite(Composite parent, EObject selectedObject) {
+		return compositeFactory.createFormDetailComposite(parent, SWT.BORDER, selectedObject);
 	}
 
 }
