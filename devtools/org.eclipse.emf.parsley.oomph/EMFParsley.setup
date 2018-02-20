@@ -399,6 +399,9 @@
       <description>Tests Libraries</description>
     </setupTask>
     <setupTask
+        xsi:type="projects:ProjectsBuildTask"
+        refresh="true"/>
+    <setupTask
         xsi:type="launching:LaunchTask"
         id="CreateTestLibraries"
         launcher="Create Test Libraries"/>
@@ -700,7 +703,7 @@
               project="org.eclipse.emf.parsley.common"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='rcp']/@setupTasks.5/@workingSets.3 //@projects[name='rcp']/@setupTasks.5/@workingSets.0 //@projects[name='rcp']/@setupTasks.5/@workingSets.4 //@projects[name='rcp']/@setupTasks.5/@workingSets.2 //@projects[name='rcp']/@setupTasks.5/@workingSets.1"/>
+              excludedWorkingSet="//@projects[name='rcp']/@setupTasks.6/@workingSets.3 //@projects[name='rcp']/@setupTasks.6/@workingSets.0 //@projects[name='rcp']/@setupTasks.6/@workingSets.4 //@projects[name='rcp']/@setupTasks.6/@workingSets.2 //@projects[name='rcp']/@setupTasks.6/@workingSets.1"/>
         </predicate>
       </workingSet>
       <description>The dynamic working sets for ${scope.project.label}</description>
