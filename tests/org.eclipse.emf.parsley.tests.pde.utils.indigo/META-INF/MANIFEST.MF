@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Emf Parsley Tests PDE Utils
 Bundle-SymbolicName: org.eclipse.emf.parsley.tests.pde.utils
-Bundle-Version: 1.2.2.qualifier
+Bundle-Version: 1.2.3.qualifier
 Bundle-Vendor: Eclipse Modeling Project
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.pde.core;bundle-version="3.7.1";visibility:=reexport,
