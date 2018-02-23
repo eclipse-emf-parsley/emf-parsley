@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
@@ -38,6 +40,8 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 
 	boolean tableFormViewOpened = false;
 
+	boolean treeTableFormViewOpened = false;
+
 	boolean tableViewOpened = false;
 
 	boolean treeViewOpened = false;
@@ -50,6 +54,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		tableViewOpened = false;
 		treeViewOpened = false;
 		tableFormViewOpened = false;
+		treeTableFormViewOpened = false;
 	}
 
 	@Override
@@ -59,6 +64,8 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 			closeView(TEST_SAVEABLE_TREE_FORM_VIEW);
 		if (tableFormViewOpened)
 			closeView(TEST_SAVEABLE_TABLE_FORM_VIEW);
+		if (treeTableFormViewOpened)
+			closeView(TEST_MODEL_EDITABLE_TREE_TABLE_FORM_VIEW);
 		if (tableViewOpened)
 			closeView(TEST_SAVEABLE_TABLE_VIEW);
 		if (treeViewOpened)
@@ -246,6 +253,14 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		saveViewAndAssertNotDirty(TEST_SAVEABLE_TREE_VIEW);
 	}
 
+	@Test
+	public void testSaveableTreeTableFormView() throws Exception {
+		SWTBotTable table = prepareSaveableTreeTableFormView();
+		table.select(0);
+		SWTFormsBot formbot = formBotFromView(getView(TEST_MODEL_EDITABLE_TREE_TABLE_FORM_VIEW));
+		formbot.label("Boolean Feature");
+	}
+
 	protected void checkDoubleClickDialog(SWTBotTreeItem libraryNode, String viewName) {
 		libraryNode.doubleClick();
 		bot.shell(LIBRARY_LABEL);
@@ -287,6 +302,16 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 		openTestView(TEST_SAVEABLE_TABLE_FORM_VIEW);
 		SWTBotTable table = bot.table();
 		tableFormViewOpened = true;
+		return table;
+	}
+
+	protected SWTBotTable prepareSaveableTreeTableFormView()
+			throws CoreException, InvocationTargetException, InterruptedException, IOException {
+		createProjectAndTestFiles();
+		SWTBotView view = openTestView(TEST_MODEL_EDITABLE_TREE_TABLE_FORM_VIEW);
+		view.bot().tree().select(TEST_CONTAINER_LABEL);
+		SWTBotTable table = bot.table();
+		treeTableFormViewOpened = true;
 		return table;
 	}
 

@@ -1,0 +1,55 @@
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.parsley.resource.ResourceSaveStrategy
+import org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsFactory
+import org.eclipse.emf.parsley.tests.models.testmodels.TestmodelsPackage
+import org.eclipse.emf.parsley.tests.views.ViewsSaveableEditableTreeTableFormView
+import org.eclipse.emf.parsley.viewers.TableViewerColumnBuilder
+import org.eclipse.emf.parsley.viewers.TableViewerEditableColumnBuilder
+
+/**
+ * Defines Parsley parts acting on parsley.tests.models,
+ * for testing purposes.
+ * 
+ * The resources edited by these views are expected to be found
+ * on a project called "MyTestProject" in the workbench.
+ */
+module org.eclipse.emf.parsley.tests.treetableformviews {
+	parts {
+		viewpart org.eclipse.emf.parsley.tests.editabletreetableform {
+			viewname "Test Model Editable Tree Table Form View"
+			viewclass ViewsSaveableEditableTreeTableFormView
+		}
+	}
+	
+	bindings {
+		type ResourceSaveStrategy -> ValidateBeforeSaveStrategy
+		type TableViewerColumnBuilder -> TableViewerEditableColumnBuilder
+		value int TreeFormSashStyle -> SWT.HORIZONTAL
+	}
+
+	configurator {
+		resourceURI {
+			ViewsSaveableEditableTreeTableFormView -> {
+				return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");
+			}
+		}
+		eClass {
+			ViewsSaveableEditableTreeTableFormView -> {
+				TestmodelsPackage.Literals.CLASS_FOR_CONTROLS
+			}
+		}
+	}
+
+	resourceManager {
+		val factory = TestmodelsFactory.eINSTANCE
+
+		initializeResource {
+			getContents += factory.createTestContainer => [
+				classesForControls += factory.createClassForControls
+				classesWithName += factory.createClassWithName => [name = "First Class With Name"]
+				classesWithName += factory.createClassWithName => [name = "Second Class With Name"]
+			]
+		}
+	}
+}

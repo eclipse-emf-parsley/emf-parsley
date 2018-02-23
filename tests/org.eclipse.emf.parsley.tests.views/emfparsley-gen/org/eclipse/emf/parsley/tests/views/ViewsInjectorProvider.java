@@ -9,7 +9,7 @@ import org.eclipse.emf.parsley.tests.views.ViewsEmfParsleyGuiceModule;
 public class ViewsInjectorProvider {
   private static Injector injector;
   
-  public static synchronized Injector getInjector() throws Exception {
+  public static synchronized Injector getInjector() {
     if (injector == null) {
       injector = Guice.createInjector(
         new ViewsEmfParsleyGuiceModule(PluginUtil.getPlugin(

@@ -337,6 +337,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	protected static final String TEST_MODEL_EDITABLE_TABLE_VIEW = "Test Model Editable Table View";
 
+	protected static final String TEST_MODEL_EDITABLE_TREE_TABLE_FORM_VIEW = "Test Model Editable Tree Table Form View";
+
 	protected static final String NEW_OBJECT_FOR_VALIDATION = "Objects For Validation Class For Validation";
 
 	protected static final String OBJECT_FOR_VALIDATION = "Class For Validation";
