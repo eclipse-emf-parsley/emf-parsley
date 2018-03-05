@@ -78,6 +78,11 @@ class CompositeFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	@Test
+	def void canCreateTreeWithColumnsComposite() {
+		factory.createTreeWithColumnsComposite(shell, SWT.NONE, eClass)
+	}
+
+	@Test
 	def void testDefaultSashProperties() {
 		syncExecVoid[
 			val treeFormComposite = getOrCreateInjector.getInstance(CompositeFactory).

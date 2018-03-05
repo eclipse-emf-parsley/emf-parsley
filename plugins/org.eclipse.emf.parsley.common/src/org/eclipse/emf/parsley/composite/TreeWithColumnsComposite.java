@@ -10,33 +10,36 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
+import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.layout.FillLayout;
 
 import com.google.inject.Inject;
 
 /**
- * A generic composite with a {@link TreeViewer}.
+ * A generic composite with a {@link TreeViewer} with columns.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  */
-public class TreeComposite extends AbstractViewerMasterComposite<TreeViewer> {
+public class TreeWithColumnsComposite extends TreeComposite {
 
 	@Inject
 	private ViewerFactory viewerFactory;
 
+	private EClass eClass;
+
 	@Inject
-	public TreeComposite(CompositeParameters params) {
+	public TreeWithColumnsComposite(CompositeParameters params, EClassParameter eClassParam) {
 		super(params);
-		setLayout(new FillLayout());
+		this.eClass = eClassParam.getEClass();
 	}
 
 	@Override
 	protected TreeViewer createStructuredViewer() {
-		return viewerFactory.createTreeViewer(this, getStyle());
+		return viewerFactory.createTreeViewerWithColumns(this, getStyle(), eClass);
 	}
 
 }

@@ -154,6 +154,27 @@ public class ViewerFactory {
 	}
 
 	/**
+	 * Creates a {@link TreeViewer} with columns; the tree will display the
+	 * input and the columns will represent the features of the
+	 * contents that are instances of the specified {@link EClass}.
+	 * 
+	 * @param parent
+	 * @param style
+	 * @param type
+	 *            to get the features to represent in the columns
+	 * @return
+	 * @since 2.0
+	 */
+	public TreeViewer createTreeViewerWithColumns(Composite parent, int style, EClass type) {
+		Composite viewerContainer = new Composite(parent, SWT.NONE);
+		TreeColumnLayout layout = new TreeColumnLayout();
+		viewerContainer.setLayout(layout);
+		TreeViewer treeViewer = createTreeViewer(viewerContainer, style);
+		buildColumns(treeViewer, type);
+		return treeViewer;
+	}
+
+	/**
 	 * Initializes the specified {@link TableViewer} building its columns
 	 * according to the specified type.
 	 * 

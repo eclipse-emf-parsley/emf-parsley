@@ -108,6 +108,10 @@ public class CompositeFactory {
 		return genericFactory.createInstance(TreeComposite.class, new CompositeParameters(parent, style));
 	}
 
+	public TreeWithColumnsComposite createTreeWithColumnsComposite(Composite parent, int style, EClass type) {
+		return genericFactory.createInstance(TreeWithColumnsComposite.class, new CompositeParameters(parent, style), new EClassParameter(type));
+	}
+
 	public TableFormComposite createTableFormComposite(Composite parent, int style, EClass type) {
 		return genericFactory.createInstance(TableFormComposite.class,
 				new CompositeParameters(parent, style), new EClassParameter(type));

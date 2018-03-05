@@ -81,8 +81,22 @@ class ViewerFactoryTest extends AbstractViewerTest {
 		]
 	}
 
-	@Test def void testCreateTreeViewerWithColumns() {
+	@Test def void testCreateTreeViewerWithColumnsAndContents() {
 		treeViewer = viewerFactory.createTreeViewerWithColumns(shell, testPackage.classForControls, testContainer)
+		syncExecVoid[
+			// the tree contains all the elements, independently from
+			// the eclass for representing the table columns
+			(numOfElements * 3).assertEquals(treeViewer.tree.itemCount)
+			// the first column is the tree so we skip it
+			// the first feature of ClassForControls
+			"booleanFeature".assertEquals(treeViewer.tree.columns.get(1).text)
+			"booleanObjectFeature".assertEquals(treeViewer.tree.columns.get(2).text)
+		]
+	}
+
+	@Test def void testCreateTreeViewerWithColumns() {
+		treeViewer = viewerFactory.createTreeViewerWithColumns(shell, SWT.NONE, testPackage.classForControls)
+		treeViewer.setInput = testContainer
 		syncExecVoid[
 			// the tree contains all the elements, independently from
 			// the eclass for representing the table columns
