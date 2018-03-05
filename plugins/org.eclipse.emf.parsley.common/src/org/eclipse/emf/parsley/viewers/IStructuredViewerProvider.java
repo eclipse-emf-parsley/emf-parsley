@@ -18,10 +18,11 @@ import org.eclipse.jface.viewers.StructuredViewer;
  * 
  * @author Lorenzo Bettini - Initial contribution and API
  *
+ * @param <T> The specific type of the {@link StructuredViewer}
  */
-public interface IStructuredViewerProvider extends IViewerProvider {
+public interface IStructuredViewerProvider<T extends StructuredViewer> extends IViewerProvider {
 
 	@Override
-	StructuredViewer getViewer();
+	T getViewer();
 
 }

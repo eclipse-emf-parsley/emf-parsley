@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.parsley.inject.AfterInject;
 import org.eclipse.emf.parsley.inject.EmfParsleyLifecycle;
+import org.eclipse.emf.parsley.inject.InjectableComposite;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.viewers.IStructuredViewerProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -26,9 +27,10 @@ import org.eclipse.jface.viewers.StructuredViewer;
  * 
  */
 @EmfParsleyLifecycle
-public abstract class AbstractViewerMasterComposite extends AbstractMasterComposite implements IStructuredViewerProvider {
+public abstract class AbstractViewerMasterComposite<T extends StructuredViewer> extends InjectableComposite
+		implements IStructuredViewerProvider<T>, IMasterComposite {
 
-	private StructuredViewer structuredViewer;
+	private T structuredViewer;
 
 	public AbstractViewerMasterComposite(CompositeParameters params) {
 		super(params);
@@ -42,7 +44,7 @@ public abstract class AbstractViewerMasterComposite extends AbstractMasterCompos
 		this.structuredViewer = createStructuredViewer();
 	}
 
-	abstract protected StructuredViewer createStructuredViewer();
+	abstract protected T createStructuredViewer();
 
 	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener selectionChangedListener) {
@@ -50,7 +52,7 @@ public abstract class AbstractViewerMasterComposite extends AbstractMasterCompos
 	}
 
 	@Override
-	public StructuredViewer getViewer() {
+	public T getViewer() {
 		return structuredViewer;
 	}
 

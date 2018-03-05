@@ -58,7 +58,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 
 	private Composite detailParentComposite;
 
-	private AbstractMasterComposite masterComposite;
+	private IMasterComposite masterComposite;
 
 	private IDetailComposite detailComposite;
 
@@ -121,7 +121,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	 * @return
 	 * @since 2.0
 	 */
-	protected abstract AbstractMasterComposite createMasterComposite(Composite parent);
+	protected abstract IMasterComposite createMasterComposite(Composite parent);
 
 	/**
 	 * This method is called each time the object selected in the master composite changes.

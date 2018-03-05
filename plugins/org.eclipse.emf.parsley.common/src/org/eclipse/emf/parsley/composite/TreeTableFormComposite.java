@@ -16,7 +16,7 @@ import org.eclipse.emf.parsley.EmfParsleyConstants;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 import org.eclipse.emf.parsley.viewers.IStructuredViewerProvider;
-import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -31,7 +31,7 @@ import com.google.inject.name.Named;
  * @author Lorenzo Bettini
  * @since 2.0
  */
-public class TreeTableFormComposite extends AbstractMasterDetailComposite implements IStructuredViewerProvider {
+public class TreeTableFormComposite extends AbstractMasterDetailComposite implements IStructuredViewerProvider<TreeViewer> {
 
 	@Inject
 	private CompositeFactory compositeFactory;
@@ -69,7 +69,7 @@ public class TreeTableFormComposite extends AbstractMasterDetailComposite implem
 	}
 
 	@Override
-	public StructuredViewer getViewer() {
+	public TreeViewer getViewer() {
 		return treeComposite.getViewer();
 	}
 

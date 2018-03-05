@@ -12,9 +12,9 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EcoreFactory
-import org.eclipse.emf.parsley.composite.AbstractMasterComposite
 import org.eclipse.emf.parsley.composite.AbstractMasterDetailComposite
 import org.eclipse.emf.parsley.composite.IDetailComposite
+import org.eclipse.emf.parsley.composite.IMasterComposite
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest
 import org.eclipse.jface.viewers.ISelectionChangedListener
@@ -32,7 +32,7 @@ import static extension org.junit.Assert.*
 class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
 
 	public static class MasterDetailComposite extends AbstractMasterDetailComposite {
-		public var AbstractMasterComposite mockMasterComposite = mock(AbstractMasterComposite);
+		public var IMasterComposite mockMasterComposite = mock(IMasterComposite);
 
 		public var IDetailComposite mockDetailComposite
 

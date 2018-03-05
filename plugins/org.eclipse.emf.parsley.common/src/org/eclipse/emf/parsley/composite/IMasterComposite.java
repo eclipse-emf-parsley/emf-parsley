@@ -10,33 +10,27 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.composite;
 
-import org.eclipse.emf.parsley.inject.InjectableComposite;
-import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 
 /**
- * A generic abstract master composite with some contents.
+ * Represents a master composite with some contents.
  * 
  * @author Lorenzo Bettini
  * @since 2.0
  * 
  */
-public abstract class AbstractMasterComposite extends InjectableComposite {
-
-	public AbstractMasterComposite(CompositeParameters params) {
-		super(params);
-	}
+public interface IMasterComposite {
 
 	/**
 	 * Adss a {@link ISelectionChangedListener} listener to this composite.
 	 * @param selectionChangedListener
 	 */
-	public abstract void addSelectionChangedListener(ISelectionChangedListener selectionChangedListener);
+	void addSelectionChangedListener(ISelectionChangedListener selectionChangedListener);
 
 	/**
 	 * Updates the content of this master component.
 	 * @param contents
 	 */
-	public abstract void update(Object contents);
+	void update(Object contents);
 
 }

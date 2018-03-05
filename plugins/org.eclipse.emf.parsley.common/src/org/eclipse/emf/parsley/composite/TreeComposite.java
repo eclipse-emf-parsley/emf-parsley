@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.composite;
 
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
-import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.layout.FillLayout;
 
@@ -24,7 +23,7 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini
  * @since 2.0
  */
-public class TreeComposite extends AbstractViewerMasterComposite {
+public class TreeComposite extends AbstractViewerMasterComposite<TreeViewer> {
 
 	@Inject
 	private ViewerFactory viewerFactory;
@@ -36,7 +35,7 @@ public class TreeComposite extends AbstractViewerMasterComposite {
 	}
 
 	@Override
-	protected StructuredViewer createStructuredViewer() {
+	protected TreeViewer createStructuredViewer() {
 		TreeViewer treeViewer = viewerFactory.createTreeViewer(this, getStyle());
 		return treeViewer;
 	}
