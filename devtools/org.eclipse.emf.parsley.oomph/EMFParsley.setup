@@ -828,6 +828,12 @@
           storageURI="scope://Workspace"/>
       <setupTask
           xsi:type="setup.p2:P2Task"
+          label="Photon Integration Builds">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.8-I-builds"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup.p2:P2Task"
           id="p2.org.eclipse.xtext.4"
           label="Xtext Releases"
           licenseConfirmationDisabled="true">
