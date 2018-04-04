@@ -598,6 +598,8 @@
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
+          <repository
+              url="http://download.eclipse.org/modeling/emf/emf/builds/nightly/latest/"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -838,6 +840,12 @@
           value="Photon"
           defaultValue="Photon"
           storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup.p2:P2Task"
+          label="Photon Integration Builds">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.8-I-builds"/>
+      </setupTask>
       <setupTask
           xsi:type="setup.p2:P2Task"
           id="p2.org.eclipse.xtext.4"
