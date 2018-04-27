@@ -19,25 +19,25 @@ import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProje
  * @author Francesco Guidieri
  * @author Lorenzo Bettini - refactored to avoid code duplication
  */
-public class TemplateWizardConfiguration {
+class TemplateWizardConfiguration {
 	protected static final EmfParsleyDslNewProjectFiles projectFilesGenerator= new EmfParsleyDslNewProjectFiles
 
 	/**
 	 * The text for the template shown in the list
 	 */
-	private String label;
-	
+	String label;
+
 	/**
 	 * The class that must be extended by the generated part, this
 	 * must be a fully qualified name.
 	 */
-	private String superClassName;
+	String superClassName;
 
 	/**
 	 * A description for this specific template
 	 */
-	private CharSequence description;
-	
+	CharSequence description;
+
 	new(String label, CharSequence description, Class<?> superClass) {
 		super();
 		this.label = label;

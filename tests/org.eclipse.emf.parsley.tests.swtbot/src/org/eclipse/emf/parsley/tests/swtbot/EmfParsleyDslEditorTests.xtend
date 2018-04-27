@@ -16,7 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyDslEditorTests extends EmfParsleyDslUiAbstractTests {
+class EmfParsleyDslEditorTests extends EmfParsleyDslUiAbstractTests {
 
 	// This is now checked in org.eclipse.emf.parsley.dsl.ui.tests.EmfParsleyDslWorkbenchTest.testPluginXmlGeneration()
 //	@Test

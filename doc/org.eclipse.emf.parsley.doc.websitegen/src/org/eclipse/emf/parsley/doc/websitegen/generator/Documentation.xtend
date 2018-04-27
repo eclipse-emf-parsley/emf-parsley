@@ -14,13 +14,13 @@ import org.eclipse.xtext.xdoc.xdoc.ImageRef
 import static extension com.google.common.io.Files.*
 
 class Documentation extends AbstractXdocBaseWebsite {
-	
-	static final val MENU_SECTION_MAX_LENGHT=21
-	
+
+	static val MENU_SECTION_MAX_LENGHT = 21
+
 	new() {
 		doc = docLoader.loadDocument(xdocDocumentRootFolder)
 	}
-	
+
 //	override getStandaloneSetup() {
 //		new DocumentationSetup
 //	}

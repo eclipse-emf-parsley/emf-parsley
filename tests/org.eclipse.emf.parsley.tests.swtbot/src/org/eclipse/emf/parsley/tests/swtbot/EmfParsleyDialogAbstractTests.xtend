@@ -12,7 +12,7 @@ package org.eclipse.emf.parsley.tests.swtbot
 
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem
 
-public abstract class EmfParsleyDialogAbstractTests extends EmfParsleySWTBotAbstractTests {
+abstract class EmfParsleyDialogAbstractTests extends EmfParsleySWTBotAbstractTests {
 
 	protected var editorName = EMF_TREE_EDITOR_OPEN_DIALOG
 

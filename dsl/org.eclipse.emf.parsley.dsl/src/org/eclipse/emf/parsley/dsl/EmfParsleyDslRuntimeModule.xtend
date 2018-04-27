@@ -26,6 +26,7 @@ import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy
 import org.eclipse.xtext.scoping.IScopeProvider
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eclipse.xtext.xbase.scoping.batch.ImplicitlyImportedFeatures
+import org.eclipse.xtext.xbase.validation.XbaseConfigurableIssueCodes
 
 /** 
  * Use this class to register components to be used at runtime / without the
@@ -53,5 +54,10 @@ class EmfParsleyDslRuntimeModule extends AbstractEmfParsleyDslRuntimeModule {
 		binder.bind(IScopeProvider).annotatedWith(
 			Names.named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(
 			EmfParsleyDslImportedNamespaceScopeProvider)
+	}
+
+	// see https://github.com/eclipse/xtext-core/issues/722
+	override bindConfigurableIssueCodesProvider() {
+		XbaseConfigurableIssueCodes
 	}
 }

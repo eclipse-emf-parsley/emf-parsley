@@ -16,7 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
+class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 
 	val TREE_FORM_TEMPLATE = "Saveable Tree Form View"
 	val TREE_TEMPLATE = "Saveable Tree View"
@@ -25,8 +25,8 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	val TABLE_TEMPLATE = "Saveable Table View"
 	val ONSELECTION_TREE_TEMPLATE = "On selection Tree View"
 	val ONSELECTION_TREE_FORM_TEMPLATE = "On selection Tree Form View"
-	val ONSELECTION_TABLE_TEMPLATE = "On selection Table View"	
-	val ONSELECTION_TABLE_FORM_TEMPLATE = "On selection Table Form View"	
+	val ONSELECTION_TABLE_TEMPLATE = "On selection Table View"
+	val ONSELECTION_TABLE_FORM_TEMPLATE = "On selection Table Form View"
 	val ONSELECTION_FORM_TEMPLATE = "On selection Form View"
 
 	new() {

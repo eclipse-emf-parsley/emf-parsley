@@ -48,11 +48,9 @@ class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposalProvide
 	
 	@Inject extension EmfParsleyDslGuiceModuleHelper
 	
-	@Inject
-	private ReplacingAppendable.Factory appendableFactory;
+	@Inject ReplacingAppendable.Factory appendableFactory;
 
-	@Inject
-	private EmfParsleyDslTypeSystem typeSystem;
+	@Inject EmfParsleyDslTypeSystem typeSystem;
 
 	override void completeViewSpecification_Type(EObject model,
 			Assignment assignment, ContentAssistContext context,

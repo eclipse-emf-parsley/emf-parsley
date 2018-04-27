@@ -15,7 +15,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(typeof(SWTBotJunit4ClassRunner))
-public class EmfParsleyDialogTests extends EmfParsleyDialogAbstractTests {
+class EmfParsleyDialogTests extends EmfParsleyDialogAbstractTests {
 
 	@Test
 	def void checkOpenDialogOnTreeElements() {

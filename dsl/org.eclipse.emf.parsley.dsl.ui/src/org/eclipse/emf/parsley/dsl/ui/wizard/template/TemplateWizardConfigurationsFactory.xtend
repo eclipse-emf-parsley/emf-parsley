@@ -21,10 +21,11 @@ import org.eclipse.emf.parsley.views.SaveableTreeFormView
 import org.eclipse.emf.parsley.views.SaveableTreeView
 import org.eclipse.emf.parsley.views.SaveableTreeWithColumnsView
 
+
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
-public class TemplateWizardConfigurationsFactory {
+class TemplateWizardConfigurationsFactory {
 
 	static class TemplateWizardConfigurationForOnSelectionTableView extends TemplateWizardConfiguration {
 	
