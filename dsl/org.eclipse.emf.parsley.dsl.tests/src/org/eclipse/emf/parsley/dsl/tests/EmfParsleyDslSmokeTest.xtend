@@ -35,7 +35,7 @@ class EmfParsleyDslSmokeTest {
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
 
-	private final static Logger LOG = Logger.getLogger(JvmModelAssociator);
+	final static Logger LOG = Logger.getLogger(JvmModelAssociator);
 
 	/**
 	 * JvmModelAssociator does not throw exceptions but logs possible

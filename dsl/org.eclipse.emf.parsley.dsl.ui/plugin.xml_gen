@@ -250,6 +250,15 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="org.eclipse.emf.parsley.dsl.EmfParsleyDsl"
+			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="org.eclipse.emf.parsley.dsl.ui.keyword_EmfParsleyDsl"/>
+		</page>
+	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
@@ -484,7 +493,7 @@
 	</extension>
 	<extension point="org.eclipse.core.runtime.adapters">
 		<factory class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.xtext.builder.smap.StratumBreakpointAdapterFactory"
-			adaptableType="org.eclipse.xtext.ui.editor.XtextEditor">
+			adaptableType="org.eclipse.emf.parsley.dsl.ui.editor.EmfParsleyDslEditor">
 			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
 		</factory> 
 	</extension>
@@ -578,12 +587,18 @@
 			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="parsley">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.contenttype"
+			contentViewerId="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.compare.contentMergeViewers"
 			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="parsley" label="EmfParsleyDsl Compare">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.contenttype"
+			contentMergeViewerId="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="org.eclipse.emf.parsley.dsl.EmfParsleyDsl.editors.documentProviders"
