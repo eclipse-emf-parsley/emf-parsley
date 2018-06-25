@@ -39,18 +39,18 @@ class TargetPaths {
 		String parentPath, (AbstractSection)=>boolean predicate) {
 		var String thisPath = parentPath
 		if (element instanceof AbstractSection) {
-			val resolved = (element as AbstractSection).resolve
+			val resolved = element.resolve
 			if(resolved != element) {
 				traverseChildren(resolved, adapter, prefix, parentPath, predicate)
 				return
 			}
-			if(predicate.apply(element as AbstractSection)) {
+			if(predicate.apply(element)) {
 				thisPath = 
 					if(adapter.targetFileRoots.empty)
 						prefix + ".html"
 					else
 						prefix + adapter.targetFileRoots.size + ".html"
-				adapter.targetFileRoots.add(element as AbstractSection)
+				adapter.targetFileRoots.add(element)
 			}
 		} 
 		adapter.targetPaths.put(element, thisPath)
