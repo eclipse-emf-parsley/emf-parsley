@@ -32,6 +32,7 @@ public class OpenViewAction extends Action {
 		setImageDescriptor(org.eclipse.emf.parsley.examples.mail.rcp.Activator.getImageDescriptor("/icons/sample2.gif"));
 	}
 	
+	@Override
 	public void run() {
 		MessageDialog.openInformation(window.getShell(), "Open", "New Message Dialog!");
 //		if(window != null) {	

@@ -14,5 +14,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.junit;bundle-version="4.11.0"
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Automatic-Module-Name: org.eclipse.emf.parsley.examples.maven

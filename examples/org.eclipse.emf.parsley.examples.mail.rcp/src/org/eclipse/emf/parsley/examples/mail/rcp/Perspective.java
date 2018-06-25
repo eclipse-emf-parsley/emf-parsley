@@ -24,6 +24,7 @@ public class Perspective implements IPerspectiveFactory {
 	 */
 	public static final String ID = "org.eclipse.emf.parsley.examples.mail.rcp.perspective";
 
+	@Override
 	public void createInitialLayout(IPageLayout layout) {
 		String editorArea = layout.getEditorArea();
 		layout.setEditorAreaVisible(false);
