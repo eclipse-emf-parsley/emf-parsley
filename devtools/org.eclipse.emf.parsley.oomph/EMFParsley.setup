@@ -152,11 +152,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
-      value="1.1.0"/>
+      value="1.2.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.zip"
-      value="org.eclipse.emf.parsley.repository-1.1.0.v20161222-0943.zip"/>
+      value="org.eclipse.emf.parsley.repository-1.2.0.v20170609-0953.zip"/>
   <setupTask
       xsi:type="pde:APIBaselineTask"
       name="parsley-latest"
@@ -859,14 +859,6 @@
           xsi:type="setup:VariableTask"
           name="orbit.site"
           value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="api.baseline.version"
-          value="1.2.0"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="api.baseline.zip"
-          value="org.eclipse.emf.parsley.repository-1.2.0.v20170609-0953.zip"/>
       <description>Branch for Simrel for Photon</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
