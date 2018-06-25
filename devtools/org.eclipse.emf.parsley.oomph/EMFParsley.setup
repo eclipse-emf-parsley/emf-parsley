@@ -144,8 +144,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0"
-      defaultValue=""/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.14.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
@@ -762,7 +761,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.12.0,2.13.0)"/>
+            versionRange="[2.14.0,2.15.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
