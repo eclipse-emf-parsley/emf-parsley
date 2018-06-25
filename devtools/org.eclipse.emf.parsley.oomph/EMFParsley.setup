@@ -584,8 +584,6 @@
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
-          <repository
-              url="http://download.eclipse.org/modeling/emf/emf/builds/nightly/latest/"/>
         </repositoryList>
       </targlet>
     </setupTask>
