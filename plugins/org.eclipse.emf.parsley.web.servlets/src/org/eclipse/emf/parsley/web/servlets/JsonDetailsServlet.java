@@ -66,7 +66,7 @@ public class JsonDetailsServlet extends JsonParsleyServlet {
 			ViewerLabelProvider labelProvider = (ViewerLabelProvider) injector.getInstance(ILabelProvider.class);
 
 			final DialogControlFactory dialogControlFactory = injector.getInstance(DialogControlFactory.class);
-			FormFeatureCaptionProvider formFeatureCaptionProvider = (FormFeatureCaptionProvider) injector
+			FormFeatureCaptionProvider formFeatureCaptionProvider = injector
 					.getInstance(FormFeatureCaptionProvider.class);
 			PolymorphicDispatcher<Object> imageDispatcher = PolymorphicDispatcher.createForSingleTarget("image", 1, 1,
 					labelProvider);
