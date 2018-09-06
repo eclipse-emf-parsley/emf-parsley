@@ -11,7 +11,6 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.Injector
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.edit.domain.EditingDomain
 import org.eclipse.emf.parsley.edit.domain.EditingDomainFinderStrategy
 import org.eclipse.emf.parsley.edit.domain.EditingDomainPresetStrategy
@@ -28,8 +27,6 @@ class EditingDomainStrategyTest extends AbstractEmfParsleyTest {
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
 	var Injector injector
-
-	var Resource resource
 
 	var EditingDomain resourceEditingDomain
 
@@ -59,7 +56,7 @@ class EditingDomainStrategyTest extends AbstractEmfParsleyTest {
 
 	def private createResourceForTest() {
 		resourceEditingDomain = injector.createEditingDomain
-		resource = createTestLibrayResourceAndInitialize(
+		createTestLibrayResourceAndInitialize(
 			resourceEditingDomain.resourceSet.setupResouceFactory
 		)
 	}

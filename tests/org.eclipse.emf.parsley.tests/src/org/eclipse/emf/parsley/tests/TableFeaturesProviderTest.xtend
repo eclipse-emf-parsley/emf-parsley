@@ -23,8 +23,6 @@ import static extension org.junit.Assert.*
 
 class TableFeaturesProviderTest extends FeaturesProviderTest {
 	
-	var TableFeaturesProvider tableFeaturesProvider
-	
 	/**
 	 * This will be used to test that TableFeaturesProvider delegates also to
 	 * a possibly customized injected FeaturesProvider
@@ -51,7 +49,6 @@ class TableFeaturesProviderTest extends FeaturesProviderTest {
 	override void setUpFeaturesProvider() {
 		featuresProvider = new TableFeaturesProvider
 		injectMembers(featuresProvider)
-		tableFeaturesProvider = featuresProvider as TableFeaturesProvider
 	}
 	
 	@Test def void testTableFeaturesProviderCustomBuildMap() {

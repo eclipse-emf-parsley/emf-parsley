@@ -26,7 +26,7 @@ class CachedLabelProviderTest extends AbstractImageBasedTest {
 
 	var CachedLabelProvider labelProvider
 	var ILabelProvider delegate
-	val final TEST_VAL = "TEST"
+	val TEST_VAL = "TEST"
 
 	@Before
 	def void setupLabelProvider() {

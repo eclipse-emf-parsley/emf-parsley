@@ -17,7 +17,7 @@ import static extension org.junit.Assert.*
 
 class FormControlFactoryTest extends DialogControlFactoryTest {
 	
-	def override protected createAndInitializeFactory() {
+	override protected createAndInitializeFactory() {
 		new FormControlFactory() => [
 			initialize(classForControlsInstance)
 		]
