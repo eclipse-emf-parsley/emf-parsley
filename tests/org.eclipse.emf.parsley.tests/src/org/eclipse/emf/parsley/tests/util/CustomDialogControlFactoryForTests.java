@@ -29,7 +29,7 @@ public class CustomDialogControlFactoryForTests extends DialogControlFactory {
 		super(compositeParameter, eObjectParameter);
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Text control_BaseClass_baseClassFeature(final EMFDataBindingContext edbc,
 			final IObservableValue modelObservableValue) {
 		final Text text = this.createText("");

@@ -30,13 +30,13 @@ class FormControlFactoryTest extends DialogControlFactoryTest {
 		}
 
 		// make it available for tests
-		override public getFormToolkit() {
+		override getFormToolkit() {
 			super.getFormToolkit()
 		}
 
 	}
 
-	def override protected createAndInitializeFactory() {
+	override protected createAndInitializeFactory() {
 		new CustomFormControlFactory(compositeParameter, getEObjectParameter(classForControlsInstance),
 			new FormToolkitParameter(formToolkit)).injectMembers => [
 			// shell must be visibile since we need to check visibility of some controls

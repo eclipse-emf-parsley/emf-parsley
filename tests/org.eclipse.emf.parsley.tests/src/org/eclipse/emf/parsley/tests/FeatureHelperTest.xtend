@@ -31,7 +31,7 @@ class FeatureHelperTest extends AbstractEmfParsleyTest {
 	 */
 	var protected ClassForControls classForControlsInstance
 
-	var private FeatureHelper featureHelper
+	var FeatureHelper featureHelper
 
 	@Before
 	def void setupEObject() {

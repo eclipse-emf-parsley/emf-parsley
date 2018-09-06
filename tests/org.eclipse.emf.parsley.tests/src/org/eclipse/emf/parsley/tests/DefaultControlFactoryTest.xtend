@@ -23,7 +23,7 @@ import org.junit.Test
  */
 class DefaultControlFactoryTest extends DialogControlFactoryTest {
 
-	def override protected createAndInitializeFactory() {
+	override protected createAndInitializeFactory() {
 		new DialogControlFactory(compositeParameter, getEObjectParameter(classForControlsInstance)) {
 			override create(EStructuralFeature feature) {
 				super.createDefaultControl(feature)
