@@ -73,7 +73,7 @@ public class JsonDetailsServlet extends JsonParsleyServlet {
 			final DialogControlFactory dialogControlFactory = compositeFactory
 					.createDialogControlFactory(Application.getInstance(request).getShell(), eObject1, null);
 			// note that FormFeatureCaptionProvider requires a FormToolkit for creating labels...
-			FormFeatureCaptionProvider formFeatureCaptionProvider = (FormFeatureCaptionProvider) injector
+			FormFeatureCaptionProvider formFeatureCaptionProvider = injector
 					.getInstance(FormFeatureCaptionProvider.class);
 			PolymorphicDispatcher<Object> imageDispatcher = PolymorphicDispatcher.createForSingleTarget("image", 1, 1,
 					labelProvider);

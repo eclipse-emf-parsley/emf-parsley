@@ -144,8 +144,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.12.0"
-      defaultValue=""/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.14.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
@@ -153,11 +152,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
-      value="1.1.0"/>
+      value="1.2.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.zip"
-      value="org.eclipse.emf.parsley.repository-1.1.0.v20161222-0943.zip"/>
+      value="org.eclipse.emf.parsley.repository-1.2.0.v20170609-0953.zip"/>
   <setupTask
       xsi:type="pde:APIBaselineTask"
       name="parsley-latest"
@@ -598,8 +597,6 @@
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
           <repository
               url="${orbit.site}"/>
-          <repository
-              url="http://download.eclipse.org/modeling/emf/emf/builds/nightly/latest/"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -778,7 +775,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.12.0,2.13.0)"/>
+            versionRange="[2.14.0,2.15.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository

@@ -16,5 +16,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.parsley.dsl;resolution:=optional
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Automatic-Module-Name: org.eclipse.emf.parsley.tests.views
