@@ -271,7 +271,7 @@
       <requirement
           name="org.eclipse.cbi.p2repo.aggregator.editor.feature.feature.group"/>
       <repository
-          url="http://download.eclipse.org/cbi/updates/aggregator/ide/4.7/"/>
+          url="http://download.eclipse.org/cbi/updates/aggregator/ide/4.8/"/>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -570,7 +570,24 @@
         <repositoryList
             name="Photon">
           <repository
-              url="http://download.eclipse.org/staging/photon/"/>
+              url="http://download.eclipse.org/releases/photon/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+          <repository
+              url="${orbit.site}"/>
+        </repositoryList>
+        <repositoryList
+            name="2018-09">
+          <repository
+              url="http://download.eclipse.org/staging/2018-09/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -723,25 +740,6 @@
           url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED"/>
     </setupTask>
     <setupTask
-        xsi:type="mylyn:MylynQueriesTask"
-        connectorKind="org.eclipse.mylyn.gerrit"
-        repositoryURL="https://git.eclipse.org/r"
-        userID="${bugzilla.id}"
-        password="${eclipse.user.password}">
-      <query
-          summary="EMF Parsley Reviews">
-        <attribute
-            key="gerrit query type"
-            value="custom"/>
-        <attribute
-            key="gerrit query project"
-            value="emf-parsley/org.eclipse.emf-parsley"/>
-        <attribute
-            key="gerrit query string"
-            value="project:emf-parsley/org.eclipse.emf-parsley status:open"/>
-      </query>
-    </setupTask>
-    <setupTask
         xsi:type="mylyn:MylynBuildsTask"
         serverURL="https://hudson.eclipse.org/emf-parsley/">
       <buildPlan
@@ -861,6 +859,46 @@
           value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
       <description>Branch for Simrel for Photon</description>
     </stream>
+    <stream
+        name="next-simrel"
+        label="Next-Simrel">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="eclipse.target.platform"
+          value="2018-09"
+          defaultValue="2018-09"
+          storageURI="scope://Workspace"/>
+      <setupTask
+          xsi:type="setup.p2:P2Task"
+          label="Xtext Releases"
+          licenseConfirmationDisabled="true">
+        <requirement
+            name="org.eclipse.xtext.sdk.feature.group"
+            versionRange="[2.15.0,2.16.0)"/>
+        <requirement
+            name="de.itemis.xtext.antlr.feature.feature.group"/>
+        <repository
+            url="${xtext.site}"/>
+        <repository
+            url="${mwe2.site}"/>
+        <repository
+            url="http://download.itemis.com/updates/releases/2.1.1/"/>
+        <description>Xtext &amp; Xtend</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/staging/2018-09/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/staging/2018-09/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="orbit.site"
+          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
+      <description>Branch for the next Simrel</description>
+    </stream>
     <description>EMF Parsley version for RCP</description>
   </project>
   <project name="rap"
@@ -938,7 +976,41 @@
         <repositoryList
             name="Oxygen">
           <repository
-              url="http://download.eclipse.org/staging/oxygen/"/>
+              url="http://download.eclipse.org/releases/oxygen/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+          <repository
+              url="${orbit.site}"/>
+        </repositoryList>
+        <repositoryList
+            name="Photon">
+          <repository
+              url="http://download.eclipse.org/releases/photon/"/>
+          <repository
+              url="http://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+          <repository
+              url="${orbit.site}"/>
+        </repositoryList>
+        <repositoryList
+            name="2018-09">
+          <repository
+              url="http://download.eclipse.org/staging/2018-09/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -1069,25 +1141,6 @@
       <query
           summary="EMF Parsley Bugs"
           url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_severity=blocker&amp;bug_severity=critical&amp;bug_severity=major&amp;bug_severity=normal&amp;bug_severity=minor&amp;bug_severity=trivial"/>
-    </setupTask>
-    <setupTask
-        xsi:type="mylyn:MylynQueriesTask"
-        connectorKind="org.eclipse.mylyn.gerrit"
-        repositoryURL="https://git.eclipse.org/r"
-        userID="${bugzilla.id}"
-        password="${eclipse.user.password}">
-      <query
-          summary="EMF Parsley Reviews">
-        <attribute
-            key="gerrit query type"
-            value="custom"/>
-        <attribute
-            key="gerrit query project"
-            value="emf-parsley/org.eclipse.emf-parsley"/>
-        <attribute
-            key="gerrit query string"
-            value="project:emf-parsley/org.eclipse.emf-parsley status:open branch:master"/>
-      </query>
     </setupTask>
     <setupTask
         xsi:type="mylyn:MylynBuildsTask"
