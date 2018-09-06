@@ -20,15 +20,12 @@ class DisposingAwareAdapterTest {
 
 	var Display display
 
-	var Runnable runnable
-
 	@Before
 	def void setup() {
 		o = EcoreFactory.eINSTANCE.createEClass
 		widget = mock(Widget)
 		display = mock(Display)
 		when(widget.getDisplay).thenReturn(display)
-		runnable = mock(Runnable)
 	}
 
 	@Test

@@ -31,7 +31,7 @@ import static extension org.junit.Assert.*
 
 class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
 
-	public static class MasterDetailComposite extends AbstractMasterDetailComposite {
+	static class MasterDetailComposite extends AbstractMasterDetailComposite {
 		public var IMasterComposite mockMasterComposite = mock(IMasterComposite);
 
 		public var IDetailComposite mockDetailComposite
@@ -56,7 +56,7 @@ class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest
 			return mockMasterComposite
 		}
 
-		override public getSashForm() {
+		override getSashForm() {
 			super.getSashForm()
 		}
 

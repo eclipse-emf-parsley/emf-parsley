@@ -38,9 +38,9 @@ class AfterInjectTypeListenerTest extends AbstractEmfParsleyShellBasedTest {
 	@EmfParsleyLifecycle
 	static private abstract class MyClass {
 		@Inject
-		private Foo foo;
-		private Bar bar;
-		private var FooBar fooBar;
+		Foo foo;
+		Bar bar;
+		var FooBar fooBar;
 
 		@Inject
 		new(Bar bar) {
@@ -82,7 +82,7 @@ class AfterInjectTypeListenerTest extends AbstractEmfParsleyShellBasedTest {
 
 	static private class MySubclass extends MyClass {
 		@Inject
-		private Provider<FooBar> fooBarProvider;
+		Provider<FooBar> fooBarProvider;
 
 		@Inject
 		new(Bar bar) {
