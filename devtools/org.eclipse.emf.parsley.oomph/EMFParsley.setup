@@ -374,8 +374,6 @@
             name="org.eclipse.wb.swt.feature.feature.group"/>
         <requirement
             name="org.eclipse.wb.rcp.doc.user.feature.feature.group"/>
-        <repository
-            url="http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/4.5/"/>
       </setupTask>
       <setupTask
           xsi:type="setup.p2:P2Task"
