@@ -759,10 +759,10 @@
 							pom.xml
 							.polyglot.build.properties
 						</jgit.ignore>
-						<!-- TODO: this should be removed, since we must make sure
+						<!-- the following should not be enabled: we must make sure
 							that's everything is committed, including possible regenerated
 							MANIFEST or plugin.xml by Xtext -->
-						<jgit.dirtyWorkingTree>ignore</jgit.dirtyWorkingTree>
+						<!-- <jgit.dirtyWorkingTree>ignore</jgit.dirtyWorkingTree> -->
 					</configuration>
 					<dependencies>
 						<dependency>
