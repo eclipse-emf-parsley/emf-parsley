@@ -79,6 +79,18 @@
 		<antcall target="-modify-artifacts"/>
 	</target>
 
+	<target name="bump-timestamps" >
+		<tstamp/>
+
+		<replaceregexp>
+			<regexp pattern=".*" />
+			<substitution expression="${DSTAMP}-${TSTAMP}" />
+			<fileset id="path.timestamp" dir="${WORKSPACE}">
+				<include name="**/timestamp" />
+			</fileset>
+		</replaceregexp>
+	</target>
+
 	<target name="-modify-artifacts" if="version.main" >
 		<echo message="VERSION MAIN: ${version.main}" />
 		<echo message="VERSION OSGI: ${version.osgi}" />
