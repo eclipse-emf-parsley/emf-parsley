@@ -22,7 +22,7 @@ import static extension org.junit.Assert.*
  * @author Lorenzo Bettini
  * 
  */
-public class EmfParsleyUtilTest {
+class EmfParsleyUtilTest {
 	
 	new() {
 		// the following is useless... but it's just to have coverage

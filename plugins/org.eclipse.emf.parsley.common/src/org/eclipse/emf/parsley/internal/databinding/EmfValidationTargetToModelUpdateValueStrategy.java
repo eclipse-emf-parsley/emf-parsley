@@ -44,7 +44,7 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValu
 		this.databindingValidationUtil = databindingValidationUtil;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	protected IStatus doSet(IObservableValue observableValue, Object value) {
 		// the modification must go into the model
@@ -53,6 +53,7 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValu
 		return validationStatus();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public IStatus validateBeforeSet(Object value) {
 		if (firstValidateBeforeSet) {
@@ -62,6 +63,7 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValu
 		return super.validateBeforeSet(value);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object convert(Object value) {
 		if (converter != null) {
@@ -74,6 +76,7 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValu
 		return value;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public IStatus validateAfterConvert(Object value) {
 		if (value instanceof RuntimeException) {

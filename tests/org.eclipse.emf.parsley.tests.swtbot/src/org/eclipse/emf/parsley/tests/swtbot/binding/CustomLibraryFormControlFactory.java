@@ -43,7 +43,7 @@ public class CustomLibraryFormControlFactory extends FormControlFactory {
 //				SWT.Modify));
 //	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Control control_Writer_name(DataBindingContext dbc,
 			IObservableValue featureObservable) {
 		Text text = createText("");

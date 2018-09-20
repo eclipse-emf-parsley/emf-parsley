@@ -39,7 +39,7 @@ class NotificationBufferTest {
 	}
 	
 	@Test
-	def public void checkAdaptersAreRemovedAndRestored() {
+	def void checkAdaptersAreRemovedAndRestored() {
 		2.assertAdaptersSize
 		buffer.startBuffering
 		1.assertAdaptersSize // NotificationBuffer is set as adapter
@@ -48,7 +48,7 @@ class NotificationBufferTest {
 	}
 
 	@Test
-	def public void checkNotificationsAreBuffered() {
+	def void checkNotificationsAreBuffered() {
 		clearTestAdaptersNotifications
 		buffer.startBuffering
 		addTestBook("1") // the test adapters will receive no notification
@@ -56,7 +56,7 @@ class NotificationBufferTest {
 	}
 
 	@Test
-	def public void checkNotificationsStartAndStopBuffering() {
+	def void checkNotificationsStartAndStopBuffering() {
 		clearTestAdaptersNotifications
 		addTestBook("1")
 		"[eventType: 3, Notifier: TEST, eventType: 3, Notifier: TEST]".assertNotificationsInTestAdapters
@@ -71,7 +71,7 @@ class NotificationBufferTest {
 	}
 
 	@Test
-	def public void checkPropagateBufferedNotifications() {
+	def void checkPropagateBufferedNotifications() {
 		clearTestAdaptersNotifications
 		"[]".assertNotificationsInTestAdapters
 		buffer.startBuffering

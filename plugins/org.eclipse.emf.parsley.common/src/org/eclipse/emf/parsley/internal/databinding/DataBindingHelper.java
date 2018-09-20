@@ -40,6 +40,7 @@ public class DataBindingHelper {
 		EmfValidationTargetToModelUpdateValueStrategy targetToModelUpdateValueStrategy = new EmfValidationTargetToModelUpdateValueStrategy(
 				owner, feature, databindingValidationUtil);
 
+		@SuppressWarnings("unchecked")
 		Binding bindValue = dataBindingContext.bindValue(target, source, targetToModelUpdateValueStrategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 		return bindValue;
