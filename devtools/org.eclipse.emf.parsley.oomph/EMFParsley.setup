@@ -135,7 +135,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="Oxygen"
+      defaultValue="2018-09"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -144,7 +144,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.14.0"/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="orbit.site"
@@ -585,7 +585,7 @@
         <repositoryList
             name="2018-09">
           <repository
-              url="http://download.eclipse.org/staging/2018-09/"/>
+              url="http://download.eclipse.org/releases/2018-09/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -757,7 +757,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.14.0,2.15.0)"/>
+            versionRange="[2.15.0,2.16.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -1156,7 +1156,7 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          defaultValue="Oxygen"
+          defaultValue="2018-09"
           storageURI="scope://Workspace"/>
       <description></description>
     </stream>
