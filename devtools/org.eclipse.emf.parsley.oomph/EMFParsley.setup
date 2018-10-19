@@ -147,10 +147,6 @@
       value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="orbit.site"
-      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
-  <setupTask
-      xsi:type="setup:VariableTask"
       name="api.baseline.version"
       value="1.2.0"/>
   <setupTask
@@ -494,75 +490,6 @@
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
         <repositoryList
-            name="Luna">
-          <repository
-              url="http://download.eclipse.org/releases/luna"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="Mars">
-          <repository
-              url="http://download.eclipse.org/releases/mars"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/releases/neon/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="Kepler">
-          <repository
-              url="http://download.eclipse.org/releases/kepler"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
-            name="Juno">
-          <repository
-              url="http://download.eclipse.org/releases/juno"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
             name="Oxygen">
           <repository
               url="http://download.eclipse.org/releases/oxygen/"/>
@@ -576,8 +503,6 @@
               url="${mwe2.site}"/>
           <repository
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
         </repositoryList>
         <repositoryList
             name="Photon">
@@ -593,8 +518,6 @@
               url="${mwe2.site}"/>
           <repository
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
         </repositoryList>
         <repositoryList
             name="2018-09">
@@ -610,8 +533,6 @@
               url="${mwe2.site}"/>
           <repository
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -784,94 +705,6 @@
       </setupTask>
     </stream>
     <stream
-        name="oxygen-simrel"
-        label="Oxygen-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Oxygen"
-          defaultValue="Oxygen"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          id="p2.org.eclipse.xtext.3"
-          label="Xtext Releases"
-          licenseConfirmationDisabled="true">
-        <requirement
-            name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.12.0,2.13.0)"/>
-        <requirement
-            name="de.itemis.xtext.antlr.feature.feature.group"/>
-        <repository
-            url="${xtext.site}"/>
-        <repository
-            url="${mwe2.site}"/>
-        <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
-        <description>Xtext &amp; Xtend</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
-      <description>Branch for Simrel for Oxygen</description>
-    </stream>
-    <stream
-        name="photon-simrel"
-        label="Photon-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Photon"
-          defaultValue="Photon"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          label="Photon Integration Builds">
-        <repository
-            url="http://download.eclipse.org/eclipse/updates/4.8-I-builds"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          id="p2.org.eclipse.xtext.4"
-          label="Xtext Releases"
-          licenseConfirmationDisabled="true">
-        <requirement
-            name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.14.0,2.15.0)"/>
-        <requirement
-            name="de.itemis.xtext.antlr.feature.feature.group"/>
-        <repository
-            url="${xtext.site}"/>
-        <repository
-            url="${mwe2.site}"/>
-        <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
-        <description>Xtext &amp; Xtend</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/photon/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/photon/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
-      <description>Branch for Simrel for Photon</description>
-    </stream>
-    <stream
         name="next-simrel"
         label="Next-Simrel">
       <setupTask
@@ -905,10 +738,6 @@
           xsi:type="setup:VariableTask"
           name="xtext.site"
           value="http://download.eclipse.org/staging/2018-09/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
       <description>Branch for the next Simrel</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
@@ -935,57 +764,6 @@
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
         <repositoryList
-            name="Luna">
-          <repository
-              url="http://download.eclipse.org/releases/luna"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="http://download.eclipse.org/rt/rap/2.3/"/>
-        </repositoryList>
-        <repositoryList
-            name="Mars">
-          <repository
-              url="http://download.eclipse.org/releases/mars"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="http://download.eclipse.org/rt/rap/3.0/"/>
-        </repositoryList>
-        <repositoryList
-            name="Kepler">
-          <repository
-              url="http://download.eclipse.org/releases/kepler"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
-            name="Juno">
-          <repository
-              url="http://download.eclipse.org/releases/juno"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/releases/neon/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-        </repositoryList>
-        <repositoryList
             name="Oxygen">
           <repository
               url="http://download.eclipse.org/releases/oxygen/"/>
@@ -999,8 +777,6 @@
               url="${mwe2.site}"/>
           <repository
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
         </repositoryList>
         <repositoryList
             name="Photon">
@@ -1016,8 +792,6 @@
               url="${mwe2.site}"/>
           <repository
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
         </repositoryList>
         <repositoryList
             name="2018-09">
@@ -1033,8 +807,6 @@
               url="${mwe2.site}"/>
           <repository
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -1173,25 +945,6 @@
           defaultValue="2018-09"
           storageURI="scope://Workspace"/>
       <description></description>
-    </stream>
-    <stream
-        name="oxygen-simrel"
-        label="Oxygen-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Oxygen"
-          defaultValue="Oxygen"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <description>Branch for Simrel for Oxygen</description>
     </stream>
     <stream
         name="photon-simrel"
