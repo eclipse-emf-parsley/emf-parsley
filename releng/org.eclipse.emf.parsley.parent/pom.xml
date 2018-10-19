@@ -66,7 +66,7 @@
 		<findbugs-version>3.0.5</findbugs-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<xtext-version>2.15.0</xtext-version>
+		<xtext-version>2.16.0-SNAPSHOT</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
 		<mwe2Version>2.9.1.201705291010</mwe2Version>
 		<emf.version>(2.8,3.0)</emf.version>
@@ -174,7 +174,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>2018-09</target-file-name>
+		<target-file-name>2018-12-staging</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -299,7 +299,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>2018-09-rap</target-file-name>
+				<target-file-name>2018-12-staging-rap</target-file-name>
 			</properties>
 
 		</profile>
@@ -841,7 +841,7 @@
 								<plugin id="org.eclipse.emf.parsley.rap" />
 								<plugin id="org.eclipse.emf.parsley.rap.cdo" />
 								<plugin id="org.eclipse.emf.parsley.rap.views" />
-
+								
 								<plugin id="org.eclipse.emf.rap" />
 								<plugin id="org.eclipse.swtbot.go" />
 								<plugin id="org.eclipse.ui.forms" />
@@ -855,6 +855,8 @@
 								<plugin id="com.google.guava" />
 								<plugin id="org.apache.log4j" />
 								<plugin id="com.google.inject" />
+								
+								<plugin id="org.apache.felix.scr" />
 
 								<feature id="org.eclipse.swtbot.ide" />
 								<feature id="org.eclipse.xtext.sdk" />
