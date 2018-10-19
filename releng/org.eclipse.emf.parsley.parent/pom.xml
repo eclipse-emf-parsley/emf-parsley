@@ -759,6 +759,7 @@
 						<jgit.ignore>
 							pom.xml
 							.polyglot.build.properties
+							.api_filters
 						</jgit.ignore>
 						<!-- the following should not be enabled: we must make sure
 							that's everything is committed, including possible regenerated
