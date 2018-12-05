@@ -174,7 +174,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>2018-12-staging</target-file-name>
+		<target-file-name>2018-09</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -299,7 +299,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>2018-12-staging-rap</target-file-name>
+				<target-file-name>2018-09-rap</target-file-name>
 			</properties>
 
 		</profile>
