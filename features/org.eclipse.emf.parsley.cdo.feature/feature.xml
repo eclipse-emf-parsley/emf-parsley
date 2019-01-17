@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.cdo.feature"
       label="EMF Parsley CDO"
-      version="1.5.0.qualifier"
+      version="1.6.0.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.emf.parsley.cdo.common">
 
