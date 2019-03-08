@@ -1085,10 +1085,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		List<IMarker> errorMarkers = new LinkedList<IMarker>();
 		for (int i = 0; i < markers.length; i++) {
 			IMarker iMarker = markers[i];
-			// for the moment we ignore warnings for MANIFEST of the shape
-			// 'Automatic-Module-Name' header is required for Java 9 compatibility
 			if (iMarker.getAttribute(IMarker.SEVERITY).equals(IMarker.SEVERITY_WARNING) &&
-				iMarker.getAttribute(IMarker.MESSAGE).toString().contains("'Automatic-Module-Name'")) {
+				shouldIgnoreIssue(iMarker)) {
 				continue;
 			}
 			errorMarkers.add(iMarker);
@@ -1096,6 +1094,15 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		assertEquals(
 				"expected no issue markers: " + printMarkers(errorMarkers), 0,
 				errorMarkers.size());
+	}
+
+	private boolean shouldIgnoreIssue(IMarker iMarker) throws CoreException {
+		// for the moment we ignore warnings for MANIFEST of the shape
+		// 'Automatic-Module-Name' header is required for Java 9 compatibility
+		// and 'This plug-in does not export all of its packages'
+		final String string = iMarker.getAttribute(IMarker.MESSAGE).toString();
+		return string.contains("'Automatic-Module-Name'") ||
+				string.contains("This plug-in does not export all of its packages");
 	}
 
 	protected void setEditorContentsSaveAndWaitForAutoBuild(
