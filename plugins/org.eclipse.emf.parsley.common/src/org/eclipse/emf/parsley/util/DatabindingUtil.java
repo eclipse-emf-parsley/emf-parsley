@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Widget;
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
+@SuppressWarnings("deprecation")
 public class DatabindingUtil {
 
 	protected DatabindingUtil() {
@@ -45,6 +46,7 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if <code>control</code> type is unsupported
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static ISWTObservableValue observeText(Control control, int event) {
 		return WidgetProperties.text(event).observe(control);
 	}
@@ -71,6 +73,7 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if the type of <code>widget</code> is unsupported
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static ISWTObservableValue observeText(Widget widget) {
 		return WidgetProperties.text().observe(widget);
 	}
@@ -93,6 +96,7 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if <code>control</code> type is unsupported
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static ISWTObservableValue observeSelection(Widget widget) {
 		return WidgetProperties.selection().observe(widget);
 	}

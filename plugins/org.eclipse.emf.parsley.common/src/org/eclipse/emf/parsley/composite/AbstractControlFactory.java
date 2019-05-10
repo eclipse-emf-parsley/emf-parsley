@@ -405,6 +405,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return proposalCreator.proposals(owner, feature);
 	}
 
+	@SuppressWarnings("deprecation")
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(
 			List<?> proposals) {
 		ComboViewer comboViewer = createComboViewer(SWT.READ_ONLY);
