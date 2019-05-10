@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley RAP Runtime Functionalities
 Bundle-SymbolicName: org.eclipse.emf.parsley.rap.runtime
-Bundle-Version: 1.6.0.qualifier
+Bundle-Version: 1.7.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.emf.parsley.runtime.common;visibility:=reexport,
  org.eclipse.rap.ui
