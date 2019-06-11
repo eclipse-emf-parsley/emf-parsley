@@ -144,7 +144,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.17.0"/>
+      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.18.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
@@ -567,7 +567,7 @@
         <repositoryList
             name="2019-06">
           <repository
-              url="http://download.eclipse.org/staging/2019-06/"/>
+              url="http://download.eclipse.org/releases/2019-06/"/>
           <repository
               url="http://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -737,7 +737,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.17.0,2.18.0)"/>
+            versionRange="[2.18.0,2.19.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -755,8 +755,8 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="2019-03"
-          defaultValue="2019-03"
+          value="2019-06"
+          defaultValue="2019-06"
           storageURI="scope://Workspace"/>
       <setupTask
           xsi:type="setup.p2:P2Task"
