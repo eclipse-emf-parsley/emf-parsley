@@ -66,9 +66,9 @@
 		<findbugs-version>3.0.5</findbugs-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<xtext-version>2.18.0</xtext-version>
+		<xtext-version>2.19.0-SNAPSHOT</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.10.0</mwe2Version>
+		<mwe2Version>2.11.0</mwe2Version>
 		<emf.version>(2.8,3.0)</emf.version>
 		<guava.version>[10.0.1,)</guava.version>
 		<google-inject.version>3.0</google-inject.version>
@@ -79,7 +79,7 @@
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
-		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
+		<memoryArgs>-Xms256M -Xmx4G -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<uiTestsArgs>${memoryArgs} ${os-jvm-flags} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
 		<pdeTestsArgs>-DbuildingWithTycho=true</pdeTestsArgs>
 		<skipDragAndDropTests>true</skipDragAndDropTests>
@@ -174,7 +174,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>2019-06</target-file-name>
+		<target-file-name>2019-09-staging</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -299,7 +299,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>2019-06-rap</target-file-name>
+				<target-file-name>2019-06-staging-rap</target-file-name>
 			</properties>
 
 		</profile>
@@ -760,6 +760,7 @@
 							pom.xml
 							.polyglot.build.properties
 							.api_filters
+							*.hprof
 						</jgit.ignore>
 						<!-- the following should not be enabled: we must make sure
 							that's everything is committed, including possible regenerated

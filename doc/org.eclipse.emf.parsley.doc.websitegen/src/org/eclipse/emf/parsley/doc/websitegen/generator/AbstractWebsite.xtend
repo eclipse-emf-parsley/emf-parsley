@@ -22,7 +22,7 @@ abstract class AbstractWebsite implements Resource {
 		if (file.exists) {
 			print("overwriting ")
 		}
-		website.write(file, Charsets::UTF_8)
+		asCharSink(file, Charsets::UTF_8).write(website)
 		println("generated '"+file+"'")
 	}
 	

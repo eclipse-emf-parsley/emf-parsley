@@ -47,6 +47,23 @@ public class EmfParsleyDslPluginXmlBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
+	public static class UtilityIFileReader {
+		private IFile file;
+
+		public UtilityIFileReader(IFile file) {
+			this.file = file;
+		}
+
+		public String readFromResource() throws IOException, CoreException {
+			InputStreamReader reader = new InputStreamReader(file.getContents());
+			String string = CharStreams.toString(reader);
+			// in Windows it is crucial to close this stream, otherwise Eclipse
+			// will not always be able to delete this resource.
+			reader.close();
+			return string;
+		}
+	}
+
 	public static final String BUILDER_ID = "org.eclipse.emf.parsley.dsl.additional.builder.emfParsleyDslPluginXmlBuilder";
 
 	@Override
@@ -81,16 +98,12 @@ public class EmfParsleyDslPluginXmlBuilder extends IncrementalProjectBuilder {
 	}
 
 	protected String loadFromResource(IFile file) throws CoreException {
-		return loadFromResource(new InputStreamReader(file.getContents()), file.getFullPath().toString());
+		return loadFromResource(new UtilityIFileReader(file), file.getFullPath().toString());
 	}
 
-	protected String loadFromResource(InputStreamReader reader, String information) throws CoreException {
+	protected String loadFromResource(UtilityIFileReader iFileReader, String information) throws CoreException {
 		try {
-			String string = CharStreams.toString(reader);
-			// in Windows it is crucial to close this stream, otherwise Eclipse
-			// will not always be able to delete this resource.
-			reader.close();
-			return string;
+			return iFileReader.readFromResource();
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "while reading " + information, e));
 		}
