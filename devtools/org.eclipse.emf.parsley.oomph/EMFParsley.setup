@@ -135,7 +135,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="2019-06"
+      defaultValue="2019-09"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -752,7 +752,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.18.0,2.19.0)"/>
+            versionRange="[2.19.0,2.20.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -763,6 +763,14 @@
             url="http://download.itemis.com/updates/releases/2.1.1/"/>
         <description>Xtext &amp; Xtend</description>
       </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="mwe2.site"
+          value="http://download.eclipse.org/staging/2019-09/"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="xtext.site"
+          value="http://download.eclipse.org/staging/2019-09/"/>
     </stream>
     <stream
         name="next-simrel"
