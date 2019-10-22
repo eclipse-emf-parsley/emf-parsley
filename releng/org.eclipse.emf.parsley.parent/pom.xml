@@ -299,7 +299,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>2019-06-staging-rap</target-file-name>
+				<target-file-name>2019-12-staging-rap</target-file-name>
 			</properties>
 
 		</profile>
