@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.junit4,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.objectweb.asm;bundle-version="[7.1.0,7.2.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[7.2.0,7.3.0)";resolution:=optional
 Import-Package: org.apache.log4j,
  org.apache.log4j.spi,
  org.hamcrest.core,
