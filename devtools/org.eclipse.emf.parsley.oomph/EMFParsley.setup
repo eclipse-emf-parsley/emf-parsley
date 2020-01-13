@@ -440,10 +440,7 @@
         </predicate>
       </sourceLocator>
       <sourceLocator
-          rootFolder="${git.clone.location}/tests">
-        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.kepler</excludedPath>
-        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.indigo</excludedPath>
-      </sourceLocator>
+          rootFolder="${git.clone.location}/tests"/>
     </setupTask>
     <setupTask
         xsi:type="setup.targlets:TargletTask">

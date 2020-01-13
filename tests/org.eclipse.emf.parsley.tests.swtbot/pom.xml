@@ -106,7 +106,6 @@
 					<execution>
 						<id>PDEBasedTests</id>
 						<phase>integration-test</phase>
-						<!-- These tests required PDE and must pass -DbuildingWithTycho=true -->
 						<configuration>
 							<skip>${swtbot.tests.skip}</skip>
 							<useUIHarness>true</useUIHarness>

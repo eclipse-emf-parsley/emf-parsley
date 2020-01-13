@@ -16,15 +16,13 @@ import org.eclipse.core.resources.IProject
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
 import org.eclipse.emf.parsley.dsl.tests.util.ui.TestableEmfParsleyDslNewProjectWizard
-import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.jface.wizard.Wizard
 import org.eclipse.jface.wizard.WizardDialog
 import org.eclipse.ui.PlatformUI
-import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.junit.BeforeClass
+import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -79,11 +77,6 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 //		super.setUp()
 //		projectHelper.clearJdtIndex
 //	}
-
-	@BeforeClass
-	def static void beforeClass() {
-		PDETargetPlatformUtils.setTargetPlatform();
-	}
 
 	@Test def void testEmfParsleyDslNewProjectWizard() {
 		createProjectWithNewProjectWizard

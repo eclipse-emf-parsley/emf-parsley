@@ -81,7 +81,11 @@
 		<os-jvm-flags />
 		<memoryArgs>-Xms256M -Xmx4G -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<uiTestsArgs>${memoryArgs} ${os-jvm-flags} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
+		<!-- 
+		The following is not needed anymore
 		<pdeTestsArgs>-DbuildingWithTycho=true</pdeTestsArgs>
+		-->
+		<pdeTestsArgs></pdeTestsArgs>
 		<skipDragAndDropTests>true</skipDragAndDropTests>
 		<swtbotTestsArgs>${uiTestsArgs} -DskipDragAndDropTests=${skipDragAndDropTests} -Dorg.eclipse.swtbot.search.timeout=20000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
 
@@ -264,7 +268,6 @@
 
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
 
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
