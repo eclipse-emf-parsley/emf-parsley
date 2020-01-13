@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.examples.rap.feature"
       label="EMF Parsley RAP Example Feature"
-      version="1.9.0.qualifier">
+      version="1.10.0.qualifier">
 
    <description url="http://www.eclipse.org/emf-parsley">
       EMF Parsley RAP Example Feature
