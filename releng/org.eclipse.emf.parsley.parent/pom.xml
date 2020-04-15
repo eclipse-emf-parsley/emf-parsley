@@ -170,7 +170,7 @@
 		<sonar.issue.ignore.multicriteria.e12.ruleKey>pmd:CompareObjectsWithEquals</sonar.issue.ignore.multicriteria.e12.ruleKey>
 		<sonar.issue.ignore.multicriteria.e12.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e12.resourceKey>
 
-		<findbugs.skip>false</findbugs.skip>
+		<findbugs.skip>true</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
 
 		<dsl.tests.skip>false</dsl.tests.skip>
