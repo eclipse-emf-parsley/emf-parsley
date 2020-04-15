@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.emf.parsley</groupId>
 	<artifactId>org.eclipse.emf.parsley.parent</artifactId>
-	<version>1.9.0-SNAPSHOT</version>
+	<version>1.10.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<name>EMF Parsley</name>
@@ -57,7 +57,7 @@
 	</prerequisites>
 
 	<properties>
-		<tycho-version>1.4.0</tycho-version>
+		<tycho-version>1.5.1</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
@@ -66,7 +66,7 @@
 		<findbugs-version>3.0.5</findbugs-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<xtext-version>2.20.0</xtext-version>
+		<xtext-version>2.21.0-SNAPSHOT</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
 		<mwe2Version>2.11.1</mwe2Version>
 		<emf.version>(2.8,3.0)</emf.version>
@@ -81,7 +81,11 @@
 		<os-jvm-flags />
 		<memoryArgs>-Xms256M -Xmx4G -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<uiTestsArgs>${memoryArgs} ${os-jvm-flags} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
+		<!-- 
+		The following is not needed anymore
 		<pdeTestsArgs>-DbuildingWithTycho=true</pdeTestsArgs>
+		-->
+		<pdeTestsArgs></pdeTestsArgs>
 		<skipDragAndDropTests>true</skipDragAndDropTests>
 		<swtbotTestsArgs>${uiTestsArgs} -DskipDragAndDropTests=${skipDragAndDropTests} -Dorg.eclipse.swtbot.search.timeout=20000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
 
@@ -174,7 +178,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>2019-12-staging</target-file-name>
+		<target-file-name>2020-03-staging</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -264,7 +268,6 @@
 
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
 
-				<module>../../tests/org.eclipse.emf.parsley.tests.pde.utils.luna</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
@@ -299,7 +302,7 @@
 			</modules>
 			<properties>
 				<findbugs.skip>true</findbugs.skip>
-				<target-file-name>2019-12-staging-rap</target-file-name>
+				<target-file-name>2020-03-staging-rap</target-file-name>
 			</properties>
 
 		</profile>

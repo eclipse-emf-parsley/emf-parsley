@@ -16,13 +16,12 @@ import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
 import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator
-import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
 import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
 import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.ui.testing.ContentAssistProcessorTestBuilder
 import org.eclipse.xtext.ui.testing.AbstractContentAssistTest
+import org.eclipse.xtext.ui.testing.ContentAssistProcessorTestBuilder
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.Test
@@ -43,8 +42,6 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	
 	@BeforeClass
 	def static void setUp() {
-		PDETargetPlatformUtils.setTargetPlatform();
-		
 		val injector = DslActivator.getInstance().getInjector
 			(DslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL);
 		

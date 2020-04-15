@@ -11,7 +11,9 @@
 package org.eclipse.emf.parsley.tests.swtbot;
 
 import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
-import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*;
+import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.cleanWorkspace;
+import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.createFile;
+import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.root;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -43,7 +45,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsActivator;
 import org.eclipse.emf.parsley.junit4.ui.util.ImageTester;
-import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils;
 import org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBotTestsActivator;
 import org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryTreeViewWithResourceURI;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
@@ -364,8 +365,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		PDETargetPlatformUtils.setTargetPlatform();
-		
 		// force loading of examples.views
 		EmfParsleyExamplesViewsActivator.getDefault();
 		

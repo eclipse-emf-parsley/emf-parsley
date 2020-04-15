@@ -135,7 +135,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="2019-09"
+      defaultValue="2020-03"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -440,10 +440,7 @@
         </predicate>
       </sourceLocator>
       <sourceLocator
-          rootFolder="${git.clone.location}/tests">
-        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.kepler</excludedPath>
-        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.indigo</excludedPath>
-      </sourceLocator>
+          rootFolder="${git.clone.location}/tests"/>
     </setupTask>
     <setupTask
         xsi:type="setup.targlets:TargletTask">
@@ -595,9 +592,9 @@
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
         </repositoryList>
         <repositoryList
-            name="2019-12">
+            name="2020-03">
           <repository
-              url="https://download.eclipse.org/releases/2019-12/"/>
+              url="https://download.eclipse.org/staging/2020-03/"/>
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -804,8 +801,8 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="2019-12"
-          defaultValue="2019-12"
+          value="2020-03"
+          defaultValue="2020-03"
           storageURI="scope://Workspace"/>
       <setupTask
           xsi:type="setup.p2:P2Task"
@@ -813,7 +810,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.20.0,2.21.0)"/>
+            versionRange="[2.21.0,2.22.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -827,11 +824,11 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="mwe2.site"
-          value="http://download.eclipse.org/staging/2019-12/"/>
+          value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.11.1"/>
       <setupTask
           xsi:type="setup:VariableTask"
           name="xtext.site"
-          value="http://download.eclipse.org/staging/2019-12/"/>
+          value="https://download.eclipse.org/modeling/tmf/xtext/updates/nightly/"/>
       <description>Branch for the next Simrel</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
