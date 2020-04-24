@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.rap.site"
       label="Emf Parsley RAP Site"
-      version="1.10.0.qualifier">
+      version="1.11.0.qualifier">
 
    <description url="http://code.google.com/a/eclipselabs.org/p/emf-components/">
       Working with EMF a developer realizes that all the information are available for building basic UI.
