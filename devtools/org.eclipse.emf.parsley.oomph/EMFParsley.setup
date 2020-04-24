@@ -184,7 +184,7 @@
       <requirement
           name="org.eclipse.egit.feature.group"/>
       <repository
-          url="http://download.eclipse.org/egit/updates"/>
+          url="https://download.eclipse.org/egit/updates"/>
       <description>Git connector</description>
     </setupTask>
     <setupTask
@@ -256,18 +256,10 @@
       <requirement
           name="org.eclipse.egit.mylyn.feature.group"/>
       <repository
-          url="http://download.eclipse.org/egit/github/updates"/>
+          url="https://download.eclipse.org/egit/github/updates"/>
       <repository
-          url="http://download.eclipse.org/mylyn/releases/latest"/>
+          url="https://download.eclipse.org/mylyn/releases/latest"/>
       <description>Task and build connector</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="CBI Aggregator">
-      <requirement
-          name="org.eclipse.cbi.p2repo.aggregator.editor.feature.feature.group"/>
-      <repository
-          url="http://download.eclipse.org/cbi/updates/aggregator/ide/4.8/"/>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -340,7 +332,7 @@
         <requirement
             name="org.eclipse.swtbot.generator.feature.feature.group"/>
         <repository
-            url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+            url="https://download.eclipse.org/technology/swtbot/releases/latest/"/>
         <description>UI testing framework</description>
       </setupTask>
       <setupTask
@@ -348,8 +340,6 @@
           label="Eclemma Jacoco">
         <requirement
             name="org.eclipse.eclemma.feature.feature.group"/>
-        <repository
-            url="http://update.eclemma.org"/>
       </setupTask>
       <setupTask
           xsi:type="setup.p2:P2Task"
@@ -606,6 +596,21 @@
           <repository
               url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
         </repositoryList>
+        <repositoryList
+            name="2020-06">
+          <repository
+              url="https://download.eclipse.org/staging/2020-06/"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+        </repositoryList>
       </targlet>
     </setupTask>
     <setupTask
@@ -801,8 +806,8 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          value="2020-03"
-          defaultValue="2020-03"
+          value="2020-06"
+          defaultValue="2020-06"
           storageURI="scope://Workspace"/>
       <setupTask
           xsi:type="setup.p2:P2Task"
@@ -810,7 +815,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.21.0,2.22.0)"/>
+            versionRange="[2.22.0,2.23.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -824,11 +829,11 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="mwe2.site"
-          value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.11.1"/>
+          value="https://download.eclipse.org/staging/2020-06/"/>
       <setupTask
           xsi:type="setup:VariableTask"
           name="xtext.site"
-          value="https://download.eclipse.org/modeling/tmf/xtext/updates/nightly/"/>
+          value="https://download.eclipse.org/staging/2020-06/"/>
       <description>Branch for the next Simrel</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
