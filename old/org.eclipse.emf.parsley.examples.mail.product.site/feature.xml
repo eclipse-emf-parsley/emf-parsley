@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.parsley.examples.mail.product.site"
       label="Emf Parsley Mail Example Product Site"
-      version="1.11.0.qualifier">
+      version="1.12.0.qualifier">
 
    <description url="http://www.eclipse.org/emfparsley">
       Emf Parsley Mail Example Product Site
