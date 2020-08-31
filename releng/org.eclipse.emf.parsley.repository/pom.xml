@@ -99,6 +99,21 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<!-- sets the following properties that we use in our Ant scripts parsedVersion.majorVersion 
+								parsedVersion.minorVersion bound by default to the validate phase -->
+							<execution>
+								<id>parse-version</id>
+								<goals>
+									<goal>parse-version</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
 						<groupId>org.eclipse.tycho.extras</groupId>
 						<artifactId>tycho-eclipserun-plugin</artifactId>
 						<version>${tycho-version}</version>
@@ -169,6 +184,8 @@
 										<arg>-Dproject.build.directory=${project.build.directory}</arg>
 										<arg>-DunqualifiedVersion=${unqualifiedVersion}</arg>
 										<arg>-DbuildQualifier=${buildQualifier}</arg>
+										<arg>-DparsedVersion.majorVersion=${parsedVersion.majorVersion}</arg>
+										<arg>-DparsedVersion.minorVersion=${parsedVersion.minorVersion}</arg>
 									</applicationsArgs>
 									<repositories>
 										<repository>
