@@ -83,8 +83,10 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil;
 import org.junit.After;
@@ -100,7 +102,7 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public abstract class EmfParsleySWTBotAbstractTests {
 
-	public static String OPEN_DIALOG_SUBMIT = "OK";
+	public static final String OPEN_DIALOG_SUBMIT = "Open";
 
 	public static final String PACKAGE_EXPLORER = "Package Explorer";
 
@@ -404,6 +406,10 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		editorNamesToId.put(EMF_CUSTOM_MENU_LIBRARY_EDITOR,
 				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_MENU_LIBRARY);
 		
+		// better to open PDE perspective programmatically
+		openPDEPerspective();
+		
+		/*
 		// Change the perspective via the Open Perspective dialog
 		bot.menu("Open Perspective").menu("Other...").click();
 		SWTBotShell openPerspectiveShell = bot.shell("Open Perspective");
@@ -417,7 +423,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		// select the dialog
 		bot.table().select("Plug-in Development");
 		bot.button(OPEN_DIALOG_SUBMIT).click();
-		
+		*/
+
 		// in SwtBot 2.2.0 we must use part name since the title
 		// of the problems view also contains the items count
 		// see also http://www.eclipse.org/forums/index.php/t/640194/
@@ -453,6 +460,21 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.saveAllEditors();
 		cleanWorkspace();
 		waitForBuild();
+	}
+
+	private static void openPDEPerspective() throws InterruptedException {
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					IWorkbench workbench = PlatformUI.getWorkbench();
+					workbench.showPerspective("org.eclipse.pde.ui.PDEPerspective",
+							workbench.getActiveWorkbenchWindow());
+				} catch (WorkbenchException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	protected static void closeWelcomePage() throws InterruptedException {

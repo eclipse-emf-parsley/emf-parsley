@@ -44,7 +44,7 @@
 					<useUIThread>false</useUIThread>
 					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 						for jacoco agent -->
-					<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
+					<argLine>${tycho.testArgLine} ${swtbotTestsArgs} ${moduleProperties}</argLine>
 					<includes>
 						<include>**/*Test*.java</include>
 					</includes>

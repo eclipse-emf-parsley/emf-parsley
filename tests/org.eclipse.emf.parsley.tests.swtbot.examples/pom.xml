@@ -46,7 +46,7 @@
 					<application>org.eclipse.emf.parsley.examples.mail.rcp.application</application>
 					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 						for jacoco agent -->
-					<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
+					<argLine>${tycho.testArgLine} ${swtbotTestsArgs} ${moduleProperties}</argLine>
 					<!-- TODO remove with tycho 1.3 -->
 					<bundleStartLevel>
 						<bundle>

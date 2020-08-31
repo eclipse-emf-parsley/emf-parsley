@@ -397,37 +397,6 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 	}
 
 	/**
-	 * Notifies of the keyboard event.
-	 * <p>
-	 * FIXME need some work for CTRL|SHIFT + 1 the 1 is to be sent as '!' in this case.
-	 * </p>
-	 *
-	 * @param modificationKeys the modification keys.
-	 * @param c the character.
-	 * @see Event#character
-	 * @see Event#stateMask
-	 * @deprecated use {@link #pressShortcut(int, char)} instead. This api will be removed.
-	 */
-	public void notifyKeyboardEvent(int modificationKeys, char c) {
-		styledText.notifyKeyboardEvent(modificationKeys, c);
-	}
-
-	/**
-	 * Notifies of keyboard event.
-	 *
-	 * @param modificationKeys the modification key.
-	 * @param c the character.
-	 * @param keyCode any special keys (function keys, arrow or navigation keys etc.)
-	 * @see Event#keyCode
-	 * @see Event#character
-	 * @see Event#stateMask
-	 * @deprecated use {@link #pressShortcut(int, int, char)} instead. This api will be removed.
-	 */
-	public void notifyKeyboardEvent(int modificationKeys, char c, int keyCode) {
-		styledText.notifyKeyboardEvent(modificationKeys, c, keyCode);
-	}
-
-	/**
 	 * Presses the shortcut specified by the given keys.
 	 *
 	 * @param modificationKeys the combination of {@link SWT#ALT} | {@link SWT#CTRL} | {@link SWT#SHIFT} |

@@ -56,7 +56,7 @@ class PluginProjectHelper {
 		);
 		projectFactory.addRequiredBundles(requiredBundles);
 		val result = projectFactory.createProject(new NullProgressMonitor(), null);
-		JavaProjectSetupUtil.makeJava5Compliant(JavaCore.create(result));
+		JavaProjectSetupUtil.makeJava8Compliant(JavaCore.create(result));
 		return JavaProjectSetupUtil.findJavaProject(projectName);
 	}
 

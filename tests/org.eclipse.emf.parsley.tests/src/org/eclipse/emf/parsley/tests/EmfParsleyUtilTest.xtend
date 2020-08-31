@@ -40,7 +40,7 @@ class EmfParsleyUtilTest {
 
 	@Test
 	def void testEnsureCollectionGivenSingleElement() {
-		assertEquals(1, EmfParsleyUtil.ensureCollection(new Integer(0)).size());
+		assertEquals(1, EmfParsleyUtil.ensureCollection(Integer.valueOf(0)).size());
 	}
 
 	@Test

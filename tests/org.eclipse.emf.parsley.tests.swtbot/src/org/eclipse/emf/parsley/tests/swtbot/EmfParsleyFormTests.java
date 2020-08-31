@@ -48,9 +48,11 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.xtext.testing.Flaky;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -62,6 +64,9 @@ import org.junit.runner.RunWith;
 public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 	
 	protected final Logger log = Logger.getLogger(getClass());
+	
+	@Rule
+	public Flaky.Rule testRule = new Flaky.Rule();
 	
 	public EmfParsleyFormTests() {
 		log.setLevel(Level.DEBUG);
@@ -229,7 +234,7 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 		getEditor(EMF_TREE_EDITOR).close();
 	}
 
-	@Test
+	@Test @Flaky
 	public void testContentAssistInFormAndSelect() throws Exception {
 		if (!isIndigo()) {
 			SWTFormsBot formbot = setupFormForContentAssistTest();
