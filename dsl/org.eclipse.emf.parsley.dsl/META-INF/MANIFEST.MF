@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.eclipse.emf.parsley;visibility:=reexport,
  org.eclipse.emf.parsley.generator.common,
- org.objectweb.asm;bundle-version="5.0.1";visibility:=reexport,
+ org.objectweb.asm;bundle-version="9.0.0";visibility:=reexport,
  org.eclipse.xtend.lib;bundle-version="2.14.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib

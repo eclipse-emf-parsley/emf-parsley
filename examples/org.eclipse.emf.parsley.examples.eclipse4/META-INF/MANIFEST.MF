@@ -18,7 +18,7 @@ Require-Bundle: javax.inject,
  org.eclipse.core.resources,
  org.eclipse.emf.common,
  org.eclipse.emf.edit,
- org.eclipse.emf.parsley
-Import-Package: javax.annotation
+ org.eclipse.emf.parsley,
+ javax.annotation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Automatic-Module-Name: org.eclipse.emf.parsley.examples.eclipse4
