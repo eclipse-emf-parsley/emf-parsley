@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Servlets
 Bundle-SymbolicName: org.eclipse.emf.parsley.web.servlets;singleton:=true
-Bundle-Version: 1.12.0.qualifier
+Bundle-Version: 1.13.0.qualifier
 Export-Package: org.eclipse.emf.parsley.web.servlets
 Require-Bundle:  com.google.inject,
  org.eclipse.emf.parsley.runtime,
