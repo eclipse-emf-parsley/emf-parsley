@@ -63,7 +63,6 @@
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<junit-version>4.12</junit-version>
 		<jacoco-version>0.8.8</jacoco-version>
-		<findbugs-version>3.0.5</findbugs-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<xtext-version>2.24.0</xtext-version>
@@ -91,7 +90,6 @@
 		<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
 
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
-		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->
 		
 		<parsley.download.area>/home/data/httpd/download.eclipse.org/emf-parsley</parsley.download.area>
 		<parsley.updates.dir>updates</parsley.updates.dir>
@@ -171,7 +169,6 @@
 		<sonar.issue.ignore.multicriteria.e12.ruleKey>pmd:CompareObjectsWithEquals</sonar.issue.ignore.multicriteria.e12.ruleKey>
 		<sonar.issue.ignore.multicriteria.e12.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e12.resourceKey>
 
-		<findbugs.skip>true</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
 
 		<dsl.tests.skip>false</dsl.tests.skip>
@@ -302,7 +299,6 @@
 				<module>../../releng/org.eclipse.emf.parsley.rap.repository</module>
 			</modules>
 			<properties>
-				<findbugs.skip>true</findbugs.skip>
 				<target-file-name>2020-12-staging-rap</target-file-name>
 			</properties>
 
@@ -345,7 +341,6 @@
 			</modules>
 			
 			<properties>
-				<findbugs.skip>true</findbugs.skip>
 				<target-file-name>rap-examples-test</target-file-name>
 			</properties>
 		</profile>
@@ -378,9 +373,6 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
 
-			<properties>
-				<findbugs.skip>true</findbugs.skip>
-			</properties>
 		</profile>
 
 		<profile>
@@ -544,7 +536,6 @@
 		<profile>
 			<id>eclipse-sign</id>
 			<properties>
-				<findbugs.skip>true</findbugs.skip>
 				<skipTests>true</skipTests>
 				
 				<!-- for Hudson CI @Eclipse.org -->
@@ -668,33 +659,6 @@
 					</configuration>
 				</plugin>
 
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>findbugs-maven-plugin</artifactId>
-					<version>${findbugs-version}</version>
-					<configuration>
-						<skip>${findbugs.skip}</skip>
-						<findbugsXmlOutput>true</findbugsXmlOutput>
-						<failOnError>false</failOnError>
-						<!-- <findbugsXmlOutputDirectory>${findbugs.reportPath}</findbugsXmlOutputDirectory> -->
-						<!-- Enables analysis which takes more memory but finds more bugs. If 
-							you run out of memory, changes the value of the effort element to 'Low'. -->
-						<!-- <effort>Max</effort> -->
-						<!-- Low: Reports all bugs (other values are medium and max) -->
-						<!-- <threshold>Medium</threshold> -->
-						<maxRank>15</maxRank>
-						<jvmArgs>-Xmx1024m</jvmArgs>
-						<excludeFilterFile>${project.basedir}/../../releng/org.eclipse.emf.parsley.parent/findbugs/excludeFilter.xml</excludeFilterFile>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
