@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -28,6 +27,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.inject.Injector;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * A class for handling singletons at JEE application level

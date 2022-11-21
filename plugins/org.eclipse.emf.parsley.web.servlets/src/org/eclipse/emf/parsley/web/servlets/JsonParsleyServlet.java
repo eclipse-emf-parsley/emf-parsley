@@ -13,8 +13,8 @@ package org.eclipse.emf.parsley.web.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Super-class Servlet that provides common behaviours
