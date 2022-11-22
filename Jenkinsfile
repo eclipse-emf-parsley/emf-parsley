@@ -38,8 +38,8 @@ pipeline {
 
   post {
     always {
-      junit testResults: '**/target/surefire-reports/*.xml, **/screenshots'
-      archiveArtifacts artifacts: '**/target/work/data/.metadata/.log, **/hs_err_pid*.log'
+      junit testResults: '**/target/surefire-reports/*.xml'
+      archiveArtifacts artifacts: '**/target/work/data/.metadata/.log, **/screenshots, **/hs_err_pid*.log'
     }
     success {
       archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log'
