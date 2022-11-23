@@ -57,7 +57,7 @@
 	</prerequisites>
 
 	<properties>
-		<tycho-version>1.7.0</tycho-version>
+		<tycho-version>2.7.5</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
@@ -200,9 +200,6 @@
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
 
-				<module>../../plugins/org.eclipse.emf.parsley.web.servlets</module>
-				<module>../../plugins/org.eclipse.emf.parsley.web.tools</module>
-
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.libraries</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests</module>
@@ -236,7 +233,6 @@
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
-				<module>../../features/org.eclipse.emf.parsley.web.feature</module>
 		
 				<!-- These examples are used in swtbot tests -->
 				<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
