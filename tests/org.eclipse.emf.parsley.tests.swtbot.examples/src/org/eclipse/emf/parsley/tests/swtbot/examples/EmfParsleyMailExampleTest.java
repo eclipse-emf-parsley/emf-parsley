@@ -40,6 +40,7 @@ public class EmfParsleyMailExampleTest {
 			public boolean test() throws Exception {
 				System.out.println("*** expanding mail tree...");
 				try {
+					bot.activeShell().setFocus();
 					bot.tree().getTreeItem("lorenzo@foobar").expand().getNode("Inbox").select();
 				} catch (WidgetNotFoundException e) {
 					System.out.println("### " + e.getMessage());
