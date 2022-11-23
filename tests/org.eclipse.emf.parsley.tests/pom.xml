@@ -51,7 +51,7 @@
 							<skip>${simple.tests.skip}</skip>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${memoryArgs}</argLine>
+							<argLine>${tycho.testArgLine} ${memoryArgs} ${moduleProperties}</argLine>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<includes>
 								<include>**/*Test.java</include>
