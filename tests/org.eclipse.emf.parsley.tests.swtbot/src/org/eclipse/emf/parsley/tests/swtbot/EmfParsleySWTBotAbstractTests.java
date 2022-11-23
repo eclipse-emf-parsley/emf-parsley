@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot;
 
-import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.*;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.cleanWorkspace;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.createFile;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.root;
@@ -790,6 +790,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				projectName);
 		
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName, shell);
 	}
 	
@@ -801,6 +802,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.checkBox(1).deselect();
 		
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName, shell);
 	}
 	
@@ -814,6 +816,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.table().select(template);
 		
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		
 		assertProjectIsCreated(projectName, shell);
 	}
@@ -824,13 +827,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
+		bot.waitUntil(shellIsActive("New Project"));
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY, "Examples")
 				.select(exampleDescription);
 		bot.button("Next >").click();
 
 
 		bot.button("Finish").click();
-		
 		waitForShellToClose(shell);
 		
 		for (String projectName : expectedProjects) {
@@ -850,6 +853,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		}
 
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName, shell);
 	}
 
@@ -859,6 +863,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
+		bot.waitUntil(shellIsActive("New Project"));
 		expandNodeSync(bot.tree(), category).select(projectType);
 		bot.button("Next >").click();
 
@@ -872,6 +877,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
+		bot.waitUntil(shellIsActive("New Project"));
 		expandNodeSync(bot.tree(), category, subCategory).select(projectType);
 		bot.button("Next >").click();
 
@@ -1031,6 +1037,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.menu("Window").menu("Show View").menu("Other...").click();
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
+		bot.waitUntil(shellIsActive("Show View"));
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(viewName);
 		bot.button(OPEN_DIALOG_SUBMIT).click();
 		waitForShellToClose(shell);
