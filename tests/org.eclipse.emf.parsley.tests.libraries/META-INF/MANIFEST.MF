@@ -10,7 +10,7 @@ Bundle-ClassPath: .,
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.eclipse.emf.parsley.tests.models
 Export-Package: org.hamcrest,
  org.hamcrest.core,

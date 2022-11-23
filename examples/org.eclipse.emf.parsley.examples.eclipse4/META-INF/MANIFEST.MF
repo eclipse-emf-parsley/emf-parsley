@@ -20,5 +20,5 @@ Require-Bundle: javax.inject,
  org.eclipse.emf.edit,
  org.eclipse.emf.parsley,
  javax.annotation
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.eclipse.emf.parsley.examples.eclipse4

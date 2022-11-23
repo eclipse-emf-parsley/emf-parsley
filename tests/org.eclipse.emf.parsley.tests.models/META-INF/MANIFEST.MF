@@ -9,7 +9,7 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.emf.parsley.tests.models.testmodels,
  org.eclipse.emf.parsley.tests.models.testmodels.impl,
  org.eclipse.emf.parsley.tests.models.testmodels.util
