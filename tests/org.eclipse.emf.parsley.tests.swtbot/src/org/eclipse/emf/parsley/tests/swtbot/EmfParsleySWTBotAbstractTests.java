@@ -406,8 +406,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		editorNamesToId.put(EMF_CUSTOM_MENU_LIBRARY_EDITOR,
 				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_MENU_LIBRARY);
 		
-		// better to open PDE perspective programmatically
-		openPDEPerspective();
+		openJavaPerspective();
 		
 		/*
 		// Change the perspective via the Open Perspective dialog
@@ -435,14 +434,14 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		// Unfortunately, before Luna, the Error Log view was enabled by
 		// default in Plug-in Development perspective, but in Luna it is
 		// there anymore.
-		if (!isLuna()) {
-			bot.viewByPartName("Error Log").close();
-		}
-		bot.viewByPartName("Problems").show();
-
-		bot.viewByTitle(OUTLINE_VIEW).show();
-
-		openPackageExplorer();
+//		if (!isLuna()) {
+//			bot.viewByPartName("Error Log").close();
+//		}
+//		bot.viewByPartName("Problems").show();
+//
+//		bot.viewByTitle(OUTLINE_VIEW).show();
+//
+//		openPackageExplorer();
 
 		// In Neon the Package Explorer is not part of the Plug-in Development perspective
 		// but in Kepler it is not available from the Window | Show View menu
@@ -464,13 +463,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		waitForBuild();
 	}
 
-	private static void openPDEPerspective() throws InterruptedException {
+	private static void openJavaPerspective() throws InterruptedException {
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
+				IWorkbench workbench = PlatformUI.getWorkbench();
 				try {
-					IWorkbench workbench = PlatformUI.getWorkbench();
-					workbench.showPerspective("org.eclipse.pde.ui.PDEPerspective",
+					workbench.showPerspective("org.eclipse.jdt.ui.JavaPerspective",
 							workbench.getActiveWorkbenchWindow());
 				} catch (WorkbenchException e) {
 					e.printStackTrace();
@@ -478,6 +477,21 @@ public abstract class EmfParsleySWTBotAbstractTests {
 			}
 		});
 	}
+
+//	private static void openPDEPerspective() throws InterruptedException {
+//		Display.getDefault().syncExec(new Runnable() {
+//			@Override
+//			public void run() {
+//				try {
+//					IWorkbench workbench = PlatformUI.getWorkbench();
+//					workbench.showPerspective("org.eclipse.pde.ui.PDEPerspective",
+//							workbench.getActiveWorkbenchWindow());
+//				} catch (WorkbenchException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	protected static void closeWelcomePage() throws InterruptedException {
 		Display.getDefault().syncExec(new Runnable() {
@@ -667,14 +681,31 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		return tree.getTreeItem(treeRootLabel);
 	}
 
-	protected SWTBotTree getEditorTree(String emfEditorContextMenuString) 
-			throws CoreException, InvocationTargetException,
-				InterruptedException, IOException {
+	protected SWTBotTree getEditorTree(String emfEditorContextMenuString) {
 		SWTBotEditor editor = getEditor(emfEditorContextMenuString);
 		SWTBotTree tree = editor.bot().tree();
 		return tree;
 	}
 
+	/**
+	 * Retrieves the "File" menu by using the shell of the active workbench window;
+	 * this ensures that the active shell is not null (it happens often after the first test).
+	 * 
+	 * @return
+	 */
+	protected SWTBotMenu fileMenu() {
+		return bot.shell().menu().menu("File");
+	}
+
+	/**
+	 * Retrieves the "Window" menu by using the shell of the active workbench window;
+	 * this ensures that the active shell is not null (it happens often after the first test).
+	 * 
+	 * @return
+	 */
+	protected SWTBotMenu windowMenu() {
+		return bot.shell().menu().menu("Window");
+	}
 
 	protected SWTBotEditor openEmfEditorOnTestFile(
 			String emfEditorContextMenuString, String fileName)
@@ -823,7 +854,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	protected void createExampleProjectsInWorkspace(String exampleDescription,
 			String... expectedProjects) {
-		bot.menu("File").menu("New").menu("Project...").click();
+		fileMenu().menu("New").menu("Project...").click();
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
@@ -859,7 +890,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	protected SWTBotShell createNewProjectWizard(String category,
 			String projectType, String projectName) {
-		bot.menu("File").menu("New").menu("Project...").click();
+		fileMenu().menu("New").menu("Project...").click();
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
@@ -873,7 +904,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	protected SWTBotShell createNewProjectWizard(String category,
 			String subCategory, String projectType, String projectName) {
-		bot.menu("File").menu("New").menu("Project...").click();
+		fileMenu().menu("New").menu("Project...").click();
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
@@ -1034,7 +1065,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected SWTBotView openTestView(String viewName) {
-		bot.menu("Window").menu("Show View").menu("Other...").click();
+		windowMenu().menu("Show View").menu("Other...").click();
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
 		bot.waitUntil(shellIsActive("Show View"));
