@@ -27,3 +27,9 @@ jobs:
         xvfb-run
         mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
         clean verify
+    - name: Archive UI Tests Screenshots
+      uses: actions/upload-artifact@v2
+      if: ${{ failure() || cancelled() }}
+      with:
+        name: screenshots-${{ runner.os }}
+        path: '**/screenshots'

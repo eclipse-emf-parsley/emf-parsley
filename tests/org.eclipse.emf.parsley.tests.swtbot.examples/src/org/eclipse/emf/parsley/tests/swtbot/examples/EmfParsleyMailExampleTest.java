@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.tests.swtbot.examples;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.forms.finder.SWTFormsBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,10 @@ public class EmfParsleyMailExampleTest {
 
 	@Test
 	public void testExampleMail() {
+		SWTBotShell activeShell = bot.activeShell();
+		activeShell.setFocus();
+		System.out.println("### Active shell: " + activeShell);
+		System.out.println("*** expanding mail tree...");
 		bot.tree().getTreeItem("lorenzo@foobar").expand().getNode("Inbox").select();
 		bot.table().select(0);
 		SWTFormsBot formbot = new SWTFormsBot(bot.viewByTitle("Mail Message View").getWidget());

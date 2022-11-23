@@ -442,11 +442,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 		bot.viewByTitle(OUTLINE_VIEW).show();
 
+		openPackageExplorer();
+
 		// In Neon the Package Explorer is not part of the Plug-in Development perspective
 		// but in Kepler it is not available from the Window | Show View menu
-		if (!isKepler()) {
-			bot.menu("Window").menu("Show View").menu(PACKAGE_EXPLORER).click();
-		}
+//		if (!isKepler()) {
+//			bot.menu("Window").menu("Show View").menu(PACKAGE_EXPLORER).click();
+//		}
 	}
 
 	@AfterClass
@@ -488,6 +490,24 @@ public abstract class EmfParsleySWTBotAbstractTests {
 							.closeIntro(
 									PlatformUI.getWorkbench().getIntroManager()
 											.getIntro());
+				}
+			}
+		});
+	}
+
+	protected static void openPackageExplorer() throws InterruptedException {
+		openViewById("org.eclipse.jdt.ui.PackageExplorer");
+	}
+
+	protected static void openViewById(final String viewId) throws InterruptedException {
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				IWorkbench workbench = PlatformUI.getWorkbench();
+				try {
+					workbench.getActiveWorkbenchWindow().getActivePage().showView(viewId);
+				} catch (WorkbenchException e) {
+					e.printStackTrace();
 				}
 			}
 		});
