@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibili
  org.eclipse.emf.ecore.edit;bundle-version="2.7.0";visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="3.5.0";visibility:=reexport,
  org.eclipse.core.commands;bundle-version="3.5.0";visibility:=reexport,
- org.eclipse.emf.parsley.runtime.common;visibility:=reexport
+ org.eclipse.emf.parsley.runtime.common;visibility:=reexport,
+ org.eclipse.jface.databinding;bundle-version="1.13.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.parsley,
