@@ -606,6 +606,12 @@
 					</plugin>
 				</plugins>
 			</build>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>cbi-release</id>
+					<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+				</pluginRepository>
+			</pluginRepositories>
 		</profile>
 	</profiles>
 
@@ -986,11 +992,6 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</pluginRepository>
-
-		<pluginRepository>
-			<id>cbi-release</id>
-			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
 		</pluginRepository>
 	</pluginRepositories>
 
