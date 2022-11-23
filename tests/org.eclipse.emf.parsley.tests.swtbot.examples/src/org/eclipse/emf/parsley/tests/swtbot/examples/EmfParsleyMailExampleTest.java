@@ -34,7 +34,7 @@ public class EmfParsleyMailExampleTest {
 
 	@Test
 	public void testExampleMail() {
-		SWTBotShell activeShell = bot.activeShell();
+		SWTBotShell activeShell = bot.shell().activate();
 		activeShell.setFocus();
 		System.out.println("### Active shell: " + activeShell);
 		System.out.println("*** expanding mail tree...");
