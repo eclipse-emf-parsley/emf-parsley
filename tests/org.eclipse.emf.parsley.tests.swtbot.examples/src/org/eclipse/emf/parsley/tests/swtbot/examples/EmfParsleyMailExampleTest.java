@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.tests.swtbot.examples;
 
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.forms.finder.SWTFormsBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.junit.BeforeClass;
@@ -38,7 +39,12 @@ public class EmfParsleyMailExampleTest {
 			@Override
 			public boolean test() throws Exception {
 				System.out.println("*** expanding mail tree...");
-				bot.tree().getTreeItem("lorenzo@foobar").expand().getNode("Inbox").select();
+				try {
+					bot.tree().getTreeItem("lorenzo@foobar").expand().getNode("Inbox").select();
+				} catch (WidgetNotFoundException e) {
+					System.out.println("### " + e.getMessage());
+					return false;
+				}
 				return true;
 			}
 			@Override
