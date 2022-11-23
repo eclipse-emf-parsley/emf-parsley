@@ -59,7 +59,7 @@
 	<properties>
 		<tycho-version>2.7.5</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
-		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<junit-version>4.12</junit-version>
 		<jacoco-version>0.8.8</jacoco-version>

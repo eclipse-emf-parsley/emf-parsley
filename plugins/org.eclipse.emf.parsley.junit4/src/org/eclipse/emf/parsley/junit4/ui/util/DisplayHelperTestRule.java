@@ -59,9 +59,9 @@ public class DisplayHelperTestRule implements TestRule {
 	}
 
 	public void flushPendingEvents() {
-		while (Display.getCurrent() != null
-				&& !Display.getCurrent().isDisposed()
-				&& Display.getCurrent().readAndDispatch()) {
+		while (display != null
+				&& !display.isDisposed()
+				&& display.readAndDispatch()) {
 		}
 	}
 
