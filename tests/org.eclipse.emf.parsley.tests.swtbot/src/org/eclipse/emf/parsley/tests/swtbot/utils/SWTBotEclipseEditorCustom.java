@@ -44,7 +44,6 @@ import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
-import org.eclipse.swtbot.swt.finder.utils.MessageFormat;
 import org.eclipse.swtbot.swt.finder.utils.Position;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.waits.WaitForObjectCondition;
