@@ -22,7 +22,7 @@ pipeline {
       steps {
           wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
           sh """
-            mutter --sm-disable --replace 2> wm.err &
+            metacity --sm-disable --replace 2> wm.err &
             mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml clean verify
           """
           }
