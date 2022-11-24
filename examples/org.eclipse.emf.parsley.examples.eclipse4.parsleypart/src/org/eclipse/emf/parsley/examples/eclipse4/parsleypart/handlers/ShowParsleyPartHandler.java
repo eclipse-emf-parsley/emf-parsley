@@ -25,9 +25,11 @@ public class ShowParsleyPartHandler {
 	
 	@Execute
 	public void execute(MApplication application) {
+		System.out.println("PARSLEY: showing e4 Parsley part");
 		MPart part = partService.findPart("org.eclipse.emf.parsley.examples.eclipse4.parsleypart.part.0");
 		part.setVisible(true);
 		partService.showPart(part, EPartService.PartState.VISIBLE);
+		System.out.println("PARSLEY: shown e4 Parsley part");
 	}
 
 }
