@@ -105,11 +105,6 @@ public class EmfParsleyCdoSWTBotTests {
 	}
 
 	@Test
-	public void testView() {
-		Assert.assertNotNull(getLibraryView(TEST_CDO_FORM_VIEW));
-	}
-
-	@Test
 	public void testExploreLibraryTree() {
 		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
