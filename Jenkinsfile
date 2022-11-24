@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'ui-test'
+      inheritFrom 'centos-mutter'
     }
   }
   
@@ -29,7 +29,7 @@ pipeline {
       steps {
           wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
           sh """
-            metacity --sm-disable --replace 2> wm.err &
+            mutter --sm-disable --replace 2> wm.err &
             mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml clean verify
           """
           }
