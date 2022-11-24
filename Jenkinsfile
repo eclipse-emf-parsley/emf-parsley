@@ -29,6 +29,7 @@ pipeline {
       steps {
           wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
           sh """
+            icewm --replace --sm-disable 2> icewm.err &
             mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml clean verify
           """
           }
@@ -39,7 +40,7 @@ pipeline {
   post {
     always {
       junit testResults: '**/target/surefire-reports/*.xml'
-      archiveArtifacts artifacts: '**/target/work/data/.metadata/.log, **/screenshots/, **/hs_err_pid*.log'
+      archiveArtifacts artifacts: '**/target/work/data/.metadata/.log, **/screenshots/, **/icewm.err, **/hs_err_pid*.log'
     }
     success {
       archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log'
