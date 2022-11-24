@@ -38,16 +38,17 @@ public class EmfParsleyEclipse4ExampleTest {
 			System.out.println("### Shell: " + shell);
 		}
 		SWTBotShell shell = bot.shell("org.eclipse.emf.parsley.examples.eclipse4");
-		System.out.println("### Clicking file menu");
-		shell
-			.menu()
-			.menu("File").click();
-		System.out.println("### Clicking our menu");
-		shell
-			.menu()
-			.menu("Parsley")
-			.menu("Show Parsley Part").click();
-		bot.cTabItem("Eclipse4 Model").setFocus();
+		System.out.println("### Our Shell: " + shell);
+//		System.out.println("### Clicking file menu");
+//		shell
+//			.menu()
+//			.menu("File").click();
+//		System.out.println("### Clicking our menu");
+//		shell
+//			.menu()
+//			.menu("Parsley")
+//			.menu("Show Parsley Part").click();
+		bot.cTabItem("Eclipse4 Model").activate();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 
