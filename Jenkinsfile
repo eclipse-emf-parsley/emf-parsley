@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'migration'
+      inheritFrom 'ui-test'
     }
   }
   
