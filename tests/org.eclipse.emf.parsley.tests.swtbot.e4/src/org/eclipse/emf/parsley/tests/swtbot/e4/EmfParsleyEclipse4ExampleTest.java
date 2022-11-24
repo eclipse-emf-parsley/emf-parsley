@@ -40,6 +40,7 @@ public class EmfParsleyEclipse4ExampleTest {
 		bot.shell("org.eclipse.emf.parsley.examples.eclipse4")
 			.menu()
 			.menu("Show Parsley Part").click();
+		bot.cTabItem("Eclipse4 Model").setFocus();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 
