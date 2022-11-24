@@ -177,7 +177,10 @@ public class EmfParsleyCdoSWTBotTests {
 		long channelTimeout = SWTBotPreferences.TIMEOUT + SWTBotPreferences.TIMEOUT;
 		connector.setOpenChannelTimeout(channelTimeout);
 		config.openNet4jSession();
-//		session.close();
+		// better not to close the session:
+		// On GitHub Actions this seems to cause:
+		// org.eclipse.net4j.channel.ChannelException: org.eclipse.net4j.util.concurrent.TimeoutRuntimeException: Channel registration timeout after 20000 milliseconds
+		//		session.close();
 	}
 
 	private void assertLibraryViewDirty(final String id, final boolean expectedDirty) {
