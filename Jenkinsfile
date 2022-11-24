@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'centos-8'
+      inheritFrom 'centos-7'
     }
   }
   
