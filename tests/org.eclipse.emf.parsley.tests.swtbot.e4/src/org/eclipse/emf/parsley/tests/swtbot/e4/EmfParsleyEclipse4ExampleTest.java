@@ -48,7 +48,8 @@ public class EmfParsleyEclipse4ExampleTest {
 //			.menu()
 //			.menu("Parsley")
 //			.menu("Show Parsley Part").click();
-		bot.cTabItem("Eclipse4 Model").activate();
+		// "Eclipse4 Model"
+		bot.cTabItem(1).activate();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 
