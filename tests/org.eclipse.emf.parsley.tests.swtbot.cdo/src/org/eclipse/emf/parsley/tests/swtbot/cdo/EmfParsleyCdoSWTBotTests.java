@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
-import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.parsley.examples.cdo.server.CDOServer;
 import org.eclipse.net4j.connector.IConnector;
 import org.eclipse.net4j.util.container.IPluginContainer;
@@ -177,8 +176,8 @@ public class EmfParsleyCdoSWTBotTests {
 
 		long channelTimeout = SWTBotPreferences.TIMEOUT + SWTBotPreferences.TIMEOUT;
 		connector.setOpenChannelTimeout(channelTimeout);
-		CDOSession session = config.openNet4jSession();
-		session.close();
+		config.openNet4jSession();
+//		session.close();
 	}
 
 	private void assertLibraryViewDirty(final String id, final boolean expectedDirty) {
