@@ -93,7 +93,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 	public void testOnSelectionLibraryBooksTableView() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_VIEW);
 		// the table should already show the column headers
-		getTableHeader(AUTHOR_COLUMN_HEADER);
+		getViewTableHeader(view, AUTHOR_COLUMN_HEADER);
 
 		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
@@ -123,7 +123,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 	public void testOnSelectionLibraryBooksTableViewWithCustomContentProvider() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_VIEW_CUSTOM_PROVIDER);
 		// the table should already show the column headers
-		getTableHeader(AUTHOR_COLUMN_HEADER);
+		getViewTableHeader(view, AUTHOR_COLUMN_HEADER);
 
 		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
@@ -151,7 +151,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 	public void testOnSelectionLibraryBooksTableFormView() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_FORM_VIEW);
 		// the table should already show the column headers
-		getTableHeader(AUTHOR_COLUMN_HEADER);
+		getViewTableHeader(view, AUTHOR_COLUMN_HEADER);
 
 		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
@@ -184,7 +184,7 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 	public void testOnSelectionLibraryBooksTableFormViewWithCustomContentProvider() throws Exception {
 		final SWTBotView view = openTestView(LIBRARY_BOOKS_TABLE_FORM_VIEW_CUSTOM_PROVIDER);
 		// the table should already show the column headers
-		getTableHeader(AUTHOR_COLUMN_HEADER);
+		getViewTableHeader(view, AUTHOR_COLUMN_HEADER);
 
 		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);

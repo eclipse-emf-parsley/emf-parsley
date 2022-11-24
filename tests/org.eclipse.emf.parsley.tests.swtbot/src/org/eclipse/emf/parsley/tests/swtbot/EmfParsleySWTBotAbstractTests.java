@@ -1117,13 +1117,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		getView(title).close();
 	}
 
-	protected void getTableHeader(int tableIndex, String tableHeader) {
-		SWTBotTable table = bot.table(tableIndex);
+	protected void getViewTableHeader(SWTBotView view, int tableIndex, String tableHeader) {
+		SWTBotTable table = view.bot().table(tableIndex);
 		table.header(tableHeader);
 	}
 
-	protected void getTableHeader(String tableHeader) {
-		SWTBotTable table = bot.table();
+	protected void getViewTableHeader(SWTBotView view, String tableHeader) {
+		SWTBotTable table = view.bot().table();
 		table.header(tableHeader);
 	}
 
