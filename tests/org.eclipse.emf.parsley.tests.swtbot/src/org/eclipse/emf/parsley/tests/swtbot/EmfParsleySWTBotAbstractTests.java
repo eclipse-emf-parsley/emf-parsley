@@ -707,6 +707,16 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		return bot.shell().menu().menu("Window");
 	}
 
+	/**
+	 * Retrieves the "Edit" menu by using the shell of the active workbench window;
+	 * this ensures that the active shell is not null (it happens often after the first test).
+	 * 
+	 * @return
+	 */
+	protected SWTBotMenu editMenu() {
+		return bot.shell().menu().menu("Edit");
+	}
+
 	protected SWTBotEditor openEmfEditorOnTestFile(
 			String emfEditorContextMenuString, String fileName)
 			throws CoreException, InvocationTargetException,
@@ -1092,11 +1102,11 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void undo(final String undoText) {
-		bot.menu("Edit").menu("Undo " + undoText).click();
+		editMenu().menu("Undo " + undoText).click();
 	}
 
 	protected void redo(final String undoText) {
-		bot.menu("Edit").menu("Redo " + undoText).click();
+		editMenu().menu("Redo " + undoText).click();
 	}
 
 	protected SWTBotText undoShortcut(SWTBotText text) {
