@@ -10,12 +10,16 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot.e4;
 
-import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.workbench.IWorkbench;
+import org.eclipse.swtbot.e4.finder.widgets.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * @author Lorenzo Bettini
@@ -24,11 +28,11 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyEclipse4ExampleTest {
 
-	protected static SWTBot bot;
+	private SWTWorkbenchBot bot;
 
-	@BeforeClass
-	public static void beforeClass() throws Exception {
-		bot = new SWTBot();
+	@Before
+	public void init() {
+		bot = new SWTWorkbenchBot(getEclipseContext());
 	}
 
 	@Test
@@ -51,4 +55,21 @@ public class EmfParsleyEclipse4ExampleTest {
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 
+	/**
+	 * IMPORTANT: for this to work and avoid a NullPointerException,
+	 * we must have
+	 * <pre>Bundle-ActivationPolicy: lazy</pre> in the
+	 * <code>MANIFEST.MF</code>
+	 * 
+	 * @return
+	 */
+	protected static IEclipseContext getEclipseContext() {
+		final IEclipseContext serviceContext =
+			EclipseContextFactory
+			.getServiceContext(
+				FrameworkUtil.getBundle(Activator.class)
+					.getBundleContext());
+		return serviceContext.get(IWorkbench.class)
+				.getApplication().getContext();
+	}
 }
