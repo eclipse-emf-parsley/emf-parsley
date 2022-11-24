@@ -33,9 +33,13 @@ public class EmfParsleyEclipse4ExampleTest {
 
 	@Test
 	public void testExampleE4Part() {
-		SWTBotShell activeShell = bot.activeShell();
-		System.out.println("### Active shell: " + activeShell);
-		bot.menu("Show Parsley Part").click();
+		SWTBotShell[] shells = bot.shells();
+		for (SWTBotShell shell : shells) {
+			System.out.println("### Shell: " + shell);
+		}
+		bot.shell("org.eclipse.emf.parsley.examples.eclipse4")
+			.menu()
+			.menu("Show Parsley Part").click();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 
