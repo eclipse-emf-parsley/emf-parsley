@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.tests.swtbot.e4;
 
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,9 @@ public class EmfParsleyEclipse4ExampleTest {
 
 	@Test
 	public void testExampleE4Part() {
-		bot.menu("Show Parsley Part").click();
+		SWTBotShell activeShell = bot.activeShell();
+		System.out.println("### Active shell: " + activeShell);
+		bot.menu().menu("Show Parsley Part").click();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 
