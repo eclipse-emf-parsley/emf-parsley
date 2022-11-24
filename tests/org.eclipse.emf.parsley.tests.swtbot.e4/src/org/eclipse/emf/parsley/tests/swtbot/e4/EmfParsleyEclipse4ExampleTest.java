@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot.e4;
 
-import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.BeforeClass;
@@ -24,18 +24,18 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyEclipse4ExampleTest {
 
-	protected static SWTWorkbenchBot bot;
+	protected static SWTBot bot;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		bot = new SWTWorkbenchBot();
+		bot = new SWTBot();
 	}
 
 	@Test
 	public void testExampleE4Part() {
 		SWTBotShell activeShell = bot.activeShell();
 		System.out.println("### Active shell: " + activeShell);
-		bot.menu().menu("Show Parsley Part").click();
+		bot.menu("Show Parsley Part").click();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 
