@@ -45,6 +45,7 @@ public class EmfParsleyEclipse4ExampleTest {
 		System.out.println("### Clicking our menu");
 		shell
 			.menu()
+			.menu("Parsley")
 			.menu("Show Parsley Part").click();
 		bot.cTabItem("Eclipse4 Model").setFocus();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
