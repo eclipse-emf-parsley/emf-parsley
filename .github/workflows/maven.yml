@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    env:
+      DISPLAY: :1
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +33,6 @@ jobs:
         metacity --sm-disable --replace 2> metacity.err &
     - name: Build with Maven
       run: >
-        xvfb-run
         mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
         clean verify
     - name: Archive UI Tests Screenshots
