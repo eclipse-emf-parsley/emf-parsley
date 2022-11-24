@@ -175,7 +175,8 @@ public class EmfParsleyCdoSWTBotTests {
 		PasswordCredentialsProvider credentialsProvider = new PasswordCredentialsProvider(user, password);
 		config.setCredentialsProvider(credentialsProvider);
 
-		connector.setOpenChannelTimeout(SWTBotPreferences.TIMEOUT);
+		long channelTimeout = SWTBotPreferences.TIMEOUT + SWTBotPreferences.TIMEOUT;
+		connector.setOpenChannelTimeout(channelTimeout);
 		CDOSession session = config.openNet4jSession();
 		session.close();
 	}
