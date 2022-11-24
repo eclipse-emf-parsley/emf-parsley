@@ -12,6 +12,6 @@
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_GW7uUDv6EeOSLdq_-SfLkg" featurename="children" parentElementId="org.eclipse.emf.parsley.examples.eclipse4.partstack">
-    <elements xsi:type="basic:Part" xmi:id="_T1BOoDv7EeOSLdq_-SfLkg" elementId="org.eclipse.emf.parsley.examples.eclipse4.parsleypart.part.0" visible="false" contributionURI="bundleclass://org.eclipse.emf.parsley.examples.eclipse4.parsleypart/org.eclipse.emf.parsley.examples.eclipse4.parsleypart.parts.ParsleyE4ModelPart" label="Eclipse4 Model" closeable="true"/>
+    <elements xsi:type="basic:Part" xmi:id="_T1BOoDv7EeOSLdq_-SfLkg" elementId="org.eclipse.emf.parsley.examples.eclipse4.parsleypart.part.0" contributionURI="bundleclass://org.eclipse.emf.parsley.examples.eclipse4.parsleypart/org.eclipse.emf.parsley.examples.eclipse4.parsleypart.parts.ParsleyE4ModelPart" label="Eclipse4 Model" closeable="true"/>
   </fragments>
 </fragment:ModelFragments>
