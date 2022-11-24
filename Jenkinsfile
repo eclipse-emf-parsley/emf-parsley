@@ -17,15 +17,14 @@ pipeline {
   }
 
   stages {
-
     stage('Build') {
       steps {
-          wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+        wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
           sh """
             metacity --sm-disable --replace 2> wm.err &
             mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml clean verify
           """
-          }
+        }
       }
     }
   }
@@ -37,28 +36,6 @@ pipeline {
     }
     success {
       archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log'
-    }
-    cleanup {
-      script {
-        def curResult = currentBuild.currentResult
-
-        if (curResult != 'SUCCESS' || lastResult != 'SUCCESS') {
-          def color = ''
-          switch (curResult) {
-            case 'SUCCESS':
-              color = '#00FF00'
-              break
-            case 'UNSTABLE':
-              color = '#FFFF00'
-              break
-            case 'FAILURE':
-              color = '#FF0000'
-              break
-            default: // e.g. ABORTED
-              color = '#666666'
-          }
-        }
-      }
     }
   }
 }
