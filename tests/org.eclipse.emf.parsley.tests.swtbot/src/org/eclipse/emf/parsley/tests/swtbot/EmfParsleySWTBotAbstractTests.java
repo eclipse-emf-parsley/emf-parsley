@@ -1075,6 +1075,18 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		return getView(viewName);
 	}
 
+	/**
+	 * Opens a view and returns the table using the bot of the view.
+	 * 
+	 * @param viewName
+	 * @return
+	 */
+	protected SWTBotTable tableFromView(String viewName) {
+		SWTBotView openTestView = openTestView(viewName);
+		SWTBotTable table = openTestView.bot().table();
+		return table;
+	}
+
 	protected void waitForShellToClose(SWTBotShell shell) {
 		bot.waitUntil(shellCloses(shell), SWTBotPreferences.TIMEOUT);
 	}
