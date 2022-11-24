@@ -197,6 +197,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
+				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
@@ -267,7 +268,6 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
-				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			</modules>
 		</profile>
 
