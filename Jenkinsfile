@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'centos-7'
+      inheritFrom 'migration'
     }
   }
   
@@ -29,7 +29,7 @@ pipeline {
       steps {
           wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
           sh """
-            icewm --replace --sm-disable 2> icewm.err &
+            metacity --sm-disable --replace 2> wm.err &
             mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml clean verify
           """
           }
@@ -40,7 +40,7 @@ pipeline {
   post {
     always {
       junit testResults: '**/target/surefire-reports/*.xml'
-      archiveArtifacts artifacts: '**/target/work/data/.metadata/.log, **/screenshots/, **/icewm.err, **/hs_err_pid*.log'
+      archiveArtifacts artifacts: '**/target/work/data/.metadata/.log, **/screenshots/, **/wm.err, **/hs_err_pid*.log'
     }
     success {
       archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log'
