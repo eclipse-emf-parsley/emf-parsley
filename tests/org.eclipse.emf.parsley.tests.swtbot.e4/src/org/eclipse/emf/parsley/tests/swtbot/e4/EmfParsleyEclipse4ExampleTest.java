@@ -37,7 +37,13 @@ public class EmfParsleyEclipse4ExampleTest {
 		for (SWTBotShell shell : shells) {
 			System.out.println("### Shell: " + shell);
 		}
-		bot.shell("org.eclipse.emf.parsley.examples.eclipse4")
+		SWTBotShell shell = bot.shell("org.eclipse.emf.parsley.examples.eclipse4");
+		System.out.println("### Clicking file menu");
+		shell
+			.menu()
+			.menu("File").click();
+		System.out.println("### Clicking our menu");
+		shell
 			.menu()
 			.menu("Show Parsley Part").click();
 		bot.cTabItem("Eclipse4 Model").setFocus();
