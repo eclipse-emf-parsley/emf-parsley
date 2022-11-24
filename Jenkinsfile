@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'centos-8'
+      label 'migration'
     }
   }
   
@@ -17,13 +17,6 @@ pipeline {
   }
 
   stages {
-    stage('Show') {
-      steps {
-          sh """
-            ls -al
-          """
-      }
-    }
 
     stage('Build') {
       steps {
