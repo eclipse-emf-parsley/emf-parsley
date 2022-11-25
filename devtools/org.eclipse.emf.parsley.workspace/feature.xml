@@ -18,7 +18,7 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtext.sdk" version="2.24.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.sdk" version="2.28.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.swtbot.eclipse" version="2.5.0.201609021837"/>
       <import feature="org.eclipse.swtbot.ide" version="2.5.0.201609021837"/>
    </requires>

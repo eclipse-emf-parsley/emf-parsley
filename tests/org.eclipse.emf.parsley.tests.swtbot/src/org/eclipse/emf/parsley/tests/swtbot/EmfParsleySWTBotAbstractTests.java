@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot;
 
-import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.*;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.cleanWorkspace;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.createFile;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.root;
@@ -406,8 +406,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		editorNamesToId.put(EMF_CUSTOM_MENU_LIBRARY_EDITOR,
 				EmfParsleySwtBotTestsActivator.EMF_EDITOR_FOR_MENU_LIBRARY);
 		
-		// better to open PDE perspective programmatically
-		openPDEPerspective();
+		openJavaPerspective();
 		
 		/*
 		// Change the perspective via the Open Perspective dialog
@@ -435,18 +434,20 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		// Unfortunately, before Luna, the Error Log view was enabled by
 		// default in Plug-in Development perspective, but in Luna it is
 		// there anymore.
-		if (!isLuna()) {
-			bot.viewByPartName("Error Log").close();
-		}
-		bot.viewByPartName("Problems").show();
-
-		bot.viewByTitle(OUTLINE_VIEW).show();
+//		if (!isLuna()) {
+//			bot.viewByPartName("Error Log").close();
+//		}
+//		bot.viewByPartName("Problems").show();
+//
+//		bot.viewByTitle(OUTLINE_VIEW).show();
+//
+//		openPackageExplorer();
 
 		// In Neon the Package Explorer is not part of the Plug-in Development perspective
 		// but in Kepler it is not available from the Window | Show View menu
-		if (!isKepler()) {
-			bot.menu("Window").menu("Show View").menu(PACKAGE_EXPLORER).click();
-		}
+//		if (!isKepler()) {
+//			bot.menu("Window").menu("Show View").menu(PACKAGE_EXPLORER).click();
+//		}
 	}
 
 	@AfterClass
@@ -462,13 +463,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		waitForBuild();
 	}
 
-	private static void openPDEPerspective() throws InterruptedException {
+	private static void openJavaPerspective() throws InterruptedException {
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
+				IWorkbench workbench = PlatformUI.getWorkbench();
 				try {
-					IWorkbench workbench = PlatformUI.getWorkbench();
-					workbench.showPerspective("org.eclipse.pde.ui.PDEPerspective",
+					workbench.showPerspective("org.eclipse.jdt.ui.JavaPerspective",
 							workbench.getActiveWorkbenchWindow());
 				} catch (WorkbenchException e) {
 					e.printStackTrace();
@@ -476,6 +477,21 @@ public abstract class EmfParsleySWTBotAbstractTests {
 			}
 		});
 	}
+
+//	private static void openPDEPerspective() throws InterruptedException {
+//		Display.getDefault().syncExec(new Runnable() {
+//			@Override
+//			public void run() {
+//				try {
+//					IWorkbench workbench = PlatformUI.getWorkbench();
+//					workbench.showPerspective("org.eclipse.pde.ui.PDEPerspective",
+//							workbench.getActiveWorkbenchWindow());
+//				} catch (WorkbenchException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	protected static void closeWelcomePage() throws InterruptedException {
 		Display.getDefault().syncExec(new Runnable() {
@@ -488,6 +504,24 @@ public abstract class EmfParsleySWTBotAbstractTests {
 							.closeIntro(
 									PlatformUI.getWorkbench().getIntroManager()
 											.getIntro());
+				}
+			}
+		});
+	}
+
+	protected static void openPackageExplorer() throws InterruptedException {
+		openViewById("org.eclipse.jdt.ui.PackageExplorer");
+	}
+
+	protected static void openViewById(final String viewId) throws InterruptedException {
+		Display.getDefault().syncExec(new Runnable() {
+			@Override
+			public void run() {
+				IWorkbench workbench = PlatformUI.getWorkbench();
+				try {
+					workbench.getActiveWorkbenchWindow().getActivePage().showView(viewId);
+				} catch (WorkbenchException e) {
+					e.printStackTrace();
 				}
 			}
 		});
@@ -647,14 +681,41 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		return tree.getTreeItem(treeRootLabel);
 	}
 
-	protected SWTBotTree getEditorTree(String emfEditorContextMenuString) 
-			throws CoreException, InvocationTargetException,
-				InterruptedException, IOException {
+	protected SWTBotTree getEditorTree(String emfEditorContextMenuString) {
 		SWTBotEditor editor = getEditor(emfEditorContextMenuString);
 		SWTBotTree tree = editor.bot().tree();
 		return tree;
 	}
 
+	/**
+	 * Retrieves the "File" menu by using the shell of the active workbench window;
+	 * this ensures that the active shell is not null (it happens often after the first test).
+	 * 
+	 * @return
+	 */
+	protected SWTBotMenu fileMenu() {
+		return bot.shell().menu().menu("File");
+	}
+
+	/**
+	 * Retrieves the "Window" menu by using the shell of the active workbench window;
+	 * this ensures that the active shell is not null (it happens often after the first test).
+	 * 
+	 * @return
+	 */
+	protected SWTBotMenu windowMenu() {
+		return bot.shell().menu().menu("Window");
+	}
+
+	/**
+	 * Retrieves the "Edit" menu by using the shell of the active workbench window;
+	 * this ensures that the active shell is not null (it happens often after the first test).
+	 * 
+	 * @return
+	 */
+	protected SWTBotMenu editMenu() {
+		return bot.shell().menu().menu("Edit");
+	}
 
 	protected SWTBotEditor openEmfEditorOnTestFile(
 			String emfEditorContextMenuString, String fileName)
@@ -770,6 +831,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				projectName);
 		
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName, shell);
 	}
 	
@@ -781,6 +843,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.checkBox(1).deselect();
 		
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName, shell);
 	}
 	
@@ -794,23 +857,24 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.table().select(template);
 		
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		
 		assertProjectIsCreated(projectName, shell);
 	}
 
 	protected void createExampleProjectsInWorkspace(String exampleDescription,
 			String... expectedProjects) {
-		bot.menu("File").menu("New").menu("Project...").click();
+		fileMenu().menu("New").menu("Project...").click();
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
+		bot.waitUntil(shellIsActive("New Project"));
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY, "Examples")
 				.select(exampleDescription);
 		bot.button("Next >").click();
 
 
 		bot.button("Finish").click();
-		
 		waitForShellToClose(shell);
 		
 		for (String projectName : expectedProjects) {
@@ -830,15 +894,17 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		}
 
 		bot.button("Finish").click();
+		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName, shell);
 	}
 
 	protected SWTBotShell createNewProjectWizard(String category,
 			String projectType, String projectName) {
-		bot.menu("File").menu("New").menu("Project...").click();
+		fileMenu().menu("New").menu("Project...").click();
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
+		bot.waitUntil(shellIsActive("New Project"));
 		expandNodeSync(bot.tree(), category).select(projectType);
 		bot.button("Next >").click();
 
@@ -848,10 +914,11 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	protected SWTBotShell createNewProjectWizard(String category,
 			String subCategory, String projectType, String projectName) {
-		bot.menu("File").menu("New").menu("Project...").click();
+		fileMenu().menu("New").menu("Project...").click();
 
 		SWTBotShell shell = bot.shell("New Project");
 		shell.activate();
+		bot.waitUntil(shellIsActive("New Project"));
 		expandNodeSync(bot.tree(), category, subCategory).select(projectType);
 		bot.button("Next >").click();
 
@@ -1008,13 +1075,26 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected SWTBotView openTestView(String viewName) {
-		bot.menu("Window").menu("Show View").menu("Other...").click();
+		windowMenu().menu("Show View").menu("Other...").click();
 		SWTBotShell shell = bot.shell("Show View");
 		shell.activate();
+		bot.waitUntil(shellIsActive("Show View"));
 		expandNodeSync(bot.tree(), EMF_PARSLEY_CATEGORY).select(viewName);
 		bot.button(OPEN_DIALOG_SUBMIT).click();
 		waitForShellToClose(shell);
 		return getView(viewName);
+	}
+
+	/**
+	 * Opens a view and returns the table using the bot of the view.
+	 * 
+	 * @param viewName
+	 * @return
+	 */
+	protected SWTBotTable tableFromView(String viewName) {
+		SWTBotView openTestView = openTestView(viewName);
+		SWTBotTable table = openTestView.bot().table();
+		return table;
 	}
 
 	protected void waitForShellToClose(SWTBotShell shell) {
@@ -1022,11 +1102,11 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void undo(final String undoText) {
-		bot.menu("Edit").menu("Undo " + undoText).click();
+		editMenu().menu("Undo " + undoText).click();
 	}
 
 	protected void redo(final String undoText) {
-		bot.menu("Edit").menu("Redo " + undoText).click();
+		editMenu().menu("Redo " + undoText).click();
 	}
 
 	protected SWTBotText undoShortcut(SWTBotText text) {
@@ -1047,13 +1127,13 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		getView(title).close();
 	}
 
-	protected void getTableHeader(int tableIndex, String tableHeader) {
-		SWTBotTable table = bot.table(tableIndex);
+	protected void getViewTableHeader(SWTBotView view, int tableIndex, String tableHeader) {
+		SWTBotTable table = view.bot().table(tableIndex);
 		table.header(tableHeader);
 	}
 
-	protected void getTableHeader(String tableHeader) {
-		SWTBotTable table = bot.table();
+	protected void getViewTableHeader(SWTBotView view, String tableHeader) {
+		SWTBotTable table = view.bot().table();
 		table.header(tableHeader);
 	}
 

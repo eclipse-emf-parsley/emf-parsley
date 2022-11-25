@@ -44,7 +44,6 @@ import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.results.WidgetResult;
-import org.eclipse.swtbot.swt.finder.utils.MessageFormat;
 import org.eclipse.swtbot.swt.finder.utils.Position;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.waits.WaitForObjectCondition;
@@ -184,7 +183,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 	 * @param proposalText the name of the quickfix to apply.
 	 */
 	private void selectProposal(SWTBotTable proposalTable, String proposalText) {
-		log.debug(MessageFormat.format("Trying to select proposal {0}", proposalText)); //$NON-NLS-1$
+		log.debug("Trying to select proposal {0}", proposalText); //$NON-NLS-1$
 		if (proposalTable.containsItem(proposalText)) {
 			selectProposal(proposalTable, proposalTable.indexOf(proposalText));
 			return;
@@ -199,13 +198,13 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 	 * @param proposalIndex the index of the quickfix.
 	 */
 	private void selectProposal(final SWTBotTable proposalTable, final int proposalIndex) {
-		log.debug(MessageFormat.format("Trying to select proposal with index {0}", proposalIndex)); //$NON-NLS-1$
+		log.debug("Trying to select proposal with index {0}", proposalIndex); //$NON-NLS-1$
 		UIThreadRunnable.asyncExec(new VoidResult() {
 			@Override
 			public void run() {
 				Table table = proposalTable.widget;
-				log.debug(MessageFormat.format("Selecting row [{0}] {1} in {2}", proposalIndex, table.getItem(proposalIndex).getText(), //$NON-NLS-1$
-						table));
+				log.debug("Selecting row [{0}] {1} in {2}", proposalIndex, table.getItem(proposalIndex).getText(), //$NON-NLS-1$
+						table);
 				table.setSelection(proposalIndex);
 				Event event = new Event();
 				event.type = SWT.Selection;
@@ -228,7 +227,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 		try {
 			Table table = bot.widget(widgetOfType(Table.class), activatePopupShell().widget);
 			SWTBotTable swtBotTable = new SWTBotTable(table);
-			log.debug(MessageFormat.format("Found table containing proposals -- {0}", getRows(swtBotTable)));
+			log.debug("Found table containing proposals -- {0}", getRows(swtBotTable));
 			return swtBotTable;
 		} catch (Exception e) {
 			throw new QuickFixNotFoundException("Quickfix options not found. Giving up.", e); //$NON-NLS-1$
@@ -748,7 +747,7 @@ public class SWTBotEclipseEditorCustom extends SWTBotEditor {
 		syncExec(new VoidResult() {
 			@Override
 			public void run() {
-				log.debug(MessageFormat.format("Activating action with id {0}", actionId));
+				log.debug("Activating action with id {0}", actionId);
 				action.run();
 			}
 		});

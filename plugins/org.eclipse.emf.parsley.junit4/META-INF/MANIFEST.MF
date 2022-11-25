@@ -4,7 +4,7 @@ Bundle-Name: EMF Parsley Junit4 Support
 Bundle-SymbolicName: org.eclipse.emf.parsley.junit4
 Bundle-Version: 1.13.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.emf.parsley.junit4,
  org.eclipse.emf.parsley.junit4.ui.util,
  org.eclipse.emf.parsley.junit4.util

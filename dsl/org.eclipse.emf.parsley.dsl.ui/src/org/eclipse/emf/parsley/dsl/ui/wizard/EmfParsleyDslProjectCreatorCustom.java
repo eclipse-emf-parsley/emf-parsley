@@ -112,7 +112,8 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 				"Creating project " + projectName, 
 				CREATING_PROJECT_WORK_STEPS);
 
-		String[] paths = { projectPackagePath };
+		String settingsPath = ".settings";
+		String[] paths = { projectPackagePath, settingsPath };
 		NewEmfParsleyProjectSupport.addToProjectStructure(project, paths,
 				subMonitor.newChild(1));
 
@@ -134,6 +135,12 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 
 		NewEmfParsleyProjectSupport.createDslModule(project, projectName,
 				projectPackagePath, dslFileContents, subMonitor.newChild(1));
+
+		NewEmfParsleyProjectSupport.createProjectFile(project,
+				settingsPath + "/org.eclipse.core.resources.prefs",
+				"eclipse.preferences.version=1\n"
+				+ "encoding/<project>=UTF-8\n"
+				+ "", subMonitor.newChild(1));
 
 		project.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.newChild(1));
 		subMonitor.done();

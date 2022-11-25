@@ -57,18 +57,19 @@
 	</prerequisites>
 
 	<properties>
-		<tycho-version>1.7.0</tycho-version>
+		<tycho-version>2.7.5</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
-		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<junit-version>4.12</junit-version>
-		<jacoco-version>0.8.6</jacoco-version>
-		<findbugs-version>3.0.5</findbugs-version>
+		<jacoco-version>0.8.8</jacoco-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 
-		<xtext-version>2.24.0-SNAPSHOT</xtext-version>
+		<xtext-version>2.28.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.12.0</mwe2Version>
+		<mwe2Version>2.13.0</mwe2Version>
 		<emf.version>(2.8,3.0)</emf.version>
 		<guava.version>[10.0.1,)</guava.version>
 		<google-inject.version>3.0</google-inject.version>
@@ -91,7 +92,6 @@
 		<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
 
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
-		<!-- <findbugs.reportPath>../target/findbugs</findbugs.reportPath> -->
 		
 		<parsley.download.area>/home/data/httpd/download.eclipse.org/emf-parsley</parsley.download.area>
 		<parsley.updates.dir>updates</parsley.updates.dir>
@@ -171,7 +171,6 @@
 		<sonar.issue.ignore.multicriteria.e12.ruleKey>pmd:CompareObjectsWithEquals</sonar.issue.ignore.multicriteria.e12.ruleKey>
 		<sonar.issue.ignore.multicriteria.e12.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e12.resourceKey>
 
-		<findbugs.skip>true</findbugs.skip>
 		<mwe2.skip>false</mwe2.skip>
 
 		<dsl.tests.skip>false</dsl.tests.skip>
@@ -179,7 +178,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>2020-12-staging</target-file-name>
+		<target-file-name>simrel</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -202,9 +201,6 @@
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
-
-				<module>../../plugins/org.eclipse.emf.parsley.web.servlets</module>
-				<module>../../plugins/org.eclipse.emf.parsley.web.tools</module>
 
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.libraries</module>
@@ -239,7 +235,6 @@
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
-				<module>../../features/org.eclipse.emf.parsley.web.feature</module>
 		
 				<!-- These examples are used in swtbot tests -->
 				<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
@@ -302,7 +297,6 @@
 				<module>../../releng/org.eclipse.emf.parsley.rap.repository</module>
 			</modules>
 			<properties>
-				<findbugs.skip>true</findbugs.skip>
 				<target-file-name>2020-12-staging-rap</target-file-name>
 			</properties>
 
@@ -345,7 +339,6 @@
 			</modules>
 			
 			<properties>
-				<findbugs.skip>true</findbugs.skip>
 				<target-file-name>rap-examples-test</target-file-name>
 			</properties>
 		</profile>
@@ -378,9 +371,6 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
 
-			<properties>
-				<findbugs.skip>true</findbugs.skip>
-			</properties>
 		</profile>
 
 		<profile>
@@ -544,7 +534,6 @@
 		<profile>
 			<id>eclipse-sign</id>
 			<properties>
-				<findbugs.skip>true</findbugs.skip>
 				<skipTests>true</skipTests>
 				
 				<!-- for Hudson CI @Eclipse.org -->
@@ -617,6 +606,12 @@
 					</plugin>
 				</plugins>
 			</build>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>cbi-release</id>
+					<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+				</pluginRepository>
+			</pluginRepositories>
 		</profile>
 	</profiles>
 
@@ -668,33 +663,6 @@
 					</configuration>
 				</plugin>
 
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>findbugs-maven-plugin</artifactId>
-					<version>${findbugs-version}</version>
-					<configuration>
-						<skip>${findbugs.skip}</skip>
-						<findbugsXmlOutput>true</findbugsXmlOutput>
-						<failOnError>false</failOnError>
-						<!-- <findbugsXmlOutputDirectory>${findbugs.reportPath}</findbugsXmlOutputDirectory> -->
-						<!-- Enables analysis which takes more memory but finds more bugs. If 
-							you run out of memory, changes the value of the effort element to 'Low'. -->
-						<!-- <effort>Max</effort> -->
-						<!-- Low: Reports all bugs (other values are medium and max) -->
-						<!-- <threshold>Medium</threshold> -->
-						<maxRank>15</maxRank>
-						<jvmArgs>-Xmx1024m</jvmArgs>
-						<excludeFilterFile>${project.basedir}/../../releng/org.eclipse.emf.parsley.parent/findbugs/excludeFilter.xml</excludeFilterFile>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
@@ -814,6 +782,41 @@
 							<classifier>${target-file-name}</classifier> 
 						</artifact>
 					</target>
+					<!--
+						Build only with the current environment to avoid problems of the shape
+						java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+						in our emf.parsley.tests
+					-->
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.xtext.logging</id>
+								<versionRange>1.2.19</versionRange>
+							</requirement>
+							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
+								platform is Luna or later. (backward compatible with kepler and previous 
+								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<!-- to force the same version of jdt.compiler.apt and jdt.core
+								(for xtext-maven-plugin) 
+								see https://github.com/eclipse/xtext-maven/issues/146 -->
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.jdt.compiler.apt</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.jdt.compiler.tool</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
 				</configuration>
 			</plugin>
 			
@@ -929,17 +932,31 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<!-- This must be disabled explicitly, otherwise it is enabled by https://github.com/mojohaus/mojo-parent 
+			which is taken from exec-maven-plugin from at least version 1.6.0 -->
 		<repository>
-			<id>sonatype-snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<releases><enabled>false</enabled></releases>
-			<snapshots><enabled>true</enabled></snapshots>
+			<id>ossrh-snapshots</id>
+			<name>ossrh-snapshots</name>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
 		</repository>
+		<!-- This is enabled by /org/sonatype/oss/oss-parent/7 used as parent by 
+			org/xtext/antlr-generator/3.2.1 -->
 		<repository>
-			<id>sonatype-releases</id>
-			<url>https://oss.sonatype.org/content/repositories/releases</url>
-			<releases><enabled>true</enabled></releases>
-			<snapshots><enabled>false</enabled></snapshots>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -955,21 +972,26 @@
 			</snapshots>
 		</pluginRepository>
 		<pluginRepository>
-			<id>sonatype-snapshots</id>
+			<id>ossrh-snapshots</id>
+			<name>ossrh-snapshots</name>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<releases><enabled>false</enabled></releases>
-			<snapshots><enabled>true</enabled></snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>sonatype-releases</id>
-			<url>https://oss.sonatype.org/content/repositories/releases</url>
-			<releases><enabled>true</enabled></releases>
-			<snapshots><enabled>false</enabled></snapshots>
-		</pluginRepository>
-
-		<pluginRepository>
-			<id>cbi-release</id>
-			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
 

@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
-import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.parsley.examples.cdo.server.CDOServer;
 import org.eclipse.net4j.connector.IConnector;
 import org.eclipse.net4j.util.container.IPluginContainer;
@@ -105,11 +104,6 @@ public class EmfParsleyCdoSWTBotTests {
 	}
 
 	@Test
-	public void testView() {
-		Assert.assertNotNull(getLibraryView(TEST_CDO_FORM_VIEW));
-	}
-
-	@Test
 	public void testExploreLibraryTree() {
 		SWTBotView botView = getLibraryView(TEST_CDO_FORM_VIEW);
 		SWTBotTreeItem libraryNode = getLibraryNode(botView);
@@ -180,9 +174,13 @@ public class EmfParsleyCdoSWTBotTests {
 		PasswordCredentialsProvider credentialsProvider = new PasswordCredentialsProvider(user, password);
 		config.setCredentialsProvider(credentialsProvider);
 
-		connector.setOpenChannelTimeout(SWTBotPreferences.TIMEOUT);
-		CDOSession session = config.openNet4jSession();
-		session.close();
+		long channelTimeout = SWTBotPreferences.TIMEOUT + SWTBotPreferences.TIMEOUT;
+		connector.setOpenChannelTimeout(channelTimeout);
+		config.openNet4jSession();
+		// better not to close the session:
+		// On GitHub Actions this seems to cause:
+		// org.eclipse.net4j.channel.ChannelException: org.eclipse.net4j.util.concurrent.TimeoutRuntimeException: Channel registration timeout after 20000 milliseconds
+		//		session.close();
 	}
 
 	private void assertLibraryViewDirty(final String id, final boolean expectedDirty) {

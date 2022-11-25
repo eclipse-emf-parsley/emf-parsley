@@ -388,7 +388,7 @@ public class EmfParsleyEditableTableTests extends EmfParsleySWTBotAbstractTests 
 	}
 
 	protected SWTBotTable openTestEditableTableView() {
-		openTestView(TEST_MODEL_EDITABLE_TABLE_VIEW);
-		return bot.table();
+		SWTBotTable table = tableFromView(TEST_MODEL_EDITABLE_TABLE_VIEW);
+		return table;
 	}
 }
