@@ -12,8 +12,8 @@
 	<url>http://www.eclipse.org/emf-parsley/</url>
 
 	<ciManagement>
-		<system>hudson</system>
-		<url>https://hudson.eclipse.org/hudson</url>
+		<system>JIRO</system>
+		<url>https://ci.eclipse.org/emf-parsley/</url>
 	</ciManagement>
 	<licenses>
 		<license>
@@ -24,16 +24,16 @@
 	</licenses>
 	<organization>
 		<name>Eclipse Foundation</name>
-		<url>http://www.eclipse.org/</url>
+		<url>https://www.eclipse.org/</url>
 	</organization>
 	<issueManagement>
-		<system>Bugzilla</system>
-		<url>https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley</url>
+		<system>GitHub</system>
+		<url>https://github.com/eclipse-emf-parsley/emf-parsley/issues</url>
 	</issueManagement>
 	<scm>
-		<connection>scm:git:http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git</connection>
-		<developerConnection>scm:git:ssh://git.eclipse.org/gitroot/emf-parsley/org.eclipse.emf-parsley.git</developerConnection>
-		<url>http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git</url>
+		<connection>scm:git:https://github.com/eclipse-emf-parsley/emf-parsley.git</connection>
+		<developerConnection>scm:git:https://github.com/eclipse-emf-parsley/emf-parsley.git</developerConnection>
+		<url>git@github.com:eclipse-emf-parsley/emf-parsley.git</url>
 	</scm>
 	<developers>
 		<developer>
