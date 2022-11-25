@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.parsley.generator.common,
  org.objectweb.asm;bundle-version="9.0.0";visibility:=reexport,
  org.eclipse.xtend.lib;bundle-version="2.14.0",
- org.eclipse.xtext.xtext.generator;bundle-version="2.28.0"
+ org.eclipse.xtext.xtext.generator;bundle-version="2.28.0",
+ org.eclipse.emf.mwe2.lib;bundle-version="2.13.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-11
