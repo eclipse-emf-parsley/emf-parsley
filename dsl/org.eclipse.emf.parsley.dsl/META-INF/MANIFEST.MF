@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley DSL
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 1.13.0.qualifier
+Bundle-Version: 1.14.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.parsley.generator.common,
  org.objectweb.asm;bundle-version="9.0.0";visibility:=reexport,
  org.eclipse.xtend.lib;bundle-version="2.14.0",
- org.eclipse.xtext.xtext.generator;bundle-version="2.28.0"
+ org.eclipse.xtext.xtext.generator;bundle-version="2.28.0",
+ org.eclipse.emf.mwe2.lib;bundle-version="2.13.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-11
