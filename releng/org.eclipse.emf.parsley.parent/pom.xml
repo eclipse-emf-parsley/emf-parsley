@@ -80,7 +80,7 @@
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
-		<memoryArgs>-Xms256M -Xmx4G -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
+		<memoryArgs>-XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<uiTestsArgs>${memoryArgs} ${os-jvm-flags} -Dorg.eclipse.swt.browser.DefaultType=mozilla</uiTestsArgs>
 		<!-- 
 		The following is not needed anymore
