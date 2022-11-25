@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.emf.parsley.dsl.ui
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 1.13.0.qualifier
+Bundle-Version: 1.14.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
