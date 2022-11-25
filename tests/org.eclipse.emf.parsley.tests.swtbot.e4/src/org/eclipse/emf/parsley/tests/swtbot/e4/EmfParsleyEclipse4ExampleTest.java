@@ -10,8 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot.e4;
 
-import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,16 +24,32 @@ import org.junit.runner.RunWith;
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyEclipse4ExampleTest {
 
-	protected static SWTWorkbenchBot bot;
+	protected static SWTBot bot;
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		bot = new SWTWorkbenchBot();
+		bot = new SWTBot();
 	}
 
 	@Test
 	public void testExampleE4Part() {
-		bot.menu("Show Parsley Part").click();
+		SWTBotShell[] shells = bot.shells();
+		for (SWTBotShell shell : shells) {
+			System.out.println("### Shell: " + shell);
+		}
+		SWTBotShell shell = bot.shell("org.eclipse.emf.parsley.examples.eclipse4");
+		System.out.println("### Our Shell: " + shell);
+//		System.out.println("### Clicking file menu");
+//		shell
+//			.menu()
+//			.menu("File").click();
+//		System.out.println("### Clicking our menu");
+//		shell
+//			.menu()
+//			.menu("Parsley")
+//			.menu("Show Parsley Part").click();
+		// "Eclipse4 Model"
+		bot.cTabItem(1).activate();
 		bot.tree().getTreeItem("Trimmed Window").contextMenu("New Child").menu("Children Part");
 	}
 

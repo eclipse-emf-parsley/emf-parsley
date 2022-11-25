@@ -57,17 +57,19 @@
 	</prerequisites>
 
 	<properties>
-		<tycho-version>1.7.0</tycho-version>
+		<tycho-version>2.7.5</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
-		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<junit-version>4.12</junit-version>
 		<jacoco-version>0.8.8</jacoco-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 
-		<xtext-version>2.24.0</xtext-version>
+		<xtext-version>2.28.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.12.0</mwe2Version>
+		<mwe2Version>2.13.0</mwe2Version>
 		<emf.version>(2.8,3.0)</emf.version>
 		<guava.version>[10.0.1,)</guava.version>
 		<google-inject.version>3.0</google-inject.version>
@@ -176,7 +178,7 @@
 		<swtbot.tests.skip>false</swtbot.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
-		<target-file-name>2020-12-staging</target-file-name>
+		<target-file-name>simrel</target-file-name>
 
 		<ant-files-path>${basedir}/../../releng/org.eclipse.emf.parsley.parent/ant</ant-files-path>
 	</properties>
@@ -199,9 +201,6 @@
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
-
-				<module>../../plugins/org.eclipse.emf.parsley.web.servlets</module>
-				<module>../../plugins/org.eclipse.emf.parsley.web.tools</module>
 
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.libraries</module>
@@ -236,7 +235,6 @@
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
-				<module>../../features/org.eclipse.emf.parsley.web.feature</module>
 		
 				<!-- These examples are used in swtbot tests -->
 				<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
@@ -608,6 +606,12 @@
 					</plugin>
 				</plugins>
 			</build>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>cbi-release</id>
+					<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+				</pluginRepository>
+			</pluginRepositories>
 		</profile>
 	</profiles>
 
@@ -778,6 +782,41 @@
 							<classifier>${target-file-name}</classifier> 
 						</artifact>
 					</target>
+					<!--
+						Build only with the current environment to avoid problems of the shape
+						java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+						in our emf.parsley.tests
+					-->
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.xtext.logging</id>
+								<versionRange>1.2.19</versionRange>
+							</requirement>
+							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
+								platform is Luna or later. (backward compatible with kepler and previous 
+								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<!-- to force the same version of jdt.compiler.apt and jdt.core
+								(for xtext-maven-plugin) 
+								see https://github.com/eclipse/xtext-maven/issues/146 -->
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.jdt.compiler.apt</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.jdt.compiler.tool</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
 				</configuration>
 			</plugin>
 			
@@ -953,11 +992,6 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</pluginRepository>
-
-		<pluginRepository>
-			<id>cbi-release</id>
-			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
 		</pluginRepository>
 	</pluginRepositories>
 

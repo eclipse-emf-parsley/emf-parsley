@@ -34,7 +34,10 @@ public class EmfParsleyMailExampleTest {
 
 	@Test
 	public void testExampleMail() {
-		SWTBotShell activeShell = bot.activeShell();
+		// in a CI (with xvfb-run or xvnc), it's crucial to
+		// activate the shell and set the focus
+		// otherwise the tree or table cannot be found
+		SWTBotShell activeShell = bot.shell().activate();
 		activeShell.setFocus();
 		System.out.println("### Active shell: " + activeShell);
 		System.out.println("*** expanding mail tree...");

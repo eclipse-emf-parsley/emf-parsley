@@ -7,7 +7,6 @@ Bundle-SymbolicName: org.eclipse.emf.parsley.dsl;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
- org.eclipse.xtext.generator;resolution:=optional,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
  org.eclipse.emf.codegen.ecore;bundle-version="2.7.0";resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
@@ -21,10 +20,11 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.parsley;visibility:=reexport,
  org.eclipse.emf.parsley.generator.common,
  org.objectweb.asm;bundle-version="9.0.0";visibility:=reexport,
- org.eclipse.xtend.lib;bundle-version="2.14.0"
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.xtext.generator;bundle-version="2.28.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.dsl.generator,
  org.eclipse.emf.parsley.dsl.jvmmodel,

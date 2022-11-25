@@ -34,7 +34,7 @@ public class NewEmfParsleyProjectSupport {
 
 	static EmfParsleyProjectFilesGenerator filesGenerator = new EmfParsleyProjectFilesGenerator();
 
-	protected NewEmfParsleyProjectSupport() {
+	private NewEmfParsleyProjectSupport() {
 		// hide the implicit one
 	}
 

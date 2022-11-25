@@ -36,6 +36,7 @@ public class ParsleyE4ModelPart {
 
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+		System.out.println("ParsleyE4ModelPart: postConstruct start");
 		// Guice injector
 		Injector injector = ParsleypartInjectorProvider.getInjector();
 		// Guice injected EMF Parsley factory for the tree detail form
@@ -59,6 +60,7 @@ public class ParsleyE4ModelPart {
 
 		// 4) fill the data
 		treeFormComposite.update(application);
+		System.out.println("ParsleyE4ModelPart: postConstruct done");
 	}
 
 	@Focus

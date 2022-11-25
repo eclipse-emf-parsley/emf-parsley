@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.emf.parsley.tests.swtbot;singleton:=true
 Bundle-Version: 1.13.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.3.0",
  org.eclipse.core.resources;bundle-version="3.5.0",
  org.eclipse.emf.parsley,
@@ -26,7 +26,9 @@ Require-Bundle: org.eclipse.swtbot.go;bundle-version="2.3.0",
  org.eclipse.emf.parsley.examples.editors,
  org.eclipse.emf.parsley.tests.views,
  org.eclipse.xtext.ui.testing,
- org.eclipse.xtext.testing
+ org.eclipse.xtext.testing,
+ org.slf4j.api;bundle-version="1.7.30",
+ org.apache.log4j;bundle-version="1.2.19"
 Bundle-Activator: org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBotTestsActivator
 Export-Package: org.eclipse.emf.parsley.tests.swtbot,
  org.eclipse.emf.parsley.tests.swtbot.editors,
