@@ -29,6 +29,10 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<finalName>${project.artifactId}-${qualifiedVersion}</finalName>
+					<extraArtifactRepositoryProperties>
+						<p2.statsURI>${p2.statsURL}</p2.statsURI>
+						<p2.mirrorsURL>${p2.mirrorsURL}</p2.mirrorsURL>
+					</extraArtifactRepositoryProperties>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -119,58 +123,11 @@
 						<version>${tycho-version}</version>
 						<executions>
 							<execution>
-								<!--
-									(1)
-									See <http://wiki.eclipse.org/Equinox/p2/p2.mirrorsURL>.
-									This will add the mirror and statistics properties to your
-									artifacts.jar, but NOT to artifacts.xml.xz,
-									since p2 can only read artifacts.xml.zx but now write into it
-									(https://bugs.eclipse.org/bugs/show_bug.cgi?id=467779).
-									artifacts.xml.xz will be handled later (from (2) on). -->
-								<id>add-repo-properties</id>
-								<goals>
-									<goal>eclipse-run</goal>
-								</goals>
-								<phase>package</phase>
-								<configuration>
-									<applicationsArgs>
-										<arg>-application</arg>
-										<arg>org.eclipse.wtp.releng.tools.addRepoProperties</arg>
-									</applicationsArgs>
-									<jvmArgs>
-										<arg>-DartifactRepoDirectory=${project.build.directory}/repository</arg>
-										<arg>-Dp2MirrorsURL=${p2.mirrorsURL}</arg>
-										<arg>-Dp2StatsURI=${p2.statsURL}</arg>
-										<arg>-DstatsTrackedArtifacts=${p2.statsTrackedArtifacts}</arg>
-										<arg>-DstatsArtifactsSuffix=-${project.version}</arg>
-									</jvmArgs>
-									<work>${project.build.directory}/eclipserun-work-first</work>
-									<dependencies>
-										<dependency>
-											<artifactId>org.eclipse.wtp.releng.tools.feature</artifactId>
-											<type>eclipse-feature</type>
-										</dependency>
-									</dependencies>
-									<repositories>
-										<repository>
-											<url>http://download.eclipse.org/webtools/releng/repository</url>
-											<layout>p2</layout>
-										</repository>
-										<repository>
-											<url>http://download.eclipse.org/releases/neon</url>
-											<layout>p2</layout>
-										</repository>
-									</repositories>
-								</configuration>
-							</execution>
-							<execution>
 								<id>add-p2-composite-repository</id>
 								<goals>
 									<goal>eclipse-run</goal>
 								</goals>
-								<!-- this must be executed after package, since during package we also
-									deal with XZ compressed artifacts -->
-								<phase>verify</phase>
+								<phase>package</phase>
 								<configuration>
 									<applicationsArgs>
 										<arg>-application</arg>
@@ -189,8 +146,9 @@
 									</applicationsArgs>
 									<repositories>
 										<repository>
-											<url>http://download.eclipse.org/releases/neon</url>
+											<id>2021-12</id>
 											<layout>p2</layout>
+											<url>https://download.eclipse.org/releases/2021-12</url>
 										</repository>
 									</repositories>
 									<dependencies>
@@ -215,7 +173,15 @@
 											<type>eclipse-feature</type>
 										</dependency>
 										<dependency>
+											<artifactId>org.eclipse.osgi.compatibility.state</artifactId>
+											<type>eclipse-plugin</type>
+										</dependency>
+										<dependency>
 											<artifactId>org.eclipse.equinox.ds</artifactId>
+											<type>eclipse-plugin</type>
+										</dependency>
+										<dependency>
+											<artifactId>org.eclipse.core.net</artifactId>
 											<type>eclipse-plugin</type>
 										</dependency>
 									</dependencies>
@@ -228,14 +194,6 @@
 						<!-- copy the zipped p2 repository into download zips area  -->
 						<artifactId>maven-antrun-plugin</artifactId>
 						<version>${maven-antrun-plugin.version}</version>
-						<dependencies>
-							<!-- Needed for XZ compression -->
-							<dependency>
-								<groupId>org.apache.ant</groupId>
-								<artifactId>ant-compress</artifactId>
-								<version>1.4</version>
-							</dependency>
-						</dependencies>
 						<executions>
 							<execution>
 								<id>copy-to-zips-download</id>
@@ -257,53 +215,6 @@
 								<goals>
 									<goal>run</goal>
 								</goals>
-							</execution>
-							<execution>
-								<!-- (2)
-									Unpack artifacts.jar (which has already been processed) -->
-								<id>unjar-artifacts</id>
-								<phase>package</phase>
-								<configuration>
-									<target>
-										<unzip src="${project.build.directory}/repository/artifacts.jar"
-											dest="${project.build.directory}/repository/" />
-									</target>
-								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-							<execution>
-								<!-- (3)
-									pack artifacts.xml into artifacts.xml.xz (rewrite) -->
-								<id>xz-artifacts</id>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target name="xz-artifacts-xml">
-										<taskdef resource="org/apache/ant/compress/antlib.xml"
-											classpathref="maven.plugin.classpath" />
-										<xz
-											srcfile="${project.build.directory}/repository/artifacts.xml"
-											destfile="${project.build.directory}/repository/artifacts.xml.xz" />
-									</target>
-								</configuration>
-							</execution>
-							<execution>
-								<!-- (4)
-									Remove artifacts.xml (we don't need that anymore) -->
-								<id>remove-artifacts-xml</id>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<delete file="${project.build.directory}/repository/artifacts.xml"/>
-									</target>
-								</configuration>
 							</execution>
 						</executions>
 					</plugin>
