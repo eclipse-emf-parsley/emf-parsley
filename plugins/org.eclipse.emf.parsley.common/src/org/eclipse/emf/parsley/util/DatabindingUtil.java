@@ -10,7 +10,7 @@
 package org.eclipse.emf.parsley.util;
 
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
-import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
+import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Widget;
 
@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Widget;
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
+@SuppressWarnings("deprecation")
 public class DatabindingUtil {
 
 	protected DatabindingUtil() {
@@ -45,7 +46,7 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if <code>control</code> type is unsupported
 	 */
-	@SuppressWarnings({ "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static ISWTObservableValue observeText(Control control, int event) {
 		return WidgetProperties.text(event).observe(control);
 	}
@@ -72,7 +73,7 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if the type of <code>widget</code> is unsupported
 	 */
-	@SuppressWarnings({ "rawtypes" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static ISWTObservableValue observeText(Widget widget) {
 		return WidgetProperties.text().observe(widget);
 	}
@@ -95,9 +96,9 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if <code>control</code> type is unsupported
 	 */
-	@SuppressWarnings({ "rawtypes" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static ISWTObservableValue observeSelection(Widget widget) {
-		return WidgetProperties.widgetSelection().observe(widget);
+		return WidgetProperties.selection().observe(widget);
 	}
 
 }
