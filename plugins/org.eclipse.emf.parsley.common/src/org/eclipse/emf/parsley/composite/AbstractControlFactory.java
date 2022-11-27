@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2013 itemis AG and others.
+ * Copyright (c) 2008, 2013, 2022 Lorenzo Bettini, itemis AG and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ import org.eclipse.emf.parsley.util.FeatureHelper;
 import org.eclipse.emf.parsley.widgets.IWidgetFactory;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
-import org.eclipse.jface.databinding.viewers.ViewersObservables;
+import org.eclipse.jface.databinding.viewers.typed.ViewerProperties;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.jface.fieldassist.FieldDecoration;
@@ -405,7 +405,6 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		return proposalCreator.proposals(owner, feature);
 	}
 
-	@SuppressWarnings("deprecation")
 	protected ControlObservablePair createControlAndObservableWithPredefinedProposals(
 			List<?> proposals) {
 		ComboViewer comboViewer = createComboViewer(SWT.READ_ONLY);
@@ -414,8 +413,8 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		comboViewer.setInput(proposals);
 		ControlObservablePair retValAndTargetPair = new ControlObservablePair();
 		retValAndTargetPair.setControl(comboViewer.getCombo());
-		retValAndTargetPair.setObservableValue(ViewersObservables
-				.observeSingleSelection(comboViewer));
+		retValAndTargetPair.setObservableValue(ViewerProperties.singleSelection()
+				.observe(comboViewer));
 		return retValAndTargetPair;
 	}
 
