@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibili
  org.eclipse.ui;bundle-version="3.5.0";visibility:=reexport,
  org.eclipse.emf.edit.ui;bundle-version="2.7.0";visibility:=reexport,
  org.eclipse.ui.forms;bundle-version="3.5.0";visibility:=reexport,
- org.eclipse.jface.databinding;bundle-version="1.2.0";visibility:=reexport,
+ org.eclipse.jface.databinding;bundle-version="1.9.0";visibility:=reexport,
  org.eclipse.emf.parsley.common;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
