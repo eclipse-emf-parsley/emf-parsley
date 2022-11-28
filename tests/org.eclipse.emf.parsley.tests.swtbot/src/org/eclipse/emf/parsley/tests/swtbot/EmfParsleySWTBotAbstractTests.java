@@ -93,6 +93,10 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.rules.TestRule;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 
 /**
@@ -349,6 +353,14 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	protected static SWTWorkbenchBot bot;
 
 	protected static Map<String, String> editorNamesToId;
+
+	@Rule
+	public TestRule showTestMethodNameRule = new TestWatcher() {
+		@Override
+		protected void starting(Description description) {
+			System.out.println("*** Starting test: " + description.getMethodName());
+		}
+	};
 
 	public EmfParsleySWTBotAbstractTests() {
 		// the following are useless... but it's just to have coverage
@@ -1443,7 +1455,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		int msecs = 2000;
 		int count = 0;
 		while (count < retries) {
-			System.out.println("Checking that tree item " + treeItem.getText() + " has children...");
+			// System.out.println("Checking that tree item " + treeItem.getText() + " has children...");
 			List<SWTBotTreeItem> foundItems = UIThreadRunnable.syncExec(new ListResult<SWTBotTreeItem>() {
 				@Override
 				public List<SWTBotTreeItem> run() {
@@ -1457,7 +1469,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 			});
 			if (foundItems.isEmpty()) {
 				treeItem.collapse();
-				System.out.println("No chilren... retrying in " + msecs + " milliseconds..."); //$NON-NLS-1$
+				// System.out.println("No chilren... retrying in " + msecs + " milliseconds..."); //$NON-NLS-1$
 				try {
 					Thread.sleep(msecs);
 				} catch (InterruptedException e) {
@@ -1466,7 +1478,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				treeItem.expand();
 			} else if (foundItems.size() == 1 && foundItems.get(0).getText().trim().isEmpty()) {
 				treeItem.collapse();
-				System.out.println("Only one child with empty text... retrying in " + msecs + " milliseconds..."); //$NON-NLS-1$
+				// System.out.println("Only one child with empty text... retrying in " + msecs + " milliseconds..."); //$NON-NLS-1$
 				try {
 					Thread.sleep(msecs);
 				} catch (InterruptedException e) {
@@ -1474,7 +1486,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				}
 				treeItem.expand();
 			} else {
-				System.out.println("Found " + foundItems.size() + " items. OK!");
+				// System.out.println("Found " + foundItems.size() + " items. OK!");
 				return;
 			}
 			
