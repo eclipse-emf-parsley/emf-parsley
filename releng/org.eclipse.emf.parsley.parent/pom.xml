@@ -702,6 +702,7 @@
 							.polyglot.build.properties
 							.api_filters
 							*.hprof
+							plugin.xml_gen
 						</jgit.ignore>
 						<!-- the following should not be enabled: we must make sure
 							that's everything is committed, including possible regenerated
