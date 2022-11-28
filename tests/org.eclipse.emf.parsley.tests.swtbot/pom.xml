@@ -142,6 +142,7 @@
 							<autoStart>true</autoStart>
 						</bundle>
 					</bundleStartLevel>
+					<trimStackTrace>false</trimStackTrace>
 				</configuration>
 			</plugin>
 			

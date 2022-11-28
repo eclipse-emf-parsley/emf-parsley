@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -24,6 +23,28 @@
 			<properties>
 				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<configuration>
+							<dependency-resolution>
+								<extraRequirements combine.children="append">
+									<!-- This allows us to take the fragment org.eclipse.jdt.launching.macosx
+					                    See https://github.com/LorenzoBettini/jbase/issues/3 
+					                    https://www.eclipse.org/forums/index.php/t/1073366/ -->
+									<requirement>
+										<type>eclipse-feature</type>
+										<id>org.eclipse.jdt</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+								</extraRequirements>
+							</dependency-resolution>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
@@ -72,13 +93,13 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<dependency-resolution>
-						<extraRequirements>
+						<extraRequirements combine.children="append">
 							<!-- to get the org.eclipse.osgi.compatibility.state plugin iff 
 							the targeted Eclipse version (e.g., Luna) has it
 							(backwards compatible with kepler and previous versions) -->
