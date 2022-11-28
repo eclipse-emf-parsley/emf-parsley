@@ -25,8 +25,8 @@
 <unit id="com.google.inject" version="0.0.0"/>
 <unit id="org.apache.log4j" version="0.0.0"/>
 <unit id="org.aopalliance" version="0.0.0"/>
-<unit id="org.slf4j.api" version="1.7.30.v20200204-2150"/>
-<unit id="org.slf4j.binding.log4j12" version="1.7.30.v20201108-2042"/>
+<unit id="org.slf4j.api" version="0.0.0"/>
+<unit id="org.slf4j.binding.log4j12" version="0.0.0"/>
 <repository location="https://download.eclipse.org/tools/orbit/downloads/2022-09"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
