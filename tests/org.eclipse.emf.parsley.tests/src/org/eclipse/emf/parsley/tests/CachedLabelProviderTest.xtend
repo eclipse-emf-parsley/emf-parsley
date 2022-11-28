@@ -17,7 +17,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-import static org.mockito.Matchers.*
 import static org.mockito.Mockito.*
 
 import static extension org.junit.Assert.*
@@ -31,7 +30,7 @@ class CachedLabelProviderTest extends AbstractImageBasedTest {
 	@Before
 	def void setupLabelProvider() {
 		delegate = mock(ILabelProvider)
-		when(delegate.getText(anyObject)).thenReturn(TEST_VAL)
+		when(delegate.getText(any)).thenReturn(TEST_VAL)
 		labelProvider = new CachedLabelProvider(delegate)
 	}
 
@@ -44,14 +43,14 @@ class CachedLabelProviderTest extends AbstractImageBasedTest {
 	def void testGetText() {
 		TEST_VAL.assertEquals(labelProvider.getText(classForControlsInstance))
 		TEST_VAL.assertEquals(labelProvider.getText(classForControlsInstance))
-		verify(delegate, times(1)).getText(anyObject)
+		verify(delegate, times(1)).getText(any)
 	}
 
 	@Test
 	def void testGetImage() {
 		assertNull(labelProvider.getImage(classForControlsInstance))
 		assertNull(labelProvider.getImage(classForControlsInstance))
-		verify(delegate, times(1)).getImage(anyObject)
+		verify(delegate, times(1)).getImage(any)
 	}
 
 	@Test
