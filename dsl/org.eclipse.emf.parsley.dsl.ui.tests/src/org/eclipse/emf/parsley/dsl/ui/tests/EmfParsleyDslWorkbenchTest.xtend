@@ -39,8 +39,6 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 
 	@Inject Provider<TestableEmfParsleyDslNewProjectWizard> wizardProvider
 
-	@Inject PluginProjectHelper projectHelper
-
 	val TEST_MODULE = TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + "/" +
 		TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT.toFirstUpper + ".parsley"
 
@@ -80,7 +78,7 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 
 	@Test def void testEmfParsleyDslNewProjectWizard() {
 		createProjectWithNewProjectWizard
-		projectHelper.assertNoErrors
+		PluginProjectHelper.assertNoErrors
 	}
 
 	@Test def void testPluginXmlGeneration() {

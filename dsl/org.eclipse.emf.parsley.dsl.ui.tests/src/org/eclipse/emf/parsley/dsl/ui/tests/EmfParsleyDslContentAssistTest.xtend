@@ -14,9 +14,7 @@ import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
-import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator
-import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
+import org.eclipse.emf.parsley.dsl.tests.util.ui.ProjectImportUtil
 import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
@@ -38,21 +36,12 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	
 	static IJavaProject pluginJavaProject
 	
-	val static PROJECT_NAME = "customPluginProject"
+	val static PROJECT_NAME = "org.eclipse.emf.parsley.dsl.ui.tests.project"
 	
 	@BeforeClass
 	def static void setUp() {
-		val injector = DslActivator.getInstance().getInjector
-			(DslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL);
-		
-		val projectHelper = injector.getInstance(PluginProjectHelper)
-		
-		pluginJavaProject = projectHelper.createJavaPluginProject
-			(PROJECT_NAME, newArrayList(
-				"org.eclipse.core.runtime",
-				"org.eclipse.ui",
-				EmfParsleyViewsActivator.PLUGIN_ID,
-				"org.eclipse.xtext.xbase.lib"))
+		pluginJavaProject = ProjectImportUtil
+					.importJavaProject(PROJECT_NAME);
 	}
 	
 	@AfterClass
