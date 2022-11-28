@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.tests
 
-import com.google.inject.Inject
 import java.io.IOException
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder.UtilityIFileReader
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
-import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
+import org.eclipse.emf.parsley.dsl.tests.util.ui.ProjectImportUtil
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
@@ -35,9 +34,7 @@ import static org.mockito.Mockito.*
 @InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
 class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 
-	@Inject PluginProjectHelper projectHelper
-
-	public static final String TEST_PROJECT = "TestProject";
+	public static final String TEST_PROJECT = "org.eclipse.emf.parsley.dsl.ui.tests.project";
 
 	public static final String PLUGIN_XML = "/plugin.xml";
 
@@ -126,7 +123,9 @@ class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 	@Before
 	override setUp() throws Exception {
 		super.setUp()
-		project = projectHelper.createSimpleProject(TEST_PROJECT)
+		project = ProjectImportUtil
+					.importJavaProject(TEST_PROJECT)
+					.project;
 	}
 
 	@Test def void testCopyGeneratedPluginXmlWhenNoPluginXmlExists() {
