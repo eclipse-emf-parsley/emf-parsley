@@ -30,7 +30,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-import static org.mockito.Matchers.*
 import static org.mockito.Mockito.*
 
 import static extension org.junit.Assert.*
