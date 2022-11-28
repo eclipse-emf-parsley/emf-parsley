@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -221,12 +220,15 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	}
 
 	private void expandTreeWithColumnsNode(SWTBotTree tree) {
+		tree.expandNode("");
+		/*
 		try {
 			tree.expandNode("Library My Library");
 		} catch (WidgetNotFoundException e) {
 			// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=530506
 			tree.expandNode("");
 		}
+		*/
 	}
 
 	@Test
