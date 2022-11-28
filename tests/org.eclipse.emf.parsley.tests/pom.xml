@@ -22,6 +22,20 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>macosx-jvm-flags</id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			
@@ -51,7 +65,7 @@
 							<skip>${simple.tests.skip}</skip>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${memoryArgs} ${moduleProperties}</argLine>
+							<argLine>${tycho.testArgLine} ${uiTestsArgs} ${memoryArgs} ${moduleProperties}</argLine>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<includes>
 								<include>**/*Test.java</include>
