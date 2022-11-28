@@ -1,4 +1,4 @@
-name: Java CI with Maven (Linux)
+name: Java CI with Maven (macOS)
 
 on:
   push:
@@ -6,9 +6,7 @@ on:
 
 jobs:
   build:
-    env:
-      DISPLAY: :1
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2.5.0
@@ -24,13 +22,6 @@ jobs:
           ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2-
-    - name: Install and start Metacity window manager
-      run: |
-        sudo apt-get update
-        sudo apt-get install xvfb metacity
-        Xvfb :1 &
-        sleep 5
-        metacity --sm-disable --replace 2> metacity.err &
     - name: Build with Maven
       run: >
         mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
