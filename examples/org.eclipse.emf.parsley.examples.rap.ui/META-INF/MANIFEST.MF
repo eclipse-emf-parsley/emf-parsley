@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
+Automatic-Module-Name: org.eclipse.emf.parsley.examples.rap.ui
 Bundle-Name: EMF Parsley RAP Example Ui
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.rap.ui;singleton:=true
 Bundle-Version: 1.14.0.qualifier
