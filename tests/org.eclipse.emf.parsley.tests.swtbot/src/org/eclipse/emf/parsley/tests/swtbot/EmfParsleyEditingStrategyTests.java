@@ -34,6 +34,7 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTest
 				() -> {
 					modifyText(LIBRARY_NAME);
 				});
+		// library label has not changed
 		libraryNode();
 	}
 
@@ -47,10 +48,12 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTest
 		undo(editMenuItemForModifiedLibrary());
 		assertEditorDirty();
 		saveEditor();
+		// library label has not changed
 		libraryNode();
 		redo(editMenuItemForModifiedLibrary());
 		assertEditorDirty();
 		saveEditor();
+		// library label has been changed by Redo
 		libraryModifiedNode();
 	}
 
@@ -69,6 +72,8 @@ public class EmfParsleyEditingStrategyTests extends EmfParsleyDialogAbstractTest
 		SWTBotShell shell = bot.shell(dialogTitle);
 		shell.activate();
 		proc.run();
+		// tree refresh (upon Cancel and rollback) is asynchronous so we must
+		// wait for refresh to end, with a sync operation
 		Display.getDefault().syncExec(() -> {
 			bot.button("Cancel").click();
 			waitForShellToClose(shell);
