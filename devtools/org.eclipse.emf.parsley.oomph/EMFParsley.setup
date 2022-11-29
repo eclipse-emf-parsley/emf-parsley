@@ -50,18 +50,18 @@
     <description>Initialize JDT's package explorer to show working sets as its root objects</description>
     <content>
 
-            &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
-            &lt;section name=&quot;Workbench&quot;>
-            	&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>
-            		&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>
-            		&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>
-            		&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>
-            		&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>
-            		&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>
-            	&lt;/section>
-            &lt;/section>
+      &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+      &lt;section name=&quot;Workbench&quot;>
+      	&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>
+      		&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>
+      		&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>
+      		&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>
+      		&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>
+      		&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>
+      	&lt;/section>
+      &lt;/section>
 
-          
+
     </content>
   </setupTask>
   <setupTask
@@ -148,7 +148,7 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="2022-09"
+      defaultValue="2022-12"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
@@ -362,18 +362,18 @@
         <requirement
             name="org.eclipse.rap.tools.feature.feature.group"/>
         <requirement
-            name="org.mockito"/>
+            name="org.mockito.mockito-core"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
         <repositoryList
-            name="2022-09">
+            name="2022-12">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="https://download.eclipse.org/releases/2022-09"/>
+              url="https://download.eclipse.org/releases/2022-12"/>
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -381,7 +381,7 @@
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
-              url="https://download.eclipse.org/tools/orbit/downloads/2022-09"/>
+              url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
         </repositoryList>
       </targlet>
     </setupTask>
