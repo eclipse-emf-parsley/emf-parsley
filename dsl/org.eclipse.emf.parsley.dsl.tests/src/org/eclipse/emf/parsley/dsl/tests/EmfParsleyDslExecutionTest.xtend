@@ -95,6 +95,10 @@ class EmfParsleyDslExecutionTest extends AbstractEmfParsleyShellBasedTest {
 		"Title: Foo".assertEquals(labelProvider.getText(libraryFactory.createBook => [title = "Foo"]))
 	}
 
+	/**
+	 * WARNING: on macOS, this requires SWT thread access, so we must use
+	 * <code>-XstartOnFirstThread</code> in the POM
+	 */
 	@Test def void testGeneratedContentProvider() {
 		val viewerFactory = '''
 			import org.eclipse.emf.ecore.resource.Resource

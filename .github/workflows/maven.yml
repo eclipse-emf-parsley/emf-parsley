@@ -1,8 +1,12 @@
-name: Java CI with Maven
+name: Java CI with Maven (Linux)
 
 on:
   push:
+    paths-ignore:
+     - 'README.md'
   pull_request:
+    paths-ignore:
+     - 'README.md'
 
 jobs:
   build:

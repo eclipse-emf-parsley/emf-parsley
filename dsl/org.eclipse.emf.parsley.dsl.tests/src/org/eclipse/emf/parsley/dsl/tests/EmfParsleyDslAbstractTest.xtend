@@ -66,7 +66,10 @@ abstract class EmfParsleyDslAbstractTest {
 	}
 
 	def assertEqualsStrings(Object expected, Object actual) {
-		assertEquals("" + expected, "" + actual)
+		assertEquals(
+			("" + expected).replace("\r", ""),
+			("" + actual).replace("\r", "")
+		)
 	}
 
 	def partSpecification(CharSequence s) {

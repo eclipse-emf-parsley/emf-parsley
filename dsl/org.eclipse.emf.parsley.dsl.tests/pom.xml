@@ -13,6 +13,25 @@
 	<artifactId>org.eclipse.emf.parsley.dsl.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<!--
+		-XstartOnFirstThread is required by the test
+		org.eclipse.emf.parsley.dsl.tests.EmfParsleyDslExecutionTest.testGeneratedContentProvider()
+		which must access the SWT thread
+	-->
+	<profiles>
+		<profile>
+			<id>macosx-jvm-flags</id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -39,7 +58,7 @@
 							<useUIThread>false</useUIThread>
 							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
 								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${memoryArgs} ${moduleProperties}</argLine>
+							<argLine>${tycho.testArgLine} ${uiTestsArgs} ${memoryArgs} ${moduleProperties}</argLine>
 						</configuration>
 						<goals>
 							<goal>test</goal>
