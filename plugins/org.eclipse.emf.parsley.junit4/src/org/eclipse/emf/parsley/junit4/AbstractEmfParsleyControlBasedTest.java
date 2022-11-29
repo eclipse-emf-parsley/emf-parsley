@@ -29,7 +29,7 @@ import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.composite.MultipleFeatureControl;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm;
-import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.swt.DisplayRealm;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -53,7 +53,6 @@ import org.junit.Before;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-@SuppressWarnings("deprecation")
 public abstract class AbstractEmfParsleyControlBasedTest extends
 		AbstractEmfParsleyShellBasedTest {
 	
@@ -304,7 +303,7 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 			@Override
 			public void run() {
 				Realm.runWithDefault(
-						SWTObservables.getRealm(Display.getDefault()),
+						DisplayRealm.getRealm(Display.getDefault()),
 						new Runnable() {
 							@Override
 							public void run() {
