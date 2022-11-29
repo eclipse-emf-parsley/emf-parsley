@@ -19,9 +19,9 @@ Require-Bundle: org.eclipse.emf.parsley.dsl.ui,
  org.eclipse.xtext.xbase.ui.testing,
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.xbase.junit,
- org.mockito;bundle-version="2.23.0",
- net.bytebuddy.byte-buddy;bundle-version="1.9.0",
- org.objenesis;bundle-version="2.6.0",
+ net.bytebuddy.byte-buddy;bundle-version="1.12.18",
+ org.objenesis;bundle-version="3.3.0",
+ org.mockito.mockito-core;bundle-version="4.8.1",
  org.eclipse.ui.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.emf.parsley.dsl.ui.tests;x-internal=true

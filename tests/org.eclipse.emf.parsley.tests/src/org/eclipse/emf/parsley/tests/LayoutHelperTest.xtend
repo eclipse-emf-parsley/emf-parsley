@@ -104,7 +104,7 @@ class LayoutHelperTest extends AbstractEmfParsleyShellBasedTest {
 		val layout = mock(Layout)
 		val widget = mock(Widget)
 		layoutHelper.adjustLayoutColumnData(layout, widget, 0)
-		verifyZeroInteractions(layout)
+		verifyNoInteractions(layout)
 	}
 
 	private def mockTableViewer(Layout layout) {
