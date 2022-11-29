@@ -1,4 +1,4 @@
-/*******************************************************************************
+/**
  * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -7,28 +7,27 @@
  * 
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
- *******************************************************************************/
-package org.eclipse.emf.parsley.tests.swtbot
+ */
+package org.eclipse.emf.parsley.tests.swtbot;
 
-import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner
-import org.junit.runner.RunWith
+import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.junit.runner.RunWith;
 
-@RunWith(typeof(SWTBotJunit4ClassRunner))
-abstract class EmfParsleyDslUiAbstractTests extends EmfParsleySWTBotAbstractTests {
+@RunWith(SWTBotJunit4ClassRunner.class)
+public abstract class EmfParsleyDslUiAbstractTests extends EmfParsleySWTBotAbstractTests {
+	protected final String TEST_PROJ_NAME = "my.emfparsley.proj";
 
-	protected val TEST_PROJ_NAME = "my.emfparsley.proj"
-	protected val TEST_PROJ_NAME_BAD1 = "My-EmfParsley--project"
+	protected final String TEST_PROJ_NAME_BAD1 = "My-EmfParsley--project";
 
-	def createDslProjectWithWizard() {
+	public void createDslProjectWithWizard() throws Exception {
 		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
 				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME);
 		assertNoIssuesInProjectAfterAutoBuild();
 	}
 
-	def createDslProjectWithWizardFromBadProjectName1() {
+	public void createDslProjectWithWizardFromBadProjectName1() throws Exception {
 		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
 				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME_BAD1);
 		assertNoIssuesInProjectAfterAutoBuild();
 	}
-
 }
