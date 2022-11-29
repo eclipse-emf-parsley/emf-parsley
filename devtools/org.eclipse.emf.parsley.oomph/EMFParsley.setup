@@ -153,11 +153,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="mwe2.site"
-      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.13.0"/>
+      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.14.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.28.0"/>
+      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.29.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
@@ -522,7 +522,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.28.0,2.29.0)"/>
+            versionRange="[2.29.0,2.30.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
