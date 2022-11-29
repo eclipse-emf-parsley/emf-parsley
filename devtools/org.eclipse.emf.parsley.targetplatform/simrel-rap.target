@@ -34,7 +34,7 @@
 <unit id="org.eclipse.rap.sdk.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.examples.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="0.0.0"/>
-<repository location="file://home/bettini/tmp/rap-3.23.0-N-20221128-0840"/>
+<repository location="https://ci.eclipse.org/rap/view/RAP%20main%20branch/job/rap-head-runtime-signed/lastSuccessfulBuild/artifact/org.eclipse.rap/releng/org.eclipse.rap.build/repository/target/repository/"/>
 </location>
 </locations>
 </target>
