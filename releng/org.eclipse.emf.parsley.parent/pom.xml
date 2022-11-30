@@ -274,6 +274,56 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			</modules>
+
+			<build>
+				<plugins>
+					<!-- The main configuration is in pluginManagement,parameterized over the
+						.target file name.
+						Then, for RCP we need extra requirements, that we
+						don't want in RAP -->
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<configuration>
+							<!--
+								Build only with the current environment to avoid problems of the shape
+								java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+								in our emf.parsley.tests
+							-->
+							<dependency-resolution>
+								<extraRequirements>
+									<requirement>
+										<type>eclipse-plugin</type>
+										<id>org.eclipse.xtext.logging</id>
+										<versionRange>1.2.19</versionRange>
+									</requirement>
+									<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
+										platform is Luna or later. (backward compatible with kepler and previous 
+										versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+									<requirement>
+										<type>eclipse-feature</type>
+										<id>org.eclipse.rcp</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+									<!-- to force the same version of jdt.compiler.apt and jdt.core
+										(for xtext-maven-plugin) 
+										see https://github.com/eclipse/xtext-maven/issues/146 -->
+									<requirement>
+										<type>eclipse-plugin</type>
+										<id>org.eclipse.jdt.compiler.apt</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+									<requirement>
+										<type>eclipse-plugin</type>
+										<id>org.eclipse.jdt.compiler.tool</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+								</extraRequirements>
+							</dependency-resolution>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<profile>
@@ -726,52 +776,6 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
-			</plugin>
-			
-			<!-- The main configuration is in pluginManagement,parameterized over the
-				.target file name.
-				Then, for RCP we need extra requirements, that we
-				don't want in RAP -->
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<configuration>
-					<!--
-						Build only with the current environment to avoid problems of the shape
-						java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
-						in our emf.parsley.tests
-					-->
-					<dependency-resolution>
-						<extraRequirements>
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.eclipse.xtext.logging</id>
-								<versionRange>1.2.19</versionRange>
-							</requirement>
-							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
-								platform is Luna or later. (backward compatible with kepler and previous 
-								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
-							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.eclipse.rcp</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<!-- to force the same version of jdt.compiler.apt and jdt.core
-								(for xtext-maven-plugin) 
-								see https://github.com/eclipse/xtext-maven/issues/146 -->
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.eclipse.jdt.compiler.apt</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.eclipse.jdt.compiler.tool</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-						</extraRequirements>
-					</dependency-resolution>
-				</configuration>
 			</plugin>
 
 			<plugin>
