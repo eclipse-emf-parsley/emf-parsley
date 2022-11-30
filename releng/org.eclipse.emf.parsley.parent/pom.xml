@@ -274,6 +274,56 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
 			</modules>
+
+			<build>
+				<plugins>
+					<!-- The main configuration is in pluginManagement,parameterized over the
+						.target file name.
+						Then, for RCP we need extra requirements, that we
+						don't want in RAP -->
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<configuration>
+							<!--
+								Build only with the current environment to avoid problems of the shape
+								java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+								in our emf.parsley.tests
+							-->
+							<dependency-resolution>
+								<extraRequirements>
+									<requirement>
+										<type>eclipse-plugin</type>
+										<id>org.eclipse.xtext.logging</id>
+										<versionRange>1.2.19</versionRange>
+									</requirement>
+									<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
+										platform is Luna or later. (backward compatible with kepler and previous 
+										versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+									<requirement>
+										<type>eclipse-feature</type>
+										<id>org.eclipse.rcp</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+									<!-- to force the same version of jdt.compiler.apt and jdt.core
+										(for xtext-maven-plugin) 
+										see https://github.com/eclipse/xtext-maven/issues/146 -->
+									<requirement>
+										<type>eclipse-plugin</type>
+										<id>org.eclipse.jdt.compiler.apt</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+									<requirement>
+										<type>eclipse-plugin</type>
+										<id>org.eclipse.jdt.compiler.tool</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+								</extraRequirements>
+							</dependency-resolution>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<profile>
@@ -302,7 +352,7 @@
 				<module>../../releng/org.eclipse.emf.parsley.rap.repository</module>
 			</modules>
 			<properties>
-				<target-file-name>2020-12-staging-rap</target-file-name>
+				<target-file-name>simrel-rap</target-file-name>
 			</properties>
 
 		</profile>
@@ -394,7 +444,6 @@
 							mvn org.apache.maven.plugins:maven-antrun-plugin:run -Dtycho.mode=maven -Pset-version-release
 						-->
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>${maven-antrun-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>default-cli</id>
@@ -554,10 +603,40 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
+
+				<!-- The main configuration is here, parameterized over the
+					.target file name.
+					Then, for RCP we need extra requirements, that we
+					don't want in RAP -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<target>
+							<artifact>
+								<groupId>org.eclipse.emf.parsley</groupId>
+								<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
+								<version>${project.version}</version>
+								<classifier>${target-file-name}</classifier> 
+							</artifact>
+						</target>
+						<!--
+							Build only with the current environment to avoid problems of the shape
+							java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+							in our emf.parsley.tests
+						-->
+					</configuration>
+				</plugin>
+
 				<!-- xtend-maven-plugin is in pluginManagement instead of in plugins 
 					so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
 					we can list it after. -->
-
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
@@ -576,13 +655,13 @@
 						<outputDirectory>xtend-gen</outputDirectory>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
 					<version>3.2.0</version>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
@@ -651,6 +730,19 @@
 						<generateDownloadStatsProperty>true</generateDownloadStatsProperty>
 					</configuration>
 				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho.extras</groupId>
+					<artifactId>tycho-eclipserun-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-repository-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+
 				<plugin>
 					<groupId>org.eclipse.cbi.maven.plugins</groupId>
 					<artifactId>eclipse-jarsigner-plugin</artifactId>
@@ -702,58 +794,7 @@
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
-			
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<target>
-						<artifact>
-							<groupId>org.eclipse.emf.parsley</groupId>
-							<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
-							<version>${project.version}</version>
-							<classifier>${target-file-name}</classifier> 
-						</artifact>
-					</target>
-					<!--
-						Build only with the current environment to avoid problems of the shape
-						java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
-						in our emf.parsley.tests
-					-->
-					<dependency-resolution>
-						<extraRequirements>
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.eclipse.xtext.logging</id>
-								<versionRange>1.2.19</versionRange>
-							</requirement>
-							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
-								platform is Luna or later. (backward compatible with kepler and previous 
-								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
-							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.eclipse.rcp</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<!-- to force the same version of jdt.compiler.apt and jdt.core
-								(for xtext-maven-plugin) 
-								see https://github.com/eclipse/xtext-maven/issues/146 -->
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.eclipse.jdt.compiler.apt</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.eclipse.jdt.compiler.tool</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-						</extraRequirements>
-					</dependency-resolution>
-				</configuration>
-			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>

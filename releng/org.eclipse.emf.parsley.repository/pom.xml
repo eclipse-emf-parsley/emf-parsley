@@ -14,6 +14,10 @@
 	<packaging>eclipse-repository</packaging>
 
 	<properties>
+		<!-- The label for the Composite sites -->
+		<site.label>EMF Parsley Site</site.label>
+		<updates.dir>${parsley.updates.dir}</updates.dir>
+
 		<p2.mirrorsPrefix>/emf-parsley/${parsley.updates.dir}</p2.mirrorsPrefix>
 		<p2.versionMajorMinor>1.14</p2.versionMajorMinor>
 		<p2.statsURL>http://download.eclipse.org/stats</p2.statsURL>
@@ -26,7 +30,6 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<configuration>
 					<finalName>${project.artifactId}-${qualifiedVersion}</finalName>
 					<extraArtifactRepositoryProperties>
@@ -120,7 +123,6 @@
 					<plugin>
 						<groupId>org.eclipse.tycho.extras</groupId>
 						<artifactId>tycho-eclipserun-plugin</artifactId>
-						<version>${tycho-version}</version>
 						<executions>
 							<execution>
 								<id>add-p2-composite-repository</id>
@@ -136,8 +138,8 @@
 										<arg>${project.basedir}/../org.eclipse.emf.parsley.parent/ant/packaging-p2composite.ant</arg>
 										<arg>p2.composite.add</arg>
 										<arg>-Dsoftware.download.area=${parsley.download.area}</arg>
-										<arg>-Dupdates.dir=${parsley.updates.dir}</arg>
-										<arg>-Dsite.label="EMF Parsley Site"</arg>
+										<arg>-Dupdates.dir=${updates.dir}</arg>
+										<arg>-Dsite.label="${site.label}"</arg>
 										<arg>-Dproject.build.directory=${project.build.directory}</arg>
 										<arg>-DunqualifiedVersion=${unqualifiedVersion}</arg>
 										<arg>-DbuildQualifier=${buildQualifier}</arg>
@@ -193,7 +195,6 @@
 					<plugin>
 						<!-- copy the zipped p2 repository into download zips area  -->
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>${maven-antrun-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>copy-to-zips-download</id>

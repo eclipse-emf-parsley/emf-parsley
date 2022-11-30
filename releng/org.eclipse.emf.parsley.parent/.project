@@ -19,5 +19,10 @@
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Jenkinsfile</locationURI>
 		</link>
+		<link>
+			<name>Jenkinsfile-RAP</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Jenkinsfile-RAP</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>
