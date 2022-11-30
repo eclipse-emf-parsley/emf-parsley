@@ -554,10 +554,6 @@
             name="org.eclipse.rap.examples.feature.feature.group"/>
         <requirement
             name="org.eclipse.rap.equinox.target.feature.feature.group"/>
-        <requirement
-            name="org.slf4j.api"/>
-        <requirement
-            name="org.slf4j.binding.log4j12"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
