@@ -123,7 +123,6 @@
 					<plugin>
 						<groupId>org.eclipse.tycho.extras</groupId>
 						<artifactId>tycho-eclipserun-plugin</artifactId>
-						<version>${tycho-version}</version>
 						<executions>
 							<execution>
 								<id>add-p2-composite-repository</id>
