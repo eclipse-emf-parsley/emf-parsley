@@ -554,10 +554,35 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
+				<!-- The main configuration is here, parameterized over the
+					.target file name.
+					Then, for RCP we need extra requirements, that we
+					don't want in RAP -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<target>
+							<artifact>
+								<groupId>org.eclipse.emf.parsley</groupId>
+								<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
+								<version>${project.version}</version>
+								<classifier>${target-file-name}</classifier> 
+							</artifact>
+						</target>
+						<!--
+							Build only with the current environment to avoid problems of the shape
+							java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+							in our emf.parsley.tests
+						-->
+					</configuration>
+				</plugin>
+
 				<!-- xtend-maven-plugin is in pluginManagement instead of in plugins 
 					so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
 					we can list it after. -->
-
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
@@ -703,19 +728,14 @@
 				<extensions>true</extensions>
 			</plugin>
 			
+			<!-- The main configuration is in pluginManagement,parameterized over the
+				.target file name.
+				Then, for RCP we need extra requirements, that we
+				don't want in RAP -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
 				<configuration>
-					<target>
-						<artifact>
-							<groupId>org.eclipse.emf.parsley</groupId>
-							<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
-							<version>${project.version}</version>
-							<classifier>${target-file-name}</classifier> 
-						</artifact>
-					</target>
 					<!--
 						Build only with the current environment to avoid problems of the shape
 						java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
@@ -753,7 +773,7 @@
 					</dependency-resolution>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
