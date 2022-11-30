@@ -444,7 +444,6 @@
 							mvn org.apache.maven.plugins:maven-antrun-plugin:run -Dtycho.mode=maven -Pset-version-release
 						-->
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>${maven-antrun-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>default-cli</id>
@@ -604,6 +603,11 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
 
 				<!-- The main configuration is here, parameterized over the
 					.target file name.

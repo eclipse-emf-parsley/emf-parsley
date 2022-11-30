@@ -196,7 +196,6 @@
 					<plugin>
 						<!-- copy the zipped p2 repository into download zips area  -->
 						<artifactId>maven-antrun-plugin</artifactId>
-						<version>${maven-antrun-plugin.version}</version>
 						<executions>
 							<execution>
 								<id>copy-to-zips-download</id>
