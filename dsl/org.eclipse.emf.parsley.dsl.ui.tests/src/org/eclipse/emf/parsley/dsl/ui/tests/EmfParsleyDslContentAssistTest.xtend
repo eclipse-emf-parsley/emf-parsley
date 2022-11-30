@@ -296,6 +296,25 @@ module my.test.proj {
 		)
 	}
 
+	@Test def void testTemplateProposalForViewSpecification() throws Exception {
+		newBuilder.
+		append(
+		'''
+		module my.test.proj {
+			parts { 
+		'''
+		).
+		applyProposal("ViewSpecification - Template for ViewSpecification").
+		expectContent('''
+		module my.test.proj {
+			parts { 
+		viewpart id {
+			viewname "View Name"
+			viewclass viewclassref
+			// viewcategory my.category
+		}''')
+	}
+
 	def private assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String...acceptableParts) {
 		for (p : builder.computeCompletionProposals) {
 			assertTrue(
