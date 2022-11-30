@@ -102,7 +102,7 @@
 						<id>PDEBasedTests</id>
 						<phase>integration-test</phase>
 						<configuration>
-							<skip>true</skip>
+							<skip>${swtbot.tests.skip}</skip>
 							<!-- temporary skip these flaky tests
 							<skip>${swtbot.tests.skip}</skip>
 							 -->
