@@ -302,7 +302,7 @@
 				<module>../../releng/org.eclipse.emf.parsley.rap.repository</module>
 			</modules>
 			<properties>
-				<target-file-name>2020-12-staging-rap</target-file-name>
+				<target-file-name>simrel-rap</target-file-name>
 			</properties>
 
 		</profile>
