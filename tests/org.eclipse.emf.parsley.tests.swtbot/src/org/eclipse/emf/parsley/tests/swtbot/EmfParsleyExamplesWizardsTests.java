@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,8 +22,9 @@ import org.junit.runner.RunWith;
 public class EmfParsleyExamplesWizardsTests extends
 		EmfParsleySWTBotAbstractTests {
 
-	boolean firstRun = true;
+	// boolean firstRun = true;
 
+	/*
 	@Before
 	public void ensureEclipseBuildMechanism() throws CoreException {
 		if (firstRun) {
@@ -41,6 +40,7 @@ public class EmfParsleyExamplesWizardsTests extends
 			// any imported Java project, even empty would do the trick
 		}
 	}
+	*/
 
 	@Test
 	public void canCreateMailExampleProjectWithWizard() throws Exception {
