@@ -32,8 +32,8 @@
 							<dependency-resolution>
 								<extraRequirements combine.children="append">
 									<!-- This allows us to take the fragment org.eclipse.jdt.launching.macosx
-					                    See https://github.com/LorenzoBettini/jbase/issues/3 
-					                    https://www.eclipse.org/forums/index.php/t/1073366/ -->
+										See https://github.com/LorenzoBettini/jbase/issues/3 
+										https://www.eclipse.org/forums/index.php/t/1073366/ -->
 									<requirement>
 										<type>eclipse-feature</type>
 										<id>org.eclipse.jdt</id>
