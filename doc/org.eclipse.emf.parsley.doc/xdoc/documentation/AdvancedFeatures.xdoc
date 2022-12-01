@@ -8,7 +8,7 @@ We provide Maven artifacts in Maven Central that allows you to compile the Parsl
 with Maven/Tycho, using the e[xtext-maven-plugin].
 
 This is a typical configuration (a complete example can be found here:
-link[http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/tree/examples/org.eclipse.emf.parsley.examples.maven][http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/tree/examples/org.eclipse.emf.parsley.examples.maven]):
+link[https://github.com/eclipse-emf-parsley/emf-parsley/blob/master/tests/org.eclipse.emf.parsley.tests.views/pom.xml][https://github.com/eclipse-emf-parsley/emf-parsley/blob/master/tests/org.eclipse.emf.parsley.tests.views/pom.xml]):
 
 code[
 <plugin>
@@ -37,7 +37,7 @@ code[
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.emf.parsley</groupId>
-			<artifactId>org.eclipse.emf.parsley.dsl.standalone</artifactId>
+			<artifactId>org.eclipse.emf.parsley.dsl</artifactId>
 			<version>${parsley-version}</version>
 		</dependency>
 	</dependencies>
