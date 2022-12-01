@@ -43,82 +43,82 @@ public class MavenEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public MavenEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends IEditingStrategy> bindIEditingStrategy() {
     return UndoableEditingStrategy.class;
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return MavenLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends TableColumnLabelProvider> bindTableColumnLabelProvider() {
     return MavenTableLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
     return MavenFeatureCaptionProvider.class;
   }
-  
+
   @Override
   public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
     return MavenFormFeatureCaptionProvider.class;
   }
-  
+
   @Override
   public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
     return MavenDialogFeatureCaptionProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return MavenFeaturesProvider.class;
   }
-  
+
   @Override
   public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
     return MavenTableFeaturesProvider.class;
   }
-  
+
   @Override
   public Class<? extends FormControlFactory> bindFormControlFactory() {
     return MavenFormControlFactory.class;
   }
-  
+
   @Override
   public Class<? extends DialogControlFactory> bindDialogControlFactory() {
     return MavenDialogControlFactory.class;
   }
-  
+
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
     return MavenViewerContentProvider.class;
   }
-  
+
   @Override
   public Class<? extends TableViewerContentProvider> bindTableViewerContentProvider() {
     return MavenTableViewerContentProvider.class;
   }
-  
+
   @Override
   public Class<? extends ProposalCreator> bindProposalCreator() {
     return MavenProposalCreator.class;
   }
-  
+
   @Override
   public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
     return MavenMenuBuilder.class;
   }
-  
+
   @Override
   public Class<? extends Configurator> bindConfigurator() {
     return MavenConfigurator.class;
   }
-  
+
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
     return MavenResourceManager.class;

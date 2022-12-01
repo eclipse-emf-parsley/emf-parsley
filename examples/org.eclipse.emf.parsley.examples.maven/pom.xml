@@ -54,7 +54,7 @@
 						<fileset>
 							<directory>${basedir}/emfparsley-gen</directory>
 							<excludes>
-								<exclude>.gitignore</exclude>
+								<exclude>.keepme</exclude>
 							</excludes>
 						</fileset>
 						<fileset>

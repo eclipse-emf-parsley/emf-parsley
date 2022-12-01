@@ -9,3 +9,7 @@ mvn clean install -Pmaven
 Then from this project you can run
 
 mvn clean verify
+
+In the "launches" directory there's a launch configuration to install Parsley bundles in a
+local Maven repository (${user.home}/tmp/maven-repository). After that, you can use
+the other launch configuration to build the example against the installed Maven repository.
