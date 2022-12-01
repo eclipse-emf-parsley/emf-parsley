@@ -9,7 +9,7 @@ on:
      - '**.md'
 
 jobs:
-  build:
+  tycho-build:
     env:
       DISPLAY: :1
     runs-on: ubuntu-latest
@@ -51,3 +51,35 @@ jobs:
       with:
         name: logs-${{ runner.os }}
         path: '**/target/work/data/.metadata/.log'
+
+  maven-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.5.0
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3.6.0
+      with:
+        java-version: 11
+        distribution: temurin
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.m2
+          !~/.m2/**/*parsley*
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml', '**/*.target') }}
+        restore-keys: ${{ runner.os }}-maven-
+      # for the examples our Parsley bundles must be installed
+      # so we exclude them from the cache
+    - name: Build with Maven
+      run: >
+        mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        -Pmaven
+        clean install
+    - name: Build Maven example
+      run: >
+        xvfb-run
+        mvn -f examples/org.eclipse.emf.parsley.examples.maven
+        -Pmaven
+        clean verify
