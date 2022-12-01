@@ -26,11 +26,8 @@ jobs:
       with:
         path: |
           ~/.m2
-          !~/.m2/**/*parsley*
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2-
-      # for the Maven example we have to install our Parsley bundles
-      # so we exclude them from the cache
     - name: Install and start Metacity window manager
       run: |
         sudo apt-get update
@@ -41,8 +38,7 @@ jobs:
     - name: Build with Maven
       run: >
         mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
-        clean install
-      # for the Maven example we have to install our Parsley bundles
+        clean verify
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v2
       if: ${{ failure() || cancelled() }}
