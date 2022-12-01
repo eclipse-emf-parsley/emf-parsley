@@ -68,6 +68,8 @@ class Download extends AbstractWebsite {
 						<a href="https://download.eclipse.org/emf-parsley/updates/1.14/">https://download.eclipse.org/emf-parsley/updates/1.14/</a></li>
 						<li>Milestones (when available): <a href="https://download.eclipse.org/emf-parsley/milestones/">https://download.eclipse.org/emf-parsley/milestones/</a></li>
 						<li>Latest Stable Build: <a href="https://ci.eclipse.org/emf-parsley/view/Simrel/job/parsley-multibranch/job/master/lastSuccessfulBuild/artifact/target/repository/">https://ci.eclipse.org/emf-parsley/view/Simrel/job/parsley-multibranch/job/master/lastSuccessfulBuild/artifact/target/repository/</a></li>
+						<li>Update site for EMF Parsley RAP features (DO NOT INSTALL IT IN YOUR IDE, use it only for the target platform of your RAP applications):
+						<a href="https://download.eclipse.org/emf-parsley/rt/">https://download.eclipse.org/emf-parsley/rt/</a></li>
 					</ul>
 					<p>
 						All downloads are provided under the terms and conditions of the Eclipse Foundation Software User Agreement unless otherwise specified.
