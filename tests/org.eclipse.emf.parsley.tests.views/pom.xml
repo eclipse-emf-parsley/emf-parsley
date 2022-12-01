@@ -15,17 +15,10 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>${basedir}/emfparsley-gen</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
+			<!--
+				Don't run maven-clean-plugin, otherwise Tycho will complain
+				when computing reproducible qualifier'
+			-->
 			<plugin>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>xtext-maven-plugin</artifactId>
