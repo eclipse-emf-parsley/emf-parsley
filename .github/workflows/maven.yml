@@ -79,6 +79,7 @@ jobs:
         clean install
     - name: Build Maven example
       run: >
+        xvfb-run
         mvn -f examples/org.eclipse.emf.parsley.examples.maven
         -Pmaven
         clean verify
