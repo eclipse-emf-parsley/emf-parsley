@@ -203,7 +203,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.views.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo.common</module>
-			
+
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
@@ -216,31 +216,33 @@
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
-		
+
 				<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
-		
+
 				<module>../../plugins/org.eclipse.emf.parsley.ui.examples</module>
-		
+
 				<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
-		
+
 				<module>../../doc/org.eclipse.emf.parsley.doc</module>
-		
+
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ide</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.additional.builder</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui.tests</module>
-		
+
+				<module>../../examples/org.eclipse.emf.parsley.examples.maven</module>
+
 				<module>../../features/org.eclipse.emf.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.junit4.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
-		
+
 				<!-- These examples are used in swtbot tests -->
 				<module>../../examples/org.eclipse.emf.parsley.examples.library</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.library.edit</module>
