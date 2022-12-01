@@ -10,14 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot;
 
-import org.eclipse.core.resources.IWorkspaceRunnable;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
-import org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -29,8 +22,9 @@ import org.junit.runner.RunWith;
 public class EmfParsleyExamplesWizardsTests extends
 		EmfParsleySWTBotAbstractTests {
 
-	boolean firstRun = true;
+	// boolean firstRun = true;
 
+	/*
 	@Before
 	public void ensureEclipseBuildMechanism() throws CoreException {
 		if (firstRun) {
@@ -46,6 +40,7 @@ public class EmfParsleyExamplesWizardsTests extends
 			// any imported Java project, even empty would do the trick
 		}
 	}
+	*/
 
 	@Test
 	public void canCreateMailExampleProjectWithWizard() throws Exception {
@@ -122,34 +117,6 @@ public class EmfParsleyExamplesWizardsTests extends
 				"org.eclipse.emf.parsley.examples.rap.ui");
 		//assertNoErrorsInProjectAfterAutoBuild();
 		// errors are expected since the RAP target platform is not set
-	}
-
-	@Override
-	protected void assertNoErrorsInProjectAfterAutoBuild() throws CoreException {
-		System.out.println("wait for autobuild...");
-		IResourcesSetupUtil.reallyWaitForAutoBuild();
-		assertNoErrorsInProject();
-		
-		// ensure that all queued workspace operations and locks are released
-		try {
-			ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
-				@Override
-				public void run(IProgressMonitor monitor) throws CoreException {
-					// nothing to do!
-				}
-			}, new NullProgressMonitor());
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-
-		// we also make sure that we can do a clean build
-		// and still get no compile error
-		System.out.println("clean build...");
-		IResourcesSetupUtil.cleanBuild();
-		System.out.println("wait for autobuild...");
-		IResourcesSetupUtil.reallyWaitForAutoBuild();
-		assertNoErrorsInProject();
-		System.out.println("done");
 	}
 
 }
