@@ -10,8 +10,6 @@ on:
 
 jobs:
   build:
-    env:
-      DISPLAY: :1
     runs-on: ubuntu-latest
 
     steps:
@@ -33,11 +31,11 @@ jobs:
       # so we exclude them from the cache
     - name: Build with Maven
       run: >
-        mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         -Prap-build
         clean verify
     - name: Build Examples with Maven
       run: >
-        mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         -Prap-examples
         clean verify
