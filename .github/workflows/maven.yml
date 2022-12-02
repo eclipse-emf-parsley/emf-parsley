@@ -37,7 +37,7 @@ jobs:
         metacity --sm-disable --replace 2> metacity.err &
     - name: Build with Maven
       run: >
-        mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         clean verify
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v2
@@ -74,12 +74,12 @@ jobs:
       # so we exclude them from the cache
     - name: Build with Maven
       run: >
-        mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         -Pmaven
         clean install
     - name: Build Maven example
       run: >
         xvfb-run
-        mvn -f examples/org.eclipse.emf.parsley.examples.maven
+        ./mvnw -f examples/org.eclipse.emf.parsley.examples.maven
         -Pmaven
         clean verify
