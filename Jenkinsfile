@@ -12,7 +12,7 @@ pipeline {
   }
 
   tools {
-     maven "apache-maven-3.8.5"
+     maven "apache-maven-latest"
      jdk "openjdk-jdk11-latest"
   }
 
