@@ -276,7 +276,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	def protected checkType(EObject context, JvmTypeReference actualType, Class<?> expectedType,
 			EStructuralFeature feature) {
 		if (actualType !== null) {
-			if (!typeSystem.isConformant(context, expectedType, actualType)) {
+			val lightweightActualType = toLightweightTypeReference(actualType)
+			if (!(lightweightActualType).isSubtypeOf(expectedType)) {
 				error("Type mismatch: cannot convert from " + actualType.simpleName +
 					" to " + expectedType.simpleName,
 					context,
