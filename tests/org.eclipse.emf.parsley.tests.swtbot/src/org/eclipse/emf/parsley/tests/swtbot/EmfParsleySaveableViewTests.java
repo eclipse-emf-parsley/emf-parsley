@@ -54,7 +54,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 
 	@Override
 	@After
-	public void runAfterEveryTest() throws CoreException {
+	public void runAfterEveryTest() throws Exception {
 		if (treeFormViewOpened)
 			closeView(TEST_SAVEABLE_TREE_FORM_VIEW);
 		if (tableFormViewOpened)

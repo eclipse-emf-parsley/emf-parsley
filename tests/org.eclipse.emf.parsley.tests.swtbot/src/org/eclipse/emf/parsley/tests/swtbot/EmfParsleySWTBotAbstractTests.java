@@ -468,7 +468,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	@After
-	public void runAfterEveryTest() throws CoreException {
+	public void runAfterEveryTest() throws Exception {
 		// bot.sleep(2000);
 		bot.saveAllEditors();
 		cleanWorkspace();
