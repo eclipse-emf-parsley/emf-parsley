@@ -12,7 +12,6 @@ pipeline {
   }
 
   tools {
-     maven "apache-maven-3.8.5"
      jdk "openjdk-jdk11-latest"
   }
 
@@ -20,14 +19,14 @@ pipeline {
     stage('Build') {
       steps {
         sh """
-          mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml -Prap-build clean verify
+          ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml -Prap-build clean verify
         """
       }
     }
     stage('Build Example') {
       steps {
         sh """
-          mvn -f releng/org.eclipse.emf.parsley.parent/pom.xml -Prap-examples clean verify
+          ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml -Prap-examples clean verify
         """
       }
     }
