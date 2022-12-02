@@ -27,7 +27,7 @@ public abstract class EmfParsleyDslUiAbstractTests extends EmfParsleySWTBotAbstr
 	@Override
 	public void runAfterEveryTest() throws Exception {
 		super.runAfterEveryTest();
-		clearJdtIndex();
+//		clearJdtIndex();
 	}
 
 	protected void clearJdtIndex() {
