@@ -952,12 +952,15 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	protected void waitForBuild() throws CoreException {
 		bot.waitUntil(new DefaultCondition() {
 			
+			private AssertionError error;
+
 			@Override
 			public boolean test() throws Exception {
 				IResourcesSetupUtil.waitForBuild();
 				try {
 					assertNoIssuesInProject();
 				} catch (AssertionError error) {
+					this.error = error;
 					System.err.println("errors: " + error.getMessage());
 					System.err.println("retrying...");
 					// ensure that all queued workspace operations and locks are released
@@ -979,7 +982,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 			
 			@Override
 			public String getFailureMessage() {
-				return "Build with errors";
+				return "Build with errors: " + error.getMessage();
 			}
 		});
 		/*
@@ -1201,8 +1204,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void assertNoIssuesInProjectAfterAutoBuild() throws CoreException {
-		waitForBuild();
-		// the second wait is for our custom builder for plugin.xml
 		waitForBuild();
 		assertNoIssuesInProject();
 	}
