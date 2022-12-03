@@ -948,6 +948,39 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void waitForBuild() throws CoreException {
+		bot.waitUntil(new DefaultCondition() {
+			
+			@Override
+			public boolean test() throws Exception {
+				IResourcesSetupUtil.waitForBuild();
+				try {
+					assertNoIssuesInProject();
+				} catch (AssertionError error) {
+					System.err.println("errors: " + error.getMessage());
+					System.err.println("retrying...");
+					// ensure that all queued workspace operations and locks are released
+					try {
+						ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
+							@Override
+							public void run(IProgressMonitor monitor) throws CoreException {
+								// nothing to do!
+							}
+						}, new NullProgressMonitor());
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
+					IResourcesSetupUtil.cleanBuild();
+					return false;
+				}
+				return true;
+			}
+			
+			@Override
+			public String getFailureMessage() {
+				return "Build with errors";
+			}
+		});
+		/*
 		IResourcesSetupUtil.reallyWaitForAutoBuild();
 		
 		// ensure that all queued workspace operations and locks are released
@@ -973,6 +1006,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				}
 			}
 		});
+		*/
 	}
 
 	protected static SWTBotView getPackageExplorer() {
