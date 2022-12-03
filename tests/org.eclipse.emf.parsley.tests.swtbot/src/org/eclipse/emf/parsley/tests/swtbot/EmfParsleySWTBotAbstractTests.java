@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -48,6 +49,7 @@ import org.eclipse.emf.parsley.junit4.ui.util.ImageTester;
 import org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBotTestsActivator;
 import org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryTreeViewWithResourceURI;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.jface.action.SubStatusLineManager;
@@ -1569,6 +1571,29 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		table.select(0); // otherwise context menu might not be created
 		clickOnContextMenu(table, NEW_SIBLING, sibling);
 		assertTableItemsSize(table, initialTableItemsSize+1);
+	}
+
+	protected void clearJdtIndex() {
+		var jdtMetadata = JavaCore.getPlugin().getStateLocation().toFile();
+		bot.waitUntil(new DefaultCondition() {
+			
+			@Override
+			public boolean test() {
+				System.err.println("Clean up index " + jdtMetadata.getAbsolutePath());
+				try {
+					FileUtils.deleteDirectory(jdtMetadata);
+				} catch (IOException e) {
+					System.err.println("retrying due to exception while cleaning");
+					return false;
+				}
+				return true;
+			}
+			
+			@Override
+			public String getFailureMessage() {
+				return "cannot delete " + jdtMetadata;
+			}
+		});
 	}
 
 //	protected void maximizeCurrentWindow() {
