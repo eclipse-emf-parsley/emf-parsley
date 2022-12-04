@@ -47,6 +47,7 @@ import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.views.EmfParsleyExamplesViewsActivator;
 import org.eclipse.emf.parsley.junit4.ui.util.ImageTester;
 import org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBotTestsActivator;
+import org.eclipse.emf.parsley.tests.swtbot.utils.WaitForBuildCondition;
 import org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryTreeViewWithResourceURI;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
 import org.eclipse.jdt.core.JavaCore;
@@ -943,13 +944,15 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void waitForBuild() throws CoreException {
+//		var condition = new WaitForBuildCondition(bot);
+//		condition.startListenForBuild();
+//		condition.waitForBuild();
 		bot.waitUntil(new DefaultCondition() {
 			
 			private AssertionError error;
 
 			@Override
 			public boolean test() throws Exception {
-				IResourcesSetupUtil.waitForBuild();
 				try {
 					assertNoIssuesInProject();
 				} catch (AssertionError error) {
@@ -957,17 +960,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 					System.err.println("errors: " + error.getMessage());
 					System.err.println("retrying...");
 					// ensure that all queued workspace operations and locks are released
-					try {
-						ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
-							@Override
-							public void run(IProgressMonitor monitor) throws CoreException {
-								// nothing to do!
-							}
-						}, new NullProgressMonitor());
-					} catch (CoreException e) {
-						e.printStackTrace();
+					while (Display.getDefault().readAndDispatch()) {
 					}
-					IResourcesSetupUtil.cleanBuild();
 					return false;
 				}
 				return true;
@@ -977,7 +971,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 			public String getFailureMessage() {
 				return "Build with errors: " + error.getMessage();
 			}
-		});
+		}, SWTBotPreferences.TIMEOUT, 2000);
 		/*
 		IResourcesSetupUtil.reallyWaitForAutoBuild();
 		
