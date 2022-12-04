@@ -30,7 +30,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -53,7 +52,6 @@ import org.eclipse.emf.parsley.junit4.ui.util.ImageTester;
 import org.eclipse.emf.parsley.tests.swtbot.activator.EmfParsleySwtBotTestsActivator;
 import org.eclipse.emf.parsley.tests.swtbot.views.TestOnSelectionLibraryTreeViewWithResourceURI;
 import org.eclipse.emf.parsley.util.ActionBarsUtils;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.jface.action.SubStatusLineManager;
@@ -1323,21 +1321,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				string.contains("This plug-in does not export all of its packages");
 	}
 
-	protected void setEditorContentsSaveAndWaitForAutoBuild(
-			SWTBotEditor editor, CharSequence contents) throws CoreException {
-		setEditorContentsSaveAndWaitForAutoBuild(editor, contents, true);
-	}
-
-	protected void setEditorContentsSaveAndWaitForAutoBuild(
-			SWTBotEditor editor, CharSequence contents, boolean expectNoErrors) throws CoreException {
-		editor.toTextEditor().setText(contents.toString());
-		editor.save();
-		if (expectNoErrors)
-			assertNoErrorsInProjectAfterAutoBuild();
-		else
-			waitForBuild();
-	}
-
 	protected void assertTextComponent(SWTFormsBot formbot, String text, final boolean editable) {
 		final SWTBotText t = formbot.text(text);
 		Display.getDefault().syncExec(new Runnable() {
@@ -1642,28 +1625,28 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		assertTableItemsSize(table, initialTableItemsSize+1);
 	}
 
-	protected void clearJdtIndex() {
-		var jdtMetadata = JavaCore.getPlugin().getStateLocation().toFile();
-		bot.waitUntil(new DefaultCondition() {
-			
-			@Override
-			public boolean test() {
-				System.err.println("Clean up index " + jdtMetadata.getAbsolutePath());
-				try {
-					FileUtils.deleteDirectory(jdtMetadata);
-				} catch (IOException e) {
-					System.err.println("retrying due to exception while cleaning");
-					return false;
-				}
-				return true;
-			}
-			
-			@Override
-			public String getFailureMessage() {
-				return "cannot delete " + jdtMetadata;
-			}
-		});
-	}
+//	protected void clearJdtIndex() {
+//		var jdtMetadata = JavaCore.getPlugin().getStateLocation().toFile();
+//		bot.waitUntil(new DefaultCondition() {
+//			
+//			@Override
+//			public boolean test() {
+//				System.err.println("Clean up index " + jdtMetadata.getAbsolutePath());
+//				try {
+//					FileUtils.deleteDirectory(jdtMetadata);
+//				} catch (IOException e) {
+//					System.err.println("retrying due to exception while cleaning");
+//					return false;
+//				}
+//				return true;
+//			}
+//			
+//			@Override
+//			public String getFailureMessage() {
+//				return "cannot delete " + jdtMetadata;
+//			}
+//		});
+//	}
 
 //	protected void maximizeCurrentWindow() {
 //		Display.getDefault().syncExec(new Runnable() {
