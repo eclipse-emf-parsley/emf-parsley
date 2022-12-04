@@ -10,7 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot;
 
-import static org.eclipse.swtbot.swt.finder.waits.Conditions.*;
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellIsActive;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.cleanWorkspace;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.createFile;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.root;
@@ -30,6 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -39,6 +41,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.jobs.IJobManager;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -100,8 +104,6 @@ import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author Lorenzo Bettini
@@ -369,7 +371,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	};
 
 	public EmfParsleySWTBotAbstractTests() {
-		log = LoggerFactory.getLogger(getClass());
+		log = Logger.getLogger(getClass());
+		// log.setLevel(Level.DEBUG);
 	}
 
 	@BeforeClass
@@ -466,8 +469,38 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	public void runAfterEveryTest() throws Exception {
 		// bot.sleep(2000);
 		bot.saveAllEditors();
+		waitForJobs();
 		cleanWorkspace();
 		waitForBuild();
+		waitForJobs();
+	}
+
+	private void waitForJobs() {
+		bot.waitUntil(new DefaultCondition() {
+			@Override
+			public boolean test() throws Exception {
+				IJobManager jobManager = Job.getJobManager();
+				boolean idle = jobManager.isIdle();
+				if (!idle) {
+					log.info("Jobs still running...");
+					printJobs();
+				}
+				return idle;
+			}
+
+			@Override
+			public String getFailureMessage() {
+				printJobs();
+				return "Timed out waiting for jobs to finish.";
+			}
+
+			void printJobs() {
+				Job[] jobs = Job.getJobManager().find(null);
+				for (Job job : jobs) {
+					log.info(job.toString() + " state: " + job.getState());
+				}
+			}
+		});
 	}
 
 	private static void openJavaPerspective() throws InterruptedException {
