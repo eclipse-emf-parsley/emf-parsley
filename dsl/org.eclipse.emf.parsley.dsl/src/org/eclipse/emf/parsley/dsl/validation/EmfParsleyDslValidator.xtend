@@ -276,7 +276,25 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	def protected checkType(EObject context, JvmTypeReference actualType, Class<?> expectedType,
 			EStructuralFeature feature) {
 		if (actualType !== null) {
-			if (!typeSystem.isConformant(context, expectedType, actualType)) {
+			val jvmType = actualType.type
+			if (jvmType instanceof JvmGenericType) {
+				val allSuperTypesAreObject = jvmType.superTypes
+					.forall[
+						t |
+						// this means that the hierarchy has not been
+						// completely resolved...
+						t.identifier == "java.lang.Object"
+					]
+				// ... so we don't perform other checks
+				// otherwise when everything is resolved, the old
+				// error markers is not removed
+				// https://github.com/eclipse-emf-parsley/emf-parsley/issues/42
+				if (allSuperTypesAreObject)
+					return
+			}
+			val lightweightActualType = toLightweightTypeReference(actualType)
+			// val superType = lightweightActualType.getSuperType(expectedType)
+			if (!lightweightActualType.isSubtypeOf(expectedType)) {
 				error("Type mismatch: cannot convert from " + actualType.simpleName +
 					" to " + expectedType.simpleName,
 					context,

@@ -31,7 +31,7 @@ import com.google.common.collect.Iterables;
  */
 public class EmfCommandsUtil {
 
-	protected EmfCommandsUtil() {
+	private EmfCommandsUtil() {
 	}
 
 	/**

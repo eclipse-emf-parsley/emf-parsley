@@ -23,7 +23,7 @@ import org.eclipse.ui.IWorkbenchPart;
  */
 public class ActionBarsUtils {
 	
-	protected ActionBarsUtils() {
+	private ActionBarsUtils() {
 	}
 
 	public static IActionBars getActionBars(IWorkbenchPart part) {

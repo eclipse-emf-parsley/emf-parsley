@@ -10,7 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests.swtbot;
 
-import static org.eclipse.swtbot.swt.finder.waits.Conditions.*;
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses;
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellIsActive;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.cleanWorkspace;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.createFile;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.root;
@@ -29,6 +30,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -38,6 +40,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.jobs.IJobManager;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -354,6 +358,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	protected static Map<String, String> editorNamesToId;
 
+	protected final Logger log;
+
 	@Rule
 	public TestRule showTestMethodNameRule = new TestWatcher() {
 		@Override
@@ -363,18 +369,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	};
 
 	public EmfParsleySWTBotAbstractTests() {
-		// the following are useless... but it's just to have coverage
-		// for the protected constructor of EmfParsleyConstants
-		// and the protected constructor is "required" by sonar...
-		new org.eclipse.emf.parsley.util.EmfParsleyUiUtil() {
-			
-		};
-		new ActionBarsUtils() {
-			
-		};
-		new org.eclipse.emf.parsley.util.EmfCommandsUtil() {
-			
-		};
+		log = Logger.getLogger(getClass());
+		// log.setLevel(Level.DEBUG);
 	}
 
 	@BeforeClass
@@ -468,11 +464,40 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	@After
-	public void runAfterEveryTest() throws CoreException {
+	public void runAfterEveryTest() throws Exception {
 		// bot.sleep(2000);
 		bot.saveAllEditors();
+		waitForJobs();
 		cleanWorkspace();
-		waitForBuild();
+		waitForJobs();
+	}
+
+	private void waitForJobs() {
+		bot.waitUntil(new DefaultCondition() {
+			@Override
+			public boolean test() throws Exception {
+				IJobManager jobManager = Job.getJobManager();
+				boolean idle = jobManager.isIdle();
+				if (!idle) {
+					log.info("Jobs still running...");
+					printJobs();
+				}
+				return idle;
+			}
+
+			@Override
+			public String getFailureMessage() {
+				printJobs();
+				return "Timed out waiting for jobs to finish.";
+			}
+
+			void printJobs() {
+				Job[] jobs = Job.getJobManager().find(null);
+				for (Job job : jobs) {
+					log.info(job.toString() + " state: " + job.getState());
+				}
+			}
+		});
 	}
 
 	private static void openJavaPerspective() throws InterruptedException {
@@ -948,6 +973,43 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void waitForBuild() throws CoreException {
+		waitForJobs();
+		bot.waitUntil(new DefaultCondition() {
+			
+			private AssertionError error;
+
+			@Override
+			public boolean test() throws Exception {
+				IResourcesSetupUtil.fullBuild();
+				try {
+					assertNoIssuesInProject();
+				} catch (AssertionError error) {
+					this.error = error;
+					System.err.println("errors: " + error.getMessage());
+					System.err.println("retrying...");
+					// ensure that all queued workspace operations and locks are released
+					try {
+						ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
+							@Override
+							public void run(IProgressMonitor monitor) throws CoreException {
+								// nothing to do!
+							}
+						}, new NullProgressMonitor());
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
+					// IResourcesSetupUtil.cleanBuild();
+					return false;
+				}
+				return true;
+			}
+			
+			@Override
+			public String getFailureMessage() {
+				return "Build with errors: " + error.getMessage();
+			}
+		});
+		/*
 		IResourcesSetupUtil.reallyWaitForAutoBuild();
 		
 		// ensure that all queued workspace operations and locks are released
@@ -971,6 +1033,45 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				} catch (CoreException e) {
 					e.printStackTrace();
 				}
+			}
+		});
+		*/
+	}
+
+	protected void waitForBuildAllowWarnings() throws CoreException {
+		waitForJobs();
+		bot.waitUntil(new DefaultCondition() {
+			
+			private AssertionError error;
+
+			@Override
+			public boolean test() throws Exception {
+				IResourcesSetupUtil.fullBuild();
+				try {
+					assertNoErrorsInProject();
+				} catch (AssertionError error) {
+					this.error = error;
+					System.err.println("errors: " + error.getMessage());
+					System.err.println("retrying...");
+					// ensure that all queued workspace operations and locks are released
+					try {
+						ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
+							@Override
+							public void run(IProgressMonitor monitor) throws CoreException {
+								// nothing to do!
+							}
+						}, new NullProgressMonitor());
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
+					return false;
+				}
+				return true;
+			}
+			
+			@Override
+			public String getFailureMessage() {
+				return "Build with errors: " + error.getMessage();
 			}
 		});
 	}
@@ -1160,15 +1261,14 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void assertNoErrorsInProjectAfterAutoBuild() throws CoreException {
-		waitForBuild();
-		assertNoErrorsInProject();
+		// warnings are due to feature references that are not resolved
+		// due to the way the target platform is handled in tests
+		// only plugins available (?)
+		waitForBuildAllowWarnings();
 	}
 
 	protected void assertNoIssuesInProjectAfterAutoBuild() throws CoreException {
 		waitForBuild();
-		// the second wait is for our custom builder for plugin.xml
-		waitForBuild();
-		assertNoIssuesInProject();
 	}
 
 	protected void assertNoErrorsInProject() throws CoreException {
@@ -1216,21 +1316,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		final String string = iMarker.getAttribute(IMarker.MESSAGE).toString();
 		return string.contains("'Automatic-Module-Name'") ||
 				string.contains("This plug-in does not export all of its packages");
-	}
-
-	protected void setEditorContentsSaveAndWaitForAutoBuild(
-			SWTBotEditor editor, CharSequence contents) throws CoreException {
-		setEditorContentsSaveAndWaitForAutoBuild(editor, contents, true);
-	}
-
-	protected void setEditorContentsSaveAndWaitForAutoBuild(
-			SWTBotEditor editor, CharSequence contents, boolean expectNoErrors) throws CoreException {
-		editor.toTextEditor().setText(contents.toString());
-		editor.save();
-		if (expectNoErrors)
-			assertNoErrorsInProjectAfterAutoBuild();
-		else
-			waitForBuild();
 	}
 
 	protected void assertTextComponent(SWTFormsBot formbot, String text, final boolean editable) {
@@ -1536,6 +1621,29 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		clickOnContextMenu(table, NEW_SIBLING, sibling);
 		assertTableItemsSize(table, initialTableItemsSize+1);
 	}
+
+//	protected void clearJdtIndex() {
+//		var jdtMetadata = JavaCore.getPlugin().getStateLocation().toFile();
+//		bot.waitUntil(new DefaultCondition() {
+//			
+//			@Override
+//			public boolean test() {
+//				System.err.println("Clean up index " + jdtMetadata.getAbsolutePath());
+//				try {
+//					FileUtils.deleteDirectory(jdtMetadata);
+//				} catch (IOException e) {
+//					System.err.println("retrying due to exception while cleaning");
+//					return false;
+//				}
+//				return true;
+//			}
+//			
+//			@Override
+//			public String getFailureMessage() {
+//				return "cannot delete " + jdtMetadata;
+//			}
+//		});
+//	}
 
 //	protected void maximizeCurrentWindow() {
 //		Display.getDefault().syncExec(new Runnable() {
