@@ -34,8 +34,6 @@ jobs:
       run: >
         ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         clean verify
-        '-Dswtbot.tests.skip=true'
-      # The full suite of SWTBot tests is too flaky on Windows
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v2
       if: ${{ failure() || cancelled() }}
