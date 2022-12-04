@@ -370,19 +370,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	public EmfParsleySWTBotAbstractTests() {
 		log = LoggerFactory.getLogger(getClass());
-
-		// the following are useless... but it's just to have coverage
-		// for the protected constructor of EmfParsleyConstants
-		// and the protected constructor is "required" by sonar...
-		new org.eclipse.emf.parsley.util.EmfParsleyUiUtil() {
-			
-		};
-		new ActionBarsUtils() {
-			
-		};
-		new org.eclipse.emf.parsley.util.EmfCommandsUtil() {
-			
-		};
 	}
 
 	@BeforeClass

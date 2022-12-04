@@ -24,7 +24,7 @@ import org.eclipse.ui.PlatformUI;
  */
 public class EmfParsleyUiUtil {
 
-	protected EmfParsleyUiUtil() {
+	private EmfParsleyUiUtil() {
 
 	}
 
