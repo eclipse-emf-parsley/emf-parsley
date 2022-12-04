@@ -51,7 +51,9 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.xtext.testing.Flaky;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,14 +64,23 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
-	
+
 	protected final Logger log = Logger.getLogger(getClass());
-	
+
 	@Rule
 	public Flaky.Rule testRule = new Flaky.Rule();
-	
-	public EmfParsleyFormTests() {
+
+	private Level origLevel;
+
+	@Before
+	public void setLogLevel() {
+		origLevel = log.getLevel();
 		log.setLevel(Level.DEBUG);
+	}
+
+	@After
+	public void resetLogLevel() {
+		log.setLevel(origLevel);
 	}
 
 	@Test
