@@ -976,6 +976,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void waitForBuild() throws CoreException {
+		waitForJobs();
 		bot.waitUntil(new DefaultCondition() {
 			
 			private AssertionError error;
@@ -1041,6 +1042,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void waitForBuildAllowWarnings() throws CoreException {
+		waitForJobs();
 		bot.waitUntil(new DefaultCondition() {
 			
 			private AssertionError error;
