@@ -469,7 +469,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.saveAllEditors();
 		waitForJobs();
 		cleanWorkspace();
-		waitForBuild();
 		waitForJobs();
 	}
 
@@ -1266,12 +1265,10 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		// due to the way the target platform is handled in tests
 		// only plugins available (?)
 		waitForBuildAllowWarnings();
-		assertNoErrorsInProject();
 	}
 
 	protected void assertNoIssuesInProjectAfterAutoBuild() throws CoreException {
 		waitForBuild();
-		assertNoIssuesInProject();
 	}
 
 	protected void assertNoErrorsInProject() throws CoreException {
