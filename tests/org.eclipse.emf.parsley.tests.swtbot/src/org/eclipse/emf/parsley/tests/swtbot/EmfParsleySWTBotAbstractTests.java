@@ -949,7 +949,16 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 			@Override
 			public boolean test() throws Exception {
-				IResourcesSetupUtil.waitForBuild();
+				Display.getDefault().syncExec(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							IResourcesSetupUtil.fullBuild();
+						} catch (CoreException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 				try {
 					assertNoIssuesInProject();
 				} catch (AssertionError error) {
@@ -967,7 +976,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 					} catch (CoreException e) {
 						e.printStackTrace();
 					}
-					IResourcesSetupUtil.cleanBuild();
+					// IResourcesSetupUtil.cleanBuild();
 					return false;
 				}
 				return true;
@@ -977,7 +986,7 @@ public abstract class EmfParsleySWTBotAbstractTests {
 			public String getFailureMessage() {
 				return "Build with errors: " + error.getMessage();
 			}
-		});
+		}, SWTBotPreferences.TIMEOUT, 2000);
 		/*
 		IResourcesSetupUtil.reallyWaitForAutoBuild();
 		
