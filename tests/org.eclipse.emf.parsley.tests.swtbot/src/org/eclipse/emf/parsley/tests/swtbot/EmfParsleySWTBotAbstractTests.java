@@ -100,6 +100,8 @@ import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Lorenzo Bettini
@@ -356,6 +358,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 
 	protected static Map<String, String> editorNamesToId;
 
+	protected final Logger log;
+
 	@Rule
 	public TestRule showTestMethodNameRule = new TestWatcher() {
 		@Override
@@ -365,6 +369,8 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	};
 
 	public EmfParsleySWTBotAbstractTests() {
+		log = LoggerFactory.getLogger(getClass());
+
 		// the following are useless... but it's just to have coverage
 		// for the protected constructor of EmfParsleyConstants
 		// and the protected constructor is "required" by sonar...
