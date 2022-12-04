@@ -48,13 +48,11 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-import org.eclipse.xtext.testing.Flaky;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -67,8 +65,8 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 
 	protected final Logger log = Logger.getLogger(getClass());
 
-	@Rule
-	public Flaky.Rule testRule = new Flaky.Rule();
+//	@Rule
+//	public Flaky.Rule testRule = new Flaky.Rule();
 
 	private Level origLevel;
 
@@ -245,17 +243,15 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 		getEditor(EMF_TREE_EDITOR).close();
 	}
 
-	@Test @Flaky
+	@Test
 	public void testContentAssistInFormAndSelect() throws Exception {
-		if (!isIndigo()) {
-			SWTFormsBot formbot = setupFormForContentAssistTest();
-			SWTBotText text = formbot.textWithLabel(STRING_FEATURE_LABEL);
-			// select the content assist proposal
-			selectContentAssistProposal(text, "Second Proposal");
-			// and check that the text has changed
-			formbot.text("Second Proposal");
-			getEditor(EMF_TREE_EDITOR).saveAndClose();
-		}
+		SWTFormsBot formbot = setupFormForContentAssistTest();
+		SWTBotText text = formbot.textWithLabel(STRING_FEATURE_LABEL);
+		// select the content assist proposal
+		selectContentAssistProposal(text, "Second Proposal");
+		// and check that the text has changed
+		formbot.text("Second Proposal");
+		getEditor(EMF_TREE_EDITOR).saveAndClose();
 	}
 
 	private SWTFormsBot setupFormForContentAssistTest() throws CoreException,
