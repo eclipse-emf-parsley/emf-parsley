@@ -1011,10 +1011,10 @@ public abstract class EmfParsleySWTBotAbstractTests {
 		bot.waitUntil(new DefaultCondition() {
 			
 			private AssertionError error;
-			
+
 			@Override
 			public boolean test() throws Exception {
-				IResourcesSetupUtil.waitForBuild();
+				IResourcesSetupUtil.fullBuild();
 				try {
 					assertNoErrorsInProject();
 				} catch (AssertionError error) {
@@ -1032,7 +1032,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 					} catch (CoreException e) {
 						e.printStackTrace();
 					}
-					IResourcesSetupUtil.cleanBuild();
 					return false;
 				}
 				return true;
@@ -1043,33 +1042,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				return "Build with errors: " + error.getMessage();
 			}
 		});
-		/*
-		IResourcesSetupUtil.reallyWaitForAutoBuild();
-		
-		// ensure that all queued workspace operations and locks are released
-		try {
-			ResourcesPlugin.getWorkspace().run(new IWorkspaceRunnable() {
-				@Override
-				public void run(IProgressMonitor monitor) throws CoreException {
-					// nothing to do!
-				}
-			}, new NullProgressMonitor());
-		} catch (CoreException e) {
-			e.printStackTrace();
-		}
-
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					IResourcesSetupUtil.cleanBuild();
-					IResourcesSetupUtil.fullBuild();
-				} catch (CoreException e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		 */
 	}
 
 	protected static SWTBotView getPackageExplorer() {
