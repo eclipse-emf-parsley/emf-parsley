@@ -43,5 +43,5 @@ jobs:
       uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
-        name: logs-${{ runner.os }}
+        name: rap-examples-test-${{ runner.os }}
         path: '**/org.eclipse.emf.parsley.targetplatform/rap-examples-test.target'
