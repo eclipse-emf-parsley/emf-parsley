@@ -71,6 +71,7 @@
 		<xtext-version>2.29.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
 		<mwe2Version>2.14.0</mwe2Version>
+		<eclipse-version>2022-12</eclipse-version>
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
@@ -222,6 +223,10 @@
 				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 
+				<!-- The target platform rap example is required here to allow to generate
+					a .target file with proper substitution of versions in the update sites.
+					The example is then packaged by org.eclipse.emf.parsley.ui.examples -->
+				<module>../../examples/org.eclipse.emf.parsley.examples.rap.targetplatform</module>
 				<module>../../plugins/org.eclipse.emf.parsley.ui.examples</module>
 
 				<module>../../features/org.eclipse.emf.parsley.examples.feature</module>
@@ -350,7 +355,11 @@
 				<module>../../features/org.eclipse.emf.parsley.rap.sdk</module>
 
 				<module>../../features/org.eclipse.emf.parsley.rap.cdo.sdk</module>
-				
+
+				<!-- The target platform rap example is required here to allow to generate
+					a .target file with proper substitution of versions in the update sites.
+					The example .target file is then processed by the rap.repository -->
+				<module>../../examples/org.eclipse.emf.parsley.examples.rap.targetplatform</module>
 				<module>../../releng/org.eclipse.emf.parsley.rap.repository</module>
 			</modules>
 			<properties>
@@ -622,6 +631,10 @@
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.3.0</version>
 				</plugin>
 
 				<!-- The main configuration is here, parameterized over the

@@ -46,7 +46,7 @@
 		</replaceregexp>
 
 		<replaceregexp byline="true">
-			<regexp pattern="&lt;repository location=&quot;(https://download.eclipse.org/emf-parsley/rt)&quot;(\.*)/&gt;" />
+			<regexp pattern="&lt;repository location=&quot;(https://download.eclipse.org/emf-parsley/rt.*)&quot;(\.*)/&gt;" />
 			<substitution expression="&lt;repository location=&quot;${local.mirror.url}&quot;\2/&gt;" />
 			<fileset id="path.target" dir="${ant.file}/../">
 				<include name="${local.target.name}" />

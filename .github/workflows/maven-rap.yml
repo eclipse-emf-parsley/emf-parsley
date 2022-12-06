@@ -39,3 +39,9 @@ jobs:
         ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         -Prap-examples
         clean verify
+    - name: Archive Target Platform example
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: rap-examples-test-${{ runner.os }}
+        path: '**/org.eclipse.emf.parsley.targetplatform/rap-examples-test.target'
