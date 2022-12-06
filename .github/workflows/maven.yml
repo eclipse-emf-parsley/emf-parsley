@@ -38,6 +38,7 @@ jobs:
     - name: Build with Maven
       run: >
         ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        -Prcp-build
         clean verify
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v2
