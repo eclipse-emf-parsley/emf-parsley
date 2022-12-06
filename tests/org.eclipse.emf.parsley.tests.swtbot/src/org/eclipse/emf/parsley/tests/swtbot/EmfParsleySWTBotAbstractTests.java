@@ -494,7 +494,9 @@ public abstract class EmfParsleySWTBotAbstractTests {
 					System.err.println("### JOBS: " + job.toString() + " state: " + job.getState());
 				}
 			}
-		});
+		}, SWTBotPreferences.TIMEOUT + SWTBotPreferences.TIMEOUT);
+		// waiting for Jobs might require lots of time, so better
+		// to double the timeout
 	}
 
 	private static void openJavaPerspective() throws InterruptedException {
