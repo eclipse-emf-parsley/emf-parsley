@@ -12,7 +12,11 @@
 
 	<artifactId>org.eclipse.emf.parsley.tests.swtbot</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-	
+
+	<properties>
+		<specialTestArguments>${swtbotTestsArgs}</specialTestArguments>
+	</properties>
+
 	<profiles>
 		<profile>
 			<id>macosx-jvm-flags</id>

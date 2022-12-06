@@ -13,6 +13,10 @@
 	<artifactId>org.eclipse.emf.parsley.tests.swtbot.examples</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<properties>
+		<specialTestArguments>${swtbotTestsArgs}</specialTestArguments>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
