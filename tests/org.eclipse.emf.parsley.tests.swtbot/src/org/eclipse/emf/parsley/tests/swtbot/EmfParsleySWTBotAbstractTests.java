@@ -478,7 +478,6 @@ public abstract class EmfParsleySWTBotAbstractTests {
 				boolean idle = Job.getJobManager().isIdle();
 				if (!idle) {
 					log.info("Jobs still running...");
-					printJobs();
 				}
 				return idle;
 			}
