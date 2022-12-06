@@ -94,6 +94,8 @@
 		<additionalTestArguments></additionalTestArguments>
 		<specialTestArguments></specialTestArguments>
 
+		<jacoco-aggregate-report>../../tests/org.eclipse.emf.parsley.tests.coverage/target/site/jacoco-aggregate/jacoco.xml</jacoco-aggregate-report>
+
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		
 		<parsley.download.area>/home/data/httpd/download.eclipse.org/emf-parsley</parsley.download.area>
@@ -205,7 +207,6 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.coverage</module>
 				<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
@@ -288,6 +289,8 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
+
+				<module>../../tests/org.eclipse.emf.parsley.tests.coverage</module>
 			</modules>
 
 			<build>
@@ -665,6 +668,17 @@
 						<artifactId>jacoco-maven-plugin</artifactId>
 					</plugin>
 				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.xtend</groupId>
+							<artifactId>xtend-maven-plugin</artifactId>
+							<configuration>
+								<xtendAsPrimaryDebugSource>true</xtendAsPrimaryDebugSource>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 			</build>
 		</profile>
 	</profiles>
@@ -789,8 +803,6 @@
 								<goal>prepare-agent</goal>
 							</goals>
 							<configuration>
-								<!-- Where to put jacoco coverage report -->
-								<destFile>${sonar.jacoco.reportPath}</destFile>
 								<includes>
 									<include>org.eclipse.emf.parsley.*</include>
 								</includes>
@@ -806,7 +818,6 @@
 									<exclude>**/Abstract*ProposalProvider.java</exclude>
 									<exclude>**/*Test.java</exclude>
 								</excludes>
-								<append>true</append>
 							</configuration>
 						</execution>
 					</executions>
