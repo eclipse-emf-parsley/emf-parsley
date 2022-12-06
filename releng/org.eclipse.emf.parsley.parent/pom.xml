@@ -84,7 +84,14 @@
 		<pdeTestsArgs></pdeTestsArgs>
 		<skipDragAndDropTests>true</skipDragAndDropTests>
 		<swtbotTestsArgs>${uiTestsArgs} -DskipDragAndDropTests=${skipDragAndDropTests} -Dorg.eclipse.swtbot.search.timeout=20000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
+		<!-- we build with at least Java 11 always -->
 		<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
+
+		<!-- Define overridable properties for tycho-surefire-plugin -->
+		<platformSystemProperties></platformSystemProperties>
+		<previewProperties></previewProperties>
+		<systemProperties></systemProperties>
+		<additionalTestArguments></additionalTestArguments>
 
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		
@@ -622,6 +629,43 @@
 				</pluginRepository>
 			</pluginRepositories>
 		</profile>
+
+		<profile>
+			<id>macos</id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
+				<platformSystemProperties>-XstartOnFirstThread</platformSystemProperties>
+			</properties>
+		</profile>
+		<profile>
+			<id>jdk12-or-newer</id>
+			<activation>
+				<jdk>[12,)</jdk>
+			</activation>
+			<properties>
+				<previewProperties>--enable-preview</previewProperties>
+			</properties>
+		</profile>
+		<profile>
+			<id>jacoco</id>
+			<properties>
+				<!-- tycho.testArgLine is where jacoco stores the agent path -->
+				<additionalTestArguments>${tycho.testArgLine}</additionalTestArguments>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 	<build>
@@ -687,6 +731,15 @@
 					</executions>
 					<configuration>
 						<outputDirectory>xtend-gen</outputDirectory>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+					<configuration>
+						<argLine>${platformSystemProperties} ${systemProperties} ${additionalTestArguments}</argLine>
 					</configuration>
 				</plugin>
 

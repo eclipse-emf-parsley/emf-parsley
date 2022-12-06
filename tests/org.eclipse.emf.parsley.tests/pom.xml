@@ -54,7 +54,6 @@
 					of tycho surefire -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
 				<executions>
 					<execution>
 						<!-- The execution id default-test must be left to tycho-surefire-plugin 
@@ -63,9 +62,6 @@
 						<phase>test</phase>
 						<configuration>
 							<skip>${simple.tests.skip}</skip>
-							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${uiTestsArgs} ${memoryArgs} ${moduleProperties}</argLine>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<includes>
 								<include>**/*Test.java</include>
