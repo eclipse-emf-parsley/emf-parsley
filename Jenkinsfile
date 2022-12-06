@@ -35,14 +35,6 @@ pipeline {
     }
     success {
       archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log, **/site/jacoco-aggregate/'
-      publishHTML(target: [
-        allowMissing: false,
-        alwaysLinkToLastBuild: true,
-        keepAll: true,
-        reportDir: 'tests/org.eclipse.emf.parsley.tests.coverage/target/site/jacoco-aggregate',
-        reportFiles: 'index.html',
-        reportName: 'Jacoco HTML Report'
-      ])
     }
   }
 }
