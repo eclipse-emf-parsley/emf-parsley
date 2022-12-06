@@ -802,25 +802,28 @@
 							<goals>
 								<goal>prepare-agent</goal>
 							</goals>
-							<configuration>
-								<includes>
-									<include>org.eclipse.emf.parsley.*</include>
-								</includes>
-								<excludes>
-									<exclude>**/src-gen/**/*.java</exclude>
-									<exclude>**.antlr**</exclude>
-									<exclude>**.parseTree**</exclude>
-									<exclude>**Abstract*RuntimeModule.java</exclude>
-									<exclude>**/*SetupGenerated*.java</exclude>
-									<exclude>**/Abstract*Validator.java</exclude>
-									<exclude>**/*GrammarAccess.java</exclude>
-									<exclude>**/Abstract*UiModule.java</exclude>
-									<exclude>**/Abstract*ProposalProvider.java</exclude>
-									<exclude>**/*Test.java</exclude>
-								</excludes>
-							</configuration>
 						</execution>
 					</executions>
+					<configuration>
+						<excludes>
+							<!-- Antlr generated Java classes -->
+							<exclude>**/antlr/**/*.class</exclude>
+							<!-- We don't have a custom serializer -->
+							<exclude>**/serializer/*.class</exclude>
+							<!-- generated files -->
+							<exclude>**/*Abstract*RuntimeModule.class</exclude>
+							<exclude>**/*StandaloneSetup*.class</exclude>
+							<exclude>**/*Abstract*Validator.class</exclude>
+							<exclude>**/*Abstract*ScopeProvider.class</exclude>
+							<exclude>**/*GrammarAccess*.class</exclude>
+							<exclude>**/*Abstract*UiModule.class</exclude>
+							<exclude>**/**ExecutableExtensionFactory.class</exclude>
+							<exclude>**/*Abstract*ProposalProvider.class</exclude>
+							<exclude>**/internal/*.class</exclude>
+							<exclude>**/*ProjectTemplateProvider.class</exclude>
+							<exclude>**/*ProjectTemplate.class</exclude>
+						</excludes>
+					</configuration>
 				</plugin>
 				
 				<!--  see https://bugs.eclipse.org/bugs/show_bug.cgi?id=419172#c17 -->
