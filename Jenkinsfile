@@ -34,7 +34,7 @@ pipeline {
       archiveArtifacts artifacts: '**/target/work/data/.metadata/.log, **/screenshots/, **/wm.err, **/hs_err_pid*.log'
     }
     success {
-      archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log'
+      archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log, **/site/jacoco-aggregate/'
     }
   }
 }
