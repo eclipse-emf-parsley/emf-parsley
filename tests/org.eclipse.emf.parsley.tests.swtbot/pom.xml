@@ -65,9 +65,6 @@
 						<id>default-test</id>
 						<phase>integration-test</phase>
 						<configuration>
-							<skip>${swtbot.tests.skip}</skip>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>false</useUIThread>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</exclude>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</exclude>
@@ -76,11 +73,6 @@
 							<includes>
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*Test*.java</include>
 							</includes>
-							<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
-								http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
-							<environmentVariables>
-								<SWT_GTK3>0</SWT_GTK3>
-							</environmentVariables>
 						</configuration>
 						<goals>
 							<goal>test</goal>
@@ -92,9 +84,6 @@
 						<id>draganddrop-test</id>
 						<phase>integration-test</phase>
 						<configuration>
-							<skip>${swtbot.tests.skip}</skip>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>false</useUIThread>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</exclude>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</exclude>
@@ -102,11 +91,6 @@
 							<includes>
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*DropTest*.java</include>
 							</includes>
-							<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
-								http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
-							<environmentVariables>
-								<SWT_GTK3>0</SWT_GTK3>
-							</environmentVariables>
 						</configuration>
 						<goals>
 							<goal>test</goal>
@@ -116,9 +100,6 @@
 						<id>PDEBasedTests</id>
 						<phase>integration-test</phase>
 						<configuration>
-							<skip>${swtbot.tests.skip}</skip>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>false</useUIThread>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*AbstractTest*.java</exclude>
 							</excludes>
@@ -126,15 +107,22 @@
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</include>
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</include>
 							</includes>
-							<environmentVariables>
-								<SWT_GTK3>0</SWT_GTK3>
-							</environmentVariables>
 						</configuration>
 						<goals>
 							<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<skip>${swtbot.tests.skip}</skip>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
+						http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
+					<environmentVariables>
+						<SWT_GTK3>0</SWT_GTK3>
+					</environmentVariables>
+				</configuration>
 			</plugin>
 
 			<plugin>
