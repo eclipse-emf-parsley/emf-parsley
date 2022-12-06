@@ -647,12 +647,9 @@
 					<version>${tycho-version}</version>
 					<configuration>
 						<target>
-							<artifact>
-								<groupId>org.eclipse.emf.parsley</groupId>
-								<artifactId>org.eclipse.emf.parsley.targetplatform</artifactId>
-								<version>${project.version}</version>
-								<classifier>${target-file-name}</classifier> 
-							</artifact>
+							<file>
+							${project.basedir}/../../devtools/org.eclipse.emf.parsley.targetplatform/${target-file-name}.target
+							</file>
 						</target>
 						<!--
 							Build only with the current environment to avoid problems of the shape
