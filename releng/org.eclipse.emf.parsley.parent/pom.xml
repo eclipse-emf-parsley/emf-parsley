@@ -817,6 +817,7 @@
 							<!-- We don't have a custom serializer -->
 							<exclude>**/serializer/*.class</exclude>
 							<!-- generated files -->
+							<exclude>**/EmfParsleyDslNewProjectWizard*.class</exclude>
 							<exclude>**/*Abstract*RuntimeModule.class</exclude>
 							<exclude>**/*StandaloneSetup*.class</exclude>
 							<exclude>**/*Abstract*Validator.class</exclude>

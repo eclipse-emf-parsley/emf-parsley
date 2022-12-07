@@ -26,7 +26,7 @@ pipeline {
         }
         jacoco (
           classPattern: 'plugins/org.eclipse.emf.parsley.*/**/classes,dsl/org.eclipse.emf.parsley.dsl/**/classes,dsl/org.eclipse.emf.parsley.dsl.ui/**/classes,dsl/org.eclipse.emf.parsley.dsl.additional.builder/**/classes',
-          exclusionPattern: '**/*StandaloneSetup*.class,**/*ExecutableExtensionFactory*.class,**/*UiModule*.class,**/*RuntimeModule*.class,**/*Activator*.class,**/*Nature*.class,**/EmfParsleyDslProjectCreator.class,**/EmfParsleyDslNewProjectWizard.class,**/Abstract*ProposalProvider*,**/*Internal*,**/*Sequencer*,**/*GrammarAccess*,**/antlr/*.*,**/internal/*.*,**/org/eclipse/emf/parsley/dsl/model/impl/*.*,**/org/eclipse/emf/parsley/dsl/model/util/*.*,**/org/eclipse/emf/parsley/rap/**/*.*,**/org/eclipse/emf/parsley/runtime/**/*.*,**/org/eclipse/emf/parsley/tests/**/*.*,**/org/eclipse/emf/parsley/junit4/**/*.*,**/org/eclipse/emf/parsley/inject/parameters/*.*',
+          exclusionPattern: '**/*StandaloneSetup*.class,**/*ExecutableExtensionFactory*.class,**/*UiModule*.class,**/*RuntimeModule*.class,**/*Activator*.class,**/*Nature*.class,**/EmfParsleyDslProjectCreator.class,**/EmfParsleyDslNewProjectWizard*.class,**/Abstract*ProposalProvider*,**/*Internal*,**/*Sequencer*,**/*GrammarAccess*,**/antlr/*.*,**/internal/*.*,**/org/eclipse/emf/parsley/dsl/model/impl/*.*,**/org/eclipse/emf/parsley/dsl/model/util/*.*,**/org/eclipse/emf/parsley/rap/**/*.*,**/org/eclipse/emf/parsley/runtime/**/*.*,**/org/eclipse/emf/parsley/tests/**/*.*,**/org/eclipse/emf/parsley/junit4/**/*.*,**/org/eclipse/emf/parsley/inject/parameters/*.*',
           maximumBranchCoverage: '100',
           maximumClassCoverage: '100',
           maximumComplexityCoverage: '100',
