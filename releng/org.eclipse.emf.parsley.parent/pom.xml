@@ -94,6 +94,8 @@
 		<additionalTestArguments></additionalTestArguments>
 		<specialTestArguments></specialTestArguments>
 
+		<jacoco-aggregate-report>../../tests/org.eclipse.emf.parsley.tests.coverage/target/site/jacoco-aggregate/jacoco.xml</jacoco-aggregate-report>
+
 		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
 		
 		<parsley.download.area>/home/data/httpd/download.eclipse.org/emf-parsley</parsley.download.area>
@@ -205,7 +207,6 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>../../tests/org.eclipse.emf.parsley.tests.coverage</module>
 				<module>../../devtools/org.eclipse.emf.parsley.targetplatform</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.runtime.common</module>
@@ -288,6 +289,8 @@
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.parsleypart</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.eclipse4.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.e4</module>
+
+				<module>../../tests/org.eclipse.emf.parsley.tests.coverage</module>
 			</modules>
 
 			<build>
@@ -665,6 +668,17 @@
 						<artifactId>jacoco-maven-plugin</artifactId>
 					</plugin>
 				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.xtend</groupId>
+							<artifactId>xtend-maven-plugin</artifactId>
+							<configuration>
+								<xtendAsPrimaryDebugSource>true</xtendAsPrimaryDebugSource>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 			</build>
 		</profile>
 	</profiles>
@@ -788,28 +802,30 @@
 							<goals>
 								<goal>prepare-agent</goal>
 							</goals>
-							<configuration>
-								<!-- Where to put jacoco coverage report -->
-								<destFile>${sonar.jacoco.reportPath}</destFile>
-								<includes>
-									<include>org.eclipse.emf.parsley.*</include>
-								</includes>
-								<excludes>
-									<exclude>**/src-gen/**/*.java</exclude>
-									<exclude>**.antlr**</exclude>
-									<exclude>**.parseTree**</exclude>
-									<exclude>**Abstract*RuntimeModule.java</exclude>
-									<exclude>**/*SetupGenerated*.java</exclude>
-									<exclude>**/Abstract*Validator.java</exclude>
-									<exclude>**/*GrammarAccess.java</exclude>
-									<exclude>**/Abstract*UiModule.java</exclude>
-									<exclude>**/Abstract*ProposalProvider.java</exclude>
-									<exclude>**/*Test.java</exclude>
-								</excludes>
-								<append>true</append>
-							</configuration>
 						</execution>
 					</executions>
+					<configuration>
+						<excludes>
+							<!-- EMF generated Java classes -->
+							<exclude>**/dsl/model/**/*.class</exclude>
+							<!-- Antlr generated Java classes -->
+							<exclude>**/antlr/**/*.class</exclude>
+							<!-- We don't have a custom serializer -->
+							<exclude>**/serializer/*.class</exclude>
+							<!-- generated files -->
+							<exclude>**/*Abstract*RuntimeModule.class</exclude>
+							<exclude>**/*StandaloneSetup*.class</exclude>
+							<exclude>**/*Abstract*Validator.class</exclude>
+							<exclude>**/*Abstract*ScopeProvider.class</exclude>
+							<exclude>**/*GrammarAccess*.class</exclude>
+							<exclude>**/*Abstract*UiModule.class</exclude>
+							<exclude>**/**ExecutableExtensionFactory.class</exclude>
+							<exclude>**/*Abstract*ProposalProvider.class</exclude>
+							<exclude>**/internal/*.class</exclude>
+							<exclude>**/*ProjectTemplateProvider.class</exclude>
+							<exclude>**/*ProjectTemplate.class</exclude>
+						</excludes>
+					</configuration>
 				</plugin>
 				
 				<!--  see https://bugs.eclipse.org/bugs/show_bug.cgi?id=419172#c17 -->

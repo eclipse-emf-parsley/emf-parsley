@@ -39,6 +39,7 @@ jobs:
       run: >
         ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         -Prcp-build
+        -Pjacoco
         clean verify
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v2
@@ -52,6 +53,12 @@ jobs:
       with:
         name: logs-${{ runner.os }}
         path: '**/target/work/data/.metadata/.log'
+    - name: Archive Coverage Report
+      uses: actions/upload-artifact@v2
+      if: ${{ success() }}
+      with:
+        name: jacoco-coverage-${{ runner.os }}
+        path: '**/site/jacoco-aggregate'
 
   maven-build:
     runs-on: ubuntu-latest
