@@ -56,12 +56,6 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>org.eclipse.emf.parsley.runtime.common</artifactId>
-			<version>${project.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
 			<artifactId>org.eclipse.emf.parsley.views.common</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>

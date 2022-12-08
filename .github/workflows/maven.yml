@@ -12,6 +12,8 @@ jobs:
   tycho-build:
     env:
       DISPLAY: :1
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+    # for external PRs the secret token is not available
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +37,12 @@ jobs:
         Xvfb :1 &
         sleep 5
         metacity --sm-disable --replace 2> metacity.err &
+    - name: Set Maven Additional Goals
+      run: |
+        echo "COVERALLSGOAL=coveralls:report" >> $GITHUB_ENV
+      if: ${{ env.COVERALLS_REPO_TOKEN }}
+      # for external PRs the repo token is not defined
+      # and we don't upload coverage to coveralls
     - name: Build with Maven
       run: >
         ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
@@ -43,9 +51,7 @@ jobs:
         clean verify
         -DrepoToken=$COVERALLS_REPO_TOKEN
         -DpullRequest=${{ github.event.pull_request.number }}
-        coveralls:report
-      env: 
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+        $COVERALLSGOAL
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v2
       if: ${{ failure() || cancelled() }}
