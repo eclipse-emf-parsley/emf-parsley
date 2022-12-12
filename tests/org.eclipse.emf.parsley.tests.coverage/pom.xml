@@ -50,6 +50,12 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.cdo.common</artifactId>
+			<version>${project.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>org.eclipse.emf.parsley.generator.common</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
