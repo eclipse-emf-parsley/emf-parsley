@@ -174,7 +174,7 @@
 
 		<!-- "Synchronized classes Vector, Hashtable, Stack and StringBuffer should not be used" 
 			In TextUndoRedo we actually need a synchronized data structure. -->
-		<sonar.issue.ignore.multicriteria.e3.ruleKey>squid:S1149</sonar.issue.ignore.multicriteria.e3.ruleKey>
+		<sonar.issue.ignore.multicriteria.e3.ruleKey>java:S1149</sonar.issue.ignore.multicriteria.e3.ruleKey>
 		<sonar.issue.ignore.multicriteria.e3.resourceKey>**/TextUndoRedo.java</sonar.issue.ignore.multicriteria.e3.resourceKey>
 
 		<!-- Avoid deprecated checkstyle rule -->
