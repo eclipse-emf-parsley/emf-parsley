@@ -13,11 +13,16 @@ jobs:
     env:
       DISPLAY: :1
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
     # for external PRs the secret token is not available
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2.5.0
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     - name: Set up JDK 11
       uses: actions/setup-java@v3.6.0
       with:
@@ -28,6 +33,7 @@ jobs:
       with:
         path: |
           ~/.m2
+          ~/.sonar/cache
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2-
     - name: Install and start Metacity window manager
@@ -39,7 +45,7 @@ jobs:
         metacity --sm-disable --replace 2> metacity.err &
     - name: Set Maven Additional Goals
       run: |
-        echo "COVERALLSGOAL=coveralls:report" >> $GITHUB_ENV
+        echo "COVERALLSGOAL=coveralls:report sonar:sonar -Dsonar.projectKey=eclipse-emf-parsley_emf-parsley" >> $GITHUB_ENV
       if: ${{ env.COVERALLS_REPO_TOKEN }}
       # for external PRs the repo token is not defined
       # and we don't upload coverage to coveralls
