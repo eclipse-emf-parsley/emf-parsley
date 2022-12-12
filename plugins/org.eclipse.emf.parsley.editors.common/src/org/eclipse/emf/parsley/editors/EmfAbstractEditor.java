@@ -770,10 +770,8 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		try {
 			InputStream stream = editingDomain.getResourceSet()
 					.getURIConverter().createInputStream(resource.getURI());
-			if (stream != null) {
-				result = true;
-				stream.close();
-			}
+			result = true;
+			stream.close();
 		} catch (IOException e) {
 			EmfParsleyActivator.logError("EmfAbstractEditor.isPersisted", e);
 		}
