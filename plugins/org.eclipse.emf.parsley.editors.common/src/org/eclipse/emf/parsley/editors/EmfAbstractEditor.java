@@ -120,6 +120,8 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		IEditingDomainProvider, ISelectionProvider, IMenuListener,
 		IViewerProvider, IGotoMarker, AsyncCommandStackListenerClient {
 
+	private static final String ORG_ECLIPSE_EMF_ECORE_EDITOR = "org.eclipse.emf.ecore.editor";
+
 	protected static final int CONTAINER_Y_SIZE_DELTA = 6;
 
 	/**
@@ -431,7 +433,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	protected BasicDiagnostic createDiagnostic() {
 		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
-				"org.eclipse.emf.ecore.editor", 0, null,
+				ORG_ECLIPSE_EMF_ECORE_EDITOR, 0, null,
 				new Object[] { editingDomain.getResourceSet() });
 		for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
 			if (childDiagnostic.getSeverity() != Diagnostic.OK) {
@@ -573,7 +575,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				|| !resource.getWarnings().isEmpty()) {
 			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(
 					Diagnostic.ERROR,
-					"org.eclipse.emf.ecore.editor",
+					ORG_ECLIPSE_EMF_ECORE_EDITOR,
 					0,
 					getString("_UI_CreateModelError_message", resource.getURI()),
 					new Object[] { exception == null ? (Object) resource
@@ -582,7 +584,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			return basicDiagnostic;
 		} else if (exception != null) {
 			return new BasicDiagnostic(Diagnostic.ERROR,
-					"org.eclipse.emf.ecore.editor", 0, getString(
+					ORG_ECLIPSE_EMF_ECORE_EDITOR, 0, getString(
 							"_UI_CreateModelError_message", resource.getURI()),
 					new Object[] { exception });
 		} else {
@@ -1095,7 +1097,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		}
 
 		if (updateProblemIndication) {
-			getSite().getShell().getDisplay().asyncExec(() -> updateProblemIndication());
+			getSite().getShell().getDisplay().asyncExec(this::updateProblemIndication);
 		}
 	}
 
