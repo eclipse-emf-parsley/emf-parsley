@@ -19,6 +19,7 @@ package org.eclipse.emf.parsley.editors;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -80,7 +81,6 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -749,7 +749,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Save only resources that have actually changed.
-		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		final Map<Object, Object> saveOptions = new HashMap<>();
 		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
 		updateProblemIndication = false;
@@ -757,19 +757,20 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		try {
 			// Do the work within an operation because this is a long running
 			// activity that modifies the workbench.
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false, new IRunnableWithProgress() {
-				@Override
-				public void run(IProgressMonitor monitor) {
-					performSave(saveOptions);
-				}
-			});
+			new ProgressMonitorDialog(getSite().getShell()).run(true, false,
+					monitor -> performSave(saveOptions));
 
 			// Refresh the necessary state.
 			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
 			firePropertyChange(IEditorPart.PROP_DIRTY);
-		} catch (Exception exception) {
+		} catch (InterruptedException exception) {
 			// Something went wrong that shouldn't.
 			EcoreEditorPlugin.INSTANCE.log(exception);
+			// Restore interrupted state...
+			Thread.currentThread().interrupt();
+		} catch (InvocationTargetException e) {
+			// Something went wrong that shouldn't.
+			EcoreEditorPlugin.INSTANCE.log(e);
 		}
 		saving = false;
 		updateProblemIndication = true;
