@@ -9,4 +9,4 @@ implemented in Xtext, thus, it comes with rich and powerful IDE tooling.
 
 * https://www.eclipse.org/emf-parsley/
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=eclipse-emf-parsley_emf-parsley)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=eclipse-emf-parsley_emf-parsley&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=eclipse-emf-parsley_emf-parsley)
