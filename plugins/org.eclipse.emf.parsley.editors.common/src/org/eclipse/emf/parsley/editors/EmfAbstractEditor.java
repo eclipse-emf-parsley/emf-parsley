@@ -400,7 +400,9 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 *
 	 * @generated
 	 */
-	protected void updateProblemIndication() {
+	protected void updateProblemIndication() { // NOSONAR
+		// TODO in the new major version, rename this method or the field:
+		// Methods and field names should not be the same or differ only by capitalization (java:S1845)
 		if (updateProblemIndication) {
 			BasicDiagnostic diagnostic = createDiagnostic();
 
