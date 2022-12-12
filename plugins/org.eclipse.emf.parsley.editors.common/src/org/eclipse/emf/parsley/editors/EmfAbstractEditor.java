@@ -273,12 +273,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 *
 	 * @generated
 	 */
-	protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
-		@Override
-		public void resourceChanged(IResourceChangeEvent event) {
-			handleIResourceChangeEvent(event);
-		}
-	};
+	protected IResourceChangeListener resourceChangeListener = EmfAbstractEditor.this::handleIResourceChangeEvent;
 
 	@Inject
 	protected ViewerFactory viewerFactory;
@@ -520,16 +515,13 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					// Try to select the items in the current content viewer of
-					// the editor.
-					//
-					if (selectionViewer != null) {
-						selectionViewer.setSelection(new StructuredSelection(
-								theSelection.toArray()), true);
-					}
+			Runnable runnable = () -> {
+				// Try to select the items in the current content viewer of
+				// the editor.
+				//
+				if (selectionViewer != null) {
+					selectionViewer.setSelection(new StructuredSelection(
+							theSelection.toArray()), true);
 				}
 			};
 			getSite().getShell().getDisplay().asyncExec(runnable);
@@ -551,15 +543,8 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	}
 
 	protected ISelectionChangedListener createSelectionChangedListener() {
-		return new ISelectionChangedListener() {
-			// This just notifies those things that are affected by the section.
-			//
-			@Override
-			public void selectionChanged(
-					SelectionChangedEvent selectionChangedEvent) {
-				setSelection(selectionChangedEvent.getSelection());
-			}
-		};
+		// This just notifies those things that are affected by the section.
+		return selectionChangedEvent -> setSelection(selectionChangedEvent.getSelection());
 	}
 
 	public void createContextMenuFor(StructuredViewer viewer) {
@@ -680,14 +665,9 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 			// Listen to selection so that we can handle it is a special way.
 			contentOutlinePage
-					.addSelectionChangedListener(new ISelectionChangedListener() {
+					.addSelectionChangedListener(
 						// This ensures that we handle selections correctly.
-						//
-						@Override
-						public void selectionChanged(SelectionChangedEvent event) {
-							handleContentOutlineSelection(event.getSelection());
-						}
-					});
+						event -> handleContentOutlineSelection(event.getSelection()));
 		}
 
 		return contentOutlinePage;
@@ -1117,12 +1097,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		}
 
 		if (updateProblemIndication) {
-			getSite().getShell().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					updateProblemIndication();
-				}
-			});
+			getSite().getShell().getDisplay().asyncExec(() -> updateProblemIndication());
 		}
 	}
 
@@ -1134,28 +1109,22 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			delta.accept(visitor);
 
 			if (!visitor.getRemovedResources().isEmpty()) {
-				getSite().getShell().getDisplay().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						removedResources.addAll(visitor
-								.getRemovedResources());
-						if (!isDirty()) {
-							getSite().getPage().closeEditor(
-									EmfAbstractEditor.this, false);
-						}
+				getSite().getShell().getDisplay().asyncExec(() -> {
+					removedResources.addAll(visitor
+							.getRemovedResources());
+					if (!isDirty()) {
+						getSite().getPage().closeEditor(
+								EmfAbstractEditor.this, false);
 					}
 				});
 			}
 
 			if (!visitor.getChangedResources().isEmpty()) {
-				getSite().getShell().getDisplay().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						changedResources.addAll(visitor
-								.getChangedResources());
-						if (getSite().getPage().getActiveEditor() == EmfAbstractEditor.this) {
-							handleActivate();
-						}
+				getSite().getShell().getDisplay().asyncExec(() -> {
+					changedResources.addAll(visitor
+							.getChangedResources());
+					if (getSite().getPage().getActiveEditor() == EmfAbstractEditor.this) {
+						handleActivate();
 					}
 				});
 			}
