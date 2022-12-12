@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini, Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
@@ -31,16 +31,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * This implementation of a {@link IResourceChangeListener} gets changes in the resource and apply them to the model instance. 
+ * This implementation of a {@link IResourceChangeListener} gets changes in the resource and apply them to the model instance.
  * It works only if the resource is contained in the workspace.
- * 
+ *
  * @author Francesco Guidieri
  * @author Lorenzo Bettini - logging
  */
 public class WorkspaceResourcesListener implements IResourceChangeListener{
 
 	private ResourceSet resourceSet;
-	
+
 	private static final Logger LOGGER = Logger.getLogger(WorkspaceResourcesListener.class);
 
 	public WorkspaceResourcesListener(ResourceSet resourceSet) {
@@ -49,13 +49,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 	}
 	@Override
 	public void resourceChanged(final IResourceChangeEvent event) {
-		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-
-			@Override
-			public void run() {
-				manageEvent(event);
-			}
-		});
+		PlatformUI.getWorkbench().getDisplay().asyncExec(() -> manageEvent(event));
 	}
 
 	private void manageEvent(final IResourceChangeEvent event) {
@@ -68,7 +62,7 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 			LOGGER.error("manageEnvent", e);
 		}
 
-		final List<String> changedObjectUris = new ArrayList<String>();
+		final List<String> changedObjectUris = new ArrayList<>();
 		if (!visitor.getChangedResources().isEmpty()) {
 			for (final Resource resource : visitor.getChangedResources()) {
 				final String resourceUri = EcoreUtil.getURI(
@@ -86,14 +80,14 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 	public void removeWorkspaceListener(){
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
 	}
-	
+
 	protected void aftertResourcesChanged(List<String> changedObjectUris) {
 		// the default implementation does nothing
 	}
 
 	private class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 
-		private final Collection<Resource> changedResources = new ArrayList<Resource>();
+		private final Collection<Resource> changedResources = new ArrayList<>();
 
 		@Override
 		public boolean visit(final IResourceDelta delta) {
@@ -109,7 +103,6 @@ public class WorkspaceResourcesListener implements IResourceChangeListener{
 							true);
 					reload(resource);
 					this.changedResources.add(resource);
-					return true;
 				}
 			}
 			return true;
