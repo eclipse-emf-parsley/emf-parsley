@@ -12,6 +12,7 @@
  */
 package org.eclipse.emf.parsley.composite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.databinding.Binding;
@@ -381,7 +382,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	protected ControlObservablePair createControlAndObservableValueForNonBooleanFeature(
 			EStructuralFeature feature) {
-		List<Object> proposals = null;
+		List<Object> proposals = new ArrayList<>();
 		if (!isReadonly()) {
 			proposals = createProposals(feature);
 		}
