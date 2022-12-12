@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.validation;
 import static com.google.common.collect.Iterables.filter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,15 +26,13 @@ import com.google.common.base.Predicate;
  */
 public class DiagnosticUtil {
 
-	private final Map<Integer, String> severityStrings = new HashMap<Integer, String>() {
-		{
-			put(Diagnostic.OK, "OK");
-			put(Diagnostic.ERROR, "ERROR");
-			put(Diagnostic.WARNING, "WARNING");
-			put(Diagnostic.INFO, "INFO");
-			put(Diagnostic.CANCEL, "CANCEL");
-		}
-	};
+	private final Map<Integer, String> severityStrings = Map.of(
+		Diagnostic.OK, "OK",
+		Diagnostic.ERROR, "ERROR",
+		Diagnostic.WARNING, "WARNING",
+		Diagnostic.INFO, "INFO",
+		Diagnostic.CANCEL, "CANCEL"
+	);
 
 	/**
 	 * Flattens possible nested diagnostics
@@ -43,7 +40,7 @@ public class DiagnosticUtil {
 	 * @return
 	 */
 	public List<Diagnostic> flatten(Diagnostic diagnostic) {
-		List<Diagnostic> flattened = new ArrayList<Diagnostic>();
+		List<Diagnostic> flattened = new ArrayList<>();
 		traverseDiagnostic(flattened, diagnostic);
 		return flattened;
 	}

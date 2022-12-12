@@ -19,6 +19,7 @@ package org.eclipse.emf.parsley.editors;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -80,7 +81,6 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -113,19 +113,21 @@ import com.google.inject.Provider;
 /**
  * This is an example of a Ecore model editor. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		IEditingDomainProvider, ISelectionProvider, IMenuListener,
 		IViewerProvider, IGotoMarker, AsyncCommandStackListenerClient {
 
+	private static final String ORG_ECLIPSE_EMF_ECORE_EDITOR = "org.eclipse.emf.ecore.editor";
+
 	protected static final int CONTAINER_Y_SIZE_DELTA = 6;
 
 	/**
 	 * This is the one adapter factory used for providing views of the model.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ComposedAdapterFactory adapterFactory;
@@ -137,16 +139,16 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This is the property sheet page. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
+	protected List<PropertySheetPage> propertySheetPages = new ArrayList<>();
 
 	/**
 	 * This is the viewer that shadows the selection in the content outline. The
 	 * parent relation must be correctly defined for this to work. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected StructuredViewer selectionViewer;
@@ -155,15 +157,15 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * This keeps track of all the
 	 * {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
 	 * listening to this editor. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
+	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<>();
 
 	/**
 	 * This keeps track of the selection of the editor as a whole. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
@@ -172,7 +174,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * The MarkerHelper is responsible for creating workspace resource markers
 	 * presented in Eclipse's Problems View. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MarkerHelper markerHelper = new EditUIMarkerHelper();
@@ -180,7 +182,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This listens for when the outline becomes active <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected IPartListener partListener = new PartListenerAdapter() {
@@ -204,39 +206,39 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * Resources that have been removed since last activation. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	protected Collection<Resource> removedResources = new ArrayList<Resource>();
+	protected Collection<Resource> removedResources = new ArrayList<>();
 
 	/**
 	 * Resources that have been changed since last activation. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	protected Collection<Resource> changedResources = new ArrayList<Resource>();
+	protected Collection<Resource> changedResources = new ArrayList<>();
 
 	/**
 	 * Resources that have been saved. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
-	protected Collection<Resource> savedResources = new ArrayList<Resource>();
+	protected Collection<Resource> savedResources = new ArrayList<>();
 
 	/**
 	 * Map to store the diagnostic associated with a resource. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
+	protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<>();
 
 	/**
 	 * Controls whether the problem indication should be updated. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean updateProblemIndication = true;
@@ -244,7 +246,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * Adapter used to update the problem indication when resources are demanded
 	 * loaded. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected EContentAdapter problemIndicationAdapter = new ProblemIndicationEContentAdapter() {
@@ -270,15 +272,10 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This listens for workspace changes. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
-	protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
-		@Override
-		public void resourceChanged(IResourceChangeEvent event) {
-			handleIResourceChangeEvent(event);
-		}
-	};
+	protected IResourceChangeListener resourceChangeListener = EmfAbstractEditor.this::handleIResourceChangeEvent;
 
 	@Inject
 	protected ViewerFactory viewerFactory;
@@ -295,7 +292,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This keeps track of the editing domain that is used to track all changes
 	 * to the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Inject
@@ -316,7 +313,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void handleActivate() {
@@ -349,7 +346,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * Handles what to do with changed resources on activation. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void handleChangedResources() {
@@ -400,7 +397,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * Updates the problems indication with the information described in the
 	 * specified diagnostic. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void updateProblemIndication() {
@@ -436,7 +433,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	protected BasicDiagnostic createDiagnostic() {
 		BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
-				"org.eclipse.emf.ecore.editor", 0, null,
+				ORG_ECLIPSE_EMF_ECORE_EDITOR, 0, null,
 				new Object[] { editingDomain.getResourceSet() });
 		for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
 			if (childDiagnostic.getSeverity() != Diagnostic.OK) {
@@ -462,7 +459,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * Shows a dialog that asks if conflicting changes should be discarded. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean handleDirtyConflict() {
@@ -474,10 +471,10 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This creates a model editor. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
-	public EmfAbstractEditor() {
+	protected EmfAbstractEditor() {
 		super();
 	}
 
@@ -512,7 +509,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This sets the selection into whichever viewer is active. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSelectionToViewer(Collection<?> collection) {
@@ -520,16 +517,13 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					// Try to select the items in the current content viewer of
-					// the editor.
-					//
-					if (selectionViewer != null) {
-						selectionViewer.setSelection(new StructuredSelection(
-								theSelection.toArray()), true);
-					}
+			Runnable runnable = () -> {
+				// Try to select the items in the current content viewer of
+				// the editor.
+				//
+				if (selectionViewer != null) {
+					selectionViewer.setSelection(new StructuredSelection(
+							theSelection.toArray()), true);
 				}
 			};
 			getSite().getShell().getDisplay().asyncExec(runnable);
@@ -542,7 +536,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * implementing the static methods of {@link AdapterFactoryEditingDomain}
 	 * and for supporting {@link org.eclipse.emf.edit.ui.action.CommandAction}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -551,20 +545,13 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	}
 
 	protected ISelectionChangedListener createSelectionChangedListener() {
-		return new ISelectionChangedListener() {
-			// This just notifies those things that are affected by the section.
-			//
-			@Override
-			public void selectionChanged(
-					SelectionChangedEvent selectionChangedEvent) {
-				setSelection(selectionChangedEvent.getSelection());
-			}
-		};
+		// This just notifies those things that are affected by the section.
+		return selectionChangedEvent -> setSelection(selectionChangedEvent.getSelection());
 	}
 
 	public void createContextMenuFor(StructuredViewer viewer) {
 		contextMenuHelper.addViewerContextMenu(viewer,
-				this, this, (WorkbenchActionBarContributor) getActionBarContributor());
+				this, this, getActionBarContributor());
 		dragAndDropHelper.addDragAndDrop(viewer, editingDomain);
 
 		IEditorMouseListener listener = getMouseAdapter();
@@ -579,7 +566,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * Returns a diagnostic describing the errors and warnings listed in the
 	 * resource and the specified exception (if any). <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Diagnostic analyzeResourceProblems(Resource resource,
@@ -588,7 +575,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				|| !resource.getWarnings().isEmpty()) {
 			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(
 					Diagnostic.ERROR,
-					"org.eclipse.emf.ecore.editor",
+					ORG_ECLIPSE_EMF_ECORE_EDITOR,
 					0,
 					getString("_UI_CreateModelError_message", resource.getURI()),
 					new Object[] { exception == null ? (Object) resource
@@ -597,7 +584,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			return basicDiagnostic;
 		} else if (exception != null) {
 			return new BasicDiagnostic(Diagnostic.ERROR,
-					"org.eclipse.emf.ecore.editor", 0, getString(
+					ORG_ECLIPSE_EMF_ECORE_EDITOR, 0, getString(
 							"_UI_CreateModelError_message", resource.getURI()),
 					new Object[] { exception });
 		} else {
@@ -608,7 +595,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * If there is just one page in the multi-page editor part, this hides the
 	 * single tab at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void hideTabs() {
@@ -625,7 +612,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * If there is more than one page in the multi-page editor part, this shows
 	 * the tabs at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void showTabs() {
@@ -642,7 +629,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This is used to track the active viewer. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -657,7 +644,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This is how the framework determines which interfaces we implement. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -680,14 +667,9 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 			// Listen to selection so that we can handle it is a special way.
 			contentOutlinePage
-					.addSelectionChangedListener(new ISelectionChangedListener() {
+					.addSelectionChangedListener(
 						// This ensures that we handle selections correctly.
-						//
-						@Override
-						public void selectionChanged(SelectionChangedEvent event) {
-							handleContentOutlineSelection(event.getSelection());
-						}
-					});
+						event -> handleContentOutlineSelection(event.getSelection()));
 		}
 
 		return contentOutlinePage;
@@ -704,7 +686,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This accesses a cached version of the property sheet. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
@@ -737,7 +719,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This is for implementing {@link IEditorPart} and simply tests the command
 	 * stack. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -749,7 +731,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Save only resources that have actually changed.
-		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		final Map<Object, Object> saveOptions = new HashMap<>();
 		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
 		updateProblemIndication = false;
@@ -757,19 +739,20 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		try {
 			// Do the work within an operation because this is a long running
 			// activity that modifies the workbench.
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false, new IRunnableWithProgress() {
-				@Override
-				public void run(IProgressMonitor monitor) {
-					performSave(saveOptions);
-				}
-			});
+			new ProgressMonitorDialog(getSite().getShell()).run(true, false,
+					monitor -> performSave(saveOptions));
 
 			// Refresh the necessary state.
 			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
 			firePropertyChange(IEditorPart.PROP_DIRTY);
-		} catch (Exception exception) {
+		} catch (InterruptedException exception) {
 			// Something went wrong that shouldn't.
 			EcoreEditorPlugin.INSTANCE.log(exception);
+			// Restore interrupted state...
+			Thread.currentThread().interrupt();
+		} catch (InvocationTargetException e) {
+			// Something went wrong that shouldn't.
+			EcoreEditorPlugin.INSTANCE.log(e);
 		}
 		saving = false;
 		updateProblemIndication = true;
@@ -781,7 +764,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * specified resource. The implementation uses the URI converter from the
 	 * editor's resource set to try to open an input stream. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean isPersisted(Resource resource) {
@@ -789,10 +772,8 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		try {
 			InputStream stream = editingDomain.getResourceSet()
 					.getURIConverter().createInputStream(resource.getURI());
-			if (stream != null) {
-				result = true;
-				stream.close();
-			}
+			result = true;
+			stream.close();
 		} catch (IOException e) {
 			EmfParsleyActivator.logError("EmfAbstractEditor.isPersisted", e);
 		}
@@ -802,7 +783,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This always returns true because it is not currently supported. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -816,7 +797,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This also changes the editor's input. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -843,7 +824,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void doSaveAs(URI uri, IEditorInput editorInput) {
@@ -859,7 +840,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -886,7 +867,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This is called during startup. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -903,7 +884,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -914,7 +895,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -925,7 +906,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -938,7 +919,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
 	 * return this editor's overall selection. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -950,7 +931,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
 	 * set this editor's overall selection. Calling this result will notify the
 	 * listeners. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -965,7 +946,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setStatusLineManager(ISelection selection) {
@@ -1003,7 +984,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This looks up a string in the plugin's plugin.properties file. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static String getString(String key) {
@@ -1013,7 +994,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * This looks up a string in plugin.properties, making a substitution. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
@@ -1024,7 +1005,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 * This implements {@link org.eclipse.jface.action.IMenuListener} to help
 	 * fill the context menus with contributions from the Edit menu. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1035,7 +1016,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public WorkbenchActionBarContributor getActionBarContributor() {
@@ -1045,7 +1026,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IActionBars getActionBars() {
@@ -1054,7 +1035,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AdapterFactory getAdapterFactory() {
@@ -1063,7 +1044,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1095,7 +1076,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	/**
 	 * Returns whether the outline view should be presented to the user. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean showOutlineView() {
@@ -1116,12 +1097,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 		}
 
 		if (updateProblemIndication) {
-			getSite().getShell().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					updateProblemIndication();
-				}
-			});
+			getSite().getShell().getDisplay().asyncExec(this::updateProblemIndication);
 		}
 	}
 
@@ -1133,28 +1109,22 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 			delta.accept(visitor);
 
 			if (!visitor.getRemovedResources().isEmpty()) {
-				getSite().getShell().getDisplay().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						removedResources.addAll(visitor
-								.getRemovedResources());
-						if (!isDirty()) {
-							getSite().getPage().closeEditor(
-									EmfAbstractEditor.this, false);
-						}
+				getSite().getShell().getDisplay().asyncExec(() -> {
+					removedResources.addAll(visitor
+							.getRemovedResources());
+					if (!isDirty()) {
+						getSite().getPage().closeEditor(
+								EmfAbstractEditor.this, false);
 					}
 				});
 			}
 
 			if (!visitor.getChangedResources().isEmpty()) {
-				getSite().getShell().getDisplay().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						changedResources.addAll(visitor
-								.getChangedResources());
-						if (getSite().getPage().getActiveEditor() == EmfAbstractEditor.this) {
-							handleActivate();
-						}
+				getSite().getShell().getDisplay().asyncExec(() -> {
+					changedResources.addAll(visitor
+							.getChangedResources());
+					if (getSite().getPage().getActiveEditor() == EmfAbstractEditor.this) {
+						handleActivate();
 					}
 				});
 			}
