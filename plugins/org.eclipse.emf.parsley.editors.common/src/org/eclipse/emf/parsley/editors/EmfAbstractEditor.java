@@ -472,7 +472,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 *
 	 * @generated
 	 */
-	public EmfAbstractEditor() {
+	protected EmfAbstractEditor() {
 		super();
 	}
 
