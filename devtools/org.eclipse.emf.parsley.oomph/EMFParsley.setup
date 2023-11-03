@@ -371,6 +371,8 @@
             name="org.eclipse.rap.tools.feature.feature.group"/>
         <requirement
             name="org.mockito.mockito-core"/>
+        <requirement
+            name="org.eclipse.egit.feature.group"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
