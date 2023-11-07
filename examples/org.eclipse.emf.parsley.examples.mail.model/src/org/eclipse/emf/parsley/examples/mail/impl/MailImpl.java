@@ -1,14 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail.impl;
-
 
 import java.util.Collection;
 
@@ -22,6 +14,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
 import org.eclipse.emf.parsley.examples.mail.Mail;
 import org.eclipse.emf.parsley.examples.mail.MailPackage;
 
@@ -31,13 +24,13 @@ import org.eclipse.emf.parsley.examples.mail.MailPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.MailImpl#getFrom <em>From</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.MailImpl#getRecipients <em>Recipients</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.MailImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.MailImpl#getSubject <em>Subject</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -136,6 +129,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFrom() {
 		return from;
 	}
@@ -145,6 +139,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFrom(String newFrom) {
 		String oldFrom = from;
 		from = newFrom;
@@ -157,6 +152,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getRecipients() {
 		if (recipients == null) {
 			recipients = new EDataTypeUniqueEList<String>(String.class, this, MailPackage.MAIL__RECIPIENTS);
@@ -169,6 +165,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getMessage() {
 		return message;
 	}
@@ -178,6 +175,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMessage(String newMessage) {
 		String oldMessage = message;
 		message = newMessage;
@@ -190,6 +188,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSubject() {
 		return subject;
 	}
@@ -199,6 +198,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSubject(String newSubject) {
 		String oldSubject = subject;
 		subject = newSubject;
@@ -305,7 +305,7 @@ public class MailImpl extends EObjectImpl implements Mail {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (from: ");
 		result.append(from);
 		result.append(", recipients: ");

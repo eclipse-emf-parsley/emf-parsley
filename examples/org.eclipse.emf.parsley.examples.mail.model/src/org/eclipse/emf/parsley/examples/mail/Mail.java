@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail;
@@ -20,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.Mail#getFrom <em>From</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.Mail#getRecipients <em>Recipients</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.Mail#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.Mail#getSubject <em>Subject</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.parsley.examples.mail.MailPackage#getMail()
  * @model
@@ -36,10 +29,6 @@ public interface Mail extends EObject {
 	/**
 	 * Returns the value of the '<em><b>From</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>From</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>From</em>' attribute.
 	 * @see #setFrom(String)
@@ -63,10 +52,6 @@ public interface Mail extends EObject {
 	 * Returns the value of the '<em><b>Recipients</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Recipients</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Recipients</em>' attribute list.
 	 * @see org.eclipse.emf.parsley.examples.mail.MailPackage#getMail_Recipients()
@@ -78,10 +63,6 @@ public interface Mail extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Message</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Message</em>' attribute.
 	 * @see #setMessage(String)
@@ -104,10 +85,6 @@ public interface Mail extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Subject</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Subject</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subject</em>' attribute.
 	 * @see #setSubject(String)

@@ -1,14 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail.util;
-
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -16,6 +8,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.parsley.examples.mail.*;
 
 /**
@@ -83,14 +76,6 @@ public class MailAdapterFactory extends AdapterFactoryImpl {
 				return createFolderAdapter();
 			}
 			@Override
-			public Adapter caseFolderContent(FolderContent object) {
-				return createFolderContentAdapter();
-			}
-			@Override
-			public Adapter caseMailContent(MailContent object) {
-				return createMailContentAdapter();
-			}
-			@Override
 			public Adapter caseMail(Mail object) {
 				return createMailAdapter();
 			}
@@ -139,34 +124,6 @@ public class MailAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFolderAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.examples.mail.FolderContent <em>Folder Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.parsley.examples.mail.FolderContent
-	 * @generated
-	 */
-	public Adapter createFolderContentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.parsley.examples.mail.MailContent <em>Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.parsley.examples.mail.MailContent
-	 * @generated
-	 */
-	public Adapter createMailContentAdapter() {
 		return null;
 	}
 
