@@ -15,17 +15,15 @@ public class ProductsViewerContentProvider extends ViewerContentProvider {
   public ProductsViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
-  
+
   public Object elements(final Resource it) {
     EList<Category> _xifexpression = null;
-    EList<EObject> _contents = it.getContents();
-    int _size = _contents.size();
+    int _size = it.getContents().size();
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       EList<Category> _xblockexpression = null;
       {
-        EList<EObject> _contents_1 = it.getContents();
-        EObject _get = _contents_1.get(0);
+        EObject _get = it.getContents().get(0);
         final Company company = ((Company) _get);
         _xblockexpression = company.getCategories();
       }

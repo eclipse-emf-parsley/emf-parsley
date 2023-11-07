@@ -24,32 +24,32 @@ public class AccountsviewEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public AccountsviewEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends IEditingStrategy> bindIEditingStrategy() {
     return UndoableEditingStrategy.class;
   }
-  
+
   @Override
   public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
     return GlobalAdapterFactoryEditingDomainProvider.class;
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return AccountsviewLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
     return AccountsviewViewerContentProvider.class;
   }
-  
+
   @Override
   public Class<? extends Configurator> bindConfigurator() {
     return AccountsviewConfigurator.class;
   }
-  
+
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
     return AccountsviewResourceManager.class;

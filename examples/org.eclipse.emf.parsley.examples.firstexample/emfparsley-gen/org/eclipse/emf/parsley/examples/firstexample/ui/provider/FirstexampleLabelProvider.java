@@ -12,13 +12,13 @@ public class FirstexampleLabelProvider extends ViewerLabelProvider {
   public FirstexampleLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
-  
+
   public String text(final Book b) {
     String _title = b.getTitle();
     String _plus = ("\"" + _title);
     return (_plus + "\"");
   }
-  
+
   public String text(final Writer w) {
     return w.getName();
   }

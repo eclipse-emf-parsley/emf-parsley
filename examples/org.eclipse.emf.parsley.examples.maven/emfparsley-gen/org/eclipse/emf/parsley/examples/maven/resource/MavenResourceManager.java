@@ -15,10 +15,8 @@ public class MavenResourceManager extends ResourceManager {
   public void initialize(final Resource it) {
     EList<EObject> _contents = it.getContents();
     EClass _createEClass = EcoreFactory.eINSTANCE.createEClass();
-    final Procedure1<EClass> _function = new Procedure1<EClass>() {
-      public void apply(final EClass it_1) {
-        it_1.setName("TestClass");
-      }
+    final Procedure1<EClass> _function = (EClass it_1) -> {
+      it_1.setName("TestClass");
     };
     EClass _doubleArrow = ObjectExtensions.<EClass>operator_doubleArrow(_createEClass, _function);
     _contents.add(_doubleArrow);

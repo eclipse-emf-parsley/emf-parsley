@@ -1,7 +1,6 @@
 package org.eclipse.emf.parsley.examples.mail.unifiedfoldersview;
 
 import com.google.inject.Injector;
-import org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.UnifiedfoldersviewInjectorProvider;
 import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory;
 
 @SuppressWarnings("all")

@@ -20,7 +20,7 @@ public class MessageviewFormControlFactory extends FormControlFactory {
     	observableValue);
     return control;
   }
-  
+
   protected Control createControl_Mail_message() {
     final Text t = this.createText("", 
       SWT.MULTI, SWT.BORDER, 
@@ -30,7 +30,7 @@ public class MessageviewFormControlFactory extends FormControlFactory {
     t.setLayoutData(_gridData);
     return t;
   }
-  
+
   protected IObservableValue createTarget_Mail_message(final Control it) {
     ISWTObservableValue _observeText = DatabindingUtil.observeText(it, SWT.Modify);
     return _observeText;

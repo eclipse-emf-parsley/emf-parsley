@@ -8,11 +8,11 @@ import org.eclipse.emf.parsley.examples.mail.accountsview.views.AccountsView;
 public class AccountsviewConfigurator extends Configurator {
   private final URI mailModelURI = URI.createFileURI(
     (System.getProperty("user.home") + "/examples/mail/My.mail"));
-  
+
   public URI getMailModelURI() {
     return this.mailModelURI;
   }
-  
+
   public URI resourceURI(final AccountsView it) {
     return this.mailModelURI;
   }

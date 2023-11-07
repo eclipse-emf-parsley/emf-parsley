@@ -64,7 +64,7 @@ module org.eclipse.emf.parsley.examples.mail.accountsview {
 			Folder -> {
 				// the label provider is used also by the menu builder
 				// which uses freshly created Folder (and the name will be null)
-				if (name == null)
+				if (name === null)
 					return "folder.gif"
 				
 				switch (name) {
