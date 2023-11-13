@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Inject
+import javax.inject.Inject
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.parsley.edit.provider.AdapterFactoryHelper
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest

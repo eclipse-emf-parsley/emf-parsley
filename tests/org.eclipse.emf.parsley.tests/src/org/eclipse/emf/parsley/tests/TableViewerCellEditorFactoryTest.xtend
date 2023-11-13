@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests
 
-import com.google.inject.Inject
+import javax.inject.Inject
 import org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor.EDataTypeCellEditor
