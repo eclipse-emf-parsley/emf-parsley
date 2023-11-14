@@ -11,7 +11,7 @@
 package org.eclipse.emf.parsley.tests
 
 import com.google.inject.MembersInjector
-import javax.inject.Inject
+import com.google.inject.Inject
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain
