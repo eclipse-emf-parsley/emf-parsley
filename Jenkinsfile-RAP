@@ -12,7 +12,7 @@ pipeline {
   }
 
   tools {
-     jdk "openjdk-jdk11-latest"
+     jdk "openjdk-jdk17-latest"
   }
 
   stages {
