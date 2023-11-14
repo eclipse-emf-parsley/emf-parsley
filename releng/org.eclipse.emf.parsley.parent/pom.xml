@@ -806,6 +806,7 @@
 						<argLine>${previewProperties} ${platformSystemProperties} ${systemProperties} ${moduleProperties} ${additionalTestArguments} ${specialTestArguments}</argLine>
 						<failIfNoTests>false</failIfNoTests>
 						<useUIHarness>false</useUIHarness>
+						<rerunFailingTestsCount>3</rerunFailingTestsCount>
 					</configuration>
 				</plugin>
 
