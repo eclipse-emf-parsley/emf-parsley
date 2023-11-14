@@ -57,7 +57,7 @@
 	</prerequisites>
 
 	<properties>
-		<tycho-version>2.7.5</tycho-version>
+		<tycho-version>3.0.5</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
 		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
@@ -957,9 +957,9 @@
 							<version>${tycho-extras-version}</version>
 						</dependency>
 						<dependency>
-							<groupId>org.eclipse.tycho.extras</groupId>
+							<groupId>org.eclipse.tycho</groupId>
 							<artifactId>tycho-buildtimestamp-jgit</artifactId>
-							<version>${tycho-extras-version}</version>
+							<version>${tycho-version}</version>
 						</dependency>
 					</dependencies>
 				</plugin>
