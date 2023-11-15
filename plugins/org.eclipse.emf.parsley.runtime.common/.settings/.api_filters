@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.parsley.runtime.common" version="2">
+    <resource path="META-INF/MANIFEST.MF">
+        <filter comment="jakarta.inject" id="933232702">
+            <message_arguments>
+                <message_argument value="1.14.0"/>
+                <message_argument value="javax.inject"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>
