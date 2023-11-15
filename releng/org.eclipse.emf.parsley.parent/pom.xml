@@ -68,10 +68,10 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 
-		<xtext-version>2.29.0</xtext-version>
+		<xtext-version>2.32.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.14.0</mwe2Version>
-		<eclipse-version>2022-12</eclipse-version>
+		<mwe2Version>2.15.0</mwe2Version>
+		<eclipse-version>2023-09</eclipse-version>
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
