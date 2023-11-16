@@ -13,4 +13,4 @@ Require-Bundle: org.eclipse.help;bundle-version="3.5.0",
  org.eclipse.emf.mwe2.lib;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
  org.eclipse.emf.parsley.junit4;resolution:=optional
-
+Automatic-Module-Name: org.eclipse.emf.parsley.doc
