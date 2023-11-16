@@ -603,6 +603,23 @@
           <repository
               url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
         </repositoryList>
+        <repositoryList
+            name="2023-09">
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://download.eclipse.org/releases/2023-09"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
+        </repositoryList>
       </targlet>
     </setupTask>
     <setupTask
