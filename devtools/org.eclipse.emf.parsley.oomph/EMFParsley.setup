@@ -153,11 +153,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="mwe2.site"
-      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.14.0"/>
+      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.15.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.29.0"/>
+      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.32.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
@@ -395,6 +395,23 @@
           <repository
               url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
         </repositoryList>
+        <repositoryList
+            name="2023-09">
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://download.eclipse.org/releases/2023-09"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
+        </repositoryList>
       </targlet>
     </setupTask>
     <setupTask
@@ -534,7 +551,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.29.0,2.30.0)"/>
+            versionRange="[2.32.0,2.33.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -556,6 +573,37 @@
           name="${scope.project.label}"
           activeRepositoryList="${eclipse.target.platform}"
           includeAllRequirements="false">
+        <annotation
+            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+          <detail
+              key="location">
+            <value>${git.clone.location}/devtools/org.eclipse.emf.parsley.targetplatform/simrel.rap.oomph.tp.target</value>
+          </detail>
+          <detail
+              key="sortLocations">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeAllPlatforms">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeSource">
+            <value>true</value>
+          </detail>
+          <detail
+              key="singleLocation">
+            <value>false</value>
+          </detail>
+          <detail
+              key="generateImplicitUnits">
+            <value>true</value>
+          </detail>
+          <detail
+              key="minimizeImplicitUnits">
+            <value>true</value>
+          </detail>
+        </annotation>
         <requirement
             name="org.eclipse.emf.parsley.rap.workspace.feature.group"/>
         <requirement
@@ -585,6 +633,23 @@
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
               url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
+        </repositoryList>
+        <repositoryList
+            name="2023-09">
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://download.eclipse.org/releases/2023-09"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
         </repositoryList>
       </targlet>
     </setupTask>

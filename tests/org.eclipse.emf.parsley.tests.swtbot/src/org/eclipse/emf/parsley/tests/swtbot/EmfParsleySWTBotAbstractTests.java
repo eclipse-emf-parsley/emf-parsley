@@ -1214,11 +1214,17 @@ public abstract class EmfParsleySWTBotAbstractTests {
 	}
 
 	protected void undo(final String undoText) {
-		editMenu().menu("Undo " + undoText).click();
+		// looks like, at least in 2023-09, the Undo menu of menu's Edit
+		// does not show the description label anymore
+		// https://www.eclipse.org/forums/index.php/t/1113985/
+		// editMenu().menu("Undo " + undoText).click();
+		editMenu().menu("Undo").click();
 	}
 
 	protected void redo(final String undoText) {
-		editMenu().menu("Redo " + undoText).click();
+		// see the comment above
+		// editMenu().menu("Redo " + undoText).click();
+		editMenu().menu("Redo").click();
 	}
 
 	protected SWTBotText undoShortcut(SWTBotText text) {

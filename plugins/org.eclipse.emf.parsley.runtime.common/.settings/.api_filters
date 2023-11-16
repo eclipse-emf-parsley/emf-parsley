@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.parsley.runtime.common" version="2">
+    <resource path="META-INF/MANIFEST.MF">
+        <filter comment="jakarta.inject" id="933232702">
+            <message_arguments>
+                <message_argument value="1.14.0"/>
+                <message_argument value="javax.inject"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/runtime/util/ReflectionUtil.java" type="org.eclipse.emf.parsley.runtime.util.ReflectionUtil">
+        <filter id="1143996420">
+            <message_arguments>
+                <message_argument value="getRawType(Type)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

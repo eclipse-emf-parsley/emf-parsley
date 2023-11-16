@@ -9,9 +9,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>2.7.5</tycho-version>
-		<xtext-version>2.29.0</xtext-version>
-		<eclipse-version>2022-12</eclipse-version>
+		<tycho-version>3.0.5</tycho-version>
+		<xtext-version>2.32.0</xtext-version>
+		<eclipse-version>2023-09</eclipse-version>
 
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
