@@ -8,4 +8,11 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/parsley/runtime/util/ReflectionUtil.java" type="org.eclipse.emf.parsley.runtime.util.ReflectionUtil">
+        <filter id="1143996420">
+            <message_arguments>
+                <message_argument value="getRawType(Type)"/>
+            </message_arguments>
+        </filter>
+    </resource>
 </component>
