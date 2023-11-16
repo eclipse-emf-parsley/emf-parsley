@@ -599,7 +599,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.32.0,2.33.0)"/>
+            versionRange="[2.33.0,2.34.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
