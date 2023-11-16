@@ -347,6 +347,37 @@
       <targlet
           name="${scope.project.label}"
           activeRepositoryList="${eclipse.target.platform}">
+        <annotation
+            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+          <detail
+              key="location">
+            <value>${git.clone.location}/devtools/org.eclipse.emf.parsley.targetplatform/simrel.oomph.tp.target</value>
+          </detail>
+          <detail
+              key="sortLocations">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeAllPlatforms">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeSource">
+            <value>true</value>
+          </detail>
+          <detail
+              key="singleLocation">
+            <value>false</value>
+          </detail>
+          <detail
+              key="generateImplicitUnits">
+            <value>false</value>
+          </detail>
+          <detail
+              key="minimizeImplicitUnits">
+            <value>false</value>
+          </detail>
+        </annotation>
         <requirement
             name="org.eclipse.emf.parsley.workspace.feature.group"/>
         <requirement
@@ -411,6 +442,23 @@
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
               url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
+        </repositoryList>
+        <repositoryList
+            name="2023-12">
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://download.eclipse.org/releases/2023-12"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -551,7 +599,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.32.0,2.33.0)"/>
+            versionRange="[2.33.0,2.34.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -650,6 +698,23 @@
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
               url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
+        </repositoryList>
+        <repositoryList
+            name="2023-12">
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://download.eclipse.org/releases/2023-12"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
         </repositoryList>
       </targlet>
     </setupTask>

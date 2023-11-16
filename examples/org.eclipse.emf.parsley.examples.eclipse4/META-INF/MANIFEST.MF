@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley Eclipse4
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.eclipse4;singleton:=true
 Bundle-Version: 1.15.0.qualifier
-Require-Bundle: javax.inject,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.swt,
  org.eclipse.e4.ui.model.workbench,
  org.eclipse.jface,
@@ -19,6 +18,6 @@ Require-Bundle: javax.inject,
  org.eclipse.emf.common,
  org.eclipse.emf.edit,
  org.eclipse.emf.parsley,
- javax.annotation
+ jakarta.annotation-api;bundle-version="2.1.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.eclipse.emf.parsley.examples.eclipse4

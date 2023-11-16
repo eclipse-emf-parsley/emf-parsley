@@ -114,7 +114,7 @@ The first one allows to configure a provider.
 A codeRef[com.google.inject.Provider] is an interface with just one method:
 
 code[Java][
-public interface Provider<T> extends javax.inject.Provider<T> {
+public interface Provider<T> extends jakarta.inject.Provider<T> {
 
   /**
    * Provides an instance of {@code T}. Must never return {@code null}.

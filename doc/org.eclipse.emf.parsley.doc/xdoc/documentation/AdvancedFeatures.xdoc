@@ -233,7 +233,7 @@ and, in the end, add the e[Save] handler along with the correspondent e[Command]
 tutorials])
 
 code[Java][
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 public class SaveHandler {
 
