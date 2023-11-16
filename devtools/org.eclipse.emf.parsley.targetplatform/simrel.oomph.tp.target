@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="Generated from RCP" sequenceNumber="3">
+  <locations>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="com.google.inject" version="0.0.0"/>
+      <unit id="jakarta.inject.jakarta.inject-api" version="0.0.0"/>
+      <unit id="javax.inject" version="0.0.0"/>
+      <unit id="org.aopalliance" version="0.0.0"/>
+      <unit id="org.eclipse.xpand" version="0.0.0"/>
+      <unit id="org.eclipse.xtend.typesystem.emf" version="0.0.0"/>
+      <unit id="org.junit" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.32.0"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.15.0"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="bcpkix" version="0.0.0"/>
+      <unit id="bcutil" version="0.0.0"/>
+      <unit id="com.googlecode.javaewah.JavaEWAH" version="0.0.0"/>
+      <unit id="com.jcraft.jsch" version="0.0.0"/>
+      <unit id="com.sun.el.javax.el" version="0.0.0"/>
+      <unit id="jakarta.annotation-api" version="0.0.0"/>
+      <unit id="net.bytebuddy.byte-buddy" version="0.0.0"/>
+      <unit id="net.i2p.crypto.eddsa" version="0.0.0"/>
+      <unit id="org.apache.commons.commons-codec" version="0.0.0"/>
+      <unit id="org.apache.commons.compress" version="0.0.0"/>
+      <unit id="org.apache.commons.lang" version="0.0.0"/>
+      <unit id="org.apache.felix.gogo.runtime" version="0.0.0"/>
+      <unit id="org.apache.httpcomponents.httpclient" version="0.0.0"/>
+      <unit id="org.apache.httpcomponents.httpcore" version="0.0.0"/>
+      <unit id="org.apache.sshd.osgi" version="0.0.0"/>
+      <unit id="org.apache.sshd.sftp" version="0.0.0"/>
+      <unit id="org.apache.xmlgraphics" version="0.0.0"/>
+      <unit id="org.apiguardian.api" version="0.0.0"/>
+      <unit id="org.eclipse.core.filesystem.linux.x86_64" version="0.0.0"/>
+      <unit id="org.eclipse.core.net.linux" version="0.0.0"/>
+      <unit id="org.eclipse.ecf.core.ssl.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.ecf.filetransfer.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.ecf.provider.filetransfer.ssl" version="0.0.0"/>
+      <unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecp.view.label.model" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecp.view.model.common.di" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecp.view.template.service" version="0.0.0"/>
+      <unit id="org.eclipse.emf.query.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emfforms.view.annotation.model" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.http.registry" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.http.servlet" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.jsp.jasper" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.jsp.jasper.registry" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.launcher.gtk.linux.x86_64" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.console" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.directorywatcher" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.extensionlocation" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.reconciler.dropins" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.touchpoint.natives" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.transport.ecf" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.ui.sdk" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.ui.sdk.scheduler" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.updatesite" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.security.linux" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.annotation" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.astview" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.doc.user" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.jeview" version="0.0.0"/>
+      <unit id="org.eclipse.jdt.junit4.runtime" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.servlet-api" version="0.0.0"/>
+      <unit id="org.eclipse.jface.notifications" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.pde.api.tools.annotations" version="0.0.0"/>
+      <unit id="org.eclipse.pde.ds.annotations" version="0.0.0"/>
+      <unit id="org.eclipse.platform.doc.user" version="0.0.0"/>
+      <unit id="org.eclipse.rap.tools.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.text.quicksearch" version="0.0.0"/>
+      <unit id="org.eclipse.ui.browser" version="0.0.0"/>
+      <unit id="org.eclipse.ui.monitoring" version="0.0.0"/>
+      <unit id="org.eclipse.ui.themes" version="0.0.0"/>
+      <unit id="org.eclipse.ui.trace" version="0.0.0"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.kohsuke.args4j" version="0.0.0"/>
+      <unit id="org.mortbay.jasper.apache-jsp" version="0.0.0"/>
+      <unit id="org.objectweb.asm.commons" version="0.0.0"/>
+      <unit id="org.objectweb.asm.tree" version="0.0.0"/>
+      <unit id="org.objectweb.asm.tree.analysis" version="0.0.0"/>
+      <unit id="org.objectweb.asm.util" version="0.0.0"/>
+      <unit id="org.opentest4j" version="0.0.0"/>
+      <unit id="org.osgi.annotation.bundle" version="0.0.0"/>
+      <unit id="org.osgi.annotation.versioning" version="0.0.0"/>
+      <unit id="org.osgi.service.component.annotations" version="0.0.0"/>
+      <unit id="org.osgi.service.metatype.annotations" version="0.0.0"/>
+      <unit id="org.osgi.service.repository" version="0.0.0"/>
+      <unit id="org.osgi.util.function" version="0.0.0"/>
+      <unit id="org.osgi.util.measurement" version="0.0.0"/>
+      <unit id="org.osgi.util.position" version="0.0.0"/>
+      <unit id="org.osgi.util.promise" version="0.0.0"/>
+      <unit id="org.osgi.util.xml" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/releases/2023-12"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="de.itemis.xtext.antlr.feature.feature.group" version="0.0.0"/>
+      <repository location="https://download.itemis.com/updates/releases/2.1.1/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="org.eclipse.xtext.xdoc.feature.feature.group" version="0.0.0"/>
+      <repository location="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="biz.aQute.bnd.util" version="0.0.0"/>
+      <unit id="biz.aQute.bndlib" version="0.0.0"/>
+      <unit id="com.google.guava.failureaccess" version="0.0.0"/>
+      <unit id="com.ibm.icu" version="0.0.0"/>
+      <unit id="io.github.classgraph.classgraph" version="0.0.0"/>
+      <unit id="junit-jupiter-api" version="0.0.0"/>
+      <unit id="junit-jupiter-migrationsupport" version="0.0.0"/>
+      <unit id="junit-jupiter-params" version="0.0.0"/>
+      <unit id="junit-platform-commons" version="0.0.0"/>
+      <unit id="junit-platform-engine" version="0.0.0"/>
+      <unit id="junit-platform-runner" version="0.0.0"/>
+      <unit id="junit-platform-suite-api" version="0.0.0"/>
+      <unit id="junit-platform-suite-commons" version="0.0.0"/>
+      <unit id="junit-platform-suite-engine" version="0.0.0"/>
+      <unit id="junit-vintage-engine" version="0.0.0"/>
+      <unit id="net.bytebuddy.byte-buddy-agent" version="0.0.0"/>
+      <unit id="org.apache.aries.spifly.dynamic.bundle" version="0.0.0"/>
+      <unit id="org.apache.batik.constants" version="0.0.0"/>
+      <unit id="org.apache.batik.css" version="0.0.0"/>
+      <unit id="org.apache.batik.i18n" version="0.0.0"/>
+      <unit id="org.apache.batik.util" version="0.0.0"/>
+      <unit id="org.apache.commons.cli" version="0.0.0"/>
+      <unit id="org.apache.commons.commons-io" version="0.0.0"/>
+      <unit id="org.apache.httpcomponents.client5.httpclient5" version="0.0.0"/>
+      <unit id="org.apache.httpcomponents.core5.httpcore5" version="0.0.0"/>
+      <unit id="org.apache.httpcomponents.core5.httpcore5-h2" version="0.0.0"/>
+      <unit id="org.apache.log4j" version="0.0.0"/>
+      <unit id="org.eclipse.orbit.xml-apis-ext" version="0.0.0"/>
+      <unit id="org.hamcrest.library" version="0.0.0"/>
+      <unit id="org.mockito.mockito-core" version="0.0.0"/>
+      <unit id="org.objenesis" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
+    </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+      <unit id="bcpg" version="0.0.0"/>
+      <unit id="bcprov" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.ee8.security" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.ee8.server" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.http" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.io" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.security" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.server" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.session" version="0.0.0"/>
+      <unit id="org.eclipse.jetty.util" version="0.0.0"/>
+      <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/eclipse/updates/4.30-I-builds"/>
+    </location>
+  </locations>
+</target>
