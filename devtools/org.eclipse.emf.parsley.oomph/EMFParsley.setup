@@ -596,14 +596,6 @@
             <value>false</value>
           </detail>
           <detail
-              key="extraUnits">
-            <value>
-              com.google.guava
-              org.eclipse.emf.common
-              org.eclipse.emf.edit
-            </value>
-          </detail>
-          <detail
               key="generateImplicitUnits">
             <value>true</value>
           </detail>
@@ -622,12 +614,6 @@
             name="org.eclipse.rap.examples.feature.feature.group"/>
         <requirement
             name="org.eclipse.rap.equinox.target.feature.feature.group"/>
-        <requirement
-            name="com.google.guava"/>
-        <requirement
-            name="org.eclipse.emf.common"/>
-        <requirement
-            name="org.eclipse.emf.ecore"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
