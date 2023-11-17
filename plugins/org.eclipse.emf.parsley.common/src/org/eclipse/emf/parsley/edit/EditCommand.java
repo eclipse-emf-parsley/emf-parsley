@@ -52,13 +52,15 @@ public class EditCommand extends AbstractOverrideableCommand {
 
 	@Override
 	public void doUndo() {
-		EObjectState tempState = new EObjectState(original);
-		state.copyStateTo(original);
-		state = tempState;
+		applyUndoRedo();
 	}
 
 	@Override
 	public void doRedo() {
+		applyUndoRedo();
+	}
+
+	private void applyUndoRedo() {
 		EObjectState tempState = new EObjectState(original);
 		state.copyStateTo(original);
 		state = tempState;
