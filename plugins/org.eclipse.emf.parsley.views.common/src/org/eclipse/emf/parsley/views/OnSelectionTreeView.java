@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -18,9 +18,9 @@ import org.eclipse.swt.widgets.Composite;
 /**
  * A View that visualizes the tree of an emf selected resource (it also acts as
  * a selection provider).
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class OnSelectionTreeView extends AbstractOnSelectionViewerView {
 

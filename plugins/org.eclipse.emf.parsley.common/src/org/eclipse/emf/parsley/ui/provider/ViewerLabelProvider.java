@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -29,13 +29,13 @@ import com.google.inject.name.Named;
 /**
  * Default implementation for {@link ILabelProvider} that uses polymorphic dispatch to invoke methods at runtime,
  * it also implements {@link IFontProvider} and {@link IColorProvider}.
- * 
- * You can define {@link #text(Object)} and {@link #image(Object)} methods specifying the input type. 
+ *
+ * You can define {@link #text(Object)} and {@link #image(Object)} methods specifying the input type.
  * The framework will select the correct implementation depending on the runtime type of the argument.
- * 
+ *
  * The same holds for {@link #font(Object)}, {@link #foreground(Object)} and {@link #background(Object)}.
- * 
- * @author Lorenzo Bettini - Initial contribution and API 
+ *
+ * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - Javadocs :-)
  */
 public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColorProvider {
@@ -71,7 +71,7 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 			.createForSingleTarget("background", 1, 1, this);
 
 	protected ILabelProvider delegateLabelProvider;
-	
+
 	@Inject
 	public ViewerLabelProvider(AdapterFactoryLabelProvider delegate) {
 		delegateLabelProvider = delegate;

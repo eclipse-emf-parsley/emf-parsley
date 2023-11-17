@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -26,12 +26,11 @@ import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
 import org.eclipse.emf.parsley.validation.DiagnosticUtil;
 import org.eclipse.jface.viewers.ILabelProvider;
 
-import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 /**
  * Some utilities for validation used in databinding.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  * @noextend This class is not intended to be subclassed by clients.
@@ -54,23 +53,18 @@ public class DatabindingValidationUtil {
 	/**
 	 * Retrieves the {@link Diagnostic} for the specified object and related to
 	 * the specified feature.
-	 * 
+	 *
 	 * @param eObject
 	 * @param feature
 	 * @param context
 	 * @return
 	 */
 	public Iterable<Diagnostic> getDiagnostic(final EObject eObject, final EStructuralFeature feature) {
-		Map<Object, Object> context = new HashMap<Object, Object>();
+		Map<Object, Object> context = new HashMap<>();
 		context.put(SubstitutionLabelProvider.class,
 			new DatabindingSubstitutionLabelProvider(eObject, labelProvider, featureLabelCaptionProvider));
 		List<Diagnostic> diagnostics = diagnosticUtil.flatten(diagnostician.validate(eObject, context));
-		Iterable<Diagnostic> filtered = filter(diagnostics, new Predicate<Diagnostic>() {
-			@Override
-			public boolean apply(Diagnostic d) {
-				return contains(d.getData(), feature);
-			}
-		});
+		Iterable<Diagnostic> filtered = filter(diagnostics, d -> contains(d.getData(), feature));
 		return filtered;
 	}
 }

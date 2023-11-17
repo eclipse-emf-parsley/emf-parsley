@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * Additional ecore utilities.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -42,14 +42,14 @@ public class EcoreUtil2 {
 		return new EObjectState(o);
 	}
 
-	@SuppressWarnings({ "unchecked", "cast" })
+	@SuppressWarnings({ "unchecked" })
 	public static <T extends EObject> List<T> getAllContentsOfType(EObject ele, EClass type) {
-		return (List<T>) getAllContentsOfType(ele, (Class<T>) type.getInstanceClass());
+		return getAllContentsOfType(ele, (Class<T>) type.getInstanceClass());
 	}
 
 	@SuppressWarnings("unchecked")
 	public static <T extends EObject> List<T> getAllContentsOfType(EObject ele, Class<T> type) {
-		List<T> result = new ArrayList<T>();
+		List<T> result = new ArrayList<>();
 		TreeIterator<EObject> allContents = ele.eAllContents();
 		while (allContents.hasNext()) {
 			EObject object = allContents.next();
@@ -60,14 +60,14 @@ public class EcoreUtil2 {
 		return result;
 	}
 
-	@SuppressWarnings({ "unchecked", "cast" })
+	@SuppressWarnings({ "unchecked" })
 	public static <T extends EObject> List<T> getAllContentsOfType(Resource resource, EClass type) {
-		return (List<T>) getAllContentsOfType(resource, (Class<T>) type.getInstanceClass());
+		return getAllContentsOfType(resource, (Class<T>) type.getInstanceClass());
 	}
 
 	@SuppressWarnings("unchecked")
 	public static <T extends EObject> List<T> getAllContentsOfType(Resource resource, Class<T> type) {
-		List<T> result = new ArrayList<T>();
+		List<T> result = new ArrayList<>();
 		TreeIterator<EObject> iterator = resource.getAllContents();
 		while (iterator.hasNext()) {
 			EObject object = iterator.next();
@@ -81,7 +81,7 @@ public class EcoreUtil2 {
 	/**
 	 * Before retrieving the value of the specified {@link EStructuralFeature} it checks
 	 * whether the object's class defines that feature; if not, the returned value is null
-	 * 
+	 *
 	 * @param object
 	 * @param feature
 	 * @return

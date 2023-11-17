@@ -6,7 +6,7 @@ package org.eclipse.emf.parsley.runtime.service;
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * @author Sebastian Zarnekow - Initial contribution and API
  *******************************************************************************/
@@ -25,13 +25,13 @@ import com.google.inject.Module;
 public class CompoundModule implements Module {
 
 	private static Logger LOGGER = Logger.getLogger(CompoundModule.class);
-	
+
 	private List<Module> modules;
 
 	public CompoundModule() {
 		modules = Lists.newArrayList();
 	}
-	
+
 	@Override
 	public void configure(Binder binder) {
 		for (Module module : modules) {
@@ -46,11 +46,11 @@ public class CompoundModule implements Module {
 	public void add(Module module) {
 		modules.add(module);
 	}
-	
+
 	public void remove(Module module) {
 		modules.remove(module);
 	}
-	
+
 	public List<Module> getModules() {
 		return modules;
 	}

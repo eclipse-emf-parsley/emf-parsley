@@ -4,16 +4,17 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.runtime.ui;
 
+import static com.google.inject.Guice.createInjector;
+
 import org.eclipse.emf.parsley.runtime.service.AbstractGenericModule;
 
 import com.google.inject.Injector;
-import static com.google.inject.Guice.createInjector;
 
 /**
  * @author Lorenzo Bettini

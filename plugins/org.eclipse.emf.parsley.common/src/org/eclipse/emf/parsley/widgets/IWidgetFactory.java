@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Text;
 /**
  * An abstraction for creating {@link Label}, {@link Text}, {@link Button}, etc.
  * It will be implemented creating standard controls and form controls.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */

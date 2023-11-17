@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.ecore.FeatureResolver;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
@@ -36,25 +35,25 @@ import com.google.inject.Inject;
  * default is to return the list of all the features in the EClass, but the
  * programmer can customize it (for instance, by returning only a superset, or
  * using a different order) on an EClass-based strategy.
- * 
+ *
  * The customization can be done redefining {@link #buildMap} or
  * {@link #buildStringMap} and adding mappings.
- * 
+ *
  * In any case, the computation of features is cached, thus, the list of
  * features for a given EClass will always be the same after the first invocation.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
- * 
+ *
  */
 public class FeaturesProvider {
-	
+
 	@Inject
 	private FeatureResolver featureResolver;
 
-	private Map<EClass, List<EStructuralFeature>> eClassFeaturesCache = new HashMap<EClass, List<EStructuralFeature>>();
+	private Map<EClass, List<EStructuralFeature>> eClassFeaturesCache = new HashMap<>();
 
 	protected EClassToEStructuralFeatureMap map = null;
-	
+
 	protected EClassToEStructuralFeatureAsStringsMap stringMap = null;
 
 	public FeatureResolver getFeatureResolver() {
@@ -122,27 +121,20 @@ public class FeaturesProvider {
 
 	protected List<EStructuralFeature> defaultFeatures(EClass eClass) {
 		EList<EStructuralFeature> eAllStructuralFeatures = eClass.getEAllStructuralFeatures();
-		Collection<EStructuralFeature> features = Collections2.filter(eAllStructuralFeatures, new Predicate<EStructuralFeature>() {
-
-			@Override
-			public boolean apply(EStructuralFeature feature) {
-				// derived, unchangeable, container and containment features ignored
-				return feature.isChangeable()
-						&& !feature.isDerived()
-						&& !(feature instanceof EReference && (((EReference) feature)
-								.isContainment()
-						// || ((EReference) feature).isContainer()
-						));
-			}
-		});
-		return new BasicEList<EStructuralFeature>(features);
+		Collection<EStructuralFeature> features = Collections2.filter(eAllStructuralFeatures, feature -> feature.isChangeable()
+				&& !feature.isDerived()
+				&& !(feature instanceof EReference && (((EReference) feature)
+						.isContainment()
+				// || ((EReference) feature).isContainer()
+				)));
+		return new BasicEList<>(features);
 	}
 
 	protected List<EStructuralFeature> getFromMap(EClass eClass) {
 		if (map == null) {
 			buildMapInternal();
 		}
-		
+
 		return map.get(eClass);
 	}
 
@@ -156,7 +148,7 @@ public class FeaturesProvider {
 			return null;
 		}
 
-		List<EStructuralFeature> result = new LinkedList<EStructuralFeature>();
+		List<EStructuralFeature> result = new LinkedList<>();
 
 		for (String featureName : list) {
 			EStructuralFeature feature = getFeatureResolver().getFeature(eClass, featureName);
@@ -193,7 +185,7 @@ public class FeaturesProvider {
 	/**
 	 * Derived classes should redefine this method to map an {@link EClass} to
 	 * {@link EStructuralFeature}s.
-	 * 
+	 *
 	 * @param map
 	 */
 	protected void buildMap(EClassToEStructuralFeatureMap map) {
@@ -204,7 +196,7 @@ public class FeaturesProvider {
 	 * Derived classes should redefine this method to map an {@link EClass}'s
 	 * instanceClassName to {@link EStructuralFeature}s' names; the {@link EClass}'s name
 	 * should be obtained using getInstanceClassName().
-	 * 
+	 *
 	 * @param stringMap
 	 */
 	protected void buildStringMap(

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini, Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
@@ -16,13 +16,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 
 /**
- * This Resource Loader implements a resource changes listening mechanism, if the resource is contained in the workspace. 
- * 
+ * This Resource Loader implements a resource changes listening mechanism, if the resource is contained in the workspace.
+ *
  * @author Francesco Guidieri
  *
  */
 public class ObserverResourceLoader extends ResourceLoader {
-	
+
 	private WorkspaceResourcesListener resourceListener;
 
 	@Override
@@ -31,7 +31,7 @@ public class ObserverResourceLoader extends ResourceLoader {
 		resourceListener = new WorkspaceResourcesListener(resourceSet);
 		return resource;
 	}
-	
+
 	public void removeListener(){
 		resourceListener.removeWorkspaceListener();
 	}

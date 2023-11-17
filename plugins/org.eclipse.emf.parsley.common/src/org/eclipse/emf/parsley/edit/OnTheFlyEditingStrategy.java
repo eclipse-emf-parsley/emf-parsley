@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -19,12 +19,12 @@ import com.google.inject.Inject;
 /**
  * With this strategy the edited {@link EObject} is the original
  * object itself, thus every update will be immediate.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
 public class OnTheFlyEditingStrategy implements IEditingStrategy {
-	
+
 	@Inject
 	private EditingDomainFinder editingDomainFinder;
 

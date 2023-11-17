@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -31,7 +31,7 @@ import com.google.inject.Provider;
  * Creates the actions and builds the corresponding menu (by delegating to an
  * injected {@link EditingMenuBuilder}); this class also registers actions using
  * {@link IActionBars} and {@link IPage}.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  */
 @SuppressWarnings("restriction")
@@ -113,7 +113,7 @@ public class EditingActionManager {
 	/**
 	 * Creates the actions and sets the corresponding global action
 	 * handler using the passed {@link IActionBars} depending on the {@link IPage}
-	 * 
+	 *
 	 * @param page
 	 * @param actionBars
 	 */

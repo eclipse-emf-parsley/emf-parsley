@@ -1,7 +1,8 @@
 package org.eclipse.emf.parsley.dsl.additional.builder.builder;
 
-import java.util.Iterator;
-import org.eclipse.core.commands.*;
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
@@ -12,30 +13,25 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 public class AddRemoveEmfParsleyDslPluginXmlNatureHandler extends AbstractHandler {
 
-	@SuppressWarnings("cast")
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// TODO Auto-generated method stub
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
 		//
 		if (selection instanceof IStructuredSelection) {
-			for (Iterator<?> it = ((IStructuredSelection) selection).iterator(); it
-					.hasNext();) {
-				Object element = it.next();
+			for (Object element : ((IStructuredSelection) selection)) {
 				IProject project = null;
 				if (element instanceof IProject) {
 					project = (IProject) element;
 				} else if (element instanceof IAdaptable) {
-					project = (IProject) ((IAdaptable) element)
-							.getAdapter(IProject.class);
+					project = ((IAdaptable) element).getAdapter(IProject.class);
 				}
 				if (project != null) {
 					try {
 						toggleNature(project);
 					} catch (CoreException e) {
-						//TODO log something
-						throw new ExecutionException("Failed to toggle nature",
-								e);
+						// TODO log something
+						throw new ExecutionException("Failed to toggle nature", e);
 					}
 				}
 			}
@@ -47,8 +43,7 @@ public class AddRemoveEmfParsleyDslPluginXmlNatureHandler extends AbstractHandle
 	/**
 	 * Toggles sample nature on a project
 	 *
-	 * @param project
-	 *            to have sample nature added or removed
+	 * @param project to have sample nature added or removed
 	 */
 	private void toggleNature(IProject project) throws CoreException {
 		IProjectDescription description = project.getDescription();

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -24,9 +24,9 @@ import com.google.inject.Inject;
 /**
  * A View that visualizes the list of elements of an emf selected resource (it
  * also acts as a selection provider).
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class OnSelectionFormView extends AbstractOnSelectionView {
 
@@ -36,7 +36,7 @@ public class OnSelectionFormView extends AbstractOnSelectionView {
 	protected Composite parent;
 
 	protected FormDetailComposite formComposite;
-	
+
 	public OnSelectionFormView() {
 	}
 
@@ -53,10 +53,10 @@ public class OnSelectionFormView extends AbstractOnSelectionView {
 		EObject eObject = getFirstSelectedEObject(selection);
 		if (eObject != null) {
 			resetFormComposite();
-			
+
 			formComposite = createFormDetailComposite();
 			formComposite.init(eObject);
-			
+
 			parent.layout(true, true);
 		}
 	}

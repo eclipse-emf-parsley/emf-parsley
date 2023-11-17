@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -29,9 +29,9 @@ import com.google.inject.Inject;
 
 /**
  * Declarative ContentProvider inheriting from {@link AdapterFactoryContentProvider}.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
- * 
+ *
  */
 public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
@@ -48,7 +48,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	 * elements won't be refreshed) - This is used only when getElements is
 	 * customized.
 	 */
-	private Set<Object> customElementsParents = new HashSet<Object>();
+	private Set<Object> customElementsParents = new HashSet<>();
 
 	/**
 	 * If you use this constructor, you then must make sure to inject other
@@ -85,7 +85,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
 	/**
 	 * The default implementation
-	 * 
+	 *
 	 * @param o
 	 * @return null
 	 */
@@ -95,7 +95,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
 	/**
 	 * The default implementation
-	 * 
+	 *
 	 * @param o
 	 * @return null
 	 */
@@ -127,7 +127,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	/**
 	 * This will ensure that this content provider will get notifications from
 	 * all the parents/containers in the model.
-	 * 
+	 *
 	 * @param elements
 	 * @param main
 	 */
@@ -159,7 +159,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	/**
 	 * This will ensure that this content provider will get notifications from
 	 * all the parents/containers in the model.
-	 * 
+	 *
 	 * @param elements
 	 */
 	protected void addListenersToTheModel(Object[] elements) {
@@ -171,7 +171,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	/**
 	 * This will ensure that this content provider will get notifications from
 	 * all the parents/containers in the model.
-	 * 
+	 *
 	 * @param object
 	 */
 	protected void addListenersToTheModel(Object object) {
@@ -184,9 +184,9 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
 	@Override
 	public Object getParent(Object object) {
-		/* 
+		/*
 		 * This is necessary in the CDO Resource case: getParent returns itself.
-		 * This leads AbstractTreeViewer to a loop during the internalExpand method. 
+		 * This leads AbstractTreeViewer to a loop during the internalExpand method.
 		 */
 		Object parent = super.getParent(object);
 		if (Objects.equal(parent, object)) {

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -23,13 +23,13 @@ import com.google.inject.Inject;
 /**
  * Declarative ContentProvider specific for table viewer, implementing
  * getElements retrieving all the contents of a specific {@link EClass}.
- * 
+ *
  * The {@link EClass} must be set before this content provider is used. We
  * provide a specific factory for conveniently create instances of this content
  * provider.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
- * 
+ *
  */
 public class TableViewerContentProvider extends ViewerContentProvider {
 

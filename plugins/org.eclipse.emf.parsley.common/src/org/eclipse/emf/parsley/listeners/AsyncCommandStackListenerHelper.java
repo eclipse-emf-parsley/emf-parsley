@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,7 +21,7 @@ import com.google.inject.Provider;
  * Helper class for instantiating via injection a
  * {@link AsyncCommandStackListener}, setting it as a listener in the command
  * stack and adding a {@link AsyncCommandStackListenerClient}.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -34,7 +34,7 @@ public class AsyncCommandStackListenerHelper {
 	 * Sets up an {@link AsyncCommandStackListener} observing any
 	 * {@link Resource}'s involved in commands executed in the stack of the
 	 * given {@link EditingDomain}.
-	 * 
+	 *
 	 * @param editingDomain
 	 * @param widget
 	 * @param client
@@ -48,7 +48,7 @@ public class AsyncCommandStackListenerHelper {
 	 * Sets up an {@link AsyncCommandStackListener} observing a specific
 	 * {@link Resource}'s involved in commands executed in the stack of the
 	 * given {@link EditingDomain}.
-	 * 
+	 *
 	 * @param editingDomain
 	 * @param widget
 	 * @param client

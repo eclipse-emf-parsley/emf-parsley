@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  * Francesco Guidieri - Initial contribution and API
@@ -40,7 +40,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 	 * Initializes this dialog for editing the {@link EObject} toBeEdited;
 	 * the {@link EObject} original is needed to retrieve additional information
 	 * such as the {@link EditingDomain} and the containing {@link Resource}.
-	 * 
+	 *
 	 * @param parentShell
 	 * @param title
 	 * @param original

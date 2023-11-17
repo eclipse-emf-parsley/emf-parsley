@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri, Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.EEnumImpl;
 
 /**
  * Some helper methods for {@link EStructuralFeature}.
- * 
+ *
  * @author Francesco Guidieri - initial API and implementation
  */
 public class FeatureHelper {
@@ -28,7 +28,7 @@ public class FeatureHelper {
 	 * Whether the {@link EStructuralFeature} is considered as editable. The
 	 * default behavior is not to consider as editable a derived feature, an
 	 * unchangeable feature or any data type which is not serializable.
-	 * 
+	 *
 	 * @param f
 	 * @return
 	 */

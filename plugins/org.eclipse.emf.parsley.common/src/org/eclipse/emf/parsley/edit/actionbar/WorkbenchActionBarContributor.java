@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  * Francesco Guidieri - initial API and implementation
@@ -51,12 +51,12 @@ import com.google.inject.Inject;
  * <p>
  * Another very useful feature of this contributor is that it can be used as
  * follows:
- * 
+ *
  * <pre>
  * ((IMenuListener) ((IEditorSite) getSite()).getActionBarContributor())
  * 		.menuAboutToShow(menuManager);
  * </pre>
- * 
+ *
  * to contribute the Edit menu actions to a pop-up menu.
  */
 public class WorkbenchActionBarContributor extends
@@ -107,11 +107,11 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	/* (non-Javadoc)
-	 * 
+	 *
 	 * (*) We used to call contributeToMenu(submenuManager)
-	 * 
+	 *
 	 * but that does not seem to work (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=447954)
-	 * 
+	 *
 	 * @see org.eclipse.ui.part.EditorActionBarContributor#contributeToMenu(org.eclipse.jface.action.IMenuManager)
 	 */
 	@Override
@@ -126,13 +126,8 @@ public class WorkbenchActionBarContributor extends
 		submenuManager.add(new Separator("additions-end"));
 
 		// (*)
-		
-		submenuManager.addMenuListener(new IMenuListener() {
-			@Override
-			public void menuAboutToShow(IMenuManager menuManager) {
-				menuManager.updateAll(true);
-			}
-		});
+
+		submenuManager.addMenuListener(menuManager1 -> menuManager1.updateAll(true));
 
 		addGlobalActions(submenuManager);
 	}
@@ -276,7 +271,7 @@ public class WorkbenchActionBarContributor extends
 		menuManager.add(new Separator("additions-end"));
 
 		addGlobalActions(menuManager);
-		
+
 		editingActionManager.emfMenuAboutToShow(menuManager);
 	}
 
@@ -290,7 +285,7 @@ public class WorkbenchActionBarContributor extends
 
 	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
-		
+
 		String key = (style & ADDITIONS_LAST_STYLE) == 0 ? "additions-end"
 				: "additions";
 		if (validateAction != null) {

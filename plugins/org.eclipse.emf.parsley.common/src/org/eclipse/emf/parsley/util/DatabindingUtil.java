@@ -17,10 +17,10 @@ import org.eclipse.swt.widgets.Widget;
 /**
  * A utility class with methods for databinding that have the same signatures of
  * the deprecated ones and use the new {@link WidgetProperties} methods.
- * 
+ *
  * This is useful in the DSL since it will be easier to implement target
  * observable specifications.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */

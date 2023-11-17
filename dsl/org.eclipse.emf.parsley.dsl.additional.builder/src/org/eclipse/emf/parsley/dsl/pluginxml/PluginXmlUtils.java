@@ -16,16 +16,15 @@ import org.eclipse.pde.internal.core.text.DocumentElementNode;
 import org.eclipse.pde.internal.core.text.IDocumentAttributeNode;
 import org.eclipse.pde.internal.core.text.plugin.PluginAttribute;
 import org.eclipse.pde.internal.core.text.plugin.PluginElementNode;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * Utility methods that abstract from the specific internal implementation of
  * PDE across several Eclipse versions from Indigo on.
- * 
+ *
  * {@link DocumentElementNode#getNodeAttributesMap()} returns a parameterized
  * TreeMap, while in Indigo it is not parameterized.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  */
 public class PluginXmlUtils {
@@ -38,17 +37,11 @@ public class PluginXmlUtils {
 			final PluginElementNode node) {
 		return IterableExtensions.<Map.Entry<String, IDocumentAttributeNode>> filter(
 				node.getNodeAttributesMap().entrySet(),
-				new Function1<Map.Entry<String, IDocumentAttributeNode>, Boolean>() {
-					@Override
-					public Boolean apply(final Map.Entry<String, IDocumentAttributeNode> it) {
-						return it.getValue() instanceof PluginAttribute;
-					}
-				});
+				it -> it.getValue() instanceof PluginAttribute);
 	}
 
-	@SuppressWarnings("cast")
 	public static IDocumentAttributeNode getId(final DocumentElementNode node) {
-		return ((IDocumentAttributeNode) node.getNodeAttributesMap().get("id"));
+		return (node.getNodeAttributesMap().get("id"));
 	}
 
 	@SuppressWarnings("rawtypes")

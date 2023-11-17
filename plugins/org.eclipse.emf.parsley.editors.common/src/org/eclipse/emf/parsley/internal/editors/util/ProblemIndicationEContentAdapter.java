@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 
 /**
  * Redefines a few methods.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */

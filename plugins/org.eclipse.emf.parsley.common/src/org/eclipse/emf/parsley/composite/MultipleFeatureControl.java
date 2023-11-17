@@ -1,13 +1,13 @@
 /**
- * <copyright> 
+ * <copyright>
  *
  * Copyright (c) 2008, 2013 itemis AG and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
+ *
+ * Contributors:
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini - refactoring for EmfParsley
  *
@@ -17,7 +17,6 @@
 package org.eclipse.emf.parsley.composite;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -48,10 +47,10 @@ import org.eclipse.swt.widgets.Menu;
 /**
  * Widget that opens the {@link FeatureEditorDialog} to select some feature values.<br>
  * Shows values comma separated as label.
- * 
+ *
  * @author Dennis Huebner
  * @author Lorenzo Bettini (modifications)
- * 
+ *
  */
 public class MultipleFeatureControl extends Composite {
 
@@ -105,10 +104,9 @@ public class MultipleFeatureControl extends Composite {
 	}
 
 	private List<Object> unwrapSelection() {
-		List<Object> l = new ArrayList<Object>();
+		List<Object> l = new ArrayList<>();
 		if (getSelection() != null && !getSelection().isEmpty() && getSelection() instanceof IStructuredSelection) {
-			for (Iterator<?> iterator = ((IStructuredSelection) getSelection()).iterator(); iterator.hasNext();) {
-				Object object = iterator.next();
+			for (Object object : ((IStructuredSelection) getSelection())) {
 				l.add(object);
 			}
 		}
@@ -177,7 +175,7 @@ public class MultipleFeatureControl extends Composite {
 			}
 		}
 
-		private java.util.List<ISelectionChangedListener> listeners = new ArrayList<ISelectionChangedListener>();
+		private java.util.List<ISelectionChangedListener> listeners = new ArrayList<>();
 
 		@Override
 		public void addSelectionChangedListener(ISelectionChangedListener listener) {

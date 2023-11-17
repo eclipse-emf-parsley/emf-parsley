@@ -13,7 +13,7 @@ package org.eclipse.swt.widgets;
 /**
  * Empty stub Java type that is used ONLY by the DSL when running in standalone
  * mode, i.e., through the xtext-maven-plugin.
- * 
+ *
  * @author Lorenzo Bettini
  *
  */

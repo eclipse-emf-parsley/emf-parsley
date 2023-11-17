@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  * Lorenzo Bettini - additional contributions
@@ -32,25 +32,25 @@ import com.google.inject.Inject;
 /**
  * Provides a column provider for EStructuralFeatures that uses polymorphic
  * dispatch to call methods at runtime.
- * 
+ *
  * If you define methods with a specific signature convention, the framework
  * will select the correct implementation depending on the runtime type of the
  * input.
- * 
+ *
  * You can define methods with a prefix 'text' or 'image' followed by the EClass
  * and EStructuralFeature names separated by an underscore character, like in
  * the example:
- * 
+ *
  * <pre>
  * {@code
- * 
+ *
  * public String text_MyClass_myFeature(Object object)
- *    
+ *
  * public Image image_MyClass_myFeature(Object object)
- *    
+ *
  * }
  * </pre>
- * 
+ *
  * Similarly, you can define methods with a prefix 'rowFont', 'rowForeground'
  * and 'rowBackground' for an object to specify the font, foreground color and
  * background color, respectively, for the entire row, or 'font', 'foreground'
@@ -58,28 +58,28 @@ import com.google.inject.Inject;
  * by an underscore character, for the font, foreground color and background
  * color, respectively, for a specific table cell (the latter has the precedence
  * over the former) for example:
- * 
+ *
  * <pre>
  * {@code
- * 
+ *
  * public Font text_MyClass_myFeature(Object object)
- *    
+ *
  * public Color foreground_MyClass_myFeature(Object object)
- *    
+ *
  * public Color background_MyClass_myFeature(Object object)
- *    
+ *
  * public Font rowFont(Object object)
- *    
+ *
  * public Color rowForeground(Object object)
- *    
+ *
  * public Color rowBackground(Object object)
- *    
+ *
  * }
  * </pre>
- * 
+ *
  * @author Francesco Guidieri
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class TableColumnLabelProvider extends ColumnLabelProvider {
 
@@ -188,7 +188,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	/**
 	 * This method will be linked at runtime, belonging to the real input type
 	 * at runtime.
-	 * 
+	 *
 	 * @return the font for the entire row
 	 */
 	public Font rowFont(Object element) {
@@ -212,7 +212,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	/**
 	 * This method will be linked at runtime, belonging to the real input type
 	 * at runtime.
-	 * 
+	 *
 	 * @return the foreground color for the entire row
 	 */
 	public Color rowForeground(Object element) {
@@ -236,7 +236,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	/**
 	 * This method will be linked at runtime, belonging to the real input type
 	 * at runtime.
-	 * 
+	 *
 	 * @return the background color for the entire row
 	 */
 	public Color rowBackground(Object element) {

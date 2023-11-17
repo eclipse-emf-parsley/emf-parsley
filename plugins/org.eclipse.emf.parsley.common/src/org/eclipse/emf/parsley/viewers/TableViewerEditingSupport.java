@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -26,16 +26,16 @@ import com.google.inject.Inject;
 
 /**
  * {@link EditingSupport} for the columns of our table viewers.
- * 
+ *
  * It delegates the creation of {@link CellEditor} to an injected
  * {@link TableViewerCellEditorFactory} and updates the model using our
  * {@link EditingDomainFinder}.
- * 
+ *
  * IMPORTANT: this relies on injection, thus, after calling the constructor, you
  * need to inject members with a members injector. Even better, use the
  * corresponding table viewer editing support factory to create instances of
  * this class.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */

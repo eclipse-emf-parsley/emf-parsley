@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -20,9 +20,9 @@ import com.google.inject.Injector;
 /**
  * An abstract activator useful for wizards to be used as the base class for
  * generated Java classes.
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public abstract class EmfParsleyAbstractActivator extends AbstractUIPlugin {
 
@@ -37,7 +37,7 @@ public abstract class EmfParsleyAbstractActivator extends AbstractUIPlugin {
 
 	/**
 	 * Returns the singleton Injector for this plugin
-	 * 
+	 *
 	 * @return the singleton Injector for this plugin
 	 */
 	public Injector getInjector() {
@@ -49,7 +49,7 @@ public abstract class EmfParsleyAbstractActivator extends AbstractUIPlugin {
 
 	/**
 	 * Creates the EmfParsleyGuiceModule for this this plugin
-	 * 
+	 *
 	 * @return the EmfParsleyGuiceModule for this this plugin
 	 */
 	protected abstract EmfParsleyGuiceModule createModule();

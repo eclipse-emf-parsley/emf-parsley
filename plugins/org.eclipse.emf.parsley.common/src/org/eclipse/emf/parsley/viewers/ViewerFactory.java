@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -35,9 +35,9 @@ import com.google.inject.Provider;
 
 /**
  * Factory for viewers for EMF resources.
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class ViewerFactory {
 
@@ -65,7 +65,7 @@ public class ViewerFactory {
 	/**
 	 * Initializes the viewer, and uses as input the resource specified by an
 	 * {@link URI}.
-	 * 
+	 *
 	 * @param viewer
 	 * @param uri
 	 */
@@ -76,7 +76,7 @@ public class ViewerFactory {
 	/**
 	 * Initializes the viewer, and uses as input the resource set of the
 	 * specified editingDomain.
-	 * 
+	 *
 	 * @param viewer
 	 * @param editingDomain
 	 */
@@ -86,7 +86,7 @@ public class ViewerFactory {
 
 	/**
 	 * Initializes the viewer, and uses as input the specified object.
-	 * 
+	 *
 	 * @param viewer
 	 * @param object
 	 */
@@ -97,7 +97,7 @@ public class ViewerFactory {
 	/**
 	 * Creates a {@link TableViewer} that will represent objects of the
 	 * specified type.
-	 * 
+	 *
 	 * @param parent
 	 * @param style
 	 * @param type
@@ -113,7 +113,7 @@ public class ViewerFactory {
 	 * Creates a {@link TreeViewer} with columns; the tree will display the
 	 * specified content and the columns will represent the features of the
 	 * contents that are instances of the specified {@link EClass}.
-	 * 
+	 *
 	 * @param parent
 	 * @param type
 	 *            to get the features to represent in the columns
@@ -133,7 +133,7 @@ public class ViewerFactory {
 	/**
 	 * Initializes the specified {@link TableViewer} building its columns
 	 * according to the specified type.
-	 * 
+	 *
 	 * @param tableViewer
 	 * @param eClass
 	 */
@@ -144,7 +144,7 @@ public class ViewerFactory {
 	/**
 	 * Initializes the specified {@link TreeViewer} building its columns
 	 * according to the specified type.
-	 * 
+	 *
 	 * @param treeViewer
 	 * @param eClass
 	 */
@@ -155,7 +155,7 @@ public class ViewerFactory {
 	/**
 	 * Initializes the specified {@link TreeViewer} building its columns
 	 * according to the specified {@link EStructuralFeature}s.
-	 * 
+	 *
 	 * @param treeViewer
 	 * @param typeFeatures
 	 */

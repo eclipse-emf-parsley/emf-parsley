@@ -25,7 +25,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
 /**
@@ -52,7 +51,7 @@ public class PolymorphicDispatcher<RT> {
 	public static class NullErrorHandler<RT> implements ErrorHandler<RT> {
 
 		public static <RT> ErrorHandler<RT> get() {
-			return new NullErrorHandler<RT>();
+			return new NullErrorHandler<>();
 		}
 
 		@Override
@@ -61,19 +60,19 @@ public class PolymorphicDispatcher<RT> {
 			return null;
 		}
 	}
-	
+
 	public static class WarningErrorHandler<RT> implements ErrorHandler<RT> {
-		
+
 		private Logger logger;
 
 		public WarningErrorHandler(Logger logger) {
 			this.logger = logger;
 		}
-		
+
 		public static <RT> ErrorHandler<RT> get(Logger logger) {
-			return new WarningErrorHandler<RT>(logger);
+			return new WarningErrorHandler<>(logger);
 		}
-		
+
 		@Override
 		public RT handle(Object[] params, Throwable throwable) {
 			logger.warn("Error in polymorphic dispatcher : "+throwable.getMessage(), throwable);
@@ -105,11 +104,11 @@ public class PolymorphicDispatcher<RT> {
 		public String toString() {
 			return "'" + methodName + "'";
 		}
-		
+
 		public int getMaxParams() {
 			return maxParams;
 		}
-		
+
 		public int getMinParams() {
 			return minParams;
 		}
@@ -134,19 +133,19 @@ public class PolymorphicDispatcher<RT> {
 	private final ErrorHandler<RT> handler;
 
 	public static <T> PolymorphicDispatcher<T> createForSingleTarget(final String methodName, final Object singleTarget) {
-		return new PolymorphicDispatcher<T>(methodName, Collections.singletonList(singleTarget));
+		return new PolymorphicDispatcher<>(methodName, Collections.singletonList(singleTarget));
 	}
 
 	public static <T> PolymorphicDispatcher<T> createForSingleTarget(final String methodName, int min, int max, final Object singleTarget) {
-		return new PolymorphicDispatcher<T>(methodName, min, max, Collections.singletonList(singleTarget));
+		return new PolymorphicDispatcher<>(methodName, min, max, Collections.singletonList(singleTarget));
 	}
-	
+
 	public static <T> PolymorphicDispatcher<T> createForSingleTarget(Predicate<Method> methodFilter, Object singleTarget) {
-		return new PolymorphicDispatcher<T>(Collections.singletonList(singleTarget), methodFilter);
+		return new PolymorphicDispatcher<>(Collections.singletonList(singleTarget), methodFilter);
 	}
 
 	public static <T> PolymorphicDispatcher<T> createForVarTarget(final String methodName, final Object... targets) {
-		return new PolymorphicDispatcher<T>(methodName, Arrays.asList(targets));
+		return new PolymorphicDispatcher<>(methodName, Arrays.asList(targets));
 	}
 
 	public PolymorphicDispatcher(final String methodName, final List<? extends Object> targets) {
@@ -154,7 +153,7 @@ public class PolymorphicDispatcher<RT> {
 	}
 
 	public PolymorphicDispatcher(final String methodName, final int minParams, final int maxParams, final List<? extends Object> targets) {
-		this(methodName, minParams, maxParams, targets, new DefaultErrorHandler<RT>());
+		this(methodName, minParams, maxParams, targets, new DefaultErrorHandler<>());
 	}
 
 	public PolymorphicDispatcher(final String methodName, final int minParams, final int maxParams, final List<? extends Object> targets,
@@ -163,7 +162,7 @@ public class PolymorphicDispatcher<RT> {
 	}
 
 	public PolymorphicDispatcher(final List<? extends Object> targets, Predicate<Method> methodFilter) {
-		this(targets, methodFilter, new DefaultErrorHandler<RT>());
+		this(targets, methodFilter, new DefaultErrorHandler<>());
 	}
 
 	public PolymorphicDispatcher(final List<? extends Object> targets, Predicate<Method> methodFilter, ErrorHandler<RT> handler) {
@@ -200,12 +199,14 @@ public class PolymorphicDispatcher<RT> {
 		}
 
 		public boolean isInvokeable(final List<Class<?>> paramTypes) {
-			if (getParameterTypes().length != paramTypes.size())
+			if (getParameterTypes().length != paramTypes.size()) {
 				return false;
+			}
 			for (int i = 0; i < paramTypes.size(); i++) {
 				Class<?> paramClass = paramTypes.get(i);
-				if (paramClass!=null && !Void.class.equals(paramClass) && !(getObjectType(getParameterTypes()[i]).isAssignableFrom(getObjectType(paramClass))))
+				if (paramClass!=null && !Void.class.equals(paramClass) && !(getObjectType(getParameterTypes()[i]).isAssignableFrom(getObjectType(paramClass)))) {
 					return false;
+				}
 			}
 			return true;
 		}
@@ -221,30 +222,37 @@ public class PolymorphicDispatcher<RT> {
 		final Class<?>[] paramTypes2 = o2.getParameterTypes();
 
 		// sort by number of parameters
-		if (paramTypes1.length > paramTypes2.length)
+		if (paramTypes1.length > paramTypes2.length) {
 			return 1;
-		if (paramTypes2.length > paramTypes1.length)
+		}
+		if (paramTypes2.length > paramTypes1.length) {
 			return -1;
+		}
 
 		// sort by parameter types from left to right
 		for (int i = 0; i < paramTypes1.length; i++) {
 			final Class<?> class1 = paramTypes1[i];
 			final Class<?> class2 = paramTypes2[i];
 
-			if (class1.equals(class2))
+			if (class1.equals(class2)) {
 				continue;
-			if (class1.isAssignableFrom(class2) || Void.class.equals(class2))
+			}
+			if (class1.isAssignableFrom(class2) || Void.class.equals(class2)) {
 				return -1;
-			if (class2.isAssignableFrom(class1) || Void.class.equals(class1))
+			}
+			if (class2.isAssignableFrom(class1) || Void.class.equals(class1)) {
 				return 1;
+			}
 		}
 
 		// sort by declaring class (more specific comes first).
 		if (!o1.getDeclaringClass().equals(o2.getDeclaringClass())) {
-			if (o1.getDeclaringClass().isAssignableFrom(o2.getDeclaringClass()))
+			if (o1.getDeclaringClass().isAssignableFrom(o2.getDeclaringClass())) {
 				return 1;
-			if (o2.getDeclaringClass().isAssignableFrom(o1.getDeclaringClass()))
+			}
+			if (o2.getDeclaringClass().isAssignableFrom(o1.getDeclaringClass())) {
 				return -1;
+			}
 		}
 
 		// sort by target
@@ -253,36 +261,31 @@ public class PolymorphicDispatcher<RT> {
 	}
 
 	private final SimpleCache<List<Class<?>>, List<MethodDesc>> cache =
-		new SimpleCache<List<Class<?>>, List<MethodDesc>>(
-			new Function<List<Class<?>>, List<MethodDesc>>() {
-				@Override
-				public List<MethodDesc> apply(List<Class<?>> paramTypes) {
-					// 'result' contains all best-matched MethodDesc for which 
-					// pairwise compare(m1, m2) == 0, meaning they're equal or unrelated. 
-					List<MethodDesc> result = new ArrayList<MethodDesc>();
-					Iterator<MethodDesc> iterator = methods.iterator();
-					NEXT: while (iterator.hasNext()) {
-						MethodDesc methodDesc = iterator.next();
-						if (methodDesc.isInvokeable(paramTypes)) {
-							if (result.isEmpty()) {
-								result.add(methodDesc);
-							} else {
-								Iterator<MethodDesc> it = result.iterator();
-								while(it.hasNext()) {
-									MethodDesc next = it.next();
-									int compare = compare(next, methodDesc);
-									if (compare < 0) {
-										it.remove();
-									} else if (compare > 0) {
-										continue NEXT;
-									}
+		new SimpleCache<>(
+			paramTypes -> {
+				// 'result' contains all best-matched MethodDesc for which
+				// pairwise compare(m1, m2) == 0, meaning they're equal or unrelated.
+				List<MethodDesc> result = new ArrayList<>();
+				NEXT: for (PolymorphicDispatcher<RT>.MethodDesc methodDesc : methods) {
+					if (methodDesc.isInvokeable(paramTypes)) {
+						if (result.isEmpty()) {
+							result.add(methodDesc);
+						} else {
+							Iterator<MethodDesc> it = result.iterator();
+							while(it.hasNext()) {
+								MethodDesc next = it.next();
+								int compare = compare(next, methodDesc);
+								if (compare < 0) {
+									it.remove();
+								} else if (compare > 0) {
+									continue NEXT;
 								}
-								result.add(methodDesc);
 							}
+							result.add(methodDesc);
 						}
 					}
-					return result;
 				}
+				return result;
 			}
 		);
 
@@ -296,19 +299,22 @@ public class PolymorphicDispatcher<RT> {
 		}
 		List<MethodDesc> result = cache.get(getTypes(params));
 		// check if ambiguous
-		if (result.size()>1)
+		if (result.size()>1) {
 			return handleAmbigousMethods(result, params);
-		
-		if (result.isEmpty())
+		}
+
+		if (result.isEmpty()) {
 			return handleNoSuchMethod(params);
+		}
 
 		try {
 			MethodDesc current = result.get(0);
 			current.method.setAccessible(true);
 			return (RT) current.method.invoke(current.target, params);
 		} catch (InvocationTargetException e) {
-			if (e.getTargetException() instanceof Error)
+			if (e.getTargetException() instanceof Error) {
 				throw (Error) e.getTargetException();
+			}
 			return handler.handle(params, e.getTargetException());
 		} catch (IllegalArgumentException e) {
 			return handler.handle(params, e);
@@ -330,7 +336,7 @@ public class PolymorphicDispatcher<RT> {
 	 * @return
 	 */
 	private List<Class<?>> getTypes(Object[] params) {
-		List<Class<?>> result = new ArrayList<Class<?>>(params.length);
+		List<Class<?>> result = new ArrayList<>(params.length);
 		for (int i = 0; i < params.length; i++) {
 			if (params[i]!=null) {
 				result.add(params[i].getClass());
@@ -349,7 +355,7 @@ public class PolymorphicDispatcher<RT> {
 	}
 
 	private Collection<MethodDesc> getCandidateMethods() {
-		Collection<MethodDesc> cachedDescriptors = new ArrayList<MethodDesc>();
+		Collection<MethodDesc> cachedDescriptors = new ArrayList<>();
 		for (Object target : targets) {
 			Class<?> current = target.getClass();
 			while (current != Object.class) {
@@ -387,17 +393,17 @@ public class PolymorphicDispatcher<RT> {
 	}
 
 	public static class ExceptionLogHandler<RT> implements ErrorHandler<RT> {
-		
+
 		private Logger logger;
 
 		public ExceptionLogHandler(Logger logger) {
 			this.logger = logger;
 		}
-		
+
 		public static <RT> ErrorHandler<RT> get(Logger logger) {
-			return new ExceptionLogHandler<RT>(logger);
+			return new ExceptionLogHandler<>(logger);
 		}
-		
+
 		@Override
 		public RT handle(Object[] params, Throwable throwable) {
 			if(!(throwable instanceof NoSuchMethodException)){

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * itemis AG - Initial contribution and API
  *******************************************************************************/
@@ -36,7 +36,7 @@ public abstract class MethodBasedModule implements Module {
 		this.method = method;
 		this.owner = owner;
 	}
-	
+
 	public Method getMethod() {
 		return method;
 	}
@@ -44,17 +44,18 @@ public abstract class MethodBasedModule implements Module {
 	public Object getOwner() {
 		return owner;
 	}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public void configure(Binder binder) {
 		Type key = getKeyType();
 		if (isClassBinding()) {
 			Class<?> value = (Class<?>) invokeMethod();
-			if (LOGGER.isTraceEnabled())
+			if (LOGGER.isTraceEnabled()) {
 				LOGGER.trace("Adding binding from " + key + " to " + value.getName()
 						+ ". Declaring Method was '" + getMethod().toGenericString() + "' in Module "
 						+ this.getClass().getName());
+			}
 			if (value != null && !Void.class.equals(value)) {
 				LinkedBindingBuilder<Object> bind = binder.bind((Key<Object>)Key.get(key));
 				if (!key.equals(value)) {
@@ -68,12 +69,13 @@ public abstract class MethodBasedModule implements Module {
 			}
 		} else {
 			Object instance = invokeMethod();
-			if (LOGGER.isTraceEnabled())
+			if (LOGGER.isTraceEnabled()) {
 				LOGGER.trace(
-						"Adding binding from " + getMethod().getReturnType().getName() + 
+						"Adding binding from " + getMethod().getReturnType().getName() +
 						" to instance " + instance.toString()
 						+ ". Declaring Method was '" + getMethod().toGenericString() + "' in Module "
 						+ this.getClass().getName());
+			}
 			LinkedBindingBuilder<Object> bind = binder.bind((Key<Object>)Key.get(key));
 			bindToInstance(bind, instance);
 		}
@@ -86,11 +88,11 @@ public abstract class MethodBasedModule implements Module {
 	protected void bindToInstance(LinkedBindingBuilder<Object> bind, Object instance) {
 		bind.toInstance(instance);
 	}
-	
+
 	protected boolean isSame(Type typeA, Type typeB) {
 		return typeA.equals(typeB);
 	}
-	
+
 	public Type getKeyType() {
 		Type genericReturnType = getMethod().getGenericReturnType();
 		if (isClassBinding()) {
@@ -115,7 +117,7 @@ public abstract class MethodBasedModule implements Module {
 	protected IllegalStateException throwIllegalReturnTypeDeclaration(Method method) {
 		return new IllegalStateException("return type of "+method.getName()+" should be declared with wildcard and upperbound (i.e. Class<? extends IScopeProvider>)");
 	}
-	
+
 	public boolean isClassBinding() {
 		return Class.class.equals(getMethod().getReturnType());
 	}
@@ -131,7 +133,7 @@ public abstract class MethodBasedModule implements Module {
 	public boolean isSingleton() {
 		return getMethod().getAnnotation(SingletonBinding.class) != null;
 	}
-	
+
 	public Object invokeMethod(Object... parameters) {
 		try {
 			getMethod().setAccessible(true);
@@ -140,5 +142,5 @@ public abstract class MethodBasedModule implements Module {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 }
