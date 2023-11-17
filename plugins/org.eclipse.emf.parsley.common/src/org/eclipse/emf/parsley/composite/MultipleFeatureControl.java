@@ -17,6 +17,7 @@
 package org.eclipse.emf.parsley.composite;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -105,8 +106,8 @@ public class MultipleFeatureControl extends Composite {
 	private List<Object> unwrapSelection() {
 		List<Object> l = new ArrayList<>();
 		if (getSelection() != null && !getSelection().isEmpty() && getSelection() instanceof IStructuredSelection) {
-			for (Object object : ((IStructuredSelection) getSelection())) {
-				l.add(object);
+			for (Iterator<?> iterator = ((IStructuredSelection) getSelection()).iterator(); iterator.hasNext();) {
+				l.add(iterator.next());
 			}
 		}
 		return l;
