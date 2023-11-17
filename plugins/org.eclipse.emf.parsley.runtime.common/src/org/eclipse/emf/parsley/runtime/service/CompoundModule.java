@@ -24,7 +24,7 @@ import com.google.inject.Module;
  */
 public class CompoundModule implements Module {
 
-	private static Logger LOGGER = Logger.getLogger(CompoundModule.class);
+	private static final Logger LOGGER = Logger.getLogger(CompoundModule.class);
 
 	private List<Module> modules;
 

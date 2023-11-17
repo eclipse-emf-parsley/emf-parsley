@@ -28,7 +28,7 @@ import com.google.inject.binder.LinkedBindingBuilder;
  * @author Sven Efftinge
  */
 public abstract class MethodBasedModule implements Module {
-	private static Logger LOGGER = Logger.getLogger(BindModule.class);
+	private static final Logger LOGGER = Logger.getLogger(BindModule.class);
 	private final Method method;
 	private final Object owner;
 

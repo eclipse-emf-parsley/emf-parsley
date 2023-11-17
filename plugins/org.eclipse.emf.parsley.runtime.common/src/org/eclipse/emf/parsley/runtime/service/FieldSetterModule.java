@@ -47,7 +47,7 @@ public class FieldSetterModule extends MethodBasedModule {
 
 	public static final String METHOD_PREFIX = "value";
 
-	private static Logger LOGGER = Logger.getLogger(BindModule.class);
+	private static final Logger LOGGER = Logger.getLogger(BindModule.class);
 
 	public FieldSetterModule(Method method, Object owner) {
 		super(method, owner);

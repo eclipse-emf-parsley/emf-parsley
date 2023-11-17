@@ -30,7 +30,7 @@ import com.google.inject.name.Names;
  */
 public abstract class AbstractGenericModule implements Module {
 
-	private static Logger LOGGER = Logger.getLogger(AbstractGenericModule.class);
+	private static final Logger LOGGER = Logger.getLogger(AbstractGenericModule.class);
 
 	@Override
 	public void configure(Binder binder) {
