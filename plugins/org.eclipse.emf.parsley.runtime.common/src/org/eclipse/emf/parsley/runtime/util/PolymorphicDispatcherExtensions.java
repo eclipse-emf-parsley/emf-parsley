@@ -133,7 +133,7 @@ public class PolymorphicDispatcherExtensions {
 			// generate _EType so we must search for methods polymorphically both with
 			// _eType (which is what one would manually write) and
 			// _EType (which is what the DSL generates)
-			char chars[] = featureName.toCharArray();
+			char[] chars = featureName.toCharArray();
 			chars[0] = Character.toUpperCase(chars[0]);
 			final String alternativePredicateMethodName = methodNamePrefix + new String(chars);
 			return new MethodNameFilter(predicateMethodName, numOfParams, numOfParams) {
