@@ -20,6 +20,7 @@ import org.junit.Test
 import static org.mockito.Mockito.*
 
 import static extension org.junit.Assert.*
+import org.eclipse.swt.graphics.Image
 
 class CachedLabelProviderTest extends AbstractImageBasedTest {
 
@@ -30,7 +31,9 @@ class CachedLabelProviderTest extends AbstractImageBasedTest {
 	@Before
 	def void setupLabelProvider() {
 		delegate = mock(ILabelProvider)
+		val Image mockImage = mock(Image)
 		when(delegate.getText(any)).thenReturn(TEST_VAL)
+		when(delegate.getImage(any)).thenReturn(mockImage)
 		labelProvider = new CachedLabelProvider(delegate)
 	}
 
@@ -48,8 +51,8 @@ class CachedLabelProviderTest extends AbstractImageBasedTest {
 
 	@Test
 	def void testGetImage() {
-		assertNull(labelProvider.getImage(classForControlsInstance))
-		assertNull(labelProvider.getImage(classForControlsInstance))
+		assertNotNull(labelProvider.getImage(classForControlsInstance))
+		assertNotNull(labelProvider.getImage(classForControlsInstance))
 		verify(delegate, times(1)).getImage(any)
 	}
 
