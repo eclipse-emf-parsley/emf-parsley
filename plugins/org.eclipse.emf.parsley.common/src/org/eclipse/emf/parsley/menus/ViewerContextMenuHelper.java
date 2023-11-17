@@ -132,7 +132,7 @@ public class ViewerContextMenuHelper {
 
 	private MenuManager createContextMenu(Viewer viewer, final IMenuListener menuListener) {
 		MenuManager menuManager = createContextMenu(viewer);
-		menuManager.addMenuListener(manager -> menuListener.menuAboutToShow(manager));
+		menuManager.addMenuListener(menuListener::menuAboutToShow);
 		return menuManager;
 	}
 
