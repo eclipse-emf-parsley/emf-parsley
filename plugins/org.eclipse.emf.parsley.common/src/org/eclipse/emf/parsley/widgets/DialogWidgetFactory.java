@@ -49,8 +49,7 @@ public class DialogWidgetFactory extends AbstractWidgetFactory {
 
 	@Override
 	public ComboViewer createComboViewer(Composite parent, int style) {
-		ComboViewer combo = new ComboViewer(parent, style);
-		return combo;
+		return new ComboViewer(parent, style);
 	}
 
 	@Override

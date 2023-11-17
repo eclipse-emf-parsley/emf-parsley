@@ -106,8 +106,7 @@ public class LogAppenderTestRule implements TestRule {
 	}
 
 	protected String eventsToString() {
-		String eventsToString = join(map(logListener.getEvents(), it -> it.getMessage().toString()), ",");
-		return eventsToString;
+		return join(map(logListener.getEvents(), it -> it.getMessage().toString()), ",");
 	}
 
 	public void assertEmpty() {

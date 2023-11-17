@@ -164,8 +164,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 			return null;
 		}
 
-		Image ret = polymorphicGetImage(element, geteStructuralFeature());
-		return ret;
+		return polymorphicGetImage(element, geteStructuralFeature());
 	}
 
 	@Override

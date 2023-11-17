@@ -82,13 +82,11 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 		}
 
 		public TextInfo popUndo() {
-			TextInfo res = undo.pop();
-			return res;
+			return undo.pop();
 		}
 
 		public TextInfo popRedo() {
-			TextInfo res = redo.pop();
-			return res;
+			return redo.pop();
 		}
 
 		public void clearRedo() {

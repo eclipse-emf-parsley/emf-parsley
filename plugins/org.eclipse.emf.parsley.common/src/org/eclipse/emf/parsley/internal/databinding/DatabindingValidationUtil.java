@@ -64,7 +64,6 @@ public class DatabindingValidationUtil {
 		context.put(SubstitutionLabelProvider.class,
 			new DatabindingSubstitutionLabelProvider(eObject, labelProvider, featureLabelCaptionProvider));
 		List<Diagnostic> diagnostics = diagnosticUtil.flatten(diagnostician.validate(eObject, context));
-		Iterable<Diagnostic> filtered = filter(diagnostics, d -> contains(d.getData(), feature));
-		return filtered;
+		return filter(diagnostics, d -> contains(d.getData(), feature));
 	}
 }

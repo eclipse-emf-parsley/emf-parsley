@@ -123,7 +123,7 @@ public class TableViewerColumnBuilder {
 
 	private SelectionAdapter getSelectionAdapter(final TableViewer viewer, final TableColumn column,
 			final int index) {
-		SelectionAdapter selectionAdapter = new SelectionAdapter() {
+		return new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GenericFeatureViewerComparator comparator = (GenericFeatureViewerComparator) viewer.getComparator();
@@ -134,6 +134,5 @@ public class TableViewerColumnBuilder {
 				viewer.refresh();
 			}
 		};
-		return selectionAdapter;
 	}
 }
