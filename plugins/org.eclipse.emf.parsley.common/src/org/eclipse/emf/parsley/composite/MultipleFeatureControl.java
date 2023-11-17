@@ -154,13 +154,6 @@ public class MultipleFeatureControl extends Composite {
 		button.removeFocusListener(listener);
 	}
 
-	/**
-	 * @param selection
-	 */
-	private void recalculateLabelText() {
-		label.setText(labelProvider.getText(unwrapSelection()));
-	}
-
 	class InternalSelectionProvider implements ISelectionProvider {
 
 		@Override
@@ -176,6 +169,10 @@ public class MultipleFeatureControl extends Composite {
 		}
 
 		private java.util.List<ISelectionChangedListener> listeners = new ArrayList<>();
+
+		private void recalculateLabelText() {
+			label.setText(labelProvider.getText(unwrapSelection()));
+		}
 
 		@Override
 		public void addSelectionChangedListener(ISelectionChangedListener listener) {
