@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.ui.provider;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -147,12 +148,10 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 			// we can refresh the viewer
 			Object[] defaultElements = super.getElements(main);
 			addListenersToTheModel(defaultElements);
-			for (Object object : defaultElements) {
-				// although these are not actually parents, we need to
-				// treat them as such, since notifications concerning them
-				// must issue a full refresh
-				customElementsParents.add(object);
-			}
+			// although these are not actually parents, we need to
+			// treat them as such, since notifications concerning them
+			// must issue a full refresh
+			customElementsParents.addAll(Arrays.asList(defaultElements));
 		}
 	}
 
