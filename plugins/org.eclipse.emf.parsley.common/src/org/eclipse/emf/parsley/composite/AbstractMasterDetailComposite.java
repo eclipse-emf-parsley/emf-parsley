@@ -58,11 +58,11 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	private SashForm sashForm;
 
-	public AbstractMasterDetailComposite(Composite parent, int style) {
+	protected AbstractMasterDetailComposite(Composite parent, int style) {
 		this(parent, style, SWT.VERTICAL, new int[0]);
 	}
 
-	public AbstractMasterDetailComposite(Composite parent, int style, int sashStyle, int[] weights) {
+	protected AbstractMasterDetailComposite(Composite parent, int style, int sashStyle, int[] weights) {
 		super(parent, style);
 		setLayout( new FillLayout());
 		sashForm = new SashForm(this, sashStyle);

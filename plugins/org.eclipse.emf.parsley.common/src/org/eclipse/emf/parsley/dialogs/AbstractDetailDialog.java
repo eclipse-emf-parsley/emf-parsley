@@ -46,7 +46,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 	 * @param original
 	 * @param toBeEdited
 	 */
-	public AbstractDetailDialog(Shell parentShell, String title,
+	protected AbstractDetailDialog(Shell parentShell, String title,
 			EObject original, EditingDomain domain) {
 		super(parentShell);
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.TITLE | SWT.MAX);

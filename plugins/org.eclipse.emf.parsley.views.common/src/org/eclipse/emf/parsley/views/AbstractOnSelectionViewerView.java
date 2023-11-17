@@ -39,7 +39,7 @@ public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionV
 	@Inject
 	private ViewerDragAndDropHelper dragAndDropHelper;
 
-	public AbstractOnSelectionViewerView() {
+	protected AbstractOnSelectionViewerView() {
 	}
 
 	@Override

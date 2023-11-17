@@ -32,7 +32,7 @@ public abstract class EmfParsleyAbstractActivator extends AbstractUIPlugin {
 	/**
 	 * The constructor
 	 */
-	public EmfParsleyAbstractActivator() {
+	protected EmfParsleyAbstractActivator() {
 	}
 
 	/**

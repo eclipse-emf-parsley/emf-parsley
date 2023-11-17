@@ -125,7 +125,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	public static final String ESTRUCTURALFEATURE_KEY = EcorePackage.Literals.ESTRUCTURAL_FEATURE
 			.getName();
 
-	public AbstractControlFactory() {
+	protected AbstractControlFactory() {
 
 	}
 

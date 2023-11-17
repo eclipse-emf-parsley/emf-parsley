@@ -34,7 +34,7 @@ public abstract class AbstractDetailComposite extends Composite {
 	@Inject
 	private EditingDomainFinder editingDomainFinder;
 
-	public AbstractDetailComposite(Composite parent, int style) {
+	protected AbstractDetailComposite(Composite parent, int style) {
 		super(parent, style);
 	}
 

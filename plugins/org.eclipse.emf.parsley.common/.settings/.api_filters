@@ -1,10 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <component id="org.eclipse.emf.parsley.common" version="2">
+    <resource path="src/org/eclipse/emf/parsley/composite/AbstractControlFactory.java" type="org.eclipse.emf.parsley.composite.AbstractControlFactory">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.composite.AbstractControlFactory"/>
+                <message_argument value="AbstractControlFactory()"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/composite/AbstractDetailComposite.java" type="org.eclipse.emf.parsley.composite.AbstractDetailComposite">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.composite.AbstractDetailComposite"/>
+                <message_argument value="AbstractDetailComposite(Composite, int)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/composite/AbstractMasterDetailComposite.java" type="org.eclipse.emf.parsley.composite.AbstractMasterDetailComposite">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.composite.AbstractMasterDetailComposite"/>
+                <message_argument value="AbstractMasterDetailComposite(Composite, int)"/>
+            </message_arguments>
+        </filter>
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.composite.AbstractMasterDetailComposite"/>
+                <message_argument value="AbstractMasterDetailComposite(Composite, int, int, int[])"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/dialogs/AbstractDetailDialog.java" type="org.eclipse.emf.parsley.dialogs.AbstractDetailDialog">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.dialogs.AbstractDetailDialog"/>
+                <message_argument value="AbstractDetailDialog(Shell, String, EObject, EditingDomain)"/>
+            </message_arguments>
+        </filter>
+    </resource>
     <resource path="src/org/eclipse/emf/parsley/edit/action/EditingActionManager.java" type="org.eclipse.emf.parsley.edit.action.EditingActionManager">
         <filter comment="we need this, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=404727" id="574664731">
             <message_arguments>
                 <message_argument value="org.eclipse.emf.parsley.edit.action.EditingActionManager.getSharedImages()"/>
                 <message_argument value="ISharedImages"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/ui/EmfParsleyAbstractActivator.java" type="org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator"/>
+                <message_argument value="EmfParsleyAbstractActivator()"/>
             </message_arguments>
         </filter>
     </resource>
