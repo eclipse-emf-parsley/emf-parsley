@@ -37,7 +37,7 @@ public class DialogFactory {
 
 	@Inject
 	public DialogFactory() {
-
+		// nothing to do
 	}
 
 	public DetailFormBasedDialog createDetailFormBasedDialog(Shell parentShell,

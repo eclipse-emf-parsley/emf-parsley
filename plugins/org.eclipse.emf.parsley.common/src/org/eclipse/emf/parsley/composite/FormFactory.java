@@ -30,7 +30,7 @@ public class FormFactory {
 
 	@Inject
 	public FormFactory() {
-
+		// nothing to do
 	}
 
 	public FormDetailComposite createFormDetailComposite(Composite parent,

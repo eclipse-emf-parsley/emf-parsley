@@ -34,7 +34,7 @@ public class EmfTreeEditor extends EmfAbstractEditor {
 	 *
 	 */
 	public EmfTreeEditor() {
-
+		// nothing to do
 	}
 
 	@Override

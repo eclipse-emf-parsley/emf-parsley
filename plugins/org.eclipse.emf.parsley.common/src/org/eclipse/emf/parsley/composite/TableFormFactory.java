@@ -28,7 +28,7 @@ public class TableFormFactory {
 
 	@Inject
 	public TableFormFactory() {
-
+		// nothing to do
 	}
 
 	public TableFormComposite createTableFormMasterDetailComposite(Composite parent, int style, EClass type) {

@@ -23,6 +23,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 public class MenuSeparatorContributionSpecification implements IMenuContributionSpecification {
 
 	public MenuSeparatorContributionSpecification() {
+		// nothing to do
 	}
 
 	@Override

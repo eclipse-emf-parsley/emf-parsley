@@ -101,7 +101,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 
 	@Inject
 	public TableColumnLabelProvider() {
-
+		// nothing to do
 	}
 
 	public EStructuralFeature geteStructuralFeature() {

@@ -27,6 +27,7 @@ public class OnSelectionTreeView extends AbstractOnSelectionViewerView {
 	private TreeViewer treeViewer;
 
 	public OnSelectionTreeView() {
+		// nothing to do
 	}
 
 	@Override

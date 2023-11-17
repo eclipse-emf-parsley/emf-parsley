@@ -40,7 +40,7 @@ public class TreeFormFactory {
 
 	@Inject
 	public TreeFormFactory() {
-
+		// nothing to do
 	}
 
 	/**
