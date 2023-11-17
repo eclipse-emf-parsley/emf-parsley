@@ -40,18 +40,14 @@ public class CachedLabelProvider implements ILabelProvider {
 
 	@Override
 	public Image getImage(Object element) {
-		if (!imageCache.containsKey(element)) {
-			imageCache.put(element, delegate.getImage(element));
-		}
-		return imageCache.get(element);
+		return imageCache.computeIfAbsent(element,
+				delegate::getImage);
 	}
 
 	@Override
 	public String getText(Object element) {
-		if (!textCache.containsKey(element)) {
-			textCache.put(element, delegate.getText(element));
-		}
-		return textCache.get(element);
+		return textCache.computeIfAbsent(element,
+				delegate::getText);
 	}
 
 	@Override
