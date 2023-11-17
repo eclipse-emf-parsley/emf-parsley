@@ -63,6 +63,10 @@ public class WorkbenchActionBarContributor extends
 		MultiPageEditorActionBarContributor implements IMenuListener,
 		IPropertyListener, ISelectionChangedListener {
 
+	private static final String ADDITIONS_END = "additions-end";
+
+	private static final String ADDITIONS = "additions";
+
 	@Inject
 	private EditingActionManager editingActionManager;
 
@@ -119,11 +123,11 @@ public class WorkbenchActionBarContributor extends
 		IMenuManager submenuManager = new MenuManager("EMF Parsley",
 				"org.eclipse.emf.parsley.MenuID");
 
-		menuManager.insertAfter("additions", submenuManager);
+		menuManager.insertAfter(ADDITIONS, submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
-		submenuManager.add(new Separator("additions"));
-		submenuManager.add(new Separator("additions-end"));
+		submenuManager.add(new Separator(ADDITIONS));
+		submenuManager.add(new Separator(ADDITIONS_END));
 
 		// (*)
 
@@ -257,7 +261,7 @@ public class WorkbenchActionBarContributor extends
 	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		if ((style & ADDITIONS_LAST_STYLE) == 0) {
-			menuManager.add(new Separator("additions"));
+			menuManager.add(new Separator(ADDITIONS));
 		}
 		menuManager.add(new Separator("edit"));
 
@@ -265,10 +269,10 @@ public class WorkbenchActionBarContributor extends
 		editingActionManager.menuAboutToShow(menuManager);
 
 		if ((style & ADDITIONS_LAST_STYLE) != 0) {
-			menuManager.add(new Separator("additions"));
+			menuManager.add(new Separator(ADDITIONS));
 			menuManager.add(new Separator());
 		}
-		menuManager.add(new Separator("additions-end"));
+		menuManager.add(new Separator(ADDITIONS_END));
 
 		addGlobalActions(menuManager);
 
@@ -284,10 +288,10 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	protected void addGlobalActions(IMenuManager menuManager) {
-		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
+		menuManager.insertAfter(ADDITIONS_END, new Separator("ui-actions"));
 
-		String key = (style & ADDITIONS_LAST_STYLE) == 0 ? "additions-end"
-				: "additions";
+		String key = (style & ADDITIONS_LAST_STYLE) == 0 ? ADDITIONS_END
+				: ADDITIONS;
 		if (validateAction != null) {
 			menuManager.insertBefore(key, new ActionContributionItem(
 					validateAction));
