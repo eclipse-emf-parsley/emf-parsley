@@ -40,4 +40,36 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/parsley/widgets/AbstractWidgetFactory.java" type="org.eclipse.emf.parsley.widgets.AbstractWidgetFactory">
+        <filter comment="useless to override as abstract methods of the interface" id="338792546">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.widgets.AbstractWidgetFactory"/>
+                <message_argument value="createButton(Composite, String, int)"/>
+            </message_arguments>
+        </filter>
+        <filter comment="useless to override as abstract methods of the interface" id="338792546">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.widgets.AbstractWidgetFactory"/>
+                <message_argument value="createComboViewer(Composite, int)"/>
+            </message_arguments>
+        </filter>
+        <filter comment="useless to override as abstract methods of the interface" id="338792546">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.widgets.AbstractWidgetFactory"/>
+                <message_argument value="createDateTime(Composite, int)"/>
+            </message_arguments>
+        </filter>
+        <filter comment="useless to override as abstract methods of the interface" id="338792546">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.widgets.AbstractWidgetFactory"/>
+                <message_argument value="createLabel(Composite, String)"/>
+            </message_arguments>
+        </filter>
+        <filter comment="useless to override as abstract methods of the interface" id="338792546">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.widgets.AbstractWidgetFactory"/>
+                <message_argument value="createText(Composite, String, int)"/>
+            </message_arguments>
+        </filter>
+    </resource>
 </component>

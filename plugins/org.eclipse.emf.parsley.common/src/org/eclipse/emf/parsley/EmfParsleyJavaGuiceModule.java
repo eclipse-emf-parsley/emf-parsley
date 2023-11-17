@@ -78,7 +78,6 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseListener;
 
-import com.google.inject.Binder;
 import com.google.inject.Provider;
 
 /**
@@ -90,11 +89,6 @@ import com.google.inject.Provider;
  *
  */
 public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
-
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-	}
 
 	/**
 	 * The String constant for Content Assist Shortcut
