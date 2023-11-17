@@ -26,7 +26,7 @@ public class GlobalAdapterFactoryEditingDomainProvider extends DefaultAdapterFac
 	@Override
 	public AdapterFactoryEditingDomain get() {
 		if (singleton == null) {
-			singleton = super.get();
+			singleton = super.get(); // NOSONAR we have to use a static field in an instance method
 		}
 		return singleton;
 	}
