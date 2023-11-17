@@ -78,7 +78,6 @@ public class ProposalCreator {
 
 	protected List<Object> defaultProposals(EStructuralFeature feature) {
 		List<Object> retVal = null;
-		// TODO Reference[] handle
 		if (feature instanceof EReference) {
 			retVal = findAllInstances(feature.getEType());
 		} else if (feature.getEType() instanceof EEnumImpl) {

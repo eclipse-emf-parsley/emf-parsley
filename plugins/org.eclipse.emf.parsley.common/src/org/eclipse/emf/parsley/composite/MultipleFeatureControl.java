@@ -84,7 +84,6 @@ public class MultipleFeatureControl extends Composite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				List<?> oldValue = unwrapSelection();
-				// TODO (dennis) load choice of values in a runnable with status bar
 				List<Object> proposals = proposalcreator.proposals(object, feature);
 				dialog = new FeatureEditorDialog(parent.getShell(), new CachedLabelProvider(labelProvider), object,
 						feature.getEType(), oldValue, "Select", proposals, false,

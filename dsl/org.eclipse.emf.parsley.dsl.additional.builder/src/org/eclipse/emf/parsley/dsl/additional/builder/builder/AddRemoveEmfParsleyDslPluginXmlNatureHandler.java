@@ -15,9 +15,7 @@ public class AddRemoveEmfParsleyDslPluginXmlNatureHandler extends AbstractHandle
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		// TODO Auto-generated method stub
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
-		//
 		if (selection instanceof IStructuredSelection) {
 			for (Object element : ((IStructuredSelection) selection)) {
 				IProject project = null;
@@ -30,7 +28,6 @@ public class AddRemoveEmfParsleyDslPluginXmlNatureHandler extends AbstractHandle
 					try {
 						toggleNature(project);
 					} catch (CoreException e) {
-						// TODO log something
 						throw new ExecutionException("Failed to toggle nature", e);
 					}
 				}
