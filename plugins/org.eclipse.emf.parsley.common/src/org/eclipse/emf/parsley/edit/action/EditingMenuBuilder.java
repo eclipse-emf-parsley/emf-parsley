@@ -550,7 +550,7 @@ public class EditingMenuBuilder {
 		return actions;
 	}
 
-	protected Collection<?> getDescriptors(ISelection selection, boolean siblings) {
+	protected Collection<?> getDescriptors(ISelection selection, boolean siblings) { // NOSONAR Collection<?> is implied by the method from EMF
 		final Object firstSelectedElement = selectionHelper.getFirstSelectedElement(selection);
 		if (getEditingDomain() == null) {
 			return Collections.emptyList();
