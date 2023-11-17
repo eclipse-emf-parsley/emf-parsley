@@ -104,6 +104,10 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 		});
 	}
 
+	/**
+	 * @param controlFactory
+	 * @param obj the object for which we create the control (unused by default)
+	 */
 	protected void initializeCommon(
 			final AbstractControlFactory controlFactory, final EObject obj) {
 		injectMembers(controlFactory);

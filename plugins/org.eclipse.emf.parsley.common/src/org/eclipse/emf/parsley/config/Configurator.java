@@ -42,7 +42,7 @@ public class Configurator {
 
 	/**
 	 * Returns the {@link URI} of the resource for the requestor for any use the requestor may need it
-	 * @param requestor
+	 * @param requestor the requestor object (unused by default)
 	 * @return
 	 */
 	public URI resourceURI(Object requestor) {
@@ -60,7 +60,7 @@ public class Configurator {
 
 	/**
 	 * Returns the {@link EClass} for the requestor
-	 * @param requestor
+	 * @param requestor the requestor object (unused by default)
 	 * @return
 	 */
 	public EClass eClass(Object requestor) {

@@ -87,21 +87,21 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	/**
 	 * The default implementation
 	 *
-	 * @param o
+	 * @param o the object for which we return the children
 	 * @return null
 	 */
 	public List<Object> children(Object o) {
-		return null;
+		return null; // NOSONAR we rely on null
 	}
 
 	/**
 	 * The default implementation
 	 *
-	 * @param o
+	 * @param o the object for which we return the children
 	 * @return null
 	 */
 	public List<Object> elements(Object o) {
-		return null;
+		return null; // NOSONAR we rely on null
 	}
 
 	@Override

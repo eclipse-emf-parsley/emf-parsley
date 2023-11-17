@@ -277,7 +277,7 @@ public class EditingMenuBuilder {
 	/**
 	 * The default implementation on Object.
 	 *
-	 * @param object
+	 * @param object the object for which we create the control (unused by default)
 	 * @return
 	 */
 	protected List<IMenuContributionSpecification> emfMenuContributions(Object object) {
@@ -302,7 +302,7 @@ public class EditingMenuBuilder {
 	/**
 	 * The default polymorphic implementation.
 	 *
-	 * @param object
+	 * @param object the object for which we create the control (unused by default)
 	 * @return
 	 */
 	protected List<IMenuContributionSpecification> defaultMenuContributions(Object object) {
