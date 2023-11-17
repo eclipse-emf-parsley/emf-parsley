@@ -74,7 +74,7 @@ public class EmfParsleyDslPluginXmlBuilder extends IncrementalProjectBuilder {
 		} else {
 			incrementalBuild(delta, monitor);
 		}
-		return null;
+		return null; // NOSONAR null is part of the superclass method
 	}
 
 	void copyFromGeneratedPluginXml(IResource resource) throws CoreException {

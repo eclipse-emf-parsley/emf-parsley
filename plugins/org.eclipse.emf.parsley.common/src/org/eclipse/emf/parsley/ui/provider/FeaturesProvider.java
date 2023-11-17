@@ -145,7 +145,7 @@ public class FeaturesProvider {
 
 		List<String> list = stringMap.get(eClass.getInstanceClassName());
 		if (list == null) {
-			return null;
+			return null; // NOSONAR null is part of our contract
 		}
 
 		List<EStructuralFeature> result = new LinkedList<>();
