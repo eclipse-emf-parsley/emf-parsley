@@ -65,8 +65,8 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 	 */
 	private static class UndoRedoStack {
 
-		private Stack<TextInfo> undo;
-		private Stack<TextInfo> redo;
+		private Stack<TextInfo> undo; // NOSONAR see Javadoc above
+		private Stack<TextInfo> redo; // NOSONAR see Javadoc above
 
 		public UndoRedoStack() {
 			undo = new Stack<>();
