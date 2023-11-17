@@ -17,6 +17,6 @@ package org.eclipse.core.databinding;
  * @author Lorenzo Bettini
  *
  */
-public class DataBindingContext {
+public class DataBindingContext { // NOSONAR
 
 }

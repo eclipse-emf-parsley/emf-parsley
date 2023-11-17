@@ -17,6 +17,6 @@ package org.eclipse.swt.widgets;
  * @author Lorenzo Bettini
  *
  */
-public class Widget {
+public class Widget { // NOSONAR
 
 }

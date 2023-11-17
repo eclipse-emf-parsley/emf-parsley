@@ -17,6 +17,6 @@ package org.eclipse.jface.viewers;
  * @author Lorenzo Bettini
  *
  */
-public class ColumnLabelProvider {
+public class ColumnLabelProvider { // NOSONAR
 
 }

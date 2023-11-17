@@ -17,6 +17,6 @@ package org.eclipse.ui.plugin;
  * @author Lorenzo Bettini
  *
  */
-public class AbstractUIPlugin {
+public class AbstractUIPlugin { // NOSONAR
 
 }

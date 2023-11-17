@@ -17,6 +17,6 @@ package org.eclipse.swt.graphics;
  * @author Lorenzo Bettini
  *
  */
-public class Font {
+public class Font { // NOSONAR
 
 }

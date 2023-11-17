@@ -17,6 +17,6 @@ package org.eclipse.swt.widgets;
  * @author Lorenzo Bettini
  *
  */
-public class Label {
+public class Label { // NOSONAR
 
 }

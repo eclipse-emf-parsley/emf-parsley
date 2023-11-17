@@ -17,6 +17,6 @@ package org.eclipse.emf.edit.ui.provider;
  * @author Lorenzo Bettini
  *
  */
-public class AdapterFactoryLabelProvider {
+public class AdapterFactoryLabelProvider { // NOSONAR
 
 }
