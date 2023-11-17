@@ -42,6 +42,6 @@ public class ValidateBeforeSaveStrategy extends ResourceSaveStrategy {
 	}
 
 	protected boolean precondition(Resource resource) {
-		return validationRunner.validate(resource, issueReporter).size() == 0;
+		return validationRunner.validate(resource, issueReporter).isEmpty();
 	}
 }

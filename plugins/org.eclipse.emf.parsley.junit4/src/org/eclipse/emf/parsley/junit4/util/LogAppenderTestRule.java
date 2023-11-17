@@ -111,7 +111,7 @@ public class LogAppenderTestRule implements TestRule {
 
 	public void assertEmpty() {
 		Assert.assertTrue("Found messages: " + eventsToString(),
-			logListener.getEvents().size() == 0
+			logListener.getEvents().isEmpty()
 		);
 	}
 

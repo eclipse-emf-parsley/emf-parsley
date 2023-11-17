@@ -34,7 +34,7 @@ public class DialogErrorReporter implements IssueReporter {
 	public List<Diagnostic> report(Diagnostic diagnostic) {
 		List<Diagnostic> errors = Lists.newArrayList(diagnosticUtil.errors(diagnostic));
 
-		if (errors.size() > 0) {
+		if (!errors.isEmpty()) {
 			DiagnosticDialog.open(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Validation Errors",
 					"Problems encountered during validation", diagnostic, Diagnostic.ERROR);
 		}
