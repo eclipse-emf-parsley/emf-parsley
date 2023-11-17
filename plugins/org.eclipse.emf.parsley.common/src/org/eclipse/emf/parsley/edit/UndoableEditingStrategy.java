@@ -73,6 +73,9 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 		triggerViewerNotification(edited);
 	}
 
+	/**
+	 * @param edited the object being edited
+	 */
 	protected void triggerViewerNotification(EObject edited) {
 		notificationBuffer.propagateBufferedNotifications();
 	}
@@ -83,10 +86,16 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 		enableNotifications(edited);
 	}
 
+	/**
+	 * @param edited the object being edited
+	 */
 	protected void disableNotifications(EObject edited) {
 		notificationBuffer.startBuffering();
 	}
 
+	/**
+	 * @param edited the object being edited
+	 */
 	protected void enableNotifications(EObject edited) {
 		notificationBuffer.stopBuffering();
 	}

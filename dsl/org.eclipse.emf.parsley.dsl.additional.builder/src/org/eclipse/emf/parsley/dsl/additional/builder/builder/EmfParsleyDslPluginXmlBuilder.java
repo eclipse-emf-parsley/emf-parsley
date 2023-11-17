@@ -109,10 +109,19 @@ public class EmfParsleyDslPluginXmlBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
+	/**
+	 * @param monitor the progress monitor (unused by default)
+	 * @throws CoreException
+	 */
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException {
 		getProject().accept(new EmfParsleyDslPluginXmlBuilderResourceVisitor());
 	}
 
+	/**
+	 * @param delta
+	 * @param monitor the progress monitor (unused by default)
+	 * @throws CoreException
+	 */
 	protected void incrementalBuild(IResourceDelta delta,
 			IProgressMonitor monitor) throws CoreException {
 		// the visitor does the work.

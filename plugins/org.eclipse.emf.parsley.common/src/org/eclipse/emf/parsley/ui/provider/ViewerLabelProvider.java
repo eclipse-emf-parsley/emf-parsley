@@ -141,7 +141,10 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 	}
 
 	/**
-	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * This method will be linked at runtime, belonging to the real input type at
+	 * runtime.
+	 *
+	 * @param element the element for which we return the text
 	 * @return the text representation of the input parameter
 	 */
 	public String text(Object element) {
@@ -149,7 +152,10 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 	}
 
 	/**
-	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * This method will be linked at runtime, belonging to the real input type at
+	 * runtime.
+	 *
+	 * @param element the element for which we return the image
 	 * @return the image that represents the input
 	 */
 	public Object image(Object element) {
@@ -205,6 +211,8 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 
 	/**
 	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 *
+	 * @param element the element for which we return the font
 	 * @return the font that represents the input
 	 */
 	public Font font(Object element) {
@@ -221,6 +229,8 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 
 	/**
 	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 *
+	 * @param element the element for which we return the foreground
 	 * @return the foreground color
 	 */
 	public Color foreground(Object element) {
@@ -237,6 +247,8 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 
 	/**
 	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 *
+	 * @param element the element for which we return the background
 	 * @return the background color
 	 */
 	public Color background(Object element) {

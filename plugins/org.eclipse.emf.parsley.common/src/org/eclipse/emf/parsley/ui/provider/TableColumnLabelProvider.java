@@ -185,6 +185,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 * This method will be linked at runtime, belonging to the real input type
 	 * at runtime.
 	 *
+	 * @param element the element for which we return the font
 	 * @return the font for the entire row
 	 */
 	public Font rowFont(Object element) {
@@ -209,6 +210,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 * This method will be linked at runtime, belonging to the real input type
 	 * at runtime.
 	 *
+	 * @param element the element for which we return the foreground
 	 * @return the foreground color for the entire row
 	 */
 	public Color rowForeground(Object element) {
@@ -233,6 +235,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	 * This method will be linked at runtime, belonging to the real input type
 	 * at runtime.
 	 *
+	 * @param element the element for which we return the background
 	 * @return the background color for the entire row
 	 */
 	public Color rowBackground(Object element) {
