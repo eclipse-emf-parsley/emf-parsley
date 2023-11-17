@@ -22,6 +22,10 @@ import java.text.MessageFormat;
  */
 public class ReflectionUtil {
 
+	private ReflectionUtil() {
+
+	}
+
 	public static Class<?> getObjectType(Class<?> clazzA) {
 		if (clazzA != null && clazzA.isPrimitive()) {
 			if (clazzA == Boolean.TYPE) {

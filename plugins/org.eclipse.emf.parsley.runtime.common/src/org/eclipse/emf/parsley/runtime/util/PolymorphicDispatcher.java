@@ -116,6 +116,10 @@ public class PolymorphicDispatcher<RT> {
 
 	public static class Predicates {
 
+		private Predicates() {
+
+		}
+
 		public static Predicate<Method> forName(String name) {
 			return new MethodNameFilter(name, 1, 1);
 		}

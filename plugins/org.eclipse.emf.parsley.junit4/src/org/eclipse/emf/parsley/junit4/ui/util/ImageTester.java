@@ -24,6 +24,10 @@ import org.eclipse.swt.graphics.RGB;
  */
 public class ImageTester {
 
+	private ImageTester() {
+
+	}
+
 	public static void assertImageIs(Image expectedImage,
 			Image actualImage) {
 		assertImageDataIs(expectedImage.getImageData(), actualImage.getImageData());

@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.WrappedException;
  */
 public class Exceptions {
 
+	private Exceptions() {
+		
+	}
+
 	public static <T> T throwUncheckedException(Throwable e) {
 		if (e instanceof RuntimeException) {
 			throw (RuntimeException) e;
