@@ -161,17 +161,17 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
-      value="1.3.0"/>
+      value="1.4.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.zip"
-      value="org.eclipse.emf.parsley.repository-1.13.0.v20201130-1005.zip"/>
+      value="org.eclipse.emf.parsley.repository-1.14.0.v20221201-1038.zip"/>
   <setupTask
       xsi:type="pde:APIBaselineTask"
       name="parsley-latest"
       version="${api.baseline.version}"
       location="${installation.location}/api/${api.baseline.version}/"
-      remoteURI="https://download.eclipse.org/emf-parsley/milestones/zips/${api.baseline.zip}"/>
+      remoteURI="https://download.eclipse.org/emf-parsley/zips/${api.baseline.zip}"/>
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Eclipse IDE Plugins">

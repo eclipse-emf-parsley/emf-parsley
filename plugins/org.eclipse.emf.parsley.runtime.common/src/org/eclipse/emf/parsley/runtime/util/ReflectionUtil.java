@@ -47,6 +47,8 @@ public class ReflectionUtil {
 
 	/**
 	 * Copied from com.google.inject.internal.MoreTypes.getRawType(Type)
+	 * 
+	 * @since 1.15
 	 */
 	public static Class<?> getRawType(Type type) {
 		if (type instanceof Class<?>) {
