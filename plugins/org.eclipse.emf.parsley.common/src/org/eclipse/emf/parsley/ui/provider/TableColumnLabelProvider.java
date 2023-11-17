@@ -133,13 +133,10 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 		}
 		try {
 			return defaultGetTextForFeatureValue(element);
-		} catch (AssertionError e) {
+		} catch (AssertionError | RuntimeException e) {
 			// avoid exceptions during rendering
 			return logErrorAndReturnEmptyString(e);
-		} catch (RuntimeException e) {
-			// avoid exceptions during rendering
-			return logErrorAndReturnEmptyString(e);
-		}
+		} 
 	}
 
 	protected String defaultGetTextForFeatureValue(Object element) {
