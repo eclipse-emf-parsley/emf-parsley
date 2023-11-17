@@ -36,7 +36,7 @@ public class EmfParsleyExtensionFactory extends AbstractGuiceAwareExecutableExte
 		return injector;
 	}
 
-	protected EmfParsleyGuiceModule getModule() throws Exception {
+	protected EmfParsleyGuiceModule getModule() {
 		return new EmfParsleyGuiceModule(EmfParsleyActivator.getDefault());
 	}
 
