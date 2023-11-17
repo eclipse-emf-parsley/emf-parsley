@@ -154,7 +154,7 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	}
 
 	protected String tableItemsRepresentation(TableItem[] items) {
-		StringBuffer buffer = new StringBuffer();
+		var buffer = new StringBuilder();
 		for (TableItem item : items) {
 			buffer.append(item.getText() + "\n");
 		}
