@@ -156,7 +156,7 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	protected String tableItemsRepresentation(TableItem[] items) {
 		StringBuffer buffer = new StringBuffer();
 		for (TableItem item : items) {
-			buffer.append(item.getText().toString() + "\n");
+			buffer.append(item.getText() + "\n");
 		}
 		return buffer.toString();
 	}
@@ -179,23 +179,23 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	}
 
 	protected String treeItemsRepresentation(TreeItem[] items) {
-		StringBuffer buffer = new StringBuffer();
+		var buffer = new StringBuilder();
 		// skip the root node
 		treeItemsRepresentation(items, buffer, 0);
 		return buffer.toString();
 	}
 
-	private void treeItemsRepresentation(TreeItem[] items, StringBuffer buffer, int tabs) {
+	private void treeItemsRepresentation(TreeItem[] items, StringBuilder buffer, int tabs) {
 		for (TreeItem item : items) {
 			treeItemRepresentation(item, buffer, tabs);
 		}
 	}
 
-	private void treeItemRepresentation(TreeItem item, StringBuffer buffer, int tabs) {
+	private void treeItemRepresentation(TreeItem item, StringBuilder buffer, int tabs) {
 		for (int i = 0; i < tabs; ++i) {
 			buffer.append(" ");
 		}
-		buffer.append(item.getText().toString() + "\n");
+		buffer.append(item.getText() + "\n");
 		treeItemsRepresentation(item.getItems(), buffer, tabs + TAB_INDENT);
 	}
 }
