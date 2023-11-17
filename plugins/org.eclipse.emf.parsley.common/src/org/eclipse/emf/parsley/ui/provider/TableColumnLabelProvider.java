@@ -136,7 +136,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 		} catch (AssertionError | RuntimeException e) {
 			// avoid exceptions during rendering
 			return logErrorAndReturnEmptyString(e);
-		} 
+		}
 	}
 
 	protected String defaultGetTextForFeatureValue(Object element) {
