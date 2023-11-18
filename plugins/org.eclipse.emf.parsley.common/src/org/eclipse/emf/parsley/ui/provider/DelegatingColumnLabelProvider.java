@@ -23,10 +23,10 @@ import com.google.inject.Inject;
 /**
  * Implements a {@link ColumnLabelProvider} by delegating to an injected
  * {@link ILabelProvider}.
- * 
+ *
  * This is useful for implementing the main column of a tree with columns. The
  * main column is the one that shows the tree.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */

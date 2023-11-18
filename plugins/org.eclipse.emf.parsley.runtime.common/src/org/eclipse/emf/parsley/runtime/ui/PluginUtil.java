@@ -21,7 +21,7 @@ import org.osgi.framework.FrameworkUtil;
 
 /**
  * Utility methods for plug-ins.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
@@ -40,7 +40,7 @@ public class PluginUtil {
 	 * {@link Bundle}, via reflection, assuming that the activator has a static
 	 * method getDefault returning the singleton instance. If the specified
 	 * {@link Bundle} is null, then it simply returns null.
-	 * 
+	 *
 	 * @param bundle
 	 * @return
 	 * @throws PluginConfigurationException

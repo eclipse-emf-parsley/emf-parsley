@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -19,7 +19,7 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
  * for instance, the Resource of a view, the EClass for the objects to
  * be presented in a view, etc; the configuration will take place polymorphically
  * according to the requestor, passed as a parameter of the methods.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -42,7 +42,7 @@ public class Configurator {
 
 	/**
 	 * Returns the {@link URI} of the resource for the requestor for any use the requestor may need it
-	 * @param requestor
+	 * @param requestor the requestor object (unused by default)
 	 * @return
 	 */
 	public URI resourceURI(Object requestor) {
@@ -60,7 +60,7 @@ public class Configurator {
 
 	/**
 	 * Returns the {@link EClass} for the requestor
-	 * @param requestor
+	 * @param requestor the requestor object (unused by default)
 	 * @return
 	 */
 	public EClass eClass(Object requestor) {

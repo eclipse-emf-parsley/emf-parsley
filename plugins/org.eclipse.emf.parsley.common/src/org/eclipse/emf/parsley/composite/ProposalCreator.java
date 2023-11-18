@@ -1,13 +1,13 @@
 /**
- * <copyright> 
+ * <copyright>
  *
  * Copyright (c) 2008, 2013 itemis AG and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
+ *
+ * Contributors:
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini - refactoring for EmfParsley
  *
@@ -38,7 +38,7 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
 /**
  * @author Dennis Huebner Initial
  * @author Lorenzo Bettini polymorphic proposals
- * 
+ *
  */
 public class ProposalCreator {
 	private static final String PROPOSALS_PREFIX = "proposals_";
@@ -59,7 +59,7 @@ public class ProposalCreator {
 
 	/**
 	 * Calculates possible values for given operating object.
-	 * 
+	 *
 	 * @param feature
 	 * @return possible values
 	 */
@@ -78,12 +78,11 @@ public class ProposalCreator {
 
 	protected List<Object> defaultProposals(EStructuralFeature feature) {
 		List<Object> retVal = null;
-		// TODO Reference[] handle
 		if (feature instanceof EReference) {
 			retVal = findAllInstances(feature.getEType());
 		} else if (feature.getEType() instanceof EEnumImpl) {
 			EEnum eEnum = (EEnum) feature.getEType();
-			List<Object> enumerators = new ArrayList<Object>();
+			List<Object> enumerators = new ArrayList<>();
 			for (Iterator<?> iter = eEnum.getELiterals().iterator(); iter.hasNext();) {
 				Enumerator instance = ((EEnumLiteral) iter.next()).getInstance();
 				enumerators.add(instance);
@@ -94,7 +93,7 @@ public class ProposalCreator {
 	}
 
 	protected List<Object> findAllInstances(EClassifier type) {
-		List<Object> objects = new ArrayList<Object>();
+		List<Object> objects = new ArrayList<>();
 
 		if (getResource() == null) {
 			return objects;

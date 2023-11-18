@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -18,19 +18,19 @@ import com.google.inject.MembersInjector;
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
- * 
+ *
  */
 public class FormFactory {
 
 	@Inject
 	protected MembersInjector<FormDetailComposite> formDetailCompositeMembersInjector;
-	
+
 	@Inject
 	protected MembersInjector<FormDetailReadOnlyComposite> formDetailReadOnlyCompositeMembersInjector;
 
 	@Inject
 	public FormFactory() {
-
+		// nothing to do
 	}
 
 	public FormDetailComposite createFormDetailComposite(Composite parent,
@@ -39,7 +39,7 @@ public class FormFactory {
 		formDetailCompositeMembersInjector.injectMembers(formDetailComposite);
 		return formDetailComposite;
 	}
-	
+
 	public FormDetailReadOnlyComposite createFormDetailReadOnlyComposite(Composite parent,
 			int style) {
 		FormDetailReadOnlyComposite formDetailComposite = new FormDetailReadOnlyComposite(parent, style);

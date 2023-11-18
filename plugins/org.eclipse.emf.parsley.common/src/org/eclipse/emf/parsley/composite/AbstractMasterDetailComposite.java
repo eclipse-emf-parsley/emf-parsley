@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  * Francesco Guidieri - initial API and implementation
@@ -28,9 +28,9 @@ import com.google.inject.Inject;
 /**
  * A generic abstract composite with a viewer and a Form with details of the
  * selected object in the viewer. The viewer is intended to be defined by user.
- * 
+ *
  * @author Lorenzo Bettini, Francesco Guidieri
- * 
+ *
  */
 public abstract class AbstractMasterDetailComposite extends Composite implements IViewerProvider {
 
@@ -58,18 +58,18 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	private SashForm sashForm;
 
-	public AbstractMasterDetailComposite(Composite parent, int style) {
+	protected AbstractMasterDetailComposite(Composite parent, int style) {
 		this(parent, style, SWT.VERTICAL, new int[0]);
 	}
 
-	public AbstractMasterDetailComposite(Composite parent, int style, int sashStyle, int[] weights) {
+	protected AbstractMasterDetailComposite(Composite parent, int style, int sashStyle, int[] weights) {
 		super(parent, style);
 		setLayout( new FillLayout());
 		sashForm = new SashForm(this, sashStyle);
 
 		Composite masterComposite = new Composite(sashForm, SWT.NONE);
 		masterComposite.setLayout( new FillLayout());
-		
+
 		detailComposite = new Composite(sashForm, SWT.NONE);
 		detailComposite.setLayout( new FillLayout());
 		viewer = createViewer(masterComposite);

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -78,23 +78,17 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseListener;
 
-import com.google.inject.Binder;
 import com.google.inject.Provider;
 
 /**
  * Default Google Guice bindings; this can be used in a pure Java environment, without
  * requiring an OSGI - Plug-in environment.
- * 
+ *
  * @author Lorenzo Bettini
  * @author Francesco Guidieri - only Javadocs :-)
- * 
+ *
  */
 public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
-
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-	}
 
 	/**
 	 * The String constant for Content Assist Shortcut
@@ -157,7 +151,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 * Use this binding to provide your own implementation of getImages methods.
 	 * Default implementation is {@link ClassLoaderImageHelper}.
 	 * @return a specialization of {@link IImageHelper}
-	 * 
+	 *
 	 */
 	public Class<? extends IImageHelper> bindIImageHelper() {
 		return ClassLoaderImageHelper.class;
@@ -166,7 +160,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	/**
 	 * Use this binding to change the way your resources are loaded from the framework.
 	 * @return a specialization of {@link ResourceLoader}
-	 * 
+	 *
 	 */
 	public Class<? extends ResourceLoader> bindResourceLoader() {
 		return ResourceLoader.class;
@@ -207,7 +201,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 * @return a specialization of {@link FeatureCaptionProvider}
 	 * @see FormFeatureCaptionProvider
 	 * @see DialogFeatureCaptionProvider
-	 */	
+	 */
 	public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
 		return FeatureCaptionProvider.class;
 	}
@@ -216,8 +210,8 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 * Use this binding to provide the caption provider only for Forms.
 	 * @return a specialization of {@link FormFeatureCaptionProvider}
 	 * @see FeatureCaptionProvider
-	 * @see DialogFeatureCaptionProvider  
-	 */	
+	 * @see DialogFeatureCaptionProvider
+	 */
 	public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
 		return FormFeatureCaptionProvider.class;
 	}
@@ -226,8 +220,8 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 * Use this binding to provide the caption provider only for Dialogs.
 	 * @return a specialization of {@link DialogFeatureCaptionProvider}
 	 * @see FeatureCaptionProvider
-	 * @see FormFeatureCaptionProvider  
-	 */	
+	 * @see FormFeatureCaptionProvider
+	 */
 	public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
 		return DialogFeatureCaptionProvider.class;
 	}
@@ -267,7 +261,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 
 	/**
-	 * Use this bind to change the viewers context menu mechanisms. 
+	 * Use this bind to change the viewers context menu mechanisms.
 	 * @return a specialization of {@link ViewerContextMenuHelper}
 	 */
 	public Class<? extends ViewerContextMenuHelper> bindViewerContextMenuHelper() {
@@ -275,7 +269,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	}
 
 	/**
-	 * Use this bind to change the viewers drag and drop mechanisms. 
+	 * Use this bind to change the viewers drag and drop mechanisms.
 	 * @return a specialization of {@link ViewerDragAndDropHelper}
 	 */
 	public Class<? extends ViewerDragAndDropHelper> bindViewerDragAndDropHelper() {
@@ -302,7 +296,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 
 	/**
 	 * Use this bind to customize the label provider factory, specifically for columns.
-	 * The default implementation will use the same implementation specified by bind method {@link #bindILabelProvider()}  
+	 * The default implementation will use the same implementation specified by bind method {@link #bindILabelProvider()}
 	 * @return a specialization of {@link ColumnLabelProviderFactory}
 	 * @see ViewerLabelProvider
 	 */
@@ -312,16 +306,16 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 
 	/**
 	 * Use this binding to provide the label provider factory only for columns.
-	 * The default implementation will use the same implementation specified by bind method {@link #bindILabelProvider()}  
+	 * The default implementation will use the same implementation specified by bind method {@link #bindILabelProvider()}
 	 * @return a specialization of {@link TableColumnLabelProvider}
 	 * @see FeatureCaptionProvider
-	 */		
+	 */
 	public Class<? extends TableColumnLabelProvider> bindTableColumnLabelProvider() {
 		return TableColumnLabelProvider.class;
 	}
 
 	/**
-	 * Use this bind to change the way columns for table are built. 
+	 * Use this bind to change the way columns for table are built.
 	 * @return a specialization of {@link TableViewerColumnBuilder}
 	 * @see TableViewerFactory
 	 */
@@ -340,7 +334,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 
 	/**
 	 * Use this bind to provide your implementation of a of <b>action bar contributor</b>  without a workbench.
-	 * This scenario can be used where you have a view instead of an editor, for example in a <b>e4 application</b>.  
+	 * This scenario can be used where you have a view instead of an editor, for example in a <b>e4 application</b>.
 	 * @return an implementation of  {@link LightweightActionBarContributor}
 	 * @see WorkbenchActionBarContributor
 	 */
@@ -351,7 +345,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	/**
 	 * Use this bind method to change the way Edit actions (Copy, cut and paste)
 	 * and EMF actions are added to context menu.
-	 * 
+	 *
 	 * @return a specialization of {@link EditingActionManager}
 	 */
 	public Class<? extends EditingActionManager> bindEditingActionManager() {
@@ -361,7 +355,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	/**
 	 * Use this bind method to change the way the context and other menus are created for
 	 * Edit actions.
-	 * 
+	 *
 	 * @return a specialization of {@link EditingMenuBuilder}
 	 */
 	public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
@@ -371,7 +365,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	/**
 	 * Use this method to specify how the editing domain can be found
 	 * @return a specialization of {@link EditingDomainFinder}
-	 * 
+	 *
 	 */
 	public Class<? extends EditingDomainFinder> bindEditingDomainFinder() {
 		return EditingDomainFinder.class;
@@ -438,7 +432,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	/**
 	 * Use this method to customize tasks concerning a resource,
 	 * for example, its initialization.
-	 * 
+	 *
 	 * @return a specification of {@link ResourceManager}
 	 */
 	public Class<? extends ResourceManager> bindResourceManager() {
@@ -495,7 +489,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 * Use this method to customize a {@link IssueReporter},
 	 * the default implementation is {@link DialogErrorReporter}.
 	 * @return an implementation of {@link IssueReporter}
-	 * @see LogIssueReporter	
+	 * @see LogIssueReporter
 	 */
 	public Class<? extends IssueReporter> bindIssueReporter() {
 		return DialogErrorReporter.class;
@@ -547,7 +541,7 @@ public class EmfParsleyJavaGuiceModule extends AbstractGenericModule {
 	 * default implementation is {@link DefaultEditingDomainProvider}, which
 	 * simply delegates to an injected
 	 * {@link DefaultAdapterFactoryEditingDomainProvider}.
-	 * 
+	 *
 	 * @return an implementation of {@link Provider} for {@link EditingDomain}
 	 */
 	public Class<? extends Provider<EditingDomain>> provideEditingDomain() {

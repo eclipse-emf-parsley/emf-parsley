@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
@@ -27,7 +27,7 @@ import com.google.inject.Provider;
 
 /**
  * A common saveable view based on a viewer.
- * 
+ *
  * @author Francesco Guidieri - Initial contribution and API
  * @author Lorenzo Bettini - some refactoring
  */
@@ -60,9 +60,9 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	/**
 	 * This is called after mostRecentCommandAffectsResource, so that you can
 	 * perform additional custom actions.
-	 * 
+	 *
 	 * The default implementation is empty.
-	 * 
+	 *
 	 * @param mostRecentCommand
 	 */
 	@Override
@@ -76,7 +76,7 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	 * seamlessly (if the selection stays in the parent element, then it will not
 	 * obviously change and the context menu actions will not be recreated and they
 	 * will be stale).
-	 * 
+	 *
 	 * @param mostRecentCommand
 	 */
 	@Override
@@ -93,16 +93,13 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 	protected void setSelectionToViewer(Collection<?> collection) {
 		final Collection<?> theSelection = collection;
 		if (theSelection != null && !theSelection.isEmpty()) {
-			Runnable runnable = new Runnable() {
-				@Override
-				public void run() {
-					// Try to select the items in the current viewer.
-					if (getViewer() != null) {
-						getViewer()
-								.setSelection(
-										new StructuredSelection(
-												theSelection.toArray()), true);
-					}
+			Runnable runnable = () -> {
+				// Try to select the items in the current viewer.
+				if (getViewer() != null) {
+					getViewer()
+							.setSelection(
+									new StructuredSelection(
+											theSelection.toArray()), true);
 				}
 			};
 			getSite().getShell().getDisplay().asyncExec(runnable);
@@ -119,7 +116,7 @@ public abstract class AbstractSaveableViewerView extends AbstractSaveableView im
 
 	/**
 	 * Adds the {@link IViewerMouseListener} specified in the guice module.
-	 * 
+	 *
 	 * @param viewer
 	 */
 	public void addMouseListenerToViewer() {

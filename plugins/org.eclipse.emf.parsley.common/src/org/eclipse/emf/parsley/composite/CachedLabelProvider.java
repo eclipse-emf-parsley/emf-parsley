@@ -4,8 +4,8 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
+ *
+ * Contributors:
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini - refactoring for EmfParsley
  *******************************************************************************/
@@ -20,13 +20,13 @@ import org.eclipse.swt.graphics.Image;
 
 /**
  * Cached Label Provider.
- * 
+ *
  * @author Dennis Huebner - Initial contribution and API
  */
 public class CachedLabelProvider implements ILabelProvider {
 
-	private final Map<Object, Image> imageCache = new HashMap<Object, Image>();
-	private final Map<Object, String> textCache = new HashMap<Object, String>();
+	private final Map<Object, Image> imageCache = new HashMap<>();
+	private final Map<Object, String> textCache = new HashMap<>();
 
 	private final ILabelProvider delegate;
 
@@ -40,18 +40,14 @@ public class CachedLabelProvider implements ILabelProvider {
 
 	@Override
 	public Image getImage(Object element) {
-		if (!imageCache.containsKey(element)) {
-			imageCache.put(element, delegate.getImage(element));
-		}
-		return imageCache.get(element);
+		return imageCache.computeIfAbsent(element,
+				delegate::getImage);
 	}
 
 	@Override
 	public String getText(Object element) {
-		if (!textCache.containsKey(element)) {
-			textCache.put(element, delegate.getText(element));
-		}
-		return textCache.get(element);
+		return textCache.computeIfAbsent(element,
+				delegate::getText);
 	}
 
 	@Override

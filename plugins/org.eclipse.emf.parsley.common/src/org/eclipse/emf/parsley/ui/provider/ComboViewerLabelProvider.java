@@ -15,7 +15,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 /**
  * Specialization for a combo that also provides a null element for unset a
  * reference.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */

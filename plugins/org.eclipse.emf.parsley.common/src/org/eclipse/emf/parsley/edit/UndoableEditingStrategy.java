@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -23,9 +23,9 @@ import com.google.inject.Inject;
  * get updated until the editing is submitted, for instance, with a dialog "OK"
  * button; the editing can also be undone and the object is rolledback to its
  * original state.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
- * 
+ *
  */
 public class UndoableEditingStrategy implements IEditingStrategy {
 
@@ -36,12 +36,12 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 	private ILabelProvider labelProvider;
 
 	private EObjectState state;
-	
+
 	private NotificationBuffer notificationBuffer;
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.emf.parsley.edit.IEditingStrategy#prepare(org.eclipse.emf
 	 * .ecore.EObject)
@@ -73,6 +73,9 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 		triggerViewerNotification(edited);
 	}
 
+	/**
+	 * @param edited the object being edited
+	 */
 	protected void triggerViewerNotification(EObject edited) {
 		notificationBuffer.propagateBufferedNotifications();
 	}
@@ -83,10 +86,16 @@ public class UndoableEditingStrategy implements IEditingStrategy {
 		enableNotifications(edited);
 	}
 
+	/**
+	 * @param edited the object being edited
+	 */
 	protected void disableNotifications(EObject edited) {
 		notificationBuffer.startBuffering();
 	}
 
+	/**
+	 * @param edited the object being edited
+	 */
 	protected void enableNotifications(EObject edited) {
 		notificationBuffer.stopBuffering();
 	}

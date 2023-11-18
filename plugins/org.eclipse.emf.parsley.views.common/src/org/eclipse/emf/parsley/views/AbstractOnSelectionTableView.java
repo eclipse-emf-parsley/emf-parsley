@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -61,7 +61,7 @@ public abstract class AbstractOnSelectionTableView extends AbstractOnSelectionVi
 
 	/**
 	 * {@link EClass} to build the table columns.
-	 * 
+	 *
 	 * @return the {@link EClass} to build the table columns
 	 */
 	protected abstract EClass getEClass();

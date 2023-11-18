@@ -4,12 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.parsley.edit.ui.provider;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,9 +30,9 @@ import com.google.inject.Inject;
 
 /**
  * Declarative ContentProvider inheriting from {@link AdapterFactoryContentProvider}.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
- * 
+ *
  */
 public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
@@ -48,7 +49,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	 * elements won't be refreshed) - This is used only when getElements is
 	 * customized.
 	 */
-	private Set<Object> customElementsParents = new HashSet<Object>();
+	private Set<Object> customElementsParents = new HashSet<>();
 
 	/**
 	 * If you use this constructor, you then must make sure to inject other
@@ -85,22 +86,22 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
 	/**
 	 * The default implementation
-	 * 
-	 * @param o
+	 *
+	 * @param o the object for which we return the children
 	 * @return null
 	 */
 	public List<Object> children(Object o) {
-		return null;
+		return null; // NOSONAR we rely on null
 	}
 
 	/**
 	 * The default implementation
-	 * 
-	 * @param o
+	 *
+	 * @param o the object for which we return the children
 	 * @return null
 	 */
 	public List<Object> elements(Object o) {
-		return null;
+		return null; // NOSONAR we rely on null
 	}
 
 	@Override
@@ -127,7 +128,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	/**
 	 * This will ensure that this content provider will get notifications from
 	 * all the parents/containers in the model.
-	 * 
+	 *
 	 * @param elements
 	 * @param main
 	 */
@@ -147,19 +148,17 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 			// we can refresh the viewer
 			Object[] defaultElements = super.getElements(main);
 			addListenersToTheModel(defaultElements);
-			for (Object object : defaultElements) {
-				// although these are not actually parents, we need to
-				// treat them as such, since notifications concerning them
-				// must issue a full refresh
-				customElementsParents.add(object);
-			}
+			// although these are not actually parents, we need to
+			// treat them as such, since notifications concerning them
+			// must issue a full refresh
+			customElementsParents.addAll(Arrays.asList(defaultElements));
 		}
 	}
 
 	/**
 	 * This will ensure that this content provider will get notifications from
 	 * all the parents/containers in the model.
-	 * 
+	 *
 	 * @param elements
 	 */
 	protected void addListenersToTheModel(Object[] elements) {
@@ -171,7 +170,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	/**
 	 * This will ensure that this content provider will get notifications from
 	 * all the parents/containers in the model.
-	 * 
+	 *
 	 * @param object
 	 */
 	protected void addListenersToTheModel(Object object) {
@@ -184,9 +183,9 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
 	@Override
 	public Object getParent(Object object) {
-		/* 
+		/*
 		 * This is necessary in the CDO Resource case: getParent returns itself.
-		 * This leads AbstractTreeViewer to a loop during the internalExpand method. 
+		 * This leads AbstractTreeViewer to a loop during the internalExpand method.
 		 */
 		Object parent = super.getParent(object);
 		if (Objects.equal(parent, object)) {

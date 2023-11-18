@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * itemis AG - Initial contribution and API
  *******************************************************************************/
@@ -21,6 +21,10 @@ import java.text.MessageFormat;
  * @author Jan Koehnlein - Initial contribution and API
  */
 public class ReflectionUtil {
+
+	private ReflectionUtil() {
+
+	}
 
 	public static Class<?> getObjectType(Class<?> clazzA) {
 		if (clazzA != null && clazzA.isPrimitive()) {
@@ -47,7 +51,7 @@ public class ReflectionUtil {
 
 	/**
 	 * Copied from com.google.inject.internal.MoreTypes.getRawType(Type)
-	 * 
+	 *
 	 * @since 1.15
 	 */
 	public static Class<?> getRawType(Type type) {
@@ -75,7 +79,7 @@ public class ReflectionUtil {
 
 		} else if (type instanceof TypeVariable) {
 			// we could use the variable's bounds, but that'll won't work if there are multiple.
-			// having a raw type that's more general than necessary is okay  
+			// having a raw type that's more general than necessary is okay
 			return Object.class;
 
 		} else {

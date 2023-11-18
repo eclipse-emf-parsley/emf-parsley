@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -30,18 +30,18 @@ import com.google.inject.Inject;
  * then it tries to get the text polymorphically also from that one, before
  * using the default text. The default label's text is obtained using the
  * {@link AdapterFactory} property descriptions.
- * 
+ *
  * You can defines methods with a prefix 'label'
  * followed by the EClass and EStructuralFeature names separated by an
  * underscore character, like in the example:
- * 
+ *
  * <pre>
  * {@code
  *    public Label label_MyClass_myFeature(EStructuralFeature feature)
- *      
+ *
  * }
  * </pre>
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  */
 public class FeatureLabelCaptionProvider extends FeatureCaptionProvider {
@@ -111,7 +111,7 @@ public class FeatureLabelCaptionProvider extends FeatureCaptionProvider {
 	 * The default text for the object's feature is computed using the {@link IItemPropertyDescriptor}
 	 * obtained through the {@link AdapterFactory}; if no property descriptor is found, then
 	 * we fall back to the feature's name.
-	 * 
+	 *
 	 * @param o
 	 * @param feature
 	 * @return

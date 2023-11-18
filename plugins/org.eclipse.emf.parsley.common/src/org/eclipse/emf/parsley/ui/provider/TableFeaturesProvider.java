@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -19,10 +19,10 @@ import com.google.inject.Inject;
 
 /**
  * Provides the list of EStructuralFeature of an EClass only for tables.
- * 
+ *
  * If there is no customization for an EClass, it defaults to the injected
  * {@link FeaturesProvider}.
- * 
+ *
  * @author Lorenzo Bettini, Francesco Guidieri
  * @see FeaturesProvider
  */

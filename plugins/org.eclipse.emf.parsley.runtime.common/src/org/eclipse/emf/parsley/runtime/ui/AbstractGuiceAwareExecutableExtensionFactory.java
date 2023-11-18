@@ -6,7 +6,7 @@ package org.eclipse.emf.parsley.runtime.ui;
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Sven Efftinge - Initial contribution and API
  *******************************************************************************/
@@ -47,15 +47,16 @@ public abstract class AbstractGuiceAwareExecutableExtensionFactory implements IE
 		}
 		this.config = config;
 	}
-	
+
 	@Override
 	public Object create() throws CoreException {
 		try {
 			final Class<?> clazz = getBundle().loadClass(clazzName);
 			final Injector injector = getInjector();
 			final Object result = injector.getInstance(clazz);
-			if (result instanceof IExecutableExtension)
+			if (result instanceof IExecutableExtension) {
 				((IExecutableExtension) result).setInitializationData(config, null, null);
+			}
 			return result;
 		}
 		catch (Exception e) {

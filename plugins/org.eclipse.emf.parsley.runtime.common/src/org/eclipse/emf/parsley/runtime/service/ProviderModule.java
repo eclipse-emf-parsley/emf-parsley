@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * itemis AG - Initial contribution and API
  *******************************************************************************/
@@ -23,14 +23,15 @@ public class ProviderModule extends MethodBasedModule {
 	public ProviderModule(Method method, Object owner) {
 		super(method, owner);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void bindToInstance(LinkedBindingBuilder<Object> bind, Object instance) {
-		if (instance != null) // provider may not be null
+		if (instance != null) { // provider may not be null
 			bind.toProvider((com.google.inject.Provider<? extends Object>) instance);
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void bindToClass(LinkedBindingBuilder<Object> bind, Class<?> value) {
@@ -42,8 +43,9 @@ public class ProviderModule extends MethodBasedModule {
 		Type keyType = super.getKeyType();
 		if (!isInstanceOf(keyType, com.google.inject.Provider.class)) {
 			if (isInstanceOf(keyType, jakarta.inject.Provider.class)) {
-				if (!isClassBinding())
+				if (!isClassBinding()) {
 					throw new IllegalStateException("The method "+getMethod().getName()+" returns jakarta.inject.Provider, but this kind of binding is allowed only for com.google.inject.Provider.");
+				}
 			} else {
 				throw new IllegalStateException("The method "+getMethod().getName()+" is expected to return a Class<? extends Provider<Something>> or directly Provider<Something>.");
 			}

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -31,14 +31,14 @@ import com.google.inject.Inject;
 
 /**
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class CDOResourceLoader extends ResourceLoader {
 
 	@Inject private CDOSessionManager sessionManager;
-	
+
 	private static final Logger LOGGER = Logger.getLogger(CDOResourceLoader.class);
-	
+
 	@Override
 	public Resource getResource(ResourceSet resourceSet, URI resourceURI) {
 		CDOTransaction t =openTransaction(resourceURI);
@@ -74,28 +74,28 @@ public class CDOResourceLoader extends ResourceLoader {
 
 		return new LoadResourceResponse(resource, exception);
 	}
-	
+
 	public Resource createResource(ResourceSet resourceSet, URI resourceURI) {
 		CDOTransaction t =openTransaction(resourceURI);
-		
+
 		CDOResource resource = t.getOrCreateResource(CDOURIData.parse(resourceURI).getResource());
 
 		resourceSet.getResources().add(resource);
 
 		return resource;
 	}
-	
+
 
 	private CDOTransaction openTransaction(URI resourceURI){
 		CDONet4jUtil.prepareContainer(IPluginContainer.INSTANCE);
-		
+
 		CDOURIData data = CDOURIData.parse(resourceURI);
-		
+
 		String server = data.getServer();
 		String repository = data.getRepository();
-		
+
 		CDOSession cdoSession = sessionManager.getSession(server,repository);
-		
+
 		CDOTransaction transaction = cdoSession.openTransaction();
 		transaction.options().addChangeSubscriptionPolicy(CDOAdapterPolicy.ALL);
 		return transaction;

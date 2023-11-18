@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * A custom {@link UpdateValueStrategy} to decorate controls with possible EMF validation errors.
- * 
+ *
  * @author Francesco Guidieri - initial API and implementation
  *
  * @noextend This class is not intended to be subclassed by clients.
@@ -86,7 +86,7 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValu
 	}
 
 	private IStatus validationStatus() {
-		Iterable<Diagnostic> filtered = 
+		Iterable<Diagnostic> filtered =
 				databindingValidationUtil.getDiagnostic(owner, feature);
 		for (Diagnostic d : filtered) {
 			int severity = d.getSeverity();

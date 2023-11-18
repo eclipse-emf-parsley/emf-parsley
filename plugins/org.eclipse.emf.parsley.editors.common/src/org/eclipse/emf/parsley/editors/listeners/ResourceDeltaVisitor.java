@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -22,18 +22,18 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
  * Extracted and adapted from EmfAbstractEditor
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 	protected ResourceSet resourceSet;
 
 	protected Collection<Resource> savedResources;
 
-	protected Collection<Resource> changedResources = new ArrayList<Resource>();
+	protected Collection<Resource> changedResources = new ArrayList<>();
 
-	protected Collection<Resource> removedResources = new ArrayList<Resource>();
+	protected Collection<Resource> removedResources = new ArrayList<>();
 
 	public void init(ResourceSet resourceSet,
 			Collection<Resource> savedResources) {

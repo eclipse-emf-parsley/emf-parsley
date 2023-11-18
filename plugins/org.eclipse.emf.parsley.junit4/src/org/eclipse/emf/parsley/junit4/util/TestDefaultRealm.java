@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -16,7 +16,7 @@ import org.eclipse.core.databinding.observable.Realm;
  * Simple realm implementation that will set itself as default when constructed, this
  * will be used for unit testing. Invoke
  * {@link #dispose()} to remove the realm from being the default. Does not support asyncExec(...).
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  */
 public class TestDefaultRealm extends Realm {

@@ -4,8 +4,8 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
+ *
+ * Contributors:
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini, Francesco Guidieri - refactoring for EmfParsley
  *
@@ -60,7 +60,6 @@ import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
@@ -68,13 +67,13 @@ import com.google.inject.Provider;
 import com.google.inject.name.Named;
 
 /**
- * 
+ *
  * Creates Control for an {@link EStructuralFeature}
- * 
+ *
  * @author Dennis Huebner initial code
  * @author Lorenzo Bettini refactoring for EMF Parsley
  * @author Francesco Guidieri added validation support
- * 
+ *
  */
 public abstract class AbstractControlFactory implements IWidgetFactory {
 
@@ -126,7 +125,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	public static final String ESTRUCTURALFEATURE_KEY = EcorePackage.Literals.ESTRUCTURAL_FEATURE
 			.getName();
 
-	public AbstractControlFactory() {
+	protected AbstractControlFactory() {
 
 	}
 
@@ -152,7 +151,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	/**
 	 * Concrete implementation should create a {@link IWidgetFactory} according
 	 * to the specific widgets (e.g., for dialogs or forms).
-	 * 
+	 *
 	 * @return the concrete implementation
 	 */
 	protected abstract IWidgetFactory createWidgetFactory();
@@ -161,7 +160,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * Concrete implementation should create a
 	 * {@link FeatureLabelCaptionProvider} according to the specific widgets
 	 * (e.g., for dialogs or forms).
-	 * 
+	 *
 	 * @return the concrete implementation
 	 */
 	protected abstract FeatureLabelCaptionProvider createFeatureLabelCaptionProvider();
@@ -185,14 +184,14 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	/**
 	 * Initializes this factory for creating {@link Control}s with
 	 * Data Binding.
-	 * 
+	 *
 	 * The passed {@link EditingDomain} can be null; in that case
 	 * Data Binding will be implemented through {@link EMFProperties}, instead
 	 * of {@link EMFEditProperties}.  If the {@link EditingDomain} is null
 	 * views and editors will not be notified about changes to the passed
 	 * {@link EObject}.  This is useful when you want to create {@link Control}s
 	 * that act on a copy of the original object (see also {@link IEditingStrategy}).
-	 * 
+	 *
 	 * @param domain
 	 * @param owner
 	 * @param parent
@@ -210,7 +209,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	/**
 	 * Creates a caption label and a {@link Control} for the passed {@link EStructuralFeature}
 	 * of the {@link EObject} handled by this factory.
-	 * 
+	 *
 	 * @param feature the {@link EStructuralFeature} for the creation
 	 */
 	public void createEditingField(EStructuralFeature feature) {
@@ -221,7 +220,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	/**
 	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
 	 * of the {@link EObject} handled by this factory, using polymorphic dispatch.
-	 * 
+	 *
 	 * @param feature the {@link EStructuralFeature} for the creation of control
 	 * @return a {@link Control}
 	 */
@@ -233,7 +232,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
 	 * of the {@link EObject} handled by this factory, using polymorphic dispatch, if
 	 * specified in the argument withPolymorphicDispatch.
-	 * 
+	 *
 	 * @param feature
 	 * @param withPolymorphicDispatch
 	 * @return
@@ -263,7 +262,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * Creates a {@link Control} for the passed {@link EStructuralFeature}
 	 * of the {@link EObject} handled by this factory, using the default
 	 * implementation, that is, without using polymorphic dispatch.
-	 * 
+	 *
 	 * @param feature the {@link EStructuralFeature} for the creation of control
 	 * @return a {@link Control}
 	 */
@@ -445,14 +444,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		if (proposals != null && !proposals.isEmpty()) {
 			Iterable<String> filteredNotNullToString = Iterables.transform(
 					Iterables.filter(proposals, Predicates.notNull()),
-					new Function<Object, String>() {
-
-						@Override
-						public String apply(Object input) {
-							return input.toString();
-						}
-
-					});
+					Object::toString);
 			ControlDecoration field = new ControlDecoration(t, SWT.BORDER);
 			FieldDecoration requiredFieldIndicator = FieldDecorationRegistry
 					.getDefault().getFieldDecoration(
@@ -468,7 +460,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 			}
 			return new ContentProposalAdapter(t, new TextContentAdapter(),
 					new SimpleContentProposalProvider(
-							Iterables.toArray(filteredNotNullToString, String.class)), 
+							Iterables.toArray(filteredNotNullToString, String.class)),
 							keyStroke,
 					null);
 		}
@@ -509,8 +501,8 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	/**
 	 * Polymorphically invokes a create_EClass_feature(DataBindingContext,
 	 * IObservableValue), trying to get the new version with validation support.
-	 * If not found, the old version of the method is searched, for backward compatibility. 
-	 * 
+	 * If not found, the old version of the method is searched, for backward compatibility.
+	 *
 	 * @param feature
 	 * @param featureObservable
 	 * @return
@@ -533,7 +525,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 
 	/**
 	 * Polymorphically invokes a create_EClass_feature(EObject)
-	 * 
+	 *
 	 * @param feature
 	 * @return
 	 */

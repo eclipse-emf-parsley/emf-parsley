@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -26,7 +26,7 @@ public class EmfParsleyDslImportedNamespaceScopeProvider extends
 
 	@Override
 	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
-		List<ImportNormalizer> implicitImports = new ArrayList<ImportNormalizer>(super.getImplicitImports(ignoreCase));
+		List<ImportNormalizer> implicitImports = new ArrayList<>(super.getImplicitImports(ignoreCase));
 		implicitImports.add(new ImportNormalizer(QualifiedName.create("org","eclipse","swt"), true, ignoreCase));
 		return implicitImports;
 	}

@@ -4,14 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * itemis AG - Initial contribution and API
  *******************************************************************************/
 package org.eclipse.emf.parsley.runtime.ui;
 
 import java.net.URL;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -49,7 +48,7 @@ public class PluginImageHelper extends AbstractImageHelper implements IImageHelp
 
 	/**
 	 * Returns the image associated with the given image descriptor.
-	 * 
+	 *
 	 * @param descriptor
 	 *            the image descriptor for which the helper manages an image, or <code>null</code> for a missing image
 	 *            descriptor
@@ -77,8 +76,7 @@ public class PluginImageHelper extends AbstractImageHelper implements IImageHelp
 	 * Disposes all images managed by this image helper.
 	 */
 	public void dispose() {
-		for (Iterator<Image> iter = registry.values().iterator(); iter.hasNext();) {
-			Image image = iter.next();
+		for (Image image : registry.values()) {
 			image.dispose();
 		}
 		registry.clear();

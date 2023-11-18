@@ -1,13 +1,13 @@
 /**
- * <copyright> 
+ * <copyright>
  *
  * Copyright (c) 2008, 2013 itemis AG and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
+ *
+ * Contributors:
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini - refactoring for EmfParsley
  *
@@ -48,10 +48,10 @@ import org.eclipse.swt.widgets.Menu;
 /**
  * Widget that opens the {@link FeatureEditorDialog} to select some feature values.<br>
  * Shows values comma separated as label.
- * 
+ *
  * @author Dennis Huebner
  * @author Lorenzo Bettini (modifications)
- * 
+ *
  */
 public class MultipleFeatureControl extends Composite {
 
@@ -85,7 +85,6 @@ public class MultipleFeatureControl extends Composite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				List<?> oldValue = unwrapSelection();
-				// TODO (dennis) load choice of values in a runnable with status bar
 				List<Object> proposals = proposalcreator.proposals(object, feature);
 				dialog = new FeatureEditorDialog(parent.getShell(), new CachedLabelProvider(labelProvider), object,
 						feature.getEType(), oldValue, "Select", proposals, false,
@@ -105,11 +104,10 @@ public class MultipleFeatureControl extends Composite {
 	}
 
 	private List<Object> unwrapSelection() {
-		List<Object> l = new ArrayList<Object>();
+		List<Object> l = new ArrayList<>();
 		if (getSelection() != null && !getSelection().isEmpty() && getSelection() instanceof IStructuredSelection) {
 			for (Iterator<?> iterator = ((IStructuredSelection) getSelection()).iterator(); iterator.hasNext();) {
-				Object object = iterator.next();
-				l.add(object);
+				l.add(iterator.next());
 			}
 		}
 		return l;
@@ -156,13 +154,6 @@ public class MultipleFeatureControl extends Composite {
 		button.removeFocusListener(listener);
 	}
 
-	/**
-	 * @param selection
-	 */
-	private void recalculateLabelText() {
-		label.setText(labelProvider.getText(unwrapSelection()));
-	}
-
 	class InternalSelectionProvider implements ISelectionProvider {
 
 		@Override
@@ -177,7 +168,11 @@ public class MultipleFeatureControl extends Composite {
 			}
 		}
 
-		private java.util.List<ISelectionChangedListener> listeners = new ArrayList<ISelectionChangedListener>();
+		private java.util.List<ISelectionChangedListener> listeners = new ArrayList<>();
+
+		private void recalculateLabelText() {
+			label.setText(labelProvider.getText(unwrapSelection()));
+		}
 
 		@Override
 		public void addSelectionChangedListener(ISelectionChangedListener listener) {

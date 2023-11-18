@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * itemis AG - Initial contribution and API
  * Lorenzo Bettini - added convertToImage
@@ -27,9 +27,9 @@ import com.google.inject.ImplementedBy;
 public interface IImageHelper {
 
 	Image getImage(String name);
-	
+
 	Image getImage(ImageDescriptor imageDescriptor);
-	
+
 	/**
 	 * @param imageSpecification
 	 *            a {@link String}, an {@link ImageDescriptor} or an
@@ -38,7 +38,7 @@ public interface IImageHelper {
 	 *         <code>null</code>
 	 */
 	Image convertToImage(Object imageSpecification);
-	
+
 	class NullImageHelper implements IImageHelper {
 
 		@Override
@@ -55,7 +55,7 @@ public interface IImageHelper {
 		public Image convertToImage(Object imageDescription) {
 			return null;
 		}
-		
+
 	}
 
 }

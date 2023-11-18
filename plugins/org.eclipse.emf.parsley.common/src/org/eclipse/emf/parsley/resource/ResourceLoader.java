@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -19,7 +19,7 @@ import com.google.inject.Inject;
 
 /**
  * ResourceLoader is responsible for loading a {@link Resource}.
- * 
+ *
  * @author Lorenzo Bettini
  */
 public class ResourceLoader {
@@ -36,11 +36,11 @@ public class ResourceLoader {
 	protected ResourceManager getResourceManager() {
 		return resourceManager;
 	}
-	
+
 	/**
 	 * Tries to load the resource using the resource set of the editing domain
 	 * and returns a {@link LoadResourceResponse}.
-	 * 
+	 *
 	 * @param editingDomain
 	 * @param resourceURI
 	 * @return

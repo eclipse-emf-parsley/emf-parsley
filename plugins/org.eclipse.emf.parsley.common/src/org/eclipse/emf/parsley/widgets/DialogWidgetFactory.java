@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * An implementation that creates widgets suitable for dialogs.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -49,8 +49,7 @@ public class DialogWidgetFactory extends AbstractWidgetFactory {
 
 	@Override
 	public ComboViewer createComboViewer(Composite parent, int style) {
-		ComboViewer combo = new ComboViewer(parent, style);
-		return combo;
+		return new ComboViewer(parent, style);
 	}
 
 	@Override

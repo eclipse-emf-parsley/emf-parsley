@@ -4,7 +4,7 @@
  * are made available underthe terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -17,7 +17,7 @@ import com.google.inject.Provider;
 
 /**
  * Factory methods to create specific {@link TableViewerContentProvider}.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */

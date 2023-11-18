@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -24,9 +24,9 @@ import com.google.inject.Inject;
 /**
  * An abstract View that reacts on selection (it should show something related
  * to an emf resource or object).
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public abstract class AbstractOnSelectionView extends ViewPart {
 
@@ -34,16 +34,12 @@ public abstract class AbstractOnSelectionView extends ViewPart {
 	protected EmfSelectionHelper selectionHelper;
 
 	// the listener we register with the selection service
-	private ISelectionListener listener = new ISelectionListener() {
-		@Override
-		public void selectionChanged(IWorkbenchPart sourcepart,
-				ISelection selection) {
-			// we ignore our own selections
-			if (sourcepart != AbstractOnSelectionView.this) {
-				updateOnSelection(sourcepart, selection);
-			}
-		}
-	};
+	private ISelectionListener listener = (sourcepart, selection) -> {
+// we ignore our own selections
+if (sourcepart != this) {
+	updateOnSelection(sourcepart, selection);
+}
+};
 
 	protected abstract void updateOnSelection(IWorkbenchPart sourcepart,
 			ISelection selection);

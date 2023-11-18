@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -16,7 +16,6 @@ import org.eclipse.emf.parsley.edit.actionbar.LightweightActionBarContributor;
 import org.eclipse.emf.parsley.edit.actionbar.WorkbenchActionBarContributor;
 import org.eclipse.emf.parsley.viewers.ViewerSelectionProvider;
 import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -29,7 +28,7 @@ import com.google.inject.Provider;
 
 /**
  * Provides utility methods for adding context menu to a viewer.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - refactoring for
  *         https://bugs.eclipse.org/bugs/show_bug.cgi?id=455727
@@ -51,15 +50,15 @@ public class ViewerContextMenuHelper {
 
 	/**
 	 * Adds a context menu to the passed {@link Viewer}.
-	 * 
+	 *
 	 * The passed {@link IMenuListener} should implement a method like
-	 * 
+	 *
 	 * <pre>
 	 * public void menuAboutToShow(IMenuManager menuManager) {
 	 * 	actionBarContributor.menuAboutToShow(menuManager);
 	 * }
 	 * </pre>
-	 * 
+	 *
 	 * @param viewer
 	 * @param activePart
 	 * @param menuListener
@@ -76,7 +75,7 @@ public class ViewerContextMenuHelper {
 
 	/**
 	 * Adds a context menu to the passed {@link StructuredViewer}.
-	 * 
+	 *
 	 * @param viewer
 	 * @param activePart
 	 */
@@ -103,7 +102,7 @@ public class ViewerContextMenuHelper {
 
 	/**
 	 * Adds a context menu to the passed {@link StructuredViewer}.
-	 * 
+	 *
 	 * @param viewer
 	 */
 	public void addViewerContextMenu(StructuredViewer viewer) {
@@ -112,7 +111,7 @@ public class ViewerContextMenuHelper {
 
 	/**
 	 * Adds a context menu to the passed {@link StructuredViewer}.
-	 * 
+	 *
 	 * @param viewer
 	 * @param editingDomain
 	 */
@@ -133,12 +132,7 @@ public class ViewerContextMenuHelper {
 
 	private MenuManager createContextMenu(Viewer viewer, final IMenuListener menuListener) {
 		MenuManager menuManager = createContextMenu(viewer);
-		menuManager.addMenuListener(new IMenuListener() {
-			@Override
-			public void menuAboutToShow(IMenuManager manager) {
-				menuListener.menuAboutToShow(manager);
-			}
-		});
+		menuManager.addMenuListener(menuListener::menuAboutToShow);
 		return menuManager;
 	}
 

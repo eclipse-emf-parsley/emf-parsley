@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -34,13 +34,13 @@ public abstract class AbstractDetailComposite extends Composite {
 	@Inject
 	private EditingDomainFinder editingDomainFinder;
 
-	public AbstractDetailComposite(Composite parent, int style) {
+	protected AbstractDetailComposite(Composite parent, int style) {
 		super(parent, style);
 	}
 
 	/**
 	 * Initializes this component for editing the {@link EObject} object.
-	 * 
+	 *
 	 * @param object
 	 */
 	public void init(EObject object) {
@@ -50,7 +50,7 @@ public abstract class AbstractDetailComposite extends Composite {
 	/**
 	 * Initializes this component for editing the passed {@link EObject} using
 	 * the passed {@link EditingDomain}.
-	 * 
+	 *
 	 * @param original
 	 * @param editingDomain
 	 *            it can be null

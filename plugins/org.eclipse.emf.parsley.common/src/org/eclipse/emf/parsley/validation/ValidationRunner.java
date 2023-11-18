@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 
 /**
  * Executes EMF Validation.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
@@ -35,7 +35,7 @@ public class ValidationRunner {
 	/**
 	 * Validates, reports diagnostics through the passed {@link IssueReporter}
 	 * and returns the list of reported diagnostics.
-	 * 
+	 *
 	 * @param eObject
 	 * @param reporter
 	 * @return
@@ -51,7 +51,7 @@ public class ValidationRunner {
 	/**
 	 * Validates, reports diagnostics through the passed {@link IssueReporter}
 	 * and returns the list of reported diagnostics.
-	 * 
+	 *
 	 * @param resource
 	 * @param reporter
 	 * @return
@@ -64,7 +64,7 @@ public class ValidationRunner {
 	 * Validates the passed {@link Resource} by calling {@link Diagnostician#validate(EObject)} on
 	 * all the root contents of the resource (this will trigger validation on all the contents
 	 * of the resource).
-	 * 
+	 *
 	 * @param resource
 	 * @return
 	 */

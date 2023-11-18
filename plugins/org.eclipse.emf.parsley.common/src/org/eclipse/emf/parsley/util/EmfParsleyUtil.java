@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -22,9 +22,9 @@ import com.google.common.collect.Lists;
 
 /**
  * Some utility static methods.
- * 
+ *
  * @author Lorenzo Bettini - Initial Contribution and API
- * 
+ *
  */
 public class EmfParsleyUtil {
 
@@ -36,7 +36,7 @@ public class EmfParsleyUtil {
 	 * Given the passed object it ensures that it is a {@link Collection}; if it
 	 * is not, it returns a singleton {@link Collection}; if it is null it
 	 * returns an empty {@link Collection}.
-	 * 
+	 *
 	 * @param contents
 	 * @return
 	 */
@@ -63,7 +63,7 @@ public class EmfParsleyUtil {
 
 	/**
 	 * Given a List of Integer it returns an array of int
-	 * 
+	 *
 	 * @param intList
 	 * @return
 	 */
@@ -78,7 +78,7 @@ public class EmfParsleyUtil {
 
 	/**
 	 * If the passed object is not an EObject simply returns null.
-	 * 
+	 *
 	 * @param o
 	 * @return
 	 */

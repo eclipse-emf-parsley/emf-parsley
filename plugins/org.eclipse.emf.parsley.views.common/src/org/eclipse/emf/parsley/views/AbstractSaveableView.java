@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -64,7 +64,7 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 	/**
 	 * It is called when the {@link CommandStack} changed and the change
 	 * concerns something which is in our {@link Resource}.
-	 * 
+	 *
 	 * @param mostRecentCommand
 	 */
 	@Override
@@ -74,7 +74,7 @@ public abstract class AbstractSaveableView extends ViewPart implements ISaveable
 
 	/**
 	 * The dirty state must be changed according to the passed parameter.
-	 * 
+	 *
 	 * @param dirtyState
 	 */
 	protected void setDirtyAndFirePropertyChange(boolean dirtyState) {

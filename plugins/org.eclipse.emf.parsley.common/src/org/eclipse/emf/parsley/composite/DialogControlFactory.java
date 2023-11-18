@@ -1,13 +1,13 @@
 /**
- * <copyright> 
+ * <copyright>
  *
  * Copyright (c) 2008, 2013 itemis AG and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
+ *
+ * Contributors:
  *   itemis AG - Initial API and implementation
  *   Lorenzo Bettini - refactoring for EmfParsley
  *
@@ -26,10 +26,10 @@ import com.google.inject.Inject;
 
 /**
  * An implementation specific for dialogs.
- * 
+ *
  * @author Dennis Huebner initial code
  * @author Lorenzo Bettini refactoring for EmfParsley
- * 
+ *
  */
 public class DialogControlFactory extends AbstractControlFactory {
 

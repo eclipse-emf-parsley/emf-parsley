@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  * Lorenzo Bettini - aligned to other composites
@@ -24,7 +24,7 @@ import com.google.inject.Inject;
 /**
  * A generic composite with a Table and a Form with details of the selected
  * object in the tree.
- * 
+ *
  * @author Francesco Guidieri
  * @author Lorenzo Bettini
  */

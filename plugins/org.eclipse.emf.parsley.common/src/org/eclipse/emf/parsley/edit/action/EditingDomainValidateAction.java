@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
@@ -15,7 +15,7 @@ import org.eclipse.emf.edit.ui.action.ValidateAction;
 
 /**
  * A custom version where we can explicitly set the {@link EditingDomain}
- * 
+ *
  * @author Francesco Guidieri - initial API and implementation
  *
  */

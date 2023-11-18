@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -15,14 +15,13 @@ import java.util.HashMap;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 
 import com.google.inject.Inject;
 
 /**
  * @author Lorenzo Bettini
- * 
+ *
  *         Injectable {@link AdapterFactoryEditingDomain}
  */
 public class InjectableAdapterFactoryEditingDomain extends
@@ -31,7 +30,7 @@ public class InjectableAdapterFactoryEditingDomain extends
 	@Inject
 	public InjectableAdapterFactoryEditingDomain(AdapterFactory adapterFactory) {
 		super(adapterFactory, new BasicCommandStack(),
-				new HashMap<Resource, Boolean>());
+				new HashMap<>());
 
 		// in the future we might try and computePlatformURIMap
 		// using the target platform.

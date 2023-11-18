@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,7 +21,7 @@ import com.google.inject.Inject;
 
 /**
  * Reports error issues using a {@link DiagnosticDialog}.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
@@ -34,7 +34,7 @@ public class DialogErrorReporter implements IssueReporter {
 	public List<Diagnostic> report(Diagnostic diagnostic) {
 		List<Diagnostic> errors = Lists.newArrayList(diagnosticUtil.errors(diagnostic));
 
-		if (errors.size() > 0) {
+		if (!errors.isEmpty()) {
 			DiagnosticDialog.open(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Validation Errors",
 					"Problems encountered during validation", diagnostic, Diagnostic.ERROR);
 		}

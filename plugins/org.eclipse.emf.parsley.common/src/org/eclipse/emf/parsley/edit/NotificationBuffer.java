@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -22,22 +22,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * Buffers notifications.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
 public class NotificationBuffer extends AdapterImpl {
 
-	protected List<Notification> notifications = new ArrayList<Notification>();
-	
-	protected List<Adapter> savedAdapters = new ArrayList<Adapter>();
-	
+	protected List<Notification> notifications = new ArrayList<>();
+
+	protected List<Adapter> savedAdapters = new ArrayList<>();
+
 	protected EObject eObject;
-	
+
 	public NotificationBuffer(EObject eObject) {
 		this.eObject = eObject;
 	}
-	
+
 	public void startBuffering() {
 		EList<Adapter> eAdapters = eObject.eAdapters();
 		for (Adapter a : eAdapters) {

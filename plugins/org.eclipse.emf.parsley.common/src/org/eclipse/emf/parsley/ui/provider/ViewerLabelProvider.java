@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -29,13 +29,13 @@ import com.google.inject.name.Named;
 /**
  * Default implementation for {@link ILabelProvider} that uses polymorphic dispatch to invoke methods at runtime,
  * it also implements {@link IFontProvider} and {@link IColorProvider}.
- * 
- * You can define {@link #text(Object)} and {@link #image(Object)} methods specifying the input type. 
+ *
+ * You can define {@link #text(Object)} and {@link #image(Object)} methods specifying the input type.
  * The framework will select the correct implementation depending on the runtime type of the argument.
- * 
+ *
  * The same holds for {@link #font(Object)}, {@link #foreground(Object)} and {@link #background(Object)}.
- * 
- * @author Lorenzo Bettini - Initial contribution and API 
+ *
+ * @author Lorenzo Bettini - Initial contribution and API
  * @author Francesco Guidieri - Javadocs :-)
  */
 public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColorProvider {
@@ -71,7 +71,7 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 			.createForSingleTarget("background", 1, 1, this);
 
 	protected ILabelProvider delegateLabelProvider;
-	
+
 	@Inject
 	public ViewerLabelProvider(AdapterFactoryLabelProvider delegate) {
 		delegateLabelProvider = delegate;
@@ -141,7 +141,10 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 	}
 
 	/**
-	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * This method will be linked at runtime, belonging to the real input type at
+	 * runtime.
+	 *
+	 * @param element the element for which we return the text
 	 * @return the text representation of the input parameter
 	 */
 	public String text(Object element) {
@@ -149,7 +152,10 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 	}
 
 	/**
-	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 * This method will be linked at runtime, belonging to the real input type at
+	 * runtime.
+	 *
+	 * @param element the element for which we return the image
 	 * @return the image that represents the input
 	 */
 	public Object image(Object element) {
@@ -205,6 +211,8 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 
 	/**
 	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 *
+	 * @param element the element for which we return the font
 	 * @return the font that represents the input
 	 */
 	public Font font(Object element) {
@@ -221,6 +229,8 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 
 	/**
 	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 *
+	 * @param element the element for which we return the foreground
 	 * @return the foreground color
 	 */
 	public Color foreground(Object element) {
@@ -237,6 +247,8 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 
 	/**
 	 * This method will be linked at runtime, belonging to the real input type at runtime.
+	 *
+	 * @param element the element for which we return the background
 	 * @return the background color
 	 */
 	public Color background(Object element) {

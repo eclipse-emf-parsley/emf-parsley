@@ -4,7 +4,7 @@ s * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -23,9 +23,9 @@ import com.google.inject.Inject;
 
 /**
  * An abstract View that reacts on selection and is based on a viewer.
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionView
 		implements IStructuredViewerProvider {
@@ -39,7 +39,7 @@ public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionV
 	@Inject
 	private ViewerDragAndDropHelper dragAndDropHelper;
 
-	public AbstractOnSelectionViewerView() {
+	protected AbstractOnSelectionViewerView() {
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionV
 
 	/**
 	 * Subclasses should implement this.
-	 * 
+	 *
 	 * @param parent
 	 */
 	protected abstract void createViewer(Composite parent);

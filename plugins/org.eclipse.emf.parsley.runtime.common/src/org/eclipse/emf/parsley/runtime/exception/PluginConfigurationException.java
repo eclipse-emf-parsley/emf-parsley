@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - Initial contribution and API
  *******************************************************************************/
@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.runtime.exception;
 /**
  * A {@link RuntimeException} that can be thrown during the reflective
  * operations that are done on plugins.
- * 
+ *
  * @author Francesco Guidieri - Initial contribution and API
  */
 public class PluginConfigurationException extends RuntimeException {

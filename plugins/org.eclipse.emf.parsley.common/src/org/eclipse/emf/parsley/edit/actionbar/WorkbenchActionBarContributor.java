@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  * Francesco Guidieri - initial API and implementation
@@ -51,17 +51,21 @@ import com.google.inject.Inject;
  * <p>
  * Another very useful feature of this contributor is that it can be used as
  * follows:
- * 
+ *
  * <pre>
  * ((IMenuListener) ((IEditorSite) getSite()).getActionBarContributor())
  * 		.menuAboutToShow(menuManager);
  * </pre>
- * 
+ *
  * to contribute the Edit menu actions to a pop-up menu.
  */
 public class WorkbenchActionBarContributor extends
 		MultiPageEditorActionBarContributor implements IMenuListener,
 		IPropertyListener, ISelectionChangedListener {
+
+	private static final String ADDITIONS_END = "additions-end";
+
+	private static final String ADDITIONS = "additions";
 
 	@Inject
 	private EditingActionManager editingActionManager;
@@ -107,11 +111,11 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	/* (non-Javadoc)
-	 * 
+	 *
 	 * (*) We used to call contributeToMenu(submenuManager)
-	 * 
+	 *
 	 * but that does not seem to work (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=447954)
-	 * 
+	 *
 	 * @see org.eclipse.ui.part.EditorActionBarContributor#contributeToMenu(org.eclipse.jface.action.IMenuManager)
 	 */
 	@Override
@@ -119,20 +123,15 @@ public class WorkbenchActionBarContributor extends
 		IMenuManager submenuManager = new MenuManager("EMF Parsley",
 				"org.eclipse.emf.parsley.MenuID");
 
-		menuManager.insertAfter("additions", submenuManager);
+		menuManager.insertAfter(ADDITIONS, submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
-		submenuManager.add(new Separator("additions"));
-		submenuManager.add(new Separator("additions-end"));
+		submenuManager.add(new Separator(ADDITIONS));
+		submenuManager.add(new Separator(ADDITIONS_END));
 
 		// (*)
-		
-		submenuManager.addMenuListener(new IMenuListener() {
-			@Override
-			public void menuAboutToShow(IMenuManager menuManager) {
-				menuManager.updateAll(true);
-			}
-		});
+
+		submenuManager.addMenuListener(menuManager1 -> menuManager1.updateAll(true));
 
 		addGlobalActions(submenuManager);
 	}
@@ -262,7 +261,7 @@ public class WorkbenchActionBarContributor extends
 	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		if ((style & ADDITIONS_LAST_STYLE) == 0) {
-			menuManager.add(new Separator("additions"));
+			menuManager.add(new Separator(ADDITIONS));
 		}
 		menuManager.add(new Separator("edit"));
 
@@ -270,13 +269,13 @@ public class WorkbenchActionBarContributor extends
 		editingActionManager.menuAboutToShow(menuManager);
 
 		if ((style & ADDITIONS_LAST_STYLE) != 0) {
-			menuManager.add(new Separator("additions"));
+			menuManager.add(new Separator(ADDITIONS));
 			menuManager.add(new Separator());
 		}
-		menuManager.add(new Separator("additions-end"));
+		menuManager.add(new Separator(ADDITIONS_END));
 
 		addGlobalActions(menuManager);
-		
+
 		editingActionManager.emfMenuAboutToShow(menuManager);
 	}
 
@@ -289,10 +288,10 @@ public class WorkbenchActionBarContributor extends
 	}
 
 	protected void addGlobalActions(IMenuManager menuManager) {
-		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
-		
-		String key = (style & ADDITIONS_LAST_STYLE) == 0 ? "additions-end"
-				: "additions";
+		menuManager.insertAfter(ADDITIONS_END, new Separator("ui-actions"));
+
+		String key = (style & ADDITIONS_LAST_STYLE) == 0 ? ADDITIONS_END
+				: ADDITIONS;
 		if (validateAction != null) {
 			menuManager.insertBefore(key, new ActionContributionItem(
 					validateAction));

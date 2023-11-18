@@ -17,7 +17,7 @@ public class EmfParsleyDslPluginXmlNature implements IProjectNature {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.core.resources.IProjectNature#configure()
 	 */
 	@Override
@@ -25,8 +25,8 @@ public class EmfParsleyDslPluginXmlNature implements IProjectNature {
 		IProjectDescription desc = project.getDescription();
 		ICommand[] commands = desc.getBuildSpec();
 
-		for (int i = 0; i < commands.length; ++i) {
-			if (commands[i].getBuilderName().equals(EmfParsleyDslPluginXmlBuilder.BUILDER_ID)) {
+		for (ICommand command : commands) {
+			if (command.getBuilderName().equals(EmfParsleyDslPluginXmlBuilder.BUILDER_ID)) {
 				return;
 			}
 		}
@@ -42,7 +42,7 @@ public class EmfParsleyDslPluginXmlNature implements IProjectNature {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.core.resources.IProjectNature#deconfigure()
 	 */
 	@Override
@@ -56,7 +56,7 @@ public class EmfParsleyDslPluginXmlNature implements IProjectNature {
 				System.arraycopy(commands, i + 1, newCommands, i,
 						commands.length - i - 1);
 				description.setBuildSpec(newCommands);
-				project.setDescription(description, null);			
+				project.setDescription(description, null);
 				return;
 			}
 		}
@@ -64,7 +64,7 @@ public class EmfParsleyDslPluginXmlNature implements IProjectNature {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.core.resources.IProjectNature#getProject()
 	 */
 	@Override
@@ -74,7 +74,7 @@ public class EmfParsleyDslPluginXmlNature implements IProjectNature {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.core.resources.IProjectNature#setProject(org.eclipse.core.resources.IProject)
 	 */
 	@Override

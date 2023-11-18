@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  * Lorenzo Bettini - updated for using EditingMenuBuilder
@@ -26,15 +26,15 @@ import com.google.inject.Inject;
  * where a workbench is not available (for example in e4) or simply to use a
  * lightweight version for views. The main difference is that this class has to
  * be initialized with editing domain.
- * 
+ *
  * <pre>
- * 
+ *
  * viewer.addSelectionChangedListener(treeActionBarContributor);
- * 
+ *
  * treeActionBarContributor.initialize(editingDomain);
- * 
+ *
  * </pre>
- * 
+ *
  * @author Francesco Guidieri - initial API and implementation
  * @author Lorenzo Bettini - updated for using EditingMenuBuilder
  */

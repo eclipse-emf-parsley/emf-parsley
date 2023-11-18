@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,7 +21,7 @@ import com.google.common.collect.Lists;
 
 /**
  * Keeps the state of an {@link EObject}
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -31,12 +31,12 @@ public class EObjectState extends HashMap<EStructuralFeature, Object> {
 		if (o == null) {
 			return;
 		}
-		
+
 		for (EStructuralFeature f : o.eClass().getEAllStructuralFeatures()) {
 			if (!f.isChangeable() || f.isDerived()) {
 				continue;
 			}
-			
+
 			Object eGet = o.eGet(f);
 			if (!(eGet instanceof FeatureMap)) {
 				updateMap(f, eGet);

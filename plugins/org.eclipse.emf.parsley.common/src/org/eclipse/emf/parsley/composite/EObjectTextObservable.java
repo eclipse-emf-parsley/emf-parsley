@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.htmlù
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -18,17 +18,17 @@ import org.eclipse.swt.widgets.Text;
 /**
  * To perform data binding between a Text and an EObject (representing
  * a reference)
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
 @SuppressWarnings("rawtypes")
 public class EObjectTextObservable extends AbstractObservableValue {
-	
+
 	private ILabelProvider labelProvider;
-	
+
 	private Text text;
-	
+
 	private EObject current;
 
 	public EObjectTextObservable(ILabelProvider labelProvider, Text text) {
@@ -46,15 +46,15 @@ public class EObjectTextObservable extends AbstractObservableValue {
 	protected Object doGetValue() {
 		return current;
 	}
-	
+
 	@Override
 	protected void doSetValue(Object value) {
 		if (!(value instanceof EObject)) {
 			return;
 		}
-		
+
 		current = (EObject) value;
-		
+
 		text.setText(labelProvider.getText(current));
 	}
 

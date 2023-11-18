@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,9 +21,9 @@ import org.eclipse.swt.widgets.Widget;
 /**
  * A custom {@link CommandStackListener} that executes asynchronously in the UI
  * thread, delegating an {@link AsyncCommandStackListenerClient} appropriately.
- * 
+ *
  * Instances of this class should be created using the corresponding helper class.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -37,7 +37,7 @@ public class AsyncCommandStackListener implements CommandStackListener {
 
 	/**
 	 * The {@link Widget} is used to run in the UI thread.
-	 * 
+	 *
 	 * @param widget
 	 */
 	public void setWidget(Widget widget) {
@@ -46,7 +46,7 @@ public class AsyncCommandStackListener implements CommandStackListener {
 
 	/**
 	 * The client to notify.
-	 * 
+	 *
 	 * @param client
 	 */
 	public void setClient(AsyncCommandStackListenerClient client) {
@@ -57,7 +57,7 @@ public class AsyncCommandStackListener implements CommandStackListener {
 	 * If set, the
 	 * {@link AsyncCommandStackListenerClient#mostRecentCommandAffectsResource(Command)}
 	 * is called only if the last command affects the resource.
-	 * 
+	 *
 	 * @param resourceToObserve
 	 */
 	public void setResourceToObserve(Resource resourceToObserve) {
@@ -66,19 +66,16 @@ public class AsyncCommandStackListener implements CommandStackListener {
 
 	@Override
 	public void commandStackChanged(final EventObject event) {
-		widget.getDisplay().asyncExec(new Runnable() {
-			@Override
-			public void run() {
-				Command mostRecentCommand = EmfCommandsUtil.mostRecentCommand(event);
+		widget.getDisplay().asyncExec(() -> {
+			Command mostRecentCommand = EmfCommandsUtil.mostRecentCommand(event);
 
-				if (mostRecentCommand != null) {
-					if (resourceToObserve == null
-							|| EmfCommandsUtil.affectsResource(mostRecentCommand, resourceToObserve)) {
-						client.mostRecentCommandAffectsResource(mostRecentCommand);
-					}
-
-					client.postCommandStackChanged(mostRecentCommand);
+			if (mostRecentCommand != null) {
+				if (resourceToObserve == null
+						|| EmfCommandsUtil.affectsResource(mostRecentCommand, resourceToObserve)) {
+					client.mostRecentCommandAffectsResource(mostRecentCommand);
 				}
+
+				client.postCommandStackChanged(mostRecentCommand);
 			}
 		});
 	}

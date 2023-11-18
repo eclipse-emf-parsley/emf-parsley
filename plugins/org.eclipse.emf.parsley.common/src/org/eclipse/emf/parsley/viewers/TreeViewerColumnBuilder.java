@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
@@ -32,9 +32,9 @@ import com.google.inject.name.Named;
  * Sets the columns of a TreeViewer according to an EClass (adds a column for
  * each feature of the EClass, retrieved using an injected
  * {@link TableFeaturesProvider}).
- * 
+ *
  * @author Francesco Guidieri - initial API and implementation
- * 
+ *
  */
 public class TreeViewerColumnBuilder {
 
@@ -65,7 +65,7 @@ public class TreeViewerColumnBuilder {
 	 * Setups the columns of the given treeViewer using the features of the
 	 * given eClass; the features are retrieved using an injected
 	 * {@link TableFeaturesProvider}.
-	 * 
+	 *
 	 * @param treeViewer
 	 * @param eClass
 	 */
@@ -75,7 +75,7 @@ public class TreeViewerColumnBuilder {
 
 	/**
 	 * Setups the columns of the given treeViewer using the specified features.
-	 * 
+	 *
 	 * @param treeViewer
 	 * @param typeFeatures
 	 */
@@ -87,7 +87,7 @@ public class TreeViewerColumnBuilder {
 	 * Setups the columns of the given treeViewer using the specified features,
 	 * the eClass, if not null, is used for the feature caption provider, otherwise
 	 * the containing eClass of each feature is used for the feature caption provider.
-	 * 
+	 *
 	 * @param treeViewer
 	 * @param eClass
 	 * @param typeFeatures

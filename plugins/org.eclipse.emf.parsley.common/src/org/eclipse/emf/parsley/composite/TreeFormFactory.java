@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -23,13 +23,13 @@ import com.google.inject.name.Named;
 
 /**
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class TreeFormFactory {
 
 	@Inject
 	protected MembersInjector<TreeFormComposite> treeFormCompositeMembersInjector;
-	
+
 	@Inject
 	@Named(EmfParsleyConstants.TREE_FORM_SASH_STYLE)
 	private int sashStyle;
@@ -40,11 +40,11 @@ public class TreeFormFactory {
 
 	@Inject
 	public TreeFormFactory() {
-
+		// nothing to do
 	}
 
 	/**
-	 * This method is not intended to be extended. Use {link {@link #createComposite(Composite, int)} to customize the creation of the {@link TreeFormComposite}. 
+	 * This method is not intended to be extended. Use {link {@link #createComposite(Composite, int)} to customize the creation of the {@link TreeFormComposite}.
 	 * @return the TreeFormComposite instance
 	 */
 	public TreeFormComposite createTreeFormComposite(Composite parent, int style) {

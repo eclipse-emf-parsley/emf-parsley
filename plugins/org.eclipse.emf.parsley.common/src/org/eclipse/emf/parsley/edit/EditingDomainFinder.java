@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,9 +21,9 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
  * Retrieves the EditingDomain for an Object. The default implementation simply
  * uses {@link AdapterFactoryEditingDomain#getEditingDomainFor(Object)} and also
  * considers the case for {@link Resource}.
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class EditingDomainFinder {
 
