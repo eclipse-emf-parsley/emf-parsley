@@ -96,8 +96,6 @@
 
 		<jacoco-aggregate-report>../../tests/org.eclipse.emf.parsley.tests.coverage/target/site/jacoco-aggregate/jacoco.xml</jacoco-aggregate-report>
 
-		<!-- <jacoco.reportPath>../target/jacoco.exec</jacoco.reportPath> -->
-		
 		<parsley.download.area>/home/data/httpd/download.eclipse.org/emf-parsley</parsley.download.area>
 		<parsley.updates.dir>updates</parsley.updates.dir>
 		<parsley.zips.dir>zips</parsley.zips.dir>
@@ -949,10 +947,9 @@
 							*.hprof
 							plugin.xml_gen
 						</jgit.ignore>
-						<!-- the following should not be enabled: we must make sure
+						<!-- "git.dirtyWorkingTree" as "ignore" should not be enabled: we must make sure
 							that's everything is committed, including possible regenerated
 							MANIFEST or plugin.xml by Xtext -->
-						<!-- <jgit.dirtyWorkingTree>ignore</jgit.dirtyWorkingTree> -->
 					</configuration>
 					<dependencies>
 						<dependency>
