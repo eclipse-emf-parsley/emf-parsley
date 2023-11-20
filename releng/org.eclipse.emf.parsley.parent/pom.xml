@@ -52,9 +52,6 @@
 			<organizationUrl>http://www.rcp-vision.com/</organizationUrl>
 		</developer>
 	</developers>
-	<prerequisites>
-		<maven>3.0</maven>
-	</prerequisites>
 
 	<properties>
 		<tycho-version>3.0.5</tycho-version>
