@@ -24,12 +24,11 @@ import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Composite
 import org.junit.Test
 
-import static org.mockito.Matchers.*
 import static org.mockito.Mockito.*
 
 import static extension org.junit.Assert.*
 
-class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
+abstract class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
 
 	static class MasterDetailComposite extends AbstractMasterDetailComposite {
 		public var IMasterComposite mockMasterComposite = mock(IMasterComposite);
