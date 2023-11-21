@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail;
@@ -109,25 +102,6 @@ public interface MailPackage extends EPackage {
 	int ACCOUNT_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.parsley.examples.mail.impl.FolderContentImpl <em>Folder Content</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.parsley.examples.mail.impl.FolderContentImpl
-	 * @see org.eclipse.emf.parsley.examples.mail.impl.MailPackageImpl#getFolderContent()
-	 * @generated
-	 */
-	int FOLDER_CONTENT = 2;
-
-	/**
-	 * The number of structural features of the '<em>Folder Content</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOLDER_CONTENT_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.examples.mail.impl.FolderImpl <em>Folder</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -144,7 +118,7 @@ public interface MailPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER__SUBFOLDERS = FOLDER_CONTENT_FEATURE_COUNT + 0;
+	int FOLDER__SUBFOLDERS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -153,7 +127,7 @@ public interface MailPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER__NAME = FOLDER_CONTENT_FEATURE_COUNT + 1;
+	int FOLDER__NAME = 1;
 
 	/**
 	 * The feature id for the '<em><b>Mails</b></em>' containment reference list.
@@ -162,7 +136,7 @@ public interface MailPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER__MAILS = FOLDER_CONTENT_FEATURE_COUNT + 2;
+	int FOLDER__MAILS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Folder</em>' class.
@@ -171,26 +145,7 @@ public interface MailPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FOLDER_FEATURE_COUNT = FOLDER_CONTENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.parsley.examples.mail.impl.MailContentImpl <em>Content</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.parsley.examples.mail.impl.MailContentImpl
-	 * @see org.eclipse.emf.parsley.examples.mail.impl.MailPackageImpl#getMailContent()
-	 * @generated
-	 */
-	int MAIL_CONTENT = 3;
-
-	/**
-	 * The number of structural features of the '<em>Content</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAIL_CONTENT_FEATURE_COUNT = FOLDER_CONTENT_FEATURE_COUNT + 0;
+	int FOLDER_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.parsley.examples.mail.impl.MailImpl <em>Mail</em>}' class.
@@ -200,7 +155,7 @@ public interface MailPackage extends EPackage {
 	 * @see org.eclipse.emf.parsley.examples.mail.impl.MailPackageImpl#getMail()
 	 * @generated
 	 */
-	int MAIL = 4;
+	int MAIL = 2;
 
 	/**
 	 * The feature id for the '<em><b>From</b></em>' attribute.
@@ -333,26 +288,6 @@ public interface MailPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFolder_Mails();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.examples.mail.FolderContent <em>Folder Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Folder Content</em>'.
-	 * @see org.eclipse.emf.parsley.examples.mail.FolderContent
-	 * @generated
-	 */
-	EClass getFolderContent();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.examples.mail.MailContent <em>Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Content</em>'.
-	 * @see org.eclipse.emf.parsley.examples.mail.MailContent
-	 * @generated
-	 */
-	EClass getMailContent();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.parsley.examples.mail.Mail <em>Mail</em>}'.
@@ -497,26 +432,6 @@ public interface MailPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FOLDER__MAILS = eINSTANCE.getFolder_Mails();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.parsley.examples.mail.impl.FolderContentImpl <em>Folder Content</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.parsley.examples.mail.impl.FolderContentImpl
-		 * @see org.eclipse.emf.parsley.examples.mail.impl.MailPackageImpl#getFolderContent()
-		 * @generated
-		 */
-		EClass FOLDER_CONTENT = eINSTANCE.getFolderContent();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.parsley.examples.mail.impl.MailContentImpl <em>Content</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.parsley.examples.mail.impl.MailContentImpl
-		 * @see org.eclipse.emf.parsley.examples.mail.impl.MailPackageImpl#getMailContent()
-		 * @generated
-		 */
-		EClass MAIL_CONTENT = eINSTANCE.getMailContent();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.parsley.examples.mail.impl.MailImpl <em>Mail</em>}' class.

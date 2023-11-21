@@ -4,7 +4,7 @@ Bundle-Name: EMF Parsley Example CDO Server
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.cdo.server
 Bundle-Version: 2.0.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.emf.cdo,
  org.eclipse.net4j,
  org.eclipse.emf.cdo.net4j,

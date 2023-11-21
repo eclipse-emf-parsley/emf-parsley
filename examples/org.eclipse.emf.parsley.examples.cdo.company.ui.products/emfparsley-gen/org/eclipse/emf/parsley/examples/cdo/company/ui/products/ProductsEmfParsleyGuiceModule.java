@@ -20,32 +20,32 @@ public class ProductsEmfParsleyGuiceModule extends CompanyGuiceModule {
   public ProductsEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public int valueTreeFormSashStyle() {
     return SWT.HORIZONTAL;
   }
-  
+
   @Override
   public int[] valueTreeFormSashWeights() {
     return new int[] { 1, 3 };
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return ProductsLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
     return ProductsFeatureCaptionProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return ProductsFeaturesProvider.class;
   }
-  
+
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
     return ProductsViewerContentProvider.class;

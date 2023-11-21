@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -22,13 +22,13 @@ import org.eclipse.emf.parsley.EmfParsleyActivator;
 
 /**
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class FeatureResolver {
 
 	public List<EStructuralFeature> getFeatures(EClass eClass,
 			List<FeatureNamePath> paths) {
-		List<EStructuralFeature> features = new LinkedList<EStructuralFeature>();
+		List<EStructuralFeature> features = new LinkedList<>();
 		collectFeatures(eClass, paths, features);
 		return features;
 	}
@@ -41,7 +41,7 @@ public class FeatureResolver {
 				// the error has already been logged by getFeature
 				continue;
 			}
-			
+
 			if (path.getPaths() == null) {
 				features.add(feature);
 			} else {
@@ -64,7 +64,7 @@ public class FeatureResolver {
 		if (feature != null) {
 			return feature;
 		}
-		
+
 		// try to search for the feature ignoring the case
 		// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=421998
 		for (EStructuralFeature f : eClass.getEAllStructuralFeatures()) {
@@ -72,7 +72,7 @@ public class FeatureResolver {
 				return f;
 			}
 		}
-		
+
 		EmfParsleyActivator.logError("cannot find feature '"
 					+ featureName + "' in EClass '" + getEClassDescription(eClass) + "'");
 		return null;

@@ -1,7 +1,6 @@
 package org.eclipse.emf.parsley.examples.cdo.company.ui.orders;
 
 import com.google.inject.Injector;
-import org.eclipse.emf.parsley.examples.cdo.company.ui.orders.OrdersInjectorProvider;
 import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory;
 
 @SuppressWarnings("all")

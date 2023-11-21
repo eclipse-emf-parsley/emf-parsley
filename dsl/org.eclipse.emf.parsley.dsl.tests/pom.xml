@@ -16,11 +16,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
@@ -28,24 +23,9 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>default-test</id>
-						<phase>integration-test</phase>
-						<configuration>
-							<skip>${dsl.tests.skip}</skip>
-							<useUIHarness>false</useUIHarness>
-							<useUIThread>false</useUIThread>
-							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${memoryArgs}</argLine>
-						</configuration>
-						<goals>
-							<goal>test</goal>
-						</goals>
-					</execution>
-				</executions>
+				<configuration>
+					<skip>${dsl.tests.skip}</skip>
+				</configuration>
 			</plugin>
 
 		</plugins>

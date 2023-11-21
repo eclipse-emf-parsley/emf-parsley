@@ -18,17 +18,15 @@ public class CustomersViewerContentProvider extends ViewerContentProvider {
   public CustomersViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
-  
+
   public Object elements(final Resource it) {
     EList<Customer> _xifexpression = null;
-    EList<EObject> _contents = it.getContents();
-    int _size = _contents.size();
+    int _size = it.getContents().size();
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       EList<Customer> _xblockexpression = null;
       {
-        EList<EObject> _contents_1 = it.getContents();
-        EObject _get = _contents_1.get(0);
+        EObject _get = it.getContents().get(0);
         final Company company = ((Company) _get);
         _xblockexpression = company.getCustomers();
       }
@@ -36,7 +34,7 @@ public class CustomersViewerContentProvider extends ViewerContentProvider {
     }
     return _xifexpression;
   }
-  
+
   public Object children(final SalesOrder it) {
     List<Object> _emptyList = CollectionLiterals.<Object>emptyList();
     return _emptyList;

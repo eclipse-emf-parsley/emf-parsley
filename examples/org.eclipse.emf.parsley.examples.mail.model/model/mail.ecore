@@ -8,15 +8,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="folders" upperBound="-1"
         eType="#//Folder" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//FolderContent">
+  <eClassifiers xsi:type="ecore:EClass" name="Folder">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subfolders" upperBound="-1"
         eType="#//Folder" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mails" upperBound="-1"
         eType="#//Mail" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FolderContent" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MailContent" eSuperTypes="#//FolderContent"/>
   <eClassifiers xsi:type="ecore:EClass" name="Mail">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="recipients" upperBound="-1"

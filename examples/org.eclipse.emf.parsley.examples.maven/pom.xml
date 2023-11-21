@@ -9,11 +9,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>1.0.0</tycho-version>
-		<xtext-version>2.13.0</xtext-version>
+		<tycho-version>3.0.5</tycho-version>
+		<xtext-version>2.32.0</xtext-version>
+		<eclipse-version>2023-09</eclipse-version>
 
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
 	<repositories>
@@ -22,17 +23,17 @@
 				to resolve EMF Parsley runtime dependencies from the p2 repository -->
 			<id>EMF Parsley</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/emf-parsley/updates</url>
+			<url>https://download.eclipse.org/emf-parsley/updates</url>
 		</repository>
 		<repository>
-			<id>eclipse</id>
+			<id>Eclipse Update Site</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/photon</url>
+			<url>https://download.eclipse.org/releases/${eclipse-version}</url>
 		</repository>
 		<repository>
 			<id>Xtext Update Site</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext-version}</url>
+			<url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext-version}</url>
 		</repository>
 	</repositories>
 
@@ -53,8 +54,11 @@
 						<fileset>
 							<directory>${basedir}/emfparsley-gen</directory>
 							<excludes>
-								<exclude>.gitignore</exclude>
+								<exclude>.keepme</exclude>
 							</excludes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/screenshots</directory>
 						</fileset>
 					</filesets>
 				</configuration>
@@ -93,7 +97,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.8</version>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<goals>

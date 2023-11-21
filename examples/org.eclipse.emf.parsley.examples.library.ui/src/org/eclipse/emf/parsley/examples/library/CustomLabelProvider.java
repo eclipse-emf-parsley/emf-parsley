@@ -1,9 +1,6 @@
 package org.eclipse.emf.parsley.examples.library;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.parsley.examples.library.Book;
-import org.eclipse.emf.parsley.examples.library.Library;
-import org.eclipse.emf.parsley.examples.library.Person;
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider;
 
 import com.google.inject.Inject;

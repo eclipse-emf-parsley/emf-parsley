@@ -11,12 +11,12 @@ public class CustomersLabelProvider extends ViewerLabelProvider {
   public CustomersLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
-  
+
   public String text(final Customer it) {
     String _name = it.getName();
     return _name;
   }
-  
+
   public Object image(final Customer it) {
     return "customer.png";
   }

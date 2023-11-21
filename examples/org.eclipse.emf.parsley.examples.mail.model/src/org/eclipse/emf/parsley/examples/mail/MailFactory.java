@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail;
@@ -45,15 +38,6 @@ public interface MailFactory extends EFactory {
 	 * @generated
 	 */
 	Folder createFolder();
-
-	/**
-	 * Returns a new object of class '<em>Content</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Content</em>'.
-	 * @generated
-	 */
-	MailContent createMailContent();
 
 	/**
 	 * Returns a new object of class '<em>Mail</em>'.

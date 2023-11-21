@@ -10,15 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.tests
 
-import com.google.inject.Inject
 import java.io.IOException
-import java.io.InputStreamReader
-import java.nio.CharBuffer
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder
+import org.eclipse.emf.parsley.dsl.additional.builder.builder.EmfParsleyDslPluginXmlBuilder.UtilityIFileReader
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
-import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
+import org.eclipse.emf.parsley.dsl.tests.util.ui.ProjectImportUtil
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
@@ -27,7 +25,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*
-import static org.mockito.Matchers.*
 import static org.mockito.Mockito.*
 
 /**
@@ -37,9 +34,7 @@ import static org.mockito.Mockito.*
 @InjectWith(typeof(EmfParsleyDslUiInjectorProvider))
 class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 
-	@Inject PluginProjectHelper projectHelper
-
-	public static final String TEST_PROJECT = "TestProject";
+	public static final String TEST_PROJECT = "org.eclipse.emf.parsley.dsl.ui.tests.project";
 
 	public static final String PLUGIN_XML = "/plugin.xml";
 
@@ -119,16 +114,18 @@ class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 		/**
 		 * Accessible for tests
 		 */
-		override loadFromResource(InputStreamReader reader, String information) throws CoreException {
-			super.loadFromResource(reader, information)
-		}
 		
+		override protected loadFromResource(UtilityIFileReader iFileReader, String information) throws CoreException {
+			super.loadFromResource(iFileReader, information)
+		}
 	}
 
 	@Before
 	override setUp() throws Exception {
 		super.setUp()
-		project = projectHelper.createSimpleProject(TEST_PROJECT)
+		project = ProjectImportUtil
+					.importJavaProject(TEST_PROJECT)
+					.project;
 	}
 
 	@Test def void testCopyGeneratedPluginXmlWhenNoPluginXmlExists() {
@@ -175,8 +172,8 @@ class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 
 	@Test(expected=CoreException) def void testExceptionWhenReading() {
 		val builder = new TestableBuilder()
-		val reader = mock(InputStreamReader)
-		when(reader.read(any(CharBuffer))).thenThrow(new IOException)
+		val reader = mock(UtilityIFileReader)
+		when(reader.readFromResource()).thenThrow(new IOException)
 		builder.loadFromResource(reader, "info")
 	}
 

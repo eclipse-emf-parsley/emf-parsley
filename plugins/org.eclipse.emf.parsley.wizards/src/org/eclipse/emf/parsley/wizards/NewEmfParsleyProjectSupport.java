@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  * Vincenzo Caselli - https://bugs.eclipse.org/bugs/show_bug.cgi?id=512356
@@ -34,7 +34,7 @@ public class NewEmfParsleyProjectSupport {
 
 	static EmfParsleyProjectFilesGenerator filesGenerator = new EmfParsleyProjectFilesGenerator();
 
-	protected NewEmfParsleyProjectSupport() {
+	private NewEmfParsleyProjectSupport() {
 		// hide the implicit one
 	}
 
@@ -60,7 +60,7 @@ public class NewEmfParsleyProjectSupport {
 	/**
 	 * Create a folder structure with a parent root, overlay, and a few child
 	 * folders.
-	 * 
+	 *
 	 * @param newProject
 	 * @param paths
 	 * @param progressMonitor

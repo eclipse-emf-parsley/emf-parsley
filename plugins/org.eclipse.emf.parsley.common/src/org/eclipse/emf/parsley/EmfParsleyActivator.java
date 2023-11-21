@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -26,7 +26,7 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static EmfParsleyActivator plugin;
-	
+
 	private static final Logger LOGGER = Logger.getLogger(EmfParsleyActivator.class);
 
 	/**
@@ -37,7 +37,7 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
 	 * )
@@ -50,7 +50,7 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
 	 * )
@@ -63,7 +63,7 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 
 	/**
 	 * Returns the shared instance
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static EmfParsleyActivator getDefault() {
@@ -93,5 +93,5 @@ public class EmfParsleyActivator extends AbstractUIPlugin {
 				exception.getMessage(),
 				exception));
 	}
-	
+
 }

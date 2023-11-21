@@ -24,11 +24,11 @@ public class MavenDialogControlFactory extends DialogControlFactory {
     	observableValue);
     return control;
   }
-  
+
   protected Control createControl_EClass_name() {
     return this.createText("");
   }
-  
+
   protected IObservableValue createTarget_EClass_name(final Control it) {
     return DatabindingUtil.observeText(it);
   }

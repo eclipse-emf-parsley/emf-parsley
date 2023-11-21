@@ -16,7 +16,7 @@ import org.eclipse.ui.IWorkbenchPart;
 /**
  * Base class implementing all the methods as empty but from the one we'll
  * implement in the editor.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */

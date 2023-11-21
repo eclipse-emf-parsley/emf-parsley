@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -24,7 +24,7 @@ import com.google.inject.MembersInjector;
 
 /**
  * Helper methods to add drag and drop on a viewer.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  */
 public class ViewerDragAndDropHelper {
@@ -35,7 +35,7 @@ public class ViewerDragAndDropHelper {
 	/**
 	 * With this version the editing domain will be retrieved dynamically from
 	 * the object being dragged.
-	 * 
+	 *
 	 * @param viewer
 	 */
 	public void addDragAndDrop(StructuredViewer viewer) {
@@ -45,7 +45,7 @@ public class ViewerDragAndDropHelper {
 	/**
 	 * If the passed editing domain is null, then the editing domain will be
 	 * retrieved dynamically from the object being dragged.
-	 * 
+	 *
 	 * @param viewer
 	 * @param editingDomain
 	 */

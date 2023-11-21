@@ -14,15 +14,12 @@ import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
-import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator
-import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
-import org.eclipse.emf.parsley.views.EmfParsleyViewsActivator
+import org.eclipse.emf.parsley.dsl.tests.util.ui.ProjectImportUtil
 import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.ui.testing.ContentAssistProcessorTestBuilder
 import org.eclipse.xtext.ui.testing.AbstractContentAssistTest
+import org.eclipse.xtext.ui.testing.ContentAssistProcessorTestBuilder
 import org.junit.AfterClass
 import org.junit.BeforeClass
 import org.junit.Test
@@ -39,23 +36,12 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	
 	static IJavaProject pluginJavaProject
 	
-	val static PROJECT_NAME = "customPluginProject"
+	val static PROJECT_NAME = "org.eclipse.emf.parsley.dsl.ui.tests.project"
 	
 	@BeforeClass
 	def static void setUp() {
-		PDETargetPlatformUtils.setTargetPlatform();
-		
-		val injector = DslActivator.getInstance().getInjector
-			(DslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL);
-		
-		val projectHelper = injector.getInstance(PluginProjectHelper)
-		
-		pluginJavaProject = projectHelper.createJavaPluginProject
-			(PROJECT_NAME, newArrayList(
-				"org.eclipse.core.runtime",
-				"org.eclipse.ui",
-				EmfParsleyViewsActivator.PLUGIN_ID,
-				"org.eclipse.xtext.xbase.lib"))
+		pluginJavaProject = ProjectImportUtil
+					.importJavaProject(PROJECT_NAME);
 	}
 	
 	@AfterClass
@@ -306,6 +292,25 @@ module my.test.proj {
 		text {
 			EClass e -> { e.eAdapters'''
 		)
+	}
+
+	@Test def void testTemplateProposalForViewSpecification() throws Exception {
+		newBuilder.
+		append(
+		'''
+		module my.test.proj {
+			parts { 
+		'''
+		).
+		applyProposal("ViewSpecification - Template for ViewSpecification").
+		expectContent('''
+		module my.test.proj {
+			parts { 
+		viewpart id {
+			viewname "View Name"
+			viewclass viewclassref
+			// viewcategory my.category
+		}''')
 	}
 
 	def private assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String...acceptableParts) {

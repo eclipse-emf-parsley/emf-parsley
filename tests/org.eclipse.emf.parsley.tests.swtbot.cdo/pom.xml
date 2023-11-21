@@ -13,44 +13,25 @@
 	<artifactId>org.eclipse.emf.parsley.tests.swtbot.cdo</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
-	<profiles>
-		<profile>
-			<id>macosx-jvm-flags</id>
-			<activation>
-				<os>
-					<family>mac</family>
-				</os>
-			</activation>
-			<properties>
-				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
-			</properties>
-		</profile>
-	</profiles>
+	<properties>
+		<specialTestArguments>${swtbotTestsArgs}</specialTestArguments>
+	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<configuration>
 					<skip>${swtbot.cdo.tests.skip}</skip>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>false</useUIThread>
-					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-						for jacoco agent -->
-					<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
 					<includes>
 						<include>**/*Test*.java</include>
 					</includes>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>

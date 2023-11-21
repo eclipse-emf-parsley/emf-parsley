@@ -7,5 +7,6 @@ Bundle-Activator: org.eclipse.emf.parsley.cdo.EmfParsleyCDOActivator
 Require-Bundle: org.eclipse.emf.parsley.cdo.common;visibility:=reexport,
  org.eclipse.rap.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: Eclipse Modeling Project
+Automatic-Module-Name: org.eclipse.emf.parsley.rap.cdo

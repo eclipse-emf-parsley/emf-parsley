@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -21,19 +20,33 @@
 					<family>mac</family>
 				</os>
 			</activation>
-			<properties>
-				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<configuration>
+							<dependency-resolution>
+								<extraRequirements combine.children="append">
+									<!-- This allows us to take the fragment org.eclipse.jdt.launching.macosx
+										See https://github.com/LorenzoBettini/jbase/issues/3 
+										https://www.eclipse.org/forums/index.php/t/1073366/ -->
+									<requirement>
+										<type>eclipse-feature</type>
+										<id>org.eclipse.jdt</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+								</extraRequirements>
+							</dependency-resolution>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-
 			<plugin>
 				<groupId>org.eclipse.xtend</groupId>
 				<artifactId>xtend-maven-plugin</artifactId>
@@ -42,35 +55,22 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>default-test</id>
-						<phase>integration-test</phase>
-						<configuration>
-							<skip>${dsl.tests.skip}</skip>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>true</useUIThread>
-							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${uiTestsArgs} ${pdeTestsArgs}</argLine>
-							<includes>
-								<include>**/org/eclipse/emf/parsley/dsl/ui/tests/*Test.java</include>
-							</includes>
-						</configuration>
-						<goals>
-							<goal>test</goal>
-						</goals>
-					</execution>
-				</executions>
+				<configuration>
+					<skip>${dsl.tests.skip}</skip>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>true</useUIThread>
+					<includes>
+						<include>**/org/eclipse/emf/parsley/dsl/ui/tests/*Test.java</include>
+					</includes>
+				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<dependency-resolution>
-						<extraRequirements>
+						<extraRequirements combine.children="append">
 							<!-- to get the org.eclipse.osgi.compatibility.state plugin iff 
 							the targeted Eclipse version (e.g., Luna) has it
 							(backwards compatible with kepler and previous versions) -->
@@ -78,6 +78,11 @@
 								<type>eclipse-feature</type>
 								<id>org.eclipse.rcp</id>
 								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.apache.felix.scr</id>
+								<versionRange>1.0.0</versionRange>
 							</requirement>
 						</extraRequirements>
 					</dependency-resolution>

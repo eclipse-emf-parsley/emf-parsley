@@ -15,12 +15,12 @@ public class UnifiedfoldersviewEmfParsleyGuiceModule extends AccountsviewEmfPars
   public UnifiedfoldersviewEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return UnifiedfoldersviewLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
     return UnifiedfoldersviewViewerContentProvider.class;

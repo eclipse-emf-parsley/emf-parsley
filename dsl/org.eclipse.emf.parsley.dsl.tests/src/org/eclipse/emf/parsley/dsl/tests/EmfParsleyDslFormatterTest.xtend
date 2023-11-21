@@ -39,14 +39,14 @@ class EmfParsleyDslFormatterTest extends EmfParsleyDslAbstractTest {
 						}
 					}
 				}
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 				module Foo { parts { viewpart 
 					my.view.tree.part { viewname  "My Tree View" viewclass  AbstractSaveableTreeView 	viewcategory  My.Category}
 					viewpart my.view.tree.part2 { viewname  "My Tree View" viewclass  AbstractSaveableTreeView 	}
 					}
 				}
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -65,7 +65,7 @@ module my.empty {
 		var extension int f2 = 0;
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.ecore.resource.Resource
 import com.google.inject.Inject
@@ -75,7 +75,7 @@ module my.empty {
 		val field2 = "a field";  var  f1  =  0 ; var  extension  int  f2  =  0 ;
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -86,13 +86,13 @@ module my.empty {
 	tableViewerContentProvider extends Foo {
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 module my.empty {
 	tableViewerContentProvider  extends  Foo {
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -100,7 +100,7 @@ module my.empty {
 		assertFormatted[
 			expectation = '''
 				import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
-
+				
 				module my.empty {
 					resourceManager {
 						val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
@@ -114,7 +114,7 @@ module my.empty {
 						}
 					}
 				}
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
@@ -130,7 +130,7 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 						}
 					}
 				}
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -148,7 +148,7 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 						}
 					}
 				}
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
@@ -160,7 +160,7 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 						}
 					}
 				}
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -179,7 +179,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.ecore.resource.Resource
 
@@ -190,7 +190,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -204,7 +204,7 @@ module my.empty {
 		val field = "a field";
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.ecore.resource.Resource
 
@@ -212,7 +212,7 @@ module my.empty {
 	tableViewerContentProvider { 		val field  =  "a field";
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -240,7 +240,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EObject
@@ -256,7 +256,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -282,7 +282,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
@@ -299,7 +299,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -360,7 +360,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 import org.eclipse.emf.parsley.examples.library.Library
@@ -413,7 +413,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -442,7 +442,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.Library
@@ -467,7 +467,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -485,7 +485,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -498,7 +498,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -517,7 +517,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -531,7 +531,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -565,7 +565,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
@@ -594,7 +594,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -649,7 +649,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
@@ -700,7 +700,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -755,7 +755,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.BookOnTape
@@ -806,7 +806,7 @@ background {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -825,7 +825,7 @@ module my.empty {
 		value IBaseLabelProvider a -> ViewerLabelProvider
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.jface.viewers.IBaseLabelProvider
@@ -839,7 +839,7 @@ module my.empty {
 		value IBaseLabelProvider  a  ->  ViewerLabelProvider
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 
@@ -880,7 +880,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 			toBeFormatted = '''
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Borrower
@@ -913,7 +913,7 @@ module my.empty {
 		}
 	}
 }
-			'''
+			'''.toString.replace("\r", "")
 		]
 	}
 

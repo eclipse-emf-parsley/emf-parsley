@@ -19,22 +19,22 @@ public class MessageviewEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public MessageviewEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return MessageviewLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
     return MessageviewFeatureCaptionProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return MessageviewFeaturesProvider.class;
   }
-  
+
   @Override
   public Class<? extends FormControlFactory> bindFormControlFactory() {
     return MessageviewFormControlFactory.class;

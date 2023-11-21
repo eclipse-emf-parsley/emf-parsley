@@ -16,7 +16,7 @@ public class FirstexampleViewerContentProvider extends ViewerContentProvider {
   public FirstexampleViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
-  
+
   public Object children(final Library it) {
     EList<Writer> _writers = it.getWriters();
     EList<Book> _books = it.getBooks();

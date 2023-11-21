@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -27,9 +27,9 @@ import org.eclipse.swt.widgets.Text;
 /**
  * Adds the Undo-Redo functionality (working Ctrl+Z and Ctrl+Y) to an instance
  * of {@link Text}.
- * 
+ *
  * @author Lorenzo Bettini - Initial Contribution and API
- * 
+ *
  * @see {@linkplain http
  *      ://sourceforge.net/p/etinyplugins/blog/2013/02/add-undoredo
  *      -support-to-your-swt-styledtext-s/} - inspiration for this code...
@@ -58,19 +58,19 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 
 	/**
 	 * Encapsulation of the Undo and Redo stack(s).
-	 * 
+	 *
 	 * It is crucial to use Stack (and not Deque) even if Sonarqube suggests the
 	 * other way around, because here we're in a multithreading context and
 	 * we need a synchronized data structure to make it thread-safe.
 	 */
 	private static class UndoRedoStack {
 
-		private Stack<TextInfo> undo;
-		private Stack<TextInfo> redo;
+		private Stack<TextInfo> undo; // NOSONAR see Javadoc above
+		private Stack<TextInfo> redo; // NOSONAR see Javadoc above
 
 		public UndoRedoStack() {
-			undo = new Stack<TextInfo>();
-			redo = new Stack<TextInfo>();
+			undo = new Stack<>();
+			redo = new Stack<>();
 		}
 
 		public void pushUndo(TextInfo delta) {
@@ -82,13 +82,11 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 		}
 
 		public TextInfo popUndo() {
-			TextInfo res = undo.pop();
-			return res;
+			return undo.pop();
 		}
 
 		public TextInfo popRedo() {
-			TextInfo res = redo.pop();
-			return res;
+			return redo.pop();
 		}
 
 		public void clearRedo() {
@@ -119,7 +117,7 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 	 * Creates a new instance of this class. Automatically starts listening to
 	 * corresponding key and modify events coming from the given
 	 * <var>text</var>.
-	 * 
+	 *
 	 * @param text
 	 *            the text field to which the Undo-Redo functionality should be
 	 *            added
@@ -135,7 +133,7 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.swt.events.KeyListener#keyPressed(org.eclipse.swt.events.
 	 * KeyEvent)
@@ -161,7 +159,7 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.swt.events.KeyListener#keyReleased(org.eclipse.swt.events
 	 * .KeyEvent)
@@ -175,7 +173,7 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 	 * Creates a corresponding Undo or Redo step from the given event and pushes
 	 * it to the stack. The Redo stack is, logically, emptied if the event comes
 	 * from a normal user action.
-	 * 
+	 *
 	 * @param event
 	 */
 	@Override

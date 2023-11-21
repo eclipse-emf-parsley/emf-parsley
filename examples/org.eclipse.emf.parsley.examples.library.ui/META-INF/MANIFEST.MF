@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.5.0",
  org.eclipse.emf.parsley.examples.views,
  org.eclipse.emf.parsley.editors
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: org.eclipse.emf.parsley.examples.library.ui

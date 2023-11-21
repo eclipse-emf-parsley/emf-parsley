@@ -6,7 +6,6 @@
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:launching="http://www.eclipse.org/oomph/setup/launching/1.0"
-    xmlns:mylyn="http://www.eclipse.org/oomph/setup/mylyn/1.0"
     xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
     xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
@@ -15,13 +14,13 @@
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/launching/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Launching.ecore http://www.eclipse.org/oomph/setup/mylyn/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Mylyn.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/launching/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Launching.ecore http://www.eclipse.org/oomph/setup/pde/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/WorkingSets.ecore"
     name="emf.parsley"
     label="EMF Parsley">
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.6"
-      location="${jre.location-1.6}">
+      version="JavaSE-17"
+      location="${jre.location-17}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -41,15 +40,29 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.emf.parsley"
-      value="=http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.oomph/EMFParsley.setup->${git.clone.location|uri}/devtools/org.eclipse.emf.parsley.oomph/EMFParsley.setup"
+      value="=https://raw.githubusercontent.com/eclipse-emf-parsley/emf-parsley/master/devtools/org.eclipse.emf.parsley.oomph/EMFParsley.setup->${git.clone.location|uri}/devtools/org.eclipse.emf.parsley.oomph/EMFParsley.setup"
       vm="true"/>
   <setupTask
       xsi:type="setup:ResourceCreationTask"
       excludedTriggers="STARTUP MANUAL"
-      content="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;section name=&quot;Workbench&quot;>&#xD;&#xA;&#x9;&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>&#xD;&#xA;&#x9;&lt;/section>&#xD;&#xA;&lt;/section>&#xD;&#xA;"
       targetURL="${workspace.location|uri}/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml"
       encoding="UTF-8">
     <description>Initialize JDT's package explorer to show working sets as its root objects</description>
+    <content>
+
+      &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+      &lt;section name=&quot;Workbench&quot;>
+      	&lt;section name=&quot;org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart&quot;>
+      		&lt;item value=&quot;true&quot; key=&quot;group_libraries&quot;/>
+      		&lt;item value=&quot;false&quot; key=&quot;linkWithEditor&quot;/>
+      		&lt;item value=&quot;2&quot; key=&quot;layout&quot;/>
+      		&lt;item value=&quot;2&quot; key=&quot;rootMode&quot;/>
+      		&lt;item value=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;packageExplorer configured=&amp;quot;true&amp;quot; group_libraries=&amp;quot;1&amp;quot; layout=&amp;quot;2&amp;quot; linkWithEditor=&amp;quot;0&amp;quot; rootMode=&amp;quot;2&amp;quot; sortWorkingSets=&amp;quot;false&amp;quot; workingSetName=&amp;quot;&amp;quot;&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;workingSet editPageId=&amp;quot;org.eclipse.jdt.internal.ui.OthersWorkingSet&amp;quot; factoryID=&amp;quot;org.eclipse.ui.internal.WorkingSetFactory&amp;quot; id=&amp;quot;1382792884467_1&amp;quot; label=&amp;quot;Other Projects&amp;quot; name=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/localWorkingSetManager&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;activeWorkingSet workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;allWorkingSets workingSetName=&amp;quot;Other Projects&amp;quot;/&amp;gt;&amp;#x0D;&amp;#x0A;&amp;lt;/packageExplorer&amp;gt;&quot; key=&quot;memento&quot;/>
+      	&lt;/section>
+      &lt;/section>
+
+
+    </content>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -135,34 +148,30 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="Oxygen"
+      defaultValue="2023-12"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="mwe2.site"
-      value="http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.9.1"/>
+      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.16.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.14.0"/>
-  <setupTask
-      xsi:type="setup:VariableTask"
-      name="orbit.site"
-      value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
+      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.33.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
-      value="1.2.0"/>
+      value="1.4.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.zip"
-      value="org.eclipse.emf.parsley.repository-1.2.0.v20170609-0953.zip"/>
+      value="org.eclipse.emf.parsley.repository-1.14.0.v20221201-1038.zip"/>
   <setupTask
       xsi:type="pde:APIBaselineTask"
       name="parsley-latest"
       version="${api.baseline.version}"
       location="${installation.location}/api/${api.baseline.version}/"
-      remoteURI="http://download.eclipse.org/emf-parsley/zips/${api.baseline.zip}"/>
+      remoteURI="https://download.eclipse.org/emf-parsley/zips/${api.baseline.zip}"/>
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Eclipse IDE Plugins">
@@ -170,26 +179,8 @@
         xsi:type="setup.p2:P2Task"
         label="Eclipse SDK">
       <requirement
-          name="org.eclipse.sdk.feature.group"/>
-      <requirement
           name="org.eclipse.pde.api.tools.ee.feature.feature.group"
           optional="true"/>
-      <requirement
-          name="org.eclipse.releng.tools.feature.group"
-          optional="true"/>
-      <requirement
-          name="org.eclipse.wst.xml_ui.feature.feature.group"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        id="p2.egit"
-        label="EGit"
-        licenseConfirmationDisabled="true">
-      <requirement
-          name="org.eclipse.egit.feature.group"/>
-      <repository
-          url="http://download.eclipse.org/egit/updates"/>
-      <description>Git connector</description>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -197,15 +188,9 @@
         label="M2E"
         licenseConfirmationDisabled="true">
       <requirement
-          name="org.sonatype.tycho.m2e.feature.feature.group"/>
-      <requirement
           name="org.eclipse.m2e.feature.feature.group"/>
       <requirement
-          name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
-      <repository
-          url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.9.0/N/LATEST"/>
-      <repository
-          url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201207090124/"/>
+          name="org.eclipse.m2e.pde.feature.feature.group"/>
       <description>Maven connector</description>
     </setupTask>
     <setupTask
@@ -219,59 +204,8 @@
           name="org.eclipse.emf.query.sdk.feature.group"/>
       <requirement
           name="org.eclipse.net4j.sdk.feature.group"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        id="p2.mylyn"
-        label="Mylyn"
-        licenseConfirmationDisabled="true">
       <requirement
-          name="org.eclipse.mylyn.bugzilla_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.builds.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.context_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.discovery.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.gerrit.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.git.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.github.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.hudson.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.ide_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.java_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.monitor.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.pde_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.tasks.ide.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.team_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.egit.mylyn.feature.group"/>
-      <repository
-          url="http://download.eclipse.org/egit/github/updates"/>
-      <repository
-          url="http://download.eclipse.org/mylyn/releases/latest"/>
-      <description>Task and build connector</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        label="CBI Aggregator">
-      <requirement
-          name="org.eclipse.cbi.p2repo.aggregator.editor.feature.feature.group"/>
-      <repository
-          url="http://download.eclipse.org/cbi/updates/aggregator/ide/4.8/"/>
+          name="org.eclipse.emf.ecoretools.design.feature.group"/>
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
@@ -282,8 +216,6 @@
           name="org.eclipse.oomph.setup.jdt.feature.group"/>
       <requirement
           name="org.eclipse.oomph.setup.maven.feature.group"/>
-      <requirement
-          name="org.eclipse.oomph.setup.mylyn.feature.group"/>
       <requirement
           name="org.eclipse.oomph.setup.pde.feature.group"/>
       <requirement
@@ -305,20 +237,28 @@
       <requirement
           name="org.eclipse.rap.tools.feature.feature.group"/>
     </setupTask>
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="Sonar">
+      <requirement
+          name="org.sonarlint.eclipse.feature.feature.group"/>
+      <repository
+          url="https://eclipse-uc.sonarlint.org/"/>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
       id="git.clone"
-      remoteURI="emf-parsley/org.eclipse.emf-parsley">
+      remoteURI="eclipse-emf-parsley/emf-parsley">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
           key="inherit">
-        <value>eclipse.git.gerrit.remoteURIs</value>
+        <value>github.remoteURIs</value>
       </detail>
       <detail
           key="label">
-        <value>Oomph Git or Gerrit Repository</value>
+        <value>${scope.project.label} Github repository</value>
       </detail>
       <detail
           key="target">
@@ -343,39 +283,7 @@
             name="org.eclipse.swtbot.ide.feature.group"/>
         <requirement
             name="org.eclipse.swtbot.generator.feature.feature.group"/>
-        <repository
-            url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
         <description>UI testing framework</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          label="Eclemma Jacoco">
-        <requirement
-            name="org.eclipse.eclemma.feature.feature.group"/>
-        <repository
-            url="http://update.eclemma.org"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          label="WindowBuilder">
-        <requirement
-            name="org.eclipse.wb.core.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wb.doc.user.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wb.core.ui.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wb.layout.group.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wb.core.java.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wb.rcp.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wb.swt.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wb.rcp.doc.user.feature.feature.group"/>
-        <repository
-            url="http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/4.5/"/>
       </setupTask>
       <setupTask
           xsi:type="setup.p2:P2Task"
@@ -383,27 +291,13 @@
         <requirement
             name="org.eclipse.xtext.xdoc.feature.feature.group"/>
         <repository
-            url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+            url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
         <repository
             url="${xtext.site}"/>
         <repository
             url="${mwe2.site}"/>
       </setupTask>
     </setupTask>
-    <setupTask
-        xsi:type="projects:ProjectsImportTask"
-        id="tests.libraries">
-      <sourceLocator
-          rootFolder="${git.clone.location}/tests/org.eclipse.emf.parsley.tests.libraries"/>
-      <description>Tests Libraries</description>
-    </setupTask>
-    <setupTask
-        xsi:type="projects:ProjectsBuildTask"
-        refresh="true"/>
-    <setupTask
-        xsi:type="launching:LaunchTask"
-        id="CreateTestLibraries"
-        launcher="Create Test Libraries"/>
     <setupTask
         xsi:type="projects:ProjectsImportTask">
       <sourceLocator
@@ -446,16 +340,44 @@
         </predicate>
       </sourceLocator>
       <sourceLocator
-          rootFolder="${git.clone.location}/tests">
-        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.kepler</excludedPath>
-        <excludedPath>org.eclipse.emf.parsley.tests.pde.utils.indigo</excludedPath>
-      </sourceLocator>
+          rootFolder="${git.clone.location}/tests"/>
     </setupTask>
     <setupTask
         xsi:type="setup.targlets:TargletTask">
       <targlet
           name="${scope.project.label}"
           activeRepositoryList="${eclipse.target.platform}">
+        <annotation
+            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+          <detail
+              key="location">
+            <value>${git.clone.location}/devtools/org.eclipse.emf.parsley.targetplatform/simrel.oomph.tp.target</value>
+          </detail>
+          <detail
+              key="sortLocations">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeAllPlatforms">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeSource">
+            <value>true</value>
+          </detail>
+          <detail
+              key="singleLocation">
+            <value>false</value>
+          </detail>
+          <detail
+              key="generateImplicitUnits">
+            <value>false</value>
+          </detail>
+          <detail
+              key="minimizeImplicitUnits">
+            <value>false</value>
+          </detail>
+        </annotation>
         <requirement
             name="org.eclipse.emf.parsley.workspace.feature.group"/>
         <requirement
@@ -481,139 +403,68 @@
         <requirement
             name="org.eclipse.rap.tools.feature.feature.group"/>
         <requirement
-            name="org.eclipse.jst.server_adapters.feature.feature.group"/>
+            name="org.mockito.mockito-core"/>
         <requirement
-            name="org.eclipse.jst.server_adapters.ext.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.jst.server_ui.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.jst.enterprise_ui.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.wst.server_adapters.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.jst.web_ui.feature.feature.group"/>
+            name="org.eclipse.egit.feature.group"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
         <repositoryList
-            name="Luna">
-          <repository
-              url="http://download.eclipse.org/releases/luna"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+            name="2022-12">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+              url="https://download.eclipse.org/releases/2022-12"/>
           <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+              url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="${orbit.site}"/>
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
+          <repository
+              url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
         </repositoryList>
         <repositoryList
-            name="Mars">
-          <repository
-              url="http://download.eclipse.org/releases/mars"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+            name="2023-09">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+              url="https://download.eclipse.org/releases/2023-09"/>
           <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+              url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="${orbit.site}"/>
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
+          <repository
+              url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
         </repositoryList>
         <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/releases/neon/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+            name="2023-12">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+              url="https://download.eclipse.org/releases/2023-12"/>
           <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="Kepler">
+              url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="http://download.eclipse.org/releases/kepler"/>
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
           <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
-            name="Juno">
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
-              url="http://download.eclipse.org/releases/juno"/>
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
           <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
-            name="Oxygen">
-          <repository
-              url="http://download.eclipse.org/releases/oxygen/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="Photon">
-          <repository
-              url="http://download.eclipse.org/releases/photon/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="2018-09">
-          <repository
-              url="http://download.eclipse.org/staging/2018-09/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
+              url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -719,7 +570,7 @@
               project="org.eclipse.emf.parsley.common"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='rcp']/@setupTasks.6/@workingSets.3 //@projects[name='rcp']/@setupTasks.6/@workingSets.0 //@projects[name='rcp']/@setupTasks.6/@workingSets.4 //@projects[name='rcp']/@setupTasks.6/@workingSets.2 //@projects[name='rcp']/@setupTasks.6/@workingSets.1"/>
+              excludedWorkingSet="//@projects[name='rcp']/@setupTasks.3/@workingSets[name='Documentation'] //@projects[name='rcp']/@setupTasks.3/@workingSets[name='Examples'] //@projects[name='rcp']/@setupTasks.3/@workingSets[name='Features'] //@projects[name='rcp']/@setupTasks.3/@workingSets[name='Release%20Engineering'] //@projects[name='rcp']/@setupTasks.3/@workingSets[name='Tests']"/>
         </predicate>
       </workingSet>
       <description>The dynamic working sets for ${scope.project.label}</description>
@@ -729,7 +580,7 @@
         refresh="true"/>
     <setupTask
         xsi:type="launching:LaunchTask"
-        id="GenerateEmfParsleyDsl2"
+        id="GenerateEmfParsleyDsl"
         launcher="Generate Language Infrastructure (org.eclipse.emf.parsley.dsl)"/>
     <setupTask
         xsi:type="projects:ProjectsBuildTask"
@@ -744,25 +595,6 @@
         launcher="Build Zips">
       <description>Generate Zips of Examples</description>
     </setupTask>
-    <setupTask
-        xsi:type="mylyn:MylynQueriesTask"
-        repositoryURL="https://bugs.eclipse.org/bugs"
-        userID="${bugzilla.id}"
-        password="${eclipse.user.password}">
-      <query
-          summary="EMF Parsley Bugs"
-          url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED"/>
-    </setupTask>
-    <setupTask
-        xsi:type="mylyn:MylynBuildsTask"
-        serverURL="https://hudson.eclipse.org/emf-parsley/">
-      <buildPlan
-          name="emf-parsley-kepler-nightly"/>
-      <buildPlan
-          name="emf-parsley-tycho-gerrit"/>
-      <buildPlan
-          name="emf-parsley-sonar"/>
-    </setupTask>
     <stream
         name="master"
         label="Master">
@@ -773,7 +605,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.14.0,2.15.0)"/>
+            versionRange="[2.33.0,2.34.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -781,145 +613,9 @@
         <repository
             url="${mwe2.site}"/>
         <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
+            url="https://download.itemis.com/updates/releases/2.1.1/"/>
         <description>Xtext &amp; Xtend</description>
       </setupTask>
-    </stream>
-    <stream
-        name="oxygen-simrel"
-        label="Oxygen-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Oxygen"
-          defaultValue="Oxygen"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          id="p2.org.eclipse.xtext.3"
-          label="Xtext Releases"
-          licenseConfirmationDisabled="true">
-        <requirement
-            name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.12.0,2.13.0)"/>
-        <requirement
-            name="de.itemis.xtext.antlr.feature.feature.group"/>
-        <repository
-            url="${xtext.site}"/>
-        <repository
-            url="${mwe2.site}"/>
-        <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
-        <description>Xtext &amp; Xtend</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
-      <description>Branch for Simrel for Oxygen</description>
-    </stream>
-    <stream
-        name="photon-simrel"
-        label="Photon-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Photon"
-          defaultValue="Photon"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          label="Photon Integration Builds">
-        <repository
-            url="http://download.eclipse.org/eclipse/updates/4.8-I-builds"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          id="p2.org.eclipse.xtext.4"
-          label="Xtext Releases"
-          licenseConfirmationDisabled="true">
-        <requirement
-            name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.14.0,2.15.0)"/>
-        <requirement
-            name="de.itemis.xtext.antlr.feature.feature.group"/>
-        <repository
-            url="${xtext.site}"/>
-        <repository
-            url="${mwe2.site}"/>
-        <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
-        <description>Xtext &amp; Xtend</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/photon/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/photon/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="api.baseline.version"
-          value="1.2.0"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="api.baseline.zip"
-          value="org.eclipse.emf.parsley.repository-1.2.0.v20170609-0953.zip"/>
-      <description>Branch for Simrel for Photon</description>
-    </stream>
-    <stream
-        name="next-simrel"
-        label="Next-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="2018-09"
-          defaultValue="2018-09"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup.p2:P2Task"
-          label="Xtext Releases"
-          licenseConfirmationDisabled="true">
-        <requirement
-            name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.15.0,2.16.0)"/>
-        <requirement
-            name="de.itemis.xtext.antlr.feature.feature.group"/>
-        <repository
-            url="${xtext.site}"/>
-        <repository
-            url="${mwe2.site}"/>
-        <repository
-            url="http://download.itemis.com/updates/releases/2.1.1/"/>
-        <description>Xtext &amp; Xtend</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/2018-09/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/2018-09/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="orbit.site"
-          value="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
-      <description>Branch for the next Simrel</description>
     </stream>
     <description>EMF Parsley version for RCP</description>
   </project>
@@ -931,6 +627,37 @@
           name="${scope.project.label}"
           activeRepositoryList="${eclipse.target.platform}"
           includeAllRequirements="false">
+        <annotation
+            source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
+          <detail
+              key="location">
+            <value>${git.clone.location}/devtools/org.eclipse.emf.parsley.targetplatform/simrel.rap.oomph.tp.target</value>
+          </detail>
+          <detail
+              key="sortLocations">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeAllPlatforms">
+            <value>false</value>
+          </detail>
+          <detail
+              key="includeSource">
+            <value>true</value>
+          </detail>
+          <detail
+              key="singleLocation">
+            <value>false</value>
+          </detail>
+          <detail
+              key="generateImplicitUnits">
+            <value>true</value>
+          </detail>
+          <detail
+              key="minimizeImplicitUnits">
+            <value>true</value>
+          </detail>
+        </annotation>
         <requirement
             name="org.eclipse.emf.parsley.rap.workspace.feature.group"/>
         <requirement
@@ -945,106 +672,55 @@
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
         <repositoryList
-            name="Luna">
-          <repository
-              url="http://download.eclipse.org/releases/luna"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
+            name="2022-12">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://download.eclipse.org/rt/rap/2.3/"/>
+              url="https://download.eclipse.org/staging/2022-12/"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
         </repositoryList>
         <repositoryList
-            name="Mars">
-          <repository
-              url="http://download.eclipse.org/releases/mars"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
+            name="2023-09">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="http://download.eclipse.org/rt/rap/3.0/"/>
+              url="https://download.eclipse.org/releases/2023-09"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
         </repositoryList>
         <repositoryList
-            name="Kepler">
-          <repository
-              url="http://download.eclipse.org/releases/kepler"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
-            name="Juno">
-          <repository
-              url="http://download.eclipse.org/releases/juno"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-        </repositoryList>
-        <repositoryList
-            name="Neon">
-          <repository
-              url="http://download.eclipse.org/releases/neon/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="Oxygen">
-          <repository
-              url="http://download.eclipse.org/releases/oxygen/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
+            name="2023-12">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
+              url="https://download.eclipse.org/releases/2023-12"/>
           <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="Photon">
+              url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="http://download.eclipse.org/releases/photon/"/>
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
           <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
-        </repositoryList>
-        <repositoryList
-            name="2018-09">
-          <repository
-              url="http://download.eclipse.org/staging/2018-09/"/>
-          <repository
-              url="http://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="http://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://dl.bintray.com/lorenzobettini/xtext-xdoc/updates/"/>
-          <repository
-              url="${orbit.site}"/>
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -1150,29 +826,10 @@
               project="org.eclipse.emf.parsley.common"/>
           <operand
               xsi:type="workingsets:ExclusionPredicate"
-              excludedWorkingSet="//@projects[name='rap']/@setupTasks.1/@workingSets.3 //@projects[name='rap']/@setupTasks.1/@workingSets.0 //@projects[name='rap']/@setupTasks.1/@workingSets.4 //@projects[name='rap']/@setupTasks.1/@workingSets.2 //@projects[name='rap']/@setupTasks.1/@workingSets.1"/>
+              excludedWorkingSet="//@projects[name='rap']/@setupTasks.1/@workingSets[name='Documentation'] //@projects[name='rap']/@setupTasks.1/@workingSets[name='Examples'] //@projects[name='rap']/@setupTasks.1/@workingSets[name='Features'] //@projects[name='rap']/@setupTasks.1/@workingSets[name='Release%20Engineering'] //@projects[name='rap']/@setupTasks.1/@workingSets[name='Tests']"/>
         </predicate>
       </workingSet>
       <description>The dynamic working sets for ${scope.project.label}</description>
-    </setupTask>
-    <setupTask
-        xsi:type="mylyn:MylynQueriesTask"
-        repositoryURL="https://bugs.eclipse.org/bugs"
-        userID="${bugzilla.id}"
-        password="${eclipse.user.password}">
-      <query
-          summary="EMF Parsley Bugs"
-          url="https://bugs.eclipse.org/bugs/buglist.cgi?product=EMF.Parsley&amp;bug_status=UNCONFIRMED&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;bug_severity=blocker&amp;bug_severity=critical&amp;bug_severity=major&amp;bug_severity=normal&amp;bug_severity=minor&amp;bug_severity=trivial"/>
-    </setupTask>
-    <setupTask
-        xsi:type="mylyn:MylynBuildsTask"
-        serverURL="https://hudson.eclipse.org/emf-parsley/">
-      <buildPlan
-          name="emf-parsley-kepler-nightly"/>
-      <buildPlan
-          name="emf-parsley-tycho-gerrit"/>
-      <buildPlan
-          name="emf-parsley-sonar"/>
     </setupTask>
     <stream
         name="master"
@@ -1180,47 +837,9 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="eclipse.target.platform"
-          defaultValue="Oxygen"
+          defaultValue="2022-09"
           storageURI="scope://Workspace"/>
       <description></description>
-    </stream>
-    <stream
-        name="oxygen-simrel"
-        label="Oxygen-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Oxygen"
-          defaultValue="Oxygen"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/oxygen/"/>
-      <description>Branch for Simrel for Oxygen</description>
-    </stream>
-    <stream
-        name="photon-simrel"
-        label="Photon-Simrel">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eclipse.target.platform"
-          value="Photon"
-          defaultValue="Photon"
-          storageURI="scope://Workspace"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="mwe2.site"
-          value="http://download.eclipse.org/staging/photon/"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="xtext.site"
-          value="http://download.eclipse.org/staging/photon/"/>
-      <description>Branch for Simrel for Photon</description>
     </stream>
     <description>EMF Parsley version for RAP</description>
   </project>

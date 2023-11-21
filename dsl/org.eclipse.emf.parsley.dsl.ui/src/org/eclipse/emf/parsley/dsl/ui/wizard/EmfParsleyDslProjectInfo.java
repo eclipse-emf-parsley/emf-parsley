@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
@@ -15,21 +15,21 @@ import org.eclipse.xtext.ui.wizard.DefaultProjectInfo;
 
 /**
  * @author Francesco Guidieri
- * 
+ *
  */
 public class EmfParsleyDslProjectInfo extends DefaultProjectInfo {
-	
+
 	private TemplateWizardConfiguration selectedTemplate;
 	private boolean isRapOption;
 
 	public TemplateWizardConfiguration getSelectedTemplate() {
 		return selectedTemplate;
 	}
-	
+
 	public void setSelectedTemplate(TemplateWizardConfiguration selectedTemplate) {
 		this.selectedTemplate = selectedTemplate;
 	}
-	
+
 	public boolean isRapOption() {
 		return isRapOption;
 	}
@@ -37,5 +37,5 @@ public class EmfParsleyDslProjectInfo extends DefaultProjectInfo {
 	public void setRapOption(boolean isRapOption) {
 		this.isRapOption = isRapOption;
 	}
-	
+
 }

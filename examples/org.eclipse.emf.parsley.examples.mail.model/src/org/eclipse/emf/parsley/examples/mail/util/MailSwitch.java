@@ -1,19 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail.util;
-
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
+
 import org.eclipse.emf.parsley.examples.mail.*;
 
 /**
@@ -54,7 +47,7 @@ public class MailSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
@@ -82,20 +75,6 @@ public class MailSwitch<T> extends Switch<T> {
 			case MailPackage.FOLDER: {
 				Folder folder = (Folder)theEObject;
 				T result = caseFolder(folder);
-				if (result == null) result = caseFolderContent(folder);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case MailPackage.FOLDER_CONTENT: {
-				FolderContent folderContent = (FolderContent)theEObject;
-				T result = caseFolderContent(folderContent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case MailPackage.MAIL_CONTENT: {
-				MailContent mailContent = (MailContent)theEObject;
-				T result = caseMailContent(mailContent);
-				if (result == null) result = caseFolderContent(mailContent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -136,36 +115,6 @@ public class MailSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFolder(Folder object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Folder Content</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Folder Content</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFolderContent(FolderContent object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Content</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Content</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMailContent(MailContent object) {
 		return null;
 	}
 

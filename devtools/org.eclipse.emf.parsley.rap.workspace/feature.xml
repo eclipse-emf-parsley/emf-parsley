@@ -29,4 +29,12 @@
          id="org.eclipse.emf.parsley.rap.cdo.sdk"
          version="0.0.0"/>
 
+   <plugin
+         id="slf4j.api"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.log4j"
+         version="0.0.0"/>
+
 </feature>

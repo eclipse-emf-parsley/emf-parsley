@@ -200,9 +200,7 @@ class HtmlExtensions {
 	}
 	
 	def protected dispatch CharSequence toHtml(CodeBlock it, ParagraphState state) {
-		if(it.language===null){
-			val code=contents.toHtml(state).toString'''«code»'''.insert(state)
-		}else if(it.language.name=="Java"){
+		if(it.language===null || it.language.name=="Java"){
 			val code=contents.toHtml(state).toString'''<pre class="prettyprint" skin="desert">«code»</pre>'''.insert(state)
 		}else{
 			val code=contents.toHtml(state).toString'''<pre class="prettyprint  lang-parsley" skin="desert">«code»</pre>'''.insert(state)

@@ -12,7 +12,7 @@ public class AccountsviewViewerContentProvider extends ViewerContentProvider {
   public AccountsviewViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
-  
+
   public Object children(final Folder it) {
     EList<Folder> _subfolders = it.getSubfolders();
     return _subfolders;

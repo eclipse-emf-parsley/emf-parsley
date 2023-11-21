@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -29,7 +29,7 @@ import com.google.common.collect.Lists;
 
 /**
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreator {
 	private static final int CREATING_PROJECT_WORK_STEPS = 5;
@@ -106,13 +106,14 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 
 		String srcFolder = "src";
 		String projectPackagePath = srcFolder + "/"
-				+ projectName.replaceAll("\\.", "/");
-		
-		SubMonitor subMonitor = SubMonitor.convert(monitor, 
-				"Creating project " + projectName, 
+				+ projectName.replace('.', '/');
+
+		SubMonitor subMonitor = SubMonitor.convert(monitor,
+				"Creating project " + projectName,
 				CREATING_PROJECT_WORK_STEPS);
 
-		String[] paths = { projectPackagePath };
+		String settingsPath = ".settings";
+		String[] paths = { projectPackagePath, settingsPath };
 		NewEmfParsleyProjectSupport.addToProjectStructure(project, paths,
 				subMonitor.newChild(1));
 
@@ -134,6 +135,12 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 
 		NewEmfParsleyProjectSupport.createDslModule(project, projectName,
 				projectPackagePath, dslFileContents, subMonitor.newChild(1));
+
+		NewEmfParsleyProjectSupport.createProjectFile(project,
+				settingsPath + "/org.eclipse.core.resources.prefs",
+				"eclipse.preferences.version=1\n"
+				+ "encoding/<project>=UTF-8\n"
+				+ "", subMonitor.newChild(1));
 
 		project.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.newChild(1));
 		subMonitor.done();

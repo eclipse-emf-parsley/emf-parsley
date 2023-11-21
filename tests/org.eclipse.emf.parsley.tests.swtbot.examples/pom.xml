@@ -12,41 +12,22 @@
 
 	<artifactId>org.eclipse.emf.parsley.tests.swtbot.examples</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-	
-	<profiles>
-		<profile>
-			<id>macosx-jvm-flags</id>
-			<activation>
-				<os>
-					<family>mac</family>
-				</os>
-			</activation>
-			<properties>
-				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
-			</properties>
-		</profile>
-	</profiles>
+
+	<properties>
+		<specialTestArguments>${swtbotTestsArgs}</specialTestArguments>
+	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<configuration>
 					<skip>${swtbot.tests.skip}</skip>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>false</useUIThread>
 					<product>org.eclipse.emf.parsley.examples.mail.rcp.product</product>
 					<application>org.eclipse.emf.parsley.examples.mail.rcp.application</application>
-					<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-						for jacoco agent -->
-					<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
 				</configuration>
 			</plugin>
 
@@ -60,6 +41,11 @@
 								<type>eclipse-feature</type>
 								<id>org.eclipse.emf.parsley.examples.mail.product.feature</id>
 								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.apache.felix.scr</id>
+								<versionRange>1.0.0</versionRange>
 							</requirement>
 						</extraRequirements>
 					</dependency-resolution>

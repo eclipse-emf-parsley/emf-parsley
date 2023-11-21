@@ -1,14 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail.impl;
-
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -16,11 +8,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.emf.parsley.examples.mail.Account;
 import org.eclipse.emf.parsley.examples.mail.Folder;
-import org.eclipse.emf.parsley.examples.mail.FolderContent;
 import org.eclipse.emf.parsley.examples.mail.Mail;
-import org.eclipse.emf.parsley.examples.mail.MailContent;
 import org.eclipse.emf.parsley.examples.mail.MailFactory;
 import org.eclipse.emf.parsley.examples.mail.MailPackage;
 
@@ -50,20 +41,6 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass folderContentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass mailContentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass mailEClass = null;
 
 	/**
@@ -84,7 +61,6 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	private MailPackageImpl() {
 		super(eNS_URI, MailFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,7 +70,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link MailPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -108,7 +84,8 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 		if (isInited) return (MailPackage)EPackage.Registry.INSTANCE.getEPackage(MailPackage.eNS_URI);
 
 		// Obtain or create and register package
-		MailPackageImpl theMailPackage = (MailPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MailPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MailPackageImpl());
+		Object registeredMailPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		MailPackageImpl theMailPackage = registeredMailPackage instanceof MailPackageImpl ? (MailPackageImpl)registeredMailPackage : new MailPackageImpl();
 
 		isInited = true;
 
@@ -121,7 +98,6 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 		// Mark meta-data to indicate it can't be changed
 		theMailPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(MailPackage.eNS_URI, theMailPackage);
 		return theMailPackage;
@@ -132,6 +108,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAccount() {
 		return accountEClass;
 	}
@@ -141,6 +118,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAccount_Name() {
 		return (EAttribute)accountEClass.getEStructuralFeatures().get(0);
 	}
@@ -150,6 +128,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAccount_Email() {
 		return (EAttribute)accountEClass.getEStructuralFeatures().get(1);
 	}
@@ -159,6 +138,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAccount_Folders() {
 		return (EReference)accountEClass.getEStructuralFeatures().get(2);
 	}
@@ -168,6 +148,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFolder() {
 		return folderEClass;
 	}
@@ -177,6 +158,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFolder_Subfolders() {
 		return (EReference)folderEClass.getEStructuralFeatures().get(0);
 	}
@@ -186,6 +168,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFolder_Name() {
 		return (EAttribute)folderEClass.getEStructuralFeatures().get(1);
 	}
@@ -195,6 +178,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getFolder_Mails() {
 		return (EReference)folderEClass.getEStructuralFeatures().get(2);
 	}
@@ -204,24 +188,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFolderContent() {
-		return folderContentEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMailContent() {
-		return mailContentEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public EClass getMail() {
 		return mailEClass;
 	}
@@ -231,6 +198,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMail_From() {
 		return (EAttribute)mailEClass.getEStructuralFeatures().get(0);
 	}
@@ -240,6 +208,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMail_Recipients() {
 		return (EAttribute)mailEClass.getEStructuralFeatures().get(1);
 	}
@@ -249,6 +218,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMail_Message() {
 		return (EAttribute)mailEClass.getEStructuralFeatures().get(2);
 	}
@@ -258,6 +228,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMail_Subject() {
 		return (EAttribute)mailEClass.getEStructuralFeatures().get(3);
 	}
@@ -267,6 +238,7 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MailFactory getMailFactory() {
 		return (MailFactory)getEFactoryInstance();
 	}
@@ -299,10 +271,6 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 		createEReference(folderEClass, FOLDER__SUBFOLDERS);
 		createEAttribute(folderEClass, FOLDER__NAME);
 		createEReference(folderEClass, FOLDER__MAILS);
-
-		folderContentEClass = createEClass(FOLDER_CONTENT);
-
-		mailContentEClass = createEClass(MAIL_CONTENT);
 
 		mailEClass = createEClass(MAIL);
 		createEAttribute(mailEClass, MAIL__FROM);
@@ -339,8 +307,6 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		folderEClass.getESuperTypes().add(this.getFolderContent());
-		mailContentEClass.getESuperTypes().add(this.getFolderContent());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(accountEClass, Account.class, "Account", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -352,10 +318,6 @@ public class MailPackageImpl extends EPackageImpl implements MailPackage {
 		initEReference(getFolder_Subfolders(), this.getFolder(), null, "subfolders", null, 0, -1, Folder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFolder_Name(), ecorePackage.getEString(), "name", null, 0, 1, Folder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFolder_Mails(), this.getMail(), null, "mails", null, 0, -1, Folder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(folderContentEClass, FolderContent.class, "FolderContent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(mailContentEClass, MailContent.class, "MailContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(mailEClass, Mail.class, "Mail", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMail_From(), ecorePackage.getEString(), "from", null, 0, 1, Mail.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

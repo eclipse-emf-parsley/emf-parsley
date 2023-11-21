@@ -157,7 +157,7 @@ class EmfValidationTargetToModelUpdateValueStrategyTest extends AbstractEmfParsl
 		initializeDatabindingInternal(feature, o, target);
 	}
 
-	private def Binding initializeDatabindingInternal(EStructuralFeature feature, EObject o, ISWTObservableValue target) {
+	private def Binding initializeDatabindingInternal(EStructuralFeature feature, EObject o, ISWTObservableValue<?> target) {
 		val source = EMFEditProperties.value(editingDomain, feature).observe(o);
 		val targetToModelUpdateValueStrategy =
 			new EmfValidationTargetToModelUpdateValueStrategy(

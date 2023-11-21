@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -50,26 +50,26 @@ import com.google.inject.Inject;
 /**
  * Creates the actions and builds the corresponding menu; this class does not
  * depend on eclipse.ui bundles and it can be used without a workbench.
- * 
+ *
  * Customizations of this class should provide a different overloaded
  * implementation of the method {@link #menuContributions(IStructuredSelection)}
  * : depending on the parameter, and return a different list of
  * {@link IMenuContributionSpecification} accordingly; such methods will be
  * selected polymorphically.
- * 
+ *
  * The creation of the contributions should use the internal DSL methods, e.g.,
- * 
+ *
  * <pre>
  * protected List&lt;IMenuContributionSpecification&gt; menuContributions(MyClass o) {
  * 	return Lists.newArrayList(actionUndo(), actionRedo(), separator(), actionCut(), actionCopy(), actionPaste(),
  * 			separator(), actionDelete(), separator());
  * }
- * 
+ *
  * protected List&lt;IMenuContributionSpecification&gt; menuContributions(MyOtherClass o) {
  * 	return Lists.newArrayList(actionCut(), actionCopy(), actionPaste());
  * }
  * </pre>
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  */
 public class EditingMenuBuilder {
@@ -77,7 +77,7 @@ public class EditingMenuBuilder {
 	/**
 	 * Customization for executing a lambda; it also implements
 	 * getAffectedObjects() which is crucial for dirty state handling.
-	 * 
+	 *
 	 * @author Lorenzo Bettini
 	 *
 	 * @param <T>
@@ -107,9 +107,9 @@ public class EditingMenuBuilder {
 	 * Custom implementation of doUndo to make getAffectedObjects() work
 	 * correctly in our context, see
 	 * https://bugs.eclipse.org/bugs/show_bug.cgi?id=476289
-	 * 
+	 *
 	 * @author Lorenzo Bettini
-	 * 
+	 *
 	 * @param <T>
 	 */
 	private static class CustomAddCommand<T> extends AddCommand {
@@ -163,7 +163,7 @@ public class EditingMenuBuilder {
 	 * this will be used only for checking the default "null" result for
 	 * polymorphic invocation avoiding to return null
 	 */
-	private static final List<IMenuContributionSpecification> POLYMORPHIC_NULL_RESULT = new ArrayList<IMenuContributionSpecification>();
+	private static final List<IMenuContributionSpecification> POLYMORPHIC_NULL_RESULT = new ArrayList<>();
 
 	protected List<IMenuContributionSpecification> getCurrentEmfMenuContributions() {
 		return currentEmfMenuContributions;
@@ -266,7 +266,7 @@ public class EditingMenuBuilder {
 	 * implementation of this method depending on the parameter, and return a
 	 * different list of {@link IMenuContributionSpecification} accordingly;
 	 * such methods will be selected polymorphically.
-	 * 
+	 *
 	 * @param object
 	 * @return
 	 */
@@ -276,8 +276,8 @@ public class EditingMenuBuilder {
 
 	/**
 	 * The default implementation on Object.
-	 * 
-	 * @param object
+	 *
+	 * @param object the object for which we create the control (unused by default)
 	 * @return
 	 */
 	protected List<IMenuContributionSpecification> emfMenuContributions(Object object) {
@@ -291,7 +291,7 @@ public class EditingMenuBuilder {
 	 * method depending on the parameter, and return a different list of
 	 * {@link IMenuContributionSpecification} accordingly; such methods will be
 	 * selected polymorphically.
-	 * 
+	 *
 	 * @param selection
 	 * @return
 	 */
@@ -301,8 +301,8 @@ public class EditingMenuBuilder {
 
 	/**
 	 * The default polymorphic implementation.
-	 * 
-	 * @param object
+	 *
+	 * @param object the object for which we create the control (unused by default)
 	 * @return
 	 */
 	protected List<IMenuContributionSpecification> defaultMenuContributions(Object object) {
@@ -321,7 +321,7 @@ public class EditingMenuBuilder {
 
 	/**
 	 * The default polymorphic implementation.
-	 * 
+	 *
 	 * @param selection
 	 * @return
 	 */
@@ -428,7 +428,7 @@ public class EditingMenuBuilder {
 	/**
 	 * Creates a menu contribution for an action with the given text, that will
 	 * add the specified value to the specified list, when executed.
-	 * 
+	 *
 	 * @param text
 	 * @param list
 	 * @param value
@@ -443,7 +443,7 @@ public class EditingMenuBuilder {
 	 * add the specified value to the specified list, when executed; the passed
 	 * addedObjectInizialier will be executed after the object has been added to
 	 * the specified list.
-	 * 
+	 *
 	 * @param text
 	 * @param list
 	 * @param value
@@ -455,18 +455,18 @@ public class EditingMenuBuilder {
 		AddCommand addCommand = addCommand(list, value);
 		addCommand.setDescription(text);
 		return new MenuActionContributionSpecification(
-				new EmfCommandAction<T>(text, getEditingDomain(), addCommand, addedObjectInitialier));
+				new EmfCommandAction<>(text, getEditingDomain(), addCommand, addedObjectInitialier));
 	}
 
 	/**
 	 * Creates a command for adding the specified value to the specified list.
-	 * 
+	 *
 	 * @param list
 	 * @param value
 	 * @return
 	 */
 	protected <T> AddCommand addCommand(EList<? super T> list, T value) {
-		return new CustomAddCommand<T>(getEditingDomain(), list, value);
+		return new CustomAddCommand<>(getEditingDomain(), list, value);
 	}
 
 	/**
@@ -474,7 +474,7 @@ public class EditingMenuBuilder {
 	 * modify the model, when executed, by running the passed lambda
 	 * changeImplementation; the specified element will be passed to the lambda
 	 * and represents the model's element that will be changed.
-	 * 
+	 *
 	 * All modifications that concern such element will be recorded so that
 	 * undo/redo will work. Important: only the changes concerning the element
 	 * will be recorded: if during the modification you also change other
@@ -483,7 +483,7 @@ public class EditingMenuBuilder {
 	 * the element (you can even specify its Resource to keep track of all the
 	 * changes in the object's resource). However, recall that the element you
 	 * specify is the argument passed to the lamba.
-	 * 
+	 *
 	 * @param text
 	 * @param element
 	 * @param changeImplementation
@@ -494,31 +494,31 @@ public class EditingMenuBuilder {
 		ChangeCommand changeCommand = changeCommand(element, changeImplementation);
 		changeCommand.setDescription(text);
 		return new MenuActionContributionSpecification(
-				new EmfCommandAction<T>(text, getEditingDomain(), changeCommand));
+				new EmfCommandAction<>(text, getEditingDomain(), changeCommand));
 	}
 
 	/**
 	 * Creates a command for modifying the element, tracking all the changes
 	 * that concern such element in order to implement undo/redo.
-	 * 
+	 *
 	 * @param element
 	 * @param changeImplementation
 	 * @return
 	 */
 	protected <T extends Notifier> ChangeCommand changeCommand(final T element,
 			final IAcceptor<T> changeImplementation) {
-		return new CustomChangeCommand<T>(element, changeImplementation);
+		return new CustomChangeCommand<>(element, changeImplementation);
 	}
 
 	/**
 	 * Creates the standard EMF "new child" action contributions
-	 * 
+	 *
 	 * @param selection
 	 * @return
 	 */
 	public List<IMenuContributionSpecification> createChildActions(ISelection selection) {
 		Collection<?> descriptors = getDescriptors(selection, false);
-		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
+		List<IMenuContributionSpecification> actions = new ArrayList<>();
 
 		for (Object descriptor : descriptors) {
 			CreateChildAction act = new CreateChildAction(getEditingDomain(), selection, descriptor);
@@ -532,13 +532,13 @@ public class EditingMenuBuilder {
 
 	/**
 	 * Creates the standard EMF "new sibling" action contributions
-	 * 
+	 *
 	 * @param selection
 	 * @return
 	 */
 	public List<IMenuContributionSpecification> createSiblingActions(ISelection selection) {
 		Collection<?> descriptors = getDescriptors(selection, true);
-		List<IMenuContributionSpecification> actions = new ArrayList<IMenuContributionSpecification>();
+		List<IMenuContributionSpecification> actions = new ArrayList<>();
 
 		for (Object descriptor : descriptors) {
 			CreateSiblingAction act = new CreateSiblingAction(getEditingDomain(), selection, descriptor);
@@ -550,7 +550,7 @@ public class EditingMenuBuilder {
 		return actions;
 	}
 
-	protected Collection<?> getDescriptors(ISelection selection, boolean siblings) {
+	protected Collection<?> getDescriptors(ISelection selection, boolean siblings) { // NOSONAR Collection<?> is implied by the method from EMF
 		final Object firstSelectedElement = selectionHelper.getFirstSelectedElement(selection);
 		if (getEditingDomain() == null) {
 			return Collections.emptyList();

@@ -6,7 +6,7 @@ package org.eclipse.emf.parsley.runtime.service;
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * @author Heiko Behrens - Initial contribution and API
  * @author Sven Efftinge
@@ -30,7 +30,7 @@ import com.google.inject.name.Names;
  */
 public abstract class AbstractGenericModule implements Module {
 
-	private static Logger LOGGER = Logger.getLogger(AbstractGenericModule.class);
+	private static final Logger LOGGER = Logger.getLogger(AbstractGenericModule.class);
 
 	@Override
 	public void configure(Binder binder) {
@@ -54,7 +54,7 @@ public abstract class AbstractGenericModule implements Module {
 
 					}
 				} else if (method.getName().startsWith(FieldSetterModule.METHOD_PREFIX)) {
-					if (!method.getName().equals(FieldSetterModule.METHOD_PREFIX) 
+					if (!method.getName().equals(FieldSetterModule.METHOD_PREFIX)
 							&& method.getParameterTypes().length == 0) {
 						result.add(new FieldSetterModule(method, this));
 					}
@@ -89,8 +89,9 @@ public abstract class AbstractGenericModule implements Module {
 				properties.load(in);
 				Names.bindProperties(binder, properties);
 				return properties;
-			} else
+			} else {
 				return null;
+			}
 		} catch (IOException e) {
 			return null;
 		}

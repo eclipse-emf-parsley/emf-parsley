@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  * Lorenzo Bettini - https://bugs.eclipse.org/bugs/show_bug.cgi?id=479683
@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 
 /**
  * This assumes that the objects of the table are {@link EObject}s.
- * 
+ *
  * @author Francesco Guidieri - initial API and implementation
  *
  */
@@ -38,7 +38,7 @@ public class TableViewerEditableColumnBuilder extends TableViewerColumnBuilder {
 		TableViewerColumn viewerColumn= super.buildTableViewerColumn(tableViewer, layout,
 				eClass, eStructuralFeature, weight);
 
-		TableViewerEditingSupport editingSupport = 
+		TableViewerEditingSupport editingSupport =
 				editingSupportFactory.createTableViewerEditingSupport(tableViewer, eStructuralFeature);
 		viewerColumn.setEditingSupport(editingSupport);
 

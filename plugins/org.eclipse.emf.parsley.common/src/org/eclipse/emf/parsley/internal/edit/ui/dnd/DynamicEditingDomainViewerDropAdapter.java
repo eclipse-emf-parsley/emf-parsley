@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -23,10 +23,10 @@ import com.google.inject.Inject;
 /**
  * A specialization of {@link EditingDomainViewerDropAdapter} that retrieves the
  * editing domain dynamically from the object that is being dragged and dropped.
- * 
+ *
  * @noextend This class is not intended to be subclassed by clients.
  * @noinstantiate This class is not intended to be instantiated by clients.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */

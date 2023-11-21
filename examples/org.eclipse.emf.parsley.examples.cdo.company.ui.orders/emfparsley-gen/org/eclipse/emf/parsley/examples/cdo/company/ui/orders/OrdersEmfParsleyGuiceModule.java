@@ -13,7 +13,7 @@ public class OrdersEmfParsleyGuiceModule extends CompanyGuiceModule {
   public OrdersEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return OrdersLabelProvider.class;

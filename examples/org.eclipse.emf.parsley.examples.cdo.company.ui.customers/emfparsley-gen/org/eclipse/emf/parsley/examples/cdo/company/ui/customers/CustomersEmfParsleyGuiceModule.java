@@ -15,12 +15,12 @@ public class CustomersEmfParsleyGuiceModule extends CompanyGuiceModule {
   public CustomersEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return CustomersLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
     return CustomersViewerContentProvider.class;

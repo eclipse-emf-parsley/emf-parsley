@@ -23,8 +23,8 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
    </license>
 
    <requires>
-      <import feature="org.eclipse.xtext.xbase" version="2.15.0" match="equivalent"/>
-      <import feature="org.eclipse.xtext.ui" version="2.15.0" match="equivalent"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.33.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.ui" version="2.33.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

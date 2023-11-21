@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -31,10 +31,10 @@ import org.eclipse.swt.widgets.Tree;
 public class EmfTreeEditor extends EmfAbstractEditor {
 
 	/**
-	 * 
+	 *
 	 */
 	public EmfTreeEditor() {
-
+		// nothing to do
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class EmfTreeEditor extends EmfAbstractEditor {
 		createAdapterFactoryTreeEditor(emfTreeViewer);
 
 		createContextMenuFor(selectionViewer);
-		
+
 		selectionViewer.addSelectionChangedListener(createSelectionChangedListener());
 
 		int pageIndex = addPage(tree);
@@ -102,7 +102,7 @@ public class EmfTreeEditor extends EmfAbstractEditor {
 	/**
 	 * This looks up a string in the plugin's plugin.properties file. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static String getString(String key) {

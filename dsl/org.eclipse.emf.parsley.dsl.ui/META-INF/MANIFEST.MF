@@ -19,8 +19,6 @@ Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
  org.eclipse.compare;bundle-version="3.5.0",
  org.eclipse.core.runtime;bundle-version="3.5.0",
  org.eclipse.core.resources;bundle-version="3.5.0",
- org.eclipse.xtend,
- org.eclipse.xpand,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.eclipse.emf.parsley.views,
  org.eclipse.emf.parsley.generator.common,
@@ -28,12 +26,12 @@ Require-Bundle: org.eclipse.emf.parsley.dsl;visibility:=reexport,
  org.objectweb.asm;bundle-version="5.0.1",
  org.eclipse.jdt.debug.ui,
  org.eclipse.emf.parsley.dsl.additional.builder,
- org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.xtend.lib;bundle-version="2.14.0";resolution:=optional,
  org.eclipse.emf.parsley.dsl.ide
 Import-Package: org.apache.log4j,
  org.eclipse.pde.internal.ui.parts,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.emf.parsley.dsl.ui.contentassist,
  org.eclipse.emf.parsley.dsl.ui.internal,
  org.eclipse.emf.parsley.dsl.ui.quickfix,

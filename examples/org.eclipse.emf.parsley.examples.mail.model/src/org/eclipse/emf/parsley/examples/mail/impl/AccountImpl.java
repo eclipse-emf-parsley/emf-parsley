@@ -1,14 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail.impl;
-
 
 import java.util.Collection;
 
@@ -25,6 +17,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.parsley.examples.mail.Account;
 import org.eclipse.emf.parsley.examples.mail.Folder;
 import org.eclipse.emf.parsley.examples.mail.MailPackage;
@@ -35,12 +28,12 @@ import org.eclipse.emf.parsley.examples.mail.MailPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.AccountImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.AccountImpl#getEmail <em>Email</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.AccountImpl#getFolders <em>Folders</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -119,6 +112,7 @@ public class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -128,6 +122,7 @@ public class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -140,6 +135,7 @@ public class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEmail() {
 		return email;
 	}
@@ -149,6 +145,7 @@ public class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEmail(String newEmail) {
 		String oldEmail = email;
 		email = newEmail;
@@ -161,6 +158,7 @@ public class AccountImpl extends EObjectImpl implements Account {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Folder> getFolders() {
 		if (folders == null) {
 			folders = new EObjectContainmentEList<Folder>(Folder.class, this, MailPackage.ACCOUNT__FOLDERS);
@@ -271,7 +269,7 @@ public class AccountImpl extends EObjectImpl implements Account {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", email: ");

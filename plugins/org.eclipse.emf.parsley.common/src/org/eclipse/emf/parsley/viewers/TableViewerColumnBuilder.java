@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -35,7 +35,7 @@ import com.google.inject.name.Named;
  * Sets the columns of a TableViewer according to an EClass (adds a column for
  * each feature of the EClass, retrieved using an injected
  * {@link TableFeaturesProvider}).
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  * @author Francesco Guidieri - Sorting
  */
@@ -65,7 +65,7 @@ public class TableViewerColumnBuilder {
 	 * Setups the columns of the given tableViewer using the features of the
 	 * given eClass; the features are retrieved using an injected
 	 * {@link TableFeaturesProvider}.
-	 * 
+	 *
 	 * @param tableViewer
 	 * @param eClass
 	 * @param contentProvider
@@ -117,7 +117,7 @@ public class TableViewerColumnBuilder {
 
 	private SelectionAdapter getSelectionAdapter(final TableViewer viewer, final TableColumn column,
 			final int index) {
-		SelectionAdapter selectionAdapter = new SelectionAdapter() {
+		return new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				EObjectTableViewerComparator comparator = (EObjectTableViewerComparator) viewer.getComparator();
@@ -128,6 +128,5 @@ public class TableViewerColumnBuilder {
 				viewer.refresh();
 			}
 		};
-		return selectionAdapter;
 	}
 }

@@ -16,15 +16,13 @@ import org.eclipse.core.resources.IProject
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider
 import org.eclipse.emf.parsley.dsl.tests.util.ui.PluginProjectHelper
 import org.eclipse.emf.parsley.dsl.tests.util.ui.TestableEmfParsleyDslNewProjectWizard
-import org.eclipse.emf.parsley.tests.pde.utils.PDETargetPlatformUtils
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.jface.wizard.Wizard
 import org.eclipse.jface.wizard.WizardDialog
 import org.eclipse.ui.PlatformUI
-import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.junit.BeforeClass
+import org.eclipse.xtext.ui.testing.AbstractWorkbenchTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -40,8 +38,6 @@ import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.*
 class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 
 	@Inject Provider<TestableEmfParsleyDslNewProjectWizard> wizardProvider
-
-	@Inject PluginProjectHelper projectHelper
 
 	val TEST_MODULE = TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + "/" +
 		TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT.toFirstUpper + ".parsley"
@@ -80,14 +76,9 @@ class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 //		projectHelper.clearJdtIndex
 //	}
 
-	@BeforeClass
-	def static void beforeClass() {
-		PDETargetPlatformUtils.setTargetPlatform();
-	}
-
 	@Test def void testEmfParsleyDslNewProjectWizard() {
 		createProjectWithNewProjectWizard
-		projectHelper.assertNoErrors
+		PluginProjectHelper.assertNoErrors
 	}
 
 	@Test def void testPluginXmlGeneration() {

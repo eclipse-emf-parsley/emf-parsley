@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Parsley DSL UI tests Project
+Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.ui.tests.project
+Bundle-Version: 2.0.0.qualifier
+Bundle-Vendor: EMF Parsley
+Automatic-Module-Name: org.eclipse.emf.parsley.dsl.ui.tests.project
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.emf.parsley.views,
+ org.eclipse.xtext.xbase.lib

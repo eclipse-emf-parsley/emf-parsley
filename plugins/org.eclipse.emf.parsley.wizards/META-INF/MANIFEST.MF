@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.jdt.core;bundle-version="3.7.1",
  org.eclipse.core.runtime;bundle-version="3.5.0",
  org.eclipse.core.resources;bundle-version="3.5.0",
  org.eclipse.emf.parsley.generator.common
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.parsley.wizards
 Import-Package: org.apache.log4j

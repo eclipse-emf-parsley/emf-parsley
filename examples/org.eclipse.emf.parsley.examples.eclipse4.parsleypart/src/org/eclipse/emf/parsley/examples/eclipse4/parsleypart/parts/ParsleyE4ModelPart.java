@@ -11,9 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.examples.eclipse4.parsleypart.parts;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -27,6 +24,9 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Injector;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.inject.Inject;
+
 public class ParsleyE4ModelPart {
 
 	private TreeFormComposite treeFormComposite;
@@ -36,6 +36,7 @@ public class ParsleyE4ModelPart {
 
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+		System.out.println("ParsleyE4ModelPart: postConstruct start");
 		// Guice injector
 		Injector injector = ParsleypartInjectorProvider.getInjector();
 		// Guice injected EMF Parsley factory for the tree detail form
@@ -59,6 +60,7 @@ public class ParsleyE4ModelPart {
 
 		// 4) fill the data
 		treeFormComposite.update(application);
+		System.out.println("ParsleyE4ModelPart: postConstruct done");
 	}
 
 	@Focus

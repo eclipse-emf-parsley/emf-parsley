@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - Initial contribution and API
  *******************************************************************************/
@@ -20,7 +20,7 @@ import org.junit.runners.model.Statement;
 /**
  * A Junit {@link TestRule} for executing tests that need a {@link Display}
  * and a {@link Shell} as plain Junit tests (that is, not as Plug-in tests).
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -28,7 +28,7 @@ public class DisplayHelperTestRule implements TestRule {
 
 	private boolean displayOwner;
 	private Display display;
-	
+
 	private Shell shell;
 
 	public DisplayHelperTestRule() {
@@ -49,7 +49,7 @@ public class DisplayHelperTestRule implements TestRule {
 
 		return shell;
 	}
-	
+
 	public Shell createShell() {
 		return createShell(SWT.NONE);
 	}
@@ -59,9 +59,9 @@ public class DisplayHelperTestRule implements TestRule {
 	}
 
 	public void flushPendingEvents() {
-		while (Display.getCurrent() != null
-				&& !Display.getCurrent().isDisposed()
-				&& Display.getCurrent().readAndDispatch()) {
+		while (display != null
+				&& !display.isDisposed()
+				&& display.readAndDispatch()) {
 		}
 	}
 

@@ -8,7 +8,7 @@ public class FirstexampleFeatureCaptionProvider extends FeatureCaptionProvider {
   public String text_Book_author(final EStructuralFeature it) {
     return "Written by:";
   }
-  
+
   public String text_Writer_name(final EStructuralFeature it) {
     return "Name:";
   }

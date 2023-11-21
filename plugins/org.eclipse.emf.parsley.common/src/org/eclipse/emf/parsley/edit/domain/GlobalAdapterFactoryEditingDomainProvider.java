@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -15,7 +15,7 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 /**
  * This ensures that only one instance of {@link AdapterFactoryEditingDomain}
  * will be used in the same JVM.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -26,7 +26,7 @@ public class GlobalAdapterFactoryEditingDomainProvider extends DefaultAdapterFac
 	@Override
 	public AdapterFactoryEditingDomain get() {
 		if (singleton == null) {
-			singleton = super.get();
+			singleton = super.get(); // NOSONAR we have to use a static field in an instance method
 		}
 		return singleton;
 	}

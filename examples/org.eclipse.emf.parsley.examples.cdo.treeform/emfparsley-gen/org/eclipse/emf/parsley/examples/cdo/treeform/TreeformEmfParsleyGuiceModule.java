@@ -15,12 +15,12 @@ public class TreeformEmfParsleyGuiceModule extends CDOEmfParsleyModule {
   public TreeformEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
     return TreeformCDOResourceManager.class;
   }
-  
+
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return TreeformFeaturesProvider.class;

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,7 +21,7 @@ import com.google.inject.Inject;
 /**
  * Before saving the {@link Resource} it validates it, and effectively save it
  * only if there are no errors.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
@@ -42,6 +42,6 @@ public class ValidateBeforeSaveStrategy extends ResourceSaveStrategy {
 	}
 
 	protected boolean precondition(Resource resource) {
-		return validationRunner.validate(resource, issueReporter).size() == 0;
+		return validationRunner.validate(resource, issueReporter).isEmpty();
 	}
 }

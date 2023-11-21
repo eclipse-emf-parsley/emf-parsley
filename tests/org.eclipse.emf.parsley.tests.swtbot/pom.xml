@@ -12,7 +12,11 @@
 
 	<artifactId>org.eclipse.emf.parsley.tests.swtbot</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-	
+
+	<properties>
+		<specialTestArguments>${swtbotTestsArgs}</specialTestArguments>
+	</properties>
+
 	<profiles>
 		<profile>
 			<id>macosx-jvm-flags</id>
@@ -21,40 +25,41 @@
 					<family>mac</family>
 				</os>
 			</activation>
-			<properties>
-				<os-jvm-flags>-XstartOnFirstThread</os-jvm-flags>
-			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<configuration>
+							<dependency-resolution>
+								<extraRequirements combine.children="append">
+									<!-- This allows us to take the fragment org.eclipse.jdt.launching.macosx
+										See https://github.com/LorenzoBettini/jbase/issues/3 
+										https://www.eclipse.org/forums/index.php/t/1073366/ -->
+									<requirement>
+										<type>eclipse-feature</type>
+										<id>org.eclipse.jdt</id>
+										<versionRange>0.0.0</versionRange>
+									</requirement>
+								</extraRequirements>
+							</dependency-resolution>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
 				<executions>
 					<execution>
 						<id>default-test</id>
 						<phase>integration-test</phase>
 						<configuration>
-							<skip>${swtbot.tests.skip}</skip>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>false</useUIThread>
-							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
-							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</exclude>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</exclude>
@@ -63,29 +68,17 @@
 							<includes>
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*Test*.java</include>
 							</includes>
-							<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
-								http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
-							<environmentVariables>
-								<SWT_GTK3>0</SWT_GTK3>
-							</environmentVariables>
 						</configuration>
 						<goals>
 							<goal>test</goal>
 						</goals>
 					</execution>
 					<execution>
-						<!-- In Hudson DragAndDrop tests seem to be "disturbed" by other tests,
+						<!-- In CI DragAndDrop tests seem to be "disturbed" by other tests,
 							so we run them in an isolated run. -->
 						<id>draganddrop-test</id>
 						<phase>integration-test</phase>
 						<configuration>
-							<skip>${swtbot.tests.skip}</skip>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>false</useUIThread>
-							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${swtbotTestsArgs}</argLine>
-							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</exclude>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</exclude>
@@ -93,11 +86,6 @@
 							<includes>
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*DropTest*.java</include>
 							</includes>
-							<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
-								http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
-							<environmentVariables>
-								<SWT_GTK3>0</SWT_GTK3>
-							</environmentVariables>
 						</configuration>
 						<goals>
 							<goal>test</goal>
@@ -106,15 +94,7 @@
 					<execution>
 						<id>PDEBasedTests</id>
 						<phase>integration-test</phase>
-						<!-- These tests required PDE and must pass -DbuildingWithTycho=true -->
 						<configuration>
-							<skip>${swtbot.tests.skip}</skip>
-							<useUIHarness>true</useUIHarness>
-							<useUIThread>false</useUIThread>
-							<!-- tycho.testArgLine repeated to re-use the configuration for argLine 
-								for jacoco agent -->
-							<argLine>${tycho.testArgLine} ${pdeTestsArgs} ${swtbotTestsArgs}</argLine>
-							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
 								<exclude>**/org/eclipse/emf/parsley/tests/swtbot/*AbstractTest*.java</exclude>
 							</excludes>
@@ -122,23 +102,30 @@
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</include>
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</include>
 							</includes>
-							<environmentVariables>
-								<SWT_GTK3>0</SWT_GTK3>
-							</environmentVariables>
 						</configuration>
 						<goals>
 							<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<skip>${swtbot.tests.skip}</skip>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<!-- Disable GTK3 with Luna because it makes the test hang (bug in IcedTea 
+						http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1736) -->
+					<environmentVariables>
+						<SWT_GTK3>0</SWT_GTK3>
+					</environmentVariables>
+				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<dependency-resolution>
-						<extraRequirements>
+						<extraRequirements combine.children="append">
 							<requirement>
 								<type>eclipse-feature</type>
 								<id>org.eclipse.emf.parsley.tests.swtbot.feature</id>

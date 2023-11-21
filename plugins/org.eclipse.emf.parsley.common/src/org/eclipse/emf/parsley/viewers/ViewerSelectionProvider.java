@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -22,9 +22,9 @@ import org.eclipse.jface.viewers.Viewer;
 /**
  * A utility class that bridges a {@link Viewer} and a
  * {@link ISelectionProvider}.
- * 
+ *
  * @author Lorenzo Bettini
- * 
+ *
  */
 public class ViewerSelectionProvider implements ISelectionProvider {
 
@@ -33,7 +33,7 @@ public class ViewerSelectionProvider implements ISelectionProvider {
 	 * {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
 	 * listening.
 	 */
-	private Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
+	private Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<>();
 
 	private Viewer viewer;
 
@@ -68,12 +68,6 @@ public class ViewerSelectionProvider implements ISelectionProvider {
 	}
 
 	protected ISelectionChangedListener createSelectionChangedListener() {
-		return new ISelectionChangedListener() {
-			@Override
-			public void selectionChanged(
-					SelectionChangedEvent selectionChangedEvent) {
-				setSelection(selectionChangedEvent.getSelection());
-			}
-		};
+		return selectionChangedEvent -> setSelection(selectionChangedEvent.getSelection());
 	}
 }

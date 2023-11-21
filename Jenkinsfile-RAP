@@ -1,0 +1,40 @@
+pipeline {
+  agent {
+    kubernetes {
+      inheritFrom 'centos-7'
+    }
+  }
+  
+  options {
+    buildDiscarder(logRotator(numToKeepStr:'20'))
+    disableConcurrentBuilds()
+    timeout(time: 300, unit: 'MINUTES')
+  }
+
+  tools {
+     jdk "openjdk-jdk17-latest"
+  }
+
+  stages {
+    stage('Build') {
+      steps {
+        sh """
+          ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml -Prap-build clean verify
+        """
+      }
+    }
+    stage('Build Example') {
+      steps {
+        sh """
+          ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml -Prap-examples clean verify
+        """
+      }
+    }
+  }
+
+  post {
+    success {
+      archiveArtifacts artifacts: 'target/repository/, **/target/work/data/.metadata/.log'
+    }
+  }
+}

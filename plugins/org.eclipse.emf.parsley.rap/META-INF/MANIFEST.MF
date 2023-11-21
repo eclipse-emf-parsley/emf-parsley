@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
+Automatic-Module-Name: org.eclipse.emf.parsley.rap
 Bundle-Name: EMF Parsley
 Bundle-SymbolicName: org.eclipse.emf.parsley.rap
 Bundle-Version: 2.0.0.qualifier
@@ -15,5 +16,5 @@ Require-Bundle: org.eclipse.emf.databinding.edit;bundle-version="1.2.0";visibili
  org.eclipse.rap.jface.databinding;visibility:=reexport,
  org.eclipse.emf.parsley.common;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: Eclipse Modeling Project

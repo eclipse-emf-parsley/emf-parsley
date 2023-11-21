@@ -28,47 +28,47 @@ public class FirstexampleEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public FirstexampleEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends IEditingStrategy> bindIEditingStrategy() {
     return UndoableEditingStrategy.class;
   }
-  
+
   @Override
   public int valueTreeFormSashStyle() {
     return SWT.HORIZONTAL;
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return FirstexampleLabelProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
     return FirstexampleFeatureCaptionProvider.class;
   }
-  
+
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return FirstexampleFeaturesProvider.class;
   }
-  
+
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
     return FirstexampleViewerContentProvider.class;
   }
-  
+
   @Override
   public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
     return FirstexampleMenuBuilder.class;
   }
-  
+
   @Override
   public Class<? extends Configurator> bindConfigurator() {
     return FirstexampleConfigurator.class;
   }
-  
+
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
     return FirstexampleResourceManager.class;

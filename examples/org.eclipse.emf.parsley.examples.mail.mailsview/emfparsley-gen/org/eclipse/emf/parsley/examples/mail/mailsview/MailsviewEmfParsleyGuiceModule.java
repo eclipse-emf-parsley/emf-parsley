@@ -15,12 +15,12 @@ public class MailsviewEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public MailsviewEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return MailsviewFeaturesProvider.class;
   }
-  
+
   @Override
   public Class<? extends Configurator> bindConfigurator() {
     return MailsviewConfigurator.class;

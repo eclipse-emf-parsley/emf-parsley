@@ -15,7 +15,7 @@ public class ProductsViewerContentProvider extends ViewerContentProvider {
   public ProductsViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
-  
+
   public Object elements(final Resource it) {
     EList<Category> _xifexpression = null;
     int _size = it.getContents().size();

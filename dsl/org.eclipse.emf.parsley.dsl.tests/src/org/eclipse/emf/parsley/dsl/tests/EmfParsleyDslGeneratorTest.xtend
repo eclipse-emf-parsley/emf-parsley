@@ -65,13 +65,12 @@ package my.empty;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import my.empty.EmptyEmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.runtime.ui.PluginUtil;
 
 @SuppressWarnings("all")
 public class EmptyInjectorProvider {
   private static Injector injector;
-  
+
   public static synchronized Injector getInjector() {
     if (injector == null) {
       injector = Guice.createInjector(
@@ -172,7 +171,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return EmptyLabelProvider.class;
@@ -216,7 +215,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
     return EmptyFeatureCaptionProvider.class;
@@ -293,27 +292,27 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
   public EmptyLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
-  
+
   public String text(final Library it) {
     return "foo";
   }
-  
+
   public String text(final Writer writer) {
     String _name = writer.getName();
     return _name;
   }
-  
+
   public String text(final Book it) {
     String _title = it.getTitle();
     return _title;
   }
-  
+
   public String text(final Lendable it) {
     int _copies = it.getCopies();
     String _plus = ("copies: " + Integer.valueOf(_copies));
     return _plus;
   }
-  
+
   public String text(final Borrower it) {
     String _xblockexpression = null;
     {
@@ -329,16 +328,16 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
     }
     return _xblockexpression;
   }
-  
+
   public String text(final BookOnTape it) {
     String _title = it.getTitle();
     return _title;
   }
-  
+
   public Object image(final Library it) {
     return "library.jpeg";
   }
-  
+
   public Object image(final Writer writer) {
     Object _xifexpression = null;
     boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(writer.getName());
@@ -349,17 +348,17 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
     }
     return _xifexpression;
   }
-  
+
   public Font font(final Library it) {
     Font _bold = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
     return _bold;
   }
-  
+
   public Color foreground(final Library it) {
     Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     return _systemColor;
   }
-  
+
   public Color background(final Library it) {
     Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
     return _systemColor;
@@ -417,28 +416,28 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 public class EmptyLabelProvider extends ViewerLabelProvider {
   @Inject
   private ILabelProvider parentLabelProvider;
-  
+
   public ILabelProvider getParentLabelProvider() {
     return this.parentLabelProvider;
   }
-  
+
   public void setParentLabelProvider(final ILabelProvider parentLabelProvider) {
     this.parentLabelProvider = parentLabelProvider;
   }
-  
+
   @Extension
   private final TestExtensions myExtensions = new TestExtensions();
-  
+
   public TestExtensions getMyExtensions() {
     return this.myExtensions;
   }
-  
+
   private final TestExtensions2 myExtensions2 = new TestExtensions2();
-  
+
   public TestExtensions2 getMyExtensions2() {
     return this.myExtensions2;
   }
-  
+
   private final List<String> listOfString = ObjectExtensions.<ArrayList<String>>operator_doubleArrow(new ArrayList<String>(), new Procedure1<ArrayList<String>>() {
     @Override
     public void apply(final ArrayList<String> it) {
@@ -446,16 +445,16 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
       it.add("second");
     }
   });
-  
+
   public List<String> getListOfString() {
     return this.listOfString;
   }
-  
+
   @Inject
   public EmptyLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
-  
+
   public String text(final Library it) {
     final ArrayList<Object> myList = new ArrayList<Object>();
     this.myExtensions.printList(myList);
@@ -500,16 +499,16 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   public String text_Library_name(final Library it) {
     return "Name";
   }
-  
+
   public String text_Library_books(final Library it) {
     return "Books";
   }
-  
+
   public String text_Writer_lastName(final Writer it) {
     String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
-  
+
   public Object image_Book_author(final Book it) {
     Object _xifexpression = null;
     boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(it.getAuthor().getName());
@@ -520,32 +519,32 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
     }
     return _xifexpression;
   }
-  
+
   public Font font_Library_name(final Library it) {
     Font _bold = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
     return _bold;
   }
-  
+
   public Color foreground_Library_books(final Library it) {
     Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     return _systemColor;
   }
-  
+
   public Color background_Library_address(final Library it) {
     Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
     return _systemColor;
   }
-  
+
   public Font rowFont(final Library it) {
     Font _bold = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
     return _bold;
   }
-  
+
   public Color rowForeground(final Library it) {
     Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     return _systemColor;
   }
-  
+
   public Color rowBackground(final Library it) {
     Color _systemColor = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
     return _systemColor;
@@ -595,11 +594,11 @@ import org.eclipse.jface.viewers.ILabelProvider;
 public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   @Inject
   private ILabelProvider parentLabelProvider;
-  
+
   public ILabelProvider getParentLabelProvider() {
     return this.parentLabelProvider;
   }
-  
+
   public void setParentLabelProvider(final ILabelProvider parentLabelProvider) {
     this.parentLabelProvider = parentLabelProvider;
   }
@@ -631,7 +630,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
     return EmptyFeatureCaptionProvider.class;
@@ -651,11 +650,11 @@ public class EmptyFeatureCaptionProvider extends FeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
-  
+
   public String text_Library_books(final EStructuralFeature it) {
     return "Books";
   }
-  
+
   public String text_Writer_lastName(final EStructuralFeature it) {
     String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
@@ -683,7 +682,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends FeatureCaptionProvider> bindFeatureCaptionProvider() {
     return EmptyFeatureCaptionProvider.class;
@@ -703,7 +702,7 @@ public class EmptyFeatureCaptionProvider extends TestFeatureCaptionProvider {
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
-  
+
   public String text_Writer_lastName(final EStructuralFeature it) {
     String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
@@ -731,7 +730,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends FormFeatureCaptionProvider> bindFormFeatureCaptionProvider() {
     return EmptyFormFeatureCaptionProvider.class;
@@ -764,26 +763,26 @@ public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider 
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
-  
+
   public String text_Library_books(final EStructuralFeature it) {
     return "Books";
   }
-  
+
   public String text_Writer_lastName(final EStructuralFeature it) {
     String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
-  
+
   public Label label_Library_name(final Composite parent, final EStructuralFeature it) {
     Label _createLabel = this.createLabel(parent, "Name");
     return _createLabel;
   }
-  
+
   public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
     Label _createLabel = this.createLabel(parent, EXTLibraryPackage.eINSTANCE.getLibrary(), EXTLibraryPackage.eINSTANCE.getLibrary_Books());
     return _createLabel;
   }
-  
+
   public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
     Label _label = new Label(parent, SWT.NONE);
     final Procedure1<Label> _function = new Procedure1<Label>() {
@@ -840,7 +839,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends DialogFeatureCaptionProvider> bindDialogFeatureCaptionProvider() {
     return EmptyDialogFeatureCaptionProvider.class;
@@ -866,26 +865,26 @@ public class EmptyDialogFeatureCaptionProvider extends DialogFeatureCaptionProvi
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
-  
+
   public String text_Library_books(final EStructuralFeature it) {
     return "Books";
   }
-  
+
   public String text_Writer_lastName(final EStructuralFeature it) {
     String _firstUpper = StringExtensions.toFirstUpper(it.getName());
     return _firstUpper;
   }
-  
+
   public Label label_Library_name(final Composite parent, final EStructuralFeature it) {
     Label _createLabel = this.createLabel(parent, "Name");
     return _createLabel;
   }
-  
+
   public Label label_Library_books(final Composite parent, final EStructuralFeature it) {
     Label _createLabel = this.createLabel(parent, EXTLibraryPackage.eINSTANCE.getLibrary(), EXTLibraryPackage.eINSTANCE.getLibrary_Books());
     return _createLabel;
   }
-  
+
   public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
     Label _label = new Label(parent, SWT.NONE);
     final Procedure1<Label> _function = new Procedure1<Label>() {
@@ -936,7 +935,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends FeaturesProvider> bindFeaturesProvider() {
     return EmptyFeaturesProvider.class;
@@ -1007,7 +1006,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
     return EmptyTableFeaturesProvider.class;
@@ -1078,7 +1077,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends FormControlFactory> bindFormControlFactory() {
     return EmptyFormControlFactory.class;
@@ -1119,19 +1118,19 @@ public class EmptyFormControlFactory extends FormControlFactory {
   public Control control_Library_name(final Library it) {
     return null;
   }
-  
+
   public Control control_Writer_books(final Writer it) {
     final Function1<Book, String> _function = new Function1<Book, String>() {
       @Override
-      public String apply(final Book it) {
-        return it.getTitle();
+      public String apply(final Book it_1) {
+        return it_1.getTitle();
       }
     };
     Label _createLabel = this.createLabel(
       IterableExtensions.join(ListExtensions.<Book, String>map(it.getBooks(), _function), ", "));
     return _createLabel;
   }
-  
+
   public Control control_Writer_name(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_name();
     bindValue(
@@ -1140,15 +1139,15 @@ public class EmptyFormControlFactory extends FormControlFactory {
     	observableValue);
     return control;
   }
-  
+
   protected Control createControl_Writer_name() {
     return this.createLabel(this.getParent(), "");
   }
-  
+
   protected IObservableValue createTarget_Writer_name(final Control it) {
     return DatabindingUtil.observeText(it);
   }
-  
+
   public Control control_Writer_firstName(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_firstName();
     bindValue(
@@ -1157,17 +1156,17 @@ public class EmptyFormControlFactory extends FormControlFactory {
     	observableValue);
     return control;
   }
-  
+
   protected Control createControl_Writer_firstName() {
     Label _createLabel = this.getFormToolkit().createLabel(this.getParent(), "");
     return _createLabel;
   }
-  
+
   protected IObservableValue createTarget_Writer_firstName(final Control it) {
     ISWTObservableValue _observeText = DatabindingUtil.observeText(it, SWT.Modify);
     return _observeText;
   }
-  
+
   public Control control_Borrower_firstName(final Borrower it) {
     return this.createText(it.getFirstName(), SWT.MULTI, SWT.BORDER, 
       SWT.WRAP, SWT.V_SCROLL);
@@ -1220,7 +1219,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends DialogControlFactory> bindDialogControlFactory() {
     return EmptyDialogControlFactory.class;
@@ -1260,19 +1259,19 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
   public Control control_Library_name(final Library it) {
     return null;
   }
-  
+
   public Control control_Writer_books(final Writer it) {
     final Function1<Book, String> _function = new Function1<Book, String>() {
       @Override
-      public String apply(final Book it) {
-        return it.getTitle();
+      public String apply(final Book it_1) {
+        return it_1.getTitle();
       }
     };
     Label _createLabel = this.createLabel(
       IterableExtensions.join(ListExtensions.<Book, String>map(it.getBooks(), _function), ", "));
     return _createLabel;
   }
-  
+
   public Control control_Writer_name(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_name();
     bindValue(
@@ -1281,15 +1280,15 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
     	observableValue);
     return control;
   }
-  
+
   protected Control createControl_Writer_name() {
     return this.createLabel(this.getParent(), "");
   }
-  
+
   protected IObservableValue createTarget_Writer_name(final Control it) {
     return DatabindingUtil.observeText(it);
   }
-  
+
   public Control control_Writer_firstName(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_Writer_firstName();
     bindValue(
@@ -1298,17 +1297,17 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
     	observableValue);
     return control;
   }
-  
+
   protected Control createControl_Writer_firstName() {
     Label _createLabel = this.createLabel(this.getParent(), "");
     return _createLabel;
   }
-  
+
   protected IObservableValue createTarget_Writer_firstName(final Control it) {
     ISWTObservableValue _observeText = DatabindingUtil.observeText(it, SWT.Modify);
     return _observeText;
   }
-  
+
   public Control control_Borrower_firstName(final Borrower it) {
     return this.createText(it.getFirstName(), SWT.MULTI, SWT.BORDER, 
       SWT.WRAP, SWT.V_SCROLL);
@@ -1360,7 +1359,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends IContentProvider> bindIContentProvider() {
     return EmptyViewerContentProvider.class;
@@ -1390,24 +1389,24 @@ public class EmptyViewerContentProvider extends ViewerContentProvider {
   public EmptyViewerContentProvider(final AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
-  
+
   public Object elements(final Resource it) {
     Iterator<Library> _filter = Iterators.<Library>filter(it.getAllContents(), Library.class);
     return _filter;
   }
-  
+
   public Object children(final Library it) {
     EList<Book> _books = it.getBooks();
     EList<Writer> _writers = it.getWriters();
     Iterable<EObject> _plus = Iterables.<EObject>concat(_books, _writers);
     return _plus;
   }
-  
+
   public Object children(final Writer writer) {
     EList<Book> _books = writer.getBooks();
     return _books;
   }
-  
+
   public Object children(final Book it) {
     Writer _author = it.getAuthor();
     return _author;
@@ -1435,7 +1434,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends TableViewerContentProvider> bindTableViewerContentProvider() {
     return EmptyTableViewerContentProvider.class;
@@ -1466,24 +1465,24 @@ public class EmptyTableViewerContentProvider extends TableViewerContentProvider 
   public EmptyTableViewerContentProvider(final AdapterFactory adapterFactory, final EClassParameter eClassParameter) {
     super(adapterFactory, eClassParameter);
   }
-  
+
   public Object elements(final Resource it) {
     Iterator<Library> _filter = Iterators.<Library>filter(it.getAllContents(), Library.class);
     return _filter;
   }
-  
+
   public Object elements(final Library it) {
     EList<Book> _books = it.getBooks();
     EList<Writer> _writers = it.getWriters();
     Iterable<EObject> _plus = Iterables.<EObject>concat(_books, _writers);
     return _plus;
   }
-  
+
   public Object elements(final Writer writer) {
     EList<Book> _books = writer.getBooks();
     return _books;
   }
-  
+
   public Object elements(final Book it) {
     Writer _author = it.getAuthor();
     return _author;
@@ -1534,7 +1533,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ProposalCreator> bindProposalCreator() {
     return EmptyProposalCreator.class;
@@ -1562,45 +1561,45 @@ public class EmptyProposalCreator extends ProposalCreator {
   public List<?> proposals_Library_name(final Library it, final EStructuralFeature feature) {
     return CollectionLiterals.<String>newArrayList("foo", "bar");
   }
-  
+
   public List<?> proposals_Writer_books(final Writer it, final EStructuralFeature feature) {
     return it.getBooks();
   }
-  
+
   public List<?> proposals_Book_author(final Book it, final EStructuralFeature feature) {
     Writer _createWriter = EXTLibraryFactory.eINSTANCE.createWriter();
     final Procedure1<Writer> _function = new Procedure1<Writer>() {
       @Override
-      public void apply(final Writer it) {
-        it.setName("Foo");
+      public void apply(final Writer it_1) {
+        it_1.setName("Foo");
       }
     };
     Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
     Writer _createWriter_1 = EXTLibraryFactory.eINSTANCE.createWriter();
     final Procedure1<Writer> _function_1 = new Procedure1<Writer>() {
       @Override
-      public void apply(final Writer it) {
-        it.setName("Bar");
+      public void apply(final Writer it_1) {
+        it_1.setName("Bar");
       }
     };
     Writer _doubleArrow_1 = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter_1, _function_1);
     return CollectionLiterals.<Writer>newArrayList(_doubleArrow, _doubleArrow_1);
   }
-  
+
   public List<?> proposals_Borrower_borrowed(final Borrower it, final EStructuralFeature feature) {
     List<Object> _defaultProposals = this.defaultProposals(feature);
     final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
       @Override
-      public void apply(final List<Object> it) {
+      public void apply(final List<Object> it_1) {
         Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
         final Procedure1<Book> _function = new Procedure1<Book>() {
           @Override
-          public void apply(final Book it) {
-            it.setTitle("Fake Book");
+          public void apply(final Book it_2) {
+            it_2.setTitle("Fake Book");
           }
         };
         Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);
-        it.add(_doubleArrow);
+        it_1.add(_doubleArrow);
       }
     };
     final List<Object> p = ObjectExtensions.<List<Object>>operator_doubleArrow(_defaultProposals, _function);
@@ -1699,7 +1698,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends EditingMenuBuilder> bindEditingMenuBuilder() {
     return EmptyMenuBuilder.class;
@@ -1727,11 +1726,11 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 @SuppressWarnings("all")
 public class EmptyMenuBuilder extends EditingMenuBuilder {
   private final EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
-  
+
   public EXTLibraryFactory getLibraryFactory() {
     return this.libraryFactory;
   }
-  
+
   public List<IMenuContributionSpecification> menuContributions(final Object it) {
     IMenuContributionSpecification _actionRedo = this.actionRedo();
     IMenuContributionSpecification _actionUndo = this.actionUndo();
@@ -1740,7 +1739,7 @@ public class EmptyMenuBuilder extends EditingMenuBuilder {
     IMenuContributionSpecification _actionPaste = this.actionPaste();
     return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionRedo, _actionUndo, _separator, _actionCopy, _actionPaste));
   }
-  
+
   public List<IMenuContributionSpecification> menuContributions(final Writer it) {
     IMenuContributionSpecification _actionUndo = this.actionUndo();
     IMenuContributionSpecification _separator = this.separator();
@@ -1751,7 +1750,7 @@ public class EmptyMenuBuilder extends EditingMenuBuilder {
     IMenuContributionSpecification _actionPaste = this.actionPaste();
     return Collections.<IMenuContributionSpecification>unmodifiableList(CollectionLiterals.<IMenuContributionSpecification>newArrayList(_actionUndo, _separator, _submenu_1, _actionPaste));
   }
-  
+
   public List<IMenuContributionSpecification> emfMenuContributions(final Library lib) {
     EList<Writer> _writers = lib.getWriters();
     Writer _createWriter = this.libraryFactory.createWriter();
@@ -1766,14 +1765,14 @@ public class EmptyMenuBuilder extends EditingMenuBuilder {
       this.<Writer>actionAdd("New Writer", _writers, _doubleArrow));
     return _newArrayList;
   }
-  
+
   public List<IMenuContributionSpecification> emfMenuContributions(final Writer it) {
     EList<Book> _books = it.getBooks();
     Book _createBook = this.libraryFactory.createBook();
     final Procedure1<Book> _function = new Procedure1<Book>() {
       @Override
-      public void apply(final Book it) {
-        it.setTitle("New book");
+      public void apply(final Book it_1) {
+        it_1.setTitle("New book");
       }
     };
     Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);
@@ -1804,7 +1803,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends Configurator> bindConfigurator() {
     return EmptyConfigurator.class;
@@ -1825,25 +1824,25 @@ import org.eclipse.emf.parsley.examples.library.Writer;
 @SuppressWarnings("all")
 public class EmptyConfigurator extends Configurator {
   private final EXTLibraryPackage libraryPackage = EXTLibraryPackage.eINSTANCE;
-  
+
   public EXTLibraryPackage getLibraryPackage() {
     return this.libraryPackage;
   }
-  
+
   public URI resourceURI(final Library lib) {
     URI _createFileURI = URI.createFileURI("file:/foo");
     return _createFileURI;
   }
-  
+
   public URI resourceURI(final Writer it) {
     return null;
   }
-  
+
   public EClass eClass(final Library lib) {
     EClass _library = this.libraryPackage.getLibrary();
     return _library;
   }
-  
+
   public EClass eClass(final Writer it) {
     EClass _writer = this.libraryPackage.getWriter();
     return _writer;
@@ -1872,7 +1871,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
     return EmptyResourceManager.class;
@@ -1894,18 +1893,18 @@ import org.eclipse.emf.parsley.resource.ResourceManager;
 @SuppressWarnings("all")
 public class EmptyResourceManager extends ResourceManager {
   private final EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
-  
+
   public EXTLibraryFactory getLibraryFactory() {
     return this.libraryFactory;
   }
-  
+
   @Override
   public void initialize(final Resource it) {
     EList<EObject> _contents = it.getContents();
     Library _createLibrary = this.libraryFactory.createLibrary();
     _contents.add(_createLibrary);
   }
-  
+
   @Override
   public boolean save(final Resource it) throws IOException {
     it.save(null);
@@ -1963,7 +1962,6 @@ expectedExecutableExtensionFactory =
 package my.test;
 
 import com.google.inject.Injector;
-import my.test.TestInjectorProvider;
 import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory;
 
 @SuppressWarnings("all")
@@ -2033,12 +2031,12 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ILabelProvider> bindILabelProvider() {
     return ViewerLabelProvider.class;
   }
-  
+
   public Class<? extends IBaseLabelProvider> bindIBaseLabelProvider() {
     return ViewerLabelProvider.class;
   }
@@ -2087,16 +2085,16 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends Provider<AdapterFactoryEditingDomain>> provideAdapterFactoryEditingDomain() {
     return DefaultAdapterFactoryEditingDomainProvider.class;
   }
-  
+
   public Class<? extends Provider<ViewerLabelProvider>> provideViewerLabelProvider() {
     return TestViewerLabelProviderProvider.class;
   }
-  
+
   public Class<? extends Provider<FeaturesProvider>> provideFeaturesProvider() {
     Class<? extends TestFeaturesProviderProvider> _class = new TestFeaturesProviderProvider().getClass();
     return _class;
@@ -2133,7 +2131,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public int[] valueTableColumnWeights() {
     return new int[] { 5, 2 };
@@ -2143,7 +2141,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public int[] valueTreeFormSashWeights() {
     return new int[] { 5, 2 };
   }
-  
+
   public String valuefoo() {
     return "foo";
   }
@@ -2180,7 +2178,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public EmptyEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public int[] valueTableColumnWeights() {
     ArrayList<Integer> _newArrayList = CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2));

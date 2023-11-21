@@ -1,7 +1,6 @@
 package org.eclipse.emf.parsley.examples.mail.messageview;
 
 import com.google.inject.Injector;
-import org.eclipse.emf.parsley.examples.mail.messageview.MessageviewInjectorProvider;
 import org.eclipse.emf.parsley.runtime.ui.AbstractGuiceAwareExecutableExtensionFactory;
 
 @SuppressWarnings("all")

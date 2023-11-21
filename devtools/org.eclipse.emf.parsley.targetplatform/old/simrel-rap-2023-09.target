@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="simrel-rap" sequenceNumber="5">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
+<unit id="javax.inject" version="0.0.0"/>
+<unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.rap.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.rap.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.databinding.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.net4j.db.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.net4j.util.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.cdo.server.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.cdo.server.db.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.databinding.edit.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.query.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.sdk.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.examples.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="0.0.0"/>
+<repository location="https://download.eclipse.org/releases/2023-09/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.google.guava.failureaccess" version="0.0.0"/>
+<unit id="com.google.inject" version="0.0.0"/>
+<unit id="jakarta.inject.jakarta.inject-api" version="0.0.0"/>
+<unit id="org.aopalliance" version="0.0.0"/>
+<unit id="org.apache.log4j" version="0.0.0"/>
+<unit id="org.eclipse.xtext.xbase.lib" version="0.0.0"/>
+<unit id="org.junit" version="0.0.0"/>
+<unit id="org.objectweb.asm" version="0.0.0"/>
+<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.32.0"/>
+</location>
+</locations>
+</target>

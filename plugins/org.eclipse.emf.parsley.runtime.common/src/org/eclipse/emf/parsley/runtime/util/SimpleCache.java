@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * itemis AG - Initial contribution and API
  *******************************************************************************/
@@ -19,10 +19,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 import com.google.common.base.Function;
 
 /**
- * A primitive cache implementation. The SimpleCache allows to cache 
+ * A primitive cache implementation. The SimpleCache allows to cache
  * lazily computable values. Subsequent calls to the computation algorithm with equal
  * parameters have to yield equal results.
- * Attention: The algorithm may not depend on itself in a circular manner. E.g. the following will lead 
+ * Attention: The algorithm may not depend on itself in a circular manner. E.g. the following will lead
  * to a stack overflow:
  * <pre>
  * SimpleCache<K, V> cache = new SimpleCache<K, V>(new Function<K, V>() {
@@ -40,10 +40,10 @@ import com.google.common.base.Function;
  * The cache uses weak references to the keys but the values are strongly referenced. This leads
  * to the conclusion, that the computed values should not refer to the keys because no cache entry
  * will be reclaimend automatically. In such cases, clients have to discard the values for a key explicitly.
- * 
+ *
  * Please note that {@link Function#apply(Object)} may be invoked concurrently while the cache
  * itself is threadsafe.
- * 
+ *
  * @author Sebastian Zarnekow - Initial contribution and API
  */
 public class SimpleCache<Key, Value> {
@@ -62,7 +62,7 @@ public class SimpleCache<Key, Value> {
 		this.readLock = readWriteLock.readLock();
 		this.writeLock = readWriteLock.writeLock();
 		this.f = f;
-		this.content = new WeakHashMap<Key, Value>();
+		this.content = new WeakHashMap<>();
 	}
 
 	public Value get(Key k) {
@@ -70,8 +70,9 @@ public class SimpleCache<Key, Value> {
 		try {
 			readLock.lock();
 			result = content.get(k);
-			if (result != null || content.containsKey(k))
+			if (result != null || content.containsKey(k)) {
 				return result;
+			}
 		} finally {
 			readLock.unlock();
 		}
@@ -91,8 +92,9 @@ public class SimpleCache<Key, Value> {
 	public void clear() {
 		try {
 			writeLock.lock();
-			if (!content.isEmpty())
+			if (!content.isEmpty()) {
 				content.clear();
+			}
 		} finally {
 			writeLock.unlock();
 		}
@@ -106,9 +108,9 @@ public class SimpleCache<Key, Value> {
 			writeLock.unlock();
 		}
 	}
-	
+
 	// for testing purpose
-	
+
 	public boolean hasCachedValue(Key key) {
 		try {
 			readLock.lock();
@@ -117,7 +119,7 @@ public class SimpleCache<Key, Value> {
 			readLock.unlock();
 		}
 	}
-	
+
 	public int getSize() {
 		try {
 			readLock.lock();

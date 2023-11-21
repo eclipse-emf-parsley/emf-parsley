@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,19 +21,19 @@ import org.eclipse.swt.widgets.Control;
 public class ControlObservablePair {
 
 	protected Control control;
-	
+
 	@SuppressWarnings("rawtypes")
 	protected IObservableValue observableValue;
-	
+
 	public ControlObservablePair() {
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	public ControlObservablePair(Control control, IObservableValue observableValue) {
 		this.control = control;
 		this.observableValue = observableValue;
 	}
-	
+
 	public Control getControl() {
 		return control;
 	}

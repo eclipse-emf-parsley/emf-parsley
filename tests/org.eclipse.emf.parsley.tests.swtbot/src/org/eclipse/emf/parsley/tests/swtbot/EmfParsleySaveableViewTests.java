@@ -59,7 +59,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 
 	@Override
 	@After
-	public void runAfterEveryTest() throws CoreException {
+	public void runAfterEveryTest() throws Exception {
 		if (treeFormViewOpened)
 			closeView(TEST_SAVEABLE_TREE_FORM_VIEW);
 		if (tableFormViewOpened)
@@ -290,8 +290,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	protected SWTBotTable prepareSaveableTableView()
 			throws CoreException, InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFiles();
-		openTestView(TEST_SAVEABLE_TABLE_VIEW);
-		SWTBotTable table = bot.table();
+		SWTBotTable table = tableFromView(TEST_SAVEABLE_TABLE_VIEW);
 		tableViewOpened = true;
 		return table;
 	}
@@ -299,8 +298,7 @@ public class EmfParsleySaveableViewTests extends EmfParsleySWTBotAbstractTests {
 	protected SWTBotTable prepareSaveableTableFormView()
 			throws CoreException, InvocationTargetException, InterruptedException, IOException {
 		createProjectAndTestFiles();
-		openTestView(TEST_SAVEABLE_TABLE_FORM_VIEW);
-		SWTBotTable table = bot.table();
+		SWTBotTable table = tableFromView(TEST_SAVEABLE_TABLE_FORM_VIEW);
 		tableFormViewOpened = true;
 		return table;
 	}

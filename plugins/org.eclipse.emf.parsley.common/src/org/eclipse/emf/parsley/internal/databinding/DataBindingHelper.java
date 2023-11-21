@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Francesco Guidieri - initial API and implementation
  *******************************************************************************/
@@ -21,8 +21,8 @@ import org.eclipse.swt.SWT;
 import com.google.inject.Inject;
 
 /**
- * Helper class for performing databinding 
- * 
+ * Helper class for performing databinding
+ *
  * @author Francesco Guidieri - initial API and implementation
  *
  * @noextend This class is not intended to be subclassed by clients.
@@ -30,7 +30,7 @@ import com.google.inject.Inject;
  * @since 1.1
  */
 public class DataBindingHelper {
-	
+
 	@Inject
 	private DatabindingValidationUtil databindingValidationUtil;
 

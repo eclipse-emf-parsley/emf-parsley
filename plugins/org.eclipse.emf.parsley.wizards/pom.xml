@@ -12,13 +12,4 @@
 
 	<artifactId>org.eclipse.emf.parsley.wizards</artifactId>
 	<packaging>eclipse-plugin</packaging>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>

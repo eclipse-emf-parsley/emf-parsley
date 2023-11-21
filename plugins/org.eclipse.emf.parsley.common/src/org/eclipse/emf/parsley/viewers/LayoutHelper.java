@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Widget;
 
 /**
  * Some methods to adjust layout.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */

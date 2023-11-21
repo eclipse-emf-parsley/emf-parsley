@@ -14,23 +14,23 @@ public class MavenLabelProvider extends ViewerLabelProvider {
   public MavenLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
   }
-  
+
   public String text(final EClass it) {
     return it.getInstanceClassName();
   }
-  
+
   public Object image(final EObject it) {
     return "test.png";
   }
-  
+
   public Font font(final EObject it) {
     return null;
   }
-  
+
   public Color foreground(final EObject it) {
     return null;
   }
-  
+
   public Color background(final EObject it) {
     return null;
   }

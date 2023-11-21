@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -25,7 +25,7 @@ import com.google.inject.Inject;
 /**
  * An implementation of {@link IWidgetFactory} with some defaults for some
  * overloaded methods.
- * 
+ *
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
@@ -47,15 +47,9 @@ public abstract class AbstractWidgetFactory implements IWidgetFactory {
 	}
 
 	@Override
-	public abstract Label createLabel(Composite parent, String text);
-
-	@Override
 	public Button createButton(String text, int... styles) {
 		return createButton(parent, text, aggregateStyles(styles));
 	}
-
-	@Override
-	public abstract Button createButton(Composite parent, String text, int style);
 
 	@Override
 	public Text createText(String text) {
@@ -78,15 +72,9 @@ public abstract class AbstractWidgetFactory implements IWidgetFactory {
 	}
 
 	@Override
-	public abstract Text createText(Composite parent, String text, int style);
-
-	@Override
 	public ComboViewer createComboViewer(int... styles) {
 		return createComboViewer(parent, aggregateStyles(styles));
 	}
-
-	@Override
-	public abstract ComboViewer createComboViewer(Composite parent, int style);
 
 	@Override
 	public DateTime createDateTime() {
@@ -102,9 +90,6 @@ public abstract class AbstractWidgetFactory implements IWidgetFactory {
 	public DateTime createDateTime(Composite parent) {
 		return createDateTime(parent, SWT.DATE | SWT.DROP_DOWN);
 	}
-
-	@Override
-	public abstract DateTime createDateTime(Composite parent, int style);
 
 	protected int aggregateStyles(int... styles) {
 		int result = 0;

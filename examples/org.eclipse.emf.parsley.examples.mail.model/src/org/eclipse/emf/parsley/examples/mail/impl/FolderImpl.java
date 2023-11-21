@@ -1,14 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2013 RCP Vision (http://www.rcp-vision.com) and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
 /**
  */
 package org.eclipse.emf.parsley.examples.mail.impl;
-
 
 import java.util.Collection;
 
@@ -21,9 +13,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.parsley.examples.mail.Folder;
 import org.eclipse.emf.parsley.examples.mail.Mail;
 import org.eclipse.emf.parsley.examples.mail.MailPackage;
@@ -34,16 +28,16 @@ import org.eclipse.emf.parsley.examples.mail.MailPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.FolderImpl#getSubfolders <em>Subfolders</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.FolderImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.emf.parsley.examples.mail.impl.FolderImpl#getMails <em>Mails</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class FolderImpl extends FolderContentImpl implements Folder {
+public class FolderImpl extends EObjectImpl implements Folder {
 	/**
 	 * The cached value of the '{@link #getSubfolders() <em>Subfolders</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -108,6 +102,7 @@ public class FolderImpl extends FolderContentImpl implements Folder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Folder> getSubfolders() {
 		if (subfolders == null) {
 			subfolders = new EObjectContainmentEList<Folder>(Folder.class, this, MailPackage.FOLDER__SUBFOLDERS);
@@ -120,6 +115,7 @@ public class FolderImpl extends FolderContentImpl implements Folder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -129,6 +125,7 @@ public class FolderImpl extends FolderContentImpl implements Folder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -141,6 +138,7 @@ public class FolderImpl extends FolderContentImpl implements Folder {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Mail> getMails() {
 		if (mails == null) {
 			mails = new EObjectContainmentEList<Mail>(Mail.class, this, MailPackage.FOLDER__MAILS);
@@ -254,7 +252,7 @@ public class FolderImpl extends FolderContentImpl implements Folder {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

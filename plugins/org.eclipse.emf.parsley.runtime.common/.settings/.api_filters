@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.parsley.runtime.common" version="2">
+    <resource path="META-INF/MANIFEST.MF">
+        <filter comment="moved from javax.inject to jakarta.inject" id="933232702">
+            <message_arguments>
+                <message_argument value="1.15.0"/>
+                <message_argument value="javax.inject"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/runtime/util/Exceptions.java" type="org.eclipse.emf.parsley.runtime.util.Exceptions">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.runtime.util.Exceptions"/>
+                <message_argument value="Exceptions()"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/runtime/util/PolymorphicDispatcher.java" type="org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher$Predicates">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher.Predicates"/>
+                <message_argument value="Predicates()"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/runtime/util/ReflectionUtil.java" type="org.eclipse.emf.parsley.runtime.util.ReflectionUtil">
+        <filter id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.runtime.util.ReflectionUtil"/>
+                <message_argument value="ReflectionUtil()"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

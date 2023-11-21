@@ -6,10 +6,11 @@ Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.emf.parsley.examples.rap.model,
  org.eclipse.emf.parsley.examples.rap.model.impl,
  org.eclipse.emf.parsley.examples.rap.model.util
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.5.0",
  org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.emf.parsley.examples.rap.model

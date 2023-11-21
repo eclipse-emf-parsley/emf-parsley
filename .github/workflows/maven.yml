@@ -1,0 +1,110 @@
+name: Java CI with Maven (Linux)
+
+on:
+  push:
+    paths-ignore:
+     - '**.md'
+  pull_request:
+    paths-ignore:
+     - '**.md'
+
+jobs:
+  tycho-build:
+    env:
+      DISPLAY: :1
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    # for external PRs the secret token is not available
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.5.0
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3.6.0
+      with:
+        java-version: 17
+        distribution: temurin
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.m2
+          ~/.sonar/cache
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.target') }}
+        restore-keys: ${{ runner.os }}-m2-
+    - name: Install and start Metacity window manager
+      run: |
+        sudo apt-get update
+        sudo apt-get install xvfb metacity
+        Xvfb :1 &
+        sleep 5
+        metacity --sm-disable --replace 2> metacity.err &
+    - name: Set Maven Additional Goals
+      run: |
+        echo "COVERALLSGOAL=coveralls:report sonar:sonar -Dsonar.projectKey=eclipse-emf-parsley_emf-parsley" >> $GITHUB_ENV
+      if: ${{ env.COVERALLS_REPO_TOKEN }}
+      # for external PRs the repo token is not defined
+      # and we don't upload coverage to coveralls
+    - name: Build with Maven
+      run: >
+        ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        -Prcp-build
+        -Pjacoco
+        clean verify
+        -DrepoToken=$COVERALLS_REPO_TOKEN
+        -DpullRequest=${{ github.event.pull_request.number }}
+        $COVERALLSGOAL
+    - name: Archive UI Tests Screenshots
+      uses: actions/upload-artifact@v2
+      if: ${{ failure() || cancelled() }}
+      with:
+        name: screenshots-${{ runner.os }}
+        path: '**/screenshots'
+    - name: Archive Logs
+      uses: actions/upload-artifact@v2
+      if: ${{ failure() || cancelled() }}
+      with:
+        name: logs-${{ runner.os }}
+        path: '**/target/work/data/.metadata/.log'
+    - name: Archive Coverage Report
+      uses: actions/upload-artifact@v2
+      if: ${{ success() }}
+      with:
+        name: jacoco-coverage-${{ runner.os }}
+        path: '**/site/jacoco-aggregate'
+
+  maven-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.5.0
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3.6.0
+      with:
+        java-version: 17
+        distribution: temurin
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.m2
+          !~/.m2/**/*parsley*
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml', '**/*.target') }}
+        restore-keys: ${{ runner.os }}-maven-
+      # for the examples our Parsley bundles must be installed
+      # so we exclude them from the cache
+    - name: Build with Maven
+      run: >
+        ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
+        -Pmaven
+        clean install
+    - name: Build Maven example
+      run: >
+        xvfb-run
+        ./mvnw -f examples/org.eclipse.emf.parsley.examples.maven
+        -Pmaven
+        clean verify

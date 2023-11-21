@@ -36,6 +36,22 @@
          id="org.eclipse.swtbot"
          version="0.0.0"/>
 
+   <includes
+         id="org.eclipse.rcp"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.e4.rcp"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.common"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.ecore"
+         version="0.0.0"/>
+
    <plugin
          id="org.eclipse.emf.parsley.ui.examples"
          download-size="0"
@@ -68,13 +84,6 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.emf.parsley.tests.pde.utils"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.parsley.tests.views"
          download-size="0"
          install-size="0"
@@ -90,6 +99,13 @@
 
    <plugin
          id="org.eclipse.pde.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.felix.scr"
          download-size="0"
          install-size="0"
          version="0.0.0"

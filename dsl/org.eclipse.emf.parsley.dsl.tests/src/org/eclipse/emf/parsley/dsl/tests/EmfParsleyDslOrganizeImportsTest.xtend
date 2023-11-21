@@ -46,7 +46,10 @@ class EmfParsleyDslOrganizeImportsTest {
 		}
 		for(it: sortedChanges.reverse)
 			builder.replace(offset, offset + length, text)
-		assertEquals(expected.toString, builder.toString)
+		assertEquals(
+			expected.toString.replace("\r", ""),
+			builder.toString.replace("\r", "")
+		)
 	}
 
 	@Test def testTypeInLabelProvider() {

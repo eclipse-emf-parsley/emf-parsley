@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015, 2022 Lorenzo Bettini and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,17 +10,17 @@
 package org.eclipse.emf.parsley.util;
 
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Widget;
 
 /**
  * A utility class with methods for databinding that have the same signatures of
  * the deprecated ones and use the new {@link WidgetProperties} methods.
- * 
+ *
  * This is useful in the DSL since it will be easier to implement target
  * observable specifications.
- * 
+ *
  * @author Lorenzo Bettini - initial API and implementation
  *
  */
@@ -45,6 +45,7 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if <code>control</code> type is unsupported
 	 */
+	@SuppressWarnings({ "rawtypes" })
 	public static ISWTObservableValue observeText(Control control, int event) {
 		return WidgetProperties.text(event).observe(control);
 	}
@@ -71,6 +72,7 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if the type of <code>widget</code> is unsupported
 	 */
+	@SuppressWarnings({ "rawtypes" })
 	public static ISWTObservableValue observeText(Widget widget) {
 		return WidgetProperties.text().observe(widget);
 	}
@@ -93,8 +95,9 @@ public class DatabindingUtil {
 	 * @throws IllegalArgumentException
 	 *             if <code>control</code> type is unsupported
 	 */
+	@SuppressWarnings({ "rawtypes" })
 	public static ISWTObservableValue observeSelection(Widget widget) {
-		return WidgetProperties.selection().observe(widget);
+		return WidgetProperties.widgetSelection().observe(widget);
 	}
 
 }

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
@@ -21,13 +21,13 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions;
  * runtime type of the input. You can defines methods with a prefix 'text'
  * followed by the EClass and EStructuralFeature names separated by an
  * underscore character, like in the example:
- * 
+ *
  * <pre>
  * {@code
  *    public String text_MyClass_myFeature(EStructuralFeature feature)
  * }
  * </pre>
- * 
+ *
  * @author Lorenzo Bettini - Initial Contribution and API
  * @author Francesco Guidieri - Javadocs
  */

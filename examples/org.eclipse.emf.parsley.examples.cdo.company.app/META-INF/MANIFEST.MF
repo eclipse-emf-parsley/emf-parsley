@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.parsley;bundle-version="0.1.1",
  org.eclipse.emf.parsley.cdo.common;bundle-version="0.1.1",
  org.eclipse.emf.parsley.examples.cdo.company.model;bundle-version="0.1.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.emf.parsley.examples.cdo.company
 Automatic-Module-Name: org.eclipse.emf.parsley.examples.cdo.company.app
