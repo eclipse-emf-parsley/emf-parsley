@@ -27,7 +27,7 @@ import org.eclipse.emf.parsley.composite.AbstractControlFactory;
 import org.eclipse.emf.parsley.composite.MultipleFeatureControl;
 import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm;
-import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.swt.DisplayRealm;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -51,7 +51,6 @@ import org.junit.Before;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-@SuppressWarnings("deprecation")
 public abstract class AbstractEmfParsleyControlBasedTest extends
 		AbstractEmfParsleyShellBasedTest {
 
@@ -275,27 +274,19 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 	 * @return
 	 */
 	protected <T> T syncExecInRealm(final RunnableWithResult<T> toExecute) {
-		final ArrayList<T> arrayList = new ArrayList<T>();
-		getDisplay().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				Realm.runWithDefault(
-						SWTObservables.getRealm(Display.getDefault()),
-						new Runnable() {
-							@Override
-							public void run() {
-								try {
-									arrayList.add(toExecute.run());
-								} catch (Throwable e) {
-									LOGGER.error(
-											"Exception in runnable: "
-													+ e.getMessage(), e);
-									arrayList.add(null);
-								}
-							}
-						});
-			}
-		});
+		final ArrayList<T> arrayList = new ArrayList<>();
+		getDisplay().syncExec(() -> Realm.runWithDefault(
+				DisplayRealm.getRealm(Display.getDefault()),
+				() -> {
+					try {
+						arrayList.add(toExecute.run());
+					} catch (Throwable e) {
+						LOGGER.error(
+								"Exception in runnable: "
+										+ e.getMessage(), e);
+						arrayList.add(null);
+					}
+				}));
 		return arrayList.get(0);
 	}
 }
