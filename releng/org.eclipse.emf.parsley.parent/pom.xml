@@ -79,7 +79,7 @@
 		<pdeTestsArgs>-DbuildingWithTycho=true</pdeTestsArgs>
 		-->
 		<pdeTestsArgs></pdeTestsArgs>
-		<skipDragAndDropTests>true</skipDragAndDropTests>
+		<skipDragAndDropTests>false</skipDragAndDropTests>
 		<swtbotTestsArgs>${uiTestsArgs} -DskipDragAndDropTests=${skipDragAndDropTests} -Dorg.eclipse.swtbot.search.timeout=20000 -Dorg.eclipse.swt.internal.gtk.cairoGraphics=false</swtbotTestsArgs>
 		<!-- we build with at least Java 11 always -->
 		<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
