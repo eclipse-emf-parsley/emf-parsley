@@ -32,7 +32,7 @@ public abstract class AbstractViewerMasterComposite<T extends StructuredViewer> 
 
 	private T structuredViewer;
 
-	public AbstractViewerMasterComposite(CompositeParameters params) {
+	protected AbstractViewerMasterComposite(CompositeParameters params) {
 		super(params);
 	}
 
@@ -44,7 +44,7 @@ public abstract class AbstractViewerMasterComposite<T extends StructuredViewer> 
 		this.structuredViewer = createStructuredViewer();
 	}
 
-	abstract protected T createStructuredViewer();
+	protected abstract T createStructuredViewer();
 
 	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener selectionChangedListener) {
