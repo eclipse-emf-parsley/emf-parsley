@@ -21,7 +21,6 @@ import org.eclipse.emf.parsley.inject.AfterInject;
 import org.eclipse.emf.parsley.inject.EmfParsleyLifecycle;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.inject.Binder;
@@ -89,14 +88,8 @@ public class AfterInjectTypeListener implements TypeListener {
 	}
 
 	private <I> Collection<Method> collectAfterInjectMethods(Class<? super I> cl) {
-		Collection<Method> afterInjectMethods = Collections2.filter(collectLifecycleMethods(cl),
-				new Predicate<Method>() {
-					@Override
-					public boolean apply(Method method) {
-						return method.isAnnotationPresent(AfterInject.class);
-					}
-				});
-		return afterInjectMethods;
+		return Collections2.filter(collectLifecycleMethods(cl),
+				method -> method.isAnnotationPresent(AfterInject.class));
 	}
 
 	private <I> List<Method> collectLifecycleMethods(Class<? super I> cl) {
