@@ -161,11 +161,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
-      value="1.4.0"/>
+      value="1.5.0"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.zip"
-      value="org.eclipse.emf.parsley.repository-1.14.0.v20221201-1038.zip"/>
+      value="org.eclipse.emf.parsley.repository-1.15.0.v20231121-1609.zip"/>
   <setupTask
       xsi:type="pde:APIBaselineTask"
       name="parsley-latest"
