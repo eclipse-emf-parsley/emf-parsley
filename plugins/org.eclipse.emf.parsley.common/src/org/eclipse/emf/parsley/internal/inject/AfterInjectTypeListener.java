@@ -83,7 +83,7 @@ public class AfterInjectTypeListener implements TypeListener {
 		Class<? super I> cl = type.getRawType();
 		Collection<Method> afterInjectMethods = collectAfterInjectMethods(cl);
 		if (!afterInjectMethods.isEmpty()) {
-			encounter.register(new AfterInjectInjectionListener<I>(afterInjectMethods));
+			encounter.register(new AfterInjectInjectionListener<>(afterInjectMethods));
 		}
 	}
 
@@ -94,7 +94,7 @@ public class AfterInjectTypeListener implements TypeListener {
 
 	private <I> List<Method> collectLifecycleMethods(Class<? super I> cl) {
 		Class<? super I> current = cl;
-		List<Method> methods = new ArrayList<Method>();
+		List<Method> methods = new ArrayList<>();
 		while (!Objects.equal(current, Object.class)) {
 			if (current.isAnnotationPresent(EmfParsleyLifecycle.class)) {
 				methods.addAll(asList(current.getDeclaredMethods()));
