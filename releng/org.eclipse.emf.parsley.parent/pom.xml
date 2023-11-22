@@ -142,7 +142,7 @@
 			For views.resource package we still don't have tests -->
 		<sonar.coverage.exclusions>
 			**/xtend-gen/**/*.java,
-			**/views/resource/**/*.java
+			**/views/resource/**/*.java,
 			**/inject/parameters/*.java
 		</sonar.coverage.exclusions>
 
