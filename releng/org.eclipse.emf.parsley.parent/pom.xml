@@ -143,6 +143,7 @@
 		<sonar.coverage.exclusions>
 			**/xtend-gen/**/*.java,
 			**/views/resource/**/*.java
+			**/inject/parameters/*.java
 		</sonar.coverage.exclusions>
 
 		<!-- To make SonarQube detect JUnit tests in generated Java code from Xtend -->
