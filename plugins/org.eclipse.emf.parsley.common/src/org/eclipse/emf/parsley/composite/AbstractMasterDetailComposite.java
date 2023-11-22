@@ -65,7 +65,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	/**
 	 * @since 2.0
 	 */
-	public AbstractMasterDetailComposite(CompositeParameters params, int sashStyle, int[] weights) {
+	protected AbstractMasterDetailComposite(CompositeParameters params, int sashStyle, int[] weights) {
 		super(params);
 		setLayout(new FillLayout());
 		sashForm = new SashForm(this, sashStyle);

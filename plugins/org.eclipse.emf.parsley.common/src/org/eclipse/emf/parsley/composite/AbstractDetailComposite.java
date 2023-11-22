@@ -45,7 +45,7 @@ public abstract class AbstractDetailComposite extends InjectableComposite implem
 	 * @since 2.0
 	 */
 	@Inject
-	public AbstractDetailComposite(CompositeParameters compositeParameters, EObjectParameter eObjectParameter) {
+	protected AbstractDetailComposite(CompositeParameters compositeParameters, EObjectParameter eObjectParameter) {
 		super(compositeParameters);
 		this.object = eObjectParameter.getObject();
 		this.editingDomain = eObjectParameter.getEditingDomain();

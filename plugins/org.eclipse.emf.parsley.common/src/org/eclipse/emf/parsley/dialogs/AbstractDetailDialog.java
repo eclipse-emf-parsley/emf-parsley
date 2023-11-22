@@ -47,7 +47,7 @@ public abstract class AbstractDetailDialog extends Dialog {
 	 * @since 2.0
 	 */
 	@Inject
-	public AbstractDetailDialog(DialogParameters params, EObjectParameter eObjectParameter) {
+	protected AbstractDetailDialog(DialogParameters params, EObjectParameter eObjectParameter) {
 		super(params.getParentShell());
 		setShellStyle(getShellStyle() | SWT.RESIZE | SWT.TITLE | SWT.MAX);
 		this.title = params.getTitle();

@@ -37,7 +37,7 @@ public abstract class AbstractWidgetFactory implements IWidgetFactory {
 	 * @since 2.0
 	 */
 	@Inject
-	public AbstractWidgetFactory(CompositeParameter compositeParameter) {
+	protected AbstractWidgetFactory(CompositeParameter compositeParameter) {
 		this.parent = compositeParameter.getComposite();
 	}
 

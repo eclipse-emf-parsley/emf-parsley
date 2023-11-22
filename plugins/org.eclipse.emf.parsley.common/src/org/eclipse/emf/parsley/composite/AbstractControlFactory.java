@@ -137,7 +137,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 	 * @since 2.0
 	 */
 	@Inject
-	public AbstractControlFactory(EObjectParameter eObjectParameter) {
+	protected AbstractControlFactory(EObjectParameter eObjectParameter) {
 		this.owner = eObjectParameter.getObject();
 		this.domain = eObjectParameter.getEditingDomain();
 		this.edbc = new EMFDataBindingContext();
