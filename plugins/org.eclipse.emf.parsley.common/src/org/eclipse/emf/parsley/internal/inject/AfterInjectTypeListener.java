@@ -59,10 +59,10 @@ public class AfterInjectTypeListener implements TypeListener {
 		public void afterInjection(final I injectee) {
 			for (final Method method : afterInjectMethods) {
 				try {
-					method.setAccessible(true);
+					method.setAccessible(true); // NOSONAR: we need to call that via reflection
 					method.invoke(injectee);
 				} catch (final Exception e) {
-					throw new RuntimeException("@AfterInject " + method, e);
+					throw new RuntimeException("@AfterInject " + method, e); // NOSONAR
 				}
 			}
 		}
