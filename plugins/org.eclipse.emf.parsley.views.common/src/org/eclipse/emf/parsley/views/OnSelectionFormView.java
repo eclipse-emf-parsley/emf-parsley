@@ -37,6 +37,7 @@ public class OnSelectionFormView extends AbstractOnSelectionView {
 	protected FormDetailComposite formComposite;
 
 	public OnSelectionFormView() {
+		// nothing to do
 	}
 
 	@Override
