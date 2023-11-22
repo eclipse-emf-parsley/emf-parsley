@@ -8,6 +8,10 @@ IMPORTANT: In any case a full clean build of your projects is required so that t
 compiler can regenerate correct Java code according to the new API.
 
 ul[
+item[e[saveable views and views based on selections]: These views are now generic with respect to the
+e[StructuredViewer]; thus, the method e[getViewer()] correctly returns a specific Jface viewer, e.g.,
+e[TreeViewer], e[TableViewer], etc., not a generic e[StructuredViewer].]
+
 item[e[factories]: The following factories have been removed:
 e[org.eclipse.emf.parsley.composite.FormFactory],
 e[org.eclipse.emf.parsley.composite.TreeFormFactory],

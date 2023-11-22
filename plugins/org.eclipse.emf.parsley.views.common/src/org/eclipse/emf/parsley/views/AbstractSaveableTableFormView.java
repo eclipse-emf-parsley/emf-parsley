@@ -14,7 +14,7 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
-import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -25,7 +25,7 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - aligned to {@link AbstractSaveableTableView}
  *
  */
-public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView {
+public abstract class AbstractSaveableTableFormView extends AbstractSaveableViewerView<TableViewer> {
 
 	@Inject
 	private CompositeFactory compositeFactory;
@@ -48,8 +48,11 @@ public abstract class AbstractSaveableTableFormView extends AbstractSaveableView
 		tableFormComposite.setFocus();
 	}
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	public StructuredViewer getViewer() {
+	public TableViewer getViewer() {
 		return tableFormComposite.getViewer();
 	}
 

@@ -21,7 +21,7 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerView {
+public abstract class AbstractSaveableTreeView extends AbstractSaveableViewerView<TreeViewer> {
 
 	@Inject
 	private ViewerFactory viewerFactory;

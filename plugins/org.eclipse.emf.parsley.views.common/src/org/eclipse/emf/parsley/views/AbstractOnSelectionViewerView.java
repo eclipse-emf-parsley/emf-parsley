@@ -16,6 +16,7 @@ import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.viewers.IStructuredViewerProvider;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -27,8 +28,8 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini
  *
  */
-public abstract class AbstractOnSelectionViewerView extends AbstractOnSelectionView
-		implements IStructuredViewerProvider {
+public abstract class AbstractOnSelectionViewerView<T extends StructuredViewer> extends AbstractOnSelectionView
+		implements IStructuredViewerProvider<T> {
 
 	@Inject
 	private ViewerFactory viewerFactory;

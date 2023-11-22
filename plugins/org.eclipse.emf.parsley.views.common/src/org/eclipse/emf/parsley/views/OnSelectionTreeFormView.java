@@ -13,22 +13,25 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.inject.Inject;
 
-public class OnSelectionTreeFormView extends AbstractOnSelectionViewerView {
+public class OnSelectionTreeFormView extends AbstractOnSelectionViewerView<TreeViewer> {
 
 	@Inject
 	private CompositeFactory compositeFactory;
 
 	private TreeFormComposite treeFormDetailComposite;
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	public StructuredViewer getViewer() {
+	public TreeViewer getViewer() {
 		return treeFormDetailComposite.getViewer();
 	}
 

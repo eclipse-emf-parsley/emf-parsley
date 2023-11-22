@@ -22,6 +22,11 @@ compiler can regenerate correct Java code according to the new API.
 <p>
 <ul>
 	<li>
+		<em>saveable views and views based on selections</em>: These views are now generic with respect to the
+		<em>StructuredViewer</em>; thus, the method <em>getViewer()</em> correctly returns a specific Jface viewer, e.g.,
+		<em>TreeViewer</em>, <em>TableViewer</em>, etc., not a generic <em>StructuredViewer</em>.
+	</li>
+	<li>
 		<em>factories</em>: The following factories have been removed:
 		<em>org.eclipse.emf.parsley.composite.FormFactory</em>,
 		<em>org.eclipse.emf.parsley.composite.TreeFormFactory</em>,

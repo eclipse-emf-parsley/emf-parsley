@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.views;
 
-import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -22,7 +21,7 @@ import org.eclipse.swt.widgets.Composite;
  * @author Lorenzo Bettini
  *
  */
-public class OnSelectionTreeView extends AbstractOnSelectionViewerView {
+public class OnSelectionTreeView extends AbstractOnSelectionViewerView<TreeViewer> {
 
 	private TreeViewer treeViewer;
 
@@ -30,8 +29,11 @@ public class OnSelectionTreeView extends AbstractOnSelectionViewerView {
 		// nothing to do
 	}
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	public StructuredViewer getViewer() {
+	public TreeViewer getViewer() {
 		return treeViewer;
 	}
 

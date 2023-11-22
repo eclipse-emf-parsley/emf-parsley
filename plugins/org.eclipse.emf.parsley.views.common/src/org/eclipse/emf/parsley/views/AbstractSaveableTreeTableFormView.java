@@ -14,7 +14,7 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TreeTableFormComposite;
-import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -25,7 +25,7 @@ import com.google.inject.Inject;
  * @since 2.0
  *
  */
-public abstract class AbstractSaveableTreeTableFormView extends AbstractSaveableViewerView {
+public abstract class AbstractSaveableTreeTableFormView extends AbstractSaveableViewerView<TreeViewer> {
 
 	@Inject
 	private CompositeFactory compositeFactory;
@@ -49,7 +49,7 @@ public abstract class AbstractSaveableTreeTableFormView extends AbstractSaveable
 	}
 
 	@Override
-	public StructuredViewer getViewer() {
+	public TreeViewer getViewer() {
 		return treeTableFormComposite.getViewer();
 	}
 

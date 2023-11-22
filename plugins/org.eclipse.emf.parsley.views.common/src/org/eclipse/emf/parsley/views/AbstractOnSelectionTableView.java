@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -29,15 +28,18 @@ import com.google.inject.Inject;
  * @author Lorenzo Bettini - new API for table content provider
  *
  */
-public abstract class AbstractOnSelectionTableView extends AbstractOnSelectionViewerView {
+public abstract class AbstractOnSelectionTableView extends AbstractOnSelectionViewerView<TableViewer> {
 
 	@Inject
 	private ViewerFactory viewerFactory;
 
 	private TableViewer tableViewer;
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	public StructuredViewer getViewer() {
+	public TableViewer getViewer() {
 		return tableViewer;
 	}
 

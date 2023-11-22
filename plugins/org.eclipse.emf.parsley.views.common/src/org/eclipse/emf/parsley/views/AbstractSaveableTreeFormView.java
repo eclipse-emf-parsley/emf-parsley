@@ -14,13 +14,13 @@ package org.eclipse.emf.parsley.views;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
-import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 import com.google.inject.Inject;
 
-public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewerView{
+public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewerView<TreeViewer> {
 
 	@Inject
 	private CompositeFactory compositeFactory;
@@ -52,8 +52,11 @@ public abstract class AbstractSaveableTreeFormView extends AbstractSaveableViewe
 		treeFormComposite.setFocus();
 	}
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	public StructuredViewer getViewer() {
+	public TreeViewer getViewer() {
 		return treeFormComposite.getViewer();
 	}
 

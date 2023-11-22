@@ -21,6 +21,7 @@ import org.eclipse.emf.parsley.menus.ViewerContextMenuHelper;
 import org.eclipse.emf.parsley.viewers.IStructuredViewerProvider;
 import org.eclipse.emf.parsley.viewers.IViewerMouseListener;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.StructuredViewer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -31,7 +32,7 @@ import com.google.inject.Provider;
  * @author Francesco Guidieri - Initial contribution and API
  * @author Lorenzo Bettini - some refactoring
  */
-public abstract class AbstractSaveableViewerView extends AbstractSaveableView implements IStructuredViewerProvider {
+public abstract class AbstractSaveableViewerView<T extends StructuredViewer> extends AbstractSaveableView implements IStructuredViewerProvider<T> {
 
 	@Inject
 	private ViewerContextMenuHelper contextMenuHelper;

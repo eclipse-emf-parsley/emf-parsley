@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TableFormComposite;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredViewer;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
@@ -30,15 +30,18 @@ import com.google.inject.Inject;
  * @author Francesco Guidieri - Initial contribution and API
  * @author Lorenzo Bettini - new API for table content provider
  */
-public abstract class AbstractOnSelectionTableFormView extends AbstractOnSelectionViewerView {
+public abstract class AbstractOnSelectionTableFormView extends AbstractOnSelectionViewerView<TableViewer> {
 
 	@Inject
 	private CompositeFactory compositeFactory;
 
 	private TableFormComposite tableFormComposite;
 
+	/**
+	 * @since 2.0
+	 */
 	@Override
-	public StructuredViewer getViewer() {
+	public TableViewer getViewer() {
 		return tableFormComposite.getViewer();
 	}
 
