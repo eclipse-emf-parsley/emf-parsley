@@ -46,6 +46,9 @@ Workflow {
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
+			scopeProvider = {
+				generateXtendStub = false
+			}
 		}
 	}
 }
