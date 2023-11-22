@@ -98,7 +98,7 @@ public class GenericFactory<T> {
 	 *     // create an instance through an injector
 	 *   } finally {
 	 *     // leave the scope
-	 *     scope.exit();
+	 *     scope.leave();
 	 *   }
 	 * </code>
 	 * </pre>
@@ -117,7 +117,8 @@ public class GenericFactory<T> {
 		}
 
 		// Make this a ThreadLocal for multithreading.
-		private final ThreadLocal<ParametersStack> parametersStack = ThreadLocal.withInitial(ParametersStack::new);
+		private final ThreadLocal<ParametersStack> parametersStack =
+				ThreadLocal.withInitial(ParametersStack::new);
 
 		@Override
 		public <T> Provider<T> scope(final Key<T> key, final Provider<T> unscoped) {
@@ -135,6 +136,18 @@ public class GenericFactory<T> {
 
 		public void leave() {
 			parametersStack.get().pop();
+			if (parametersStack.get().isEmpty())
+				parametersStack.remove();
+			/*
+			 * From the Javadoc of remove: Removes the current thread's value for this
+			 * thread-local variable. If this thread-local variable is subsequently read by
+			 * the current thread, its value will be reinitialized by invoking its
+			 * initialValue method.
+			 * 
+			 * SonarQube says that ThreadLocal variable must be garbage-collected to avoid memory leaks.
+			 * The threads should always be alive in our context, but calling remove is safe is the
+			 * stack is empty; in case, it will be re-initialized.
+			 */
 		}
 
 		public void addParameter(InjectableParameter o) {
