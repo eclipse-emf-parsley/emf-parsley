@@ -117,23 +117,15 @@ public class GenericFactory<T> {
 		}
 
 		// Make this a ThreadLocal for multithreading.
-		private final ThreadLocal<ParametersStack> parametersStack = new ThreadLocal<ParametersStack>() {
-			@Override
-			protected ParametersStack initialValue() {
-				return new ParametersStack();
-			}
-		};
+		private final ThreadLocal<ParametersStack> parametersStack = ThreadLocal.withInitial(ParametersStack::new);
 
 		@Override
 		public <T> Provider<T> scope(final Key<T> key, final Provider<T> unscoped) {
-			return new Provider<T>() {
-				@Override
-				public T get() {
-					Object param = parametersStack.get().peek().get(key);
-					@SuppressWarnings("unchecked")
-					T toReturn = (T) param;
-					return toReturn;
-				}
+			return () -> {
+				Object param = parametersStack.get().peek().get(key);
+				@SuppressWarnings("unchecked")
+				T toReturn = (T) param;
+				return toReturn;
 			};
 		}
 
