@@ -85,12 +85,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 	@Override
 	protected FormControlFactory createControlFactory(final EObject object, EditingDomain editingDomain) {
 		updateTitle(object);
-		headerAdapter = new DisposingAwareAdapter(object, this, new Runnable() {
-			@Override
-			public void run() {
-				updateTitle(object);
-			}
-		});
+		headerAdapter = new DisposingAwareAdapter(object, this, () -> updateTitle(object));
 		return compositeFactory.createFormControlFactory(main, object, editingDomain, toolkit);
 	}
 

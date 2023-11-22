@@ -60,7 +60,6 @@ import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
@@ -450,14 +449,7 @@ public abstract class AbstractControlFactory implements IWidgetFactory {
 		if (proposals != null && !proposals.isEmpty()) {
 			Iterable<String> filteredNotNullToString = Iterables.transform(
 					Iterables.filter(proposals, Predicates.notNull()),
-					new Function<Object, String>() {
-
-						@Override
-						public String apply(Object input) {
-							return input.toString();
-						}
-
-					});
+					Object::toString);
 			ControlDecoration field = new ControlDecoration(t, SWT.BORDER);
 			FieldDecoration requiredFieldIndicator = FieldDecorationRegistry
 					.getDefault().getFieldDecoration(
