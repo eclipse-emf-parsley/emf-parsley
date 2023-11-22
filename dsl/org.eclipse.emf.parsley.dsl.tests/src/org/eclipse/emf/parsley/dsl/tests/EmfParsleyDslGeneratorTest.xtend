@@ -495,7 +495,7 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
     super(eStructuralFeatureParameter);
   }
-  
+
   public String text_Library_name(final Library it) {
     return "Name";
   }
@@ -602,7 +602,7 @@ public class EmptyTableLabelProvider extends TableColumnLabelProvider {
   public void setParentLabelProvider(final ILabelProvider parentLabelProvider) {
     this.parentLabelProvider = parentLabelProvider;
   }
-  
+
   @Inject
   public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
     super(eStructuralFeatureParameter);
@@ -759,7 +759,7 @@ public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider 
   public EmptyFormFeatureCaptionProvider(final FormToolkitParameter formToolkitParameter) {
     super(formToolkitParameter);
   }
-  
+
   public String text_Library_name(final EStructuralFeature it) {
     return "Name";
   }
@@ -1114,7 +1114,7 @@ public class EmptyFormControlFactory extends FormControlFactory {
   public EmptyFormControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter, final FormToolkitParameter formToolkitParameter) {
     super(compositeParameter, eObjectParameter, formToolkitParameter);
   }
-  
+
   public Control control_Library_name(final Library it) {
     return null;
   }
@@ -1255,7 +1255,7 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
   public EmptyDialogControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter) {
     super(compositeParameter, eObjectParameter);
   }
-  
+
   public Control control_Library_name(final Library it) {
     return null;
   }
@@ -2136,7 +2136,7 @@ public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public int[] valueTableColumnWeights() {
     return new int[] { 5, 2 };
   }
-  
+
   @Override
   public int[] valueTreeFormSashWeights() {
     return new int[] { 5, 2 };
