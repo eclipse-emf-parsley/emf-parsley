@@ -49,6 +49,9 @@ Workflow {
 			scopeProvider = {
 				generateXtendStub = false
 			}
+			labelProvider = {
+				generateXtendStub = false
+			}
 		}
 	}
 }
