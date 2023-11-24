@@ -55,6 +55,9 @@ Workflow {
 			outline = {
 				generateXtendStub = false
 			}
+			quickFixProvider = {
+				generateXtendStub = false
+			}
 		}
 	}
 }
