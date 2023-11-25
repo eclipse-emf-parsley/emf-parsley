@@ -12,11 +12,9 @@ package org.eclipse.emf.parsley.dsl.tests
 
 import com.google.inject.Inject
 import org.eclipse.emf.parsley.dsl.model.Model
-import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslModelUtil
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -28,11 +26,6 @@ import static extension org.junit.Assert.*
 class EmfParsleyDslModelUtilTest {
 
 	@Inject extension ParseHelper<Model>
-
-	@Before
-	def void instantiate() {
-		new EmfParsleyDslModelUtil
-	}
 
 	@Test
 	def void testContainingModule() {

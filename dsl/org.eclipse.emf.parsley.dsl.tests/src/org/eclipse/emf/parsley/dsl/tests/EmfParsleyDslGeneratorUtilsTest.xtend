@@ -30,4 +30,9 @@ class EmfParsleyDslGeneratorUtilsTest {
 		"is".assertEquals("is".propertyNameForGetterSetterMethod)
 		"iseFoo".assertEquals("iseFoo".propertyNameForGetterSetterMethod)
 	}
+
+	@Test
+	def testShouldGenerateExtensionsWithNull() {
+		utils.shouldGenerateExtensions(null).assertFalse
+	}
 }

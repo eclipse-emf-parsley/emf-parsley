@@ -43,37 +43,37 @@ class EmfParsleyDslPluginXmlGenerator implements IGenerator {
 			return ''''''
 		} else {
 			'''
-<extension
-      point="org.eclipse.ui.views">
-   «module.partsSpecifications.parts.map[generateExtensionPoint].join("")»
-</extension>
-'''.generatePluginXml
+			<extension
+			      point="org.eclipse.ui.views">
+			   «module.partsSpecifications.parts.map[generateExtensionPoint].join("")»
+			</extension>
+			'''.generatePluginXml
 		}
 	}
 
 	def CharSequence generateExtensionPoint(PartSpecification partSpecification) {
 		if (partSpecification instanceof ViewSpecification) {
-'''
-<view
-      category="«if (partSpecification.category.nullOrEmpty)
-  	"org.eclipse.emf.parsley" else
-    partSpecification.category»"
-      class="«executableExtensionFactoryQN(partSpecification)»:«partSpecification.type.identifier»"
-      id="«partSpecification.id»"
-      name="«partSpecification.viewName»"
-      restorable="true">
-</view>
-'''
+			'''
+			<view
+			      category="«if (partSpecification.category.nullOrEmpty)
+			  	"org.eclipse.emf.parsley" else
+			    partSpecification.category»"
+			      class="«executableExtensionFactoryQN(partSpecification)»:«partSpecification.type.identifier»"
+			      id="«partSpecification.id»"
+			      name="«partSpecification.viewName»"
+			      restorable="true">
+			</view>
+			'''
 		}
 	}
 
 	def generatePluginXml(CharSequence contents) {
 		'''
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   «contents»
-</plugin>
-'''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<?eclipse version="3.4"?>
+		<plugin>
+		   «contents»
+		</plugin>
+		'''
 	}
 }

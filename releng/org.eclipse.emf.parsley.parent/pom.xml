@@ -131,7 +131,7 @@
 			**/EmfParsleyViewFilesGenerator.java,
 			**/EmfParsleyProjectFilesGenerator.java,
 			**/EmfParsleyDslNewProjectFiles.java,
-			**/*StandaloneSetup*.java,
+			**/*Dsl*Setup*.java,
 			**/*ExtensionFactory*.java,
 			**/*Nature*.java,
 			**/junit4/**
