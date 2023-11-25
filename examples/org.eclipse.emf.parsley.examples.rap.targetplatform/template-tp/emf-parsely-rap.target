@@ -4,7 +4,6 @@
 <target name="EMF Parsley RAP" sequenceNumber="1">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.rap.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.rap.sdk.feature.group" version="0.0.0"/>
@@ -23,6 +22,7 @@
 <repository location="https://download.eclipse.org/releases/${eclipse-version}/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
 <unit id="com.google.guava.failureaccess" version="0.0.0"/>
 <unit id="com.google.inject" version="0.0.0"/>
 <unit id="jakarta.inject.jakarta.inject-api" version="0.0.0"/>
