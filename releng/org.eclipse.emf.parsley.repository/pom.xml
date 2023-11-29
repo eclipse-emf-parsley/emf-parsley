@@ -42,7 +42,6 @@
 				<!-- copy the p2 repository into the project root folder 
 					to allow for easier archiving in CI server -->
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>${maven-antrun-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>copy-to-root-target</id>
