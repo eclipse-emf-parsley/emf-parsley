@@ -68,7 +68,7 @@
 		<xtext-version>2.33.0 </xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
 		<mwe2Version>2.16.0</mwe2Version>
-		<eclipse-version>2023-12</eclipse-version>
+		<eclipse-version>2024-03</eclipse-version>
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
@@ -548,7 +548,7 @@
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<!-- MJAVADOC-620 – Maven Javadoc Plugin fails to resolve the dependencies 
 							when used with Java 11 -->
-						<version>3.2.0</version>
+						<version>3.5.0</version>
 						<configuration>
 							<detectOfflineLinks>false</detectOfflineLinks>
 							<detectJavaApiLink>false</detectJavaApiLink>
@@ -561,7 +561,6 @@
 									<goal>jar</goal>
 								</goals>
 								<configuration>
-									<additionalparam>-Xdoclint:none</additionalparam>
 									<failOnError>false</failOnError>
 								</configuration>
 							</execution>
