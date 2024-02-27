@@ -68,7 +68,7 @@
 		<xtext-version>2.33.0 </xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
 		<mwe2Version>2.16.0</mwe2Version>
-		<eclipse-version>2023-12</eclipse-version>
+		<eclipse-version>2024-03</eclipse-version>
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />

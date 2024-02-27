@@ -9,4 +9,8 @@
 
 ## Update the `.target` files
 
-Both the `simrel.target` and `simrel-rap.target` in `org.eclipse.emf.parsley.targetplatform` with the URL of the Eclipse releases and the Orbit update site (e.g., https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-03)
+Both the `simrel.target` and `simrel-rap.target` in `org.eclipse.emf.parsley.targetplatform` with the URL of the Eclipse releases and the Orbit update site (e.g., https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-03).
+
+## Update the parent `pom.xml`
+
+Update the property `<eclipse-version>2023-12</eclipse-version>`.
