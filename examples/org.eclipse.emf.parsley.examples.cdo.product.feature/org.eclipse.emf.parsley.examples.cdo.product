@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="EMF Parsley Eclipse4 Example CDO Product" uid="org.eclipse.emf.parsley.examples.cdo.product" id="org.eclipse.emf.parsley.examples.cdo.rcp.product" application="org.eclipse.emf.parsley.examples.cdo.rcp.application" version="1.15.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="EMF Parsley Eclipse4 Example CDO Product" uid="org.eclipse.emf.parsley.examples.cdo.product" id="org.eclipse.emf.parsley.examples.cdo.rcp.product" application="org.eclipse.emf.parsley.examples.cdo.rcp.application" version="1.16.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
