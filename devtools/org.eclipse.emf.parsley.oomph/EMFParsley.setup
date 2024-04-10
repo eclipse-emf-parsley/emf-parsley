@@ -201,8 +201,6 @@
       <requirement
           name="org.eclipse.emf.cdo.sdk.feature.group"/>
       <requirement
-          name="org.eclipse.emf.query.sdk.feature.group"/>
-      <requirement
           name="org.eclipse.net4j.sdk.feature.group"/>
       <requirement
           name="org.eclipse.emf.ecoretools.design.feature.group"/>
@@ -386,8 +384,6 @@
             name="org.eclipse.emf.sdk.feature.group"/>
         <requirement
             name="org.eclipse.emf.cdo.sdk.feature.group"/>
-        <requirement
-            name="org.eclipse.emf.query.sdk.feature.group"/>
         <requirement
             name="org.eclipse.net4j.sdk.feature.group"/>
         <requirement
