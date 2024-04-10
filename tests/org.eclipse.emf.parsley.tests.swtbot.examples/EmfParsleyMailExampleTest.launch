@@ -282,10 +282,6 @@
         <setEntry value="org.eclipse.emf.mwe2.launch@default:default"/>
         <setEntry value="org.eclipse.emf.mwe2.lib@default:default"/>
         <setEntry value="org.eclipse.emf.mwe2.runtime@default:default"/>
-        <setEntry value="org.eclipse.emf.query.doc@default:default"/>
-        <setEntry value="org.eclipse.emf.query.examples@default:default"/>
-        <setEntry value="org.eclipse.emf.query.ocl@default:default"/>
-        <setEntry value="org.eclipse.emf.query@default:default"/>
         <setEntry value="org.eclipse.emf.transaction.doc@default:default"/>
         <setEntry value="org.eclipse.emf.transaction.examples@default:default"/>
         <setEntry value="org.eclipse.emf.transaction.ui@default:default"/>
