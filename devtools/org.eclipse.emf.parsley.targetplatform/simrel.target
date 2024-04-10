@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="simrel" sequenceNumber="6">
+<target name="simrel" sequenceNumber="7">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.net4j.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.query.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
