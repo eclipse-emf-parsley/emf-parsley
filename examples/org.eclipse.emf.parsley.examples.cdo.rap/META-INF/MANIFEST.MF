@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Automatic-Module-Name: org.eclipse.emf.parsley.examples.cdo.rap
 Bundle-Name: EMF Parsley Library RAP
 Bundle-SymbolicName: org.eclipse.emf.parsley.examples.cdo.rap;singleton:=true
-Bundle-Version: 1.16.0.qualifier
+Bundle-Version: 1.17.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.rap.ui
 Bundle-Vendor: Eclipse Modeling Project
