@@ -198,7 +198,7 @@ class EmfParsleyDslValidatorTest extends EmfParsleyDslAbstractTest {
 		'''
 		module my.first extends my.first.FirstEmfParsleyGuiceModule {
 		}
-		'''.parse.assertHierarchyCycle("FirstEmfParsleyGuiceModule")
+		'''.parse.assertHierarchyCycle(ModelPackage.eINSTANCE.module, "FirstEmfParsleyGuiceModule")
 	}
 
 	@Test
@@ -218,9 +218,9 @@ class EmfParsleyDslValidatorTest extends EmfParsleyDslAbstractTest {
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		m1.assertHierarchyCycle("SecondEmfParsleyGuiceModule")
-		m2.assertHierarchyCycle("ThirdEmfParsleyGuiceModule")
-		m3.assertHierarchyCycle("FirstEmfParsleyGuiceModule")
+		m1.assertHierarchyCycle(ModelPackage.eINSTANCE.module, "FirstEmfParsleyGuiceModule")
+		m2.assertHierarchyCycle(ModelPackage.eINSTANCE.module, "SecondEmfParsleyGuiceModule")
+		m3.assertHierarchyCycle(ModelPackage.eINSTANCE.module, "ThirdEmfParsleyGuiceModule")
 	}
 
 	@Test
@@ -243,9 +243,9 @@ class EmfParsleyDslValidatorTest extends EmfParsleyDslAbstractTest {
 		}
 		'''.parse(m2.eResource.resourceSet)
 		
-		m1.assertHierarchyCycle("SecondLabelProvider")
-		m2.assertHierarchyCycle("ThirdLabelProvider")
-		m3.assertHierarchyCycle("FirstLabelProvider")
+		m1.assertHierarchyCycle(ModelPackage.eINSTANCE.labelProvider, "FirstLabelProvider")
+		m2.assertHierarchyCycle(ModelPackage.eINSTANCE.labelProvider, "SecondLabelProvider")
+		m3.assertHierarchyCycle(ModelPackage.eINSTANCE.labelProvider, "ThirdLabelProvider")
 	}
 
 	@Test
@@ -801,10 +801,10 @@ class EmfParsleyDslValidatorTest extends EmfParsleyDslAbstractTest {
 		)
 	}
 
-	def private assertHierarchyCycle(EObject e, String className) {
+	def private assertHierarchyCycle(EObject e, EClass type, String className) {
 		e.assertError(
-			ModelPackage.eINSTANCE.extendsClause,
-			CYCLIC_INHERITANCE,
+			type,
+			IssueCodes.CYCLIC_INHERITANCE,
 			'''The inheritance hierarchy of «className» contains cycles'''
 		)
 	}

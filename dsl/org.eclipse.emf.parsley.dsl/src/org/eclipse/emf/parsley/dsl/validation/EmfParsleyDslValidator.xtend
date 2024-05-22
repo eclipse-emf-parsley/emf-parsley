@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.dsl.validation
 import com.google.common.collect.ListMultimap
 import com.google.inject.Inject
 import java.util.List
-import java.util.Set
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
@@ -23,7 +22,6 @@ import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
-import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmTypeReference
@@ -34,6 +32,7 @@ import org.eclipse.xtext.validation.CheckType
 import org.eclipse.xtext.validation.ComposedChecks
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
 import org.eclipse.xtext.xbase.validation.JvmGenericTypeValidator
+import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 
 //import org.eclipse.xtext.validation.Check
 
@@ -46,11 +45,9 @@ import org.eclipse.xtext.xbase.validation.JvmGenericTypeValidator
 class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val TYPE_MISMATCH = "org.eclipse.emf.parsley.dsl.TypeMismatch";
-	
-	public static val CYCLIC_INHERITANCE = "org.eclipse.emf.parsley.dsl.CyclicInheritance";
 
 	public static val FINAL_FIELD_NOT_INITIALIZED = "org.eclipse.emf.parsley.dsl.FinalFieldNotInitialized";
-	
+
 	public static val TOO_LITTLE_TYPE_INFORMATION = "org.eclipse.emf.parsley.dsl.TooLittleTypeInformation";
 
 	public static val DUPLICATE_ELEMENT = "org.eclipse.emf.parsley.dsl.DuplicateElement";
@@ -111,9 +108,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	@Check
 	def void checkExtendsClause(WithExtendsClause withExtendsClause) {
-		if (withExtendsClause.getExtendsClause() !== null && !withExtendsClause.hasCycleInHierarchy()) {
-			// it makes no sense to check for type conformance if there's a cycle in the
-			// hierarchy: there will always be a type mismatch in that case
+		if (withExtendsClause.getExtendsClause() !== null) {
 			checkType(withExtendsClause.extendsClause, 
 				withExtendsClause.extendsClause.superType, withExtendsClause.expectedSupertype, 
 				ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE)
@@ -216,35 +211,6 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 					TYPE_MISMATCH);
 			}
 		}
-	}
-
-	def protected boolean hasCycleInHierarchy(WithExtendsClause withExtendsClause) {
-		val superType = withExtendsClause.extendsClause.superType?.type
-		
-		if (superType instanceof JvmGenericType) {
-			if (superType.hasCycleInHierarchy(newHashSet())) {
-				error("The inheritance hierarchy of " + superType.simpleName + " contains cycles",
-					withExtendsClause.extendsClause,
-					ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE,
-					CYCLIC_INHERITANCE);
-				return true
-			}
-		}
-		
-		return false
-	}
-
-	def protected boolean hasCycleInHierarchy(JvmGenericType type, Set<JvmGenericType> processedSuperTypes) {
-		if (processedSuperTypes.contains(type)) {
-			return true;
-		}
-		processedSuperTypes.add(type);
-		for (genericType : type.superTypes.map[getType].filter(JvmGenericType)) {
-			if (hasCycleInHierarchy(genericType, processedSuperTypes))
-				return true;
-		}
-		processedSuperTypes.remove(type);
-		return false;
 	}
 
 	def private <K, T> duplicatesMultimap() {
