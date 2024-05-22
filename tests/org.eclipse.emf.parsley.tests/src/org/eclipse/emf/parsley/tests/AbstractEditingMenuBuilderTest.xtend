@@ -741,7 +741,7 @@ abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyTest {
 			executeAction("New Book for Writer")
 
 		// the book's library is not the original one
-		val addedLibrary = resource.contents.last as Library
+		val addedLibrary = resource.contents.lastOrNull as Library
 		val addedBook = addedLibrary.getAddedNewBook
 		addedBook.author.assertSame(writerForMenu)
 

@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.dsl.validation
 import com.google.common.collect.ListMultimap
 import com.google.inject.Inject
 import java.util.List
-import java.util.Set
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
@@ -22,22 +21,18 @@ import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
-import org.eclipse.emf.parsley.dsl.model.ProviderBinding
-import org.eclipse.emf.parsley.dsl.model.TypeBinding
-import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
-import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
-import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.resource.IContainer
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.CheckType
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
+import org.eclipse.xtext.validation.ComposedChecks
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
+import org.eclipse.xtext.xbase.validation.JvmGenericTypeValidator
+import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 
 //import org.eclipse.xtext.validation.Check
 
@@ -46,26 +41,19 @@ import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
  *
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
+@ComposedChecks(validators = JvmGenericTypeValidator)
 class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val TYPE_MISMATCH = "org.eclipse.emf.parsley.dsl.TypeMismatch";
-	
-	public static val CYCLIC_INHERITANCE = "org.eclipse.emf.parsley.dsl.CyclicInheritance";
 
 	public static val FINAL_FIELD_NOT_INITIALIZED = "org.eclipse.emf.parsley.dsl.FinalFieldNotInitialized";
-	
-	public static val TOO_LITTLE_TYPE_INFORMATION = "org.eclipse.emf.parsley.dsl.TooLittleTypeInformation";
 
-	public static val DUPLICATE_BINDING = "org.eclipse.emf.parsley.dsl.DuplicateBinding";
+	public static val TOO_LITTLE_TYPE_INFORMATION = "org.eclipse.emf.parsley.dsl.TooLittleTypeInformation";
 
 	public static val DUPLICATE_ELEMENT = "org.eclipse.emf.parsley.dsl.DuplicateElement";
 
-	public static val NON_COMPLIANT_BINDING = "org.eclipse.emf.parsley.dsl.NonCompliantBinding";
-
-	@Inject EmfParsleyDslTypeSystem typeSystem
 	@Inject extension EmfParsleyDslExpectedSuperTypes
 	@Inject extension EmfParsleyDslGuiceModuleHelper
-	@Inject extension IJvmModelAssociations
 
 	@Inject ResourceDescriptionsProvider rdp
 	@Inject IContainer.Manager cm
@@ -120,9 +108,7 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	@Check
 	def void checkExtendsClause(WithExtendsClause withExtendsClause) {
-		if (withExtendsClause.getExtendsClause() !== null && !withExtendsClause.hasCycleInHierarchy()) {
-			// it makes no sense to check for type conformance if there's a cycle in the
-			// hierarchy: there will always be a type mismatch in that case
+		if (withExtendsClause.getExtendsClause() !== null) {
 			checkType(withExtendsClause.extendsClause, 
 				withExtendsClause.extendsClause.superType, withExtendsClause.expectedSupertype, 
 				ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE)
@@ -164,77 +150,17 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		if (methods.empty) {
 			return
 		}
-		
-		checkDuplicateBindings(methods)
-		
-		checkCorrectValueBindings(guiceModuleClass, methods, module)
-		
-		for (t : module.allWithExtendsClauseInferredJavaTypes) {
-			checkDuplicateSpecifications(t)
-		}
-	}
-	
-	private def checkDuplicateBindings(Iterable<JvmOperation> methods) {
-		val map = duplicatesMultimap
-		
-		// create a multimap using method names
-		for (m : methods) {
-			map.put(m.simpleName, m)
-		}
-		
-		checkDuplicates(map) [
-			d |
-			val source = d.sourceElements.head
-			error(
-				duplicateBindingMessage(source, d),
-				source,
-				source.duplicateBindingFeature,
-				DUPLICATE_BINDING
-			);
-		]
-	}
 
-	/**
-	 * Since for fields we generate getter/setter, checking duplicate Java methods
-	 * will automatically check for duplicate fields as well.
-	 */
-	private def checkDuplicateSpecifications(JvmGenericType inferredType) {
-		val inferredFeatures = inferredType.javaResolvedFeatures
-		val methods = inferredFeatures.declaredOperations
-		val map = duplicatesMultimap
-		// since they may be more than one Java method associated to the same
-		// source, we avoid reporting errors on the same source more than once
-		// e.g., for control factory specifications
-		val errorSourceSeen = newHashSet()
-		
-		// create a multimap using method erased signature as key
-		for (m : methods) {
-			map.put(m.javaMethodResolvedErasedSignature, m.declaration)
-		}
-		
-		checkDuplicates(map) [
-			d |
-			val source = d.sourceElements.head
-			if (errorSourceSeen.add(source)) {
-				error(
-					"Duplicate element",
-					source,
-					null,
-					DUPLICATE_ELEMENT
-				);
-			}
-		]
 	}
 
 	private def checkDuplicateViewSpecifications(List<PartSpecification> parts) {
 		val map = duplicatesMultimap
-		
+
 		for (p : parts.filter(ViewSpecification)) {
 			map.put(p.id, p)
 		}
-		
-		checkDuplicates(map) [
-			d |
+
+		checkDuplicates(map) [ d |
 			error(
 				"Duplicate element",
 				d,
@@ -256,23 +182,6 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		}
 	}
 
-	def checkCorrectValueBindings(JvmGenericType guiceModuleClass, Iterable<JvmOperation> methods, Module module) {
-		// These are all the value bindings in the superclass
-		val superClassValueBindings = guiceModuleClass.allGuiceValueBindingsMethodsInSuperclass
-		// check that the return type of the value bindings in this module
-		// are compliant (they can be subtypes)
-		for (superBinding : superClassValueBindings) {
-			val matching = methods.findFirst[simpleName == superBinding.simpleName]
-			if (matching !== null && !(typeSystem.isConformant(module, superBinding.returnType, matching.returnType))) {
-				error("Incorrect value binding: " + matching.returnType.simpleName +
-					" is not compliant with inherited binding's type " + superBinding.returnType.simpleName,
-					matching.sourceElements.head,
-					modelPackage.valueBinding_TypeDecl,
-					NON_COMPLIANT_BINDING);
-			}
-		}
-	}
-	
 	def protected checkType(EObject context, JvmTypeReference actualType, Class<?> expectedType,
 			EStructuralFeature feature) {
 		if (actualType !== null) {
@@ -304,56 +213,8 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		}
 	}
 
-	def protected boolean hasCycleInHierarchy(WithExtendsClause withExtendsClause) {
-		val superType = withExtendsClause.extendsClause.superType?.type
-		
-		if (superType instanceof JvmGenericType) {
-			if (superType.hasCycleInHierarchy(newHashSet())) {
-				error("The inheritance hierarchy of " + superType.simpleName + " contains cycles",
-					withExtendsClause.extendsClause,
-					ModelPackage.Literals.EXTENDS_CLAUSE__SUPER_TYPE,
-					CYCLIC_INHERITANCE);
-				return true
-			}
-		}
-		
-		return false
-	}
-
-	def protected boolean hasCycleInHierarchy(JvmGenericType type, Set<JvmGenericType> processedSuperTypes) {
-		if (processedSuperTypes.contains(type)) {
-			return true;
-		}
-		processedSuperTypes.add(type);
-		for (genericType : type.superTypes.map[getType].filter(JvmGenericType)) {
-			if (hasCycleInHierarchy(genericType, processedSuperTypes))
-				return true;
-		}
-		processedSuperTypes.remove(type);
-		return false;
-	}
-
 	def private <K, T> duplicatesMultimap() {
 		return Multimaps2.<K, T> newLinkedHashListMultimap();
-	}
-
-	def private duplicateBindingMessage(EObject source, JvmOperation method) {
-		"Duplicate binding for: " +
-		switch (source) {
-			TypeBinding: method.returnType.simpleName
-			ProviderBinding: method.returnType.simpleName
-			ValueBinding: source.id
-			default: method.returnType.simpleName
-		}
-	}
-
-	def private duplicateBindingFeature(EObject e) {
-		switch (e) {
-			TypeBinding: modelPackage.typeBinding_TypeToBind
-			ProviderBinding: modelPackage.providerBinding_Type
-			ValueBinding: modelPackage.valueBinding_Id
-			default: null
-		}
 	}
 
 }

@@ -18,7 +18,7 @@
 <unit id="org.eclipse.rap.sdk.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.examples.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/releases/2024-03/"/>
+<repository location="https://download.eclipse.org/releases/2024-06/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
@@ -30,14 +30,14 @@
 <unit id="org.eclipse.xtext.xbase.lib" version="0.0.0"/>
 <unit id="org.junit" version="0.0.0"/>
 <unit id="org.objectweb.asm" version="0.0.0"/>
-<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.34.0"/>
+<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/milestones/2.35.0.M0"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.parsley.rap.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.rap.cdo.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.rap.cdo.sdk.source.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.rap.sdk.source.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/emf-parsley/rt/1.16"/>
+<repository location="https://download.eclipse.org/emf-parsley/rt/1.17"/>
 </location>
 </locations>
 </target>

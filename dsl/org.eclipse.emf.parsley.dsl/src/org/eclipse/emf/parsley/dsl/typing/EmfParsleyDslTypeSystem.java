@@ -25,12 +25,6 @@ public class EmfParsleyDslTypeSystem {
 		return toLightweightTypeReference(actual, context).isSubtypeOf(expected);
 	}
 
-	public boolean isConformant(final EObject context, final JvmTypeReference expected, final JvmTypeReference actual) {
-		var actualType = toLightweightTypeReference(actual, context);
-		var expectedType = toLightweightTypeReference(expected, context);
-		return expectedType.isAssignableFrom(actualType);
-	}
-
 	public LightweightTypeReference toLightweightTypeReference(final JvmTypeReference typeRef, final EObject context) {
 		return newTypeReferenceOwner(context).toLightweightTypeReference(typeRef);
 	}

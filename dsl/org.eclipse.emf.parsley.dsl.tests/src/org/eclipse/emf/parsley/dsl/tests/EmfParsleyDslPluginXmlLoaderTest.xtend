@@ -220,7 +220,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		val loader = load(s1)
 		val elements = loader.extensionElements
 		VIEW_POINT.assertEquals(loader.getElementExtension(elements.head))
-		EDITOR_POINT.assertEquals(loader.getElementExtension(elements.last))
+		EDITOR_POINT.assertEquals(loader.getElementExtension(elements.lastOrNull))
 	}
 
 	@Test
@@ -262,7 +262,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 <extension
       point="org.eclipse.ui.editors">
 </extension>'''.toString.
-		assertEquals(loader.extensionNodes.last.toString)
+		assertEquals(loader.extensionNodes.lastOrNull.toString)
 	}
 
 	@Test
@@ -434,7 +434,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		val loader = load(singleView)
 		loader.insertExtensionElement(VIEW_POINT, "view")
 		'''<view></view>'''.toString.
-		assertEquals(loader.extensionElements.last.toString)
+		assertEquals(loader.extensionElements.lastOrNull.toString)
 	}
 
 	@Test
@@ -442,7 +442,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		val loader = load(emptyPlugin)
 		loader.insertExtensionElement(VIEW_POINT, "view")
 		'''<view></view>'''.toString.
-		assertEquals(loader.extensionElements.last.toString)
+		assertEquals(loader.extensionElements.lastOrNull.toString)
 	}
 
 	@Test

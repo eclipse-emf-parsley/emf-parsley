@@ -39,7 +39,7 @@ class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	val static PROJECT_NAME = "org.eclipse.emf.parsley.dsl.ui.tests.project"
 	
 	@BeforeClass
-	def static void setUp() {
+	def static void setUpOnce() {
 		pluginJavaProject = ProjectImportUtil
 					.importJavaProject(PROJECT_NAME);
 	}
