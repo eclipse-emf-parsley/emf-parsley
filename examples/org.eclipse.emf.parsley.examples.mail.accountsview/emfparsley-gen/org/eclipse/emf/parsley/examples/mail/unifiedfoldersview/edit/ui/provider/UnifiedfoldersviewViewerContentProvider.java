@@ -1,8 +1,8 @@
 package org.eclipse.emf.parsley.examples.mail.unifiedfoldersview.edit.ui.provider;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
+import java.util.Objects;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.edit.ui.provider.ViewerContentProvider;
@@ -30,7 +30,7 @@ public class UnifiedfoldersviewViewerContentProvider extends ViewerContentProvid
     final Function1<Folder, Boolean> _function = (Folder it) -> {
       String _name = it.getName();
       String _containerName = c.getContainerName();
-      return Boolean.valueOf(Objects.equal(_name, _containerName));
+      return Boolean.valueOf(Objects.equals(_name, _containerName));
     };
     return IteratorExtensions.<Folder>filter(Iterators.<Folder>filter(c.getResource().getAllContents(), Folder.class), _function);
   }

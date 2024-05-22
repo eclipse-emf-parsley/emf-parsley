@@ -24,6 +24,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
+import org.junit.Before
+import org.eclipse.xtext.util.JavaVersion
 
 @RunWith(XtextRunner)
 @InjectWith(EmfParsleyDslInjectorProvider)
@@ -32,7 +34,12 @@ class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 	@Rule
 	@Inject public TemporaryFolder temporaryFolder
 
-	@Inject extension CompilationTestHelper
+	@Inject extension CompilationTestHelper compilationTestHelper
+
+	@Before
+	def void setup() {
+		compilationTestHelper.setJavaVersion(JavaVersion.JAVA11);
+	}
 
 	@Test
 	def testEmptyModule() {
@@ -316,11 +323,8 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
   public String text(final Borrower it) {
     String _xblockexpression = null;
     {
-      final Function1<Lendable, Integer> _function = new Function1<Lendable, Integer>() {
-        @Override
-        public Integer apply(final Lendable b) {
-          return Integer.valueOf(b.getCopies());
-        }
+      final Function1<Lendable, Integer> _function = (Lendable b) -> {
+        return Integer.valueOf(b.getCopies());
       };
       List<Integer> _map = ListExtensions.<Lendable, Integer>map(it.getBorrowed(), _function);
       final String buffer = ("borrowed: " + _map);
@@ -438,13 +442,10 @@ public class EmptyLabelProvider extends ViewerLabelProvider {
     return this.myExtensions2;
   }
 
-  private final List<String> listOfString = ObjectExtensions.<ArrayList<String>>operator_doubleArrow(new ArrayList<String>(), new Procedure1<ArrayList<String>>() {
-    @Override
-    public void apply(final ArrayList<String> it) {
-      it.add("first");
-      it.add("second");
-    }
-  });
+  private final List<String> listOfString = ObjectExtensions.<ArrayList<String>>operator_doubleArrow(new ArrayList<String>(), ((Procedure1<ArrayList<String>>) (ArrayList<String> it) -> {
+    it.add("first");
+    it.add("second");
+  }));
 
   public List<String> getListOfString() {
     return this.listOfString;
@@ -759,11 +760,8 @@ public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider 
 
   public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
     Label _label = new Label(parent, SWT.NONE);
-    final Procedure1<Label> _function = new Procedure1<Label>() {
-      @Override
-      public void apply(final Label l) {
-        l.setText(it.getName());
-      }
+    final Procedure1<Label> _function = (Label l) -> {
+      l.setText(it.getName());
     };
     return ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
   }
@@ -855,11 +853,8 @@ public class EmptyDialogFeatureCaptionProvider extends DialogFeatureCaptionProvi
 
   public Label label_Writer_lastName(final Composite parent, final EStructuralFeature it) {
     Label _label = new Label(parent, SWT.NONE);
-    final Procedure1<Label> _function = new Procedure1<Label>() {
-      @Override
-      public void apply(final Label l) {
-        l.setText(it.getName());
-      }
+    final Procedure1<Label> _function = (Label l) -> {
+      l.setText(it.getName());
     };
     return ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
   }
@@ -1079,11 +1074,8 @@ public class EmptyFormControlFactory extends FormControlFactory {
   }
 
   public Control control_Writer_books(final Writer it) {
-    final Function1<Book, String> _function = new Function1<Book, String>() {
-      @Override
-      public String apply(final Book it_1) {
-        return it_1.getTitle();
-      }
+    final Function1<Book, String> _function = (Book it_1) -> {
+      return it_1.getTitle();
     };
     Label _createLabel = this.createLabel(
       IterableExtensions.join(ListExtensions.<Book, String>map(it.getBooks(), _function), ", "));
@@ -1204,11 +1196,8 @@ public class EmptyDialogControlFactory extends DialogControlFactory {
   }
 
   public Control control_Writer_books(final Writer it) {
-    final Function1<Book, String> _function = new Function1<Book, String>() {
-      @Override
-      public String apply(final Book it_1) {
-        return it_1.getTitle();
-      }
+    final Function1<Book, String> _function = (Book it_1) -> {
+      return it_1.getTitle();
     };
     Label _createLabel = this.createLabel(
       IterableExtensions.join(ListExtensions.<Book, String>map(it.getBooks(), _function), ", "));
@@ -1503,19 +1492,13 @@ public class EmptyProposalCreator extends ProposalCreator {
 
   public List<?> proposals_Book_author(final Book it, final EStructuralFeature feature) {
     Writer _createWriter = EXTLibraryFactory.eINSTANCE.createWriter();
-    final Procedure1<Writer> _function = new Procedure1<Writer>() {
-      @Override
-      public void apply(final Writer it_1) {
-        it_1.setName("Foo");
-      }
+    final Procedure1<Writer> _function = (Writer it_1) -> {
+      it_1.setName("Foo");
     };
     Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
     Writer _createWriter_1 = EXTLibraryFactory.eINSTANCE.createWriter();
-    final Procedure1<Writer> _function_1 = new Procedure1<Writer>() {
-      @Override
-      public void apply(final Writer it_1) {
-        it_1.setName("Bar");
-      }
+    final Procedure1<Writer> _function_1 = (Writer it_1) -> {
+      it_1.setName("Bar");
     };
     Writer _doubleArrow_1 = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter_1, _function_1);
     return CollectionLiterals.<Writer>newArrayList(_doubleArrow, _doubleArrow_1);
@@ -1523,19 +1506,13 @@ public class EmptyProposalCreator extends ProposalCreator {
 
   public List<?> proposals_Borrower_borrowed(final Borrower it, final EStructuralFeature feature) {
     List<Object> _defaultProposals = this.defaultProposals(feature);
-    final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
-      @Override
-      public void apply(final List<Object> it_1) {
-        Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
-        final Procedure1<Book> _function = new Procedure1<Book>() {
-          @Override
-          public void apply(final Book it_2) {
-            it_2.setTitle("Fake Book");
-          }
-        };
-        Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);
-        it_1.add(_doubleArrow);
-      }
+    final Procedure1<List<Object>> _function = (List<Object> it_1) -> {
+      Book _createBook = EXTLibraryFactory.eINSTANCE.createBook();
+      final Procedure1<Book> _function_1 = (Book it_2) -> {
+        it_2.setTitle("Fake Book");
+      };
+      Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function_1);
+      it_1.add(_doubleArrow);
     };
     final List<Object> p = ObjectExtensions.<List<Object>>operator_doubleArrow(_defaultProposals, _function);
     return p;
@@ -1689,11 +1666,8 @@ public class EmptyMenuBuilder extends EditingMenuBuilder {
   public List<IMenuContributionSpecification> emfMenuContributions(final Library lib) {
     EList<Writer> _writers = lib.getWriters();
     Writer _createWriter = this.libraryFactory.createWriter();
-    final Procedure1<Writer> _function = new Procedure1<Writer>() {
-      @Override
-      public void apply(final Writer it) {
-        it.setName("This is a new writer");
-      }
+    final Procedure1<Writer> _function = (Writer it) -> {
+      it.setName("This is a new writer");
     };
     Writer _doubleArrow = ObjectExtensions.<Writer>operator_doubleArrow(_createWriter, _function);
     ArrayList<IMenuContributionSpecification> _newArrayList = CollectionLiterals.<IMenuContributionSpecification>newArrayList(
@@ -1704,11 +1678,8 @@ public class EmptyMenuBuilder extends EditingMenuBuilder {
   public List<IMenuContributionSpecification> emfMenuContributions(final Writer it) {
     EList<Book> _books = it.getBooks();
     Book _createBook = this.libraryFactory.createBook();
-    final Procedure1<Book> _function = new Procedure1<Book>() {
-      @Override
-      public void apply(final Book it_1) {
-        it_1.setTitle("New book");
-      }
+    final Procedure1<Book> _function = (Book it_1) -> {
+      it_1.setTitle("New book");
     };
     Book _doubleArrow = ObjectExtensions.<Book>operator_doubleArrow(_createBook, _function);
     IMenuContributionSpecification _actionAdd = this.<Book>actionAdd("New book", _books, _doubleArrow);
