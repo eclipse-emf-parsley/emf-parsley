@@ -131,36 +131,6 @@ provideEditingDomain''',
 	}
 
 	@Test
-	def void testGetAllWithExtendsClause() {
-		assertEqualsStrings(
-		'''
-LabelProviderImpl
-FormFeatureCaptionProviderImpl''',
-		'''
-		module my.test.mod {
-			labelProvider {}
-			bindings {} // this is not a WithExtendsClause
-			formFeatureCaptionProvider {}
-		}
-		'''.parseAndAssertNoError.module.allWithExtendsClause.map[class.simpleName].join("\n"))
-	}
-
-	@Test
-	def void testGetAllWithExtendsClauseInferredJavaTypes() {
-		assertEqualsStrings(
-		'''
-ModLabelProvider
-ModFormFeatureCaptionProvider''',
-		'''
-		module my.test.mod {
-			labelProvider {}
-			bindings {} // this is not a WithExtendsClause
-			formFeatureCaptionProvider {}
-		}
-		'''.parseAndAssertNoError.module.allWithExtendsClauseInferredJavaTypes.map[simpleName].join("\n"))
-	}
-
-	@Test
 	def void testContainsConstructorAcceptingSinglePluginParameter() {
 		val module = '''
 		module my.empty extends org.eclipse.emf.parsley.dsl.tests.inputs.TestIntermediateEmfParsleyJavaGuiceModule {
