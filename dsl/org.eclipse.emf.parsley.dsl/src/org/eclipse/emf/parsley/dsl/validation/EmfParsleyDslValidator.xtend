@@ -24,17 +24,14 @@ import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
-import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.resource.IContainer
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.CheckType
 import org.eclipse.xtext.validation.ComposedChecks
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
 import org.eclipse.xtext.xbase.validation.JvmGenericTypeValidator
 
@@ -56,16 +53,10 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 	
 	public static val TOO_LITTLE_TYPE_INFORMATION = "org.eclipse.emf.parsley.dsl.TooLittleTypeInformation";
 
-	public static val DUPLICATE_BINDING = "org.eclipse.emf.parsley.dsl.DuplicateBinding";
-
 	public static val DUPLICATE_ELEMENT = "org.eclipse.emf.parsley.dsl.DuplicateElement";
 
-	public static val NON_COMPLIANT_BINDING = "org.eclipse.emf.parsley.dsl.NonCompliantBinding";
-
-	@Inject EmfParsleyDslTypeSystem typeSystem
 	@Inject extension EmfParsleyDslExpectedSuperTypes
 	@Inject extension EmfParsleyDslGuiceModuleHelper
-	@Inject extension IJvmModelAssociations
 
 	@Inject ResourceDescriptionsProvider rdp
 	@Inject IContainer.Manager cm
@@ -164,25 +155,17 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		if (methods.empty) {
 			return
 		}
-		
-//		checkDuplicateBindings(methods)
-//		
-//		checkCorrectValueBindings(guiceModuleClass, methods, module)
-//		
-//		for (t : module.allWithExtendsClauseInferredJavaTypes) {
-//			checkDuplicateSpecifications(t)
-//		}
+
 	}
 
 	private def checkDuplicateViewSpecifications(List<PartSpecification> parts) {
 		val map = duplicatesMultimap
-		
+
 		for (p : parts.filter(ViewSpecification)) {
 			map.put(p.id, p)
 		}
-		
-		checkDuplicates(map) [
-			d |
+
+		checkDuplicates(map) [ d |
 			error(
 				"Duplicate element",
 				d,
@@ -204,23 +187,6 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 		}
 	}
 
-	def checkCorrectValueBindings(JvmGenericType guiceModuleClass, Iterable<JvmOperation> methods, Module module) {
-		// These are all the value bindings in the superclass
-		val superClassValueBindings = guiceModuleClass.allGuiceValueBindingsMethodsInSuperclass
-		// check that the return type of the value bindings in this module
-		// are compliant (they can be subtypes)
-		for (superBinding : superClassValueBindings) {
-			val matching = methods.findFirst[simpleName == superBinding.simpleName]
-			if (matching !== null && !(typeSystem.isConformant(module, superBinding.returnType, matching.returnType))) {
-				error("Incorrect value binding: " + matching.returnType.simpleName +
-					" is not compliant with inherited binding's type " + superBinding.returnType.simpleName,
-					matching.sourceElements.head,
-					modelPackage.valueBinding_TypeDecl,
-					NON_COMPLIANT_BINDING);
-			}
-		}
-	}
-	
 	def protected checkType(EObject context, JvmTypeReference actualType, Class<?> expectedType,
 			EStructuralFeature feature) {
 		if (actualType !== null) {
