@@ -38,6 +38,8 @@ import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.CheckType
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
+import org.eclipse.xtext.validation.ComposedChecks
+import org.eclipse.xtext.xbase.validation.JvmGenericTypeValidator
 
 //import org.eclipse.xtext.validation.Check
 
@@ -46,6 +48,7 @@ import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
  *
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
+@ComposedChecks(validators = JvmGenericTypeValidator)
 class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	public static val TYPE_MISMATCH = "org.eclipse.emf.parsley.dsl.TypeMismatch";
@@ -165,13 +168,13 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 			return
 		}
 		
-		checkDuplicateBindings(methods)
-		
-		checkCorrectValueBindings(guiceModuleClass, methods, module)
-		
-		for (t : module.allWithExtendsClauseInferredJavaTypes) {
-			checkDuplicateSpecifications(t)
-		}
+//		checkDuplicateBindings(methods)
+//		
+//		checkCorrectValueBindings(guiceModuleClass, methods, module)
+//		
+//		for (t : module.allWithExtendsClauseInferredJavaTypes) {
+//			checkDuplicateSpecifications(t)
+//		}
 	}
 	
 	private def checkDuplicateBindings(Iterable<JvmOperation> methods) {

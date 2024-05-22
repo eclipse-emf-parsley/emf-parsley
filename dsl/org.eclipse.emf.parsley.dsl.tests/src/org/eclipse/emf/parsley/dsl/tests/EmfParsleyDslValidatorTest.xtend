@@ -349,10 +349,10 @@ class EmfParsleyDslValidatorTest extends EmfParsleyDslAbstractTest {
 			}
 		}
 		'''.parse.assertErrorMessages(
-'''
-Duplicate binding for: Class<? extends ILabelProvider>
-Duplicate binding for: Class<? extends ILabelProvider>
-'''
+		'''
+		Duplicate method bindILabelProvider() in type EmptyEmfParsleyGuiceModule
+		Duplicate method bindILabelProvider() in type EmptyEmfParsleyGuiceModule
+		'''
 		)
 	}
 
@@ -373,11 +373,11 @@ Duplicate binding for: Class<? extends ILabelProvider>
 			}
 		}
 		'''.parse.assertErrorMessages(
-'''
-Duplicate binding for: Class<? extends ILabelProvider>
-Duplicate binding for: Class<? extends ILabelProvider>
-Duplicate binding for: Class<? extends ILabelProvider>
-'''
+		'''
+		Duplicate method bindILabelProvider() in type EmptyEmfParsleyGuiceModule
+		Duplicate method bindILabelProvider() in type EmptyEmfParsleyGuiceModule
+		Duplicate method bindILabelProvider() in type EmptyEmfParsleyGuiceModule
+		'''
 		)
 	}
 
@@ -399,11 +399,11 @@ Duplicate binding for: Class<? extends ILabelProvider>
 		'''.parse => [
 			assertDuplicateBinding(
 				ModelPackage.eINSTANCE.labelProvider,
-				"Class<? extends ILabelProvider>"
+				"bindILabelProvider"
 			)
 			assertDuplicateBinding(
 				ModelPackage.eINSTANCE.typeBinding,
-				"Class<? extends ILabelProvider>"
+				"bindILabelProvider"
 			)
 		]
 	}
@@ -438,10 +438,10 @@ Duplicate binding for: Class<? extends ILabelProvider>
 			}
 		}
 		'''.parse.assertErrorMessages(
-'''
-Duplicate binding for: Class<? extends Provider<AdapterFactoryEditingDomain>>
-Duplicate binding for: Class<? extends Provider<AdapterFactoryEditingDomain>>
-'''
+		'''
+		Duplicate method provideAdapterFactoryEditingDomain() in type EmptyEmfParsleyGuiceModule
+		Duplicate method provideAdapterFactoryEditingDomain() in type EmptyEmfParsleyGuiceModule
+		'''
 		)
 	}
 
@@ -459,7 +459,7 @@ Duplicate binding for: Class<? extends Provider<AdapterFactoryEditingDomain>>
 		}
 		'''.parse.assertDuplicateBinding(
 				ModelPackage.eINSTANCE.providerBinding,
-				"Class<? extends Provider<AdapterFactoryEditingDomain>>"
+				"provideAdapterFactoryEditingDomain"
 			)
 	}
 
@@ -475,10 +475,10 @@ Duplicate binding for: Class<? extends Provider<AdapterFactoryEditingDomain>>
 			}
 		}
 		'''.parse.assertErrorMessages(
-'''
-Duplicate binding for: TableColumnWeights
-Duplicate binding for: TableColumnWeights
-'''
+		'''
+		Duplicate method valueTableColumnWeights() in type EmptyEmfParsleyGuiceModule
+		Duplicate method valueTableColumnWeights() in type EmptyEmfParsleyGuiceModule
+		'''
 		)
 	}
 
@@ -495,15 +495,13 @@ Duplicate binding for: TableColumnWeights
 		}
 		'''.parse.assertDuplicateBinding(
 				ModelPackage.eINSTANCE.valueBinding,
-				"TableColumnWeights"
+				"valueTableColumnWeights"
 			)
 	}
 
 	@Test
 	def void testNonCompliantValueBinding() {
 		'''
-		import java.util.List
-
 		module my.empty {
 			bindings {
 				// the correct type should be List<Integer>
@@ -512,8 +510,8 @@ Duplicate binding for: TableColumnWeights
 		}
 		'''.parse.assertError(
 			ModelPackage.eINSTANCE.valueBinding,
-			NON_COMPLIANT_BINDING,
-			"Incorrect value binding: Integer is not compliant with inherited binding's type List<Integer>"
+			IssueCodes.INCOMPATIBLE_RETURN_TYPE,
+			"The return type is incompatible with valueTableColumnWeights()"
 		)
 	}
 
@@ -548,25 +546,14 @@ Duplicate binding for: TableColumnWeights
 					}
 				}
 				'''
-		input.parse => [
-			4.assertEquals(validate.size)
-			assertDuplicateElement(
-				ModelPackage.eINSTANCE.polymorphicSpecification,
-				input.indexOf("EClass ->"), 'EClass -> ""'.length
-			)
-			assertDuplicateElement(
-				ModelPackage.eINSTANCE.polymorphicSpecification,
-				input.indexOf("EClass c"), 'EClass c -> ""'.length
-			)
-			assertDuplicateElement(
-				ModelPackage.eINSTANCE.featureAssociatedExpression,
-				input.indexOf("EClass  : name"), 'EClass  : name -> ""'.length
-			)
-			assertDuplicateElement(
-				ModelPackage.eINSTANCE.featureAssociatedExpression,
-				input.indexOf("EClass : name"), 'EClass : name -> ""'.length
-			)
-		]
+		input.parse.assertErrorMessages(
+		'''
+		Duplicate method text(EClass) in type EmptyLabelProvider
+		Duplicate method text(EClass) in type EmptyLabelProvider
+		Duplicate method text_EClass_name(EStructuralFeature) in type EmptyFormFeatureCaptionProvider
+		Duplicate method text_EClass_name(EStructuralFeature) in type EmptyFormFeatureCaptionProvider
+		'''
+		)
 	}
 
 	@Test
@@ -587,12 +574,12 @@ Duplicate binding for: TableColumnWeights
 				'''
 		input.parse => [
 			2.assertEquals(validate.size)
-			assertDuplicateElement(
+			assertDuplicateMethod(
 				ModelPackage.eINSTANCE.controlFactorySpecification,
 				input.indexOf("EClass : name ->"),
 				'EClass : name -> { createLabel(parent, "") } target { observeText }'.length
 			)
-			assertDuplicateElement(
+			assertDuplicateMethod(
 				ModelPackage.eINSTANCE.controlFactorySpecification,
 				input.indexOf("EClass  : name ->"),
 				'EClass  : name -> { createLabel(parent, "") } target { observeText }'.length
@@ -617,26 +604,26 @@ Duplicate binding for: TableColumnWeights
 				}
 				'''
 		input.parse => [
-			4.assertEquals(validate.size)
-			assertDuplicateElement(
+			8.assertEquals(validate.size) // 8 because there also inferred getters
+			assertDuplicateField(
 				ModelPackage.eINSTANCE.fieldSpecification,
-				input.indexOf("val int e1"),
-				'val int e1 = 0'.length
+				input.indexOf("e1"),
+				'e1'.length
 			)
-			assertDuplicateElement(
+			assertDuplicateField(
 				ModelPackage.eINSTANCE.fieldSpecification,
-				input.indexOf("val String e1"),
-				'val String e1 = null'.length
+				input.lastIndexOf("e1"),
+				'e1'.length
 			)
-			assertDuplicateElement(
+			assertDuplicateField(
 				ModelPackage.eINSTANCE.fieldSpecification,
-				input.indexOf("val int f1"),
-				'val int f1 = 0'.length
+				input.indexOf("f1"),
+				'f1'.length
 			)
-			assertDuplicateElement(
+			assertDuplicateField(
 				ModelPackage.eINSTANCE.fieldSpecification,
-				input.indexOf("val String f1"),
-				'val String f1 = null'.length
+				input.lastIndexOf("f1"),
+				'f1'.length
 			)
 		]
 	}
@@ -770,11 +757,11 @@ Duplicate binding for: TableColumnWeights
 		)
 	}
 
-	def private assertDuplicateBinding(EObject e, EClass eClass, String expectedType) {
+	def private assertDuplicateBinding(EObject e, EClass eClass, String expectedMethodName) {
 		e.assertError(
 			eClass,
-			DUPLICATE_BINDING,
-			"Duplicate binding for: " + expectedType
+			IssueCodes.DUPLICATE_METHOD,
+			"Duplicate method " + expectedMethodName
 		)
 	}
 
@@ -784,6 +771,24 @@ Duplicate binding for: TableColumnWeights
 			DUPLICATE_ELEMENT,
 			offset, length,
 			"Duplicate element"
+		)
+	}
+
+	def private assertDuplicateField(EObject e, EClass eClass, int offset, int length) {
+		e.assertError(
+			eClass,
+			IssueCodes.DUPLICATE_FIELD,
+			offset, length,
+			"Duplicate field"
+		)
+	}
+
+	def private assertDuplicateMethod(EObject e, EClass eClass, int offset, int length) {
+		e.assertError(
+			eClass,
+			IssueCodes.DUPLICATE_METHOD,
+			offset, length,
+			"Duplicate method"
 		)
 	}
 
