@@ -22,9 +22,6 @@ import org.eclipse.emf.parsley.dsl.model.FieldSpecification
 import org.eclipse.emf.parsley.dsl.model.ModelPackage
 import org.eclipse.emf.parsley.dsl.model.Module
 import org.eclipse.emf.parsley.dsl.model.PartSpecification
-import org.eclipse.emf.parsley.dsl.model.ProviderBinding
-import org.eclipse.emf.parsley.dsl.model.TypeBinding
-import org.eclipse.emf.parsley.dsl.model.ValueBinding
 import org.eclipse.emf.parsley.dsl.model.ViewSpecification
 import org.eclipse.emf.parsley.dsl.model.WithExtendsClause
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem
@@ -36,9 +33,9 @@ import org.eclipse.xtext.resource.IContainer
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.CheckType
+import org.eclipse.xtext.validation.ComposedChecks
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.typesystem.util.Multimaps2
-import org.eclipse.xtext.validation.ComposedChecks
 import org.eclipse.xtext.xbase.validation.JvmGenericTypeValidator
 
 //import org.eclipse.xtext.validation.Check
@@ -176,58 +173,6 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 //			checkDuplicateSpecifications(t)
 //		}
 	}
-	
-	private def checkDuplicateBindings(Iterable<JvmOperation> methods) {
-		val map = duplicatesMultimap
-		
-		// create a multimap using method names
-		for (m : methods) {
-			map.put(m.simpleName, m)
-		}
-		
-		checkDuplicates(map) [
-			d |
-			val source = d.sourceElements.head
-			error(
-				duplicateBindingMessage(source, d),
-				source,
-				source.duplicateBindingFeature,
-				DUPLICATE_BINDING
-			);
-		]
-	}
-
-	/**
-	 * Since for fields we generate getter/setter, checking duplicate Java methods
-	 * will automatically check for duplicate fields as well.
-	 */
-	private def checkDuplicateSpecifications(JvmGenericType inferredType) {
-		val inferredFeatures = inferredType.javaResolvedFeatures
-		val methods = inferredFeatures.declaredOperations
-		val map = duplicatesMultimap
-		// since they may be more than one Java method associated to the same
-		// source, we avoid reporting errors on the same source more than once
-		// e.g., for control factory specifications
-		val errorSourceSeen = newHashSet()
-		
-		// create a multimap using method erased signature as key
-		for (m : methods) {
-			map.put(m.javaMethodResolvedErasedSignature, m.declaration)
-		}
-		
-		checkDuplicates(map) [
-			d |
-			val source = d.sourceElements.head
-			if (errorSourceSeen.add(source)) {
-				error(
-					"Duplicate element",
-					source,
-					null,
-					DUPLICATE_ELEMENT
-				);
-			}
-		]
-	}
 
 	private def checkDuplicateViewSpecifications(List<PartSpecification> parts) {
 		val map = duplicatesMultimap
@@ -338,25 +283,6 @@ class EmfParsleyDslValidator extends AbstractEmfParsleyDslValidator {
 
 	def private <K, T> duplicatesMultimap() {
 		return Multimaps2.<K, T> newLinkedHashListMultimap();
-	}
-
-	def private duplicateBindingMessage(EObject source, JvmOperation method) {
-		"Duplicate binding for: " +
-		switch (source) {
-			TypeBinding: method.returnType.simpleName
-			ProviderBinding: method.returnType.simpleName
-			ValueBinding: source.id
-			default: method.returnType.simpleName
-		}
-	}
-
-	def private duplicateBindingFeature(EObject e) {
-		switch (e) {
-			TypeBinding: modelPackage.typeBinding_TypeToBind
-			ProviderBinding: modelPackage.providerBinding_Type
-			ValueBinding: modelPackage.valueBinding_Id
-			default: null
-		}
 	}
 
 }

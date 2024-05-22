@@ -27,18 +27,12 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.typesystem.override.IResolvedOperation;
-import org.eclipse.xtext.xbase.typesystem.override.OverrideHelper;
-import org.eclipse.xtext.xbase.typesystem.override.ResolvedFeatures;
 
 import com.google.inject.Inject;
 
 public class EmfParsleyDslGuiceModuleHelper {
 	@Inject
 	private IJvmModelAssociations jvmModelAssociations;
-
-	@Inject
-	private OverrideHelper overrideHelper;
 
 	@Inject
 	private EmfParsleyDslTypeSystem emfParsleyDslTypeSystem;
@@ -81,14 +75,6 @@ public class EmfParsleyDslGuiceModuleHelper {
 
 	public Iterable<WithExtendsClause> getAllWithExtendsClause(final org.eclipse.emf.parsley.dsl.model.Module module) {
 		return filter(module.eContents(), WithExtendsClause.class);
-	}
-
-	public ResolvedFeatures getJavaResolvedFeatures(final JvmGenericType type) {
-		return overrideHelper.getResolvedFeatures(type);
-	}
-
-	public String getJavaMethodResolvedErasedSignature(final IResolvedOperation op) {
-		return op.getResolvedErasureSignature();
 	}
 
 	public boolean containsConstructorAcceptingPluginParameter(final EObject context, final JvmTypeReference typeRef) {
