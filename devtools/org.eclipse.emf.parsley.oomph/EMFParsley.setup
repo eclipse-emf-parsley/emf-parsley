@@ -611,6 +611,7 @@
     </setupTask>
     <setupTask
         xsi:type="projects:ProjectsBuildTask"
+        onlyNewProjects="true"
         refresh="true"/>
     <setupTask
         xsi:type="launching:LaunchTask"
@@ -619,6 +620,7 @@
     <setupTask
         xsi:type="projects:ProjectsBuildTask"
         id="Clean"
+        onlyNewProjects="true"
         refresh="true"
         clean="true">
       <description>Clean</description>
