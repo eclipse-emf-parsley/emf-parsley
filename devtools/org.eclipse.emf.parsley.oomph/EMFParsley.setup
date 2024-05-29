@@ -153,11 +153,11 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="mwe2.site"
-      value="https://download.eclipse.org/modeling/emft/mwe/updates/milestones/S202405170722/"/>
+      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.18.0/"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="https://download.eclipse.org/modeling/tmf/xtext/updates/milestones/2.35.0.M2/"/>
+      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.35.0/"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
