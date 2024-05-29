@@ -483,7 +483,6 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
-
 		</profile>
 
 		<profile>
@@ -530,6 +529,20 @@
 			</activation>
 
 			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.tycho</groupId>
+							<artifactId>tycho-packaging-plugin</artifactId>
+							<version>${tycho-version}</version>
+							<configuration>
+								<!-- since we change MANIFEST and POMs when releasing to Maven Central
+									we must disable the error because the Git working tree will be dirty -->
+								<jgit.dirtyWorkingTree>ignore</jgit.dirtyWorkingTree>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 				<plugins>
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
@@ -542,7 +555,6 @@
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
 					</plugin>
-
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
