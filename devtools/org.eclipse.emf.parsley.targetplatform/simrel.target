@@ -10,7 +10,7 @@
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/releases/2024-06"/>
+<repository location="https://download.eclipse.org/releases/2024-09"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.swtbot.forms.feature.group" version="0.0.0"/>
@@ -21,11 +21,11 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.18.0/"/>
+<repository location="https://download.eclipse.org/modeling/emft/mwe/updates/milestones/S202407051027/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.35.0/"/>
+<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/milestones/2.36.0.M1/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="de.itemis.xtext.antlr.feature.feature.group" version="2.1.1.v201405091103"/>
@@ -33,9 +33,9 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.mockito.mockito-core" version="5.12.0"/>
-<unit id="net.bytebuddy.byte-buddy-agent" version="1.14.16"/>
+<unit id="net.bytebuddy.byte-buddy-agent" version="0.0.0"/>
 <unit id="slf4j.api" version="2.0.13"/>
-<repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-06"/>
+<repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-09"/>
 </location>
 </locations>
 </target>
