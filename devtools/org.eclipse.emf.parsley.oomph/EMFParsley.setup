@@ -148,16 +148,16 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="2024-06"
+      defaultValue="2024-09"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="mwe2.site"
-      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.18.0/"/>
+      value="https://download.eclipse.org/modeling/emft/mwe/updates/milestones/S202407051027/"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.35.0/"/>
+      value="https://download.eclipse.org/modeling/tmf/xtext/updates/milestones/2.36.0.M1/"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
@@ -281,6 +281,8 @@
             name="org.eclipse.swtbot.ide.feature.group"/>
         <requirement
             name="org.eclipse.swtbot.generator.feature.feature.group"/>
+        <repository
+            url="https://download.eclipse.org/technology/swtbot/releases/latest"/>
         <description>UI testing framework</description>
       </setupTask>
       <setupTask
@@ -406,63 +408,6 @@
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
         <repositoryList
-            name="2022-12">
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://download.eclipse.org/releases/2022-12"/>
-          <repository
-              url="https://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
-          <repository
-              url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
-          <repository
-              url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
-        </repositoryList>
-        <repositoryList
-            name="2023-09">
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://download.eclipse.org/releases/2023-09"/>
-          <repository
-              url="https://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
-          <repository
-              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
-          <repository
-              url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
-        </repositoryList>
-        <repositoryList
-            name="2023-12">
-          <repository
-              url="${xtext.site}"/>
-          <repository
-              url="${mwe2.site}"/>
-          <repository
-              url="https://download.eclipse.org/releases/2023-12"/>
-          <repository
-              url="https://download.eclipse.org/cbi/updates/license"/>
-          <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
-          <repository
-              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
-          <repository
-              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
-          <repository
-              url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
-        </repositoryList>
-        <repositoryList
             name="2024-03">
           <repository
               url="${xtext.site}"/>
@@ -499,6 +444,27 @@
               url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-06"/>
           <repository
               url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
+        </repositoryList>
+        <repositoryList
+            name="2024-09">
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://download.eclipse.org/releases/2024-03"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-09"/>
+          <repository
+              url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
+          <repository
+              url="https://download.eclipse.org/technology/swtbot/releases/latest"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -641,7 +607,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.35.0,2.36.0)"/>
+            versionRange="[2.36.0,2.37.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
