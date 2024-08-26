@@ -11,5 +11,3 @@ Require-Bundle: org.eclipse.emf.parsley.examples.rap.model,
  org.eclipse.emf.ecore.xmi
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
-Import-Package: javax.servlet;version="2.4.0",
- javax.servlet.http;version="2.4.0"
