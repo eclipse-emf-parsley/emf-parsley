@@ -65,9 +65,9 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 
-		<xtext-version>2.36.0.M1</xtext-version>
+		<xtext-version>2.36.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.19.0.M1</mwe2Version>
+		<mwe2Version>2.19.0</mwe2Version>
 		<eclipse-version>2024-09</eclipse-version>
 
 		<!-- tests and runtime args -->
