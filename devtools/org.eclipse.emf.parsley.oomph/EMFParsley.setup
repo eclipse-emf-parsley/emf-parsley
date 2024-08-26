@@ -404,6 +404,8 @@
             name="org.mockito.mockito-core"/>
         <requirement
             name="org.eclipse.egit.feature.group"/>
+        <requirement
+            name="org.apache.commons.commons-logging"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
