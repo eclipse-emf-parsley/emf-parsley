@@ -65,6 +65,12 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 
+		<!--
+		Disable m2e-apt automatic configuration to avoid generated .classpath entries in Visual Studio Code Maven extension
+		See https://github.com/eclipse-m2e/m2e-core/tree/main/org.eclipse.m2e.apt.ui
+		-->
+		<m2e.apt.activation>disabled</m2e.apt.activation>
+
 		<xtext-version>2.36.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
 		<mwe2Version>2.19.0</mwe2Version>
