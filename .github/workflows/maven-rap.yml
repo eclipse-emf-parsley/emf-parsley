@@ -40,7 +40,7 @@ jobs:
         -Prap-examples
         clean verify
     - name: Archive Target Platform example
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       if: ${{ always() }}
       with:
         name: rap-examples-test-${{ runner.os }}

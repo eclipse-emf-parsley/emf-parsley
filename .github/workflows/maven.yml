@@ -59,19 +59,19 @@ jobs:
         -DpullRequest=${{ github.event.pull_request.number }}
         $COVERALLSGOAL
     - name: Archive UI Tests Screenshots
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       if: ${{ failure() || cancelled() }}
       with:
         name: screenshots-${{ runner.os }}
         path: '**/screenshots'
     - name: Archive Logs
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       if: ${{ failure() || cancelled() }}
       with:
         name: logs-${{ runner.os }}
         path: '**/target/work/data/.metadata/.log'
     - name: Archive Coverage Report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       if: ${{ success() }}
       with:
         name: jacoco-coverage-${{ runner.os }}
