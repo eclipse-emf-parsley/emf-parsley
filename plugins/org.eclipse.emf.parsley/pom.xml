@@ -13,4 +13,16 @@
 	<artifactId>org.eclipse.emf.parsley</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.runtime</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>
