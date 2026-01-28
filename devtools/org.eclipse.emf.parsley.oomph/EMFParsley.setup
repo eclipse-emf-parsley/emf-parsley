@@ -296,6 +296,8 @@
             url="${xtext.site}"/>
         <repository
             url="${mwe2.site}"/>
+        <repository
+            url="https://download.eclipse.org/oomph/simrel-orbit/2023-09"/>
       </setupTask>
     </setupTask>
     <setupTask

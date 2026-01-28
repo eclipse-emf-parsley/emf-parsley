@@ -960,6 +960,7 @@
 							.api_filters
 							*.hprof
 							plugin.xml_gen
+							*.launch
 						</jgit.ignore>
 						<!-- "git.dirtyWorkingTree" as "ignore" should not be enabled: we must make sure
 							that's everything is committed, including possible regenerated
