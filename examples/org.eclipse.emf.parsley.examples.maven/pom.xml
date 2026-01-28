@@ -9,7 +9,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>4.0.7</tycho-version>
+		<tycho-version>4.0.13</tycho-version>
 		<xtext-version>2.35.0</xtext-version>
 		<eclipse-version>2024-06</eclipse-version>
 
