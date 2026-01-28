@@ -362,22 +362,10 @@
 										<id>org.eclipse.rcp</id>
 										<versionRange>0.0.0</versionRange>
 									</requirement>
-									<!-- to force the same version of jdt.compiler.apt and jdt.core
+									<!-- forcing the same version of jdt.compiler.apt and jdt.core
 										(for xtext-maven-plugin) 
 										see https://github.com/eclipse/xtext-maven/issues/146
-										It is not necessary anymore since 2023-03 since the fragments have been removed -->
-									<!--
-									<requirement>
-										<type>eclipse-plugin</type>
-										<id>org.eclipse.jdt.compiler.apt</id>
-										<versionRange>0.0.0</versionRange>
-									</requirement>
-									<requirement>
-										<type>eclipse-plugin</type>
-										<id>org.eclipse.jdt.compiler.tool</id>
-										<versionRange>0.0.0</versionRange>
-									</requirement>
-									-->
+										is not necessary anymore since 2023-03 since the fragments have been removed -->
 								</extraRequirements>
 							</dependency-resolution>
 						</configuration>
