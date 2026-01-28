@@ -55,7 +55,9 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<!-- e.g. JavaSE-11 / JavaSE-17 / JavaSE-21 -->
+					<!-- Tycho now requires that, or it will use
+						the current Java level and it won't be resolve
+						bundles that require a higher version of Java -->
 					<executionEnvironment>JavaSE-17</executionEnvironment>
 				</configuration>
 			</plugin>
