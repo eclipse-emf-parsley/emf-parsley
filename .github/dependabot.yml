@@ -1,7 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: "maven"
-    directory: "/releng/org.eclipse.emf.parsley.parent"
+    directories:
+      - "/plugins/*"
+      - "/features/*"
+      - "/tests/*"
+      - "/dsl/*"
+      - "/examples/*"
+      - "/releng/*"
+      - "/devtools/*"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 10
