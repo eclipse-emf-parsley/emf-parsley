@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directories:
+      - "releng/org.eclipse.emf.parsley.parent"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "org.eclipse.xtend:*" # we handle these ones manually
+      - dependency-name: "org.eclipse.xtext:*" # we handle these ones manually
+      - dependency-name: "org.eclipse.tycho:*" # we handle these ones manually
+    groups:
+      # update official Maven plugins in a single pull request
+      maven-plugin-updates:
+        patterns:
+         - "org.apache.maven.plugins:*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
