@@ -10,13 +10,6 @@ import static extension org.junit.Assert.*
  */
 class EmfParsleyProjectFilesGeneratorUtilTest {
 
-	new() {
-		// to avoid missed code coverage for the protected constructor
-		new EmfParsleyProjectFilesGeneratorUtil() {
-			
-		}
-	}
-
 	@Test
 	def void testClassNameFromProject() {
 		"Name".assertEquals(

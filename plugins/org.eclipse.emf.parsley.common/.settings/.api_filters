@@ -8,11 +8,27 @@
             </message_arguments>
         </filter>
     </resource>
+    <resource path="src/org/eclipse/emf/parsley/EmfParsleyConstants.java" type="org.eclipse.emf.parsley.EmfParsleyConstants">
+        <filter comment="protected constructor turned into private in utility class" id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.EmfParsleyConstants"/>
+                <message_argument value="EmfParsleyConstants()"/>
+            </message_arguments>
+        </filter>
+    </resource>
     <resource path="src/org/eclipse/emf/parsley/edit/action/EditingActionManager.java" type="org.eclipse.emf.parsley.edit.action.EditingActionManager">
         <filter comment="we need this, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=404727" id="574664731">
             <message_arguments>
                 <message_argument value="org.eclipse.emf.parsley.edit.action.EditingActionManager.getSharedImages()"/>
                 <message_argument value="ISharedImages"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/util/DatabindingUtil.java" type="org.eclipse.emf.parsley.util.DatabindingUtil">
+        <filter comment="protected constructor turned into private in utility class" id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.util.DatabindingUtil"/>
+                <message_argument value="DatabindingUtil()"/>
             </message_arguments>
         </filter>
     </resource>

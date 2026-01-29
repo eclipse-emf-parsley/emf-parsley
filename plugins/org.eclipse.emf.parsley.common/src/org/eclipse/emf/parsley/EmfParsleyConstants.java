@@ -32,8 +32,8 @@ public class EmfParsleyConstants {
 
 	public static final String TREE_FORM_SASH_WEIGHTS = "TreeFormSashWeights";
 
-	protected EmfParsleyConstants() {
-
+	private EmfParsleyConstants() {
+		// only static utility methods
 	}
 
 }
