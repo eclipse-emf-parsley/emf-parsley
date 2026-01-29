@@ -28,8 +28,8 @@ import com.google.common.collect.Lists;
  */
 public class EmfParsleyUtil {
 
-	protected EmfParsleyUtil() {
-
+	private EmfParsleyUtil() {
+		// only static utility methods
 	}
 
 	/**
