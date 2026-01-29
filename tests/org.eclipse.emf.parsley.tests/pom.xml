@@ -39,10 +39,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<!-- Since these are plain Junit tests, we use maven surefire instead
 					of tycho surefire -->
 				<groupId>org.apache.maven.plugins</groupId>
