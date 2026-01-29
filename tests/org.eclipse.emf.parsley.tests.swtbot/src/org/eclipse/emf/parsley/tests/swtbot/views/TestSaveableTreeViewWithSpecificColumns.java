@@ -33,7 +33,6 @@ public class TestSaveableTreeViewWithSpecificColumns extends SaveableTreeView {
 		TreeColumnLayout layout = new TreeColumnLayout();
 		viewerContainer.setLayout(layout);
 		TreeViewer treeViewer = super.createAndInitializeTreeViewer(viewerContainer);
-		@SuppressWarnings("serial")
 		List<EStructuralFeature> features = new ArrayList<EStructuralFeature>() {
 			{
 				add(EXTLibraryPackage.eINSTANCE.getWriter_Name());

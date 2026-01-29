@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.tests
 
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EStructuralFeature
-import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.junit.Rule
 import org.junit.Test
@@ -55,14 +54,6 @@ class PolymorphicDispatcherTest {
 		// bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=494886
 		def String text_TestEClassForFeatureName_eField(EStructuralFeature feature) {
 			return SPECIAL_CASE
-		}
-	}
-
-	new() {
-		// the following is useless... but it's just to have coverage
-		// for the protected constructor 
-		new PolymorphicDispatcherExtensions() {
-			
 		}
 	}
 

@@ -26,8 +26,8 @@ import org.eclipse.swt.widgets.Widget;
  */
 public class DatabindingUtil {
 
-	protected DatabindingUtil() {
-
+	private DatabindingUtil() {
+		// only static utility methods
 	}
 
 	/**

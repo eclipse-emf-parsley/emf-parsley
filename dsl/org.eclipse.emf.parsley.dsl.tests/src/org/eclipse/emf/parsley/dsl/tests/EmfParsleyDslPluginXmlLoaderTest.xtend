@@ -4,21 +4,12 @@ import java.util.List
 import org.eclipse.emf.parsley.dsl.pluginxml.PluginXmlLoader
 import org.eclipse.pde.internal.core.text.plugin.PluginAttribute
 import org.eclipse.pde.internal.core.text.plugin.PluginElementNode
+import org.eclipse.xtend2.lib.StringConcatenation
 import org.junit.Test
 
 import static extension org.junit.Assert.*
-import org.eclipse.xtend2.lib.StringConcatenation
-import org.eclipse.emf.parsley.dsl.pluginxml.PluginXmlUtils
 
 class EmfParsleyDslPluginXmlLoaderTest {
-
-	new() {
-		// to avoid missed code coverage for the protected constructor
-		new PluginXmlUtils() {
-			
-		}
-	}
-
 	val EDITOR_POINT = "org.eclipse.ui.editors"
 	val VIEW_POINT = "org.eclipse.ui.views"
 
