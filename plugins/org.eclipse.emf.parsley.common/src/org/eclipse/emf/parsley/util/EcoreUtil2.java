@@ -28,7 +28,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  */
 public class EcoreUtil2 {
 
-	protected EcoreUtil2() {
+	private EcoreUtil2() {
+		// only static utility methods
 	}
 
 	/**
