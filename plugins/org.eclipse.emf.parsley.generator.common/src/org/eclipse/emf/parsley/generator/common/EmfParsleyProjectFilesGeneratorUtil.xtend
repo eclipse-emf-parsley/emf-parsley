@@ -15,8 +15,8 @@ package org.eclipse.emf.parsley.generator.common
  */
 class EmfParsleyProjectFilesGeneratorUtil {
 
-	protected new() {
-		
+	private new() {
+		// only static utility methods
 	}
 
 	def static buildClassNameFromProject(String projectName) {

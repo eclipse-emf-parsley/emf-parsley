@@ -24,5 +24,15 @@
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Jenkinsfile-RAP</locationURI>
 		</link>
+		<link>
+			<name>README.md</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/README.md</locationURI>
+		</link>
+		<link>
+			<name>DEVELOPMENT.md</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/DEVELOPMENT.md</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>

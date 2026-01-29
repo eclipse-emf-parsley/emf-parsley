@@ -29,8 +29,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  */
 public class PluginXmlUtils {
 
-	protected PluginXmlUtils() {
-		// empty
+	private PluginXmlUtils() {
+		// only static utility methods
 	}
 
 	public static Iterable<Map.Entry<String, IDocumentAttributeNode>> getPluginAttributesEntrySet(

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.emf.parsley.dsl.ui.tests
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 1.18.0.qualifier
 Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.parsley.dsl.ui,
@@ -17,8 +17,6 @@ Require-Bundle: org.eclipse.emf.parsley.dsl.ui,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.ui.testing,
  org.eclipse.xtext.xbase.ui.testing,
- org.eclipse.xtext.junit4,
- org.eclipse.xtext.xbase.junit,
  net.bytebuddy.byte-buddy;bundle-version="1.12.18",
  org.objenesis;bundle-version="3.3.0",
  org.mockito.mockito-core;bundle-version="4.8.1",

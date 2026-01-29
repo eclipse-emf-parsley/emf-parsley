@@ -26,13 +26,6 @@ class EcoreUtil2Test extends AbstractEmfParsleyTest {
 
 	@Rule public extension EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule()
 
-	new() {
-		// just to cover the protected constructor
-		new EcoreUtil2() {
-			
-		}
-	}
-
 	@Test def void testCopyStateNull() {
 		EcoreUtil2.copyState(null) => [
 			assertEquals(0, size)

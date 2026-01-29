@@ -231,7 +231,7 @@ abstract class AbstractWebsite implements Resource {
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
 						<ul class="nav navbar-nav miolifooter">
 							«FOR it : topLevelMenu»
-								<li«IF equals(topLevelMenu.last)» style="border-right: 0 none;"«ENDIF»><a href="«key»">«value»</a></li>
+								<li«IF equals(topLevelMenu.lastOrNull)» style="border-right: 0 none;"«ENDIF»><a href="«key»">«value»</a></li>
 							«ENDFOR»
 						</ul>
 					</div><!-- /.navbar-collapse -->

@@ -14,7 +14,7 @@
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/launching/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Launching.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/launching/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Launching.ecore http://www.eclipse.org/oomph/setup/pde/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/WorkingSets.ecore"
     name="emf.parsley"
     label="EMF Parsley">
   <setupTask
@@ -26,7 +26,7 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Xmx"
-      value="1024m"
+      value="2g"
       vm="true">
     <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
   </setupTask>
@@ -148,16 +148,16 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="2023-12"
+      defaultValue="2024-09"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="mwe2.site"
-      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.16.0"/>
+      value="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.19.0/"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="xtext.site"
-      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.33.0"/>
+      value="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.36.0/"/>
   <setupTask
       xsi:type="setup:VariableTask"
       name="api.baseline.version"
@@ -200,8 +200,6 @@
           name="org.eclipse.emf.sdk.feature.group"/>
       <requirement
           name="org.eclipse.emf.cdo.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.query.sdk.feature.group"/>
       <requirement
           name="org.eclipse.net4j.sdk.feature.group"/>
       <requirement
@@ -283,6 +281,8 @@
             name="org.eclipse.swtbot.ide.feature.group"/>
         <requirement
             name="org.eclipse.swtbot.generator.feature.feature.group"/>
+        <repository
+            url="https://download.eclipse.org/technology/swtbot/releases/latest"/>
         <description>UI testing framework</description>
       </setupTask>
       <setupTask
@@ -296,6 +296,8 @@
             url="${xtext.site}"/>
         <repository
             url="${mwe2.site}"/>
+        <repository
+            url="https://download.eclipse.org/oomph/simrel-orbit/2023-09"/>
       </setupTask>
     </setupTask>
     <setupTask
@@ -387,8 +389,6 @@
         <requirement
             name="org.eclipse.emf.cdo.sdk.feature.group"/>
         <requirement
-            name="org.eclipse.emf.query.sdk.feature.group"/>
-        <requirement
             name="org.eclipse.net4j.sdk.feature.group"/>
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"/>
@@ -406,17 +406,19 @@
             name="org.mockito.mockito-core"/>
         <requirement
             name="org.eclipse.egit.feature.group"/>
+        <requirement
+            name="org.apache.commons.commons-logging"/>
         <sourceLocator
             rootFolder="${git.clone.location}"
             locateNestedProjects="true"/>
         <repositoryList
-            name="2022-12">
+            name="2024-03">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="https://download.eclipse.org/releases/2022-12"/>
+              url="https://download.eclipse.org/releases/2024-03"/>
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -424,18 +426,18 @@
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
-              url="https://download.eclipse.org/tools/orbit/downloads/2022-12"/>
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-03"/>
           <repository
               url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
         </repositoryList>
         <repositoryList
-            name="2023-09">
+            name="2024-06">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="https://download.eclipse.org/releases/2023-09"/>
+              url="https://download.eclipse.org/releases/2024-03"/>
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -443,18 +445,18 @@
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
-              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-09/"/>
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-06"/>
           <repository
               url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
         </repositoryList>
         <repositoryList
-            name="2023-12">
+            name="2024-09">
           <repository
               url="${xtext.site}"/>
           <repository
               url="${mwe2.site}"/>
           <repository
-              url="https://download.eclipse.org/releases/2023-12"/>
+              url="https://download.eclipse.org/releases/2024-03"/>
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
@@ -462,9 +464,11 @@
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
-              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-09"/>
           <repository
               url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
+          <repository
+              url="https://download.eclipse.org/technology/swtbot/releases/latest"/>
         </repositoryList>
       </targlet>
     </setupTask>
@@ -577,6 +581,7 @@
     </setupTask>
     <setupTask
         xsi:type="projects:ProjectsBuildTask"
+        onlyNewProjects="true"
         refresh="true"/>
     <setupTask
         xsi:type="launching:LaunchTask"
@@ -585,6 +590,7 @@
     <setupTask
         xsi:type="projects:ProjectsBuildTask"
         id="Clean"
+        onlyNewProjects="true"
         refresh="true"
         clean="true">
       <description>Clean</description>
@@ -605,7 +611,7 @@
           licenseConfirmationDisabled="true">
         <requirement
             name="org.eclipse.xtext.sdk.feature.group"
-            versionRange="[2.33.0,2.34.0)"/>
+            versionRange="[2.36.0,2.37.0)"/>
         <requirement
             name="de.itemis.xtext.antlr.feature.feature.group"/>
         <repository
@@ -723,6 +729,23 @@
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
               url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
+        </repositoryList>
+        <repositoryList
+            name="2024-03">
+          <repository
+              url="${xtext.site}"/>
+          <repository
+              url="${mwe2.site}"/>
+          <repository
+              url="https://download.eclipse.org/releases/2024-03"/>
+          <repository
+              url="https://download.eclipse.org/cbi/updates/license"/>
+          <repository
+              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+          <repository
+              url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
+          <repository
+              url="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-03"/>
         </repositoryList>
       </targlet>
     </setupTask>

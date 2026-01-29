@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/releng/org.eclipse.emf.parsley.parent"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "org.eclipse.xtend:*" # we handle these ones manually
+      - dependency-name: "org.eclipse.xtext:*" # we handle these ones manually
+      - dependency-name: "org.eclipse.tycho:*" # we handle these ones manually
+      - dependency-name: "org.eclipse.tycho.extras:*" # we handle these ones manually
+      - dependency-name: "org.eclipse.emf:*" # we handle these ones manually
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10

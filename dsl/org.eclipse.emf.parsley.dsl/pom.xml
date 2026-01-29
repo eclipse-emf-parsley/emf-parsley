@@ -7,7 +7,7 @@
 		<relativePath>../../releng/org.eclipse.emf.parsley.parent/pom.xml</relativePath>
 		<groupId>org.eclipse.emf.parsley</groupId>
 		<artifactId>org.eclipse.emf.parsley.parent</artifactId>
-		<version>2.0.0-SNAPSHOT</version>
+		<version>1.18.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.dsl</artifactId>
@@ -52,33 +52,6 @@
 					<includePluginDependencies>true</includePluginDependencies>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.eclipse.emf</groupId>
-						<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-						<version>${mwe2Version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>org.eclipse.xtext.common.types</artifactId>
-						<version>${xtextVersion}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-						<version>${xtextVersion}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>org.eclipse.xtext.xbase</artifactId>
-						<version>${xtextVersion}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>xtext-antlr-generator</artifactId>
-						<version>2.1.1</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 
 			<plugin>

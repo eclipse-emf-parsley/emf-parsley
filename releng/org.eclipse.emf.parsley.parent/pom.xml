@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.emf.parsley</groupId>
 	<artifactId>org.eclipse.emf.parsley.parent</artifactId>
-	<version>2.0.0-SNAPSHOT</version>
+	<version>1.18.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<name>EMF Parsley</name>
@@ -54,21 +54,27 @@
 	</developers>
 
 	<properties>
-		<tycho-version>3.0.5</tycho-version>
+		<tycho-version>4.0.13</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
-		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
-		<exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
+		<maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
+		<maven-antrun-plugin.version>3.2.0</maven-antrun-plugin.version>
+		<exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
 		<junit-version>4.13.2</junit-version>
-		<jacoco-version>0.8.8</jacoco-version>
+		<jacoco-version>0.8.14</jacoco-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 
-		<xtext-version>2.33.0 </xtext-version>
+		<!--
+		Disable m2e-apt automatic configuration to avoid generated .classpath entries in Visual Studio Code Maven extension
+		See https://github.com/eclipse-m2e/m2e-core/tree/main/org.eclipse.m2e.apt.ui
+		-->
+		<m2e.apt.activation>disabled</m2e.apt.activation>
+
+		<xtext-version>2.36.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.16.0</mwe2Version>
-		<eclipse-version>2023-12</eclipse-version>
+		<mwe2Version>2.19.0</mwe2Version>
+		<eclipse-version>2024-09</eclipse-version>
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
@@ -142,8 +148,7 @@
 			For views.resource package we still don't have tests -->
 		<sonar.coverage.exclusions>
 			**/xtend-gen/**/*.java,
-			**/views/resource/**/*.java,
-			**/inject/parameters/*.java
+			**/views/resource/**/*.java
 		</sonar.coverage.exclusions>
 
 		<!-- To make SonarQube detect JUnit tests in generated Java code from Xtend -->
@@ -357,22 +362,10 @@
 										<id>org.eclipse.rcp</id>
 										<versionRange>0.0.0</versionRange>
 									</requirement>
-									<!-- to force the same version of jdt.compiler.apt and jdt.core
+									<!-- forcing the same version of jdt.compiler.apt and jdt.core
 										(for xtext-maven-plugin) 
 										see https://github.com/eclipse/xtext-maven/issues/146
-										It is not necessary anymore since 2023-03 since the fragments have been removed -->
-									<!--
-									<requirement>
-										<type>eclipse-plugin</type>
-										<id>org.eclipse.jdt.compiler.apt</id>
-										<versionRange>0.0.0</versionRange>
-									</requirement>
-									<requirement>
-										<type>eclipse-plugin</type>
-										<id>org.eclipse.jdt.compiler.tool</id>
-										<versionRange>0.0.0</versionRange>
-									</requirement>
-									-->
+										is not necessary anymore since 2023-03 since the fragments have been removed -->
 								</extraRequirements>
 							</dependency-resolution>
 						</configuration>
@@ -484,7 +477,6 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
-
 		</profile>
 
 		<profile>
@@ -531,11 +523,25 @@
 			</activation>
 
 			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.tycho</groupId>
+							<artifactId>tycho-packaging-plugin</artifactId>
+							<version>${tycho-version}</version>
+							<configuration>
+								<!-- since we change MANIFEST and POMs when releasing to Maven Central
+									we must disable the error because the Git working tree will be dirty -->
+								<jgit.dirtyWorkingTree>ignore</jgit.dirtyWorkingTree>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 				<plugins>
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.13</version>
+						<version>1.7.0</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
@@ -543,13 +549,12 @@
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
 					</plugin>
-
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<!-- MJAVADOC-620 – Maven Javadoc Plugin fails to resolve the dependencies 
 							when used with Java 11 -->
-						<version>3.2.0</version>
+						<version>3.12.0</version>
 						<configuration>
 							<detectOfflineLinks>false</detectOfflineLinks>
 							<detectJavaApiLink>false</detectJavaApiLink>
@@ -562,7 +567,6 @@
 									<goal>jar</goal>
 								</goals>
 								<configuration>
-									<additionalparam>-Xdoclint:none</additionalparam>
 									<failOnError>false</failOnError>
 								</configuration>
 							</execution>
@@ -571,7 +575,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<version>3.2.8</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -730,7 +734,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.3.0</version>
+					<version>3.4.0</version>
 				</plugin>
 
 				<!-- The main configuration is here, parameterized over the
@@ -812,13 +816,13 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>3.6.1</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>3.5.0</version>
 					<configuration>
 						<filesets>
 							<fileset>
@@ -894,7 +898,7 @@
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
-					<version>3.9.1.2184</version>
+					<version>5.5.0.6356</version>
 				</plugin>
 
 				<plugin>
@@ -925,7 +929,7 @@
 				<plugin>
 					<groupId>org.eclipse.cbi.maven.plugins</groupId>
 					<artifactId>eclipse-jarsigner-plugin</artifactId>
-					<version>1.3.4</version>
+					<version>1.5.3</version>
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
@@ -944,6 +948,7 @@
 							.api_filters
 							*.hprof
 							plugin.xml_gen
+							*.launch
 						</jgit.ignore>
 						<!-- "git.dirtyWorkingTree" as "ignore" should not be enabled: we must make sure
 							that's everything is committed, including possible regenerated

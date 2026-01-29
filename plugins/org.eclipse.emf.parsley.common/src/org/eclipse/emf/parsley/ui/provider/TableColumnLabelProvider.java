@@ -11,8 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.ui.provider;
 
-import java.lang.reflect.Method;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
@@ -27,7 +25,6 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
-import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
 /**
@@ -249,7 +246,7 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 					prefix, element);
 		}
 		String methodName = prefix + feature.getEContainingClass().getName() + "_" + feature.getName();
-		Predicate<Method> predicate = PolymorphicDispatcher.Predicates.forName(methodName, 1);
-		return PolymorphicDispatcherExtensions.<T> createPolymorphicDispatcher(this, predicate).invoke(element);
+		return PolymorphicDispatcherExtensions.<T>createPolymorphicDispatcher(this,
+				PolymorphicDispatcher.Predicates.forName(methodName, 1)).invoke(element);
 	}
 }

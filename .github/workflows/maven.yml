@@ -20,16 +20,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2.5.0
+    - uses: actions/checkout@v6.0.2
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     - name: Set up JDK 17
-      uses: actions/setup-java@v3.6.0
+      uses: actions/setup-java@v5.2.0
       with:
         java-version: 17
         distribution: temurin
     - name: Cache Maven packages
-      uses: actions/cache@v3
+      uses: actions/cache@v5
       with:
         path: |
           ~/.m2
@@ -59,19 +59,19 @@ jobs:
         -DpullRequest=${{ github.event.pull_request.number }}
         $COVERALLSGOAL
     - name: Archive UI Tests Screenshots
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       if: ${{ failure() || cancelled() }}
       with:
         name: screenshots-${{ runner.os }}
         path: '**/screenshots'
     - name: Archive Logs
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       if: ${{ failure() || cancelled() }}
       with:
         name: logs-${{ runner.os }}
         path: '**/target/work/data/.metadata/.log'
     - name: Archive Coverage Report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v6
       if: ${{ success() }}
       with:
         name: jacoco-coverage-${{ runner.os }}
@@ -81,14 +81,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2.5.0
+    - uses: actions/checkout@v6.0.2
     - name: Set up JDK 17
-      uses: actions/setup-java@v3.6.0
+      uses: actions/setup-java@v5.2.0
       with:
         java-version: 17
         distribution: temurin
     - name: Cache Maven packages
-      uses: actions/cache@v3
+      uses: actions/cache@v5
       with:
         path: |
           ~/.m2

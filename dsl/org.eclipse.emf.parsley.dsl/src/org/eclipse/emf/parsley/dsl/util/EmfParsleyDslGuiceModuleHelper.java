@@ -10,15 +10,12 @@
  */
 package org.eclipse.emf.parsley.dsl.util;
 
-import static com.google.common.collect.Iterables.concat;
 import static org.eclipse.xtext.xbase.lib.CollectionLiterals.emptyList;
 import static org.eclipse.xtext.xbase.lib.IterableExtensions.exists;
 import static org.eclipse.xtext.xbase.lib.IterableExtensions.filter;
 import static org.eclipse.xtext.xbase.lib.IterableExtensions.head;
-import static org.eclipse.xtext.xbase.lib.IterableExtensions.map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.parsley.dsl.model.WithExtendsClause;
 import org.eclipse.emf.parsley.dsl.typing.EmfParsleyDslTypeSystem;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -27,18 +24,12 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.typesystem.override.IResolvedOperation;
-import org.eclipse.xtext.xbase.typesystem.override.OverrideHelper;
-import org.eclipse.xtext.xbase.typesystem.override.ResolvedFeatures;
 
 import com.google.inject.Inject;
 
 public class EmfParsleyDslGuiceModuleHelper {
 	@Inject
 	private IJvmModelAssociations jvmModelAssociations;
-
-	@Inject
-	private OverrideHelper overrideHelper;
 
 	@Inject
 	private EmfParsleyDslTypeSystem emfParsleyDslTypeSystem;
@@ -72,23 +63,6 @@ public class EmfParsleyDslGuiceModuleHelper {
 	public Iterable<JvmOperation> getAllGuiceValueBindingsMethodsInSuperclass(final JvmGenericType type) {
 		// These are all the value bindings in the superclass
 		return filter(superTypeJvmOperations(type), it -> it.getSimpleName().startsWith("value"));
-	}
-
-	public Iterable<JvmGenericType> getAllWithExtendsClauseInferredJavaTypes(
-			final org.eclipse.emf.parsley.dsl.model.Module module) {
-		return concat(map(getAllWithExtendsClause(module), this::getInferredJavaTypes));
-	}
-
-	public Iterable<WithExtendsClause> getAllWithExtendsClause(final org.eclipse.emf.parsley.dsl.model.Module module) {
-		return filter(module.eContents(), WithExtendsClause.class);
-	}
-
-	public ResolvedFeatures getJavaResolvedFeatures(final JvmGenericType type) {
-		return overrideHelper.getResolvedFeatures(type);
-	}
-
-	public String getJavaMethodResolvedErasedSignature(final IResolvedOperation op) {
-		return op.getResolvedErasureSignature();
 	}
 
 	public boolean containsConstructorAcceptingPluginParameter(final EObject context, final JvmTypeReference typeRef) {

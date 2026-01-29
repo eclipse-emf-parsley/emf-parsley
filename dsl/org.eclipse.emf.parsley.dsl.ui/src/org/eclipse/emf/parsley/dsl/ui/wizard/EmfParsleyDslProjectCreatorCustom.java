@@ -105,8 +105,8 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		String projectName = getFixedProjectName();
 
 		String srcFolder = "src";
-		String projectPackagePath = srcFolder + "/"
-				+ projectName.replace('.', '/');
+		String projectPackagePath = String.format("%s/%s",
+				srcFolder, projectName.replace('.', '/'));
 
 		SubMonitor subMonitor = SubMonitor.convert(monitor,
 				"Creating project " + projectName,

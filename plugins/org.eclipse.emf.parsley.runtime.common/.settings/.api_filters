@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <component id="org.eclipse.emf.parsley.runtime.common" version="2">
     <resource path="META-INF/MANIFEST.MF">
-        <filter id="925892614">
+        <filter id="932184123">
             <message_arguments>
-                <message_argument value="2.0.0"/>
+                <message_argument value="1.18.0"/>
                 <message_argument value="1.15.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/parsley/runtime/util/PolymorphicDispatcherExtensions.java" type="org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions">
+        <filter comment="protected constructor turned into private in utility class" id="354463860">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcherExtensions"/>
+                <message_argument value="PolymorphicDispatcherExtensions()"/>
             </message_arguments>
         </filter>
     </resource>

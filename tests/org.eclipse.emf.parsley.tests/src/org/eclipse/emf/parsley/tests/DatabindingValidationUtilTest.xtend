@@ -62,7 +62,7 @@ class DatabindingValidationUtilTest extends AbstractEmfParsleyTest {
 				notEmpty = "foo"
 			]
 		]
-		fixture.getDiagnostic(container.objectsForDefaultValidation.last,
+		fixture.getDiagnostic(container.objectsForDefaultValidation.lastOrNull,
 			testPackage.classForDefaultValidation_NotEmpty).assertDiagnostic("")
 		fixture.getDiagnostic(container.objectsForDefaultValidation.head,
 			testPackage.classForDefaultValidation_NotEmpty).

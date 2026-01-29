@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target name="simrel-rap" sequenceNumber="5">
+<target name="simrel-rap" sequenceNumber="7">
+<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="0.0.0"/>
@@ -12,13 +13,12 @@
 <unit id="org.eclipse.emf.cdo.server.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.cdo.server.db.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.databinding.edit.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.query.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.sdk.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.examples.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/releases/2023-12/"/>
+<repository location="https://download.eclipse.org/releases/2024-09/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
@@ -30,7 +30,7 @@
 <unit id="org.eclipse.xtext.xbase.lib" version="0.0.0"/>
 <unit id="org.junit" version="0.0.0"/>
 <unit id="org.objectweb.asm" version="0.0.0"/>
-<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.33.0"/>
+<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.36.0/"/>
 </location>
 </locations>
 </target>

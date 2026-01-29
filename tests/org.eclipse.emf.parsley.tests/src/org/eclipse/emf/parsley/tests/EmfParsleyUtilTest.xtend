@@ -24,15 +24,6 @@ import static extension org.junit.Assert.*
  */
 class EmfParsleyUtilTest {
 	
-	new() {
-		// the following is useless... but it's just to have coverage
-		// for the protected constructor of EmfParsleyConstants
-		// and the protected constructor is "required" by sonar...
-		new EmfParsleyUtil() {
-			
-		};
-	}
-	
 	@Test
 	def void testEnsureCollectionGivenNull() {
 		assertNotNull(EmfParsleyUtil.ensureCollection(null));

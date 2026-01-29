@@ -1,5 +1,0 @@
-import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule
-
-module org.eclipse.emf.parsley.web.tools.servlets extends EmfParsleyJavaGuiceModule {
-	
-}

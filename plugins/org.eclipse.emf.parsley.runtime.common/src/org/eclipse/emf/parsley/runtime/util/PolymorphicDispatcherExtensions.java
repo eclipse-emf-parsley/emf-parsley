@@ -25,8 +25,8 @@ import com.google.common.base.Predicate;
  */
 public class PolymorphicDispatcherExtensions {
 
-	protected PolymorphicDispatcherExtensions() {
-
+	private PolymorphicDispatcherExtensions() {
+		// only static utility methods
 	}
 
 	/**

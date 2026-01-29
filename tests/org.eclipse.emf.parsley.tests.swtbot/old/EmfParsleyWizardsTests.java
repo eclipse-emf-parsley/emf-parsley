@@ -22,13 +22,6 @@ import org.junit.runner.RunWith;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyWizardsTests extends EmfParsleySWTBotAbstractTests {
-	
-	public EmfParsleyWizardsTests() {
-		// just to avoid code coverage of protected constructor
-		new NewEmfParsleyProjectSupport() {
-			
-		};
-	}
 
 	@Test
 	public void canCreateProjectWithWizard() throws Exception {

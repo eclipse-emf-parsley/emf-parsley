@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: EMF Parsley Tests
 Bundle-SymbolicName: org.eclipse.emf.parsley.tests;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 1.18.0.qualifier
 Bundle-Activator: org.eclipse.emf.parsley.tests.EmfParsleyTestsActivator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.5.0",
@@ -14,9 +14,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.5.0",
  net.bytebuddy.byte-buddy;bundle-version="1.12.18",
  org.objenesis;bundle-version="3.3.0",
  org.mockito.mockito-core;bundle-version="4.8.1",
- net.bytebuddy.byte-buddy-agent;bundle-version="1.14.7",
- org.hamcrest;bundle-version="2.2.0",
- org.aopalliance;bundle-version="1.0.0"
+ net.bytebuddy.byte-buddy-agent;bundle-version="1.14.7"
 Import-Package: org.junit;version="4.5.0",
  org.junit.rules;version="4.9.0",
  org.junit.runner;version="4.5.0",
