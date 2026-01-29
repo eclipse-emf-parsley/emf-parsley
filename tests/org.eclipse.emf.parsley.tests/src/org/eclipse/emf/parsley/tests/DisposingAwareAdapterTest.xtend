@@ -8,8 +8,7 @@ import org.eclipse.swt.widgets.Widget
 import org.junit.Before
 import org.junit.Test
 
-import static org.hamcrest.CoreMatchers.*
-import static org.hamcrest.MatcherAssert.assertThat
+import static org.junit.Assert.fail
 import static org.mockito.Mockito.*
 
 class DisposingAwareAdapterTest {
@@ -31,7 +30,9 @@ class DisposingAwareAdapterTest {
 	@Test
 	def void testConstructorAddsAdapterDisposeRemovesIt() {
 		val adapter = new DisposingAwareAdapter(o, widget, [])
-		assertThat(o.eAdapters, hasItem(adapter))
+		val adapters = o.eAdapters
+		if (!adapters.contains(adapter))
+			fail("adapter not found in " + adapters)
 		adapter.dispose
 	}
 
