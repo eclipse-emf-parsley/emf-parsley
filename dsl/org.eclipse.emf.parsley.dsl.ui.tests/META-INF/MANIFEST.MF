@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.emf.parsley.dsl.ui,
  org.objenesis;bundle-version="3.3.0",
  org.mockito.mockito-core;bundle-version="4.8.1",
  org.eclipse.ui.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.eclipse.emf.parsley.dsl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
  org.junit;version="4.5.0",
