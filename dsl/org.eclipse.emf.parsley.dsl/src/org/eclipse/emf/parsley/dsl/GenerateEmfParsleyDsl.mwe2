@@ -49,7 +49,7 @@ Workflow {
 				generateXtendStub = false
 			}
 			contentAssist = {
-				generateXtendStub = true
+				generateXtendStub = false
 			}
 		}
 	}
