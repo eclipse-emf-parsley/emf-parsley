@@ -4,7 +4,7 @@ Bundle-Name: EMF Parsley Runtime Functionalities
 Bundle-SymbolicName: org.eclipse.emf.parsley.runtime.common
 Bundle-Version: 1.18.0.qualifier
 Bundle-Vendor: Eclipse Modeling Project
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: com.google.inject;visibility:=reexport,
  com.google.guava.failureaccess;bundle-version="1.0.1";visibility:=reexport,
  jakarta.inject.jakarta.inject-api;bundle-version="2.0.1";resolution:=optional;visibility:=reexport;x-installation:=greedy,
