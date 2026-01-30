@@ -1,4 +1,4 @@
-package org.eclipse.emf.parsley.dsl.tests
+package org.eclipse.emf.parsley.dsl.ui.tests
 
 import java.util.List
 import org.eclipse.emf.parsley.dsl.ui.wizard.template.TemplateWizardConfiguration
