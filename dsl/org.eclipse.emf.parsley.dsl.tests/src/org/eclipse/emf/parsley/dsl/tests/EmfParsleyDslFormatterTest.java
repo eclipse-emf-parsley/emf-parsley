@@ -8,51 +8,56 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.dsl.tests
+package org.eclipse.emf.parsley.dsl.tests;
 
-import com.google.inject.Inject
-import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.testing.formatter.FormatterTestHelper
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.eclipse.xtext.testing.InjectWith;
+import org.eclipse.xtext.testing.XtextRunner;
+import org.eclipse.xtext.testing.formatter.FormatterTestHelper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner)
-@InjectWith(EmfParsleyDslInjectorProvider)
-class EmfParsleyDslFormatterTest extends EmfParsleyDslAbstractTest {
+import com.google.inject.Inject;
 
-	@Inject extension FormatterTestHelper
+@RunWith(XtextRunner.class)
+@InjectWith(EmfParsleyDslInjectorProvider.class)
+public class EmfParsleyDslFormatterTest extends EmfParsleyDslAbstractTest {
 
-	@Test def void testFormatPartSpecification() {
-		assertFormatted[
-			expectation = '''
-				module Foo {
-					parts {
-						viewpart my.view.tree.part {
-							viewname "My Tree View"
-							viewclass AbstractSaveableTreeView
-							viewcategory My.Category
-						}
-						viewpart my.view.tree.part2 {
-							viewname "My Tree View"
-							viewclass AbstractSaveableTreeView
-						}
-					}
-				}
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
-				module Foo { parts { viewpart 
-					my.view.tree.part { viewname  "My Tree View" viewclass  AbstractSaveableTreeView 	viewcategory  My.Category}
-					viewpart my.view.tree.part2 { viewname  "My Tree View" viewclass  AbstractSaveableTreeView 	}
-					}
-				}
-			'''.toString.replace("\r", "")
-		]
+	@Inject
+	private FormatterTestHelper formatterTestHelper;
+
+	@Test
+	public void testFormatPartSpecification() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
+module Foo {
+	parts {
+		viewpart my.view.tree.part {
+			viewname "My Tree View"
+			viewclass AbstractSaveableTreeView
+			viewcategory My.Category
+		}
+		viewpart my.view.tree.part2 {
+			viewname "My Tree View"
+			viewclass AbstractSaveableTreeView
+		}
+	}
+}
+""".replace("\r", ""));
+			request.setToBeFormatted("""
+module Foo { parts { viewpart \
+
+	my.view.tree.part { viewname  "My Tree View" viewclass  AbstractSaveableTreeView 	viewcategory  My.Category}
+	viewpart my.view.tree.part2 { viewname  "My Tree View" viewclass  AbstractSaveableTreeView 	}
+	}
+}
+""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testFieldSpecifications() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testFieldSpecifications() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.ecore.resource.Resource
 import com.google.inject.Inject
 
@@ -65,8 +70,8 @@ module my.empty {
 		var extension int f2 = 0;
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.ecore.resource.Resource
 import com.google.inject.Inject
 
@@ -75,47 +80,49 @@ module my.empty {
 		val field2 = "a field";  var  f1  =  0 ; var  extension  int  f2  =  0 ;
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testExtends() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testExtends() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 module my.empty {
 	tableViewerContentProvider extends Foo {
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 module my.empty {
 	tableViewerContentProvider  extends  Foo {
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testResourceManager() {
-		assertFormatted[
-			expectation = '''
-				import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
-				
-				module my.empty {
-					resourceManager {
-						val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+	@Test
+	public void testResourceManager() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
-						initializeResource {
-							getContents() += libraryFactory.createLibrary
-						}
-						saveResource {
-							it.save(null)
-							return true
-						}
-					}
-				}
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+module my.empty {
+	resourceManager {
+		val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+
+		initializeResource {
+			getContents() += libraryFactory.createLibrary
+		}
+		saveResource {
+			it.save(null)
+			return true
+		}
+	}
+}
+""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
 				module my.empty {
@@ -130,26 +137,27 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 						}
 					}
 				}
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testResourceManagerWithoutSaveResource() {
-		assertFormatted[
-			expectation = '''
-				import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
+	@Test
+	public void testResourceManagerWithoutSaveResource() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
+import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
-				module my.empty {
-					resourceManager {
-						val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
+module my.empty {
+	resourceManager {
+		val EXTLibraryFactory libraryFactory = EXTLibraryFactory.eINSTANCE;
 
-						initializeResource {
-							getContents() += libraryFactory.createLibrary
-						}
-					}
-				}
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+		initializeResource {
+			getContents() += libraryFactory.createLibrary
+		}
+	}
+}
+""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
 				module my.empty {
@@ -160,13 +168,14 @@ import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 						}
 					}
 				}
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testTableViewerContentProvider() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testTableViewerContentProvider() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.ecore.resource.Resource
 
 module my.empty {
@@ -179,8 +188,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.ecore.resource.Resource
 
 module my.empty {
@@ -190,13 +199,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testTableViewerContentProviderWithoutElements() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testTableViewerContentProviderWithoutElements() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.ecore.resource.Resource
 
 module my.empty {
@@ -204,21 +214,22 @@ module my.empty {
 		val field = "a field";
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.ecore.resource.Resource
 
 module my.empty {
 	tableViewerContentProvider { 		val field  =  "a field";
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testViewerContentProvider() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testViewerContentProvider() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EObject
 
@@ -240,8 +251,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EObject
 
@@ -256,13 +267,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testConfigurator() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testConfigurator() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -282,8 +294,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -299,13 +311,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testMenuBuilder() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testMenuBuilder() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -360,8 +373,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -413,13 +426,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testControlFactory() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testControlFactory() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -442,8 +456,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -467,13 +481,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testFeaturesProvider() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testFeaturesProvider() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 
@@ -485,8 +500,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 
@@ -498,13 +513,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testFeatureCaptionProvider() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testFeatureCaptionProvider() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 
@@ -517,8 +533,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 
@@ -531,13 +547,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testCaptionProviderWithLabel() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testCaptionProviderWithLabel() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -565,8 +582,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -594,13 +611,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testTableLabelProvider() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testTableLabelProvider() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -649,8 +667,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -700,13 +718,14 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testLabelProvider() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testLabelProvider() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.BookOnTape
 import org.eclipse.emf.parsley.examples.library.Borrower
@@ -755,8 +774,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.BookOnTape
 import org.eclipse.emf.parsley.examples.library.Borrower
@@ -806,13 +825,14 @@ background {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testBindings() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testBindings() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.jface.viewers.IBaseLabelProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
@@ -825,8 +845,8 @@ module my.empty {
 		value IBaseLabelProvider a -> ViewerLabelProvider
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.jface.viewers.IBaseLabelProvider
 import org.eclipse.emf.parsley.ui.provider.ViewerLabelProvider
@@ -839,13 +859,14 @@ module my.empty {
 		value IBaseLabelProvider  a  ->  ViewerLabelProvider
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
-	@Test def void testProposals() {
-		assertFormatted[
-			expectation = '''
+	@Test
+	public void testProposals() {
+		formatterTestHelper.assertFormatted(request -> {
+			request.setExpectation("""
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
@@ -880,8 +901,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-			toBeFormatted = '''
+			""".replace("\r", ""));
+			request.setToBeFormatted("""
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
@@ -913,8 +934,8 @@ module my.empty {
 		}
 	}
 }
-			'''.toString.replace("\r", "")
-		]
+			""".replace("\r", ""));
+		});
 	}
 
 }
