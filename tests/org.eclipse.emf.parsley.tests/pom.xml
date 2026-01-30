@@ -80,7 +80,7 @@
 						<id>default-test</id>
 						<phase>none</phase>
 						<goals>
-							<goal>integration-test</goal>
+							<goal>plugin-test</goal>
 						</goals>
 					</execution>
 				</executions>
