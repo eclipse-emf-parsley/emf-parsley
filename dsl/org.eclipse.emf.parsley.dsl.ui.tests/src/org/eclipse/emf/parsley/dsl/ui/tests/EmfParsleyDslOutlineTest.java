@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.dsl.ui.tests;
 import org.eclipse.emf.parsley.dsl.ui.internal.DslActivator;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.testing.AbstractOutlineTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +28,15 @@ public class EmfParsleyDslOutlineTest extends AbstractOutlineTest {
 	@Override
 	protected String getEditorId() {
 		return DslActivator.ORG_ECLIPSE_EMF_PARSLEY_DSL_EMFPARSLEYDSL;
+	}
+
+	/**
+	 * We must make sure to get rid of "\r" because in Windows
+	 * Java text blocks do not contain "\r" and the comparison would fail.
+	 */
+	@Override
+	protected String outlineStringRepresentation(IOutlineNode node) {
+		return super.outlineStringRepresentation(node).replace("\r", "");
 	}
 
 	@Test
