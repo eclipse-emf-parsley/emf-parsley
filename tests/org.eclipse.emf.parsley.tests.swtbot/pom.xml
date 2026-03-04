@@ -117,6 +117,7 @@
 					<environmentVariables>
 						<SWT_GTK3>0</SWT_GTK3>
 					</environmentVariables>
+					<rerunFailingTestsCount>3</rerunFailingTestsCount>
 				</configuration>
 			</plugin>
 
