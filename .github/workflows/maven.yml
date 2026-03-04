@@ -58,18 +58,24 @@ jobs:
         -DrepoToken=$COVERALLS_REPO_TOKEN
         -DpullRequest=${{ github.event.pull_request.number }}
         $COVERALLSGOAL
+    - name: Archive Test Results
+      uses: actions/upload-artifact@v6
+      if: ${{ failure() || cancelled() }}
+      with:
+        name: test-results-${{ runner.os }}
+        path: '**/*.tests/target/surefire-reports'
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
       with:
         name: screenshots-${{ runner.os }}
-        path: '**/screenshots'
+        path: '**/*.tests/screenshots'
     - name: Archive Logs
       uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
       with:
         name: logs-${{ runner.os }}
-        path: '**/target/work/data/.metadata/.log'
+        path: '**/*.tests/target/**/*.log'
     - name: Archive Coverage Report
       uses: actions/upload-artifact@v7
       if: ${{ success() }}
