@@ -11,31 +11,33 @@ import org.junit.Test;
  */
 public class EmfParsleyTemplateWizardConfigurationTest {
 
+	private static final String MY_PROJECT_MYNAME = "my.project.myname";
+
 	@Test
 	public void testPartClassName() {
 		assertEquals("MynameSaveableTreeView",
-			createEmptyConfiguration().getPartClassName("my.project.myname")
+			createEmptyConfiguration().getPartClassName(MY_PROJECT_MYNAME)
 		);
 	}
 
 	@Test
 	public void testPartClassFQN() {
 		assertEquals("my.project.myname.MynameSaveableTreeView",
-			createEmptyConfiguration().getPartClassFQN("my.project.myname")
+			createEmptyConfiguration().getPartClassFQN(MY_PROJECT_MYNAME)
 		);
 	}
 
 	@Test
 	public void testDefaultConfiguratorElements() {
 		assertEquals("",
-			createEmptyConfiguration().getConfiguratorElements("my.project.myname")
+			createEmptyConfiguration().getConfiguratorElements(MY_PROJECT_MYNAME)
 		);
 	}
 
 	@Test
 	public void testConfiguratorIsNotGeneratedWhenElementsAreEmpty() {
 		assertEquals("",
-			createEmptyConfiguration().getConfiguratorContents("my.project.myname")
+			createEmptyConfiguration().getConfiguratorContents(MY_PROJECT_MYNAME)
 		);
 	}
 
@@ -52,7 +54,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 				public String getConfiguratorElements(String projectName) {
 					return "// some contents";
 				}
-			}.getConfiguratorContents("my.project.myname")
+			}.getConfiguratorContents(MY_PROJECT_MYNAME)
 		);
 	}
 
@@ -66,7 +68,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 			\t
 			}
 			""",
-			createEmptyConfiguration().getContentsForPart("my.project.myname")
+			createEmptyConfiguration().getContentsForPart(MY_PROJECT_MYNAME)
 		);
 	}
 
@@ -96,7 +98,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 				public String getConfiguratorElements(String projectName) {
 					return "// some contents";
 				}
-			}.getParsleyModuleContents("my.project.myname")
+			}.getParsleyModuleContents(MY_PROJECT_MYNAME)
 		);
 	}
 
@@ -118,7 +120,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 			\t
 			}
 			""",
-			createEmptyConfiguration().getParsleyModuleContents("my.project.myname")
+			createEmptyConfiguration().getParsleyModuleContents(MY_PROJECT_MYNAME)
 		);
 	}
 
@@ -161,7 +163,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 						getProjectFilesGenerator().genInitializeResource()
 					).toString();
 				}
-			}.getParsleyModuleContents("my.project.myname")
+			}.getParsleyModuleContents(MY_PROJECT_MYNAME)
 		);
 	}
 
