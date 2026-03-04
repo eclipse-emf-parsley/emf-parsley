@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.tests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule;
@@ -23,6 +23,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+
 /**
  * @author Lorenzo Bettini
  */
@@ -32,6 +35,9 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 
 	private static final String PROJECT_NAME = "org.eclipse.emf.parsley.dsl.ui.tests.project";
 
+	@Inject
+	private Injector injector;
+
 	@BeforeClass
 	public static void setUp() {
 		try {
@@ -39,6 +45,17 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	protected ContentAssistProcessorTestBuilder newBuilder() throws Exception {
+		return new ContentAssistProcessorTestBuilder(injector, this) {
+			@Override
+			public ContentAssistProcessorTestBuilder expectContent(String expectation) {
+				assertEquals(expectation, getModel().replace("\r", ""));
+				return this;
+			}
+		};
 	}
 
 	@Test
