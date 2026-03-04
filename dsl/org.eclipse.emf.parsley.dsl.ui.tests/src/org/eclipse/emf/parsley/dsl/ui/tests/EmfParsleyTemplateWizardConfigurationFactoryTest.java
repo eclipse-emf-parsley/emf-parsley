@@ -355,7 +355,7 @@ public class EmfParsleyTemplateWizardConfigurationFactoryTest {
 
 	private void assertGenerated(CharSequence expectedModule, int index) {
 		assertEquals(expectedModule.toString(),
-			configurations.get(index).getParsleyModuleContents("my.project.name")
+			configurations.get(index).getParsleyModuleContents("my.project.name").replace("\r\n", "\n")
 		);
 	}
 }

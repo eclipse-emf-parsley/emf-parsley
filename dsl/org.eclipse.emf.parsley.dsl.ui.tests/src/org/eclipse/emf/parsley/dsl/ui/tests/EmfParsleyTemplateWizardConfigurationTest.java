@@ -43,7 +43,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 
 	@Test
 	public void testConfiguratorIsGeneratedElementsAreNotEmpty() {
-		assertEquals(
+		assertEqualsIgnoringCRLF(
 			"""
 			configurator {
 				// some contents
@@ -60,7 +60,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 
 	@Test
 	public void testPartClassContents() {
-		assertEquals(
+		assertEqualsIgnoringCRLF(
 			"""
 			package my.project.myname;
 
@@ -74,7 +74,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 
 	@Test
 	public void testParsleyModuleContentsWithConfigurator() {
-		assertEquals(
+		assertEqualsIgnoringCRLF(
 			"""
 			import my.project.myname.MynameSaveableTreeView
 
@@ -104,7 +104,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 
 	@Test
 	public void testParsleyModuleContentsWithoutConfigurator() {
-		assertEquals(
+		assertEqualsIgnoringCRLF(
 			"""
 			import my.project.myname.MynameSaveableTreeView
 
@@ -133,7 +133,7 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 
 	@Test
 	public void testParsleyModuleContentsWithResourceManager() {
-		assertEquals(
+		assertEqualsIgnoringCRLF(
 			"""
 			import my.project.myname.MynameSaveableTreeView
 
@@ -169,5 +169,9 @@ public class EmfParsleyTemplateWizardConfigurationTest {
 
 	private TemplateWizardConfiguration createEmptyConfiguration() {
 		return new TemplateWizardConfiguration(null, null, SaveableTreeView.class);
+	}
+
+	private void assertEqualsIgnoringCRLF(String expected, String actual) {
+		assertEquals(expected, actual.replace("\r\n", "\n"));
 	}
 }
