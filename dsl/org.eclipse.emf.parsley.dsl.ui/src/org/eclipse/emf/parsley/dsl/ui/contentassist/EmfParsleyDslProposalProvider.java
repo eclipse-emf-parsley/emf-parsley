@@ -146,12 +146,10 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 	public void completeBinding_TypeToBind(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		var containingModule = EmfParsleyDslModelUtil.containingModule(model);
 		completeTypeOrProvideBinding(model, guiceModuleHelper.getAllGuiceTypeBindingsMethodsInSuperclass(containingModule),
-			op -> {
-				// if the original method was Class<? extends MyType> bindName(...) the proposal will be
-				// MyType
-				return extractWildcardUpperBound(op);
-			},
-			assignment, context, acceptor
+			// if the original method was Class<? extends MyType> bindName(...) the proposal will be
+			// MyType
+			this::extractWildcardUpperBound,
+			context, acceptor
 		);
 	}
 
@@ -168,7 +166,7 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 				// and this will return MyType
 				return providerType.getArguments().get(0);
 			},
-			assignment, context, acceptor
+			context, acceptor
 		);
 	}
 
@@ -180,7 +178,7 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 
 	private void completeTypeOrProvideBinding(EObject model, Iterable<JvmOperation> superClassValueBindings,
 		Function<JvmOperation, JvmTypeReference> typeExtractor,
-		Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor
+		ContentAssistContext context, ICompletionProposalAcceptor acceptor
 	) {
 		createStandardJavaTypesProposals(context, acceptor);
 		// the completion for existing bindings will appear first
