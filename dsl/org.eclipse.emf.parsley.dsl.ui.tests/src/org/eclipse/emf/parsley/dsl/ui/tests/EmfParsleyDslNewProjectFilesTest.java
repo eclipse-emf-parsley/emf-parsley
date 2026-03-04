@@ -120,6 +120,6 @@ public class EmfParsleyDslNewProjectFilesTest {
 	}
 
 	private void assertGeneratedContentEqualsTo(CharSequence actual, CharSequence expected) {
-		assertEquals(expected.toString(), actual.toString());
+		assertEquals(expected.toString(), actual.toString().replace("\r\n", "\n"));
 	}
 }
