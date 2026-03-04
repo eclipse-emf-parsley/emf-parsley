@@ -16,8 +16,6 @@ import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.cleanBuild;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.createFile;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.root;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.waitForBuild;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;

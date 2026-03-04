@@ -15,9 +15,6 @@ import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.fileToString
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.fullBuild;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.monitor;
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.waitForBuild;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
