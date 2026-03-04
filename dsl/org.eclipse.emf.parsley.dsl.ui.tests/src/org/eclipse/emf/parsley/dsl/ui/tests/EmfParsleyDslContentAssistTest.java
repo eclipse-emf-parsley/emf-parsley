@@ -352,8 +352,4 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 				proposal
 			).expectContent(expectedContent);
 	}
-
-//	private void assertProposals(ContentAssistProcessorTestBuilder builder, CharSequence expected) {
-//		builder.assertText(expected.toString().split("\\r?\\n"));
-//	}
 }
