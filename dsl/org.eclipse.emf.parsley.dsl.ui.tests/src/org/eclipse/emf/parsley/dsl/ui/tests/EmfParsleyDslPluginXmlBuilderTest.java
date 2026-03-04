@@ -215,6 +215,6 @@ public class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 	private void assertPluginXmlContents(CharSequence expected) throws Exception {
 		var file = project.getFile(PLUGIN_XML);
 		assertTrue(file.exists());
-		assertEquals(expected.toString(), fileToString(file));
+		assertEquals(expected.toString(), fileToString(file).replace("\r\n", "\n"));
 	}
 }
