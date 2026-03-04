@@ -47,6 +47,9 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		}
 	}
 
+	/**
+	 * String "\r" in Windows, since Java text blocks don't contain them.
+	 */
 	@Override
 	protected ContentAssistProcessorTestBuilder newBuilder() throws Exception {
 		return new ContentAssistProcessorTestBuilder(injector, this) {
