@@ -122,7 +122,7 @@ public class EmfParsleyDslPluginXmlBuilderTest extends AbstractWorkbenchTest {
 		 * Accessible for tests
 		 */
 		@Override
-		protected String loadFromResource(UtilityIFileReader iFileReader, String information) throws CoreException {
+		public String loadFromResource(UtilityIFileReader iFileReader, String information) throws CoreException {
 			return super.loadFromResource(iFileReader, information);
 		}
 	}

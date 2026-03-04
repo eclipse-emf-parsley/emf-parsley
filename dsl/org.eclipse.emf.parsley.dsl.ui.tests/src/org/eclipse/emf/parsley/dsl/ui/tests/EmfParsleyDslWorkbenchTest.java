@@ -44,10 +44,10 @@ public class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 	@Inject
 	private Provider<TestableEmfParsleyDslNewProjectWizard> wizardProvider;
 
-	private final String TEST_MODULE = TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + "/" +
+	private static final String TEST_MODULE = TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT + "/" +
 		capitalize(TestableEmfParsleyDslNewProjectWizard.TEST_PROJECT) + ".parsley";
 
-	private final String TEST_PLUGIN_XML_GEN =
+	private static final String TEST_PLUGIN_XML_GEN =
 		EmfParsleyDslOutputConfigurationProvider.EMFPARSLEY_GEN + "/" + TEST_PROJECT + "/" +
 		EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_GEN_FILE;
 
@@ -64,7 +64,7 @@ public class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 						// wait for the shell to become active
 						while (getShell() == null) {
 							try {
-								Thread.sleep(1000);
+								Thread.sleep(1000); // NOSONAR we need to give time to the UI thread to open the shell
 							} catch (InterruptedException e) {
 								// ignore
 							}
@@ -78,13 +78,6 @@ public class EmfParsleyDslWorkbenchTest extends AbstractWorkbenchTest {
 		};
 		return dialog.open();
 	}
-
-//	@Before
-//	@Override
-//	public void setUp() throws Exception {
-//		super.setUp();
-//		projectHelper.clearJdtIndex();
-//	}
 
 	@Test
 	public void testEmfParsleyDslNewProjectWizard() throws Exception {
