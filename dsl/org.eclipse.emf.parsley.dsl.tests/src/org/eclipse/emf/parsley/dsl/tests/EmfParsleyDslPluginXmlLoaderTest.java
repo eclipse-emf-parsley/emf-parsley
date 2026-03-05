@@ -19,7 +19,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 	private static final String EDITOR_POINT = "org.eclipse.ui.editors";
 	private static final String VIEW_POINT = "org.eclipse.ui.views";
 
-	private static final String s1 = """
+	private static final String S1 = """
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
@@ -56,7 +56,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 </plugin>
 """;
 
-	private static final String singleView = """
+	private static final String SINGLE_VIEW = """
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
@@ -73,7 +73,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 </plugin>
 """;
 
-	private static final String singleView2 = """
+	private static final String SINGLE_VIEW2 = """
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
@@ -89,7 +89,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 </plugin>
 """;
 
-	private static final String singleEditor = """
+	private static final String SINGLE_EDITOR = """
 	<?xml version="1.0" encoding="UTF-8"?>
 	<?eclipse version="3.4"?>
 	<plugin>
@@ -109,12 +109,12 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 	</plugin>
 	""";
 
-	private static final String emptyPlugin = """
+	private static final String EMPTY_PLUGIN = """
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 """;
 
-	private static final String emptyView = """
+	private static final String EMPTY_VIEW = """
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
@@ -129,7 +129,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 
 	@Test
 	public void testLoad() throws Exception {
-		var loader = load(s1);
+		var loader = load(S1);
 		var extensions = loader.getExtensionNodes();
 		assertEquals("""
 <extension
@@ -193,27 +193,27 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testComputedOnlyTheFirstTime() throws Exception {
-		var loader = load(s1);
+		var loader = load(S1);
 		assertSame(loader.getExtensionNodes(), loader.getExtensionNodes());
 		assertSame(loader.getExtensionElements(), loader.getExtensionElements());
 	}
 
 	@Test
 	public void testWrite() throws Exception {
-		var loader = load(s1);
-		assertEquals(s1, loader.getContentsAsString());
+		var loader = load(S1);
+		assertEquals(S1, loader.getContentsAsString());
 	}
 
 	@Test
 	public void testGetExtensionByPoint() throws Exception {
-		var loader = load(singleView);
+		var loader = load(SINGLE_VIEW);
 		assertNull(loader.getExtensionByPoint(EDITOR_POINT));
 		assertNotNull(loader.getExtensionByPoint(VIEW_POINT));
 	}
 
 	@Test
 	public void testGetElementExtension() throws Exception {
-		var loader = load(s1);
+		var loader = load(S1);
 		var elements = loader.getExtensionElements();
 		assertEquals(VIEW_POINT, loader.getElementExtension(elements.get(0)));
 		assertEquals(EDITOR_POINT, loader.getElementExtension(elements.get(elements.size() - 1)));
@@ -221,7 +221,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testElementByTagAndId() throws Exception {
-		var loader = load(s1);
+		var loader = load(S1);
 		assertSame(loader.getElementByTagAndId("view", "org.eclipse.emf.parsley.tests.treeviews"),
 			loader.getExtensionElements().get(1));
 	}
@@ -247,7 +247,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testInsertExtension() throws Exception {
-		var loader = load(singleView);
+		var loader = load(SINGLE_VIEW);
 		loader.insertExtension(EDITOR_POINT);
 		assertEquals("""
 <extension
@@ -258,7 +258,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testInsertExtensionInEmptyPlugin() throws Exception {
-		var loader = load(emptyPlugin);
+		var loader = load(EMPTY_PLUGIN);
 		loader.insertExtension(EDITOR_POINT);
 		assertEquals("""
 <?xml version="1.0" encoding="UTF-8"?>
@@ -288,9 +288,9 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testCopySourceIntoTarget() throws Exception {
-		var source = load(singleView);
+		var source = load(SINGLE_VIEW);
 		var sourceView = source.getExtensionElements().get(0);
-		var target = load(singleView2);
+		var target = load(SINGLE_VIEW2);
 		var targetView = target.getExtensionElements().get(0);
 		target.copy(sourceView, targetView);
 		assertEquals(sourceView.toString(), targetView.toString());
@@ -298,9 +298,9 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testCopySourceIntoEmptyView() throws Exception {
-		var source = load(singleView);
+		var source = load(SINGLE_VIEW);
 		var sourceView = source.getExtensionElements().get(0);
-		var target = load(emptyView);
+		var target = load(EMPTY_VIEW);
 		var targetView = target.getExtensionElements().get(0);
 		target.copy(sourceView, targetView);
 		assertEquals(sourceView.toString(), targetView.toString());
@@ -308,25 +308,25 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testCopyIntoExistingView() throws Exception {
-		var source = load(singleView);
+		var source = load(SINGLE_VIEW);
 		var sourceView = source.getExtensionElements().get(0);
-		var target = load(singleView2);
+		var target = load(SINGLE_VIEW2);
 		target.copy(sourceView);
 		assertEquals(sourceView.toString(), target.getExtensionElements().get(0).toString());
 	}
 
 	@Test
 	public void testCopyIntoEmptyPlugin() throws Exception {
-		var source = load(singleView);
+		var source = load(SINGLE_VIEW);
 		var sourceView = source.getExtensionElements().get(0);
-		var target = load(emptyPlugin);
+		var target = load(EMPTY_PLUGIN);
 		target.copy(sourceView);
 		assertEquals(source.getContentsAsString(), target.getContentsAsString());
 	}
 
 	@Test
 	public void testCopyIntoEmptyPluginFile() throws Exception {
-		var source = load(singleView);
+		var source = load(SINGLE_VIEW);
 		var sourceView = source.getExtensionElements().get(0);
 		var target = load("");
 		target.copy(sourceView);
@@ -335,8 +335,8 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testCopyFromPluginFileIntoExistingOne() throws Exception {
-		var target = load(singleView2);
-		target.copyFromPluginXml(singleView);
+		var target = load(SINGLE_VIEW2);
+		target.copyFromPluginXml(SINGLE_VIEW);
 		// note that the string contents are different, but only for
 		// indentation
 		assertEquals("""
@@ -359,16 +359,16 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testCopyFromPluginFileIntoEmptyPlugin() throws Exception {
-		var target = load(emptyPlugin);
-		target.copyFromPluginXml(s1);
-		assertEquals(s1, target.getContentsAsString());
+		var target = load(EMPTY_PLUGIN);
+		target.copyFromPluginXml(S1);
+		assertEquals(S1, target.getContentsAsString());
 	}
 
 	@Test
 	public void testCopyFromPluginFileIntoEmptyPluginFile() throws Exception {
 		var target = load("");
-		target.copyFromPluginXml(s1);
-		assertEquals(s1, target.getContentsAsString());
+		target.copyFromPluginXml(S1);
+		assertEquals(S1, target.getContentsAsString());
 	}
 
 	@Test
@@ -392,8 +392,8 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 	      </editor>
 	   </extension>
 	</plugin>""");
-		target.copyFromPluginXml(singleEditor);
-		assertEquals(singleEditor, target.getContentsAsString());
+		target.copyFromPluginXml(SINGLE_EDITOR);
+		assertEquals(SINGLE_EDITOR, target.getContentsAsString());
 	}
 
 	@Test
@@ -414,13 +414,13 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 	      </editor>
 	   </extension>
 	</plugin>""");
-		target.copyFromPluginXml(singleEditor);
-		assertEquals(singleEditor, target.getContentsAsString());
+		target.copyFromPluginXml(SINGLE_EDITOR);
+		assertEquals(SINGLE_EDITOR, target.getContentsAsString());
 	}
 
 	@Test
 	public void testInsertExtensionElement() throws Exception {
-		var loader = load(singleView);
+		var loader = load(SINGLE_VIEW);
 		loader.insertExtensionElement(VIEW_POINT, "view");
 		assertEquals("<view></view>",
 			loader.getExtensionElements().get(loader.getExtensionElements().size() - 1).toString());
@@ -428,7 +428,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testInsertExtensionElementInEmptyPlugin() throws Exception {
-		var loader = load(emptyPlugin);
+		var loader = load(EMPTY_PLUGIN);
 		loader.insertExtensionElement(VIEW_POINT, "view");
 		assertEquals("<view></view>",
 			loader.getExtensionElements().get(loader.getExtensionElements().size() - 1).toString());
@@ -436,7 +436,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 
 	@Test
 	public void testModification() throws Exception {
-		var loader = load(singleView);
+		var loader = load(SINGLE_VIEW);
 		var e = loader.getExtensionElements().get(0);
 
 		assertEquals("""
