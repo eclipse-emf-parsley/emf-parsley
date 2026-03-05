@@ -10,13 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.pluginxml;
 
+import static org.eclipse.xtext.xbase.lib.IterableExtensions.filter;
+
 import java.util.Map;
 
 import org.eclipse.pde.internal.core.text.DocumentElementNode;
 import org.eclipse.pde.internal.core.text.IDocumentAttributeNode;
 import org.eclipse.pde.internal.core.text.plugin.PluginAttribute;
 import org.eclipse.pde.internal.core.text.plugin.PluginElementNode;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * Utility methods that abstract from the specific internal implementation of
@@ -35,7 +36,7 @@ public class PluginXmlUtils {
 
 	public static Iterable<Map.Entry<String, IDocumentAttributeNode>> getPluginAttributesEntrySet(
 			final PluginElementNode node) {
-		return IterableExtensions.<Map.Entry<String, IDocumentAttributeNode>> filter(
+		return filter(
 				node.getNodeAttributesMap().entrySet(),
 				it -> it.getValue() instanceof PluginAttribute);
 	}
