@@ -55,7 +55,7 @@ public abstract class EmfParsleyDslAbstractTest {
 		return ts;
 	}
 
-	public void parseAndAssertError(CharSequence s, EClass objectType, String code, String messagePart) throws Exception {
+	public void assertErrorAfterParsing(CharSequence s, EClass objectType, String code, String messagePart) throws Exception {
 		validationTestHelper.assertError(parseHelper.parse(s), objectType, code, messagePart);
 	}
 
