@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.Document;
@@ -51,7 +50,7 @@ public class PluginXmlLoader extends PluginModel {
 		pluginExtensionNodes = Arrays.stream(getPlugin().getExtensions())
 				.filter(PluginExtensionNode.class::isInstance)
 				.map(PluginExtensionNode.class::cast)
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	/**
@@ -67,14 +66,14 @@ public class PluginXmlLoader extends PluginModel {
 	protected void initializeExtensionElements() {
 		pluginExtensionElementNodes = getExtensionNodes().stream()
 				.flatMap(node -> mapToNodes(node).stream())
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	private List<PluginElementNode> mapToNodes(DocumentElementNode node) {
 		return Arrays.stream(node.getChildNodes())
 				.filter(PluginElementNode.class::isInstance)
 				.map(PluginElementNode.class::cast)
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	public List<PluginElementNode> getExtensionChildren(PluginElementNode node) {
