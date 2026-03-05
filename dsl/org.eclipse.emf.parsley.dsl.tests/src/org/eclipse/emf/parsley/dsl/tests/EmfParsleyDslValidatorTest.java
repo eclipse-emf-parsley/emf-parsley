@@ -46,6 +46,7 @@ import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.testing.validation.ValidationTestHelper;
+import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.validation.IssueCodes;
 import org.junit.Test;
@@ -833,7 +834,7 @@ public class EmfParsleyDslValidatorTest extends EmfParsleyDslAbstractTest {
 			expected.toString().trim(),
 			validationTestHelper.validate(elem).stream()
 				.filter(issue -> issue.getSeverity() == Severity.ERROR)
-				.map(issue -> issue.getMessage())
+				.map(Issue::getMessage)
 				.reduce((a, b) -> a + "\n" + b)
 				.orElse("")
 		);
