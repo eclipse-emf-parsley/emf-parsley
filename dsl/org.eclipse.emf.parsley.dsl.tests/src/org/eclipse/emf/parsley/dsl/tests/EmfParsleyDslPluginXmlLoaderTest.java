@@ -20,175 +20,179 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 	private static final String VIEW_POINT = "org.eclipse.ui.views";
 
 	private static final String S1 = """
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
-            id="org.eclipse.emf.parsley.tests.views"
-            name="Test Model Tree Form View"
-            restorable="true">
-      </view>
-      <view
-            category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView"
-            id="org.eclipse.emf.parsley.tests.treeviews"
-            name="Test Model Tree View"
-            restorable="true">
-      </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.editors">
-      <editor
-            class="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-            contributorClass="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
-            default="false"
-            id="org.eclipse.emf.parsley.openDialogOnDoubleClick"
-            name="EMF Tree Editor Opening Dialog">
-         <contentTypeBinding
-               contentTypeId="org.eclipse.emf.ecore.xmi">
-         </contentTypeBinding>
-      </editor>
-   </extension>
-</plugin>
-""";
+			<?xml version="1.0" encoding="UTF-8"?>
+			<?eclipse version="3.4"?>
+			<plugin>
+			   <extension
+			         point="org.eclipse.ui.views">
+			      <view
+			            category="org.eclipse.emf.parsley"
+			            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
+			            id="org.eclipse.emf.parsley.tests.views"
+			            name="Test Model Tree Form View"
+			            restorable="true">
+			      </view>
+			      <view
+			            category="org.eclipse.emf.parsley"
+			            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView"
+			            id="org.eclipse.emf.parsley.tests.treeviews"
+			            name="Test Model Tree View"
+			            restorable="true">
+			      </view>
+			   </extension>
+			   <extension
+			         point="org.eclipse.ui.editors">
+			      <editor
+			            class="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+			            contributorClass="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+			            default="false"
+			            id="org.eclipse.emf.parsley.openDialogOnDoubleClick"
+			            name="EMF Tree Editor Opening Dialog">
+			         <contentTypeBinding
+			               contentTypeId="org.eclipse.emf.ecore.xmi">
+			         </contentTypeBinding>
+			      </editor>
+			   </extension>
+			</plugin>
+			""";
 
 	private static final String SINGLE_VIEW = """
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-       <view
-            category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
-            id="viewId"
-            name="Test Model Tree Form View"
-            restorable="true">
-     </view>
-   </extension>
-</plugin>
-""";
+			<?xml version="1.0" encoding="UTF-8"?>
+			<?eclipse version="3.4"?>
+			<plugin>
+			   <extension
+			         point="org.eclipse.ui.views">
+			       <view
+			            category="org.eclipse.emf.parsley"
+			            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
+			            id="viewId"
+			            name="Test Model Tree Form View"
+			            restorable="true">
+			     </view>
+			   </extension>
+			</plugin>
+			""";
 
 	private static final String SINGLE_VIEW2 = """
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-       <view
-            category="org.eclipse.emf.parsley"
-            class="MyClass"
-            id="viewId"
-            name="My View">
-     </view>
-   </extension>
-</plugin>
-""";
+			<?xml version="1.0" encoding="UTF-8"?>
+			<?eclipse version="3.4"?>
+			<plugin>
+			   <extension
+			         point="org.eclipse.ui.views">
+			       <view
+			            category="org.eclipse.emf.parsley"
+			            class="MyClass"
+			            id="viewId"
+			            name="My View">
+			     </view>
+			   </extension>
+			</plugin>
+			""";
 
 	private static final String SINGLE_EDITOR = """
-	<?xml version="1.0" encoding="UTF-8"?>
-	<?eclipse version="3.4"?>
-	<plugin>
-	   <extension
-	         point="org.eclipse.ui.editors">
-	      <editor
-	            class="EditorClass"
-	            contributorClass="ContributorClass"
-	            default="false"
-	            id="editorId"
-	            name="EMF Tree Editor">
-	         <contentTypeBinding
-	               contentTypeId="myType">
-	         </contentTypeBinding>
-	      </editor>
-	   </extension>
-	</plugin>
-	""";
+			<?xml version="1.0" encoding="UTF-8"?>
+			<?eclipse version="3.4"?>
+			<plugin>
+			   <extension
+			         point="org.eclipse.ui.editors">
+			      <editor
+			            class="EditorClass"
+			            contributorClass="ContributorClass"
+			            default="false"
+			            id="editorId"
+			            name="EMF Tree Editor">
+			         <contentTypeBinding
+			               contentTypeId="myType">
+			         </contentTypeBinding>
+			      </editor>
+			   </extension>
+			</plugin>
+			""";
 
 	private static final String EMPTY_PLUGIN = """
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-""";
+			<?xml version="1.0" encoding="UTF-8"?>
+			<?eclipse version="3.4"?>
+			""";
 
 	private static final String EMPTY_VIEW = """
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-       <view
-            >
-     </view>
-   </extension>
-</plugin>
-""";
+			<?xml version="1.0" encoding="UTF-8"?>
+			<?eclipse version="3.4"?>
+			<plugin>
+			   <extension
+			         point="org.eclipse.ui.views">
+			       <view
+			            >
+			     </view>
+			   </extension>
+			</plugin>
+			""";
 
 	@Test
 	public void testLoad() throws Exception {
 		var loader = load(S1);
 		var extensions = loader.getExtensionNodes();
-		assertEquals("""
-<extension
-         point="org.eclipse.ui.views">
-      <view
-            category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
-            id="org.eclipse.emf.parsley.tests.views"
-            name="Test Model Tree Form View"
-            restorable="true">
-      </view>
-      <view
-            category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView"
-            id="org.eclipse.emf.parsley.tests.treeviews"
-            name="Test Model Tree View"
-            restorable="true">
-      </view>
-   </extension>""", extensions.get(0).toString());
+		assertEquals(
+				"""
+						<extension
+						         point="org.eclipse.ui.views">
+						      <view
+						            category="org.eclipse.emf.parsley"
+						            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
+						            id="org.eclipse.emf.parsley.tests.views"
+						            name="Test Model Tree Form View"
+						            restorable="true">
+						      </view>
+						      <view
+						            category="org.eclipse.emf.parsley"
+						            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView"
+						            id="org.eclipse.emf.parsley.tests.treeviews"
+						            name="Test Model Tree View"
+						            restorable="true">
+						      </view>
+						   </extension>""",
+				extensions.get(0).toString());
 		var elements = loader.getExtensionElements();
-		assertEquals("""
-<view
-            category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
-            id="org.eclipse.emf.parsley.tests.views"
-            name="Test Model Tree Form View"
-            restorable="true">
-      </view>
-tag: view
-category=org.eclipse.emf.parsley, class=org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView, id=org.eclipse.emf.parsley.tests.views, name=Test Model Tree Form View, restorable=true
+		assertEquals(
+				"""
+						<view
+						            category="org.eclipse.emf.parsley"
+						            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
+						            id="org.eclipse.emf.parsley.tests.views"
+						            name="Test Model Tree Form View"
+						            restorable="true">
+						      </view>
+						tag: view
+						category=org.eclipse.emf.parsley, class=org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView, id=org.eclipse.emf.parsley.tests.views, name=Test Model Tree Form View, restorable=true
 
-<view
-            category="org.eclipse.emf.parsley"
-            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView"
-            id="org.eclipse.emf.parsley.tests.treeviews"
-            name="Test Model Tree View"
-            restorable="true">
-      </view>
-tag: view
-category=org.eclipse.emf.parsley, class=org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView, id=org.eclipse.emf.parsley.tests.treeviews, name=Test Model Tree View, restorable=true
+						<view
+						            category="org.eclipse.emf.parsley"
+						            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView"
+						            id="org.eclipse.emf.parsley.tests.treeviews"
+						            name="Test Model Tree View"
+						            restorable="true">
+						      </view>
+						tag: view
+						category=org.eclipse.emf.parsley, class=org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeView, id=org.eclipse.emf.parsley.tests.treeviews, name=Test Model Tree View, restorable=true
 
-<editor
-            class="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
-            contributorClass="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
-            default="false"
-            id="org.eclipse.emf.parsley.openDialogOnDoubleClick"
-            name="EMF Tree Editor Opening Dialog">
-         <contentTypeBinding
-               contentTypeId="org.eclipse.emf.ecore.xmi">
-         </contentTypeBinding>
-      </editor>
-tag: editor
-class=org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor, contributorClass=org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor, default=false, id=org.eclipse.emf.parsley.openDialogOnDoubleClick, name=EMF Tree Editor Opening Dialog
-<contentTypeBinding
-               contentTypeId="org.eclipse.emf.ecore.xmi">
-         </contentTypeBinding>
-tag: contentTypeBinding
-contentTypeId=org.eclipse.emf.ecore.xmi
-		""", repr(elements, loader));
+						<editor
+						            class="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor"
+						            contributorClass="org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor"
+						            default="false"
+						            id="org.eclipse.emf.parsley.openDialogOnDoubleClick"
+						            name="EMF Tree Editor Opening Dialog">
+						         <contentTypeBinding
+						               contentTypeId="org.eclipse.emf.ecore.xmi">
+						         </contentTypeBinding>
+						      </editor>
+						tag: editor
+						class=org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfTreeEditor, contributorClass=org.eclipse.emf.parsley.tests.factories.OpenDialogMouseEventExecutableExtensionFactory:org.eclipse.emf.parsley.editors.EmfParsleyEditorActionBarContributor, default=false, id=org.eclipse.emf.parsley.openDialogOnDoubleClick, name=EMF Tree Editor Opening Dialog
+						<contentTypeBinding
+						               contentTypeId="org.eclipse.emf.ecore.xmi">
+						         </contentTypeBinding>
+						tag: contentTypeBinding
+						contentTypeId=org.eclipse.emf.ecore.xmi
+								""",
+				repr(elements, loader));
 	}
 
 	@Test
@@ -223,25 +227,25 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 	public void testElementByTagAndId() throws Exception {
 		var loader = load(S1);
 		assertSame(loader.getElementByTagAndId("view", "org.eclipse.emf.parsley.tests.treeviews"),
-			loader.getExtensionElements().get(1));
+				loader.getExtensionElements().get(1));
 	}
 
 	@Test
 	public void testElementByTagAndIdNotFound() throws Exception {
 		var loader = load("""
-			<?xml version="1.0" encoding="UTF-8"?>
-			<?eclipse version="3.4"?>
-			<plugin>
-			   <extension
-			         point="org.eclipse.ui.views">
-			       <view
-			            category="org.eclipse.emf.parsley"
-			            name="Test Model Tree Form View"
-			            restorable="true">
-			     </view>
-			   </extension>
-			</plugin>
-			""");
+				<?xml version="1.0" encoding="UTF-8"?>
+				<?eclipse version="3.4"?>
+				<plugin>
+				   <extension
+				         point="org.eclipse.ui.views">
+				       <view
+				            category="org.eclipse.emf.parsley"
+				            name="Test Model Tree Form View"
+				            restorable="true">
+				     </view>
+				   </extension>
+				</plugin>
+				""");
 		assertNull(loader.getElementByTagAndId("view", "foo"));
 	}
 
@@ -250,10 +254,9 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		var loader = load(SINGLE_VIEW);
 		loader.insertExtension(EDITOR_POINT);
 		assertEquals("""
-<extension
-      point="org.eclipse.ui.editors">
-</extension>""",
-			loader.getExtensionNodes().get(loader.getExtensionNodes().size() - 1).toString());
+				<extension
+				      point="org.eclipse.ui.editors">
+				</extension>""", loader.getExtensionNodes().get(loader.getExtensionNodes().size() - 1).toString());
 	}
 
 	@Test
@@ -261,14 +264,14 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		var loader = load(EMPTY_PLUGIN);
 		loader.insertExtension(EDITOR_POINT);
 		assertEquals("""
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.editors">
-   </extension>
-</plugin>
-		""", loader.getContentsAsString());
+				<?xml version="1.0" encoding="UTF-8"?>
+				<?eclipse version="3.4"?>
+				<plugin>
+				   <extension
+				         point="org.eclipse.ui.editors">
+				   </extension>
+				</plugin>
+						""", loader.getContentsAsString());
 	}
 
 	@Test
@@ -276,14 +279,14 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		var loader = load("");
 		loader.insertExtension(EDITOR_POINT);
 		assertEquals("""
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.editors">
-   </extension>
-</plugin>
-		""", loader.getContentsAsString());
+				<?xml version="1.0" encoding="UTF-8"?>
+				<?eclipse version="3.4"?>
+				<plugin>
+				   <extension
+				         point="org.eclipse.ui.editors">
+				   </extension>
+				</plugin>
+						""", loader.getContentsAsString());
 	}
 
 	@Test
@@ -339,22 +342,24 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		target.copyFromPluginXml(SINGLE_VIEW);
 		// note that the string contents are different, but only for
 		// indentation
-		assertEquals("""
-		<?xml version="1.0" encoding="UTF-8"?>
-		<?eclipse version="3.4"?>
-		<plugin>
-		   <extension
-		         point="org.eclipse.ui.views">
-		      <view
-		            category="org.eclipse.emf.parsley"
-		            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
-		            id="viewId"
-		            name="Test Model Tree Form View"
-		            restorable="true">
-		      </view>
-		   </extension>
-		</plugin>
-		""", target.getContentsAsString());
+		assertEquals(
+				"""
+						<?xml version="1.0" encoding="UTF-8"?>
+						<?eclipse version="3.4"?>
+						<plugin>
+						   <extension
+						         point="org.eclipse.ui.views">
+						      <view
+						            category="org.eclipse.emf.parsley"
+						            class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
+						            id="viewId"
+						            name="Test Model Tree Form View"
+						            restorable="true">
+						      </view>
+						   </extension>
+						</plugin>
+						""",
+				target.getContentsAsString());
 	}
 
 	@Test
@@ -375,23 +380,23 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 	public void testCopyFromPluginFileIntoExtensionWithExistingChild() throws Exception {
 		// the editor already has the contentTypeBinding child
 		var target = load("""
-	<?xml version="1.0" encoding="UTF-8"?>
-	<?eclipse version="3.4"?>
-	<plugin>
-	   <extension
-	         point="org.eclipse.ui.editors">
-	      <editor
-	            class="EditorClass"
-	            contributorClass="ContributorClass"
-	            default="false"
-	            id="editorId"
-	            name="EMF Tree Editor">
-	         <contentTypeBinding
-	               contentTypeId="myDifferentType">
-	         </contentTypeBinding>
-	      </editor>
-	   </extension>
-	</plugin>""");
+				<?xml version="1.0" encoding="UTF-8"?>
+				<?eclipse version="3.4"?>
+				<plugin>
+				   <extension
+				         point="org.eclipse.ui.editors">
+				      <editor
+				            class="EditorClass"
+				            contributorClass="ContributorClass"
+				            default="false"
+				            id="editorId"
+				            name="EMF Tree Editor">
+				         <contentTypeBinding
+				               contentTypeId="myDifferentType">
+				         </contentTypeBinding>
+				      </editor>
+				   </extension>
+				</plugin>""");
 		target.copyFromPluginXml(SINGLE_EDITOR);
 		assertEquals(SINGLE_EDITOR, target.getContentsAsString());
 	}
@@ -400,20 +405,20 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 	public void testCopyFromPluginFileIntoExtensionWithoutExistingChild() throws Exception {
 		// the editor does not have the contentTypeBinding child
 		var target = load("""
-	<?xml version="1.0" encoding="UTF-8"?>
-	<?eclipse version="3.4"?>
-	<plugin>
-	   <extension
-	         point="org.eclipse.ui.editors">
-	      <editor
-	            class="EditorClass"
-	            contributorClass="ContributorClass"
-	            default="false"
-	            id="editorId"
-	            name="EMF Tree Editor">
-	      </editor>
-	   </extension>
-	</plugin>""");
+				<?xml version="1.0" encoding="UTF-8"?>
+				<?eclipse version="3.4"?>
+				<plugin>
+				   <extension
+				         point="org.eclipse.ui.editors">
+				      <editor
+				            class="EditorClass"
+				            contributorClass="ContributorClass"
+				            default="false"
+				            id="editorId"
+				            name="EMF Tree Editor">
+				      </editor>
+				   </extension>
+				</plugin>""");
 		target.copyFromPluginXml(SINGLE_EDITOR);
 		assertEquals(SINGLE_EDITOR, target.getContentsAsString());
 	}
@@ -423,7 +428,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		var loader = load(SINGLE_VIEW);
 		loader.insertExtensionElement(VIEW_POINT, "view");
 		assertEquals("<view></view>",
-			loader.getExtensionElements().get(loader.getExtensionElements().size() - 1).toString());
+				loader.getExtensionElements().get(loader.getExtensionElements().size() - 1).toString());
 	}
 
 	@Test
@@ -431,7 +436,7 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		var loader = load(EMPTY_PLUGIN);
 		loader.insertExtensionElement(VIEW_POINT, "view");
 		assertEquals("<view></view>",
-			loader.getExtensionElements().get(loader.getExtensionElements().size() - 1).toString());
+				loader.getExtensionElements().get(loader.getExtensionElements().size() - 1).toString());
 	}
 
 	@Test
@@ -439,52 +444,51 @@ contentTypeId=org.eclipse.emf.ecore.xmi
 		var loader = load(SINGLE_VIEW);
 		var e = loader.getExtensionElements().get(0);
 
-		assertEquals("""
-<view
-             category="org.eclipse.emf.parsley"
-             class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
-             id="viewId"
-             name="Test Model Tree Form View"
-             restorable="true">
-       </view>""", e.toString());
+		assertEquals(
+				"""
+						<view
+						             category="org.eclipse.emf.parsley"
+						             class="org.eclipse.emf.parsley.tests.views.ViewsExecutableExtensionFactory:org.eclipse.emf.parsley.tests.views.ViewsSaveableTreeFormView"
+						             id="viewId"
+						             name="Test Model Tree Form View"
+						             restorable="true">
+						       </view>""",
+				e.toString());
 
 		e.setAttribute("category", "modified-category");
 		e.setAttribute("class", "modified-class");
 
 		assertEquals("""
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            category="modified-category"
-            class="modified-class"
-            id="viewId"
-            name="Test Model Tree Form View"
-            restorable="true">
-      </view>
-   </extension>
-</plugin>
-		""", loader.getContentsAsString());
+				<?xml version="1.0" encoding="UTF-8"?>
+				<?eclipse version="3.4"?>
+				<plugin>
+				   <extension
+				         point="org.eclipse.ui.views">
+				      <view
+				            category="modified-category"
+				            class="modified-class"
+				            id="viewId"
+				            name="Test Model Tree Form View"
+				            restorable="true">
+				      </view>
+				   </extension>
+				</plugin>
+						""", loader.getContentsAsString());
 	}
 
 	private String repr(List<PluginElementNode> nodes, PluginXmlLoader loader) {
-		return nodes.stream()
-			.map(node -> repr(node, loader))
-			.collect(Collectors.joining(System.lineSeparator()));
+		return nodes.stream().map(node -> repr(node, loader)).collect(Collectors.joining(System.lineSeparator()));
 	}
 
 	private String repr(PluginElementNode node, PluginXmlLoader loader) {
 		var entrySet = loader.getPluginAttributesEntrySet(node);
 		var extensionChildren = loader.getExtensionChildren(node);
 		var childrenRepr = extensionChildren.isEmpty() ? "" : repr(extensionChildren, loader);
-		return node.toString() + "\n" +
-			"tag: " + node.getXMLTagName() + "\n" +
-			StreamSupport.stream(entrySet.spliterator(), false)
-				.map(e -> e.getKey() + "=" + ((PluginAttribute) e.getValue()).getValue())
-				.collect(Collectors.joining(", ")) + "\n" +
-			childrenRepr;
+		return node.toString() + "\n" + "tag: " + node.getXMLTagName() + "\n"
+				+ StreamSupport.stream(entrySet.spliterator(), false)
+						.map(e -> e.getKey() + "=" + ((PluginAttribute) e.getValue()).getValue())
+						.collect(Collectors.joining(", "))
+				+ "\n" + childrenRepr;
 	}
 
 	private PluginXmlLoader load(String s) throws Exception {
