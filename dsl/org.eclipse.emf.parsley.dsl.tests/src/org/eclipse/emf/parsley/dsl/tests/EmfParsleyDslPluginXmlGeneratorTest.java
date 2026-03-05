@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.tests;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.eclipse.emf.parsley.dsl.generator.EmfParsleyDslOutputConfigurationProvider;
