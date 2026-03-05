@@ -34,31 +34,27 @@ public class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTe
 
 	@Test
 	public void testEmptyContents() {
-		assertPluginXmlContents("",
-"""
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-</plugin>
-"""			
-		);
+		assertPluginXmlContents("", """
+				<?xml version="1.0" encoding="UTF-8"?>
+				<?eclipse version="3.4"?>
+				<plugin>
+				</plugin>
+				""");
 	}
 
 	@Test
 	public void testViewExtensionPoint() throws Exception {
-		assertEqualsStrings("""
-<view
-      category="org.eclipse.emf.parsley"
-      class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
-      id="my.view.part"
-      name="My View"
-      restorable="true">
-</view>
-""",
-	pluginXmlGenerator.generateExtensionPoint(
-		partSpecification(inputs.nonEmptyViewsSpecifications())
-	)
-);
+		assertEqualsStrings(
+				"""
+						<view
+						      category="org.eclipse.emf.parsley"
+						      class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
+						      id="my.view.part"
+						      name="My View"
+						      restorable="true">
+						</view>
+						""",
+				pluginXmlGenerator.generateExtensionPoint(partSpecification(inputs.nonEmptyViewsSpecifications())));
 	}
 
 	@Test
@@ -74,81 +70,78 @@ public class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTe
 	@Test
 	public void testSingleViewSpecification() throws Exception {
 		assertPluginXmlContents(module(inputs.nonEmptyViewsSpecifications()),
-"""
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            category="org.eclipse.emf.parsley"
-            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
-            id="my.view.part"
-            name="My View"
-            restorable="true">
-      </view>
-   </extension>
-</plugin>
-"""
-		);
+				"""
+						<?xml version="1.0" encoding="UTF-8"?>
+						<?eclipse version="3.4"?>
+						<plugin>
+						   <extension
+						         point="org.eclipse.ui.views">
+						      <view
+						            category="org.eclipse.emf.parsley"
+						            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
+						            id="my.view.part"
+						            name="My View"
+						            restorable="true">
+						      </view>
+						   </extension>
+						</plugin>
+						""");
 	}
 
 	@Test
 	public void testMultipleViewSpecification() throws Exception {
 		assertPluginXmlContents(module(inputs.multipleViewsSpecifications()),
-"""
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            category="org.eclipse.emf.parsley"
-            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
-            id="my.view.tree.part"
-            name="My Tree View"
-            restorable="true">
-      </view>
-      <view
-            category="my.view.category"
-            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView"
-            id="my.view.form.part"
-            name="My Tree Form View"
-            restorable="true">
-      </view>
-   </extension>
-</plugin>
-"""
-		);
+				"""
+						<?xml version="1.0" encoding="UTF-8"?>
+						<?eclipse version="3.4"?>
+						<plugin>
+						   <extension
+						         point="org.eclipse.ui.views">
+						      <view
+						            category="org.eclipse.emf.parsley"
+						            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
+						            id="my.view.tree.part"
+						            name="My Tree View"
+						            restorable="true">
+						      </view>
+						      <view
+						            category="my.view.category"
+						            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView"
+						            id="my.view.form.part"
+						            name="My Tree Form View"
+						            restorable="true">
+						      </view>
+						   </extension>
+						</plugin>
+						""");
 	}
 
 	@Test
 	public void testPluginXmlGen() throws Exception {
 		assertPluginXmlGeneration(inputs.multipleViewsSpecifications(),
-"""
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-   <extension
-         point="org.eclipse.ui.views">
-      <view
-            category="org.eclipse.emf.parsley"
-            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
-            id="my.view.tree.part"
-            name="My Tree View"
-            restorable="true">
-      </view>
-      <view
-            category="my.view.category"
-            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView"
-            id="my.view.form.part"
-            name="My Tree Form View"
-            restorable="true">
-      </view>
-   </extension>
-</plugin>
-"""				
-		);
+				"""
+						<?xml version="1.0" encoding="UTF-8"?>
+						<?eclipse version="3.4"?>
+						<plugin>
+						   <extension
+						         point="org.eclipse.ui.views">
+						      <view
+						            category="org.eclipse.emf.parsley"
+						            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeView"
+						            id="my.view.tree.part"
+						            name="My Tree View"
+						            restorable="true">
+						      </view>
+						      <view
+						            category="my.view.category"
+						            class="my.test.TestExecutableExtensionFactory:org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView"
+						            id="my.view.form.part"
+						            name="My Tree Form View"
+						            restorable="true">
+						      </view>
+						   </extension>
+						</plugin>
+						""");
 	}
 
 	@Test
@@ -164,12 +157,8 @@ public class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTe
 		var entrySet = textFiles.entrySet();
 		// both the plugin.xml_emfparsley_gen and the plugin.xml
 		assertEqualsStrings(1, entrySet.size());
-		assertEqualsStrings(expected,
-			textFiles.get(
-				IFileSystemAccess.DEFAULT_OUTPUT +
-				"my/test/" + EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_GEN_FILE
-			)
-		);
+		assertEqualsStrings(expected, textFiles.get(IFileSystemAccess.DEFAULT_OUTPUT + "my/test/"
+				+ EmfParsleyDslOutputConfigurationProvider.PLUGIN_XML_GEN_FILE));
 	}
 
 	private void assertNoPluginXmlGeneration(CharSequence input) throws Exception {
