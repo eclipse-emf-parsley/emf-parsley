@@ -477,7 +477,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 	}
 
 	private String repr(List<PluginElementNode> nodes, PluginXmlLoader loader) {
-		return nodes.stream().map(node -> repr(node, loader)).collect(Collectors.joining(System.lineSeparator()));
+		return nodes.stream().map(node -> repr(node, loader)).collect(Collectors.joining("\n"));
 	}
 
 	private String repr(PluginElementNode node, PluginXmlLoader loader) {
