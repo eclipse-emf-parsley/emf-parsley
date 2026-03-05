@@ -286,7 +286,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 				         point="org.eclipse.ui.editors">
 				   </extension>
 				</plugin>
-						""", loader.getContentsAsString());
+						""", loader.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -333,7 +333,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 		var sourceView = source.getExtensionElements().get(0);
 		var target = load("");
 		target.copy(sourceView);
-		assertEquals(source.getContentsAsString(), target.getContentsAsString());
+		assertEquals(source.getContentsAsString(), target.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -373,7 +373,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 	public void testCopyFromPluginFileIntoEmptyPluginFile() throws Exception {
 		var target = load("");
 		target.copyFromPluginXml(S1);
-		assertEquals(S1, target.getContentsAsString());
+		assertEquals(S1, target.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
