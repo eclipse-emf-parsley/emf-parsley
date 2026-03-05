@@ -158,7 +158,7 @@ public class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTe
 
 	private void assertPluginXmlGeneration(CharSequence input, CharSequence expected) throws Exception {
 		var access = new InMemoryFileSystemAccess();
-		var parsed = parseAndAssertNoError(input);
+		var parsed = assertNoErrorAfterParsing(input);
 		pluginXmlGenerator.doGenerate(parsed.eResource(), access);
 		var textFiles = access.getTextFiles();
 		var entrySet = textFiles.entrySet();
@@ -174,7 +174,7 @@ public class EmfParsleyDslPluginXmlGeneratorTest extends EmfParsleyDslAbstractTe
 
 	private void assertNoPluginXmlGeneration(CharSequence input) throws Exception {
 		var access = new InMemoryFileSystemAccess();
-		var parsed = parseAndAssertNoError(input);
+		var parsed = assertNoErrorAfterParsing(input);
 		pluginXmlGenerator.doGenerate(parsed.eResource(), access);
 		var textFiles = access.getTextFiles();
 		var entrySet = textFiles.entrySet();

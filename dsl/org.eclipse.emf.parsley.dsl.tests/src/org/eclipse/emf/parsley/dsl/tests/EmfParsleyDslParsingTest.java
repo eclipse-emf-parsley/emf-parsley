@@ -22,37 +22,37 @@ public class EmfParsleyDslParsingTest extends EmfParsleyDslAbstractTest {
 
 	@Test
 	public void testEmptyModule() throws Exception {
-		parseAndAssertNoError(inputs.emptyModule());
+		assertNoErrorAfterParsing(inputs.emptyModule());
 	}
 
 	@Test
 	public void testModuleWithExtends() throws Exception {
-		parseAndAssertNoError(inputs.moduleWithExtends());
+		assertNoErrorAfterParsing(inputs.moduleWithExtends());
 	}
 
 	@Test
 	public void testEmptyLabelProvider() throws Exception {
-		parseAndAssertNoError(inputs.emptyLabelProvider());
+		assertNoErrorAfterParsing(inputs.emptyLabelProvider());
 	}
 
 	@Test
 	public void testEmptyLabelSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.emptyLabelSpecifications());
+		assertNoErrorAfterParsing(inputs.emptyLabelSpecifications());
 	}
 
 	@Test
 	public void testLabelSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.labelProvider());
+		assertNoErrorAfterParsing(inputs.labelProvider());
 	}
 
 	@Test
 	public void testEmptyLabelSpecificationsForColumns() throws Exception {
-		parseAndAssertNoError(inputs.emptyLabelSpecificationsForColumns());
+		assertNoErrorAfterParsing(inputs.emptyLabelSpecificationsForColumns());
 	}
 
 	@Test
 	public void testLabelSpecificationsForColumns() throws Exception {
-		parseAndAssertNoError(inputs.tableLabelProvider());
+		assertNoErrorAfterParsing(inputs.tableLabelProvider());
 	}
 
 	@Test
@@ -62,17 +62,17 @@ public class EmfParsleyDslParsingTest extends EmfParsleyDslAbstractTest {
 
 	@Test
 	public void testPropertyDescriptionSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.featureCaptionProvider());
+		assertNoErrorAfterParsing(inputs.featureCaptionProvider());
 	}
 
 	@Test
 	public void testFormPropertyDescriptionSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.formFeatureCaptionProvider());
+		assertNoErrorAfterParsing(inputs.formFeatureCaptionProvider());
 	}
 
 	@Test
 	public void testDialogPropertyDescriptionSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.dialogFeatureCaptionProvider());
+		assertNoErrorAfterParsing(inputs.dialogFeatureCaptionProvider());
 	}
 
 	@Test
@@ -92,47 +92,47 @@ public class EmfParsleyDslParsingTest extends EmfParsleyDslAbstractTest {
 
 	@Test
 	public void testFeaturesSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.featuresProvider());
+		assertNoErrorAfterParsing(inputs.featuresProvider());
 	}
 
 	@Test
 	public void testFormControlFactory() throws Exception {
-		parseAndAssertNoError(inputs.formControlFactory());
+		assertNoErrorAfterParsing(inputs.formControlFactory());
 	}
 
 	@Test
 	public void testDialogControlFactory() throws Exception {
-		parseAndAssertNoError(inputs.dialogControlFactory());
+		assertNoErrorAfterParsing(inputs.dialogControlFactory());
 	}
 
 	@Test
 	public void testProposalsSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.proposalCreator());
+		assertNoErrorAfterParsing(inputs.proposalCreator());
 	}
 
 	@Test
 	public void testViewerContentProviderSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.viewerContentProvider());
+		assertNoErrorAfterParsing(inputs.viewerContentProvider());
 	}
 
 	@Test
 	public void testEmptyViewsSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.emptyViewsSpecifications());
+		assertNoErrorAfterParsing(inputs.emptyViewsSpecifications());
 	}
 
 	@Test
 	public void testNonEmptyViewsSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.nonEmptyViewsSpecifications());
+		assertNoErrorAfterParsing(inputs.nonEmptyViewsSpecifications());
 	}
 
 	@Test
 	public void testMultipleViewsSpecifications() throws Exception {
-		parseAndAssertNoError(inputs.multipleViewsSpecifications());
+		assertNoErrorAfterParsing(inputs.multipleViewsSpecifications());
 	}
 
 	@Test
 	public void testConfigurator() throws Exception {
-		parseAndAssertNoError(inputs.configuratorExample());
+		assertNoErrorAfterParsing(inputs.configuratorExample());
 	}
 
 }

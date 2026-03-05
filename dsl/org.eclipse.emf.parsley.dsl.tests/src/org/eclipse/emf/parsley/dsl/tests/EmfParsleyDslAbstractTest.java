@@ -49,7 +49,7 @@ public abstract class EmfParsleyDslAbstractTest {
 		System.setProperty("line.separator", "\n");
 	}
 
-	public Model parseAndAssertNoError(CharSequence s) throws Exception {
+	public Model assertNoErrorAfterParsing(CharSequence s) throws Exception {
 		var ts = parseHelper.parse(s);
 		validationTestHelper.assertNoErrors(ts);
 		return ts;
@@ -68,7 +68,7 @@ public abstract class EmfParsleyDslAbstractTest {
 	}
 
 	public Module module(CharSequence s) throws Exception {
-		return parseAndAssertNoError(s).getModule();
+		return assertNoErrorAfterParsing(s).getModule();
 	}
 
 	public void assertEqualsStrings(Object expected, Object actual) {
