@@ -63,7 +63,7 @@ public abstract class EmfParsleyDslAbstractTest {
 		return parseHelper.parse(s);
 	}
 
-	public void parseAndAssertErrors(CharSequence s) throws Exception {
+	public void assertErrorsAfterParsing(CharSequence s) throws Exception {
 		assertTrue(validationTestHelper.validate(parseHelper.parse(s)).size() > 0);
 	}
 

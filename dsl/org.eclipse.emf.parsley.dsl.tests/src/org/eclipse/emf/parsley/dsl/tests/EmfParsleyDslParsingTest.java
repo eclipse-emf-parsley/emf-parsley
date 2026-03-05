@@ -57,7 +57,7 @@ public class EmfParsleyDslParsingTest extends EmfParsleyDslAbstractTest {
 
 	@Test
 	public void testDuplicateLabelSpecifications() throws Exception {
-		parseAndAssertErrors(inputsWithErrors.duplicateLabelSpecifications());
+		assertErrorsAfterParsing(inputsWithErrors.duplicateLabelSpecifications());
 	}
 
 	@Test
