@@ -45,8 +45,7 @@ public class PluginXmlUtils {
 		return (node.getNodeAttributesMap().get("id"));
 	}
 
-	@SuppressWarnings("rawtypes")
-	public static Map getNodeAttributesMap(final DocumentElementNode node) {
+	public static Map<String, IDocumentAttributeNode> getNodeAttributesMap(final DocumentElementNode node) {
 		return node.getNodeAttributesMap();
 	}
 }
