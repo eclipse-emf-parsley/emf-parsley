@@ -17,7 +17,8 @@ import org.eclipse.swt.widgets.Text;
  * @author Lorenzo Bettini
  *
  */
-public class CustomDialogControlFactoryForTests extends DialogControlFactory {
+public class CustomDialogControlFactoryForTests // NOSONAR: this is not a test class
+		extends DialogControlFactory {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Text control_BaseClass_baseClassFeature(final EMFDataBindingContext edbc,
 			final IObservableValue modelObservableValue) {
