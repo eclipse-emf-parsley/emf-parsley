@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.parsley.composite.ProposalCreator;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
