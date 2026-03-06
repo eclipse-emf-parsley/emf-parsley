@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
@@ -100,7 +101,7 @@ public class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest 
 	}
 
 	@Test public void testDateTime() {
-		factory.createDateTime();
+		assertNotNull(factory.createDateTime());
 	}
 
 	@Test public void testDateTimeWithStyle() {

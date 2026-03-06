@@ -778,7 +778,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 	}
 
 	@Test
-	public void testSafeActionUpdate() {
+	public void testSafeActionUpdate() { // NOSONAR: we just check it does not throw
 		final var builder = createTestableEditingMenuBuilder();
 		builder.updateEditingDomain(getEditingDomain());
 		builder.updateUndoRedo();

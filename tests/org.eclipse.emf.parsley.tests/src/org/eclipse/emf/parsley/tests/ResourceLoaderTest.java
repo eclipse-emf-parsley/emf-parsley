@@ -69,7 +69,7 @@ public class ResourceLoaderTest extends AbstractEmfParsleyTest {
 	}
 
 	@Test
-	public void testInitializeOnNullResource() {
+	public void testInitializeOnNullResource() { // NOSONAR: we just ensure it doesn't throw
 		resourceLoader.initializeEmptyResource(null);
 	}
 

@@ -206,7 +206,7 @@ public class TableViewerContentProviderTest extends AbstractEmfParsleyShellBased
 	 * non structured viewers.
 	 */
 	@Test
-	public void smokeTestCustomGetElementsForNonStructuredViewer() {
+	public void smokeTestCustomGetElementsForNonStructuredViewer() { // NOSONAR: we just ensure it doesn't throw
 		fillTestContainer();
 		var viewer = new NonStructuredViewer(getShell());
 		viewer.setContentProvider(getContentProviderWithCustomGetElements(fixtures.getTestPackage().getClassForControls()));

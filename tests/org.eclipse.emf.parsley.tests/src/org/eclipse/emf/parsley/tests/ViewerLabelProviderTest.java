@@ -266,7 +266,7 @@ public class ViewerLabelProviderTest extends AbstractImageBasedTest {
 	}
 
 	@Test
-	public void testListeners() {
+	public void testListeners() { // NOSONAR: we just ensure it doesn't throw
 		var listener = mock(ILabelProviderListener.class);
 		labelProvider.addListener(listener);
 		labelProvider.removeListener(listener);

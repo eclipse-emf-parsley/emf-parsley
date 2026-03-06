@@ -114,7 +114,7 @@ public class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest 
 	}
 
 	@Test
-	public void testDisposeWhenInitIsNotCalled() {
+	public void testDisposeWhenInitIsNotCalled() { // NOSONAR: we just ensure it doesn't throw
 		Injector injector = getOrCreateInjector();
 		FormDetailComposite formDetailComposite = new FormDetailComposite(getShell(), SWT.NONE);
 		injector.injectMembers(formDetailComposite);
@@ -122,7 +122,7 @@ public class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest 
 	}
 
 	@Test
-	public void testDisposeWhenWidgetIsDisposed() {
+	public void testDisposeWhenWidgetIsDisposed() { // NOSONAR: we just ensure it doesn't throw
 		Injector injector = getOrCreateInjector();
 		FormDetailCompositeWithCustomIsDisposed formDetailComposite = new FormDetailCompositeWithCustomIsDisposed(getShell(), SWT.NONE);
 		injector.injectMembers(formDetailComposite);

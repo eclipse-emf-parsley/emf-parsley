@@ -45,14 +45,14 @@ public class DialogDetailCompositeTest extends AbstractEmfParsleyControlBasedTes
 	}
 
 	@Test
-	public void testInitWithEditingDomain() {
+	public void testInitWithEditingDomain() { // NOSONAR: we just ensure it doesn't throw
 		ClassWithName o = fixtures.getTestFactory().createClassWithName();
 		o.setName("Test");
 		dialogDetailComposite.init(o, editingDomain);
 	}
 
 	@Test
-	public void testInitWithoutEditingDomain() {
+	public void testInitWithoutEditingDomain() { // NOSONAR: we just ensure it doesn't throw
 		ClassWithName o = fixtures.getTestFactory().createClassWithName();
 		o.setName("Test");
 		dialogDetailComposite.init(o);

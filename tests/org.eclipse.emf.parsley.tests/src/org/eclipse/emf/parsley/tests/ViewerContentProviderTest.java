@@ -217,7 +217,7 @@ public class ViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest 
 	 * non structured viewers.
 	 */
 	@Test
-	public void smokeTestCustomGetElementsForNonStructuredViewer() {
+	public void smokeTestCustomGetElementsForNonStructuredViewer() { // NOSONAR: we just ensure it doesn't throw
 		fillTestContainer();
 		NonStructuredViewer viewer = new NonStructuredViewer(getShell());
 		viewer.setContentProvider(getContentProviderWithCustomGetElements());

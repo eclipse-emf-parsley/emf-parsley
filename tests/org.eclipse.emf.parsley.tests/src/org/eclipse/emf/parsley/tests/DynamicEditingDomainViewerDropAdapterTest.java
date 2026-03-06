@@ -48,7 +48,7 @@ public class DynamicEditingDomainViewerDropAdapterTest extends AbstractEmfParsle
 	}
 
 	@Test
-	public void testWithoutEditingDomain() {
+	public void testWithoutEditingDomain() { // NOSONAR: we just ensure it doesn't throw
 		final var event = mockEvent("a string");
 		dropAdapter.drop(event);
 		// no exception is expected since nothing will happen
