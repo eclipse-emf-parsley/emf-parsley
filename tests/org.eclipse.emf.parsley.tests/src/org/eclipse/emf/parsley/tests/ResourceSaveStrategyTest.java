@@ -86,7 +86,7 @@ public class ResourceSaveStrategyTest extends AbstractEmfParsleyTest {
 				return ValidateBeforeSaveStrategy.class;
 			}
 			
-			@SuppressWarnings("unused")
+			@Override
 			public Class<? extends IssueReporter> bindIssueReporter() {
 				return LogIssueReporterForTests.class;
 			}
