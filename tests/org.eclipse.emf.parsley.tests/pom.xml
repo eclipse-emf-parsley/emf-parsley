@@ -13,6 +13,12 @@
 	<artifactId>org.eclipse.emf.parsley.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<properties>
+		<!-- Workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=397015 -->
+		<sonar.sources></sonar.sources>
+		<sonar.tests>src</sonar.tests>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<!-- needed for running plain Junit tests with Maven surefire plugin -->
