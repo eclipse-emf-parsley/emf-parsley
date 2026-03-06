@@ -205,7 +205,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 	@Test
 	public void testWrite() throws Exception {
 		var loader = load(S1);
-		assertEquals(S1, loader.getContentsAsString());
+		assertEquals(S1, loader.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -271,7 +271,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 				         point="org.eclipse.ui.editors">
 				   </extension>
 				</plugin>
-						""", loader.getContentsAsString());
+						""", loader.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -333,7 +333,9 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 		var sourceView = source.getExtensionElements().get(0);
 		var target = load("");
 		target.copy(sourceView);
-		assertEquals(source.getContentsAsString(), target.getContentsAsString().replace("\r", ""));
+		assertEquals(
+				source.getContentsAsString().replace("\r", ""),
+				target.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -359,14 +361,14 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 						   </extension>
 						</plugin>
 						""",
-				target.getContentsAsString());
+				target.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
 	public void testCopyFromPluginFileIntoEmptyPlugin() throws Exception {
 		var target = load(EMPTY_PLUGIN);
 		target.copyFromPluginXml(S1);
-		assertEquals(S1, target.getContentsAsString());
+		assertEquals(S1, target.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -398,7 +400,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 				   </extension>
 				</plugin>""");
 		target.copyFromPluginXml(SINGLE_EDITOR);
-		assertEquals(SINGLE_EDITOR, target.getContentsAsString());
+		assertEquals(SINGLE_EDITOR, target.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -420,7 +422,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 				   </extension>
 				</plugin>""");
 		target.copyFromPluginXml(SINGLE_EDITOR);
-		assertEquals(SINGLE_EDITOR, target.getContentsAsString());
+		assertEquals(SINGLE_EDITOR, target.getContentsAsString().replace("\r", ""));
 	}
 
 	@Test
@@ -473,7 +475,7 @@ public class EmfParsleyDslPluginXmlLoaderTest {
 				      </view>
 				   </extension>
 				</plugin>
-						""", loader.getContentsAsString());
+						""", loader.getContentsAsString().replace("\r", ""));
 	}
 
 	private String repr(List<PluginElementNode> nodes, PluginXmlLoader loader) {

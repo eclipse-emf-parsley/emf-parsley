@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.text.Document;
@@ -194,9 +196,17 @@ public class PluginXmlLoader extends PluginModel {
 	public String getContentsAsString() {
 		// it would be nice to use the Document contents, but these are not synchronized
 		// with the plugin model changes
-		return getPlugin().toString()
-				.replaceFirst("eclipse version=\"3.0", "eclipse version=\"3.4")
-				.replaceFirst("(<plugin)\\r?\\n(>)", "<plugin>")
-				+ "\n";
+		String s = getPlugin().toString()
+				.replaceFirst("eclipse version=\"3\\.0", "eclipse version=\"3.4");
+
+		Matcher m = Pattern.compile("(<plugin)(\\r?\\n)(>)").matcher(s);
+
+		String eol = "\n"; // default if no match
+		if (m.find()) {
+			eol = m.group(2); // "\n" or "\r\n"
+			s = m.replaceFirst("$1$3"); // "<plugin>"
+		}
+
+		return s + eol;
 	}
 }
