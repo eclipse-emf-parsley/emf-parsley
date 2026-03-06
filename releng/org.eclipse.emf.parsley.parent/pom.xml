@@ -179,9 +179,11 @@
 		<sonar.issue.ignore.multicriteria.e3.ruleKey>java:S1149</sonar.issue.ignore.multicriteria.e3.ruleKey>
 		<sonar.issue.ignore.multicriteria.e3.resourceKey>**/TextUndoRedo.java</sonar.issue.ignore.multicriteria.e3.resourceKey>
 
-		<!-- Avoid deprecated checkstyle rule -->
-		<sonar.issue.ignore.multicriteria.e4.ruleKey>checkstyle:com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck</sonar.issue.ignore.multicriteria.e4.ruleKey>
-		<sonar.issue.ignore.multicriteria.e4.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
+		<!-- Unused method parameters should be removed.
+			In these tests we test the polymorphic dispatcher and the
+			parameter is needed for method selection, even if unused -->
+		<sonar.issue.ignore.multicriteria.e4.ruleKey>java:S1172</sonar.issue.ignore.multicriteria.e4.ruleKey>
+		<sonar.issue.ignore.multicriteria.e4.resourceKey>**/parsley/tests/*Test.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
 
 		<!-- Avoid deprecated checkstyle rule -->
 		<sonar.issue.ignore.multicriteria.e5.ruleKey>checkstyle:com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck</sonar.issue.ignore.multicriteria.e5.ruleKey>
