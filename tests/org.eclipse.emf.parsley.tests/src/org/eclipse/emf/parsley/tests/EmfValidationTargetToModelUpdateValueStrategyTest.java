@@ -160,6 +160,7 @@ public class EmfValidationTargetToModelUpdateValueStrategyTest extends AbstractE
 		initializeDatabindingInternal(feature, o, target);
 	}
 
+	@SuppressWarnings("unchecked")
 	private Binding initializeDatabindingInternal(EStructuralFeature feature, EObject o, ISWTObservableValue<?> target) {
 		final var source = EMFEditProperties.value(editingDomain, feature).observe(o);
 		final var targetToModelUpdateValueStrategy =
