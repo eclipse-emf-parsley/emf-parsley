@@ -109,11 +109,10 @@ public class ResourceLoaderTest extends AbstractEmfParsleyTest {
 		fixtures.setupResouceFactory(resourceSet);
 		
 		injector.injectMembers(resourceLoader);
-		final var response = resourceLoader.getResource(
+		return resourceLoader.getResource(
 			e1,
 			URI.createURI(TEST_URI)
 		);
-		return response;
 	}
 
 }

@@ -155,16 +155,13 @@ public class EmfParsleyUtilTest {
 	}
 
 	protected Object[] createArray() {
-		final Object[] arr = { EXTLibraryFactory.eINSTANCE.createBook(), EXTLibraryFactory.eINSTANCE.createBook() };
-		return arr;
+		return new Object[] { EXTLibraryFactory.eINSTANCE.createBook(), EXTLibraryFactory.eINSTANCE.createBook() };
 	}
 
 	protected Iterable<EObject> createIterable() {
 		final var library = EXTLibraryFactory.eINSTANCE.createLibrary();
 		library.getBooks().add(EXTLibraryFactory.eINSTANCE.createBook());
 		library.getWriters().add(EXTLibraryFactory.eINSTANCE.createWriter());
-		final Iterable<EObject> iterable = Iterables.<EObject>concat(
-				library.getBooks(), library.getWriters());
-		return iterable;
+		return Iterables.concat(library.getBooks(), library.getWriters());
 	}
 }

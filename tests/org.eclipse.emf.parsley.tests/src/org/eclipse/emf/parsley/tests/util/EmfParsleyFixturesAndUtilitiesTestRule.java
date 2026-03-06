@@ -322,9 +322,7 @@ public class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	}
 
 	public Resource createTestResource() {
-		var resourceSet = createAndSetupResourceSet();
-		var resource = resourceSet.createResource(createTestResourceURI());
-		return resource;
+		return createAndSetupResourceSet().createResource(createTestResourceURI());
 	}
 	
 	public URI createTestResourceURI() {
@@ -336,18 +334,15 @@ public class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	}
 
 	public Resource loadTestResource(ResourceSet resourceSet) {
-		var resource = resourceSet.getResource(createTestResourceURI(), true);
-		return resource;
+		return resourceSet.getResource(createTestResourceURI(), true);
 	}
 
 	public Resource createTestLibrayResource() {
-		var resourceSet = createAndSetupResourceSet();
-		return createTestLibrayResource(resourceSet);
+		return createTestLibrayResource(createAndSetupResourceSet());
 	}
 
 	public Resource createTestLibrayResource(ResourceSet resourceSet) {
-		var resource = resourceSet.createResource(URI.createURI(TEST_LIBRARY_RESOURCE_URI));
-		return resource;
+		return resourceSet.createResource(URI.createURI(TEST_LIBRARY_RESOURCE_URI));
 	}
 
 	public Resource createTestLibrayResourceAndInitialize() {
@@ -367,9 +362,7 @@ public class EmfParsleyFixturesAndUtilitiesTestRule implements TestRule {
 	}
 
 	public Resource loadTestLibraryResource() {
-		var resourceSet = createAndSetupResourceSet();
-		var resource = resourceSet.getResource(URI.createURI(TEST_LIBRARY_RESOURCE_URI), true);
-		return resource;
+		return createAndSetupResourceSet().getResource(URI.createURI(TEST_LIBRARY_RESOURCE_URI), true);
 	}
 
 }
