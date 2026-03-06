@@ -53,10 +53,12 @@ public class AsyncCommandStackListenerTest extends AbstractEmfParsleyControlBase
 
 		@Override
 		public void execute() {
+			// not used
 		}
 
 		@Override
 		public void redo() {
+			// not used
 		}
 
 	}
