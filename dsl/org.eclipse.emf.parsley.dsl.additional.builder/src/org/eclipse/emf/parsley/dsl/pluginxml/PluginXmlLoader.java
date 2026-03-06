@@ -201,11 +201,9 @@ public class PluginXmlLoader extends PluginModel {
 
 		Matcher m = Pattern.compile("(<plugin)(\\r?\\n)(>)").matcher(s);
 
-		String eol = "\n"; // default if no match
-		if (m.find()) {
-			eol = m.group(2); // "\n" or "\r\n"
-			s = m.replaceFirst("$1$3"); // "<plugin>"
-		}
+		m.find();
+		String eol = m.group(2); // "\n" or "\r\n"
+		s = m.replaceFirst("$1$3"); // "<plugin>"
 
 		return s + eol;
 	}
