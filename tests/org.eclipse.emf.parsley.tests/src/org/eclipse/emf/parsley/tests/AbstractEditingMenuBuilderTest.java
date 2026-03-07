@@ -890,9 +890,9 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 			.filter(i -> actionText.equals(i.getAction().getText()))
 			.findFirst()
 			.orElse(null);
-		assertTrue(
+		assertNotNull(
 			"Could not find " + actionText + " in " + menuManager.getMenu(),
-			item != null
+			item
 		);
 		item.getAction().run();
 	}
