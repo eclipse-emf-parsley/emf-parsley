@@ -151,12 +151,14 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 	public void testDefaultEmfNewChildMenu() {
 		final var editingMenuBuilder = getAndInitializeEditingMenuBuilder();
 		assertEmfMenuItemsGivenObject(editingMenuBuilder, fixtures.getLibrary(),
-			"&New Child -> [\n" +
-			"\tStock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower\n" +
-			"]\n" +
-			", N&ew Sibling -> [\n" +
-			"\t\n" +
-			"]\n"
+			"""
+				&New Child -> [
+					Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower
+				]
+				, N&ew Sibling -> [
+				\t
+				]
+				"""
 		);
 	}
 
@@ -164,12 +166,14 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 	public void testDefaultEmfNewSiblingMenu() {
 		final var editingMenuBuilder = getAndInitializeEditingMenuBuilder();
 		assertEmfMenuItemsGivenObject(editingMenuBuilder, fixtures.getWriter(),
-			"&New Child -> [\n" +
-			"\t\n" +
-			"]\n" +
-			", N&ew Sibling -> [\n" +
-			"\tStock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower\n" +
-			"]\n"
+			"""
+				&New Child -> [
+				\t
+				]
+				, N&ew Sibling -> [
+					Stock Book, Stock Book On Tape, Stock Video Cassette, Branches Library, Writers Writer, Employees Employee, Borrowers Borrower
+				]
+				"""
 		);
 	}
 
@@ -272,13 +276,14 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 
 			}));
 		assertMenuItemsGivenObject(editingMenuBuilder, fixtures.getLibrary(),
-			"&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, Submenu1 -> [\n" +
-			"\t&Copy, Submenu2 -> [\n" +
-			"\tCu&t\n" +
-			"]\n" +
-			"\n" +
-			"]\n" +
-			", &Paste"
+			"""
+				&Redo @Ctrl+Y, &Undo @Ctrl+Z, separator, Submenu1 -> [
+					&Copy, Submenu2 -> [
+					Cu&t
+				]
+				
+				]
+				, &Paste"""
 		);
 	}
 
