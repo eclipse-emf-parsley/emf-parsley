@@ -60,11 +60,11 @@
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<includes>
 								<include>**/*Test.java</include>
+								<include>**/*Scenario.java</include>
 							</includes>
 							<excludes>
 								<exclude>**/*Abstract*Test.java</exclude>
 								<exclude>**/*Activator.java</exclude>
-								<exclude>**/*Scenario.java</exclude>
 							</excludes>
 						</configuration>
 						<goals>
