@@ -85,23 +85,4 @@ public class DynamicEditingDomainViewerDropAdapterTest extends AbstractEmfParsle
 		return event;
 	}
 
-	// This does not work in Indigo and Kepler, since mockito throws an exception
-	// org.mockito.cglib.core.CodeGenerationException
-//	private Resource createResourceForTest() {
-//		final var e = new AdapterFactoryEditingDomain(fixtures.getAdapterFactory(), new BasicCommandStack());
-//		editingDomain = spy(e);
-//		fixtures.setupResouceFactory(editingDomain.getResourceSet());
-//		// since the adapter factory editing domain's resource set is an
-//		// internal class instance we need to play with mocks a little bit
-//		// so that the spied editing domain is effectively retrieved by the
-//		// EditingDomainFinder
-//		final var resourceSet = spy((IEditingDomainProvider) editingDomain.getResourceSet());
-//		when(resourceSet.getEditingDomain()).thenReturn(editingDomain);
-//		when(editingDomain.getResourceSet()).thenReturn((ResourceSet) resourceSet);
-//		final var resource = fixtures.createTestLibrayResourceAndInitialize(
-//			editingDomain
-//		);
-//		return resource;
-//	}
-
 }
