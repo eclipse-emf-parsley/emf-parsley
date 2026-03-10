@@ -1,7 +1,6 @@
 package org.eclipse.emf.parsley.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +19,7 @@ public class TreeFormFactoryTest extends AbstractEmfParsleyShellBasedTest {
 			SashForm sashForm = getOrCreateInjector()
 				.getInstance(TreeFormFactory.class).createTreeFormComposite(getShell(), 0)
 					.getSashForm();
-			assertTrue((SWT.VERTICAL & sashForm.getStyle()) != 0);
+			assertNotEquals(0, SWT.VERTICAL & sashForm.getStyle());
 			assertEquals("200, 200", 
 				Arrays.stream(sashForm.getWeights())
 					.mapToObj(Integer::toString)
@@ -47,7 +46,7 @@ public class TreeFormFactoryTest extends AbstractEmfParsleyShellBasedTest {
 				)
 				.getInstance(TreeFormFactory.class).createTreeFormComposite(getShell(), 0)
 					.getSashForm();
-			assertTrue((SWT.HORIZONTAL & sashForm.getStyle()) != 0);
+			assertNotEquals(0, SWT.HORIZONTAL & sashForm.getStyle());
 			assertEquals("333, 666",
 				Arrays.stream(sashForm.getWeights())
 					.mapToObj(Integer::toString)

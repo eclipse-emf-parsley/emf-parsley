@@ -97,7 +97,7 @@ public class GenericFeatureViewerComparatorTest extends AbstractViewerTest {
 	}
 
 	private void assertCompareEquals(ClassForCompare first, ClassForCompare second) {
-		assertTrue(genericViewerComparator.compare(null, first, second) == 0);
+		assertEquals(0, genericViewerComparator.compare(null, first, second));
 	}
 
 	private ClassForCompare createWithInt(int value) {

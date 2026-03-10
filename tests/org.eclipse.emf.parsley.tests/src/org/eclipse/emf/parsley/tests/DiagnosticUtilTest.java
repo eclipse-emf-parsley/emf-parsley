@@ -11,7 +11,7 @@
 package org.eclipse.emf.parsley.tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertSame;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
@@ -62,7 +62,7 @@ public class DiagnosticUtilTest extends AbstractEmfParsleyTest {
 		Iterable<Diagnostic> errors = diagnosticUtil.errors(diagnostic);
 		int count = 0;
 		for (Diagnostic error : errors) {
-			assertTrue(error.getSeverity() == Diagnostic.ERROR);
+			assertSame(Diagnostic.ERROR, error.getSeverity());
 			count++;
 		}
 		assertEquals(1, count);
