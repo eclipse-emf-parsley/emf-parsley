@@ -177,7 +177,7 @@ public class ProposalCreatorTest extends AbstractEmfParsleyTest {
 		assertEquals(
 			expected,
 			proposals.stream()
-				.map(it -> labelProvider.getText(it))
+				.map(labelProvider::getText)
 				.collect(Collectors.joining(", ")));
 	}
 }

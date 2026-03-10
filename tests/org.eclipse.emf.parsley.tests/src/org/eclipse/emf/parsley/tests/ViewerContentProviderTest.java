@@ -389,10 +389,10 @@ public class ViewerContentProviderTest extends AbstractEmfParsleyShellBasedTest 
 				TreeIterator<EObject> allContents = resource.getAllContents();
 				Iterable<EObject> iterable = () -> allContents;
 				return StreamSupport.stream(iterable.spliterator(), false)
-					.filter(e -> e instanceof TestContainer)
+					.filter(TestContainer.class::isInstance)
 					.map(e -> (TestContainer) e)
 					.flatMap(c -> c.getClassesForControls().stream())
-					.collect(Collectors.toList());
+					.toList();
 			}
 		};
 		injectMembers(customProvider);

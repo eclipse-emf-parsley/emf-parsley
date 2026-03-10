@@ -315,7 +315,7 @@ public class TableViewerContentProviderTest extends AbstractEmfParsleyShellBased
 				// don't return classesWithName
 				Iterable<TestContainer> containers = () -> 
 					StreamSupport.stream(
-						((Iterable<EObject>) () -> resource.getAllContents()).spliterator(), false)
+						((Iterable<EObject>) resource::getAllContents).spliterator(), false)
 					.filter(TestContainer.class::isInstance)
 					.map(TestContainer.class::cast)
 					.iterator();

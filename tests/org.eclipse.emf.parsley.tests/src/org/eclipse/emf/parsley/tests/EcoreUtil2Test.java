@@ -144,7 +144,7 @@ public class EcoreUtil2Test extends AbstractEmfParsleyTest {
 	private void assertList(List<?> list, CharSequence expected) {
 		final var labelProvider = getOrCreateInjector().getInstance(ILabelProvider.class);
 		assertEquals(expected.toString(),
-			list.stream().map(it -> labelProvider.getText(it)).collect(Collectors.joining(", "))
+			list.stream().map(labelProvider::getText).collect(Collectors.joining(", "))
 		);
 	}
 

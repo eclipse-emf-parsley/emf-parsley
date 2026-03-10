@@ -43,6 +43,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -629,7 +630,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 			// since we get notifications for undo as well, we can't retrieve
 			// the book as affected object from the library, since after an undo
 			// the book has been removed
-			assertNotNull(affectedObjects.stream().filter(it -> it instanceof Book).findFirst().orElse(null));
+			assertNotNull(affectedObjects.stream().filter(Book.class::isInstance).findFirst().orElse(null));
 		});
 
 		final var writerForMenu = library.getWriters().get(0);
@@ -743,7 +744,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 			// since we get notifications for undo as well, we can't retrieve
 			// the book as affected object from the library, since after an undo
 			// the book has been removed
-			assertNotNull(affectedObjects.stream().filter(it -> it instanceof Book).findFirst().orElse(null));
+			assertNotNull(affectedObjects.stream().filter(Book.class::isInstance).findFirst().orElse(null));
 		});
 
 		final var writerForMenu = library.getWriters().get(0);
@@ -779,7 +780,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 	@Test
 	public void testActionsAreCreatedByCreateActions() {
 		final var builder = createTestableEditingMenuBuilder();
-		collectActions(builder).forEach(action -> assertNotNull(action));
+		collectActions(builder).forEach(Assert::assertNotNull);
 	}
 
 	@Test
