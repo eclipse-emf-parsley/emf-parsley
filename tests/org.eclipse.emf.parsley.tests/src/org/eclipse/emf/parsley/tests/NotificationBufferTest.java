@@ -10,16 +10,14 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.junit.Assert.assertEquals;
+
 import org.eclipse.emf.parsley.edit.NotificationBuffer;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.tests.util.TestAdapter;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-
-import java.util.stream.Collectors;
-
-import static org.junit.Assert.*;
 
 public class NotificationBufferTest {
 
@@ -106,7 +104,7 @@ public class NotificationBufferTest {
 	private void assertBufferedNotifications(String expected) {
 		String actual = buffer.getNotifications().stream()
 				.map(n -> "eventType: " + n.getEventType())
-				.collect(Collectors.toList())
+				.toList()
 				.toString();
 		assertEquals(expected, actual);
 	}
