@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -319,7 +320,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 		assertTrue(fixtures.getLibrary().getWriters().stream().anyMatch(w -> "This is a new writer".equals(w.getName())));
 	}
 
-	@Test(expected = DanglingHREFException.class)
+	@Test
 	public void testCustomAddCommand_Bug466219() throws Exception {
 		// this will recreate the context of
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=466219
@@ -350,11 +351,11 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 		emfMenuManagerForSelection(editingMenuBuilder, writerForMenu);
 		// and will never be in the resource
 
-		try {
-			resource.save(null);
-		} catch (IOWrappedException e) {
-			throw (DanglingHREFException) e.getCause();
-		}
+		var thrown = assertThrows(IOWrappedException.class,
+				() -> resource.save(null));
+		assertTrue(
+			"The cause of the exception must be a DanglingHREFException" + thrown.getCause(),
+			thrown.getCause() instanceof DanglingHREFException);
 	}
 
 	@Test
