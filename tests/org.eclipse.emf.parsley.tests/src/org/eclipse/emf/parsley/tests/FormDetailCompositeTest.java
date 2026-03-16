@@ -124,12 +124,12 @@ public class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest 
 	@Test
 	public void testDisposeWhenWidgetIsDisposed() { // NOSONAR: we just ensure it doesn't throw
 		Injector injector = getOrCreateInjector();
-		FormDetailCompositeWithCustomIsDisposed formDetailComposite = new FormDetailCompositeWithCustomIsDisposed(getShell(), SWT.NONE);
-		injector.injectMembers(formDetailComposite);
+		FormDetailCompositeWithCustomIsDisposed composite = new FormDetailCompositeWithCustomIsDisposed(getShell(), SWT.NONE);
+		injector.injectMembers(composite);
 		ClassWithName o = fixtures.getTestFactory().createClassWithName();
 		o.setName("Test");
-		formDetailComposite.init(o);
-		formDetailComposite.dispose();
+		composite.init(o);
+		composite.dispose();
 	}
 
 }
