@@ -375,9 +375,9 @@ public class DialogControlFactoryTest extends AbstractControlFactoryTest {
 	}
 
 	protected DialogControlFactory createAndInitializeFactory() {
-		DialogControlFactory factory = new DialogControlFactory();
-		initialize(factory, classForControlsInstance);
-		return factory;
+		DialogControlFactory dialogControlFactory = new DialogControlFactory();
+		initialize(dialogControlFactory, classForControlsInstance);
+		return dialogControlFactory;
 	}
 
 }
