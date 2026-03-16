@@ -31,7 +31,7 @@ public class CachedLabelProviderTest extends AbstractImageBasedTest {
 
 	private CachedLabelProvider labelProvider;
 	private ILabelProvider delegate;
-	private final String TEST_VAL = "TEST";
+	private static final String TEST_VAL = "TEST";
 
 	@Before
 	public void setupLabelProvider() {
