@@ -321,7 +321,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 	}
 
 	@Test
-	public void testCustomAddCommand_Bug466219() throws Exception {
+	public void testCustomAddCommand_Bug466219() {
 		// this will recreate the context of
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=466219
 		final var resource = createResourceForTest();
