@@ -20,7 +20,8 @@ import org.junit.Test;
 /**
  * In this scenario the EditingDomain is set from outside
  */
-public class EditingMenuBuilderTestWithEditingDomainRetrievedScenario extends AbstractEditingMenuBuilderTest {
+public class EditingMenuBuilderTestWithEditingDomainRetrievedScenario // NOSONAR: we want it be called like that
+		extends AbstractEditingMenuBuilderTest {
 
 	private Resource resource;
 
