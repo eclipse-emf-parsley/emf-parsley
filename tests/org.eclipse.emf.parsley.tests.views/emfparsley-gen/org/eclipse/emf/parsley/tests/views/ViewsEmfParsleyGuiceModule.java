@@ -25,27 +25,27 @@ public class ViewsEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
   public ViewsEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ResourceSaveStrategy> bindResourceSaveStrategy() {
     return ValidateBeforeSaveStrategy.class;
   }
-  
+
   @Override
   public Class<? extends TableViewerColumnBuilder> bindTableViewerColumnBuilder() {
     return TableViewerEditableColumnBuilder.class;
   }
-  
+
   @Override
   public Class<? extends TableFeaturesProvider> bindTableFeaturesProvider() {
     return ViewsTableFeaturesProvider.class;
   }
-  
+
   @Override
   public Class<? extends Configurator> bindConfigurator() {
     return ViewsConfigurator.class;
   }
-  
+
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
     return ViewsResourceManager.class;
