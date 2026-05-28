@@ -40,9 +40,7 @@ jobs:
       if: ${{ failure() || cancelled() }}
       with:
         name: test-results-${{ runner.os }}
-        path: |
-          '**/*.tests/target/surefire-reports'
-          '**/*.tests.*/target/surefire-reports'
+        path: '**/target/surefire-reports/'
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
@@ -54,6 +52,4 @@ jobs:
       if: ${{ failure() || cancelled() }}
       with:
         name: logs-${{ runner.os }}
-        path: |
-          '**/*.tests/target/**/*.log'
-          '**/*.tests.*/target/**/*.log'
+        path: '**/target/**/*.log'
