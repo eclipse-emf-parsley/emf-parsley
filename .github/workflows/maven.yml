@@ -63,19 +63,19 @@ jobs:
       if: ${{ failure() || cancelled() }}
       with:
         name: test-results-${{ runner.os }}
-        path: '**/*.tests/target/surefire-reports'
+        path: '**/target/surefire-reports/'
     - name: Archive UI Tests Screenshots
       uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
       with:
         name: screenshots-${{ runner.os }}
-        path: '**/*.tests/screenshots'
+        path: '**/*.tests.*/screenshots'
     - name: Archive Logs
       uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
       with:
         name: logs-${{ runner.os }}
-        path: '**/*.tests/target/**/*.log'
+        path: '**/target/**/*.log'
     - name: Archive Coverage Report
       uses: actions/upload-artifact@v7
       if: ${{ success() }}
