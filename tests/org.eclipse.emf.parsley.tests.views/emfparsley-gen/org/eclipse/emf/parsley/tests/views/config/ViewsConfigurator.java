@@ -13,15 +13,15 @@ public class ViewsConfigurator extends Configurator {
   public URI resourceURI(final ViewsSaveableTreeFormView it) {
     return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");
   }
-  
+
   public URI resourceURI(final ViewsSaveableTreeView it) {
     return URI.createURI("platform:/resource/MyTestProject/TestContainerForDnD.xmi");
   }
-  
+
   public URI resourceURI(final ViewsSaveableEditableTableView it) {
     return URI.createURI("platform:/resource/MyTestProject/TestContainer.xmi");
   }
-  
+
   public EClass eClass(final ViewsSaveableEditableTableView it) {
     return TestmodelsPackage.Literals.CLASS_FOR_CONTROLS;
   }

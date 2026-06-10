@@ -1,4 +1,4 @@
-package org.eclipse.emf.parsley.dsl.tests
+package org.eclipse.emf.parsley.dsl.ui.tests
 
 import org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectFiles
 import org.junit.Test
@@ -61,8 +61,8 @@ module mypackage.testproject {
 	def void testGenConfigurator() {
 		generator.genConfigurator(
 			'''
-			«generator.genResourceURI("MyClass")»
-			«generator.genEClass("MyClass")»
+				«generator.genResourceURI("MyClass")»
+				«generator.genEClass("MyClass")»
 			'''
 		).assertGeneratedContentEqualsTo(
 '''

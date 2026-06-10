@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.emf.parsley.dsl.ui.tests.project
 Bundle-Version: 2.0.0.qualifier
 Bundle-Vendor: EMF Parsley
 Automatic-Module-Name: org.eclipse.emf.parsley.dsl.ui.tests.project
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
  org.eclipse.emf.parsley.views,

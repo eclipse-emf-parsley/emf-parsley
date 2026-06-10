@@ -14,8 +14,8 @@
 		<xtext-version>2.35.0</xtext-version>
 		<eclipse-version>2024-06</eclipse-version>
 
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<repositories>

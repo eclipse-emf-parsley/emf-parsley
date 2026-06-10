@@ -12,6 +12,14 @@
 	<artifactId>org.eclipse.emf.parsley.dsl.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.dsl.ui</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 	<profiles>
 		<profile>
 			<id>macosx-jvm-flags</id>

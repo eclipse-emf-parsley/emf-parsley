@@ -16,6 +16,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
 			<artifactId>org.eclipse.emf.parsley.common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -42,6 +47,7 @@
 					</execution>
 				</executions>
 				<configuration>
+					<skip>${mwe2.skip}</skip>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
 						<argument>/${project.basedir}/src/org/eclipse/emf/parsley/dsl/GenerateEmfParsleyDsl.mwe2</argument>

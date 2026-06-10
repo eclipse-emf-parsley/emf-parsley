@@ -17,7 +17,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v6.0.2
+    - uses: actions/checkout@v6.0.3
     - name: Set up JDK 17
       uses: actions/setup-java@v5.2.0
       with:
@@ -30,20 +30,63 @@ jobs:
           ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.target') }}
         restore-keys: ${{ runner.os }}-m2-
+    - name: Remove macOS Setup Assistant
+      shell: bash
+      run: |
+        for i in {1..10}; do
+          if ! pgrep -x "Setup Assistant" >/dev/null; then
+            echo "Setup Assistant is not running"
+            exit 0
+          fi
+
+          echo "Setup Assistant is running; trying to dismiss it"
+
+          osascript \
+            -e 'tell application "System Events"' \
+            -e 'if exists process "Setup Assistant" then' \
+            -e 'tell process "Setup Assistant"' \
+            -e 'set frontmost to true' \
+            -e 'delay 0.2' \
+            -e 'try' \
+            -e 'perform action "AXPress" of button "Continue" of window 1' \
+            -e 'end try' \
+            -e 'delay 0.5' \
+            -e 'end tell' \
+            -e 'key code 36' \
+            -e 'end if' \
+            -e 'end tell' >/dev/null 2>&1 || true
+
+          sleep 2
+        done
+
+        echo "Setup Assistant did not go away; killing it"
+        pkill -9 -x "Setup Assistant" || true
+        sleep 2
+
+        if pgrep -x "Setup Assistant" >/dev/null; then
+          echo "::error::Setup Assistant is still running"
+          exit 1
+        fi
     - name: Build with Maven
       run: >
         ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         -Prcp-build
         clean verify
+    - name: Archive Test Results
+      uses: actions/upload-artifact@v7
+      if: ${{ failure() || cancelled() }}
+      with:
+        name: test-results-${{ runner.os }}
+        path: '**/target/surefire-reports/'
     - name: Archive UI Tests Screenshots
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
       with:
         name: screenshots-${{ runner.os }}
-        path: '**/screenshots'
+        path: '**/*.tests.*/screenshots'
     - name: Archive Logs
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: ${{ failure() || cancelled() }}
       with:
         name: logs-${{ runner.os }}
-        path: '**/target/work/data/.metadata/.log'
+        path: '**/target/**/*.log'

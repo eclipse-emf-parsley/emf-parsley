@@ -6,7 +6,7 @@ Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.eclipse.emf.parsley.examples.rap.model,
  org.eclipse.emf.parsley.examples.rap.model.impl,
  org.eclipse.emf.parsley.examples.rap.model.util
