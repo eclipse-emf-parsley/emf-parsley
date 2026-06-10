@@ -422,7 +422,7 @@
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+              url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
@@ -441,7 +441,7 @@
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+              url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
@@ -460,7 +460,7 @@
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+              url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
@@ -619,7 +619,7 @@
         <repository
             url="${mwe2.site}"/>
         <repository
-            url="https://download.itemis.com/updates/releases/2.1.1/"/>
+            url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
         <repository
             url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
         <description>Xtext &amp; Xtend</description>
@@ -690,7 +690,7 @@
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+              url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
@@ -707,7 +707,7 @@
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+              url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
@@ -724,7 +724,7 @@
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+              url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
@@ -741,7 +741,7 @@
           <repository
               url="https://download.eclipse.org/cbi/updates/license"/>
           <repository
-              url="https://download.itemis.com/updates/releases/2.1.1/"/>
+              url="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
           <repository
               url="https://lorenzobettini.github.io/xtext-xdoc-releases/"/>
           <repository
