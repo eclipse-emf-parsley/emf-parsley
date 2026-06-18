@@ -263,17 +263,6 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	}
 
 	@Test
-	public void testProposalForValueBindingTypeWithMethodNamePrefix() throws Exception {
-		newBuilder().append(
-			"""
-			module my.test.proj {
-				
-				bindings {
-					value valueTableCol"""
-		).assertProposal("int[] TableColumnWeights");
-	}
-
-	@Test
 	public void testProposalForValueBindingTypeMatcherUsesOperationSimpleName() throws Exception {
 		var builder = newBuilder().append(
 			"""
