@@ -170,9 +170,9 @@
 		<sonar.issue.ignore.multicriteria.e1.ruleKey>squid:S00100</sonar.issue.ignore.multicriteria.e1.ruleKey>
 		<sonar.issue.ignore.multicriteria.e1.resourceKey>**/*OutlineTreeProvider.java</sonar.issue.ignore.multicriteria.e1.resourceKey>
 	
-		<!-- "Tabulation characters should not be used" sorry... I don't agree :) -->
-		<sonar.issue.ignore.multicriteria.e2.ruleKey>squid:S00105</sonar.issue.ignore.multicriteria.e2.ruleKey>
-		<sonar.issue.ignore.multicriteria.e2.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
+		<!-- I don't want to add parameterized tests nor to switch to JUnit 5 (just for that) -->
+		<sonar.issue.ignore.multicriteria.e2.ruleKey>java:S5976</sonar.issue.ignore.multicriteria.e2.ruleKey>
+		<sonar.issue.ignore.multicriteria.e2.resourceKey>**/dsl/tests/*Test.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
 
 		<!-- "Synchronized classes Vector, Hashtable, Stack and StringBuffer should not be used" 
 			In TextUndoRedo we actually need a synchronized data structure. -->

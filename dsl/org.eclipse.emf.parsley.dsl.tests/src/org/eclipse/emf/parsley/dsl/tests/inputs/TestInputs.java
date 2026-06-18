@@ -8,51 +8,56 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.dsl.tests.inputs
+package org.eclipse.emf.parsley.dsl.tests.inputs;
 
-class TestInputs {
+public class TestInputs {
 	
-	def emptyModule() 
-'''
+	public CharSequence emptyModule() {
+		return """
 module my.empty {
 	
 }
-'''
+""";
+	}
 
-	def moduleWithExtends() 
-'''
+	public CharSequence moduleWithExtends() {
+		return """
 module my.empty extends org.eclipse.emf.parsley.dsl.tests.additional.MyTestGuiceModule {
 	
 }
-'''
+""";
+	}
 
-	def moduleWithExtendsJavaGuiceModule() 
-'''
+	public CharSequence moduleWithExtendsJavaGuiceModule() {
+		return """
 module my.empty extends org.eclipse.emf.parsley.dsl.tests.additional.MyTestJavaGuiceModule {
 	
 }
-'''
+""";
+	}
 
-	def emptyLabelProvider() 
-'''
+	public CharSequence emptyLabelProvider() {
+		return """
 module my.empty {
 	labelProvider {
 		
 	}
 }
-'''
+""";
+	}
 
-	def emptyPropertyDescriptionProvider() 
-'''
+	public CharSequence emptyPropertyDescriptionProvider() {
+		return """
 module my.empty {
 	featureCaptionProvider {
 		
 	}
 }
-'''
+""";
+	}
 
-	def emptyLabelSpecifications() 
-'''
+	public CharSequence emptyLabelSpecifications() {
+		return """
 module my.empty {
 	labelProvider {
 		text {
@@ -63,10 +68,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def emptyLabelSpecificationsForColumns() 
-'''
+	public CharSequence emptyLabelSpecificationsForColumns() {
+		return """
 module my.empty {
 	tableLabelProvider {
 		text {
@@ -77,11 +83,12 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
 
-	def labelProvider() 
-'''
+	public CharSequence labelProvider() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.BookOnTape
 import org.eclipse.emf.parsley.examples.library.Borrower
@@ -131,10 +138,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def labelProviderWithExtends() 
-'''
+	public CharSequence labelProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestLabelProvider
 
 module my.empty {
@@ -142,10 +150,11 @@ module my.empty {
 		
 	}
 }
-'''
+""";
+	}
 
-	def labelProviderWithFields() 
-'''
+	public CharSequence labelProviderWithFields() {
+		return """
 import java.util.ArrayList
 import java.util.List
 import com.google.inject.Inject
@@ -182,10 +191,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def tableLabelProvider() 
-'''
+	public CharSequence tableLabelProvider() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -235,10 +245,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def tableLabelProviderWithExtends() 
-'''
+	public CharSequence tableLabelProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableColumnLabelProvider
 
 module my.empty {
@@ -246,10 +257,11 @@ module my.empty {
 		
 	}
 }
-'''
+""";
+	}
 
-	def tableLabelProviderWithFields() 
-'''
+	public CharSequence tableLabelProviderWithFields() {
+		return """
 import com.google.inject.Inject
 import org.eclipse.jface.viewers.ILabelProvider
 
@@ -259,10 +271,11 @@ module my.empty {
 		var ILabelProvider parentLabelProvider;
 	}
 }
-'''
+""";
+	}
 
-	def featureCaptionProvider() 
-'''
+	public CharSequence featureCaptionProvider() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 
@@ -275,10 +288,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def featureCaptionProviderWithExtends() 
-'''
+	public CharSequence featureCaptionProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeatureCaptionProvider
 
 import org.eclipse.emf.parsley.examples.library.Library
@@ -291,10 +305,11 @@ module my.empty {
 			Writer:lastName -> name.toFirstUpper // the implicit param is an EStructuralFeature
 		}
 	}
-}'''
+}""";
+	}
 
-	def formFeatureCaptionProvider() 
-'''
+	public CharSequence formFeatureCaptionProvider() {
+		return """
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -322,20 +337,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def formFeatureCaptionProviderWithExtends() 
-'''
+	public CharSequence formFeatureCaptionProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormFeatureCaptionProvider
 
 module my.empty {
 	formFeatureCaptionProvider extends TestFormFeatureCaptionProvider {
 	}
 }
-'''
+""";
+	}
 
-	def dialogFeatureCaptionProvider() 
-'''
+	public CharSequence dialogFeatureCaptionProvider() {
+		return """
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -363,20 +380,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def dialogFeatureCaptionProviderWithExtends() 
-'''
+	public CharSequence dialogFeatureCaptionProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogFeatureCaptionProvider
 
 module my.empty {
 	dialogFeatureCaptionProvider extends TestDialogFeatureCaptionProvider {
 	}
 }
-'''
+""";
+	}
 
-	def featuresProvider() 
-'''
+	public CharSequence featuresProvider() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 
@@ -388,20 +407,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def featuresProviderWithExtends() 
-'''
+	public CharSequence featuresProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFeaturesProvider
 
 module my.empty {
 	featuresProvider extends TestFeaturesProvider {
 	}
 }
-'''
+""";
+	}
 
-	def tableFeaturesProvider() 
-'''
+	public CharSequence tableFeaturesProvider() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
 
@@ -413,20 +434,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def tableFeaturesProviderWithExtends() 
-'''
+	public CharSequence tableFeaturesProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableFeaturesProvider
 
 module my.empty {
 	tableFeaturesProvider extends TestTableFeaturesProvider {
 	}
 }
-'''
+""";
+	}
 
-	def formControlFactory()
-'''
+	public CharSequence formControlFactory() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -450,20 +473,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def formControlFactoryWithExtends()
-'''
+	public CharSequence formControlFactoryWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormControlFactory
 
 module my.empty {
 	formControlFactory extends TestFormControlFactory {
 	}
 }
-'''
+""";
+	}
 
-	def dialogControlFactory()
-'''
+	public CharSequence dialogControlFactory() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -488,20 +513,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def dialogControlFactoryWithExtends()
-'''
+	public CharSequence dialogControlFactoryWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogControlFactory
 
 module my.empty {
 	dialogControlFactory extends TestDialogControlFactory {
 	}
 }
-'''
+""";
+	}
 
-	def proposalCreator()
-'''
+	public CharSequence proposalCreator() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Borrower
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
@@ -533,20 +560,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def proposalCreatorWithExtends()
-'''
+	public CharSequence proposalCreatorWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestProposalCreator
 
 module my.empty {
 	proposals extends TestProposalCreator {
 	}
 }
-'''
+""";
+	}
 
-	def viewerContentProvider() 
-'''
+	public CharSequence viewerContentProvider() {
+		return """
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
@@ -565,10 +594,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def tableViewerContentProvider() 
-'''
+	public CharSequence tableViewerContentProvider() {
+		return """
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.parsley.examples.library.Book
 import org.eclipse.emf.parsley.examples.library.Library
@@ -584,20 +614,22 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def viewerContentProviderWithExtends() 
-'''
+	public CharSequence viewerContentProviderWithExtends() {
+		return """
 import org.eclipse.emf.parsley.dsl.tests.inputs.TestViewerContentProvider
 
 module my.empty {
 	viewerContentProvider extends TestViewerContentProvider {
 	}
 }
-'''
+""";
+	}
 
-	def configuratorExample() {
-'''
+	public CharSequence configuratorExample() {
+		return """
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage
 import org.eclipse.emf.parsley.examples.library.Library
 import org.eclipse.emf.parsley.examples.library.Writer
@@ -622,11 +654,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
 	}
 
-	def resourceManagerExample() {
-'''
+	public CharSequence resourceManagerExample() {
+		return """
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory
 
 module my.empty {
@@ -643,20 +675,21 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
 	}
 
-	def emptyViewsSpecifications() 
-'''
+	public CharSequence emptyViewsSpecifications() {
+		return """
 module my.empty {
 	parts {
 		
 	}
 }
-'''
+""";
+	}
 
-	def nonEmptyViewsSpecifications() 
-'''
+	public CharSequence nonEmptyViewsSpecifications() {
+		return """
 import org.eclipse.emf.parsley.views.AbstractSaveableTreeView
 
 module my.test {
@@ -667,10 +700,11 @@ module my.test {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def multipleViewsSpecifications() 
-'''
+	public CharSequence multipleViewsSpecifications() {
+		return """
 import org.eclipse.emf.parsley.views.AbstractSaveableTreeFormView
 import org.eclipse.emf.parsley.views.AbstractSaveableTreeView
 
@@ -687,6 +721,7 @@ module my.test {
 		}
 	}
 }
-'''
+""";
+	}
 
 }

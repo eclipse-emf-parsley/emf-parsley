@@ -8,12 +8,12 @@
  * Contributors:
  * Lorenzo Bettini - initial API and implementation
  *******************************************************************************/
-package org.eclipse.emf.parsley.dsl.tests.inputs
+package org.eclipse.emf.parsley.dsl.tests.inputs;
 
-class TestInputsWithErrors {
+public class TestInputsWithErrors {
 	
-	def duplicateLabelSpecifications() 
-'''
+	public CharSequence duplicateLabelSpecifications() {
+		return """
 import java.util.*
 
 module my.empty {
@@ -28,10 +28,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def wrongPropertyDescriptionSpecifications() 
-'''
+	public CharSequence wrongPropertyDescriptionSpecifications() {
+		return """
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
 
@@ -46,10 +47,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def viewSpecificationIsNotIViewPart() 
-'''
+	public CharSequence viewSpecificationIsNotIViewPart() {
+		return """
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
 
@@ -61,10 +63,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def notAnEObjectInFeatureCaptionProvider() 
-'''
+	public CharSequence notAnEObjectInFeatureCaptionProvider() {
+		return """
 import java.util.*
 import org.eclipse.emf.parsley.examples.library.*
 import org.eclipse.emf.parsley.views.*
@@ -77,10 +80,11 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def notAnEObjectInFeaturesProvider() 
-'''
+	public CharSequence notAnEObjectInFeaturesProvider() {
+		return """
 import java.util.List
 
 module my.empty {
@@ -90,15 +94,17 @@ module my.empty {
 		}
 	}
 }
-'''
+""";
+	}
 
-	def notValidModuleExtends() 
-'''
+	public CharSequence notValidModuleExtends() {
+		return """
 import org.eclipse.emf.parsley.examples.library.Library
 
 module my.empty extends Library {
 
 }
-'''
+""";
+	}
 
 }
