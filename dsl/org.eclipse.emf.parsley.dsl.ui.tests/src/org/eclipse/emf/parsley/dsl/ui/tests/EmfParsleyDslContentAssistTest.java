@@ -221,21 +221,19 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	}
 
 	@Test
-	public void testApplyProposalForValueBindingAlsoInsertsImport() throws Exception {
+	public void testApplyProposalForValueBindingWithArrayOfInt() throws Exception {
 		appendAndApplyProposalAndExpectContent(
 			"""
 			module my.test.proj {
 				
 				bindings {
 					value valueT""",
-			"List<Integer> TableColumnWeights",
+			"int[] TableColumnWeights",
 			"""
-			import java.util.List
-			
 			module my.test.proj {
 				
 				bindings {
-					value List<Integer> TableColumnWeights"""
+					value int[] TableColumnWeights"""
 		);
 	}
 
