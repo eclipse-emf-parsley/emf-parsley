@@ -113,10 +113,6 @@ public class EmfParsleyDslProposalProvider extends AbstractEmfParsleyDslProposal
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor,
 			Class<?> superType) {
 
-		if (superType == null) {
-			return;
-		}
-
 		var jvmTypeProvider = typeProviderFactory
 				.createTypeProvider(model.eResource().getResourceSet());
 		JvmType interfaceToImplement = jvmTypeProvider
