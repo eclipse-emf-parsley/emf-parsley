@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.dsl.ui.tests;
 
-import static org.junit.Assert.*;
-
-import java.lang.reflect.Field;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule;
@@ -20,9 +20,10 @@ import org.eclipse.emf.parsley.dsl.tests.util.ui.ProjectImportUtil;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
+import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
+import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
 import org.eclipse.xtext.ui.testing.AbstractContentAssistTest;
 import org.eclipse.xtext.ui.testing.ContentAssistProcessorTestBuilder;
-import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -397,24 +398,12 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 				return proposal;
 			}
 		}
-		var available = new StringBuilder();
-		for (var proposal : proposals) {
-			available.append("\n").append(proposal.getDisplayString());
-		}
-		fail("Proposal containing not found: " + displayStringPart + " Available:" + available);
 		return null;
 	}
 
-	private PrefixMatcher findPrefixMatcher(ICompletionProposal proposal) throws IllegalAccessException {
-		Class<?> current = proposal.getClass();
-		while (current != null) {
-			for (Field field : current.getDeclaredFields()) {
-				if (PrefixMatcher.class.isAssignableFrom(field.getType())) {
-					field.setAccessible(true);
-					return (PrefixMatcher) field.get(proposal);
-				}
-			}
-			current = current.getSuperclass();
+	private PrefixMatcher findPrefixMatcher(ICompletionProposal proposal) {
+		if (proposal instanceof ConfigurableCompletionProposal configurableCompletionProposal) {
+			return configurableCompletionProposal.getMatcher();
 		}
 		return null;
 	}
