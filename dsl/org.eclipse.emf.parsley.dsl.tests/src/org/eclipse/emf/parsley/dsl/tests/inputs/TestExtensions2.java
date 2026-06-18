@@ -9,10 +9,10 @@ import java.util.List;
  */
 public class TestExtensions2 {
 	public TestExtensions2() {
-		
+		// only for tests
 	}
-	
-	public void printList2(List<Object> l) {
 
+	public void printList2(List<Object> l) {
+		// only for tests
 	}
 }

@@ -51,6 +51,9 @@ Workflow {
 			contentAssist = {
 				generateXtendStub = true
 			}
+			junitSupport = {
+				generateXtendStub = false
+			}
 		}
 	}
 }

@@ -1,49 +1,49 @@
-package org.eclipse.emf.parsley.dsl.tests
+package org.eclipse.emf.parsley.dsl.tests;
 
-import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil
-import org.junit.Test
+import static org.junit.Assert.assertEquals;
 
-import static extension org.junit.Assert.*
+import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil;
+import org.junit.Test;
 
 /**
  * @author Lorenzo Bettini - Initial contribution and API
  */
-class EmfParsleyProjectFilesGeneratorUtilTest {
+public class EmfParsleyProjectFilesGeneratorUtilTest {
 
 	@Test
-	def void testClassNameFromProject() {
-		"Name".assertEquals(
+	public void testClassNameFromProject() {
+		assertEquals("Name",
 			EmfParsleyProjectFilesGeneratorUtil.buildClassNameFromProject("my.project.name")
-		)
+		);
 	}
 
 	@Test
-	def void testStripPathFromProject() {
-		"name".assertEquals(
+	public void testStripPathFromProject() {
+		assertEquals("name",
 			EmfParsleyProjectFilesGeneratorUtil.stripPackageFromProject("my.project.name")
-		)
-		"name".assertEquals(
+		);
+		assertEquals("name",
 			EmfParsleyProjectFilesGeneratorUtil.stripPackageFromProject("name")
-		)
+		);
 	}
 
 	@Test
-	def void testGetPackageFromProject() {
-		"my.project.name".assertEquals(
+	public void testGetPackageFromProject() {
+		assertEquals("my.project.name",
 			EmfParsleyProjectFilesGeneratorUtil.getPackageFromProject("my.project.name")
-		)
-		"name".assertEquals(
+		);
+		assertEquals("name",
 			EmfParsleyProjectFilesGeneratorUtil.getPackageFromProject("name")
-		)
+		);
 	}
 
 	@Test
-	def void testFQNFromProject() {
-		"my.project.name.Name".assertEquals(
+	public void testFQNFromProject() {
+		assertEquals("my.project.name.Name",
 			EmfParsleyProjectFilesGeneratorUtil.buildFQNFromProject("my.project.name")
-		)
-		"name.Name".assertEquals(
+		);
+		assertEquals("name.Name",
 			EmfParsleyProjectFilesGeneratorUtil.buildFQNFromProject("name")
-		)
+		);
 	}
 }
