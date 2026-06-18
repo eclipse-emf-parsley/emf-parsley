@@ -455,9 +455,11 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedTableLabelProvider = """
 			package my.empty.ui.provider;
 
+			import com.google.inject.Inject;
 			import org.eclipse.emf.parsley.examples.library.Book;
 			import org.eclipse.emf.parsley.examples.library.Library;
 			import org.eclipse.emf.parsley.examples.library.Writer;
+			import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 			import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 			import org.eclipse.jface.resource.JFaceResources;
 			import org.eclipse.swt.SWT;
@@ -469,6 +471,11 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 
 			@SuppressWarnings("all")
 			public class EmptyTableLabelProvider extends TableColumnLabelProvider {
+			  @Inject
+			  public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
+			    super(eStructuralFeatureParameter);
+			  }
+
 			  public String text_Library_name(final Library it) {
 			    return "Name";
 			  }
@@ -533,10 +540,16 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedTableLabelProvider = """
 			package my.empty.ui.provider;
 
+			import com.google.inject.Inject;
 			import org.eclipse.emf.parsley.dsl.tests.inputs.TestTableColumnLabelProvider;
+			import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 
 			@SuppressWarnings("all")
 			public class EmptyTableLabelProvider extends TestTableColumnLabelProvider {
+			  @Inject
+			  public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
+			    super(eStructuralFeatureParameter);
+			  }
 			}
 			""";
 		assertCorrectJavaCodeGeneration(inputs.tableLabelProviderWithExtends(), expected);
@@ -549,6 +562,7 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			package my.empty.ui.provider;
 
 			import com.google.inject.Inject;
+			import org.eclipse.emf.parsley.inject.parameters.EStructuralFeatureParameter;
 			import org.eclipse.emf.parsley.ui.provider.TableColumnLabelProvider;
 			import org.eclipse.jface.viewers.ILabelProvider;
 
@@ -563,6 +577,11 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 
 			  public void setParentLabelProvider(final ILabelProvider parentLabelProvider) {
 			    this.parentLabelProvider = parentLabelProvider;
+			  }
+
+			  @Inject
+			  public EmptyTableLabelProvider(final EStructuralFeatureParameter eStructuralFeatureParameter) {
+			    super(eStructuralFeatureParameter);
 			  }
 			}
 			""";
@@ -689,8 +708,10 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedFormFeatureCaptionProvider = """
 			package my.empty.ui.provider;
 
+			import com.google.inject.Inject;
 			import org.eclipse.emf.ecore.EStructuralFeature;
 			import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
+			import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 			import org.eclipse.emf.parsley.ui.provider.FormFeatureCaptionProvider;
 			import org.eclipse.swt.SWT;
 			import org.eclipse.swt.widgets.Composite;
@@ -701,6 +722,11 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 
 			@SuppressWarnings("all")
 			public class EmptyFormFeatureCaptionProvider extends FormFeatureCaptionProvider {
+			  @Inject
+			  public EmptyFormFeatureCaptionProvider(final FormToolkitParameter formToolkitParameter) {
+			    super(formToolkitParameter);
+			  }
+
 			  public String text_Library_name(final EStructuralFeature it) {
 			    return "Name";
 			  }
@@ -742,10 +768,16 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedFormFeatureCaptionProvider = """
 			package my.empty.ui.provider;
 
+			import com.google.inject.Inject;
 			import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormFeatureCaptionProvider;
+			import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 
 			@SuppressWarnings("all")
 			public class EmptyFormFeatureCaptionProvider extends TestFormFeatureCaptionProvider {
+			  @Inject
+			  public EmptyFormFeatureCaptionProvider(final FormToolkitParameter formToolkitParameter) {
+			    super(formToolkitParameter);
+			  }
 			}
 			""";
 		assertCorrectJavaCodeGeneration(inputs.formFeatureCaptionProviderWithExtends(), expected);
@@ -997,6 +1029,7 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedFormControlFactory = """
 			package my.empty.binding;
 
+			import com.google.inject.Inject;
 			import org.eclipse.core.databinding.observable.value.IObservableValue;
 			import org.eclipse.emf.ecore.EStructuralFeature;
 			import org.eclipse.emf.parsley.composite.FormControlFactory;
@@ -1004,6 +1037,9 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			import org.eclipse.emf.parsley.examples.library.Borrower;
 			import org.eclipse.emf.parsley.examples.library.Library;
 			import org.eclipse.emf.parsley.examples.library.Writer;
+			import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+			import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+			import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 			import org.eclipse.emf.parsley.util.DatabindingUtil;
 			import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 			import org.eclipse.swt.SWT;
@@ -1015,6 +1051,11 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 
 			@SuppressWarnings("all")
 			public class EmptyFormControlFactory extends FormControlFactory {
+			  @Inject
+			  public EmptyFormControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter, final FormToolkitParameter formToolkitParameter) {
+			    super(compositeParameter, eObjectParameter, formToolkitParameter);
+			  }
+
 			  public Control control_Library_name(final Library it) {
 			    return null;
 			  }
@@ -1055,7 +1096,7 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			  }
 
 			  protected Control createControl_Writer_firstName() {
-			    Label _createLabel = this.getToolkit().createLabel(this.getParent(), "");
+			    Label _createLabel = this.getFormToolkit().createLabel(this.getParent(), "");
 			    return _createLabel;
 			  }
 
@@ -1079,10 +1120,18 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedFormControlFactory = """
 			package my.empty.binding;
 
+			import com.google.inject.Inject;
 			import org.eclipse.emf.parsley.dsl.tests.inputs.TestFormControlFactory;
+			import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+			import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
+			import org.eclipse.emf.parsley.inject.parameters.FormToolkitParameter;
 
 			@SuppressWarnings("all")
 			public class EmptyFormControlFactory extends TestFormControlFactory {
+			  @Inject
+			  public EmptyFormControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter, final FormToolkitParameter formToolkitParameter) {
+			    super(compositeParameter, eObjectParameter, formToolkitParameter);
+			  }
 			}
 			""";
 		assertCorrectJavaCodeGeneration(inputs.formControlFactoryWithExtends(), expected);
@@ -1114,6 +1163,7 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedDialogControlFactory = """
 			package my.empty.binding;
 
+			import com.google.inject.Inject;
 			import org.eclipse.core.databinding.observable.value.IObservableValue;
 			import org.eclipse.emf.ecore.EStructuralFeature;
 			import org.eclipse.emf.parsley.composite.DialogControlFactory;
@@ -1121,6 +1171,8 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			import org.eclipse.emf.parsley.examples.library.Borrower;
 			import org.eclipse.emf.parsley.examples.library.Library;
 			import org.eclipse.emf.parsley.examples.library.Writer;
+			import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+			import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 			import org.eclipse.emf.parsley.util.DatabindingUtil;
 			import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 			import org.eclipse.swt.SWT;
@@ -1132,6 +1184,11 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 
 			@SuppressWarnings("all")
 			public class EmptyDialogControlFactory extends DialogControlFactory {
+			  @Inject
+			  public EmptyDialogControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter) {
+			    super(compositeParameter, eObjectParameter);
+			  }
+
 			  public Control control_Library_name(final Library it) {
 			    return null;
 			  }
@@ -1196,10 +1253,17 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedDialogControlFactory = """
 			package my.empty.binding;
 
+			import com.google.inject.Inject;
 			import org.eclipse.emf.parsley.dsl.tests.inputs.TestDialogControlFactory;
+			import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
+			import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
 
 			@SuppressWarnings("all")
 			public class EmptyDialogControlFactory extends TestDialogControlFactory {
+			  @Inject
+			  public EmptyDialogControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter) {
+			    super(compositeParameter, eObjectParameter);
+			  }
 			}
 			""";
 		assertCorrectJavaCodeGeneration(inputs.dialogControlFactoryWithExtends(), expected);
@@ -1315,12 +1379,13 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			import org.eclipse.emf.parsley.examples.library.Book;
 			import org.eclipse.emf.parsley.examples.library.Library;
 			import org.eclipse.emf.parsley.examples.library.Writer;
+			import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
 
 			@SuppressWarnings("all")
 			public class EmptyTableViewerContentProvider extends TableViewerContentProvider {
 			  @Inject
-			  public EmptyTableViewerContentProvider(final AdapterFactory adapterFactory) {
-			    super(adapterFactory);
+			  public EmptyTableViewerContentProvider(final AdapterFactory adapterFactory, final EClassParameter eClassParameter) {
+			    super(adapterFactory, eClassParameter);
 			  }
 
 			  public Object elements(final Resource it) {
@@ -1916,11 +1981,8 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 		expected.expectedModule = """
 			package my.empty;
 
-			import java.util.Collections;
-			import java.util.List;
 			import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 			import org.eclipse.ui.plugin.AbstractUIPlugin;
-			import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 			@SuppressWarnings("all")
 			public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
@@ -1929,8 +1991,13 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			  }
 
 			  @Override
-			  public List<Integer> valueTableColumnWeights() {
-			    return Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2)));
+			  public int[] valueTableColumnWeights() {
+			    return new int[] { 5, 2 };
+			  }
+
+			  @Override
+			  public int[] valueTreeFormSashWeights() {
+			    return new int[] { 5, 2 };
 			  }
 
 			  public String valuefoo() {
@@ -1961,6 +2028,7 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			import org.eclipse.emf.parsley.EmfParsleyGuiceModule;
 			import org.eclipse.ui.plugin.AbstractUIPlugin;
 			import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+			import org.eclipse.xtext.xbase.lib.Conversions;
 
 			@SuppressWarnings("all")
 			public class EmptyEmfParsleyGuiceModule extends EmfParsleyGuiceModule {
@@ -1969,9 +2037,9 @@ public class EmfParsleyDslGeneratorTest extends EmfParsleyDslAbstractTest {
 			  }
 
 			  @Override
-			  public ArrayList<Integer> valueTableColumnWeights() {
+			  public int[] valueTableColumnWeights() {
 			    ArrayList<Integer> _newArrayList = CollectionLiterals.<Integer>newArrayList(Integer.valueOf(5), Integer.valueOf(2));
-			    return _newArrayList;
+			    return ((int[])Conversions.unwrapArray(_newArrayList, int.class));
 			  }
 			}
 			""";
