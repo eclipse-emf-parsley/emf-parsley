@@ -38,7 +38,7 @@ public class AfterInjectTypeListenerTest extends AbstractEmfParsleyShellBasedTes
 	}
 
 	@EmfParsleyLifecycle
-	private static abstract class MyClass {
+	private abstract static class MyClass {
 		@Inject
 		Foo foo;
 		Bar bar;
