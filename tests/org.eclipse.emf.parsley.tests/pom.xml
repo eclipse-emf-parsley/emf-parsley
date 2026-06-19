@@ -13,6 +13,12 @@
 	<artifactId>org.eclipse.emf.parsley.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
+	<properties>
+		<!-- Workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=397015 -->
+		<sonar.sources></sonar.sources>
+		<sonar.tests>src</sonar.tests>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<!-- needed for running plain Junit tests with Maven surefire plugin -->
@@ -39,10 +45,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<!-- Since these are plain Junit tests, we use maven surefire instead
 					of tycho surefire -->
 				<groupId>org.apache.maven.plugins</groupId>
@@ -58,11 +60,11 @@
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<includes>
 								<include>**/*Test.java</include>
+								<include>**/*Scenario.java</include>
 							</includes>
 							<excludes>
 								<exclude>**/*Abstract*Test.java</exclude>
 								<exclude>**/*Activator.java</exclude>
-								<exclude>**/*Scenario.java</exclude>
 							</excludes>
 						</configuration>
 						<goals>
