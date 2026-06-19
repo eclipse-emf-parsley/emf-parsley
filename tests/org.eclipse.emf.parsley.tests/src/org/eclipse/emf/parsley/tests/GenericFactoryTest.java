@@ -28,6 +28,8 @@ import org.eclipse.emf.parsley.inject.parameters.FactoryParameter;
 import org.eclipse.emf.parsley.inject.parameters.InjectableParameter;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -235,14 +237,14 @@ public class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	@Test
 	public void testCanInjectWithNestedInjectableObjects() {
 		var injector = getOrCreateInjector();
-		var factory = injector.getInstance(
+		var localFactory = injector.getInstance(
 			Key.get(new TypeLiteral<GenericFactory<ClassWithNestedInjectableObjects>>() {})
 		);
 		var eclass = EcorePackage.eINSTANCE.getEObject();
 		// StringP and EClassP are not directly arguments
 		// for GenericFactory<ClassWithNestedInjectableObjects
 		// they are arguments for the constructors of the arguments
-		var o = factory.createInstance(
+		var o = localFactory.createInstance(
 			ClassWithNestedInjectableObjects.class,
 			new StringP("test"),
 			new EClassP(eclass)
@@ -265,7 +267,7 @@ public class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 	@Test
 	public void testMultiThreading() throws Exception {
 		var injector = getOrCreateInjector();
-		var factory =
+		var localFactory =
 			injector.getInstance(
 				Key.get(new TypeLiteral<GenericFactory<GenericInjectableObject<StringP>>>() {})
 			);
@@ -276,7 +278,7 @@ public class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 				@Override
 				public void run() {
 					try {
-						factory.createInstance(GenericInjectableObjectWithString.class, new StringP("test"));
+						localFactory.createInstance(GenericInjectableObjectWithString.class, new StringP("test"));
 					} catch (Exception e) {
 						exceptions.add(e);
 					}
@@ -288,9 +290,7 @@ public class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
 		for (Thread thread : threads) {
 			thread.join();
 		}
-		if (!exceptions.isEmpty()) {
-			throw exceptions.get(0);
-		}
+		MatcherAssert.assertThat(exceptions, Matchers.empty());
 	}
 
 }
