@@ -102,7 +102,7 @@ public class EObjectTableViewerComparatorTest extends AbstractViewerTest {
 	}
 
 	private void assertCompareEquals(ClassForCompare first, ClassForCompare second) {
-		assertTrue(viewerComparator.compare(null, first, second) == 0);
+		assertEquals(0, viewerComparator.compare(null, first, second));
 	}
 
 	private ClassForCompare createWithInt(int value) {
