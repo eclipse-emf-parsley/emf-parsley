@@ -38,7 +38,7 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.widgets.Composite;
 import org.junit.Test;
 
-public abstract class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
+public class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
 
 	public static class MasterDetailComposite extends AbstractMasterDetailComposite {
 		public IMasterComposite mockMasterComposite = mock(IMasterComposite.class);
