@@ -10,9 +10,10 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
@@ -36,8 +37,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.widgets.Composite;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 public abstract class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
 
@@ -74,61 +73,61 @@ public abstract class AbstractMasterDetailCompositeTest extends AbstractEmfParsl
 		}
 	}
 
-	private MasterDetailComposite SUT;
+	private MasterDetailComposite sut;
 
 	@Test
 	public void testSashFormWeigths() {
-		SUT = createSUT(0, new int[] {});
+		sut = createSUT(0, new int[] {});
 		assertEquals("200, 200",
-			Arrays.stream(SUT.getSashForm().getWeights()).mapToObj(Integer::toString).collect(Collectors.joining(", ")));
+			Arrays.stream(sut.getSashForm().getWeights()).mapToObj(Integer::toString).collect(Collectors.joining(", ")));
 	}
 
 	@Test
 	public void testCustomSashFormWeigths() {
-		SUT = createSUT(0, new int[] { 1, 2 });
+		sut = createSUT(0, new int[] { 1, 2 });
 		assertEquals("333, 666",
-			Arrays.stream(SUT.getSashForm().getWeights()).mapToObj(Integer::toString).collect(Collectors.joining(", ")));
+			Arrays.stream(sut.getSashForm().getWeights()).mapToObj(Integer::toString).collect(Collectors.joining(", ")));
 	}
 
 	@Test
 	public void testSetSashFormOrientation() {
-		SUT = createSUT(SWT.VERTICAL, new int[] {});
-		SUT.setSashFormOrientation(SWT.HORIZONTAL);
-		assertTrue((SWT.HORIZONTAL & SUT.getSashForm().getStyle()) != 0);
+		sut = createSUT(SWT.VERTICAL, new int[] {});
+		sut.setSashFormOrientation(SWT.HORIZONTAL);
+		assertNotEquals(0, sut.getSashForm().getStyle() & SWT.HORIZONTAL);
 	}
 
 	@Test
 	public void testUpdateDelegatesToMasterComposite() {
-		SUT = createSUT(SWT.VERTICAL, new int[] {});
+		sut = createSUT(SWT.VERTICAL, new int[] {});
 		var o = new Object();
-		SUT.update(o);
-		verify(SUT.mockMasterComposite).update(o);
+		sut.update(o);
+		verify(sut.mockMasterComposite).update(o);
 	}
 
 	@Test
 	public void testSelectionChangeCreatesDetailComposite() {
-		SUT = createSUT(0, new int[] {});
-		assertNull(SUT.mockDetailComposite);
-		triggerSelectionChanged(SUT.selectionChangedListener, EcoreFactory.eINSTANCE.createEClass());
-		assertNotNull(SUT.mockDetailComposite);
+		sut = createSUT(0, new int[] {});
+		assertNull(sut.mockDetailComposite);
+		triggerSelectionChanged(sut.selectionChangedListener, EcoreFactory.eINSTANCE.createEClass());
+		assertNotNull(sut.mockDetailComposite);
 	}
 
 	@Test
 	public void testSelectionChangeCreatesDetailCompositeAfterDispose() {
-		SUT = createSUT(0, new int[] {});
-		triggerSelectionChanged(SUT.selectionChangedListener, EcoreFactory.eINSTANCE.createEClass());
-		var previousDetailComposite = SUT.mockDetailComposite;
+		sut = createSUT(0, new int[] {});
+		triggerSelectionChanged(sut.selectionChangedListener, EcoreFactory.eINSTANCE.createEClass());
+		var previousDetailComposite = sut.mockDetailComposite;
 		assertNotNull(previousDetailComposite);
-		triggerSelectionChanged(SUT.selectionChangedListener, EcoreFactory.eINSTANCE.createEClass());
+		triggerSelectionChanged(sut.selectionChangedListener, EcoreFactory.eINSTANCE.createEClass());
 		verify(previousDetailComposite).dispose();
 	}
 
 	@Test
 	public void testSelectionChangeWithNonEObjectDoesNotCreateDetailComposite() {
-		SUT = createSUT(0, new int[] {});
-		assertNull(SUT.mockDetailComposite);
-		triggerSelectionChanged(SUT.selectionChangedListener, "noEObject");
-		assertNull(SUT.mockDetailComposite);
+		sut = createSUT(0, new int[] {});
+		assertNull(sut.mockDetailComposite);
+		triggerSelectionChanged(sut.selectionChangedListener, "noEObject");
+		assertNull(sut.mockDetailComposite);
 	}
 
 	private Object triggerSelectionChanged(ISelectionChangedListener selectionChangedListener, Object selected) {
