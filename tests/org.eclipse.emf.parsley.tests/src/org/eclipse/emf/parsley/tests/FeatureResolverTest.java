@@ -141,7 +141,6 @@ public class FeatureResolverTest {
 		);
 	}
 
-	@SuppressWarnings("unused")
 	public Library createModel() {
 		final Library library = eINSTANCE.createLibrary();
 		final Writer writer = eINSTANCE.createWriter();
