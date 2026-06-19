@@ -80,6 +80,7 @@ public class ResourceAndEObject extends ResourceImpl implements EObject {
 
 	@Override
 	public void eSet(EStructuralFeature feature, Object newValue) {
+		// not used
 	}
 
 	@Override
@@ -89,6 +90,7 @@ public class ResourceAndEObject extends ResourceImpl implements EObject {
 
 	@Override
 	public void eUnset(EStructuralFeature feature) {
+		// not used
 	}
 
 	@Override

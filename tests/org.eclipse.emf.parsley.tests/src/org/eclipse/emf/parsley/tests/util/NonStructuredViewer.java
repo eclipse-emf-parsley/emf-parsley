@@ -43,6 +43,7 @@ public class NonStructuredViewer extends Viewer {
 
 	@Override
 	public void refresh() {
+		// not used
 	}
 
 	@Override
@@ -54,6 +55,7 @@ public class NonStructuredViewer extends Viewer {
 
 	@Override
 	public void setSelection(ISelection selection, boolean reveal) {
+		// not used
 	}
 
 	public void setContentProvider(IStructuredContentProvider contentProvider) {
