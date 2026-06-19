@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.dialogs.DialogFactory;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
@@ -38,11 +40,11 @@ public class DialogFactoryTest extends AbstractEmfParsleyShellBasedTest {
 
 	@Test
 	public void canDetailDialog() {
-		factory.createDetailDialog(getShell(), "title", object, fixtures.getEditingDomain());
+		assertNotNull(factory.createDetailDialog(getShell(), "title", object, fixtures.getEditingDomain()));
 	}
 
 	@Test
 	public void canDetailFormBasedDialog() {
-		factory.createDetailFormBasedDialog(getShell(), "title", object, fixtures.getEditingDomain());
+		assertNotNull(factory.createDetailFormBasedDialog(getShell(), "title", object, fixtures.getEditingDomain()));
 	}
 }
