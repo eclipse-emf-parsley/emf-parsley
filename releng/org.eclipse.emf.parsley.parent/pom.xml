@@ -148,7 +148,8 @@
 			For views.resource package we still don't have tests -->
 		<sonar.coverage.exclusions>
 			**/xtend-gen/**/*.java,
-			**/views/resource/**/*.java
+			**/views/resource/**/*.java,
+			**/inject/parameters/*.java
 		</sonar.coverage.exclusions>
 
 		<!-- To make SonarQube detect JUnit tests in generated Java code from Xtend -->
@@ -170,18 +171,20 @@
 		<sonar.issue.ignore.multicriteria.e1.ruleKey>squid:S00100</sonar.issue.ignore.multicriteria.e1.ruleKey>
 		<sonar.issue.ignore.multicriteria.e1.resourceKey>**/*OutlineTreeProvider.java</sonar.issue.ignore.multicriteria.e1.resourceKey>
 	
-		<!-- "Tabulation characters should not be used" sorry... I don't agree :) -->
-		<sonar.issue.ignore.multicriteria.e2.ruleKey>squid:S00105</sonar.issue.ignore.multicriteria.e2.ruleKey>
-		<sonar.issue.ignore.multicriteria.e2.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
+		<!-- I don't want to add parameterized tests nor to switch to JUnit 5 (just for that) -->
+		<sonar.issue.ignore.multicriteria.e2.ruleKey>java:S5976</sonar.issue.ignore.multicriteria.e2.ruleKey>
+		<sonar.issue.ignore.multicriteria.e2.resourceKey>**/dsl/tests/*Test.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
 
 		<!-- "Synchronized classes Vector, Hashtable, Stack and StringBuffer should not be used" 
 			In TextUndoRedo we actually need a synchronized data structure. -->
 		<sonar.issue.ignore.multicriteria.e3.ruleKey>java:S1149</sonar.issue.ignore.multicriteria.e3.ruleKey>
 		<sonar.issue.ignore.multicriteria.e3.resourceKey>**/TextUndoRedo.java</sonar.issue.ignore.multicriteria.e3.resourceKey>
 
-		<!-- Avoid deprecated checkstyle rule -->
-		<sonar.issue.ignore.multicriteria.e4.ruleKey>checkstyle:com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck</sonar.issue.ignore.multicriteria.e4.ruleKey>
-		<sonar.issue.ignore.multicriteria.e4.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
+		<!-- Unused method parameters should be removed.
+			In these tests we test the polymorphic dispatcher and the
+			parameter is needed for method selection, even if unused -->
+		<sonar.issue.ignore.multicriteria.e4.ruleKey>java:S1172</sonar.issue.ignore.multicriteria.e4.ruleKey>
+		<sonar.issue.ignore.multicriteria.e4.resourceKey>**/parsley/tests/*Test.java</sonar.issue.ignore.multicriteria.e4.resourceKey>
 
 		<!-- Avoid deprecated checkstyle rule -->
 		<sonar.issue.ignore.multicriteria.e5.ruleKey>checkstyle:com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck</sonar.issue.ignore.multicriteria.e5.ruleKey>
@@ -870,6 +873,7 @@
 							<exclude>**/internal/*.class</exclude>
 							<exclude>**/*ProjectTemplateProvider.class</exclude>
 							<exclude>**/*ProjectTemplate.class</exclude>
+							<exclude>**/inject/parameters/*.class</exclude>
 						</excludes>
 					</configuration>
 				</plugin>

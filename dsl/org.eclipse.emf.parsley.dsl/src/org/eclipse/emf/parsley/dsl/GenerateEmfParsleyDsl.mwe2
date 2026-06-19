@@ -49,7 +49,10 @@ Workflow {
 				generateXtendStub = false
 			}
 			contentAssist = {
-				generateXtendStub = true
+				generateXtendStub = false
+			}
+			junitSupport = {
+				generateXtendStub = false
 			}
 		}
 	}
