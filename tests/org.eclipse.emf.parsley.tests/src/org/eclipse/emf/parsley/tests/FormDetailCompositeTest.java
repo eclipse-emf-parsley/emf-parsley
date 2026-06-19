@@ -11,6 +11,7 @@
 package org.eclipse.emf.parsley.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -76,5 +77,6 @@ public class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest 
 		var o = fixtures.createClassWithName("Test");
 		var formDetailComposite = injectMembers(new TestableFormDetailComposite(getShell(), SWT.NONE, o, null));
 		formDetailComposite.dispose();
+		assertTrue(formDetailComposite.isDisposed());
 	}
 }
