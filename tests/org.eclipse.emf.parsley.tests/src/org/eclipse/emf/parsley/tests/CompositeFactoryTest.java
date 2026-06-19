@@ -11,7 +11,8 @@
 package org.eclipse.emf.parsley.tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -44,47 +45,47 @@ public class CompositeFactoryTest extends AbstractControlFactoryTest {
 
 	@Test
 	public void canCreateFormDetailComposite() {
-		factory.createFormDetailComposite(getShell(), SWT.NONE, eClass);
+		assertNotNull(factory.createFormDetailComposite(getShell(), SWT.NONE, eClass));
 	}
 
 	@Test
 	public void canCreateFormDetailCompositeWithEditingDomain() {
-		factory.createFormDetailComposite(getShell(), SWT.NONE, eClass, getEditingDomain());
+		assertNotNull(factory.createFormDetailComposite(getShell(), SWT.NONE, eClass, getEditingDomain()));
 	}
 
 	@Test
 	public void canCreateFormDetailCompositeWithNullEditingDomain() {
-		factory.createFormDetailComposite(getShell(), SWT.NONE, eClass, null);
+		assertNotNull(factory.createFormDetailComposite(getShell(), SWT.NONE, eClass, null));
 	}
 
 	@Test
 	public void canCreateFormDetailReadOnlyComposite() {
-		factory.createFormDetailReadOnlyComposite(getShell(), SWT.NONE, eClass);
+		assertNotNull(factory.createFormDetailReadOnlyComposite(getShell(), SWT.NONE, eClass));
 	}
 
 	@Test
 	public void canCreateDialogDetailComposite() {
-		factory.createDialogDetailComposite(getShell(), SWT.NONE, eClass, getEditingDomain());
+		assertNotNull(factory.createDialogDetailComposite(getShell(), SWT.NONE, eClass, getEditingDomain()));
 	}
 
 	@Test
 	public void canCreateDialogDetailCompositeWithNullEditingDomain() {
-		factory.createDialogDetailComposite(getShell(), SWT.NONE, eClass, null);
+		assertNotNull(factory.createDialogDetailComposite(getShell(), SWT.NONE, eClass, null));
 	}
 
 	@Test
 	public void canCreateTreeFormComposite() {
-		factory.createTreeFormComposite(getShell(), SWT.NONE);
+		assertNotNull(factory.createTreeFormComposite(getShell(), SWT.NONE));
 	}
 
 	@Test
 	public void canCreateTreeComposite() {
-		factory.createTreeComposite(getShell(), SWT.NONE);
+		assertNotNull(factory.createTreeComposite(getShell(), SWT.NONE));
 	}
 
 	@Test
 	public void canCreateTreeWithColumnsComposite() {
-		factory.createTreeWithColumnsComposite(getShell(), SWT.NONE, eClass);
+		assertNotNull(factory.createTreeWithColumnsComposite(getShell(), SWT.NONE, eClass));
 	}
 
 	@Test
@@ -93,7 +94,7 @@ public class CompositeFactoryTest extends AbstractControlFactoryTest {
 			var treeFormComposite = getOrCreateInjector().getInstance(CompositeFactory.class)
 				.createTreeFormComposite(getShell(), 0);
 			var sashForm = getSashForm(treeFormComposite);
-			assertTrue((SWT.VERTICAL & sashForm.getStyle()) != 0);
+			assertNotEquals(0, sashForm.getStyle() & SWT.VERTICAL);
 			assertEquals("200, 200",
 				Arrays.stream(sashForm.getWeights()).mapToObj(Integer::toString).collect(Collectors.joining(", ")));
 		});
@@ -117,7 +118,7 @@ public class CompositeFactoryTest extends AbstractControlFactoryTest {
 			).getInstance(CompositeFactory.class)
 			.createTreeFormComposite(getShell(), 0);
 			var sashForm = getSashForm(treeFormComposite);
-			assertTrue((SWT.HORIZONTAL & sashForm.getStyle()) != 0);
+			assertNotEquals(0, sashForm.getStyle() & SWT.HORIZONTAL);
 			assertEquals("333, 666",
 				Arrays.stream(sashForm.getWeights()).mapToObj(Integer::toString).collect(Collectors.joining(", ")));
 		});
@@ -125,47 +126,47 @@ public class CompositeFactoryTest extends AbstractControlFactoryTest {
 
 	@Test
 	public void canCreateTableFormComposite() {
-		factory.createTableFormComposite(getShell(), SWT.NONE, eClass);
+		assertNotNull(factory.createTableFormComposite(getShell(), SWT.NONE, eClass));
 	}
 
 	@Test
 	public void canCreateTableComposite() {
-		factory.createTableComposite(getShell(), SWT.NONE, eClass);
+		assertNotNull(factory.createTableComposite(getShell(), SWT.NONE, eClass));
 	}
 
 	@Test
 	public void canCreateTreeTableFormComposite() {
-		factory.createTreeTableFormComposite(getShell(), SWT.NONE, eClass);
+		assertNotNull(factory.createTreeTableFormComposite(getShell(), SWT.NONE, eClass));
 	}
 
 	@Test
 	public void canCreateDialogWidgetFactory() {
-		factory.createDialogWidgetFactory(getShell());
+		assertNotNull(factory.createDialogWidgetFactory(getShell()));
 	}
 
 	@Test
 	public void canCreateFormWidgetFactory() {
-		factory.createFormWidgetFactory(getShell(), getFormToolkit());
+		assertNotNull(factory.createFormWidgetFactory(getShell(), getFormToolkit()));
 	}
 
 	@Test
 	public void canCreateFeatureLabelCaptionProvider() {
-		factory.createFeatureLabelCaptionProvider();
+		assertNotNull(factory.createFeatureLabelCaptionProvider());
 	}
 
 	@Test
 	public void canCreateFormFeatureCaptionProvider() {
-		factory.createFormFeatureCaptionProvider(getFormToolkit());
+		assertNotNull(factory.createFormFeatureCaptionProvider(getFormToolkit()));
 	}
 
 	@Test
 	public void canCreateDialogControlFactory() {
-		factory.createDialogControlFactory(getShell(), EcorePackage.eINSTANCE.getEObject(), getEditingDomain());
+		assertNotNull(factory.createDialogControlFactory(getShell(), EcorePackage.eINSTANCE.getEObject(), getEditingDomain()));
 	}
 
 	@Test
 	public void canCreateFormControlFactory() {
-		factory.createFormControlFactory(getShell(), EcorePackage.eINSTANCE.getEObject(), getEditingDomain(), getFormToolkit());
+		assertNotNull(factory.createFormControlFactory(getShell(), EcorePackage.eINSTANCE.getEObject(), getEditingDomain(), getFormToolkit()));
 	}
 
 	private SashForm getSashForm(TreeFormComposite treeFormComposite) {
