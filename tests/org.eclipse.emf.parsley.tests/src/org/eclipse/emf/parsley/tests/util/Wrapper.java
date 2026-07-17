@@ -8,7 +8,7 @@ public class Wrapper<T> {
 		return new Wrapper<T>(value);
 	}
 
-	public static <T> Wrapper<T> forType(Class<T> type) {
+	public static <T> Wrapper<T> forType(Class<T> type) { // NOSONAR: we need a Class parameter for type inference
 		return new Wrapper<T>();
 	}
 
