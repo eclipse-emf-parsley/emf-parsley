@@ -31,9 +31,6 @@ public class DisplayHelperTestRule implements TestRule {
 
 	private Shell shell;
 
-	public DisplayHelperTestRule() {
-	}
-
 	public Display getDisplay() {
 		if (display == null) {
 			displayOwner = Display.getCurrent() == null;
