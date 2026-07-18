@@ -26,17 +26,14 @@ public class EmfEventHelper {
 
 	public EObject getEObjectFromMouseEvent(MouseEvent event) {
 		Object source = event.getSource();
-		if (source instanceof Tree) {
-			Tree tree = (Tree) source;
+		if (source instanceof Tree tree) {
 			if (tree.getSelectionCount() == 1) {
 				return getEObjectOrNull(tree.getSelection()[0].getData());
 			}
-		} else if (source instanceof Table) {
-			Table table = (Table) source;
-			if (table.getSelectionCount() == 1) {
-				return getEObjectOrNull(table.getSelection()[0].getData());
-			}
+		} else if (source instanceof Table table && table.getSelectionCount() == 1) {
+			return getEObjectOrNull(table.getSelection()[0].getData());
 		}
+
 		return null;
 	}
 }
