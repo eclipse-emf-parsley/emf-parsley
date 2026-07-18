@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.tests;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -21,8 +22,10 @@ import java.util.ArrayList;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.util.EmfEventHelper;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Tree;
@@ -63,18 +66,19 @@ public class EmfEventHelperTest extends AbstractEmfParsleyShellBasedTest {
 
 	@Test
 	public void testGetEObjectFromMouseEventOnTreeWithSelection() {
-		final var object = fixtures.getClassForControlsInstance();
-		final var item = mock(TreeItem.class);
-		when(item.getData()).thenReturn(object);
-		final var widget = mock(Tree.class);
-		when(widget.getSelectionCount()).thenReturn(1);
-		final var selectionList = new ArrayList<TreeItem>();
-		selectionList.add(item);
-		when(widget.getSelection()).thenReturn(selectionList.toArray(new TreeItem[0]));
-		final var mouseEvent = mockMouseEvent(widget);
-		assertNotNull(eventHelper.getEObjectFromMouseEvent(mouseEvent));
-		verify(widget).getSelectionCount();
-		verify(widget).getSelection();
+		var object = fixtures.getClassForControlsInstance();
+
+		var result = syncExec(() -> {
+			var tree = new Tree(getShell(), SWT.NONE);
+			var item = new TreeItem(tree, SWT.NONE);
+			item.setData(object);
+			tree.setSelection(item);
+			var event = new Event();
+			event.widget = tree;
+			return eventHelper.getEObjectFromMouseEvent(new MouseEvent(event));
+		});
+
+		assertSame(object, result);
 	}
 
 	@Test
