@@ -11,13 +11,10 @@
 package org.eclipse.emf.parsley.tests;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
-import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule;
-import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,9 +24,6 @@ import org.junit.Test;
  */
 public class ShellBasedTest extends AbstractEmfParsleyShellBasedTest {
 
-	@Rule
-	public final LogAppenderTestRule logAppender = new LogAppenderTestRule(AbstractEmfParsleyShellBasedTest.class);
-
 	@Test
 	public void testSyncExecSuccess() {
 		assertTrue(syncExec(() -> {
@@ -37,13 +31,12 @@ public class ShellBasedTest extends AbstractEmfParsleyShellBasedTest {
 		}));
 	}
 
-	@Test
+	@Test(expected = AssertionError.class)
 	public void testSyncExecWithFailureReturnsNull() {
-		assertNull(syncExec(() -> {
+		syncExec(() -> {
 			fail("intentional failure");
 			return true;
-		}));
-		logAppender.assertContainsMessage("Exception in runnable: intentional failure");
+		});
 	}
 
 	@Test(expected = AssertionError.class)

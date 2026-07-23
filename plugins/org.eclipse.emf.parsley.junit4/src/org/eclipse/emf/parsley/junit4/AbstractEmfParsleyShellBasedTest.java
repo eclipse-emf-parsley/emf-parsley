@@ -12,9 +12,8 @@ package org.eclipse.emf.parsley.junit4;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.EMFEditPlugin;
@@ -28,7 +27,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Rule;
 
 /**
@@ -44,8 +42,6 @@ import org.junit.Rule;
  */
 public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
 
-	private static final Logger LOGGER = Logger.getLogger(AbstractEmfParsleyShellBasedTest.class);
-
 	protected static int TAB_INDENT = 2;
 
 	@Rule
@@ -56,46 +52,51 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	}
 
 	/**
-	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)},
-	 * and returns the result; note that possible assertions within the runnable will NOT
-	 * make a test fail: the result will be null, and the exception will be logged.
-	 *
+	 * Executes the passed {@link RunnableWithResult} in a
+	 * {@link Display#syncExec(Runnable)}, and returns the result; In the runnable
+	 * you can assert with Junit and if an assertion fails this method will make the
+	 * test fail, propagating the failure.
+	 * 
 	 * @param toExecute
 	 * @return
 	 */
 	protected <T> T syncExec(final RunnableWithResult<T> toExecute) {
-		final ArrayList<T> arrayList = new ArrayList<>();
+		var result = new AtomicReference<T>();
+		var failure = new AtomicReference<Throwable>();
 		getDisplay().syncExec(() -> {
 			try {
-				arrayList.add(toExecute.run());
-			} catch (Throwable e) {
-				LOGGER.error("Exception in runnable: " + e.getMessage(), e);
-				arrayList.add(null);
+				result.setPlain(toExecute.run());
+			} catch (Throwable t) {
+				failure.setPlain(t);
 			}
 		});
-		return arrayList.get(0);
+		Throwable throwable = failure.getPlain();
+		if (throwable != null)
+			throw new AssertionError("Failure in SWT display thread", throwable);
+		return result.get();
 	}
 
 	/**
-	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)};
-	 * In the runnable you can assert with Junit and if an assertion fails this method will
-	 * make the test fail, propagating the failure.
+	 * Executes the passed {@link RunnableWithResult} in a
+	 * {@link Display#syncExec(Runnable)}; In the runnable you can assert with Junit
+	 * and if an assertion fails this method will make the test fail, propagating
+	 * the failure.
 	 *
 	 * @param toExecute
 	 * @return
 	 */
 	protected void syncExecVoid(final Runnable toExecute) {
-		final ArrayList<Throwable> arrayList = new ArrayList<>();
+		var failure = new AtomicReference<Throwable>();
 		getDisplay().syncExec(() -> {
 			try {
 				toExecute.run();
-			} catch (Throwable e) {
-				arrayList.add(e);
+			} catch (Throwable t) {
+				failure.setPlain(t);
 			}
 		});
-		if (!arrayList.isEmpty()) {
-			throw Exceptions.sneakyThrow(arrayList.get(0));
-		}
+		Throwable throwable = failure.getPlain();
+		if (throwable != null)
+			throw new AssertionError("Failure in SWT display thread", throwable);
 	}
 
 	protected Display getDisplay() {
@@ -156,7 +157,7 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	protected String tableItemsRepresentation(TableItem[] items) {
 		var buffer = new StringBuilder();
 		for (TableItem item : items) {
-			buffer.append(item.getText() + "\n");
+			buffer.append(item.getText()).append("\n");
 		}
 		return buffer.toString();
 	}
