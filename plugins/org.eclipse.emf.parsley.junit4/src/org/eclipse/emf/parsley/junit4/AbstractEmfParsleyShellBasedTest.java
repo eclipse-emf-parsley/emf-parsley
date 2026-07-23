@@ -73,7 +73,7 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 		Throwable throwable = failure.getPlain();
 		if (throwable != null)
 			throw new AssertionError("Failure in SWT display thread", throwable);
-		return result.get();
+		return result.getPlain();
 	}
 
 	/**
