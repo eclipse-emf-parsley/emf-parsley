@@ -52,7 +52,7 @@ public class EditingActionManager {
 
 		createActions();
 
-		actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(),
+		actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), // NOSONAR: actionBars that is passed as parameter cannot be null
 				editingMenuBuilder.getDeleteAction());
 		actionBars.setGlobalActionHandler(ActionFactory.CUT.getId(),
 				editingMenuBuilder.getCutAction());
