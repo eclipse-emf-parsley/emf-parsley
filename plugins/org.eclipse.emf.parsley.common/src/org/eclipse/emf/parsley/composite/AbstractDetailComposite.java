@@ -44,7 +44,7 @@ public abstract class AbstractDetailComposite extends Composite {
 	 * @param object
 	 */
 	public void init(EObject object) {
-		init(object, editingDomainFinder.getEditingDomainFor(object));
+		init(object, editingDomainFinder.getEditingDomainFor(object)); // NOSONAR: editingDomainFinder is injected and cannot be null
 	}
 
 	/**
