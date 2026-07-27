@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
-import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
@@ -122,8 +121,8 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	 * @param toExecute
 	 * @return
 	 */
-	protected <T> T execAndFlushPendingEvents(final RunnableWithResult<T> toExecute) {
-		T result = toExecute.run();
+	protected <T> T execAndFlushPendingEvents(final Supplier<T> toExecute) {
+		T result = toExecute.get();
 		flushPendingEvents();
 		return result;
 	}
