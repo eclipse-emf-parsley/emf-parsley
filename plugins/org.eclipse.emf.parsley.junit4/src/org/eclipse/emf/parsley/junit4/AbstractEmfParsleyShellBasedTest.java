@@ -53,20 +53,20 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	}
 
 	/**
-	 * Executes the passed {@link RunnableWithResult} in a
-	 * {@link Display#syncExec(Runnable)}, and returns the result.
-	 * 
-	 * In the {@link Supplier} you can assert with JUnit and if an assertion fails
-	 * this method will make the test fail, propagating the failure. Exceptions
-	 * thrown in the {@link Supplier} will be propagated as an
-	 * {@link AssertionError}.
-	 * 
-	 * @param toExecute
-	 * @return
+	 * Executes the specified {@link Supplier} synchronously on the SWT display
+	 * thread and returns its result.
+	 * <p>
+	 * The supplier may contain JUnit assertions. An assertion failure causes the
+	 * calling test to fail. Runtime exceptions thrown by the supplier are
+	 * propagated as {@link AssertionError}s.
+	 *
+	 * @param toExecute the operation to execute
+	 * @return the result produced by the operation
 	 */
 	protected <T> T syncExec(final Supplier<T> toExecute) {
 		var result = new AtomicReference<T>();
 		var failure = new AtomicReference<Exception>();
+
 		getDisplay().syncExec(() -> {
 			try {
 				result.setPlain(toExecute.get());
@@ -74,25 +74,28 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 				failure.setPlain(e);
 			}
 		});
+
 		var exception = failure.getPlain();
-		if (exception != null)
+		if (exception != null) {
 			throw new AssertionError("Failure in SWT display thread", exception);
+		}
+
 		return result.getPlain();
 	}
 
 	/**
-	 * Executes the passed {@link RunnableWithResult} in a
-	 * {@link Display#syncExec(Runnable)}.
-	 * 
-	 * In the runnable you can assert with JUnit and if an assertion fails this
-	 * method will make the test fail, propagating the failure. Exceptions thrown in
-	 * the runnable will be propagated as an {@link AssertionError}.
+	 * Executes the specified {@link Runnable} synchronously on the SWT display
+	 * thread.
+	 * <p>
+	 * The runnable may contain JUnit assertions. An assertion failure causes the
+	 * calling test to fail. Runtime exceptions thrown by the runnable are
+	 * propagated as {@link AssertionError}s.
 	 *
-	 * @param toExecute
-	 * @return
+	 * @param toExecute the operation to execute
 	 */
 	protected void syncExecVoid(final Runnable toExecute) {
 		var failure = new AtomicReference<Exception>();
+
 		getDisplay().syncExec(() -> {
 			try {
 				toExecute.run();
@@ -100,9 +103,11 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 				failure.setPlain(e);
 			}
 		});
+
 		var exception = failure.getPlain();
-		if (exception != null)
+		if (exception != null) {
 			throw new AssertionError("Failure in SWT display thread", exception);
+		}
 	}
 
 	protected Display getDisplay() {
