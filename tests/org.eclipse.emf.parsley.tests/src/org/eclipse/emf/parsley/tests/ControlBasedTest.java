@@ -10,10 +10,12 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
+import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule;
 import org.eclipse.swt.SWT;
@@ -36,15 +38,21 @@ public class ControlBasedTest extends AbstractEmfParsleyControlBasedTest {
 		assertTrue(syncExecInRealm(() -> {
 			return true;
 		}));
+		assertNotNull(syncExecInRealm(Realm::getDefault));
 	}
 
 	@Test
-	public void testSyncExecInRealmWithFailureReturnsNull() {
-		assertNull(syncExecInRealm(() -> {
-			fail("intentional failure");
-			return true;
-		}));
-		logAppender.assertContainsMessage("Exception in runnable: intentional failure");
+	public void testSyncExecInRealmWithException() {
+		var throwable = assertThrows(AssertionError.class, () ->
+			syncExecInRealm(() -> {
+				throw new NullPointerException("intentional NPE");
+			})
+		);
+
+		assertTrue(
+				"The cause of the AssertionError should be a NullPointerException: "
+						+ throwable.getCause(),
+				throwable.getCause() instanceof NullPointerException);
 	}
 
 	@Test

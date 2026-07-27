@@ -15,10 +15,10 @@ import static org.eclipse.xtext.xbase.lib.ListExtensions.map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -27,7 +27,6 @@ import org.eclipse.emf.parsley.composite.AbstractControlFactory;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.composite.FormControlFactory;
 import org.eclipse.emf.parsley.composite.MultipleFeatureControl;
-import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm;
 import org.eclipse.jface.databinding.swt.DisplayRealm;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -37,7 +36,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
@@ -54,8 +52,6 @@ import org.junit.Before;
  */
 public abstract class AbstractEmfParsleyControlBasedTest extends
 		AbstractEmfParsleyShellBasedTest {
-
-	private static final Logger LOGGER = Logger.getLogger(AbstractEmfParsleyControlBasedTest.class);
 
 	private TestDefaultRealm realm;
 
@@ -230,28 +226,26 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 	}
 
 	/**
-	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)}
-	 * and {@link Realm#runWithDefault(Realm, Runnable)},
-	 * and returns the result; note that possible assertions within the runnable will NOT
-	 * make a test fail: the result will be null, and the exception will be logged.
+	 * Executes the specified {@link Supplier} synchronously on the SWT display
+	 * thread using {@link Realm#runWithDefault(Realm, Runnable)} and returns its
+	 * result.
+	 * <p>
+	 * The supplier may contain JUnit assertions. An assertion failure causes the
+	 * calling test to fail. Runtime exceptions thrown by the supplier are
+	 * propagated as {@link AssertionError}s.
 	 *
-	 * @param toExecute
-	 * @return
+	 * @param toExecute the operation to execute
+	 * @return the result produced by the operation
 	 */
-	protected <T> T syncExecInRealm(final RunnableWithResult<T> toExecute) {
-		final ArrayList<T> arrayList = new ArrayList<>();
-		getDisplay().syncExec(() -> Realm.runWithDefault(
-				DisplayRealm.getRealm(Display.getDefault()),
-				() -> {
-					try {
-						arrayList.add(toExecute.run());
-					} catch (Throwable e) {
-						LOGGER.error(
-								"Exception in runnable: "
-										+ e.getMessage(), e);
-						arrayList.add(null);
-					}
-				}));
-		return arrayList.get(0);
+	protected <T> T syncExecInRealm(final Supplier<T> toExecute) {
+		return syncExec(() -> {
+			var result = new AtomicReference<T>();
+
+			Realm.runWithDefault(
+					DisplayRealm.getRealm(getDisplay()),
+					() -> result.setPlain(toExecute.get()));
+
+			return result.getPlain();
+		});
 	}
 }

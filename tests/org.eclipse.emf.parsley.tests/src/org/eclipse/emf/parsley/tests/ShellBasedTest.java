@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
-import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule;
-import org.junit.Rule;
 import org.junit.Test;
 
 /**
@@ -27,9 +26,6 @@ import org.junit.Test;
  */
 public class ShellBasedTest extends AbstractEmfParsleyShellBasedTest {
 
-	@Rule
-	public final LogAppenderTestRule logAppender = new LogAppenderTestRule(AbstractEmfParsleyShellBasedTest.class);
-
 	@Test
 	public void testSyncExecSuccess() {
 		assertTrue(syncExec(() -> {
@@ -38,19 +34,40 @@ public class ShellBasedTest extends AbstractEmfParsleyShellBasedTest {
 	}
 
 	@Test
-	public void testSyncExecWithFailureReturnsNull() {
-		assertNull(syncExec(() -> {
-			fail("intentional failure");
-			return true;
-		}));
-		logAppender.assertContainsMessage("Exception in runnable: intentional failure");
+	public void testSyncExecWithException() {
+		var throwable = assertThrows(AssertionError.class, () -> {
+			syncExec(() -> {
+				fail("intentional failure");
+				return true;
+			});
+		});
+		assertEquals("intentional failure", throwable.getMessage());
+		throwable = assertThrows(AssertionError.class, () -> {
+			syncExec(() -> {
+				throw new NullPointerException("intentional NPE");
+			});
+		});
+		assertTrue(
+				"The cause of the AssertionError should be a NullPointerException: " + throwable.getCause(),
+				throwable.getCause() instanceof NullPointerException);
 	}
 
-	@Test(expected = AssertionError.class)
-	public void testSyncExecVoidWithFailureMakesTheTestFail() {
-		syncExecVoid(() -> {
-			fail("intentional failure");
+	@Test
+	public void testSyncExecVoidWithException() {
+		var throwable = assertThrows(AssertionError.class, () -> {
+			syncExecVoid(() -> {
+				fail("intentional failure");
+			});
 		});
+		assertEquals("intentional failure", throwable.getMessage());
+		throwable = assertThrows(AssertionError.class, () -> {
+			syncExecVoid(() -> {
+				throw new NullPointerException("intentional NPE");
+			});
+		});
+		assertTrue(
+				"The cause of the AssertionError should be a NullPointerException: " + throwable.getCause(),
+				throwable.getCause() instanceof NullPointerException);
 	}
 
 	@Test

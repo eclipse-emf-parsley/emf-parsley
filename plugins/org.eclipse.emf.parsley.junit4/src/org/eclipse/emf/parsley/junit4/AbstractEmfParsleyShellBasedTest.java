@@ -12,15 +12,14 @@ package org.eclipse.emf.parsley.junit4;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
 
-import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
-import org.eclipse.emf.parsley.junit4.ui.util.RunnableWithResult;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
@@ -28,7 +27,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Rule;
 
 /**
@@ -44,8 +42,6 @@ import org.junit.Rule;
  */
 public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
 
-	private static final Logger LOGGER = Logger.getLogger(AbstractEmfParsleyShellBasedTest.class);
-
 	protected static int TAB_INDENT = 2;
 
 	@Rule
@@ -56,45 +52,60 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	}
 
 	/**
-	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)},
-	 * and returns the result; note that possible assertions within the runnable will NOT
-	 * make a test fail: the result will be null, and the exception will be logged.
+	 * Executes the specified {@link Supplier} synchronously on the SWT display
+	 * thread and returns its result.
+	 * <p>
+	 * The supplier may contain JUnit assertions. An assertion failure causes the
+	 * calling test to fail. Runtime exceptions thrown by the supplier are
+	 * propagated as {@link AssertionError}s.
 	 *
-	 * @param toExecute
-	 * @return
+	 * @param toExecute the operation to execute
+	 * @return the result produced by the operation
 	 */
-	protected <T> T syncExec(final RunnableWithResult<T> toExecute) {
-		final ArrayList<T> arrayList = new ArrayList<>();
+	protected <T> T syncExec(final Supplier<T> toExecute) {
+		var result = new AtomicReference<T>();
+		var failure = new AtomicReference<Exception>();
+
 		getDisplay().syncExec(() -> {
 			try {
-				arrayList.add(toExecute.run());
-			} catch (Throwable e) {
-				LOGGER.error("Exception in runnable: " + e.getMessage(), e);
-				arrayList.add(null);
+				result.setPlain(toExecute.get());
+			} catch (Exception e) {
+				failure.setPlain(e);
 			}
 		});
-		return arrayList.get(0);
+
+		var exception = failure.getPlain();
+		if (exception != null) {
+			throw new AssertionError("Failure in SWT display thread", exception);
+		}
+
+		return result.getPlain();
 	}
 
 	/**
-	 * Executes the passed {@link RunnableWithResult} in a {@link Display#syncExec(Runnable)};
-	 * In the runnable you can assert with Junit and if an assertion fails this method will
-	 * make the test fail, propagating the failure.
+	 * Executes the specified {@link Runnable} synchronously on the SWT display
+	 * thread.
+	 * <p>
+	 * The runnable may contain JUnit assertions. An assertion failure causes the
+	 * calling test to fail. Runtime exceptions thrown by the runnable are
+	 * propagated as {@link AssertionError}s.
 	 *
-	 * @param toExecute
-	 * @return
+	 * @param toExecute the operation to execute
 	 */
 	protected void syncExecVoid(final Runnable toExecute) {
-		final ArrayList<Throwable> arrayList = new ArrayList<>();
+		var failure = new AtomicReference<Exception>();
+
 		getDisplay().syncExec(() -> {
 			try {
 				toExecute.run();
-			} catch (Throwable e) {
-				arrayList.add(e);
+			} catch (Exception e) {
+				failure.setPlain(e);
 			}
 		});
-		if (!arrayList.isEmpty()) {
-			throw Exceptions.sneakyThrow(arrayList.get(0));
+
+		var exception = failure.getPlain();
+		if (exception != null) {
+			throw new AssertionError("Failure in SWT display thread", exception);
 		}
 	}
 
@@ -110,8 +121,8 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	 * @param toExecute
 	 * @return
 	 */
-	protected <T> T execAndFlushPendingEvents(final RunnableWithResult<T> toExecute) {
-		T result = toExecute.run();
+	protected <T> T execAndFlushPendingEvents(final Supplier<T> toExecute) {
+		T result = toExecute.get();
 		flushPendingEvents();
 		return result;
 	}
@@ -156,7 +167,7 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	protected String tableItemsRepresentation(TableItem[] items) {
 		var buffer = new StringBuilder();
 		for (TableItem item : items) {
-			buffer.append(item.getText() + "\n");
+			buffer.append(item.getText()).append("\n");
 		}
 		return buffer.toString();
 	}
