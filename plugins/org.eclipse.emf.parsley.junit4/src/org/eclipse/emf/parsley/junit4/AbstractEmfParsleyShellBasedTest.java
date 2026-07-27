@@ -13,6 +13,7 @@ package org.eclipse.emf.parsley.junit4;
 import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -53,50 +54,55 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 
 	/**
 	 * Executes the passed {@link RunnableWithResult} in a
-	 * {@link Display#syncExec(Runnable)}, and returns the result; In the runnable
-	 * you can assert with Junit and if an assertion fails this method will make the
-	 * test fail, propagating the failure.
+	 * {@link Display#syncExec(Runnable)}, and returns the result.
+	 * 
+	 * In the {@link Supplier} you can assert with JUnit and if an assertion fails
+	 * this method will make the test fail, propagating the failure. Exceptions
+	 * thrown in the {@link Supplier} will be propagated as an
+	 * {@link AssertionError}.
 	 * 
 	 * @param toExecute
 	 * @return
 	 */
-	protected <T> T syncExec(final RunnableWithResult<T> toExecute) {
+	protected <T> T syncExec(final Supplier<T> toExecute) {
 		var result = new AtomicReference<T>();
-		var failure = new AtomicReference<Throwable>();
+		var failure = new AtomicReference<Exception>();
 		getDisplay().syncExec(() -> {
 			try {
-				result.setPlain(toExecute.run());
-			} catch (Throwable t) {
-				failure.setPlain(t);
+				result.setPlain(toExecute.get());
+			} catch (Exception e) {
+				failure.setPlain(e);
 			}
 		});
-		Throwable throwable = failure.getPlain();
-		if (throwable != null)
-			throw new AssertionError("Failure in SWT display thread", throwable);
+		var exception = failure.getPlain();
+		if (exception != null)
+			throw new AssertionError("Failure in SWT display thread", exception);
 		return result.getPlain();
 	}
 
 	/**
 	 * Executes the passed {@link RunnableWithResult} in a
-	 * {@link Display#syncExec(Runnable)}; In the runnable you can assert with Junit
-	 * and if an assertion fails this method will make the test fail, propagating
-	 * the failure.
+	 * {@link Display#syncExec(Runnable)}.
+	 * 
+	 * In the runnable you can assert with JUnit and if an assertion fails this
+	 * method will make the test fail, propagating the failure. Exceptions thrown in
+	 * the runnable will be propagated as an {@link AssertionError}.
 	 *
 	 * @param toExecute
 	 * @return
 	 */
 	protected void syncExecVoid(final Runnable toExecute) {
-		var failure = new AtomicReference<Throwable>();
+		var failure = new AtomicReference<Exception>();
 		getDisplay().syncExec(() -> {
 			try {
 				toExecute.run();
-			} catch (Throwable t) {
-				failure.setPlain(t);
+			} catch (Exception e) {
+				failure.setPlain(e);
 			}
 		});
-		Throwable throwable = failure.getPlain();
-		if (throwable != null)
-			throw new AssertionError("Failure in SWT display thread", throwable);
+		var exception = failure.getPlain();
+		if (exception != null)
+			throw new AssertionError("Failure in SWT display thread", exception);
 	}
 
 	protected Display getDisplay() {

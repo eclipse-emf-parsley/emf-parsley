@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -31,19 +33,41 @@ public class ShellBasedTest extends AbstractEmfParsleyShellBasedTest {
 		}));
 	}
 
-	@Test(expected = AssertionError.class)
-	public void testSyncExecWithFailureReturnsNull() {
-		syncExec(() -> {
-			fail("intentional failure");
-			return true;
+	@Test
+	public void testSyncExecWithException() {
+		var throwable = assertThrows(AssertionError.class, () -> {
+			syncExec(() -> {
+				fail("intentional failure");
+				return true;
+			});
 		});
+		assertEquals("intentional failure", throwable.getMessage());
+		throwable = assertThrows(AssertionError.class, () -> {
+			syncExec(() -> {
+				throw new NullPointerException("intentional NPE");
+			});
+		});
+		assertTrue(
+				"The cause of the AssertionError should be a NullPointerException: " + throwable.getCause(),
+				throwable.getCause() instanceof NullPointerException);
 	}
 
-	@Test(expected = AssertionError.class)
-	public void testSyncExecVoidWithFailureMakesTheTestFail() {
-		syncExecVoid(() -> {
-			fail("intentional failure");
+	@Test
+	public void testSyncExecVoidWithException() {
+		var throwable = assertThrows(AssertionError.class, () -> {
+			syncExecVoid(() -> {
+				fail("intentional failure");
+			});
 		});
+		assertEquals("intentional failure", throwable.getMessage());
+		throwable = assertThrows(AssertionError.class, () -> {
+			syncExecVoid(() -> {
+				throw new NullPointerException("intentional NPE");
+			});
+		});
+		assertTrue(
+				"The cause of the AssertionError should be a NullPointerException: " + throwable.getCause(),
+				throwable.getCause() instanceof NullPointerException);
 	}
 
 	@Test
