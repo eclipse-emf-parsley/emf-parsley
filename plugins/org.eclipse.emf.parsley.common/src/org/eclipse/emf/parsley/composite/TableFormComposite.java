@@ -62,7 +62,7 @@ public class TableFormComposite extends AbstractMasterDetailComposite {
 	}
 
 	public void buildTable(EClass eType) {
-		viewerFactory.buildColumns(tableViewer, eType);
+		viewerFactory.buildColumns(tableViewer, eType); // NOSONAR: viewerFactory is injected and cannot be null
 	}
 
 }
