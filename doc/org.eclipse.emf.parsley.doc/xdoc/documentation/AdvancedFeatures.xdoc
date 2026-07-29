@@ -47,7 +47,7 @@ code[
 section:Testing[Testing Framework]
 
 We provide some utility classes for testing e[EMF Parsley] components in the feature
-"EMF Parsley Junit4 Support".  By deriving from one of the abstract classes in our
+"EMF Parsley JUnit4 Support".  By deriving from one of the abstract classes in our
 testing bundle, you will be able to write tests that are meant to be run as Junit test,
 that is to say, NOT as Plug-in Junit tests.  Thus, you will not need a running Eclipse product
 to execute such tests: they will be much faster.  Indeed, many parts of Parsley can

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.parsley.junit4.feature"
-      label="EMF Parsley Junit4 Support"
+      label="EMF Parsley JUnit4 Support"
       version="1.18.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.eclipse.org/emfparsley">
-      EMF Parsley Junit4 Support.
+      EMF Parsley JUnit4 Support.
    </description>
 
    <copyright>
