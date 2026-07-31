@@ -23,7 +23,7 @@ public class TestDefaultRealm extends Realm {
 	private Realm previousRealm;
 
 	public TestDefaultRealm() {
-		previousRealm = super.setDefault(this);
+		previousRealm = setDefault(this);
 	}
 
 	/**
