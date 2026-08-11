@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.junit4;
 
-import static org.eclipse.xtext.xbase.lib.IterableExtensions.join;
-import static org.eclipse.xtext.xbase.lib.ListExtensions.map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -153,12 +151,8 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 		assertControlClass(control, Combo.class);
 		final Combo combo = ((Combo) control);
 		syncExecVoid(() -> {
-			String[] items = combo.getItems();
-			@SuppressWarnings("unchecked")
-			String join = join(
-					map(((List<String>) Conversions.doWrapArray(items)),
-							String::toString), ", ");
-			assertEquals(expectedElements, join);
+			String actualElements = String.join(", ", combo.getItems());
+			assertEquals(expectedElements, actualElements);
 			assertEquals(selected, combo.getSelectionIndex());
 		});
 	}
