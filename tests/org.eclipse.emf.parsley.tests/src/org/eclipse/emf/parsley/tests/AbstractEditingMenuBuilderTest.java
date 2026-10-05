@@ -848,12 +848,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 	}
 
 	private ISelection createEmptySelection() {
-		return new ISelection() {
-			@Override
-			public boolean isEmpty() {
-				return true;
-			}
-		};
+		return () -> true;
 	}
 
 	protected void assertMenuItemsGivenObject(EditingMenuBuilder editingMenuBuilder, Object o, CharSequence expectedRepresentation) {

@@ -61,7 +61,7 @@ public abstract class AbstractDetailComposite extends Composite {
 		initControlFactory(editingDomain, original);
 
 		for (final EStructuralFeature feature : features) {
-			createControlForFeature(original.eClass(), feature);
+			createControlForFeature(original.eClass(), feature); // NOSONAR: original that is passed as paramenter cannot be null
 		}
 
 		this.layout();
