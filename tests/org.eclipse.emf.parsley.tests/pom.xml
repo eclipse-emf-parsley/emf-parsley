@@ -22,7 +22,7 @@
 		<systemProperties>-Dnet.bytebuddy.experimental=true</systemProperties>
 
 		<!-- Defaults to 4000 -->
-		<pit-timeout-const>1000</pit-timeout-const>
+		<pit-timeout-const>4000</pit-timeout-const>
 	</properties>
 
 	<dependencies>
