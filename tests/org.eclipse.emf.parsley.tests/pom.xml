@@ -17,8 +17,12 @@
 		<!-- Workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=397015 -->
 		<sonar.sources></sonar.sources>
 		<sonar.tests>src</sonar.tests>
+
 		<!-- To make it work with Java 25 until we update ByeBuddy -->
 		<systemProperties>-Dnet.bytebuddy.experimental=true</systemProperties>
+
+		<!-- Defaults to 4000 -->
+		<pit-timeout-const>1000</pit-timeout-const>
 	</properties>
 
 	<dependencies>
@@ -91,4 +95,82 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>mutation-testing</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.pitest</groupId>
+						<artifactId>pitest-maven</artifactId>
+						<version>${pitest.version}</version>
+						<configuration>
+							<timeoutConstant>${pit-timeout-const}</timeoutConstant>
+							<crossModule>true</crossModule>
+
+							<targetClasses>
+								<param>org.eclipse.emf.parsley.*</param>
+							</targetClasses>
+
+							<excludedClasses>
+								<!-- Explicitly excluded: classes in the top-level package only -->
+								<param>org.eclipse.emf.parsley.EmfParsleyActivator*</param>
+								<param>org.eclipse.emf.parsley.EmfParsleyExtensionFactory*</param>
+								<param>org.eclipse.emf.parsley.EmfParsleyGuiceModule*</param>
+								<param>org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule*</param>
+
+								<!-- Individual classes having 0% line coverage -->
+								<param>org.eclipse.emf.parsley.composite.FormDetailReadOnlyComposite*</param>
+								<param>org.eclipse.emf.parsley.composite.TableFormComposite*</param>
+								<param>org.eclipse.emf.parsley.composite.TableFormFactory*</param>
+								
+								<param>org.eclipse.emf.parsley.edit.EditCommand*</param>
+								<param>org.eclipse.emf.parsley.edit.OnTheFlyEditingStrategy*</param>
+								<param>org.eclipse.emf.parsley.edit.UndoableEditingStrategy*</param>
+								
+								<param>org.eclipse.emf.parsley.edit.action.EditingActionManager*</param>
+								
+								<param>org.eclipse.emf.parsley.listeners.OpenDialogMouseAdapter*</param>
+								<param>org.eclipse.emf.parsley.listeners.OpenFormBasedDialogMouseAdapter*</param>
+								<param>org.eclipse.emf.parsley.listeners.OpenPropertyViewMouseAdapter*</param>
+								
+								<param>org.eclipse.emf.parsley.util.ActionBarsUtils*</param>
+								<param>org.eclipse.emf.parsley.util.EmfParsleyUiUtil*</param>
+								
+								<param>org.eclipse.emf.parsley.validation.DialogErrorReporter*</param>
+								
+								<param>org.eclipse.emf.parsley.viewers.TableViewerEditableColumnBuilder*</param>
+								<param>org.eclipse.emf.parsley.viewers.TableViewerEditingSupportFactory*</param>
+								<param>org.eclipse.emf.parsley.viewers.ViewerSelectionProvider*</param>
+
+								<!-- Explicitly excluded packages -->
+								<param>org.eclipse.emf.parsley.internal.edit.ui.dnd.*</param>
+								<param>org.eclipse.emf.parsley.runtime.*</param>
+
+								<!-- Packages having 0% line coverage -->
+								<param>org.eclipse.emf.parsley.dialogs.*</param>
+								<param>org.eclipse.emf.parsley.edit.actionbar.*</param>
+								<param>org.eclipse.emf.parsley.edit.ui.dnd.*</param>
+								<param>org.eclipse.emf.parsley.handlers.*</param>
+								<param>org.eclipse.emf.parsley.menus.*</param>
+
+								<!-- org.eclipse.emf.parsley.ui itself, but NOT
+								ui.provider -->
+								<param>org.eclipse.emf.parsley.ui.EmfParsleyAbstractActivator*</param>
+
+								<param>org.eclipse.emf.parsley.tests.*</param>
+								<param>org.eclipse.emf.parsley.examples.*</param>
+								<param>org.eclipse.emf.parsley.junit4.*</param>
+							</excludedClasses>
+
+							<targetTests>
+								<param>org.eclipse.emf.parsley.tests.*</param>
+							</targetTests>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
