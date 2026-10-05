@@ -204,9 +204,9 @@
 		<sonar.issue.ignore.multicriteria.e7.ruleKey>squid:S1217</sonar.issue.ignore.multicriteria.e7.ruleKey>
 		<sonar.issue.ignore.multicriteria.e7.resourceKey>**/junit4/**/*.java</sonar.issue.ignore.multicriteria.e7.resourceKey>
 
-		<!-- Avoid deprecated checkstyle rule -->
-		<sonar.issue.ignore.multicriteria.e8.ruleKey>checkstyle:com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck</sonar.issue.ignore.multicriteria.e8.ruleKey>
-		<sonar.issue.ignore.multicriteria.e8.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e8.resourceKey>
+		<!-- False positives for NPE with Guice injected elements -->
+		<sonar.issue.ignore.multicriteria.e8.ruleKey>javabugs:S2259</sonar.issue.ignore.multicriteria.e8.ruleKey>
+		<sonar.issue.ignore.multicriteria.e8.resourceKey>**/composite/*.java</sonar.issue.ignore.multicriteria.e8.resourceKey>
 
 		<!-- Avoid deprecated PMD rule -->
 		<sonar.issue.ignore.multicriteria.e9.ruleKey>pmd:AvoidDuplicateLiterals</sonar.issue.ignore.multicriteria.e9.ruleKey>
