@@ -17,6 +17,8 @@
 		<!-- Workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=397015 -->
 		<sonar.sources></sonar.sources>
 		<sonar.tests>src</sonar.tests>
+		<!-- To make it work with Java 25 until we update ByeBuddy -->
+		<systemProperties>-Dnet.bytebuddy.experimental=true</systemProperties>
 	</properties>
 
 	<dependencies>
