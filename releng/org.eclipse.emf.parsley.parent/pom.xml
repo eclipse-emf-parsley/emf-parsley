@@ -68,6 +68,7 @@
 		<exec-maven-plugin.version>3.6.4</exec-maven-plugin.version>
 		<junit-version>4.13.2</junit-version>
 		<jacoco-version>0.8.15</jacoco-version>
+		<pitest.version>1.30.0</pitest.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
