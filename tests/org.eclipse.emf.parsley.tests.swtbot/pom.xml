@@ -135,6 +135,7 @@
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*DslEditorTest*.java</include>
 								<include>**/org/eclipse/emf/parsley/tests/swtbot/*WizardsTest*.java</include>
 							</includes>
+							<skip>${swtbot.pde.tests.skip}</skip>
 						</configuration>
 						<goals>
 							<goal>test</goal>
