@@ -285,7 +285,7 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 			@Override
 			protected List<SWTBotTable> findMatches() {
 				try {
-					text.pressShortcut(SWT.CTRL, 0, ' ');
+					pressContentAssistShortcut(text);
 					SWTBotTable autoCompleteTable = getProposalTable(text);
 					if (matcher.matches(autoCompleteTable)) {
 						log.debug("matched table, returning");
@@ -303,6 +303,23 @@ public class EmfParsleyFormTests extends EmfParsleySWTBotAbstractTests {
 			}
 			
 		};
+	}
+
+	private void pressContentAssistShortcut(final SWTBotText text) {
+		// SWTBot's pressShortcut uses AWT Robot, so macOS can intercept Ctrl+Space
+		// as its global input-source shortcut before the SWT control receives it.
+		// Send the equivalent SWT.KeyDown event directly to the text widget.
+		// This still exercises the real ContentProposalAdapter, popup, proposals,
+		// and selection behavior, without involving global OS shortcuts.
+		UIThreadRunnable.syncExec(() -> {
+			Event event = new Event();
+			event.widget = text.widget;
+			event.stateMask = SWT.CTRL;
+			event.keyCode = ' ';
+			event.character = ' ';
+			event.doit = true;
+			text.widget.notifyListeners(SWT.KeyDown, event);
+		});
 	}
 
 	private SWTBotTable getProposalTable(SWTBotText text) {
