@@ -13,4 +13,12 @@
 	<artifactId>org.eclipse.emf.parsley.cdo.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.cdo</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 </project>

@@ -20,6 +20,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.examples.editors</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>org.eclipse.emf.parsley</artifactId>
 			<version>${project.version}</version>
 		</dependency>

@@ -15,6 +15,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.junit4.feature</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.emf.parsley</groupId>
 			<artifactId>org.eclipse.emf.parsley.dsl.feature</artifactId>
 			<version>${project.version}</version>
