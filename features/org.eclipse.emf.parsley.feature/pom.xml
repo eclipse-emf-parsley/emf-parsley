@@ -13,4 +13,11 @@
 	<artifactId>org.eclipse.emf.parsley.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.doc</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

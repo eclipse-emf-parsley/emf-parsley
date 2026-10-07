@@ -13,4 +13,16 @@
 	<artifactId>org.eclipse.emf.parsley.doc</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.editors</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.junit4</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

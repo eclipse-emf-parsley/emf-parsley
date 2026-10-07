@@ -225,11 +225,16 @@
 		<sonar.issue.ignore.multicriteria.e12.ruleKey>pmd:CompareObjectsWithEquals</sonar.issue.ignore.multicriteria.e12.ruleKey>
 		<sonar.issue.ignore.multicriteria.e12.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e12.resourceKey>
 
+		<!-- Don't run the MWE2 generator -->
 		<mwe2.skip>false</mwe2.skip>
+		<!-- Skip xtext-maven-plugin:
+		use -Dxtext.generator.skip=true
+		-->
 
 		<dsl.tests.skip>false</dsl.tests.skip>
 		<simple.tests.skip>false</simple.tests.skip>
 		<swtbot.tests.skip>false</swtbot.tests.skip>
+		<swtbot.pde.tests.skip>false</swtbot.pde.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
 		<target-file-name>simrel</target-file-name>
