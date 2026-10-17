@@ -35,7 +35,7 @@ public class UiThreadTest {
 
 		// A background thread cannot call label.setText() directly.
 		// syncExec blocks it until the display's thread runs the callback.
-		Thread worker = Thread.ofPlatform().daemon().start(() -> {
+		Thread worker = new Thread(() -> {
 			try {
 				display.syncExec(() -> {
 					callbackThread.set(Thread.currentThread());
@@ -47,6 +47,8 @@ public class UiThreadTest {
 				finished.countDown();
 			}
 		});
+		worker.setDaemon(true);
+		worker.start();
 
 		// In a plain-JUnit SWT test, this thread owns the Display and must
 		// dispatch its queued events; merely calling worker.join() deadlocks.
