@@ -272,6 +272,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.testing.maven</module>
+				<module>../../plugins/org.eclipse.emf.parsley.junit4.parsley</module>
 
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests</module>
@@ -305,9 +306,9 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui.tests</module>
 
-
 				<module>../../features/org.eclipse.emf.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.junit4.feature</module>
+				<module>../../features/org.eclipse.emf.parsley.junit4.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
@@ -483,6 +484,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.testing.maven</module>
+				<module>../../plugins/org.eclipse.emf.parsley.junit4.parsley</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.views</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>

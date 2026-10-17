@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015, 2026 Lorenzo Bettini and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,7 @@ import org.junit.After;
 import org.junit.Before;
 
 /**
- * Base class for Junit tests concerning {@link Control}, in particular using an
- * {@link AbstractControlFactory}.
+ * Base class for Junit tests concerning {@link Control}s.
  *
  * @author Lorenzo Bettini - Initial contribution and API
  *
