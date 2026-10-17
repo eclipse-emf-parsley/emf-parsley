@@ -271,6 +271,7 @@
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.testing.maven</module>
 
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests</module>
