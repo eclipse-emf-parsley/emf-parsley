@@ -3,7 +3,6 @@ package org.eclipse.emf.parsley.examples.testing.maven;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -59,7 +58,7 @@ public class UiThreadTest {
 			}
 		}
 
-		assertTrue("The queued syncExec callback did not complete", finished.getCount() == 0);
+		assertEquals(0, finished.getCount());
 		worker.join(1000);
 		assertNull("Background thread failed: " + failure.get(), failure.get());
 		assertSame(uiThread, callbackThread.get());
