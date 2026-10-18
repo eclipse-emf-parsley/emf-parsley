@@ -25,7 +25,7 @@
 		<plugins>
 			<!--
 				Don't run maven-clean-plugin, otherwise Tycho will complain
-				when computing reproducible qualifier'
+				when computing reproducible qualifier
 			-->
 			<plugin>
 				<groupId>org.eclipse.xtext</groupId>
