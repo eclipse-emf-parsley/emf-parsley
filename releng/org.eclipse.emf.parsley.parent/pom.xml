@@ -303,6 +303,8 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ide</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.additional.builder</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
+				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui.tests</module>
