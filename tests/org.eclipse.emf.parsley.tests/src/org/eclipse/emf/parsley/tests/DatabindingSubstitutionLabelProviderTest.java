@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.parsley.internal.databinding.DatabindingSubstitutionLabelProvider;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.ui.provider.FeatureLabelCaptionProvider;
@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public class DatabindingSubstitutionLabelProviderTest extends AbstractEmfParsleyTest {
+public class DatabindingSubstitutionLabelProviderTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

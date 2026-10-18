@@ -4,8 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule;
 import org.eclipse.emf.parsley.resource.ResourceSaveStrategy;
 import org.eclipse.emf.parsley.resource.ValidateBeforeSaveStrategy;
@@ -14,13 +16,11 @@ import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule
 import org.eclipse.emf.parsley.tests.util.LogIssueReporterForTests;
 import org.eclipse.emf.parsley.validation.IssueReporter;
 import org.eclipse.emf.parsley.validation.LogIssueReporter;
-import java.io.IOException;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class ResourceSaveStrategyTest extends AbstractEmfParsleyTest {
+public class ResourceSaveStrategyTest extends AbstractEmfParsleyApplicationTest {
 	
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

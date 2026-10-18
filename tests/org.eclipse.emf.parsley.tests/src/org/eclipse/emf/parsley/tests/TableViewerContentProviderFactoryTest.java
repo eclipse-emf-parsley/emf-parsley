@@ -19,7 +19,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProvider;
 import org.eclipse.emf.parsley.edit.ui.provider.TableViewerContentProviderFactory;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -29,7 +29,7 @@ import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public class TableViewerContentProviderFactoryTest extends AbstractEmfParsleyShellBasedTest {
+public class TableViewerContentProviderFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

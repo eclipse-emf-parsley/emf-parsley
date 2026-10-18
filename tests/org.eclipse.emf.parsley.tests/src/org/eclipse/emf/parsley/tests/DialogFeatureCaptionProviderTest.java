@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.ui.provider.DialogFeatureCaptionProvider;
 import org.eclipse.emf.parsley.ui.provider.FeatureCaptionProvider;
@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Label;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyShellBasedTest {
+public class DialogFeatureCaptionProviderTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
 

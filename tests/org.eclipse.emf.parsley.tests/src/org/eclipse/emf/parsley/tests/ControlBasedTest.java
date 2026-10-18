@@ -16,6 +16,7 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 import org.eclipse.core.databinding.observable.Realm;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule;
 import org.eclipse.swt.SWT;
@@ -28,7 +29,7 @@ import org.junit.Test;
  * 
  * @author Lorenzo Bettini
  */
-public class ControlBasedTest extends AbstractEmfParsleyControlBasedTest {
+public class ControlBasedTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public final LogAppenderTestRule logAppender = new LogAppenderTestRule(AbstractEmfParsleyControlBasedTest.class);

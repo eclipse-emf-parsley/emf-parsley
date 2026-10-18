@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.util.EmfEventHelper;
 import org.eclipse.swt.SWT;
@@ -32,7 +32,7 @@ import org.junit.Test;
 /**
  * @author Lorenzo Bettini
  */
-public class EmfEventHelperTest extends AbstractEmfParsleyShellBasedTest {
+public class EmfEventHelperTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
 

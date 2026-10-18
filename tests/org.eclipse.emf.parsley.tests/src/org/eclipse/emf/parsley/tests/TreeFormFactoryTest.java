@@ -1,17 +1,18 @@
 package org.eclipse.emf.parsley.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.parsley.composite.TreeFormFactory;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.junit.Test;
 
-public class TreeFormFactoryTest extends AbstractEmfParsleyShellBasedTest {
+public class TreeFormFactoryTest extends AbstractEmfParsleyApplicationTest {
 	
 	@Test
 	public void testDefaultSashProperties() {

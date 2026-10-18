@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.composite.FormDetailComposite;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.swt.SWT;
@@ -30,7 +30,7 @@ import com.google.inject.Injector;
 /**
  * @author Lorenzo Bettini
  */
-public class FormDetailCompositeTest extends AbstractEmfParsleyControlBasedTest {
+public class FormDetailCompositeTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
