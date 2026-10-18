@@ -108,10 +108,4 @@ jobs:
         xvfb-run
         ./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml
         -Pmaven
-        clean install
-    - name: Build Maven example
-      run: >
-        xvfb-run
-        ./mvnw -f examples/org.eclipse.emf.parsley.examples.maven
-        -Pmaven
         clean verify
