@@ -20,6 +20,15 @@
 	</properties>
 
 	<dependencies>
+		<!-- IMPORTANT: to avoid version ranges in EMF Maven artifacts,
+			always place additional dependencies before the Parsley JUnit 4 one -->
+		<!-- For the standalone EMF/SWT two-way binding example. -->
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.databinding</artifactId>
+			<version>1.10.0</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf.parsley</groupId>
 			<artifactId>org.eclipse.emf.parsley.junit4</artifactId>
