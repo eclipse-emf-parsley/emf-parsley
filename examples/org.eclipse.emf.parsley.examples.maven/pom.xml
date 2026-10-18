@@ -2,69 +2,36 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eclipse.emf.parsley</groupId>
+
+	<parent>
+		<relativePath>../../releng/org.eclipse.emf.parsley.parent/pom.xml</relativePath>
+		<groupId>org.eclipse.emf.parsley</groupId>
+		<artifactId>org.eclipse.emf.parsley.parent</artifactId>
+		<version>1.18.0-SNAPSHOT</version>
+	</parent>
+
 	<artifactId>org.eclipse.emf.parsley.examples.maven</artifactId>
-	<version>1.18.0-SNAPSHOT</version>
 
 	<packaging>eclipse-test-plugin</packaging>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>4.0.13</tycho-version>
-		<xtext-version>2.35.0</xtext-version>
-		<eclipse-version>2024-06</eclipse-version>
-
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-	</properties>
-
-	<repositories>
-		<repository>
-			<!-- we also need this one because this is an eclipse project, so it
-			needs 
-				to resolve EMF Parsley runtime dependencies from the p2 repository -->
-			<id>EMF Parsley</id>
-			<layout>p2</layout>
-			<url>https://download.eclipse.org/emf-parsley/updates</url>
-		</repository>
-		<repository>
-			<id>Eclipse Update Site</id>
-			<layout>p2</layout>
-			<url>https://download.eclipse.org/releases/${eclipse-version}</url>
-		</repository>
-		<repository>
-			<id>Xtext Update Site</id>
-			<layout>p2</layout>
-			<!--
-			<url>https://download.eclipse.org/modeling/tmf/xtext/updates/milestones/2.35.0.M2/</url> -->
-			<url>
-				https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext-version}</url>
-		</repository>
-	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.junit4.parsley</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.views</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<!-- Tycho now requires that, or it will use
-						the current Java level and it won't be resolve
-						bundles that require a higher version of Java -->
-					<executionEnvironment>JavaSE-17</executionEnvironment>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.5</version>
 				<configuration>
 					<filesets>
 						<fileset>
@@ -82,7 +49,6 @@
 			<plugin>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>xtext-maven-plugin</artifactId>
-				<version>${xtext-version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -114,7 +80,6 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<goals>
