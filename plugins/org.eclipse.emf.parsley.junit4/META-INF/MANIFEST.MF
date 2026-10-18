@@ -17,5 +17,7 @@ Import-Package: org.hamcrest.core,
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0"
 Require-Bundle: org.eclipse.jface.databinding;visibility:=reexport,
+ org.eclipse.jface;visibility:=reexport,
+ org.eclipse.core.databinding.observable;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport
 Automatic-Module-Name: org.eclipse.emf.parsley.junit4
