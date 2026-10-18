@@ -54,8 +54,6 @@ to execute such tests: they will be much faster.  Indeed, many parts of Parsley 
 be tested even without a running Eclipse.
 
 ul[
-	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest]: this provides
-	a few utility methods, e.g., for creating an codeRef[com.google.inject.Injector].]
 	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest]: this allows
 	to run Junit tests that require a codeRef[org.eclipse.swt.widgets.Display] and a
 	codeRef[org.eclipse.swt.widgets.Shell].]
@@ -63,6 +61,9 @@ ul[
 	of the previous class for tests that also require databinding capabilities, e.g.,
 	tests for codeRef[org.eclipse.swt.widgets.Control] elements; this provides many assert
 	methods for several kinds of controls, such as e[assertCheckbox], e[assertCombo], etc.]
+	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest]: this adds
+	a few utility methods, e.g., for creating an codeRef[com.google.inject.Injector] and
+	other specific Parsley factory to test EMF Parsley based applications.]
 ]
 
 We use these classes for testing most of our classes; you might want to have a look
