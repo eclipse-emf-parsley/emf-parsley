@@ -65,12 +65,11 @@ This is a typical configuration (a complete example can be found here:
 <a name="Testing"></a>
 <h2>Testing Framework</h2>
 <p>
-We provide some utility classes for testing <em>EMF Parsley</em> components in the feature
-"EMF Parsley JUnit4 Support".  By deriving from one of the abstract classes in our
+We provide some utility classes for testing EMF-based SWT/JFace components in the feature
+"EMF Parsley JUnit4 Support".  By deriving from one of the abstract classes in this
 testing bundle, you will be able to write tests that are meant to be run as Junit test,
 that is to say, NOT as Plug-in Junit tests.  Thus, you will not need a running Eclipse product
-to execute such tests: they will be much faster.  Indeed, many parts of Parsley can
-be tested even without a running Eclipse.
+to execute such tests: they will be much faster.
 </p>
 <p>
 <ul>
@@ -85,6 +84,21 @@ be tested even without a running Eclipse.
 			tests for <a class="jdoc" href="http://help.eclipse.org/helios/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/swt/widgets/Control.html" title="View JavaDoc"><abbr title="org.eclipse.swt.widgets.Control" >Control</abbr></a> elements; this provides many assert
 			methods for several kinds of controls, such as <em>assertCheckbox</em>, <em>assertCombo</em>, etc.
 	</li>
+</ul>
+</p>
+<p>
+These testing harness is general and it can be used for testing any EMF-based SWT/JFace,
+not necessarily an EMF Parsley application.
+</p>
+<p>
+We provide some utility classes for testing <em>EMF Parsley</em> components in the feature
+"EMF Parsley JUnit4 Application Testing Support".  By deriving from the abstract classes in this
+testing bundle, you will be able to write tests that are meant to be run as Junit test,
+that is to say, NOT as Plug-in Junit tests, as above, bu these are meant for testing Parsley-based
+applications:
+</p>
+<p>
+<ul>
 	<li>
 		<a class="jdoc" href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.10.0/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyApplicationTest.html" title="View JavaDoc"><abbr title="org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest" >AbstractEmfParsleyApplicationTest</abbr></a> <a class="srcLink" href="https://github.com/eclipse/emf/blob/R2_9_0/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/parsley/junit4/AbstractEmfParsleyApplicationTest.java" title="View Source Code" >(src)</a>: this adds
 			a few utility methods, e.g., for creating an <a class="jdoc" href="https://google.github.io/guice/api-docs/latest/javadoc/com/google/inject/Injector.html" title="View JavaDoc"><abbr title="com.google.inject.Injector" >Injector</abbr></a> and
@@ -93,7 +107,7 @@ be tested even without a running Eclipse.
 </ul>
 </p>
 <p>
-We use these classes for testing most of our classes; you might want to have a look
+We use this class for testing most of our classes; you might want to have a look
 at the project <em>org.eclipse.emf.parsley.tests</em> for some usage examples.
 </p>
 <a name="Eclipse4"></a>

@@ -46,12 +46,11 @@ code[
 
 section:Testing[Testing Framework]
 
-We provide some utility classes for testing e[EMF Parsley] components in the feature
-"EMF Parsley JUnit4 Support".  By deriving from one of the abstract classes in our
+We provide some utility classes for testing EMF-based SWT/JFace components in the feature
+"EMF Parsley JUnit4 Support".  By deriving from one of the abstract classes in this
 testing bundle, you will be able to write tests that are meant to be run as Junit test,
 that is to say, NOT as Plug-in Junit tests.  Thus, you will not need a running Eclipse product
-to execute such tests: they will be much faster.  Indeed, many parts of Parsley can
-be tested even without a running Eclipse.
+to execute such tests: they will be much faster.
 
 ul[
 	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest]: this allows
@@ -61,12 +60,24 @@ ul[
 	of the previous class for tests that also require databinding capabilities, e.g.,
 	tests for codeRef[org.eclipse.swt.widgets.Control] elements; this provides many assert
 	methods for several kinds of controls, such as e[assertCheckbox], e[assertCombo], etc.]
+]
+
+These testing harness is general and it can be used for testing any EMF-based SWT/JFace,
+not necessarily an EMF Parsley application.
+
+We provide some utility classes for testing e[EMF Parsley] components in the feature
+"EMF Parsley JUnit4 Application Testing Support".  By deriving from the abstract classes in this
+testing bundle, you will be able to write tests that are meant to be run as Junit test,
+that is to say, NOT as Plug-in Junit tests, as above, bu these are meant for testing Parsley-based
+applications:
+
+ul[
 	item[codeRef[org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest]: this adds
 	a few utility methods, e.g., for creating an codeRef[com.google.inject.Injector] and
 	other specific Parsley factory to test EMF Parsley based applications.]
 ]
 
-We use these classes for testing most of our classes; you might want to have a look
+We use this class for testing most of our classes; you might want to have a look
 at the project e[org.eclipse.emf.parsley.tests] for some usage examples.
 
 section:Eclipse4[Eclipse 4.x]
