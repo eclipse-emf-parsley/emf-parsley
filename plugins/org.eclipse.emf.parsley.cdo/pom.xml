@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.cdo</artifactId>
+	<name>EMF Parsley CDO</name>
 	<packaging>eclipse-plugin</packaging>
 
 	<dependencies>

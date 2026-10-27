@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.generator.common</artifactId>
+	<name>EMF Parsley Generator Common Utilities</name>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>

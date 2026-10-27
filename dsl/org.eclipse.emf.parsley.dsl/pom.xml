@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>org.eclipse.emf.parsley.dsl</artifactId>
+	<name>EMF Parsley DSL</name>
 	<packaging>eclipse-plugin</packaging>
 
 	<dependencies>
