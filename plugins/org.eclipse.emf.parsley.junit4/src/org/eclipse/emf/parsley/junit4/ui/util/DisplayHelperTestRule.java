@@ -31,9 +31,6 @@ public class DisplayHelperTestRule implements TestRule {
 
 	private Shell shell;
 
-	public DisplayHelperTestRule() {
-	}
-
 	public Display getDisplay() {
 		if (display == null) {
 			displayOwner = Display.getCurrent() == null;
@@ -62,6 +59,7 @@ public class DisplayHelperTestRule implements TestRule {
 		while (display != null
 				&& !display.isDisposed()
 				&& display.readAndDispatch()) {
+			// do nothing, just flush the events
 		}
 	}
 
@@ -86,8 +84,9 @@ public class DisplayHelperTestRule implements TestRule {
 	}
 
 	private void disposeShell() {
-		if (shell != null) {
+		if (shell != null && !shell.isDisposed()) {
 			shell.dispose();
+			shell = null;
 		}
 	}
 

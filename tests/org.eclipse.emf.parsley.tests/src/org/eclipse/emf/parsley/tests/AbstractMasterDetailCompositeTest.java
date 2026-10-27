@@ -29,7 +29,7 @@ import org.eclipse.emf.parsley.composite.AbstractMasterDetailComposite;
 import org.eclipse.emf.parsley.composite.IDetailComposite;
 import org.eclipse.emf.parsley.composite.IMasterComposite;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -38,7 +38,7 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.widgets.Composite;
 import org.junit.Test;
 
-public class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyShellBasedTest {
+public class AbstractMasterDetailCompositeTest extends AbstractEmfParsleyApplicationTest {
 
 	public static class MasterDetailComposite extends AbstractMasterDetailComposite {
 		public IMasterComposite mockMasterComposite = mock(IMasterComposite.class);

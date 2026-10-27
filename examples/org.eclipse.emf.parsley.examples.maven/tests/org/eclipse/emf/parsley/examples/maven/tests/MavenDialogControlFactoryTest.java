@@ -7,14 +7,14 @@ import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule;
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.DialogControlFactory;
 import org.eclipse.emf.parsley.examples.maven.binding.MavenDialogControlFactory;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.swt.widgets.Control;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public class MavenDialogControlFactoryTest extends AbstractEmfParsleyControlBasedTest {
+public class MavenDialogControlFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	@Inject
 	private AdapterFactoryEditingDomain editingDomain;

@@ -17,7 +17,7 @@ import static org.junit.Assert.assertSame;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.edit.domain.EditingDomainFinderStrategy;
 import org.eclipse.emf.parsley.edit.domain.EditingDomainPresetStrategy;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.junit.Before;
 import org.junit.Rule;
@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import com.google.inject.Injector;
 
-public class EditingDomainStrategyTest extends AbstractEmfParsleyTest {
+public class EditingDomainStrategyTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
 

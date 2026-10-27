@@ -13,46 +13,47 @@ package org.eclipse.emf.parsley.junit4.util;
 import org.eclipse.core.databinding.observable.Realm;
 
 /**
- * Simple realm implementation that will set itself as default when constructed, this
- * will be used for unit testing. Invoke
- * {@link #dispose()} to remove the realm from being the default. Does not support asyncExec(...).
+ * Simple realm implementation that will set itself as default when constructed,
+ * this will be used for unit testing. Invoke {@link #dispose()} to remove the
+ * realm from being the default. Does not support asyncExec(...).
  *
  * @author Lorenzo Bettini - Initial contribution and API
  */
 public class TestDefaultRealm extends Realm {
-    private Realm previousRealm;
+	private Realm previousRealm;
 
-    public TestDefaultRealm() {
-        previousRealm = super.setDefault(this);
-    }
+	public TestDefaultRealm() {
+		previousRealm = setDefault(this);
+	}
 
-    /**
-     * @return always returns true
-     */
-    @Override
+	/**
+	 * @return always returns true
+	 */
+	@Override
 	public boolean isCurrent() {
-        return true;
-    }
+		return true;
+	}
 
-    @Override
+	@Override
 	protected void syncExec(Runnable runnable) {
-        runnable.run();
-    }
+		runnable.run();
+	}
 
-    /**
-     * @throws UnsupportedOperationException
-     */
-    @Override
+	/**
+	 * @throws UnsupportedOperationException
+	 */
+	@Override
 	public void asyncExec(Runnable runnable) {
-        throw new UnsupportedOperationException("asyncExec is unsupported");
-    }
+		throw new UnsupportedOperationException("asyncExec is unsupported");
+	}
 
-    /**
-     * Removes the realm from being the current and sets the previous realm to the default.
-     */
-    public void dispose() {
-        if (getDefault() == this) {
-            setDefault(previousRealm);
-        }
-    }
+	/**
+	 * Removes the realm from being the current and sets the previous realm to the
+	 * default.
+	 */
+	public void dispose() {
+		if (getDefault() == this) {
+			setDefault(previousRealm);
+		}
+	}
 }

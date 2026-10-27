@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameter;
 import org.eclipse.emf.parsley.inject.parameters.EObjectParameter;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.junit.Rule;
 
-public abstract class AbstractControlFactoryTest extends AbstractEmfParsleyControlBasedTest {
+public abstract class AbstractControlFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

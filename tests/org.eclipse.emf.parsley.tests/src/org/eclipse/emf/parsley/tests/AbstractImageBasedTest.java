@@ -11,14 +11,14 @@
 package org.eclipse.emf.parsley.tests;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.runtime.ui.IImageHelper;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.junit.Rule;
 
-public abstract class AbstractImageBasedTest extends AbstractEmfParsleyShellBasedTest {
+public abstract class AbstractImageBasedTest extends AbstractEmfParsleyApplicationTest {
 
 	public static final String TEST_IMAGE = "test_image.png";
 

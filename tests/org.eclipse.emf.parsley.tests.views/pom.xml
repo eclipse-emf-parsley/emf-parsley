@@ -13,11 +13,19 @@
 	<artifactId>org.eclipse.emf.parsley.tests.views</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.tests.models</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<!--
 				Don't run maven-clean-plugin, otherwise Tycho will complain
-				when computing reproducible qualifier'
+				when computing reproducible qualifier
 			-->
 			<plugin>
 				<groupId>org.eclipse.xtext</groupId>

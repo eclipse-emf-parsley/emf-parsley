@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.parsley.dialogs.DialogFactory;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,7 +23,7 @@ import org.junit.Test;
 /**
  * Make sure we can instantiate all our composites via dependency injection.
  */
-public class DialogFactoryTest extends AbstractEmfParsleyShellBasedTest {
+public class DialogFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

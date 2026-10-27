@@ -15,7 +15,7 @@ import static org.junit.Assert.assertSame;
 
 import org.eclipse.emf.parsley.composite.CompositeFactory;
 import org.eclipse.emf.parsley.composite.TreeFormComposite;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.swt.SWT;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import org.junit.Test;
 /**
  * Make sure we can instantiate all our composites via dependency injection.
  */
-public class TreeFormCompositeTest extends AbstractEmfParsleyShellBasedTest {
+public class TreeFormCompositeTest extends AbstractEmfParsleyApplicationTest {
 
 	private TreeFormComposite treeFormComposite;
 

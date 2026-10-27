@@ -24,17 +24,17 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.action.CommandActionHandler;
 import org.eclipse.emf.edit.ui.action.ControlAction;
-import org.eclipse.emf.parsley.edit.action.EditingDomainValidateAction;
-import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
+import org.eclipse.emf.parsley.edit.action.EditingDomainValidateAction;
+import org.eclipse.emf.parsley.edit.action.EditingMenuBuilder;
 import org.eclipse.emf.parsley.edit.action.IMenuContributionSpecification;
 import org.eclipse.emf.parsley.edit.domain.EditingDomainPresetStrategy;
 import org.eclipse.emf.parsley.examples.library.Book;
 import org.eclipse.emf.parsley.examples.library.Library;
 import org.eclipse.emf.parsley.examples.library.Writer;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.util.EmfCommandsUtil;
 import org.eclipse.emf.parsley.util.EmfParsleyUtil;
@@ -51,7 +51,7 @@ import org.junit.Test;
 
 import com.google.inject.Injector;
 
-public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyTest {
+public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
@@ -799,6 +799,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 		assertNotNull(builder.createValidateAction());
 	}
 
+	@Override
 	protected EditingDomain getEditingDomain() {
 		if (editingDomain == null) {
 			editingDomain = getOrCreateInjector().getProvider(EditingDomain.class).get();
@@ -848,12 +849,7 @@ public abstract class AbstractEditingMenuBuilderTest extends AbstractEmfParsleyT
 	}
 
 	private ISelection createEmptySelection() {
-		return new ISelection() {
-			@Override
-			public boolean isEmpty() {
-				return true;
-			}
-		};
+		return () -> true;
 	}
 
 	protected void assertMenuItemsGivenObject(EditingMenuBuilder editingMenuBuilder, Object o, CharSequence expectedRepresentation) {

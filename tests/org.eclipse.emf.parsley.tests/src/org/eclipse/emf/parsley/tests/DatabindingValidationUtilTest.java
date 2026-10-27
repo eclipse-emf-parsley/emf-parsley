@@ -17,7 +17,7 @@ import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.parsley.internal.databinding.DatabindingValidationUtil;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.TestContainer;
@@ -29,7 +29,7 @@ import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public class DatabindingValidationUtilTest extends AbstractEmfParsleyTest {
+public class DatabindingValidationUtilTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

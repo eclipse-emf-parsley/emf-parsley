@@ -177,7 +177,8 @@
       name="Eclipse IDE Plugins">
     <setupTask
         xsi:type="setup.p2:P2Task"
-        label="Eclipse SDK">
+        label="Eclipse SDK"
+        profileProperties="org.eclipse.update.install.sources=false">
       <requirement
           name="org.eclipse.pde.api.tools.ee.feature.feature.group"
           optional="true"/>

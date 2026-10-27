@@ -105,8 +105,9 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 		String projectName = getFixedProjectName();
 
 		String srcFolder = "src";
-		String projectPackagePath = String.format("%s/%s",
-				srcFolder, projectName.replace('.', '/'));
+		String projectPackagePath = srcFolder +
+				"/" + // NOSONAR: "/" is perfectly handled by Eclipse
+				projectName.replace('.', '/');
 
 		SubMonitor subMonitor = SubMonitor.convert(monitor,
 				"Creating project " + projectName,
@@ -138,9 +139,10 @@ public class EmfParsleyDslProjectCreatorCustom extends EmfParsleyDslProjectCreat
 
 		NewEmfParsleyProjectSupport.createProjectFile(project,
 				settingsPath + "/org.eclipse.core.resources.prefs",
-				"eclipse.preferences.version=1\n"
-				+ "encoding/<project>=UTF-8\n"
-				+ "", subMonitor.newChild(1));
+				"""
+					eclipse.preferences.version=1
+					encoding/<project>=UTF-8
+					""", subMonitor.newChild(1));
 
 		project.refreshLocal(IResource.DEPTH_INFINITE, subMonitor.newChild(1));
 		subMonitor.done();

@@ -23,10 +23,10 @@ import com.google.inject.Singleton;
 import org.eclipse.emf.parsley.inject.AfterInject;
 import org.eclipse.emf.parsley.inject.EmfParsleyLifecycle;
 import org.eclipse.emf.parsley.internal.inject.AfterInjectTypeListener;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.junit.Test;
 
-public class AfterInjectTypeListenerTest extends AbstractEmfParsleyShellBasedTest {
+public class AfterInjectTypeListenerTest extends AbstractEmfParsleyApplicationTest {
 
 	private static class Foo {
 	}

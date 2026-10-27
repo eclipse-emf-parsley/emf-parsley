@@ -27,13 +27,13 @@ import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule;
 import org.eclipse.emf.parsley.inject.parameters.FactoryParameter;
 import org.eclipse.emf.parsley.inject.parameters.InjectableParameter;
 import org.eclipse.emf.parsley.internal.inject.GenericFactory;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GenericFactoryTest extends AbstractEmfParsleyShellBasedTest {
+public class GenericFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	@FactoryParameter
 	private static class MyInjectableParameter implements InjectableParameter {

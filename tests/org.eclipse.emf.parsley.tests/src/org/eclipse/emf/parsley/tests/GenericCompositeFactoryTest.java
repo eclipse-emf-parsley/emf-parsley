@@ -21,14 +21,14 @@ import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule;
 import org.eclipse.emf.parsley.inject.GenericCompositeFactory;
 import org.eclipse.emf.parsley.inject.InjectableComposite;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.SWT;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GenericCompositeFactoryTest extends AbstractEmfParsleyShellBasedTest {
+public class GenericCompositeFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	private GenericCompositeFactory factory;
 

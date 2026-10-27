@@ -56,11 +56,19 @@
 	<properties>
 		<tycho-version>4.0.13</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
+		<!-- Don't update yet to 3.6.0 because of this:
+		https://github.com/apache/maven-surefire/issues/3460
+		which breaks Mockito tests when executed with
+		-pl :org.eclipse.emf.parsley.tests
+		Fixed by https://github.com/apache/maven-surefire/pull/3464
+		But 3.6.1 has not yet been released
+		-->
 		<maven-surefire-plugin.version>3.5.6</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>3.2.0</maven-antrun-plugin.version>
-		<exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
+		<exec-maven-plugin.version>3.6.4</exec-maven-plugin.version>
 		<junit-version>4.13.2</junit-version>
 		<jacoco-version>0.8.15</jacoco-version>
+		<pitest.version>1.30.0</pitest.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
@@ -198,9 +206,9 @@
 		<sonar.issue.ignore.multicriteria.e7.ruleKey>squid:S1217</sonar.issue.ignore.multicriteria.e7.ruleKey>
 		<sonar.issue.ignore.multicriteria.e7.resourceKey>**/junit4/**/*.java</sonar.issue.ignore.multicriteria.e7.resourceKey>
 
-		<!-- Avoid deprecated checkstyle rule -->
-		<sonar.issue.ignore.multicriteria.e8.ruleKey>checkstyle:com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck</sonar.issue.ignore.multicriteria.e8.ruleKey>
-		<sonar.issue.ignore.multicriteria.e8.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e8.resourceKey>
+		<!-- False positives for NPE with Guice injected elements -->
+		<sonar.issue.ignore.multicriteria.e8.ruleKey>javabugs:S2259</sonar.issue.ignore.multicriteria.e8.ruleKey>
+		<sonar.issue.ignore.multicriteria.e8.resourceKey>**/composite/*.java</sonar.issue.ignore.multicriteria.e8.resourceKey>
 
 		<!-- Avoid deprecated PMD rule -->
 		<sonar.issue.ignore.multicriteria.e9.ruleKey>pmd:AvoidDuplicateLiterals</sonar.issue.ignore.multicriteria.e9.ruleKey>
@@ -218,11 +226,16 @@
 		<sonar.issue.ignore.multicriteria.e12.ruleKey>pmd:CompareObjectsWithEquals</sonar.issue.ignore.multicriteria.e12.ruleKey>
 		<sonar.issue.ignore.multicriteria.e12.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e12.resourceKey>
 
+		<!-- Don't run the MWE2 generator -->
 		<mwe2.skip>false</mwe2.skip>
+		<!-- Skip xtext-maven-plugin:
+		use -Dxtext.generator.skip=true
+		-->
 
 		<dsl.tests.skip>false</dsl.tests.skip>
 		<simple.tests.skip>false</simple.tests.skip>
 		<swtbot.tests.skip>false</swtbot.tests.skip>
+		<swtbot.pde.tests.skip>false</swtbot.pde.tests.skip>
 		<swtbot.cdo.tests.skip>false</swtbot.cdo.tests.skip>
 
 		<target-file-name>simrel</target-file-name>
@@ -259,6 +272,9 @@
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.testing.maven</module>
+				<module>../../plugins/org.eclipse.emf.parsley.junit4.parsley</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.maven</module>
 
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests</module>
@@ -292,9 +308,9 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui.tests</module>
 
-
 				<module>../../features/org.eclipse.emf.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.junit4.feature</module>
+				<module>../../features/org.eclipse.emf.parsley.junit4.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
@@ -469,6 +485,9 @@
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.testing.maven</module>
+				<module>../../plugins/org.eclipse.emf.parsley.junit4.parsley</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.maven</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.views</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
@@ -477,8 +496,6 @@
 
 				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
-				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
-				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
 		</profile>
 
@@ -818,7 +835,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.6.1</version>
+					<version>3.6.2</version>
 				</plugin>
 
 				<plugin>
@@ -901,7 +918,7 @@
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
-					<version>5.7.0.6970</version>
+					<version>5.8.0.7211</version>
 				</plugin>
 
 				<plugin>
@@ -969,6 +986,31 @@
 							<version>${tycho-version}</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>exec-maven-plugin</artifactId>
+										<versionRange>[3.6.4,)</versionRange>
+										<goals>
+											<goal>java</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

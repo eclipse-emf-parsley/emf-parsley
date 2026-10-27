@@ -44,7 +44,7 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 	private Injector injector;
 
 	@BeforeClass
-	public static void setUp() {
+	public static void setUp() { // NOSONAR: we must intercept the same method of the base class
 		try {
 			javaProject = ProjectImportUtil.importJavaProject(PROJECT_NAME);
 		} catch (Exception e) {

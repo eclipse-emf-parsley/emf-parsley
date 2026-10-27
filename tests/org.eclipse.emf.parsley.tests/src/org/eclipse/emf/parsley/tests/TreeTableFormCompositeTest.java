@@ -35,7 +35,7 @@ import org.eclipse.emf.parsley.composite.TreeComposite;
 import org.eclipse.emf.parsley.composite.TreeTableFormComposite;
 import org.eclipse.emf.parsley.inject.parameters.CompositeParameters;
 import org.eclipse.emf.parsley.inject.parameters.EClassParameter;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.MockCompositeFactory;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -44,7 +44,7 @@ import org.eclipse.swt.SWT;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
-public class TreeTableFormCompositeTest extends AbstractEmfParsleyShellBasedTest {
+public class TreeTableFormCompositeTest extends AbstractEmfParsleyApplicationTest {
 
 	private TreeTableFormComposite treeTableFormComposite;
 

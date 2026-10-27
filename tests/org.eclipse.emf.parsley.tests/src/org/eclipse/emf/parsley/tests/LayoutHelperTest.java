@@ -10,8 +10,16 @@
  *******************************************************************************/
 package org.eclipse.emf.parsley.tests;
 
-import com.google.inject.Inject;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
+
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.viewers.LayoutHelper;
 import org.eclipse.jface.layout.AbstractColumnLayout;
@@ -30,13 +38,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import com.google.inject.Inject;
 
 /**
  * @author Lorenzo Bettini
  */
-public class LayoutHelperTest extends AbstractEmfParsleyShellBasedTest {
+public class LayoutHelperTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

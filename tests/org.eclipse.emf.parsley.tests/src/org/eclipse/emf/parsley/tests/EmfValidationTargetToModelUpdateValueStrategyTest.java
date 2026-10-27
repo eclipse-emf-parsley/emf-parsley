@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.internal.databinding.DatabindingValidationUtil;
 import org.eclipse.emf.parsley.internal.databinding.EmfValidationTargetToModelUpdateValueStrategy;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassWithName;
@@ -45,7 +45,7 @@ import com.google.inject.Inject;
  * 
  * @author Lorenzo Bettini
  */
-public class EmfValidationTargetToModelUpdateValueStrategyTest extends AbstractEmfParsleyControlBasedTest {
+public class EmfValidationTargetToModelUpdateValueStrategyTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

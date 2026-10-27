@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.parsley.junit4.parsley.feature"
+      label="EMF Parsley JUnit4 Application Testing Support"
+      version="2.0.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.eclipse.org/emfparsley">
+      EMF Parsley JUnit4 Application Testing Support.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.emf.parsley.junit4.parsley"
+         version="0.0.0"/>
+
+</feature>

@@ -98,15 +98,17 @@ public class EmfParsleyOnSelectionViewTests extends EmfParsleySWTBotAbstractTest
 		final SWTBotTreeItem resourceNode = openEditorAndGetTreeRoot();
 		SWTBotTreeItem libraryNode = getLibraryNode(resourceNode);
 
-		// select the library
+		// select the library in the tree
 		libraryNode.select();
-		// the table shows the books, select a table row
-		bot.table().select(0);
+		// the table should show its books,
+		// thus, we should be able to select a table row, because the table should not be empty
+		bot.table().select(0); // select the first row
 
-		// select the resource
+		// select the resource (root) in the tree
 		resourceNode.select();
-		// the table shows the books, select a table row
-		bot.table().select(0);
+		// the table should show all the contents in the resource,
+		// thus, we should be able to select a table row, because the table should not be empty
+		bot.table().select(0); // select the first row
 
 		// test the context menu
 		createNewSiblingAndAssertTableSize(bot.table(), 2, "Book");
