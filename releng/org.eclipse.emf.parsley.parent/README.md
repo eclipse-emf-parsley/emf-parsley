@@ -20,8 +20,10 @@ for `maven-gpg-plugin`.
   -Pmaven,sonatype-oss-release clean deploy
 ```
 
-The Maven examples are built and tested but excluded from deployment through
+The Maven examples are built but excluded from deployment through
 `maven.deploy.skip`, which is also honored by the Central publishing plugin.
+
+The profile `sonatype-oss-release` is configured to skip tests.
 
 The plugin uploads the artifacts and waits for validation. Automatic publishing
 is disabled: review the deployment and publish it manually in the
