@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.parsley.EmfParsleyJavaGuiceModule;
 import org.eclipse.emf.parsley.examples.maven.ui.provider.MavenLabelProvider;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public class MavenExampleLabelProviderTest extends AbstractEmfParsleyShellBasedTest {
+public class MavenExampleLabelProviderTest extends AbstractEmfParsleyApplicationTest {
 
 	@Inject
 	private ILabelProvider labelProvider;

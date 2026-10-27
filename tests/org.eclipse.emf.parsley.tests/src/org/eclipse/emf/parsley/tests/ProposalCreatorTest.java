@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.composite.ProposalCreator;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.BaseClass;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
@@ -28,7 +28,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class ProposalCreatorTest extends AbstractEmfParsleyTest {
+public class ProposalCreatorTest extends AbstractEmfParsleyApplicationTest {
 	
 	private ProposalCreator defaultProposalCreator;
 	

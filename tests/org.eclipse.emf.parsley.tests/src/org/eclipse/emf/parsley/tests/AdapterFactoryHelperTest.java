@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNull;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.parsley.edit.provider.AdapterFactoryHelper;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,7 +24,7 @@ import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public class AdapterFactoryHelperTest extends AbstractEmfParsleyTest {
+public class AdapterFactoryHelperTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

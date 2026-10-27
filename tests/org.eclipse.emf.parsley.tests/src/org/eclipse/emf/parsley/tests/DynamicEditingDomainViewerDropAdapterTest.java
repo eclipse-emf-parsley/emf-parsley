@@ -20,7 +20,7 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.parsley.internal.edit.ui.dnd.DynamicEditingDomainViewerDropAdapter;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.tests.util.Wrapper;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -33,7 +33,7 @@ import org.junit.Test;
 /**
  * @author Lorenzo Bettini
  */
-public class DynamicEditingDomainViewerDropAdapterTest extends AbstractEmfParsleyShellBasedTest {
+public class DynamicEditingDomainViewerDropAdapterTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
 

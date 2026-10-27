@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryFactory;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.viewers.ViewerFactory;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -36,7 +36,7 @@ import com.google.inject.Module;
 
 @RunWith(XtextRunner.class)
 @InjectWith(EmfParsleyDslInjectorProvider.class)
-public class EmfParsleyDslExecutionTest extends AbstractEmfParsleyShellBasedTest {
+public class EmfParsleyDslExecutionTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	@Inject

@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.parsley.EmfParsleyActivator;
 import org.eclipse.emf.parsley.examples.library.EXTLibraryPackage;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.ui.provider.EClassToEStructuralFeatureAsStringsMap;
@@ -31,7 +31,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class FeaturesProviderTest extends AbstractEmfParsleyTest {
+public class FeaturesProviderTest extends AbstractEmfParsleyApplicationTest {
 
 	protected FeaturesProvider featuresProvider;
 

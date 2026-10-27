@@ -17,7 +17,7 @@ import static org.junit.Assert.fail;
 import org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor.EDataTypeCellEditor;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.viewers.TableViewerCellEditorFactory;
 import org.eclipse.jface.viewers.CellEditor;
@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import com.google.inject.Inject;
 
-public class TableViewerCellEditorFactoryTest extends AbstractEmfParsleyShellBasedTest {
+public class TableViewerCellEditorFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

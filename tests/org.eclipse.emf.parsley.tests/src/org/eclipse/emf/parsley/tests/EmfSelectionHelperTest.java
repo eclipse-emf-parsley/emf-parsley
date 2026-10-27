@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyShellBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.util.EmfSelectionHelper;
 import org.eclipse.jface.viewers.ISelection;
@@ -26,7 +26,7 @@ import org.junit.Test;
 /**
  * @author Lorenzo Bettini
  */
-public class EmfSelectionHelperTest extends AbstractEmfParsleyShellBasedTest {
+public class EmfSelectionHelperTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
 

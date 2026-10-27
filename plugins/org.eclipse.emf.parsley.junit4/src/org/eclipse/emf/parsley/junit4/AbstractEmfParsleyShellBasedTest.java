@@ -15,14 +15,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.EMFEditPlugin;
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.parsley.junit4.ui.util.DisplayHelperTestRule;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TableItem;
@@ -40,7 +35,7 @@ import org.junit.Rule;
  * @author Lorenzo Bettini - Initial contribution and API
  *
  */
-public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsleyTest {
+public abstract class AbstractEmfParsleyShellBasedTest {
 
 	protected static int TAB_INDENT = 2;
 
@@ -136,20 +131,6 @@ public abstract class AbstractEmfParsleyShellBasedTest extends AbstractEmfParsle
 	 */
 	protected void flushPendingEvents() {
 		displayHelperTestRule.flushPendingEvents();
-	}
-
-	protected Image getEMFImageFromObject(final Object object) {
-		return ExtendedImageRegistry.INSTANCE.getImage(object);
-	}
-
-	protected URI getEMFImage(final EObject eObject) {
-		return URI.createURI(this.getEMFResourceLocator()
-				.getImage("full/obj16/Item").toString()
-				+ "#" + eObject.eClass().getName());
-	}
-
-	protected EMFEditPlugin getEMFResourceLocator() {
-		return EMFEditPlugin.INSTANCE;
 	}
 
 	/**

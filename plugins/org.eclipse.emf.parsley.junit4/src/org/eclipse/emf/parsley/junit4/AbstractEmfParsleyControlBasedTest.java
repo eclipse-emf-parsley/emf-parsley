@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 RCP Vision (http://www.rcp-vision.com) and others.
+ * Copyright (c) 2015, 2026 Lorenzo Bettini and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,12 +18,6 @@ import java.util.function.Supplier;
 
 import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.composite.AbstractControlFactory;
-import org.eclipse.emf.parsley.composite.DialogControlFactory;
-import org.eclipse.emf.parsley.composite.FormControlFactory;
-import org.eclipse.emf.parsley.composite.MultipleFeatureControl;
 import org.eclipse.emf.parsley.junit4.util.TestDefaultRealm;
 import org.eclipse.jface.databinding.swt.DisplayRealm;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -35,13 +29,11 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.junit.After;
 import org.junit.Before;
 
 /**
- * Base class for Junit tests concerning {@link Control}, in particular using an
- * {@link AbstractControlFactory}.
+ * Base class for Junit tests concerning {@link Control}s.
  *
  * @author Lorenzo Bettini - Initial contribution and API
  *
@@ -59,56 +51,6 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 	@After
 	public void disposeRealm() {
 		this.realm.dispose();
-	}
-
-	/**
-	 * This default implementation returns a null {@link EditingDomain},
-	 * subclasses can override this method to return an actual
-	 * {@link EditingDomain}.
-	 *
-	 * @return
-	 */
-	protected EditingDomain getEditingDomain() {
-		return null;
-	}
-
-	protected void initialize(final DialogControlFactory controlFactory,
-			final EObject obj) {
-		initializeCommon(controlFactory, obj);
-		controlFactory.init(getEditingDomain(), obj, getShell());
-		// shell must be visibile since we need to check visibility of some
-		// controls
-		getShell().open();
-	}
-
-	protected Boolean initialize(final FormControlFactory controlFactory,
-			final EObject obj) {
-		initializeCommon(controlFactory, obj);
-		// shell must be visibile since we need to check visibility of some
-		// controls
-		getShell().open();
-		// FormToolkit must be created in the UI thread
-		// and the initialization requires databinding, and thus the Realm
-		return syncExecInRealm(() -> {
-			controlFactory.init(getEditingDomain(), obj, getShell(),
-					new FormToolkit(getDisplay()));
-			return true;
-		});
-	}
-
-	/**
-	 * @param controlFactory
-	 * @param obj the object for which we create the control (unused by default)
-	 */
-	protected void initializeCommon(
-			final AbstractControlFactory controlFactory, final EObject obj) {
-		injectMembers(controlFactory);
-		getOrCreateInjector().injectMembers(controlFactory);
-	}
-
-	protected Control createControl(final AbstractControlFactory factory,
-			final EStructuralFeature feature) {
-		return syncExecInRealm(() -> factory.create(feature));
 	}
 
 	protected void assertCheckbox(final Control control, final boolean checked) {
@@ -166,26 +108,6 @@ public abstract class AbstractEmfParsleyControlBasedTest extends
 		final Text text = ((Text) control);
 		syncExecVoid(() -> text.setText(newText));
 		assertText(control, newText);
-	}
-
-	protected void assertMultipleFeatureControl(final Control control,
-			final String expectedLabelText, final boolean isButtonVisible) {
-		assertMultipleFeatureControl(control, expectedLabelText,
-				isButtonVisible, true);
-	}
-
-	protected void assertMultipleFeatureControl(final Control control,
-			final String expectedLabelText, final boolean isButtonVisible,
-			final boolean isButtonEnabled) {
-		assertControlClass(control, MultipleFeatureControl.class);
-		final MultipleFeatureControl mfc = ((MultipleFeatureControl) control);
-		syncExecVoid(() -> {
-			Button button = mfc.getButton();
-			assertEquals("...", button.getText());
-			assertEquals(expectedLabelText, mfc.getLabel().getText());
-			assertEquals(isButtonVisible, button.isVisible());
-			assertEquals(isButtonEnabled, button.isEnabled());
-		});
 	}
 
 	protected void setSelectionProgrammatically(

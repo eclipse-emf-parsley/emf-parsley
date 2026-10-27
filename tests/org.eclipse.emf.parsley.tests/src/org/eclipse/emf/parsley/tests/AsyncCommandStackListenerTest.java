@@ -14,7 +14,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.listeners.AsyncCommandStackListenerHelper;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.tests.util.TestableCommandStackListenerClient;
@@ -24,7 +24,7 @@ import org.junit.Test;
 
 import com.google.inject.Injector;
 
-public class AsyncCommandStackListenerTest extends AbstractEmfParsleyControlBasedTest {
+public class AsyncCommandStackListenerTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

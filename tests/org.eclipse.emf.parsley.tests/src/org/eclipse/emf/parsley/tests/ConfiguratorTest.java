@@ -6,12 +6,12 @@ import static org.junit.Assert.assertNull;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.parsley.config.Configurator;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class ConfiguratorTest extends AbstractEmfParsleyTest {
+public class ConfiguratorTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

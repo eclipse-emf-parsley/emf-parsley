@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.apache.log4j.Level;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.junit4.util.LogAppenderTestRule;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForDefaultValidation;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForValidation;
@@ -15,7 +15,7 @@ import org.eclipse.emf.parsley.validation.ValidationRunner;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class ValidationRunnerTest extends AbstractEmfParsleyTest {
+public class ValidationRunnerTest extends AbstractEmfParsleyApplicationTest {
 	
 	@Rule
 	public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();

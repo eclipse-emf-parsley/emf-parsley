@@ -16,9 +16,8 @@ Import-Package: org.hamcrest.core,
  org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0"
-Require-Bundle: org.eclipse.core.runtime;bundle-version="3.5.0";visibility:=reexport,
- org.eclipse.emf.parsley;visibility:=reexport,
- org.eclipse.core.databinding.property;visibility:=reexport,
- org.eclipse.xtext.xbase.lib;visibility:=reexport,
- org.apache.log4j;bundle-version="1.2.15"
+Require-Bundle: org.eclipse.jface.databinding;visibility:=reexport,
+ org.eclipse.jface;visibility:=reexport,
+ org.eclipse.core.databinding.observable;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport
 Automatic-Module-Name: org.eclipse.emf.parsley.junit4

@@ -271,6 +271,9 @@
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.testing.maven</module>
+				<module>../../plugins/org.eclipse.emf.parsley.junit4.parsley</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.maven</module>
 
 				<module>../../tests/org.eclipse.emf.parsley.tests.models</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests</module>
@@ -304,9 +307,9 @@
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.tests</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui.tests</module>
 
-
 				<module>../../features/org.eclipse.emf.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.junit4.feature</module>
+				<module>../../features/org.eclipse.emf.parsley.junit4.parsley.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.dsl.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.cdo.feature</module>
 				<module>../../features/org.eclipse.emf.parsley.sdk</module>
@@ -481,6 +484,9 @@
 				<module>../../plugins/org.eclipse.emf.parsley.runtime</module>
 				<module>../../plugins/org.eclipse.emf.parsley</module>
 				<module>../../plugins/org.eclipse.emf.parsley.junit4</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.testing.maven</module>
+				<module>../../plugins/org.eclipse.emf.parsley.junit4.parsley</module>
+				<module>../../examples/org.eclipse.emf.parsley.examples.maven</module>
 
 				<module>../../plugins/org.eclipse.emf.parsley.views</module>
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
@@ -489,8 +495,6 @@
 
 				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
-				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone.lib</module>
-				<module>../../dsl/org.eclipse.emf.parsley.dsl.standalone</module>
 			</modules>
 		</profile>
 
@@ -980,6 +984,31 @@
 							<version>${tycho-version}</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>exec-maven-plugin</artifactId>
+										<versionRange>[3.6.4,)</versionRange>
+										<goals>
+											<goal>java</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

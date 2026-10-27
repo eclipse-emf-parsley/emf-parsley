@@ -13,7 +13,7 @@ package org.eclipse.emf.parsley.tests;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 
-import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyControlBasedTest;
+import org.eclipse.emf.parsley.junit4.AbstractEmfParsleyApplicationTest;
 import org.eclipse.emf.parsley.tests.models.testmodels.ClassForControls;
 import org.eclipse.emf.parsley.tests.util.EmfParsleyFixturesAndUtilitiesTestRule;
 import org.eclipse.emf.parsley.widgets.DialogWidgetFactory;
@@ -23,7 +23,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class DialogWidgetFactoryTest extends AbstractEmfParsleyControlBasedTest {
+public class DialogWidgetFactoryTest extends AbstractEmfParsleyApplicationTest {
 
 	@Rule public EmfParsleyFixturesAndUtilitiesTestRule fixtures = new EmfParsleyFixturesAndUtilitiesTestRule();
 	
