@@ -275,7 +275,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 	 *
 	 * @generated
 	 */
-	protected IResourceChangeListener resourceChangeListener = EmfAbstractEditor.this::handleIResourceChangeEvent;
+	protected IResourceChangeListener resourceChangeListener = this::handleIResourceChangeEvent;
 
 	@Inject
 	protected ViewerFactory viewerFactory;
@@ -329,7 +329,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
-				getSite().getPage().closeEditor(EmfAbstractEditor.this, false);
+				getSite().getPage().closeEditor(this, false);
 			} else {
 				removedResources.clear();
 				changedResources.clear();
@@ -1115,7 +1115,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 							.getRemovedResources());
 					if (!isDirty()) {
 						getSite().getPage().closeEditor(
-								EmfAbstractEditor.this, false);
+								this, false);
 					}
 				});
 			}
@@ -1124,7 +1124,7 @@ public abstract class EmfAbstractEditor extends MultiPageEditorPart implements
 				getSite().getShell().getDisplay().asyncExec(() -> {
 					changedResources.addAll(visitor
 							.getChangedResources());
-					if (getSite().getPage().getActiveEditor() == EmfAbstractEditor.this) {
+					if (getSite().getPage().getActiveEditor() == this) {
 						handleActivate();
 					}
 				});

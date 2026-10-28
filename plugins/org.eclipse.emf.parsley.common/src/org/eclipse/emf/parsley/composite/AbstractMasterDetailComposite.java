@@ -56,7 +56,7 @@ public abstract class AbstractMasterDetailComposite extends Composite implements
 
 	private FormDetailComposite detailForm;
 
-	private SashForm sashForm;
+	private final SashForm sashForm;
 
 	protected AbstractMasterDetailComposite(Composite parent, int style) {
 		this(parent, style, SWT.VERTICAL, new int[0]);

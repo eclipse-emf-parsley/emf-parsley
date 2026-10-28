@@ -32,9 +32,9 @@ import org.eclipse.swt.widgets.Shell;
  */
 public abstract class AbstractDetailDialog extends Dialog {
 
-	private String title;
-	private EObject original;
-	private EditingDomain domain;
+	private final String title;
+	private final EObject original;
+	private final EditingDomain domain;
 
 	/**
 	 * Initializes this dialog for editing the {@link EObject} toBeEdited;

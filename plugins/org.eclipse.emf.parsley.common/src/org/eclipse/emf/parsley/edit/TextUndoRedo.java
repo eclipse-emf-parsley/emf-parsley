@@ -103,11 +103,11 @@ public class TextUndoRedo implements KeyListener, ModifyListener {
 
 	}
 
-	private Text text;
+	private final Text text;
 
 	private TextInfo currentTextInfo;
 
-	private UndoRedoStack stack;
+	private final UndoRedoStack stack;
 
 	private boolean isUndo;
 

@@ -87,13 +87,13 @@ public class TableColumnLabelProvider extends ColumnLabelProvider {
 	@Inject
 	private IImageHelper imageHelper;
 
-	private PolymorphicDispatcher<Font> fontDispatcher = PolymorphicDispatcher.createForSingleTarget("rowFont", 1, 1,
+	private final PolymorphicDispatcher<Font> fontDispatcher = PolymorphicDispatcher.createForSingleTarget("rowFont", 1, 1,
 			this);
 
-	private PolymorphicDispatcher<Color> foregroundDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Color> foregroundDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("rowForeground", 1, 1, this);
 
-	private PolymorphicDispatcher<Color> backgroundDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Color> backgroundDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("rowBackground", 1, 1, this);
 
 	@Inject

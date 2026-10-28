@@ -19,11 +19,11 @@ import org.eclipse.emf.common.util.URI;
  */
 public class CDOURIData {
 
-	private String server;
+	private final String server;
 
-	private String repository;
+	private final String repository;
 
-	private String resource;
+	private final String resource;
 
 	public CDOURIData(String host, String sessionName, String resourceName) {
 		super();

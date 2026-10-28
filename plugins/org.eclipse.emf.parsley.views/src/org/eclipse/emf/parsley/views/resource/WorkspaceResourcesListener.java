@@ -39,7 +39,7 @@ import org.eclipse.ui.PlatformUI;
  */
 public class WorkspaceResourcesListener implements IResourceChangeListener{
 
-	private ResourceSet resourceSet;
+	private final ResourceSet resourceSet;
 
 	private static final Logger LOGGER = Logger.getLogger(WorkspaceResourcesListener.class);
 

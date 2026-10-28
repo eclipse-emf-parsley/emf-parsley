@@ -23,7 +23,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
  */
 public class MenuCommandActionHandlerContributionSpecification implements IMenuContributionSpecification {
 
-	private CommandActionHandler action;
+	private final CommandActionHandler action;
 
 	public MenuCommandActionHandlerContributionSpecification(CommandActionHandler action) {
 		this.action = action;

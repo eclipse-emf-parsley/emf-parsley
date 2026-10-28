@@ -36,10 +36,10 @@ import com.google.inject.Inject;
  */
 public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
-	private PolymorphicDispatcher<Object> childrenDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Object> childrenDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("children", 1, 1, this);
 
-	private PolymorphicDispatcher<Object> elementsDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Object> elementsDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("elements", 1, 1, this);
 
 	/**
@@ -49,7 +49,7 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 	 * elements won't be refreshed) - This is used only when getElements is
 	 * customized.
 	 */
-	private Set<Object> customElementsParents = new HashSet<>();
+	private final Set<Object> customElementsParents = new HashSet<>();
 
 	/**
 	 * If you use this constructor, you then must make sure to inject other
@@ -205,9 +205,9 @@ public class ViewerContentProvider extends AdapterFactoryContentProvider {
 
 	public static class ViewerContentProviderViewerRefresh extends ViewerRefresh {
 
-		private Viewer viewer;
+		private final Viewer viewer;
 
-		private Set<Object> customElementsParents;
+		private final Set<Object> customElementsParents;
 
 		public ViewerContentProviderViewerRefresh(Viewer viewer, Set<Object> customElementsParents) {
 			super(viewer);
