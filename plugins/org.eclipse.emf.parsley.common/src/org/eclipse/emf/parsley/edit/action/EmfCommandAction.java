@@ -27,18 +27,18 @@ public class EmfCommandAction<T> extends Action {
 	 * This records the editing domain and it has to be passed during the
 	 * constructor.
 	 */
-	private EditingDomain editingDomain;
+	private final EditingDomain editingDomain;
 
 	/**
 	 * This records the command.
 	 */
-	private Command command;
+	private final Command command;
 
 	/**
 	 * This will be used to initialize the object that has been added by this
 	 * action.
 	 */
-	private IAcceptor<T> addedObjectInitializer;
+	private final IAcceptor<T> addedObjectInitializer;
 
 	public EmfCommandAction(String text, EditingDomain editingDomain, Command command) {
 		this(text, editingDomain, command, null);

@@ -55,19 +55,19 @@ public class ViewerLabelProvider implements ILabelProvider, IFontProvider, IColo
 	@Named(EmfParsleyConstants.ITERABLE_STRING_MAX_LENGTH)
 	private int iterableStringMaxLength;
 
-	private PolymorphicDispatcher<String> textDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<String> textDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("text", 1, 1, this);
 
-	private PolymorphicDispatcher<Object> imageDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Object> imageDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("image", 1, 1, this);
 
-	private PolymorphicDispatcher<Font> fontDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Font> fontDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("font", 1, 1, this);
 
-	private PolymorphicDispatcher<Color> foregroundDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Color> foregroundDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("foreground", 1, 1, this);
 
-	private PolymorphicDispatcher<Color> backgroundDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<Color> backgroundDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("background", 1, 1, this);
 
 	protected ILabelProvider delegateLabelProvider;

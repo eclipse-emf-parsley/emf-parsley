@@ -36,7 +36,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private final Composite main;
 
-	private FormToolkit toolkit;
+	private final FormToolkit toolkit;
 
 	private final ScrolledForm scrolledForm;
 
@@ -99,7 +99,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private class FormTitleAdapter extends AdapterImpl {
 
-		private EObject model;
+		private final EObject model;
 		private boolean disposing = false;
 
 		public FormTitleAdapter(EObject model) {

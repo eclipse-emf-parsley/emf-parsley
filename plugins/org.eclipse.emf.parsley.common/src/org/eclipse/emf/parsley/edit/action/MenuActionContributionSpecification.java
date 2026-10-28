@@ -23,7 +23,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
  */
 public class MenuActionContributionSpecification implements IMenuContributionSpecification {
 
-	private Action action;
+	private final Action action;
 
 	public MenuActionContributionSpecification(Action action) {
 		this.action = action;

@@ -44,7 +44,7 @@ public class TableViewerEditingSupport extends EditingSupport {
 	/**
 	 * This is the feature we create a cell editor for.
 	 */
-	private EStructuralFeature eStructuralFeature;
+	private final EStructuralFeature eStructuralFeature;
 
 	/**
 	 * The initial value of the cell editor, which we will use to tell whether

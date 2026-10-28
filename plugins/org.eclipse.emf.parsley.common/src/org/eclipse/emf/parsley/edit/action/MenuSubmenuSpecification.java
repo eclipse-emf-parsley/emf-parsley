@@ -24,9 +24,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
  */
 public class MenuSubmenuSpecification implements IMenuContributionSpecification {
 
-	private String text;
+	private final String text;
 
-	private List<IMenuContributionSpecification> subContributionSpecifications;
+	private final List<IMenuContributionSpecification> subContributionSpecifications;
 
 	public MenuSubmenuSpecification(String text, List<IMenuContributionSpecification> subContributionSpecifications) {
 		this.text = text;

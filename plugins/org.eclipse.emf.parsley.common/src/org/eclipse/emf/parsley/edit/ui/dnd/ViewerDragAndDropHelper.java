@@ -51,7 +51,7 @@ public class ViewerDragAndDropHelper {
 	 */
 	public void addDragAndDrop(StructuredViewer viewer, EditingDomain editingDomain) {
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
+		Transfer[] transfers = { LocalTransfer.getInstance() };
 		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
 		if (editingDomain != null) {
 			viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));

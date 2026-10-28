@@ -47,7 +47,7 @@ public class EmfParsleyDslProjectTemplateSelectionPage extends WizardPage implem
 
 	private TableViewer templateSelectionViewer;
 
-	private FormBrowser descriptionBrowser;
+	private final FormBrowser descriptionBrowser;
 
 	protected EmfParsleyDslProjectTemplateSelectionPage() {
 		super("emfParsleySelectPredefinedViewPage");
