@@ -1,8 +1,6 @@
 pipeline {
   agent {
-    kubernetes {
-      inheritFrom 'centos-7'
-    }
+    label 'ubuntu-latest'
   }
   
   options {
