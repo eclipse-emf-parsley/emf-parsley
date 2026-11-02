@@ -29,11 +29,11 @@ import org.eclipse.jface.viewers.ILabelProvider;
  */
 public class DatabindingSubstitutionLabelProvider implements SubstitutionLabelProvider {
 
-	private EObject eObject;
+	private final EObject eObject;
 
-	private ILabelProvider labelProvider;
+	private final ILabelProvider labelProvider;
 
-	private FeatureLabelCaptionProvider featureLabelCaptionProvider;
+	private final FeatureLabelCaptionProvider featureLabelCaptionProvider;
 
 	public DatabindingSubstitutionLabelProvider(EObject eObject, ILabelProvider labelProvider,
 			FeatureLabelCaptionProvider featureLabelCaptionProvider) {

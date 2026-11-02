@@ -25,10 +25,10 @@ import org.eclipse.emf.parsley.runtime.util.PolymorphicDispatcher;
  */
 public class Configurator {
 
-	private PolymorphicDispatcher<URI> createResourceUriDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<URI> createResourceUriDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("resourceURI", 1, 1, this);
 
-	private PolymorphicDispatcher<EClass> getEClassDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<EClass> getEClassDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("eClass", 1, 1, this);
 
 	/**

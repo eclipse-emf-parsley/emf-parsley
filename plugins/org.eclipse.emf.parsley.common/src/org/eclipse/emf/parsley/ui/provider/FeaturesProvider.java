@@ -50,7 +50,7 @@ public class FeaturesProvider {
 	@Inject
 	private FeatureResolver featureResolver;
 
-	private Map<EClass, List<EStructuralFeature>> eClassFeaturesCache = new HashMap<>();
+	private final Map<EClass, List<EStructuralFeature>> eClassFeaturesCache = new HashMap<>();
 
 	protected EClassToEStructuralFeatureMap map = null;
 

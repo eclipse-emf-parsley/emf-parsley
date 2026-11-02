@@ -48,7 +48,7 @@ public class EmfParsleyDslOrganizeImportsTest {
 		var changes = importOrganizer.getOrganizedImportChanges((XtextResource) model.eResource());
 		var builder = new StringBuilder(input);
 		List<ReplaceRegion> sortedChanges = new ArrayList<>(changes);
-		Collections.sort(sortedChanges, (a, b) -> Integer.compare(a.getOffset(), b.getOffset()));
+		sortedChanges.sort((a, b) -> Integer.compare(a.getOffset(), b.getOffset()));
 		ReplaceRegion lastChange = null;
 		for (var it : sortedChanges) {
 			if (lastChange != null && lastChange.getEndOffset() > it.getOffset())

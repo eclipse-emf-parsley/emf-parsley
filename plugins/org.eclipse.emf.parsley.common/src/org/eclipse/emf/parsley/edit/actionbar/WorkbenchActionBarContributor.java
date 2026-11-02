@@ -76,7 +76,7 @@ public class WorkbenchActionBarContributor extends
 
 	private ControlAction controlAction;
 
-	private int style;
+	private final int style;
 
 	private ISelectionProvider explicitSelectionProvider = null;
 

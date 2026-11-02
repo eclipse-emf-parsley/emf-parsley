@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValueStrategy {
 
-	private EObject owner;
+	private final EObject owner;
 
-	private EStructuralFeature feature;
+	private final EStructuralFeature feature;
 
-	private DatabindingValidationUtil databindingValidationUtil;
+	private final DatabindingValidationUtil databindingValidationUtil;
 
 	private boolean firstValidateBeforeSet = true;
 
@@ -48,7 +48,7 @@ public class EmfValidationTargetToModelUpdateValueStrategy extends EMFUpdateValu
 	@Override
 	protected IStatus doSet(IObservableValue observableValue, Object value) {
 		// the modification must go into the model
-		super.doSet(observableValue, (!"".equals(value) ? value : null));
+		super.doSet(observableValue, ("".equals(value) ? null : value));
 		// since we delegate validation to the EMF validator
 		return validationStatus();
 	}

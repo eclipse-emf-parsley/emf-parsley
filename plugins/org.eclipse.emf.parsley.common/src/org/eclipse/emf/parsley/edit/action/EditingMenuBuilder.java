@@ -149,10 +149,10 @@ public class EditingMenuBuilder {
 
 	private RedoAction redoAction;
 
-	private PolymorphicDispatcher<List<IMenuContributionSpecification>> menuContributionsDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<List<IMenuContributionSpecification>> menuContributionsDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("menuContributions", 1, 1, this);
 
-	private PolymorphicDispatcher<List<IMenuContributionSpecification>> emfMenuContributionsDispatcher = PolymorphicDispatcher
+	private final PolymorphicDispatcher<List<IMenuContributionSpecification>> emfMenuContributionsDispatcher = PolymorphicDispatcher
 			.createForSingleTarget("emfMenuContributions", 1, 1, this);
 
 	private List<IMenuContributionSpecification> currentMenuContributions = Collections.emptyList();

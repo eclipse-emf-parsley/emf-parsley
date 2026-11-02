@@ -33,9 +33,9 @@ public class ViewerSelectionProvider implements ISelectionProvider {
 	 * {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
 	 * listening.
 	 */
-	private Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<>();
+	private final Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<>();
 
-	private Viewer viewer;
+	private final Viewer viewer;
 
 	public ViewerSelectionProvider(Viewer viewer) {
 		super();

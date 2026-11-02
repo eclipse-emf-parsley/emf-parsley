@@ -57,11 +57,11 @@ public class MultipleFeatureControl extends Composite {
 
 	private FeatureEditorDialog dialog;
 	private final ILabelProvider labelProvider;
-	private ISelectionProvider inernalProvider = new InternalSelectionProvider();
+	private final ISelectionProvider inernalProvider = new InternalSelectionProvider();
 
-	private Label label;
+	private final Label label;
 
-	private Button button;
+	private final Button button;
 
 	public MultipleFeatureControl(final Composite parent, IWidgetFactory widgetFactory, final ILabelProvider labelProvider,
 			final EObject object, final EStructuralFeature feature, final ProposalCreator proposalcreator,
@@ -168,7 +168,7 @@ public class MultipleFeatureControl extends Composite {
 			}
 		}
 
-		private java.util.List<ISelectionChangedListener> listeners = new ArrayList<>();
+		private final java.util.List<ISelectionChangedListener> listeners = new ArrayList<>();
 
 		private void recalculateLabelText() {
 			label.setText(labelProvider.getText(unwrapSelection()));

@@ -34,7 +34,7 @@ public abstract class AbstractOnSelectionView extends ViewPart {
 	protected EmfSelectionHelper selectionHelper;
 
 	// the listener we register with the selection service
-	private ISelectionListener listener = (sourcepart, selection) -> {
+	private final ISelectionListener listener = (sourcepart, selection) -> {
 // we ignore our own selections
 if (sourcepart != this) {
 	updateOnSelection(sourcepart, selection);

@@ -48,7 +48,7 @@ public class EmfParsleyDslPluginXmlBuilder extends IncrementalProjectBuilder {
 	}
 
 	public static class UtilityIFileReader {
-		private IFile file;
+		private final IFile file;
 
 		public UtilityIFileReader(IFile file) {
 			this.file = file;

@@ -36,9 +36,9 @@ import com.google.inject.Inject;
  */
 public abstract class AbstractDetailDialog extends Dialog {
 
-	private String title;
-	private EObject object;
-	private EditingDomain domain;
+	private final String title;
+	private final EObject object;
+	private final EditingDomain domain;
 
 	/**
 	 * Initializes this dialog for editing an {@link EObject}.

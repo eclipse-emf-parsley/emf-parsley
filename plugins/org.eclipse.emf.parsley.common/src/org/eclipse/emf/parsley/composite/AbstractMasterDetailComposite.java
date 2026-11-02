@@ -52,7 +52,7 @@ public abstract class AbstractMasterDetailComposite extends InjectableComposite 
 	@Inject
 	private EmfSelectionHelper emfSelectionHelper;
 
-	private SashForm sashForm;
+	private final SashForm sashForm;
 
 	private Composite masterParentComposite;
 

@@ -35,7 +35,7 @@ public class FormDetailComposite extends AbstractDetailComposite {
 
 	private final Composite main;
 
-	private FormToolkit toolkit;
+	private final FormToolkit toolkit;
 
 	private final ScrolledForm scrolledForm;
 
