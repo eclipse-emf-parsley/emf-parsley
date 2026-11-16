@@ -54,7 +54,7 @@
 	</developers>
 
 	<properties>
-		<tycho-version>4.0.13</tycho-version>
+		<tycho-version>5.0.4</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
 		<!-- Don't update yet to 3.6.0 because of this:
 		https://github.com/apache/maven-surefire/issues/3460
@@ -70,8 +70,8 @@
 		<jacoco-version>0.8.15</jacoco-version>
 		<pitest.version>1.30.0</pitest.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<maven.deploy.skip>false</maven.deploy.skip>
 
 		<!--
@@ -80,10 +80,10 @@
 		-->
 		<m2e.apt.activation>disabled</m2e.apt.activation>
 
-		<xtext-version>2.36.0</xtext-version>
+		<xtext-version>2.44.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.19.0</mwe2Version>
-		<eclipse-version>2024-09</eclipse-version>
+		<mwe2Version>2.27.0</mwe2Version>
+		<eclipse-version>2026-09</eclipse-version>
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
@@ -251,6 +251,21 @@
 				<version>${xtextVersion}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.common</artifactId>
+				<version>2.46.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.ecore</artifactId>
+				<version>2.43.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.edit</artifactId>
+				<version>2.24.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
