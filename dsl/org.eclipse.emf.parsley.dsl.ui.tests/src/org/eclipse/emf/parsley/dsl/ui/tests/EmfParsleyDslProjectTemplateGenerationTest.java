@@ -11,7 +11,6 @@ import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.waitForBuild
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -86,10 +85,7 @@ public class EmfParsleyDslProjectTemplateGenerationTest {
 		for (Path file : expectedFiles) {
 			String expectedContents = normalizeContents(file, Files.readString(expected.resolve(file), StandardCharsets.UTF_8));
 			String actualContents = normalizeContents(file, Files.readString(actual.resolve(file), StandardCharsets.UTF_8));
-			if (!expectedContents.equals(actualContents)) {
-				fail("Different contents: " + file + "\nExpected:\n" + expectedContents
-					+ "\nActual:\n" + actualContents);
-			}
+			assertEquals(expectedContents, actualContents);
 		}
 	}
 
@@ -116,7 +112,7 @@ public class EmfParsleyDslProjectTemplateGenerationTest {
 	}
 
 	private String normalizeContents(Path file, String text) {
-		text = text.replace("\r\n", "\n").replace('\r', '\n');
+		text = text.replace("\r", "");
 		if (file.equals(Paths.get(".settings", "org.eclipse.jdt.core.prefs"))) {
 			text = text.replaceAll("(?m)^(org\\.eclipse\\.jdt\\.core\\.compiler\\."
 				+ "(?:codegen\\.targetPlatform|compliance|source)=)\\d+", "$1<version>");

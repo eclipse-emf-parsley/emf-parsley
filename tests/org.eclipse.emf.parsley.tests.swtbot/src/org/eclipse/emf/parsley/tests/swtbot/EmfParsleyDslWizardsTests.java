@@ -12,7 +12,6 @@ package org.eclipse.emf.parsley.tests.swtbot;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -156,15 +155,12 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 		for (Path file : expectedFiles) {
 			String expected = normalizeContents(file, Files.readString(reference.resolve(file), StandardCharsets.UTF_8));
 			String generated = normalizeContents(file, Files.readString(actual.resolve(file), StandardCharsets.UTF_8));
-			if (!expected.equals(generated)) {
-				fail("Different contents: " + file + "\nExpected:\n" + expected
-						+ "\nActual:\n" + generated);
-			}
+			assertEquals(expected, generated);
 		}
 	}
 
 	private String normalizeContents(Path file, String text) {
-		text = text.replace("\r\n", "\n").replace('\r', '\n');
+		text = text.replace("\r", "");
 		if (file.equals(Paths.get(".settings", "org.eclipse.jdt.core.prefs"))) {
 			text = text.replaceAll("(?m)^(org\\.eclipse\\.jdt\\.core\\.compiler\\."
 					+ "(?:codegen\\.targetPlatform|compliance|source)=)\\d+", "$1<version>");
