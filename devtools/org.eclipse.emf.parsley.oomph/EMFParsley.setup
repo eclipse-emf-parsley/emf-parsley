@@ -314,7 +314,14 @@
       </sourceLocator>
       <sourceLocator
           rootFolder="${git.clone.location}/dsl"
-          locateNestedProjects="true"/>
+          locateNestedProjects="true">
+        <predicate
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern=".*\.*wizard.*"/>
+        </predicate>
+      </sourceLocator>
       <sourceLocator
           rootFolder="${git.clone.location}/features">
         <predicate
