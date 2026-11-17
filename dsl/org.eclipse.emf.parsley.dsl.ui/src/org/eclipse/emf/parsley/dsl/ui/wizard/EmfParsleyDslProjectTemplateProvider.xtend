@@ -140,9 +140,6 @@ final class SaveableTreeWithColumnsProjectTemplate {
 
 /** All generated project files and project settings live here. */
 class ParsleyProjectFiles {
-	// A marker keeps indented blank lines in Xtend rich strings until file creation.
-	static val BLANK_LINE = "__PARSLEY_BLANK_LINE__"
-
 	static def generate(IProjectGenerator generator, IExtendedProjectInfo info, Class<?> viewType, boolean rap) {
 		val name = info.projectName.replaceAll("[^a-zA-Z0-9\\._]", "_").toLowerCase(Locale.ENGLISH)
 		val simpleName = name.substring(name.lastIndexOf('.') + 1).toFirstUpper
@@ -182,29 +179,29 @@ class ParsleyProjectFiles {
 	}
 
 	private static def addFile(PluginProjectFactory factory, CharSequence path, CharSequence contents) {
-		factory.addContributor(new TextFileContributor(path, contents.toString.replace(BLANK_LINE, "")))
+		factory.addContributor(new TextFileContributor(path, contents))
 	}
 
 	private static def activator(String name, String simpleName) '''
 		package «name»;
-		«BLANK_LINE»
+		
 		import org.osgi.framework.BundleContext;
 		import org.eclipse.ui.plugin.AbstractUIPlugin;
-		«BLANK_LINE»
+		
 		/**
 		 * The activator class controls the plug-in life cycle
 		 */
 		public class «simpleName»Activator extends AbstractUIPlugin {
-		«BLANK_LINE»
+		
 			// The plug-in ID
 			public static final String PLUGIN_ID = "«name»"; //$NON-NLS-1$
-		«BLANK_LINE»
+		
 			// The shared instance
 			private static «simpleName»Activator plugin;
-		«BLANK_LINE»
+		
 			public «simpleName»Activator() {
 			}
-		«BLANK_LINE»
+		
 			/*
 			 * (non-Javadoc)
 			 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
@@ -213,7 +210,7 @@ class ParsleyProjectFiles {
 				super.start(context);
 				plugin = this;
 			}
-		«BLANK_LINE»
+		
 			/*
 			 * (non-Javadoc)
 			 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
@@ -222,7 +219,7 @@ class ParsleyProjectFiles {
 				plugin = null;
 				super.stop(context);
 			}
-		«BLANK_LINE»
+		
 			/**
 			 * Returns the shared instance
 			 *
@@ -231,15 +228,15 @@ class ParsleyProjectFiles {
 			public static «simpleName»Activator getDefault() {
 				return plugin;
 			}
-		«BLANK_LINE»
+		
 		}
 	'''
 
 	private static def viewClass(String name, String partName, String superClass) '''
 		package «name»;
-		«BLANK_LINE»
+		
 		public class «partName» extends «superClass» {
-			«BLANK_LINE»
+			
 		}
 	'''
 
@@ -248,7 +245,7 @@ class ParsleyProjectFiles {
 			return '''
 				/* «name» EMF Parsley Dsl Module file */
 				module «name» {
-					«BLANK_LINE»
+					
 				}
 			'''
 		val partName = simpleName + viewType.simpleName
@@ -256,17 +253,17 @@ class ParsleyProjectFiles {
 		val resourceManager = if (isSaveable(viewType)) "\n" + resourceManager else ""
 		'''
 			import «name».«partName»
-			«BLANK_LINE»
+			
 			/* «name» EMF Parsley Dsl Module file */
 			module «name» {
-				«BLANK_LINE»
+				
 				parts {
 					viewpart «name» {
 						viewname "«simpleName»"
 						viewclass «partName»
 					}
 				}
-				«BLANK_LINE»
+				
 				«configurator»
 				«resourceManager»
 			}
