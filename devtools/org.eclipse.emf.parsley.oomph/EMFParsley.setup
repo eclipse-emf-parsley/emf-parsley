@@ -470,6 +470,8 @@
               url="https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/"/>
           <repository
               url="https://download.eclipse.org/technology/swtbot/releases/latest"/>
+          <repository
+              url="https://download.eclipse.org/oomph/simrel-orbit/2023-09"/>
         </repositoryList>
       </targlet>
     </setupTask>
