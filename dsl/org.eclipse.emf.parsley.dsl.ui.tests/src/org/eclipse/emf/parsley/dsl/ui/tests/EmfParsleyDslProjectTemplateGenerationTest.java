@@ -8,10 +8,10 @@
 package org.eclipse.emf.parsley.dsl.ui.tests;
 
 import static org.eclipse.xtext.ui.testing.util.IResourcesSetupUtil.waitForBuild;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -84,9 +84,12 @@ public class EmfParsleyDslProjectTemplateGenerationTest {
 		Set<Path> expectedFiles = projectFiles(expected);
 		assertEquals("Project files differ for " + name, expectedFiles, projectFiles(actual));
 		for (Path file : expectedFiles) {
-			assertArrayEquals("Different contents: " + file,
-				normalizeVersion(file, Files.readAllBytes(expected.resolve(file))),
-				normalizeVersion(file, Files.readAllBytes(actual.resolve(file))));
+			String expectedContents = normalizeContents(file, Files.readString(expected.resolve(file), StandardCharsets.UTF_8));
+			String actualContents = normalizeContents(file, Files.readString(actual.resolve(file), StandardCharsets.UTF_8));
+			if (!expectedContents.equals(actualContents)) {
+				fail("Different contents: " + file + "\nExpected:\n" + expectedContents
+					+ "\nActual:\n" + actualContents);
+			}
 		}
 	}
 
@@ -112,15 +115,15 @@ public class EmfParsleyDslProjectTemplateGenerationTest {
 		}
 	}
 
-	private byte[] normalizeVersion(Path file, byte[] contents) {
-		String text = new String(contents, StandardCharsets.UTF_8);
-		if (file.toString().equals(".settings/org.eclipse.jdt.core.prefs")) {
+	private String normalizeContents(Path file, String text) {
+		text = text.replace("\r\n", "\n").replace('\r', '\n');
+		if (file.equals(Paths.get(".settings", "org.eclipse.jdt.core.prefs"))) {
 			text = text.replaceAll("(?m)^(org\\.eclipse\\.jdt\\.core\\.compiler\\."
 				+ "(?:codegen\\.targetPlatform|compliance|source)=)\\d+", "$1<version>");
-		} else if (file.toString().equals(".classpath")
-				|| file.toString().equals("META-INF/MANIFEST.MF")) {
+		} else if (file.equals(Paths.get(".classpath"))
+				|| file.equals(Paths.get("META-INF", "MANIFEST.MF"))) {
 			text = text.replaceAll("JavaSE-\\d+", "JavaSE-<version>");
 		}
-		return text.getBytes(StandardCharsets.UTF_8);
+		return text;
 	}
 }

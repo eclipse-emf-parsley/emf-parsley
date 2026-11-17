@@ -12,6 +12,7 @@ package org.eclipse.emf.parsley.tests.swtbot;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -153,23 +154,22 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 		Set<Path> expectedFiles = projectFiles(reference);
 		assertEquals("Project files differ from " + reference, expectedFiles, projectFiles(actual));
 		for (Path file : expectedFiles) {
-			String expected = Files.readString(reference.resolve(file), StandardCharsets.UTF_8);
-			String generated = Files.readString(actual.resolve(file), StandardCharsets.UTF_8);
-			if (file.toString().equals(".classpath")
-					|| file.toString().equals("META-INF/MANIFEST.MF")
-					|| file.toString().equals(".settings/org.eclipse.jdt.core.prefs")) {
-				expected = normalizeJavaVersion(file, expected);
-				generated = normalizeJavaVersion(file, generated);
+			String expected = normalizeContents(file, Files.readString(reference.resolve(file), StandardCharsets.UTF_8));
+			String generated = normalizeContents(file, Files.readString(actual.resolve(file), StandardCharsets.UTF_8));
+			if (!expected.equals(generated)) {
+				fail("Different contents: " + file + "\nExpected:\n" + expected
+						+ "\nActual:\n" + generated);
 			}
-			assertEquals("Different contents: " + file, expected, generated);
 		}
 	}
 
-	private String normalizeJavaVersion(Path file, String text) {
-		if (file.toString().equals(".settings/org.eclipse.jdt.core.prefs")) {
+	private String normalizeContents(Path file, String text) {
+		text = text.replace("\r\n", "\n").replace('\r', '\n');
+		if (file.equals(Paths.get(".settings", "org.eclipse.jdt.core.prefs"))) {
 			text = text.replaceAll("(?m)^(org\\.eclipse\\.jdt\\.core\\.compiler\\."
 					+ "(?:codegen\\.targetPlatform|compliance|source)=)\\d+", "$1<version>");
-		} else {
+		} else if (file.equals(Paths.get(".classpath"))
+				|| file.equals(Paths.get("META-INF", "MANIFEST.MF"))) {
 			text = text.replaceAll("JavaSE-\\d+", "JavaSE-<version>");
 		}
 		return text;
