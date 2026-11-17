@@ -10,7 +10,6 @@
  */
 package org.eclipse.emf.parsley.tests.swtbot;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -154,27 +153,26 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 		Set<Path> expectedFiles = projectFiles(reference);
 		assertEquals("Project files differ from " + reference, expectedFiles, projectFiles(actual));
 		for (Path file : expectedFiles) {
-			byte[] expected = Files.readAllBytes(reference.resolve(file));
-			byte[] generated = Files.readAllBytes(actual.resolve(file));
+			String expected = Files.readString(reference.resolve(file), StandardCharsets.UTF_8);
+			String generated = Files.readString(actual.resolve(file), StandardCharsets.UTF_8);
 			if (file.toString().equals(".classpath")
 					|| file.toString().equals("META-INF/MANIFEST.MF")
 					|| file.toString().equals(".settings/org.eclipse.jdt.core.prefs")) {
 				expected = normalizeJavaVersion(file, expected);
 				generated = normalizeJavaVersion(file, generated);
 			}
-			assertArrayEquals("Different contents: " + file, expected, generated);
+			assertEquals("Different contents: " + file, expected, generated);
 		}
 	}
 
-	private byte[] normalizeJavaVersion(Path file, byte[] contents) {
-		String text = new String(contents, StandardCharsets.UTF_8);
+	private String normalizeJavaVersion(Path file, String text) {
 		if (file.toString().equals(".settings/org.eclipse.jdt.core.prefs")) {
 			text = text.replaceAll("(?m)^(org\\.eclipse\\.jdt\\.core\\.compiler\\."
 					+ "(?:codegen\\.targetPlatform|compliance|source)=)\\d+", "$1<version>");
 		} else {
 			text = text.replaceAll("JavaSE-\\d+", "JavaSE-<version>");
 		}
-		return text.getBytes(StandardCharsets.UTF_8);
+		return text;
 	}
 
 	private Set<Path> projectFiles(Path project) throws IOException {
