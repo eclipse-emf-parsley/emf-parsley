@@ -144,8 +144,6 @@
 			**/*ParsleyModule.java,
 			**/*Activator.java,
 			**/EmfParsleyViewFilesGenerator.java,
-			**/EmfParsleyProjectFilesGenerator.java,
-			**/EmfParsleyDslNewProjectFiles.java,
 			**/*Dsl*Setup*.java,
 			**/*ExtensionFactory*.java,
 			**/*Nature*.java,
@@ -302,8 +300,6 @@
 
 				<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
 
-				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
-				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 
 				<!-- The target platform rap example is required here to allow to generate
 					a .target file with proper substitution of versions in the update sites.
@@ -509,7 +505,6 @@
 				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
 
-				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 			</modules>
 		</profile>
@@ -655,8 +650,6 @@
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
-				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
-				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
@@ -897,7 +890,6 @@
 							<!-- We don't have a custom serializer -->
 							<exclude>**/serializer/*.class</exclude>
 							<!-- generated files -->
-							<exclude>**/EmfParsleyDslNewProjectWizard*.class</exclude>
 							<exclude>**/*Abstract*RuntimeModule.class</exclude>
 							<exclude>**/*StandaloneSetup*.class</exclude>
 							<exclude>**/*Abstract*Validator.class</exclude>

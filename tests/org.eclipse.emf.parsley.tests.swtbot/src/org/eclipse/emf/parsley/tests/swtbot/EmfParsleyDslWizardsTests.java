@@ -133,16 +133,14 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	}
 
 	private void createTemplateProject(String projectName, String template, boolean rap) {
-		if (!rap) {
-			createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-					NEW_EMF_PARSLEY_DSL_PROJECT, projectName, template);
-			return;
-		}
 		SWTBotShell shell = createNewProjectWizard(
 				EMF_PARSLEY_CATEGORY, NEW_EMF_PARSLEY_DSL_PROJECT, projectName);
-		bot.checkBox("Prepare for Remote Application Platform (RAP)").select();
 		bot.button("Next >").click();
 		bot.table().select(template);
+		bot.button("Next >").click();
+		if (rap) {
+			bot.checkBox("Prepare for Remote Application Platform (RAP)").select();
+		}
 		bot.button("Finish").click();
 		waitForShellToClose(shell);
 		assertProjectIsCreated(projectName, shell);

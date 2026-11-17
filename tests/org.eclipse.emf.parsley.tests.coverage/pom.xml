@@ -56,19 +56,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>org.eclipse.emf.parsley.generator.common</artifactId>
-			<version>${project.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
 			<artifactId>org.eclipse.emf.parsley.views.common</artifactId>
-			<version>${project.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>org.eclipse.emf.parsley.wizards</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
 		</dependency>

@@ -41,7 +41,7 @@ Workflow {
 				generateStub = true
 				generateXtendStub = true
 			}
-			newProjectWizardForEclipse = {
+			projectWizard = {
 				generate = true
 			}
 			validator = {
