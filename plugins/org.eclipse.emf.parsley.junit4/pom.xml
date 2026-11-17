@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.jface.databinding</artifactId>
-			<version>1.15.400</version>
+			<version>1.16.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
