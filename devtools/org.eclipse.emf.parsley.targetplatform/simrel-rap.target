@@ -18,7 +18,7 @@
 <unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.rap.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.rap.sdk.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/modeling/emf/emf/builds/release/2.47.0/"/>
+<repository location="https://download.eclipse.org/modeling/emf/emf/builds/release/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.rap.feature.feature.group" version="0.0.0"/>
