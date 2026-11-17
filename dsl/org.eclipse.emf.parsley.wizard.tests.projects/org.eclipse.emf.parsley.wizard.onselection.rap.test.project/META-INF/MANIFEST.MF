@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.eclipse.emf.parsley.wizard.onselection.rap.test.project
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.emf.parsley.wizard.onselection.rap.test.project
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.eclipse.emf.parsley.wizard.onselection.rap.test.project; singleton:=true
+Bundle-Activator: org.eclipse.emf.parsley.wizard.onselection.rap.test.project.ProjectActivator
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui;resolution:=optional,
+ org.eclipse.rap.ui;resolution:=optional,
+ org.eclipse.emf.parsley.views;resolution:=optional,
+ org.eclipse.emf.parsley.rap.views;resolution:=optional,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: JavaSE-21
