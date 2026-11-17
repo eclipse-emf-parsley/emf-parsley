@@ -10,12 +10,32 @@
  */
 package org.eclipse.emf.parsley.tests.swtbot;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
+	private static final String REFERENCE_PROJECTS = "dsl/org.eclipse.emf.parsley.wizard.tests.projects";
+	private static final String PROJECT_PREFIX = "org.eclipse.emf.parsley.wizard.";
+	private static final String PROJECT_SUFFIX = ".test.project";
+
 	private final String TREE_FORM_TEMPLATE = "Saveable Tree Form View";
 
 	private final String TREE_TEMPLATE = "Saveable Tree View";
@@ -49,79 +69,122 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 
 	@Test
 	public void canCreateDslProjectWithWizardAndTreeFormTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				TREE_FORM_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("saveabletreeformview", TREE_FORM_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndTreeTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TREE_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("saveabletreeview", TREE_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndTableFormTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				TABLE_FORM_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("saveabletableformview", TABLE_FORM_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndTableTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME, TABLE_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("saveabletableview", TABLE_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndTreeWithColumnsTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				TREE_WITH_COLUMNS_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("saveabletreecolumnsview", TREE_WITH_COLUMNS_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndOnselectionTreeTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				ONSELECTION_TREE_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("onselectiontreeview", ONSELECTION_TREE_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndOnselectionTreeFormTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				ONSELECTION_TREE_FORM_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("onselectiontreeformview", ONSELECTION_TREE_FORM_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndOnselectionTableTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				ONSELECTION_TABLE_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("onselectiontableview", ONSELECTION_TABLE_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndOnselectionFormTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				ONSELECTION_FORM_TEMPLATE);
-		assertNoIssuesInProjectAfterAutoBuild();
+		assertTemplateProject("onselectionformview", ONSELECTION_FORM_TEMPLATE);
 	}
 
 	@Test
 	public void canCreateDslProjectWithWizardAndOnselectionTableFormTemplate() throws Exception {
-		createProjectWithTemplateInWorkspace(EmfParsleySWTBotAbstractTests.EMF_PARSLEY_CATEGORY,
-				EmfParsleySWTBotAbstractTests.NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME,
-				ONSELECTION_TABLE_FORM_TEMPLATE);
+		assertTemplateProject("onselectiontableformview", ONSELECTION_TABLE_FORM_TEMPLATE);
+	}
+
+	@Test
+	public void canCreateDslProjectWithWizardAndRapOption() throws Exception {
+		String projectName = PROJECT_PREFIX + "onselection.rap" + PROJECT_SUFFIX;
+		createTemplateProject(projectName, ONSELECTION_TREE_FORM_TEMPLATE, true);
+		assertNoErrorsInProjectAfterAutoBuild();
+		assertProjectMatchesReference(projectName);
+	}
+
+	private void assertTemplateProject(String name, String template) throws Exception {
+		String projectName = PROJECT_PREFIX + name + PROJECT_SUFFIX;
+		createTemplateProject(projectName, template, false);
 		assertNoIssuesInProjectAfterAutoBuild();
+		assertProjectMatchesReference(projectName);
+	}
+
+	private void createTemplateProject(String projectName, String template, boolean rap) {
+		if (!rap) {
+			createProjectWithTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
+					NEW_EMF_PARSLEY_DSL_PROJECT, projectName, template);
+			return;
+		}
+		SWTBotShell shell = createNewProjectWizard(
+				EMF_PARSLEY_CATEGORY, NEW_EMF_PARSLEY_DSL_PROJECT, projectName);
+		bot.checkBox("Prepare for Remote Application Platform (RAP)").select();
+		bot.button("Next >").click();
+		bot.table().select(template);
+		bot.button("Finish").click();
+		waitForShellToClose(shell);
+		assertProjectIsCreated(projectName, shell);
+	}
+
+	private void assertProjectMatchesReference(String projectName) throws IOException {
+		Path reference = findReferenceProjects().resolve(projectName);
+		assertTrue("Missing reference project: " + reference, Files.isDirectory(reference));
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		Path actual = project.getLocation().toFile().toPath();
+		Set<Path> expectedFiles = projectFiles(reference);
+		assertEquals("Project files differ from " + reference, expectedFiles, projectFiles(actual));
+		for (Path file : expectedFiles) {
+			assertArrayEquals("Different contents: " + file,
+					Files.readAllBytes(reference.resolve(file)), Files.readAllBytes(actual.resolve(file)));
+		}
+	}
+
+	private Set<Path> projectFiles(Path project) throws IOException {
+		try (Stream<Path> files = Files.walk(project)) {
+			return files.filter(Files::isRegularFile)
+					.map(project::relativize)
+					.filter(path -> !path.startsWith("emfparsley-gen") && !path.startsWith("bin")
+							&& !path.startsWith("target"))
+					.collect(Collectors.toCollection(TreeSet::new));
+		}
+	}
+
+	private Path findReferenceProjects() {
+		IProject fixtureProject = ResourcesPlugin.getWorkspace().getRoot()
+				.getProject("org.eclipse.emf.parsley.wizard.tests.projects");
+		if (fixtureProject.exists() && fixtureProject.getLocation() != null) {
+			return fixtureProject.getLocation().toFile().toPath();
+		}
+		Path path = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
+		while (path != null) {
+			Path candidate = path.resolve(REFERENCE_PROJECTS);
+			if (Files.isDirectory(candidate)) {
+				return candidate;
+			}
+			path = path.getParent();
+		}
+		throw new AssertionError("Cannot find " + REFERENCE_PROJECTS + " from " + System.getProperty("user.dir"));
 	}
 }
