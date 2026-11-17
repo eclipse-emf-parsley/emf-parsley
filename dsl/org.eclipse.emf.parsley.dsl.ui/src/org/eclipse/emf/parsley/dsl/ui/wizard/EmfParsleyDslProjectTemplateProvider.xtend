@@ -141,7 +141,7 @@ final class SaveableTreeWithColumnsProjectTemplate {
 /** All generated project files and project settings live here. */
 class ParsleyProjectFiles {
 	// A marker keeps indented blank lines in Xtend rich strings until file creation.
-	private static val BLANK_LINE = "__PARSLEY_BLANK_LINE__"
+	static val BLANK_LINE = "__PARSLEY_BLANK_LINE__"
 
 	static def generate(IProjectGenerator generator, IExtendedProjectInfo info, Class<?> viewType, boolean rap) {
 		val name = info.projectName.replaceAll("[^a-zA-Z0-9\\._]", "_").toLowerCase(Locale.ENGLISH)
