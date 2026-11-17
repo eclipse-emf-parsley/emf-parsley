@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,7 +36,6 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 	private static final String REFERENCE_PROJECTS = "dsl/org.eclipse.emf.parsley.wizard.tests.projects";
 	private static final String PROJECT_PREFIX = "org.eclipse.emf.parsley.wizard.";
 	private static final String PROJECT_SUFFIX = ".test.project";
-
 	private final String TREE_FORM_TEMPLATE = "Saveable Tree Form View";
 
 	private final String TREE_TEMPLATE = "Saveable Tree View";
@@ -156,9 +156,27 @@ public class EmfParsleyDslWizardsTests extends EmfParsleyDslUiAbstractTests {
 		Set<Path> expectedFiles = projectFiles(reference);
 		assertEquals("Project files differ from " + reference, expectedFiles, projectFiles(actual));
 		for (Path file : expectedFiles) {
-			assertArrayEquals("Different contents: " + file,
-					Files.readAllBytes(reference.resolve(file)), Files.readAllBytes(actual.resolve(file)));
+			byte[] expected = Files.readAllBytes(reference.resolve(file));
+			byte[] generated = Files.readAllBytes(actual.resolve(file));
+			if (file.toString().equals(".classpath")
+					|| file.toString().equals("META-INF/MANIFEST.MF")
+					|| file.toString().equals(".settings/org.eclipse.jdt.core.prefs")) {
+				expected = normalizeJavaVersion(file, expected);
+				generated = normalizeJavaVersion(file, generated);
+			}
+			assertArrayEquals("Different contents: " + file, expected, generated);
 		}
+	}
+
+	private byte[] normalizeJavaVersion(Path file, byte[] contents) {
+		String text = new String(contents, StandardCharsets.UTF_8);
+		if (file.toString().equals(".settings/org.eclipse.jdt.core.prefs")) {
+			text = text.replaceAll("(?m)^(org\\.eclipse\\.jdt\\.core\\.compiler\\."
+					+ "(?:codegen\\.targetPlatform|compliance|source)=)\\d+", "$1<version>");
+		} else {
+			text = text.replaceAll("JavaSE-\\d+", "JavaSE-<version>");
+		}
+		return text.getBytes(StandardCharsets.UTF_8);
 	}
 
 	private Set<Path> projectFiles(Path project) throws IOException {
