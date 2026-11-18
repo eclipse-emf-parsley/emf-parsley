@@ -49,7 +49,7 @@ final class EmptyParsleyProjectTemplate {
 }
 
 @ProjectTemplate(label="On selection Tree View", icon="sample.gif",
-	description="<p>A tree view that reacts to selection from other components.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>tree</b>.</p><p>The view reacts on selection from other components.</p><p><b>No user change is needed to run the project</b></p>")
 final class OnSelectionTreeProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -58,7 +58,7 @@ final class OnSelectionTreeProjectTemplate {
 }
 
 @ProjectTemplate(label="On selection Form View", icon="sample.gif",
-	description="<p>A form view that reacts to selection from other components.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>form</b>.</p><p>The view reacts on selection from other components.</p><p><b>No user change is needed to run the project</b></p>")
 final class OnSelectionFormProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -67,7 +67,7 @@ final class OnSelectionFormProjectTemplate {
 }
 
 @ProjectTemplate(label="On selection Table Form View", icon="sample.gif",
-	description="<p>A table and form view that reacts to selection. Specify the EClass to show.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>table and a form</b>.</p><p>The view reacts on selection from other components.</p><p><b>The user must specify:</b></p><ul><li>the EClass of objects to be shown</li></ul>")
 final class OnSelectionTableFormProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -76,7 +76,7 @@ final class OnSelectionTableFormProjectTemplate {
 }
 
 @ProjectTemplate(label="On selection Table View", icon="sample.gif",
-	description="<p>A table view that reacts to selection. Specify the EClass to show.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>table</b>.</p><p>The view reacts on selection from other components.</p><p><b>The user must specify:</b></p><ul><li>the EClass of objects to be shown</li></ul>")
 final class OnSelectionTableProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -85,7 +85,7 @@ final class OnSelectionTableProjectTemplate {
 }
 
 @ProjectTemplate(label="On selection Tree Form View", icon="sample.gif",
-	description="<p>A tree and form view that reacts to selection from other components.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>tree and a form</b>.</p><p>The view reacts on selection from other components.</p><p><b>No user change is needed to run the project</b></p>")
 final class OnSelectionTreeFormProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -94,7 +94,7 @@ final class OnSelectionTreeFormProjectTemplate {
 }
 
 @ProjectTemplate(label="Saveable Table Form View", icon="sample.gif",
-	description="<p>A table and form view backed by a resource. Specify the resource URI and EClass.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>table and a form</b>.</p><p>This view reads the content from a resource and can save changes.</p><p><b>The user must specify:</b></p><ul><li>the resource URI</li><li>the EClass of objects to be shown</li></ul>")
 final class SaveableTableFormProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -103,7 +103,7 @@ final class SaveableTableFormProjectTemplate {
 }
 
 @ProjectTemplate(label="Saveable Table View", icon="sample.gif",
-	description="<p>A table view backed by a resource. Specify the resource URI and EClass.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>table</b>.</p><p>This view reads the content from a resource and can save changes.</p><p><b>The user must specify:</b></p><ul><li>the resource URI</li><li>the EClass of objects to be shown</li></ul>")
 final class SaveableTableProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -112,7 +112,7 @@ final class SaveableTableProjectTemplate {
 }
 
 @ProjectTemplate(label="Saveable Tree Form View", icon="sample.gif",
-	description="<p>A tree and form view backed by a resource. Specify the resource URI.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>tree and a form</b>.</p><p>This view reads the content from a resource and can save changes.</p><p><b>The user must specify:</b></p><ul><li>the resource URI</li></ul>")
 final class SaveableTreeFormProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -121,7 +121,7 @@ final class SaveableTreeFormProjectTemplate {
 }
 
 @ProjectTemplate(label="Saveable Tree View", icon="sample.gif",
-	description="<p>A tree view backed by a resource. Specify the resource URI.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>tree</b>.</p><p>This view reads the content from a resource and can save changes.</p><p><b>The user must specify:</b></p><ul><li>the resource URI</li></ul>")
 final class SaveableTreeProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {
@@ -130,7 +130,7 @@ final class SaveableTreeProjectTemplate {
 }
 
 @ProjectTemplate(label="Saveable Tree With Columns View", icon="sample.gif",
-	description="<p>A tree with columns backed by a resource. Specify the resource URI and EClass.</p>")
+	description="<p>This wizard creates a plug-in project that contains a view with a <b>tree with columns</b>.</p><p>This view reads the content from a resource and can save changes.</p><p><b>The user must specify:</b></p><ul><li>the resource URI</li><li>the EClass with the features to be shown</li></ul>")
 final class SaveableTreeWithColumnsProjectTemplate {
 	val rap = check("Prepare for Remote Application Platform (RAP)", false)
 	override generateProjects(IProjectGenerator generator) {

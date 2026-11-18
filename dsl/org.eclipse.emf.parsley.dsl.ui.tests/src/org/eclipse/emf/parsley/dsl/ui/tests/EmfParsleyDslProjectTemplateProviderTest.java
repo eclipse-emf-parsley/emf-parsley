@@ -26,4 +26,32 @@ public class EmfParsleyDslProjectTemplateProviderTest {
 			assertTrue(template.getVariables().get(0).getLabel().contains("RAP"));
 		}
 	}
+
+	@Test
+	public void viewTemplateDescriptionsExplainRequiredChanges() {
+		AbstractProjectTemplate[] templates = new EmfParsleyDslProjectTemplateProvider().getProjectTemplates();
+		String[] viewTypes = { "tree", "form", "table and a form", "table", "tree and a form",
+				"table and a form", "table", "tree and a form", "tree", "tree with columns" };
+		for (int i = 1; i < templates.length; i++) {
+			String description = templates[i].getDescription();
+			assertTrue(templates[i].getLabel(), description.contains("<b>" + viewTypes[i - 1] + "</b>"));
+			assertTrue(templates[i].getLabel(), description.contains("This wizard creates a plug-in project"));
+			if (i <= 5) {
+				assertTrue(templates[i].getLabel(), description.contains("reacts on selection from other components"));
+			} else {
+				assertTrue(templates[i].getLabel(), description.contains("reads the content from a resource and can save changes"));
+				assertTrue(templates[i].getLabel(), description.contains("<li>the resource URI</li>"));
+			}
+			if (i == 1 || i == 2 || i == 5) {
+				assertTrue(templates[i].getLabel(), description.contains("<b>No user change is needed to run the project</b>"));
+			} else {
+				assertTrue(templates[i].getLabel(), description.contains("<b>The user must specify:</b>"));
+			}
+			if (i == 3 || i == 4 || i == 6 || i == 7) {
+				assertTrue(templates[i].getLabel(), description.contains("<li>the EClass of objects to be shown</li>"));
+			} else if (i == 10) {
+				assertTrue(description.contains("<li>the EClass with the features to be shown</li>"));
+			}
+		}
+	}
 }
