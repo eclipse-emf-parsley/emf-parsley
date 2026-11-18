@@ -8,6 +8,7 @@
 package org.eclipse.emf.parsley.dsl.ui.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectTemplateProvider;
@@ -34,6 +35,7 @@ public class EmfParsleyDslProjectTemplateProviderTest {
 				"table and a form", "table", "tree and a form", "tree", "tree with columns" };
 		for (int i = 1; i < templates.length; i++) {
 			String description = templates[i].getDescription();
+			assertFalse(templates[i].getLabel(), description.contains("<ul>"));
 			assertTrue(templates[i].getLabel(), description.contains("<b>" + viewTypes[i - 1] + "</b>"));
 			assertTrue(templates[i].getLabel(), description.contains("This wizard creates a plug-in project"));
 			if (i <= 5) {
