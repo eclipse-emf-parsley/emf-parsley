@@ -620,4 +620,12 @@
 			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectTemplateProvider"
 			grammarName="org.eclipse.emf.parsley.dsl.EmfParsleyDsl"/>
 	</extension>
+	<extension point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+			<newWizardShortcut id="org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"/>
+		</perspectiveExtension>
+		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+			<newWizardShortcut id="org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"/>
+		</perspectiveExtension>
+	</extension>
 </plugin>
