@@ -826,7 +826,6 @@
         <setEntry value="org.eclipse.emf.parsley.examples.library.editor@default:default"/>
         <setEntry value="org.eclipse.emf.parsley.examples.library@default:default"/>
         <setEntry value="org.eclipse.emf.parsley.tests.swtbot@default:default"/>
-        <setEntry value="org.eclipse.emf.parsley.wizards@default:default"/>
         <setEntry value="org.eclipse.emf.parsley@default:default"/>
         <setEntry value="org.eclipse.swtbot.examples@default:default"/>
         <setEntry value="org.eclipse.swtbot.swt.finder@default:default"/>

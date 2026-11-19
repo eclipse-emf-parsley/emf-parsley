@@ -605,12 +605,31 @@
 	</extension>
 	<extension
 		point="org.eclipse.ui.newWizards">
+		<category id="org.eclipse.emf.parsley.dsl.ui.category" name="EmfParsleyDsl">
+		</category>
 		<wizard
-			category="org.eclipse.xtext.projectwiz"
-			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"
+			category="org.eclipse.emf.parsley.dsl.ui.category"
+			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard"
 			id="org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"
 			name="EmfParsleyDsl Project"
-				project="true">
+			icon="icons/new_EmfParsleyDsl_proj.gif"
+			project="true">
 		</wizard>
+	</extension>
+	<extension
+		point="org.eclipse.xtext.ui.projectTemplate">
+		<projectTemplateProvider
+			class="org.eclipse.emf.parsley.dsl.ui.EmfParsleyDslExecutableExtensionFactory:org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslProjectTemplateProvider"
+			grammarName="org.eclipse.emf.parsley.dsl.EmfParsleyDsl">
+		</projectTemplateProvider>
+	</extension>
+	<extension
+		point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+			<newWizardShortcut id="org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"/>
+		</perspectiveExtension>
+		<perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+			<newWizardShortcut id="org.eclipse.emf.parsley.dsl.ui.wizard.EmfParsleyDslNewProjectWizard"/>
+		</perspectiveExtension>
 	</extension>
 </plugin>

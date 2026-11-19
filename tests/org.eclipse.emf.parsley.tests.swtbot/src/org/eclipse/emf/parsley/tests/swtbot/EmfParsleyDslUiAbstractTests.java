@@ -20,14 +20,23 @@ public abstract class EmfParsleyDslUiAbstractTests extends EmfParsleySWTBotAbstr
 	protected final String TEST_PROJ_NAME_BAD1 = "My-EmfParsley--project";
 
 	public void createDslProjectWithWizard() throws Exception {
-		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME);
+		createEmptyDslProject(TEST_PROJ_NAME);
 		assertNoIssuesInProjectAfterAutoBuild();
 	}
 
 	public void createDslProjectWithWizardFromBadProjectName1() throws Exception {
-		createProjectWithoutTemplateInWorkspace(EMF_PARSLEY_CATEGORY,
-				NEW_EMF_PARSLEY_DSL_PROJECT, TEST_PROJ_NAME_BAD1);
+		createEmptyDslProject(TEST_PROJ_NAME_BAD1);
 		assertNoIssuesInProjectAfterAutoBuild();
+	}
+
+	private void createEmptyDslProject(String name) {
+		var shell = createNewProjectWizard(EMF_PARSLEY_CATEGORY,
+				NEW_EMF_PARSLEY_DSL_PROJECT, name);
+		bot.button("Next >").click();
+		bot.table().select("Empty EMF Parsley Project");
+		bot.button("Next >").click();
+		bot.button("Finish").click();
+		waitForShellToClose(shell);
+		assertProjectIsCreated(name, shell);
 	}
 }

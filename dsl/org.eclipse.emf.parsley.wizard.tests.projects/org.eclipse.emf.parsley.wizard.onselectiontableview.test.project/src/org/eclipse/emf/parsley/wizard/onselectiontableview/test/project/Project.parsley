@@ -1,0 +1,20 @@
+import org.eclipse.emf.parsley.wizard.onselectiontableview.test.project.ProjectOnSelectionTableView
+
+/* org.eclipse.emf.parsley.wizard.onselectiontableview.test.project EMF Parsley Dsl Module file */
+module org.eclipse.emf.parsley.wizard.onselectiontableview.test.project {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.wizard.onselectiontableview.test.project {
+			viewname "Project"
+			viewclass ProjectOnSelectionTableView
+		}
+	}
+	
+	configurator {
+		eClass {
+			ProjectOnSelectionTableView -> {
+				// TODO return the EClass of objects to be shown
+			}
+		}
+	}
+}
