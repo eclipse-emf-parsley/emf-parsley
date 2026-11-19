@@ -1,0 +1,13 @@
+import org.eclipse.emf.parsley.wizard.onselectionformview.test.project.ProjectOnSelectionFormView
+
+/* org.eclipse.emf.parsley.wizard.onselectionformview.test.project EMF Parsley Dsl Module file */
+module org.eclipse.emf.parsley.wizard.onselectionformview.test.project {
+	
+	parts {
+		viewpart org.eclipse.emf.parsley.wizard.onselectionformview.test.project {
+			viewname "Project"
+			viewclass ProjectOnSelectionFormView
+		}
+	}
+	
+}

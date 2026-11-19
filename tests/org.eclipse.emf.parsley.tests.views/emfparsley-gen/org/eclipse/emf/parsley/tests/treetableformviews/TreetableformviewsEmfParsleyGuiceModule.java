@@ -24,27 +24,27 @@ public class TreetableformviewsEmfParsleyGuiceModule extends EmfParsleyGuiceModu
   public TreetableformviewsEmfParsleyGuiceModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public Class<? extends ResourceSaveStrategy> bindResourceSaveStrategy() {
     return ValidateBeforeSaveStrategy.class;
   }
-  
+
   @Override
   public Class<? extends TableViewerColumnBuilder> bindTableViewerColumnBuilder() {
     return TableViewerEditableColumnBuilder.class;
   }
-  
+
   @Override
   public int valueTreeFormSashStyle() {
     return SWT.HORIZONTAL;
   }
-  
+
   @Override
   public Class<? extends Configurator> bindConfigurator() {
     return TreetableformviewsConfigurator.class;
   }
-  
+
   @Override
   public Class<? extends ResourceManager> bindResourceManager() {
     return TreetableformviewsResourceManager.class;

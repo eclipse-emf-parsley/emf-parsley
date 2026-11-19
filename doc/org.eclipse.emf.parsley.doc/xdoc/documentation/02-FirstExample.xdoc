@@ -36,7 +36,7 @@ ol[
 	]
 	item[click "Next"]
 	item[give a name to the project (e.g. "org.eclipse.emf.parsley.examples.firstexample")
-	and make sure the checkbox about using one of the templates is checked
+	and press "Next" to select one of the templates
 	
 	img[images/01-new-project-dsl-wizard2.png][][ ][] 
 	
@@ -48,6 +48,8 @@ ol[
 	
 	]
 	item[click "Finish"]
+	item[Alternatively click "Next" to select the checkbox for preparing the project for RAP (not used
+	in thi example)]
 ]
  
 The generated project has some classes and a e[module.parlsey] file, which opens automatically:

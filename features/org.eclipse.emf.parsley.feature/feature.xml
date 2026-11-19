@@ -30,9 +30,6 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
          id="org.eclipse.emf.parsley.doc"
          version="0.0.0"/>
 
-   <plugin
-         id="org.eclipse.emf.parsley.wizards"
-         version="0.0.0"/>
 
    <plugin
          id="org.eclipse.emf.parsley.views"
@@ -46,9 +43,6 @@ It aims at providing a set of Components like Trees, Tables and Detail Forms tha
          id="org.eclipse.emf.parsley.runtime"
          version="0.0.0"/>
 
-   <plugin
-         id="org.eclipse.emf.parsley.generator.common"
-         version="0.0.0"/>
 
    <plugin
          id="org.eclipse.emf.parsley.common"

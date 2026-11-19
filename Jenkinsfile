@@ -1,8 +1,6 @@
 pipeline {
   agent {
-    kubernetes {
-      inheritFrom 'centos-7'
-    }
+    label 'ubuntu-latest'
   }
   
   options {
@@ -12,7 +10,7 @@ pipeline {
   }
 
   tools {
-     jdk "openjdk-jdk17-latest"
+     jdk "temurin-jdk21-latest"
   }
 
   stages {

@@ -24,5 +24,10 @@
 			<artifactId>org.eclipse.emf.parsley.junit4</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf.parsley</groupId>
+			<artifactId>org.eclipse.emf.parsley.junit4.parsley</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

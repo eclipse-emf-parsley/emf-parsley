@@ -30,11 +30,6 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>org.eclipse.emf.parsley.wizards</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
 			<artifactId>org.eclipse.emf.parsley.dsl.ui</artifactId>
 			<version>${project.version}</version>
 		</dependency>

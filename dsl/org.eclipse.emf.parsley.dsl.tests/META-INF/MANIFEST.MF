@@ -13,7 +13,6 @@ Require-Bundle: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.tests.models,
  org.eclipse.emf.parsley.views,
  org.eclipse.jface;bundle-version="3.5.0",
- org.eclipse.emf.parsley.generator.common,
  org.eclipse.emf.parsley.dsl.additional.builder,
  org.eclipse.pde.core;bundle-version="3.7.1",
  org.eclipse.xtext.testing,
@@ -29,6 +28,6 @@ Import-Package: org.apache.log4j,
  org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.eclipse.emf.parsley.dsl.tests;x-internal=true
 Automatic-Module-Name: org.eclipse.emf.parsley.dsl.tests

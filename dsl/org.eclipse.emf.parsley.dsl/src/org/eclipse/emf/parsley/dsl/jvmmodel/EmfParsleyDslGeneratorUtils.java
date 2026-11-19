@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.eclipse.emf.parsley.dsl.model.PartSpecification;
 import org.eclipse.emf.parsley.dsl.model.PartsSpecifications;
-import org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 
 import com.google.inject.Inject;
@@ -28,9 +27,6 @@ import com.google.inject.Inject;
 public class EmfParsleyDslGeneratorUtils {
 	@Inject
 	private IQualifiedNameProvider qualifiedNameProvider;
-
-	@Inject
-	private EmfParsleyProjectFilesGenerator projectFilesGenerator;
 
 	public String getPropertyNameForGetterSetterMethod(final String opName) {
 		if (opName.startsWith("get") && opName.length() > 3 && Character.isUpperCase(opName.charAt(3))) {
@@ -43,9 +39,9 @@ public class EmfParsleyDslGeneratorUtils {
 	}
 
 	public String executableExtensionFactoryQN(final org.eclipse.emf.parsley.dsl.model.Module element) {
-		return qualifiedNameProvider.getFullyQualifiedName(element).toString() + "."
-			+ projectFilesGenerator
-				.extFactoryName(qualifiedNameProvider.getFullyQualifiedName(element).toString());
+		String name = qualifiedNameProvider.getFullyQualifiedName(element).toString();
+		return name + "." + EmfParsleyDslNaming.buildClassNameFromProject(name)
+				+ "ExecutableExtensionFactory";
 	}
 
 	public String executableExtensionFactoryQN(final PartSpecification element) {

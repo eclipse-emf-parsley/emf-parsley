@@ -15,7 +15,7 @@ public class MavenDialogControlFactory extends DialogControlFactory {
   public MavenDialogControlFactory(final CompositeParameter compositeParameter, final EObjectParameter eObjectParameter) {
     super(compositeParameter, eObjectParameter);
   }
-  
+
   public Control control_EClass_name(final IObservableValue observableValue, final EStructuralFeature feature) {
     Control control = createControl_EClass_name();
     bindValue(

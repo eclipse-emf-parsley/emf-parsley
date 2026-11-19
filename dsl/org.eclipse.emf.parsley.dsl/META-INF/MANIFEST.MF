@@ -17,11 +17,10 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.common,
  org.eclipse.core.resources,
  org.eclipse.emf.parsley;visibility:=reexport,
- org.eclipse.emf.parsley.generator.common,
  org.objectweb.asm;bundle-version="9.2.0";resolution:=optional
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.eclipse.emf.parsley.dsl,
  org.eclipse.emf.parsley.dsl.generator,
  org.eclipse.emf.parsley.dsl.jvmmodel,

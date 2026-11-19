@@ -108,8 +108,8 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 				featuresProvider {
 					features {
 						List ->\s"""
-		).assertText("class", "empty");
-		// these correspond to getClass and isEmpty
+		).assertText("class", "empty", "first", "last");
+		// these correspond to getClass, isEmpty, getFirst and getLast
 	}
 
 	@Test
@@ -123,8 +123,8 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 				featureCaptionProvider {
 					text {
 						List :\s"""
-		).assertText("class", "empty");
-		// these correspond to getClass and isEmpty
+		).assertText("class", "empty", "first", "last");
+		// these correspond to getClass, isEmpty, getFirst and getLast
 	}
 
 	@Test
@@ -138,8 +138,8 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 				formControlFactory {
 					control {
 						List :\s"""
-		).assertText("class", "empty");
-		// these correspond to getClass and isEmpty
+		).assertText("class", "empty", "first", "last");
+		// these correspond to getClass, isEmpty, getFirst and getLast
 	}
 
 	@Test
@@ -152,8 +152,8 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 			
 				proposals {
 						List :\s"""
-		).assertText("class", "empty");
-		// these correspond to getClass and isEmpty
+		).assertText("class", "empty", "first", "last");
+		// these correspond to getClass, isEmpty, getFirst and getLast
 	}
 
 	@Test
@@ -180,7 +180,7 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		),
 			"View", "E4PartWrapper", "ContentOutline", "PropertySheet"
 		);
-		// only IViewPart sutypes
+		// representative IViewPart subtypes
 	}
 
 	@Test
@@ -194,7 +194,7 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		),
 			"emf.ecore", "emf.edit.tree"
 		);
-		// only EObject sutypes
+		// representative EObject subtypes
 	}
 
 	@Test
@@ -208,7 +208,7 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		),
 			"emf.ecore", "emf.edit.tree"
 		);
-		// only EObject sutypes
+		// representative EObject subtypes
 	}
 
 	@Test
@@ -222,7 +222,7 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		),
 			"emf.ecore", "emf.edit.tree"
 		);
-		// only EObject sutypes
+		// representative EObject subtypes
 	}
 
 	@Test
@@ -360,22 +360,18 @@ public class EmfParsleyDslContentAssistTest extends AbstractContentAssistTest {
 		);
 	}
 
-	private void assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String... acceptableParts) throws Exception {
-		for (var p : builder.computeCompletionProposals()) {
-			assertTrue(
-				"proposal not expected: " + p.getDisplayString(),
-				containsAny(p.getDisplayString(), acceptableParts)
-			);
-		}
-	}
-
-	private boolean containsAny(String displayString, String[] acceptableParts) {
-		for (var part : acceptableParts) {
-			if (displayString.contains(part)) {
-				return true;
+	private void assertProposalSolutions(ContentAssistProcessorTestBuilder builder, String... expectedParts) throws Exception {
+		var proposals = builder.computeCompletionProposals();
+		for (var part : expectedParts) {
+			boolean found = false;
+			for (var proposal : proposals) {
+				if (proposal.getDisplayString().contains(part)) {
+					found = true;
+					break;
+				}
 			}
+			assertTrue("missing proposal containing: " + part, found);
 		}
-		return false;
 	}
 
 	private void appendAndApplyProposalAndExpectContent(String model, String proposal, String expectedContent) throws Exception {

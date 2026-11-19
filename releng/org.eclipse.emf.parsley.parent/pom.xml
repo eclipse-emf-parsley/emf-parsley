@@ -54,7 +54,7 @@
 	</developers>
 
 	<properties>
-		<tycho-version>4.0.13</tycho-version>
+		<tycho-version>5.0.4</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
 		<!-- Don't update yet to 3.6.0 because of this:
 		https://github.com/apache/maven-surefire/issues/3460
@@ -63,15 +63,15 @@
 		Fixed by https://github.com/apache/maven-surefire/pull/3464
 		But 3.6.1 has not yet been released
 		-->
-		<maven-surefire-plugin.version>3.5.6</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>3.6.1</maven-surefire-plugin.version>
 		<maven-antrun-plugin.version>3.2.0</maven-antrun-plugin.version>
-		<exec-maven-plugin.version>3.6.4</exec-maven-plugin.version>
+		<exec-maven-plugin.version>3.7.0</exec-maven-plugin.version>
 		<junit-version>4.13.2</junit-version>
-		<jacoco-version>0.8.15</jacoco-version>
-		<pitest.version>1.30.0</pitest.version>
+		<jacoco-version>0.8.16</jacoco-version>
+		<pitest.version>1.30.2</pitest.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<maven.deploy.skip>false</maven.deploy.skip>
 
 		<!--
@@ -80,10 +80,10 @@
 		-->
 		<m2e.apt.activation>disabled</m2e.apt.activation>
 
-		<xtext-version>2.36.0</xtext-version>
+		<xtext-version>2.44.0</xtext-version>
 		<xtextVersion>${xtext-version}</xtextVersion>
-		<mwe2Version>2.19.0</mwe2Version>
-		<eclipse-version>2024-09</eclipse-version>
+		<mwe2Version>2.27.0</mwe2Version>
+		<eclipse-version>2026-09</eclipse-version>
 
 		<!-- tests and runtime args -->
 		<os-jvm-flags />
@@ -144,8 +144,6 @@
 			**/*ParsleyModule.java,
 			**/*Activator.java,
 			**/EmfParsleyViewFilesGenerator.java,
-			**/EmfParsleyProjectFilesGenerator.java,
-			**/EmfParsleyDslNewProjectFiles.java,
 			**/*Dsl*Setup*.java,
 			**/*ExtensionFactory*.java,
 			**/*Nature*.java,
@@ -253,6 +251,21 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.common</artifactId>
+				<version>2.46.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.ecore</artifactId>
+				<version>2.43.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.edit</artifactId>
+				<version>2.24.0</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -288,8 +301,6 @@
 
 				<module>../../tests/org.eclipse.emf.parsley.cdo.tests</module>
 
-				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
-				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 
 				<!-- The target platform rap example is required here to allow to generate
 					a .target file with proper substitution of versions in the update sites.
@@ -495,7 +506,6 @@
 				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
 
-				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 			</modules>
 		</profile>
@@ -641,8 +651,6 @@
 				<module>../../plugins/org.eclipse.emf.parsley.cdo</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors.common</module>
 				<module>../../plugins/org.eclipse.emf.parsley.editors</module>
-				<module>../../plugins/org.eclipse.emf.parsley.generator.common</module>
-				<module>../../plugins/org.eclipse.emf.parsley.wizards</module>
 
 				<module>../../dsl/org.eclipse.emf.parsley.dsl</module>
 				<module>../../dsl/org.eclipse.emf.parsley.dsl.ui</module>
@@ -737,7 +745,7 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.eclipse.xtend</groupId>
+							<groupId>org.eclipse.xtext</groupId>
 							<artifactId>xtend-maven-plugin</artifactId>
 							<configuration>
 								<xtendAsPrimaryDebugSource>true</xtendAsPrimaryDebugSource>
@@ -794,7 +802,7 @@
 					so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
 					we can list it after. -->
 				<plugin>
-					<groupId>org.eclipse.xtend</groupId>
+					<groupId>org.eclipse.xtext</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
 					<version>${xtext-version}</version>
 					<executions>
@@ -840,7 +848,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.6.2</version>
+					<version>3.8.0</version>
 				</plugin>
 
 				<plugin>
@@ -883,7 +891,6 @@
 							<!-- We don't have a custom serializer -->
 							<exclude>**/serializer/*.class</exclude>
 							<!-- generated files -->
-							<exclude>**/EmfParsleyDslNewProjectWizard*.class</exclude>
 							<exclude>**/*Abstract*RuntimeModule.class</exclude>
 							<exclude>**/*StandaloneSetup*.class</exclude>
 							<exclude>**/*Abstract*Validator.class</exclude>
@@ -923,7 +930,7 @@
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
-					<version>5.8.0.7211</version>
+					<version>5.9.0.7382</version>
 				</plugin>
 
 				<plugin>

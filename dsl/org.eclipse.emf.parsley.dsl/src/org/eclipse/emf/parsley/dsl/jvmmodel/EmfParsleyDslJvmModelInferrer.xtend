@@ -94,7 +94,7 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
-import static extension org.eclipse.emf.parsley.generator.common.EmfParsleyProjectFilesGeneratorUtil.*
+import static extension org.eclipse.emf.parsley.dsl.jvmmodel.EmfParsleyDslNaming.*
 import org.eclipse.emf.parsley.dsl.util.EmfParsleyDslGuiceModuleHelper
 
 /**
