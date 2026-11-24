@@ -6,6 +6,10 @@ These parts are highly customizable via a DSL that lets you change many details 
 
 The DSL is implemented in Xtext; thus, it comes with rich and powerful IDE tooling.
 
+Building from source requires JDK 25 for the current Eclipse target platform.
+The bundles are compiled with Java 21 source and target levels. Run Maven from
+the repository root with `./mvnw -f releng/org.eclipse.emf.parsley.parent/pom.xml`.
+
 * https://eclipse.dev/emf-parsley/
 
 [![Java CI with Maven (Linux)](https://github.com/eclipse-emf-parsley/emf-parsley/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/eclipse-emf-parsley/emf-parsley/actions/workflows/maven.yml)
