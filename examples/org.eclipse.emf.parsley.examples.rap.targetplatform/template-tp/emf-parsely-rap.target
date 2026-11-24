@@ -6,10 +6,6 @@
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.databinding.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.net4j.db.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.net4j.util.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.cdo.server.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.cdo.server.db.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.databinding.edit.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
 <unit id="org.apache.commons.commons-logging" version="0.0.0"/>
@@ -29,6 +25,10 @@
 <repository location="https://download.eclipse.org/rt/rap/4.8/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.net4j.db.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.net4j.util.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.cdo.server.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.cdo.server.db.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xtext.xbase.lib.feature.group" version="0.0.0"/>
 <unit id="com.google.guava.failureaccess" version="0.0.0"/>
 <unit id="com.google.inject" version="0.0.0"/>
