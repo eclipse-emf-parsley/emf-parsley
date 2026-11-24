@@ -242,26 +242,6 @@
                description="Mail RCP"
                name="org.eclipse.emf.parsley.examples.mail.rcp">
          </projectDescriptor>
-         <projectDescriptor
-               contentURI="contents/org.eclipse.emf.parsley.examples.mail.accountsview.zip"
-               description="Mail Accounts View"
-               name="org.eclipse.emf.parsley.examples.mail.accountsview">
-         </projectDescriptor>
-         <projectDescriptor
-               contentURI="contents/org.eclipse.emf.parsley.examples.mail.mailsview.zip"
-               description="Mail Emails View"
-               name="org.eclipse.emf.parsley.examples.mail.mailsview">
-         </projectDescriptor>
-         <projectDescriptor
-               contentURI="contents/org.eclipse.emf.parsley.examples.mail.messageview.zip"
-               description="Mail Message View"
-               name="org.eclipse.emf.parsley.examples.mail.messageview">
-         </projectDescriptor>
-         <projectDescriptor
-               contentURI="contents/org.eclipse.emf.parsley.examples.mail.product.feature.zip"
-               description="Mail Product Feature"
-               name="org.eclipse.emf.parsley.examples.mail.product.feature">
-         </projectDescriptor>
       </example>
    </extension>
    <extension

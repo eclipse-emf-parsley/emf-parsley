@@ -345,11 +345,7 @@
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.cdo</module>
 
 				<module>../../examples/org.eclipse.emf.parsley.examples.mail.model</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.mail.accountsview</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.mail.mailsview</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.mail.messageview</module>
 				<module>../../examples/org.eclipse.emf.parsley.examples.mail.rcp</module>
-				<module>../../examples/org.eclipse.emf.parsley.examples.mail.product.feature</module>
 				<module>../../tests/org.eclipse.emf.parsley.tests.swtbot.examples</module>
 
 				<module>../../releng/org.eclipse.emf.parsley.repository</module>
