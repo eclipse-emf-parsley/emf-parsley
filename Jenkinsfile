@@ -10,7 +10,7 @@ pipeline {
   }
 
   tools {
-     jdk "temurin-jdk21-latest"
+     jdk "temurin-jdk25-latest"
   }
 
   stages {

@@ -25,7 +25,7 @@ import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.parsley.examples.cdo.server.CDOServer;
 import org.eclipse.net4j.connector.IConnector;
-import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.security.PasswordCredentialsProvider;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeItem;
@@ -164,7 +164,7 @@ public class EmfParsleyCdoSWTBotTests {
 	}
 
 	public static void checkCDOServer(String host, String user, String password, String port) {
-		final IConnector connector = (IConnector) IPluginContainer.INSTANCE.getElement("org.eclipse.net4j.connectors",
+		final IConnector connector = (IConnector) IManagedContainer.INSTANCE.getElement("org.eclipse.net4j.connectors",
 				"tcp", host + ":" + port);
 
 		CDONet4jSessionConfiguration config = CDONet4jUtil.createNet4jSessionConfiguration();
