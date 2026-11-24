@@ -13,7 +13,6 @@ package org.eclipse.emf.parsley.cdo;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.cdo.eresource.CDOResource;
-import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.view.CDOAdapterPolicy;
@@ -25,7 +24,6 @@ import org.eclipse.emf.parsley.cdo.util.CDOURIData;
 import org.eclipse.emf.parsley.resource.LoadResourceResponse;
 import org.eclipse.emf.parsley.resource.ResourceLoader;
 import org.eclipse.emf.spi.cdo.CDOMergingConflictResolver;
-import org.eclipse.net4j.util.container.IPluginContainer;
 
 import com.google.inject.Inject;
 
@@ -87,8 +85,6 @@ public class CDOResourceLoader extends ResourceLoader {
 
 
 	private CDOTransaction openTransaction(URI resourceURI){
-		CDONet4jUtil.prepareContainer(IPluginContainer.INSTANCE);
-
 		CDOURIData data = CDOURIData.parse(resourceURI);
 
 		String server = data.getServer();

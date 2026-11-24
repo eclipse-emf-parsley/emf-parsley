@@ -14,7 +14,7 @@ import org.eclipse.emf.cdo.net4j.CDONet4jSessionConfiguration;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.net4j.connector.IConnector;
-import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.lifecycle.ILifecycle;
 import org.eclipse.net4j.util.lifecycle.LifecycleEventAdapter;
 
@@ -22,7 +22,7 @@ public class CDOSessionManager {
 
 	public CDOSession getSession(String server, String repository) {
 
-		final IConnector connector = (IConnector) IPluginContainer.INSTANCE
+		final IConnector connector = (IConnector) IManagedContainer.INSTANCE
 				.getElement( //
 						"org.eclipse.net4j.connectors", // Product group
 						"tcp", // Type
