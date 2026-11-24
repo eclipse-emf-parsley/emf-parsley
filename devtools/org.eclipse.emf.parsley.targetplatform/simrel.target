@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="simrel" sequenceNumber="8">
-<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-21"/>
+<target name="simrel" sequenceNumber="9">
+<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-25"/>
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.net4j.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
 <unit id="org.apache.commons.commons-logging" version="0.0.0"/>
-<repository location="https://download.eclipse.org/releases/2026-09"/>
+<repository location="https://download.eclipse.org/staging/2026-12/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.swtbot.forms.feature.group" version="0.0.0"/>
@@ -22,14 +24,6 @@
 <repository location="https://download.eclipse.org/technology/swtbot/releases/latest"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.27.0/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.44.0/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="de.itemis.xtext.antlr.feature.feature.group" version="0.0.0"/>
 <repository location="https://artifacts.itemis.cloud/repository/p2/xtext-updates/releases/2.1.1"/>
 </location>
@@ -37,7 +31,7 @@
 <unit id="org.mockito.mockito-core" version="0.0.0"/>
 <unit id="net.bytebuddy.byte-buddy-agent" version="0.0.0"/>
 <unit id="slf4j.api" version="0.0.0"/>
-<repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-09"/>
+<repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-12"/>
 </location>
 </locations>
 </target>
