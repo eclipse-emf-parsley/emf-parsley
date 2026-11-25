@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
@@ -14,38 +13,38 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="EMF Parsley Mail RCP Perspective"
             class="org.eclipse.emf.parsley.examples.mail.rcp.Perspective"
-            id="org.eclipse.emf.parsley.examples.mail.rcp.perspective">
+            id="org.eclipse.emf.parsley.examples.mail.rcp.perspective"
+            name="EMF Parsley Mail RCP Perspective">
       </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.views">
       <view
-            name="Message"
             allowMultiple="true"
-            icon="icons/sample2.gif"
             class="org.eclipse.emf.parsley.examples.mail.rcp.View"
-            id="org.eclipse.emf.parsley.examples.mail.rcp.view">
+            icon="icons/sample2.gif"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.view"
+            name="Message">
       </view>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <category
-            name="Mail"
-            id="org.eclipse.emf.parsley.examples.mail.rcp.category">
+            id="org.eclipse.emf.parsley.examples.mail.rcp.category"
+            name="Mail">
       </category>
       <command
-            name="Open Mailbox"
-            description="Opens a mailbox"
             categoryId="org.eclipse.emf.parsley.examples.mail.rcp.category"
-            id="org.eclipse.emf.parsley.examples.mail.rcp.open">
+            description="Opens a mailbox"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.open"
+            name="Open Mailbox">
       </command>
       <command
-            name="Open Message Dialog"
-            description="Open a message dialog"
             categoryId="org.eclipse.emf.parsley.examples.mail.rcp.category"
-            id="org.eclipse.emf.parsley.examples.mail.rcp.openMessage">
+            description="Open a message dialog"
+            id="org.eclipse.emf.parsley.examples.mail.rcp.openMessage"
+            name="Open Message Dialog">
       </command>
    </extension>
    <extension
@@ -85,7 +84,6 @@
          </property>
       </product>
    </extension>
-
    <extension
          point="org.eclipse.ui.views">
       <category
