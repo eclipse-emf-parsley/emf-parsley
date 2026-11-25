@@ -70,6 +70,7 @@
 		<jacoco-version>0.8.16</jacoco-version>
 		<pitest.version>1.30.2</pitest.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Build with JDK 25; retain Java 21 source and bytecode compatibility. -->
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 		<maven.deploy.skip>false</maven.deploy.skip>
