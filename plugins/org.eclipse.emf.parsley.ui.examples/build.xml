@@ -35,10 +35,6 @@
 	<target name="zip_all_examples">
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.rcp" />
 		<zip_example name="org.eclipse.emf.parsley.examples.mail.model" />
-		<zip_example name="org.eclipse.emf.parsley.examples.mail.accountsview" />
-		<zip_example name="org.eclipse.emf.parsley.examples.mail.mailsview" />
-		<zip_example name="org.eclipse.emf.parsley.examples.mail.messageview" />
-		<zip_example name="org.eclipse.emf.parsley.examples.mail.product.feature" />
 		<zip_example name="org.eclipse.emf.parsley.examples.firstexample" />
 		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4" />
 		<zip_example name="org.eclipse.emf.parsley.examples.eclipse4.parsleypart" />

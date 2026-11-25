@@ -17,6 +17,14 @@
 		<specialTestArguments>${swtbotTestsArgs}</specialTestArguments>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.eclipse.emf.parsley.examples.mail.rcp</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -37,11 +45,6 @@
 				<configuration>
 					<dependency-resolution>
 						<extraRequirements>
-							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.eclipse.emf.parsley.examples.mail.product.feature</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
 							<requirement>
 								<type>eclipse-plugin</type>
 								<id>org.apache.felix.scr</id>
