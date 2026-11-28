@@ -42,7 +42,7 @@ public class DynamicEditingDomainViewerDropAdapter extends EditingDomainViewerDr
 	@Override
 	public void drop(DropTargetEvent event) {
 		Collection<?> dragSource = extractDragSource(event.data);
-		Object firstElement = Iterables.getFirst(dragSource, null);
+		Object firstElement = Iterables.getFirst(dragSource, null); // NOSONAR: issue reported on getFirst which is not our code
 		editingDomainFinderStrategy.updateEditingDomain(firstElement);
 		domain = editingDomainFinderStrategy.getEditingDomain();
 		if (domain != null) {
