@@ -119,6 +119,9 @@ public class EmfParsleyDslProjectTemplateGenerationTest {
 		} else if (file.equals(Paths.get(".classpath"))
 				|| file.equals(Paths.get("META-INF", "MANIFEST.MF"))) {
 			text = text.replaceAll("JavaSE-\\d+", "JavaSE-<version>");
+			if (file.equals(Paths.get("META-INF", "MANIFEST.MF"))) {
+				text = text.replaceAll("(?m)^Bundle-Version: .*", "Bundle-Version: <version>");
+			}
 		}
 		return text;
 	}
