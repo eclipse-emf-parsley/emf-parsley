@@ -42,7 +42,7 @@
 <unit id="org.eclipse.emf.parsley.rap.cdo.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.rap.cdo.sdk.source.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.emf.parsley.rap.sdk.source.feature.group" version="0.0.0"/>
-<repository location="https://download.eclipse.org/emf-parsley/rt/1.19"/>
+<repository location="https://download.eclipse.org/emf-parsley/rt/1.20"/>
 </location>
 </locations>
 </target>
